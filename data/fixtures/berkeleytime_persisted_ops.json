@@ -1,0 +1,96 @@
+{
+ "GetTerm": [
+  {
+   "id": "40f7350accb924cdb91a6b6ff820cd5d474008917554431a93f2e21bf3a53f23",
+   "document": "query GetTerm($year:Int!$semester:Semester!){term(year:$year semester:$semester){year semester temporalPosition sessions{name startDate endDate temporalPosition __typename}startDate endDate __typename}}",
+   "variableNames": [
+    "year",
+    "semester"
+   ]
+  }
+ ],
+ "GetCatalog": [
+  {
+   "id": "448617e0113eeca9809d8e6384b513707d5f2c7aced71653b3ad0e5f5dd64e32",
+   "document": "query GetCatalog($year:Int!$semester:Semester!){catalog(year:$year semester:$semester){subject courseNumber number sessionId title unitsMax unitsMin finalExam gradingBasis primarySection{component online instructionMode attendanceRequired lecturesRecorded enrollment{latest{status enrolledCount maxEnroll waitlistedCount maxWaitlist __typename}__typename}meetings{days __typename}__typename}course{title gradeDistribution{average __typename}academicCareer __typename}decal{title __typename}__typename}}",
+   "variableNames": [
+    "year",
+    "semester"
+   ]
+  }
+ ],
+ "GetClass": [
+  {
+   "id": "47ceea46a863bda95a648503be7750d25726796b996518912ccca8f27c98ece2",
+   "document": "query GetClass($year:Int!$semester:Semester!$sessionId:SessionIdentifier$subject:String!$courseNumber:CourseNumber!$number:ClassNumber!){class(year:$year semester:$semester sessionId:$sessionId subject:$subject courseNumber:$courseNumber number:$number){year semester subject courseNumber number title description unitsMax unitsMin gradingBasis finalExam gradeDistribution{average distribution{letter count __typename}__typename}course{title description aggregatedRatings{metrics{categories{count value __typename}count metricName weightedAverage __typename}__typename}gradeDistribution{average distribution{letter count __typename}__typename}academicCareer requirements __typename}primarySection{number sectionId component online attendanceRequired lecturesRecorded startDate endDate enrollment{latest{status enrolledCount maxEnroll waitlistedCount maxWaitlist seatReservationCount{number maxEnroll enrolledCount __typename}__typename}seatReservationTypes{number requirementGroup fromDate __typename}__typename}meetings{days location endTime startTime instructors{familyName givenName __typename}__typename}exams{date type location startTime endTime __typename}__typename}sections{number sectionId component online attendanceRequired lecturesRecorded startDate endDate enrollment{latest{status enrolledCount maxEnroll waitlistedCount maxWaitlist __typename}seatReservationTypes{number requirementGroup fromDate __typename}__typename}meetings{days location endTime startTime instructors{familyName givenName __typename}__typename}exams{date type location startTime endTime __typename}__typename}__typename}}",
+   "variableNames": [
+    "year",
+    "semester",
+    "sessionId",
+    "subject",
+    "courseNumber",
+    "number"
+   ]
+  },
+  {
+   "id": "79775dae18f1f702ad5c0d177254b33b973f126c5e21750cb7b5569ec5146a87",
+   "document": "query GetClass($year:Int!$semester:Semester!$sessionId:SessionIdentifier!$subject:String!$courseNumber:CourseNumber!$number:ClassNumber!){class(year:$year semester:$semester sessionId:$sessionId subject:$subject courseNumber:$courseNumber number:$number){year semester subject sessionId courseNumber number title description decal{title syllabus description syllabusUrl applicationUrl applicationDueDate instructors{name email __typename}__typename}unitsMax unitsMin gradingBasis finalExam gradeDistribution{average pnpPercentage distribution{letter count __typename}__typename}course{title description aggregatedRatings{metrics{categories{count value __typename}count metricName weightedAverage __typename}__typename}gradeDistribution{average pnpPercentage distribution{letter count __typename}__typename}academicCareer requirements requiredCourses{subject number __typename}classes{semester year number anyPrintInScheduleOfClasses primarySection{startDate meetings{instructors{familyName givenName __typename}__typename}__typename}__typename}__typename}primarySection{number sectionId component online attendanceRequired lecturesRecorded startDate endDate sectionAttributes(attributeCode:\\\"NOTE\\\"){attribute{code description formalDescription __typename}value{code description formalDescription __typename}__typename}enrollment{history{startTime endTime granularitySeconds status enrolledCount maxEnroll waitlistedCount maxWaitlist __typename}latest{startTime endTime granularitySeconds status enrolledCount maxEnroll waitlistedCount maxWaitlist activeReservedMaxCount seatReservationCount{enrolledCount maxEnroll requirementGroup{description __typename}isValid __typename}__typename}__typename}meetings{days location endTime startTime instructors{familyName givenName __typename}__typename}exams{date type location startTime endTime __typename}__typename}sections{number sectionId component online attendanceRequired lecturesRecorded startDate endDate sectionAttributes(attributeCode:\\\"NOTE\\\"){attribute{code description formalDescription __typename}value{code description formalDescription __typename}__typename}enrollment{latest{startTime endTime granularitySeconds status enrolledCount maxEnroll waitlistedCount maxWaitlist activeReservedMaxCount __typename}__typename}meetings{days location endTime startTime instructors{familyName givenName __typename}__typename}exams{date type location startTime endTime __typename}__typename}__typename}}",
+   "variableNames": [
+    "year",
+    "semester",
+    "sessionId",
+    "subject",
+    "courseNumber",
+    "number"
+   ]
+  }
+ ],
+ "GetTerms": [
+  {
+   "id": "5758c759e679eb9005c3aaeaf54504f2b6fb7995cee2a411116fef7b171ad746",
+   "document": "query GetTerms{terms{year semester temporalPosition sessions{id name startDate endDate temporalPosition __typename}startDate endDate __typename}}",
+   "variableNames": []
+  },
+  {
+   "id": "e97249c70d8a47a59a96728627078b5bc951c52d566afa0a10f953af5adc3332",
+   "document": "query GetTerms{terms(withCatalogData:true){year semester temporalPosition hasCatalogData sessions{id name startDate endDate temporalPosition __typename}startDate endDate __typename}}",
+   "variableNames": []
+  }
+ ],
+ "GetEnrollment": [
+  {
+   "id": "6b4e761f02e20db683488a9928ee2b8c6d07dbddab14851410cd0e94e2585382",
+   "document": "query GetEnrollment($year:Int!$semester:Semester!$sessionId:SessionIdentifier$subject:String!$courseNumber:CourseNumber!$sectionNumber:SectionNumber!){enrollment(year:$year semester:$semester sessionId:$sessionId subject:$subject courseNumber:$courseNumber sectionNumber:$sectionNumber){year semester sessionId sectionId subject courseNumber sectionNumber history{startTime endTime granularitySeconds status enrolledCount waitlistedCount reservedCount minEnroll maxEnroll maxWaitlist openReserved activeReservedMaxCount seatReservationCount{maxEnroll enrolledCount requirementGroup{description __typename}isValid __typename}__typename}__typename}}",
+   "variableNames": [
+    "year",
+    "semester",
+    "sessionId",
+    "subject",
+    "courseNumber",
+    "sectionNumber"
+   ]
+  },
+  {
+   "id": "df2ab4d2fdf5c72953e86cb4c8c73ea74a7eb99b524fa7c1b1423c16950d36da",
+   "document": "query GetEnrollment($year:Int!$semester:Semester!$sessionId:SessionIdentifier$subject:String!$courseNumber:CourseNumber!$sectionNumber:SectionNumber!){enrollment(year:$year semester:$semester sessionId:$sessionId subject:$subject courseNumber:$courseNumber sectionNumber:$sectionNumber){year semester sessionId sectionId subject courseNumber sectionNumber seatReservationTypes{number requirementGroup fromDate __typename}history{startTime endTime granularitySeconds status enrolledCount reservedCount waitlistedCount minEnroll maxEnroll maxWaitlist openReserved seatReservationCount{number maxEnroll enrolledCount __typename}__typename}__typename}}",
+   "variableNames": [
+    "year",
+    "semester",
+    "sessionId",
+    "subject",
+    "courseNumber",
+    "sectionNumber"
+   ]
+  }
+ ],
+ "GetEnrollmentTimeframes": [
+  {
+   "id": "f11827caca4ffa25bba5d4ee7bf22c0fa6724af5e7bd975ec74f5c4f89ffdcca",
+   "document": "query GetEnrollmentTimeframes($year:Int!$semester:Semester!){enrollmentTimeframes(year:$year semester:$semester){phase isAdjustment group startDate endDate startEventSummary __typename}}",
+   "variableNames": [
+    "year",
+    "semester"
+   ]
+  }
+ ]
+}

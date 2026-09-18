@@ -1,0 +1,197 @@
+{
+ "enrollment": {
+  "available": {
+   "id": 30174,
+   "enrollmentStatus": {
+    "status": {
+     "code": "O",
+     "description": "Open"
+    },
+    "enrolledCount": 60,
+    "reservedCount": 60,
+    "waitlistedCount": 0,
+    "minEnroll": 0,
+    "maxEnroll": 64,
+    "maxWaitlist": 15,
+    "openReserved": 0
+   }
+  },
+  "history": {
+   "id": 30174,
+   "enrollmentStatus": {
+    "status": {
+     "code": "O",
+     "description": "Open"
+    },
+    "enrolledCount": 60,
+    "reservedCount": 60,
+    "waitlistedCount": 0,
+    "minEnroll": 0,
+    "maxEnroll": 64,
+    "maxWaitlist": 15,
+    "openReserved": 0,
+    "seatReservations": [
+     {
+      "number": 1,
+      "requirementGroup": {
+       "code": "001351",
+       "description": "Undergraduate Students: Aerospace Engineering Majors"
+      },
+      "fromDate": "2026-04-13",
+      "maxEnroll": 60,
+      "enrolledCount": 60
+     }
+    ]
+   }
+  }
+ },
+ "termDetails": {
+  "sessionDescription": "2026 Fall",
+  "summerFees": null,
+  "textbookInfo": "See class syllabus or https://calstudentstore.berkeley.edu/textbooks for the most current information.\r\n<p><a class='cc-button cc-small-button'  href=https://calstudentstore.berkeley.edu/textbooks for the most current information.'>Textbook Lookup</a></p>\r\nGuide to Open, Free, & Affordable Course Materials\r\n<p><a class='cc-button cc-small-button'  href=https://guides.lib.berkeley.edu/affordable-resources>eTextbooks</a></p>",
+  "callToAction": null,
+  "showFinalExamLocation": "false",
+  "reservedSeatsInfo": "Note: Reserved seating rules can change at any time.",
+  "enrollmentPhases": [
+   {
+    "phase_name": "Phase 1 for Continuing Students",
+    "phase_dates": {
+     "value": "2026-04-13",
+     "value2": "2026-06-12"
+    }
+   },
+   {
+    "phase_name": "Phase 2 for Continuing Students",
+    "phase_dates": {
+     "value": "2026-07-20",
+     "value2": "2026-08-16"
+    }
+   },
+   {
+    "phase_name": "Adjustment Period",
+    "phase_dates": {
+     "value": "2026-08-17",
+     "value2": "2026-10-30"
+    }
+   },
+   {
+    "phase_name": "Phase 1 for New Freshman",
+    "phase_dates": {
+     "value": "2026-07-16",
+     "value2": "2026-08-16"
+    }
+   },
+   {
+    "phase_name": "Phase 1 for New Undergraduate Transfers",
+    "phase_dates": {
+     "value": "2026-07-14",
+     "value2": "2026-08-16"
+    }
+   }
+  ]
+ },
+ "explainers": [
+  {
+   "title": "Explainer Asynchronous",
+   "element": "#block-recordedclasses legend",
+   "delay": "",
+   "content": "Asynchronous Instruction means that there are no specified days/times at which students are expected to attend. The class section may be delivered either a) exclusively asynchronously or b) optionally asynchronously--a synchronous option may be available. Note that a meeting pattern (days/times) may appear for a section that is delivered exclusively asynchronously because the pattern is needed for the purpose of determining the final exam schedule. Check the Class Notes and/or syllabus for more information."
+  },
+  {
+   "title": "Explainer Audio/Visually Recorded",
+   "element": "#recorded-classes-audio",
+   "delay": "",
+   "content": "Classes that are audio and/or visually recorded for later viewing."
+  },
+  {
+   "title": "Explainer asynchronous facet",
+   "element": "#recorded-classes-async",
+   "delay": "",
+   "content": "This filter is for Asynchronous and/or Audio/Visually Recorded classes. Please mouse over each option for more information."
+  },
+  {
+   "title": "Explainer course thread",
+   "element": "#block-coursethreads legend",
+   "delay": "3",
+   "content": "Some Course Threads have been discontinued. To view all currently active Course Threads and learn about the program, visit <a href=\"https://coursethreads.berkeley.edu\" target=\"_blank\">https://coursethreads.berkeley.edu</a>"
+  },
+  {
+   "title": "Explainer Flexible",
+   "element": "#mode-instruction-ef",
+   "delay": "",
+   "content": "Reviewed and approved for a mixture of in-person and remote delivery and students may choose either type of delivery. See class notes for additional details."
+  },
+  {
+   "title": "Explainer Flexible pending",
+   "element": ".a",
+   "delay": "",
+   "content": "Under review for flexible instruction for Spring 2021."
+  },
+  {
+   "title": "Explainer Hybrid",
+   "element": "#mode-instruction-eh",
+   "delay": "",
+   "content": "Reviewed and approved for a combination of remote and in-person delivery, with some degree of in-person participation required."
+  },
+  {
+   "title": "Explainer Remote",
+   "element": "#mode-instruction-er",
+   "delay": "",
+   "content": "Approved for online delivery on a temporary basis."
+  },
+  {
+   "title": "Explainer Online Instruction",
+   "element": "#mode-instruction-oo",
+   "delay": "",
+   "content": "Designed and approved for online delivery."
+  },
+  {
+   "title": "Explainer In Person",
+   "element": "#mode-instruction-pp",
+   "delay": "",
+   "content": "Instruction is primarily or entirely in-person."
+  },
+  {
+   "title": "Explainer In-Person pending",
+   "element": ".a",
+   "delay": "",
+   "content": "Under review for in-person instruction."
+  },
+  {
+   "title": "Explainer Pending Review",
+   "element": "#mode-instruction-pr",
+   "delay": "",
+   "content": "Class has not yet been updated for the term."
+  },
+  {
+   "title": "Explainer Web Based",
+   "element": "#mode-instruction-ww",
+   "delay": "",
+   "content": "Designed and approved for online delivery regardless of the semester. Most web-based courses have a \"W\" before the course number. Example: CYBER W200."
+  },
+  {
+   "title": "Explainer instructor mode facet",
+   "element": "#block-modeofinstruction legend",
+   "delay": "",
+   "content": "This filter is for the primary section of the class (usually the lecture). The primary section can have a different mode of instruction than the associated/secondary sections, such as labs or discussions. Mode of Instruction is updated nightly."
+  },
+  {
+   "title": "Explainer major",
+   "element": "#block-majorrequirements legend",
+   "delay": "",
+   "content": "Select your intended or declared major."
+  },
+  {
+   "title": "Explainer major facet",
+   "element": "#requirement-year-facet",
+   "delay": "",
+   "content": "Search is currently available for Bioengineering, Classical Civilizations, Cognitive Science, Data Science, Economics, Electrical Engineering and Computer Sciences, English, Environmental Earth Science, Environmental Economics and Policy, Environmental Sciences, Gender and Women's Studies, Integrative Biology, Landscape Architecture, Mathematics, Molecular and Cell Biology, Molecular Environmental Biology, Physics, Political Science, Psychology, Sociology, and Urban Studies."
+  },
+  {
+   "title": "Explainer year",
+   "element": "#requirement-major-facet",
+   "delay": "",
+   "content": "Undeclared students should select the academic year they were admitted as the requirement year. Most students with a declared major can verify their requirement year in CalCentral's Academic Progress Report. "
+  }
+ ]
+}
