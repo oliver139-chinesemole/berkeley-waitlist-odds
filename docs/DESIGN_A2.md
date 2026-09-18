@@ -1,0 +1,236 @@
+# A2 build contract — scraper and storage
+
+This is the binding interface spec for step A2. Modules are built in parallel against it; do not change a signature here without updating this file. Facts about the sources are in `docs/PHASE0.md`; fixtures in `data/fixtures/`.
+
+Python 3.12. Dependencies are pinned in `requirements.txt` (`pyarrow`, `pandas`, `tenacity`, `certifi`; `requests` is NOT used for classes.berkeley.edu because its TLS stack is blocked; it is fine for Berkeleytime and the SIS gateway). Tests use `pytest` and never touch the network.
+
+## 1. Snapshot row schema (`scraper/schema.py`)
+
+`SNAPSHOT_SCHEMA: pyarrow.Schema`, field order fixed:
+
+| field | type | notes |
+| --- | --- | --- |
+| `fetched_at` | `timestamp[us, tz=UTC]` | actual fetch time of that row, never the scheduled time |
+| `term_id` | `string` | SIS term id, e.g. `"2268"` (Fall 2026), `"2272"` (Spring 2027, to confirm) |
+| `section_id` | `string` | SIS class section id = "Class #", e.g. `"30174"` |
+| `course_key` | `string` | `"<SUBJECT> <CATALOG>"`, e.g. `"COMPSCI 61A"` |
+| `subject` | `string` | `"COMPSCI"` (spaces removed, Berkeleytime convention) |
+| `catalog_number` | `string` | `"61A"` |
+| `class_number` | `string` | `"001"` |
+| `section_number` | `string` | `"001"` |
+| `component` | `string` | `"LEC"`, `"DIS"`, `"LAB"`, ... |
+| `is_primary` | `bool` nullable | null when the source cannot tell |
+| `session_id` | `string` | `"1"` for regular session |
+| `enrolled_count` | `int32` | `enrollmentStatus.enrolledCount` |
+| `enroll_capacity` | `int32` | `enrollmentStatus.maxEnroll` |
+| `waitlist_count` | `int32` | `enrollmentStatus.waitlistedCount` |
+| `waitlist_capacity` | `int32` | `enrollmentStatus.maxWaitlist` |
+| `reserved_count` | `int32` nullable | `enrollmentStatus.reservedCount` |
+| `open_reserved` | `int32` nullable | `enrollmentStatus.openReserved` |
+| `status` | `string` | `enrollmentStatus.status.code`: `O` open, `C` closed, `W` waitlist ... |
+| `section_status` | `string` nullable | section `status.code` (`A` active, `X` cancelled); tombstone rows use `"GONE"` |
+| `source` | `string` | `"sis_api"`, `"classes_site"`, `"berkeleytime"` |
+
+Functions:
+
+```python
+SNAPSHOT_SCHEMA: pa.Schema
+COUNT_FIELDS = ("enrolled_count","enroll_capacity","waitlist_count","waitlist_capacity","reserved_count","open_reserved","status","section_status")
+class SnapshotRow(TypedDict): ...            # one key per field above
+def rows_to_table(rows: list[SnapshotRow]) -> pa.Table   # casts to SNAPSHOT_SCHEMA, raises SchemaError on any violation
+def validate_table(table: pa.Table) -> None              # raises SchemaError if schema differs or section_id duplicates exist
+class SchemaError(ValueError): ...
+```
+
+## 2. Storage layout (`scraper/storage.py`)
+
+Root is the checkout of the `data` branch (`data_root`). Files are never rewritten.
+
+```
+snapshots/date=YYYY-MM-DD/HHMM-baseline.parquet   # every observed section, all rows
+snapshots/date=YYYY-MM-DD/HHMM-delta.parquet      # only rows whose COUNT_FIELDS changed vs the previous observation of that section, plus tombstones
+catalog/<term_id>/sections.json                   # section list for the term (classes_site only), refreshed at most daily
+status.json                                       # last run summary (small, rewritten each run)
+```
+
+`HHMM` is `fetched_at` of the run start in UTC. Date partition is the UTC date.
+
+Every parquet file carries key-value metadata (all values are strings, JSON-encoded where structured):
+
+| key | meaning |
+| --- | --- |
+| `run_started_at` | ISO-8601 UTC |
+| `term_id` | |
+| `source` | |
+| `kind` | `baseline` or `delta` |
+| `scope` | `full` (whole term universe observed) or `priority` (priority list ∪ shard observed) |
+| `shard` | `"k/n"` when scope is `priority` and rotating shards are on, else `""` |
+| `priority_sha` | sha256 of the priority list file content when scope is `priority`, else `""` |
+| `missing_ids` | JSON list of section ids that were in scope but failed to fetch (HTTP error, parse error) |
+| `n_observed` | integer, sections successfully fetched in this run |
+| `n_written` | rows in the file |
+
+Functions:
+
+```python
+@dataclass
+class RunMeta:  # mirrors the metadata table above
+    run_started_at: datetime; term_id: str; source: str; kind: str; scope: str
+    shard: str = ""; priority_sha: str = ""; missing_ids: list[str] = field(default_factory=list); n_observed: int = 0
+
+def snapshot_path(data_root: Path, run_started_at: datetime, kind: str) -> Path
+def write_snapshot(data_root: Path, table: pa.Table, meta: RunMeta) -> Path      # validates, refuses to overwrite, writes atomically (tmp + rename)
+def list_snapshots(data_root: Path, date: date | None = None) -> list[Path]      # sorted by time
+def read_snapshot(path: Path) -> tuple[pa.Table, RunMeta]
+def latest_state(data_root: Path, term_id: str, as_of_date: date) -> pd.DataFrame | None
+    # section_id-indexed frame of the most recent observed COUNT_FIELDS for that UTC date (baseline + deltas applied in order); None if no baseline that day
+def compute_delta(previous: pd.DataFrame | None, observed: pa.Table, universe_ids: set[str] | None) -> pa.Table
+    # rows in `observed` whose COUNT_FIELDS differ from `previous` (or are new); when `universe_ids` is given (scope=full) also emit a tombstone row
+    # (section_status="GONE", counts copied from previous) for ids in previous that are neither in observed nor in universe_ids.
+```
+
+Rules: the first run of a UTC day writes a `baseline` regardless of scope (rows = everything observed). Later runs write `delta`. A run that observes zero sections writes nothing and exits non-zero (see fetch.py).
+
+## 3. Rebuild (`scraper/rebuild.py`)
+
+```python
+def rebuild_panel(data_root: Path, term_id: str, start: date | None = None, end: date | None = None) -> pd.DataFrame
+```
+
+Output: one row per (section_id, run_started_at) for every run in range, columns = COUNT_FIELDS + `observed: bool` + `source` + `scope`. Semantics:
+
+- For each run, the observed set is: scope `full` → every section id present in the baseline of that day ∪ ids in this file, minus `missing_ids`; scope `priority` → the priority list at `priority_sha` (`config/priority_courses.txt` history is not needed; the set is reconstructed from the section list in `catalog/<term>/sections.json` matched against the list) ∪ shard members, minus `missing_ids`. To keep this simple the delta file also stores `observed_ids` as a compact JSON list in metadata **only when scope is priority** (≤ 1,500 ids ≈ 10 KB); rebuild uses it directly.
+- Observed and unchanged → previous values carried forward, `observed=True`.
+- Not observed → previous values carried forward, `observed=False`. (A4 treats runs of `observed=False` as censoring, not as zero flow.)
+- Tombstone (`section_status="GONE"`) → carried forward with `observed=True` until the section reappears.
+
+Round-trip requirement (test): a day of synthetic runs written as baseline + deltas rebuilds to exactly the same panel as writing every run as a full table.
+
+## 4. HTTP client (`scraper/http.py`)
+
+```python
+class HttpError(Exception): status: int; url: str
+class HttpClient:
+    def __init__(self, user_agent: str, min_interval_s: float = 1.0, max_concurrency: int = 2, timeout_s: float = 40, retries: int = 3, backoff_base_s: float = 1.0, ca_file: str | None = None)
+    def get(self, url: str, headers: dict | None = None) -> bytes        # urllib.request + ssl context from certifi; handles gzip; retries on 429/5xx/URLError with exponential backoff + jitter; raises HttpError after retries; 404 raises immediately (no retry)
+    def get_many(self, urls: list[str], on_result: Callable[[str, bytes | HttpError], None], time_budget_s: float | None = None) -> None
+        # thread pool of max_concurrency, global rate limiter so that requests start no faster than 1/min_interval_s; stops scheduling new URLs when time budget is exhausted
+```
+
+User-Agent everywhere: `berkeley-waitlist-odds/<version> (+https://github.com/<owner>/berkeley-waitlist-odds; mailto:oliver139@berkeley.edu)`.
+
+## 5. Sources (`scraper/sources/`)
+
+```python
+@dataclass(frozen=True)
+class TermSpec:
+    name: str          # "Spring 2027"
+    year: int          # 2027
+    semester: str      # "Spring" | "Fall" | "Summer"
+    sis_term_id: str   # "2272"
+    @property
+    def berkeleytime_semester(self) -> str  # same as semester
+    @staticmethod
+    def from_name(name: str) -> "TermSpec"   # derives sis_term_id: "2" + YY + {Spring:2, Summer:5, Fall:8}
+
+@dataclass
+class FetchResult:
+    rows: list[SnapshotRow]
+    missing_ids: list[str]
+    universe_ids: set[str] | None     # all section ids the source considers in scope (None if unknown)
+    scope: str                        # "full" | "priority"
+    observed_ids: list[str]           # ids successfully fetched (== {r["section_id"] for r in rows})
+
+class Source(Protocol):
+    name: str
+    def fetch(self, term: TermSpec, *, priority: PrioritySpec | None, time_budget_s: float | None) -> FetchResult
+```
+
+### 5a. `classes_site.py` (`name = "classes_site"`)
+
+- `discover_term_facet_id(client, term_name) -> str`: parse the listing page's term facet links (`href` contains `term%3A<id>`, link text starts with the term name, e.g. `Spring 2027 (6131)`). Raise `TermNotPublished` if absent.
+- `list_sections(client, facet_id, max_pages=None) -> list[SectionRef]` where `SectionRef(section_id, url_path, course_key, subject, catalog_number, class_number, section_number, component)` parsed from each `views-row` (`#30174`, `st--section-name`, the two `st--section-count`, `st--section-code`, and the `/content/...` href). Pager: `?page=N`, 18 rows per page, stop when a page yields no rows. Persist to `catalog/<term_id>/sections.json` with a `listed_at` timestamp; reuse if younger than 24 h.
+- `parse_section_page(html: bytes, ref: SectionRef, fetched_at: datetime, term: TermSpec) -> SnapshotRow`: read `<script data-drupal-selector="drupal-settings-json">`, take `ucb.enrollment.available.id` (must equal `ref.section_id`) and `ucb.enrollment.available.enrollmentStatus`; `section_status` from `ucb.enrollment.history` if present else null; `is_primary` null. Raise `ParseError` when the blob or keys are absent.
+- `fetch(...)`: scope = `priority` when `priority` is given, else `full`. Selection = priority matches ∪ shard `k` of the non-priority remainder (`k = run_index % n_shards`, membership by `int(hashlib.sha1(section_id)) % n_shards`). Fetch via `client.get_many` within the time budget; every failure or budget cutoff goes to `missing_ids`.
+
+### 5b. `sis_api.py` (`name = "sis_api"`)
+
+- Base `https://gateway.api.berkeley.edu/sis/v1/classes/sections`, headers `app_id`, `app_key` from env `SIS_CLASS_APP_ID` / `SIS_CLASS_APP_KEY`. Query `term-id`, `page-number` (1-based), `page-size=50`. Iterate pages until a page returns 404 or an empty `apiResponse.response.classSections`. Up to 8 pages in flight. Retry each page 3× on 5xx.
+- `parse_sections(payload: dict, fetched_at, term) -> list[SnapshotRow]` using the field paths in `docs/PHASE0.md`; skip sections with `status.code == "X"` unless `include_cancelled`. `is_primary = association.primary`.
+- scope is always `full`; `universe_ids` = all parsed ids. A synthetic fixture in `data/fixtures/sis_sections_page_synthetic.json` must be created from the swagger definitions (`ClassSection`, `EnrollmentStatus`) with 3 sections including one cancelled and one with seat reservations.
+
+### 5c. `berkeleytime.py` (`name = "berkeleytime"`)
+
+- `POST https://berkeleytime.com/api/graphql` JSON `{"id": <op id>, "variables": {...}}` (use `requests`; this host is not blocked). Op ids from `data/fixtures/berkeleytime_persisted_ops.json` — load the file, pick the entry whose `variableNames` match what we send (GetClass needs `sessionId`).
+- `fetch(...)`: `GetCatalog(year, semester)` → one row per class's `primarySection` (`is_primary=True`, `section_id` is NOT returned by GetCatalog: set `section_id = f"bt:{subject}:{courseNumber}:{number}"` and `section_status=None`), scope `full`. This source is for cross-checks and emergencies; document that ids are not SIS ids.
+- `get_class(term, subject, catalog_number, class_number) -> dict` and `get_enrollment_history(term, subject, catalog_number, section_number) -> list[dict]` for the cross-check script.
+
+## 6. Orchestration (`scraper/fetch.py`, run as `python -m scraper.fetch`)
+
+CLI:
+
+```
+--term "Spring 2027"          required
+--source auto|sis_api|classes_site|berkeleytime   default auto: sis_api if both env creds set, else classes_site
+--data-root PATH              default ./data-branch
+--priority-file PATH          default config/priority_courses.txt (classes_site only); pass "none" to disable
+--n-shards INT                default 8 (classes_site); 0 disables sharding (priority only)
+--run-index INT               default: number of runs already present today (drives shard rotation)
+--time-budget-s FLOAT         default 1500 (25 min)
+--min-interval-s FLOAT        default 1.0
+--max-concurrency INT         default 2
+--force-baseline              write a baseline even if one exists today
+--limit INT                   debug: cap sections fetched
+--dry-run                     fetch and print summary, write nothing
+```
+
+Behaviour: choose source → fetch → `rows_to_table` → decide kind (`baseline` if no baseline today or `--force-baseline`, else `delta` via `compute_delta(latest_state(...), table, universe_ids if scope=="full" else None)`) → `write_snapshot` → write `status.json` `{last_run_at, term_id, source, kind, scope, n_observed, n_written, n_missing, sweep_seconds}` → print a one-line summary. Exit codes: `0` success; `2` zero sections observed (workflow fails loudly, nothing written); `3` term not published yet (classes_site only; log and exit non-zero so it shows in Actions, but monitor treats it as expected before Oct 4). Logging to stderr with timestamps.
+
+`config/priority_courses.txt`: one pattern per line, `SUBJECT` or `SUBJECT CATALOG` with `*` wildcard on catalog (e.g. `COMPSCI *`, `DATA *`, `STAT *`, `EECS *`, `EL ENG *`, `MATH 1*`, `MATH 5*`, `ECON 1`, `ECON 100*`, `PSYCH 1`, `UGBA 10`, `PHYSICS 7*`, `CHEM 1A`, `CHEM 3*`, `MCELLBI *`, `INTEGBI *`, `POL SCI 1`, `SOCIOL 1`, `PHILOS *`, `ENGLISH R1*`, `COLWRIT R*`, `L&S *`, `IND ENG *`, `NUC ENG *`). Lines starting with `#` are comments.
+
+## 7. Gap report (`scraper/gaps.py`)
+
+```python
+def gap_report(data_root: Path, term_id: str, since_hours: float = 24) -> dict
+# {"n_runs": int, "largest_gap_min": float, "p95_gap_min": float, "share_gaps_le_45min": float, "first": iso, "last": iso, "by_scope": {...}}
+```
+
+CLI `python -m scraper.gaps --data-root ... --term-id ... --hours 24 --fail-if-gap-min 90 --fail-if-runs-lt 40` exits 1 when a threshold is breached. Used by `monitor.yml` and by `CLAIMS.md`.
+
+## 8. GitHub Actions
+
+`.github/workflows/scrape.yml`: `schedule: cron "7,37 * * * *"` + `workflow_dispatch` (inputs: term, source, force_baseline); `concurrency: {group: scrape, cancel-in-progress: false}`; `permissions: {contents: write}`; `timeout-minutes: 29`. Steps: checkout `main`; checkout `data` branch into `data-branch/` (`actions/checkout` with `ref: data`, `path: data-branch`, `fetch-depth: 1`); `actions/setup-python@v5` 3.12 with pip cache; `pip install -r requirements.txt`; run fetch with `SIS_CLASS_APP_ID`/`SIS_CLASS_APP_KEY` from secrets (empty when not set); commit in `data-branch` as `github-actions[bot]` and push with up to 3 `git pull --rebase` retries. Never fail the job on "nothing to commit"; do fail on exit code 2.
+
+`.github/workflows/monitor.yml`: daily at 15:10 UTC + dispatch; `permissions: {contents: read, issues: write}`; checkout data branch; run `python -m scraper.gaps ... --fail-if-gap-min 90 --fail-if-runs-lt 40`; on failure create or update a single open issue titled `Scraper gap alert` with the report (use `gh issue list --search`, then `create` or `comment`).
+
+`.github/workflows/ci.yml`: on push and pull_request to any branch; python 3.12; `pip install -r requirements.txt`; `pytest -q`.
+
+`scripts/bootstrap_data_branch.sh`: creates the orphan `data` branch with a README and `snapshots/.gitkeep`, pushes it. Idempotent.
+
+## 9. Probe scripts
+
+- `probe/probe_sources.py --term "Fall 2026"`: for each source available, fetch these 5 sections and print the raw payload and the parsed row: `COMPSCI 61A LEC 001`, `DATA C100 LEC 001`, `STAT 134 LEC 001` (impacted), `ECON 1 LEC 001` (large), `AEROENG 1 SEM 001` (small seminar), `AEROENG 10 LEC 001` (reserved seats).
+- `probe/crosscheck_berkeleytime.py --term "Fall 2026" --n 20`: pick 20 section refs from the classes_site catalog, fetch each live from classes_site and the same section's latest from Berkeleytime `GetClass` (match on `sectionId`), print a table of both counts and the number that agree exactly on enrolled/waitlisted/max. Writes `docs/crosscheck_<date>.md`.
+
+## 10. Tests (`tests/`, pytest, offline)
+
+- `test_schema.py`: valid rows round-trip; wrong dtype, missing column, duplicate section_id all raise `SchemaError`.
+- `test_storage.py`: paths, atomic write, refuse overwrite, metadata round-trip, `compute_delta` (changed/unchanged/new/tombstone), `latest_state` across baseline + 2 deltas.
+- `test_rebuild.py`: synthetic 1-day run set: baseline + 5 deltas including a priority-scope run and a `missing_ids` entry; assert exact equality with the all-full-tables panel and correct `observed` flags.
+- `test_classes_site.py`: parse the real fixture section page and listing; term facet discovery from the listing fixture (`Fall 2026` → `8588`); `TermNotPublished` for `Spring 2031`; `ParseError` on a page without the blob; `fetch` with a fake client returning one 500-then-200 and one 404 → the 404 id lands in `missing_ids`.
+- `test_sis_api.py`: parse the synthetic page fixture; cancelled section skipped; pagination stops on 404 with a fake transport.
+- `test_berkeleytime.py`: parse the saved GetCatalog-shaped fixture (`berkeleytime_getclass_compsci61a_fa26.json` for get_class) and a small hand-written GetCatalog fixture.
+- `test_http.py`: retry on 500 then success; no retry on 404; rate limiter spacing ≥ min_interval with a fake clock; gzip decoding.
+- `test_gaps.py`: known timestamps → known largest gap and share ≤ 45 min.
+- `test_fetch_cli.py`: `--dry-run` with a fake source writes nothing; exit code 2 on zero rows; baseline/delta decision.
+
+`pytest -q` must pass with zero network access (monkeypatch `HttpClient.get` / `requests.post`).
+
+## 11. Addendum (2026-09-18, after writing the foundations)
+
+- `scraper/schema.py` and `scraper/sources/base.py` are already written and are the reference implementations of sections 1 and 5. Import from them; do not redefine `TermSpec`, `PrioritySpec`, `FetchResult`, `shard_of`, `SnapshotRow`, `SNAPSHOT_SCHEMA`, `COUNT_FIELDS`.
+- `Source.fetch` signature is `fetch(term, *, priority=None, shard=None, time_budget_s=None, limit=None)`; `shard` is `(k, n)`.
+- classes.berkeley.edu section pages carry the SIS term id as an attribute: `data-term="2268" data-term-name="Fall 2026"`. `parse_section_page` must read `data-term` and use it as `term_id`; if it differs from `term.sis_term_id`, log a warning and keep the page value. This is how Spring 2027's id gets confirmed.
+- Berkeleytime `GetClass` requires `sessionId` (`"1"`) and uses the second op id in the fixture (`variableNames` include `sessionId`). Fixture of a real response: `data/fixtures/berkeleytime_getclass_compsci61a_fa26.json` (108 secondary sections).
+- Priority-scope delta files store `observed_ids` in metadata (JSON list) so rebuild never needs the priority file history.
+- `pytest.ini` at the repo root sets `pythonpath = .` and `testpaths = tests`.
