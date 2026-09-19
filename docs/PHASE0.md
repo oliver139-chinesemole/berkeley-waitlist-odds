@@ -6,8 +6,8 @@ Written 2026-09-18 from live probes (see `data/fixtures/` for the raw responses)
 
 | Rank | Source | Role | Status |
 | --- | --- | --- | --- |
-| 1 | **SIS Class API** (`https://gateway.api.berkeley.edu/sis/v1/classes/sections`) | Primary once credentials arrive. One full-term sweep is ~130–330 paged requests and finishes in minutes. Returns every field we need including seat reservations. | **Blocked on Oliver:** request access at https://developers.api.berkeley.edu (CalNet + Data Owner approval). `api-central.berkeley.edu` no longer resolves (NXDOMAIN). |
-| 2 | **classes.berkeley.edu section pages** | Fallback and the source we go live with if credentials are not approved by Oct 12. No login. Each section page embeds the SIS `enrollmentStatus` JSON verbatim in `drupalSettings.ucb.enrollment`. | **Working now** with the Python stdlib client. See rate-limit notes; a full sweep is ~6,100 pages. |
+| 1 | **SIS Class API** (`https://gateway.api.berkeley.edu/sis/v1/classes/sections`) | Primary once credentials arrive. One full-term sweep is ~130–330 paged requests and finishes in minutes. Returns every field we need including seat reservations. | **Denied 2026-09-19:** API Central states it is not granting access to students at this time. The adapter stays in the code (`sis_api`) in case a faculty or ASUC sponsor opens it later; for Spring 2027 the classes.berkeley.edu route is the primary. `api-central.berkeley.edu` no longer resolves (NXDOMAIN); the portal is https://developers.api.berkeley.edu. |
+| 2 | **classes.berkeley.edu section pages** | **Primary for Spring 2027** (the API is closed to students). No login. Each section page embeds the SIS `enrollmentStatus` JSON verbatim in `drupalSettings.ucb.enrollment`. | **Working now** with the Python stdlib client. See rate-limit notes; a full sweep is ~6,100 pages. |
 | 3 | **Berkeleytime public GraphQL gateway** (`POST https://berkeleytime.com/api/graphql`, persisted operations only) | Cross-check of our counts, and a safety net. `GetCatalog(year, semester)` returns every class with the primary section's latest counts in one 12.5 MB response; `GetEnrollment` returns a section's full 15-minute history. | **Working now.** Third-party data; used to validate, not as the primary dataset. |
 
 ## Evidence
@@ -61,5 +61,5 @@ Scraper must be live by **Mon Oct 12, 2026** (two weeks before Phase 1). Fall 20
 
 ## Open items for Oliver
 
-1. Submit the SIS Class API access request at https://developers.api.berkeley.edu (sign in with CalNet, find "Class API", request access, describe: student project, read-only, one paged sweep of one term every 30 minutes). Save the request id in `docs/DATA_LOG.md`.
+1. ~~Submit the SIS Class API access request~~ Done 2026-09-19: API Central does not grant access to students at this time. Optional: ask a faculty member or the ASUC OCTO Berkeleytime team to sponsor a request; until then the site route is the plan.
 2. Decide whether a 4-hour full sweep from classes.berkeley.edu is acceptable as the fallback, or whether the fallback should be Berkeleytime's `GetCatalog` every 30 minutes (one request, primary sections only, third-party data).

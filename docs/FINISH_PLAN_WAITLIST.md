@@ -131,7 +131,7 @@ Phase 1 for spring has historically opened on the 2nd or 3rd Monday of October, 
 
 ### A0. Today (Oliver, 30 minutes, before anything else)
 
-- [ ] Submit the API Central request for the SIS Class API. Approval is the main timeline risk and is outside your control. Save the request ID.
+- [x] Submit the API Central request for the SIS Class API. Outcome 2026-09-19: API Central is not granting access to students at this time. The classes.berkeley.edu route is the primary; a sponsored request is optional.
 - [x] Confirm Spring 2027 Phase 1, Phase 2, and adjustment period dates on the registrar's Student Enrollment Calendar. Write them into section 2 and into `CLAUDE.md`.
 - [x] Confirm the repo is public (unmetered Actions minutes). If it is private, flip it now.
 
@@ -238,10 +238,10 @@ permissions:
 
 ```
 Last updated: 2026-09-19
-Phase 1 opens: Mon Oct 26, 2026 (registrar ICS; schedule publishes Oct 4)   API Central request: NOT SUBMITTED (Oliver; developers.api.berkeley.edu)
+Phase 1 opens: Mon Oct 26, 2026 (registrar ICS; schedule publishes Oct 4)   API Central request: DENIED 2026-09-19 (not granting access to students); site route is primary
 Setup (section 0): plugins not installed in this environment; work done by hand   Source chosen (A1): classes.berkeley.edu section pages via Berkeleytime catalog (SIS API primary once approved); docs/PHASE0.md
 
-Step: A3 | blockers: API approval pending; schedule paused until the robots.txt fix is merged | scraper live: paused (first Actions run succeeded 2026-09-19 02:46Z) | snapshots landed: 1 baseline (911 sections)
+Step: A3 | blockers: none (API closed to students; site route is primary; cron cadence still ramping) | scraper live: yes since 2026-09-19 12:27Z (schedule) | snapshots landed: 1 baseline (911 sections)
 Done: A0 dates; A1 probe + 20/20 cross-check; A2 scraper, storage, rebuild, gaps, 3 sources, workflows, 214 tests; repo public with data branch; review fixes (robots, budget, day-boundary tombstones, cross-source guard, coverage gate)
 Next session: commit + push the fix branch, CI green, re-enable scrape.yml, dispatch a forced baseline, then 48-hour check (RUNBOOK step 6); Oliver: submit the SIS API request, review the priority list (UGBA *, MECENG * suggested), Sunday checks
 ```

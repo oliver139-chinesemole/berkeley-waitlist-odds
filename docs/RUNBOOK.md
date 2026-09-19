@@ -42,7 +42,9 @@ gh run watch
 
 The forced baseline is needed because the first baseline of 2026-09-19 was built from the old listing and includes self-study sections that the new catalog excludes.
 
-### Step 4. Add the SIS API secrets (only once the access request is approved)
+### Step 4. Add the SIS API secrets (only if access is ever granted)
+
+On 2026-09-19 API Central said it is not granting access to students at this time, so this step is parked. The site-page route (`classes_site`) is the primary source for Spring 2027. If a sponsor ever opens the API, the steps below still apply unchanged.
 
 ```
 gh secret set SIS_CLASS_APP_ID
