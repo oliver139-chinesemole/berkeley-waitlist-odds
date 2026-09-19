@@ -35,6 +35,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write   # the chain step dispatches the next run
 
 env:
   PYTHONUNBUFFERED: "1"
@@ -49,7 +50,9 @@ jobs:
     # 1200 s + ~120 s setup + ~20 s overrun + parquet write, commit and
     # 3 push attempts (~60 s) is about 1400 s, leaving 5+ minutes of slack so
     # the job never hits this timeout with data fetched but nothing committed.
-    timeout-minutes: 29
+    # 29 min covered checkout, install, a 1,380 s fetch and the push; the chain step at the
+    # end can sleep up to 30 min more waiting for the next :07/:37 slot.
+    timeout-minutes: 59
     env:
       # Scheduled runs take the term from the SCRAPE_TERM repository variable
       # (Settings > Secrets and variables > Actions > Variables); Fall 2026 until Oct 4.
@@ -150,3 +153,32 @@ jobs:
           path: fetch.log
           retention-days: 7
           if-no-files-found: ignore
+
+      - name: Keep the 30-minute chain alive
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          THIS_RUN: ${{ github.run_id }}
+        run: |
+          # GitHub's cron fired this workflow only every 2 to 4 hours during its first
+          # day (docs/DATA_LOG.md, 2026-09-19). Runs started with GITHUB_TOKEN through
+          # workflow_dispatch do create new runs, so each run dispatches its successor at
+          # the next :07 or :37 mark unless another run is already queued or running.
+          # The dispatch carries no inputs: the successor resolves the term from the
+          # SCRAPE_TERM variable and the source from the secrets, like a scheduled run.
+          m=$((10#$(date -u +%M))); s=$((10#$(date -u +%S)))
+          if [ $m -lt 7 ]; then wait=$(( (7 - m) * 60 - s ))
+          elif [ $m -lt 37 ]; then wait=$(( (37 - m) * 60 - s ))
+          else wait=$(( (67 - m) * 60 - s )); fi
+          [ $wait -lt 0 ] && wait=0
+          echo "sleeping ${wait}s until the next slot"
+          sleep $wait
+          others=$(gh run list --workflow scrape.yml --status in_progress --json databaseId --jq "map(select(.databaseId != ${THIS_RUN})) | length")
+          queued=$(gh run list --workflow scrape.yml --status queued --json databaseId --jq 'length')
+          if [ "${others:-0}" != "0" ] || [ "${queued:-0}" != "0" ]; then
+            echo "another run exists (in_progress=$others queued=$queued); not dispatching"
+            exit 0
+          fi
+          gh workflow run scrape.yml && echo "dispatched the next run"
