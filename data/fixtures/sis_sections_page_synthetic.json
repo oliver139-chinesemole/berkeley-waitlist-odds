@@ -1,0 +1,272 @@
+{
+  "apiResponse": {
+    "source": "SIS Class API (synthetic page, built from sis_class_api_swagger.json definitions classSection / classSectionEnrollmentStatus / seatReservation)",
+    "correlationId": "00000000-0000-4000-8000-000000000000",
+    "timeStamp": "2026-09-18T20:15:07.000Z",
+    "httpStatus": {
+      "code": "200",
+      "description": "OK",
+      "formalDescription": "Request completed successfully"
+    },
+    "cursor": {
+      "previous": "",
+      "next": "page-number=2&page-size=50"
+    },
+    "response": {
+      "classSections": [
+        {
+          "id": 29147,
+          "class": {
+            "course": {
+              "identifiers": [
+                {"type": "cs-course-id", "id": "100126"},
+                {"type": "cms-version-independent-id", "id": "COMPSCI 61A"}
+              ],
+              "subjectArea": {"code": "COMPSCI", "description": "Computer Science"},
+              "catalogNumber": {"prefix": "", "number": "61", "suffix": "A", "formatted": "61A"},
+              "classSubjectArea": {"code": "COMPSCI", "description": "Computer Science"},
+              "displayName": "COMPSCI 61A",
+              "classDisplayName": "COMPSCI 61A",
+              "title": "The Structure and Interpretation of Computer Programs",
+              "transcriptTitle": "STRUCTURE INTERP",
+              "academicCareer": {"code": "UGRD", "description": "Undergraduate"},
+              "academicGroup": {"code": "ENGR", "description": "College of Engineering"},
+              "academicOrganization": {"code": "EECS", "description": "Electrical Engineering & Computer Science"}
+            },
+            "offeringNumber": 1,
+            "session": {
+              "id": "1",
+              "name": "Regular Academic Session",
+              "term": {"id": "2268", "name": "2026 Fall"}
+            },
+            "number": "001",
+            "displayName": "2026 Fall COMPSCI 61A 001",
+            "classTitle": "The Structure and Interpretation of Computer Programs",
+            "primaryComponent": {"code": "LEC", "description": "Lecture"},
+            "allowedUnits": {"minimum": 4, "maximum": 4, "forAcademicProgress": 4, "forFinancialAid": 4},
+            "gradingBasis": {"code": "OPT", "description": "Student Option"},
+            "instructionMode": {"code": "P", "description": "In-Person Instruction"},
+            "status": {"code": "A", "description": "Active"},
+            "anyPrintInScheduleOfClasses": true,
+            "finalExam": {"code": "Y", "description": "Yes"}
+          },
+          "number": "001",
+          "component": {"code": "LEC", "description": "Lecture"},
+          "displayName": "2026 Fall COMPSCI 61A 001 LEC 001",
+          "instructionMode": {"code": "P", "description": "In-Person Instruction"},
+          "type": {"code": "E", "description": "Enrollment"},
+          "academicOrganization": {"code": "EECS", "description": "Electrical Engineering & Computer Science"},
+          "academicGroup": {"code": "ENGR", "description": "College of Engineering"},
+          "startDate": "2026-08-26",
+          "endDate": "2026-12-11",
+          "status": {"code": "A", "description": "Active"},
+          "association": {
+            "primary": true,
+            "primaryAssociatedComponent": {"code": "LEC", "description": "Lecture"},
+            "primaryAssociatedSectionId": 29147,
+            "primaryAssociatedSectionIds": [29147],
+            "associatedClass": 1
+          },
+          "enrollmentStatus": {
+            "status": {"code": "O", "description": "Open"},
+            "enrolledCount": 1472,
+            "reservedCount": 489,
+            "waitlistedCount": 0,
+            "minEnroll": 0,
+            "maxEnroll": 1750,
+            "maxWaitlist": 500,
+            "openReserved": 11,
+            "instructorAddConsentRequired": false,
+            "instructorDropConsentRequired": false,
+            "seatReservations": [
+              {
+                "number": 1,
+                "requirementGroup": {
+                  "code": "001820",
+                  "description": "Undergraduate Students: Electrical Engineering & Computer Science, Computer Science, and Electrical & Computer Engineering Majors"
+                },
+                "fromDate": "2026-04-13",
+                "maxEnroll": 400,
+                "enrolledCount": 389
+              },
+              {
+                "number": 2,
+                "requirementGroup": {
+                  "code": "001821",
+                  "description": "Undergraduate Students: Data Science Majors"
+                },
+                "fromDate": "2026-04-13",
+                "maxEnroll": 100,
+                "enrolledCount": 100
+              }
+            ]
+          },
+          "printInScheduleOfClasses": true,
+          "addConsentRequired": {"code": "N", "description": "No Special Consent Required"},
+          "dropConsentRequired": {"code": "N", "description": "No Special Consent Required"},
+          "graded": true,
+          "feesExist": false,
+          "roomShare": false,
+          "meetings": [
+            {
+              "number": 1,
+              "meetsDays": "MOWEFR",
+              "meetsMonday": true,
+              "meetsTuesday": false,
+              "meetsWednesday": true,
+              "meetsThursday": false,
+              "meetsFriday": true,
+              "meetsSaturday": false,
+              "meetsSunday": false,
+              "startTime": "12:00:00",
+              "endTime": "12:59:00",
+              "location": {"code": "WHEELER150", "description": "Wheeler 150"},
+              "building": {"code": "WHEELER", "description": "Wheeler"},
+              "startDate": "2026-08-26",
+              "endDate": "2026-12-11"
+            }
+          ],
+          "exams": []
+        },
+        {
+          "id": 34692,
+          "class": {
+            "course": {
+              "identifiers": [
+                {"type": "cs-course-id", "id": "100126"},
+                {"type": "cms-version-independent-id", "id": "COMPSCI 61A"}
+              ],
+              "subjectArea": {"code": "COMPSCI", "description": "Computer Science"},
+              "catalogNumber": {"prefix": "", "number": "61", "suffix": "A", "formatted": "61A"},
+              "displayName": "COMPSCI 61A",
+              "title": "The Structure and Interpretation of Computer Programs",
+              "academicCareer": {"code": "UGRD", "description": "Undergraduate"}
+            },
+            "offeringNumber": 1,
+            "session": {
+              "id": "1",
+              "name": "Regular Academic Session",
+              "term": {"id": "2268", "name": "2026 Fall"}
+            },
+            "number": "001",
+            "displayName": "2026 Fall COMPSCI 61A 001",
+            "primaryComponent": {"code": "LEC", "description": "Lecture"},
+            "status": {"code": "A", "description": "Active"}
+          },
+          "number": "101",
+          "component": {"code": "DIS", "description": "Discussion"},
+          "displayName": "2026 Fall COMPSCI 61A 001 DIS 101",
+          "instructionMode": {"code": "P", "description": "In-Person Instruction"},
+          "type": {"code": "N", "description": "Non-Enrollment"},
+          "startDate": "2026-08-26",
+          "endDate": "2026-12-11",
+          "status": {"code": "A", "description": "Active"},
+          "association": {
+            "primary": false,
+            "primaryAssociatedComponent": {"code": "LEC", "description": "Lecture"},
+            "primaryAssociatedSectionId": 29147,
+            "primaryAssociatedSectionIds": [29147],
+            "associatedClass": 1
+          },
+          "enrollmentStatus": {
+            "status": {"code": "O", "description": "Open"},
+            "enrolledCount": 24,
+            "reservedCount": 0,
+            "waitlistedCount": 2,
+            "minEnroll": 0,
+            "maxEnroll": 30,
+            "maxWaitlist": 5,
+            "openReserved": 0,
+            "instructorAddConsentRequired": false,
+            "instructorDropConsentRequired": false
+          },
+          "printInScheduleOfClasses": true,
+          "graded": false,
+          "feesExist": false,
+          "roomShare": false,
+          "meetings": [
+            {
+              "number": 1,
+              "meetsDays": "TU",
+              "meetsMonday": false,
+              "meetsTuesday": true,
+              "meetsWednesday": false,
+              "meetsThursday": false,
+              "meetsFriday": false,
+              "meetsSaturday": false,
+              "meetsSunday": false,
+              "startTime": "15:30:00",
+              "endTime": "16:59:00",
+              "location": {"code": "PHYSICS3", "description": "Physics Building 3"},
+              "building": {"code": "PHYSICS", "description": "Physics Building"},
+              "startDate": "2026-08-26",
+              "endDate": "2026-12-11"
+            }
+          ],
+          "exams": []
+        },
+        {
+          "id": 31555,
+          "class": {
+            "course": {
+              "identifiers": [
+                {"type": "cs-course-id", "id": "100592"},
+                {"type": "cms-version-independent-id", "id": "EL ENG 16A"}
+              ],
+              "subjectArea": {"code": "EL ENG", "description": "Electrical Engineering"},
+              "catalogNumber": {"prefix": "", "number": "16", "suffix": "A", "formatted": "16A"},
+              "displayName": "EL ENG 16A",
+              "title": "Designing Information Devices and Systems I",
+              "academicCareer": {"code": "UGRD", "description": "Undergraduate"}
+            },
+            "offeringNumber": 1,
+            "session": {
+              "id": "1",
+              "name": "Regular Academic Session",
+              "term": {"id": "2268", "name": "2026 Fall"}
+            },
+            "number": "002",
+            "displayName": "2026 Fall EL ENG 16A 002",
+            "primaryComponent": {"code": "LEC", "description": "Lecture"},
+            "status": {"code": "A", "description": "Active"}
+          },
+          "number": "002",
+          "component": {"code": "LEC", "description": "Lecture"},
+          "displayName": "2026 Fall EL ENG 16A 002 LEC 002",
+          "instructionMode": {"code": "P", "description": "In-Person Instruction"},
+          "type": {"code": "E", "description": "Enrollment"},
+          "startDate": "2026-08-26",
+          "endDate": "2026-12-11",
+          "status": {"code": "X", "description": "Cancelled"},
+          "cancelledDate": "2026-08-03",
+          "lastCancelled": "2026-08-03",
+          "association": {
+            "primary": true,
+            "primaryAssociatedComponent": {"code": "LEC", "description": "Lecture"},
+            "primaryAssociatedSectionId": 31555,
+            "primaryAssociatedSectionIds": [31555],
+            "associatedClass": 2
+          },
+          "enrollmentStatus": {
+            "status": {"code": "C", "description": "Closed"},
+            "enrolledCount": 0,
+            "reservedCount": 0,
+            "waitlistedCount": 0,
+            "minEnroll": 0,
+            "maxEnroll": 0,
+            "maxWaitlist": 0,
+            "openReserved": 0,
+            "instructorAddConsentRequired": false,
+            "instructorDropConsentRequired": false
+          },
+          "printInScheduleOfClasses": false,
+          "graded": true,
+          "feesExist": false,
+          "roomShare": false,
+          "meetings": [],
+          "exams": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,128 @@
+# One enrollment snapshot every 30 minutes, appended to the `data` branch.
+# See docs/DESIGN_A2.md section 8. Only this workflow writes to `data`.
+name: scrape
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"   # off :00/:30, where GitHub delays or drops scheduled runs
+  workflow_dispatch:
+    inputs:
+      term:
+        description: 'Term name, e.g. "Spring 2027" (default: SCRAPE_TERM repo variable, else Spring 2027)'
+        required: false
+        type: string
+      source:
+        description: Data source
+        required: false
+        type: choice
+        default: auto
+        options:
+          - auto
+          - sis_api
+          - classes_site
+          - berkeleytime
+      force_baseline:
+        description: Write a baseline even if one exists today
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 29
+    env:
+      # Scheduled runs take the term from the SCRAPE_TERM repository variable
+      # (Settings > Secrets and variables > Actions > Variables); Fall 2026 until Oct 4.
+      TERM_NAME: ${{ inputs.term || vars.SCRAPE_TERM || 'Spring 2027' }}
+      SOURCE: ${{ inputs.source || 'auto' }}
+      FORCE_BASELINE: ${{ inputs.force_baseline == true && 'true' || 'false' }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Verify the data branch exists
+        shell: bash
+        run: |
+          if ! git ls-remote --exit-code --heads origin data >/dev/null 2>&1; then
+            echo "::error::Branch 'data' does not exist on origin. Create it once with scripts/bootstrap_data_branch.sh (from a clean checkout of main), then re-run this workflow."
+            exit 1
+          fi
+
+      - name: Check out data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-branch
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch snapshot
+        shell: bash
+        env:
+          # Empty when the secrets are not set; --source auto then uses classes_site.
+          SIS_CLASS_APP_ID: ${{ secrets.SIS_CLASS_APP_ID }}
+          SIS_CLASS_APP_KEY: ${{ secrets.SIS_CLASS_APP_KEY }}
+        run: |
+          args=(--term "$TERM_NAME" --source "$SOURCE" --data-root data-branch)
+          if [ "$FORCE_BASELINE" = "true" ]; then
+            args+=(--force-baseline)
+          fi
+          echo "python -m scraper.fetch ${args[*]}"
+          # `shell: bash` runs with -o pipefail, so the fetch exit code survives the tee.
+          # Exit 2 (zero sections observed) and 3 (term not published) both fail the job
+          # so they show up in the Actions history; nothing is committed in either case.
+          python -m scraper.fetch "${args[@]}" 2>&1 | tee fetch.log
+
+      - name: Commit and push snapshot
+        shell: bash
+        working-directory: data-branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A .
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          read -r kind scope < <(python -c "import json; s = json.load(open('status.json')); print(s['kind'], s['scope'])")
+          msg="snapshot ${TERM_NAME} ${kind} ${scope} $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git commit --quiet -m "$msg"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:data; then
+              echo "pushed: $msg"
+              exit 0
+            fi
+            echo "push failed (attempt $attempt of 3); rebasing on origin/data"
+            # -X theirs keeps this run's status.json when the previous push rewrote it.
+            git pull --rebase -X theirs origin data
+          done
+          echo "::error::could not push to the data branch after 3 attempts"
+          exit 1
+
+      - name: Upload run log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fetch-log-${{ github.run_id }}-${{ github.run_attempt }}
+          path: fetch.log
+          retention-days: 7
+          if-no-files-found: ignore

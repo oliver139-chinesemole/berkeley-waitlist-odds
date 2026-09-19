@@ -1,0 +1,147 @@
+{
+  "data": {
+    "catalog": [
+      {
+        "subject": "COMPSCI",
+        "courseNumber": "61A",
+        "number": "001",
+        "sessionId": "1",
+        "title": null,
+        "unitsMax": 4,
+        "unitsMin": 4,
+        "finalExam": "Y",
+        "gradingBasis": "OPT",
+        "primarySection": {
+          "component": "LEC",
+          "online": false,
+          "instructionMode": "P",
+          "attendanceRequired": false,
+          "lecturesRecorded": false,
+          "enrollment": {
+            "latest": {
+              "status": "O",
+              "enrolledCount": 1472,
+              "maxEnroll": 1750,
+              "waitlistedCount": 0,
+              "maxWaitlist": 500,
+              "__typename": "EnrollmentSingular"
+            },
+            "__typename": "Enrollment"
+          },
+          "meetings": [
+            {
+              "days": [true, false, true, false, true, false, false],
+              "__typename": "Meeting"
+            }
+          ],
+          "__typename": "Section"
+        },
+        "course": {
+          "title": "The Structure and Interpretation of Computer Programs",
+          "gradeDistribution": {
+            "average": 3.117360879706764,
+            "__typename": "GradeDistribution"
+          },
+          "academicCareer": "UGRD",
+          "__typename": "Course"
+        },
+        "decal": null,
+        "__typename": "Class"
+      },
+      {
+        "subject": "DATA",
+        "courseNumber": "C100",
+        "number": "001",
+        "sessionId": "1",
+        "title": null,
+        "unitsMax": 4,
+        "unitsMin": 4,
+        "finalExam": "Y",
+        "gradingBasis": "OPT",
+        "primarySection": {
+          "component": "LEC",
+          "online": false,
+          "instructionMode": "P",
+          "attendanceRequired": false,
+          "lecturesRecorded": true,
+          "enrollment": {
+            "latest": {
+              "status": "C",
+              "enrolledCount": 856,
+              "maxEnroll": 850,
+              "waitlistedCount": 0,
+              "maxWaitlist": 0,
+              "__typename": "EnrollmentSingular"
+            },
+            "__typename": "Enrollment"
+          },
+          "meetings": [
+            {
+              "days": [false, true, false, true, false, false, false],
+              "__typename": "Meeting"
+            }
+          ],
+          "__typename": "Section"
+        },
+        "course": {
+          "title": "Principles and Techniques of Data Science",
+          "gradeDistribution": {
+            "average": 3.4512,
+            "__typename": "GradeDistribution"
+          },
+          "academicCareer": "UGRD",
+          "__typename": "Course"
+        },
+        "decal": null,
+        "__typename": "Class"
+      },
+      {
+        "subject": "STAT",
+        "courseNumber": "134",
+        "number": "001",
+        "sessionId": "1",
+        "title": "Concepts of Probability",
+        "unitsMax": 4,
+        "unitsMin": 4,
+        "finalExam": "Y",
+        "gradingBasis": "OPT",
+        "primarySection": {
+          "component": "LEC",
+          "online": false,
+          "instructionMode": "P",
+          "attendanceRequired": false,
+          "lecturesRecorded": false,
+          "enrollment": {
+            "latest": {
+              "status": "W",
+              "enrolledCount": 300,
+              "maxEnroll": 300,
+              "waitlistedCount": 45,
+              "maxWaitlist": 60,
+              "__typename": "EnrollmentSingular"
+            },
+            "__typename": "Enrollment"
+          },
+          "meetings": [
+            {
+              "days": [true, false, true, false, true, false, false],
+              "__typename": "Meeting"
+            }
+          ],
+          "__typename": "Section"
+        },
+        "course": {
+          "title": "Concepts of Probability",
+          "gradeDistribution": {
+            "average": null,
+            "__typename": "GradeDistribution"
+          },
+          "academicCareer": "UGRD",
+          "__typename": "Course"
+        },
+        "decal": null,
+        "__typename": "Class"
+      }
+    ]
+  }
+}

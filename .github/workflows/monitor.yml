@@ -1,0 +1,128 @@
+# Daily gap check on the data branch. Opens (or updates) one GitHub issue titled
+# "Scraper gap alert" when the last 24 h had a gap over 90 min or fewer than 40 runs,
+# and closes it with a "recovered" comment once the check passes again.
+# See docs/DESIGN_A2.md section 8.
+name: monitor
+
+on:
+  schedule:
+    - cron: "10 15 * * *"   # daily 15:10 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  PYTHONUNBUFFERED: "1"
+  ALERT_TITLE: Scraper gap alert
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+
+jobs:
+  gaps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Check out data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-branch
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Resolve term id
+        id: term
+        shell: bash
+        env:
+          TERM_NAME: ${{ vars.SCRAPE_TERM || 'Spring 2027' }}
+        run: |
+          # Prefer the term id the last run actually observed (status.json), else derive it from the name.
+          term_id=$(python -c "import json, os, pathlib; from scraper.sources.base import TermSpec; p = pathlib.Path('data-branch/status.json'); s = json.loads(p.read_text()) if p.exists() else {}; print(s.get('term_id') or TermSpec.from_name(os.environ['TERM_NAME']).sis_term_id)")
+          echo "term_id=$term_id" >> "$GITHUB_OUTPUT"
+          echo "term $TERM_NAME -> term_id $term_id"
+
+      - name: Gap report
+        id: gaps
+        shell: bash
+        continue-on-error: true
+        env:
+          TERM_ID: ${{ steps.term.outputs.term_id }}
+        run: |
+          python -m scraper.gaps --data-root data-branch --term-id "$TERM_ID" --hours 24 --fail-if-gap-min 90 --fail-if-runs-lt 40 2>&1 | tee gap_report.txt
+
+      - name: Find the open alert issue
+        id: alert
+        shell: bash
+        run: |
+          number=$(gh issue list --state open --limit 50 --search "$ALERT_TITLE in:title" --json number,title \
+            --jq "map(select(.title == \"$ALERT_TITLE\")) | .[0].number // empty")
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+          echo "open alert issue: ${number:-none}"
+
+      - name: Open or update the alert issue
+        if: steps.gaps.outcome == 'failure'
+        shell: bash
+        env:
+          TERM_ID: ${{ steps.term.outputs.term_id }}
+          ISSUE_NUMBER: ${{ steps.alert.outputs.number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "Gap check failed at $(date -u +%Y-%m-%dT%H:%M:%SZ) for term_id ${TERM_ID}."
+            echo "Thresholds: largest gap > 90 min, or fewer than 40 runs in the last 24 h."
+            echo
+            echo "Run: ${RUN_URL}"
+            echo
+            echo '```'
+            cat gap_report.txt
+            echo '```'
+            echo
+            echo "Before Oct 4, 2026 this is expected for Spring 2027 (term not published; runs exit 3 and write nothing)."
+            echo "Log the outage in docs/DATA_LOG.md once resolved."
+          } > alert_body.md
+          if [ -n "$ISSUE_NUMBER" ]; then
+            gh issue comment "$ISSUE_NUMBER" --body-file alert_body.md
+            echo "commented on existing issue #$ISSUE_NUMBER"
+          else
+            gh issue create --title "$ALERT_TITLE" --body-file alert_body.md
+            echo "created a new alert issue"
+          fi
+
+      - name: Close the alert issue on recovery
+        if: steps.gaps.outcome == 'success' && steps.alert.outputs.number != ''
+        shell: bash
+        env:
+          ISSUE_NUMBER: ${{ steps.alert.outputs.number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "recovered: gap check passed at $(date -u +%Y-%m-%dT%H:%M:%SZ)."
+            echo
+            echo "Run: ${RUN_URL}"
+            echo
+            echo '```'
+            cat gap_report.txt
+            echo '```'
+          } > recovered_body.md
+          gh issue comment "$ISSUE_NUMBER" --body-file recovered_body.md
+          gh issue close "$ISSUE_NUMBER" --reason completed
+          echo "closed issue #$ISSUE_NUMBER"
+
+      - name: Fail the job when the gap check failed
+        if: steps.gaps.outcome == 'failure'
+        run: |
+          echo "::error::gap check failed; see the alert issue"
+          exit 1

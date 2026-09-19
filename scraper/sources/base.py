@@ -48,7 +48,11 @@ class PrioritySpec:
     """Course patterns that get the 30-minute cadence on slow sources.
 
     Patterns are `SUBJECT` or `SUBJECT CATALOG` where CATALOG may end in `*`.
-    Matching is case-insensitive on the course_key "SUBJECT CATALOG".
+    Matching is case-insensitive on the course_key "SUBJECT CATALOG" and ignores
+    spaces inside the subject: "EL ENG *" matches "ELENG 16A", which is how
+    classes.berkeley.edu (and the schema) spell it. A bare multi-word subject is
+    ambiguous ("EL ENG" reads as subject EL, catalog ENG): write it without
+    spaces ("ELENG") or with a wildcard ("EL ENG *").
     """
 
     patterns: tuple[str, ...]
@@ -65,11 +69,24 @@ class PrioritySpec:
         for line in text.splitlines():
             line = line.split("#", 1)[0].strip()
             if line:
-                pats.append(" ".join(line.upper().split()))
+                pats.append(PrioritySpec.normalize(line))
         return PrioritySpec(patterns=tuple(pats), sha=hashlib.sha256(text.encode("utf-8")).hexdigest())
 
-    def matches(self, course_key: str) -> bool:
+    @staticmethod
+    def normalize(course_key: str) -> str:
+        """Upper-case, single-spaced, spaces removed from the subject part.
+
+        ``"el eng 16a"`` and ``"ELENG 16A"`` both become ``"ELENG 16A"``; a value
+        without a space (bare subject) is only upper-cased.
+        """
         key = " ".join(course_key.upper().split())
+        if " " not in key:
+            return key
+        subject, catalog = key.rsplit(" ", 1)
+        return f"{subject.replace(' ', '')} {catalog}"
+
+    def matches(self, course_key: str) -> bool:
+        key = self.normalize(course_key)
         subject = key.rsplit(" ", 1)[0] if " " in key else key
         for pat in self.patterns:
             if " " in pat:

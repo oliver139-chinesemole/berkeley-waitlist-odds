@@ -1,0 +1,39 @@
+# Priority course list for classes.berkeley.edu runs (docs/DESIGN_A2.md section 6).
+#
+# Format: one pattern per line, either
+#   SUBJECT            every course in the subject          (e.g. COMPSCI)
+#   SUBJECT CATALOG    one course, or a catalog prefix with a trailing *  (e.g. MATH 1*)
+# classes.berkeley.edu spells multi-word subjects without spaces (ELENG 16A, POLSCI 1, NUCENG 10);
+# matching ignores spaces inside the subject, so EL ENG * and ELENG * are the same pattern.
+# Write a bare multi-word subject without spaces (ELENG) or with a wildcard (EL ENG *).
+# Matching is case-insensitive on "SUBJECT CATALOG"; see PrioritySpec in scraper/sources/base.py.
+# Text after # is a comment; blank lines are ignored.
+#
+# Sections matching these patterns are fetched on every 30-minute run; the rest of the
+# catalog rotates through --n-shards shards. Any edit to this file, including a comment
+# or whitespace change, changes priority_sha in the snapshot metadata, which is how the
+# rebuild tells which list was active. Keep edits rare and note them in docs/DATA_LOG.md.
+COMPSCI *
+DATA *
+STAT *
+EECS *
+EL ENG *
+MATH 1*
+MATH 5*
+ECON 1
+ECON 100*
+PSYCH 1
+UGBA 10
+PHYSICS 7*
+CHEM 1A
+CHEM 3*
+MCELLBI *
+INTEGBI *
+POL SCI 1
+SOCIOL 1
+PHILOS *
+ENGLISH R1*
+COLWRIT R*
+L&S *
+IND ENG *
+NUC ENG *
