@@ -211,7 +211,7 @@ gh workflow run scrape.yml
 
 5. If the push to the `data` branch failed after its three rebase retries, something else wrote to the branch. Two scheduled runs cannot overlap (concurrency group `scrape`), so the cause is usually a manual push. Re-dispatch the workflow; the next run writes a fresh file.
 
-6. If `monitor.yml` opened a `Scraper gap alert` issue, it keeps commenting on the same issue daily until the thresholds hold again. Close it by hand once the gap report passes: `gh issue close <number>`.
+6. The daily monitor is dispatched by the scrape chain in the first slot after 15:00 UTC (and by its own cron when GitHub honours it). If `monitor.yml` opened a `Scraper gap alert` issue, it keeps commenting on the same issue daily until the thresholds hold again. Close it by hand once the gap report passes: `gh issue close <number>`.
 
 7. Write the docs/DATA_LOG.md row: `start_utc` is the `createdAt` of the first failed or missing run (or the last good `last_run_at`), `end_utc` is `last_run_at` of the first good run after the fix, kind `outage`, note what happened and what changed. Fill `end_utc` in when the outage ends, not before.
 

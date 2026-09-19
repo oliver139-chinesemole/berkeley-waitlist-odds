@@ -72,4 +72,5 @@ def make_figure(out_dir: Path, seed: int = 1) -> Path:
 
 
 if __name__ == "__main__":
-    print(make_figure(Path(sys.argv[1]) if len(sys.argv) > 1 else Path("reports/figures_validation")))
+    path = make_figure(Path(sys.argv[1]) if len(sys.argv) > 1 else Path("reports/figures_validation"))
+    print(path)

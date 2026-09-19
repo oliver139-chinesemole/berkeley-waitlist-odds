@@ -182,3 +182,8 @@ jobs:
             exit 0
           fi
           gh workflow run scrape.yml && echo "dispatched the next run"
+          # once a day (the first slot after 15:00 UTC) also run the gap monitor, so
+          # alerting does not depend on GitHub's cron either
+          if [ "$(date -u +%H)" = "15" ] && [ "$(date -u +%M)" -lt 30 ]; then
+            gh workflow run monitor.yml && echo "dispatched the daily monitor"
+          fi
