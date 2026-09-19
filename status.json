@@ -1,0 +1,14 @@
+{
+  "kind": "baseline",
+  "last_run_at": "2026-09-19T02:21:07.941074+00:00",
+  "n_missing": 808,
+  "n_observed": 911,
+  "n_written": 911,
+  "scope": "priority",
+  "shard": "0/8",
+  "snapshot": "data-branch/snapshots/date=2026-09-19/0221-baseline.parquet",
+  "source": "classes_site",
+  "sweep_seconds": 1501.787,
+  "term_id": "2268",
+  "version": "0.1.0"
+}
