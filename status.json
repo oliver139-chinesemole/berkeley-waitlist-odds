@@ -1,14 +1,16 @@
 {
+  "complete": false,
   "kind": "baseline",
-  "last_run_at": "2026-09-19T02:21:07.941074+00:00",
-  "n_missing": 808,
-  "n_observed": 911,
-  "n_written": 911,
+  "last_run_at": "2026-09-19T07:41:38.939242+00:00",
+  "missing_share": 0.0,
+  "n_missing": 0,
+  "n_observed": 1089,
+  "n_written": 1089,
   "scope": "priority",
-  "shard": "0/8",
-  "snapshot": "data-branch/snapshots/date=2026-09-19/0221-baseline.parquet",
+  "shard": "1/8",
+  "snapshot": "data-branch/snapshots/date=2026-09-19/0741-baseline.parquet",
   "source": "classes_site",
-  "sweep_seconds": 1501.787,
+  "sweep_seconds": 1173.824,
   "term_id": "2268",
   "version": "0.1.0"
 }
