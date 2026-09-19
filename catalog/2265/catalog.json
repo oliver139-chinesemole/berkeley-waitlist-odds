@@ -1,0 +1,35 @@
+{
+"sections": [
+{
+"catalog_number": "169",
+"class_number": "105",
+"component": "DIS",
+"course_key": "ESPM 169",
+"last_status": null,
+"node_id": 530411,
+"probed_at": null,
+"section_id": "",
+"section_number": "105",
+"subject": "ESPM",
+"url_path": "/content/2026-summer-espm-169-105-dis-105"
+},
+{
+"catalog_number": "128",
+"class_number": "001",
+"component": "SEM",
+"course_key": "GEOG 128",
+"last_status": null,
+"node_id": 530421,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GEOG",
+"url_path": "/content/2026-summer-geog-128-001-sem-001"
+}
+],
+"source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
+"term_id": "2265",
+"term_name": "Summer 2026",
+"updated_at": "2026-09-19T20:04:45.944279+00:00",
+"version": 3
+}
