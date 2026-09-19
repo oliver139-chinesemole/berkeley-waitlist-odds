@@ -43,7 +43,7 @@ DEFAULTS: Final[dict[str, Any]] = {
     "priority_file": "config/priority_courses.txt",
     "n_shards": 8,
     "run_index": None,
-    "time_budget_s": 1500.0,
+    "time_budget_s": 1200.0,
     "min_interval_s": 1.0,
     "max_concurrency": 2,
     "force_baseline": False,

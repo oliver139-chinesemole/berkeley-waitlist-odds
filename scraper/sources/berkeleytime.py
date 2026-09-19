@@ -17,13 +17,18 @@ the SIS-backed sources in ways the reader of the data must know:
 - The counts are third-party data captured at Berkeleytime's 15-minute cadence.
 
 The HTTP layer is an injectable transport ``post_json(url, json_body, headers)
--> (status, dict)`` so tests never touch the network; the default uses
-``requests`` (this host does not block it).
+-> (status, dict, retry_after_s)`` so tests never touch the network (the older
+``(status, dict)`` shape is still accepted); the default uses ``requests``
+(this host does not block it), never follows redirects (a 3xx is a hard
+``BerkeleytimeError``) and streams the body under a ``MAX_BODY_BYTES`` cap
+(GetCatalog is about 13 MB). Retries back off exponentially with jitter and
+honour ``Retry-After`` when it is larger.
 """
 from __future__ import annotations
 
 import json
 import logging
+import random
 import time
 from dataclasses import dataclass
 from datetime import datetime
@@ -32,21 +37,32 @@ from typing import Any, Callable
 
 import requests
 
+from scraper import config
+from scraper.http import parse_retry_after
 from scraper.schema import SnapshotRow
 from scraper.sources.base import FetchResult, ParseError, PrioritySpec, TermSpec
-from scraper.sources.sis_api import USER_AGENT, TransportError, utc_now
+from scraper.sources.sis_api import (
+    TransportError,
+    TransportResult,
+    json_object,
+    read_bounded,
+    unpack_transport_result,
+    utc_now,
+)
 
 logger = logging.getLogger(__name__)
 
 GRAPHQL_URL = "https://berkeleytime.com/api/graphql"
 DEFAULT_OPS_PATH = Path(__file__).resolve().parents[2] / "data" / "fixtures" / "berkeleytime_persisted_ops.json"
 DEFAULT_TIMEOUT_S = 60.0
+MAX_BODY_BYTES = 64 * 1024 * 1024  # GetCatalog for a full term is ~13 MB; leave headroom
 DEFAULT_SESSION_ID = "1"  # regular academic session; required by GetClass
 SOURCE_NAME = "berkeleytime"
 
-PostJson = Callable[[str, dict[str, Any], dict[str, str]], tuple[int, dict[str, Any]]]
+PostJson = Callable[[str, dict[str, Any], dict[str, str]], TransportResult]
 Sleep = Callable[[float], None]
 Clock = Callable[[], datetime]
+Rng = Callable[[], float]
 
 
 class BerkeleytimeError(RuntimeError):
@@ -66,20 +82,25 @@ def requests_post_json(
     json_body: dict[str, Any],
     headers: dict[str, str],
     timeout_s: float = DEFAULT_TIMEOUT_S,
-) -> tuple[int, dict[str, Any]]:
-    """Default transport: ``requests.post`` with a JSON body, returning ``(status, json_body)``.
+    max_body_bytes: int = MAX_BODY_BYTES,
+) -> tuple[int, dict[str, Any], float | None]:
+    """Default transport: ``requests.post`` with a JSON body, returning ``(status, json_body, retry_after_s)``.
 
-    A non-object body becomes ``{}``. Network failures raise ``TransportError``.
+    Redirects are not followed (a 3xx comes back as its status and the caller
+    fails hard); the body is streamed and capped at ``max_body_bytes``
+    (``ParseError`` beyond that). A non-object body becomes ``{}``.
+    ``retry_after_s`` is the parsed ``Retry-After`` header or None. Network
+    failures raise ``TransportError``.
     """
     try:
-        resp = requests.post(url, json=json_body, headers=headers, timeout=timeout_s)
+        resp = requests.post(url, json=json_body, headers=headers, timeout=timeout_s, allow_redirects=False, stream=True)
     except requests.RequestException as exc:
         raise TransportError(f"POST {url} failed: {exc}") from exc
     try:
-        body = resp.json()
-    except ValueError:
-        return resp.status_code, {}
-    return resp.status_code, body if isinstance(body, dict) else {}
+        raw = read_bounded(resp, max_body_bytes)
+    finally:
+        resp.close()
+    return resp.status_code, json_object(raw), parse_retry_after(resp.headers.get("Retry-After"))
 
 
 # --------------------------------------------------------------------------- persisted ops
@@ -295,17 +316,23 @@ class BerkeleytimeSource:
         backoff_base_s: float = 1.0,
         sleep: Sleep = time.sleep,
         clock: Clock = utc_now,
+        rng: Rng = random.random,
     ) -> None:
         self.url = url
         self.ops = load_persisted_ops(ops_path)
         self.retries = max(0, retries)
         self.backoff_base_s = backoff_base_s
-        self._headers = {"User-Agent": USER_AGENT, "Content-Type": "application/json", "Accept": "application/json"}
+        self._headers = {
+            "User-Agent": config.USER_AGENT,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
         self._transport: PostJson = transport or (
             lambda u, body, headers: requests_post_json(u, body, headers, timeout_s=timeout_s)
         )
         self._sleep = sleep
         self._clock = clock
+        self._rng = rng
 
     # ---- one operation
 
@@ -317,8 +344,9 @@ class BerkeleytimeSource:
         """POST the persisted operation and return the response's ``data`` object.
 
         GraphQL ``errors`` raise ``ParseError``; a non-200 status without an
-        error body is retried on 5xx/429/transport failure and then raises
-        ``BerkeleytimeError``.
+        error body is retried on 5xx/429/transport failure (exponential
+        backoff with jitter, or ``Retry-After`` when larger) and then raises
+        ``BerkeleytimeError``. A 3xx is never followed and raises at once.
         """
         op = self.op_for(operation_name, variables)
         body = {"id": op.id, "variables": variables}
@@ -327,13 +355,19 @@ class BerkeleytimeSource:
         detail = ""
         for attempt in range(1, self.retries + 2):
             try:
-                status, payload = self._transport(self.url, body, self._headers)
+                status, payload, retry_after = unpack_transport_result(self._transport(self.url, body, self._headers))
                 detail = ""
             except TransportError as exc:
-                status, payload, detail = 0, {}, str(exc)
+                status, payload, retry_after, detail = 0, {}, None, str(exc)
             raise_on_graphql_errors(payload, operation_name)
             if status == 200:
                 break
+            if 300 <= status < 400:
+                raise BerkeleytimeError(
+                    f"{operation_name}: HTTP {status} unexpected redirect, not followed",
+                    status=status,
+                    operation=operation_name,
+                )
             retryable = status == 0 or status == 429 or status >= 500
             if not retryable or attempt > self.retries:
                 raise BerkeleytimeError(
@@ -342,6 +376,9 @@ class BerkeleytimeSource:
                     operation=operation_name,
                 )
             delay = self.backoff_base_s * (2 ** (attempt - 1))
+            if retry_after is not None:
+                delay = max(delay, retry_after)
+            delay += self._rng() * self.backoff_base_s
             logger.warning("%s: HTTP %s on attempt %d, retrying in %.1fs %s", operation_name, status or "transport error", attempt, delay, detail)
             self._sleep(delay)
         data = payload.get("data")

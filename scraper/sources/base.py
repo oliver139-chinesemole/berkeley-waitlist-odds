@@ -85,16 +85,24 @@ class PrioritySpec:
         subject, catalog = key.rsplit(" ", 1)
         return f"{subject.replace(' ', '')} {catalog}"
 
-    def matches(self, course_key: str) -> bool:
+    def rank(self, course_key: str) -> int | None:
+        """Index of the first pattern that matches ``course_key``, or None.
+
+        Lower is more important: the priority file is ordered, and a run whose
+        time budget runs out drops the highest ranks first.
+        """
         key = self.normalize(course_key)
         subject = key.rsplit(" ", 1)[0] if " " in key else key
-        for pat in self.patterns:
+        for index, pat in enumerate(self.patterns):
             if " " in pat:
                 if fnmatch.fnmatchcase(key, pat):
-                    return True
+                    return index
             elif pat == subject:
-                return True
-        return False
+                return index
+        return None
+
+    def matches(self, course_key: str) -> bool:
+        return self.rank(course_key) is not None
 
 
 def shard_of(section_id: str, n_shards: int) -> int:

@@ -13,70 +13,34 @@ export GH_REPO=oliver139-chinesemole/berkeley-waitlist-odds
 
 ## 1. Go-live checklist
 
-### Step 1. Create the public repo and push main
+### Steps 1 to 3. Repo, data branch, workflow permissions (done 2026-09-19)
 
-`gh` is installed (`~/.local/bin/gh`) but not logged in. `gitleaks` is not installed. The SSH alias `github-chinesemole` exists in `~/.ssh/config`.
+Done by Claude Code with Oliver's `gh` login on 2026-09-19: the public repo https://github.com/oliver139-chinesemole/berkeley-waitlist-odds exists with `main` and the orphan `data` branch pushed, workflows have read and write permissions, the repository variable `SCRAPE_TERM` is `Fall 2026`, and the first manual run wrote a baseline. gitleaks (downloaded binary, not brew) found no leaks in history or the working tree before the push.
 
-```
-gh auth login
-```
-
-Pick GitHub.com, SSH, and log in as `oliver139-chinesemole`. If `gh` already holds another account, run `gh auth switch` afterwards and confirm with `gh auth status`.
-
-Scan history for secrets before the first public push (the plan requires zero findings):
-
-```
-brew install gitleaks
-gitleaks detect --source . --redact
-```
-
-Create the repo. Either command line:
-
-```
-gh repo create oliver139-chinesemole/berkeley-waitlist-odds --public --description "Waitlist-clearing odds for UC Berkeley courses: 30-minute enrollment snapshots and survival analysis"
-```
-
-or in the browser at https://github.com/new: owner `oliver139-chinesemole`, name `berkeley-waitlist-odds`, Public, no README, no .gitignore, no license (the repo already has history; adding any of those creates a conflicting first commit).
-
-Add the remote through the SSH alias and push:
-
-```
-ssh -T git@github-chinesemole
-git remote add origin git@github-chinesemole:oliver139-chinesemole/berkeley-waitlist-odds.git
-git push -u origin main
-```
-
-The `ssh -T` line should print `Hi oliver139-chinesemole! You've successfully authenticated`. If it greets a different user, the alias points at the wrong key; fix `~/.ssh/config` before pushing.
-
-Check:
+Re-check any time:
 
 ```
 gh repo view --json visibility,defaultBranchRef -q '.visibility + " " + .defaultBranchRef.name'
-```
-
-prints `PUBLIC main`. CI (`ci.yml`) runs on the push; `gh run list --workflow ci.yml --limit 1` should show success within a few minutes.
-
-### Step 2. Create the data branch
-
-```
-bash scripts/bootstrap_data_branch.sh
 git ls-remote --heads origin data
+gh api repos/oliver139-chinesemole/berkeley-waitlist-odds/actions/permissions/workflow -q .default_workflow_permissions
+gh variable list
 ```
 
-The second command prints one line ending in `refs/heads/data`. The script is idempotent; re-running it is safe.
+Expected: `PUBLIC main`, one line ending in `refs/heads/data`, `write`, and `SCRAPE_TERM  Fall 2026`.
 
-### Step 3. Let workflows write to the repo
+If any of these is ever missing again: `gh auth login` (GitHub.com, SSH, account `oliver139-chinesemole`), `bash scripts/bootstrap_data_branch.sh`, the `gh api -X PUT repos/.../actions/permissions/workflow -f default_workflow_permissions=write -F can_approve_pull_request_reviews=false` call, and `gh variable set SCRAPE_TERM --body "Fall 2026"`.
 
-In the browser: Settings > Actions > General > Workflow permissions > select "Read and write permissions" > Save. Also confirm "Allow all actions and reusable workflows" is selected at the top of the same page.
+### Step 3b. The schedule is paused until the robots.txt fix is merged
 
-Or from the command line:
+On 2026-09-19 the scheduled workflow was disabled (`gh workflow disable scrape.yml`) because the listing crawl used `/search/`, which classes.berkeley.edu's robots.txt disallows. The fix replaces the listing with Berkeleytime's catalog (section 2). Once that change is on `main` and CI is green:
 
 ```
-gh api -X PUT repos/oliver139-chinesemole/berkeley-waitlist-odds/actions/permissions/workflow -f default_workflow_permissions=write -F can_approve_pull_request_reviews=false
-gh api repos/oliver139-chinesemole/berkeley-waitlist-odds/actions/permissions/workflow
+gh workflow enable scrape.yml
+gh workflow run scrape.yml -f term="Fall 2026" -f force_baseline=true
+gh run watch
 ```
 
-Check: the second command prints `"default_workflow_permissions": "write"`. Without this, `scrape.yml` cannot push to the `data` branch and `monitor.yml` cannot open issues.
+The forced baseline is needed because the first baseline of 2026-09-19 was built from the old listing and includes self-study sections that the new catalog excludes.
 
 ### Step 4. Add the SIS API secrets (only once the access request is approved)
 
@@ -141,7 +105,7 @@ Pass: at least 90 of 96 expected runs succeeded, `largest_gap_min` under 90, `sh
 for c in $(git -C data-branch log --format=%H -n 10 -- status.json); do git -C data-branch show $c:status.json | python -c "import json,sys; d=json.load(sys.stdin); print(d['last_run_at'], d['kind'], d['scope'], d['n_observed'], d['n_missing'], d['sweep_seconds'])"; done
 ```
 
-`sweep_seconds` should sit well under 1500 and not trend upward; `n_missing` should be near zero. Run the monitor once by hand and confirm it succeeds and opens no issue:
+`sweep_seconds` should sit under 1200 and not trend upward; `n_missing` should be near zero on cache-hit runs and can be a few hundred on the daily refresh run (the shard is trimmed after the catalog refresh; those sections are observed on the next rotation). Run the monitor once by hand and confirm it succeeds and opens no issue:
 
 ```
 gh workflow run monitor.yml
@@ -151,20 +115,20 @@ gh issue list --search "Scraper gap alert" --state open
 
 Write the results into CLAIMS.md (snapshot count, share of intervals, sweep time rows) with the date.
 
-### Step 7. On Oct 4, confirm Spring 2027 and switch the default term
+### Step 7. On Oct 4, confirm Spring 2027 and switch the term
 
 The registrar publishes the Spring 2027 Schedule of Classes on Sun Oct 4, 2026. On or after that day:
 
 ```
-curl -sS -A 'berkeley-waitlist-odds/0.1 (+mailto:oliver139@berkeley.edu)' 'https://classes.berkeley.edu/search/class' | grep -o 'Spring 2027 ([0-9,]*)'
 python -m scraper.fetch --term "Spring 2027" --source classes_site --limit 5 --dry-run; echo "exit $?"
 ```
 
-Exit 3 means the term is not on the site yet; try again the next day. Exit 0 means it is published. Read the log for the `data-term` value taken from the section pages. It should be `2272`. If it is anything else, do not change code by hand: tell Claude Code, because the derivation in `scraper/sources/base.py` and the `2272` references in CLAIMS.md and docs/DATA_LOG.md need review.
+Exit 3 means Berkeleytime's catalog has no Spring 2027 classes yet; try again the next day. Exit 0 means it is published. Read the log for the `data-term` value taken from the section pages. It should be `2272`. If it is anything else, do not change code by hand: tell Claude Code, because the derivation in `scraper/sources/base.py` and the `2272` references in CLAIMS.md and docs/DATA_LOG.md need review.
 
-Switch the workflow default. In `.github/workflows/scrape.yml`, change the default term from `Fall 2026` to `Spring 2027` (both the `workflow_dispatch` input default and whatever the scheduled run uses). Commit on a branch, push, merge to main through a PR so CI runs. Then force a baseline for the new term:
+Switch the scheduled term by changing the repository variable, not the workflow file, then force a baseline for the new term:
 
 ```
+gh variable set SCRAPE_TERM --body "Spring 2027"
 gh workflow run scrape.yml -f term="Spring 2027" -f force_baseline=true
 gh run watch
 git fetch origin data && git show origin/data:status.json
@@ -188,9 +152,9 @@ Source:
 
 Scope (which sections a run looks at):
 - `sis_api`: `full` every run. One term is 130 to 330 paged requests and takes minutes.
-- `classes_site` with the default `config/priority_courses.txt`: `priority`. Every section whose course matches the list (roughly 600 to 900) is fetched every run. The remaining sections are split into 8 shards by a hash of the section id, and shard `run_index mod 8` is added to the run, where `run_index` defaults to the number of runs already on the `data` branch for that UTC day. With 48 runs a day every section is seen about every 4 hours.
-- `classes_site --priority-file none`: `full`. About 6,100 pages at 1 request per second is about 1.7 hours, which does not fit the 25-minute budget. Do not schedule it.
-- The section list for a term comes from `catalog/<term_id>/sections.json` on the `data` branch, rebuilt from the listing pages when it is older than 24 hours.
+- `classes_site` with the default `config/priority_courses.txt`: `priority`. Every live primary section whose course matches the list (702 of 3,640 for Fall 2026) is fetched every run, in the order of the list, so a time-budget cutoff drops the bottom of the list first. The remaining sections are split into 8 shards by a hash of the page path, and shard `run_index mod 8` (about 370 pages) is added to the run, where `run_index` defaults to the number of runs already on the `data` branch for that UTC day. With 48 runs a day every section is seen about every 4 hours.
+- `classes_site --priority-file none`: `full`. About 3,640 pages at 1 request per second is about an hour, which does not fit the 20-minute budget. Do not schedule it.
+- The section universe for a term is `catalog/<term_id>/catalog.json` on the `data` branch: every class in Berkeleytime's `GetCatalog` whose primary section is not self-study (IND, GRP, FLD, TUT and similar never carry a waitlist), with the section page path derived from subject, catalog number, class number and component. It is refreshed from Berkeleytime when older than 24 hours (one request); if that refresh fails the cached copy is used. Section ids are learned from the pages on first fetch. About 40% of catalog classes are not printed in the public schedule and answer 404; those are marked absent in the catalog, skipped, and re-probed (at most 300 per run) on the daily refresh run once a week. The site's `/search/` listing is never requested: robots.txt disallows it.
 
 Kind (what gets written):
 - The first run of a UTC day writes `snapshots/date=YYYY-MM-DD/HHMM-baseline.parquet` with every section it observed.
@@ -199,10 +163,10 @@ Kind (what gets written):
 - `status.json` is rewritten by every run: `last_run_at, term_id, source, kind, scope, n_observed, n_written, n_missing, sweep_seconds`.
 
 Time and politeness:
-- 1500 s budget per run; the job itself is killed at 29 minutes. Requests to classes.berkeley.edu start no faster than one per second with two in flight. Sections not fetched by the deadline, plus any HTTP or parse failure, go to `missing_ids` in the parquet metadata and are treated as unobserved by `scraper/rebuild.py`.
+- 1200 s budget per run (`--time-budget-s` in scrape.yml); the job itself is killed at 29 minutes, and the budget leaves room for checkout, dependency install, retries in flight, and the push. Requests to classes.berkeley.edu start no faster than one per second with two in flight. Sections not fetched by the deadline, plus any HTTP or parse failure, go to `missing_ids` in the parquet metadata and are treated as unobserved by `scraper/rebuild.py`.
 - Every request carries `User-Agent: berkeley-waitlist-odds/<version> (+https://github.com/oliver139-chinesemole/berkeley-waitlist-odds; mailto:oliver139@berkeley.edu)`.
 
-Exit codes: `0` success; `2` zero sections observed, nothing written, the job fails; `3` term not published on classes.berkeley.edu (expected for Spring 2027 before Oct 4, a problem after).
+Exit codes: `0` success; `2` zero sections observed, nothing written, the job fails; `3` term not published yet (Berkeleytime's catalog is empty for the term and nothing is cached; expected for Spring 2027 before Oct 4, a problem after); `4` low coverage (more than half of the attempted sections failed), nothing written.
 
 ## 3. What to do when a run fails
 

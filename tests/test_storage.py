@@ -13,7 +13,11 @@ import pytest
 from scraper.schema import COUNT_FIELDS, SNAPSHOT_SCHEMA, SchemaError, rows_to_table
 from scraper.storage import (
     RunMeta,
+    baseline_with_tombstones,
+    carried_state,
     compute_delta,
+    compute_tombstones,
+    latest_baseline_meta,
     latest_state,
     list_snapshots,
     parse_snapshot_path,
@@ -138,13 +142,42 @@ def test_metadata_round_trip_priority(data_root: Path):
     assert read_meta(path) == got
 
 
-def test_metadata_full_scope_omits_observed_ids(data_root: Path):
-    m = meta(kind="delta", scope="full", observed_ids=["1", "2"])
+def test_metadata_complete_full_scope_omits_observed_ids(data_root: Path):
+    m = meta(kind="delta", scope="full", observed_ids=["1", "2"], complete=True)
     path = write_snapshot(data_root, rows_to_table([]), m)
     raw = pq.read_schema(path).metadata
     assert b"observed_ids" not in raw
+    assert raw[b"complete"] == b"true"
     assert raw[b"shard"] == b"" and raw[b"priority_sha"] == b""
-    assert read_meta(path).observed_ids is None
+    got = read_meta(path)
+    assert got.observed_ids is None and got.complete is True
+
+
+def test_metadata_partial_full_scope_keeps_observed_ids(data_root: Path):
+    # a truncated full sweep (sis_api time budget, --limit): observed_ids persist so rebuild
+    # does not mark the unattempted ids as observed
+    m = meta(kind="delta", scope="full", observed_ids=["2", "1"], missing_ids=["3"], complete=False)
+    path = write_snapshot(data_root, rows_to_table([]), m)
+    raw = pq.read_schema(path).metadata
+    assert raw[b"complete"] == b"false"
+    assert json.loads(raw[b"observed_ids"]) == ["1", "2"]
+    got = read_meta(path)
+    assert got.complete is False and got.observed_ids == ["1", "2"] and got.missing_ids == ["3"]
+    # unknown completeness (caller did not say): the ids are kept as given
+    m = meta(kind="delta", scope="full", observed_ids=["5"], at=T0 + timedelta(minutes=30))
+    path = write_snapshot(data_root, rows_to_table([]), m)
+    raw = pq.read_schema(path).metadata
+    assert b"complete" not in raw and json.loads(raw[b"observed_ids"]) == ["5"]
+    assert read_meta(path).complete is None
+
+
+def test_run_meta_complete_parsing():
+    base = {"run_started_at": T0.isoformat(), "term_id": TERM, "source": "sis_api", "kind": "delta", "scope": "full"}
+    assert RunMeta.from_metadata(base).complete is None  # files written before the key existed
+    assert RunMeta.from_metadata({**base, "complete": "true"}).complete is True
+    assert RunMeta.from_metadata({**base, "complete": "false"}).complete is False
+    with pytest.raises(ValueError, match="complete"):
+        RunMeta.from_metadata({**base, "complete": "maybe"})
 
 
 def test_run_meta_from_metadata_rejects_missing_keys():
@@ -251,19 +284,21 @@ def test_compute_delta_tombstone():
     prev = previous_from([
         make_row(section_id="1", enrolled_count=10),
         make_row(section_id="2", enrolled_count=20, reserved_count=4, is_primary=None, course_key="MATH 1A",
-                 subject="MATH", catalog_number="1A", source="classes_site"),
+                 subject="MATH", catalog_number="1A"),
         make_row(section_id="3"),
+        make_row(section_id="4", source="classes_site"),
     ])
     t1 = T0 + timedelta(minutes=30)
     obs = rows_to_table([make_row(section_id="1", enrolled_count=10, fetched_at=t1 + timedelta(seconds=5))])
-    # 2 is gone (not observed, not in universe); 3 is in universe but missing -> no tombstone
+    # 2 is gone (not observed, not in universe); 3 is in universe but missing -> no tombstone;
+    # 4 was written by another source -> never tombstoned by this one
     out = compute_delta(prev, obs, {"1", "3"}, fetched_at=t1)
     rows = out.to_pylist()
     assert [r["section_id"] for r in rows] == ["2"]
     tomb = rows[0]
     assert tomb["section_status"] == "GONE"
     assert tomb["fetched_at"] == t1
-    assert tomb["source"] == "sis_api"  # current run's source, not previous row's
+    assert tomb["source"] == "sis_api"
     assert tomb["enrolled_count"] == 20 and tomb["reserved_count"] == 4
     assert tomb["course_key"] == "MATH 1A" and tomb["subject"] == "MATH"
     assert tomb["is_primary"] is None
@@ -272,10 +307,60 @@ def test_compute_delta_tombstone():
 
 def test_compute_delta_tombstone_source_override_and_empty_observed():
     prev = previous_from([make_row(section_id="9", source="sis_api")])
-    out = compute_delta(prev, rows_to_table([]), set(), fetched_at=T0, source="classes_site")
-    assert out.to_pylist()[0]["source"] == "classes_site"
+    # same source given explicitly: the tombstone carries it
+    out = compute_delta(prev, rows_to_table([]), set(), fetched_at=T0, source="sis_api")
+    assert out.to_pylist()[0]["source"] == "sis_api"
+    # source unknown (nothing observed, none given): falls back to the previous row's source
     out = compute_delta(prev, rows_to_table([]), set(), fetched_at=T0)
     assert out.to_pylist()[0]["source"] == "sis_api"
+    # a different current source never tombstones another source's rows
+    out = compute_delta(prev, rows_to_table([]), set(), fetched_at=T0, source="classes_site")
+    assert out.num_rows == 0
+
+
+def test_compute_delta_never_tombstones_across_sources():
+    # a berkeleytime run (bt: ids, full scope) into a root holding SIS-id rows must not
+    # tombstone every SIS section
+    prev = previous_from([make_row(section_id="30174"), make_row(section_id="30175")])
+    bt = make_row(section_id="bt:COMPSCI:61A:001", source="berkeleytime")
+    obs = rows_to_table([bt])
+    out = compute_delta(prev, obs, {"bt:COMPSCI:61A:001"}, fetched_at=T0, source="berkeleytime")
+    assert out.column("section_id").to_pylist() == ["bt:COMPSCI:61A:001"]
+    # the current source is inferred from the observed rows when not given
+    out = compute_delta(prev, obs, {"bt:COMPSCI:61A:001"}, fetched_at=T0)
+    assert out.column("section_id").to_pylist() == ["bt:COMPSCI:61A:001"]
+    # mixed previous state: only the current source's vanished rows are tombstoned
+    prev = previous_from([
+        make_row(section_id="1", source="sis_api"),
+        make_row(section_id="2", source="classes_site"),
+        make_row(section_id="3", source="classes_site"),
+    ])
+    obs = rows_to_table([make_row(section_id="3", source="classes_site")])
+    out = compute_delta(prev, obs, {"3"}, fetched_at=T0, source="classes_site")
+    assert [(r["section_id"], r["section_status"]) for r in out.to_pylist()] == [("2", "GONE")]
+
+
+def test_compute_tombstones_and_baseline_with_tombstones():
+    prev = previous_from([
+        make_row(section_id="1", enrolled_count=1),
+        make_row(section_id="2", enrolled_count=22),
+        make_row(section_id="3", section_status="GONE"),
+        make_row(section_id="4", source="classes_site"),
+    ])
+    t1 = T0 + timedelta(minutes=30)
+    obs = rows_to_table([make_row(section_id="1", enrolled_count=2, fetched_at=t1)])
+    tomb = compute_tombstones(prev, obs, {"1"}, fetched_at=t1, source="sis_api")
+    rows = tomb.to_pylist()
+    assert [(r["section_id"], r["section_status"]) for r in rows] == [("2", "GONE")]  # 3 already gone, 4 other source
+    assert rows[0]["fetched_at"] == t1 and rows[0]["enrolled_count"] == 22 and rows[0]["source"] == "sis_api"
+    assert compute_tombstones(prev, obs, None, fetched_at=t1).num_rows == 0
+    assert compute_tombstones(None, obs, {"1"}, fetched_at=t1).num_rows == 0
+    # a full-scope baseline = everything observed followed by the tombstones
+    base = baseline_with_tombstones(prev, obs, {"1"}, fetched_at=t1, source="sis_api")
+    assert base.schema.equals(SNAPSHOT_SCHEMA)
+    assert [(r["section_id"], r["section_status"]) for r in base.to_pylist()] == [("1", "A"), ("2", "GONE")]
+    assert baseline_with_tombstones(None, obs, {"1"}, fetched_at=t1).equals(obs)
+    assert baseline_with_tombstones(prev, obs, None, fetched_at=t1).equals(obs)
 
 
 def test_compute_delta_no_tombstones_without_universe():
@@ -354,6 +439,93 @@ def test_latest_state_is_per_day(data_root: Path):
     write_snapshot(data_root, rows_to_table([make_row(section_id="1")]), meta("baseline", at=T0))
     assert latest_state(data_root, TERM, T0.date() + timedelta(days=1)) is None
     assert latest_state(data_root, TERM, T0.date()) is not None
+
+
+def test_latest_state_seeds_from_the_previous_day(data_root: Path):
+    d1, d1b, d2 = T0, T0 + timedelta(minutes=30), T0 + timedelta(days=1)
+    write_snapshot(data_root, rows_to_table([
+        make_row(section_id="1", enrolled_count=10),
+        make_row(section_id="2", enrolled_count=20),
+        make_row(section_id="3", enrolled_count=30),
+    ]), meta("baseline", at=d1))
+    write_snapshot(data_root, rows_to_table([make_row(section_id="3", enrolled_count=31, fetched_at=d1b)]), meta("delta", at=d1b))
+    # day 2 opens with a priority-scope baseline that only saw section 1
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1", enrolled_count=11, fetched_at=d2)]),
+                   meta("baseline", scope="priority", at=d2, observed_ids=["1"]))
+    state = latest_state(data_root, TERM, d2.date())
+    assert state is not None and list(state.index) == ["1", "2", "3"]
+    assert state.loc["1", "enrolled_count"] == 11  # today's baseline wins
+    assert state.loc["3", "enrolled_count"] == 31  # yesterday's final value, not its baseline value
+    assert list(latest_state(data_root, TERM, d2.date(), seed_from_previous_days=False).index) == ["1"]
+    assert list(latest_state(data_root, TERM, d2.date(), lookback_days=0).index) == ["1"]
+    # the first full-scope delta after the baseline tombstones the carried id that vanished
+    t = d2 + timedelta(minutes=30)
+    obs = rows_to_table([make_row(section_id="1", enrolled_count=11, fetched_at=t), make_row(section_id="3", enrolled_count=31, fetched_at=t)])
+    delta = compute_delta(state, obs, {"1", "3"}, fetched_at=t)
+    assert [(r["section_id"], r["section_status"]) for r in delta.to_pylist()] == [("2", "GONE")]
+
+
+def test_latest_state_lookback_window(data_root: Path):
+    d1, d9 = T0, T0 + timedelta(days=8)
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1"), make_row(section_id="2")]), meta("baseline", at=d1))
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1", fetched_at=d9)]), meta("baseline", at=d9))
+    assert list(latest_state(data_root, TERM, d9.date()).index) == ["1"]  # 8 days back is outside the 7-day window
+    assert list(latest_state(data_root, TERM, d9.date(), lookback_days=8).index) == ["1", "2"]
+    with pytest.raises(ValueError, match="lookback_days"):
+        latest_state(data_root, TERM, d9.date(), lookback_days=-1)
+
+
+def test_latest_state_still_requires_a_baseline_that_day(data_root: Path):
+    d1, d2 = T0, T0 + timedelta(days=1)
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1")]), meta("baseline", at=d1))
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1", enrolled_count=1, fetched_at=d2)]), meta("delta", at=d2))
+    assert latest_state(data_root, TERM, d2.date()) is None
+
+
+def test_carried_state_before_todays_baseline(data_root: Path):
+    d1, d1b, d2 = T0, T0 + timedelta(minutes=30), T0 + timedelta(days=1)
+    assert carried_state(data_root, TERM, d1.date()) is None
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1", enrolled_count=10), make_row(section_id="2")]), meta("baseline", at=d1))
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1", enrolled_count=12, fetched_at=d1b)]), meta("delta", at=d1b))
+    other = RunMeta(run_started_at=d1b + timedelta(minutes=1), term_id="2268", source="sis_api", kind="baseline", scope="full")
+    write_snapshot(data_root, rows_to_table([make_row(section_id="7", term_id="2268")]), other)
+    carried = carried_state(data_root, TERM, d2.date())  # day 2 has no files yet
+    assert carried is not None and list(carried.index) == ["1", "2"]
+    assert carried.loc["1", "enrolled_count"] == 12
+    assert carried_state(data_root, TERM, d2.date(), lookback_days=0) is None
+    assert carried_state(data_root, TERM, d1.date() - timedelta(days=1)) is None
+    assert carried_state(data_root, TERM, d2.date() + timedelta(days=7)) is None
+    # a --force-baseline later on day 1 sees day 1's own files too
+    assert carried_state(data_root, TERM, d1.date()).loc["1", "enrolled_count"] == 12
+
+
+def test_latest_baseline_meta(data_root: Path):
+    assert latest_baseline_meta(data_root, TERM, T0.date()) is None
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1")]), meta("delta", at=T0))
+    assert latest_baseline_meta(data_root, TERM, T0.date()) is None
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1")]), meta("baseline", at=T0 + timedelta(minutes=30)))
+    other = RunMeta(run_started_at=T0 + timedelta(minutes=40), term_id="2268", source="classes_site", kind="baseline", scope="full")
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1", term_id="2268")]), other)
+    got = latest_baseline_meta(data_root, TERM, T0.date())
+    assert got is not None and got.source == "sis_api" and got.run_started_at == T0 + timedelta(minutes=30)
+    assert latest_baseline_meta(data_root, "2268", T0.date()).source == "classes_site"
+    assert latest_baseline_meta(data_root, TERM, T0.date() + timedelta(days=1)) is None
+    # --force-baseline: the latest baseline of the day wins
+    forced = RunMeta(run_started_at=T0 + timedelta(hours=2), term_id=TERM, source="classes_site", kind="baseline", scope="full")
+    write_snapshot(data_root, rows_to_table([make_row(section_id="1", source="classes_site")]), forced)
+    assert latest_baseline_meta(data_root, TERM, T0.date()).source == "classes_site"
+
+
+def test_shard_first_seen_on_day_two_with_unchanged_values_is_not_a_delta(data_root: Path):
+    d1, d2, d2b = T0, T0 + timedelta(days=1), T0 + timedelta(days=1, minutes=30)
+    day1 = [make_row(section_id=s, enrolled_count=int(s)) for s in ("1", "2", "3", "4")]
+    write_snapshot(data_root, rows_to_table(day1), meta("baseline", at=d1))
+    # day 2: priority-scope baseline covers 1 and 2 only
+    write_snapshot(data_root, rows_to_table([make_row(section_id=s, enrolled_count=int(s), fetched_at=d2) for s in ("1", "2")]),
+                   meta("baseline", scope="priority", at=d2, observed_ids=["1", "2"]))
+    # the next shard brings 3 and 4 with the same values as yesterday: nothing changed, no rows
+    shard = rows_to_table([make_row(section_id=s, enrolled_count=int(s), fetched_at=d2b) for s in ("3", "4")])
+    assert compute_delta(latest_state(data_root, TERM, d2.date()), shard, None, fetched_at=d2b).num_rows == 0
 
 
 def test_count_fields_are_the_compared_fields():

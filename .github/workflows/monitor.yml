@@ -61,7 +61,7 @@ jobs:
         env:
           TERM_ID: ${{ steps.term.outputs.term_id }}
         run: |
-          python -m scraper.gaps --data-root data-branch --term-id "$TERM_ID" --hours 24 --fail-if-gap-min 90 --fail-if-runs-lt 40 2>&1 | tee gap_report.txt
+          python -m scraper.gaps --data-root data-branch --term-id "$TERM_ID" --hours 24 --fail-if-gap-min 90 --fail-if-runs-lt 40 --fail-if-missing-share-gt 0.5 2>&1 | tee gap_report.txt
 
       - name: Find the open alert issue
         id: alert

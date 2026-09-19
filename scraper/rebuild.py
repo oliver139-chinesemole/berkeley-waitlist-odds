@@ -6,15 +6,19 @@ Semantics per run, applied in time order with state carried forward across
 days (a baseline replaces state only for the ids it contains):
 
 * every file is an upsert of its rows into the carried state;
-* scope ``full``: the observed set is every id in the carried state after
-  applying this file (the day's baseline ids, ids introduced by files since,
-  and ids carried from earlier days) minus ``missing_ids``. A full sweep
-  attempts the whole universe, so a carried id that is not in the file was
-  either unchanged, already tombstoned (``GONE`` is carried with
-  ``observed=True`` until the section reappears), or in ``missing_ids``;
-* scope ``priority``: the observed set is ``observed_ids`` from the file
-  metadata minus ``missing_ids`` (falls back to the ids in the file, with a
-  warning, when the metadata key is absent).
+* when the file metadata carries ``observed_ids`` (every priority-scope run,
+  and every full-scope run that did not attempt the whole universe:
+  ``complete`` is ``false``), the observed set is ``observed_ids`` minus
+  ``missing_ids``;
+* otherwise (a complete full sweep) the observed set is every id in the
+  carried state after applying this file (the day's baseline ids, ids
+  introduced by files since, and ids carried from earlier days) minus
+  ``missing_ids``: a carried id that is not in the file was either unchanged
+  or in ``missing_ids``;
+* a priority-scope file without ``observed_ids`` falls back to the ids in the
+  file, with a warning;
+* in every scope, ids whose carried row is a tombstone (``section_status ==
+  "GONE"``) count as observed until the section reappears (section 3).
 
 Not-observed rows carry the previous values forward with ``observed=False``.
 """
@@ -28,7 +32,7 @@ from typing import Any
 import pandas as pd
 import pyarrow as pa
 
-from scraper.schema import COUNT_FIELDS, SNAPSHOT_SCHEMA
+from scraper.schema import COUNT_FIELDS, SNAPSHOT_SCHEMA, TOMBSTONE_STATUS
 from scraper.storage import (
     RunMeta,
     list_snapshots,
@@ -102,17 +106,18 @@ def rebuild_panel(
 def _observed_set(meta: RunMeta, rows: list[dict[str, Any]], state: dict[str, dict[str, Any]]) -> set[str]:
     """Ids counted as observed in this run (see module docstring)."""
     missing = set(meta.missing_ids)
-    if meta.scope == "priority":
-        if meta.observed_ids is None:
-            logger.warning(
-                "priority-scope run %s has no observed_ids metadata; using ids in the file",
-                meta.run_started_at.isoformat(),
-            )
-            ids = {r["section_id"] for r in rows}
-        else:
-            ids = set(meta.observed_ids)
-        return ids - missing
-    return set(state) - missing
+    gone = {sid for sid, row in state.items() if row.get("section_status") == TOMBSTONE_STATUS}
+    if meta.observed_ids is not None:
+        ids = set(meta.observed_ids)
+    elif meta.scope == "priority":
+        logger.warning(
+            "priority-scope run %s has no observed_ids metadata; using ids in the file",
+            meta.run_started_at.isoformat(),
+        )
+        ids = {r["section_id"] for r in rows}
+    else:
+        ids = set(state)
+    return (ids - missing) | gone
 
 
 def _panel_piece(meta: RunMeta, state: dict[str, dict[str, Any]], observed: set[str]) -> pa.Table:

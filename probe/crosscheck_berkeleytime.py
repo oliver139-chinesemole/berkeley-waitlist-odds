@@ -4,12 +4,13 @@ DESIGN_A2 section 9 and docs/PHASE0.md "Cross-check". Needs the network; never i
 
     python probe/crosscheck_berkeleytime.py --term "Fall 2026" --n 20
 
-Section refs come from ``ClassesSiteSource.list_sections``: the cached full listing at
-``catalog/<term_id>/sections.json`` under ``--data-root`` when a classes_site run wrote one
-in the last 24 h, else a fresh listing capped at ``--max-pages`` pages (alphabetical, so
-early pages are AEROENG..). COMPSCI/DATA/STAT refs are preferred whenever they are present
-in the pool. Each chosen section page is fetched live and matched to the same ``sectionId``
-in Berkeleytime's GetClass (primarySection + sections).
+Section refs come from ``ClassesSiteSource.load_or_refresh_catalog``: the catalog at
+``catalog/<term_id>/catalog.json`` under ``--data-root`` (built from Berkeleytime's
+GetCatalog, refreshed when older than 24 h; the site's ``/search/`` listing is never used
+because robots.txt disallows it). Refs whose page has already been fetched (known section
+id, last status 200) are preferred, then COMPSCI/DATA/STAT. Each chosen section page is
+fetched live; the page's own section id is matched to the same ``sectionId`` in
+Berkeleytime's GetClass (primarySection + sections).
 
 Berkeleytime's counts are at most 15 minutes old, so the report separates
 "agree" (identical) from "drift" (every difference <= DRIFT_TOLERANCE seats) and flags
@@ -66,19 +67,21 @@ class Comparison:
 # ------------------------------------------------------------------ refs
 
 
-def load_refs(source: Any, term: TermSpec, max_pages: int) -> list[Any]:
-    """Section refs for the term via the source (cached full listing, else ``max_pages`` live pages)."""
-    facet_id = source.discover_term_facet_id(term.name)
-    refs = source.list_sections(facet_id, max_pages, term_id=term.sis_term_id)
-    logger.info("facet %s: %d refs available", facet_id, len(refs))
+def load_refs(source: Any, term: TermSpec) -> list[Any]:
+    """Live (not 404) section refs for the term from the source's catalog."""
+    catalog = source.load_or_refresh_catalog(term)
+    refs = [r for r in catalog.refs if not r.absent]
+    logger.info("catalog for %s: %d live refs of %d", term.sis_term_id, len(refs), len(catalog.refs))
     return refs
 
 
 def order_refs(refs: list[Any]) -> list[Any]:
-    """Every ref, preferred subjects first, original order otherwise."""
-    preferred = [r for r in refs if r.subject.upper() in PREFERRED_SUBJECTS]
-    others = [r for r in refs if r.subject.upper() not in PREFERRED_SUBJECTS]
-    return preferred + others
+    """Known-good refs first (id learned, last probe 200), then preferred subjects, then the rest."""
+    def rank(r: Any) -> tuple[int, int, str]:
+        known = 0 if (getattr(r, "section_id", "") and getattr(r, "last_status", None) == 200) else 1
+        preferred = 0 if r.subject.upper() in PREFERRED_SUBJECTS else 1
+        return (known, preferred, r.url_path)
+    return sorted(refs, key=rank)
 
 
 def choose_refs(refs: list[Any], n: int) -> list[Any]:
@@ -149,6 +152,7 @@ def crosscheck_one(
     try:
         html = client.get(site_source.section_url(ref))
         row = site_source.parse_section_page(html, ref, datetime.now(timezone.utc), term)
+        comp.section_id = str(row["section_id"])  # learned from the page when the catalog had none
         comp.site = site_counts(row)
     except (HttpError, ParseError, ValueError, KeyError) as exc:
         comp.note = f"site: {type(exc).__name__}: {exc}"
@@ -223,8 +227,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Compare live classes.berkeley.edu counts with Berkeleytime for N sections.")
     p.add_argument("--term", required=True, help='e.g. "Fall 2026"')
     p.add_argument("--n", type=int, default=20, help="comparable sections wanted; uncomparable ones are replaced by the next candidate (at most 2n attempts)")
-    p.add_argument("--data-root", type=Path, default=Path(config.DEFAULTS["data_root"]), help="where catalog/<term_id>/sections.json may live")
-    p.add_argument("--max-pages", type=int, default=6, help="listing pages to read when no catalog cache exists (18 refs per page)")
+    p.add_argument("--data-root", type=Path, default=Path(config.DEFAULTS["data_root"]), help="where catalog/<term_id>/catalog.json lives (created or refreshed from Berkeleytime if missing or older than 24 h)")
     p.add_argument("--min-interval-s", type=float, default=config.DEFAULTS["min_interval_s"])
     p.add_argument("--out", type=Path, default=None, help="report path; default docs/crosscheck_<UTC date>.md")
     return p
@@ -241,7 +244,7 @@ def main(argv: list[str] | None = None) -> int:
     when = datetime.now(timezone.utc)
     client = HttpClient(config.USER_AGENT, min_interval_s=args.min_interval_s, max_concurrency=1)
     site_source = ClassesSiteSource(client, args.data_root)
-    pool = order_refs(load_refs(site_source, term, args.max_pages))
+    pool = order_refs(load_refs(site_source, term))
     if not pool:
         print("no section refs available; nothing to compare", file=sys.stderr)
         return 1

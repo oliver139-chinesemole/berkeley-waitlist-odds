@@ -17,13 +17,26 @@ Semantics that matter downstream:
   we would rather record a gap than a partial sweep that looks complete.
 
 The HTTP layer is an injectable transport ``get_json(url, params, headers) ->
-(status, dict)`` so tests never touch the network. The default transport uses
-``requests`` (the gateway does not block it; only classes.berkeley.edu does).
+(status, dict, retry_after_s)`` so tests never touch the network (the older
+``(status, dict)`` shape is still accepted). The default transport uses
+``requests`` (the gateway does not block it; only classes.berkeley.edu does),
+never follows redirects (the credential headers must not travel to another
+host; a 3xx is a hard ``SisApiError``) and bounds the body at
+``MAX_BODY_BYTES``.
+
+Retries: 5xx, 429 and transport failures back off exponentially with jitter,
+honouring ``Retry-After`` when it is larger. A 429 (or a 5xx carrying
+``Retry-After``) sets a source-wide "not before" time that *every* page worker
+waits for, so one throttled page pauses the whole sweep instead of eight
+workers retrying in lockstep.
 """
 from __future__ import annotations
 
+import json
 import logging
 import os
+import random
+import threading
 import time
 from concurrent.futures import Future, ThreadPoolExecutor
 from datetime import datetime, timezone
@@ -31,26 +44,29 @@ from typing import Any, Callable
 
 import requests
 
+from scraper import config
+from scraper.http import parse_retry_after
 from scraper.schema import SnapshotRow
 from scraper.sources.base import FetchResult, ParseError, PrioritySpec, TermSpec
 
 logger = logging.getLogger(__name__)
 
-VERSION = "0.1.0"
-# Honest identification per docs/PHASE0.md. The repo has no remote yet, so the
-# GitHub URL from DESIGN_A2.md section 4 is left to scraper/http.py once known.
-USER_AGENT = f"berkeley-waitlist-odds/{VERSION} (+mailto:oliver139@berkeley.edu)"
-
 BASE_URL = "https://gateway.api.berkeley.edu/sis/v1/classes/sections"
 ENV_APP_ID = "SIS_CLASS_APP_ID"
 ENV_APP_KEY = "SIS_CLASS_APP_KEY"
 DEFAULT_TIMEOUT_S = 60.0
+MAX_BODY_BYTES = 16 * 1024 * 1024  # a 50-section page is well under 1 MB
+READ_CHUNK_BYTES = 64 * 1024
 CANCELLED_STATUS = "X"
 SOURCE_NAME = "sis_api"
 
-GetJson = Callable[[str, dict[str, str], dict[str, str]], tuple[int, dict[str, Any]]]
+# (status, json_body, retry_after_s); the two-element form is accepted for compatibility.
+TransportResult = tuple[int, dict[str, Any], float | None] | tuple[int, dict[str, Any]]
+GetJson = Callable[[str, dict[str, str], dict[str, str]], TransportResult]
 Sleep = Callable[[float], None]
 Clock = Callable[[], datetime]
+Monotonic = Callable[[], float]
+Rng = Callable[[], float]
 
 
 class TransportError(RuntimeError):
@@ -80,26 +96,74 @@ def requests_get_json(
     params: dict[str, str],
     headers: dict[str, str],
     timeout_s: float = DEFAULT_TIMEOUT_S,
-) -> tuple[int, dict[str, Any]]:
-    """Default transport: ``requests.get`` returning ``(status, json_body)``.
+    max_body_bytes: int = MAX_BODY_BYTES,
+) -> tuple[int, dict[str, Any], float | None]:
+    """Default transport: ``requests.get`` returning ``(status, json_body, retry_after_s)``.
 
-    A body that is not a JSON object (HTML error page, empty 404) becomes ``{}``
-    so callers can branch on status alone. Network-level failures raise
-    ``TransportError`` so the retry loop can treat them like a 5xx.
+    Redirects are never followed (``allow_redirects=False``): the request
+    carries ``app_id``/``app_key`` and those must not be re-sent to whatever
+    host a 3xx names; the caller treats a 3xx as a hard error. The body is
+    streamed and capped at ``max_body_bytes`` (``ParseError`` beyond that). A
+    body that is not a JSON object (HTML error page, empty 404) becomes ``{}``
+    so callers can branch on status alone. ``retry_after_s`` is the parsed
+    ``Retry-After`` header (seconds or HTTP-date), or None. Network-level
+    failures raise ``TransportError`` so the retry loop can treat them like a 5xx.
     """
     try:
-        resp = requests.get(url, params=params, headers=headers, timeout=timeout_s)
+        resp = requests.get(url, params=params, headers=headers, timeout=timeout_s, allow_redirects=False, stream=True)
     except requests.RequestException as exc:
         raise TransportError(f"GET {url} failed: {exc}") from exc
-    return resp.status_code, _json_object(resp)
-
-
-def _json_object(resp: requests.Response) -> dict[str, Any]:
     try:
-        body = resp.json()
-    except ValueError:
+        raw = read_bounded(resp, max_body_bytes)
+    finally:
+        resp.close()
+    return resp.status_code, json_object(raw), parse_retry_after(resp.headers.get("Retry-After"))
+
+
+def read_bounded(resp: Any, max_bytes: int) -> bytes:
+    """Read a streamed ``requests`` response body, at most ``max_bytes``.
+
+    Raises ``ParseError`` (not retried) when ``Content-Length`` or the bytes
+    actually received exceed the cap, and ``TransportError`` when the
+    connection fails mid-body.
+    """
+    declared = resp.headers.get("Content-Length")
+    if declared is not None:
+        try:
+            length = int(str(declared).strip())
+        except ValueError:  # ParseError is a ValueError too: keep the raise outside this block
+            length = None
+        if length is not None and length > max_bytes:
+            raise ParseError(f"response body exceeds {max_bytes} bytes (Content-Length {declared})")
+    chunks: list[bytes] = []
+    total = 0
+    try:
+        for chunk in resp.iter_content(chunk_size=READ_CHUNK_BYTES):
+            total += len(chunk)
+            if total > max_bytes:
+                raise ParseError(f"response body exceeds {max_bytes} bytes")
+            chunks.append(chunk)
+    except requests.RequestException as exc:
+        raise TransportError(f"reading the response body failed: {exc}") from exc
+    return b"".join(chunks)
+
+
+def json_object(raw: bytes) -> dict[str, Any]:
+    """``raw`` decoded as a JSON object, or ``{}`` when it is not one."""
+    try:
+        body = json.loads(raw)
+    except (ValueError, UnicodeDecodeError):
         return {}
     return body if isinstance(body, dict) else {}
+
+
+def unpack_transport_result(result: TransportResult) -> tuple[int, dict[str, Any], float | None]:
+    """Normalise a transport's return value to ``(status, body, retry_after_s)``."""
+    if len(result) == 2:
+        status, body = result
+        return int(status), body, None
+    status, body, retry_after = result
+    return int(status), body, None if retry_after is None else float(retry_after)
 
 
 # --------------------------------------------------------------------------- parsing
@@ -247,8 +311,10 @@ class SisApiSource:
     Pages are requested in batches of ``max_in_flight`` on a thread pool; the
     sweep ends at the first page that returns 404 or an empty ``classSections``.
     Each page is retried ``retries`` times on 5xx / 429 / transport failure with
-    exponential backoff (``backoff_base_s * 2**k``), sleeping via the injectable
-    ``sleep`` so tests run instantly.
+    exponential backoff (``max(backoff_base_s * 2**k, Retry-After)`` plus
+    ``rng() * backoff_base_s`` of jitter), sleeping via the injectable ``sleep``
+    so tests run instantly. A 429, or a 5xx with ``Retry-After``, sets a shared
+    "not before" time (``monotonic`` seconds) that every page worker waits for.
     """
 
     name = SOURCE_NAME
@@ -268,6 +334,8 @@ class SisApiSource:
         timeout_s: float = DEFAULT_TIMEOUT_S,
         sleep: Sleep = time.sleep,
         clock: Clock = utc_now,
+        monotonic: Monotonic = time.monotonic,
+        rng: Rng = random.random,
     ) -> None:
         if not app_id or not app_key:
             raise ValueError("SIS Class API needs both app_id and app_key")
@@ -279,12 +347,22 @@ class SisApiSource:
         self.retries = max(0, retries)
         self.backoff_base_s = backoff_base_s
         self.base_url = base_url
-        self._headers = {"app_id": app_id, "app_key": app_key, "User-Agent": USER_AGENT, "Accept": "application/json"}
+        self._headers = {
+            "app_id": app_id,
+            "app_key": app_key,
+            "User-Agent": config.USER_AGENT,
+            "Accept": "application/json",
+        }
         self._transport: GetJson = transport or (
             lambda url, params, headers: requests_get_json(url, params, headers, timeout_s=timeout_s)
         )
         self._sleep = sleep
         self._clock = clock
+        self._monotonic = monotonic
+        self._rng = rng
+        # Source-wide backoff: no page request starts before this monotonic time.
+        self._backoff_lock = threading.Lock()
+        self._not_before = self._monotonic()
 
     @classmethod
     def from_env(cls, **kwargs: Any) -> "SisApiSource":
@@ -305,42 +383,74 @@ class SisApiSource:
     def _params(self, term: TermSpec, page: int) -> dict[str, str]:
         return {"term-id": term.sis_term_id, "page-number": str(page), "page-size": str(self.page_size)}
 
+    # ---- shared backoff
+
+    def _wait_for_shared_backoff(self) -> None:
+        """Sleep until the source-wide "not before" time (plus jitter), if it is in the future."""
+        with self._backoff_lock:
+            wait = self._not_before - self._monotonic()
+        if wait > 0:
+            self._sleep(wait + self._rng() * self.backoff_base_s)
+
+    def _pause_all(self, delay: float) -> None:
+        """Push the source-wide "not before" time so every page worker waits ``delay`` seconds."""
+        with self._backoff_lock:
+            self._not_before = max(self._not_before, self._monotonic() + delay)
+
+    def _backoff_delay(self, attempt_index: int, retry_after_s: float | None) -> float:
+        """``backoff_base_s * 2**k``, or the server's Retry-After when that is larger (no jitter)."""
+        delay = self.backoff_base_s * (2**attempt_index)
+        if retry_after_s is not None:
+            delay = max(delay, retry_after_s)
+        return delay
+
     def fetch_page(self, term: TermSpec, page: int) -> tuple[dict[str, Any] | None, datetime]:
         """Fetch one page. Returns ``(payload, fetched_at)``; payload is ``None`` on 404 (past the last page).
 
         Retries on 5xx, 429 and transport failures; any other non-2xx status
-        (403 bad credentials, 400 bad term) raises ``SisApiError`` at once.
+        (403 bad credentials, 400 bad term, any 3xx: redirects are never
+        followed) raises ``SisApiError`` at once. Every attempt first waits for
+        the source-wide backoff set by any worker's 429.
         """
         params = self._params(term, page)
         status = 0
         detail = ""
         attempt = 0
         for attempt in range(1, self.retries + 2):
+            self._wait_for_shared_backoff()
             try:
-                status, body = self._transport(self.base_url, params, self._headers)
+                status, body, retry_after = unpack_transport_result(self._transport(self.base_url, params, self._headers))
                 detail = ""
             except TransportError as exc:
-                status, body, detail = 0, {}, str(exc)
+                status, body, retry_after, detail = 0, {}, None, str(exc)
             fetched_at = self._clock()
             if 200 <= status < 300:
                 return body, fetched_at
             if status == 404:
                 logger.debug("page %d: 404, end of term %s", page, term.sis_term_id)
                 return None, fetched_at
+            if 300 <= status < 400:
+                detail = "unexpected redirect, not followed (the gateway never redirects API calls)"
+                break
             retryable = status == 0 or status == 429 or status >= 500
             if not retryable or attempt > self.retries:
                 break
-            delay = self.backoff_base_s * (2 ** (attempt - 1))
+            delay = self._backoff_delay(attempt - 1, retry_after)
+            pause_everyone = status == 429 or retry_after is not None
             logger.warning(
-                "page %d: HTTP %s on attempt %d/%d, retrying in %.1fs %s",
+                "page %d: HTTP %s on attempt %d/%d, retrying in %.1fs%s %s",
                 page,
                 status or "transport error",
                 attempt,
                 self.retries + 1,
                 delay,
+                " (all page workers paused)" if pause_everyone else "",
                 detail,
             )
-            self._sleep(delay)
+            if pause_everyone:
+                self._pause_all(delay)  # this worker waits at the top of the loop, with everyone else
+            else:
+                self._sleep(delay + self._rng() * self.backoff_base_s)
         suffix = f": {detail}" if detail else ""
         raise SisApiError(
             f"page {page} of term {term.sis_term_id}: HTTP {status} after {attempt} attempt(s){suffix}",

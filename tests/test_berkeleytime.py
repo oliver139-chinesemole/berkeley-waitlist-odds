@@ -9,7 +9,9 @@ from typing import Any
 
 import pytest
 
+from scraper import config
 from scraper.schema import rows_to_table
+from scraper.sources import berkeleytime
 from scraper.sources.base import ParseError, TermSpec
 from scraper.sources.berkeleytime import (
     DEFAULT_OPS_PATH,
@@ -18,6 +20,7 @@ from scraper.sources.berkeleytime import (
     BerkeleytimeSource,
     load_persisted_ops,
     parse_catalog,
+    requests_post_json,
     select_op,
 )
 
@@ -40,19 +43,22 @@ def ops() -> dict[str, list[Any]]:
     return load_persisted_ops(DEFAULT_OPS_PATH)
 
 
-class FakeGateway:
-    """Injected transport: answers by op id, or from a queue of (status, payload) for retry tests."""
+Reply = tuple[int, dict[str, Any]] | tuple[int, dict[str, Any], float | None]  # both transport shapes
 
-    def __init__(
-        self,
-        by_op_id: dict[str, tuple[int, dict[str, Any]]] | None = None,
-        queue: list[tuple[int, dict[str, Any]]] | None = None,
-    ) -> None:
+
+class FakeGateway:
+    """Injected transport: answers by op id, or from a queue of replies for retry tests.
+
+    A reply is ``(status, payload)`` (the pre-review shape) or
+    ``(status, payload, retry_after_s)`` (the real transport's shape).
+    """
+
+    def __init__(self, by_op_id: dict[str, Reply] | None = None, queue: list[Reply] | None = None) -> None:
         self.by_op_id = by_op_id or {}
         self.queue = queue or []
         self.calls: list[tuple[str, dict[str, Any], dict[str, str]]] = []
 
-    def __call__(self, url: str, body: dict[str, Any], headers: dict[str, str]) -> tuple[int, dict[str, Any]]:
+    def __call__(self, url: str, body: dict[str, Any], headers: dict[str, str]) -> Reply:
         self.calls.append((url, copy.deepcopy(body), dict(headers)))
         if self.queue:
             return self.queue.pop(0)
@@ -61,9 +67,10 @@ class FakeGateway:
         return 400, {"errors": [{"message": f"unknown persisted operation {body['id']}"}]}
 
 
-def make_source(transport: FakeGateway) -> tuple[BerkeleytimeSource, list[float]]:
+def make_source(transport: FakeGateway, **kwargs: Any) -> tuple[BerkeleytimeSource, list[float]]:
     sleeps: list[float] = []
-    return BerkeleytimeSource(transport=transport, sleep=sleeps.append, clock=lambda: NOW), sleeps
+    kwargs.setdefault("rng", lambda: 0.0)  # no jitter unless a test asks for it
+    return BerkeleytimeSource(transport=transport, sleep=sleeps.append, clock=lambda: NOW, **kwargs), sleeps
 
 
 # ----------------------------------------------------------------------------- GetCatalog
@@ -289,3 +296,97 @@ def test_non_retryable_status_raises_immediately() -> None:
     with pytest.raises(BerkeleytimeError):
         src.fetch(FALL_2026)
     assert sleeps == [] and len(gateway.calls) == 1
+
+
+# ----------------------------------------------------------------------------- retry-after, jitter, redirects, transport (findings A, C, D, E)
+
+
+def test_execute_honours_retry_after_over_the_backoff(catalog_small: dict[str, Any]) -> None:
+    gateway = FakeGateway(queue=[(429, {}, 9.0), (503, {}, 0.5), (200, catalog_small, None)])
+    src, sleeps = make_source(gateway)
+
+    result = src.fetch(FALL_2026)
+
+    assert len(result.rows) == 3
+    assert sleeps == [9.0, 2.0]  # max(1.0, 9.0) then max(2.0, 0.5)
+    assert len(gateway.calls) == 3
+
+
+def test_execute_backoff_jitter_comes_from_the_injected_rng(catalog_small: dict[str, Any]) -> None:
+    gateway = FakeGateway(queue=[(502, {}), (200, catalog_small)])
+    src, sleeps = make_source(gateway, rng=lambda: 0.5)
+
+    src.fetch(FALL_2026)
+
+    assert sleeps == [1.5]
+
+
+def test_redirect_is_a_hard_error_not_followed() -> None:
+    gateway = FakeGateway(queue=[(302, {}), (200, {"data": {"catalog": []}})])
+    src, sleeps = make_source(gateway)
+
+    with pytest.raises(BerkeleytimeError, match="redirect") as excinfo:
+        src.fetch(FALL_2026)
+
+    assert excinfo.value.status == 302
+    assert sleeps == []
+    assert len(gateway.calls) == 1
+
+
+class FakeRequestsResponse:
+    """The parts of ``requests.Response`` the streaming transport touches."""
+
+    def __init__(self, status_code: int, body: bytes, headers: dict[str, str] | None = None) -> None:
+        self.status_code = status_code
+        self.body = body
+        self.headers = headers or {}
+        self.closed = False
+        self.chunks_served = 0
+
+    def iter_content(self, chunk_size: int = 1) -> Any:
+        for i in range(0, len(self.body), chunk_size):
+            self.chunks_served += 1
+            yield self.body[i : i + chunk_size]
+
+    def close(self) -> None:
+        self.closed = True
+
+
+def test_requests_transport_streams_bounded_and_never_follows_redirects(monkeypatch: pytest.MonkeyPatch) -> None:
+    seen: dict[str, Any] = {}
+    response = FakeRequestsResponse(429, b'{"errors": []}', {"Retry-After": "8"})
+
+    def fake_post(url: str, **kwargs: Any) -> FakeRequestsResponse:
+        seen.update(kwargs, url=url)
+        return response
+
+    monkeypatch.setattr(berkeleytime.requests, "post", fake_post)
+
+    status, body, retry_after = requests_post_json(GRAPHQL_URL, {"id": "op", "variables": {}}, {"Accept": "x"}, timeout_s=7.0)
+
+    assert (status, body, retry_after) == (429, {"errors": []}, 8.0)
+    assert seen["url"] == GRAPHQL_URL
+    assert seen["json"] == {"id": "op", "variables": {}} and seen["headers"] == {"Accept": "x"}
+    assert seen["allow_redirects"] is False
+    assert seen["stream"] is True
+    assert seen["timeout"] == 7.0
+    assert response.closed
+
+
+def test_requests_transport_caps_the_body_at_max_body_bytes(monkeypatch: pytest.MonkeyPatch) -> None:
+    assert berkeleytime.MAX_BODY_BYTES == 64 * 1024 * 1024  # GetCatalog is ~13 MB; leave headroom
+    big = FakeRequestsResponse(200, b'{"data": {"catalog": [' + b"{}," * 100 + b"{}]}}")
+    monkeypatch.setattr(berkeleytime.requests, "post", lambda url, **kw: big)
+    with pytest.raises(ParseError, match="exceeds"):
+        requests_post_json(GRAPHQL_URL, {}, {}, max_body_bytes=64)
+    assert big.closed
+
+    small = FakeRequestsResponse(200, b'{"data": {"catalog": []}}')
+    monkeypatch.setattr(berkeleytime.requests, "post", lambda url, **kw: small)
+    assert requests_post_json(GRAPHQL_URL, {}, {}, max_body_bytes=64) == (200, {"data": {"catalog": []}}, None)
+
+
+def test_default_headers_use_the_config_user_agent() -> None:
+    src, _ = make_source(FakeGateway())
+    assert src._headers["User-Agent"] == config.USER_AGENT
+    assert not hasattr(berkeleytime, "USER_AGENT")

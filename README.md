@@ -33,7 +33,7 @@ The tests are offline and use recorded fixtures from `data/fixtures/`. The dry r
 ```
 snapshots/date=YYYY-MM-DD/HHMM-baseline.parquet   every observed section; first run of the UTC day
 snapshots/date=YYYY-MM-DD/HHMM-delta.parquet      rows whose counts changed since the previous observation, plus tombstones
-catalog/<term_id>/sections.json                   section list for the term (classes.berkeley.edu only)
+catalog/<term_id>/catalog.json                    section universe for the term (classes_site only): Berkeleytime catalog classes with derived page paths, learned section ids, and 404 markers
 status.json                                       summary of the last run
 ```
 

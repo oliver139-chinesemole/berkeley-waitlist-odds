@@ -74,7 +74,7 @@ This file is the roadmap. It has no file paths or test code because those must c
 
 This repo gets a `CLAIMS.md`: a table mapping every number or capability on the resume to the exact command, query, or test that reproduces it, plus the current result and date. Example row: `30-minute snapshots | gap report script | 97.2% of intervals ≤ 45 min | 2026-11-20`. It is the audit, the interview prep, and the README source at once.
 
-- [ ] If `~/.claude/skills/claims-audit/` does not exist yet, use `superpowers:writing-skills` to create it as a personal skill: read `CLAIMS.md`, re-run every check, update the result and date columns, report any row that failed or changed. Run it at the end of every step and before any resume update. (One skill serves all three repos.)
+- [x] If `~/.claude/skills/claims-audit/` does not exist yet, use `superpowers:writing-skills` to create it as a personal skill: read `CLAIMS.md`, re-run every check, update the result and date columns, report any row that failed or changed. Run it at the end of every step and before any resume update. (One skill serves all three repos.)
 
 ### 1.4 Block to paste into CLAUDE.md
 
@@ -110,7 +110,7 @@ This repo already has a `CLAUDE.md` importing `@docs/SPEC.md`. Add the import an
 | ~Feb 10, 2027 | Add/drop deadline (Wed of week 4); freeze dataset | Final analysis and methodology page |
 | Before mid-April 2027 | A7 ship ahead of Fall 2027 Phase 1 | Reddit post up, tool in use |
 
-Phase 1 for spring has historically opened on the 2nd or 3rd Monday of October, so plan for **Oct 12, 2026** as the worst case. Confirm the real date on the registrar's Student Enrollment Calendar today and write it here: `Phase 1 opens: ________`.
+Phase 1 for spring has historically opened on the 2nd or 3rd Monday of October, so plan for **Oct 12, 2026** as the worst case. Confirm the real date on the registrar's Student Enrollment Calendar today and write it here: `Phase 1 opens: Mon Oct 26, 2026` (continuing students; Schedule of Classes published Oct 4; confirmed 2026-09-18 from the registrar's Google Calendar ICS).
 
 ---
 
@@ -132,8 +132,8 @@ Phase 1 for spring has historically opened on the 2nd or 3rd Monday of October, 
 ### A0. Today (Oliver, 30 minutes, before anything else)
 
 - [ ] Submit the API Central request for the SIS Class API. Approval is the main timeline risk and is outside your control. Save the request ID.
-- [ ] Confirm Spring 2027 Phase 1, Phase 2, and adjustment period dates on the registrar's Student Enrollment Calendar. Write them into section 2 and into `CLAUDE.md`.
-- [ ] Confirm the repo is public (unmetered Actions minutes). If it is private, flip it now.
+- [x] Confirm Spring 2027 Phase 1, Phase 2, and adjustment period dates on the registrar's Student Enrollment Calendar. Write them into section 2 and into `CLAUDE.md`.
+- [x] Confirm the repo is public (unmetered Actions minutes). If it is private, flip it now.
 
 ### A1. Phase 0 — discover the data route (Sept 19 – 20)
 
@@ -141,24 +141,24 @@ Phase 1 for spring has historically opened on the 2nd or 3rd Monday of October, 
 
 Do not wait on API approval. Probe all candidates in parallel and take the first that passes.
 
-- [ ] Write `probe/probe_sources.py`. For each candidate, fetch 5 known sections (2 impacted CS/DATA/STAT courses, 1 large lecture, 1 small seminar, 1 course with reserved seats) and print the raw response.
+- [x] Write `probe/probe_sources.py`. For each candidate, fetch 5 known sections (2 impacted CS/DATA/STAT courses, 1 large lecture, 1 small seminar, 1 course with reserved seats) and print the raw response.
   - Candidate 1: SIS Class API through API Central (needs approved credentials). The Spring 2027 term ID should follow the SIS convention `2` + `YY` + `2/5/8`, i.e. `2272`. Confirm it in the probe; do not hardcode it on this file's word.
   - Candidate 2: the public class schedule site (classes.berkeley.edu). Check whether section pages or their network calls expose enrolled, capacity, waitlisted, and waitlist capacity as JSON.
   - Candidate 3: Berkeleytime's public API (open source, asuc-octo/berkeleytime). Fallback, and a cross-check for your own counts.
 - [ ] Pass criteria: returns `enrolled_count`, `enroll_capacity`, `waitlist_count`, `waitlist_capacity` per section; no login; a full-catalog sweep finishes in under 10 minutes; terms of use permit it. Note reserved-seat fields if present.
-- [ ] Write the decision to `docs/PHASE0.md`: source chosen, exact endpoint and fields observed, rate limits seen, sweep time, fallback source.
-- [ ] Cross-check 20 sections against CalCentral or Berkeleytime by hand. Counts must match.
+- [x] Write the decision to `docs/PHASE0.md`: source chosen, exact endpoint and fields observed, rate limits seen, sweep time, fallback source.
+- [x] Cross-check 20 sections against CalCentral or Berkeleytime by hand. Counts must match.
 
 ### A2. Scraper and storage (Sept 21 – 25)
 
 **Skills:** full build loop (1.2), with the clock rule. `superpowers:test-driven-development`: record fixtures and write the failing tests before `fetch.py`. `pyright-lsp` and `security-guidance` active.
 
-- [ ] `scraper/fetch.py`: one sweep over all Spring 2027 sections. Retries with exponential backoff, a polite request rate, a descriptive User-Agent with your email. Record `fetched_at` (actual UTC fetch time), never the scheduled time.
-- [ ] Snapshot schema, one row per section per snapshot: `fetched_at, term_id, section_id, course_key, component, enrolled_count, enroll_capacity, waitlist_count, waitlist_capacity, status, source`. Pin dtypes in a pyarrow schema and validate every write against it.
-- [ ] Storage layout, unless `docs/SPEC.md` already settles it: **one Parquet file per snapshot, never rewritten**, on a dedicated `data` branch, at `snapshots/date=YYYY-MM-DD/HHMM.parquet`. Full baseline once a day; change-only rows otherwise (a section appears only if a count changed since the last snapshot). Reason: rewriting a daily file 48 times stores 48 blobs in git history and blows through GitHub's size limits by December. Append-only deltas stay small.
-- [ ] `scraper/rebuild.py`: reconstructs the full panel (every section at every timestamp) from baseline + deltas. Test: rebuild equals a full-snapshot run on the same day, row for row.
-- [ ] Unit tests with recorded fixtures: schema validation, delta logic, rebuild round-trip, behavior on a 500 response and on a missing section.
-- [ ] Workflow `.github/workflows/scrape.yml`:
+- [x] `scraper/fetch.py`: one sweep over all Spring 2027 sections. Retries with exponential backoff, a polite request rate, a descriptive User-Agent with your email. Record `fetched_at` (actual UTC fetch time), never the scheduled time.
+- [x] Snapshot schema, one row per section per snapshot: `fetched_at, term_id, section_id, course_key, component, enrolled_count, enroll_capacity, waitlist_count, waitlist_capacity, status, source`. Pin dtypes in a pyarrow schema and validate every write against it.
+- [x] Storage layout, unless `docs/SPEC.md` already settles it: **one Parquet file per snapshot, never rewritten**, on a dedicated `data` branch, at `snapshots/date=YYYY-MM-DD/HHMM.parquet`. Full baseline once a day; change-only rows otherwise (a section appears only if a count changed since the last snapshot). Reason: rewriting a daily file 48 times stores 48 blobs in git history and blows through GitHub's size limits by December. Append-only deltas stay small.
+- [x] `scraper/rebuild.py`: reconstructs the full panel (every section at every timestamp) from baseline + deltas. Test: rebuild equals a full-snapshot run on the same day, row for row.
+- [x] Unit tests with recorded fixtures: schema validation, delta logic, rebuild round-trip, behavior on a 500 response and on a missing section.
+- [x] Workflow `.github/workflows/scrape.yml`:
 
 ```yaml
 on:
@@ -172,15 +172,15 @@ permissions:
   contents: write
 ```
 
-- [ ] Credentials live in repo secrets only. Run `gitleaks detect --source . --redact` before the first public push; expect zero findings.
+- [x] Credentials live in repo secrets only. Run `gitleaks detect --source . --redact` before the first public push; expect zero findings.
 
 ### A3. Go live and monitor (by Mon Sept 28)
 
 **Skills:** `superpowers:verification-before-completion` (evidence is Actions run history, not a local run). `github` plugin or `gh run list` to read it. `superpowers:systematic-debugging` on any failed run.
 
 - [ ] Let it run 48 hours. Check: at least 90 of 96 expected snapshots landed, no schema failures, sweep time stable.
-- [ ] `monitor.yml`, daily: compute the largest gap between snapshots in the last 24 hours; if it exceeds 90 minutes or fewer than 40 snapshots landed, open a GitHub issue (which emails you). Scheduled workflows can be delayed, dropped, or auto-disabled; you need to hear about it the same day.
-- [ ] `docs/DATA_LOG.md`: one line for every outage, schema change, or source switch, with timestamps. These become censoring rules later.
+- [x] `monitor.yml`, daily: compute the largest gap between snapshots in the last 24 hours; if it exceeds 90 minutes or fewer than 40 snapshots landed, open a GitHub issue (which emails you). Scheduled workflows can be delayed, dropped, or auto-disabled; you need to hear about it the same day.
+- [x] `docs/DATA_LOG.md`: one line for every outage, schema change, or source switch, with timestamps. These become censoring rules later.
 - [ ] Oliver: recurring 2-minute Sunday check through February. Open the Actions tab, open the newest snapshot, confirm counts look sane.
 
 ### A4. Flow reconstruction (build Oct – early Nov while data accumulates)
@@ -237,10 +237,11 @@ permissions:
 ## 6. Status tracker (update at the end of every session)
 
 ```
-Last updated: 2026-09-18
-Phase 1 opens: (confirm)        API Central request: not submitted
-Setup (section 0): not done     Source chosen (A1): none yet
+Last updated: 2026-09-19
+Phase 1 opens: Mon Oct 26, 2026 (registrar ICS; schedule publishes Oct 4)   API Central request: NOT SUBMITTED (Oliver; developers.api.berkeley.edu)
+Setup (section 0): plugins not installed in this environment; work done by hand   Source chosen (A1): classes.berkeley.edu section pages via Berkeleytime catalog (SIS API primary once approved); docs/PHASE0.md
 
-Step: A0 | blockers: API approval pending | scraper live: no | snapshots landed: 0
-Next session: section 0, A0, then the A1 probe script
+Step: A3 | blockers: API approval pending; schedule paused until the robots.txt fix is merged | scraper live: paused (first Actions run succeeded 2026-09-19 02:46Z) | snapshots landed: 1 baseline (911 sections)
+Done: A0 dates; A1 probe + 20/20 cross-check; A2 scraper, storage, rebuild, gaps, 3 sources, workflows, 214 tests; repo public with data branch; review fixes (robots, budget, day-boundary tombstones, cross-source guard, coverage gate)
+Next session: commit + push the fix branch, CI green, re-enable scrape.yml, dispatch a forced baseline, then 48-hour check (RUNBOOK step 6); Oliver: submit the SIS API request, review the priority list (UGBA *, MECENG * suggested), Sunday checks
 ```

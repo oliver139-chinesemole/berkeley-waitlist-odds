@@ -8,11 +8,11 @@
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: A2 (built 2026-09-18, awaiting go-live: A3). Update this line at the end of every session.
+- Current step: A3 (A2 built 2026-09-18, reviewed and fixed 2026-09-19; repo, data branch and first Actions run done; schedule paused until the robots.txt fix is merged, then re-enable per docs/RUNBOOK.md step 3b). Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.
-- docs/DESIGN_A2.md: binding interface contract for scraper/ and the workflows. Section 11 overrides earlier sections. Do not change a signature there without updating the file.
+- docs/DESIGN_A2.md: binding interface contract for scraper/ and the workflows. Sections 11 to 13 override earlier sections. Do not change a signature there without updating the file.
 - docs/RUNBOOK.md: go-live checklist, how a run picks a source and a mode, what to do when a run fails.
 - docs/DATA_LOG.md: outages, schema changes, source switches, with UTC timestamps. Every entry becomes a censoring rule in step A4.
 - CLAIMS.md: every resume claim with the exact command that checks it. Never write a result there by hand.
@@ -32,7 +32,7 @@
 | Last automatic waitlist run | Fri Feb 5, 2027, 6:40 PM |
 | Undergraduate add/drop deadline | Wed Feb 10, 2027 |
 
-Scraper must be live by Mon Oct 12, 2026. Fall 2026 (SIS term `2268`, classes.berkeley.edu facet `8588`) is the end-to-end test term until Spring 2027 appears on the site on Oct 4. Spring 2027 is expected to be `2272`; the scraper reads the real id from the section page's `data-term` attribute.
+Scraper must be live by Mon Oct 12, 2026. Fall 2026 (SIS term `2268`) is the end-to-end test term until Spring 2027 appears on Oct 4 (Berkeleytime's catalog lists it first; the scraper reads the real SIS id from the section page's `data-term` attribute; expected `2272`). The scheduled term is the `SCRAPE_TERM` repository variable.
 
 ## Commands
 
@@ -59,6 +59,8 @@ python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24 --fai
 ## Rules that are not obvious from the code
 - Only scrape.yml writes to the `data` branch. Never commit there by hand.
 - Tests never touch the network. Use the fixtures in data/fixtures/ and fakes.
-- The classes.berkeley.edu client is stdlib urllib on purpose. The site blocks the TLS handshake that requests and httpx produce (docs/PHASE0.md). Do not switch it and do not impersonate a browser.
+- The classes.berkeley.edu client is stdlib urllib on purpose. The site blocks clients whose TLS handshake advertises ALPN http/1.1 alone, which is what requests and httpx do (docs/PHASE0.md). Do not switch it and do not impersonate a browser.
+- Never request `/search/` on classes.berkeley.edu: robots.txt disallows it. Section discovery goes through Berkeleytime's catalog (docs/DESIGN_A2.md section 13); only `/content/` section pages are fetched.
+- `config/priority_courses.txt` is ordered by importance; a budget cutoff drops the bottom of the list. Editing it changes `priority_sha`; log the edit in docs/DATA_LOG.md.
 - `fetched_at` is the actual fetch time, never the scheduled time.
 - Data gaps are permanent. A broken run is fixed within 24 hours and logged in docs/DATA_LOG.md.

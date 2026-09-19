@@ -5,6 +5,8 @@ truth; every write validates against it.
 """
 from __future__ import annotations
 
+import numbers
+from datetime import datetime
 from typing import TypedDict
 
 import pyarrow as pa
@@ -73,6 +75,10 @@ SOURCES: tuple[str, ...] = ("sis_api", "classes_site", "berkeleytime")
 
 TOMBSTONE_STATUS = "GONE"
 
+# Integer fields: values must be real integers (pyarrow would silently truncate
+# 3.5 to 3 and accept numpy floats); bools are never counts.
+INTEGER_FIELDS: tuple[str, ...] = tuple(f.name for f in SNAPSHOT_SCHEMA if pa.types.is_integer(f.type))
+
 
 class SnapshotRow(TypedDict, total=True):
     fetched_at: object  # datetime with tzinfo=UTC
@@ -102,7 +108,9 @@ def rows_to_table(rows: list[SnapshotRow]) -> pa.Table:
 
     Raises SchemaError on a missing or extra key, a value that cannot be cast
     to the pinned dtype, a null in a non-nullable column, an unknown source,
-    or a duplicate section_id.
+    or a duplicate section_id. Two coercions pyarrow would perform silently
+    are refused explicitly: a non-integer (float, str, bool) in an integer
+    field, and a naive ``fetched_at`` (which pyarrow would stamp as UTC).
     """
     if not isinstance(rows, list):
         raise SchemaError("rows must be a list of dicts")
@@ -115,6 +123,7 @@ def rows_to_table(rows: list[SnapshotRow]) -> pa.Table:
             missing = sorted(expected - keys)
             extra = sorted(keys - expected)
             raise SchemaError(f"row {i}: missing={missing} extra={extra}")
+        _check_row_values(i, row)
     columns = {name: [row[name] for row in rows] for name in FIELD_NAMES}
     try:
         table = pa.Table.from_pydict(columns, schema=SNAPSHOT_SCHEMA)
@@ -122,6 +131,19 @@ def rows_to_table(rows: list[SnapshotRow]) -> pa.Table:
         raise SchemaError(f"cannot build table: {exc}") from exc
     validate_table(table)
     return table
+
+
+def _check_row_values(i: int, row: dict) -> None:
+    """Refuse values pyarrow would coerce silently (see ``rows_to_table``)."""
+    ts = row["fetched_at"]
+    if not isinstance(ts, datetime) or ts.tzinfo is None or ts.utcoffset() is None:
+        raise SchemaError(f"row {i}: fetched_at must be a timezone-aware datetime, got {ts!r}")
+    for name in INTEGER_FIELDS:
+        value = row[name]
+        if value is None:
+            continue  # nullability is checked on the table
+        if isinstance(value, bool) or not isinstance(value, numbers.Integral):
+            raise SchemaError(f"row {i}: {name} must be an integer, got {value!r} ({type(value).__name__})")
 
 
 def validate_table(table: pa.Table) -> None:

@@ -19,6 +19,7 @@ import pytest
 storage = pytest.importorskip("scraper.storage")
 
 from scraper import fetch  # noqa: E402  (after importorskip on purpose)
+from scraper.rebuild import rebuild_panel  # noqa: E402
 from scraper.schema import SnapshotRow  # noqa: E402
 from scraper.sources.base import FetchResult, TermNotPublished  # noqa: E402
 
@@ -26,7 +27,9 @@ TERM = "Fall 2026"
 TERM_ID = "2268"
 
 
-def make_row(section_id: str, *, enrolled: int = 10, waitlist: int = 0, course_key: str = "COMPSCI 61A") -> SnapshotRow:
+def make_row(
+    section_id: str, *, enrolled: int = 10, waitlist: int = 0, course_key: str = "COMPSCI 61A", source: str = "classes_site"
+) -> SnapshotRow:
     subject, catalog = course_key.split(" ", 1)
     return SnapshotRow(
         fetched_at=datetime.now(timezone.utc),
@@ -48,7 +51,7 @@ def make_row(section_id: str, *, enrolled: int = 10, waitlist: int = 0, course_k
         open_reserved=None,
         status="O",
         section_status="A",
-        source="classes_site",
+        source=source,
     )
 
 
@@ -158,6 +161,157 @@ def test_delta_emits_tombstone_for_vanished_section_in_full_scope(tmp_path: Path
     assert len(gone) == 1 and gone[0]["section_status"] == "GONE"
 
 
+def test_second_term_on_the_same_day_gets_its_own_baseline(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    t0 = datetime(2026, 9, 18, 12, 7, tzinfo=timezone.utc)
+    pin_clock(monkeypatch, t0)
+    install(monkeypatch, FakeSource(rows=[make_row("1")], universe_ids={"1"}))
+    assert fetch.main(base_args(tmp_path)) == fetch.EXIT_OK  # Fall 2026 -> 2268
+    pin_clock(monkeypatch, t0 + timedelta(minutes=5))
+    rows = [make_row("7")]
+    rows[0]["term_id"] = "2272"
+    install(monkeypatch, FakeSource(rows=rows, universe_ids={"7"}))
+    spring = ["--term", "Spring 2027", "--source", "classes_site", "--data-root", str(tmp_path), "--priority-file", "none"]
+    assert fetch.main(spring) == fetch.EXIT_OK
+    baselines = snapshot_files(tmp_path, "baseline")
+    assert len(baselines) == 2 and snapshot_files(tmp_path, "delta") == []
+    assert sorted(pq.read_schema(p).metadata[b"term_id"] for p in baselines) == [b"2268", b"2272"]
+    assert pq.read_table(baselines[1]).to_pylist()[0]["section_id"] == "7"  # no tombstones against the other term
+    # later runs of each term are deltas against that term's own baseline
+    pin_clock(monkeypatch, t0 + timedelta(minutes=30))
+    install(monkeypatch, FakeSource(rows=[make_row("1", enrolled=11)], universe_ids={"1"}))
+    assert fetch.main(base_args(tmp_path)) == fetch.EXIT_OK
+    pin_clock(monkeypatch, t0 + timedelta(minutes=35))
+    rows = [make_row("7", enrolled=11)]
+    rows[0]["term_id"] = "2272"
+    install(monkeypatch, FakeSource(rows=rows, universe_ids={"7"}))
+    assert fetch.main(spring) == fetch.EXIT_OK
+    deltas = snapshot_files(tmp_path, "delta")
+    assert len(deltas) == 2 and len(snapshot_files(tmp_path, "baseline")) == 2
+    assert [pq.read_table(p).column("section_id").to_pylist() for p in deltas] == [["1"], ["7"]]
+
+
+def test_full_baseline_tombstones_ids_carried_from_the_previous_day(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    t0 = datetime(2026, 9, 18, 12, 7, tzinfo=timezone.utc)
+    pin_clock(monkeypatch, t0)
+    install(monkeypatch, FakeSource(rows=[make_row("1"), make_row("2", enrolled=20)], universe_ids={"1", "2"}))
+    assert fetch.main(base_args(tmp_path)) == fetch.EXIT_OK
+    t1 = t0 + timedelta(days=1)
+    pin_clock(monkeypatch, t1)
+    install(monkeypatch, FakeSource(rows=[make_row("1")], universe_ids={"1"}))
+    assert fetch.main(base_args(tmp_path)) == fetch.EXIT_OK
+    baselines = snapshot_files(tmp_path, "baseline")
+    assert len(baselines) == 2 and snapshot_files(tmp_path, "delta") == []
+    rows = pq.read_table(baselines[1]).to_pylist()
+    assert [(r["section_id"], r["section_status"]) for r in rows] == [("1", "A"), ("2", "GONE")]
+    gone = rows[1]
+    assert gone["source"] == "classes_site" and gone["fetched_at"] == t1 and gone["enrolled_count"] == 20
+    meta = pq.read_schema(baselines[1]).metadata
+    assert meta[b"n_observed"] == b"1" and meta[b"n_written"] == b"2" and meta[b"complete"] == b"true"
+    day2 = rebuild_panel(tmp_path, TERM_ID)
+    day2 = day2[day2["run_started_at"] == t1].set_index("section_id")
+    assert day2.loc["2", "section_status"] == "GONE" and bool(day2.loc["2", "observed"])
+
+
+def test_first_full_delta_after_a_priority_baseline_tombstones_carried_ids(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    priority_file = tmp_path / "priority.txt"
+    priority_file.write_text("COMPSCI *\n")
+    data_root = tmp_path / "data"
+    data_root.mkdir()
+    t0 = datetime(2026, 9, 18, 12, 7, tzinfo=timezone.utc)
+    pin_clock(monkeypatch, t0)
+    install(monkeypatch, FakeSource(rows=[make_row("1"), make_row("2")], universe_ids={"1", "2"}))
+    assert fetch.main(base_args(data_root)) == fetch.EXIT_OK  # day 1: full baseline
+    t1 = t0 + timedelta(days=1)
+    pin_clock(monkeypatch, t1)
+    install(monkeypatch, FakeSource(rows=[make_row("1")], scope="priority", priority_sha="abc"))
+    pargs = ["--term", TERM, "--source", "classes_site", "--data-root", str(data_root), "--priority-file", str(priority_file), "--n-shards", "0"]
+    assert fetch.main(pargs) == fetch.EXIT_OK  # day 2: priority baseline, universe unknown -> nothing tombstoned
+    day2_baseline = snapshot_files(data_root, "baseline")[1]
+    assert pq.read_table(day2_baseline).column("section_status").to_pylist() == ["A"]
+    pin_clock(monkeypatch, t1 + timedelta(minutes=30))
+    install(monkeypatch, FakeSource(rows=[make_row("1")], universe_ids={"1"}))
+    assert fetch.main(base_args(data_root)) == fetch.EXIT_OK  # day 2: first full-scope delta
+    delta = pq.read_table(snapshot_files(data_root, "delta")[0]).to_pylist()
+    assert [(r["section_id"], r["section_status"]) for r in delta] == [("2", "GONE")]
+
+
+def test_delta_refuses_a_source_switch_without_force_baseline(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture) -> None:
+    t0 = datetime(2026, 9, 18, 12, 7, tzinfo=timezone.utc)
+    pin_clock(monkeypatch, t0)
+    sis_rows = [make_row("30174", source="sis_api"), make_row("30175", source="sis_api")]
+    install(monkeypatch, FakeSource(rows=sis_rows, universe_ids={"30174", "30175"}, name="sis_api"))
+    assert fetch.main(["--term", TERM, "--source", "sis_api", "--data-root", str(tmp_path), "--priority-file", "none"]) == fetch.EXIT_OK
+    pin_clock(monkeypatch, t0 + timedelta(minutes=30))
+    bt_id = "bt:COMPSCI:61A:001"
+    install(monkeypatch, FakeSource(rows=[make_row(bt_id, source="berkeleytime")], universe_ids={bt_id}, name="berkeleytime"))
+    bt_args = ["--term", TERM, "--source", "berkeleytime", "--data-root", str(tmp_path), "--priority-file", "none"]
+    with caplog.at_level("ERROR"):
+        assert fetch.main(bt_args) == fetch.EXIT_ERROR
+    assert snapshot_files(tmp_path, "delta") == [] and len(snapshot_files(tmp_path, "baseline")) == 1
+    assert any("sis_api" in m and "berkeleytime" in m and "--force-baseline" in m for m in caplog.messages)
+    # --force-baseline: a fresh baseline for the new source; the SIS rows are not tombstoned
+    assert fetch.main(bt_args + ["--force-baseline"]) == fetch.EXIT_OK
+    baselines = snapshot_files(tmp_path, "baseline")
+    assert len(baselines) == 2 and snapshot_files(tmp_path, "delta") == []
+    assert pq.read_table(baselines[1]).column("section_id").to_pylist() == [bt_id]
+    # the same source continuing is fine
+    pin_clock(monkeypatch, t0 + timedelta(minutes=60))
+    install(monkeypatch, FakeSource(rows=[make_row(bt_id, enrolled=11, source="berkeleytime")], universe_ids={bt_id}, name="berkeleytime"))
+    assert fetch.main(bt_args) == fetch.EXIT_OK
+    delta = pq.read_table(snapshot_files(tmp_path, "delta")[0]).to_pylist()
+    assert [(r["section_id"], r["section_status"]) for r in delta] == [(bt_id, "A")]
+
+
+def test_partial_full_run_records_observed_ids_and_complete_flag(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    t0 = datetime(2026, 9, 18, 12, 7, tzinfo=timezone.utc)
+    pin_clock(monkeypatch, t0)
+    install(monkeypatch, FakeSource(rows=[make_row("1"), make_row("2")], universe_ids={"1", "2"}))
+    assert fetch.main(base_args(tmp_path)) == fetch.EXIT_OK
+    md = pq.read_schema(snapshot_files(tmp_path, "baseline")[0]).metadata
+    assert md[b"complete"] == b"true" and b"observed_ids" not in md
+    # a truncated sweep (time budget exhausted: the source reports no universe)
+    pin_clock(monkeypatch, t0 + timedelta(minutes=30))
+    install(monkeypatch, FakeSource(rows=[make_row("1", enrolled=11)], universe_ids=None))
+    assert fetch.main(base_args(tmp_path)) == fetch.EXIT_OK
+    md = pq.read_schema(snapshot_files(tmp_path, "delta")[0]).metadata
+    assert md[b"complete"] == b"false" and json.loads(md[b"observed_ids"]) == ["1"]
+    # --limit marks a run incomplete even when the source reports a universe, and never tombstones
+    pin_clock(monkeypatch, t0 + timedelta(minutes=60))
+    install(monkeypatch, FakeSource(rows=[make_row("1", enrolled=12)], universe_ids={"1"}))
+    assert fetch.main(base_args(tmp_path, "--limit", "1")) == fetch.EXIT_OK
+    path = snapshot_files(tmp_path, "delta")[1]
+    md = pq.read_schema(path).metadata
+    assert md[b"complete"] == b"false" and json.loads(md[b"observed_ids"]) == ["1"]
+    assert pq.read_table(path).column("section_status").to_pylist() == ["A"]
+    status = json.loads((tmp_path / "status.json").read_text())
+    assert status["complete"] is False
+    # rebuild: section 2 is unobserved (censored) by both partial runs, not observed or gone
+    panel = rebuild_panel(tmp_path, TERM_ID)
+    for at in (t0 + timedelta(minutes=30), t0 + timedelta(minutes=60)):
+        run = panel[panel["run_started_at"] == at].set_index("section_id")
+        assert run["observed"].to_dict() == {"1": True, "2": False}
+        assert run.loc["2", "section_status"] == "A"
+
+
+def test_low_coverage_exit_4_writes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]) -> None:
+    assert fetch.EXIT_LOW_COVERAGE == 4
+    install(monkeypatch, FakeSource(rows=[make_row("1")], missing_ids=[str(i) for i in range(2, 1501)]))
+    assert fetch.main(base_args(tmp_path)) == fetch.EXIT_LOW_COVERAGE
+    assert files_under(tmp_path) == []
+    assert capsys.readouterr().out == ""
+    # strict "greater than": 1 missing of 2 is exactly the default 0.5 and passes
+    install(monkeypatch, FakeSource(rows=[make_row("1")], missing_ids=["2"]))
+    assert fetch.main(base_args(tmp_path, "--dry-run")) == fetch.EXIT_OK
+    install(monkeypatch, FakeSource(rows=[make_row("1")], missing_ids=["2", "3"]))
+    assert fetch.main(base_args(tmp_path, "--dry-run")) == fetch.EXIT_LOW_COVERAGE
+    assert fetch.main(base_args(tmp_path, "--dry-run", "--max-missing-share", "0.7")) == fetch.EXIT_OK
+    assert fetch.main(base_args(tmp_path, "--max-missing-share", "0.6")) == fetch.EXIT_LOW_COVERAGE
+    assert files_under(tmp_path) == []
+    # zero rows keeps its own exit code
+    install(monkeypatch, FakeSource(rows=[], missing_ids=["1"]))
+    assert fetch.main(base_args(tmp_path)) == fetch.EXIT_NO_ROWS
+
+
 def test_force_baseline_writes_second_baseline(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     t0 = datetime(2026, 9, 18, 12, 7, tzinfo=timezone.utc)
     pin_clock(monkeypatch, t0)
@@ -183,6 +337,8 @@ def test_status_json_contents(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -
     assert status["n_observed"] == 2
     assert status["n_written"] == 2
     assert status["n_missing"] == 1
+    assert status["missing_share"] == round(1 / 3, 4)
+    assert status["complete"] is False  # no universe reported
     assert isinstance(status["sweep_seconds"], float) and status["sweep_seconds"] >= 0
     assert Path(status["snapshot"]) == snapshot_files(tmp_path, "baseline")[0]
     assert not (tmp_path / "status.json.tmp").exists()
@@ -287,3 +443,4 @@ def test_parser_defaults_match_config() -> None:
     assert ns.max_concurrency == config.DEFAULTS["max_concurrency"]
     assert ns.force_baseline is False and ns.dry_run is False
     assert ns.limit is None and ns.catalog_max_pages is None
+    assert ns.max_missing_share == 0.5

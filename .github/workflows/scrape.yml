@@ -40,6 +40,13 @@ env:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
+    # 29 min = 1740 s. The fetch's --time-budget-s clock starts only after the
+    # two checkouts, setup-python and pip (about 60-120 s), and the budget only
+    # stops *scheduling*: a request already in flight may still spend one
+    # 20 s socket timeout finishing (retries stop at the deadline). Budget
+    # 1200 s + ~120 s setup + ~20 s overrun + parquet write, commit and
+    # 3 push attempts (~60 s) is about 1400 s, leaving 5+ minutes of slack so
+    # the job never hits this timeout with data fetched but nothing committed.
     timeout-minutes: 29
     env:
       # Scheduled runs take the term from the SCRAPE_TERM repository variable
@@ -82,7 +89,9 @@ jobs:
           SIS_CLASS_APP_ID: ${{ secrets.SIS_CLASS_APP_ID }}
           SIS_CLASS_APP_KEY: ${{ secrets.SIS_CLASS_APP_KEY }}
         run: |
-          args=(--term "$TERM_NAME" --source "$SOURCE" --data-root data-branch)
+          # --time-budget-s is passed explicitly so the 29-minute arithmetic
+          # above does not depend on the CLI default in scraper/config.py.
+          args=(--term "$TERM_NAME" --source "$SOURCE" --data-root data-branch --time-budget-s 1200)
           if [ "$FORCE_BASELINE" = "true" ]; then
             args+=(--force-baseline)
           fi
@@ -118,8 +127,21 @@ jobs:
           echo "::error::could not push to the data branch after 3 attempts"
           exit 1
 
+      - name: Show how far the run got
+        # always(): also runs when the job was cancelled by timeout-minutes,
+        # so the log tail and the uncommitted files are visible in the run.
+        if: always()
+        shell: bash
+        run: |
+          echo "--- tail -n 5 fetch.log"
+          tail -n 5 fetch.log 2>/dev/null || echo "(no fetch.log)"
+          echo "--- git -C data-branch status --short"
+          git -C data-branch status --short 2>/dev/null || echo "(no data-branch checkout)"
+
       - name: Upload run log
-        if: failure()
+        # always() rather than failure(): a job cancelled by timeout-minutes
+        # is neither success nor failure, and its log is the one we most need.
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: fetch-log-${{ github.run_id }}-${{ github.run_attempt }}

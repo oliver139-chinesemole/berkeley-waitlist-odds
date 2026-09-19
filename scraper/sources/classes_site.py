@@ -1,23 +1,30 @@
 """classes.berkeley.edu source. See docs/DESIGN_A2.md section 5a and docs/PHASE0.md.
 
-Listing: ``GET /search/class?f[0]=term:<facet>&page=N`` renders 18
-``div.views-row`` entries per page. Section page: ``GET /content/<slug>``
-embeds the SIS enrollment status in the ``drupal-settings-json`` script
-under ``ucb.enrollment.available``.
+Discovery: the site's ``/search/`` listing is disallowed by its robots.txt,
+so the section universe comes from Berkeleytime's public ``GetCatalog``
+(one request per term per day). Every catalog class has a primary section
+whose page slug is derivable: ``/content/<year>-<sem>-<subject>-<catalog>-
+<class#>-<component>-<class#>`` (verified 2026-09-19 against all 3,640
+listed Fall 2026 primaries: the section number always equals the class
+number). Classes that are not printed in the public schedule (about 40% of
+the catalog: MBA, LAW, non-printed seminars) return 404; those slugs are
+remembered as absent and re-probed on a later refresh run.
 
-Module-level functions are pure parsers (bytes in, values out) so they can be
-tested against fixtures; ``ClassesSiteSource`` does the I/O.
+Section page: ``GET /content/<slug>`` (allowed by robots.txt) embeds the SIS
+enrollment status in the ``drupal-settings-json`` script under
+``ucb.enrollment.available``.
+
+Module-level functions are pure (bytes or dicts in, values out) so they can
+be tested against fixtures; ``ClassesSiteSource`` does the I/O.
 """
 from __future__ import annotations
 
 import json
 import logging
-import math
 import os
-import re
 import threading
 import time
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable
@@ -40,14 +47,21 @@ logger = logging.getLogger(__name__)
 
 SOURCE_NAME = "classes_site"
 DEFAULT_BASE_URL = "https://classes.berkeley.edu"
-ROWS_PER_PAGE = 18
-CATALOG_MAX_AGE = timedelta(hours=24)
+CATALOG_FILENAME = "catalog.json"
+LEGACY_CATALOG_FILENAME = "sections.json"  # listing-based file written before 2026-09-19
+CATALOG_VERSION = 2
+CATALOG_MAX_AGE = timedelta(hours=24)  # refresh from Berkeleytime after this
+ABSENT_REPROBE_AFTER = timedelta(days=7)  # retry a 404 slug after this
+MAX_REPROBES_PER_RUN = 300  # only on refresh runs; 404s are cheap but not free
+# Primary-section components that never carry a waitlist in practice
+# (independent study, group study, field work, tutorials...). They are
+# excluded from the universe; the listing-era baseline showed them as noise.
+SELF_STUDY_COMPONENTS = frozenset(
+    {"IND", "GRP", "FLD", "TUT", "INT", "SLF", "PRA", "REC", "SES", "CLN", "WOR", "REA", "WBD", "VOL", "DEM"}
+)
 # The section page exposes ucb.termDetails.sessionDescription ("2026 Fall")
 # but no session id; every section we scrape is in the regular session.
 DEFAULT_SESSION_ID = "1"
-
-_TERM_FACET_RE = re.compile(r"term(?:%3A|:)(\d+)", re.IGNORECASE)
-_SECTION_ID_RE = re.compile(r"#\s*(\d+)")
 
 
 def _utcnow() -> datetime:
@@ -56,9 +70,14 @@ def _utcnow() -> datetime:
 
 @dataclass(frozen=True)
 class SectionRef:
-    """One row of the term listing: identity plus the section page path."""
+    """A primary section known from the catalog plus its section page path.
 
-    section_id: str  # "30174"
+    ``section_id`` is ``""`` until the page has been fetched once (the
+    catalog does not carry SIS section ids); ``last_status`` is the HTTP
+    status of the last probe (200, 404, ...) or None when never probed.
+    """
+
+    section_id: str  # "30174" or "" when not yet learned
     url_path: str  # "/content/2026-fall-aeroeng-10-001-lec-001"
     course_key: str  # "AEROENG 10" ("<SUBJECT> <CATALOG>", subject spaces removed)
     subject: str  # "AEROENG" (spaces removed: "EL ENG" -> "ELENG")
@@ -66,19 +85,112 @@ class SectionRef:
     class_number: str  # "001"
     section_number: str  # "001"
     component: str  # "LEC"
+    last_status: int | None = None
+    probed_at: str | None = None  # ISO-8601 UTC of the last probe
 
-    def to_dict(self) -> dict[str, str]:
+    @property
+    def absent(self) -> bool:
+        return self.last_status == 404
+
+    @property
+    def key(self) -> str:
+        """Stable identity used for shard assignment: the page path."""
+        return self.url_path
+
+    def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
     @staticmethod
     def from_dict(data: dict[str, Any]) -> "SectionRef":
         try:
-            return SectionRef(**{k: str(data[k]) for k in SectionRef.__dataclass_fields__})
-        except KeyError as exc:
-            raise ValueError(f"section ref missing key {exc}") from exc
+            status = data.get("last_status")
+            return SectionRef(
+                section_id=str(data.get("section_id") or ""),
+                url_path=str(data["url_path"]),
+                course_key=str(data["course_key"]),
+                subject=str(data["subject"]),
+                catalog_number=str(data["catalog_number"]),
+                class_number=str(data["class_number"]),
+                section_number=str(data["section_number"]),
+                component=str(data["component"]),
+                last_status=None if status is None else int(status),
+                probed_at=None if data.get("probed_at") is None else str(data["probed_at"]),
+            )
+        except (KeyError, TypeError, ValueError) as exc:
+            raise ValueError(f"section ref malformed: {exc}") from exc
 
 
-# -- parsing --------------------------------------------------------------
+# -- catalog from Berkeleytime ---------------------------------------------
+
+
+def section_slug(term: TermSpec, subject: str, catalog_number: str, class_number: str, component: str) -> str:
+    """``/content/<year>-<semester>-<subject>-<catalog>-<class#>-<component>-<class#>``.
+
+    Lower-cased; the subject loses its spaces. The section number of a
+    primary section equals its class number (verified on the whole Fall 2026
+    listing), so the class number appears twice.
+    """
+    subj = subject.replace(" ", "").lower()
+    num = class_number.lower()
+    return f"/content/{term.year}-{term.semester.lower()}-{subj}-{catalog_number.lower()}-{num}-{component.lower()}-{num}"
+
+
+def catalog_refs(classes: list[dict[str, Any]], term: TermSpec) -> list[SectionRef]:
+    """SectionRefs for every catalog class whose primary section is not
+    self-study. Malformed entries are skipped with a warning; duplicates
+    (same slug) keep the first."""
+    refs: list[SectionRef] = []
+    seen: set[str] = set()
+    for entry in classes:
+        try:
+            subject_raw = str(entry["subject"])
+            catalog_number = str(entry["courseNumber"])
+            class_number = str(entry["number"])
+            primary = entry.get("primarySection") or {}
+            component = str(primary["component"])
+        except (KeyError, TypeError) as exc:
+            logger.warning("skipping catalog entry without %s: %s", exc, str(entry)[:120])
+            continue
+        if not subject_raw or not catalog_number or not class_number or not component:
+            logger.warning("skipping catalog entry with empty fields: %s", str(entry)[:120])
+            continue
+        if component.upper() in SELF_STUDY_COMPONENTS:
+            continue
+        subject = subject_raw.replace(" ", "")
+        path = section_slug(term, subject, catalog_number, class_number, component)
+        if path in seen:
+            continue
+        seen.add(path)
+        refs.append(
+            SectionRef(
+                section_id="",
+                url_path=path,
+                course_key=f"{subject} {catalog_number}",
+                subject=subject,
+                catalog_number=catalog_number,
+                class_number=class_number,
+                section_number=class_number,
+                component=component.upper(),
+            )
+        )
+    return refs
+
+
+def merge_catalog(existing: list[SectionRef], fresh: list[SectionRef]) -> tuple[list[SectionRef], int]:
+    """Union keyed by ``url_path``: known entries keep their learned id and
+    probe state, new entries are appended. Returns the merged list and the
+    number of entries added. Entries that vanished from the fresh catalog are
+    kept (their next probe decides whether they are gone)."""
+    by_path = {ref.url_path: ref for ref in existing}
+    added = 0
+    for ref in fresh:
+        if ref.url_path not in by_path:
+            by_path[ref.url_path] = ref
+            added += 1
+    return list(by_path.values()), added
+
+
+# -- section page parsing --------------------------------------------------
 
 
 def _parse_html(html: bytes | str) -> lxml.html.HtmlElement:
@@ -90,108 +202,6 @@ def _parse_html(html: bytes | str) -> lxml.html.HtmlElement:
         return lxml.html.document_fromstring(html)
     except (lxml.etree.ParserError, lxml.etree.XMLSyntaxError, ValueError) as exc:
         raise ParseError(f"cannot parse HTML: {exc}") from exc
-
-
-def _has_class(name: str) -> str:
-    """XPath predicate matching an element whose class list contains ``name``."""
-    return f"contains(concat(' ', normalize-space(@class), ' '), ' {name} ')"
-
-
-def _text(element: lxml.html.HtmlElement) -> str:
-    return " ".join(element.text_content().split())
-
-
-def parse_term_facets(html: bytes | str) -> list[tuple[str, str]]:
-    """Return ``(anchor text, facet id)`` for every term facet link on a page.
-
-    A facet link is an anchor whose href contains ``term%3A<digits>`` (or
-    ``term:<digits>``). Pager links share that href shape but have no term
-    text, so callers must match on the text.
-    """
-    doc = _parse_html(html)
-    facets: list[tuple[str, str]] = []
-    for anchor in doc.xpath("//a[@href]"):
-        match = _TERM_FACET_RE.search(anchor.get("href", ""))
-        if match:
-            facets.append((_text(anchor), match.group(1)))
-    return facets
-
-
-def find_term_facet_id(html: bytes | str, term_name: str) -> str | None:
-    """Facet id whose link text starts with ``term_name`` followed by a space
-    or "(" (e.g. ``Fall 2026 (6131)``), or equals it; None when absent."""
-    wanted = " ".join(term_name.split()).lower()
-    for text, facet_id in parse_term_facets(html):
-        candidate = text.lower()
-        if candidate == wanted or candidate.startswith(wanted + " ") or candidate.startswith(wanted + "("):
-            return facet_id
-    return None
-
-
-def _split_course(name: str) -> tuple[str, str, str]:
-    """``"ELENG 16A"`` -> ``("ELENG 16A", "ELENG", "16A")``.
-
-    classes.berkeley.edu spells subjects without spaces (ELENG, POLSCI, NUCENG);
-    should a spaced form ever appear ("EL ENG 16A") the spaces are stripped so
-    ``course_key`` stays ``"<SUBJECT> <CATALOG>"`` with the schema's space-free
-    subject, the same key sis_api and berkeleytime produce.
-    """
-    name = " ".join(name.split())
-    subject_display, sep, catalog = name.rpartition(" ")
-    if not sep or not subject_display or not catalog:
-        raise ParseError(f"cannot split course name {name!r}")
-    subject = subject_display.replace(" ", "")
-    return f"{subject} {catalog}", subject, catalog
-
-
-def _parse_listing_row(row: lxml.html.HtmlElement) -> SectionRef:
-    """Build a SectionRef from one ``views-row``; ParseError when a part is missing."""
-    number_nodes = row.xpath(f".//*[{_has_class('st--section-number')}]")
-    if not number_nodes:
-        raise ParseError("row has no st--section-number")
-    id_match = _SECTION_ID_RE.search(_text(number_nodes[0]))
-    if not id_match:
-        raise ParseError(f"row section number {_text(number_nodes[0])!r} has no '#<digits>'")
-    names = row.xpath(f".//span[{_has_class('st--section-name')}]")
-    counts = row.xpath(f".//span[{_has_class('st--section-count')}]")
-    codes = row.xpath(f".//span[{_has_class('st--section-code')}]")
-    hrefs = row.xpath(".//a[starts-with(@href, '/content/')]/@href")
-    if not names or len(counts) < 2 or not codes or not hrefs:
-        raise ParseError(
-            f"row #{id_match.group(1)} incomplete: names={len(names)} counts={len(counts)} "
-            f"codes={len(codes)} hrefs={len(hrefs)}"
-        )
-    course_key, subject, catalog = _split_course(_text(names[0]))
-    return SectionRef(
-        section_id=id_match.group(1),
-        url_path=str(hrefs[0]).strip(),
-        course_key=course_key,
-        subject=subject,
-        catalog_number=catalog,
-        class_number=_text(counts[0]),
-        section_number=_text(counts[1]),
-        component=_text(codes[0]),
-    )
-
-
-def parse_listing_page(html: bytes | str) -> list[SectionRef]:
-    """Parse every ``div.views-row`` on a listing page, in page order.
-
-    Malformed rows are skipped with a warning; if a page has rows but none
-    parse, ParseError is raised because that signals a layout change.
-    """
-    doc = _parse_html(html)
-    rows = doc.xpath(f"//div[{_has_class('views-row')}]")
-    refs: list[SectionRef] = []
-    for row in rows:
-        article = row.xpath("./article")
-        try:
-            refs.append(_parse_listing_row(article[0] if article else row))
-        except ParseError as exc:
-            logger.warning("skipping listing row: %s", exc)
-    if rows and not refs:
-        raise ParseError(f"none of {len(rows)} listing rows parsed; layout changed?")
-    return refs
 
 
 def _load_drupal_settings(doc: lxml.html.HtmlElement) -> dict[str, Any]:
@@ -218,6 +228,8 @@ def _dig(mapping: Any, *keys: str) -> Any:
 
 
 def _as_int(value: Any, name: str) -> int:
+    if isinstance(value, bool):
+        raise ParseError(f"{name}={value!r} is not an integer")
     try:
         return int(value)
     except (TypeError, ValueError) as exc:
@@ -230,8 +242,7 @@ def _as_optional_int(value: Any, name: str) -> int | None:
 
 def _page_term_id(doc: lxml.html.HtmlElement) -> str | None:
     """The ``data-term="NNNN"`` attribute carried by the textbook widget."""
-    values = doc.xpath("//*[@data-term]/@data-term")
-    for value in values:
+    for value in doc.xpath("//*[@data-term]/@data-term"):
         text = str(value).strip()
         if text:
             return text
@@ -247,8 +258,9 @@ def _as_utc(moment: datetime) -> datetime:
 def parse_section_page(html: bytes | str, ref: SectionRef, fetched_at: datetime, term: TermSpec) -> SnapshotRow:
     """Turn a section page into a SnapshotRow.
 
-    Reads ``ucb.enrollment.available`` from the drupal-settings-json blob; the
-    blob's ``id`` must equal ``ref.section_id`` (else ParseError). ``term_id``
+    Reads ``ucb.enrollment.available`` from the drupal-settings-json blob.
+    When ``ref.section_id`` is known the blob's ``id`` must equal it (else
+    ParseError); when it is ``""`` the page's id is adopted. ``term_id``
     comes from the page's ``data-term`` attribute, falling back to
     ``term.sis_term_id`` when absent; a disagreement is logged and the page
     value wins. ``section_status`` and ``is_primary`` are None because the
@@ -258,12 +270,13 @@ def parse_section_page(html: bytes | str, ref: SectionRef, fetched_at: datetime,
     settings = _load_drupal_settings(doc)
     available = _dig(settings, "ucb", "enrollment", "available")
     page_id = _as_int(_dig(available, "id"), "ucb.enrollment.available.id")
-    try:
-        expected_id = int(ref.section_id)
-    except ValueError as exc:
-        raise ParseError(f"ref.section_id {ref.section_id!r} is not numeric") from exc
-    if page_id != expected_id:
-        raise ParseError(f"page is section {page_id}, expected {expected_id} ({ref.url_path})")
+    if ref.section_id:
+        try:
+            expected_id = int(ref.section_id)
+        except ValueError as exc:
+            raise ParseError(f"ref.section_id {ref.section_id!r} is not numeric") from exc
+        if page_id != expected_id:
+            raise ParseError(f"page is section {page_id}, expected {expected_id} ({ref.url_path})")
     status = _dig(available, "enrollmentStatus")
     if not isinstance(status, dict):
         raise ParseError("enrollmentStatus is not an object")
@@ -274,7 +287,7 @@ def parse_section_page(html: bytes | str, ref: SectionRef, fetched_at: datetime,
     elif term_id != term.sis_term_id:
         logger.warning(
             "section %s: page data-term=%s differs from expected %s for %s; using page value",
-            ref.section_id,
+            page_id,
             term_id,
             term.sis_term_id,
             term.name,
@@ -283,7 +296,7 @@ def parse_section_page(html: bytes | str, ref: SectionRef, fetched_at: datetime,
     return SnapshotRow(
         fetched_at=_as_utc(fetched_at),
         term_id=term_id,
-        section_id=ref.section_id,
+        section_id=str(page_id),
         course_key=ref.course_key,
         subject=ref.subject,
         catalog_number=ref.catalog_number,
@@ -306,12 +319,34 @@ def parse_section_page(html: bytes | str, ref: SectionRef, fetched_at: datetime,
 
 # -- source ---------------------------------------------------------------
 
+CatalogProvider = Callable[[TermSpec], list[dict[str, Any]]]
+
+
+def berkeleytime_catalog_provider(term: TermSpec) -> list[dict[str, Any]]:
+    """Default provider: Berkeleytime ``GetCatalog(year, semester)`` raw classes."""
+    from scraper.sources.berkeleytime import BerkeleytimeSource  # lazy: optional dependency path
+
+    data = BerkeleytimeSource().execute("GetCatalog", {"year": term.year, "semester": term.berkeleytime_semester})
+    classes = data.get("catalog")
+    if not isinstance(classes, list):
+        raise ParseError("GetCatalog: response has no catalog list")
+    return classes
+
+
+@dataclass
+class _Catalog:
+    refs: list[SectionRef]
+    refreshed_at: datetime | None
+    dirty: bool = False
+    refreshed_now: bool = False
+
 
 class ClassesSiteSource:
     """Scrapes classes.berkeley.edu section pages. ``name == "classes_site"``.
 
     ``now`` (UTC datetime) and ``clock`` (monotonic seconds) are injectable
-    for tests; the ``client`` provides ``get`` and ``get_many``.
+    for tests; the ``client`` provides ``get`` and ``get_many``;
+    ``catalog_provider`` returns Berkeleytime's raw catalog classes.
     """
 
     name = SOURCE_NAME
@@ -323,143 +358,117 @@ class ClassesSiteSource:
         n_shards: int = 8,
         base_url: str = DEFAULT_BASE_URL,
         *,
-        catalog_max_pages: int | None = None,
+        catalog_provider: CatalogProvider = berkeleytime_catalog_provider,
+        catalog_max_pages: int | None = None,  # accepted for CLI compatibility; unused
         now: Callable[[], datetime] = _utcnow,
         clock: Callable[[], float] = time.monotonic,
     ) -> None:
         if n_shards < 0:
             raise ValueError("n_shards must be >= 0")
-        if catalog_max_pages is not None and catalog_max_pages < 1:
-            raise ValueError("catalog_max_pages must be >= 1")
         self._client = client
         self._data_root = Path(data_root)
         self.n_shards = int(n_shards)
         self._base_url = base_url.rstrip("/")
-        # Debug knob (scraper.fetch --catalog-max-pages): cap listing pages read.
-        self.catalog_max_pages = catalog_max_pages
+        self._catalog_provider = catalog_provider
+        if catalog_max_pages is not None:
+            logger.info("catalog_max_pages is ignored: the catalog no longer comes from the listing")
         self._now = now
         self._clock = clock
 
-    # Pure parser exposed on the class too, so callers holding a source
-    # instance need not import the module function.
     parse_section_page = staticmethod(parse_section_page)
 
     # -- urls and paths ----------------------------------------------------
-
-    def search_url(self) -> str:
-        return f"{self._base_url}/search/class"
-
-    def listing_url(self, facet_id: str, page: int) -> str:
-        return f"{self._base_url}/search/class?f%5B0%5D=term%3A{facet_id}&page={page}"
 
     def section_url(self, ref: SectionRef) -> str:
         return f"{self._base_url}{ref.url_path}"
 
     def catalog_path(self, term_id: str) -> Path:
-        return self._data_root / "catalog" / term_id / "sections.json"
+        return self._data_root / "catalog" / term_id / CATALOG_FILENAME
 
-    # -- discovery ---------------------------------------------------------
+    def legacy_catalog_path(self, term_id: str) -> Path:
+        return self._data_root / "catalog" / term_id / LEGACY_CATALOG_FILENAME
 
-    def discover_term_facet_id(self, term_name: str) -> str:
-        """Facet id of ``term_name`` on the search page; TermNotPublished if absent."""
-        url = self.search_url()
-        html = self._client.get(url)
-        facet_id = find_term_facet_id(html, term_name)
-        if facet_id is None:
-            raise TermNotPublished(f"no term facet for {term_name!r} on {url}")
-        logger.info("term %s has facet id %s", term_name, facet_id)
-        return facet_id
+    # -- catalog -----------------------------------------------------------
 
-    # -- listing -----------------------------------------------------------
-
-    def list_sections(
-        self,
-        facet_id: str,
-        max_pages: int | None = None,
-        *,
-        term_id: str | None = None,
-    ) -> list[SectionRef]:
-        """All sections of the term (or the first ``max_pages`` pages).
-
-        With ``term_id`` the full listing is cached at
-        ``catalog/<term_id>/sections.json`` and reused while younger than 24h
-        (and, when ``max_pages`` is given, at least ``max_pages * 18`` long).
-        Partial listings (``max_pages`` set) are never written to the cache.
-        Raises HttpError when a listing page cannot be fetched.
-        """
-        if max_pages is not None and max_pages < 1:
-            raise ValueError("max_pages must be >= 1")
-        if term_id:
-            cached = self._load_catalog(term_id, facet_id, max_pages)
-            if cached is not None:
-                logger.info("reusing cached listing for term %s (%d sections)", term_id, len(cached))
-                return cached
-        refs = self._crawl_listing(facet_id, max_pages)
-        if term_id and max_pages is None:
-            self._save_catalog(term_id, facet_id, refs)
-        return refs
-
-    def _crawl_listing(self, facet_id: str, max_pages: int | None) -> list[SectionRef]:
-        refs: list[SectionRef] = []
-        seen: set[str] = set()
-        page = 0
-        while max_pages is None or page < max_pages:
-            url = self.listing_url(facet_id, page)
+    def _load_catalog(self, term: TermSpec) -> _Catalog | None:
+        """The on-disk catalog regardless of age, or the legacy listing file
+        converted (self-study components dropped), or None."""
+        path = self.catalog_path(term.sis_term_id)
+        if path.exists():
             try:
-                html = self._client.get(url)
-            except HttpError as exc:
-                if exc.status == 404 and page > 0:
-                    logger.info("listing ended with 404 at page %d", page)
-                    break
-                raise
-            page_refs = parse_listing_page(html)
-            if not page_refs:
-                break
-            for ref in page_refs:
-                if ref.section_id not in seen:
-                    seen.add(ref.section_id)
-                    refs.append(ref)
-            page += 1
-        logger.info("listed %d sections over %d pages for facet %s", len(refs), page, facet_id)
-        return refs
+                payload = json.loads(path.read_text(encoding="utf-8"))
+                refs = [SectionRef.from_dict(d) for d in payload["sections"]]
+                refreshed = payload.get("refreshed_at")
+                refreshed_at = _as_utc(datetime.fromisoformat(str(refreshed))) if refreshed else None
+                return _Catalog(refs=refs, refreshed_at=refreshed_at)
+            except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
+                logger.warning("ignoring unreadable catalog %s: %s", path, exc)
+        legacy = self.legacy_catalog_path(term.sis_term_id)
+        if legacy.exists():
+            try:
+                payload = json.loads(legacy.read_text(encoding="utf-8"))
+                refs = [
+                    SectionRef.from_dict(d)
+                    for d in payload["sections"]
+                    if str(d.get("component", "")).upper() not in SELF_STUDY_COMPONENTS
+                ]
+                logger.info("seeded catalog from legacy listing %s (%d sections kept)", legacy, len(refs))
+                return _Catalog(refs=refs, refreshed_at=None, dirty=True)
+            except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
+                logger.warning("ignoring unreadable legacy catalog %s: %s", legacy, exc)
+        return None
 
-    def _load_catalog(self, term_id: str, facet_id: str, max_pages: int | None) -> list[SectionRef] | None:
-        path = self.catalog_path(term_id)
-        if not path.exists():
-            return None
-        try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
-            listed_at = _as_utc(datetime.fromisoformat(str(payload["listed_at"])))
-            sections = [SectionRef.from_dict(d) for d in payload["sections"]]
-            cached_facet = str(payload.get("facet_id", ""))
-        except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
-            logger.warning("ignoring unreadable catalog %s: %s", path, exc)
-            return None
-        if self._now() - listed_at >= CATALOG_MAX_AGE:
-            return None
-        if cached_facet != str(facet_id):
-            logger.info("cached catalog is for facet %s, not %s; refetching", cached_facet, facet_id)
-            return None
-        if max_pages is not None and len(sections) < max_pages * ROWS_PER_PAGE:
-            return None
-        return sections
-
-    def _save_catalog(self, term_id: str, facet_id: str, refs: list[SectionRef]) -> Path:
-        path = self.catalog_path(term_id)
+    def _save_catalog(self, term: TermSpec, catalog: _Catalog) -> Path:
+        path = self.catalog_path(term.sis_term_id)
         path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
-            "term_id": term_id,
-            "facet_id": str(facet_id),
-            "listed_at": self._now().isoformat(),
-            "sections": [ref.to_dict() for ref in refs],
+            "version": CATALOG_VERSION,
+            "term_id": term.sis_term_id,
+            "term_name": term.name,
+            "source": "berkeleytime GetCatalog + classes.berkeleyedu probes",
+            "refreshed_at": catalog.refreshed_at.isoformat() if catalog.refreshed_at else None,
+            "sections": [ref.to_dict() for ref in sorted(catalog.refs, key=lambda r: r.url_path)],
         }
         tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
-        tmp.write_text(json.dumps(payload, indent=0), encoding="utf-8")
+        tmp.write_text(json.dumps(payload, indent=0, sort_keys=True), encoding="utf-8")
         os.replace(tmp, path)
-        logger.info("wrote %s (%d sections)", path, len(refs))
+        catalog.dirty = False
+        logger.info("wrote %s (%d sections)", path, len(catalog.refs))
         return path
 
-    # -- fetch -------------------------------------------------------------
+    def load_or_refresh_catalog(self, term: TermSpec, *, force_refresh: bool = False) -> _Catalog:
+        """Catalog for the term: refreshed from Berkeleytime when older than
+        24 h (or absent), otherwise the cached copy. A failed refresh falls
+        back to the cached copy with a warning; with nothing cached the
+        failure propagates. An empty catalog and nothing cached means the
+        term is not published yet (TermNotPublished)."""
+        catalog = self._load_catalog(term)
+        stale = catalog is None or catalog.refreshed_at is None or self._now() - catalog.refreshed_at >= CATALOG_MAX_AGE
+        if not stale and not force_refresh:
+            assert catalog is not None
+            logger.info("reusing catalog for term %s (%d sections)", term.sis_term_id, len(catalog.refs))
+            return catalog
+        try:
+            classes = self._catalog_provider(term)
+        except Exception as exc:  # noqa: BLE001 - any provider failure means "use what we have"
+            if catalog is None:
+                raise
+            logger.warning("catalog refresh for %s failed (%s); using cached copy from %s", term.name, exc, catalog.refreshed_at)
+            return catalog
+        fresh = catalog_refs(classes, term)
+        if not fresh:
+            if catalog is None:
+                raise TermNotPublished(f"Berkeleytime lists no classes for {term.name} yet")
+            logger.warning("catalog refresh for %s returned no classes; keeping cached copy", term.name)
+            return catalog
+        if catalog is None:
+            merged, added = fresh, len(fresh)
+        else:
+            merged, added = merge_catalog(catalog.refs, fresh)
+        logger.info("catalog for %s refreshed: %d classes -> %d primary sections (%d new)", term.name, len(classes), len(merged), added)
+        return _Catalog(refs=merged, refreshed_at=self._now(), dirty=True, refreshed_now=True)
+
+    # -- selection ---------------------------------------------------------
 
     @staticmethod
     def _normalise_shard(shard: tuple[int, int] | int | None, n_shards: int) -> tuple[int, int] | None:
@@ -475,29 +484,54 @@ class ClassesSiteSource:
             raise ValueError(f"shard {shard!r} must satisfy 0 <= k < n")
         return (k, n)
 
+    def _due_for_reprobe(self, ref: SectionRef) -> bool:
+        if not ref.absent:
+            return False
+        if ref.probed_at is None:
+            return True
+        try:
+            probed = _as_utc(datetime.fromisoformat(ref.probed_at))
+        except ValueError:
+            return True
+        return self._now() - probed >= ABSENT_REPROBE_AFTER
+
     def _select(
         self,
         refs: list[SectionRef],
         priority: PrioritySpec | None,
         shard: tuple[int, int] | None,
+        *,
+        reprobe: bool,
     ) -> list[SectionRef]:
-        """Priority matches first (listing order), then shard k of n of the remainder.
-
-        Priority sections are scheduled first so that a time-budget cutoff only
-        trims the rotating shard, never the courses promised the 30-minute cadence
-        (measured 2026-09-18: 886 priority + 613 to 701 shard pages per run at
-        n_shards=8 against a 1,500 s budget at about one page per second).
-        """
+        """Order of fetching: priority sections by rank (then course key),
+        then shard ``k`` of ``n`` of the remainder (no shard means priority
+        only; no priority means everything), then, on refresh runs only, up
+        to ``MAX_REPROBES_PER_RUN`` absent slugs whose last probe is older
+        than seven days. Absent slugs are otherwise skipped."""
+        live = [r for r in refs if not r.absent]
         if priority is None:
-            return list(refs)
-        first: list[SectionRef] = []
-        rest: list[SectionRef] = []
-        for ref in refs:
-            if priority.matches(ref.course_key):
-                first.append(ref)
-            elif shard is not None and shard_of(ref.section_id, shard[1]) == shard[0]:
-                rest.append(ref)
-        return first + rest
+            first: list[SectionRef] = []
+            rest = list(live)
+        else:
+            ranked: list[tuple[int, str, SectionRef]] = []
+            rest = []
+            for ref in live:
+                rank = priority.rank(ref.course_key)
+                if rank is None:
+                    if shard is not None and shard_of(ref.key, shard[1]) == shard[0]:
+                        rest.append(ref)
+                else:
+                    ranked.append((rank, ref.course_key, ref))
+            ranked.sort(key=lambda item: (item[0], item[1], item[2].url_path))
+            first = [item[2] for item in ranked]
+        selected = first + rest
+        if reprobe:
+            due = [r for r in refs if self._due_for_reprobe(r)]
+            due.sort(key=lambda r: (r.probed_at or "", r.url_path))
+            selected += due[:MAX_REPROBES_PER_RUN]
+        return selected
+
+    # -- fetch -------------------------------------------------------------
 
     def fetch(
         self,
@@ -508,54 +542,64 @@ class ClassesSiteSource:
         time_budget_s: float | None = None,
         limit: int | None = None,
     ) -> FetchResult:
-        """Discover the term, list its sections, select, and fetch the pages.
+        """Load or refresh the catalog, select, fetch the pages, update the catalog.
 
-        Scope is "full" (every listed section, ``universe_ids`` = all listed
-        ids) when ``priority`` is None, else "priority" (priority matches
-        union shard members, ``universe_ids`` None). ``limit`` caps the
-        selection after it is made and shortens the listing to
-        ``ceil(limit / 18) + 1`` pages; under ``limit`` the universe is
-        unknown, so ``universe_ids`` is None. Listing time counts against
-        ``time_budget_s``; every HTTP failure, parse failure, and unattempted
-        URL lands in ``missing_ids``. Raises TermNotPublished or HttpError
-        when discovery or listing fails outright.
+        Scope is "full" (every live catalog section, ``universe_ids`` = ids of
+        the live sections whose id is known) when ``priority`` is None, else
+        "priority" (priority matches union shard members, ``universe_ids``
+        None). ``limit`` caps the selection after it is made; under ``limit``
+        the universe is unknown, so ``universe_ids`` is None. Catalog refresh
+        time counts against ``time_budget_s``; every HTTP failure, parse
+        failure, and unattempted page of a section with a known id lands in
+        ``missing_ids``. Raises TermNotPublished when the term has no catalog.
         """
         if limit is not None and limit < 1:
             raise ValueError("limit must be >= 1")
         started = self._clock()
-        facet_id = self.discover_term_facet_id(term.name)
-        max_pages = self._listing_page_cap(limit)
-        refs = self.list_sections(facet_id, max_pages, term_id=term.sis_term_id)
+        catalog = self.load_or_refresh_catalog(term)
+        refs = catalog.refs
 
         shard_pair = self._normalise_shard(shard, self.n_shards)
         if priority is None:
             scope = "full"
             shard_label = ""
             priority_sha = ""
-            universe_ids: set[str] | None = {ref.section_id for ref in refs}
+            universe_ids: set[str] | None = {r.section_id for r in refs if r.section_id and not r.absent}
         else:
             scope = "priority"
             shard_label = f"{shard_pair[0]}/{shard_pair[1]}" if shard_pair else ""
             priority_sha = priority.sha
             universe_ids = None
-        selected = self._select(refs, priority, shard_pair if priority is not None else None)
+        selected = self._select(refs, priority, shard_pair if priority is not None else None, reprobe=catalog.refreshed_now)
         if limit is not None:
             selected = selected[:limit]
-        if max_pages is not None:
-            # A capped listing is not the term universe: never tombstone against it.
             universe_ids = None
 
         remaining = None
         if time_budget_s is not None:
             remaining = max(0.0, float(time_budget_s) - (self._clock() - started))
-        rows, missing_ids = self._fetch_pages(selected, term, remaining)
+        rows, missing_ids, updates = self._fetch_pages(selected, term, remaining)
+
+        if updates:
+            by_path = {r.url_path: r for r in refs}
+            changed = 0
+            for path, new_ref in updates.items():
+                if by_path.get(path) != new_ref:
+                    by_path[path] = new_ref
+                    changed += 1
+            if changed:
+                catalog.refs = list(by_path.values())
+                catalog.dirty = True
+        if catalog.dirty:
+            self._save_catalog(term, catalog)
 
         logger.info(
-            "classes_site term=%s scope=%s shard=%s listed=%d selected=%d observed=%d missing=%d elapsed=%.1fs",
+            "classes_site term=%s scope=%s shard=%s catalog=%d live=%d selected=%d observed=%d missing=%d elapsed=%.1fs",
             term.sis_term_id,
             scope,
             shard_label or "-",
             len(refs),
+            sum(1 for r in refs if not r.absent),
             len(selected),
             len(rows),
             len(missing_ids),
@@ -570,46 +614,67 @@ class ClassesSiteSource:
             priority_sha=priority_sha,
         )
 
-    def _listing_page_cap(self, limit: int | None) -> int | None:
-        """Pages to list: ``ceil(limit / 18) + 1`` under ``limit``, capped by
-        ``catalog_max_pages`` when set; None means the whole term."""
-        caps = [c for c in (self.catalog_max_pages, None if limit is None else math.ceil(limit / ROWS_PER_PAGE) + 1) if c]
-        return min(caps) if caps else None
-
     def _fetch_pages(
         self,
         selected: list[SectionRef],
         term: TermSpec,
         time_budget_s: float | None,
-    ) -> tuple[list[SnapshotRow], list[str]]:
-        """Fetch and parse the selected section pages; results in selection order."""
+    ) -> tuple[list[SnapshotRow], list[str], dict[str, SectionRef]]:
+        """Fetch and parse the selected pages, in selection order.
+
+        Returns rows, ``missing_ids`` (known ids that failed or were never
+        attempted), and catalog updates keyed by ``url_path``: a learned id
+        and status 200 on success, status 404 on a missing page. Transport
+        errors and budget cutoffs do not change the catalog."""
         order = {self.section_url(ref): i for i, ref in enumerate(selected)}
         ref_by_url = {self.section_url(ref): ref for ref in selected}
         parsed: dict[int, SnapshotRow] = {}
         failed: dict[int, str] = {}
+        updates: dict[str, SectionRef] = {}
         lock = threading.Lock()
 
         def on_result(url: str, payload: bytes | HttpError) -> None:
             ref = ref_by_url[url]
             index = order[url]
             if isinstance(payload, HttpError):
-                level = logging.DEBUG if payload.budget_exhausted else logging.WARNING
-                logger.log(level, "section %s not fetched: %s", ref.section_id, payload)
-                with lock:
-                    failed[index] = ref.section_id
+                if payload.status == 404:
+                    logger.info("section page absent (404): %s", ref.url_path)
+                    with lock:
+                        updates[ref.url_path] = replace(ref, last_status=404, probed_at=self._now().isoformat())
+                        if ref.section_id:
+                            failed[index] = ref.section_id
+                    return
+                level = logging.DEBUG if getattr(payload, "budget_exhausted", False) else logging.WARNING
+                logger.log(level, "section %s not fetched: %s", ref.section_id or ref.url_path, payload)
+                if ref.section_id:
+                    with lock:
+                        failed[index] = ref.section_id
                 return
             fetched_at = self._now()
             try:
                 row = parse_section_page(payload, ref, fetched_at, term)
             except ParseError as exc:
-                logger.warning("section %s not parsed: %s", ref.section_id, exc)
-                with lock:
-                    failed[index] = ref.section_id
+                logger.warning("section %s not parsed: %s", ref.section_id or ref.url_path, exc)
+                if ref.section_id:
+                    with lock:
+                        failed[index] = ref.section_id
                 return
             with lock:
                 parsed[index] = row
+                if ref.section_id != row["section_id"] or ref.last_status != 200:
+                    updates[ref.url_path] = replace(ref, section_id=row["section_id"], last_status=200, probed_at=fetched_at.isoformat())
 
         self._client.get_many(list(order), on_result, time_budget_s=time_budget_s)
         rows = [parsed[i] for i in sorted(parsed)]
-        missing_ids = [failed[i] for i in sorted(failed)]
-        return rows, missing_ids
+        # A section observed twice in one run (cannot happen with unique slugs,
+        # but guard the schema's unique-id rule anyway).
+        seen: set[str] = set()
+        unique_rows: list[SnapshotRow] = []
+        for row in rows:
+            if row["section_id"] in seen:
+                logger.warning("duplicate section id %s in one run; keeping the first", row["section_id"])
+                continue
+            seen.add(row["section_id"])
+            unique_rows.append(row)
+        missing_ids = [failed[i] for i in sorted(failed) if failed[i] not in seen]
+        return unique_rows, missing_ids, updates

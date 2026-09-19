@@ -1,8 +1,9 @@
 """Tests for scraper/schema.py (DESIGN_A2 section 1)."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
+import numpy as np
 import pyarrow as pa
 import pytest
 
@@ -84,14 +85,33 @@ def test_unknown_source_raises():
         rows_to_table([make_row(source="craigslist")])
 
 
-def test_naive_timestamp_is_rejected_or_not_silently_shifted():
-    naive = datetime(2026, 11, 2, 7, 37)
-    try:
-        table = rows_to_table([make_row(fetched_at=naive)])
-    except SchemaError:
-        return
-    # if pyarrow accepts it, it must be interpreted as UTC, not shifted
-    assert table.to_pylist()[0]["fetched_at"] == naive.replace(tzinfo=timezone.utc)
+def test_naive_fetched_at_is_rejected():
+    # pyarrow would stamp a naive datetime as UTC; a fetch time of unknown zone must never reach a file
+    with pytest.raises(SchemaError, match="fetched_at"):
+        rows_to_table([make_row(fetched_at=datetime(2026, 11, 2, 7, 37))])
+    with pytest.raises(SchemaError, match="fetched_at"):
+        rows_to_table([make_row(fetched_at="2026-11-02T07:37:00+00:00")])
+    with pytest.raises(SchemaError, match="fetched_at"):
+        rows_to_table([make_row(fetched_at=None)])
+
+
+def test_aware_non_utc_fetched_at_is_converted_not_shifted():
+    pacific = timezone(timedelta(hours=-8))
+    table = rows_to_table([make_row(fetched_at=datetime(2026, 11, 1, 23, 5, tzinfo=pacific))])
+    assert table.to_pylist()[0]["fetched_at"] == datetime(2026, 11, 2, 7, 5, tzinfo=timezone.utc)
+
+
+def test_non_integer_count_values_are_rejected():
+    # pyarrow would truncate 3.5 to 3; every int32 field must hold a real integer (bools are not counts)
+    for value in (3.5, 3.0, "12", True, float("nan")):
+        with pytest.raises(SchemaError, match="enrolled_count"):
+            rows_to_table([make_row(enrolled_count=value)])
+    with pytest.raises(SchemaError, match="reserved_count"):
+        rows_to_table([make_row(reserved_count=2.5)])
+    with pytest.raises(SchemaError, match="open_reserved"):
+        rows_to_table([make_row(open_reserved=False)])
+    row = rows_to_table([make_row(enrolled_count=np.int32(7), reserved_count=np.int64(2))]).to_pylist()[0]
+    assert row["enrolled_count"] == 7 and row["reserved_count"] == 2
 
 
 def test_validate_table_rejects_wrong_schema():

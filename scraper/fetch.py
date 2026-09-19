@@ -2,16 +2,28 @@
 
 Run as ``python -m scraper.fetch --term "Spring 2027"``.
 
-Pipeline: choose source -> fetch -> ``rows_to_table`` -> decide kind
-(``baseline`` if no baseline exists for today's UTC date or ``--force-baseline``,
-else ``delta``) -> ``storage.write_snapshot`` -> ``status.json`` -> one summary
-line on stdout. Logs go to stderr with timestamps.
+Pipeline: choose source -> fetch -> coverage check -> ``rows_to_table`` ->
+decide kind (``baseline`` if no baseline exists for this term on today's UTC
+date or ``--force-baseline``, else ``delta``) -> ``storage.write_snapshot`` ->
+``status.json`` -> one summary line on stdout. Logs go to stderr with
+timestamps.
+
+A full-scope baseline with a known universe also carries GONE tombstones for
+the ids in the state carried from the previous days (``storage.carried_state``)
+that are not in the universe, so the day boundary cannot hide a vanished
+section. A delta is refused (exit 1) when today's baseline was written by a
+different source, because ids and scope are not comparable across sources;
+``--force-baseline`` starts a fresh baseline instead (nothing is tombstoned
+across sources).
 
 Exit codes:
     0  success (also for ``--dry-run``)
-    1  any unexpected exception (traceback logged)
+    1  any unexpected exception (traceback logged), or a delta attempted on a
+       baseline written by a different source (rerun with ``--force-baseline``)
     2  zero sections observed: nothing is written so the workflow fails loudly
     3  the term is not published on the source yet (classes_site before early October)
+    4  low coverage: ``n_missing / (n_observed + n_missing)`` exceeds
+       ``--max-missing-share`` (default 0.5); nothing is written
 """
 from __future__ import annotations
 
@@ -38,6 +50,9 @@ EXIT_OK = 0
 EXIT_ERROR = 1
 EXIT_NO_ROWS = 2
 EXIT_TERM_NOT_PUBLISHED = 3
+EXIT_LOW_COVERAGE = 4
+
+DEFAULT_MAX_MISSING_SHARE = 0.5
 
 KIND_BASELINE = "baseline"
 KIND_DELTA = "delta"
@@ -89,6 +104,15 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--limit", type=int, default=d["limit"], help="debug: cap the number of sections fetched")
     p.add_argument("--dry-run", action="store_true", default=d["dry_run"], help="fetch and print the summary, write nothing")
     p.add_argument("--catalog-max-pages", type=int, default=d["catalog_max_pages"], help="debug: cap listing pages read (classes_site)")
+    p.add_argument(
+        "--max-missing-share",
+        type=float,
+        default=d.get("max_missing_share", DEFAULT_MAX_MISSING_SHARE),
+        help=(
+            "write nothing and exit 4 when n_missing / (n_observed + n_missing) exceeds this "
+            f"(default {DEFAULT_MAX_MISSING_SHARE}); guards against committing a partial outage"
+        ),
+    )
     return p
 
 
@@ -229,17 +253,44 @@ def default_run_index(data_root: Path, today: date) -> int:
     return len(snapshots_today(data_root, today))
 
 
-def has_baseline_today(data_root: Path, today: date) -> bool:
-    """True when a ``*-baseline.parquet`` exists in today's partition."""
+def has_baseline_today(data_root: Path, today: date, term_id: str | None = None) -> bool:
+    """True when a baseline exists in today's partition, for ``term_id`` when given.
+
+    With ``term_id`` this is exactly ``storage.latest_state(data_root, term_id,
+    today) is not None`` (a second term on the same UTC day gets its own
+    baseline), read from file footers only.
+    """
+    if term_id is not None:
+        if not data_root.exists():
+            return False
+        return storage.latest_baseline_meta(data_root, term_id, today) is not None
     suffix = f"-{KIND_BASELINE}.parquet"
     return any(p.name.endswith(suffix) for p in snapshots_today(data_root, today))
 
 
-def decide_kind(data_root: Path, today: date, force_baseline: bool) -> str:
-    """``baseline`` for the first run of a UTC day or on request, else ``delta``."""
-    if force_baseline or not has_baseline_today(data_root, today):
+def decide_kind(data_root: Path, today: date, force_baseline: bool, term_id: str | None = None) -> str:
+    """``baseline`` for the first run of a UTC day (of ``term_id`` when given) or on request, else ``delta``."""
+    if force_baseline or not has_baseline_today(data_root, today, term_id):
         return KIND_BASELINE
     return KIND_DELTA
+
+
+def baseline_source_mismatch(data_root: Path, term_id: str, today: date, source_name: str) -> str | None:
+    """Why a delta must not be written: today's baseline for the term came from another source.
+
+    Returns the message to log, or ``None`` when the sources agree (or no
+    baseline exists). Section ids and scope are not comparable across sources
+    (Berkeleytime uses ``bt:`` ids; a priority list differs from a full
+    sweep), so a cross-source delta would tombstone or duplicate everything.
+    """
+    baseline = storage.latest_baseline_meta(data_root, term_id, today)
+    if baseline is None or baseline.source == source_name:
+        return None
+    return (
+        f"today's baseline for term {term_id} was written by source {baseline.source!r} at "
+        f"{baseline.run_started_at.isoformat()}; refusing to write a {source_name!r} delta against it "
+        f"(exit {EXIT_ERROR}). Rerun with --force-baseline to start a fresh baseline for {source_name!r}."
+    )
 
 
 def effective_term_id(table: pa.Table, term: TermSpec) -> str:
@@ -262,26 +313,27 @@ def effective_term_id(table: pa.Table, term: TermSpec) -> str:
     return term.sis_term_id
 
 
-def _positional_arity(func: Callable[..., Any]) -> int:
-    """Number of parameters that can be passed positionally (excluding ``*args``/``**kwargs``)."""
-    try:
-        params = inspect.signature(func).parameters.values()
-    except (TypeError, ValueError):
-        return 0
-    return sum(1 for p in params if p.kind in (p.POSITIONAL_ONLY, p.POSITIONAL_OR_KEYWORD))
-
-
 def compute_delta_table(
-    previous: Any, observed: pa.Table, universe_ids: set[str] | None, fetched_at: datetime
+    previous: Any, observed: pa.Table, universe_ids: set[str] | None, fetched_at: datetime, source: str | None = None
 ) -> pa.Table:
-    """Call ``storage.compute_delta`` with or without ``fetched_at``.
+    """``storage.compute_delta`` with the current source named, so tombstones
+    are only ever written for rows of the same source."""
+    return storage.compute_delta(previous, observed, universe_ids, fetched_at, source=source)
 
-    DESIGN_A2 section 2 spells the function with three parameters; the build
-    task adds ``fetched_at`` (timestamp for tombstone rows). Both are accepted.
-    """
-    if _positional_arity(storage.compute_delta) >= 4:
-        return storage.compute_delta(previous, observed, universe_ids, fetched_at)
-    return storage.compute_delta(previous, observed, universe_ids)
+
+def is_complete(result: FetchResult, limit: int | None = None) -> bool:
+    """True when the run attempted the whole term universe: the source reports
+    a universe (full scope, not cut short by its time budget) and ``--limit``
+    was not used."""
+    return result.universe_ids is not None and limit is None
+
+
+def tombstone_universe(result: FetchResult, limit: int | None = None) -> set[str] | None:
+    """Universe to tombstone against: the source's universe for a complete
+    full-scope run, else ``None`` (never tombstone against a partial universe)."""
+    if result.scope != SCOPE_FULL or not is_complete(result, limit):
+        return None
+    return result.universe_ids
 
 
 def build_output_table(
@@ -292,21 +344,41 @@ def build_output_table(
     observed: pa.Table,
     result: FetchResult,
     fetched_at: datetime,
+    source_name: str | None = None,
+    limit: int | None = None,
 ) -> pa.Table:
-    """Rows to write: everything for a baseline, changed rows (+ tombstones) for a delta."""
+    """Rows to write.
+
+    Baseline: everything observed; a complete full-scope baseline also carries
+    GONE rows for the ids in the state carried from the previous days that
+    are not in the universe (``storage.baseline_with_tombstones``).
+    Delta: changed rows (+ tombstones) against the day's state seeded from
+    the previous days (``storage.latest_state``).
+    """
+    universe = tombstone_universe(result, limit)
     if kind == KIND_BASELINE:
-        return observed
+        if universe is None:
+            return observed
+        carried = storage.carried_state(data_root, term_id, today) if data_root.exists() else None
+        return storage.baseline_with_tombstones(carried, observed, universe, fetched_at, source=source_name)
     previous = storage.latest_state(data_root, term_id, today)
     if previous is None:
         logger.warning("no prior state for term %s on %s although a baseline exists; delta treats every row as new", term_id, today)
-    universe = result.universe_ids if result.scope == SCOPE_FULL else None
-    return compute_delta_table(previous, observed, universe, fetched_at)
+    return compute_delta_table(previous, observed, universe, fetched_at, source=source_name)
 
 
 def build_meta(
-    run_started_at: datetime, term_id: str, source_name: str, kind: str, result: FetchResult, n_written: int
+    run_started_at: datetime, term_id: str, source_name: str, kind: str, result: FetchResult, n_written: int,
+    limit: int | None = None,
 ) -> Any:
-    """``storage.RunMeta`` for this run; ``observed_ids`` only for priority scope (section 3)."""
+    """``storage.RunMeta`` for this run.
+
+    ``complete`` records whether the whole universe was attempted;
+    ``observed_ids`` is persisted for priority scope and for every incomplete
+    run (truncated sis_api sweep, ``--limit``), so rebuild never marks an
+    unattempted id as observed (section 3).
+    """
+    complete = is_complete(result, limit)
     wanted: dict[str, Any] = {
         "run_started_at": run_started_at,
         "term_id": term_id,
@@ -318,7 +390,8 @@ def build_meta(
         "missing_ids": list(result.missing_ids),
         "n_observed": len(result.rows),
         "n_written": n_written,
-        "observed_ids": list(result.observed_ids) if result.scope == SCOPE_PRIORITY else None,
+        "observed_ids": list(result.observed_ids) if (result.scope == SCOPE_PRIORITY or not complete) else None,
+        "complete": complete,
     }
     accepted = {k: v for k, v in wanted.items() if _accepts_parameter(storage.RunMeta, k)}
     dropped = sorted(set(wanted) - set(accepted))
@@ -327,11 +400,19 @@ def build_meta(
     return storage.RunMeta(**accepted)
 
 
+def missing_share(result: FetchResult) -> float:
+    """``n_missing / (n_observed + n_missing)``; 0.0 when nothing was in scope."""
+    n_observed, n_missing = len(result.rows), len(result.missing_ids)
+    total = n_observed + n_missing
+    return n_missing / total if total else 0.0
+
+
 def build_status(
     run_started_at: datetime, term_id: str, source_name: str, kind: str, result: FetchResult,
-    n_written: int, sweep_seconds: float, path: Path,
+    n_written: int, sweep_seconds: float, path: Path, limit: int | None = None,
 ) -> dict[str, Any]:
-    """Contents of ``status.json``: the section 6 keys plus the file just written and the version."""
+    """Contents of ``status.json``: the section 6 keys plus ``missing_share``,
+    ``complete``, the file just written and the version."""
     return {
         "last_run_at": run_started_at.isoformat(),
         "term_id": term_id,
@@ -342,6 +423,8 @@ def build_status(
         "n_observed": len(result.rows),
         "n_written": n_written,
         "n_missing": len(result.missing_ids),
+        "missing_share": round(missing_share(result), 4),
+        "complete": is_complete(result, limit),
         "sweep_seconds": round(sweep_seconds, 3),
         "snapshot": str(path),
         "version": config.VERSION,
@@ -407,22 +490,36 @@ def run(args: argparse.Namespace, env: Mapping[str, str] | None = None) -> int:
     if n_observed == 0:
         logger.error("zero sections observed; writing nothing (exit %d)", EXIT_NO_ROWS)
         return EXIT_NO_ROWS
+    share = missing_share(result)
+    if share > args.max_missing_share:
+        logger.error(
+            "missing share %.3f (%d missing of %d in scope) exceeds --max-missing-share %g; writing nothing (exit %d)",
+            share, n_missing, n_observed + n_missing, args.max_missing_share, EXIT_LOW_COVERAGE,
+        )
+        return EXIT_LOW_COVERAGE
 
     observed = rows_to_table(result.rows)
     term_id = effective_term_id(observed, term)
-    kind = decide_kind(data_root, today, args.force_baseline)
-    out = build_output_table(kind, data_root, term_id, today, observed, result, run_started_at)
+    kind = decide_kind(data_root, today, args.force_baseline, term_id=term_id)
+    if kind == KIND_DELTA:
+        problem = baseline_source_mismatch(data_root, term_id, today, source_name)
+        if problem is not None:
+            logger.error(problem)
+            return EXIT_ERROR
+    out = build_output_table(
+        kind, data_root, term_id, today, observed, result, run_started_at, source_name=source_name, limit=args.limit
+    )
     n_written = out.num_rows
-    logger.info("kind=%s rows_to_write=%d", kind, n_written)
+    logger.info("kind=%s rows_to_write=%d complete=%s", kind, n_written, is_complete(result, args.limit))
 
     if args.dry_run:
         logger.info("dry run: nothing written")
         print(summary_line(kind, result.scope, n_observed, n_written, n_missing, sweep_seconds, DRY_RUN_PATH))
         return EXIT_OK
 
-    meta = build_meta(run_started_at, term_id, source_name, kind, result, n_written)
+    meta = build_meta(run_started_at, term_id, source_name, kind, result, n_written, limit=args.limit)
     path = storage.write_snapshot(data_root, out, meta)
-    status = build_status(run_started_at, term_id, source_name, kind, result, n_written, sweep_seconds, path)
+    status = build_status(run_started_at, term_id, source_name, kind, result, n_written, sweep_seconds, path, limit=args.limit)
     write_status(data_root, status)
     logger.info("wrote %s (%d rows) and %s", path, n_written, config.STATUS_FILENAME)
     print(summary_line(kind, result.scope, n_observed, n_written, n_missing, sweep_seconds, str(path)))

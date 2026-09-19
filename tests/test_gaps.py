@@ -17,13 +17,22 @@ T0 = datetime(2026, 11, 2, 0, 7, tzinfo=timezone.utc)
 NOW = datetime(2026, 11, 2, 4, 0, tzinfo=timezone.utc)
 
 
-def write_runs(data_root: Path, offsets_min: list[int], term: str = TERM, scopes: list[str] | None = None) -> None:
+def write_runs(
+    data_root: Path,
+    offsets_min: list[int],
+    term: str = TERM,
+    scopes: list[str] | None = None,
+    coverage: list[tuple[int, int]] | None = None,
+) -> None:
+    """One file per offset; ``coverage[i]`` is ``(n_observed, n_missing)`` for run ``i`` (default 1, 0)."""
     for i, off in enumerate(offsets_min):
         at = T0 + timedelta(minutes=off)
         kind = "baseline" if i == 0 else "delta"
         scope = scopes[i] if scopes else "full"
+        n_observed, n_missing = coverage[i] if coverage else (1, 0)
         meta = RunMeta(run_started_at=at, term_id=term, source="sis_api", kind=kind, scope=scope,
-                       observed_ids=["1"] if scope == "priority" else None)
+                       observed_ids=["1"] if scope == "priority" else None,
+                       n_observed=n_observed, missing_ids=[f"m{k}" for k in range(n_missing)])
         table = rows_to_table([make_row(fetched_at=at, term_id=term)]) if kind == "baseline" else rows_to_table([])
         write_snapshot(data_root, table, meta)
 
@@ -44,7 +53,21 @@ def test_known_timestamps(data_root: Path):
     assert rep["by_scope"]["full"]["n_runs"] == 3 and rep["by_scope"]["full"]["largest_gap_min"] == 120.0
     assert rep["by_scope"]["priority"]["largest_gap_min"] == 120.0
     assert rep["term_id"] == TERM and rep["since_hours"] == 24.0
+    assert rep["median_missing_share"] == 0.0 and rep["max_missing_share"] == 0.0
     json.dumps(rep)  # must be JSON-serializable
+
+
+def test_missing_share_statistics(data_root: Path):
+    # shares: 0, 0.2, 0.9, 0.5; the last run has no scope information (0 + 0) and is skipped
+    write_runs(data_root, [0, 30, 60, 90, 120], coverage=[(10, 0), (8, 2), (1, 9), (5, 5), (0, 0)])
+    rep = gap_report(data_root, TERM, since_hours=24, now=NOW)
+    assert rep["n_runs"] == 5
+    assert rep["median_missing_share"] == 0.35
+    assert rep["max_missing_share"] == 0.9
+    json.dumps(rep)
+    # only runs inside the window count
+    rep = gap_report(data_root, TERM, since_hours=24, now=T0 + timedelta(minutes=45))
+    assert rep["median_missing_share"] == 0.1 and rep["max_missing_share"] == 0.2
 
 
 def test_window_and_term_filter(data_root: Path):
@@ -67,6 +90,7 @@ def test_empty_and_single_run(data_root: Path):
     assert rep["largest_gap_min"] is None and rep["p95_gap_min"] is None and rep["share_gaps_le_45min"] is None
     assert rep["first"] is None and rep["last"] is None and rep["minutes_since_last"] is None
     assert rep["runs_by_kind"] == {} and rep["by_scope"] == {}
+    assert rep["median_missing_share"] is None and rep["max_missing_share"] is None
     write_runs(data_root, [0])
     rep = gap_report(data_root, TERM, now=NOW)
     assert rep["n_runs"] == 1 and rep["largest_gap_min"] is None
@@ -89,6 +113,13 @@ def test_breaches():
     assert breaches(rep, None, 6)
     assert len(breaches(rep, 10.0, 40)) == 2
     assert breaches({"n_runs": 1, "largest_gap_min": None}, 90.0, None) == []
+    # missing share breaches on the median, strictly greater than the threshold
+    partial = {"n_runs": 5, "largest_gap_min": 30.0, "median_missing_share": 0.6, "max_missing_share": 0.9}
+    assert breaches(partial, None, None, fail_if_missing_share_gt=0.5) == ["median missing share 0.600 exceeds 0.5"]
+    assert breaches(partial, None, None, fail_if_missing_share_gt=0.6) == []
+    assert breaches(partial, None, None) == []
+    assert breaches({**partial, "median_missing_share": None}, None, None, fail_if_missing_share_gt=0.0) == []
+    assert len(breaches(partial, 10.0, 40, fail_if_missing_share_gt=0.5)) == 3
 
 
 def test_cli_exit_codes(data_root: Path, capsys):
@@ -107,6 +138,18 @@ def test_cli_exit_codes(data_root: Path, capsys):
 
     assert main(base) == 0  # no thresholds: never fails
     assert main(["--data-root", str(data_root), "--term-id", TERM, "--now", "2026-11-02T04:00:00", "--fail-if-gap-min", "90"]) == 0
+
+
+def test_cli_fail_if_missing_share_gt(data_root: Path, capsys):
+    write_runs(data_root, [0, 30, 60], coverage=[(10, 0), (2, 8), (1, 9)])  # median share 0.8
+    base = ["--data-root", str(data_root), "--term-id", TERM, "--now", NOW.isoformat()]
+    assert main(base) == 0  # default: no missing-share threshold
+    out = json.loads(capsys.readouterr().out)
+    assert out["median_missing_share"] == 0.8 and out["max_missing_share"] == 0.9
+    assert main(base + ["--fail-if-missing-share-gt", "0.8"]) == 0
+    capsys.readouterr()
+    assert main(base + ["--fail-if-missing-share-gt", "0.5"]) == 1
+    assert "BREACH: median missing share 0.800 exceeds 0.5" in capsys.readouterr().err
 
 
 def test_cli_requires_args():

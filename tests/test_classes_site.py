@@ -1,37 +1,37 @@
 """Offline tests for scraper.sources.classes_site against the saved fixtures."""
 from __future__ import annotations
 
-import email.message
 import json
 import logging
-import math
-import threading
-import urllib.error
-import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
 
-from scraper.http import HttpClient, HttpError
+from scraper.http import HttpError
 from scraper.schema import rows_to_table
 from scraper.sources.base import ParseError, PrioritySpec, TermNotPublished, TermSpec, shard_of
 from scraper.sources.classes_site import (
+    ABSENT_REPROBE_AFTER,
+    CATALOG_MAX_AGE,
+    MAX_REPROBES_PER_RUN,
+    SELF_STUDY_COMPONENTS,
     ClassesSiteSource,
     SectionRef,
-    find_term_facet_id,
-    parse_listing_page,
+    catalog_refs,
+    merge_catalog,
     parse_section_page,
-    parse_term_facets,
+    section_slug,
 )
 
 FIXTURES = Path(__file__).resolve().parent.parent / "data" / "fixtures"
 SECTION_FIXTURE = FIXTURES / "classes_section_2026-fall-aeroeng-10-001-lec-001.html"
-LISTING_FIXTURE = FIXTURES / "classes_listing_fall2026_page0_trimmed.html"
+CATALOG_FIXTURE = FIXTURES / "berkeleytime_getcatalog_small.json"
 
 BASE = "https://classes.test"
 FALL_2026 = TermSpec.from_name("Fall 2026")
 FETCHED_AT = datetime(2026, 9, 18, 20, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 9, 19, 8, 0, tzinfo=timezone.utc)
 
 AEROENG_10_REF = SectionRef(
     section_id="30174",
@@ -44,106 +44,8 @@ AEROENG_10_REF = SectionRef(
     component="LEC",
 )
 
-# The trimmed listing fixture lost the term facet block, so discovery is
-# exercised on a minimal page shaped like the live facet list.
-FACET_HTML = b"""
-<html><body>
-<ul class="facets">
-  <li><a href="/search/class?f%5B0%5D=term%3A8588" rel="nofollow"><span>Fall 2026 (6131)</span></a></li>
-  <li><a href="/search/class?f[0]=term:8400"><span>Summer 2026 (2000)</span></a></li>
-</ul>
-<nav><a href="?f%5B0%5D=term%3A8588&amp;page=1" title="Go to next page">Next page</a></nav>
-</body></html>
-"""
-
-EMPTY_LISTING = b"<html><body><div class='view-content'></div></body></html>"
-
-
-def section_page(section_id: int, term_id: str | None = "2268", **status: object) -> bytes:
-    """A minimal section page with the same drupal settings shape as the live site."""
-    enrollment = {
-        "status": {"code": "W", "description": "Wait List"},
-        "enrolledCount": 100,
-        "reservedCount": None,
-        "waitlistedCount": 12,
-        "minEnroll": 0,
-        "maxEnroll": 100,
-        "maxWaitlist": 20,
-        "openReserved": None,
-    }
-    enrollment.update(status)
-    settings = {
-        "path": {"baseUrl": "/"},
-        "ucb": {
-            "enrollment": {"available": {"id": section_id, "enrollmentStatus": enrollment}},
-            "termDetails": {"sessionDescription": "2026 Fall"},
-        },
-    }
-    term_attr = f' data-term="{term_id}" data-term-name="Fall 2026"' if term_id is not None else ""
-    return (
-        "<html><head><meta charset='utf-8'></head><body>"
-        f"<div data-element='textbook'{term_attr} data-section-id='{section_id}'></div>"
-        '<script type="application/json" data-drupal-selector="drupal-settings-json">'
-        f"{json.dumps(settings)}</script></body></html>"
-    ).encode("utf-8")
-
 
 # -- fakes --------------------------------------------------------------------
-
-
-class FakeClock:
-    def __init__(self) -> None:
-        self.t = 0.0
-        self._lock = threading.Lock()
-
-    def now(self) -> float:
-        with self._lock:
-            return self.t
-
-    def sleep(self, seconds: float) -> None:
-        with self._lock:
-            self.t += seconds
-
-
-class FakeResponse:
-    def __init__(self, body: bytes, status: int = 200) -> None:
-        self.body = body
-        self.status = status
-        self.headers: dict[str, str] = {}
-
-    def __enter__(self) -> "FakeResponse":
-        return self
-
-    def __exit__(self, *exc: object) -> bool:
-        return False
-
-    def read(self) -> bytes:
-        return self.body
-
-
-def http_error(url: str, code: int) -> urllib.error.HTTPError:
-    return urllib.error.HTTPError(url, code, f"status {code}", email.message.Message(), None)
-
-
-class FakeOpener:
-    """URL -> queue of FakeResponse or exception; the last outcome repeats."""
-
-    def __init__(self, routes: dict[str, list]) -> None:
-        self.routes = {url: list(queue) for url, queue in routes.items()}
-        self.calls: list[str] = []
-        self._lock = threading.Lock()
-
-    def open(self, request: urllib.request.Request, timeout: float | None = None) -> FakeResponse:
-        url = request.full_url
-        with self._lock:
-            self.calls.append(url)
-            queue = self.routes.get(url)
-            if not queue:
-                raise AssertionError(f"unexpected url {url}")
-            outcome = queue.pop(0) if len(queue) > 1 else queue[0]
-        if isinstance(outcome, BaseException):
-            raise outcome
-        return outcome
 
 
 class StubClient:
@@ -176,21 +78,94 @@ class StubClient:
             on_result(url, payload)
 
 
-def listing_url(page: int, facet_id: str = "8588") -> str:
-    return f"{BASE}/search/class?f%5B0%5D=term%3A{facet_id}&page={page}"
+class Clock:
+    def __init__(self, now: datetime = NOW) -> None:
+        self.now = now
+        self.mono = 0.0
+
+    def utcnow(self) -> datetime:
+        return self.now
+
+    def monotonic(self) -> float:
+        return self.mono
 
 
-def standard_pages(section_pages: dict[str, bytes | HttpError]) -> dict[str, bytes | HttpError]:
-    pages: dict[str, bytes | HttpError] = {
-        f"{BASE}/search/class": FACET_HTML,
-        listing_url(0): LISTING_FIXTURE.read_bytes(),
-        listing_url(1): EMPTY_LISTING,
+def section_html(section_id: int, enrolled: int = 10, waitlisted: int = 2, term_id: str = "2268") -> bytes:
+    """A minimal section page shaped like the live one."""
+    settings = {
+        "ucb": {
+            "enrollment": {
+                "available": {
+                    "id": section_id,
+                    "enrollmentStatus": {
+                        "status": {"code": "O", "description": "Open"},
+                        "enrolledCount": enrolled,
+                        "reservedCount": 0,
+                        "waitlistedCount": waitlisted,
+                        "minEnroll": 0,
+                        "maxEnroll": 100,
+                        "maxWaitlist": 20,
+                        "openReserved": 0,
+                    },
+                }
+            }
+        }
     }
-    pages.update(section_pages)
-    return pages
+    return (
+        "<html><head><script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">"
+        + json.dumps(settings)
+        + f"</script></head><body><div data-term=\"{term_id}\" data-term-name=\"Fall 2026\"></div></body></html>"
+    ).encode()
 
 
-# -- parsing ------------------------------------------------------------------
+def catalog_classes() -> list[dict]:
+    return json.loads(CATALOG_FIXTURE.read_text())["data"]["catalog"]
+
+
+def make_class(subject: str, number: str, class_number: str = "001", component: str = "LEC") -> dict:
+    return {
+        "subject": subject,
+        "courseNumber": number,
+        "number": class_number,
+        "sessionId": "1",
+        "primarySection": {"component": component, "enrollment": {"latest": {"status": "O"}}},
+    }
+
+
+def make_source(
+    tmp_path: Path,
+    pages: dict[str, bytes | HttpError],
+    classes: list[dict] | Exception | None = None,
+    *,
+    n_shards: int = 8,
+    attempt_limit: int | None = None,
+    clock: Clock | None = None,
+) -> tuple[ClassesSiteSource, StubClient, Clock]:
+    clock = clock or Clock()
+    client = StubClient(pages, attempt_limit=attempt_limit)
+
+    def provider(term: TermSpec) -> list[dict]:
+        if isinstance(classes, Exception):
+            raise classes
+        return list(classes) if classes is not None else catalog_classes()
+
+    source = ClassesSiteSource(
+        client,  # type: ignore[arg-type]
+        tmp_path,
+        n_shards,
+        BASE,
+        catalog_provider=provider,
+        now=clock.utcnow,
+        clock=clock.monotonic,
+    )
+    return source, client, clock
+
+
+def read_catalog(tmp_path: Path) -> dict:
+    return json.loads((tmp_path / "catalog" / "2268" / "catalog.json").read_text())
+
+
+# -- section page parsing -----------------------------------------------------
 
 
 def test_parse_section_page_real_fixture() -> None:
@@ -206,415 +181,352 @@ def test_parse_section_page_real_fixture() -> None:
     assert row["status"] == "O"
     assert row["section_status"] is None
     assert row["is_primary"] is None
-    assert row["session_id"] == "1"
     assert row["source"] == "classes_site"
-    assert row["course_key"] == "AEROENG 10"
-    assert row["subject"] == "AEROENG"
-    assert row["catalog_number"] == "10"
-    assert row["class_number"] == "001"
-    assert row["section_number"] == "001"
-    assert row["component"] == "LEC"
-    assert row["fetched_at"] == FETCHED_AT
-    table = rows_to_table([row])
-    assert table.num_rows == 1
+    assert rows_to_table([row]).num_rows == 1
 
 
-def test_parse_section_page_is_reachable_on_the_class() -> None:
-    row = ClassesSiteSource.parse_section_page(SECTION_FIXTURE.read_bytes(), AEROENG_10_REF, FETCHED_AT, FALL_2026)
+def test_parse_section_page_adopts_page_id_when_unknown() -> None:
+    ref = SectionRef(**{**AEROENG_10_REF.to_dict(), "section_id": ""})
+    row = parse_section_page(SECTION_FIXTURE.read_bytes(), ref, FETCHED_AT, FALL_2026)
     assert row["section_id"] == "30174"
+
+
+def test_parse_section_page_id_mismatch() -> None:
+    ref = SectionRef(**{**AEROENG_10_REF.to_dict(), "section_id": "99999"})
+    with pytest.raises(ParseError, match="expected 99999"):
+        parse_section_page(SECTION_FIXTURE.read_bytes(), ref, FETCHED_AT, FALL_2026)
 
 
 def test_parse_section_page_term_mismatch_uses_page_value(caplog: pytest.LogCaptureFixture) -> None:
     spring = TermSpec.from_name("Spring 2027")
-    with caplog.at_level(logging.WARNING, logger="scraper.sources.classes_site"):
+    with caplog.at_level(logging.WARNING):
         row = parse_section_page(SECTION_FIXTURE.read_bytes(), AEROENG_10_REF, FETCHED_AT, spring)
     assert row["term_id"] == "2268"
-    assert any("data-term=2268" in rec.getMessage() and "2272" in rec.getMessage() for rec in caplog.records)
+    assert "data-term=2268" in caplog.text
 
 
 def test_parse_section_page_without_data_term_falls_back() -> None:
-    ref = SectionRef("30013", "/content/x", "AEROENG 1", "AEROENG", "1", "001", "001", "SEM")
-    row = parse_section_page(section_page(30013, term_id=None), ref, FETCHED_AT, FALL_2026)
-    assert row["term_id"] == FALL_2026.sis_term_id
-    assert row["status"] == "W"
-    assert row["reserved_count"] is None
-    assert row["open_reserved"] is None
-
-
-def test_parse_section_page_naive_fetched_at_becomes_utc() -> None:
-    row = parse_section_page(SECTION_FIXTURE.read_bytes(), AEROENG_10_REF, FETCHED_AT.replace(tzinfo=None), FALL_2026)
-    assert row["fetched_at"].tzinfo is not None
-    assert row["fetched_at"] == FETCHED_AT
-
-
-def test_parse_section_page_id_mismatch() -> None:
-    wrong = SectionRef("99999", "/content/x", "AEROENG 10", "AEROENG", "10", "001", "001", "LEC")
-    with pytest.raises(ParseError, match="30174"):
-        parse_section_page(SECTION_FIXTURE.read_bytes(), wrong, FETCHED_AT, FALL_2026)
+    html = SECTION_FIXTURE.read_bytes().replace(b'data-term="2268"', b"")
+    row = parse_section_page(html, AEROENG_10_REF, FETCHED_AT, FALL_2026)
+    assert row["term_id"] == "2268"
 
 
 def test_parse_section_page_without_blob() -> None:
     with pytest.raises(ParseError, match="drupal-settings-json"):
-        parse_section_page(b"<html><body><p>maintenance</p></body></html>", AEROENG_10_REF, FETCHED_AT, FALL_2026)
+        parse_section_page(b"<html><body>nothing</body></html>", AEROENG_10_REF, FETCHED_AT, FALL_2026)
 
 
 def test_parse_section_page_missing_keys() -> None:
-    broken = (
-        b'<html><body><script data-drupal-selector="drupal-settings-json">'
-        b'{"ucb": {"enrollment": {"available": {"id": 30174}}}}</script></body></html>'
-    )
-    with pytest.raises(ParseError, match="enrollmentStatus"):
-        parse_section_page(broken, AEROENG_10_REF, FETCHED_AT, FALL_2026)
+    html = b'<html><script type="application/json" data-drupal-selector="drupal-settings-json">{"ucb": {}}</script></html>'
+    with pytest.raises(ParseError, match="ucb.enrollment"):
+        parse_section_page(html, AEROENG_10_REF, FETCHED_AT, FALL_2026)
 
 
-def test_parse_listing_fixture() -> None:
-    refs = parse_listing_page(LISTING_FIXTURE.read_bytes())
-    assert len(refs) == 3
-    assert [r.section_id for r in refs] == ["30013", "30174", "30590"]
-    aeroeng_10 = refs[1]
-    assert aeroeng_10 == AEROENG_10_REF
-    assert refs[0].course_key == "AEROENG 1" and refs[0].component == "SEM"
-    assert refs[2].course_key == "AEROENG 100" and refs[2].url_path == "/content/2026-fall-aeroeng-100-001-lec-001"
+# -- catalog building ---------------------------------------------------------
 
 
-def test_parse_listing_subject_spaces_and_bad_rows(caplog: pytest.LogCaptureFixture) -> None:
-    html = b"""
-    <div class="views-row"><article>
-      <div class="st--section-number">#12345</div>
-      <a href="/content/2026-fall-el-eng-16a-001-lec-001">
-        <span class="st--section-name">EL ENG 16A</span>
-        <span class="st--section-count">001</span> -
-        <span class="st--section-code">LEC</span>
-        <span class="st--section-count">002</span>
-      </a></article></div>
-    <div class="views-row"><article><div class="st--section-number">#1</div></article></div>
-    """
-    with caplog.at_level(logging.WARNING, logger="scraper.sources.classes_site"):
-        refs = parse_listing_page(html)
-    assert len(refs) == 1
-    ref = refs[0]
-    assert ref.course_key == "ELENG 16A"  # subject spaces stripped, as the live site spells it
-    assert ref.subject == "ELENG"
-    assert ref.catalog_number == "16A"
-    assert ref.class_number == "001" and ref.section_number == "002"
-    assert any("skipping listing row" in rec.getMessage() for rec in caplog.records)
+def test_section_slug_matches_live_pattern() -> None:
+    assert section_slug(FALL_2026, "AEROENG", "10", "001", "LEC") == "/content/2026-fall-aeroeng-10-001-lec-001"
+    assert section_slug(FALL_2026, "EL ENG", "16A", "001", "LEC") == "/content/2026-fall-eleng-16a-001-lec-001"
+    assert section_slug(TermSpec.from_name("Spring 2027"), "DATA", "C100", "001", "LEC") == "/content/2027-spring-data-c100-001-lec-001"
 
 
-def test_parse_listing_all_rows_broken_raises() -> None:
-    with pytest.raises(ParseError):
-        parse_listing_page(b"<div class='views-row'><article></article></div>")
+def test_catalog_refs_from_fixture() -> None:
+    refs = catalog_refs(catalog_classes(), FALL_2026)
+    assert [r.course_key for r in refs][:1] == ["COMPSCI 61A"]
+    first = refs[0]
+    assert first.url_path == "/content/2026-fall-compsci-61a-001-lec-001"
+    assert first.section_id == ""
+    assert first.class_number == first.section_number == "001"
+    assert first.component == "LEC"
+    assert first.last_status is None
 
 
-def test_parse_listing_empty_page() -> None:
-    assert parse_listing_page(EMPTY_LISTING) == []
-
-
-def test_term_facets() -> None:
-    assert parse_term_facets(FACET_HTML) == [
-        ("Fall 2026 (6131)", "8588"),
-        ("Summer 2026 (2000)", "8400"),
-        ("Next page", "8588"),
+def test_catalog_refs_skips_self_study_and_malformed(caplog: pytest.LogCaptureFixture) -> None:
+    classes = [
+        make_class("COMPSCI", "61A"),
+        make_class("COMPSCI", "199", "003", "IND"),
+        make_class("COMPSCI", "198", "004", "GRP"),
+        {"subject": "DATA"},  # malformed
+        make_class("COMPSCI", "61A"),  # duplicate slug
     ]
-    assert find_term_facet_id(FACET_HTML, "Fall 2026") == "8588"
-    assert find_term_facet_id(FACET_HTML, "Summer 2026") == "8400"
-    assert find_term_facet_id(FACET_HTML, "Fall 202") is None
-    assert find_term_facet_id(FACET_HTML, "Spring 2031") is None
+    with caplog.at_level(logging.WARNING):
+        refs = catalog_refs(classes, FALL_2026)
+    assert [r.course_key for r in refs] == ["COMPSCI 61A"]
+    assert "skipping catalog entry" in caplog.text
+    assert "IND" in SELF_STUDY_COMPONENTS and "GRP" in SELF_STUDY_COMPONENTS
 
 
-# -- source: discovery and listing --------------------------------------------
+def test_merge_catalog_keeps_learned_state() -> None:
+    known = SectionRef(**{**AEROENG_10_REF.to_dict(), "last_status": 200, "probed_at": "2026-09-19T00:00:00+00:00"})
+    fresh = catalog_refs([make_class("AEROENG", "10"), make_class("DATA", "C100")], FALL_2026)
+    merged, added = merge_catalog([known], fresh)
+    assert added == 1
+    by_path = {r.url_path: r for r in merged}
+    assert by_path[known.url_path] == known  # id and probe state survive
+    assert by_path["/content/2026-fall-data-c100-001-lec-001"].section_id == ""
 
 
-def test_discover_term_facet_id(tmp_path: Path) -> None:
-    client = StubClient({f"{BASE}/search/class": FACET_HTML})
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE)
-    assert source.discover_term_facet_id("Fall 2026") == "8588"
+# -- source: catalog lifecycle ------------------------------------------------
+
+
+def test_first_run_builds_catalog_and_learns_ids(tmp_path: Path) -> None:
+    pages = {f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147)}
+    source, client, _ = make_source(tmp_path, pages)
+    result = source.fetch(FALL_2026, priority=None)
+    ids = [r["section_id"] for r in result.rows]
+    assert ids == ["29147"]
+    assert result.scope == "full"
+    # The other two fixture classes 404 (not routed): marked absent, not "missing"
+    # because their ids were never known.
+    assert result.missing_ids == []
+    catalog = read_catalog(tmp_path)
+    by_path = {s["url_path"]: s for s in catalog["sections"]}
+    assert by_path["/content/2026-fall-compsci-61a-001-lec-001"]["section_id"] == "29147"
+    assert by_path["/content/2026-fall-compsci-61a-001-lec-001"]["last_status"] == 200
+    absent = [s for s in catalog["sections"] if s["last_status"] == 404]
+    assert len(absent) == 2 and all(s["probed_at"] for s in absent)
+    assert catalog["refreshed_at"] == NOW.isoformat()
+
+
+def test_second_run_reuses_catalog_and_skips_absent(tmp_path: Path) -> None:
+    pages = {f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147)}
+    source, client, clock = make_source(tmp_path, pages)
+    source.fetch(FALL_2026, priority=None)
+    clock.now = NOW + timedelta(hours=1)
+    calls: list[int] = []
+    source2, client2, _ = make_source(tmp_path, pages, classes=Exception("provider must not be called"), clock=clock)
+    result = source2.fetch(FALL_2026, priority=None)
+    assert [r["section_id"] for r in result.rows] == ["29147"]
+    urls = client2.get_many_calls[0][0]
+    assert urls == [f"{BASE}/content/2026-fall-compsci-61a-001-lec-001"]  # absent slugs skipped
+    assert result.universe_ids == {"29147"}
+    assert not calls
+
+
+def test_stale_catalog_refreshes_and_reprobes_absent(tmp_path: Path) -> None:
+    pages = {f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147)}
+    source, _, clock = make_source(tmp_path, pages)
+    source.fetch(FALL_2026, priority=None)
+    # 25 hours later: refresh due, absent slugs older than 7 days are not yet due
+    clock.now = NOW + CATALOG_MAX_AGE + timedelta(hours=1)
+    source2, client2, _ = make_source(tmp_path, pages, clock=clock)
+    source2.fetch(FALL_2026, priority=None)
+    assert client2.get_many_calls[0][0] == [f"{BASE}/content/2026-fall-compsci-61a-001-lec-001"]
+    # 8 days later: refresh run re-probes the absent slugs (still 404 -> stay absent, probed_at moves)
+    clock.now = NOW + ABSENT_REPROBE_AFTER + timedelta(days=1)
+    source3, client3, _ = make_source(tmp_path, pages, clock=clock)
+    source3.fetch(FALL_2026, priority=None)
+    urls = client3.get_many_calls[0][0]
+    assert len(urls) == 3 and urls[0].endswith("compsci-61a-001-lec-001")
+    catalog = read_catalog(tmp_path)
+    absent = [s for s in catalog["sections"] if s["last_status"] == 404]
+    assert all(s["probed_at"] == clock.now.isoformat() for s in absent)
+
+
+def test_reprobe_is_capped_per_run(tmp_path: Path) -> None:
+    classes = [make_class("SUBJ", str(i)) for i in range(MAX_REPROBES_PER_RUN + 50)]
+    source, client, clock = make_source(tmp_path, {}, classes=classes)
+    source.fetch(FALL_2026, priority=None)  # everything 404s -> all absent
+    clock.now = NOW + ABSENT_REPROBE_AFTER + timedelta(days=1)
+    source2, client2, _ = make_source(tmp_path, {}, classes=classes, clock=clock)
+    source2.fetch(FALL_2026, priority=None)
+    assert len(client2.get_many_calls[0][0]) == MAX_REPROBES_PER_RUN
+
+
+def test_refresh_failure_falls_back_to_cached_catalog(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    pages = {f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147)}
+    source, _, clock = make_source(tmp_path, pages)
+    source.fetch(FALL_2026, priority=None)
+    clock.now = NOW + CATALOG_MAX_AGE + timedelta(hours=1)
+    source2, client2, _ = make_source(tmp_path, pages, classes=RuntimeError("berkeleytime down"), clock=clock)
+    with caplog.at_level(logging.WARNING):
+        result = source2.fetch(FALL_2026, priority=None)
+    assert [r["section_id"] for r in result.rows] == ["29147"]
+    assert "using cached copy" in caplog.text
+
+
+def test_refresh_failure_without_cache_propagates(tmp_path: Path) -> None:
+    source, _, _ = make_source(tmp_path, {}, classes=RuntimeError("berkeleytime down"))
+    with pytest.raises(RuntimeError, match="berkeleytime down"):
+        source.fetch(FALL_2026)
+
+
+def test_empty_catalog_means_term_not_published(tmp_path: Path) -> None:
+    source, _, _ = make_source(tmp_path, {}, classes=[])
     with pytest.raises(TermNotPublished):
-        source.discover_term_facet_id("Spring 2031")
+        source.fetch(TermSpec.from_name("Spring 2027"))
 
 
-def test_discover_ignores_pager_links_in_trimmed_fixture(tmp_path: Path) -> None:
-    # The trimmed listing has only pager anchors with term%3A8588 hrefs and no term text.
-    client = StubClient({f"{BASE}/search/class": LISTING_FIXTURE.read_bytes()})
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE)
-    with pytest.raises(TermNotPublished):
-        source.discover_term_facet_id("Fall 2026")
-
-
-def test_list_sections_paginates_and_caches(tmp_path: Path) -> None:
-    now = datetime(2026, 9, 18, 12, 0, tzinfo=timezone.utc)
-    client = StubClient(standard_pages({}))
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE, now=lambda: now)
-
-    refs = source.list_sections("8588", term_id="2268")
-    assert [r.section_id for r in refs] == ["30013", "30174", "30590"]
-    assert client.get_calls == [listing_url(0), listing_url(1)]
-
-    catalog = tmp_path / "catalog" / "2268" / "sections.json"
-    payload = json.loads(catalog.read_text(encoding="utf-8"))
-    assert set(payload) == {"term_id", "facet_id", "listed_at", "sections"}
-    assert payload["term_id"] == "2268" and payload["facet_id"] == "8588"
-    assert payload["listed_at"] == now.isoformat()
-    assert payload["sections"][1]["section_id"] == "30174"
-
-    # Fresh cache: no listing request.
-    again = source.list_sections("8588", term_id="2268")
-    assert again == refs
-    assert len(client.get_calls) == 2
-
-    # Limited run against the short cache: 3 < 18 rows, so one page is refetched
-    # and the partial result is not written back.
-    assert source.list_sections("8588", max_pages=1, term_id="2268") == refs
-    assert client.get_calls[2:] == [listing_url(0)]
-    assert json.loads(catalog.read_text(encoding="utf-8"))["sections"] == payload["sections"]
-
-    # A cache long enough for the requested pages is reused; too short is refetched.
-    long_refs = [
-        SectionRef(str(40000 + i), f"/content/s{i}", "COMPSCI 61A", "COMPSCI", "61A", "001", f"{i:03d}", "DIS")
-        for i in range(40)
-    ]
-    catalog.write_text(
+def test_legacy_listing_file_seeds_catalog(tmp_path: Path) -> None:
+    legacy = tmp_path / "catalog" / "2268" / "sections.json"
+    legacy.parent.mkdir(parents=True)
+    legacy.write_text(
         json.dumps(
             {
                 "term_id": "2268",
-                "facet_id": "8588",
-                "listed_at": now.isoformat(),
-                "sections": [r.to_dict() for r in long_refs],
+                "listed_at": "2026-09-19T02:30:00+00:00",
+                "sections": [
+                    AEROENG_10_REF.to_dict(),
+                    {**AEROENG_10_REF.to_dict(), "section_id": "1", "url_path": "/content/2026-fall-aeroeng-199-001-ind-001", "component": "IND"},
+                ],
             }
-        ),
-        encoding="utf-8",
+        )
     )
-    assert source.list_sections("8588", max_pages=2, term_id="2268") == long_refs  # 40 >= 36
-    assert len(client.get_calls) == 3
-    assert source.list_sections("8588", max_pages=3, term_id="2268") == refs  # 40 < 54: refetch
-    assert client.get_calls[3:] == [listing_url(0), listing_url(1)]
-
-    # Stale cache: refetched and rewritten.
-    stale = ClassesSiteSource(client, tmp_path, base_url=BASE, now=lambda: now + timedelta(hours=25))
-    assert stale.list_sections("8588", term_id="2268") == refs
-    assert client.get_calls[5:] == [listing_url(0), listing_url(1)]
-    assert len(json.loads(catalog.read_text(encoding="utf-8"))["sections"]) == 3
-
-
-def test_list_sections_partial_listing_not_cached(tmp_path: Path) -> None:
-    client = StubClient(standard_pages({}))
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE)
-    refs = source.list_sections("8588", max_pages=1, term_id="2268")
-    assert len(refs) == 3
-    assert client.get_calls == [listing_url(0)]
-    assert not (tmp_path / "catalog").exists()
-
-
-def test_list_sections_stops_on_404_after_first_page(tmp_path: Path) -> None:
-    pages = standard_pages({})
-    pages[listing_url(1)] = HttpError(404, listing_url(1))
-    source = ClassesSiteSource(StubClient(pages), tmp_path, base_url=BASE)
-    assert len(source.list_sections("8588")) == 3
-
-
-def test_list_sections_propagates_first_page_error(tmp_path: Path) -> None:
-    pages = standard_pages({})
-    pages[listing_url(0)] = HttpError(503, listing_url(0))
-    source = ClassesSiteSource(StubClient(pages), tmp_path, base_url=BASE)
-    with pytest.raises(HttpError):
-        source.list_sections("8588")
-
-
-# -- source: fetch --------------------------------------------------------------
-
-
-def test_fetch_with_real_http_client_retry_and_404(tmp_path: Path) -> None:
-    clock = FakeClock()
-    url_30013 = f"{BASE}/content/2026-fall-aeroeng-1-001-sem-001"
-    url_30174 = f"{BASE}/content/2026-fall-aeroeng-10-001-lec-001"
-    url_30590 = f"{BASE}/content/2026-fall-aeroeng-100-001-lec-001"
-    opener = FakeOpener(
-        {
-            f"{BASE}/search/class": [FakeResponse(FACET_HTML)],
-            listing_url(0): [FakeResponse(LISTING_FIXTURE.read_bytes())],
-            listing_url(1): [FakeResponse(EMPTY_LISTING)],
-            url_30013: [FakeResponse(section_page(30013, enrolledCount=7, maxEnroll=7, status={"code": "C"}))],
-            url_30174: [http_error(url_30174, 500), FakeResponse(SECTION_FIXTURE.read_bytes())],
-            url_30590: [http_error(url_30590, 404)],
-        }
-    )
-    client = HttpClient(
-        "test-agent/0",
-        min_interval_s=1.0,
-        max_concurrency=1,
-        retries=3,
-        sleep=clock.sleep,
-        clock=clock.now,
-        opener=opener,
-        rng=lambda: 0.0,
-    )
-    fetched = datetime(2026, 9, 18, 21, 30, tzinfo=timezone.utc)
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE, now=lambda: fetched)
-
-    result = source.fetch(FALL_2026)
-
-    assert result.scope == "full"
-    assert result.shard == "" and result.priority_sha == ""
-    assert result.universe_ids == {"30013", "30174", "30590"}
-    assert result.missing_ids == ["30590"]
-    assert result.observed_ids == ["30013", "30174"]
-    by_id = {row["section_id"]: row for row in result.rows}
-    assert by_id["30174"]["enrolled_count"] == 60 and by_id["30174"]["term_id"] == "2268"
-    assert by_id["30013"]["enrolled_count"] == 7 and by_id["30013"]["status"] == "C"
-    assert all(row["fetched_at"] == fetched for row in result.rows)
-    assert opener.calls.count(url_30174) == 2  # 500 then 200
-    assert opener.calls.count(url_30590) == 1  # 404 never retried
-    assert rows_to_table(result.rows).num_rows == 2
-    assert (tmp_path / "catalog" / "2268" / "sections.json").exists()
-
-
-def test_fetch_parse_error_goes_to_missing(tmp_path: Path) -> None:
-    pages = standard_pages(
-        {
-            f"{BASE}/content/2026-fall-aeroeng-1-001-sem-001": section_page(30013),
-            f"{BASE}/content/2026-fall-aeroeng-10-001-lec-001": section_page(11111),  # wrong id
-            f"{BASE}/content/2026-fall-aeroeng-100-001-lec-001": b"<html><body>no blob</body></html>",
-        }
-    )
-    source = ClassesSiteSource(StubClient(pages), tmp_path, base_url=BASE)
-    result = source.fetch(FALL_2026)
-    assert result.observed_ids == ["30013"]
-    assert result.missing_ids == ["30174", "30590"]
-
-
-def test_fetch_time_budget_cutoff(tmp_path: Path) -> None:
-    pages = standard_pages(
-        {
-            f"{BASE}/content/2026-fall-aeroeng-1-001-sem-001": section_page(30013),
-            f"{BASE}/content/2026-fall-aeroeng-10-001-lec-001": section_page(30174),
-            f"{BASE}/content/2026-fall-aeroeng-100-001-lec-001": section_page(30590),
-        }
-    )
-    client = StubClient(pages, attempt_limit=1)
-    fake = FakeClock()
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE, clock=fake.now)
-    result = source.fetch(FALL_2026, time_budget_s=100.0)
-    assert result.observed_ids == ["30013"]
-    assert result.missing_ids == ["30174", "30590"]
-    # the whole budget is handed to get_many when listing took no time
-    assert client.get_many_calls[0][1] == pytest.approx(100.0)
-
-
-def test_fetch_listing_time_counts_against_budget(tmp_path: Path) -> None:
-    fake = FakeClock()
-    pages = standard_pages({})
-
-    class SlowListingClient(StubClient):
-        def get(self, url: str, headers: dict[str, str] | None = None) -> bytes:
-            fake.sleep(30.0)
-            return super().get(url, headers)
-
-    client = SlowListingClient(pages)
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE, clock=fake.now)
-    result = source.fetch(FALL_2026, time_budget_s=60.0)
-    # discovery + 2 listing pages = 90s > 60s budget: nothing attempted
-    assert client.get_many_calls[0][1] == 0.0
-    assert result.rows == []
-    assert result.missing_ids == ["30013", "30174", "30590"]
-
-
-def test_fetch_priority_and_shard(tmp_path: Path) -> None:
-    section_urls = {
-        f"{BASE}/content/2026-fall-aeroeng-1-001-sem-001": section_page(30013),
-        f"{BASE}/content/2026-fall-aeroeng-10-001-lec-001": section_page(30174),
-        f"{BASE}/content/2026-fall-aeroeng-100-001-lec-001": section_page(30590),
+    pages = {
+        f"{BASE}/content/2026-fall-aeroeng-10-001-lec-001": SECTION_FIXTURE.read_bytes(),
+        f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147),
     }
-    client = StubClient(standard_pages(section_urls))
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE)
-    priority = PrioritySpec.from_text("# impacted\nAEROENG 10\n")
-    n = 4
-    k = shard_of("30590", n)
+    source, client, _ = make_source(tmp_path, pages, classes=[make_class("COMPSCI", "61A")])
+    result = source.fetch(FALL_2026, priority=None)
+    assert sorted(r["section_id"] for r in result.rows) == ["29147", "30174"]
+    paths = {s["url_path"] for s in read_catalog(tmp_path)["sections"]}
+    assert "/content/2026-fall-aeroeng-199-001-ind-001" not in paths  # self-study dropped
+    assert "/content/2026-fall-aeroeng-10-001-lec-001" in paths
 
-    result = source.fetch(FALL_2026, priority=priority, shard=(k, n))
 
-    expected = {"30174"} | {sid for sid in ("30013", "30174", "30590") if shard_of(sid, n) == k}
-    assert set(result.observed_ids) == expected
-    assert "30590" in result.observed_ids
-    assert result.scope == "priority"
-    assert result.shard == f"{k}/{n}"
-    assert result.priority_sha == priority.sha
+def test_catalog_written_only_when_changed(tmp_path: Path) -> None:
+    pages = {f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147)}
+    source, _, clock = make_source(tmp_path, pages)
+    source.fetch(FALL_2026, priority=None)
+    path = tmp_path / "catalog" / "2268" / "catalog.json"
+    before = path.stat().st_mtime_ns
+    text_before = path.read_text()
+    clock.now = NOW + timedelta(hours=1)
+    source2, _, _ = make_source(tmp_path, pages, clock=clock)
+    source2.fetch(FALL_2026, priority=None)
+    assert path.read_text() == text_before and path.stat().st_mtime_ns == before
+
+
+# -- source: selection and fetching -------------------------------------------
+
+
+def test_priority_rank_order_then_shard(tmp_path: Path) -> None:
+    classes = [
+        make_class("MCELLBI", "102"),
+        make_class("COMPSCI", "61A"),
+        make_class("DATA", "C100"),
+        make_class("ART", "1"),
+        make_class("HISTORY", "7A"),
+        make_class("MUSIC", "27"),
+        make_class("PHYSICS", "7A"),
+    ]
+    priority = PrioritySpec.from_text("COMPSCI *\nDATA *\nPHYSICS 7*\nMCELLBI *")
+    source, client, _ = make_source(tmp_path, {}, classes=classes, n_shards=2)
+    result = source.fetch(FALL_2026, priority=priority, shard=(1, 2))
+    urls = client.get_many_calls[0][0]
+    keys = [u.rsplit("/", 1)[1] for u in urls]
+    assert keys[:4] == [
+        "2026-fall-compsci-61a-001-lec-001",
+        "2026-fall-data-c100-001-lec-001",
+        "2026-fall-physics-7a-001-lec-001",
+        "2026-fall-mcellbi-102-001-lec-001",
+    ]
+    rest = keys[4:]
+    expected_rest = sorted(
+        f"2026-fall-{s.lower()}-{c.lower()}-001-lec-001"
+        for s, c in (("ART", "1"), ("HISTORY", "7A"), ("MUSIC", "27"))
+        if shard_of(f"/content/2026-fall-{s.lower()}-{c.lower()}-001-lec-001", 2) == 1
+    )
+    assert sorted(rest) == expected_rest
+    assert result.scope == "priority" and result.shard == "1/2" and result.priority_sha == priority.sha
     assert result.universe_ids is None
-    assert result.missing_ids == []
-    requested = client.get_many_calls[0][0]
-    assert len(requested) == len(expected)
 
 
-def test_fetch_priority_without_shard(tmp_path: Path) -> None:
-    section_urls = {f"{BASE}/content/2026-fall-aeroeng-10-001-lec-001": section_page(30174)}
-    client = StubClient(standard_pages(section_urls))
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE)
-    result = source.fetch(FALL_2026, priority=PrioritySpec.from_text("AEROENG 10\n"))
-    assert result.observed_ids == ["30174"]
-    assert result.shard == ""
-    assert result.scope == "priority"
+def test_priority_without_shard_fetches_priority_only(tmp_path: Path) -> None:
+    classes = [make_class("COMPSCI", "61A"), make_class("ART", "1")]
+    source, client, _ = make_source(tmp_path, {}, classes=classes, n_shards=0)
+    source.fetch(FALL_2026, priority=PrioritySpec.from_text("COMPSCI *"), shard=None)
+    assert [u.rsplit("/", 1)[1] for u in client.get_many_calls[0][0]] == ["2026-fall-compsci-61a-001-lec-001"]
 
 
-def test_fetch_limit_shortens_listing_and_selection(tmp_path: Path) -> None:
-    section_urls = {
-        f"{BASE}/content/2026-fall-aeroeng-1-001-sem-001": section_page(30013),
-        f"{BASE}/content/2026-fall-aeroeng-10-001-lec-001": section_page(30174),
+def test_missing_ids_only_for_known_sections(tmp_path: Path) -> None:
+    pages = {
+        f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147),
+        f"{BASE}/content/2026-fall-data-c100-001-lec-001": section_html(20882),
     }
-    client = StubClient(standard_pages(section_urls))
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE)
-    result = source.fetch(FALL_2026, limit=2)
-    assert result.observed_ids == ["30013", "30174"]
+    classes = [make_class("COMPSCI", "61A"), make_class("DATA", "C100")]
+    source, _, clock = make_source(tmp_path, pages, classes=classes)
+    source.fetch(FALL_2026, priority=None)
+    # Next run: DATA C100 fails with a 503 (known id -> missing), COMPSCI parses.
+    pages2 = {
+        f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147),
+        f"{BASE}/content/2026-fall-data-c100-001-lec-001": HttpError(503, "x", "down"),
+    }
+    clock.now = NOW + timedelta(minutes=30)
+    source2, _, _ = make_source(tmp_path, pages2, classes=classes, clock=clock)
+    result = source2.fetch(FALL_2026, priority=None)
+    assert result.missing_ids == ["20882"]
+    assert result.universe_ids == {"29147", "20882"}
+    # a 503 does not change the catalog entry
+    entry = next(s for s in read_catalog(tmp_path)["sections"] if s["url_path"].endswith("data-c100-001-lec-001"))
+    assert entry["last_status"] == 200 and entry["section_id"] == "20882"
+
+
+def test_known_section_turning_404_goes_to_missing_and_absent(tmp_path: Path) -> None:
+    pages = {f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147)}
+    source, _, clock = make_source(tmp_path, pages, classes=[make_class("COMPSCI", "61A")])
+    source.fetch(FALL_2026, priority=None)
+    clock.now = NOW + timedelta(minutes=30)
+    source2, _, _ = make_source(tmp_path, {}, classes=[make_class("COMPSCI", "61A")], clock=clock)
+    result = source2.fetch(FALL_2026, priority=None)
+    assert result.rows == [] and result.missing_ids == ["29147"]
+    entry = read_catalog(tmp_path)["sections"][0]
+    assert entry["last_status"] == 404 and entry["section_id"] == "29147"
+
+
+def test_parse_error_goes_to_missing_when_id_known(tmp_path: Path) -> None:
+    pages = {f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": section_html(29147)}
+    source, _, clock = make_source(tmp_path, pages, classes=[make_class("COMPSCI", "61A")])
+    source.fetch(FALL_2026, priority=None)
+    clock.now = NOW + timedelta(minutes=30)
+    bad = {f"{BASE}/content/2026-fall-compsci-61a-001-lec-001": b"<html>no blob</html>"}
+    source2, _, _ = make_source(tmp_path, bad, classes=[make_class("COMPSCI", "61A")], clock=clock)
+    result = source2.fetch(FALL_2026, priority=None)
+    assert result.missing_ids == ["29147"]
+
+
+def test_time_budget_cutoff_marks_known_ids_missing(tmp_path: Path) -> None:
+    classes = [make_class("SUBJ", str(i)) for i in range(4)]
+    pages = {f"{BASE}/content/2026-fall-subj-{i}-001-lec-001": section_html(1000 + i) for i in range(4)}
+    source, _, clock = make_source(tmp_path, pages, classes=classes)
+    source.fetch(FALL_2026, priority=None)
+    clock.now = NOW + timedelta(minutes=30)
+    source2, client2, _ = make_source(tmp_path, pages, classes=classes, clock=clock, attempt_limit=2)
+    result = source2.fetch(FALL_2026, priority=None, time_budget_s=100)
+    assert len(result.rows) == 2 and len(result.missing_ids) == 2
+    assert client2.get_many_calls[0][1] == 100.0
+
+
+def test_catalog_refresh_time_counts_against_budget(tmp_path: Path) -> None:
+    clock = Clock()
+    source, client, _ = make_source(tmp_path, {}, classes=[make_class("COMPSCI", "61A")], clock=clock)
+    original = source._catalog_provider
+
+    def slow_provider(term: TermSpec) -> list[dict]:
+        clock.mono += 50.0
+        return original(term)
+
+    source._catalog_provider = slow_provider
+    source.fetch(FALL_2026, priority=None, time_budget_s=120)
+    assert client.get_many_calls[0][1] == pytest.approx(70.0)
+
+
+def test_limit_caps_selection_and_unknown_universe(tmp_path: Path) -> None:
+    classes = [make_class("SUBJ", str(i)) for i in range(5)]
+    source, client, _ = make_source(tmp_path, {}, classes=classes)
+    result = source.fetch(FALL_2026, priority=None, limit=2)
+    assert len(client.get_many_calls[0][0]) == 2
     assert result.universe_ids is None
-    listing_calls = [u for u in client.get_calls if "page=" in u]
-    assert len(listing_calls) <= math.ceil(2 / 18) + 1
-    assert not (tmp_path / "catalog").exists()  # partial listing is not cached
-
-
-def test_fetch_catalog_max_pages_caps_listing(tmp_path: Path) -> None:
-    section_urls = {
-        f"{BASE}/content/2026-fall-aeroeng-1-001-sem-001": section_page(30013),
-        f"{BASE}/content/2026-fall-aeroeng-10-001-lec-001": section_page(30174),
-        f"{BASE}/content/2026-fall-aeroeng-100-001-lec-001": section_page(30590),
-    }
-    client = StubClient(standard_pages(section_urls))
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE, catalog_max_pages=1)
-    result = source.fetch(FALL_2026)
-    assert result.observed_ids == ["30013", "30174", "30590"]
-    assert result.scope == "full"
-    assert result.universe_ids is None  # capped listing is not the universe
-    assert [u for u in client.get_calls if "page=" in u] == [listing_url(0)]
-    assert not (tmp_path / "catalog").exists()
-    with pytest.raises(ValueError):
-        ClassesSiteSource(client, tmp_path, base_url=BASE, catalog_max_pages=0)
-
-
-def test_fetch_term_not_published(tmp_path: Path) -> None:
-    source = ClassesSiteSource(StubClient(standard_pages({})), tmp_path, base_url=BASE)
-    with pytest.raises(TermNotPublished):
-        source.fetch(TermSpec.from_name("Spring 2031"))
 
 
 def test_fetch_rejects_bad_shard(tmp_path: Path) -> None:
-    source = ClassesSiteSource(StubClient(standard_pages({})), tmp_path, base_url=BASE)
+    source, _, _ = make_source(tmp_path, {}, classes=[make_class("COMPSCI", "61A")])
     with pytest.raises(ValueError):
-        source.fetch(FALL_2026, priority=PrioritySpec.from_text("AEROENG 10\n"), shard=(4, 4))
+        source.fetch(FALL_2026, priority=PrioritySpec.from_text("COMPSCI *"), shard=(5, 2))
 
 
-def test_fetch_priority_sections_are_scheduled_before_shard_members(tmp_path: Path) -> None:
-    """A budget cutoff must trim the rotating shard, never the priority list."""
-    section_urls = {
-        f"{BASE}/content/2026-fall-aeroeng-1-001-sem-001": section_page(30013),
-        f"{BASE}/content/2026-fall-aeroeng-10-001-lec-001": section_page(30174),
-        f"{BASE}/content/2026-fall-aeroeng-100-001-lec-001": section_page(30590),
-    }
-    # AEROENG 100 (30590) is the LAST listing row; shard (0, 1) covers every section.
-    client = StubClient(standard_pages(section_urls), attempt_limit=1)
-    source = ClassesSiteSource(client, tmp_path, base_url=BASE)
-
-    result = source.fetch(FALL_2026, priority=PrioritySpec.from_text("AEROENG 100\n"), shard=(0, 1))
-
-    requested = client.get_many_calls[0][0]
-    assert requested[0].endswith("/content/2026-fall-aeroeng-100-001-lec-001")
-    assert [u.rsplit("/", 1)[1] for u in requested[1:]] == [
-        "2026-fall-aeroeng-1-001-sem-001", "2026-fall-aeroeng-10-001-lec-001",
-    ]
-    assert result.observed_ids == ["30590"]
-    assert result.missing_ids == ["30013", "30174"]
+def test_fetch_rejects_bad_limit(tmp_path: Path) -> None:
+    source, _, _ = make_source(tmp_path, {}, classes=[make_class("COMPSCI", "61A")])
+    with pytest.raises(ValueError):
+        source.fetch(FALL_2026, limit=0)

@@ -24,7 +24,7 @@ import os
 import re
 import tempfile
 from dataclasses import dataclass, field
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
@@ -79,9 +79,15 @@ class RunMeta:
     """Per-file run metadata; mirrors the parquet key-value metadata table.
 
     ``observed_ids`` is the list of section ids successfully fetched in the
-    run. It is persisted only when ``scope == "priority"`` (the full-scope
-    observed set is reconstructed from the day's state, see rebuild.py);
-    it reads back as ``None`` when absent from a file.
+    run. It is persisted whenever given, except for a complete full-scope
+    sweep (``scope == "full"`` and ``complete is True``), whose observed set
+    rebuild.py reconstructs from the carried state; it reads back as ``None``
+    when absent from a file.
+
+    ``complete`` (metadata key ``complete`` = ``"true"`` / ``"false"``) says
+    whether the run attempted the whole term universe: full scope, universe
+    known, not truncated by a time budget or ``--limit``. ``None`` means the
+    file predates the key.
     """
 
     run_started_at: datetime
@@ -95,6 +101,7 @@ class RunMeta:
     n_observed: int = 0
     n_written: int = 0
     observed_ids: list[str] | None = None
+    complete: bool | None = None
 
     def validate(self) -> None:
         """Raise ValueError if kind/scope/run_started_at are not acceptable."""
@@ -112,7 +119,8 @@ class RunMeta:
         """Serialize to parquet key-value metadata (all values strings).
 
         Lists are JSON-encoded, sorted and de-duplicated. ``observed_ids`` is
-        written only when scope is ``priority`` and it is not ``None``.
+        written when it is not ``None``, except for a complete full-scope run
+        (see the class docstring); ``complete`` is written when not ``None``.
         """
         self.validate()
         md = {
@@ -127,7 +135,9 @@ class RunMeta:
             "n_observed": str(int(self.n_observed)),
             "n_written": str(int(self.n_written)),
         }
-        if self.scope == "priority" and self.observed_ids is not None:
+        if self.complete is not None:
+            md["complete"] = "true" if self.complete else "false"
+        if self.observed_ids is not None and not (self.scope == "full" and self.complete is True):
             md["observed_ids"] = _dump_ids(self.observed_ids)
         return md
 
@@ -163,6 +173,7 @@ class RunMeta:
             n_observed=_load_int(md.get("n_observed", "0"), "n_observed"),
             n_written=_load_int(md.get("n_written", "0"), "n_written"),
             observed_ids=None if observed is None else _load_ids(observed, "observed_ids"),
+            complete=_load_bool(md.get("complete"), "complete"),
         )
         meta.validate()
         return meta
@@ -183,6 +194,16 @@ def _load_ids(text: str, key: str) -> list[str]:
     if not isinstance(value, list) or not all(isinstance(x, str) for x in value):
         raise ValueError(f"metadata {key} must be a JSON list of strings")
     return value
+
+
+def _load_bool(text: str | None, key: str) -> bool | None:
+    if text is None:
+        return None
+    if text == "true":
+        return True
+    if text == "false":
+        return False
+    raise ValueError(f"metadata {key} must be 'true' or 'false', got {text!r}")
 
 
 def _load_int(text: str, key: str) -> int:
@@ -374,32 +395,96 @@ def write_status(data_root: Path, status: Mapping[str, Any]) -> Path:
 # --------------------------------------------------------------------------
 
 
-def latest_state(data_root: Path, term_id: str, as_of_date: date) -> pd.DataFrame | None:
-    """Most recent observation of every section seen on ``as_of_date`` (UTC).
+DEFAULT_LOOKBACK_DAYS = 7
 
-    Applies that day's files for ``term_id`` in time order as upserts,
-    starting from the first baseline. Returns a DataFrame indexed by
-    ``section_id`` with every other schema field (identity + COUNT_FIELDS,
-    nullable dtypes), or ``None`` when the day has no baseline for the term.
-    """
-    paths = list_snapshots(data_root, as_of_date)
-    state: dict[str, dict[str, Any]] = {}
-    have_baseline = False
-    for path in paths:
-        meta = read_meta(path)
-        if meta.term_id != term_id:
+
+def latest_baseline_meta(data_root: Path, term_id: str, as_of_date: date) -> RunMeta | None:
+    """Metadata of the most recent baseline written for ``term_id`` on
+    ``as_of_date`` (UTC); ``None`` when that day has no baseline for the term.
+    Reads only file footers."""
+    found: RunMeta | None = None
+    for path in list_snapshots(data_root, as_of_date):
+        ref = parse_snapshot_path(path)
+        if ref is None or ref.kind != "baseline":
             continue
-        if meta.kind == "baseline":
-            have_baseline = True
-        table, _ = read_snapshot(path)
-        for row in table.to_pylist():
-            state[row["section_id"]] = row
-    if not have_baseline:
-        return None
+        meta = read_meta(path)
+        if meta.term_id == term_id:
+            found = meta
+    return found
+
+
+def _window(as_of_date: date, lookback_days: int) -> list[date]:
+    """``as_of_date`` and the ``lookback_days`` UTC days before it, oldest first."""
+    if lookback_days < 0:
+        raise ValueError(f"lookback_days must be >= 0, got {lookback_days}")
+    return [as_of_date - timedelta(days=k) for k in range(lookback_days, -1, -1)]
+
+
+def _replay(data_root: Path, term_id: str, days: Iterable[date]) -> tuple[dict[str, dict[str, Any]], int]:
+    """Upsert every file of ``term_id`` for ``days`` in time order.
+    Returns the state and the number of files applied."""
+    state: dict[str, dict[str, Any]] = {}
+    n_files = 0
+    for day in days:
+        for path in list_snapshots(data_root, day):
+            meta = read_meta(path)
+            if meta.term_id != term_id:
+                continue
+            table, _ = read_snapshot(path)
+            for row in table.to_pylist():
+                state[row["section_id"]] = row
+            n_files += 1
+    return state, n_files
+
+
+def _state_frame(state: Mapping[str, dict[str, Any]]) -> pd.DataFrame:
     rows = [state[sid] for sid in sorted(state)]
     table = pa.Table.from_pylist(rows, schema=SNAPSHOT_SCHEMA) if rows else rows_to_table([])
-    frame = table_to_frame(table)
-    return frame.set_index("section_id")
+    return table_to_frame(table).set_index("section_id")
+
+
+def carried_state(
+    data_root: Path, term_id: str, as_of_date: date, *, lookback_days: int = DEFAULT_LOOKBACK_DAYS
+) -> pd.DataFrame | None:
+    """State a run on ``as_of_date`` (UTC) starts from, baseline or not.
+
+    Every file of ``term_id`` from the ``lookback_days`` days before
+    ``as_of_date`` and from ``as_of_date`` itself, applied in time order as
+    upserts (the same carry-forward rebuild.py performs, limited to the
+    window). Returns a DataFrame indexed by ``section_id`` with every other
+    schema field, or ``None`` when no file of the term lies in the window.
+    This is what a full-scope baseline compares against to tombstone the ids
+    that vanished since the previous day (``baseline_with_tombstones``).
+    """
+    state, n_files = _replay(data_root, term_id, _window(as_of_date, lookback_days))
+    return _state_frame(state) if n_files else None
+
+
+def latest_state(
+    data_root: Path,
+    term_id: str,
+    as_of_date: date,
+    *,
+    seed_from_previous_days: bool = True,
+    lookback_days: int = DEFAULT_LOOKBACK_DAYS,
+) -> pd.DataFrame | None:
+    """Most recent observation of every section known on ``as_of_date`` (UTC).
+
+    ``None`` when the day has no baseline for ``term_id``. Otherwise the
+    day's files are applied in time order as upserts on top of the state
+    carried from the previous ``lookback_days`` days (``carried_state``), so
+    a section present in yesterday's final state but absent from today's
+    baseline is still compared against, and the first full-scope delta of
+    the day tombstones it when it is not in the universe either. Pass
+    ``seed_from_previous_days=False`` (or ``lookback_days=0``) for the day's
+    files alone. Returns a DataFrame indexed by ``section_id`` with every
+    other schema field (identity + COUNT_FIELDS, nullable dtypes).
+    """
+    if latest_baseline_meta(data_root, term_id, as_of_date) is None:
+        return None
+    days = _window(as_of_date, lookback_days if seed_from_previous_days else 0)
+    state, _ = _replay(data_root, term_id, days)
+    return _state_frame(state)
 
 
 def compute_delta(
@@ -414,19 +499,24 @@ def compute_delta(
     Comparison is null-safe (``None == None`` is unchanged). Sections absent
     from ``previous`` are always emitted. When ``universe_ids`` is given
     (full scope), a tombstone row is emitted for every id in ``previous``
-    that is in neither ``observed`` nor ``universe_ids`` and is not already a
-    tombstone: ``section_status="GONE"``, other COUNT_FIELDS and identity
-    fields copied from ``previous``, ``fetched_at`` = the run time passed in,
-    ``source`` = ``source`` if given, else the source of ``observed`` (or of
-    the previous row when ``observed`` is empty). Result validates against
-    SNAPSHOT_SCHEMA and may be empty.
+    that is in neither ``observed`` nor ``universe_ids``, is not already a
+    tombstone, and whose ``source`` is the current source: ``section_status=
+    "GONE"``, other COUNT_FIELDS and identity fields copied from ``previous``,
+    ``fetched_at`` = the run time passed in, ``source`` = the current source.
+
+    The current source is ``source`` if given, else the source of the
+    ``observed`` rows; when neither is known (nothing observed) the previous
+    row's source is used and the guard is moot. Rows written by another
+    source are never tombstoned: their ids may live in another namespace
+    (Berkeleytime's ``bt:...``) or scope, so their absence says nothing.
+    Result validates against SNAPSHOT_SCHEMA and may be empty.
     """
     validate_table(observed)
     run_time = ensure_utc(fetched_at, "fetched_at")
     prev_rows = _previous_rows(previous)
     observed_rows = observed.to_pylist()
     observed_ids = {r["section_id"] for r in observed_rows}
-    current_source = source or (observed_rows[0]["source"] if observed_rows else None)
+    current_source = _current_source(source, observed_rows)
 
     changed: list[SnapshotRow] = []
     for row in observed_rows:
@@ -434,20 +524,85 @@ def compute_delta(
         if prev is None or _counts(prev) != _counts(row):
             changed.append(row)  # type: ignore[arg-type]
 
-    tombstones: list[SnapshotRow] = []
-    if universe_ids is not None:
-        for sid in sorted(prev_rows):
-            prev = prev_rows[sid]
-            if sid in observed_ids or sid in universe_ids:
-                continue
-            if prev.get("section_status") == TOMBSTONE_STATUS:
-                continue  # already recorded as gone; unchanged
-            tombstones.append(_tombstone(prev, run_time, current_source or prev["source"]))
+    tombstones = _tombstones(prev_rows, observed_ids, universe_ids, run_time, current_source)
     logger.info(
         "delta: %d changed/new of %d observed, %d tombstones",
         len(changed), len(observed_rows), len(tombstones),
     )
     return rows_to_table(changed + tombstones)
+
+
+def compute_tombstones(
+    previous: pd.DataFrame | None,
+    observed: pa.Table,
+    universe_ids: set[str] | None,
+    fetched_at: datetime,
+    source: str | None = None,
+) -> pa.Table:
+    """Only the tombstone rows ``compute_delta`` would emit for the same arguments.
+
+    Empty when ``universe_ids`` or ``previous`` is ``None``. Used by fetch.py
+    so that a full-scope baseline can express the disappearance of ids
+    carried from the previous day.
+    """
+    validate_table(observed)
+    run_time = ensure_utc(fetched_at, "fetched_at")
+    prev_rows = _previous_rows(previous)
+    observed_rows = observed.to_pylist()
+    observed_ids = {r["section_id"] for r in observed_rows}
+    return rows_to_table(_tombstones(prev_rows, observed_ids, universe_ids, run_time, _current_source(source, observed_rows)))
+
+
+def baseline_with_tombstones(
+    previous: pd.DataFrame | None,
+    observed: pa.Table,
+    universe_ids: set[str] | None,
+    fetched_at: datetime,
+    source: str | None = None,
+) -> pa.Table:
+    """``observed`` (every row of a baseline) followed by ``compute_tombstones(...)``.
+
+    ``previous`` is the state carried into the run (``carried_state``); ids
+    in it that are in neither ``observed`` nor ``universe_ids`` get a GONE
+    row, so the day boundary cannot turn a vanished section into a zombie.
+    Returns ``observed`` itself when there is nothing to tombstone.
+    """
+    tombstones = compute_tombstones(previous, observed, universe_ids, fetched_at, source)
+    if tombstones.num_rows == 0:
+        return observed
+    table = pa.concat_tables([observed.replace_schema_metadata(None), tombstones])
+    validate_table(table)
+    logger.info("baseline: %d observed rows, %d tombstones", observed.num_rows, tombstones.num_rows)
+    return table
+
+
+def _current_source(source: str | None, observed_rows: list[dict[str, Any]]) -> str | None:
+    if source:
+        return str(source)
+    return observed_rows[0]["source"] if observed_rows else None
+
+
+def _tombstones(
+    prev_rows: Mapping[str, dict[str, Any]],
+    observed_ids: set[str],
+    universe_ids: set[str] | None,
+    run_time: datetime,
+    current_source: str | None,
+) -> list[SnapshotRow]:
+    """GONE rows for previous rows of the current source that are neither observed nor in the universe."""
+    out: list[SnapshotRow] = []
+    if universe_ids is None:
+        return out
+    for sid in sorted(prev_rows):
+        prev = prev_rows[sid]
+        if sid in observed_ids or sid in universe_ids:
+            continue
+        if prev.get("section_status") == TOMBSTONE_STATUS:
+            continue  # already recorded as gone; unchanged
+        if current_source is not None and prev.get("source") != current_source:
+            continue  # another source's row: never tombstoned across sources
+        out.append(_tombstone(prev, run_time, current_source or prev["source"]))
+    return out
 
 
 def _tombstone(prev: dict[str, Any], run_time: datetime, source: str) -> SnapshotRow:
@@ -496,13 +651,18 @@ def _py(value: Any) -> Any:
 
 
 __all__ = [
+    "DEFAULT_LOOKBACK_DAYS",
     "KINDS",
     "SCOPES",
     "RunMeta",
     "SnapshotRef",
     "SchemaError",
+    "baseline_with_tombstones",
+    "carried_state",
     "compute_delta",
+    "compute_tombstones",
     "ensure_utc",
+    "latest_baseline_meta",
     "latest_state",
     "list_snapshots",
     "parse_snapshot_path",
