@@ -93,7 +93,7 @@ jobs:
         run: |
           # --time-budget-s is passed explicitly so the 29-minute arithmetic
           # above does not depend on the CLI default in scraper/config.py.
-          args=(--term "$TERM_NAME" --source "$SOURCE" --data-root data-branch --time-budget-s 1200)
+          args=(--term "$TERM_NAME" --source "$SOURCE" --data-root data-branch --time-budget-s 1380 --n-shards 12)
           if [ "$FORCE_BASELINE" = "true" ]; then
             args+=(--force-baseline)
           fi

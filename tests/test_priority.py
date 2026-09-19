@@ -41,10 +41,12 @@ def test_shipped_priority_file_matches_live_site_spellings() -> None:
     spec = PrioritySpec.from_file(PRIORITY_FILE)
     for key in (
         "COMPSCI 61A", "DATA C100", "STAT 134", "EECS 16A", "ELENG 16A", "MATH 1A", "MATH 53",
-        "ECON 1", "ECON 100A", "PSYCH 1", "UGBA 10", "PHYSICS 7A", "CHEM 1A", "CHEM 3A", "MCELLBI 32",
-        "INTEGBI 131", "POLSCI 1", "SOCIOL 1", "PHILOS 2", "ENGLISH R1A", "COLWRIT R4A", "L&S 1",
-        "INDENG 24", "NUCENG 10",
+        "ECON 1", "ECON 100A", "PSYCH 1", "UGBA 10", "UGBA 101", "PHYSICS 7A", "CHEM 1A", "CHEM 3A",
+        "MCELLBI 32", "INTEGBI 131", "POLSCI 1", "SOCIOL 1", "PHILOS 2", "ENGLISH R1A", "COLWRIT R4A",
+        "L&S 1", "INDENG 24", "NUCENG 10", "MECENG 40", "PHYSED 1",
     ):
         assert spec.matches(key), key
-    for key in ("ECON 2", "UGBA 101", "AEROENG 10", "PSYCH 2", "POLSCI 2", "AFRICAM R1B"):
+    for key in ("ECON 2", "AEROENG 10", "PSYCH 2", "POLSCI 2", "AFRICAM R1B", "MUSIC 27"):
         assert not spec.matches(key), key
+    # Order matters: the most waitlist-sensitive subjects rank first (2026-09-19 decision).
+    assert spec.rank("COMPSCI 61A") < spec.rank("MATH 1A") < spec.rank("UGBA 101") < spec.rank("MCELLBI 32")
