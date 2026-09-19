@@ -252,6 +252,10 @@ Use `--term-id 2268` before the Oct 4 switch. What you are looking for:
 
 If anything is off, go to section 3.
 
+## 4b. Runner diagnostics
+
+`diag.yml` (dispatch only) prints which HTTP clients berkeleytime.com and classes.berkeley.edu accept from a GitHub-hosted runner and the runner's egress IP. Run it when a source starts answering 403 in the Actions logs: `gh workflow run diag.yml` and read the log.
+
 ## 5. The site and the weekly analysis
 
 The lookup page lives under `site/` and is published to https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/ by `pages.yml` on every push to `main` that touches `site/`. It reads `site/data/meta.json` and `site/data/courses.json`; until those exist with at least 10 clearings it shows an empty state, never simulated numbers.
