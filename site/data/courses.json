@@ -1,0 +1,5199 @@
+{
+"CHEM 1A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 72,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "CHEM"
+}
+},
+"level": "lower",
+"subject": "CHEM"
+},
+"CHEM 300": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 58,
+"p_clear_by_instruction": 0.0,
+"pooled": false
+}
+},
+"level": "grad",
+"subject": "CHEM"
+},
+"CHEM 301": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 72,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "CHEM"
+}
+},
+"level": "grad",
+"subject": "CHEM"
+},
+"CHEM 301C": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 72,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "CHEM"
+}
+},
+"level": "grad",
+"subject": "CHEM"
+},
+"CHEM 3A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 72,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "CHEM"
+}
+},
+"level": "lower",
+"subject": "CHEM"
+},
+"CHEM 3AL": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 72,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "CHEM"
+}
+},
+"level": "lower",
+"subject": "CHEM"
+},
+"CHEM 3B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 72,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "CHEM"
+}
+},
+"level": "lower",
+"subject": "CHEM"
+},
+"CHEM 3BL": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 72,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "CHEM"
+}
+},
+"level": "lower",
+"subject": "CHEM"
+},
+"COLWRIT R1A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 39,
+"p_clear_by_instruction": 0.0,
+"pooled": false
+}
+},
+"level": "lower",
+"subject": "COLWRIT"
+},
+"COLWRIT R4A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 80,
+"n_course": 12,
+"p_clear_by_instruction": 0.0,
+"pooled": "COLWRIT"
+}
+},
+"level": "lower",
+"subject": "COLWRIT"
+},
+"COLWRIT R4B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 80,
+"n_course": 29,
+"p_clear_by_instruction": 0.0,
+"pooled": "COLWRIT"
+}
+},
+"level": "lower",
+"subject": "COLWRIT"
+},
+"COMPSCI 10": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "lower",
+"subject": "COMPSCI"
+},
+"COMPSCI 152": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 160": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 161": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 162": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 164": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 168": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 169A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 170": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 171": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 180": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 184": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 186": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 188": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 189": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 194": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 4,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI 252A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 260A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 260B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 262A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 264": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 271": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 280A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 282A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 284A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 289A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 294": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 13,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 298": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 365": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 375": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI 61A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "lower",
+"subject": "COMPSCI"
+},
+"COMPSCI 61B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "lower",
+"subject": "COMPSCI"
+},
+"COMPSCI 61C": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "lower",
+"subject": "COMPSCI"
+},
+"COMPSCI 70": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "lower",
+"subject": "COMPSCI"
+},
+"COMPSCI C182": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "upper",
+"subject": "COMPSCI"
+},
+"COMPSCI C249A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"COMPSCI C281A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 61,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "COMPSCI"
+}
+},
+"level": "grad",
+"subject": "COMPSCI"
+},
+"DATA 144": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "DATA"
+},
+"DATA 375": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "DATA"
+},
+"DATA 89": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "DATA"
+},
+"DATA C100": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "DATA"
+},
+"DATA C101": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "DATA"
+},
+"DATA C102": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "DATA"
+},
+"DATA C104": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "DATA"
+},
+"DATA C140": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "DATA"
+},
+"DATA C146": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "DATA"
+},
+"DATA C182": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "DATA"
+},
+"DATA C200": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "DATA"
+},
+"DATA C204": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "DATA"
+},
+"DATA C6": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "DATA"
+},
+"DATA C8": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "DATA"
+},
+"DATA C88C": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "DATA"
+},
+"ECON 1": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "ECON"
+},
+"ECON 100A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "ECON"
+},
+"ECON 100B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "ECON"
+},
+"EECS 116": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS 126": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS 127": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS 144": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS 149": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS 151": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS 151LA": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS 151LB": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS 183": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS 216": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "EECS"
+},
+"EECS 227AT": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "EECS"
+},
+"EECS 244": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "EECS"
+},
+"EECS 251A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "EECS"
+},
+"EECS 251LA": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "EECS"
+},
+"EECS 251LB": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "EECS"
+},
+"EECS 283A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "EECS"
+},
+"EECS C106A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS C128": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS C191A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "EECS"
+},
+"EECS C206A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "EECS"
+},
+"ELENG 105": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 113": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 117B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 118": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 120": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 121": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 130": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 140": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 143": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 147": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 156": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 194": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 5,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG 213A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 217B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 218A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 221A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 224A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 226A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 230A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 236A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 240A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 240C": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 247A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 290": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 10,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 375": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG 39": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "lower",
+"subject": "ELENG"
+},
+"ELENG 64": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "lower",
+"subject": "ELENG"
+},
+"ELENG 66": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "lower",
+"subject": "ELENG"
+},
+"ELENG C145B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "upper",
+"subject": "ELENG"
+},
+"ELENG C220A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG C220B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG C249A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ELENG C261": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "ELENG"
+}
+},
+"level": "grad",
+"subject": "ELENG"
+},
+"ENGLISH R17": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "ENGLISH"
+},
+"ENGLISH R1A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 15,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "ENGLISH"
+},
+"ENGLISH R1B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 12,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "ENGLISH"
+},
+"INDENG 115": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 120": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 130": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 142A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 145": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 150": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 153": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 162": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 171": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 172": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 174": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 180": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "INDENG"
+},
+"INDENG 215": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 221": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 24": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "INDENG"
+},
+"INDENG 240": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 241": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 242A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 245": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 250": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 262A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 263A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 266": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 290": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INDENG 298": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "INDENG"
+},
+"INTEGBI 108": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI 11": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "lower",
+"subject": "INTEGBI"
+},
+"INTEGBI 114": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI 130": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI 131": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI 131L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 10,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI 134L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI 160": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI 164L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI 173LF": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI 206": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI 222": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI 234": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI 24": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "lower",
+"subject": "INTEGBI"
+},
+"INTEGBI 264": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI 287": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI 290": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI 305": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI 375": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI 400": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI 43": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "lower",
+"subject": "INTEGBI"
+},
+"INTEGBI 77A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "lower",
+"subject": "INTEGBI"
+},
+"INTEGBI 84": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "lower",
+"subject": "INTEGBI"
+},
+"INTEGBI C105": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI C110L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI C139": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI C144": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI C156": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI C158L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI C166": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "upper",
+"subject": "INTEGBI"
+},
+"INTEGBI C204": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI C226": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI C242": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "grad",
+"subject": "INTEGBI"
+},
+"INTEGBI C96": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 50,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "INTEGBI"
+}
+},
+"level": "lower",
+"subject": "INTEGBI"
+},
+"MATH 1": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "lower",
+"subject": "MATH"
+},
+"MATH 104": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 10,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 10A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "lower",
+"subject": "MATH"
+},
+"MATH 110": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 113": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 118": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 121A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 125A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 126": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 128A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 130": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 136": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 140": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 142": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 151": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 160": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 16A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "lower",
+"subject": "MATH"
+},
+"MATH 16B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "lower",
+"subject": "MATH"
+},
+"MATH 185": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 8,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 191": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "upper",
+"subject": "MATH"
+},
+"MATH 51": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "lower",
+"subject": "MATH"
+},
+"MATH 52": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "lower",
+"subject": "MATH"
+},
+"MATH 53": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "lower",
+"subject": "MATH"
+},
+"MATH 54": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 6,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "lower",
+"subject": "MATH"
+},
+"MATH 55": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 55,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MATH"
+}
+},
+"level": "lower",
+"subject": "MATH"
+},
+"MCELLBI 102": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 104": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 110": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 120": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 120L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 132": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 133L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 135A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 136": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 140": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 143": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 149": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 150": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 150L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 153": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 186A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI 200A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI 200B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI 201B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI 227": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI 275": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI 287": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 102,
+"p_clear_by_instruction": 0.0,
+"pooled": false
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI 290": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 8,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI 293A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI 32": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "lower",
+"subject": "MCELLBI"
+},
+"MCELLBI 32L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "lower",
+"subject": "MCELLBI"
+},
+"MCELLBI 55": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "lower",
+"subject": "MCELLBI"
+},
+"MCELLBI C100A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI C110L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI C112": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI C112L": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 6,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI C175": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "upper",
+"subject": "MCELLBI"
+},
+"MCELLBI C205": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI C242": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI C260": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "grad",
+"subject": "MCELLBI"
+},
+"MCELLBI C96": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 151,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "MCELLBI"
+}
+},
+"level": "lower",
+"subject": "MCELLBI"
+},
+"NUCENG 10": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "lower",
+"subject": "NUCENG"
+},
+"NUCENG 100": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "upper",
+"subject": "NUCENG"
+},
+"NUCENG 101": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "upper",
+"subject": "NUCENG"
+},
+"NUCENG 120": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "upper",
+"subject": "NUCENG"
+},
+"NUCENG 124": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "upper",
+"subject": "NUCENG"
+},
+"NUCENG 156": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "upper",
+"subject": "NUCENG"
+},
+"NUCENG 161": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "upper",
+"subject": "NUCENG"
+},
+"NUCENG 175": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "upper",
+"subject": "NUCENG"
+},
+"NUCENG 200M": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 207": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 210M": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 220M": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 24": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 4,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "lower",
+"subject": "NUCENG"
+},
+"NUCENG 256M": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 261M": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 270": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 275": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 290C": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 295": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG 298": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 16,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"NUCENG C180": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "upper",
+"subject": "NUCENG"
+},
+"NUCENG C231": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 40,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "NUCENG"
+}
+},
+"level": "grad",
+"subject": "NUCENG"
+},
+"PHILOS 100": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 107": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 115": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 12A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHILOS"
+},
+"PHILOS 135": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 136": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 146": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 153": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 160": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 170": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 187": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 190": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 198BC": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "upper",
+"subject": "PHILOS"
+},
+"PHILOS 2": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHILOS"
+},
+"PHILOS 200": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "PHILOS"
+},
+"PHILOS 25A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHILOS"
+},
+"PHILOS 290": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 5,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "PHILOS"
+},
+"PHILOS 295": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "PHILOS"
+},
+"PHILOS 3": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHILOS"
+},
+"PHILOS 375": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "grad",
+"subject": "PHILOS"
+},
+"PHILOS 7": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHILOS"
+},
+"PHILOS R1B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHILOS"
+},
+"PHYSICS 77": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHYSICS"
+},
+"PHYSICS 7A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHYSICS"
+},
+"PHYSICS 7B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHYSICS"
+},
+"PHYSICS 7C": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PHYSICS"
+},
+"POLSCI 1": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "POLSCI"
+},
+"PSYCH 1": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "PSYCH"
+},
+"SOCIOL 1": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 184,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "OTHER"
+}
+},
+"level": "lower",
+"subject": "SOCIOL"
+},
+"STAT 133": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 134": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 135": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 150": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 151A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 153": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 154": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 155": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 156": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 157": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 159": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT 2": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 3,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "lower",
+"subject": "STAT"
+},
+"STAT 20": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 13,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "lower",
+"subject": "STAT"
+},
+"STAT 201A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 201B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 210A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 215A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 243A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 243B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 248": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 254": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 256": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 259": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 260": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 278B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 2,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT 375": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT C102": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT C131A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "upper",
+"subject": "STAT"
+},
+"STAT C205A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT C241A": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT C245B": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "grad",
+"subject": "STAT"
+},
+"STAT C8": {
+"buckets": {
+"1-5": {
+"curve": [],
+"events": 0,
+"horizon_days": 0.0,
+"median_days": null,
+"n": 47,
+"n_course": 1,
+"p_clear_by_instruction": 0.0,
+"pooled": "STAT"
+}
+},
+"level": "lower",
+"subject": "STAT"
+}
+}

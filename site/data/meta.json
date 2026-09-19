@@ -1,0 +1,32 @@
+{
+ "cohort_rows": {
+  "central": 809,
+  "optimistic": 809,
+  "pessimistic": 809
+ },
+ "courses": 325,
+ "events": 0,
+ "flows": {
+  "admits": 0,
+  "enr_drops": 60,
+  "enr_joins": 1,
+  "intervals": 3534,
+  "median_interval_min": 214.6,
+  "sections": 816,
+  "share_ambiguous": 0.0008,
+  "share_censored": 0.6016,
+  "wl_drops": 1,
+  "wl_joins": 0
+ },
+ "generated_at": "2026-09-19T20:15:54+00:00",
+ "instruction_start": "2026-08-26",
+ "join_window": [
+  "2026-09-19T12:27:31+00:00",
+  "2026-09-19T12:27:31+00:00"
+ ],
+ "min_n": 30,
+ "scenario": "central",
+ "sections": 704,
+ "term_id": "2268",
+ "term_name": "Fall 2026"
+}
