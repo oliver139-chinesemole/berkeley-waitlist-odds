@@ -90,6 +90,8 @@ def test_site_tables_are_valid_json_with_sample_sizes(result) -> None:
         for bucket, cell in entry["buckets"].items():
             assert 0.0 <= cell["p_clear_by_instruction"] <= 1.0 and cell["n"] > 0
             assert cell["pooled"] in (False, "all") or isinstance(cell["pooled"], str)
+            assert cell["horizon_days"] >= 0 and cell["curve"] and all(0.0 <= p <= 1.0 for _, p in cell["curve"])
+            assert [p for _, p in cell["curve"]] == sorted(p for _, p in cell["curve"])  # cumulative clearing never falls
 
 
 def test_export_pooling_rule() -> None:

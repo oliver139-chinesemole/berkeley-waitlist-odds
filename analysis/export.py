@@ -22,15 +22,22 @@ def _km(durations: pd.Series, events: pd.Series) -> KaplanMeierFitter:
     return KaplanMeierFitter().fit(durations.to_numpy(dtype=float), event_observed=events.to_numpy(dtype=int))
 
 
+CURVE_DAYS = (1, 2, 3, 5, 7, 10, 14, 21, 28, 42, 56)
+
+
 def _estimate(rows: pd.DataFrame, horizon_days: float) -> dict:
     kmf = _km(rows["duration_days"], rows["event"])
     p_by_horizon = float(1.0 - kmf.predict(max(horizon_days, 0.0)))
     median = float(kmf.median_survival_time_)
+    last = float(rows["duration_days"].max())
+    curve = [[d, round(float(1.0 - kmf.predict(float(d))), 3)] for d in CURVE_DAYS if d <= last]
     return {
         "p_clear_by_instruction": round(p_by_horizon, 2),
+        "horizon_days": round(max(horizon_days, 0.0), 1),
         "median_days": None if not np.isfinite(median) else round(median, 2),
         "n": int(len(rows)),
         "events": int(rows["event"].sum()),
+        "curve": curve,  # [days since joining, P(cleared by then)] up to the longest follow-up
     }
 
 
@@ -94,6 +101,7 @@ def export_site_tables(cohort: pd.DataFrame, calendar: TermCalendar, out_dir: Pa
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "courses": len(courses),
         "cohort_rows": int(len(cohort)),
+        "events": int(cohort["event"].sum()) if len(cohort) else 0,
         "sections": int(cohort["section_id"].nunique()) if len(cohort) else 0,
         "join_window": None
         if cohort.empty
