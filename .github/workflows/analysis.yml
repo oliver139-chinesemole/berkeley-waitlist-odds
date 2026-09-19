@@ -1,0 +1,79 @@
+# Weekly: rebuild flows, models, figures and the site JSON from the data branch and
+# commit the outputs to main (which redeploys the site). See docs/DESIGN_A5.md section 6.
+name: analysis
+
+on:
+  schedule:
+    - cron: "23 15 * * 0"   # Sundays 15:23 UTC
+  workflow_dispatch:
+    inputs:
+      term:
+        description: 'Term name (default: SCRAPE_TERM repo variable)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: analysis
+  cancel-in-progress: false
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUNBUFFERED: "1"
+      TERM_NAME: ${{ inputs.term || vars.SCRAPE_TERM || 'Spring 2027' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-branch
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Resolve the SIS term id
+        id: term
+        shell: bash
+        run: |
+          TERM_ID=$(python -c "from scraper.sources.base import TermSpec; print(TermSpec.from_name('$TERM_NAME').sis_term_id)")
+          echo "term_id=$TERM_ID" >> "$GITHUB_OUTPUT"
+          echo "term $TERM_NAME -> $TERM_ID"
+      - name: Run the analysis
+        shell: bash
+        run: |
+          python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir site/data 2>&1 | tee analysis.log
+      - name: Commit outputs
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p reports
+          cp "analysis/out/${{ steps.term.outputs.term_id }}/report.md" "reports/report_${{ steps.term.outputs.term_id }}.md"
+          if ls "analysis/out/${{ steps.term.outputs.term_id }}/figures/"*.png >/dev/null 2>&1; then
+            mkdir -p "reports/figures_${{ steps.term.outputs.term_id }}"
+            cp "analysis/out/${{ steps.term.outputs.term_id }}/figures/"*.png "reports/figures_${{ steps.term.outputs.term_id }}/"
+          fi
+          git add site/data reports
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "analysis: $TERM_NAME $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          for attempt in 1 2 3; do
+            git push origin HEAD:main && exit 0
+            git pull --rebase origin main
+          done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: analysis-${{ steps.term.outputs.term_id }}-${{ github.run_id }}
+          path: |
+            analysis.log
+            analysis/out
+          retention-days: 30
+          if-no-files-found: ignore

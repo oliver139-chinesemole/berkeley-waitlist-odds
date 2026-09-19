@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Berkeley Waitlist Odds</title>
+<meta name="description" content="How likely is a UC Berkeley waitlist spot at your position to clear, and by when? Estimates from 30-minute enrollment snapshots.">
+<style>
+  :root { --ink: #1c1c1e; --muted: #5b5b60; --line: #d9d9de; --paper: #ffffff; --bg: #f5f5f7; --accent: #003262; --gold: #fdb515; --ok: #1b7f4f; --warn: #a15c00; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #ececf0; --muted: #a2a2aa; --line: #3a3a40; --paper: #1c1c1e; --bg: #101012; --accent: #7cb3e8; --gold: #fdb515; --ok: #5ccf8f; --warn: #f0a94a; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); }
+  header { background: var(--accent); color: #fff; padding: 1.25rem 1rem; }
+  header h1 { margin: 0; font-size: 1.4rem; }
+  header p { margin: .25rem 0 0; opacity: .9; font-size: .95rem; }
+  main { max-width: 42rem; margin: 0 auto; padding: 1rem; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; margin: 1rem 0; }
+  label { display: block; font-weight: 600; margin-bottom: .25rem; }
+  input, button { font: inherit; }
+  input { width: 100%; padding: .6rem .7rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); }
+  .row { display: grid; grid-template-columns: 1fr; gap: .75rem; }
+  @media (min-width: 30rem) { .row { grid-template-columns: 2fr 1fr auto; align-items: end; } }
+  button { padding: .65rem 1rem; border: 0; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .big { font-size: 2.2rem; font-weight: 700; line-height: 1.1; margin: .25rem 0; }
+  .muted { color: var(--muted); }
+  .tag { display: inline-block; font-size: .8rem; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); margin-left: .25rem; }
+  .tag.pooled { color: var(--warn); border-color: var(--warn); }
+  svg { width: 100%; height: auto; display: block; }
+  .axis { stroke: var(--line); stroke-width: 1; }
+  .curve { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+  .mark { fill: var(--gold); stroke: var(--accent); stroke-width: 1.5; }
+  .lbl { font-size: 11px; fill: var(--muted); }
+  footer { max-width: 42rem; margin: 2rem auto; padding: 0 1rem 2rem; color: var(--muted); font-size: .9rem; }
+  a { color: var(--accent); }
+  .hidden { display: none; }
+  .error { color: var(--warn); }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: .25rem .75rem; margin: .5rem 0 0; }
+  dt { color: var(--muted); }
+  dd { margin: 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Berkeley Waitlist Odds</h1>
+  <p>You are number N on a waitlist. How often did that spot clear, and how fast?</p>
+</header>
+<main>
+  <section class="card" id="status" aria-live="polite">
+    <p class="muted">Loading data…</p>
+  </section>
+
+  <form class="card" id="form" autocomplete="off">
+    <div class="row">
+      <div>
+        <label for="course">Course</label>
+        <input id="course" name="course" list="courses" placeholder="e.g. COMPSCI 61A" required aria-describedby="course-help">
+        <datalist id="courses"></datalist>
+        <div id="course-help" class="muted" style="font-size:.85rem">Subject and number as classes.berkeley.edu spells them.</div>
+      </div>
+      <div>
+        <label for="position">Your position</label>
+        <input id="position" name="position" type="number" min="1" max="500" step="1" value="10" required>
+      </div>
+      <div>
+        <button type="submit">Look up</button>
+      </div>
+    </div>
+  </form>
+
+  <section class="card hidden" id="result" aria-live="polite"></section>
+</main>
+<footer>
+  <p>Estimates are historical frequencies for hypothetical students at the same position, reconstructed from aggregate counts under first-in-first-out assumptions. Reserved seats and department policies vary; nothing here is a guarantee. <a href="methodology.html">How this works</a> · <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds">Source and data</a></p>
+  <p id="stamp"></p>
+</footer>
+<script>
+(function () {
+  const BUCKETS = [[1, 5, "1-5"], [6, 15, "6-15"], [16, 40, "16-40"], [41, 1e9, "41+"]];
+  const $ = (id) => document.getElementById(id);
+  let courses = null, meta = null;
+
+  function bucketOf(pos) { for (const [lo, hi, label] of BUCKETS) if (pos >= lo && pos <= hi) return label; return "41+"; }
+  function pct(p) { return Math.round(p * 100) + "%"; }
+  function esc(s) { return String(s).replace(/[&<>"']/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c])); }
+  function fmtDate(iso) { try { return new Date(iso).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }); } catch (e) { return iso; } }
+
+  function curveSvg(curve, horizon) {
+    if (!curve || !curve.length) return "";
+    const W = 560, H = 220, L = 44, R = 12, T = 12, B = 36;
+    const maxDay = Math.max(curve[curve.length - 1][0], horizon || 0, 7);
+    const x = (d) => L + (d / maxDay) * (W - L - R);
+    const y = (p) => T + (1 - p) * (H - T - B);
+    let d = `M ${x(0)} ${y(0)}`;
+    for (const [day, p] of curve) d += ` L ${x(day)} ${y(p)}`;
+    const ticks = [0, .25, .5, .75, 1].map((p) => `<line class="axis" x1="${L}" x2="${W - R}" y1="${y(p)}" y2="${y(p)}"/><text class="lbl" x="${L - 6}" y="${y(p) + 4}" text-anchor="end">${Math.round(p * 100)}%</text>`).join("");
+    const days = [];
+    for (let dd = 0; dd <= maxDay; dd += maxDay > 28 ? 14 : 7) days.push(dd);
+    const xt = days.map((dd) => `<text class="lbl" x="${x(dd)}" y="${H - B + 16}" text-anchor="middle">${dd}d</text>`).join("");
+    const hz = horizon ? `<line class="axis" stroke-dasharray="4 4" x1="${x(Math.min(horizon, maxDay))}" x2="${x(Math.min(horizon, maxDay))}" y1="${T}" y2="${H - B}"/><text class="lbl" x="${x(Math.min(horizon, maxDay))}" y="${T + 10}" text-anchor="middle">instruction</text>` : "";
+    const pts = curve.map(([day, p]) => `<circle class="mark" r="3" cx="${x(day)}" cy="${y(p)}"><title>${day} days: ${pct(p)} cleared</title></circle>`).join("");
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Share of comparable students who had cleared, by days since joining">${ticks}${xt}${hz}<path class="curve" d="${d}"/>${pts}<text class="lbl" x="${W - R}" y="${H - 4}" text-anchor="end">days since joining the waitlist</text></svg>`;
+  }
+
+  function render(courseKey, pos) {
+    const out = $("result");
+    const entry = courses[courseKey];
+    if (!entry) {
+      out.innerHTML = `<p class="error">No data for <strong>${esc(courseKey)}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.</p>`;
+      out.classList.remove("hidden");
+      return;
+    }
+    const bucket = bucketOf(pos);
+    const cell = entry.buckets[bucket];
+    if (!cell) {
+      const have = Object.keys(entry.buckets).join(", ");
+      out.innerHTML = `<p class="error">No estimate for positions ${esc(bucket)} in <strong>${esc(courseKey)}</strong>; the waitlist there was never that long. Positions with data: ${esc(have)}.</p>`;
+      out.classList.remove("hidden");
+      return;
+    }
+    const pooledTag = cell.pooled === false ? "" : `<span class="tag pooled" title="Too few cases for this course alone; estimate uses ${cell.pooled === "all" ? "all courses" : "the whole " + esc(cell.pooled) + " department"}">pooled</span>`;
+    const median = cell.median_days == null ? "more than half never cleared in the data" : (cell.median_days < 1 ? Math.round(cell.median_days * 24) + " hours" : cell.median_days.toFixed(1) + " days");
+    out.innerHTML = `
+      <p class="muted">${esc(courseKey)} · position ${pos} (bucket ${esc(bucket)})${pooledTag}</p>
+      <div class="big">${pct(cell.p_clear_by_instruction)}</div>
+      <p>of comparable students had cleared by the first day of instruction${cell.horizon_days ? ` (joining about ${Math.round(cell.horizon_days)} days before it)` : ""}.</p>
+      <dl>
+        <dt>Median time to clear</dt><dd>${median}</dd>
+        <dt>Cases</dt><dd>${cell.n} hypothetical joiners${cell.n_course != null ? ` (${cell.n_course} in this course)` : ""}, ${cell.events} cleared</dd>
+      </dl>
+      ${curveSvg(cell.curve, cell.horizon_days)}
+      <p class="muted" style="font-size:.85rem">Central drop scenario. Read the <a href="methodology.html">methodology</a> before acting on this.</p>`;
+    out.classList.remove("hidden");
+    out.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function setStatus(html) { $("status").innerHTML = html; }
+
+  async function load() {
+    let m = null;
+    try { const r = await fetch("data/meta.json", { cache: "no-store" }); if (r.ok) m = await r.json(); } catch (e) { m = null; }
+    if (!m || !m.events || m.events < 10) {
+      setStatus(`<p><strong>No estimates yet.</strong> Snapshots for Spring 2027 enrollment start with Phase 1 on Oct 26, 2026; the first curves appear once enough waitlists have cleared (planned for mid-November). ${m ? `Snapshots so far: ${esc(m.sections)} sections, ${esc(m.cohort_rows)} hypothetical joiners, ${esc(m.events)} clearings.` : ""}</p>`);
+      $("form").classList.add("hidden");
+      return;
+    }
+    meta = m;
+    try { const r = await fetch("data/courses.json", { cache: "no-store" }); courses = r.ok ? await r.json() : {}; } catch (e) { courses = {}; }
+    const keys = Object.keys(courses).sort();
+    $("courses").innerHTML = keys.map((k) => `<option value="${esc(k)}">`).join("");
+    setStatus(`<p><strong>${esc(meta.term_name)}</strong>: ${esc(keys.length)} courses with estimates from ${esc(meta.sections)} sections and ${esc(meta.cohort_rows)} hypothetical joiners, ${esc(meta.events)} of whom cleared.</p>`);
+    $("stamp").textContent = "Data through " + fmtDate(meta.join_window ? meta.join_window[1] : meta.generated_at) + "; page generated " + fmtDate(meta.generated_at) + ".";
+    $("form").addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      const key = $("course").value.trim().toUpperCase().replace(/\s+/g, " ");
+      const pos = Math.max(1, parseInt($("position").value, 10) || 1);
+      render(key, pos);
+    });
+    const params = new URLSearchParams(location.search);
+    if (params.get("course")) { $("course").value = params.get("course"); if (params.get("position")) $("position").value = params.get("position"); $("form").requestSubmit(); }
+  }
+  load();
+})();
+</script>
+</body>
+</html>

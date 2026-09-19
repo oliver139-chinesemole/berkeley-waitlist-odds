@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology · Berkeley Waitlist Odds</title>
+<style>
+  :root { --ink: #1c1c1e; --muted: #5b5b60; --line: #d9d9de; --paper: #ffffff; --bg: #f5f5f7; --accent: #003262; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #ececf0; --muted: #a2a2aa; --line: #3a3a40; --paper: #1c1c1e; --bg: #101012; --accent: #7cb3e8; } }
+  body { margin: 0; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); }
+  header { background: var(--accent); color: #fff; padding: 1.25rem 1rem; }
+  header h1 { margin: 0; font-size: 1.4rem; }
+  main { max-width: 42rem; margin: 0 auto; padding: 1rem 1rem 3rem; background: var(--paper); }
+  h2 { font-size: 1.15rem; margin-top: 1.75rem; }
+  a { color: var(--accent); }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  td, th { border-bottom: 1px solid var(--line); padding: .35rem .5rem; text-align: left; }
+  code { background: var(--bg); padding: .05rem .3rem; border-radius: 4px; font-size: .9em; }
+</style>
+</head>
+<body>
+<header><h1><a href="./" style="color:#fff;text-decoration:none">Berkeley Waitlist Odds</a> · Methodology</h1></header>
+<main>
+<p>This page explains where the numbers come from and what they cannot tell you. The full write-up with every assumption is in the repository: <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/blob/main/docs/ASSUMPTIONS.md">docs/ASSUMPTIONS.md</a>.</p>
+
+<h2>Data</h2>
+<p>A scraper on GitHub Actions reads the public section pages of <a href="https://classes.berkeley.edu">classes.berkeley.edu</a>, which carry the enrolled count, capacity, waitlist count and waitlist capacity of every section, and stores one Parquet file per run on the repository's <code>data</code> branch. High-demand sections (a fixed priority list: computer science, data science, statistics, engineering, the large introductory courses in math, economics, physics, chemistry, biology, business and physical education, and the reading and composition courses) are read every 30 minutes; every other section is read about every six hours. Only pages the site's robots.txt allows are requested, at one request per second. Neither student identities nor positions are ever observed: the data are aggregate counts.</p>
+
+<h2>From counts to flows</h2>
+<p>Between two readings of a section, the change in the enrolled and waitlisted counts is split into admits from the waitlist, joins, drops from the waitlist, direct enrolments and drops from enrolment, under the rule that a seat cannot go to a newcomer while someone is queued. Events that cancel within one interval are invisible, so every flow is a lower bound. On simulated waitlists sampled every 30 minutes the reconstruction recovers about 91% of admits and 96% of joins, and every interval containing a single event exactly.</p>
+
+<h2>From flows to odds</h2>
+<p>For each section and each sampled moment, hypothetical students are placed at positions 1, 3, 5, 10, 20 and 40 of the queue as it stood then. Each moves up by one place per admit ahead of them; a waitlist drop moves them up with the probability that the dropped student was ahead (the "central" scenario; the page also computes the best and worst cases, in which every drop was ahead or behind). The time until the hypothetical student reaches the front is the outcome; if the data ends, the section vanishes, or a logged collection gap intervenes first, the outcome is censored, which survival analysis handles correctly.</p>
+<p>The probability shown is the Kaplan-Meier estimate of having cleared by the first day of instruction, for joiners at that position in that course. When a course has fewer than 30 such cases the estimate is pooled over the department, or over all courses, and labelled as pooled. A Cox proportional-hazards model relates the clearing rate to position, list length relative to capacity, course level, department, enrollment phase and days remaining before instruction; its assumptions are checked and reported in the analysis output, together with an out-of-sample test that fits on Phase 1 joiners and scores Phase 2 joiners.</p>
+
+<h2>What this cannot tell you</h2>
+<ul>
+  <li>Reserved seats break strict queue order: a section can hold seats for a category you are not in, and its waitlist can stand still while seats are open.</li>
+  <li>Departments process some waitlists by hand and the registrar runs the automatic process in batches, so time to clear includes processing delay.</li>
+  <li>Estimates describe the Spring 2027 cycle. Policies, capacities and demand change between terms.</li>
+  <li>Small courses give noisy numbers; the sample size is printed with every estimate for that reason.</li>
+</ul>
+
+<h2>Reproducing the numbers</h2>
+<p>Everything is public: the scraper, the snapshots, the reconstruction, the models and this page. <code>make analysis TERM=2272</code> in the repository rebuilds every table, figure and the JSON behind this page from the raw Parquet files. The claims and the commands that verify them are in <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/blob/main/CLAIMS.md">CLAIMS.md</a>.</p>
+
+<p><a href="./">Back to the lookup</a></p>
+</main>
+</body>
+</html>
