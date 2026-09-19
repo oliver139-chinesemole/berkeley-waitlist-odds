@@ -405,10 +405,14 @@ class _Catalog:
         return {r.url_path: r for r in self.refs}
 
 
+MAX_RETRY_IDS = 200  # node ids that answered with an error (not 404) are retried on later runs
+
+
 @dataclass
 class _SiteState:
     max_node_probed: int | None = None  # every id <= this has been probed (or predates the watermark)
     max_node_seen: int | None = None  # highest id seen in the feed
+    retry_ids: list[int] = field(default_factory=list)  # probed but not resolved (HTTP error other than 404)
     updated_at: str | None = None
     dirty: bool = False
 
@@ -533,9 +537,11 @@ class ClassesSiteSource:
             payload = json.loads(path.read_text(encoding="utf-8"))
             probed = payload.get("max_node_probed")
             seen = payload.get("max_node_seen")
+            retry = [int(x) for x in payload.get("retry_ids") or []]
             return _SiteState(
                 max_node_probed=None if probed is None else int(probed),
                 max_node_seen=None if seen is None else int(seen),
+                retry_ids=retry[:MAX_RETRY_IDS],
                 updated_at=payload.get("updated_at"),
             )
         except (OSError, json.JSONDecodeError, TypeError, ValueError) as exc:
@@ -548,6 +554,7 @@ class ClassesSiteSource:
         payload = {
             "max_node_probed": state.max_node_probed,
             "max_node_seen": state.max_node_seen,
+            "retry_ids": sorted(set(state.retry_ids))[:MAX_RETRY_IDS],
             "updated_at": self._now().isoformat(),
         }
         tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
@@ -616,17 +623,19 @@ class ClassesSiteSource:
             state.max_node_probed = max(0, state.max_node_seen - INITIAL_LOOKBACK_NODES)
             state.dirty = True
             logger.info("watermark initialised at node %d (newest %d)", state.max_node_probed, state.max_node_seen)
-        # 2. enumerate
+        # 2. enumerate: earlier ids that answered with an error first, then new ids
         first = state.max_node_probed + 1
-        last = min(state.max_node_seen, first + self.max_node_probes - 1)
-        if last < first:
+        retry = [i for i in sorted(set(state.retry_ids)) if i <= state.max_node_probed][:MAX_RETRY_IDS]
+        room = max(0, self.max_node_probes - len(retry))
+        last = min(state.max_node_seen, first + room - 1)
+        ids = retry + (list(range(first, last + 1)) if last >= first else [])
+        if not ids:
             return result
         budget = None
         if time_budget_s is not None:
             budget = max(0.0, float(time_budget_s) * NODE_PROBE_BUDGET_SHARE)
             if budget < 1.0:
                 return result
-        ids = list(range(first, last + 1))
         url_to_id = {self.node_url(i): i for i in ids}
         outcomes: dict[int, str] = {}  # id -> "section" | "other" | "missing" | "error" | "unattempted"
         lock = threading.Lock()
@@ -634,8 +643,19 @@ class ClassesSiteSource:
         def on_result(url: str, payload: bytes | HttpError) -> None:
             node_id = url_to_id[url]
             if isinstance(payload, HttpError):
+                # 404: no such node. 401/403/410: a node we may not read (a restricted
+                # course page, seen live at node 530942), never a section for us.
+                # Anything else (5xx, timeouts) is transient and retried later.
+                if payload.status == 404:
+                    kind = "missing"
+                elif payload.status in (401, 403, 410):
+                    kind = "other"
+                elif getattr(payload, "budget_exhausted", False):
+                    kind = "unattempted"
+                else:
+                    kind = "error"
                 with lock:
-                    outcomes[node_id] = "missing" if payload.status == 404 else ("unattempted" if getattr(payload, "budget_exhausted", False) else "error")
+                    outcomes[node_id] = kind
                 return
             try:
                 parsed = parse_section_ref(payload, node_id=node_id)
@@ -664,24 +684,33 @@ class ClassesSiteSource:
                     )
 
         self._client.get_many(list(url_to_id), on_result, time_budget_s=budget)
-        # advance the watermark over the contiguous prefix of ids that were actually attempted
+        # The watermark advances over the contiguous prefix of NEW ids that were attempted
+        # (any outcome but "unattempted"); ids that answered with an error are kept in
+        # retry_ids so a persistently failing node cannot block discovery, and are
+        # retried at the start of later runs until they resolve.
         probed_to = state.max_node_probed
-        for node_id in ids:
-            if outcomes.get(node_id) in ("section", "other", "missing"):
+        for node_id in range(first, last + 1) if last >= first else []:
+            if outcomes.get(node_id) in ("section", "other", "missing", "error"):
                 probed_to = node_id
             else:
                 break
-        result.probed = probed_to - state.max_node_probed
+        errors = sorted(n for n in ids if outcomes.get(n) == "error" and n <= probed_to)
+        resolved = {n for n in retry if outcomes.get(n) in ("section", "other", "missing")}
+        new_retry = sorted((set(state.retry_ids) - resolved) | set(errors))[-MAX_RETRY_IDS:]
+        attempted = sum(1 for n in ids if outcomes.get(n) not in (None, "unattempted"))
+        result.probed = attempted
         result.found_sections = sum(1 for n in ids if outcomes.get(n) == "section")
-        if probed_to != state.max_node_probed:
+        if probed_to != state.max_node_probed or new_retry != sorted(set(state.retry_ids)):
             state.max_node_probed = probed_to
+            state.retry_ids = new_retry
             state.dirty = True
         logger.info(
-            "discovery: feed items=%d, probed nodes %d..%d (%d sections found), watermark now %d of %d",
+            "discovery: feed items=%d, attempted %d ids (%d retries, %d sections found, %d errors kept for retry), watermark now %d of %d",
             result.feed_items,
-            first,
-            probed_to,
+            attempted,
+            len(retry),
             result.found_sections,
+            len(new_retry),
             state.max_node_probed,
             state.max_node_seen,
         )

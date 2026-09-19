@@ -348,7 +348,24 @@ def test_enumeration_uses_probed_pages_as_observations(tmp_path: Path) -> None:
     assert result.universe_ids == {"20882", "29147"}
 
 
-def test_enumeration_stops_at_budget_and_keeps_watermark_contiguous(tmp_path: Path) -> None:
+def test_enumeration_skips_restricted_nodes_and_retries_transient_errors(tmp_path: Path) -> None:
+    site_state(tmp_path, probed=1006, seen=None)
+    pages = small_site(extra={f"{BASE}/node/1007": HttpError(403, "x", "restricted"), f"{BASE}/node/1008": HttpError(503, "x", "down")})
+    source, client, _ = make_source(tmp_path, pages)
+    source.fetch(FALL_2026, priority=None, time_budget_s=1000)
+    state = read_site_state(tmp_path)
+    # the 403 and the 503 both advance the watermark; only the 503 is kept for retry
+    assert state["max_node_probed"] == 1012 and state["retry_ids"] == [1008]
+    # next run: the retry comes first, and once it resolves (now a section) it leaves the list
+    pages2 = small_site(extra={f"{BASE}/node/1008": section_html("Fall 2026", "STAT", "134", "001", "LEC", 20746, 1008)})
+    source2, client2, _ = make_source(tmp_path, pages2)
+    result = source2.fetch(FALL_2026, priority=None, time_budget_s=1000)
+    assert client2.get_many_calls[0][0][0] == f"{BASE}/node/1008"
+    assert read_site_state(tmp_path)["retry_ids"] == []
+    assert "20746" in {r["section_id"] for r in result.rows}
+
+
+def test_enumeration_budget_cutoff_does_not_skip_ids(tmp_path: Path) -> None:
     site_state(tmp_path, probed=1008, seen=None)
     source, client, _ = make_source(tmp_path, small_site(), attempt_limit=2)
     source.fetch(FALL_2026, priority=None, time_budget_s=1000)
