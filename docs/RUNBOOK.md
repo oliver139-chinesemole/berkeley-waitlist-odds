@@ -166,7 +166,7 @@ Kind (what gets written):
 
 Time and politeness:
 - 1380 s budget per run (`--time-budget-s` in scrape.yml); the job itself is killed at 59 minutes, which covers checkout, dependency install, retries in flight, the push, and the chain step's wait for the next slot.
-- Cadence is kept by the workflow itself, not only by GitHub's cron: the last step of every run sleeps until the next :07 or :37 mark and dispatches the next run (workflow_dispatch with the built-in token, no inputs, so the successor resolves the term from `SCRAPE_TERM`) unless another run is already queued or in progress. GitHub's cron still fires as a backstop; if the chain ever breaks (a runner dies mid-sleep), the next cron run or a manual `gh workflow run scrape.yml` restarts it. Requests to classes.berkeley.edu start no faster than one per second with two in flight. Sections not fetched by the deadline, plus any HTTP or parse failure, go to `missing_ids` in the parquet metadata and are treated as unobserved by `scraper/rebuild.py`.
+- Cadence is kept by the workflow itself, not only by GitHub's cron: the last step of every run sleeps until the next :07 or :37 mark and dispatches the next run (workflow_dispatch with the built-in token, no inputs, so the successor resolves the term from `SCRAPE_TERM`) unless another run is already queued or in progress. GitHub's cron still fires as a backstop, and `heartbeat.yml` (cron at :19 and :49, however sparsely GitHub honours it) dispatches a run whenever nothing is queued or running and the newest run is over 40 minutes old; a manual `gh workflow run scrape.yml` does the same. Requests to classes.berkeley.edu start no faster than one per second with two in flight. Sections not fetched by the deadline, plus any HTTP or parse failure, go to `missing_ids` in the parquet metadata and are treated as unobserved by `scraper/rebuild.py`.
 - Every request carries `User-Agent: berkeley-waitlist-odds/<version> (+https://github.com/oliver139-chinesemole/berkeley-waitlist-odds; mailto:oliver139@berkeley.edu)`.
 
 Exit codes: `0` success; `2` zero sections observed, nothing written, the job fails; `3` term not published yet (Berkeleytime's catalog is empty for the term and nothing is cached; expected for Spring 2027 before Oct 4, a problem after); `4` low coverage (more than half of the attempted sections failed), nothing written.
@@ -235,6 +235,13 @@ df = table.to_pandas()
 cols = ["section_number", "component", "enrolled_count", "enroll_capacity", "waitlist_count", "waitlist_capacity", "status"]
 print(df[df["course_key"] == "COMPSCI 61A"][cols].head(10).to_string())
 EOF
+```
+
+Also check that the data branch is growing at the expected rate (about 1.7 MB a day of Parquet; a 140-day cycle is about 250 MB, well inside GitHub's limits):
+
+```
+git -C data-branch count-objects -vH | grep size-pack
+du -sh data-branch/snapshots data-branch/catalog
 ```
 
 Use `--term-id 2268` before the Oct 4 switch. What you are looking for:
