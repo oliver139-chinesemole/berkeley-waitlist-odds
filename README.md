@@ -28,6 +28,10 @@ python -m scraper.fetch --term "Fall 2026" --source classes_site --limit 25 --dr
 
 The tests are offline and use recorded fixtures from `data/fixtures/`. The dry run fetches 25 Fall 2026 sections from classes.berkeley.edu at one request per second, prints a summary, and writes nothing. It identifies itself with a User-Agent that includes a contact email. It uses the Python standard library HTTP client because the site rejects the TLS handshake that `requests` and `httpx` produce (docs/PHASE0.md).
 
+## Analysis (step A4 onward)
+
+`analysis/` reconstructs waitlist flows from the snapshots. `make flows TERM=2268` rebuilds the panel from a checkout of the `data` branch at `./data-branch`, classifies every interval between consecutive observations into admits, joins, drops and direct enrolments (docs/DESIGN_A4.md), and writes `analysis/out/flows_<term>.parquet` with a summary. The assumptions behind the reconstruction, and the synthetic validation of them, are in docs/ASSUMPTIONS.md.
+
 ## Data layout (on the `data` branch)
 
 ```
