@@ -2,6 +2,8 @@
 
 Given a UC Berkeley course and a waitlist position, how likely is that spot to clear, and by when? This project records enrollment and waitlist counts for course sections every 30 minutes across the Spring 2027 enrollment cycle, reconstructs waitlist flows from those counts, and fits survival models (Kaplan-Meier, Cox proportional hazards) for time to clear. The end product is a static lookup page for students.
 
+**Live site:** https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/ (shows an empty state until Spring 2027 waitlists start clearing; estimates are planned for mid-November).
+
 ## Status (2026-09-19)
 
 Scraper live on GitHub Actions against Fall 2026 as the test term (first successful runs 2026-09-19: a baseline of 1,089 priority-list sections in 1,174 s, no fetch failures). The 30-minute schedule is enabled; the Spring 2027 switch happens on Oct 4 through the `SCRAPE_TERM` repository variable (docs/RUNBOOK.md step 7). No models have been fit yet. Deadline for the scraper to be collecting Spring 2027: Mon Oct 12, 2026, two weeks before Phase 1 enrollment opens on Oct 26.

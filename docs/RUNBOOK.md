@@ -244,3 +244,17 @@ Use `--term-id 2268` before the Oct 4 switch. What you are looking for:
 - The COMPSCI 61A counts are within a few of the live section page on classes.berkeley.edu (URL pattern in docs/PHASE0.md; the snapshot is up to 30 minutes old). `missing_ids` is empty or short.
 
 If anything is off, go to section 3.
+
+## 5. The site and the weekly analysis
+
+The lookup page lives under `site/` and is published to https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/ by `pages.yml` on every push to `main` that touches `site/`. It reads `site/data/meta.json` and `site/data/courses.json`; until those exist with at least 10 clearings it shows an empty state, never simulated numbers.
+
+`analysis.yml` runs every Sunday at 15:23 UTC (and on `gh workflow run analysis.yml`, optionally with `-f term="Spring 2027"`): it checks out the data branch, runs `python -m analysis.run` for the `SCRAPE_TERM` term, and commits `site/data/*.json`, `reports/report_<term>.md` and `reports/figures_<term>/` to `main`, which redeploys the site. To refresh by hand:
+
+```
+gh workflow run analysis.yml
+gh run watch
+curl -sS https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/data/meta.json | python -m json.tool | head
+```
+
+If the analysis workflow fails, read its log (`gh run view <id> --log-failed`); the usual cause is a data-branch checkout problem or a term with no data yet (then `analysis.run` still succeeds and writes a report saying the cohort is too small).

@@ -207,9 +207,9 @@ permissions:
 
 **Skills:** `data:build-dashboard` is the fastest route to a self-contained static page with charts and filters. `ui-ux-pro-max:ui-ux-pro-max` and `ui-ux-pro-max:ui-styling` for the look. `design:ux-copy` for how a probability is worded to a stressed student. `design:accessibility-review` and `design:design-critique` before launch. `humanizer` on the methodology page and README.
 
-- [ ] Precompute `site/data/*.json`: per course and position bucket, P(clear by first day of instruction), median days to clear, n. Fall back to a pooled department-level estimate when n < 30, and label it pooled.
-- [ ] Static GitHub Pages site: search a course, enter a position, see probability, a KM curve, sample size, last-updated date. No backend.
-- [ ] Methodology page: data source, cadence, assumptions, limitations, validation results. Link the repo.
+- [x] Precompute `site/data/*.json`: per course and position bucket, P(clear by first day of instruction), median days to clear, n. Fall back to a pooled department-level estimate when n < 30, and label it pooled.
+- [x] Static GitHub Pages site: search a course, enter a position, see probability, a KM curve, sample size, last-updated date. No backend.
+- [x] Methodology page: data source, cadence, assumptions, limitations, validation results. Link the repo.
 - [ ] README: what it is, one hero plot, pipeline diagram, how to reproduce, limitations, `CLAIMS.md` link.
 
 ### A7. Ship
