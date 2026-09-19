@@ -2,6 +2,7 @@
 @docs/FINISH_PLAN_WAITLIST.md
 
 ## How to work in this repo
+- New session: read docs/HANDOFF.md first (what is done, what is left, how to resume), then the Current step line below.
 - Before any response or action, check loaded skills and invoke every one that applies
   (superpowers:using-superpowers). Announce which skill you are using.
 - Execute every step through the build loop in docs/FINISH_PLAN_WAITLIST.md section 1.2.

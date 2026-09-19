@@ -1,0 +1,78 @@
+# Handoff: Berkeley Waitlist Odds
+
+Written 2026-09-19 23:20 UTC at the end of the first two working sessions. Read this first in a new session, then `CLAUDE.md` (the `Current step` line) and `docs/FINISH_PLAN_WAITLIST.md` (the step checklist and tracker at the bottom).
+
+## Where everything is
+
+| Thing | Location |
+| --- | --- |
+| Repo (public) | https://github.com/oliver139-chinesemole/berkeley-waitlist-odds, local checkout at `/Users/oliverguo/berkeley-waitlist-odds` (`main`, 50 commits, CI green, 286 tests in 21 files) |
+| Live site | https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/ (lookup page, methodology page; shows a no-data state until Spring 2027 waitlists clear) |
+| Data | `data` branch of the repo: `snapshots/date=YYYY-MM-DD/HHMM-{baseline,delta}.parquet`, `catalog/<term_id>/catalog.json`, `catalog/site.json`, `status.json`. Local clone at `./data-branch` (gitignored). 12 snapshots so far, all Fall 2026 test data. |
+| Environment | `source .venv/bin/activate` (Python 3.12.5, pinned in requirements.txt). `gh` is logged in as oliver139-chinesemole; the `origin` remote uses the SSH alias `github-chinesemole`. |
+| Plan and design docs | `docs/FINISH_PLAN_WAITLIST.md` (roadmap), `docs/SPEC.md` (original spec), `docs/PHASE0.md` (data-route evidence), `docs/DESIGN_A2.md` (scraper contract, sections 11 to 15 override earlier ones), `docs/DESIGN_A4.md` (flows), `docs/DESIGN_A5.md` (survival analysis), `docs/DESIGN_A6.md` (site), `docs/ASSUMPTIONS.md` (the documented assumptions with validation numbers) |
+| Operations | `docs/RUNBOOK.md` (go-live state, how a run works, what to do when it fails, Sunday check, site and weekly analysis), `docs/DATA_LOG.md` (every outage, switch and decision with UTC times; step A4 reads it as censoring rules), `CLAIMS.md` (every resume claim with its check command and the last measured result) |
+| Memory | `~/.claude/projects/-Users-oliverguo/memory/project_berkeley_waitlist_odds.md` |
+
+## What has been done (steps A0 to A6 of the plan)
+
+**A0, dates and access.** Spring 2027 dates confirmed from the registrar's Google Calendar feed: Schedule of Classes publishes Oct 4, 2026; Phase 1 opens Mon Oct 26; Phase 2 Nov 23; adjustment period Jan 11, 2027; instruction Jan 19; last automatic waitlist run Feb 5; add/drop deadline Feb 10. The SIS Class API was requested and **denied: API Central does not grant access to students**. The `sis_api` adapter stays in the code in case a sponsor ever opens it.
+
+**A1, data route (docs/PHASE0.md).** classes.berkeley.edu section pages embed the SIS enrollment JSON (enrolled, capacity, waitlisted, waitlist capacity, reserved seats) without login and are the primary source. Findings that shaped everything after:
+- The site returns 403 to Python `requests` and `httpx` because they advertise ALPN `http/1.1` alone; the stdlib `urllib` client passes, from macOS and from GitHub's Linux runners. Do not switch clients and do not impersonate a browser.
+- The site's robots.txt disallows `/search/`, so the listing is never crawled. Discovery uses the site's own `/rss.xml` (10 newest nodes with ids) and `/node/<id>` enumeration above a watermark kept in `catalog/site.json`. Spring 2027 pages will be found this way after Oct 4.
+- Berkeleytime's public GraphQL gateway works from a laptop (cross-checks agreed 20 of 20) but is blocked by Cloudflare for GitHub's whole network. It is a local cross-check only (`probe/crosscheck_berkeleytime.py`).
+
+**A2, scraper and storage.** `scraper/` package: pinned pyarrow schema, append-only Parquet per run (daily baseline plus change-only deltas with tombstones), rebuild of the full panel, gap report, three source adapters, polite HTTP client (1 request/s, retries with Retry-After, deadline-aware, bounded bodies). Priority list in `config/priority_courses.txt` (ordered by importance; about 917 sections every run) plus 12 rotating shards for the remaining live primary sections (about 3,660 in total), 1,380-second budget per run. Snapshot files store run metadata once in the footer with zstd (about 15 KB per delta); the data branch grows about 1 MB a day.
+
+**A3, live operation.** GitHub Actions `scrape.yml` runs every 30 minutes. GitHub's cron fired only every 2 to 4 hours for this new repository, so the workflow keeps its own cadence: the last step of each run sleeps to the next :07/:37 slot and dispatches its successor with the built-in token (pushes made with that token never trigger workflows, but `workflow_dispatch` does). It stands down when another run is active or pending. `heartbeat.yml` restarts a dead chain; the chain dispatches `monitor.yml` once a day after 15:00 UTC; `monitor.yml` opens a "Scraper gap alert" issue when fewer than 40 runs land or a gap exceeds 90 minutes or the median missing share exceeds 0.5. Verified 2026-09-19: chain links at 20:07, 20:37, 21:07, 21:37, 22:07, 22:37 all on the slot. A restricted node (530942, HTTP 403) had pinned the discovery watermark for a few runs; fixed in the last commit; the watermark finishes catching up around 00:07 UTC on Sep 20, after which every run should observe its whole selection.
+
+**A4, flow reconstruction (validated).** `analysis/flows.py` splits count changes between consecutive observations into admits, waitlist joins, waitlist drops, direct enrolments and enrolled drops with an `ambiguous` flag and censoring from the data log; `analysis/positions.py` gives time to clear for a virtual waitlister under optimistic, central and pessimistic drop scenarios. `analysis/synthetic.py` simulates real students; at 30-minute sampling the reconstruction recovers admits within 9%, joins within 4%, single-event intervals exactly, and the central time-to-clear has a 25-minute median error (docs/ASSUMPTIONS.md section 7). A labelled figure of this is in the README and on the methodology page.
+
+**A5, survival analysis (code complete, no real data yet).** `analysis/calendar.py` (phases per term), `cohort.py` (virtual waitlisters with covariates), `survival.py` (Kaplan-Meier by position bucket, level, department and phase; log-rank; Cox PH with cluster-robust errors, PH test and stratified refit; sensitivity across scenarios; out-of-sample scoring on Phase 2 joins with concordance, Brier and decile calibration), `profile.py` (data-quality profile), `export.py` (site JSON with pooling below 30 cases), `figures.py`, `run.py`. `make analysis TERM=2272` reproduces everything from the data branch. On Fall 2026 test data the cohort has no clearing events, so the report says so; the pipeline is exercised end to end on simulated data in `tests/test_run.py`.
+
+**A6, site (v1 live).** `site/index.html` and `site/methodology.html`, deployed by `pages.yml`. `analysis.yml` runs every Sunday 15:23 UTC (or on dispatch), commits `site/data/*.json` and `reports/` to `main`, and dispatches the redeploy. Verified end to end on 2026-09-19.
+
+**Claims.** `CLAIMS.md` rows for the test suite, the cross-check, the public repo, the flow reconstruction, the analysis command and the site are measured; the cadence rows (runs per day, share of intervals under 45 minutes, sweep time) were measured on the first day only and need re-running. The `claims-audit` skill at `~/.claude/skills/claims-audit/` re-runs every row.
+
+## What is left
+
+**Time-gated (nothing to build, just do on the date):**
+1. **Sep 20 onward, first check in a new session:** `git -C data-branch pull -q && python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24`. Expect about 48 runs, `share_gaps_le_45min` at or above 0.95, `median_missing_share` near 0 after 00:07 UTC on Sep 20. If missing share stays around 0.14, discovery is still catching up or the budget is short; see docs/RUNBOOK.md section 3 and the 20:37Z note in the data log. Then re-run the claims audit (rows 5 to 7).
+2. **Oct 4 (Spring 2027 schedule publishes):** run RUNBOOK step 7: `gh variable set SCRAPE_TERM --body "Spring 2027"`, dispatch a forced baseline, confirm the pages report `data-term` 2272, add a `term_switch` row to docs/DATA_LOG.md. Discovery finds the new pages automatically over the following runs (about 6,000 nodes at 400 per run).
+3. **Oct 12:** deadline for Spring collection to be running (it will be, if step 2 is done).
+4. **Nov 9 onward (Phase 1 data exists):** first real `make analysis TERM=2272`, read `analysis/out/2272/report.md` and `profile.md`, write the two or three headline results in plain English into CLAIMS.md and the README, replace the simulated figure with `reports/figures_2272/hero.png`, check the site renders real estimates. Soft launch before Phase 2 (Nov 23) if the numbers hold up.
+5. **Jan 2027 (Phase 2 closes):** refit, out-of-sample validation on Phase 2 joins, final numbers after Feb 10.
+6. **Before mid-April 2027:** A7 ship (see below).
+
+**Oliver's (cannot be done by the assistant):**
+- Sunday two-minute check through Feb 14 (RUNBOOK section 4).
+- Open the live site in a browser once and confirm the no-data state reads well (no browser was available in the sessions).
+- Review `config/priority_courses.txt` before Oct 26: only 99 of 478 waitlisted Fall sections matched the original list; UGBA, MEC ENG and PHYSED were added; ENGLISH, MUSIC, PBHLTH and HISTORY are the next largest gaps. Any edit changes `priority_sha`; log it in the data log.
+- Optional sponsored request for the SIS Class API (a professor or the ASUC OCTO Berkeleytime team).
+- A7: the r/berkeley post, the resume bullets ("Spring 2027 enrollment cycle", real section and snapshot counts, one headline result), pinning the repo on the GitHub profile, the private interview-prep page, LinkedIn.
+- The design-critique, accessibility and UX-copy reviews the plan names as skills were done by hand; a human pass on the site before the soft launch is still worth doing.
+
+**Engineering that could still be done now (not required):**
+- A test that renders `site/index.html` against the simulated `site/data` JSON (no JS runtime was available; the page was checked by reading).
+- Reduce `catalog.json` churn on the data branch (rewritten whenever ids are learned or a node is discovered; about 1 MB per write, currently a few writes a day).
+- The plan's `superpowers`, `data`, `design` and `humanizer` skills are not installed in this environment; their disciplines were applied by hand. Installing them is section 0 of the plan.
+
+## How to resume
+
+```
+cd /Users/oliverguo/berkeley-waitlist-odds && source .venv/bin/activate
+git pull -q origin main
+git -C data-branch pull -q || git clone -q --branch data --single-branch git@github-chinesemole:oliver139-chinesemole/berkeley-waitlist-odds.git data-branch
+python -m pytest -q                                   # 286 tests, about 3 minutes
+python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24
+gh run list -R oliver139-chinesemole/berkeley-waitlist-odds --workflow scrape.yml --limit 6
+```
+
+## Decisions worth knowing before changing anything
+
+- Only `scrape.yml` writes the `data` branch; only `analysis.yml` commits to `main` (site data and reports). Never commit to `data` by hand.
+- Workflows dispatch each other with the built-in token on purpose; a push made by a workflow does not trigger other workflows.
+- Flows are lower bounds; an enrolment gain with a non-empty waitlist counts as admits (FIFO); intervals overlapping a logged outage are censored; a `source_switch` or `schema` row in the data log is a point event, an `outage` row is a span.
+- The site never shows simulated numbers; the validation figure is labelled as simulated everywhere it appears.
+- Berkeley's registrar runs the last automatic waitlist process on Feb 5, 2027; nothing after it counts as queue movement.
