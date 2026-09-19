@@ -1,0 +1,47 @@
+# Temporary diagnostic: which HTTP clients do berkeleytime.com and
+# classes.berkeley.edu accept from a GitHub-hosted runner? Dispatch only.
+name: diag
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests certifi
+      - shell: bash
+        run: |
+          UA="berkeley-waitlist-odds/0.1.0 (+https://github.com/oliver139-chinesemole/berkeley-waitlist-odds; mailto:oliver139@berkeley.edu)"
+          echo "egress ip: $(curl -s --max-time 10 https://api.ipify.org)"
+          ID=$(python -c "import json; print(json.load(open('data/fixtures/berkeleytime_persisted_ops.json'))['GetTerms'][0]['id'])")
+          echo "== curl POST berkeleytime GetTerms: $(curl -s -o /tmp/bt.txt -w '%{http_code}' --max-time 30 -A "$UA" -H 'Content-Type: application/json' -X POST https://berkeleytime.com/api/graphql -d "{\"id\":\"$ID\",\"variables\":{}}")"; head -c 200 /tmp/bt.txt; echo
+          echo "== curl POST berkeleytime, browser UA: $(curl -s -o /tmp/bt2.txt -w '%{http_code}' --max-time 30 -A 'Mozilla/5.0' -H 'Content-Type: application/json' -X POST https://berkeleytime.com/api/graphql -d "{\"id\":\"$ID\",\"variables\":{}}")"; head -c 200 /tmp/bt2.txt; echo
+          python - <<PY
+          import json, ssl, urllib.request, urllib.error, certifi, requests
+          UA="berkeley-waitlist-odds/0.1.0 (+https://github.com/oliver139-chinesemole/berkeley-waitlist-odds; mailto:oliver139@berkeley.edu)"
+          op=json.load(open("data/fixtures/berkeleytime_persisted_ops.json"))["GetTerms"][0]["id"]
+          body=json.dumps({"id":op,"variables":{}}).encode()
+          ctx=ssl.create_default_context(cafile=certifi.where())
+          for name,headers in (("urllib honest UA",{"User-Agent":UA,"Content-Type":"application/json"}),("urllib browser UA",{"User-Agent":"Mozilla/5.0","Content-Type":"application/json"})):
+              req=urllib.request.Request("https://berkeleytime.com/api/graphql",data=body,headers=headers,method="POST")
+              try:
+                  with urllib.request.urlopen(req,timeout=30,context=ctx) as r: print("==",name,"->",r.status,r.read()[:120])
+              except urllib.error.HTTPError as e: print("==",name,"-> HTTP",e.code,e.headers.get("server"),e.headers.get("cf-ray"),e.read()[:200])
+              except Exception as e: print("==",name,"->",type(e).__name__,str(e)[:100])
+          for name,ua in (("requests honest UA",UA),("requests browser UA","Mozilla/5.0")):
+              try:
+                  r=requests.post("https://berkeleytime.com/api/graphql",json={"id":op,"variables":{}},headers={"User-Agent":ua},timeout=30)
+                  print("==",name,"->",r.status_code,r.headers.get("server"),r.headers.get("cf-ray"),r.text[:200].replace("\n"," "))
+              except Exception as e: print("==",name,"->",type(e).__name__,str(e)[:100])
+          # classes.berkeley.edu section page via urllib (what the scraper uses)
+          req=urllib.request.Request("https://classes.berkeley.edu/content/2026-fall-aeroeng-10-001-lec-001",headers={"User-Agent":UA})
+          try:
+              with urllib.request.urlopen(req,timeout=30,context=ctx) as r: b=r.read(); print("== classes.berkeley.edu urllib ->",r.status,len(b),b'"enrollmentStatus"' in b)
+          except urllib.error.HTTPError as e: print("== classes.berkeley.edu urllib -> HTTP",e.code)
+          PY
