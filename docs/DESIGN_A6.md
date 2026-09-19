@@ -19,4 +19,4 @@ Data source and cadence, counts to flows, flows to odds, what the numbers cannot
 ## Checks
 
 - CLAIMS.md row 4: `curl -sS -o /dev/null -w '%{http_code}\n' https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/` prints 200; the same for `data/meta.json` once the analysis workflow has committed it.
-- The page must render the empty state correctly with no `site/data/*.json` present (the state before Oct 26) and the full state on the JSON produced by `tests/test_run.py`'s simulated cohort (checked by hand in a browser, not by an automated test).
+- The page must render the empty state correctly with no `site/data/*.json` present (the state before Oct 26) and the full state on the JSON produced by `tests/test_run.py`'s simulated cohort. `tests/test_site.py` checks both, plus the lookup, pooling tag, missing-course and missing-bucket messages and the `?course=&position=` link, by running the page's own inline script under node with a stub document and a file-backed `fetch` (`tests/site/harness.js`); the tests are skipped when node is not installed. A pass in a real browser is still due before the soft launch.

@@ -147,7 +147,9 @@ def run_analysis(
     head = headline(cohort, cox_for_headline) if enough else {}
     site_files = None
     if site_dir is not None and len(cohort):
-        site_files = export_site_tables(cohort, calendar, site_dir, meta={"flows": fsum, "cohort_rows": cohort_rows})
+        # meta["cohort_rows"] stays the integer the exporter writes (the page prints it);
+        # the per-scenario counts go under their own key.
+        site_files = export_site_tables(cohort, calendar, site_dir, meta={"flows": fsum, "cohort_rows_by_scenario": cohort_rows})
 
     report = [
         f"# Waitlist analysis report: {calendar.name} (term {calendar.term_id})",

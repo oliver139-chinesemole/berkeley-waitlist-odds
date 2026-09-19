@@ -4,9 +4,9 @@ Given a UC Berkeley course and a waitlist position, how likely is that spot to c
 
 **Live site:** https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/ (shows an empty state until Spring 2027 waitlists start clearing; estimates are planned for mid-November).
 
-## Status (2026-09-19)
+## Status (2026-09-20)
 
-Scraper live on GitHub Actions against Fall 2026 as the test term (first successful runs 2026-09-19: a baseline of 1,089 priority-list sections in 1,174 s, no fetch failures). The 30-minute schedule is enabled; the Spring 2027 switch happens on Oct 4 through the `SCRAPE_TERM` repository variable (docs/RUNBOOK.md step 7). No models have been fit yet. Deadline for the scraper to be collecting Spring 2027: Mon Oct 12, 2026, two weeks before Phase 1 enrollment opens on Oct 26.
+The scraper has run on GitHub Actions since 2026-09-19 against Fall 2026 as the test term: about 917 priority-list sections plus one of 12 shards of the remaining live sections every 30 minutes, kept on cadence by a self-dispatching workflow chain (docs/RUNBOOK.md section 2). The flow reconstruction is validated on simulated data, the survival analysis runs end to end with `make analysis`, and the lookup site is live in its no-data state. The Spring 2027 switch happens on Oct 4 through the `SCRAPE_TERM` repository variable (docs/RUNBOOK.md step 7); the first real estimates are planned for mid-November, after Phase 1 opens on Oct 26. Deadline for the scraper to be collecting Spring 2027: Mon Oct 12, 2026. What is done and what is left is kept in docs/HANDOFF.md.
 
 On novelty: Berkeleytime already records enrollment and waitlist counts every 15 minutes and exposes the history publicly through its GraphQL gateway. Collecting snapshots is not new. What this project adds is the waitlist-clearing model and the lookup tool, plus a dataset collected under a pinned schema with every gap logged, so the model can be rebuilt from raw files.
 
@@ -23,11 +23,11 @@ flowchart LR
   J -.-> I
 ```
 
-1. Every 30 minutes a GitHub Actions job (`scrape.yml`) fetches section counts. Sources in priority order: the SIS Class API (needs credentials; request not yet submitted), classes.berkeley.edu section pages (works now), Berkeleytime (cross-check and emergency only, its ids are not SIS ids).
+1. Every 30 minutes a GitHub Actions job (`scrape.yml`) fetches section counts. Sources in priority order: the SIS Class API (needs credentials; API Central declined the request on 2026-09-19 because it does not grant access to students, so the adapter is dormant), classes.berkeley.edu section pages (the primary; sections are discovered through the site's own `rss.xml` feed and `/node/<id>` pages, never its `/search/` listing, which robots.txt disallows), Berkeleytime (local cross-check only: its ids are not SIS ids and it blocks GitHub's runners).
 2. Rows are validated against a pinned pyarrow schema (`scraper/schema.py`) and written as one Parquet file per run to the `data` branch: a full baseline once per UTC day, change-only deltas otherwise. Files are never rewritten.
 3. `scraper/rebuild.py` reconstructs the full panel (every section at every run) from baseline plus deltas and marks cells that were not observed, so they can be censored instead of read as zero flow.
 4. A daily monitor job (`monitor.yml`) computes the largest gap between snapshots in the last 24 hours and opens an issue if it exceeds 90 minutes or fewer than 40 runs landed.
-5. Not built yet: flow reconstruction (admits, joins, drops under FIFO assumptions), survival analysis with lifelines, precomputed JSON, and the GitHub Pages site.
+5. `analysis/flows.py` reconstructs waitlist flows (admits, joins, drops under FIFO assumptions), `analysis/cohort.py` and `analysis/survival.py` fit Kaplan-Meier curves and a Cox model with lifelines, `analysis/export.py` writes the precomputed JSON, and `analysis.yml` commits it every Sunday and redeploys the GitHub Pages site under `site/`.
 
 ## Run it locally
 
@@ -54,7 +54,8 @@ The tests are offline and use recorded fixtures from `data/fixtures/`. The dry r
 ```
 snapshots/date=YYYY-MM-DD/HHMM-baseline.parquet   every observed section; first run of the UTC day
 snapshots/date=YYYY-MM-DD/HHMM-delta.parquet      rows whose counts changed since the previous observation, plus tombstones
-catalog/<term_id>/catalog.json                    section universe for the term (classes_site only): Berkeleytime catalog classes with derived page paths, learned section ids, and 404 markers
+catalog/<term_id>/catalog.json                    section universe for the term (classes_site only): page paths, learned SIS section ids, node ids and 404 markers, found through the site's rss.xml feed and /node/<id> enumeration
+catalog/site.json                                 discovery watermark (highest node id probed and seen) and node ids to retry
 status.json                                       summary of the last run
 ```
 
@@ -63,16 +64,18 @@ One row per section per run: `fetched_at, term_id, section_id, course_key, subje
 ## Limitations
 
 - The data is aggregate counts, not individual positions. Nobody observes "position 12 cleared". Flows are reconstructed under stated assumptions (FIFO ordering, net flows within a 30-minute window, three scenarios for where unobserved drops sat on the list) and are lower bounds.
-- From classes.berkeley.edu only a priority list of about 600 to 900 sections is observed every 30 minutes. The rest rotate through 8 shards, so each is observed about every 4 hours. The SIS API removes this limit if access is approved.
+- From classes.berkeley.edu only a priority list of about 900 sections (`config/priority_courses.txt`) is observed every 30 minutes. The rest rotate through 12 shards, so each is observed about every 6 hours. The SIS API would remove this limit, but API Central does not grant it to students.
 - Reserved seats break pure FIFO. A waitlist can sit still while open seats exist.
 - GitHub Actions schedules drift and sometimes skip runs. Gaps are logged in docs/DATA_LOG.md and treated as censoring, not as zero flow.
 - One enrollment cycle. Results describe Spring 2027 and may not transfer to other terms.
 
 ## Documents
 
+- docs/HANDOFF.md: what is done, what is left, and how to resume a working session.
 - docs/PHASE0.md: the sources that were probed, what each returns, rate limits, and the Spring 2027 calendar.
-- docs/DESIGN_A2.md: the build contract for the scraper and storage.
-- docs/RUNBOOK.md: go-live checklist, how a run picks a source, what to do when one fails.
+- docs/DESIGN_A2.md: the build contract for the scraper and storage; docs/DESIGN_A4.md, docs/DESIGN_A5.md and docs/DESIGN_A6.md for the flow reconstruction, the survival analysis and the site.
+- docs/ASSUMPTIONS.md: the assumptions behind the reconstruction, with the numbers from the synthetic validation.
+- docs/RUNBOOK.md: go-live checklist, how a run picks a source, what to do when one fails, the weekly check.
 - docs/DATA_LOG.md: outages, schema changes, source switches.
 - CLAIMS.md: every resume claim and the command that checks it.
 
