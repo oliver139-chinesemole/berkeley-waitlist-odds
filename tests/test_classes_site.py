@@ -76,9 +76,7 @@ class StubClient:
         self.get_many_calls.append((list(urls), time_budget_s))
         for i, url in enumerate(urls):
             if self.attempt_limit is not None and i >= self.attempt_limit:
-                err = HttpError(0, url, "budget exhausted")
-                err.budget_exhausted = True  # type: ignore[attr-defined]
-                on_result(url, err)
+                on_result(url, HttpError(0, url, "budget exhausted"))  # HttpError.budget_exhausted is derived from this message
                 continue
             on_result(url, self.pages.get(url, HttpError(404, url, "not routed")))
 
@@ -322,9 +320,12 @@ def test_first_run_reads_feed_initialises_watermark_and_probes(tmp_path: Path) -
     # feed added COMPSCI 61A and DATA C100 (STAT 199 IND is self-study); watermark starts newest - lookback
     state = read_site_state(tmp_path)
     assert state["max_node_seen"] == 1012
-    assert state["max_node_probed"] == 1012  # 400-probe cap exceeds the 2000 lookback? no: capped by newest
+    # the lookback (2000) reaches below id 1, so the watermark starts at 0 and the first
+    # run probes ids 1..400 (the per-run cap), leaving 401..1012 for later runs
+    assert INITIAL_LOOKBACK_NODES > 1012
+    assert state["max_node_probed"] == 400
     probe_urls = client.get_many_calls[0][0]
-    assert probe_urls[0] == f"{BASE}/node/{1012 - INITIAL_LOOKBACK_NODES + 1}" and probe_urls[-1] == f"{BASE}/node/{1012 - INITIAL_LOOKBACK_NODES + 400}"
+    assert probe_urls[0] == f"{BASE}/node/1" and probe_urls[-1] == f"{BASE}/node/400"
     assert client.get_many_calls[0][1] == pytest.approx(1000 * NODE_PROBE_BUDGET_SHARE)
     # rows: both sections observed via the normal fetch (the probe window did not reach 1011/1012)
     assert sorted(r["section_id"] for r in result.rows) == ["20882", "29147"]
