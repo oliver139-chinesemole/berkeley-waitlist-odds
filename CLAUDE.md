@@ -8,7 +8,7 @@
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: A3 (A2 built 2026-09-18, reviewed and fixed 2026-09-19; repo, data branch and first Actions run done; schedule paused until the robots.txt fix is merged, then re-enable per docs/RUNBOOK.md step 3b). Update this line at the end of every session.
+- Current step: A3 running (scraper live since 2026-09-19; node-id discovery deployed 19:30Z; GitHub cron still sparse, see docs/DATA_LOG.md). Next: A4 flow reconstruction (docs/ASSUMPTIONS.md, analysis/flows.py, synthetic recovery test) while data accumulates; on Oct 4 confirm Spring 2027 nodes appear and switch SCRAPE_TERM. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.

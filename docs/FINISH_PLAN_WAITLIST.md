@@ -243,5 +243,5 @@ Setup (section 0): plugins not installed in this environment; work done by hand 
 
 Step: A3 | blockers: none (API closed to students; site route is primary; cron cadence still ramping) | scraper live: yes since 2026-09-19 12:27Z (schedule) | snapshots landed: 1 baseline (911 sections)
 Done: A0 dates; A1 probe + 20/20 cross-check; A2 scraper, storage, rebuild, gaps, 3 sources, workflows, 214 tests; repo public with data branch; review fixes (robots, budget, day-boundary tombstones, cross-source guard, coverage gate)
-Next session: commit + push the fix branch, CI green, re-enable scrape.yml, dispatch a forced baseline, then 48-hour check (RUNBOOK step 6); Oliver: submit the SIS API request, review the priority list (UGBA *, MECENG * suggested), Sunday checks
+Next session: check cron cadence (3 scheduled runs in the first 7 h; escalate per RUNBOOK 3.4 if still sparse), verify catalog/site.json appeared on the data branch, then start A4 (ASSUMPTIONS.md, analysis/flows.py, synthetic recovery test); Oliver: Sunday checks, Oct 4 term switch
 ```
