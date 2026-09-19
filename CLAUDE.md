@@ -8,7 +8,7 @@
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: A5 code built on 2026-09-19 (A4 done and validated; `make analysis` runs end to end on simulated data; real Spring 2027 data arrives after Oct 26). Scraper live (A3) with a self-dispatching 30-minute chain; verify cadence with the gap report. Next: A6 site scaffold, then interim A5 on Phase 1 data from Nov 9. Update this line at the end of every session.
+- Current step: A6 v1 live (2026-09-19): site at https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/ shows the no-data state until Spring 2027 waitlists clear; analysis.yml refreshes site/data and reports/ weekly. A3 running with the self-dispatch chain; A4 done; A5 code done. Next: Sunday cadence checks, Oct 4 term switch, interim A5 on Phase 1 data from Nov 9 (README hero plot and headline results then), A7 with Oliver. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.
