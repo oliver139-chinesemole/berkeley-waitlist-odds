@@ -195,12 +195,12 @@ permissions:
 
 **Skills, in order:** `data:explore-data` to profile the rebuilt panel (null rates, gaps, impossible transitions, sections that vanish). `data:statistical-analysis` for KM, log-rank, Cox, PH checks. `data:create-viz` or `data:data-visualization` for figures. `data:validate-data` on the full analysis before any number goes on the site or the resume. `superpowers:verification-before-completion` on `make analysis`.
 
-- [ ] Unit of analysis: a virtual waitlister defined by `(section, join_time, position_at_join)`. Under FIFO they advance one spot per admit and per drop ahead of them. Event: position reaches zero by admit. Censor at dataset end, section cancellation, or a logged data gap.
-- [ ] Kaplan–Meier with `lifelines.KaplanMeierFitter`, stratified by position bucket (1–5, 6–15, 16–40, 41+), course level, department, and phase at join. Log-rank tests between strata. Plot with confidence bands.
-- [ ] Cox PH with `CoxPHFitter`: covariates log(position), waitlist/capacity ratio, course level, department group, phase at join, days until instruction begins, reserved-seat indicator if available. `cluster_col="section_id"` for robust standard errors. Run `check_assumptions`; stratify any covariate that fails.
-- [ ] Sensitivity: refit under the optimistic and pessimistic drop scenarios. Report how far the headline number moves.
-- [ ] Out-of-sample: fit on Phase 1 joins, predict Phase 2 joins. Report concordance, Brier score for "cleared within 14 days," and a decile calibration plot.
-- [ ] `make analysis` reproduces every figure and table from raw Parquet. Pin versions in `requirements.txt`.
+- [x] Unit of analysis: a virtual waitlister defined by `(section, join_time, position_at_join)`. Under FIFO they advance one spot per admit and per drop ahead of them. Event: position reaches zero by admit. Censor at dataset end, section cancellation, or a logged data gap.
+- [x] Kaplan–Meier with `lifelines.KaplanMeierFitter`, stratified by position bucket (1–5, 6–15, 16–40, 41+), course level, department, and phase at join. Log-rank tests between strata. Plot with confidence bands.
+- [x] Cox PH with `CoxPHFitter`: covariates log(position), waitlist/capacity ratio, course level, department group, phase at join, days until instruction begins, reserved-seat indicator if available. `cluster_col="section_id"` for robust standard errors. Run `check_assumptions`; stratify any covariate that fails.
+- [x] Sensitivity: refit under the optimistic and pessimistic drop scenarios. Report how far the headline number moves.
+- [x] Out-of-sample: fit on Phase 1 joins, predict Phase 2 joins. Report concordance, Brier score for "cleared within 14 days," and a decile calibration plot.
+- [x] `make analysis` reproduces every figure and table from raw Parquet. Pin versions in `requirements.txt`.
 - [ ] Write the two or three headline results in plain English, with numbers. These go on the resume and the site.
 
 ### A6. Publish (site v1 by Nov 22, final by March)
@@ -241,7 +241,7 @@ Last updated: 2026-09-19
 Phase 1 opens: Mon Oct 26, 2026 (registrar ICS; schedule publishes Oct 4)   API Central request: DENIED 2026-09-19 (not granting access to students); site route is primary
 Setup (section 0): plugins not installed in this environment; work done by hand   Source chosen (A1): classes.berkeley.edu section pages via Berkeleytime catalog (SIS API primary once approved); docs/PHASE0.md
 
-Step: A3 | blockers: none (API closed to students; site route is primary; cron cadence still ramping) | scraper live: yes since 2026-09-19 12:27Z (schedule) | snapshots landed: 1 baseline (911 sections)
-Done: A0 dates; A1 probe + 20/20 cross-check; A2 scraper, storage, rebuild, gaps, 3 sources, workflows, 214 tests; repo public with data branch; review fixes (robots, budget, day-boundary tombstones, cross-source guard, coverage gate)
-Next session: check cron cadence (3 scheduled runs in the first 7 h; escalate per RUNBOOK 3.4 if still sparse), verify catalog/site.json appeared on the data branch, then start A4 (ASSUMPTIONS.md, analysis/flows.py, synthetic recovery test); Oliver: Sunday checks, Oct 4 term switch
+Step: A5 (code) / A3 (running) | blockers: none; GitHub cron sparse, self-dispatch chain added 19:41Z | scraper live: yes (5 runs on 2026-09-19 by 18:34Z, 1,070 to 1,089 sections each) | A4: done, validated on synthetic data
+Done: A0 dates; A1 probe + 20/20 cross-check; A2 scraper, storage, rebuild, gaps, 3 sources, workflows; repo public with data branch; review fixes; node-id discovery (robots-compliant, runner-compatible); A4 flows + positions + ASSUMPTIONS + synthetic validation; A5 calendar, cohort, KM/Cox/PH/OOS, exporter, figures, `make analysis` (282 tests)
+Next session: confirm the 30-minute chain holds (gap report), confirm catalog/site.json on the data branch, then A6 site scaffold (static page reading site/data/*.json) so it is ready before real numbers exist; Oliver: Sunday checks, Oct 4 term switch
 ```

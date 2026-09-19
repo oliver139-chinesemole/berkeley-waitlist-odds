@@ -8,7 +8,7 @@
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: A3 running (scraper live since 2026-09-19; node-id discovery deployed 19:30Z; GitHub cron still sparse, see docs/DATA_LOG.md). Next: A4 flow reconstruction (docs/ASSUMPTIONS.md, analysis/flows.py, synthetic recovery test) while data accumulates; on Oct 4 confirm Spring 2027 nodes appear and switch SCRAPE_TERM. Update this line at the end of every session.
+- Current step: A5 code built on 2026-09-19 (A4 done and validated; `make analysis` runs end to end on simulated data; real Spring 2027 data arrives after Oct 26). Scraper live (A3) with a self-dispatching 30-minute chain; verify cadence with the gap report. Next: A6 site scaffold, then interim A5 on Phase 1 data from Nov 9. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.
@@ -50,7 +50,13 @@ Local fetch, 25 sections, writes nothing:
 python -m scraper.fetch --term "Fall 2026" --source classes_site --limit 25 --dry-run
 ```
 
-Gap report on a checkout of the `data` branch (see docs/RUNBOOK.md for how to get one at ./data-branch):
+Full analysis (flows, cohorts, KM, Cox, figures, site JSON, report) from a checkout of the `data` branch at ./data-branch:
+
+```
+make analysis TERM=2272
+```
+
+Gap report on the same checkout (see docs/RUNBOOK.md for how to get it):
 
 ```
 python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24 --fail-if-gap-min 90 --fail-if-runs-lt 40
