@@ -175,10 +175,13 @@ jobs:
           [ $wait -lt 0 ] && wait=0
           echo "sleeping ${wait}s until the next slot"
           sleep $wait
-          others=$(gh run list --workflow scrape.yml --status in_progress --json databaseId --jq "map(select(.databaseId != ${THIS_RUN})) | length")
-          queued=$(gh run list --workflow scrape.yml --status queued --json databaseId --jq 'length')
-          if [ "${others:-0}" != "0" ] || [ "${queued:-0}" != "0" ]; then
-            echo "another run exists (in_progress=$others queued=$queued); not dispatching"
+          # Any run that is not completed counts: in_progress, queued, and the
+          # "pending"/"waiting" states GitHub uses for a run held back by the
+          # concurrency group (a --status queued filter misses those, and a fresh
+          # dispatch would make GitHub cancel the older pending run).
+          others=$(gh run list --workflow scrape.yml --limit 10 --json databaseId,status --jq "[.[] | select(.status != \"completed\" and .databaseId != ${THIS_RUN})] | length")
+          if [ "${others:-0}" != "0" ]; then
+            echo "another run is active or pending ($others); not dispatching"
             exit 0
           fi
           gh workflow run scrape.yml && echo "dispatched the next run"

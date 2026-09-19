@@ -23,13 +23,12 @@ jobs:
     steps:
       - shell: bash
         run: |
-          active=$(gh run list --workflow scrape.yml --status in_progress --json databaseId --jq 'length')
-          queued=$(gh run list --workflow scrape.yml --status queued --json databaseId --jq 'length')
+          active=$(gh run list --workflow scrape.yml --limit 10 --json status --jq '[.[] | select(.status != "completed")] | length')
           newest=$(gh run list --workflow scrape.yml --limit 1 --json createdAt --jq '.[0].createdAt // empty')
           age=999999
           if [ -n "$newest" ]; then age=$(( $(date -u +%s) - $(date -u -d "$newest" +%s) )); fi
-          echo "in_progress=$active queued=$queued newest=$newest age=${age}s"
-          if [ "${active:-0}" = "0" ] && [ "${queued:-0}" = "0" ] && [ "$age" -gt 2400 ]; then
+          echo "active_or_pending=$active newest=$newest age=${age}s"
+          if [ "${active:-0}" = "0" ] && [ "$age" -gt 2400 ]; then
             gh workflow run scrape.yml && echo "chain restarted"
           else
             echo "chain alive; nothing to do"
