@@ -8,3 +8,4 @@ __pycache__/
 data-branch/
 *.log
 analysis/out/
+site/data/
