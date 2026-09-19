@@ -249,7 +249,7 @@ If anything is off, go to section 3.
 
 The lookup page lives under `site/` and is published to https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/ by `pages.yml` on every push to `main` that touches `site/`. It reads `site/data/meta.json` and `site/data/courses.json`; until those exist with at least 10 clearings it shows an empty state, never simulated numbers.
 
-`analysis.yml` runs every Sunday at 15:23 UTC (and on `gh workflow run analysis.yml`, optionally with `-f term="Spring 2027"`): it checks out the data branch, runs `python -m analysis.run` for the `SCRAPE_TERM` term, and commits `site/data/*.json`, `reports/report_<term>.md` and `reports/figures_<term>/` to `main`, which redeploys the site. To refresh by hand:
+`analysis.yml` runs every Sunday at 15:23 UTC (and on `gh workflow run analysis.yml`, optionally with `-f term="Spring 2027"`): it checks out the data branch, runs `python -m analysis.run` for the `SCRAPE_TERM` term, and commits `site/data/*.json`, `reports/report_<term>.md` and `reports/figures_<term>/` to `main`, then dispatches `pages.yml` to redeploy the site (a push made by a workflow does not trigger other workflows on its own). To refresh by hand:
 
 ```
 gh workflow run analysis.yml

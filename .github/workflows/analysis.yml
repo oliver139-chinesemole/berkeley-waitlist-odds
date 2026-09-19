@@ -14,6 +14,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # to redeploy the site after committing (pushes made with GITHUB_TOKEN do not trigger pages.yml)
 
 concurrency:
   group: analysis
@@ -50,6 +51,7 @@ jobs:
         run: |
           python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir site/data 2>&1 | tee analysis.log
       - name: Commit outputs
+        id: commit
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -64,10 +66,16 @@ jobs:
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "analysis: $TERM_NAME $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           for attempt in 1 2 3; do
-            git push origin HEAD:main && exit 0
+            if git push origin HEAD:main; then echo "pushed=true" >> "$GITHUB_OUTPUT"; exit 0; fi
             git pull --rebase origin main
           done
           exit 1
+      - name: Redeploy the site
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow run pages.yml
       - uses: actions/upload-artifact@v4
         if: always()
         with:
