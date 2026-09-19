@@ -241,7 +241,7 @@ Last updated: 2026-09-19
 Phase 1 opens: Mon Oct 26, 2026 (registrar ICS; schedule publishes Oct 4)   API Central request: DENIED 2026-09-19 (not granting access to students); site route is primary
 Setup (section 0): plugins not installed in this environment; work done by hand   Source chosen (A1): classes.berkeley.edu section pages via Berkeleytime catalog (SIS API primary once approved); docs/PHASE0.md
 
-Step: A6 v1 live / A3 running | blockers: none | scraper live: yes, self-dispatch chain confirmed 20:07Z | A4 done and validated | A5 code done (needs Spring data) | site live with weekly analysis workflow
+Step: A6 v1 live / A3 running | blockers: none | scraper live: yes, self-dispatch chain confirmed 20:07Z | A4 done and validated | A5 code done (needs Spring data) | site live with weekly analysis workflow; heartbeat + chain-dispatched monitor; footer-only Parquet metadata (files halved)
 Done: A0 dates; A1 probe + 20/20 cross-check; A2 scraper, storage, rebuild, gaps, 3 sources, workflows; repo public with data branch; review fixes; node-id discovery (robots-compliant, runner-compatible); A4 flows + positions + ASSUMPTIONS + synthetic validation; A5 calendar, cohort, KM/Cox/PH/OOS, exporter, figures, `make analysis` (282 tests)
 Next session: gap report over 24 h (expect about 48 runs, share <= 45 min >= 0.95); open the live site in a browser and check the no-data state; Oct 4: term switch (RUNBOOK step 7); Nov 9: first real `make analysis`, README hero plot, headline numbers; Oliver: Sunday checks, priority list review before Oct 26
 ```

@@ -63,7 +63,8 @@ python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24 --fai
 ```
 
 ## Rules that are not obvious from the code
-- Only scrape.yml writes to the `data` branch. Never commit there by hand.
+- Only scrape.yml writes to the `data` branch. Never commit there by hand. analysis.yml is the only workflow that commits to `main` (site/data and reports/).
+- Workflows dispatch each other with the built-in token because pushes made with it never trigger other workflows: scrape.yml re-dispatches itself every 30 minutes and the monitor daily, analysis.yml dispatches pages.yml, heartbeat.yml restarts a dead chain.
 - Tests never touch the network. Use the fixtures in data/fixtures/ and fakes.
 - The classes.berkeley.edu client is stdlib urllib on purpose. The site blocks clients whose TLS handshake advertises ALPN http/1.1 alone, which is what requests and httpx do (docs/PHASE0.md). Do not switch it and do not impersonate a browser.
 - Never request `/search/` on classes.berkeley.edu: robots.txt disallows it. Section discovery uses the site's own `/rss.xml` and `/node/<id>` pages (docs/DESIGN_A2.md section 14); Berkeleytime is unreachable from GitHub runners and is only a local cross-check.
