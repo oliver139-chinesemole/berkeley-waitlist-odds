@@ -285,3 +285,16 @@ The full robots.txt of classes.berkeley.edu disallows `/search/` (the 2026-09-18
 ### 6 and 8. CLI and workflows
 
 `--time-budget-s` defaults to 1200 and scrape.yml passes it explicitly (29-minute job timeout minus checkout, install, in-flight retries and the push). The run-log artifact uploads on `always()`, and an `always()` step prints the log tail and the data-branch status so a cancelled run still shows how far it got. Scheduled runs take the term from the `SCRAPE_TERM` repository variable (set to `Fall 2026` on 2026-09-19; switch to `Spring 2027` on Oct 4). Storage-semantics fixes (day-boundary tombstones, cross-source guard, `complete` metadata, term-aware baseline decision, coverage threshold and exit code 4, gap-report missing-share fields) are recorded in section 12 by the agent that made them.
+
+## 14. Discovery by node id (2026-09-19, supersedes the Berkeleytime catalog in section 13)
+
+A diagnostic run from a GitHub-hosted runner showed berkeleytime.com answering 403 (Cloudflare) to every client, so the section 13 catalog refresh never ran in production. Discovery now uses two robots-allowed resources of classes.berkeley.edu itself:
+
+- `GET /rss.xml`: the 10 newest nodes, each with `<guid>` = node id, a title of the form `2026 Fall AEROENG 10 001 LEC 001`, and the `/content/` alias.
+- `GET /node/<id>`: the section page for that id (200, identical to its alias, carrying `<link rel="canonical">`, `<title>`, `data-history-node-id` and `data-term`) or 404.
+
+State: `catalog/site.json` holds `max_node_probed` (every id at or below it has been probed) and `max_node_seen` (the newest feed id). Each run: read the feed, add its section items to the catalog of their own term (`catalog/<term_id>/catalog.json`, one per term; self-study components excluded), then probe ids `max_node_probed + 1 .. min(max_node_seen, max_node_probed + MAX_NODE_PROBES_PER_RUN)` through `get_many` with at most `NODE_PROBE_BUDGET_SHARE` (30%) of the run budget. A probed page that is a section of the run's term is parsed once and counts as that run's observation (`prefetched`), so enumeration is not wasted work; sections of other terms are recorded in their catalogs; non-section nodes and 404s are skipped. The watermark advances over the contiguous prefix of attempted ids only, so a budget cutoff never skips ids. On the very first run the watermark starts `INITIAL_LOOKBACK_NODES` (2,000) below the newest feed id. When the feed is unreadable the stored watermark is used; with neither, enumeration is skipped for that run.
+
+Spring 2027: the registrar publishes the schedule on Oct 4; its sections appear as new nodes above the watermark and are enumerated over the following runs (about 6,000 nodes at 400 per run, roughly 15 runs). `TermNotPublished` (exit 3) is raised only when the term's catalog is still empty after discovery. The SIS term id is read from `data-term` on the pages, as before.
+
+`SectionRef` gained `node_id`; `CATALOG_VERSION` is 3; `catalog_provider` is gone from `ClassesSiteSource` (new keyword `max_node_probes`); `load_catalog(term)` replaces `load_or_refresh_catalog`. The 7-day re-probe of absent slugs is kept (at most 100 per run, every run) for sections that disappear.

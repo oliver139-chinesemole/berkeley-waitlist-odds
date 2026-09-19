@@ -32,7 +32,7 @@
 | Last automatic waitlist run | Fri Feb 5, 2027, 6:40 PM |
 | Undergraduate add/drop deadline | Wed Feb 10, 2027 |
 
-Scraper must be live by Mon Oct 12, 2026. Fall 2026 (SIS term `2268`) is the end-to-end test term until Spring 2027 appears on Oct 4 (Berkeleytime's catalog lists it first; the scraper reads the real SIS id from the section page's `data-term` attribute; expected `2272`). The scheduled term is the `SCRAPE_TERM` repository variable.
+Scraper must be live by Mon Oct 12, 2026. Fall 2026 (SIS term `2268`) is the end-to-end test term until Spring 2027 appears on Oct 4 (its pages show up as new nodes the scraper enumerates; the real SIS id comes from the pages' `data-term` attribute; expected `2272`). The scheduled term is the `SCRAPE_TERM` repository variable.
 
 ## Commands
 
@@ -60,7 +60,7 @@ python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24 --fai
 - Only scrape.yml writes to the `data` branch. Never commit there by hand.
 - Tests never touch the network. Use the fixtures in data/fixtures/ and fakes.
 - The classes.berkeley.edu client is stdlib urllib on purpose. The site blocks clients whose TLS handshake advertises ALPN http/1.1 alone, which is what requests and httpx do (docs/PHASE0.md). Do not switch it and do not impersonate a browser.
-- Never request `/search/` on classes.berkeley.edu: robots.txt disallows it. Section discovery goes through Berkeleytime's catalog (docs/DESIGN_A2.md section 13); only `/content/` section pages are fetched.
+- Never request `/search/` on classes.berkeley.edu: robots.txt disallows it. Section discovery uses the site's own `/rss.xml` and `/node/<id>` pages (docs/DESIGN_A2.md section 14); Berkeleytime is unreachable from GitHub runners and is only a local cross-check.
 - `config/priority_courses.txt` is ordered by importance; a budget cutoff drops the bottom of the list. Editing it changes `priority_sha`; log the edit in docs/DATA_LOG.md.
 - `fetched_at` is the actual fetch time, never the scheduled time.
 - Data gaps are permanent. A broken run is fixed within 24 hours and logged in docs/DATA_LOG.md.

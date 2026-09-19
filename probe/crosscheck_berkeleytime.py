@@ -4,10 +4,9 @@ DESIGN_A2 section 9 and docs/PHASE0.md "Cross-check". Needs the network; never i
 
     python probe/crosscheck_berkeleytime.py --term "Fall 2026" --n 20
 
-Section refs come from ``ClassesSiteSource.load_or_refresh_catalog``: the catalog at
-``catalog/<term_id>/catalog.json`` under ``--data-root`` (built from Berkeleytime's
-GetCatalog, refreshed when older than 24 h; the site's ``/search/`` listing is never used
-because robots.txt disallows it). Refs whose page has already been fetched (known section
+Section refs come from ``ClassesSiteSource.load_catalog``: the catalog at
+``catalog/<term_id>/catalog.json`` under ``--data-root`` (built by the scraper from the
+site's rss.xml and node enumeration; run a fetch first if it is empty). Refs whose page has already been fetched (known section
 id, last status 200) are preferred, then COMPSCI/DATA/STAT. Each chosen section page is
 fetched live; the page's own section id is matched to the same ``sectionId`` in
 Berkeleytime's GetClass (primarySection + sections).
@@ -69,7 +68,7 @@ class Comparison:
 
 def load_refs(source: Any, term: TermSpec) -> list[Any]:
     """Live (not 404) section refs for the term from the source's catalog."""
-    catalog = source.load_or_refresh_catalog(term)
+    catalog = source.load_catalog(term)
     refs = [r for r in catalog.refs if not r.absent]
     logger.info("catalog for %s: %d live refs of %d", term.sis_term_id, len(refs), len(catalog.refs))
     return refs
@@ -227,7 +226,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Compare live classes.berkeley.edu counts with Berkeleytime for N sections.")
     p.add_argument("--term", required=True, help='e.g. "Fall 2026"')
     p.add_argument("--n", type=int, default=20, help="comparable sections wanted; uncomparable ones are replaced by the next candidate (at most 2n attempts)")
-    p.add_argument("--data-root", type=Path, default=Path(config.DEFAULTS["data_root"]), help="where catalog/<term_id>/catalog.json lives (created or refreshed from Berkeleytime if missing or older than 24 h)")
+    p.add_argument("--data-root", type=Path, default=Path(config.DEFAULTS["data_root"]), help="where catalog/<term_id>/catalog.json lives (written by scraper.fetch; clone the data branch there)")
     p.add_argument("--min-interval-s", type=float, default=config.DEFAULTS["min_interval_s"])
     p.add_argument("--out", type=Path, default=None, help="report path; default docs/crosscheck_<UTC date>.md")
     return p
