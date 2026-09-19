@@ -23,15 +23,24 @@ def cumulative_flows(flows: pd.DataFrame) -> pd.DataFrame:
     return out.reset_index(drop=True)
 
 
+CENTRAL_CLEAR_AT = 0.5  # expected people ahead at which the central scenario counts the joiner as cleared
+
+
 def _advance(k: float, admits: int, wl_drops: int, waitlist0: int, scenario: str) -> float:
     if scenario == "optimistic":
         return k - admits - wl_drops
     if scenario == "pessimistic":
         return k - admits
     if scenario == "central":
-        share = (k / waitlist0) if waitlist0 > 0 else 0.0
+        # the joiner does not drop; each of the other waitlist0 - 1 students was ahead
+        # with probability (k - 1) / (waitlist0 - 1)
+        share = ((k - 1.0) / (waitlist0 - 1.0)) if waitlist0 > 1 else 0.0
         return k - admits - wl_drops * min(max(share, 0.0), 1.0)
     raise ValueError(f"unknown scenario {scenario!r}; expected one of {SCENARIOS}")
+
+
+def _cleared(k: float, scenario: str) -> bool:
+    return k <= (CENTRAL_CLEAR_AT if scenario == "central" else 0.0)
 
 
 def time_to_clear(
@@ -44,6 +53,10 @@ def time_to_clear(
     whether the outcome is censored.
 
     ``position`` counts the joiner itself: position 1 clears at the next admit.
+    The optimistic and pessimistic scenarios track an integer position and
+    clear at zero; the central scenario tracks the expected number of people
+    ahead and clears when it falls to ``CENTRAL_CLEAR_AT`` (0.5), the point at
+    which the joiner is more likely than not to have cleared.
     Intervals are walked in time order starting with the first whose ``t0`` is
     at or after ``join_time``; the walk stops with ``censored=True`` at the
     first censored interval or at the end of the data.
@@ -58,7 +71,7 @@ def time_to_clear(
         if bool(row.censored):
             return None, True
         k = _advance(k, int(row.admits), int(row.wl_drops), int(row.waitlist0), scenario)
-        if k <= 0:
+        if _cleared(k, scenario):
             return (pd.Timestamp(row.t1) - pd.Timestamp(join_time)).total_seconds() / 60.0, False
     return None, True
 

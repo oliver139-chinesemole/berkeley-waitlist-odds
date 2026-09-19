@@ -56,17 +56,20 @@ Output columns:
 | `censored` | boolean | interval overlaps an outage or exceeds `max_interval_min`; flows are still computed but must be ignored by A5 |
 | `rule` | string | the classification rule that fired (for audit) |
 
-Classification, with `dE = d_enrolled`, `dW = d_waitlist` (net changes over the interval; flows are lower bounds, see ASSUMPTIONS 1):
+Classification, with `dE = d_enrolled`, `dW = d_waitlist`, `W0 = waitlist0` (net changes over the interval; flows are lower bounds, see ASSUMPTIONS 1). Revised 2026-09-19 after the synthetic validation: a section with a queue cannot take a direct enrolment under FIFO, so an enrolment gain with `W0 > 0` is admits.
 
-1. `dE > 0 and dW < 0` (`rule="admit"`): `admits = min(dE, -dW)`. Leftover `dE - admits > 0` → `enr_joins`; leftover `-dW - admits > 0` → `wl_drops`. `ambiguous = dE != -dW`.
-2. `dE > 0 and dW == 0` (`rule="enr_join"`): `enr_joins = dE`. `ambiguous = waitlist0 > 0` (an admit paired with a same-size join is invisible).
-3. `dE > 0 and dW > 0` (`rule="join_and_enr_join"`): `wl_joins = dW`, `enr_joins = dE`, `ambiguous = waitlist0 > 0 or full0` (admits could hide inside).
-4. `dE == 0 and dW > 0` (`rule="join"`): `wl_joins = dW`, `ambiguous = False`.
-5. `dE == 0 and dW < 0` (`rule="wl_drop"`): `wl_drops = -dW`, `ambiguous = full0 and open_reserved0 in (0, NA)`? No: `ambiguous = False` (a drop is the only story when enrolment did not move) except when `d_capacity < 0` (capacity cut can purge a waitlist administratively; still `wl_drops`, note in `rule="wl_drop_capcut"`).
-6. `dE < 0 and dW == 0` (`rule="enr_drop"`): `enr_drops = -dE`, `ambiguous = waitlist0 > 0 and full0` (a seat opened but nobody was admitted within the interval: batch processing, ASSUMPTIONS 5).
-7. `dE < 0 and dW < 0` (`rule="enr_drop_wl_drop"`): `enr_drops = -dE`, `wl_drops = -dW`, `ambiguous = True` (admits plus larger drops also fit).
-8. `dE < 0 and dW > 0` (`rule="enr_drop_join"`): `enr_drops = -dE`, `wl_joins = dW`, `ambiguous = False`.
-9. `dE == 0 and dW == 0` (`rule="none"`): all zero, `ambiguous = False`.
+| rule | condition | flows | ambiguous when |
+| --- | --- | --- | --- |
+| `admit` / `admit_join` / `admit_drop` | `dE > 0 and W0 > 0` | `admits = dE`; `r = dW + dE` is joins minus drops: `wl_joins = r` if `r > 0`, `wl_drops = -r` if `r < 0` | open reserved seats existed at t0 (a direct enrolment past the queue is possible), or `dE > W0` (joins and admits interleaved) |
+| `enr_join` | `dE > 0 and W0 == 0 and dW == 0` | `enr_joins = dE` | never |
+| `enr_join_then_join` | `dE > 0 and W0 == 0 and dW > 0` | `enr_joins = dE`, `wl_joins = dW` | section was full at t0 |
+| `inconsistent` | `dE > 0 and W0 == 0 and dW < 0` | `enr_joins = dE` | always (a waitlist of zero cannot fall) |
+| `join` | `dE == 0 and dW > 0` | `wl_joins = dW` | never |
+| `wl_drop` / `wl_drop_capcut` | `dE == 0 and dW < 0` | `wl_drops = -dW` (`capcut` when `d_capacity < 0`) | section full at t0 with a queue (an enrolled drop replaced by an admit fits too) |
+| `enr_drop` | `dE < 0 and dW == 0` | `enr_drops = -dE` | section full at t0 with a queue (a seat opened, nobody admitted yet: batch processing) |
+| `enr_drop_wl_drop` | `dE < 0 and dW < 0` | `enr_drops = -dE`, `wl_drops = -dW` | always (admits plus larger drops also fit) |
+| `enr_drop_join` | `dE < 0 and dW > 0` | `enr_drops = -dE`, `wl_joins = dW` | never |
+| `none` | `dE == 0 and dW == 0` | all zero | never |
 
 Tombstone rows (`section_status == "GONE"`) end a section's series: no interval is built across or after them. Rows with any null count at either end produce no interval.
 
@@ -84,12 +87,16 @@ def time_to_clear(section_flows: pd.DataFrame, join_time: datetime, position: in
     # walk intervals with t0 >= join_time in order; effective position after each interval:
     #   optimistic:  k -= admits + wl_drops                  (every drop was ahead of the joiner)
     #   pessimistic: k -= admits                            (every drop was behind)
-    #   central:     k -= admits + wl_drops * (k / waitlist0) when waitlist0 > 0 else admits   (drops uniform over the list)
-    # clears at the first interval end where k <= 0 (time = t1 - join_time); stops with censored=True at the first censored interval,
-    # at a tombstone, or at the end of data
+    #   central:     k -= admits + wl_drops * (k - 1) / (waitlist0 - 1) when waitlist0 > 1 else admits
+    #                (drops uniform over the other students; the joiner does not drop)
+    # optimistic and pessimistic clear at the first interval end where k <= 0; central tracks the expected number of
+    # people ahead and clears when it reaches 0.5 (CENTRAL_CLEAR_AT), the point at which the joiner is more likely than
+    # not to have cleared (revised 2026-09-19: clearing at 0 was late-biased). Stops with censored=True at the first
+    # censored interval, at a tombstone, or at the end of data
 
 def virtual_waitlisters(flows: pd.DataFrame, *, positions: Sequence[int] = (1, 3, 5, 10, 20, 40), scenario: str = "central") -> pd.DataFrame
-    # one row per (section_id, join_time = each observed t0 with waitlist0 >= position, position): duration_min, event (1 cleared, 0 censored)
+    # one row per (section_id, join_time = each observed t0 with waitlist0 >= position - 1, position): duration_min, event (1 cleared, 0 censored)
+    # (position waitlist0 + 1 is the back of the queue, a real place; deeper positions are hypothetical and skipped)
 ```
 
 ## 4. Synthetic validation (`analysis/synthetic.py`, `tests/test_flows_synthetic.py`)

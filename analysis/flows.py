@@ -116,45 +116,55 @@ def interval_flows(
     ambiguous = np.zeros(n, dtype=bool)
     rule = np.full(n, "none", dtype=object)
 
-    # 1. admit: enrolment up, waitlist down
-    m = (dE > 0) & (dW < 0)
-    admits[m] = np.minimum(dE[m], -dW[m])
-    enr_joins[m] = dE[m] - admits[m]
-    wl_drops[m] = -dW[m] - admits[m]
-    ambiguous[m] = dE[m] != -dW[m]
+    # A. queue has priority: with a waitlist at t0, an enrolment gain is admits (FIFO,
+    #    ASSUMPTIONS 2); the waitlist's net change then splits into joins or drops.
+    m = (dE > 0) & (w0 > 0)
+    admits[m] = dE[m]
+    r = dW + dE  # joins minus drops over the interval
+    mj = m & (r > 0)
+    wl_joins[mj] = r[mj]
+    md = m & (r < 0)
+    wl_drops[md] = -r[md]
     rule[m] = "admit"
-    # 2. direct enrolment, waitlist flat
-    m = (dE > 0) & (dW == 0)
+    rule[mj] = "admit_join"
+    rule[md] = "admit_drop"
+    # open reserved seats can take a direct enrolment past the queue; more admits than
+    # the queue held means joins and admits happened in the same interval
+    ambiguous[m] = (open_res_known & (open_res_val > 0))[m] | (dE[m] > w0[m])
+    # B. no queue: an enrolment gain is direct enrolment
+    m = (dE > 0) & (w0 == 0)
     enr_joins[m] = dE[m]
-    ambiguous[m] = w0[m] > 0
     rule[m] = "enr_join"
-    # 3. joins and direct enrolments together
-    m = (dE > 0) & (dW > 0)
-    enr_joins[m] = dE[m]
-    wl_joins[m] = dW[m]
-    ambiguous[m] = (w0[m] > 0) | full0[m]
-    rule[m] = "join_and_enr_join"
-    # 4. joins only
+    mj = m & (dW > 0)
+    wl_joins[mj] = dW[mj]
+    rule[mj] = "enr_join_then_join"
+    ambiguous[mj] = full0[mj]
+    bad = m & (dW < 0)  # impossible: a waitlist of zero cannot fall
+    rule[bad] = "inconsistent"
+    ambiguous[bad] = True
+    # C. joins only
     m = (dE == 0) & (dW > 0)
     wl_joins[m] = dW[m]
     rule[m] = "join"
-    # 5. waitlist drops only
+    # D. waitlist drops only; a full section with a queue could instead have lost an
+    #    enrolled student and admitted the head of the queue in the same interval
     m = (dE == 0) & (dW < 0)
     wl_drops[m] = -dW[m]
+    ambiguous[m] = full0[m] & (w0[m] > 0)
     rule[m] = "wl_drop"
     rule[m & (dC < 0)] = "wl_drop_capcut"
-    # 6. enrolled drops only
+    # E. enrolled drops only
     m = (dE < 0) & (dW == 0)
     enr_drops[m] = -dE[m]
     ambiguous[m] = (w0[m] > 0) & full0[m]
     rule[m] = "enr_drop"
-    # 7. enrolled drops and waitlist drops
+    # F. enrolled drops and waitlist drops
     m = (dE < 0) & (dW < 0)
     enr_drops[m] = -dE[m]
     wl_drops[m] = -dW[m]
     ambiguous[m] = True
     rule[m] = "enr_drop_wl_drop"
-    # 8. enrolled drops and joins
+    # G. enrolled drops and joins
     m = (dE < 0) & (dW > 0)
     enr_drops[m] = -dE[m]
     wl_joins[m] = dW[m]

@@ -66,30 +66,37 @@ def test_rule_admit_exact() -> None:
     assert row["rule"] == "admit" and not row["ambiguous"] and row["full0"]
 
 
-def test_rule_admit_with_leftovers_is_ambiguous() -> None:
-    # 3 enrolled up, 1 waitlist down: 1 admit + 2 direct enrolments
+def test_rule_admit_queue_has_priority() -> None:
+    # 3 enrolled up with a queue of 5, waitlist down 1: 3 admits and 2 joins (FIFO: no direct enrolment past a queue)
     row = one([{"i": 0, "e": 90, "w": 5}, {"i": 1, "e": 93, "w": 4}])
-    assert flows_of(row) == {"admits": 1, "wl_joins": 0, "wl_drops": 0, "enr_joins": 2, "enr_drops": 0}
-    assert row["ambiguous"]
+    assert flows_of(row) == {"admits": 3, "wl_joins": 2, "wl_drops": 0, "enr_joins": 0, "enr_drops": 0}
+    assert row["rule"] == "admit_join" and not row["ambiguous"]
     # 1 enrolled up, 3 waitlist down: 1 admit + 2 waitlist drops
     row = one([{"i": 0, "e": 99, "w": 5}, {"i": 1, "e": 100, "w": 2}])
     assert flows_of(row) == {"admits": 1, "wl_joins": 0, "wl_drops": 2, "enr_joins": 0, "enr_drops": 0}
-    assert row["ambiguous"]
+    assert row["rule"] == "admit_drop" and not row["ambiguous"]
+    # enrolment up with a queue and a flat waitlist: admits replaced by joins
+    row = one([{"i": 0, "e": 50, "w": 2}, {"i": 1, "e": 53, "w": 2}])
+    assert flows_of(row) == {"admits": 3, "wl_joins": 3, "wl_drops": 0, "enr_joins": 0, "enr_drops": 0}
+    assert row["ambiguous"]  # 3 admits from a queue of 2 means joins and admits interleaved
+    # open reserved seats can take a direct enrolment past the queue: flagged
+    row = one([{"i": 0, "e": 90, "w": 5, "open_res": 3}, {"i": 1, "e": 91, "w": 4}])
+    assert row["rule"] == "admit" and row["ambiguous"]
 
 
 def test_rule_enr_join() -> None:
     row = one([{"i": 0, "e": 50, "w": 0}, {"i": 1, "e": 53, "w": 0}])
     assert flows_of(row)["enr_joins"] == 3 and row["rule"] == "enr_join" and not row["ambiguous"]
-    row = one([{"i": 0, "e": 50, "w": 2}, {"i": 1, "e": 53, "w": 2}])
-    assert row["ambiguous"]  # a waitlist existed: an admit paired with a join is invisible
 
 
-def test_rule_join_and_enr_join() -> None:
+def test_rule_enr_join_then_join() -> None:
     row = one([{"i": 0, "e": 50, "w": 0}, {"i": 1, "e": 52, "w": 3}])
     assert flows_of(row) == {"admits": 0, "wl_joins": 3, "wl_drops": 0, "enr_joins": 2, "enr_drops": 0}
-    assert row["rule"] == "join_and_enr_join" and not row["ambiguous"]
+    assert row["rule"] == "enr_join_then_join" and not row["ambiguous"]
     row = one([{"i": 0, "e": 100, "w": 0}, {"i": 1, "e": 102, "w": 3}])
     assert row["ambiguous"]  # section was full
+    row = one([{"i": 0, "e": 50, "w": 0}, {"i": 1, "e": 52, "w": -1}])
+    assert row["rule"] == "inconsistent" and row["ambiguous"]
 
 
 def test_rule_join() -> None:
@@ -99,7 +106,9 @@ def test_rule_join() -> None:
 
 def test_rule_wl_drop_and_capcut() -> None:
     row = one([{"i": 0, "e": 100, "w": 4}, {"i": 1, "e": 100, "w": 1}])
-    assert flows_of(row)["wl_drops"] == 3 and row["rule"] == "wl_drop" and not row["ambiguous"]
+    assert flows_of(row)["wl_drops"] == 3 and row["rule"] == "wl_drop" and row["ambiguous"]  # full with a queue
+    row = one([{"i": 0, "e": 90, "w": 4}, {"i": 1, "e": 90, "w": 1}])
+    assert row["rule"] == "wl_drop" and not row["ambiguous"]
     row = one([{"i": 0, "e": 100, "w": 4, "c": 100}, {"i": 1, "e": 100, "w": 0, "c": 90}])
     assert row["rule"] == "wl_drop_capcut" and int(row["d_capacity"]) == -10 and not row["expansion"]
 
