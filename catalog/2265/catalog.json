@@ -1,6 +1,45 @@
 {
 "sections": [
 {
+"catalog_number": "25AC",
+"class_number": "001",
+"component": "LEC",
+"course_key": "AFRICAM 25AC",
+"last_status": null,
+"node_id": 530664,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "AFRICAM",
+"url_path": "/content/2026-summer-africam-25ac-001-lec-001"
+},
+{
+"catalog_number": "138A",
+"class_number": "102",
+"component": "DIS",
+"course_key": "ANTHRO 138A",
+"last_status": null,
+"node_id": 530910,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "ANTHRO",
+"url_path": "/content/2026-summer-anthro-138a-102-dis-102"
+},
+{
+"catalog_number": "N132",
+"class_number": "005",
+"component": "SEM",
+"course_key": "COLWRIT N132",
+"last_status": null,
+"node_id": 530986,
+"probed_at": null,
+"section_id": "",
+"section_number": "005",
+"subject": "COLWRIT",
+"url_path": "/content/2026-summer-colwrit-n132-005-sem-005"
+},
+{
 "catalog_number": "169",
 "class_number": "105",
 "component": "DIS",
@@ -30,6 +69,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2265",
 "term_name": "Summer 2026",
-"updated_at": "2026-09-19T20:04:45.944279+00:00",
+"updated_at": "2026-09-19T20:30:37.024510+00:00",
 "version": 3
 }
