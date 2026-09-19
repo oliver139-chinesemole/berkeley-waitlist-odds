@@ -298,3 +298,7 @@ State: `catalog/site.json` holds `max_node_probed` (every id at or below it has 
 Spring 2027: the registrar publishes the schedule on Oct 4; its sections appear as new nodes above the watermark and are enumerated over the following runs (about 6,000 nodes at 400 per run, roughly 15 runs). `TermNotPublished` (exit 3) is raised only when the term's catalog is still empty after discovery. The SIS term id is read from `data-term` on the pages, as before.
 
 `SectionRef` gained `node_id`; `CATALOG_VERSION` is 3; `catalog_provider` is gone from `ClassesSiteSource` (new keyword `max_node_probes`); `load_catalog(term)` replaces `load_or_refresh_catalog`. The 7-day re-probe of absent slugs is kept (at most 100 per run, every run) for sections that disappear.
+
+## 15. Snapshot file format (2026-09-19, amends section 2)
+
+`write_snapshot` writes the run metadata once, into the Parquet footer through `ParquetWriter.add_key_value_metadata`, with zstd compression and no column statistics. Files written before this change carry the same keys in the Arrow schema (and therefore twice in the file). `read_raw_metadata(path)` returns the key-value pairs from either layout; `read_meta` and `read_snapshot` use it, so both layouts read identically. Effect: a 43-row delta went from about 30 KB to about 15 KB, a 900-row baseline from 61 KB to about 48 KB; the projected data-branch growth for the Spring 2027 cycle drops from about 250 MB to about 150 MB. Nothing about the schema, the semantics, or the paths changed.
