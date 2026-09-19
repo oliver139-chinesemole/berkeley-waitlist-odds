@@ -12,6 +12,17 @@ On novelty: Berkeleytime already records enrollment and waitlist counts every 15
 
 ## Pipeline
 
+```mermaid
+flowchart LR
+  A[classes.berkeley.edu section pages<br/>rss.xml + /node/id discovery] -->|every 30 min, priority list<br/>+ 1 of 12 shards| B[scrape.yml on GitHub Actions<br/>self-dispatching chain]
+  B --> C[(data branch<br/>Parquet: daily baseline + deltas)]
+  C --> D[rebuild panel] --> E[interval flows<br/>admits, joins, drops] --> F[virtual waitlisters<br/>3 drop scenarios]
+  F --> G[Kaplan-Meier, Cox PH,<br/>out-of-sample check] --> H[site/data/*.json + reports/]
+  H --> I[GitHub Pages lookup]
+  J[analysis.yml weekly] -.-> D
+  J -.-> I
+```
+
 1. Every 30 minutes a GitHub Actions job (`scrape.yml`) fetches section counts. Sources in priority order: the SIS Class API (needs credentials; request not yet submitted), classes.berkeley.edu section pages (works now), Berkeleytime (cross-check and emergency only, its ids are not SIS ids).
 2. Rows are validated against a pinned pyarrow schema (`scraper/schema.py`) and written as one Parquet file per run to the `data` branch: a full baseline once per UTC day, change-only deltas otherwise. Files are never rewritten.
 3. `scraper/rebuild.py` reconstructs the full panel (every section at every run) from baseline plus deltas and marks cells that were not observed, so they can be censored instead of read as zero flow.
