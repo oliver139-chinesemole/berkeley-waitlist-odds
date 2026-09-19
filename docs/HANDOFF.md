@@ -1,12 +1,12 @@
 # Handoff: Berkeley Waitlist Odds
 
-Written 2026-09-19 23:20 UTC at the end of the first two working sessions. Read this first in a new session, then `CLAUDE.md` (the `Current step` line) and `docs/FINISH_PLAN_WAITLIST.md` (the step checklist and tracker at the bottom).
+Written 2026-09-19 23:20 UTC at the end of the first two working sessions; updated 2026-09-20 00:10 UTC by the third session (its changes are marked "session 3" below). Read this first in a new session, then `CLAUDE.md` (the `Current step` line) and `docs/FINISH_PLAN_WAITLIST.md` (the step checklist and tracker at the bottom).
 
 ## Where everything is
 
 | Thing | Location |
 | --- | --- |
-| Repo (public) | https://github.com/oliver139-chinesemole/berkeley-waitlist-odds, local checkout at `/Users/oliverguo/berkeley-waitlist-odds` (`main`, 50 commits, CI green, 286 tests in 21 files) |
+| Repo (public) | https://github.com/oliver139-chinesemole/berkeley-waitlist-odds, local checkout at `/Users/oliverguo/berkeley-waitlist-odds` (`main`, about 53 commits, CI green, 295 tests in 22 files) |
 | Live site | https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/ (lookup page, methodology page; shows a no-data state until Spring 2027 waitlists clear) |
 | Data | `data` branch of the repo: `snapshots/date=YYYY-MM-DD/HHMM-{baseline,delta}.parquet`, `catalog/<term_id>/catalog.json`, `catalog/site.json`, `status.json`. Local clone at `./data-branch` (gitignored). 12 snapshots so far, all Fall 2026 test data. |
 | Environment | `source .venv/bin/activate` (Python 3.12.5, pinned in requirements.txt). `gh` is logged in as oliver139-chinesemole; the `origin` remote uses the SSH alias `github-chinesemole`. |
@@ -31,14 +31,14 @@ Written 2026-09-19 23:20 UTC at the end of the first two working sessions. Read 
 
 **A5, survival analysis (code complete, no real data yet).** `analysis/calendar.py` (phases per term), `cohort.py` (virtual waitlisters with covariates), `survival.py` (Kaplan-Meier by position bucket, level, department and phase; log-rank; Cox PH with cluster-robust errors, PH test and stratified refit; sensitivity across scenarios; out-of-sample scoring on Phase 2 joins with concordance, Brier and decile calibration), `profile.py` (data-quality profile), `export.py` (site JSON with pooling below 30 cases), `figures.py`, `run.py`. `make analysis TERM=2272` reproduces everything from the data branch. On Fall 2026 test data the cohort has no clearing events, so the report says so; the pipeline is exercised end to end on simulated data in `tests/test_run.py`.
 
-**A6, site (v1 live).** `site/index.html` and `site/methodology.html`, deployed by `pages.yml`. `analysis.yml` runs every Sunday 15:23 UTC (or on dispatch), commits `site/data/*.json` and `reports/` to `main`, and dispatches the redeploy. Verified end to end on 2026-09-19.
+**A6, site (v1 live).** `site/index.html` and `site/methodology.html`, deployed by `pages.yml`. `analysis.yml` runs every Sunday 15:23 UTC (or on dispatch), commits `site/data/*.json` and `reports/` to `main`, and dispatches the redeploy. Verified end to end on 2026-09-19. Session 3: `tests/test_site.py` renders the page's own script under node with a stub document and a file-backed `fetch` (`tests/site/harness.js`; node comes from PATH or `~/.nvm/versions/node/*`, the tests skip without it) and checks the empty state, the counts from `meta.json`, the full state, a lookup, the pooled tag, the missing-course and missing-bucket messages and the `?course=&position=` link. Writing it exposed a live bug: `analysis/run.py` put the per-scenario cohort sizes under `meta["cohort_rows"]`, so the no-data state read "704 sections, [object Object] hypothetical joiners"; fixed (the dict is now `cohort_rows_by_scenario`) and `analysis.yml` was dispatched to regenerate the live JSON.
 
-**Claims.** `CLAIMS.md` rows for the test suite, the cross-check, the public repo, the flow reconstruction, the analysis command and the site are measured; the cadence rows (runs per day, share of intervals under 45 minutes, sweep time) were measured on the first day only and need re-running. The `claims-audit` skill at `~/.claude/skills/claims-audit/` re-runs every row.
+**Claims.** `CLAIMS.md` rows for the test suite, the cross-check, the public repo, the flow reconstruction, the analysis command and the site are measured. Session 3 re-measured the cadence rows at 23:48Z on Sep 19: 13 runs in the 24 h window (which still holds the cron-only morning), but every slot since the chain started at 19:41Z (8 runs, largest gap 30.1 min, share under 45 min 1.0). The 24 h window can first pass after 19:41Z on Sep 20; re-run rows 5 to 7 then. The `claims-audit` skill at `~/.claude/skills/claims-audit/` re-runs every row.
 
 ## What is left
 
 **Time-gated (nothing to build, just do on the date):**
-1. **Sep 20 onward, first check in a new session:** `git -C data-branch pull -q && python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24`. Expect about 48 runs, `share_gaps_le_45min` at or above 0.95, `median_missing_share` near 0 after 00:07 UTC on Sep 20. If missing share stays around 0.14, discovery is still catching up or the budget is short; see docs/RUNBOOK.md section 3 and the 20:37Z note in the data log. Then re-run the claims audit (rows 5 to 7).
+1. **Sep 20 after 19:41 UTC, first check in a new session:** `git -C data-branch pull -q && python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24`. Expect about 48 runs, `share_gaps_le_45min` at or above 0.95, `median_missing_share` near 0 (node-id discovery had 84 ids left after the 23:37Z run on Sep 19, so it was due to finish with the 00:07Z run on Sep 20; the 00:37Z run should be the first whose `status.json` shows `n_missing` near 0. If the data log has no row for it, check `git -C data-branch log --format='%cI %s' -n 5` and `status.json` yourself). If missing share stays around 0.14, the budget is short: a run selects about 917 priority plus about 240 shard sections at one request per second against a 1,380 s budget, so a bigger catalog or slower site trims the shard tail; see docs/RUNBOOK.md section 3. Then re-run the claims audit (rows 5 to 7). Issue #1 ("Scraper gap alert", opened by the 17:58Z monitor run on Sep 19) stays open until a monitor run passes; the chain dispatches the monitor after 15:00 UTC daily, so close it by hand on Sep 21 at the earliest (`gh issue close 1`).
 2. **Oct 4 (Spring 2027 schedule publishes):** run RUNBOOK step 7: `gh variable set SCRAPE_TERM --body "Spring 2027"`, dispatch a forced baseline, confirm the pages report `data-term` 2272, add a `term_switch` row to docs/DATA_LOG.md. Discovery finds the new pages automatically over the following runs (about 6,000 nodes at 400 per run).
 3. **Oct 12:** deadline for Spring collection to be running (it will be, if step 2 is done).
 4. **Nov 9 onward (Phase 1 data exists):** first real `make analysis TERM=2272`, read `analysis/out/2272/report.md` and `profile.md`, write the two or three headline results in plain English into CLAIMS.md and the README, replace the simulated figure with `reports/figures_2272/hero.png`, check the site renders real estimates. Soft launch before Phase 2 (Nov 23) if the numbers hold up.
@@ -54,9 +54,8 @@ Written 2026-09-19 23:20 UTC at the end of the first two working sessions. Read 
 - The design-critique, accessibility and UX-copy reviews the plan names as skills were done by hand; a human pass on the site before the soft launch is still worth doing.
 
 **Engineering that could still be done now (not required):**
-- A test that renders `site/index.html` against the simulated `site/data` JSON (no JS runtime was available; the page was checked by reading).
-- Reduce `catalog.json` churn on the data branch (rewritten whenever ids are learned or a node is discovered; about 1 MB per write, currently a few writes a day).
 - The plan's `superpowers`, `data`, `design` and `humanizer` skills are not installed in this environment; their disciplines were applied by hand. Installing them is section 0 of the plan.
+- Done in session 3: the site render test (above). Measured and closed without a code change: `catalog.json` was rewritten on every run only because the stuck watermark (data log, 20:37Z row) re-probed the same 400 node ids each run and stamped 169 entries with a new `probed_at`; that cost about 7.7 KB (gzip) per run next to a 15.8 KB Parquet delta. Ordinary fetches do not touch the catalog (a live section's entry changes only when its id, status or node id changes), so after the catch-up the file changes only when something is learned.
 
 ## How to resume
 
@@ -64,10 +63,12 @@ Written 2026-09-19 23:20 UTC at the end of the first two working sessions. Read 
 cd /Users/oliverguo/berkeley-waitlist-odds && source .venv/bin/activate
 git pull -q origin main
 git -C data-branch pull -q || git clone -q --branch data --single-branch git@github-chinesemole:oliver139-chinesemole/berkeley-waitlist-odds.git data-branch
-python -m pytest -q                                   # 286 tests, about 3 minutes
+python -m pytest -q                                   # 295 tests, about 3 minutes; tests/test_site.py needs node (PATH or ~/.nvm)
 python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24
 gh run list -R oliver139-chinesemole/berkeley-waitlist-odds --workflow scrape.yml --limit 6
 ```
+
+One more thing before resuming: on the evening of Sep 19 two Claude Code sessions were open on this same checkout (the second one found a commit it had not made). Close the previous session before starting a new one, or at least run `git status` and `git log -3` first.
 
 ## Decisions worth knowing before changing anything
 

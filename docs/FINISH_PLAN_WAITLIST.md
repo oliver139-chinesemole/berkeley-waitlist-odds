@@ -237,11 +237,11 @@ permissions:
 ## 6. Status tracker (update at the end of every session)
 
 ```
-Last updated: 2026-09-19
+Last updated: 2026-09-20
 Phase 1 opens: Mon Oct 26, 2026 (registrar ICS; schedule publishes Oct 4)   API Central request: DENIED 2026-09-19 (not granting access to students); site route is primary
 Setup (section 0): plugins not installed in this environment; work done by hand   Source chosen (A1): classes.berkeley.edu section pages via Berkeleytime catalog (SIS API primary once approved); docs/PHASE0.md
 
-Step: A6 v1 live / A3 running | blockers: none | scraper live: yes, self-dispatch chain confirmed 20:07Z | A4 done and validated | A5 code done (needs Spring data) | site live with weekly analysis workflow; heartbeat + chain-dispatched monitor; footer-only Parquet metadata (files halved)
-Done: A0 dates; A1 probe + 20/20 cross-check; A2 scraper, storage, rebuild, gaps, 3 sources, workflows; repo public with data branch; review fixes; node-id discovery (robots-compliant, runner-compatible); A4 flows + positions + ASSUMPTIONS + synthetic validation; A5 calendar, cohort, KM/Cox/PH/OOS, exporter, figures, `make analysis` (282 tests)
-Next session: gap report over 24 h (expect about 48 runs, share <= 45 min >= 0.95); open the live site in a browser and check the no-data state; Oct 4: term switch (RUNBOOK step 7); Nov 9: first real `make analysis`, README hero plot, headline numbers; Oliver: Sunday checks, priority list review before Oct 26
+Step: A6 v1 live / A3 running | blockers: none | scraper live: yes, self-dispatch chain on every :07/:37 slot since 19:41Z Sep 19 (a queued cron run took the 23:07Z slot and the chain continued from it) | A4 done and validated | A5 code done (needs Spring data) | site live with weekly analysis workflow, rendered under node in tests; heartbeat + chain-dispatched monitor; footer-only Parquet metadata
+Done: A0 dates; A1 probe + 20/20 cross-check; A2 scraper, storage, rebuild, gaps, 3 sources, workflows; repo public with data branch; review fixes; node-id discovery (robots-compliant, runner-compatible); A4 flows + positions + ASSUMPTIONS + synthetic validation; A5 calendar, cohort, KM/Cox/PH/OOS, exporter, figures, `make analysis`; A6 render test under node (tests/test_site.py), site meta cohort_rows fix, README refresh (295 tests)
+Next session: gap report over 24 h after 19:41Z Sep 20 (expect about 48 runs, share <= 45 min >= 0.95, median_missing_share near 0 once discovery caught up at 00:07Z Sep 20); close issue #1 (gap alert) after a passing monitor run (Sep 21 earliest); open the live site in a browser; Oct 4: term switch (RUNBOOK step 7); Nov 9: first real `make analysis`, README hero plot, headline numbers; Oliver: Sunday checks, priority list review before Oct 26
 ```
