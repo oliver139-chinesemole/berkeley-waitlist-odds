@@ -7,11 +7,11 @@ from pathlib import Path
 
 import pandas as pd
 import pyarrow as pa
-import pyarrow.parquet as pq
 import pytest
 
 from scraper.schema import COUNT_FIELDS, SNAPSHOT_SCHEMA, SchemaError, rows_to_table
 from scraper.storage import (
+    read_raw_metadata,
     RunMeta,
     baseline_with_tombstones,
     carried_state,
@@ -127,7 +127,7 @@ def test_metadata_round_trip_priority(data_root: Path):
         observed_ids=["2", "1", "1"],
     )
     path = write_snapshot(data_root, rows_to_table([make_row()]), m)
-    raw = pq.read_schema(path).metadata
+    raw = read_raw_metadata(path)
     assert all(isinstance(k, bytes) and isinstance(v, bytes) for k, v in raw.items())
     assert json.loads(raw[b"missing_ids"]) == ["30174", "30175"]
     assert json.loads(raw[b"observed_ids"]) == ["1", "2"]
@@ -145,7 +145,7 @@ def test_metadata_round_trip_priority(data_root: Path):
 def test_metadata_complete_full_scope_omits_observed_ids(data_root: Path):
     m = meta(kind="delta", scope="full", observed_ids=["1", "2"], complete=True)
     path = write_snapshot(data_root, rows_to_table([]), m)
-    raw = pq.read_schema(path).metadata
+    raw = read_raw_metadata(path)
     assert b"observed_ids" not in raw
     assert raw[b"complete"] == b"true"
     assert raw[b"shard"] == b"" and raw[b"priority_sha"] == b""
@@ -158,7 +158,7 @@ def test_metadata_partial_full_scope_keeps_observed_ids(data_root: Path):
     # does not mark the unattempted ids as observed
     m = meta(kind="delta", scope="full", observed_ids=["2", "1"], missing_ids=["3"], complete=False)
     path = write_snapshot(data_root, rows_to_table([]), m)
-    raw = pq.read_schema(path).metadata
+    raw = read_raw_metadata(path)
     assert raw[b"complete"] == b"false"
     assert json.loads(raw[b"observed_ids"]) == ["1", "2"]
     got = read_meta(path)
@@ -166,7 +166,7 @@ def test_metadata_partial_full_scope_keeps_observed_ids(data_root: Path):
     # unknown completeness (caller did not say): the ids are kept as given
     m = meta(kind="delta", scope="full", observed_ids=["5"], at=T0 + timedelta(minutes=30))
     path = write_snapshot(data_root, rows_to_table([]), m)
-    raw = pq.read_schema(path).metadata
+    raw = read_raw_metadata(path)
     assert b"complete" not in raw and json.loads(raw[b"observed_ids"]) == ["5"]
     assert read_meta(path).complete is None
 

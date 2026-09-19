@@ -16,6 +16,8 @@ from typing import Any
 import pyarrow.parquet as pq
 import pytest
 
+from scraper.storage import read_raw_metadata
+
 storage = pytest.importorskip("scraper.storage")
 
 from scraper import fetch  # noqa: E402  (after importorskip on purpose)
@@ -174,7 +176,7 @@ def test_second_term_on_the_same_day_gets_its_own_baseline(tmp_path: Path, monke
     assert fetch.main(spring) == fetch.EXIT_OK
     baselines = snapshot_files(tmp_path, "baseline")
     assert len(baselines) == 2 and snapshot_files(tmp_path, "delta") == []
-    assert sorted(pq.read_schema(p).metadata[b"term_id"] for p in baselines) == [b"2268", b"2272"]
+    assert sorted(read_raw_metadata(p)[b"term_id"] for p in baselines) == [b"2268", b"2272"]
     assert pq.read_table(baselines[1]).to_pylist()[0]["section_id"] == "7"  # no tombstones against the other term
     # later runs of each term are deltas against that term's own baseline
     pin_clock(monkeypatch, t0 + timedelta(minutes=30))
@@ -205,7 +207,7 @@ def test_full_baseline_tombstones_ids_carried_from_the_previous_day(tmp_path: Pa
     assert [(r["section_id"], r["section_status"]) for r in rows] == [("1", "A"), ("2", "GONE")]
     gone = rows[1]
     assert gone["source"] == "classes_site" and gone["fetched_at"] == t1 and gone["enrolled_count"] == 20
-    meta = pq.read_schema(baselines[1]).metadata
+    meta = read_raw_metadata(baselines[1])
     assert meta[b"n_observed"] == b"1" and meta[b"n_written"] == b"2" and meta[b"complete"] == b"true"
     day2 = rebuild_panel(tmp_path, TERM_ID)
     day2 = day2[day2["run_started_at"] == t1].set_index("section_id")
@@ -267,20 +269,20 @@ def test_partial_full_run_records_observed_ids_and_complete_flag(tmp_path: Path,
     pin_clock(monkeypatch, t0)
     install(monkeypatch, FakeSource(rows=[make_row("1"), make_row("2")], universe_ids={"1", "2"}))
     assert fetch.main(base_args(tmp_path)) == fetch.EXIT_OK
-    md = pq.read_schema(snapshot_files(tmp_path, "baseline")[0]).metadata
+    md = read_raw_metadata(snapshot_files(tmp_path, "baseline")[0])
     assert md[b"complete"] == b"true" and b"observed_ids" not in md
     # a truncated sweep (time budget exhausted: the source reports no universe)
     pin_clock(monkeypatch, t0 + timedelta(minutes=30))
     install(monkeypatch, FakeSource(rows=[make_row("1", enrolled=11)], universe_ids=None))
     assert fetch.main(base_args(tmp_path)) == fetch.EXIT_OK
-    md = pq.read_schema(snapshot_files(tmp_path, "delta")[0]).metadata
+    md = read_raw_metadata(snapshot_files(tmp_path, "delta")[0])
     assert md[b"complete"] == b"false" and json.loads(md[b"observed_ids"]) == ["1"]
     # --limit marks a run incomplete even when the source reports a universe, and never tombstones
     pin_clock(monkeypatch, t0 + timedelta(minutes=60))
     install(monkeypatch, FakeSource(rows=[make_row("1", enrolled=12)], universe_ids={"1"}))
     assert fetch.main(base_args(tmp_path, "--limit", "1")) == fetch.EXIT_OK
     path = snapshot_files(tmp_path, "delta")[1]
-    md = pq.read_schema(path).metadata
+    md = read_raw_metadata(path)
     assert md[b"complete"] == b"false" and json.loads(md[b"observed_ids"]) == ["1"]
     assert pq.read_table(path).column("section_status").to_pylist() == ["A"]
     status = json.loads((tmp_path / "status.json").read_text())
@@ -364,7 +366,7 @@ def test_priority_scope_records_observed_ids_and_rotates_shards(tmp_path: Path, 
     assert second.calls[0]["shard"] == (1, 4)  # run_index defaults to the number of snapshots today
 
     delta_path = snapshot_files(data_root, "delta")[0]
-    meta = pq.read_schema(delta_path).metadata
+    meta = read_raw_metadata(delta_path)
     assert meta[b"scope"] == b"priority"
     assert meta[b"shard"] == b"1/4"
     assert json.loads(meta[b"observed_ids"]) == ["1", "2"]

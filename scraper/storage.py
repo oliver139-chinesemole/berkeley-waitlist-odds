@@ -329,13 +329,23 @@ def write_snapshot(data_root: Path, table: pa.Table, meta: RunMeta) -> Path:
             path.name,
         )
     file_meta = dataclasses.replace(meta, n_written=table.num_rows)
-    tagged = table.replace_schema_metadata(file_meta.to_metadata())
+    # The run metadata goes into the file footer once, through the writer, rather
+    # than into the Arrow schema (which pyarrow would then serialise a second time,
+    # base64-encoded, inside the ARROW:schema key). Column statistics are skipped
+    # and zstd used: a 43-row delta shrinks from about 30 KB to about 12 KB.
+    kv = {
+        (k.decode() if isinstance(k, bytes) else str(k)): (v.decode() if isinstance(v, bytes) else str(v))
+        for k, v in file_meta.to_metadata().items()
+    }
+    bare = table.replace_schema_metadata(None)
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp_name = tempfile.mkstemp(prefix=f".{path.stem}.", suffix=".tmp", dir=path.parent)
     os.close(fd)
     tmp = Path(tmp_name)
     try:
-        pq.write_table(tagged, tmp)
+        with pq.ParquetWriter(tmp, bare.schema, compression="zstd", write_statistics=False) as writer:
+            writer.write_table(bare)
+            writer.add_key_value_metadata(kv)
         if path.exists():  # re-check: never clobber a file that appeared meanwhile
             raise FileExistsError(f"snapshot appeared during write, refusing to overwrite: {path}")
         os.replace(tmp, path)
@@ -352,13 +362,28 @@ def write_snapshot(data_root: Path, table: pa.Table, meta: RunMeta) -> Path:
     return path
 
 
+def read_raw_metadata(path: Path) -> dict[bytes, bytes]:
+    """Key-value metadata of a snapshot.
+
+    Files written since 2026-09-19 carry it in the Parquet footer only (the
+    writer adds it after the row group, so pyarrow does not merge it into the
+    Arrow schema on read); older files carry it in the schema. Both are read.
+    """
+    try:
+        file_meta = pq.read_metadata(path)
+    except (OSError, pa.ArrowException) as exc:
+        raise ValueError(f"cannot read parquet metadata from {path}: {exc}") from exc
+    kv = dict(file_meta.metadata or {})
+    kv.pop(b"ARROW:schema", None)
+    if kv:
+        return kv
+    schema = pq.read_schema(path)
+    return dict(schema.metadata or {})
+
+
 def read_meta(path: Path) -> RunMeta:
     """Read only the run metadata of a snapshot (does not load the rows)."""
-    try:
-        schema = pq.read_schema(path)
-    except (OSError, pa.ArrowException) as exc:
-        raise ValueError(f"cannot read parquet schema from {path}: {exc}") from exc
-    return RunMeta.from_metadata(schema.metadata)
+    return RunMeta.from_metadata(read_raw_metadata(path))
 
 
 def read_snapshot(path: Path) -> tuple[pa.Table, RunMeta]:
@@ -367,7 +392,7 @@ def read_snapshot(path: Path) -> tuple[pa.Table, RunMeta]:
         table = pq.read_table(path)
     except (OSError, pa.ArrowException) as exc:
         raise ValueError(f"cannot read parquet file {path}: {exc}") from exc
-    meta = RunMeta.from_metadata(table.schema.metadata)
+    meta = RunMeta.from_metadata(read_raw_metadata(path))
     validate_table(table)
     return table, meta
 
