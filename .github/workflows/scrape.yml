@@ -5,6 +5,8 @@ name: scrape
 on:
   schedule:
     - cron: "7,37 * * * *"   # off :00/:30, where GitHub delays or drops scheduled runs
+    # Schedule re-registered 2026-09-19T09:20Z: no cron run fired in the three slots after
+    # the workflow was re-enabled at 07:41Z; GitHub registers schedules on a push to this file.
   workflow_dispatch:
     inputs:
       term:
