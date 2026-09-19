@@ -45,6 +45,10 @@ The tests are offline and use recorded fixtures from `data/fixtures/`. The dry r
 
 `analysis/` reconstructs waitlist flows from the snapshots. `make flows TERM=2268` rebuilds the panel from a checkout of the `data` branch at `./data-branch`, classifies every interval between consecutive observations into admits, joins, drops and direct enrolments (docs/DESIGN_A4.md), and writes `analysis/out/flows_<term>.parquet` with a summary. The assumptions behind the reconstruction, and the synthetic validation of them, are in docs/ASSUMPTIONS.md. `make analysis TERM=<term_id>` then builds the virtual-waitlister cohort, fits Kaplan-Meier curves and a Cox model with its proportional-hazards check, scores Phase 2 joins out of sample, and writes tables, figures, `site/data/*.json` and `analysis/out/<term>/report.md` (docs/DESIGN_A5.md). With only Fall 2026 test data the cohort has no clearing events, so the models are exercised on simulated data until Spring 2027 enrollment starts on Oct 26.
 
+![Simulated data: what the reconstruction recovers at 30-minute sampling](reports/figures_validation/reconstruction_validation.png)
+
+*Simulated waitlists, not real data* (`python -m analysis.validation_figure`): left, cumulative admits in one section, true versus reconstructed from the sampled counts; right, true versus estimated hours to clear for every simulated student who cleared, under the central drop scenario. The real hero plot replaces this once Spring 2027 waitlists start clearing.
+
 ## Data layout (on the `data` branch)
 
 ```
