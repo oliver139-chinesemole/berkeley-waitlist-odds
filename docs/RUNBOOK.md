@@ -198,7 +198,7 @@ curl -sS -o /dev/null -w '%{http_code}\n' -A 'berkeley-waitlist-odds/0.1 (+mailt
 
    If curl gets `200` and the runner got `403`, the site's rule changed (docs/PHASE0.md, the ALPN note). Do not add browser impersonation. Options in order: `sis_api` if credentials exist; a manual dispatch with `-f source=berkeleytime` as a stopgap (primary sections only, non-SIS ids, mark it in DATA_LOG); otherwise stop and reassess per docs/SPEC.md Route B.
 
-4. If runs stopped without any failure, the schedule itself is the problem. GitHub delays or drops scheduled runs at busy minutes and disables schedules in repos it considers inactive.
+4. If runs stopped without any failure, the schedule itself is the problem. GitHub delays or drops scheduled runs at busy minutes, disables schedules in repos it considers inactive, and for a new repository can take from 15 minutes to more than a day to start honouring a cron at all (seen on 2026-09-19: five slots with no run while manual dispatches worked). Order of remedies: wait one day; push any commit that touches `.github/workflows/scrape.yml`; check `gh workflow view scrape.yml` says `active`; as a last resort trigger the workflow from outside GitHub with a free cron service calling `POST /repos/oliver139-chinesemole/berkeley-waitlist-odds/actions/workflows/scrape.yml/dispatches` every 30 minutes with a fine-grained token limited to Actions on this repo (log the switch in docs/DATA_LOG.md). Note that `monitor.yml` runs on a schedule too, so while schedules are broken it will not alert; run it by hand.
 
 ```
 gh workflow view scrape.yml
