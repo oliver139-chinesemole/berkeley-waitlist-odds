@@ -6,7 +6,7 @@ Owner: Oliver Guo · Written: Sat Sept 19, 2026 · Goes with the `backfill-backt
 
 **What this does not change.** The resume's collection claims (30-minute snapshots, gap-logged, zero cost) are about this project's own scraper and Spring 2027. Backfilled data is Berkeleytime's copy of the SIS feed. It is labelled `berkeleytime_history` everywhere and never counted toward a collection claim.
 
-Work the steps in order through the build loop in `docs/FINISH_PLAN_WAITLIST.md` section 1.2. Every step ends in a check. B1 to B3 need a laptop: Berkeleytime's Cloudflare blocks GitHub's runners.
+Work the steps in order through the build loop in `docs/dev/FINISH_PLAN_WAITLIST.md` section 1.2. Every step ends in a check. B1 to B3 need a laptop: Berkeleytime's Cloudflare blocks GitHub's runners.
 
 ---
 
@@ -71,11 +71,11 @@ Review with `design:ux-copy` (how a probability reads to a stressed student) and
 
 ## B6. Repo hygiene (Oliver, 20 minutes)
 
-- [ ] `CLAIMS.md` (status paragraph) and `docs/FINISH_PLAN_WAITLIST.md` (section 3, "Reality check") say in public that the resume claims a Spring 2026 cycle that was never captured. Fix the resume line, then delete both paragraphs.
-- [ ] Add a LICENSE (MIT for code; note that `backfill/` data is Berkeleytime's and is not redistributed).
-- [ ] `gh repo edit --homepage https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/`
+- [ ] `CLAIMS.md` (status paragraph) and `docs/dev/FINISH_PLAN_WAITLIST.md` (section 3, "Reality check") say in public that the resume claims a Spring 2026 cycle that was never captured. Fix the resume line, then delete both paragraphs.
+- [x] LICENSE added (MIT, with a scope note that `backfill/` data is Berkeleytime's and is not redistributed).
+- [x] `gh repo edit --homepage https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/` (done 2026-09-20)
 - [ ] Add GoatCounter to both site pages before anything is shared. Visits cannot be backfilled either.
-- [ ] Move session scaffolding (`HANDOFF.md`, `NEXT_SESSION.md`, `FINISH_PLAN_WAITLIST.md`, `superpowers/plans/`, this file) under `docs/dev/` and fix the links in `CLAUDE.md` and the README.
+- [x] Moved session scaffolding (`HANDOFF.md`, `NEXT_SESSION.md`, `FINISH_PLAN_WAITLIST.md`, `plans/`, this file) under `docs/dev/` and fixed the links in `CLAUDE.md`, the README and the design docs (2026-09-20). Data-log rows keep their historical paths.
 
 ## Interview notes this work earns
 

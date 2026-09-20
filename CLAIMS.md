@@ -1,6 +1,6 @@
 # Claims
 
-Every number or capability that appears on the resume for this project, with the exact command that reproduces it. This table is the audit, the interview prep, and the source for README numbers (docs/FINISH_PLAN_WAITLIST.md section 1.3). Re-run every row at the end of every step and before any resume update. If the `claims-audit` skill is installed, it does this; otherwise run each command by hand.
+Every number or capability that appears on the resume for this project, with the exact command that reproduces it. This table is the audit, the interview prep, and the source for README numbers (docs/dev/FINISH_PLAN_WAITLIST.md section 1.3). Re-run every row at the end of every step and before any resume update. If the `claims-audit` skill is installed, it does this; otherwise run each command by hand.
 
 Rules:
 - Result is what the command printed. Do not type a result you did not see.

@@ -1,6 +1,6 @@
 """Data-quality profile of the rebuilt panel, run before any modelling.
 
-docs/FINISH_PLAN_WAITLIST.md step A5 asks for null rates, observation gaps,
+docs/dev/FINISH_PLAN_WAITLIST.md step A5 asks for null rates, observation gaps,
 impossible transitions and sections that vanish. Everything here is a plain
 pandas computation on the panel from ``analysis.panel.load_panel``; the
 result is a dict of small tables and numbers that ``analysis.run`` writes

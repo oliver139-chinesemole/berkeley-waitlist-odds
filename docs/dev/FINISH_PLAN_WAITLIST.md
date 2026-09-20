@@ -2,7 +2,7 @@
 
 Owner: Oliver Guo · Written: Fri Sept 18, 2026 · Repo: Berkeley Waitlist Odds (Python, GitHub Actions, Parquet, lifelines, GitHub Pages)
 
-**How to use this file.** Drop it into this repo at `docs/FINISH_PLAN_WAITLIST.md` and paste the block from section 1.4 into `CLAUDE.md` at the repo root. Claude Code loads `CLAUDE.md` at session start and follows the `@` import. Steps use `- [ ]` checkboxes; every step ends in a check you can run. If the check already passes, tick it and move on.
+**How to use this file.** It lives at `docs/dev/FINISH_PLAN_WAITLIST.md` (session scaffolding moved under docs/dev/ on 2026-09-20) and paste the block from section 1.4 into `CLAUDE.md` at the repo root. Claude Code loads `CLAUDE.md` at session start and follows the `@` import. Steps use `- [ ]` checkboxes; every step ends in a check you can run. If the check already passes, tick it and move on.
 
 **Priority across the three repos:** waitlist scraper (hard external deadline) → PaddleIQ → Waivy → waitlist analysis once data exists. This repo is first. Steps A1 to A3 outrank everything in the other two repos until the scraper is live.
 
@@ -52,7 +52,7 @@ Plugins enabled on claude.ai sync into Claude Code sessions on recent versions a
 This file is the roadmap. It has no file paths or test code because those must come from reading the actual repo. Each step below becomes a task-level plan through this loop:
 
 1. `superpowers:brainstorming` — classify the step (spike, bounded, architectural), present the design, get Oliver's approval. Keep it proportionate: where `docs/SPEC.md` or this file already settles the design, present a short design that cites it instead of re-interviewing. Approval is still required before code.
-2. `superpowers:writing-plans` — write the task-level plan to `docs/superpowers/plans/YYYY-MM-DD-<step>.md`: exact files, failing test first, commands, expected output.
+2. `superpowers:writing-plans` — write the task-level plan to `docs/dev/plans/YYYY-MM-DD-<step>.md`: exact files, failing test first, commands, expected output.
 3. `superpowers:using-git-worktrees` — one isolated branch per step. Never build on `main`.
 4. `superpowers:subagent-driven-development` to execute (fresh subagent per task, review after each). Use `superpowers:executing-plans` only when running the plan in a separate session. Inside tasks, `superpowers:test-driven-development`.
 5. Anything red (test, build, deploy, scraper run): `superpowers:systematic-debugging` before proposing a fix. Read the real logs first.
@@ -79,12 +79,12 @@ This repo gets a `CLAIMS.md`: a table mapping every number or capability on the 
 ### 1.4 Block to paste into CLAUDE.md
 
 ```markdown
-@docs/FINISH_PLAN_WAITLIST.md
+@docs/dev/FINISH_PLAN_WAITLIST.md
 
 ## How to work in this repo
 - Before any response or action, check loaded skills and invoke every one that applies
   (superpowers:using-superpowers). Announce which skill you are using.
-- Execute every step through the build loop in docs/FINISH_PLAN_WAITLIST.md section 1.2.
+- Execute every step through the build loop in docs/dev/FINISH_PLAN_WAITLIST.md section 1.2.
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
@@ -239,7 +239,7 @@ permissions:
 ```
 Last updated: 2026-09-20 (session 4)
 Phase 1 opens: Mon Oct 26, 2026 (registrar ICS; schedule publishes Oct 4)   API Central request: DENIED 2026-09-19 (not granting access to students); site route is primary
-Setup (section 0): plugins not installed in this environment; work done by hand   Source chosen (A1): classes.berkeley.edu section pages via rss.xml + node enumeration; Berkeleytime GetEnrollment history for the Fall 2026 backfill (laptop only); docs/PHASE0.md, docs/BACKFILL_BACKTEST.md
+Setup (section 0): plugins not installed in this environment; work done by hand   Source chosen (A1): classes.berkeley.edu section pages via rss.xml + node enumeration; Berkeleytime GetEnrollment history for the Fall 2026 backfill (laptop only); docs/PHASE0.md, docs/dev/BACKFILL_BACKTEST.md
 
 Step: backfill/backtest (B0 to B4 done on branch backfill-backtest; B2 full pull waits for Oliver's note to Berkeleytime) / A3 running | blockers: Oliver's note before the full pull | scraper live: yes, self-dispatch chain since 19:41Z Sep 19 | A4 done | A5 code done, exercised on the 296-section Fall 2026 pilot (KM, Cox, IPCW backtests) | A6 v2: page reads the curve at the asker's horizons, band, source label; 320 tests in 70 s
 Done: A0 dates; A1 probe + 20/20 cross-check; A2 scraper, storage, rebuild, gaps, 3 sources, workflows; repo public with data branch; node-id discovery; A4 flows + positions + ASSUMPTIONS + synthetic validation; A5 calendar (+SPRING_2026), cohort (joinable, positions 1..100, numpy walk, follow_up_days), KM/Cox/PH, exporter with bands, figures, `make analysis`; backfill module + pilot (global Berkeleytime hole Aug 19 to Sep 1 found; gap rule 180 min), backtest module (temporal/grouped/cross-term, IPCW, observability rule), `make backfill*`, `make backtest`; A6 v2 + render tests

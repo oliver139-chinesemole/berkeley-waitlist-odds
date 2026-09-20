@@ -1,6 +1,6 @@
 # A4 design contract — flow reconstruction
 
-Binding interfaces for step A4 (docs/FINISH_PLAN_WAITLIST.md A4; docs/SPEC.md section 5). Input is the rebuilt panel from `scraper.rebuild.rebuild_panel` (docs/DESIGN_A2.md section 3). Output is a per-section, per-interval table of reconstructed flows plus a FIFO position model for step A5. Everything is pure pandas; nothing here touches the network or the data branch except through `analysis/panel.py`.
+Binding interfaces for step A4 (docs/dev/FINISH_PLAN_WAITLIST.md A4; docs/SPEC.md section 5). Input is the rebuilt panel from `scraper.rebuild.rebuild_panel` (docs/DESIGN_A2.md section 3). Output is a per-section, per-interval table of reconstructed flows plus a FIFO position model for step A5. Everything is pure pandas; nothing here touches the network or the data branch except through `analysis/panel.py`.
 
 Python package `analysis/` (already an empty directory). Tests in `tests/test_panel.py`, `tests/test_flows.py`, `tests/test_positions.py`, `tests/test_flows_synthetic.py`. `docs/ASSUMPTIONS.md` states every assumption below in plain English and is the artefact behind the word "documented" on the resume.
 
