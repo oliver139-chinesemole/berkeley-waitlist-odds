@@ -9,7 +9,7 @@
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: backfill and backtest landed (2026-09-20, branch backfill-backtest; docs/dev/BACKFILL_BACKTEST.md carries what each step found). Fall 2026 pilot (296 sections of Berkeleytime history) is modelled and backtested; the full pull waits for Oliver's note to Berkeleytime (B2), then `make backfill`, `make backfill-analysis`, `make backtest`, commit site/data + reports and redeploy. Berkeleytime was dark for every section Aug 19 to Sep 1, so Fall 2026 says nothing about first-week clearing; the backtest scores only observable horizons. Site v2 reads the curve at the asker's own horizons (?today= pins the date). A3 chain running; A5/A6 code done; Oct 4 term switch; Nov 9 first own-data analysis; A7 with Oliver. Update this line at the end of every session.
+- Current step: Fall 2026 backfill installed (2026-09-20 19:50Z, PR #5, install commit a7240f4 = pre-registration point): site/data serves department-level Fall 2026 curves labelled berkeleytime_history; backtests in reports/backtest_2268/; CLAIMS rows measured. Spring 2026 pull + cross-term backtests running in the background (docs/dev/STATUS.md section 3); next: read them, decide dept vs bucket-only curves, commit, redeploy (STATUS section 4 item 1), then B5 priority list before Oct 26, Oct 4 term switch, Nov 9 own-data analysis. Site v3 (PR #4, another session's worktree) rebases onto a7240f4. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.

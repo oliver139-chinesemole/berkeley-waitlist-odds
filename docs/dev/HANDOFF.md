@@ -47,11 +47,18 @@ Branch `backfill-backtest` (docs/dev/BACKFILL_BACKTEST.md is the plan; its check
 - **Calendar**: `SPRING_2026`; the last automatic run for terms without an explicit row is the last day to add without a fee (FA26 Sep 11, SP26 Feb 6), because Spring 2027's registrar row puts them on the same day.
 - Docs: DESIGN_A5 (section 9), DESIGN_A6, methodology page, README, DATA_LOG (pilot decision row), CLAIMS (three rows).
 
+### Session 4, second half (2026-09-20, 18:20Z to 20:00Z): the full pull installed
+
+- Full Fall 2026 pull: 6,016 sections (Berkeleytime's catalog has no MATH 1A or 1B), 402,573 segments; fetch ran 02:44Z to 09:42Z with the laptop asleep for part of it (keep `caffeinate -i` on long pulls). The Fall analysis then stalled for nine hours in lifelines' cluster-robust Cox: its score residual is an O(n²) row loop. Fixed by rounding durations to 0.01 day (tied times batch) and `analysis/coxfast.py`, an O(n) cumulative-sum form of the same residual held to the original to 1e-8; the full 475,079-row design now fits in 14 s. PH test on a 50,000-row diagnostic refit. `--cox-max-rows` exists but defaults to no cap.
+- Backtests on the full pull (CLAIMS.md rows): course cells no better than the bucket baseline, so `export_site_tables` serves department curves by default (`level="dept"`, `meta.estimate_level`); the page says "department estimate" with the course's own counts. Across the Phase 1 to Phase 2 shift even department curves lose to the bucket alone (−0.017) and Cox extrapolates badly (−0.290); within a regime Cox adds +0.034. The Spring 2026 to Fall 2026 cross-term run (in progress) decides whether departments transfer across terms.
+- Installed: `site/data` (2,050 courses, `berkeleytime_history`, `estimate_level` dept), `reports/report_2268_berkeleytime.md`, `reports/figures_2268_berkeleytime/`, `reports/backtest_2268/`, data-log row, CLAIMS rows (backfill, analysis, backtest, headline, cadence on the first full chain day: 46 runs, 97.8% of gaps at or under 45 min). Install commit a7240f4 (PR #5) is the pre-registration point.
+- Also: `analysis/priority_from_flows.py` (B5 tool), `analysis/backtest_summary.py`, LICENSE, `docs/dev/`, `docs/dev/STATUS.md`, the weekly workflow's site-data guard (verified: the 18:15Z Sunday run committed only the report), issue #1 closed after the 18:11Z monitor run. Site v3 is being built by another session in a worktree (PR #4) and rebases onto the install commit.
+
 ## What is left
 
-**Backfill, in order (docs/dev/BACKFILL_BACKTEST.md B2 to B6):**
-1. **Oliver:** two-sentence note to the Berkeleytime team (ASUC OCTO) before the full pull: what the project is, one pass of about 3,600 `GetEnrollment` requests at one per two seconds. Then `make backfill` (Fall 2026, resumable, about 2 hours) and `make backfill TERM=2262 TERM_NAME="Spring 2026"`; both from a laptop.
-2. `make backfill-analysis TERM=2268` (writes `site/data`, labelled `berkeleytime_history`), `make backtest TERM=2268`, and the cross-term run in B3 with the Spring 2026 cohort. Re-read the B3 questions on the full pull; re-measure the three CLAIMS rows; commit `site/data` and `reports/backtest_2268/`; dispatch `pages.yml`. The commit timestamp is the pre-registration date for the Spring 2027 cross-term test (B5).
+**Backfill, in order (docs/dev/STATUS.md section 4 is the live list):**
+1. Fall 2026 is installed (PR #5). When the Spring 2026 chain finishes: read the cross-term reports, decide department versus bucket-only curves, commit the Spring report and cross-term reports, data-log row, CLAIMS row; redeploy with `gh workflow run pages.yml`.
+2. Oliver's note to the Berkeleytime team was to be sent in parallel with the pull (his choice on 2026-09-20).
 3. B5: rebuild `config/priority_courses.txt` from reconstructed waitlist joins (top ~900 sections' courses) and log the new `priority_sha` before Oct 26. B6: fix the resume line, delete the two "Spring 2026" paragraphs (CLAIMS status, plan section 3), LICENSE, homepage, GoatCounter, move session scaffolding under `docs/dev/`.
 4. A browser pass on the new page states (no browser in the sessions so far).
 
