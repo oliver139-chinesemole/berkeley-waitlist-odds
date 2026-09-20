@@ -25,7 +25,7 @@ from analysis.flows import interval_flows, summary as flows_summary
 from analysis.panel import Outage, load_panel, parse_data_log, section_identity
 from analysis.positions import SCENARIOS
 from analysis.profile import profile_panel
-from analysis.survival import HORIZON_DAYS, STRATA, fit_cox_with_ph_check, headline, headline_median, km_by, km_table, logrank_table
+from analysis.survival import COX_MAX_ROWS, HORIZON_DAYS, STRATA, fit_cox_with_ph_check, headline, headline_median, km_by, km_table, logrank_table
 
 logger = logging.getLogger(__name__)
 
@@ -84,6 +84,7 @@ def run_analysis(
     site_dir: Path | str | None = None,
     flows: pd.DataFrame | None = None,
     site_meta: dict | None = None,
+    cox_max_rows: int | None = COX_MAX_ROWS,
 ) -> AnalysisResult:
     """Everything from a panel (or precomputed ``flows``) to the report.
 
@@ -138,7 +139,9 @@ def run_analysis(
     cox_summary = ph = cox_strat = None
     if enough:
         try:
-            first, ph, refit = fit_cox_with_ph_check(cohort)
+            first, ph, refit = fit_cox_with_ph_check(cohort, max_rows=cox_max_rows)
+            if first.rows_fit < len(cohort):
+                notes.append(f"Cox fit on a seeded random subsample of {first.rows_fit} of {len(cohort)} rows (cox_max_rows); PH test on {int(ph['rows_tested'].iloc[0])} rows")
             cox_summary = first.summary
             cox_summary.to_csv(out_dir / "cox.csv")
             ph.to_csv(out_dir / "cox_ph_test.csv", index=False)
@@ -160,7 +163,7 @@ def run_analysis(
     # after it at a fixed 14-day horizon with IPCW (analysis.backtest).
     oos = _empty_oos()
     if enough:
-        bt = run_backtest(cohort, calendar, split="temporal", which=f"days:{int(HORIZON_DAYS)}", n_boot=100)
+        bt = run_backtest(cohort, calendar, split="temporal", which=f"days:{int(HORIZON_DAYS)}", n_boot=100, cox_max_rows=cox_max_rows)
         oos.update({"n_train": bt.n_train, "n_test": bt.n_test, "metrics": bt.metrics, "calibration": bt.calibration, "notes": bt.notes})
         if len(bt.metrics):
             m = bt.metrics.set_index("predictor")
@@ -269,6 +272,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-interval-min", type=float, default=None)
     p.add_argument("--join-every-min", type=float, default=240)
     p.add_argument("--no-site", action="store_true", help="do not write site/data")
+    p.add_argument("--cox-max-rows", type=int, default=COX_MAX_ROWS, help="seeded row cap for the Cox fits (0 = no cap)")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     flows = None
@@ -304,6 +308,7 @@ def main(argv: list[str] | None = None) -> int:
         site_dir=None if args.no_site else args.site_dir,
         flows=flows,
         site_meta=site_meta,
+        cox_max_rows=args.cox_max_rows or None,
     )
     print(json.dumps({"out": str(result.out_dir), "flows": result.flows_summary, "cohort_rows": result.cohort_rows, "notes": result.notes, "figures": [str(f) for f in result.figures]}, indent=1))
     return 0

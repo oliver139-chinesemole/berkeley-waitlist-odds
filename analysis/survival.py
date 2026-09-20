@@ -28,6 +28,10 @@ HORIZON_DAYS = 14.0  # the fixed horizon analysis.run uses for its out-of-sample
 # Fall 2026 cohort; ties let it batch by event time.
 COX_TIME_RESOLUTION_DAYS = 0.01
 PH_TEST_MAX_ROWS = 50_000  # the Schoenfeld test runs on a seeded random subsample above this
+# Default row cap for every Cox fit in the pipeline (analysis.run and the backtest's Cox
+# predictor): a seeded random subsample above this. The full Fall 2026 cohort (475,079 design
+# rows, 49 covariates) did not finish in 40 minutes even with tied times.
+COX_MAX_ROWS = 100_000
 
 
 # ---------------------------------------------------------------- Kaplan-Meier
@@ -115,7 +119,7 @@ class CoxResult:
         return int(len(self.design))
 
 
-def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: float = 0.01, max_rows: int | None = None, seed: int = 0) -> CoxResult:
+def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: float = 0.01, max_rows: int | None = COX_MAX_ROWS, seed: int = 0) -> CoxResult:
     """Cox PH with robust (cluster by section) standard errors; ``strata`` names
     columns of the design matrix (one-hot prefixes are expanded). With
     ``max_rows`` the fit uses a seeded random subsample of that many rows
@@ -172,17 +176,17 @@ def check_ph(result: CoxResult, *, alpha: float = 0.05, max_rows: int = PH_TEST_
     return out
 
 
-def fit_cox_with_ph_check(cohort: pd.DataFrame, *, alpha: float = 0.05) -> tuple[CoxResult, pd.DataFrame, CoxResult | None]:
+def fit_cox_with_ph_check(cohort: pd.DataFrame, *, alpha: float = 0.05, max_rows: int | None = COX_MAX_ROWS) -> tuple[CoxResult, pd.DataFrame, CoxResult | None]:
     """Fit, test PH, and refit with the violating covariate families as strata.
     Returns (first fit, PH table, stratified refit or None)."""
-    first = fit_cox(cohort)
+    first = fit_cox(cohort, max_rows=max_rows)
     ph = check_ph(first, alpha=alpha)
     violating = sorted({str(c).split("=")[0] for c in ph.loc[ph["violates"], "covariate"]})
     # only categorical families can be stratified; numeric violators are reported, not stratified
     families = [f for f in violating if f in COX_CATEGORICAL]
     if not families:
         return first, ph, None
-    return first, ph, fit_cox(cohort, strata=families)
+    return first, ph, fit_cox(cohort, strata=families, max_rows=max_rows)
 
 
 # ---------------------------------------------------------------- sensitivity
