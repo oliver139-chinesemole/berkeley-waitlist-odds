@@ -93,22 +93,38 @@ def test_run_produces_everything(result) -> None:
 
 def test_site_tables_are_valid_json_with_sample_sizes(result) -> None:
     res, out = result
-    courses_path, meta_path = res.site_files
-    courses = json.loads(courses_path.read_text())
+    index_path, meta_path = res.site_files
+    data_dir = index_path.parent
+    index = json.loads(index_path.read_text())
     meta = json.loads(meta_path.read_text())
+    pooled = json.loads((data_dir / "pooled.json").read_text())
+    insights = json.loads((data_dir / "insights.json").read_text())
+    rows = {r["key"]: r for r in index["courses"]}
     # a simulated course whose sections never filled and never queued has no joinable moments, so 40 is an upper bound
-    assert 36 <= len(courses) <= 40 and meta["courses"] == len(courses) and meta["term_id"] == "9999"
-    for key, entry in courses.items():
-        assert entry["subject"] == key.split()[0] and entry["level"] in ("lower", "upper", "grad")
-        for bucket, cell in entry["buckets"].items():
-            assert 0.0 <= cell["p_clear_by_instruction"] <= 1.0 and cell["n"] > 0 and 1 <= cell["sections"] <= cell["n"]
-            assert cell["pooled"] in (False, "all") or isinstance(cell["pooled"], str)
-            assert cell["horizon_days"] >= 0 and cell["curve"] and all(0.0 <= p <= 1.0 for _, p, _, _ in cell["curve"])
-            ps = [p for _, p, _, _ in cell["curve"]]
-            assert ps == sorted(ps)  # cumulative clearing never falls
-            assert cell["curve"][-1][0] == pytest.approx(cell["reach_days"], abs=0.06) and cell["reach_days"] > 0
-            for _, p, lo, hi in cell["curve"]:
-                assert lo is None or (lo - 1e-9 <= p <= hi + 1e-9 and 0.0 <= lo <= hi <= 1.0)
+    assert 36 <= len(rows) <= 40 and meta["courses"] == len(rows) and meta["term_id"] == "9999"
+    assert meta["forecast_term_id"] == "9999" and meta["dates"]["last_auto_waitlist"] == meta["deadline"] and meta["horizons"] == [7.0, 14.0, 28.0]
+    assert meta["rank"] == "wl_joins" and any(r["joins"] > 0 for r in rows.values())
+    assert set(meta["subject_files"]) == {r["subject"] for r in rows.values()}
+    for subject, rel in meta["subject_files"].items():
+        entries = json.loads((data_dir / rel).read_text())["courses"]
+        assert entries and all(key.split()[0] == subject for key in entries)
+        for key, entry in entries.items():
+            assert entry["level"] in ("lower", "upper", "grad") and rows[key]["level"] == entry["level"]
+            for bucket, cell in entry["buckets"].items():
+                if cell["pooled"] is False:
+                    assert cell["n"] >= 30 and 1 <= cell["sections"] <= cell["n"] and cell["events"] <= cell["n"]
+                    ps = [p for _, p, _, _ in cell["curve"]]
+                    assert ps == sorted(ps) and all(0.0 <= p <= 1.0 for p in ps)  # cumulative clearing never falls
+                    assert cell["curve"][-1][0] == pytest.approx(cell["reach_days"], abs=0.06) and cell["reach_days"] > 0
+                    for _, p, lo, hi in cell["curve"]:
+                        assert lo is None or (lo - 1e-9 <= p <= hi + 1e-9 and 0.0 <= lo <= hi <= 1.0)
+                else:
+                    pool = pooled["all"][bucket] if cell["pooled"] == "all" else pooled["dept"][cell["pooled"]][bucket]
+                    assert pool["n"] >= 30 and "curve" not in cell and 1 <= cell["sections_course"] <= cell["n_course"] < 30
+                summary = rows[key]["buckets"][bucket]
+                assert summary["pooled"] == cell["pooled"] and len(summary["p"]) == 3 and all(0.0 <= p <= 1.0 for p in summary["p"])
+    assert set(insights["all_by_bucket"]) <= {"1-5", "6-15", "16-40", "41+"} and insights["counts"]["courses"] == len(rows)
+    assert insights["daily"] and insights["exits"]["admitted"] >= 0 and set(insights["by_phase"]) <= {"phase1", "phase2", "before", "between", "adjustment", "instruction", "after"}
 
 
 def test_export_pooling_rule() -> None:
@@ -128,9 +144,10 @@ def test_export_pooling_rule() -> None:
 def test_export_empty(tmp_path: Path) -> None:
     cal = TermCalendar("2272", "x", *([pd.Timestamp("2026-10-26").date()] * 8))
     empty = synthetic_cohort(n_sections=1, joins_per_section=1).iloc[0:0]
-    courses_path, meta_path = export_site_tables(empty, cal, tmp_path)
+    index_path, meta_path = export_site_tables(empty, cal, tmp_path)
     meta = json.loads(meta_path.read_text())
-    assert json.loads(courses_path.read_text()) == {} and meta["cohort_rows"] == 0
+    assert json.loads(index_path.read_text())["courses"] == [] and meta["cohort_rows"] == 0 and meta["subject_files"] == {}
+    assert json.loads((tmp_path / "pooled.json").read_text())["all"] == {} and json.loads((tmp_path / "insights.json").read_text())["counts"]["rows"] == 0
     assert meta["deadline"] == "2026-10-26" and meta["instruction_start"] == "2026-10-26" and meta["positions"] == []
 
 

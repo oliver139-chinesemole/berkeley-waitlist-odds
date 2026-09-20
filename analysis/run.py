@@ -84,12 +84,14 @@ def run_analysis(
     site_dir: Path | str | None = None,
     flows: pd.DataFrame | None = None,
     site_meta: dict | None = None,
+    forecast_calendar: TermCalendar | None = None,
 ) -> AnalysisResult:
     """Everything from a panel (or precomputed ``flows``) to the report.
 
     ``flows`` skips ``interval_flows`` (a backfilled term carries its own
     censoring); ``site_meta`` is merged into ``site/data/meta.json`` and should
-    name the ``data_source``.
+    name the ``data_source``; ``forecast_calendar`` is the term whose dates the
+    site counts down to when a finished cycle stands in for the coming one.
     """
     out_dir = Path(out_dir) / calendar.term_id
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -181,7 +183,7 @@ def run_analysis(
         meta = {"data_source": OWN_DATA_SOURCE, "flows": fsum, "cohort_rows_by_scenario": cohort_rows}
         if site_meta:
             meta.update(site_meta)
-        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta)
+        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, forecast_calendar=forecast_calendar, flows=flows)
 
     report = [
         f"# Waitlist analysis report: {calendar.name} (term {calendar.term_id})",
@@ -269,6 +271,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-interval-min", type=float, default=None)
     p.add_argument("--join-every-min", type=float, default=240)
     p.add_argument("--no-site", action="store_true", help="do not write site/data")
+    p.add_argument("--forecast-term", default=None, help="SIS term id whose dates the site counts down to (default: the analysed term); 2272 when Fall 2026 stands in for Spring 2027")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     flows = None
@@ -304,6 +307,7 @@ def main(argv: list[str] | None = None) -> int:
         site_dir=None if args.no_site else args.site_dir,
         flows=flows,
         site_meta=site_meta,
+        forecast_calendar=calendar_for(args.forecast_term) if args.forecast_term else None,
     )
     print(json.dumps({"out": str(result.out_dir), "flows": result.flows_summary, "cohort_rows": result.cohort_rows, "notes": result.notes, "figures": [str(f) for f in result.figures]}, indent=1))
     return 0

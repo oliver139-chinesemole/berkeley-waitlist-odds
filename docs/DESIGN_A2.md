@@ -51,6 +51,7 @@ snapshots/date=YYYY-MM-DD/HHMM-baseline.parquet   # every observed section, all 
 snapshots/date=YYYY-MM-DD/HHMM-delta.parquet      # only rows whose COUNT_FIELDS changed vs the previous observation of that section, plus tombstones
 catalog/<term_id>/sections.json                   # section list for the term (classes_site only), refreshed at most daily
 status.json                                       # last run summary (small, rewritten each run)
+live/latest.json                                  # last observation of every full or waitlisted section, for the site (scraper/live.py; rewritten each run, continue-on-error; since 2026-09-20)
 ```
 
 `HHMM` is `fetched_at` of the run start in UTC. Date partition is the UTC date.

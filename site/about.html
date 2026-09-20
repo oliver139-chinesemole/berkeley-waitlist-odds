@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Berkeley Waitlist Odds</title>
+<meta name="description" content="Who built Berkeley Waitlist Odds, where the data come from, what is stored about visitors, and how to get in touch.">
+<meta name="theme-color" content="#003262">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="in">
+  <a class="brand" href="index.html">Berkeley Waitlist Odds</a>
+  <nav aria-label="Site"><a href="index.html">Lookup</a><a href="courses.html">Courses</a><a href="insights.html">Insights</a><a href="accuracy.html">Accuracy</a><a href="methodology.html">Methods</a></nav>
+</div></header>
+<main id="main">
+  <h1>About this site</h1>
+  <p>Berkeley Waitlist Odds answers one question: you are at some position on a UC Berkeley course waitlist, how often did that spot clear in time, and how fast? It is a student project by Oliver Guo (Applied Mathematics and Statistics, UC Berkeley), built as a public, reproducible piece of applied statistics.</p>
+
+  <h2>Not affiliated</h2>
+  <p>This site is not affiliated with, endorsed by, or maintained by UC Berkeley, the Office of the Registrar, or Berkeleytime. It reads public enrollment counts and publishes historical frequencies. Nothing here is a guarantee, an official estimate, or advice from any department.</p>
+
+  <h2>Where the numbers come from</h2>
+  <p>Two sources, and every page says which one it is showing. This project's own scraper reads the public section pages of classes.berkeley.edu every 30 minutes during an enrollment cycle and stores the counts. Until that collection has a full cycle, the estimates come from the Fall 2026 cycle as recorded in <a href="https://berkeleytime.com">Berkeleytime</a>'s public enrollment history; those numbers are labelled <em>from Berkeleytime's public history</em> wherever they appear. Neither source contains student identities or positions: the data are aggregate counts, and the odds are for hypothetical students reconstructed under stated assumptions. The <a href="methodology.html">methodology</a> page explains how, and the <a href="accuracy.html">accuracy</a> page shows how well past estimates held up.</p>
+
+  <h2>Data status</h2>
+  <p id="data-status" class="muted">Loading the data status…</p>
+
+  <h2>Privacy</h2>
+  <p>No accounts, no cookies, no tracking pixels, and nothing you type is sent anywhere: lookups run in your browser against files it has already downloaded. The site may count page views with <a href="https://www.goatcounter.com/">GoatCounter</a>, which stores no personal data; when that is on, it is loaded from this page and nothing else is.</p>
+
+  <h2>Licence</h2>
+  <p>The code, the analysis and this site are open source under the MIT licence in the <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds">repository</a>. The snapshot data collected by this project are published on the repository's <code>data</code> branch. Berkeleytime's history is theirs; this project stores only the aggregates derived from it.</p>
+
+  <h2>Feedback</h2>
+  <p>Found a wrong number, a course that will not resolve, or a place where the wording misleads? Open an issue on <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/issues">GitHub</a>. If you were on a waitlist and want to tell the project what happened, an outcome form will be linked from the lookup page once Spring 2027 enrollment opens.</p>
+</main>
+<footer>
+  <p><a href="methodology.html">How this works</a> · <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds">Source and data</a></p>
+  <p id="stamp"></p>
+</footer>
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  const { $, esc, num } = BWO;
+  async function main() {
+    const r = await BWO.load([]);
+    const el = $("data-status");
+    if (r.state === "failed") { el.innerHTML = BWO.failedHtml(); return; }
+    if (r.state === "empty") { el.innerHTML = BWO.emptyHtml(r.meta); return; }
+    const m = r.meta;
+    const src = m.data_source === "berkeleytime_history" ? "Berkeleytime's public history" : "this project's own snapshots";
+    el.innerHTML = `<strong>${esc(m.term_name)}</strong>, ${src}: ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners of whom ${esc(num(m.events))} cleared. Data through ${esc(BWO.fmtDate(m.join_window ? m.join_window[1] : m.generated_at))}; files generated ${esc(BWO.fmtDate(m.generated_at))}.${m.prereg_commit ? ` The Fall 2026 model was frozen at commit <code>${esc(String(m.prereg_commit).slice(0, 10))}</code> on ${esc(m.prereg_date || "")} for the Spring 2027 test.` : ""}`;
+    BWO.setStamp(m, BWO.today());
+  }
+  main();
+})();
+</script>
+</body>
+</html>

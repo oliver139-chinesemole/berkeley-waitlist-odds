@@ -1,6 +1,6 @@
 # Berkeley Waitlist Odds: where the project stands and what is left
 
-Written 2026-09-20 03:55 UTC (session 4). Give this file to a Claude Code session, or read it yourself, to know the stage, what is still to build, what only Oliver can do, and what happens on which date. It is a snapshot; `docs/dev/HANDOFF.md` carries the detail, `docs/dev/BACKFILL_BACKTEST.md` the backfill plan with findings, `CLAIMS.md` the measured numbers, `CLAUDE.md` the current-step line.
+Written 2026-09-20 03:55 UTC (session 4); site v3 rows added 2026-09-20 20:30 UTC (session 5, worktree `berkeley-waitlist-odds-site`, branch `site-v3`). Give this file to a Claude Code session, or read it yourself, to know the stage, what is still to build, what only Oliver can do, and what happens on which date. It is a snapshot; `docs/dev/HANDOFF.md` carries the detail, `docs/dev/BACKFILL_BACKTEST.md` the backfill plan with findings, `CLAIMS.md` the measured numbers, `CLAUDE.md` the current-step line.
 
 ## 1. In one paragraph
 
@@ -16,7 +16,7 @@ The scraper is live (30-minute snapshots of Fall 2026 as the test term, self-dis
 | A3 go live and monitor | Chain, heartbeat, monitor, data log | **Running.** Chain on every :07/:37 slot since 19:41Z Sep 19. Open: 24 h cadence check after 19:41Z Sep 20; close issue #1 after a passing monitor run (Sep 21 earliest); Oliver's Sunday check. |
 | A4 flow reconstruction | Flows, position model, ASSUMPTIONS, synthetic validation | Done. |
 | A5 survival analysis | Calendar, cohort, KM, Cox, PH check, sensitivity, out of sample, `make analysis` | Code done and run on the Fall 2026 pilot. Open: "two or three headline results in plain English" once the full pull is analysed. |
-| A6 publish | Site, methodology, README | Site v2 live; methodology and README updated. Open: README hero plot from the full backfill; a pass in a real browser. |
+| A6 publish | Site, methodology, README | Site v2 live. **Site v3 built** on branch `site-v3` (session 5; docs/dev/SITE_V3_PLAN.md section 13): Lookup, Courses, course page, Insights, Accuracy, Methods, About, 404; shared assets; split JSON (`index.json`, `courses/<SUBJECT>.json`, `pooled.json`, `insights.json`, `backtest.json`); `live/latest.json` writer in `scrape.yml`; Playwright smoke in CI; 353 tests. Open: land it after item 1 (rebase, `make site-data` with the install commit's hash, merge, `pages.yml`); README hero plot; GoatCounter; Oliver's browser pass. |
 | A7 ship | Resume, r/berkeley post, LinkedIn | Oliver's; not started. |
 | B0 backfill patch | `analysis/backfill.py`, `analysis/backtest.py`, cohort fix | Done (PR #2, merged as 4711e1c). |
 | B1 pilot and gap question | 300 sections, gap report, Spring 2026 probe | Done. Berkeleytime dark for every section Aug 19 22:45Z to Sep 1 18:30Z; gap rule 180 min; Spring 2026 histories exist. |
@@ -34,8 +34,11 @@ Peer sessions: two other Claude Code sessions were open on the same checkout on 
 
 ## 4. Still to implement or run (in order)
 
+(2026-09-20 18:23Z: session oliverguo-29 killed and restarted the full-pull chain with a Cox speed fix after the laptop slept overnight; that session owns item 1. Session 5 built site v3 in parallel in a separate worktree; item 1b is its landing.)
+
 1. **Install the full-pull results** (when the chain prints `=== done`): read `analysis/out/2268/report.md` and `reports/backtest_2268/*/report.md`; answer the B3 questions in `docs/dev/BACKFILL_BACKTEST.md` on the full data (does `course` beat `bucket`; is Cox calibrated within a regime; coverage by phase); re-measure the three backfill rows in `CLAIMS.md` with the printed numbers; copy `analysis/out/2268/report.md` to `reports/report_2268_berkeleytime.md` and the figures to `reports/figures_2268_berkeleytime/`; commit `site/data`, `reports/`, add a `decision` row to `docs/DATA_LOG.md` (sections, segments, gap share, commit hash); merge PR #3; `gh workflow run pages.yml`; check the live page shows "from Berkeleytime's public 15-minute enrollment history". The merge commit's timestamp is the pre-registration date for the Spring 2027 cross-term test.
-2. **Headline results in plain English** (A5's last box): two or three sentences with numbers from the full report (median days to clear by bucket, share cleared within 14 days, the Cox position effect), into `CLAIMS.md` "Rows to add later", the README status, and the site's methodology page if useful. Never a number that was not printed by a command.
+1b. **Land site v3** (branch `site-v3`, draft PR; docs/DESIGN_A6.md is the contract): after the install commit, rebase the branch on `main`, run `make site-data` from the installed cohort with `--prereg-commit <install sha> --prereg-date <date>` (see docs/RUNBOOK.md section 5) and `python -m analysis.export_backtest --reports reports/backtest_2268 --term-id 2268 --term-name "Fall 2026" --out site/data/backtest.json --data-source berkeleytime_history`, commit `site/data` (the old `courses.json` goes away), merge, `gh workflow run pages.yml`, then curl every page for 200 and download the `site-smoke` artifact to see the pages. Copy the printed course count into CLAIMS.md.
+2. **Headline results in plain English** (A5's last box; the Insights page already composes them from `insights.json`, so the CLAIMS sentences must use the same numbers): two or three sentences with numbers from the full report (median days to clear by bucket, share cleared within 14 days, the Cox position effect), into `CLAIMS.md` "Rows to add later", the README status, and the site's methodology page if useful. Never a number that was not printed by a command.
 3. **README hero plot**: replace the simulated figure with `reports/figures_2268_berkeleytime/hero.png` (lower-division Phase 1 joiners by bucket) and relabel the caption as Berkeleytime history, not simulation.
 4. **B5, before Oct 26**: `python -m analysis.priority_from_flows --flows backfill/2268/flows.parquet backfill/2262/flows.parquet --identity backfill/2268/identity.parquet backfill/2262/identity.parquet --top-sections 900`; review the candidate (courses of the 900 most-joined sections, ordered by joins) against the budget (a run fetches about 917 priority pages plus a shard in 1,380 s); install it as `config/priority_courses.txt`; add a `priority_list` row to `docs/DATA_LOG.md` with the new `priority_sha` (printed in the next run's metadata) and the coverage numbers the tool prints.
 5. **Oct 4 term switch** (`docs/RUNBOOK.md` step 7): `gh variable set SCRAPE_TERM --body "Spring 2027"`, dispatch a forced baseline, confirm `data-term` 2272 in the pages, add a `term_switch` row. Discovery finds the new pages over the following runs. Deadline for Spring collection to be running: Oct 12.
@@ -47,7 +50,7 @@ Peer sessions: two other Claude Code sessions were open on the same checkout on 
 
 - Send the two-sentence note to the Berkeleytime team (ASUC OCTO); the pull is already running with a User-Agent that carries your email.
 - Open the live page in a real browser (phone and laptop, light and dark) once the backfilled JSON is published; the sessions had no browser. Check the headline sentence, the floor note, the look-back state (`?today=2026-09-15`), and the pooled tag.
-- Create a GoatCounter site and add its script to both pages before anything is shared; visits cannot be backfilled.
+- Create a GoatCounter site and add its script tag to every page under `site/` (eight pages; one line each, before `</body>`) before anything is shared; visits cannot be backfilled. Counting each lookup by course (plan decision 4) is a one-line `window.goatcounter.count` call in `index.html`'s submit handler once the tag exists.
 - Fix the resume line to "Spring 2027 enrollment cycle", then delete the two paragraphs that mention it (`CLAIMS.md` status paragraph, `docs/dev/FINISH_PLAN_WAITLIST.md` section 3).
 - Sunday two-minute check through Feb 14 (`docs/RUNBOOK.md` section 4). Billing page shows $0 (CLAIMS row).
 - A7: the r/berkeley post (soft launch before Nov 23 if the numbers hold; main launch two weeks before Fall 2027 Phase 1), resume bullets from `CLAIMS.md`, pin the repo, LinkedIn, the private interview page (why IPCW; why resample by section; why selection ignores today's waitlist; what Fall 2026 could not validate).
@@ -73,6 +76,7 @@ Peer sessions: two other Claude Code sessions were open on the same checkout on 
 - `backfill/` is gitignored Berkeleytime data, labelled `berkeleytime_history`, never a collection claim. The resume's collection claims are about Spring 2027 only.
 - Tests: `python -m pytest` (addopts already has `-q`; a second `-q` hides the summary line), 322 tests in about 60 s; `tests/test_site.py` needs node (`~/.nvm/versions/node/*/bin/node`).
 - `CLAIMS.md` numbers are copied from command output, never typed.
+- Site v3 (session 5) lives in a second checkout, `/Users/oliverguo/berkeley-waitlist-odds-site` (git worktree, branch `site-v3`), so the main checkout can stay on whatever branch the pull owner needs. The pages compute nothing: `analysis/export.py` writes `index.json` (search, tables), `courses/<SUBJECT>.json` (curves on demand; pooled cells are pointers), `pooled.json` (department, level, all), `insights.json`, `meta.json` (with a forecast term whose dates the pages count down to); `analysis/export_backtest.py` writes `backtest.json`; `make site-data` rewrites them from a saved cohort in two minutes. `tests/test_site.py` renders every page under node; `tests/site/smoke.mjs` screenshots them in Chromium (locally with `NODE_PATH=/Users/oliverguo/paddleiq/node_modules`, which has Playwright 1.62.1 and axe-core; in CI through `site-smoke.yml`). `scrape.yml` now also writes `live/latest.json` to the data branch (about 1,050 active sections, 97 KB) in a `continue-on-error` step.
 
 ## 8. How to resume
 
@@ -89,7 +93,8 @@ Prompt to paste into a new Claude Code session:
 
 ```
 Continue the Berkeley Waitlist Odds project at /Users/oliverguo/berkeley-waitlist-odds. Read docs/dev/STATUS.md
-first (stage, what is left, dates), then docs/dev/HANDOFF.md and the Current step line in CLAUDE.md. Run ListAgents
+first (stage, what is left, dates), then docs/dev/HANDOFF.md, docs/dev/SITE_V3_PLAN.md section 13 and the Current step
+line in CLAUDE.md. Run ListAgents
 and git log -3 before editing (other sessions may be open on this checkout). Do the first open item in STATUS.md
 section 4 that is due, through the build loop in docs/dev/FINISH_PLAN_WAITLIST.md section 1.2. Rules: never commit
 to the data branch by hand; only analysis.yml commits to main on its own; every number in CLAIMS.md is copied from

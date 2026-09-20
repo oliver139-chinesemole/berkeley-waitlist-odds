@@ -57,18 +57,28 @@ Dates come from the registrar ICS in `data/fixtures/`. `phase_at` uses UTC midni
 
 ## 4. Site tables (`analysis/export.py`)
 
-`export_site_tables(cohort, calendar, out_dir, *, meta=None, min_n=30, n_boot=200)` writes `site/data/courses.json`: for each `course_key` and `position_bucket` a cell with
+`export_site_tables(cohort, calendar, out_dir, *, meta=None, min_n=30, n_boot=200, forecast_calendar=None, flows=None)` writes the site's JSON under `site/data/` and returns `(index.json, meta.json)`. `calendar` is the data term's; `forecast_calendar` (default: the same) is the term whose dates the pages count down to, so a finished cycle (Fall 2026) can stand in for the coming one (Spring 2027) and be labelled as such. `python -m analysis.export --cohort <cohort.parquet> --term-id 2268 --forecast-term 2272 --flows <flows.parquet> --meta-from site/data/meta.json` (`make site-data`) rewrites the files from a saved cohort without a refit, carrying `data_source`, `flows`, `backfill`, `cohort_rows_by_scenario`, `prereg_commit` and `prereg_date` over from the meta.json already there.
+
+A **cell** is the Kaplan-Meier clearing curve of one group of virtual waitlisters:
 
 | field | meaning |
 | --- | --- |
-| `curve` | `[days since joining, P(cleared by then), 95% low, 95% high]` on a fixed grid (`CURVE_DAYS`, 0.5 to 182 days) cut at the cell's longest follow-up, plus that reach as the last point; the band comes from `n_boot` resamples of sections, `null` when the cell has one section |
-| `reach_days` | the longest follow-up in the cell; the page treats a reading past it as a floor |
+| `curve` | `[days since joining, P(got in by then), 95% low, 95% high]` on a fixed grid (`CURVE_DAYS`, 0.5 to 182 days) cut at the group's longest follow-up, plus that reach as the last point; the band comes from `n_boot` resamples of sections, `null` when the group has one section |
+| `reach_days` | the longest follow-up; the pages treat a reading past it as a floor |
 | `n`, `events`, `sections` | rows, clearings and distinct sections behind the curve |
 | `median_days` | first day at which the curve reaches one half, `null` if never |
-| `p_clear_by_instruction`, `horizon_days` | the curve at the cell's median `days_to_instruction`; the report's number, not the page's |
-| `pooled`, `n_course`, `sections_course` | `false`, or the department (`min_n` rows not reached: the department's curve for the same bucket) or `"all"` (the whole cohort's bucket); the course's own counts |
 
-and `site/data/meta.json` with the term, `deadline` (the last automatic waitlist run), `instruction_start`, `add_drop_deadline`, the data window, counts, `positions`, `n_boot`, `data_source` (`own_snapshots` or `berkeleytime_history`) and the generation time. The Kaplan-Meier estimate is computed in numpy (`km_clear_at`) because the bootstrap fits tens of thousands of curves. Numbers are rounded to three decimals; nothing else is post-processed by hand.
+The pages read a curve as a step function (`read_curve`): the last grid point at or before the horizon, `0` before the first point, the last point past the reach. A **summary** is a cell without its curve: `p`, `lo`, `hi` at `HORIZONS` (7, 14 and 28 days), `reach` (`[share at the reach, reach in days]`), `median_days` and the counts.
+
+| file | contents |
+| --- | --- |
+| `meta.json` | `term_id`, `term_name` (the data term); `forecast_term_id`, `forecast_term_name`, `dates` (the eight calendar dates of the forecast term) and `data_dates` (the data term's); `deadline` (the forecast term's last automatic waitlist run, the headline horizon), `instruction_start`, `add_drop_deadline`; counts, `join_window`, `scenario`, `min_n`, `n_boot`, `horizons`, `positions`; `files`, `subject_files` (subject to `courses/<SUBJECT>.json`); `rank` (`wl_joins` when flows were given); `data_source` (`own_snapshots` or `berkeleytime_history`), `terms`, and whatever `meta` adds (`flows`, `backfill`, `cohort_rows_by_scenario`, `prereg_commit`, `prereg_date`) |
+| `index.json` | `courses`: one row per course (`key`, `subject`, `number`, `level`, `dept_group`, `joins`, `buckets`); each bucket a summary plus `pooled` (`false`, a department or `"all"`) and, when pooled, the course's own `n_course` and `sections_course`. Drives search, the example chips (top `joins`), the Courses table and related courses |
+| `courses/<SUBJECT>.json` | `courses`: `{course_key: {subject, number, level, dept_group, buckets}}`; a bucket with `min_n` rows or more is a cell with `pooled: false`; a smaller one is a pointer `{pooled, n_course, sections_course}` to the department's cell for the same bucket, or to the all-course cell when the department has fewer than `min_n` rows too; a bucket with no pool is left out |
+| `pooled.json` | `all` (bucket to cell), `dept` (department group to bucket to cell) and `level` (lower, upper, grad to bucket to cell), each with `min_n` rows or more |
+| `insights.json` | `counts`; `all_by_bucket` (cells); `hero` (lower-division courses, Phase 1 joiners, by bucket; the README hero plot's data); `by_level` and `by_phase` (summaries by bucket); with flows: `daily` (`date`, `admits`, `joins`, `drops`, `intervals`, `share_censored` per UTC day) and `exits` (`admitted`, `dropped`, `still_waiting` at each section's last interval) |
+
+The Kaplan-Meier estimate is computed in numpy (`km_clear_at`) because the bootstrap fits tens of thousands of curves. Shares are rounded to three decimals, medians to two, reaches to one; nothing else is post-processed by hand, and the pages compute no statistic of their own.
 
 ## 5. Figures (`analysis/figures.py`)
 

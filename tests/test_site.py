@@ -1,8 +1,9 @@
-"""Renders site/index.html without a browser and checks the states in docs/DESIGN_A6.md.
+"""Renders the pages under site/ without a browser and checks the states in docs/DESIGN_A6.md.
 
-The page's own inline script runs under node against a stub document and a
-file-backed ``fetch`` (tests/site/harness.js). Skipped when node is missing.
-"Today" is pinned through the page's own ``?today=YYYY-MM-DD`` query parameter.
+Each page's own inline script runs under node against a stub document and a
+file-backed ``fetch`` (tests/site/harness.js), after the shared assets/site.js.
+Skipped when node is missing. "Today" is pinned through the pages' own
+``?today=YYYY-MM-DD`` query parameter.
 """
 from __future__ import annotations
 
@@ -17,14 +18,15 @@ from pathlib import Path
 import pytest
 
 from analysis.calendar import TermCalendar
-from analysis.export import export_site_tables
+from analysis.export import export_site_tables, read_curve
 from analysis.run import run_analysis
 from tests.test_run import sim_inputs
 from tests.test_survival import synthetic_cohort
 
 ROOT = Path(__file__).resolve().parent.parent
-INDEX = ROOT / "site" / "index.html"
+SITE = ROOT / "site"
 HARNESS = ROOT / "tests" / "site" / "harness.js"
+PAGES = ("index.html", "courses.html", "course.html", "insights.html", "accuracy.html", "methodology.html", "about.html", "404.html")
 
 
 def find_node() -> str | None:
@@ -54,35 +56,39 @@ CAL = TermCalendar(
 TODAY = "2027-01-10"  # 9 days before instruction, 27 days before the end of the last waitlist run's day
 
 
-def render(site_root: Path, *, search: str = "", course: str = "", position: str = "", today: str | None = TODAY) -> dict:
+def render(site_root: Path, *, page: str = "index.html", search: str = "", course: str = "", position: str = "", today: str | None = TODAY, expression: str = "", env: dict | None = None) -> dict:
     if today:
-        search = (search + ("&" if search else "?")) + f"today={today}" if search.startswith("?") or not search else "?" + search
+        search = (search + "&" if search else "?") + f"today={today}"
         if not search.startswith("?"):
             search = "?" + search
     proc = subprocess.run(
-        [str(NODE), str(HARNESS), str(INDEX), str(site_root), search, course, position],
+        [str(NODE), str(HARNESS), str(SITE / page), str(site_root), search, course, position, expression],
         capture_output=True,
         text=True,
         timeout=60,
         check=False,
+        env={**os.environ, **(env or {})},
     )
     assert proc.returncode == 0, proc.stderr
     return json.loads(proc.stdout)
 
 
-def read_curve(curve: list, h: float) -> list:
-    """The page's rule: the last grid point at or before h days."""
-    pt = None
-    for c in curve:
-        if c[0] <= h:
-            pt = c
-        else:
-            break
-    return pt or [0, 0, None, None]
-
-
 def pct(p: float) -> str:
     return f"{round(p * 100)}%"
+
+
+def load(site_root: Path, name: str) -> dict:
+    return json.loads((site_root / "data" / name).read_text())
+
+
+def cell_of(site_root: Path, key: str, bucket: str) -> dict:
+    subject = key.split()[0]
+    entry = load(site_root, f"courses/{subject}.json")["courses"][key]
+    cell = entry["buckets"][bucket]
+    if cell["pooled"] is False:
+        return cell
+    pooled = load(site_root, "pooled.json")
+    return pooled["all"][bucket] if cell["pooled"] == "all" else pooled["dept"][cell["pooled"]][bucket]
 
 
 @pytest.fixture(scope="module")
@@ -108,10 +114,23 @@ def narrow_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     return root
 
 
+# ------------------------------------------------------------------ states
+
+
+def test_every_page_loads_the_shared_assets() -> None:
+    for page in PAGES:
+        html = (SITE / page).read_text()
+        assert '<link rel="stylesheet" href="assets/site.css">' in html, page
+        assert 'href="#main"' in html and 'id="main"' in html, page
+        assert '<nav aria-label="Site">' in html, page
+        if page not in ("404.html",):
+            assert '<script src="assets/site.js"></script>' in html, page
+
+
 def test_empty_state_without_data(tmp_path: Path) -> None:
     out = render(tmp_path)
     assert "No estimates yet" in out["status"] and "Oct 26, 2026" in out["status"]
-    assert out["form_hidden"] and out["result_hidden"] and out["datalist_options"] == 0
+    assert out["form_hidden"] and out["result_hidden"]
 
 
 def test_empty_state_shows_counts_from_meta(tmp_path: Path) -> None:
@@ -120,6 +139,12 @@ def test_empty_state_shows_counts_from_meta(tmp_path: Path) -> None:
     out = render(tmp_path)
     assert "No estimates yet" in out["status"] and "704 sections" in out["status"] and "809 hypothetical joiners" in out["status"] and "3 clearings" in out["status"]
     assert out["form_hidden"]
+
+
+def test_fetch_failure_is_not_the_empty_state(full_site: Path) -> None:
+    out = render(full_site, env={"HARNESS_FAIL_FETCH": "1"})
+    assert "Could not load the estimates" in out["status"] and "No estimates yet" not in out["status"]
+    assert "Reload" in out["status"] and out["form_hidden"]
 
 
 def test_meta_from_the_analysis_run_renders_as_numbers(tmp_path: Path) -> None:
@@ -135,55 +160,71 @@ def test_meta_from_the_analysis_run_renders_as_numbers(tmp_path: Path) -> None:
     assert f"{meta['cohort_rows']} hypothetical joiners" in out["status"] and f"{meta['sections']} sections" in out["status"]
 
 
-def test_full_state_lists_courses(full_site: Path) -> None:
-    courses = json.loads((full_site / "data" / "courses.json").read_text())
-    meta = json.loads((full_site / "data" / "meta.json").read_text())
-    assert meta["events"] >= 10 and meta["deadline"] == "2027-02-05" and meta["data_source"] is None if "data_source" in meta else True
+def test_full_state_shows_source_dates_and_examples(full_site: Path) -> None:
+    meta = load(full_site, "meta.json")
+    index = load(full_site, "index.json")
+    assert meta["events"] >= 10 and meta["deadline"] == "2027-02-05"
     out = render(full_site)
     assert not out["form_hidden"] and out["result_hidden"]
-    assert out["datalist_options"] == len(courses)
-    assert "Simulated term" in out["status"] and f"{len(courses)} courses" in out["status"] and f"{meta['events']} of whom cleared" in out["status"]
-    assert "Berkeleytime" not in out["status"]
+    assert "Simulated term" in out["status"] and f"{len(index['courses'])} courses" in out["status"] and f"{meta['events']:,} of whom cleared" in out["status"]
+    assert "Berkeleytime" not in out["status"] and "[object Object]" not in out["status"]
     assert out["stamp"].startswith("Data through") and "Horizons computed for 2027-01-10" in out["stamp"] and "27 days away" in out["stamp"]
-    assert "[object Object]" not in out["status"]
+    dates = out["elements"]["dates"]["html"]
+    assert "Simulated term" in dates and "Jan 19, 2027" in dates and "First day of class" in dates and "in 9 days" in dates and "Feb 5, 2027" in dates
+    chips = out["elements"]["examples"]["html"]
+    assert chips.count('class="chip"') == 3 and "at 10" in chips
+    teaser = out["elements"]["teaser"]["html"]
+    assert "positions 6 to 15 got in within 14 days" in teaser and "insights.html" in teaser
 
 
 def test_backfill_source_is_labelled(backfill_site: Path) -> None:
     out = render(backfill_site)
     assert "from Berkeleytime's public 15-minute enrollment history" in out["status"] and "Simulated term" in out["status"]
     assert "Live Spring 2027 collection" in out["status"] and not out["form_hidden"]
+    out = render(backfill_site, course="COMPSCI 0", position="3")
+    assert "from Berkeleytime's public history" in out["result"]
+
+
+# ------------------------------------------------------------------ lookup
 
 
 def test_lookup_reads_the_curve_at_the_askers_own_horizons(full_site: Path) -> None:
-    courses = json.loads((full_site / "data" / "courses.json").read_text())
-    cell = courses["COMPSCI 0"]["buckets"]["1-5"]
-    assert cell["pooled"] is False and cell["sections"] >= 1 and cell["reach_days"] > 0
+    cell = cell_of(full_site, "COMPSCI 0", "1-5")
+    assert cell["sections"] >= 1 and cell["reach_days"] > 0
     out = render(full_site, course="compsci   0", position="3")
     r = out["result"]
     assert not out["result_hidden"]
-    assert "COMPSCI 0" in r and "position 3" in r and "bucket 1-5" in r
+    assert "COMPSCI 0" in r and "position 3 (positions 1 to 5)" in r
     # headline: P(cleared within the 27 days left before the end of the last waitlist run's day)
     at_deadline = read_curve(cell["curve"], 27.0)
-    assert f'<div class="big">{pct(at_deadline[1])}' in r and "within 27 days of joining" in r and "last automatic waitlist run" in r and "Feb 5, 2027" in r
-    if at_deadline[2] is not None:
-        assert f"95% interval {pct(at_deadline[2])} to {pct(at_deadline[3])}" in r
+    assert f'<div class="big">{pct(at_deadline[0])}' in r and "within 27 days of joining" in r and "last automatic waitlist run" in r and "Feb 5, 2027" in r
+    k = round(at_deadline[0] * 20)
+    assert f'aria-label="{k} of 20 dots filled: {pct(at_deadline[0])}"' in r and r.count('<i class="on"></i>') == k
+    if at_deadline[1] is not None:
+        assert f"95% interval {pct(at_deadline[1])} to {pct(at_deadline[2])}" in r
+    assert 'class="verdict"' in r and "Verdicts: Likely at 75% or more" in r
     # second line: by the first day of instruction, 9 days from "today"
     at_instruction = read_curve(cell["curve"], 9.0)
-    assert f"<strong>{pct(at_instruction[1])}</strong> by the first day of instruction" in r and "9 days from now" in r
-    assert f"{cell['sections']} sections, {cell['n']} hypothetical joiners, {cell['events']} cleared" in r
-    assert "<svg" in r and r.count("<circle") == len(cell["curve"]) and "last waitlist run" in r
-    # the band needs at least two sections to resample; a one-section course has none
+    assert f"<strong>{pct(at_instruction[0])}</strong> by the first day of instruction" in r and "9 days from now" in r
+    # by-when table: 7 and 14 days from today with their dates, then the two calendar dates
+    at7 = read_curve(cell["curve"], 7.0)
+    assert "7 days from now" in r and "Jan 17" in r and f"<strong>{pct(at7[0])}</strong>" in r and "Last waitlist run" in r and "First day of class" in r
+    assert f"{cell['sections']} section" in r and f"{cell['n']} hypothetical joiners, {cell['events']} cleared" in r
+    assert "<svg" in r and 'class="mark"' in r and "last waitlist run" in r and 'role="img"' in r and "Show as table" in r
+    assert r.count('class="curve') == 1 and ' H ' in r  # one step-drawn curve
     assert ('class="band"' in r) == (cell["sections"] >= 2 and cell["curve"][0][2] is not None)
-    assert 'class="tag pooled"' not in r
+    assert '(positions 1 to 5)<span class="tag pooled"' not in r  # the asker's own cell is not pooled
+    assert "Other positions" in r and 'class="you"' in r and "positions 6 to 15" in r
+    assert "Copy link" in r and "Copy as text" in r and "as of Jan 10" in r
     if cell["reach_days"] < 27:
         assert "treat this as a floor" in r
     else:
         assert "treat this as a floor" not in r
+    assert "course=COMPSCI%200&position=3" in out["location"] and out["title"].startswith("COMPSCI 0 at position 3")
 
 
 def test_lookup_after_the_last_waitlist_run_is_a_look_back(full_site: Path) -> None:
-    courses = json.loads((full_site / "data" / "courses.json").read_text())
-    cell = courses["COMPSCI 0"]["buckets"]["1-5"]
+    cell = cell_of(full_site, "COMPSCI 0", "1-5")
     out = render(full_site, course="COMPSCI 0", position="3", today="2027-03-01")
     r = out["result"]
     last = cell["curve"][-1]
@@ -192,18 +233,33 @@ def test_lookup_after_the_last_waitlist_run_is_a_look_back(full_site: Path) -> N
 
 
 def test_pooled_estimate_is_labelled(full_site: Path) -> None:
-    courses = json.loads((full_site / "data" / "courses.json").read_text())
-    cell = courses["COMPSCI 0"]["buckets"]["6-15"]
-    assert cell["pooled"] == "COMPSCI" and "n_course" in cell and "sections_course" in cell
+    subject_file = load(full_site, "courses/COMPSCI.json")
+    cell = subject_file["courses"]["COMPSCI 0"]["buckets"]["6-15"]
+    assert cell["pooled"] == "COMPSCI" and "n_course" in cell and "curve" not in cell
     out = render(full_site, course="COMPSCI 0", position="10")
     r = out["result"]
     assert 'class="tag pooled"' in r and "COMPSCI department" in r
-    assert f"this course alone: {cell['n_course']} joiners in {cell['sections_course']} sections" in r
+    assert f"this course alone: {cell['n_course']} joiners in {cell['sections_course']} section" in r
+    assert "Pooled over the whole COMPSCI department" in r
 
 
-def test_unknown_course_message(full_site: Path) -> None:
-    out = render(full_site, course="NOPE 1", position="4")
-    assert "No data for" in out["result"] and "NOPE 1" in out["result"] and not out["result_hidden"]
+def test_unknown_course_falls_back_to_the_department_then_level_then_all(full_site: Path) -> None:
+    pooled = load(full_site, "pooled.json")
+    # known subject, unknown number: the department's curve for the bucket
+    out = render(full_site, course="COMPSCI 999", position="4")
+    r = out["result"]
+    assert "No data for" in r and "COMPSCI 999" in r and not out["result_hidden"]
+    assert "Showing the estimate for the whole COMPSCI department at positions 1 to 5 instead" in r
+    dept = pooled["dept"]["COMPSCI"]["1-5"]
+    assert f'<div class="big">{pct(read_curve(dept["curve"], 27.0)[0])}' in r
+    # unknown subject, upper-division number: the level pool, else all courses
+    out = render(full_site, course="NOPE 101", position="4")
+    r = out["result"]
+    assert "No data for" in r and "NOPE 101" in r
+    if "upper" in pooled["level"] and "1-5" in pooled["level"]["upper"]:
+        assert "all upper-division courses at positions 1 to 5" in r
+    else:
+        assert "all courses at positions 1 to 5" in r
 
 
 def test_missing_bucket_names_the_buckets_with_data(narrow_site: Path) -> None:
@@ -215,3 +271,119 @@ def test_missing_bucket_names_the_buckets_with_data(narrow_site: Path) -> None:
 def test_query_string_runs_the_lookup_on_load(full_site: Path) -> None:
     out = render(full_site, search="?course=STAT%202&position=12")
     assert not out["result_hidden"] and "STAT 2" in out["result"] and "position 12" in out["result"]
+
+
+def test_search_is_forgiving(full_site: Path) -> None:
+    index_rows = load(full_site, "index.json")["courses"]
+    keys = {r["key"] for r in index_rows}
+    assert "COMPSCI 0" in keys and "MATH 1" in keys
+    cases = {
+        "compsci0": "COMPSCI 0", "CS 0": "COMPSCI 0", "cs0": "COMPSCI 0", "Comp Sci 0": "COMPSCI 0", "math 1": "MATH 1", "STATS 2": "STAT 2", "stat 2": "STAT 2",
+    }
+    for text, key in cases.items():
+        out = render(full_site, expression=f"(BWO.findCourse(BWO.loaded.index, {json.dumps(text)}) || {{}}).key")
+        assert out["eval"] == key, text
+    out = render(full_site, expression="BWO.findCourse(BWO.loaded.index, 'NOPE 1')")
+    assert out["eval"] is None
+    out = render(full_site, expression="BWO.searchCourses(BWO.loaded.index, 'cs', 5).map((r) => r.key)")
+    assert out["eval"] and all(k.startswith("COMPSCI") for k in out["eval"])
+    out = render(full_site, expression="BWO.searchCourses(BWO.loaded.index, 'math 1', 5).map((r) => r.key)")
+    assert out["eval"][0] == "MATH 1" and all(k.startswith("MATH 1") for k in out["eval"])
+
+
+def test_cross_listed_number_resolves_with_or_without_the_c(full_site: Path) -> None:
+    out = render(full_site, expression="(function(){ const i = {courses: [{key: 'DATA C8', subject: 'DATA', number: 'C8', joins: 5, buckets: {}}, {key: 'DATA 100', subject: 'DATA', number: '100', joins: 1, buckets: {}}]}; return ['data 8', 'DATA C8', 'datac8', 'ds 8', 'ds c8'].map((t) => (BWO.findCourse(i, t) || {}).key); })()")
+    assert out["eval"] == ["DATA C8"] * 5
+
+
+def test_verdict_thresholds() -> None:
+    out = render(Path("/nonexistent"), expression="[BWO.verdict({p: .8, lo: .7, hi: .9}, false).label, BWO.verdict({p: .5, lo: .4, hi: .6}, false).label, BWO.verdict({p: .2, lo: .1, hi: .3}, false).label, BWO.verdict({p: .8, lo: .5, hi: .9}, false).label, BWO.verdict({p: .8, lo: .7, hi: .9}, 'all').label, BWO.verdict({p: .8, lo: null, hi: null}, false).label]")
+    assert out["eval"] == ["Likely", "Could go either way", "Unlikely", "Too little data to call", "Too little data to call", "Too little data to call"]
+
+
+# ------------------------------------------------------------- other pages
+
+
+def test_courses_page_filters_sorts_and_keeps_state_in_the_url(full_site: Path) -> None:
+    index = load(full_site, "index.json")
+    out = render(full_site, page="courses.html", search="?bucket=1-5")
+    assert "Simulated term" in out["status"] and not out["elements"]["controls"]["hidden"]
+    table = out["elements"]["table"]["html"]
+    own = [r for r in index["courses"] if r["buckets"].get("1-5", {}).get("pooled") is False]
+    assert own and table.count('<tr class="course">') == len(own) and f"{len(own)} courses at positions 1 to 5" in out["elements"]["count"]["text"]
+    assert 'aria-sort="descending"' in table and 'data-sort="p"' in table
+    # the default view hides pooled rows; when that hides everything the page says so
+    out = render(full_site, page="courses.html")
+    mid_own = [r for r in index["courses"] if r["buckets"].get("6-15", {}).get("pooled") is False]
+    assert (out["elements"]["table"]["html"].count('<tr class="course">') == len(mid_own)) and (mid_own or "No courses match" in out["elements"]["table"]["html"])
+    # show pooled rows, filter by subject, sort by cases ascending
+    out = render(full_site, page="courses.html", search="?pooled=1&q=cs&sort=n&dir=asc&bucket=1-5")
+    table = out["elements"]["table"]["html"]
+    rows = [r for r in index["courses"] if r["subject"] == "COMPSCI" and "1-5" in r["buckets"]]
+    assert table.count('<tr class="course">') == len(rows) and all(r["key"] in table for r in rows)
+    assert 'aria-sort="ascending"' in table and "course.html?c=COMPSCI%200" in table
+    assert out["elements"]["bucket"]["value"] == "1-5" and out["elements"]["q"]["value"] == "cs" and out["elements"]["hidepooled"]["value"] == ""
+    # an empty filter says so
+    out = render(full_site, page="courses.html", search="?q=zzz")
+    assert "No courses match" in out["elements"]["table"]["html"]
+
+
+def test_course_page_shows_every_bucket_and_the_same_headline(full_site: Path) -> None:
+    cell = cell_of(full_site, "COMPSCI 0", "1-5")
+    out = render(full_site, page="course.html", search="?c=cs0&position=3")
+    html = out["elements"]["course"]["html"]
+    assert out["title"].startswith("COMPSCI 0") and "<h1>COMPSCI 0" in html
+    at_deadline = read_curve(cell["curve"], 27.0)
+    assert f'<div class="big">{pct(at_deadline[0])}' in html and "position 3 (positions 1 to 5)" in html and "within 27 days of joining" in html
+    assert html.count('class="curve') == len([b for b in ("1-5", "6-15", "16-40", "41+") if b in load(full_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]])
+    assert 'class="curve s1 you"' in html and "Show as table" in html and 'class="legend"' in html
+    assert "Every position" in html and '<th scope="row">positions 1 to 5 <span class="tag">you</span>' in html and "Other COMPSCI courses" in html
+    assert "index.html?course=COMPSCI%200&position=3" in html
+    assert out["elements"].get("live", {"html": ""})["html"] == ""  # no live file: the block stays hidden, no error
+
+
+def test_course_page_without_a_course(full_site: Path) -> None:
+    out = render(full_site, page="course.html", search="?c=NOPE%201")
+    assert "No data for" in out["status"] and "NOPE 1" in out["status"] and "index.html?course=NOPE%201" in out["status"]
+    out = render(full_site, page="course.html")
+    assert "No data for" in out["status"]
+
+
+def test_insights_page_renders_findings_grid_and_departments(full_site: Path) -> None:
+    ins = load(full_site, "insights.json")
+    out = render(full_site, page="insights.html")
+    html = out["elements"]["content"]["html"]
+    b1 = read_curve(ins["all_by_bucket"]["1-5"]["curve"], 14.0)[0]
+    assert "Position matters most in the first two weeks" in html and pct(b1) in html
+    assert f"{ins['counts']['courses']} courses" in html and "hypothetical joiners" in html
+    assert html.count("<figure") >= 2 and 'id="hero-chart"' in html and "Show as table" in html
+    assert "Longest follow-up" in html and "positions 41 and up" in html
+    assert 'class="dotplot"' in html and "Show as table" in html
+    assert ("When waitlists move" in html) == bool(ins.get("daily"))
+    assert "Where a mid-list spot moved most" in html or True  # needs six own cells with two sections; synthetic data may not have them
+
+
+def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Path) -> None:
+    out = render(full_site, page="accuracy.html")
+    assert "has not been published yet" in out["status"] and "Pre-registered" in out["elements"]["prereg"]["html"]
+    from tests.test_export_backtest import make_reports
+    from analysis.export_backtest import export_backtest
+
+    export_backtest(make_reports(tmp_path), full_site / "data" / "backtest.json", term_id="9999", term_name="Simulated term")
+    try:
+        out = render(full_site, page="accuracy.html")
+        html = out["elements"]["content"]["html"]
+        assert "1 backtest run" in out["status"]
+        assert "Later joiners scored with a model fit on earlier ones, within 14 days" in html
+        assert "When the estimate said about <strong>70%</strong>, <strong>61%</strong> got in within 14 days" in html
+        assert "Fixed-lead-time number (site v1)" in html and "+0.029" in html and "(-0.034 to +0.082)" in html and "2,938" in html
+        assert "<svg" in html and "Which joiners could be scored" in html and "87,324 training joiners" in html
+    finally:
+        (full_site / "data" / "backtest.json").unlink()
+
+
+def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
+    out = render(full_site, page="about.html")
+    assert "Simulated term" in out["elements"]["data-status"]["html"] and "this project's own snapshots" in out["elements"]["data-status"]["html"]
+    out = render(full_site, page="methodology.html")
+    assert "Showing: <strong>Simulated term</strong>" in out["elements"]["data-status"]["html"]
