@@ -1,3 +1,5 @@
+> Superseded on 2026-09-20 by `docs/dev/STATUS.md` (stage map, what is left, dates, resume prompt). Kept for the file map below.
+
 # Paste this as the first message of the next session
 
 ```
