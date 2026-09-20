@@ -2,6 +2,7 @@
 
 The page's own inline script runs under node against a stub document and a
 file-backed ``fetch`` (tests/site/harness.js). Skipped when node is missing.
+"Today" is pinned through the page's own ``?today=YYYY-MM-DD`` query parameter.
 """
 from __future__ import annotations
 
@@ -50,9 +51,14 @@ CAL = TermCalendar(
     last_auto_waitlist=date(2027, 2, 5),
     add_drop_deadline=date(2027, 2, 10),
 )
+TODAY = "2027-01-10"  # 9 days before instruction, 27 days before the end of the last waitlist run's day
 
 
-def render(site_root: Path, *, search: str = "", course: str = "", position: str = "") -> dict:
+def render(site_root: Path, *, search: str = "", course: str = "", position: str = "", today: str | None = TODAY) -> dict:
+    if today:
+        search = (search + ("&" if search else "?")) + f"today={today}" if search.startswith("?") or not search else "?" + search
+        if not search.startswith("?"):
+            search = "?" + search
     proc = subprocess.run(
         [str(NODE), str(HARNESS), str(INDEX), str(site_root), search, course, position],
         capture_output=True,
@@ -64,10 +70,32 @@ def render(site_root: Path, *, search: str = "", course: str = "", position: str
     return json.loads(proc.stdout)
 
 
+def read_curve(curve: list, h: float) -> list:
+    """The page's rule: the last grid point at or before h days."""
+    pt = None
+    for c in curve:
+        if c[0] <= h:
+            pt = c
+        else:
+            break
+    return pt or [0, 0, None, None]
+
+
+def pct(p: float) -> str:
+    return f"{round(p * 100)}%"
+
+
 @pytest.fixture(scope="module")
 def full_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     root = tmp_path_factory.mktemp("site_full")
-    export_site_tables(synthetic_cohort(), CAL, root / "data")
+    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=50)
+    return root
+
+
+@pytest.fixture(scope="module")
+def backfill_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    root = tmp_path_factory.mktemp("site_backfill")
+    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=20, meta={"data_source": "berkeleytime_history"})
     return root
 
 
@@ -76,7 +104,7 @@ def narrow_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     """Only positions 1 to 5 ever joined, so every course has a single bucket."""
     root = tmp_path_factory.mktemp("site_narrow")
     cohort = synthetic_cohort()
-    export_site_tables(cohort[cohort["position"] <= 5], CAL, root / "data")
+    export_site_tables(cohort[cohort["position"] <= 5], CAL, root / "data", n_boot=20)
     return root
 
 
@@ -102,7 +130,7 @@ def test_meta_from_the_analysis_run_renders_as_numbers(tmp_path: Path) -> None:
     res = run_analysis(few, identity, cal, tmp_path / "out", site_dir=site_root / "data", join_every_min=1440)
     assert res.site_files is not None
     meta = json.loads(Path(res.site_files[1]).read_text())
-    out = render(site_root)
+    out = render(site_root, today=None)
     assert "[object Object]" not in out["status"] and "undefined" not in out["status"]
     assert f"{meta['cohort_rows']} hypothetical joiners" in out["status"] and f"{meta['sections']} sections" in out["status"]
 
@@ -110,36 +138,67 @@ def test_meta_from_the_analysis_run_renders_as_numbers(tmp_path: Path) -> None:
 def test_full_state_lists_courses(full_site: Path) -> None:
     courses = json.loads((full_site / "data" / "courses.json").read_text())
     meta = json.loads((full_site / "data" / "meta.json").read_text())
-    assert meta["events"] >= 10
+    assert meta["events"] >= 10 and meta["deadline"] == "2027-02-05" and meta["data_source"] is None if "data_source" in meta else True
     out = render(full_site)
     assert not out["form_hidden"] and out["result_hidden"]
     assert out["datalist_options"] == len(courses)
     assert "Simulated term" in out["status"] and f"{len(courses)} courses" in out["status"] and f"{meta['events']} of whom cleared" in out["status"]
-    assert out["stamp"].startswith("Data through") and "[object Object]" not in out["status"]
+    assert "Berkeleytime" not in out["status"]
+    assert out["stamp"].startswith("Data through") and "Horizons computed for 2027-01-10" in out["stamp"] and "27 days away" in out["stamp"]
+    assert "[object Object]" not in out["status"]
 
 
-def test_lookup_renders_estimate_curve_and_sample_size(full_site: Path) -> None:
+def test_backfill_source_is_labelled(backfill_site: Path) -> None:
+    out = render(backfill_site)
+    assert "from Berkeleytime's public 15-minute enrollment history" in out["status"] and "Simulated term" in out["status"]
+    assert "Live Spring 2027 collection" in out["status"] and not out["form_hidden"]
+
+
+def test_lookup_reads_the_curve_at_the_askers_own_horizons(full_site: Path) -> None:
     courses = json.loads((full_site / "data" / "courses.json").read_text())
     cell = courses["COMPSCI 0"]["buckets"]["1-5"]
-    assert cell["pooled"] is False
+    assert cell["pooled"] is False and cell["sections"] >= 1 and cell["reach_days"] > 0
     out = render(full_site, course="compsci   0", position="3")
     r = out["result"]
     assert not out["result_hidden"]
     assert "COMPSCI 0" in r and "position 3" in r and "bucket 1-5" in r
-    assert f"{round(cell['p_clear_by_instruction'] * 100)}%" in r and "by the first day of instruction" in r
-    assert f"{cell['n']} hypothetical joiners" in r and f"{cell['events']} cleared" in r
-    assert "<svg" in r and r.count("<circle") == len(cell["curve"]) and "instruction" in r
+    # headline: P(cleared within the 27 days left before the end of the last waitlist run's day)
+    at_deadline = read_curve(cell["curve"], 27.0)
+    assert f'<div class="big">{pct(at_deadline[1])}' in r and "within 27 days of joining" in r and "last automatic waitlist run" in r and "Feb 5, 2027" in r
+    if at_deadline[2] is not None:
+        assert f"95% interval {pct(at_deadline[2])} to {pct(at_deadline[3])}" in r
+    # second line: by the first day of instruction, 9 days from "today"
+    at_instruction = read_curve(cell["curve"], 9.0)
+    assert f"<strong>{pct(at_instruction[1])}</strong> by the first day of instruction" in r and "9 days from now" in r
+    assert f"{cell['sections']} sections, {cell['n']} hypothetical joiners, {cell['events']} cleared" in r
+    assert "<svg" in r and r.count("<circle") == len(cell["curve"]) and "last waitlist run" in r
+    # the band needs at least two sections to resample; a one-section course has none
+    assert ('class="band"' in r) == (cell["sections"] >= 2 and cell["curve"][0][2] is not None)
     assert 'class="tag pooled"' not in r
+    if cell["reach_days"] < 27:
+        assert "treat this as a floor" in r
+    else:
+        assert "treat this as a floor" not in r
+
+
+def test_lookup_after_the_last_waitlist_run_is_a_look_back(full_site: Path) -> None:
+    courses = json.loads((full_site / "data" / "courses.json").read_text())
+    cell = courses["COMPSCI 0"]["buckets"]["1-5"]
+    out = render(full_site, course="COMPSCI 0", position="3", today="2027-03-01")
+    r = out["result"]
+    last = cell["curve"][-1]
+    assert f'<div class="big">{pct(last[1])}' in r and "no longer processed automatically" in r and "look back, not a forecast" in r
+    assert "by the first day of instruction" not in r and "days away" not in out["stamp"]
 
 
 def test_pooled_estimate_is_labelled(full_site: Path) -> None:
     courses = json.loads((full_site / "data" / "courses.json").read_text())
     cell = courses["COMPSCI 0"]["buckets"]["6-15"]
-    assert cell["pooled"] == "COMPSCI" and "n_course" in cell
+    assert cell["pooled"] == "COMPSCI" and "n_course" in cell and "sections_course" in cell
     out = render(full_site, course="COMPSCI 0", position="10")
     r = out["result"]
     assert 'class="tag pooled"' in r and "COMPSCI department" in r
-    assert f"({cell['n_course']} in this course)" in r
+    assert f"this course alone: {cell['n_course']} joiners in {cell['sections_course']} sections" in r
 
 
 def test_unknown_course_message(full_site: Path) -> None:

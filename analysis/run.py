@@ -18,7 +18,7 @@ import pandas as pd
 
 from analysis.backtest import run_backtest
 from analysis.calendar import TermCalendar, calendar_for
-from analysis.cohort import build_cohort
+from analysis.cohort import DEFAULT_POSITIONS, build_cohort
 from analysis.export import export_site_tables
 from analysis.figures import plot_calibration, plot_km
 from analysis.flows import interval_flows, summary as flows_summary
@@ -78,7 +78,7 @@ def run_analysis(
     *,
     outages: list[Outage] = (),
     max_interval_min: float | None = None,
-    positions=(1, 3, 5, 10, 20, 40),
+    positions=DEFAULT_POSITIONS,
     join_every_min: float = 240,
     min_cohort_rows: int = 100,
     site_dir: Path | str | None = None,

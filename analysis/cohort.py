@@ -26,6 +26,8 @@ from analysis.calendar import TermCalendar
 from analysis.positions import CENTRAL_CLEAR_AT, SCENARIOS, time_to_clear  # noqa: F401 - time_to_clear is the reference implementation
 
 POSITION_BUCKETS = ((1, 5, "1-5"), (6, 15, "6-15"), (16, 40, "16-40"), (41, 10**9, "41+"))
+# Virtual positions: at least two per bucket, and 60 and 100 so that the 41+ bucket can be filled.
+DEFAULT_POSITIONS = (1, 2, 3, 5, 7, 10, 15, 20, 30, 40, 60, 100)
 LEVELS = ("lower", "upper", "grad")
 OTHER_GROUP = "OTHER"
 COHORT_COLUMNS = (
@@ -206,7 +208,7 @@ def build_cohort(
     calendar: TermCalendar,
     *,
     scenario: str = "central",
-    positions: Sequence[int] = (1, 3, 5, 10, 20, 40),
+    positions: Sequence[int] = DEFAULT_POSITIONS,
     join_every_min: float = 240,
     min_sections_per_group: int = 30,
 ) -> pd.DataFrame:

@@ -14,10 +14,15 @@ Rules
   censored, however long, because Berkeleytime kept polling and nothing
   changed.
 - The crossing from one segment's end to the next segment's start is where
-  the change happened. A crossing of at most ``GAP_MIN`` (45) minutes is an
+  the change happened. A crossing of at most ``GAP_MIN`` (180) minutes is an
   ordinary poll interval. A wider one is a Berkeleytime gap: the interval is
   kept (the net change is real) but flagged ``censored``, so the position
-  model stops there instead of attributing the change to a moment.
+  model stops there instead of attributing the change to a moment. The
+  threshold is three times the coarsest regular spacing seen in the pilot
+  pull of 2026-09-20: crossings at changes were 15 minutes apart from July
+  2026 on (and Oct 2025 to Feb 2026 in the Spring 2026 history) but 45 to
+  130 minutes apart from March to June 2026, so a 45-minute rule would have
+  censored ordinary polls, and done so exactly where the queue moved.
 - Section selection never looks at today's waitlist or enrollment counts.
   Keeping the sections that are waitlisted today would keep exactly the ones
   that failed to clear. Selection is by component, the same self-study
@@ -53,7 +58,7 @@ from scraper.sources.classes_site import SELF_STUDY_COMPONENTS
 
 logger = logging.getLogger(__name__)
 
-GAP_MIN = 45.0  # a between-segment crossing wider than this is a Berkeleytime gap
+GAP_MIN = 180.0  # a between-segment crossing wider than this is a Berkeleytime gap (see the module docstring)
 DATA_SOURCE = "berkeleytime_history"
 SOURCE = "berkeleytime"
 DEFAULT_SLEEP_S = 2.0
@@ -583,6 +588,7 @@ def build(cache: Cache, term: TermSpec, out_dir: Path | str, *, gap_min: float =
     report.to_csv(out_dir / "gap_report.csv", index=False)
     fsum = flows_summary(flows)
     worst = report.sort_values(["share_time_in_gap", "date"], ascending=[False, True]).head(10)
+    crossing_minutes = crossings["minutes"] if len(crossings) else pd.Series(dtype=float)
     meta = {
         "data_source": DATA_SOURCE,
         "term_id": term.sis_term_id,
@@ -593,6 +599,8 @@ def build(cache: Cache, term: TermSpec, out_dir: Path | str, *, gap_min: float =
         "gap_min": float(gap_min),
         "crossings": int(len(crossings)),
         "crossings_wide": int(crossings["wide"].sum()) if len(crossings) else 0,
+        "crossing_minutes_quantiles": {str(q): round(float(crossing_minutes.quantile(q)), 1) for q in (0.5, 0.75, 0.9, 0.99)} if len(crossing_minutes) else {},
+        "share_crossings_over_45": round(float((crossing_minutes > 45).mean()), 4) if len(crossing_minutes) else 0.0,
         "flows": fsum,
         "history_window": None if identity.empty else [identity["first_seen"].min().isoformat(), identity["last_seen"].max().isoformat()],
         "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),

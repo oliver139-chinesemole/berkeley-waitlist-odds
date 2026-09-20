@@ -125,7 +125,7 @@ def test_recorded_data_c100_history_has_the_august_hole() -> None:
     enr = fixture["data"]["enrollment"]
     panel, identity, crossings = build_panel([payload(enr)], "2268")
     assert identity.iloc[0]["section_id"] == "20882" and 580 <= len(panel) <= 1160
-    assert int(crossings["wide"].sum()) == 32
+    assert int((crossings["minutes"] > 45).sum()) == 32 and int(crossings["wide"].sum()) == 9  # 180-minute rule
     report = gap_report(crossings, identity).set_index("date")
     dark_days = [d for d in report.index if "2026-08-20" <= d <= "2026-08-31"]
     assert len(dark_days) == 12 and (report.loc[dark_days, "share_time_in_gap"] == 1.0).all()
@@ -244,7 +244,8 @@ def test_build_writes_panel_flows_gap_report_and_meta(tmp_path: Path, gateway: F
     for name in ("panel.parquet", "identity.parquet", "gaps.parquet", "flows.parquet", "gap_report.csv", "meta.json"):
         assert (out / name).exists(), name
     panel, identity, flows, meta = load_backfill(out)
-    assert meta["data_source"] == DATA_SOURCE and meta["term_id"] == "2268" and meta["sections"] == 3 and meta["gap_min"] == 45.0
+    assert meta["data_source"] == DATA_SOURCE and meta["term_id"] == "2268" and meta["sections"] == 3 and meta["gap_min"] == 180.0
+    assert meta["share_crossings_over_45"] == pytest.approx(1 / 3, abs=1e-4) and set(meta["crossing_minutes_quantiles"]) == {"0.5", "0.75", "0.9", "0.99"}
     assert set(identity["section_id"]) == {"29147", "20882", "30001"} and len(panel) == summary.panel_rows
     assert flows["censored"].sum() == 1 and summary.share_censored == pytest.approx(float(flows["censored"].mean()), abs=1e-4)
     assert summary.worst_days and {"date", "share_time_in_gap"} <= set(summary.worst_days[0])

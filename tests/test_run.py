@@ -101,10 +101,14 @@ def test_site_tables_are_valid_json_with_sample_sizes(result) -> None:
     for key, entry in courses.items():
         assert entry["subject"] == key.split()[0] and entry["level"] in ("lower", "upper", "grad")
         for bucket, cell in entry["buckets"].items():
-            assert 0.0 <= cell["p_clear_by_instruction"] <= 1.0 and cell["n"] > 0
+            assert 0.0 <= cell["p_clear_by_instruction"] <= 1.0 and cell["n"] > 0 and 1 <= cell["sections"] <= cell["n"]
             assert cell["pooled"] in (False, "all") or isinstance(cell["pooled"], str)
-            assert cell["horizon_days"] >= 0 and cell["curve"] and all(0.0 <= p <= 1.0 for _, p in cell["curve"])
-            assert [p for _, p in cell["curve"]] == sorted(p for _, p in cell["curve"])  # cumulative clearing never falls
+            assert cell["horizon_days"] >= 0 and cell["curve"] and all(0.0 <= p <= 1.0 for _, p, _, _ in cell["curve"])
+            ps = [p for _, p, _, _ in cell["curve"]]
+            assert ps == sorted(ps)  # cumulative clearing never falls
+            assert cell["curve"][-1][0] == pytest.approx(cell["reach_days"], abs=0.06) and cell["reach_days"] > 0
+            for _, p, lo, hi in cell["curve"]:
+                assert lo is None or (lo - 1e-9 <= p <= hi + 1e-9 and 0.0 <= lo <= hi <= 1.0)
 
 
 def test_export_pooling_rule() -> None:
@@ -114,7 +118,7 @@ def test_export_pooling_rule() -> None:
     # each course has 4 joins x 6 positions = 24 rows spread over buckets: every cell is pooled
     for entry in tables.values():
         for cell in entry["buckets"].values():
-            assert cell["pooled"] is not False and "n_course" in cell
+            assert cell["pooled"] is not False and "n_course" in cell and "sections_course" in cell
     big = synthetic_cohort(n_sections=8, joins_per_section=40)
     tables = course_tables(big, cal, min_n=30)
     unpooled = [cell for e in tables.values() for cell in e["buckets"].values() if cell["pooled"] is False]
@@ -125,7 +129,9 @@ def test_export_empty(tmp_path: Path) -> None:
     cal = TermCalendar("2272", "x", *([pd.Timestamp("2026-10-26").date()] * 8))
     empty = synthetic_cohort(n_sections=1, joins_per_section=1).iloc[0:0]
     courses_path, meta_path = export_site_tables(empty, cal, tmp_path)
-    assert json.loads(courses_path.read_text()) == {} and json.loads(meta_path.read_text())["cohort_rows"] == 0
+    meta = json.loads(meta_path.read_text())
+    assert json.loads(courses_path.read_text()) == {} and meta["cohort_rows"] == 0
+    assert meta["deadline"] == "2026-10-26" and meta["instruction_start"] == "2026-10-26" and meta["positions"] == []
 
 
 def test_run_too_small_writes_notes(tmp_path: Path) -> None:
