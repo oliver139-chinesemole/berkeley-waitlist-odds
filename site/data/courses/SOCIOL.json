@@ -1,0 +1,627 @@
+{
+"courses": {
+"SOCIOL 1": {
+"buckets": {
+"1-5": {
+"n_course": 333,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 112,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 229,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "lower",
+"number": "1",
+"subject": "SOCIOL"
+},
+"SOCIOL 101": {
+"buckets": {
+"1-5": {
+"n_course": 270,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 65,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "101",
+"subject": "SOCIOL"
+},
+"SOCIOL 102": {
+"buckets": {
+"1-5": {
+"n_course": 119,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "102",
+"subject": "SOCIOL"
+},
+"SOCIOL 106": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "106",
+"subject": "SOCIOL"
+},
+"SOCIOL 107": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "107",
+"subject": "SOCIOL"
+},
+"SOCIOL 110": {
+"buckets": {
+"1-5": {
+"n_course": 34,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "110",
+"subject": "SOCIOL"
+},
+"SOCIOL 111AC": {
+"buckets": {
+"1-5": {
+"n_course": 134,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 29,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "111AC",
+"subject": "SOCIOL"
+},
+"SOCIOL 113AC": {
+"buckets": {
+"1-5": {
+"n_course": 137,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 36,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "113AC",
+"subject": "SOCIOL"
+},
+"SOCIOL 120": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "120",
+"subject": "SOCIOL"
+},
+"SOCIOL 121": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "121",
+"subject": "SOCIOL"
+},
+"SOCIOL 127": {
+"buckets": {
+"1-5": {
+"n_course": 221,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 33,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "127",
+"subject": "SOCIOL"
+},
+"SOCIOL 130": {
+"buckets": {
+"1-5": {
+"n_course": 48,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "130",
+"subject": "SOCIOL"
+},
+"SOCIOL 131AC": {
+"buckets": {
+"1-5": {
+"n_course": 134,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "131AC",
+"subject": "SOCIOL"
+},
+"SOCIOL 135": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "135",
+"subject": "SOCIOL"
+},
+"SOCIOL 136": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "136",
+"subject": "SOCIOL"
+},
+"SOCIOL 139": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "139",
+"subject": "SOCIOL"
+},
+"SOCIOL 140": {
+"buckets": {
+"1-5": {
+"n_course": 56,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "140",
+"subject": "SOCIOL"
+},
+"SOCIOL 146AC": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "146AC",
+"subject": "SOCIOL"
+},
+"SOCIOL 149P": {
+"buckets": {
+"1-5": {
+"n_course": 114,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "149P",
+"subject": "SOCIOL"
+},
+"SOCIOL 150": {
+"buckets": {
+"1-5": {
+"n_course": 195,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 17,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 93,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "150",
+"subject": "SOCIOL"
+},
+"SOCIOL 163": {
+"buckets": {
+"1-5": {
+"n_course": 184,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 28,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "163",
+"subject": "SOCIOL"
+},
+"SOCIOL 166": {
+"buckets": {
+"1-5": {
+"n_course": 119,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "166",
+"subject": "SOCIOL"
+},
+"SOCIOL 167": {
+"buckets": {
+"1-5": {
+"n_course": 81,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "167",
+"subject": "SOCIOL"
+},
+"SOCIOL 169": {
+"buckets": {
+"1-5": {
+"n_course": 41,
+"pooled": "SOCIOL",
+"sections_course": 2
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "169",
+"subject": "SOCIOL"
+},
+"SOCIOL 169C": {
+"buckets": {
+"1-5": {
+"n_course": 80,
+"pooled": "SOCIOL",
+"sections_course": 2
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "169C",
+"subject": "SOCIOL"
+},
+"SOCIOL 169F": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "169F",
+"subject": "SOCIOL"
+},
+"SOCIOL 182": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "182",
+"subject": "SOCIOL"
+},
+"SOCIOL 190": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "SOCIOL",
+"sections_course": 2
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "190",
+"subject": "SOCIOL"
+},
+"SOCIOL 200": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "grad",
+"number": "200",
+"subject": "SOCIOL"
+},
+"SOCIOL 201A": {
+"buckets": {
+"1-5": {
+"n_course": 59,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "grad",
+"number": "201A",
+"subject": "SOCIOL"
+},
+"SOCIOL 202C": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "grad",
+"number": "202C",
+"subject": "SOCIOL"
+},
+"SOCIOL 271A": {
+"buckets": {
+"1-5": {
+"n_course": 61,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "grad",
+"number": "271A",
+"subject": "SOCIOL"
+},
+"SOCIOL 271B": {
+"buckets": {
+"1-5": {
+"n_course": 42,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "grad",
+"number": "271B",
+"subject": "SOCIOL"
+},
+"SOCIOL 280B": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "grad",
+"number": "280B",
+"subject": "SOCIOL"
+},
+"SOCIOL 280X": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "grad",
+"number": "280X",
+"subject": "SOCIOL"
+},
+"SOCIOL 280Y": {
+"buckets": {
+"1-5": {
+"n_course": 97,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "grad",
+"number": "280Y",
+"subject": "SOCIOL"
+},
+"SOCIOL 3AC": {
+"buckets": {
+"1-5": {
+"n_course": 202,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 39,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 126,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "lower",
+"number": "3AC",
+"subject": "SOCIOL"
+},
+"SOCIOL 5": {
+"buckets": {
+"1-5": {
+"n_course": 406,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 15,
+"pooled": "SOCIOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 133,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "lower",
+"number": "5",
+"subject": "SOCIOL"
+},
+"SOCIOL 7": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "lower",
+"number": "7",
+"subject": "SOCIOL"
+},
+"SOCIOL C126": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "upper",
+"number": "C126",
+"subject": "SOCIOL"
+},
+"SOCIOL C6": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "SOCIOL",
+"sections_course": 1
+}
+},
+"dept_group": "SOCIOL",
+"level": "lower",
+"number": "C6",
+"subject": "SOCIOL"
+},
+"SOCIOL R1B": {
+"buckets": {
+"1-5": {
+"n_course": 71,
+"pooled": "SOCIOL",
+"sections_course": 3
+}
+},
+"dept_group": "SOCIOL",
+"level": "lower",
+"number": "R1B",
+"subject": "SOCIOL"
+}
+},
+"subject": "SOCIOL",
+"term_id": "2268"
+}

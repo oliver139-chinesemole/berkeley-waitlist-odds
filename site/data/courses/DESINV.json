@@ -1,0 +1,146 @@
+{
+"courses": {
+"DESINV 15": {
+"buckets": {
+"1-5": {
+"n_course": 345,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 205,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "15",
+"subject": "DESINV"
+},
+"DESINV 190": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "DESINV"
+},
+"DESINV 195": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "195",
+"subject": "DESINV"
+},
+"DESINV 198": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "198",
+"subject": "DESINV"
+},
+"DESINV 200": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "DESINV"
+},
+"DESINV 202": {
+"buckets": {
+"1-5": {
+"n_course": 65,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "202",
+"subject": "DESINV"
+},
+"DESINV 21": {
+"buckets": {
+"1-5": {
+"n_course": 275,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 173,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "21",
+"subject": "DESINV"
+},
+"DESINV 210": {
+"buckets": {
+"1-5": {
+"n_course": 77,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210",
+"subject": "DESINV"
+},
+"DESINV 213": {
+"buckets": {
+"1-5": {
+"n_course": 58,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "213",
+"subject": "DESINV"
+},
+"DESINV 95": {
+"buckets": {
+"1-5": {
+"n_course": 110,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "95",
+"subject": "DESINV"
+}
+},
+"subject": "DESINV",
+"term_id": "2268"
+}

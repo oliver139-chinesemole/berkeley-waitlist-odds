@@ -1,0 +1,110 @@
+{
+"courses": {
+"LS 198": {
+"buckets": {
+"1-5": {
+"n_course": 1290,
+"pooled": "OTHER",
+"sections_course": 18
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "198",
+"subject": "LS"
+},
+"LS C12": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C12",
+"subject": "LS"
+},
+"LS C120T": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C120T",
+"subject": "LS"
+},
+"LS C180Y": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C180Y",
+"subject": "LS"
+},
+"LS C196C": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C196C",
+"subject": "LS"
+},
+"LS C70U": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C70U",
+"subject": "LS"
+},
+"LS C70V": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C70V",
+"subject": "LS"
+},
+"LS C70Y": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C70Y",
+"subject": "LS"
+}
+},
+"subject": "LS",
+"term_id": "2268"
+}

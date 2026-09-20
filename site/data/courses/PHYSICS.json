@@ -1,0 +1,689 @@
+{
+"courses": {
+"PHYSICS 105": {
+"buckets": {
+"1-5": {
+"n_course": 143,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 2,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "105",
+"subject": "PHYSICS"
+},
+"PHYSICS 110A": {
+"buckets": {
+"1-5": {
+"n_course": 378,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 81,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "110A",
+"subject": "PHYSICS"
+},
+"PHYSICS 111A": {
+"buckets": {
+"1-5": {
+"n_course": 47,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "111A",
+"subject": "PHYSICS"
+},
+"PHYSICS 111B": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "111B",
+"subject": "PHYSICS"
+},
+"PHYSICS 112": {
+"buckets": {
+"1-5": {
+"n_course": 191,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 20,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "112",
+"subject": "PHYSICS"
+},
+"PHYSICS 129": {
+"buckets": {
+"1-5": {
+"n_course": 147,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "129",
+"subject": "PHYSICS"
+},
+"PHYSICS 137A": {
+"buckets": {
+"1-5": {
+"n_course": 225,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 86,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "137A",
+"subject": "PHYSICS"
+},
+"PHYSICS 137B": {
+"buckets": {
+"1-5": {
+"n_course": 264,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 15,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "137B",
+"subject": "PHYSICS"
+},
+"PHYSICS 141A": {
+"buckets": {
+"1-5": {
+"n_course": 97,
+"pooled": "PHYSICS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "141A",
+"subject": "PHYSICS"
+},
+"PHYSICS 151": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "151",
+"subject": "PHYSICS"
+},
+"PHYSICS 232A": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "232A",
+"subject": "PHYSICS"
+},
+"PHYSICS 24": {
+"buckets": {
+"1-5": {
+"n_course": 65,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "24",
+"subject": "PHYSICS"
+},
+"PHYSICS 290A": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290A",
+"subject": "PHYSICS"
+},
+"PHYSICS 290B": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290B",
+"subject": "PHYSICS"
+},
+"PHYSICS 290D": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290D",
+"subject": "PHYSICS"
+},
+"PHYSICS 290F": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290F",
+"subject": "PHYSICS"
+},
+"PHYSICS 290G": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290G",
+"subject": "PHYSICS"
+},
+"PHYSICS 290H": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290H",
+"subject": "PHYSICS"
+},
+"PHYSICS 290I": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290I",
+"subject": "PHYSICS"
+},
+"PHYSICS 290J": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290J",
+"subject": "PHYSICS"
+},
+"PHYSICS 290K": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290K",
+"subject": "PHYSICS"
+},
+"PHYSICS 290L": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290L",
+"subject": "PHYSICS"
+},
+"PHYSICS 290N": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290N",
+"subject": "PHYSICS"
+},
+"PHYSICS 290Q": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290Q",
+"subject": "PHYSICS"
+},
+"PHYSICS 290R": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290R",
+"subject": "PHYSICS"
+},
+"PHYSICS 290S": {
+"buckets": {
+"1-5": {
+"n_course": 364,
+"pooled": "PHYSICS",
+"sections_course": 13
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290S",
+"subject": "PHYSICS"
+},
+"PHYSICS 290T": {
+"buckets": {
+"1-5": {
+"n_course": 112,
+"pooled": "PHYSICS",
+"sections_course": 4
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290T",
+"subject": "PHYSICS"
+},
+"PHYSICS 290X": {
+"buckets": {
+"1-5": {
+"n_course": 84,
+"pooled": "PHYSICS",
+"sections_course": 3
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290X",
+"subject": "PHYSICS"
+},
+"PHYSICS 290Y": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "290Y",
+"subject": "PHYSICS"
+},
+"PHYSICS 5A": {
+"buckets": {
+"1-5": {
+"n_course": 128,
+"pooled": "PHYSICS",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 22,
+"pooled": "PHYSICS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 44,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "5A",
+"subject": "PHYSICS"
+},
+"PHYSICS 5B": {
+"buckets": {
+"1-5": {
+"n_course": 116,
+"pooled": "PHYSICS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "5B",
+"subject": "PHYSICS"
+},
+"PHYSICS 5BL": {
+"buckets": {
+"1-5": {
+"n_course": 138,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "5BL",
+"subject": "PHYSICS"
+},
+"PHYSICS 5C": {
+"buckets": {
+"1-5": {
+"n_course": 189,
+"pooled": "PHYSICS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 33,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "5C",
+"subject": "PHYSICS"
+},
+"PHYSICS 5CL": {
+"buckets": {
+"1-5": {
+"n_course": 115,
+"pooled": "PHYSICS",
+"sections_course": 4
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "5CL",
+"subject": "PHYSICS"
+},
+"PHYSICS 77": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "77",
+"subject": "PHYSICS"
+},
+"PHYSICS 7A": {
+"buckets": {
+"1-5": {
+"n_course": 432,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 170,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "7A",
+"subject": "PHYSICS"
+},
+"PHYSICS 7B": {
+"buckets": {
+"1-5": {
+"n_course": 1013,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 46,
+"pooled": "PHYSICS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 517,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "7B",
+"subject": "PHYSICS"
+},
+"PHYSICS 7C": {
+"buckets": {
+"1-5": {
+"n_course": 269,
+"pooled": "PHYSICS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 98,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "7C",
+"subject": "PHYSICS"
+},
+"PHYSICS 88": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "88",
+"subject": "PHYSICS"
+},
+"PHYSICS 89": {
+"buckets": {
+"1-5": {
+"n_course": 105,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "89",
+"subject": "PHYSICS"
+},
+"PHYSICS 8A": {
+"buckets": {
+"1-5": {
+"n_course": 1000,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 103,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 575,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "8A",
+"subject": "PHYSICS"
+},
+"PHYSICS 8B": {
+"buckets": {
+"1-5": {
+"n_course": 771,
+"pooled": "PHYSICS",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 324,
+"pooled": "PHYSICS",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSICS",
+"level": "lower",
+"number": "8B",
+"subject": "PHYSICS"
+},
+"PHYSICS C142": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "C142",
+"subject": "PHYSICS"
+},
+"PHYSICS C161": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "C161",
+"subject": "PHYSICS"
+},
+"PHYSICS C191A": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "upper",
+"number": "C191A",
+"subject": "PHYSICS"
+},
+"PHYSICS C228": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "PHYSICS",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSICS",
+"level": "grad",
+"number": "C228",
+"subject": "PHYSICS"
+}
+},
+"subject": "PHYSICS",
+"term_id": "2268"
+}

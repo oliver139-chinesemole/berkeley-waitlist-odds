@@ -1,0 +1,973 @@
+{
+"courses": {
+"MATH 1": {
+"buckets": {
+"1-5": {
+"n_course": 66,
+"pooled": "MATH",
+"sections_course": 2
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "1",
+"subject": "MATH"
+},
+"MATH 104": {
+"buckets": {
+"1-5": {
+"n_course": 1931,
+"pooled": "MATH",
+"sections_course": 10
+},
+"6-15": {
+"n_course": 37,
+"pooled": "MATH",
+"sections_course": 10
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "104",
+"subject": "MATH"
+},
+"MATH 10A": {
+"buckets": {
+"1-5": {
+"n_course": 228,
+"pooled": "MATH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 8,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 124,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "10A",
+"subject": "MATH"
+},
+"MATH 110": {
+"buckets": {
+"1-5": {
+"n_course": 916,
+"pooled": "MATH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 264,
+"pooled": "MATH",
+"sections_course": 1
+},
+"41+": {
+"n_course": 35,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 428,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "110",
+"subject": "MATH"
+},
+"MATH 113": {
+"buckets": {
+"1-5": {
+"n_course": 755,
+"pooled": "MATH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 274,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 460,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "113",
+"subject": "MATH"
+},
+"MATH 118": {
+"buckets": {
+"1-5": {
+"n_course": 175,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 23,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "118",
+"subject": "MATH"
+},
+"MATH 124": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "124",
+"subject": "MATH"
+},
+"MATH 125A": {
+"buckets": {
+"1-5": {
+"n_course": 282,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "125A",
+"subject": "MATH"
+},
+"MATH 126": {
+"buckets": {
+"1-5": {
+"n_course": 383,
+"pooled": "MATH",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 92,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "126",
+"subject": "MATH"
+},
+"MATH 128A": {
+"buckets": {
+"1-5": {
+"n_course": 699,
+"pooled": "MATH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 253,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 475,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "128A",
+"subject": "MATH"
+},
+"MATH 130": {
+"buckets": {
+"1-5": {
+"n_course": 144,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "130",
+"subject": "MATH"
+},
+"MATH 135": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "135",
+"subject": "MATH"
+},
+"MATH 136": {
+"buckets": {
+"1-5": {
+"n_course": 155,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "136",
+"subject": "MATH"
+},
+"MATH 140": {
+"buckets": {
+"1-5": {
+"n_course": 194,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 39,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "140",
+"subject": "MATH"
+},
+"MATH 141": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "141",
+"subject": "MATH"
+},
+"MATH 142": {
+"buckets": {
+"1-5": {
+"n_course": 290,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 21,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "142",
+"subject": "MATH"
+},
+"MATH 151": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "151",
+"subject": "MATH"
+},
+"MATH 160": {
+"buckets": {
+"1-5": {
+"n_course": 175,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 22,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "160",
+"subject": "MATH"
+},
+"MATH 16A": {
+"buckets": {
+"1-5": {
+"n_course": 375,
+"pooled": "MATH",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 4,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 29,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "16A",
+"subject": "MATH"
+},
+"MATH 16B": {
+"buckets": {
+"1-5": {
+"n_course": 136,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "16B",
+"subject": "MATH"
+},
+"MATH 170": {
+"buckets": {
+"1-5": {
+"n_course": 184,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 18,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "170",
+"subject": "MATH"
+},
+"MATH 185": {
+"buckets": {
+"1-5": {
+"n_course": 1252,
+"pooled": "MATH",
+"sections_course": 8
+},
+"6-15": {
+"n_course": 1,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "185",
+"subject": "MATH"
+},
+"MATH 191": {
+"buckets": {
+"1-5": {
+"n_course": 329,
+"pooled": "MATH",
+"sections_course": 3
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "191",
+"subject": "MATH"
+},
+"MATH 202A": {
+"buckets": {
+"1-5": {
+"n_course": 63,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "202A",
+"subject": "MATH"
+},
+"MATH 204": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "204",
+"subject": "MATH"
+},
+"MATH 206": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "206",
+"subject": "MATH"
+},
+"MATH 212": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "212",
+"subject": "MATH"
+},
+"MATH 214": {
+"buckets": {
+"1-5": {
+"n_course": 88,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "214",
+"subject": "MATH"
+},
+"MATH 221": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "221",
+"subject": "MATH"
+},
+"MATH 224A": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "224A",
+"subject": "MATH"
+},
+"MATH 236": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "236",
+"subject": "MATH"
+},
+"MATH 24": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "24",
+"subject": "MATH"
+},
+"MATH 240": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "240",
+"subject": "MATH"
+},
+"MATH 250A": {
+"buckets": {
+"1-5": {
+"n_course": 30,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "250A",
+"subject": "MATH"
+},
+"MATH 251": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "251",
+"subject": "MATH"
+},
+"MATH 252": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "252",
+"subject": "MATH"
+},
+"MATH 253": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "253",
+"subject": "MATH"
+},
+"MATH 254A": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "254A",
+"subject": "MATH"
+},
+"MATH 256A": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "MATH",
+"sections_course": 2
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "256A",
+"subject": "MATH"
+},
+"MATH 261A": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "261A",
+"subject": "MATH"
+},
+"MATH 261B": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "261B",
+"subject": "MATH"
+},
+"MATH 275": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "275",
+"subject": "MATH"
+},
+"MATH 277": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "277",
+"subject": "MATH"
+},
+"MATH 278": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "278",
+"subject": "MATH"
+},
+"MATH 3": {
+"buckets": {
+"1-5": {
+"n_course": 180,
+"pooled": "MATH",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 9,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "3",
+"subject": "MATH"
+},
+"MATH 51": {
+"buckets": {
+"1-5": {
+"n_course": 622,
+"pooled": "MATH",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 51,
+"pooled": "MATH",
+"sections_course": 1
+},
+"41+": {
+"n_course": 3,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 147,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "51",
+"subject": "MATH"
+},
+"MATH 52": {
+"buckets": {
+"1-5": {
+"n_course": 887,
+"pooled": "MATH",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 262,
+"pooled": "MATH",
+"sections_course": 2
+},
+"41+": {
+"n_course": 10,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 418,
+"pooled": "MATH",
+"sections_course": 2
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "52",
+"subject": "MATH"
+},
+"MATH 53": {
+"buckets": {
+"1-5": {
+"n_course": 882,
+"pooled": "MATH",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 453,
+"pooled": "MATH",
+"sections_course": 2
+},
+"41+": {
+"n_course": 56,
+"pooled": "MATH",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 565,
+"pooled": "MATH",
+"sections_course": 2
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "53",
+"subject": "MATH"
+},
+"MATH 54": {
+"buckets": {
+"1-5": {
+"n_course": 1432,
+"pooled": "MATH",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 717,
+"pooled": "MATH",
+"sections_course": 2
+},
+"41+": {
+"n_course": 92,
+"pooled": "MATH",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 1057,
+"pooled": "MATH",
+"sections_course": 2
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "54",
+"subject": "MATH"
+},
+"MATH 55": {
+"buckets": {
+"1-5": {
+"n_course": 590,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 213,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "55",
+"subject": "MATH"
+},
+"MATH 74": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "74",
+"subject": "MATH"
+},
+"MATH 84": {
+"buckets": {
+"1-5": {
+"n_course": 108,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "84",
+"subject": "MATH"
+},
+"MATH 91": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "MATH",
+"sections_course": 2
+}
+},
+"dept_group": "MATH",
+"level": "lower",
+"number": "91",
+"subject": "MATH"
+},
+"MATH C103": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "C103",
+"subject": "MATH"
+},
+"MATH C218A": {
+"buckets": {
+"1-5": {
+"n_course": 84,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "C218A",
+"subject": "MATH"
+},
+"MATH C223A": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "grad",
+"number": "C223A",
+"subject": "MATH"
+},
+"MATH H104": {
+"buckets": {
+"1-5": {
+"n_course": 246,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 55,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "H104",
+"subject": "MATH"
+},
+"MATH H113": {
+"buckets": {
+"1-5": {
+"n_course": 168,
+"pooled": "MATH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 23,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "H113",
+"subject": "MATH"
+},
+"MATH H185": {
+"buckets": {
+"1-5": {
+"n_course": 56,
+"pooled": "MATH",
+"sections_course": 1
+}
+},
+"dept_group": "MATH",
+"level": "upper",
+"number": "H185",
+"subject": "MATH"
+}
+},
+"subject": "MATH",
+"term_id": "2268"
+}

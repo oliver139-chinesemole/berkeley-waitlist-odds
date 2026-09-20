@@ -1,0 +1,247 @@
+{
+"courses": {
+"SOCWEL 110": {
+"buckets": {
+"1-5": {
+"n_course": 172,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110",
+"subject": "SOCWEL"
+},
+"SOCWEL 112": {
+"buckets": {
+"1-5": {
+"n_course": 154,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "112",
+"subject": "SOCWEL"
+},
+"SOCWEL 150AC": {
+"buckets": {
+"1-5": {
+"n_course": 197,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 92,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "150AC",
+"subject": "SOCWEL"
+},
+"SOCWEL 200": {
+"buckets": {
+"1-5": {
+"n_course": 80,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "SOCWEL"
+},
+"SOCWEL 205": {
+"buckets": {
+"1-5": {
+"n_course": 76,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "205",
+"subject": "SOCWEL"
+},
+"SOCWEL 220": {
+"buckets": {
+"1-5": {
+"n_course": 224,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "220",
+"subject": "SOCWEL"
+},
+"SOCWEL 232": {
+"buckets": {
+"1-5": {
+"n_course": 72,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "232",
+"subject": "SOCWEL"
+},
+"SOCWEL 238C": {
+"buckets": {
+"1-5": {
+"n_course": 96,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "238C",
+"subject": "SOCWEL"
+},
+"SOCWEL 240": {
+"buckets": {
+"1-5": {
+"n_course": 163,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "240",
+"subject": "SOCWEL"
+},
+"SOCWEL 241": {
+"buckets": {
+"1-5": {
+"n_course": 143,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "241",
+"subject": "SOCWEL"
+},
+"SOCWEL 250U": {
+"buckets": {
+"1-5": {
+"n_course": 125,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "250U",
+"subject": "SOCWEL"
+},
+"SOCWEL 250Z": {
+"buckets": {
+"1-5": {
+"n_course": 112,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "250Z",
+"subject": "SOCWEL"
+},
+"SOCWEL 265T": {
+"buckets": {
+"1-5": {
+"n_course": 187,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "265T",
+"subject": "SOCWEL"
+},
+"SOCWEL 279": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "279",
+"subject": "SOCWEL"
+},
+"SOCWEL 282A": {
+"buckets": {
+"1-5": {
+"n_course": 186,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "282A",
+"subject": "SOCWEL"
+},
+"SOCWEL 294": {
+"buckets": {
+"1-5": {
+"n_course": 132,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "294",
+"subject": "SOCWEL"
+},
+"SOCWEL C181": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C181",
+"subject": "SOCWEL"
+}
+},
+"subject": "SOCWEL",
+"term_id": "2268"
+}

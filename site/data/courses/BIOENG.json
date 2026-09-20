@@ -1,0 +1,404 @@
+{
+"courses": {
+"BIOENG 10": {
+"buckets": {
+"1-5": {
+"n_course": 348,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 56,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 194,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "BIOENG"
+},
+"BIOENG 100": {
+"buckets": {
+"1-5": {
+"n_course": 414,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 275,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 291,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "BIOENG"
+},
+"BIOENG 103": {
+"buckets": {
+"1-5": {
+"n_course": 74,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "103",
+"subject": "BIOENG"
+},
+"BIOENG 110": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110",
+"subject": "BIOENG"
+},
+"BIOENG 114": {
+"buckets": {
+"1-5": {
+"n_course": 50,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "114",
+"subject": "BIOENG"
+},
+"BIOENG 124": {
+"buckets": {
+"1-5": {
+"n_course": 214,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 52,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "124",
+"subject": "BIOENG"
+},
+"BIOENG 140L": {
+"buckets": {
+"1-5": {
+"n_course": 193,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "140L",
+"subject": "BIOENG"
+},
+"BIOENG 147": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "147",
+"subject": "BIOENG"
+},
+"BIOENG 163": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "163",
+"subject": "BIOENG"
+},
+"BIOENG 168L": {
+"buckets": {
+"1-5": {
+"n_course": 197,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 52,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "168L",
+"subject": "BIOENG"
+},
+"BIOENG 192": {
+"buckets": {
+"1-5": {
+"n_course": 43,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "192",
+"subject": "BIOENG"
+},
+"BIOENG 202": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "202",
+"subject": "BIOENG"
+},
+"BIOENG 221": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "221",
+"subject": "BIOENG"
+},
+"BIOENG 224": {
+"buckets": {
+"1-5": {
+"n_course": 52,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "224",
+"subject": "BIOENG"
+},
+"BIOENG 247": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "247",
+"subject": "BIOENG"
+},
+"BIOENG 252": {
+"buckets": {
+"1-5": {
+"n_course": 97,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "252",
+"subject": "BIOENG"
+},
+"BIOENG 263": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "263",
+"subject": "BIOENG"
+},
+"BIOENG 291": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "291",
+"subject": "BIOENG"
+},
+"BIOENG C118": {
+"buckets": {
+"1-5": {
+"n_course": 63,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C118",
+"subject": "BIOENG"
+},
+"BIOENG C131": {
+"buckets": {
+"1-5": {
+"n_course": 125,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C131",
+"subject": "BIOENG"
+},
+"BIOENG C149": {
+"buckets": {
+"1-5": {
+"n_course": 117,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C149",
+"subject": "BIOENG"
+},
+"BIOENG C165": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C165",
+"subject": "BIOENG"
+},
+"BIOENG C208": {
+"buckets": {
+"1-5": {
+"n_course": 30,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C208",
+"subject": "BIOENG"
+},
+"BIOENG C231": {
+"buckets": {
+"1-5": {
+"n_course": 65,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C231",
+"subject": "BIOENG"
+},
+"BIOENG C249": {
+"buckets": {
+"1-5": {
+"n_course": 62,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C249",
+"subject": "BIOENG"
+},
+"BIOENG C261": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C261",
+"subject": "BIOENG"
+}
+},
+"subject": "BIOENG",
+"term_id": "2268"
+}

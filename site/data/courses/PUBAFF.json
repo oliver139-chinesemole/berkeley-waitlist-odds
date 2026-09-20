@@ -1,0 +1,50 @@
+{
+"courses": {
+"PUBAFF 207": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "207",
+"subject": "PUBAFF"
+},
+"PUBAFF 245": {
+"buckets": {
+"1-5": {
+"n_course": 47,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "245",
+"subject": "PUBAFF"
+},
+"PUBAFF 290": {
+"buckets": {
+"1-5": {
+"n_course": 662,
+"pooled": "OTHER",
+"sections_course": 8
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "290",
+"subject": "PUBAFF"
+}
+},
+"subject": "PUBAFF",
+"term_id": "2268"
+}

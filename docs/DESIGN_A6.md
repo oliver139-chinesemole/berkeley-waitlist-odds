@@ -49,7 +49,7 @@ Header, level tag, a position input that re-renders. The headline block is the s
 
 ### Accuracy (`accuracy.html`)
 
-Reads `data/backtest.json` (`analysis/export_backtest.py` from `reports/backtest_<term>/`). Without it: says the backtest is not published yet. With it, per run (split and horizon): the counts, "when the estimate said about 70%, X% got in" from the deciles, a calibration plot (predicted against observed by decile, with a table), the score table (Brier, AUC, gain over the bucket baseline with its interval, joiners scored), and which joiners could be scored by phase. Static text lists what Fall 2026 could not test. The pre-registration box prints `meta.prereg_commit` and `meta.prereg_date` when set and states what will be scored after Feb 10, 2027.
+Reads `data/backtest.json` (`analysis/export_backtest.py` from `reports/backtest_<term>/`). Without it: says the backtest is not published yet. With it, per run (split and horizon): the counts, "when the estimate said about 70%, X% got in" from the deciles of the predictor the pages use (the department curve at the department level, else the course curve, else the fixed-lead-time number), a calibration plot for it (predicted against observed by decile, with a table), the score table for every predictor in a fixed order (bucket, department, course, site v1, Cox; Brier, AUC, gain over the bucket baseline with its interval, joiners scored), and which joiners could be scored by phase. Static text lists what Fall 2026 could not test. The pre-registration box prints `meta.prereg_commit` and `meta.prereg_date` when set and states what will be scored after Feb 10, 2027.
 
 ## Charts (`BWO.curveChart`)
 

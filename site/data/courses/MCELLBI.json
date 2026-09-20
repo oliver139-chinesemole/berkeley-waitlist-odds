@@ -1,0 +1,612 @@
+{
+"courses": {
+"MCELLBI 100B": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "100B",
+"subject": "MCELLBI"
+},
+"MCELLBI 102": {
+"buckets": {
+"1-5": {
+"n_course": 447,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 211,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 316,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "102",
+"subject": "MCELLBI"
+},
+"MCELLBI 104": {
+"buckets": {
+"1-5": {
+"n_course": 570,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 39,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 185,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "104",
+"subject": "MCELLBI"
+},
+"MCELLBI 110": {
+"buckets": {
+"1-5": {
+"n_course": 128,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 40,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "110",
+"subject": "MCELLBI"
+},
+"MCELLBI 120": {
+"buckets": {
+"1-5": {
+"n_course": 398,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 62,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 212,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "120",
+"subject": "MCELLBI"
+},
+"MCELLBI 120L": {
+"buckets": {
+"1-5": {
+"n_course": 168,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 24,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 73,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "120L",
+"subject": "MCELLBI"
+},
+"MCELLBI 132": {
+"buckets": {
+"1-5": {
+"n_course": 102,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "132",
+"subject": "MCELLBI"
+},
+"MCELLBI 133L": {
+"buckets": {
+"1-5": {
+"n_course": 324,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 29,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 216,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "133L",
+"subject": "MCELLBI"
+},
+"MCELLBI 135A": {
+"buckets": {
+"1-5": {
+"n_course": 318,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 24,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 155,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "135A",
+"subject": "MCELLBI"
+},
+"MCELLBI 136": {
+"buckets": {
+"1-5": {
+"n_course": 472,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 29,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 167,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "136",
+"subject": "MCELLBI"
+},
+"MCELLBI 140": {
+"buckets": {
+"1-5": {
+"n_course": 86,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "140",
+"subject": "MCELLBI"
+},
+"MCELLBI 143": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "143",
+"subject": "MCELLBI"
+},
+"MCELLBI 150": {
+"buckets": {
+"1-5": {
+"n_course": 294,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 54,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "150",
+"subject": "MCELLBI"
+},
+"MCELLBI 150L": {
+"buckets": {
+"1-5": {
+"n_course": 125,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "150L",
+"subject": "MCELLBI"
+},
+"MCELLBI 153": {
+"buckets": {
+"1-5": {
+"n_course": 402,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 35,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 169,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "153",
+"subject": "MCELLBI"
+},
+"MCELLBI 186A": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "186A",
+"subject": "MCELLBI"
+},
+"MCELLBI 200A": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "200A",
+"subject": "MCELLBI"
+},
+"MCELLBI 200B": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "200B",
+"subject": "MCELLBI"
+},
+"MCELLBI 201B": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "201B",
+"subject": "MCELLBI"
+},
+"MCELLBI 227": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "227",
+"subject": "MCELLBI"
+},
+"MCELLBI 236": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "236",
+"subject": "MCELLBI"
+},
+"MCELLBI 275": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "275",
+"subject": "MCELLBI"
+},
+"MCELLBI 290": {
+"buckets": {
+"1-5": {
+"n_course": 80,
+"pooled": "MCELLBI",
+"sections_course": 5
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "290",
+"subject": "MCELLBI"
+},
+"MCELLBI 293A": {
+"buckets": {
+"1-5": {
+"n_course": 30,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "293A",
+"subject": "MCELLBI"
+},
+"MCELLBI 294": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "294",
+"subject": "MCELLBI"
+},
+"MCELLBI 296": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "296",
+"subject": "MCELLBI"
+},
+"MCELLBI 32": {
+"buckets": {
+"1-5": {
+"n_course": 152,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "lower",
+"number": "32",
+"subject": "MCELLBI"
+},
+"MCELLBI 32L": {
+"buckets": {
+"1-5": {
+"n_course": 402,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 55,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 242,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "lower",
+"number": "32L",
+"subject": "MCELLBI"
+},
+"MCELLBI 38": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "lower",
+"number": "38",
+"subject": "MCELLBI"
+},
+"MCELLBI C100A": {
+"buckets": {
+"1-5": {
+"n_course": 236,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 27,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "C100A",
+"subject": "MCELLBI"
+},
+"MCELLBI C110L": {
+"buckets": {
+"1-5": {
+"n_course": 152,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 32,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "C110L",
+"subject": "MCELLBI"
+},
+"MCELLBI C112": {
+"buckets": {
+"1-5": {
+"n_course": 300,
+"pooled": "MCELLBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "C112",
+"subject": "MCELLBI"
+},
+"MCELLBI C112L": {
+"buckets": {
+"1-5": {
+"n_course": 365,
+"pooled": "MCELLBI",
+"sections_course": 4
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "C112L",
+"subject": "MCELLBI"
+},
+"MCELLBI C175": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "upper",
+"number": "C175",
+"subject": "MCELLBI"
+},
+"MCELLBI C205": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "C205",
+"subject": "MCELLBI"
+},
+"MCELLBI C277": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "grad",
+"number": "C277",
+"subject": "MCELLBI"
+},
+"MCELLBI C96": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "MCELLBI",
+"sections_course": 1
+}
+},
+"dept_group": "MCELLBI",
+"level": "lower",
+"number": "C96",
+"subject": "MCELLBI"
+}
+},
+"subject": "MCELLBI",
+"term_id": "2268"
+}

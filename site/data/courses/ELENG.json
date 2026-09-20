@@ -1,0 +1,688 @@
+{
+"courses": {
+"ELENG 105": {
+"buckets": {
+"1-5": {
+"n_course": 370,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 167,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "105",
+"subject": "ELENG"
+},
+"ELENG 113": {
+"buckets": {
+"1-5": {
+"n_course": 246,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 6,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 110,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "113",
+"subject": "ELENG"
+},
+"ELENG 117B": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "ELENG",
+"sections_course": 3
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "117B",
+"subject": "ELENG"
+},
+"ELENG 118": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "118",
+"subject": "ELENG"
+},
+"ELENG 120": {
+"buckets": {
+"1-5": {
+"n_course": 328,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 97,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "120",
+"subject": "ELENG"
+},
+"ELENG 130": {
+"buckets": {
+"1-5": {
+"n_course": 133,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 40,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "130",
+"subject": "ELENG"
+},
+"ELENG 137A": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "137A",
+"subject": "ELENG"
+},
+"ELENG 140": {
+"buckets": {
+"1-5": {
+"n_course": 234,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 105,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "140",
+"subject": "ELENG"
+},
+"ELENG 142": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "142",
+"subject": "ELENG"
+},
+"ELENG 143": {
+"buckets": {
+"1-5": {
+"n_course": 184,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 11,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "143",
+"subject": "ELENG"
+},
+"ELENG 147": {
+"buckets": {
+"1-5": {
+"n_course": 232,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 34,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "147",
+"subject": "ELENG"
+},
+"ELENG 156": {
+"buckets": {
+"1-5": {
+"n_course": 334,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 91,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "156",
+"subject": "ELENG"
+},
+"ELENG 194": {
+"buckets": {
+"1-5": {
+"n_course": 315,
+"pooled": "ELENG",
+"sections_course": 5
+},
+"6-15": {
+"n_course": 82,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "194",
+"subject": "ELENG"
+},
+"ELENG 210": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "210",
+"subject": "ELENG"
+},
+"ELENG 213A": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "213A",
+"subject": "ELENG"
+},
+"ELENG 217B": {
+"buckets": {
+"1-5": {
+"n_course": 105,
+"pooled": "ELENG",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 7,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "217B",
+"subject": "ELENG"
+},
+"ELENG 218A": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "218A",
+"subject": "ELENG"
+},
+"ELENG 221A": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "221A",
+"subject": "ELENG"
+},
+"ELENG 224A": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "224A",
+"subject": "ELENG"
+},
+"ELENG 225D": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "225D",
+"subject": "ELENG"
+},
+"ELENG 226A": {
+"buckets": {
+"1-5": {
+"n_course": 78,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "226A",
+"subject": "ELENG"
+},
+"ELENG 227BT": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "227BT",
+"subject": "ELENG"
+},
+"ELENG 229A": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "229A",
+"subject": "ELENG"
+},
+"ELENG 230A": {
+"buckets": {
+"1-5": {
+"n_course": 68,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "230A",
+"subject": "ELENG"
+},
+"ELENG 230B": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "230B",
+"subject": "ELENG"
+},
+"ELENG 232": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "232",
+"subject": "ELENG"
+},
+"ELENG 236A": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "236A",
+"subject": "ELENG"
+},
+"ELENG 240A": {
+"buckets": {
+"1-5": {
+"n_course": 62,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "240A",
+"subject": "ELENG"
+},
+"ELENG 240C": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "240C",
+"subject": "ELENG"
+},
+"ELENG 242B": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "242B",
+"subject": "ELENG"
+},
+"ELENG 247A": {
+"buckets": {
+"1-5": {
+"n_course": 98,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "247A",
+"subject": "ELENG"
+},
+"ELENG 290": {
+"buckets": {
+"1-5": {
+"n_course": 326,
+"pooled": "ELENG",
+"sections_course": 14
+},
+"16-40": {
+"n_course": 5,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 48,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "290",
+"subject": "ELENG"
+},
+"ELENG 298": {
+"buckets": {
+"1-5": {
+"n_course": 120,
+"pooled": "ELENG",
+"sections_course": 5
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "298",
+"subject": "ELENG"
+},
+"ELENG 39": {
+"buckets": {
+"1-5": {
+"n_course": 49,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "lower",
+"number": "39",
+"subject": "ELENG"
+},
+"ELENG 64": {
+"buckets": {
+"1-5": {
+"n_course": 479,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 148,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 295,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "lower",
+"number": "64",
+"subject": "ELENG"
+},
+"ELENG 66": {
+"buckets": {
+"1-5": {
+"n_course": 424,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 271,
+"pooled": "ELENG",
+"sections_course": 1
+},
+"41+": {
+"n_course": 21,
+"pooled": "all",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 285,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "lower",
+"number": "66",
+"subject": "ELENG"
+},
+"ELENG 84": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "lower",
+"number": "84",
+"subject": "ELENG"
+},
+"ELENG C145B": {
+"buckets": {
+"1-5": {
+"n_course": 51,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "upper",
+"number": "C145B",
+"subject": "ELENG"
+},
+"ELENG C220A": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "C220A",
+"subject": "ELENG"
+},
+"ELENG C220B": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "C220B",
+"subject": "ELENG"
+},
+"ELENG C235": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "C235",
+"subject": "ELENG"
+},
+"ELENG C247B": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "C247B",
+"subject": "ELENG"
+},
+"ELENG C249A": {
+"buckets": {
+"1-5": {
+"n_course": 80,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "C249A",
+"subject": "ELENG"
+},
+"ELENG C261": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "ELENG",
+"sections_course": 1
+}
+},
+"dept_group": "ELENG",
+"level": "grad",
+"number": "C261",
+"subject": "ELENG"
+}
+},
+"subject": "ELENG",
+"term_id": "2268"
+}

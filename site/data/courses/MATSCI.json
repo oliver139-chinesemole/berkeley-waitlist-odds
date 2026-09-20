@@ -1,0 +1,192 @@
+{
+"courses": {
+"MATSCI 102": {
+"buckets": {
+"1-5": {
+"n_course": 43,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "MATSCI"
+},
+"MATSCI 113": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "113",
+"subject": "MATSCI"
+},
+"MATSCI 123": {
+"buckets": {
+"1-5": {
+"n_course": 73,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "123",
+"subject": "MATSCI"
+},
+"MATSCI 131": {
+"buckets": {
+"1-5": {
+"n_course": 195,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 69,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "131",
+"subject": "MATSCI"
+},
+"MATSCI 200A": {
+"buckets": {
+"1-5": {
+"n_course": 55,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200A",
+"subject": "MATSCI"
+},
+"MATSCI 24": {
+"buckets": {
+"1-5": {
+"n_course": 49,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "MATSCI"
+},
+"MATSCI 45": {
+"buckets": {
+"1-5": {
+"n_course": 187,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 51,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 116,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "45",
+"subject": "MATSCI"
+},
+"MATSCI 45L": {
+"buckets": {
+"1-5": {
+"n_course": 280,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "45L",
+"subject": "MATSCI"
+},
+"MATSCI C135": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C135",
+"subject": "MATSCI"
+},
+"MATSCI C150": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C150",
+"subject": "MATSCI"
+},
+"MATSCI C208": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C208",
+"subject": "MATSCI"
+},
+"MATSCI C211": {
+"buckets": {
+"1-5": {
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C211",
+"subject": "MATSCI"
+}
+},
+"subject": "MATSCI",
+"term_id": "2268"
+}

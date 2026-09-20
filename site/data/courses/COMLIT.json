@@ -1,0 +1,190 @@
+{
+"courses": {
+"COMLIT 100": {
+"buckets": {
+"1-5": {
+"n_course": 241,
+"pooled": "OTHER",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "COMLIT"
+},
+"COMLIT 100A": {
+"buckets": {
+"1-5": {
+"n_course": 71,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100A",
+"subject": "COMLIT"
+},
+"COMLIT 154": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "154",
+"subject": "COMLIT"
+},
+"COMLIT 155": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "155",
+"subject": "COMLIT"
+},
+"COMLIT 170": {
+"buckets": {
+"1-5": {
+"n_course": 78,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "170",
+"subject": "COMLIT"
+},
+"COMLIT 171": {
+"buckets": {
+"1-5": {
+"n_course": 82,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "171",
+"subject": "COMLIT"
+},
+"COMLIT 190": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "COMLIT"
+},
+"COMLIT 20": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20",
+"subject": "COMLIT"
+},
+"COMLIT 250": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "250",
+"subject": "COMLIT"
+},
+"COMLIT 60AC": {
+"buckets": {
+"1-5": {
+"n_course": 121,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 54,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "60AC",
+"subject": "COMLIT"
+},
+"COMLIT R1A": {
+"buckets": {
+"1-5": {
+"n_course": 206,
+"pooled": "OTHER",
+"sections_course": 5
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1A",
+"subject": "COMLIT"
+},
+"COMLIT R1B": {
+"buckets": {
+"1-5": {
+"n_course": 361,
+"pooled": "OTHER",
+"sections_course": 8
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "COMLIT"
+},
+"COMLIT R3B": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R3B",
+"subject": "COMLIT"
+}
+},
+"subject": "COMLIT",
+"term_id": "2268"
+}

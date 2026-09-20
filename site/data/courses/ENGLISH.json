@@ -1,0 +1,510 @@
+{
+"courses": {
+"ENGLISH 100": {
+"buckets": {
+"1-5": {
+"n_course": 1517,
+"pooled": "ENGLISH",
+"sections_course": 9
+},
+"16-40": {
+"n_course": 147,
+"pooled": "ENGLISH",
+"sections_course": 8
+},
+"6-15": {
+"n_course": 692,
+"pooled": "ENGLISH",
+"sections_course": 9
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "100",
+"subject": "ENGLISH"
+},
+"ENGLISH 104": {
+"buckets": {
+"1-5": {
+"n_course": 82,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "104",
+"subject": "ENGLISH"
+},
+"ENGLISH 110": {
+"buckets": {
+"1-5": {
+"n_course": 74,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "110",
+"subject": "ENGLISH"
+},
+"ENGLISH 112": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "112",
+"subject": "ENGLISH"
+},
+"ENGLISH 115B": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "115B",
+"subject": "ENGLISH"
+},
+"ENGLISH 117S": {
+"buckets": {
+"1-5": {
+"n_course": 280,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 133,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "117S",
+"subject": "ENGLISH"
+},
+"ENGLISH 125A": {
+"buckets": {
+"1-5": {
+"n_course": 213,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 34,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "125A",
+"subject": "ENGLISH"
+},
+"ENGLISH 125C": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "125C",
+"subject": "ENGLISH"
+},
+"ENGLISH 125D": {
+"buckets": {
+"1-5": {
+"n_course": 61,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "125D",
+"subject": "ENGLISH"
+},
+"ENGLISH 131": {
+"buckets": {
+"1-5": {
+"n_course": 118,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "131",
+"subject": "ENGLISH"
+},
+"ENGLISH 141": {
+"buckets": {
+"1-5": {
+"n_course": 289,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 2,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 103,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "141",
+"subject": "ENGLISH"
+},
+"ENGLISH 143A": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "ENGLISH",
+"sections_course": 2
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "143A",
+"subject": "ENGLISH"
+},
+"ENGLISH 143B": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "143B",
+"subject": "ENGLISH"
+},
+"ENGLISH 143C": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "143C",
+"subject": "ENGLISH"
+},
+"ENGLISH 143N": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "143N",
+"subject": "ENGLISH"
+},
+"ENGLISH 145": {
+"buckets": {
+"1-5": {
+"n_course": 151,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "145",
+"subject": "ENGLISH"
+},
+"ENGLISH 166": {
+"buckets": {
+"1-5": {
+"n_course": 227,
+"pooled": "ENGLISH",
+"sections_course": 2
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "166",
+"subject": "ENGLISH"
+},
+"ENGLISH 166AC": {
+"buckets": {
+"1-5": {
+"n_course": 253,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 119,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "166AC",
+"subject": "ENGLISH"
+},
+"ENGLISH 174": {
+"buckets": {
+"1-5": {
+"n_course": 223,
+"pooled": "ENGLISH",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 5,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "174",
+"subject": "ENGLISH"
+},
+"ENGLISH 176": {
+"buckets": {
+"1-5": {
+"n_course": 276,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 92,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "176",
+"subject": "ENGLISH"
+},
+"ENGLISH 180E": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "180E",
+"subject": "ENGLISH"
+},
+"ENGLISH 190": {
+"buckets": {
+"1-5": {
+"n_course": 658,
+"pooled": "ENGLISH",
+"sections_course": 7
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "190",
+"subject": "ENGLISH"
+},
+"ENGLISH 200": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "grad",
+"number": "200",
+"subject": "ENGLISH"
+},
+"ENGLISH 203": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "grad",
+"number": "203",
+"subject": "ENGLISH"
+},
+"ENGLISH 24": {
+"buckets": {
+"1-5": {
+"n_course": 96,
+"pooled": "ENGLISH",
+"sections_course": 2
+}
+},
+"dept_group": "ENGLISH",
+"level": "lower",
+"number": "24",
+"subject": "ENGLISH"
+},
+"ENGLISH 45A": {
+"buckets": {
+"1-5": {
+"n_course": 162,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 2,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 45,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "lower",
+"number": "45A",
+"subject": "ENGLISH"
+},
+"ENGLISH 45B": {
+"buckets": {
+"1-5": {
+"n_course": 177,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 69,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "lower",
+"number": "45B",
+"subject": "ENGLISH"
+},
+"ENGLISH 45C": {
+"buckets": {
+"1-5": {
+"n_course": 252,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "lower",
+"number": "45C",
+"subject": "ENGLISH"
+},
+"ENGLISH 90": {
+"buckets": {
+"1-5": {
+"n_course": 605,
+"pooled": "ENGLISH",
+"sections_course": 9
+}
+},
+"dept_group": "ENGLISH",
+"level": "lower",
+"number": "90",
+"subject": "ENGLISH"
+},
+"ENGLISH H195A": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "ENGLISH",
+"sections_course": 2
+}
+},
+"dept_group": "ENGLISH",
+"level": "upper",
+"number": "H195A",
+"subject": "ENGLISH"
+},
+"ENGLISH R17": {
+"buckets": {
+"1-5": {
+"n_course": 144,
+"pooled": "ENGLISH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 46,
+"pooled": "ENGLISH",
+"sections_course": 1
+}
+},
+"dept_group": "ENGLISH",
+"level": "lower",
+"number": "R17",
+"subject": "ENGLISH"
+},
+"ENGLISH R1A": {
+"buckets": {
+"1-5": {
+"n_course": 412,
+"pooled": "ENGLISH",
+"sections_course": 15
+}
+},
+"dept_group": "ENGLISH",
+"level": "lower",
+"number": "R1A",
+"subject": "ENGLISH"
+},
+"ENGLISH R1B": {
+"buckets": {
+"1-5": {
+"n_course": 378,
+"pooled": "ENGLISH",
+"sections_course": 12
+}
+},
+"dept_group": "ENGLISH",
+"level": "lower",
+"number": "R1B",
+"subject": "ENGLISH"
+}
+},
+"subject": "ENGLISH",
+"term_id": "2268"
+}

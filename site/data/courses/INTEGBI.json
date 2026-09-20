@@ -1,0 +1,566 @@
+{
+"courses": {
+"INTEGBI 108": {
+"buckets": {
+"1-5": {
+"n_course": 414,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 28,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 223,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "108",
+"subject": "INTEGBI"
+},
+"INTEGBI 11": {
+"buckets": {
+"1-5": {
+"n_course": 322,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 18,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 171,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "11",
+"subject": "INTEGBI"
+},
+"INTEGBI 114": {
+"buckets": {
+"1-5": {
+"n_course": 186,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 88,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "114",
+"subject": "INTEGBI"
+},
+"INTEGBI 118": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "118",
+"subject": "INTEGBI"
+},
+"INTEGBI 123": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "123",
+"subject": "INTEGBI"
+},
+"INTEGBI 130": {
+"buckets": {
+"1-5": {
+"n_course": 99,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "130",
+"subject": "INTEGBI"
+},
+"INTEGBI 131": {
+"buckets": {
+"1-5": {
+"n_course": 621,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 227,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 434,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "131",
+"subject": "INTEGBI"
+},
+"INTEGBI 131L": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "131L",
+"subject": "INTEGBI"
+},
+"INTEGBI 134L": {
+"buckets": {
+"1-5": {
+"n_course": 237,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 51,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "134L",
+"subject": "INTEGBI"
+},
+"INTEGBI 135": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "135",
+"subject": "INTEGBI"
+},
+"INTEGBI 136": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "136",
+"subject": "INTEGBI"
+},
+"INTEGBI 160": {
+"buckets": {
+"1-5": {
+"n_course": 445,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 9,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 104,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "160",
+"subject": "INTEGBI"
+},
+"INTEGBI 164L": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "164L",
+"subject": "INTEGBI"
+},
+"INTEGBI 173LF": {
+"buckets": {
+"1-5": {
+"n_course": 152,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 30,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "173LF",
+"subject": "INTEGBI"
+},
+"INTEGBI 177LF": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "177LF",
+"subject": "INTEGBI"
+},
+"INTEGBI 184L": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "184L",
+"subject": "INTEGBI"
+},
+"INTEGBI 192": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "192",
+"subject": "INTEGBI"
+},
+"INTEGBI 193": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "193",
+"subject": "INTEGBI"
+},
+"INTEGBI 24": {
+"buckets": {
+"1-5": {
+"n_course": 78,
+"pooled": "INTEGBI",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 4,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "24",
+"subject": "INTEGBI"
+},
+"INTEGBI 286": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "286",
+"subject": "INTEGBI"
+},
+"INTEGBI 290": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "290",
+"subject": "INTEGBI"
+},
+"INTEGBI 292": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "INTEGBI",
+"sections_course": 2
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "292",
+"subject": "INTEGBI"
+},
+"INTEGBI 375": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "375",
+"subject": "INTEGBI"
+},
+"INTEGBI 400": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "400",
+"subject": "INTEGBI"
+},
+"INTEGBI 43": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "43",
+"subject": "INTEGBI"
+},
+"INTEGBI 77A": {
+"buckets": {
+"1-5": {
+"n_course": 215,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 40,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "77A",
+"subject": "INTEGBI"
+},
+"INTEGBI 84": {
+"buckets": {
+"1-5": {
+"n_course": 80,
+"pooled": "INTEGBI",
+"sections_course": 2
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "84",
+"subject": "INTEGBI"
+},
+"INTEGBI C105": {
+"buckets": {
+"1-5": {
+"n_course": 161,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C105",
+"subject": "INTEGBI"
+},
+"INTEGBI C110L": {
+"buckets": {
+"1-5": {
+"n_course": 178,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 35,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C110L",
+"subject": "INTEGBI"
+},
+"INTEGBI C139": {
+"buckets": {
+"1-5": {
+"n_course": 398,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 164,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 268,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C139",
+"subject": "INTEGBI"
+},
+"INTEGBI C143A": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C143A",
+"subject": "INTEGBI"
+},
+"INTEGBI C144": {
+"buckets": {
+"1-5": {
+"n_course": 195,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C144",
+"subject": "INTEGBI"
+},
+"INTEGBI C156": {
+"buckets": {
+"1-5": {
+"n_course": 216,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 56,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C156",
+"subject": "INTEGBI"
+},
+"INTEGBI C166": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C166",
+"subject": "INTEGBI"
+},
+"INTEGBI C96": {
+"buckets": {
+"1-5": {
+"n_course": 137,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 22,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "C96",
+"subject": "INTEGBI"
+}
+},
+"subject": "INTEGBI",
+"term_id": "2268"
+}

@@ -1,0 +1,854 @@
+{
+"courses": {
+"POLSCI 1": {
+"buckets": {
+"1-5": {
+"n_course": 350,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 139,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 212,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "lower",
+"number": "1",
+"subject": "POLSCI"
+},
+"POLSCI 106A": {
+"buckets": {
+"1-5": {
+"n_course": 199,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 27,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 105,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "106A",
+"subject": "POLSCI"
+},
+"POLSCI 109M": {
+"buckets": {
+"1-5": {
+"n_course": 266,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 62,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "109M",
+"subject": "POLSCI"
+},
+"POLSCI 112B": {
+"buckets": {
+"1-5": {
+"n_course": 227,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 75,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "112B",
+"subject": "POLSCI"
+},
+"POLSCI 116D": {
+"buckets": {
+"1-5": {
+"n_course": 240,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 27,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "116D",
+"subject": "POLSCI"
+},
+"POLSCI 116P": {
+"buckets": {
+"1-5": {
+"n_course": 334,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 23,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 153,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "116P",
+"subject": "POLSCI"
+},
+"POLSCI 124A": {
+"buckets": {
+"1-5": {
+"n_course": 402,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 156,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"41+": {
+"n_course": 3,
+"pooled": "all",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 268,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "124A",
+"subject": "POLSCI"
+},
+"POLSCI 124R": {
+"buckets": {
+"1-5": {
+"n_course": 244,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 43,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "124R",
+"subject": "POLSCI"
+},
+"POLSCI 124W": {
+"buckets": {
+"1-5": {
+"n_course": 216,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 55,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "124W",
+"subject": "POLSCI"
+},
+"POLSCI 126A": {
+"buckets": {
+"1-5": {
+"n_course": 275,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 93,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "126A",
+"subject": "POLSCI"
+},
+"POLSCI 132C": {
+"buckets": {
+"1-5": {
+"n_course": 256,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 96,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "132C",
+"subject": "POLSCI"
+},
+"POLSCI 137H": {
+"buckets": {
+"1-5": {
+"n_course": 305,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 26,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 144,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "137H",
+"subject": "POLSCI"
+},
+"POLSCI 140F": {
+"buckets": {
+"1-5": {
+"n_course": 205,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 23,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "140F",
+"subject": "POLSCI"
+},
+"POLSCI 140O": {
+"buckets": {
+"1-5": {
+"n_course": 222,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 50,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "140O",
+"subject": "POLSCI"
+},
+"POLSCI 140W": {
+"buckets": {
+"1-5": {
+"n_course": 219,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 45,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "140W",
+"subject": "POLSCI"
+},
+"POLSCI 141A": {
+"buckets": {
+"1-5": {
+"n_course": 219,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 41,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "141A",
+"subject": "POLSCI"
+},
+"POLSCI 145A": {
+"buckets": {
+"1-5": {
+"n_course": 118,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "145A",
+"subject": "POLSCI"
+},
+"POLSCI 149B": {
+"buckets": {
+"1-5": {
+"n_course": 194,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 26,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "149B",
+"subject": "POLSCI"
+},
+"POLSCI 149E": {
+"buckets": {
+"1-5": {
+"n_course": 333,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 11,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"41+": {
+"n_course": 3,
+"pooled": "all",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 99,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "149E",
+"subject": "POLSCI"
+},
+"POLSCI 149W": {
+"buckets": {
+"1-5": {
+"n_course": 197,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "149W",
+"subject": "POLSCI"
+},
+"POLSCI 161": {
+"buckets": {
+"1-5": {
+"n_course": 426,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 5,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 133,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "161",
+"subject": "POLSCI"
+},
+"POLSCI 171": {
+"buckets": {
+"1-5": {
+"n_course": 226,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 22,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "171",
+"subject": "POLSCI"
+},
+"POLSCI 181": {
+"buckets": {
+"1-5": {
+"n_course": 226,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 82,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "181",
+"subject": "POLSCI"
+},
+"POLSCI 191": {
+"buckets": {
+"1-5": {
+"n_course": 418,
+"pooled": "POLSCI",
+"sections_course": 5
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "191",
+"subject": "POLSCI"
+},
+"POLSCI 200A": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "200A",
+"subject": "POLSCI"
+},
+"POLSCI 209A": {
+"buckets": {
+"1-5": {
+"n_course": 151,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "209A",
+"subject": "POLSCI"
+},
+"POLSCI 211": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "211",
+"subject": "POLSCI"
+},
+"POLSCI 215B": {
+"buckets": {
+"1-5": {
+"n_course": 104,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "215B",
+"subject": "POLSCI"
+},
+"POLSCI 220A": {
+"buckets": {
+"1-5": {
+"n_course": 74,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "220A",
+"subject": "POLSCI"
+},
+"POLSCI 231A": {
+"buckets": {
+"1-5": {
+"n_course": 130,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "231A",
+"subject": "POLSCI"
+},
+"POLSCI 231C": {
+"buckets": {
+"1-5": {
+"n_course": 56,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "231C",
+"subject": "POLSCI"
+},
+"POLSCI 232B": {
+"buckets": {
+"1-5": {
+"n_course": 64,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "232B",
+"subject": "POLSCI"
+},
+"POLSCI 234A": {
+"buckets": {
+"1-5": {
+"n_course": 125,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "234A",
+"subject": "POLSCI"
+},
+"POLSCI 24": {
+"buckets": {
+"1-5": {
+"n_course": 93,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "lower",
+"number": "24",
+"subject": "POLSCI"
+},
+"POLSCI 261": {
+"buckets": {
+"1-5": {
+"n_course": 69,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "261",
+"subject": "POLSCI"
+},
+"POLSCI 272": {
+"buckets": {
+"1-5": {
+"n_course": 153,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "272",
+"subject": "POLSCI"
+},
+"POLSCI 290": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "290",
+"subject": "POLSCI"
+},
+"POLSCI 290A": {
+"buckets": {
+"1-5": {
+"n_course": 74,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "290A",
+"subject": "POLSCI"
+},
+"POLSCI 290CP": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "290CP",
+"subject": "POLSCI"
+},
+"POLSCI 290IC": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "290IC",
+"subject": "POLSCI"
+},
+"POLSCI 290IE": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "290IE",
+"subject": "POLSCI"
+},
+"POLSCI 290IP": {
+"buckets": {
+"1-5": {
+"n_course": 46,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "290IP",
+"subject": "POLSCI"
+},
+"POLSCI 290PB": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "290PB",
+"subject": "POLSCI"
+},
+"POLSCI 290PI": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "290PI",
+"subject": "POLSCI"
+},
+"POLSCI 291AS": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "291AS",
+"subject": "POLSCI"
+},
+"POLSCI 3": {
+"buckets": {
+"1-5": {
+"n_course": 488,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 96,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 265,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "lower",
+"number": "3",
+"subject": "POLSCI"
+},
+"POLSCI 375": {
+"buckets": {
+"1-5": {
+"n_course": 67,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "grad",
+"number": "375",
+"subject": "POLSCI"
+},
+"POLSCI 5": {
+"buckets": {
+"1-5": {
+"n_course": 218,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 48,
+"pooled": "POLSCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 122,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "lower",
+"number": "5",
+"subject": "POLSCI"
+},
+"POLSCI C135": {
+"buckets": {
+"1-5": {
+"n_course": 80,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "C135",
+"subject": "POLSCI"
+},
+"POLSCI C196A": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "POLSCI",
+"sections_course": 1
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "C196A",
+"subject": "POLSCI"
+},
+"POLSCI H190A": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "POLSCI",
+"sections_course": 3
+}
+},
+"dept_group": "POLSCI",
+"level": "upper",
+"number": "H190A",
+"subject": "POLSCI"
+}
+},
+"subject": "POLSCI",
+"term_id": "2268"
+}

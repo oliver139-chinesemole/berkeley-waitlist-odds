@@ -1,0 +1,19 @@
+{
+"courses": {
+"NAVSCI 400C": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "400C",
+"subject": "NAVSCI"
+}
+},
+"subject": "NAVSCI",
+"term_id": "2268"
+}

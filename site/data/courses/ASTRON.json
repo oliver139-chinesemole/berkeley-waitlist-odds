@@ -1,0 +1,127 @@
+{
+"courses": {
+"ASTRON 11": {
+"buckets": {
+"1-5": {
+"n_course": 387,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 155,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 245,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "11",
+"subject": "ASTRON"
+},
+"ASTRON 120": {
+"buckets": {
+"1-5": {
+"n_course": 228,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 143,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "120",
+"subject": "ASTRON"
+},
+"ASTRON 160": {
+"buckets": {
+"1-5": {
+"n_course": 323,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 34,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 214,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "160",
+"subject": "ASTRON"
+},
+"ASTRON 252": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "252",
+"subject": "ASTRON"
+},
+"ASTRON 292": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "292",
+"subject": "ASTRON"
+},
+"ASTRON 7A": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "7A",
+"subject": "ASTRON"
+},
+"ASTRON C202": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C202",
+"subject": "ASTRON"
+}
+},
+"subject": "ASTRON",
+"term_id": "2268"
+}

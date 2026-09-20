@@ -1,0 +1,50 @@
+{
+"courses": {
+"DUTCH 1": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "DUTCH"
+},
+"DUTCH 171AC": {
+"buckets": {
+"1-5": {
+"n_course": 83,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "171AC",
+"subject": "DUTCH"
+},
+"DUTCH 24": {
+"buckets": {
+"1-5": {
+"n_course": 44,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "DUTCH"
+}
+},
+"subject": "DUTCH",
+"term_id": "2268"
+}

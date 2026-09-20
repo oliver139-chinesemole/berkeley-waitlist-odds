@@ -1,0 +1,45 @@
+{
+"courses": {
+"OPTOM 200AL": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200AL",
+"subject": "OPTOM"
+},
+"OPTOM 200CL": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200CL",
+"subject": "OPTOM"
+},
+"OPTOM 430B": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "430B",
+"subject": "OPTOM"
+}
+},
+"subject": "OPTOM",
+"term_id": "2268"
+}

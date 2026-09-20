@@ -1,0 +1,19 @@
+{
+"courses": {
+"MPS 375": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "375",
+"subject": "MPS"
+}
+},
+"subject": "MPS",
+"term_id": "2268"
+}

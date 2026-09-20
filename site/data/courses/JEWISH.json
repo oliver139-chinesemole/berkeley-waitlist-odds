@@ -1,0 +1,45 @@
+{
+"courses": {
+"JEWISH 100": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "JEWISH"
+},
+"JEWISH 120A": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "120A",
+"subject": "JEWISH"
+},
+"JEWISH 121B": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "121B",
+"subject": "JEWISH"
+}
+},
+"subject": "JEWISH",
+"term_id": "2268"
+}

@@ -1,0 +1,63 @@
+{
+"courses": {
+"RDEV 200": {
+"buckets": {
+"1-5": {
+"n_course": 47,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "RDEV"
+},
+"RDEV 225": {
+"buckets": {
+"1-5": {
+"n_course": 90,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "225",
+"subject": "RDEV"
+},
+"RDEV 250": {
+"buckets": {
+"1-5": {
+"n_course": 184,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "250",
+"subject": "RDEV"
+},
+"RDEV 260": {
+"buckets": {
+"1-5": {
+"n_course": 43,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "260",
+"subject": "RDEV"
+}
+},
+"subject": "RDEV",
+"term_id": "2268"
+}

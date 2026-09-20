@@ -1,0 +1,208 @@
+{
+"courses": {
+"CHICANO 130": {
+"buckets": {
+"1-5": {
+"n_course": 186,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130",
+"subject": "CHICANO"
+},
+"CHICANO 132": {
+"buckets": {
+"1-5": {
+"n_course": 138,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "132",
+"subject": "CHICANO"
+},
+"CHICANO 135B": {
+"buckets": {
+"1-5": {
+"n_course": 149,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "135B",
+"subject": "CHICANO"
+},
+"CHICANO 141": {
+"buckets": {
+"1-5": {
+"n_course": 102,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "141",
+"subject": "CHICANO"
+},
+"CHICANO 161": {
+"buckets": {
+"1-5": {
+"n_course": 80,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "161",
+"subject": "CHICANO"
+},
+"CHICANO 165": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "165",
+"subject": "CHICANO"
+},
+"CHICANO 175": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "175",
+"subject": "CHICANO"
+},
+"CHICANO 180": {
+"buckets": {
+"1-5": {
+"n_course": 248,
+"pooled": "OTHER",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "180",
+"subject": "CHICANO"
+},
+"CHICANO 190": {
+"buckets": {
+"1-5": {
+"n_course": 100,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "CHICANO"
+},
+"CHICANO 24": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "CHICANO"
+},
+"CHICANO 50": {
+"buckets": {
+"1-5": {
+"n_course": 129,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "50",
+"subject": "CHICANO"
+},
+"CHICANO C144L": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C144L",
+"subject": "CHICANO"
+},
+"CHICANO R1A": {
+"buckets": {
+"1-5": {
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1A",
+"subject": "CHICANO"
+},
+"CHICANO R1B": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "CHICANO"
+}
+},
+"subject": "CHICANO",
+"term_id": "2268"
+}

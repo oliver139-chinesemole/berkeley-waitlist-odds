@@ -1,0 +1,47 @@
+{
+"courses": {
+"NATRES 24": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "NATRES"
+},
+"NATRES 76": {
+"buckets": {
+"1-5": {
+"n_course": 138,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 65,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"41+": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 69,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "76",
+"subject": "NATRES"
+}
+},
+"subject": "NATRES",
+"term_id": "2268"
+}

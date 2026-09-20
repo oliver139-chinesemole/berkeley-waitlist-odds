@@ -1,0 +1,125 @@
+{
+"courses": {
+"COLWRIT 10A": {
+"buckets": {
+"1-5": {
+"n_course": 165,
+"pooled": "COLWRIT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 45,
+"pooled": "COLWRIT",
+"sections_course": 1
+}
+},
+"dept_group": "COLWRIT",
+"level": "lower",
+"number": "10A",
+"subject": "COLWRIT"
+},
+"COLWRIT 11": {
+"buckets": {
+"1-5": {
+"n_course": 336,
+"pooled": "COLWRIT",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 61,
+"pooled": "COLWRIT",
+"sections_course": 2
+}
+},
+"dept_group": "COLWRIT",
+"level": "lower",
+"number": "11",
+"subject": "COLWRIT"
+},
+"COLWRIT 130": {
+"buckets": {
+"1-5": {
+"n_course": 163,
+"pooled": "COLWRIT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 27,
+"pooled": "COLWRIT",
+"sections_course": 1
+}
+},
+"dept_group": "COLWRIT",
+"level": "upper",
+"number": "130",
+"subject": "COLWRIT"
+},
+"COLWRIT 131": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "COLWRIT",
+"sections_course": 1
+}
+},
+"dept_group": "COLWRIT",
+"level": "upper",
+"number": "131",
+"subject": "COLWRIT"
+},
+"COLWRIT 25AC": {
+"buckets": {
+"1-5": {
+"n_course": 100,
+"pooled": "COLWRIT",
+"sections_course": 1
+}
+},
+"dept_group": "COLWRIT",
+"level": "lower",
+"number": "25AC",
+"subject": "COLWRIT"
+},
+"COLWRIT R1A": {
+"buckets": {
+"1-5": {
+"n_course": 1589,
+"pooled": "COLWRIT",
+"sections_course": 39
+}
+},
+"dept_group": "COLWRIT",
+"level": "lower",
+"number": "R1A",
+"subject": "COLWRIT"
+},
+"COLWRIT R4A": {
+"buckets": {
+"1-5": {
+"n_course": 456,
+"pooled": "COLWRIT",
+"sections_course": 12
+}
+},
+"dept_group": "COLWRIT",
+"level": "lower",
+"number": "R4A",
+"subject": "COLWRIT"
+},
+"COLWRIT R4B": {
+"buckets": {
+"1-5": {
+"n_course": 888,
+"pooled": "COLWRIT",
+"sections_course": 30
+}
+},
+"dept_group": "COLWRIT",
+"level": "lower",
+"number": "R4B",
+"subject": "COLWRIT"
+}
+},
+"subject": "COLWRIT",
+"term_id": "2268"
+}

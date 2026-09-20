@@ -1,0 +1,373 @@
+{
+"courses": {
+"GEOG 10AC": {
+"buckets": {
+"1-5": {
+"n_course": 450,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 98,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 252,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10AC",
+"subject": "GEOG"
+},
+"GEOG 117": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "117",
+"subject": "GEOG"
+},
+"GEOG 127": {
+"buckets": {
+"1-5": {
+"n_course": 55,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "127",
+"subject": "GEOG"
+},
+"GEOG 138": {
+"buckets": {
+"1-5": {
+"n_course": 202,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 60,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "138",
+"subject": "GEOG"
+},
+"GEOG 170": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "170",
+"subject": "GEOG"
+},
+"GEOG 174": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "174",
+"subject": "GEOG"
+},
+"GEOG 20": {
+"buckets": {
+"1-5": {
+"n_course": 61,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20",
+"subject": "GEOG"
+},
+"GEOG 200A": {
+"buckets": {
+"1-5": {
+"n_course": 67,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200A",
+"subject": "GEOG"
+},
+"GEOG 200C": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200C",
+"subject": "GEOG"
+},
+"GEOG 203": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "203",
+"subject": "GEOG"
+},
+"GEOG 207": {
+"buckets": {
+"1-5": {
+"n_course": 118,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "207",
+"subject": "GEOG"
+},
+"GEOG 220": {
+"buckets": {
+"1-5": {
+"n_course": 112,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "220",
+"subject": "GEOG"
+},
+"GEOG 255": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "255",
+"subject": "GEOG"
+},
+"GEOG 285": {
+"buckets": {
+"1-5": {
+"n_course": 70,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "285",
+"subject": "GEOG"
+},
+"GEOG 40": {
+"buckets": {
+"1-5": {
+"n_course": 100,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "40",
+"subject": "GEOG"
+},
+"GEOG 50AC": {
+"buckets": {
+"1-5": {
+"n_course": 328,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 111,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 231,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "50AC",
+"subject": "GEOG"
+},
+"GEOG 84": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "84",
+"subject": "GEOG"
+},
+"GEOG C139": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C139",
+"subject": "GEOG"
+},
+"GEOG C160": {
+"buckets": {
+"1-5": {
+"n_course": 65,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C160",
+"subject": "GEOG"
+},
+"GEOG C188": {
+"buckets": {
+"1-5": {
+"n_course": 216,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 67,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C188",
+"subject": "GEOG"
+},
+"GEOG C32": {
+"buckets": {
+"1-5": {
+"n_course": 217,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 68,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C32",
+"subject": "GEOG"
+},
+"GEOG C55": {
+"buckets": {
+"1-5": {
+"n_course": 194,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C55",
+"subject": "GEOG"
+},
+"GEOG R1A": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1A",
+"subject": "GEOG"
+},
+"GEOG R1B": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "GEOG"
+}
+},
+"subject": "GEOG",
+"term_id": "2268"
+}

@@ -1,0 +1,45 @@
+{
+"courses": {
+"STS C100": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C100",
+"subject": "STS"
+},
+"STS C200": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C200",
+"subject": "STS"
+},
+"STS C204": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C204",
+"subject": "STS"
+}
+},
+"subject": "STS",
+"term_id": "2268"
+}

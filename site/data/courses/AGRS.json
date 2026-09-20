@@ -1,0 +1,122 @@
+{
+"courses": {
+"AGRS 10A": {
+"buckets": {
+"1-5": {
+"n_course": 285,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 107,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10A",
+"subject": "AGRS"
+},
+"AGRS 130E": {
+"buckets": {
+"1-5": {
+"n_course": 50,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130E",
+"subject": "AGRS"
+},
+"AGRS 130F": {
+"buckets": {
+"1-5": {
+"n_course": 117,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130F",
+"subject": "AGRS"
+},
+"AGRS 130S": {
+"buckets": {
+"1-5": {
+"n_course": 83,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130S",
+"subject": "AGRS"
+},
+"AGRS 17A": {
+"buckets": {
+"1-5": {
+"n_course": 85,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "17A",
+"subject": "AGRS"
+},
+"AGRS 24": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "AGRS"
+},
+"AGRS R44": {
+"buckets": {
+"1-5": {
+"n_course": 84,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 39,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R44",
+"subject": "AGRS"
+}
+},
+"subject": "AGRS",
+"term_id": "2268"
+}

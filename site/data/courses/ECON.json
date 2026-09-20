@@ -1,0 +1,734 @@
+{
+"courses": {
+"ECON 1": {
+"buckets": {
+"1-5": {
+"n_course": 820,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 369,
+"pooled": "ECON",
+"sections_course": 1
+},
+"41+": {
+"n_course": 149,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 585,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "lower",
+"number": "1",
+"subject": "ECON"
+},
+"ECON 100A": {
+"buckets": {
+"1-5": {
+"n_course": 760,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 541,
+"pooled": "ECON",
+"sections_course": 1
+},
+"41+": {
+"n_course": 299,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 570,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "100A",
+"subject": "ECON"
+},
+"ECON 100B": {
+"buckets": {
+"1-5": {
+"n_course": 817,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 524,
+"pooled": "ECON",
+"sections_course": 1
+},
+"41+": {
+"n_course": 261,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 594,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "100B",
+"subject": "ECON"
+},
+"ECON 101A": {
+"buckets": {
+"1-5": {
+"n_course": 278,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 78,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "101A",
+"subject": "ECON"
+},
+"ECON 101B": {
+"buckets": {
+"1-5": {
+"n_course": 162,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "101B",
+"subject": "ECON"
+},
+"ECON 109": {
+"buckets": {
+"1-5": {
+"n_course": 361,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 65,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "109",
+"subject": "ECON"
+},
+"ECON 119": {
+"buckets": {
+"1-5": {
+"n_course": 596,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 128,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 197,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "119",
+"subject": "ECON"
+},
+"ECON 130": {
+"buckets": {
+"1-5": {
+"n_course": 554,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 205,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 365,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "130",
+"subject": "ECON"
+},
+"ECON 131": {
+"buckets": {
+"1-5": {
+"n_course": 180,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 46,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "131",
+"subject": "ECON"
+},
+"ECON 134": {
+"buckets": {
+"1-5": {
+"n_course": 248,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 35,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 100,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "134",
+"subject": "ECON"
+},
+"ECON 135": {
+"buckets": {
+"1-5": {
+"n_course": 506,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 282,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 370,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "135",
+"subject": "ECON"
+},
+"ECON 136": {
+"buckets": {
+"1-5": {
+"n_course": 436,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 145,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 181,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "136",
+"subject": "ECON"
+},
+"ECON 139": {
+"buckets": {
+"1-5": {
+"n_course": 288,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 83,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 165,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "139",
+"subject": "ECON"
+},
+"ECON 140": {
+"buckets": {
+"1-5": {
+"n_course": 909,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 417,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 588,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "140",
+"subject": "ECON"
+},
+"ECON 141": {
+"buckets": {
+"1-5": {
+"n_course": 485,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 17,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 147,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "141",
+"subject": "ECON"
+},
+"ECON 151": {
+"buckets": {
+"1-5": {
+"n_course": 546,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 291,
+"pooled": "ECON",
+"sections_course": 1
+},
+"41+": {
+"n_course": 57,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 334,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "151",
+"subject": "ECON"
+},
+"ECON 155": {
+"buckets": {
+"1-5": {
+"n_course": 296,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 21,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 85,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "155",
+"subject": "ECON"
+},
+"ECON 155A": {
+"buckets": {
+"1-5": {
+"n_course": 346,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 31,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 165,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "155A",
+"subject": "ECON"
+},
+"ECON 165": {
+"buckets": {
+"1-5": {
+"n_course": 624,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 237,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 340,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "165",
+"subject": "ECON"
+},
+"ECON 174": {
+"buckets": {
+"1-5": {
+"n_course": 210,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 32,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "174",
+"subject": "ECON"
+},
+"ECON 191": {
+"buckets": {
+"1-5": {
+"n_course": 324,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 35,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 182,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "191",
+"subject": "ECON"
+},
+"ECON 2": {
+"buckets": {
+"1-5": {
+"n_course": 371,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 227,
+"pooled": "ECON",
+"sections_course": 1
+},
+"41+": {
+"n_course": 31,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 273,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "lower",
+"number": "2",
+"subject": "ECON"
+},
+"ECON 208": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "grad",
+"number": "208",
+"subject": "ECON"
+},
+"ECON 218": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "grad",
+"number": "218",
+"subject": "ECON"
+},
+"ECON 221": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "grad",
+"number": "221",
+"subject": "ECON"
+},
+"ECON 230A": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "grad",
+"number": "230A",
+"subject": "ECON"
+},
+"ECON 231": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "grad",
+"number": "231",
+"subject": "ECON"
+},
+"ECON 237": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "grad",
+"number": "237",
+"subject": "ECON"
+},
+"ECON 240A": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "grad",
+"number": "240A",
+"subject": "ECON"
+},
+"ECON 271": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "grad",
+"number": "271",
+"subject": "ECON"
+},
+"ECON C110": {
+"buckets": {
+"1-5": {
+"n_course": 288,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 94,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 124,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "C110",
+"subject": "ECON"
+},
+"ECON C125": {
+"buckets": {
+"1-5": {
+"n_course": 360,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 39,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 149,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "C125",
+"subject": "ECON"
+},
+"ECON C171": {
+"buckets": {
+"1-5": {
+"n_course": 114,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "C171",
+"subject": "ECON"
+},
+"ECON C181": {
+"buckets": {
+"1-5": {
+"n_course": 479,
+"pooled": "ECON",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 36,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 140,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "C181",
+"subject": "ECON"
+},
+"ECON C184": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "upper",
+"number": "C184",
+"subject": "ECON"
+},
+"ECON C3": {
+"buckets": {
+"1-5": {
+"n_course": 144,
+"pooled": "ECON",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "ECON",
+"sections_course": 1
+}
+},
+"dept_group": "ECON",
+"level": "lower",
+"number": "C3",
+"subject": "ECON"
+}
+},
+"subject": "ECON",
+"term_id": "2268"
+}

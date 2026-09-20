@@ -1,0 +1,205 @@
+{
+"courses": {
+"CHMENG 130": {
+"buckets": {
+"1-5": {
+"n_course": 114,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130",
+"subject": "CHMENG"
+},
+"CHMENG 140": {
+"buckets": {
+"1-5": {
+"n_course": 170,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 98,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "140",
+"subject": "CHMENG"
+},
+"CHMENG 142": {
+"buckets": {
+"1-5": {
+"n_course": 94,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "142",
+"subject": "CHMENG"
+},
+"CHMENG 150B": {
+"buckets": {
+"1-5": {
+"n_course": 99,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "150B",
+"subject": "CHMENG"
+},
+"CHMENG 154": {
+"buckets": {
+"1-5": {
+"n_course": 142,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "154",
+"subject": "CHMENG"
+},
+"CHMENG 170A": {
+"buckets": {
+"1-5": {
+"n_course": 102,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "170A",
+"subject": "CHMENG"
+},
+"CHMENG 179": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "179",
+"subject": "CHMENG"
+},
+"CHMENG 198": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "198",
+"subject": "CHMENG"
+},
+"CHMENG 236": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "236",
+"subject": "CHMENG"
+},
+"CHMENG 270A": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "270A",
+"subject": "CHMENG"
+},
+"CHMENG 295P": {
+"buckets": {
+"1-5": {
+"n_course": 58,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "295P",
+"subject": "CHMENG"
+},
+"CHMENG 298B": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "298B",
+"subject": "CHMENG"
+},
+"CHMENG C170L": {
+"buckets": {
+"1-5": {
+"n_course": 52,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C170L",
+"subject": "CHMENG"
+}
+},
+"subject": "CHMENG",
+"term_id": "2268"
+}

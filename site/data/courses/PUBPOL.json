@@ -1,0 +1,326 @@
+{
+"courses": {
+"PUBPOL 101": {
+"buckets": {
+"1-5": {
+"n_course": 583,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 187,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"41+": {
+"n_course": 4,
+"pooled": "all",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 340,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "upper",
+"number": "101",
+"subject": "PUBPOL"
+},
+"PUBPOL 118": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "upper",
+"number": "118",
+"subject": "PUBPOL"
+},
+"PUBPOL 141": {
+"buckets": {
+"1-5": {
+"n_course": 329,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 128,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "upper",
+"number": "141",
+"subject": "PUBPOL"
+},
+"PUBPOL 147": {
+"buckets": {
+"1-5": {
+"n_course": 112,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 11,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "upper",
+"number": "147",
+"subject": "PUBPOL"
+},
+"PUBPOL 190": {
+"buckets": {
+"1-5": {
+"n_course": 347,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 67,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "upper",
+"number": "190",
+"subject": "PUBPOL"
+},
+"PUBPOL 200A": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "200A",
+"subject": "PUBPOL"
+},
+"PUBPOL 210A": {
+"buckets": {
+"1-5": {
+"n_course": 192,
+"pooled": "PUBPOL",
+"sections_course": 2
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "210A",
+"subject": "PUBPOL"
+},
+"PUBPOL 229": {
+"buckets": {
+"1-5": {
+"n_course": 108,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "229",
+"subject": "PUBPOL"
+},
+"PUBPOL 230": {
+"buckets": {
+"1-5": {
+"n_course": 104,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "230",
+"subject": "PUBPOL"
+},
+"PUBPOL 235": {
+"buckets": {
+"1-5": {
+"n_course": 158,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "235",
+"subject": "PUBPOL"
+},
+"PUBPOL 240A": {
+"buckets": {
+"1-5": {
+"n_course": 112,
+"pooled": "PUBPOL",
+"sections_course": 2
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "240A",
+"subject": "PUBPOL"
+},
+"PUBPOL 246": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "246",
+"subject": "PUBPOL"
+},
+"PUBPOL 250": {
+"buckets": {
+"1-5": {
+"n_course": 77,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "250",
+"subject": "PUBPOL"
+},
+"PUBPOL 255": {
+"buckets": {
+"1-5": {
+"n_course": 139,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "255",
+"subject": "PUBPOL"
+},
+"PUBPOL 259": {
+"buckets": {
+"1-5": {
+"n_course": 195,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 42,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "259",
+"subject": "PUBPOL"
+},
+"PUBPOL 265": {
+"buckets": {
+"1-5": {
+"n_course": 157,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "265",
+"subject": "PUBPOL"
+},
+"PUBPOL 287": {
+"buckets": {
+"1-5": {
+"n_course": 74,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "287",
+"subject": "PUBPOL"
+},
+"PUBPOL 290": {
+"buckets": {
+"1-5": {
+"n_course": 1100,
+"pooled": "PUBPOL",
+"sections_course": 14
+},
+"16-40": {
+"n_course": 3,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 191,
+"pooled": "PUBPOL",
+"sections_course": 2
+}
+},
+"dept_group": "PUBPOL",
+"level": "grad",
+"number": "290",
+"subject": "PUBPOL"
+},
+"PUBPOL C151": {
+"buckets": {
+"1-5": {
+"n_course": 155,
+"pooled": "PUBPOL",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 66,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "upper",
+"number": "C151",
+"subject": "PUBPOL"
+},
+"PUBPOL C199C": {
+"buckets": {
+"1-5": {
+"n_course": 30,
+"pooled": "PUBPOL",
+"sections_course": 1
+}
+},
+"dept_group": "PUBPOL",
+"level": "upper",
+"number": "C199C",
+"subject": "PUBPOL"
+}
+},
+"subject": "PUBPOL",
+"term_id": "2268"
+}

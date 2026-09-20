@@ -1,0 +1,672 @@
+{
+"courses": {
+"ESPM 100": {
+"buckets": {
+"1-5": {
+"n_course": 446,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 225,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "100",
+"subject": "ESPM"
+},
+"ESPM 101A": {
+"buckets": {
+"1-5": {
+"n_course": 340,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 40,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 203,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "101A",
+"subject": "ESPM"
+},
+"ESPM 108A": {
+"buckets": {
+"1-5": {
+"n_course": 169,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 38,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "108A",
+"subject": "ESPM"
+},
+"ESPM 116B": {
+"buckets": {
+"1-5": {
+"n_course": 149,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "116B",
+"subject": "ESPM"
+},
+"ESPM 118": {
+"buckets": {
+"1-5": {
+"n_course": 290,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 89,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "118",
+"subject": "ESPM"
+},
+"ESPM 132": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "132",
+"subject": "ESPM"
+},
+"ESPM 136": {
+"buckets": {
+"1-5": {
+"n_course": 385,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 81,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 240,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "136",
+"subject": "ESPM"
+},
+"ESPM 137": {
+"buckets": {
+"1-5": {
+"n_course": 124,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "137",
+"subject": "ESPM"
+},
+"ESPM 142": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "142",
+"subject": "ESPM"
+},
+"ESPM 15": {
+"buckets": {
+"1-5": {
+"n_course": 381,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 58,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 157,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "15",
+"subject": "ESPM"
+},
+"ESPM 154": {
+"buckets": {
+"1-5": {
+"n_course": 100,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "154",
+"subject": "ESPM"
+},
+"ESPM 157": {
+"buckets": {
+"1-5": {
+"n_course": 292,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 33,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 135,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "157",
+"subject": "ESPM"
+},
+"ESPM 160AC": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "160AC",
+"subject": "ESPM"
+},
+"ESPM 175A": {
+"buckets": {
+"1-5": {
+"n_course": 70,
+"pooled": "ESPM",
+"sections_course": 2
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "175A",
+"subject": "ESPM"
+},
+"ESPM 175L": {
+"buckets": {
+"1-5": {
+"n_course": 59,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "175L",
+"subject": "ESPM"
+},
+"ESPM 182": {
+"buckets": {
+"1-5": {
+"n_course": 184,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 41,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "182",
+"subject": "ESPM"
+},
+"ESPM 185": {
+"buckets": {
+"1-5": {
+"n_course": 115,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "185",
+"subject": "ESPM"
+},
+"ESPM 194A": {
+"buckets": {
+"1-5": {
+"n_course": 44,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "194A",
+"subject": "ESPM"
+},
+"ESPM 2": {
+"buckets": {
+"1-5": {
+"n_course": 363,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 74,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 165,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "2",
+"subject": "ESPM"
+},
+"ESPM 201C": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "201C",
+"subject": "ESPM"
+},
+"ESPM 211A": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "211A",
+"subject": "ESPM"
+},
+"ESPM 215": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "215",
+"subject": "ESPM"
+},
+"ESPM 217": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "217",
+"subject": "ESPM"
+},
+"ESPM 226": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "226",
+"subject": "ESPM"
+},
+"ESPM 230": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "230",
+"subject": "ESPM"
+},
+"ESPM 231": {
+"buckets": {
+"1-5": {
+"n_course": 127,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "231",
+"subject": "ESPM"
+},
+"ESPM 244": {
+"buckets": {
+"1-5": {
+"n_course": 46,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "244",
+"subject": "ESPM"
+},
+"ESPM 290": {
+"buckets": {
+"1-5": {
+"n_course": 73,
+"pooled": "ESPM",
+"sections_course": 3
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "290",
+"subject": "ESPM"
+},
+"ESPM 42": {
+"buckets": {
+"1-5": {
+"n_course": 189,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 63,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "42",
+"subject": "ESPM"
+},
+"ESPM 50AC": {
+"buckets": {
+"1-5": {
+"n_course": 993,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 690,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"41+": {
+"n_course": 404,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 739,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "50AC",
+"subject": "ESPM"
+},
+"ESPM 90": {
+"buckets": {
+"1-5": {
+"n_course": 247,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "90",
+"subject": "ESPM"
+},
+"ESPM C103": {
+"buckets": {
+"1-5": {
+"n_course": 322,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 128,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C103",
+"subject": "ESPM"
+},
+"ESPM C104": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C104",
+"subject": "ESPM"
+},
+"ESPM C105": {
+"buckets": {
+"1-5": {
+"n_course": 116,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C105",
+"subject": "ESPM"
+},
+"ESPM C110A": {
+"buckets": {
+"1-5": {
+"n_course": 228,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 54,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C110A",
+"subject": "ESPM"
+},
+"ESPM C125": {
+"buckets": {
+"1-5": {
+"n_course": 51,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C125",
+"subject": "ESPM"
+},
+"ESPM C126": {
+"buckets": {
+"1-5": {
+"n_course": 118,
+"pooled": "ESPM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C126",
+"subject": "ESPM"
+},
+"ESPM C179A": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C179A",
+"subject": "ESPM"
+},
+"ESPM C218": {
+"buckets": {
+"1-5": {
+"n_course": 50,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "C218",
+"subject": "ESPM"
+},
+"ESPM C223": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "C223",
+"subject": "ESPM"
+},
+"ESPM H175A": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "H175A",
+"subject": "ESPM"
+},
+"ESPM H175L": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "H175L",
+"subject": "ESPM"
+}
+},
+"subject": "ESPM",
+"term_id": "2268"
+}

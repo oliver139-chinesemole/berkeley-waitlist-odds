@@ -1,0 +1,448 @@
+{
+"courses": {
+"ANTHRO 106": {
+"buckets": {
+"1-5": {
+"n_course": 201,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "106",
+"subject": "ANTHRO"
+},
+"ANTHRO 111": {
+"buckets": {
+"1-5": {
+"n_course": 373,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 112,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "111",
+"subject": "ANTHRO"
+},
+"ANTHRO 112": {
+"buckets": {
+"1-5": {
+"n_course": 165,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 25,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "112",
+"subject": "ANTHRO"
+},
+"ANTHRO 121AC": {
+"buckets": {
+"1-5": {
+"n_course": 173,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "121AC",
+"subject": "ANTHRO"
+},
+"ANTHRO 122A": {
+"buckets": {
+"1-5": {
+"n_course": 51,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "122A",
+"subject": "ANTHRO"
+},
+"ANTHRO 123A": {
+"buckets": {
+"1-5": {
+"n_course": 234,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 64,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "123A",
+"subject": "ANTHRO"
+},
+"ANTHRO 127A": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "127A",
+"subject": "ANTHRO"
+},
+"ANTHRO 128M": {
+"buckets": {
+"1-5": {
+"n_course": 46,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "128M",
+"subject": "ANTHRO"
+},
+"ANTHRO 136B": {
+"buckets": {
+"1-5": {
+"n_course": 214,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 63,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "136B",
+"subject": "ANTHRO"
+},
+"ANTHRO 141": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "141",
+"subject": "ANTHRO"
+},
+"ANTHRO 142": {
+"buckets": {
+"1-5": {
+"n_course": 59,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "142",
+"subject": "ANTHRO"
+},
+"ANTHRO 149": {
+"buckets": {
+"1-5": {
+"n_course": 341,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 44,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "149",
+"subject": "ANTHRO"
+},
+"ANTHRO 150": {
+"buckets": {
+"1-5": {
+"n_course": 311,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 3,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 92,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "150",
+"subject": "ANTHRO"
+},
+"ANTHRO 159": {
+"buckets": {
+"1-5": {
+"n_course": 176,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 43,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "159",
+"subject": "ANTHRO"
+},
+"ANTHRO 183": {
+"buckets": {
+"1-5": {
+"n_course": 43,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "183",
+"subject": "ANTHRO"
+},
+"ANTHRO 189": {
+"buckets": {
+"1-5": {
+"n_course": 231,
+"pooled": "ANTHRO",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 8,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "189",
+"subject": "ANTHRO"
+},
+"ANTHRO 196": {
+"buckets": {
+"1-5": {
+"n_course": 111,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "196",
+"subject": "ANTHRO"
+},
+"ANTHRO 215A": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "grad",
+"number": "215A",
+"subject": "ANTHRO"
+},
+"ANTHRO 229A": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "grad",
+"number": "229A",
+"subject": "ANTHRO"
+},
+"ANTHRO 240A": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "grad",
+"number": "240A",
+"subject": "ANTHRO"
+},
+"ANTHRO 250X": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "ANTHRO",
+"sections_course": 2
+}
+},
+"dept_group": "ANTHRO",
+"level": "grad",
+"number": "250X",
+"subject": "ANTHRO"
+},
+"ANTHRO 290": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "grad",
+"number": "290",
+"subject": "ANTHRO"
+},
+"ANTHRO 291": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "grad",
+"number": "291",
+"subject": "ANTHRO"
+},
+"ANTHRO 2AC": {
+"buckets": {
+"1-5": {
+"n_course": 368,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 189,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 259,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "lower",
+"number": "2AC",
+"subject": "ANTHRO"
+},
+"ANTHRO 375": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "grad",
+"number": "375",
+"subject": "ANTHRO"
+},
+"ANTHRO 3AC": {
+"buckets": {
+"1-5": {
+"n_course": 400,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 210,
+"pooled": "ANTHRO",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 284,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "lower",
+"number": "3AC",
+"subject": "ANTHRO"
+},
+"ANTHRO C125B": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "upper",
+"number": "C125B",
+"subject": "ANTHRO"
+},
+"ANTHRO C262A": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "ANTHRO",
+"sections_course": 1
+}
+},
+"dept_group": "ANTHRO",
+"level": "grad",
+"number": "C262A",
+"subject": "ANTHRO"
+},
+"ANTHRO R5B": {
+"buckets": {
+"1-5": {
+"n_course": 225,
+"pooled": "ANTHRO",
+"sections_course": 6
+}
+},
+"dept_group": "ANTHRO",
+"level": "lower",
+"number": "R5B",
+"subject": "ANTHRO"
+}
+},
+"subject": "ANTHRO",
+"term_id": "2268"
+}

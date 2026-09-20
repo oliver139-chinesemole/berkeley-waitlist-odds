@@ -1,0 +1,208 @@
+{
+"courses": {
+"AFRICAM 114": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "114",
+"subject": "AFRICAM"
+},
+"AFRICAM 136L": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "136L",
+"subject": "AFRICAM"
+},
+"AFRICAM 139": {
+"buckets": {
+"1-5": {
+"n_course": 51,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "139",
+"subject": "AFRICAM"
+},
+"AFRICAM 144": {
+"buckets": {
+"1-5": {
+"n_course": 48,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "144",
+"subject": "AFRICAM"
+},
+"AFRICAM 159": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "159",
+"subject": "AFRICAM"
+},
+"AFRICAM 194A": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "194A",
+"subject": "AFRICAM"
+},
+"AFRICAM 198BC": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "198BC",
+"subject": "AFRICAM"
+},
+"AFRICAM 240": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "240",
+"subject": "AFRICAM"
+},
+"AFRICAM 241": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "241",
+"subject": "AFRICAM"
+},
+"AFRICAM 27AC": {
+"buckets": {
+"1-5": {
+"n_course": 327,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 97,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 200,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "27AC",
+"subject": "AFRICAM"
+},
+"AFRICAM 5A": {
+"buckets": {
+"1-5": {
+"n_course": 242,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 152,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "5A",
+"subject": "AFRICAM"
+},
+"AFRICAM 98BC": {
+"buckets": {
+"1-5": {
+"n_course": 47,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "98BC",
+"subject": "AFRICAM"
+},
+"AFRICAM C133A": {
+"buckets": {
+"1-5": {
+"n_course": 83,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C133A",
+"subject": "AFRICAM"
+},
+"AFRICAM R1B": {
+"buckets": {
+"1-5": {
+"n_course": 45,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "AFRICAM"
+}
+},
+"subject": "AFRICAM",
+"term_id": "2268"
+}

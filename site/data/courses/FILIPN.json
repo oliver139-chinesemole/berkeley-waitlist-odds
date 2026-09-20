@@ -1,0 +1,32 @@
+{
+"courses": {
+"FILIPN 100A": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100A",
+"subject": "FILIPN"
+},
+"FILIPN 1A": {
+"buckets": {
+"1-5": {
+"n_course": 75,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "FILIPN"
+}
+},
+"subject": "FILIPN",
+"term_id": "2268"
+}

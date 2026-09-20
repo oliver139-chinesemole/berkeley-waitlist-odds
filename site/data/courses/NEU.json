@@ -1,0 +1,240 @@
+{
+"courses": {
+"NEU 100A": {
+"buckets": {
+"1-5": {
+"n_course": 576,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 383,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"41+": {
+"n_course": 165,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 405,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100A",
+"subject": "NEU"
+},
+"NEU 110": {
+"buckets": {
+"1-5": {
+"n_course": 519,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 124,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 283,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110",
+"subject": "NEU"
+},
+"NEU 151": {
+"buckets": {
+"1-5": {
+"n_course": 255,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 94,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "151",
+"subject": "NEU"
+},
+"NEU 164": {
+"buckets": {
+"1-5": {
+"n_course": 75,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "164",
+"subject": "NEU"
+},
+"NEU 171L": {
+"buckets": {
+"1-5": {
+"n_course": 315,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 163,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "171L",
+"subject": "NEU"
+},
+"NEU 172L": {
+"buckets": {
+"1-5": {
+"n_course": 313,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 114,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "172L",
+"subject": "NEU"
+},
+"NEU 210A": {
+"buckets": {
+"1-5": {
+"n_course": 34,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210A",
+"subject": "NEU"
+},
+"NEU 290": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "290",
+"subject": "NEU"
+},
+"NEU 295": {
+"buckets": {
+"1-5": {
+"n_course": 232,
+"pooled": "OTHER",
+"sections_course": 12
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "295",
+"subject": "NEU"
+},
+"NEU 77": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "77",
+"subject": "NEU"
+},
+"NEU C166": {
+"buckets": {
+"1-5": {
+"n_course": 379,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 219,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 252,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C166",
+"subject": "NEU"
+},
+"NEU C231": {
+"buckets": {
+"1-5": {
+"n_course": 96,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C231",
+"subject": "NEU"
+},
+"NEU C61": {
+"buckets": {
+"1-5": {
+"n_course": 331,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 102,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 188,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C61",
+"subject": "NEU"
+}
+},
+"subject": "NEU",
+"term_id": "2268"
+}

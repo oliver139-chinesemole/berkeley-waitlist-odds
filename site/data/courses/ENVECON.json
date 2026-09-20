@@ -1,0 +1,158 @@
+{
+"courses": {
+"ENVECON 100": {
+"buckets": {
+"1-5": {
+"n_course": 72,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "ENVECON"
+},
+"ENVECON 185": {
+"buckets": {
+"1-5": {
+"n_course": 306,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 153,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "185",
+"subject": "ENVECON"
+},
+"ENVECON C1": {
+"buckets": {
+"1-5": {
+"n_course": 207,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 54,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C1",
+"subject": "ENVECON"
+},
+"ENVECON C101": {
+"buckets": {
+"1-5": {
+"n_course": 374,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 165,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C101",
+"subject": "ENVECON"
+},
+"ENVECON C118": {
+"buckets": {
+"1-5": {
+"n_course": 159,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C118",
+"subject": "ENVECON"
+},
+"ENVECON C132": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C132",
+"subject": "ENVECON"
+},
+"ENVECON C175": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C175",
+"subject": "ENVECON"
+},
+"ENVECON C176": {
+"buckets": {
+"1-5": {
+"n_course": 459,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 34,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 218,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C176",
+"subject": "ENVECON"
+},
+"ENVECON C181": {
+"buckets": {
+"1-5": {
+"n_course": 204,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C181",
+"subject": "ENVECON"
+}
+},
+"subject": "ENVECON",
+"term_id": "2268"
+}

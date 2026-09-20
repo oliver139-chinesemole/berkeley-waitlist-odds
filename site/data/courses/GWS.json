@@ -1,0 +1,205 @@
+{
+"courses": {
+"GWS 10": {
+"buckets": {
+"1-5": {
+"n_course": 205,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "GWS"
+},
+"GWS 100AC": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100AC",
+"subject": "GWS"
+},
+"GWS 102": {
+"buckets": {
+"1-5": {
+"n_course": 95,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "GWS"
+},
+"GWS 111": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "111",
+"subject": "GWS"
+},
+"GWS 112": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "112",
+"subject": "GWS"
+},
+"GWS 125": {
+"buckets": {
+"1-5": {
+"n_course": 82,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "125",
+"subject": "GWS"
+},
+"GWS 130AC": {
+"buckets": {
+"1-5": {
+"n_course": 174,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 57,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130AC",
+"subject": "GWS"
+},
+"GWS 131": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "131",
+"subject": "GWS"
+},
+"GWS 133AC": {
+"buckets": {
+"1-5": {
+"n_course": 151,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 41,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "133AC",
+"subject": "GWS"
+},
+"GWS 142": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "142",
+"subject": "GWS"
+},
+"GWS 235": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "235",
+"subject": "GWS"
+},
+"GWS 236": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "236",
+"subject": "GWS"
+},
+"GWS 50AC": {
+"buckets": {
+"1-5": {
+"n_course": 210,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 34,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 114,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "50AC",
+"subject": "GWS"
+}
+},
+"subject": "GWS",
+"term_id": "2268"
+}

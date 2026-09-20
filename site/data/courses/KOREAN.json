@@ -1,0 +1,97 @@
+{
+"courses": {
+"KOREAN 10A": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10A",
+"subject": "KOREAN"
+},
+"KOREAN 10AX": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10AX",
+"subject": "KOREAN"
+},
+"KOREAN 186": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "186",
+"subject": "KOREAN"
+},
+"KOREAN 189": {
+"buckets": {
+"1-5": {
+"n_course": 41,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "189",
+"subject": "KOREAN"
+},
+"KOREAN 1A": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "KOREAN"
+},
+"KOREAN 1AX": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1AX",
+"subject": "KOREAN"
+},
+"KOREAN 7A": {
+"buckets": {
+"1-5": {
+"n_course": 45,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "7A",
+"subject": "KOREAN"
+}
+},
+"subject": "KOREAN",
+"term_id": "2268"
+}

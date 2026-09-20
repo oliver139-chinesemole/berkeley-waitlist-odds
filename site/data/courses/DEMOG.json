@@ -1,0 +1,32 @@
+{
+"courses": {
+"DEMOG 110": {
+"buckets": {
+"1-5": {
+"n_course": 50,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110",
+"subject": "DEMOG"
+},
+"DEMOG C126": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C126",
+"subject": "DEMOG"
+}
+},
+"subject": "DEMOG",
+"term_id": "2268"
+}

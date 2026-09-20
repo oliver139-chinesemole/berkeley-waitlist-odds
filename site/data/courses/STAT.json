@@ -1,0 +1,585 @@
+{
+"courses": {
+"STAT 133": {
+"buckets": {
+"1-5": {
+"n_course": 556,
+"pooled": "STAT",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 168,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 241,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "133",
+"subject": "STAT"
+},
+"STAT 134": {
+"buckets": {
+"1-5": {
+"n_course": 815,
+"pooled": "STAT",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 298,
+"pooled": "STAT",
+"sections_course": 1
+},
+"41+": {
+"n_course": 65,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 363,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "134",
+"subject": "STAT"
+},
+"STAT 135": {
+"buckets": {
+"1-5": {
+"n_course": 432,
+"pooled": "STAT",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 20,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 124,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "135",
+"subject": "STAT"
+},
+"STAT 150": {
+"buckets": {
+"1-5": {
+"n_course": 187,
+"pooled": "STAT",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 26,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 111,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "150",
+"subject": "STAT"
+},
+"STAT 151A": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "151A",
+"subject": "STAT"
+},
+"STAT 153": {
+"buckets": {
+"1-5": {
+"n_course": 504,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 73,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "153",
+"subject": "STAT"
+},
+"STAT 154": {
+"buckets": {
+"1-5": {
+"n_course": 100,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "154",
+"subject": "STAT"
+},
+"STAT 155": {
+"buckets": {
+"1-5": {
+"n_course": 432,
+"pooled": "STAT",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 20,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 232,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "155",
+"subject": "STAT"
+},
+"STAT 157": {
+"buckets": {
+"1-5": {
+"n_course": 253,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 46,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "157",
+"subject": "STAT"
+},
+"STAT 159": {
+"buckets": {
+"1-5": {
+"n_course": 331,
+"pooled": "STAT",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 39,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 197,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "159",
+"subject": "STAT"
+},
+"STAT 2": {
+"buckets": {
+"1-5": {
+"n_course": 624,
+"pooled": "STAT",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 154,
+"pooled": "STAT",
+"sections_course": 1
+},
+"41+": {
+"n_course": 26,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 278,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "lower",
+"number": "2",
+"subject": "STAT"
+},
+"STAT 20": {
+"buckets": {
+"1-5": {
+"n_course": 2627,
+"pooled": "STAT",
+"sections_course": 9
+},
+"16-40": {
+"n_course": 426,
+"pooled": "STAT",
+"sections_course": 9
+},
+"6-15": {
+"n_course": 1545,
+"pooled": "STAT",
+"sections_course": 9
+}
+},
+"dept_group": "STAT",
+"level": "lower",
+"number": "20",
+"subject": "STAT"
+},
+"STAT 201A": {
+"buckets": {
+"1-5": {
+"n_course": 258,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 50,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "201A",
+"subject": "STAT"
+},
+"STAT 201B": {
+"buckets": {
+"1-5": {
+"n_course": 208,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "201B",
+"subject": "STAT"
+},
+"STAT 210A": {
+"buckets": {
+"1-5": {
+"n_course": 91,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "210A",
+"subject": "STAT"
+},
+"STAT 215A": {
+"buckets": {
+"1-5": {
+"n_course": 228,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 65,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "215A",
+"subject": "STAT"
+},
+"STAT 243A": {
+"buckets": {
+"1-5": {
+"n_course": 66,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "243A",
+"subject": "STAT"
+},
+"STAT 243B": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "243B",
+"subject": "STAT"
+},
+"STAT 248": {
+"buckets": {
+"1-5": {
+"n_course": 120,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "248",
+"subject": "STAT"
+},
+"STAT 254": {
+"buckets": {
+"1-5": {
+"n_course": 171,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "254",
+"subject": "STAT"
+},
+"STAT 256": {
+"buckets": {
+"1-5": {
+"n_course": 237,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 89,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "256",
+"subject": "STAT"
+},
+"STAT 259": {
+"buckets": {
+"1-5": {
+"n_course": 47,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "259",
+"subject": "STAT"
+},
+"STAT 260": {
+"buckets": {
+"1-5": {
+"n_course": 72,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "260",
+"subject": "STAT"
+},
+"STAT 375": {
+"buckets": {
+"1-5": {
+"n_course": 50,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "375",
+"subject": "STAT"
+},
+"STAT 700": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "700",
+"subject": "STAT"
+},
+"STAT C100": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "C100",
+"subject": "STAT"
+},
+"STAT C102": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "C102",
+"subject": "STAT"
+},
+"STAT C131A": {
+"buckets": {
+"1-5": {
+"n_course": 315,
+"pooled": "STAT",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 38,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 210,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "C131A",
+"subject": "STAT"
+},
+"STAT C140": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "upper",
+"number": "C140",
+"subject": "STAT"
+},
+"STAT C200C": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "C200C",
+"subject": "STAT"
+},
+"STAT C205A": {
+"buckets": {
+"1-5": {
+"n_course": 70,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "C205A",
+"subject": "STAT"
+},
+"STAT C241A": {
+"buckets": {
+"1-5": {
+"n_course": 161,
+"pooled": "STAT",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 26,
+"pooled": "STAT",
+"sections_course": 1
+}
+},
+"dept_group": "STAT",
+"level": "grad",
+"number": "C241A",
+"subject": "STAT"
+},
+"STAT C8": {
+"buckets": {
+"1-5": {
+"n_course": 70,
+"pooled": "STAT",
+"sections_course": 2
+}
+},
+"dept_group": "STAT",
+"level": "lower",
+"number": "C8",
+"subject": "STAT"
+}
+},
+"subject": "STAT",
+"term_id": "2268"
+}

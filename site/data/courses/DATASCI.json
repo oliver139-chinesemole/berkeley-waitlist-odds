@@ -1,0 +1,259 @@
+{
+"courses": {
+"DATASCI 200": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "DATASCI",
+"sections_course": 3
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "200",
+"subject": "DATASCI"
+},
+"DATASCI 201": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "DATASCI",
+"sections_course": 7
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "201",
+"subject": "DATASCI"
+},
+"DATASCI 203": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "DATASCI",
+"sections_course": 3
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "203",
+"subject": "DATASCI"
+},
+"DATASCI 204": {
+"buckets": {
+"1-5": {
+"n_course": 216,
+"pooled": "DATASCI",
+"sections_course": 9
+},
+"6-15": {
+"n_course": 2,
+"pooled": "DATASCI",
+"sections_course": 1
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "204",
+"subject": "DATASCI"
+},
+"DATASCI 207": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "DATASCI",
+"sections_course": 5
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "207",
+"subject": "DATASCI"
+},
+"DATASCI 209": {
+"buckets": {
+"1-5": {
+"n_course": 66,
+"pooled": "DATASCI",
+"sections_course": 2
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "209",
+"subject": "DATASCI"
+},
+"DATASCI 210": {
+"buckets": {
+"1-5": {
+"n_course": 191,
+"pooled": "DATASCI",
+"sections_course": 6
+},
+"6-15": {
+"n_course": 4,
+"pooled": "DATASCI",
+"sections_course": 1
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "210",
+"subject": "DATASCI"
+},
+"DATASCI 221": {
+"buckets": {
+"1-5": {
+"n_course": 85,
+"pooled": "DATASCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 39,
+"pooled": "DATASCI",
+"sections_course": 1
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "221",
+"subject": "DATASCI"
+},
+"DATASCI 231": {
+"buckets": {
+"1-5": {
+"n_course": 61,
+"pooled": "DATASCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "DATASCI",
+"sections_course": 1
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "231",
+"subject": "DATASCI"
+},
+"DATASCI 241": {
+"buckets": {
+"1-5": {
+"n_course": 34,
+"pooled": "DATASCI",
+"sections_course": 3
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "241",
+"subject": "DATASCI"
+},
+"DATASCI 255": {
+"buckets": {
+"1-5": {
+"n_course": 254,
+"pooled": "DATASCI",
+"sections_course": 4
+},
+"6-15": {
+"n_course": 59,
+"pooled": "DATASCI",
+"sections_course": 3
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "255",
+"subject": "DATASCI"
+},
+"DATASCI 261": {
+"buckets": {
+"1-5": {
+"n_course": 166,
+"pooled": "DATASCI",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 12,
+"pooled": "DATASCI",
+"sections_course": 3
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "261",
+"subject": "DATASCI"
+},
+"DATASCI 266": {
+"buckets": {
+"1-5": {
+"n_course": 217,
+"pooled": "DATASCI",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 33,
+"pooled": "DATASCI",
+"sections_course": 3
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "266",
+"subject": "DATASCI"
+},
+"DATASCI 267": {
+"buckets": {
+"1-5": {
+"n_course": 214,
+"pooled": "DATASCI",
+"sections_course": 5
+},
+"6-15": {
+"n_course": 8,
+"pooled": "DATASCI",
+"sections_course": 1
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "267",
+"subject": "DATASCI"
+},
+"DATASCI 271": {
+"buckets": {
+"1-5": {
+"n_course": 79,
+"pooled": "DATASCI",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "DATASCI",
+"sections_course": 1
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "271",
+"subject": "DATASCI"
+},
+"DATASCI 281": {
+"buckets": {
+"1-5": {
+"n_course": 43,
+"pooled": "DATASCI",
+"sections_course": 2
+}
+},
+"dept_group": "DATASCI",
+"level": "grad",
+"number": "281",
+"subject": "DATASCI"
+}
+},
+"subject": "DATASCI",
+"term_id": "2268"
+}

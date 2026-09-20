@@ -1,0 +1,120 @@
+{
+"courses": {
+"ISF 100A": {
+"buckets": {
+"1-5": {
+"n_course": 134,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100A",
+"subject": "ISF"
+},
+"ISF 100B": {
+"buckets": {
+"1-5": {
+"n_course": 108,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100B",
+"subject": "ISF"
+},
+"ISF 100C": {
+"buckets": {
+"1-5": {
+"n_course": 151,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 12,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100C",
+"subject": "ISF"
+},
+"ISF 100F": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100F",
+"subject": "ISF"
+},
+"ISF 110": {
+"buckets": {
+"1-5": {
+"n_course": 64,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110",
+"subject": "ISF"
+},
+"ISF 189": {
+"buckets": {
+"1-5": {
+"n_course": 270,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "189",
+"subject": "ISF"
+},
+"ISF 190": {
+"buckets": {
+"1-5": {
+"n_course": 71,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "ISF"
+},
+"ISF C100G": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C100G",
+"subject": "ISF"
+}
+},
+"subject": "ISF",
+"term_id": "2268"
+}

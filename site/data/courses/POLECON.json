@@ -1,0 +1,170 @@
+{
+"courses": {
+"POLECON 100": {
+"buckets": {
+"1-5": {
+"n_course": 459,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 233,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"41+": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 296,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "POLECON"
+},
+"POLECON 101": {
+"buckets": {
+"1-5": {
+"n_course": 428,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 100,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 283,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101",
+"subject": "POLECON"
+},
+"POLECON 107": {
+"buckets": {
+"1-5": {
+"n_course": 53,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "107",
+"subject": "POLECON"
+},
+"POLECON 156": {
+"buckets": {
+"1-5": {
+"n_course": 332,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 191,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "156",
+"subject": "POLECON"
+},
+"POLECON 159": {
+"buckets": {
+"1-5": {
+"n_course": 391,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 62,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 251,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "159",
+"subject": "POLECON"
+},
+"POLECON 85": {
+"buckets": {
+"1-5": {
+"n_course": 134,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 42,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "85",
+"subject": "POLECON"
+},
+"POLECON C138": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C138",
+"subject": "POLECON"
+},
+"POLECON C160": {
+"buckets": {
+"1-5": {
+"n_course": 365,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 104,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C160",
+"subject": "POLECON"
+}
+},
+"subject": "POLECON",
+"term_id": "2268"
+}

@@ -1,0 +1,248 @@
+{
+"courses": {
+"EPS 100A": {
+"buckets": {
+"1-5": {
+"n_course": 82,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100A",
+"subject": "EPS"
+},
+"EPS 102": {
+"buckets": {
+"1-5": {
+"n_course": 265,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 83,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "EPS"
+},
+"EPS 109": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "109",
+"subject": "EPS"
+},
+"EPS 116": {
+"buckets": {
+"1-5": {
+"n_course": 50,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "116",
+"subject": "EPS"
+},
+"EPS 117": {
+"buckets": {
+"1-5": {
+"n_course": 163,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "117",
+"subject": "EPS"
+},
+"EPS 150": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "150",
+"subject": "EPS"
+},
+"EPS 215": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "215",
+"subject": "EPS"
+},
+"EPS 50": {
+"buckets": {
+"1-5": {
+"n_course": 231,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "50",
+"subject": "EPS"
+},
+"EPS 7": {
+"buckets": {
+"1-5": {
+"n_course": 168,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "7",
+"subject": "EPS"
+},
+"EPS 80": {
+"buckets": {
+"1-5": {
+"n_course": 152,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "80",
+"subject": "EPS"
+},
+"EPS 82": {
+"buckets": {
+"1-5": {
+"n_course": 464,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 116,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 284,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "82",
+"subject": "EPS"
+},
+"EPS 88": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "88",
+"subject": "EPS"
+},
+"EPS C181": {
+"buckets": {
+"1-5": {
+"n_course": 72,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C181",
+"subject": "EPS"
+},
+"EPS C20": {
+"buckets": {
+"1-5": {
+"n_course": 716,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 291,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"41+": {
+"n_course": 43,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 484,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C20",
+"subject": "EPS"
+}
+},
+"subject": "EPS",
+"term_id": "2268"
+}

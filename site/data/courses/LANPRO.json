@@ -1,0 +1,19 @@
+{
+"courses": {
+"LANPRO 380": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "380",
+"subject": "LANPRO"
+}
+},
+"subject": "LANPRO",
+"term_id": "2268"
+}

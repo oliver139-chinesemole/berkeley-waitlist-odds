@@ -1,0 +1,102 @@
+{
+"courses": {
+"BUDDSTD C116": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C116",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C117": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C117",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C120": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C120",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C214": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C214",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C215": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C215",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C220": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C220",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C50": {
+"buckets": {
+"1-5": {
+"n_course": 77,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C50",
+"subject": "BUDDSTD"
+}
+},
+"subject": "BUDDSTD",
+"term_id": "2268"
+}

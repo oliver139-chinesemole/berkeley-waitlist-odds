@@ -1,0 +1,80 @@
+{
+"courses": {
+"BIOLOGY 1A": {
+"buckets": {
+"1-5": {
+"n_course": 760,
+"pooled": "OTHER",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 174,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 437,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "BIOLOGY"
+},
+"BIOLOGY 1AL": {
+"buckets": {
+"1-5": {
+"n_course": 566,
+"pooled": "OTHER",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 82,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"41+": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 260,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1AL",
+"subject": "BIOLOGY"
+},
+"BIOLOGY 1B": {
+"buckets": {
+"1-5": {
+"n_course": 1038,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 276,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 742,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1B",
+"subject": "BIOLOGY"
+}
+},
+"subject": "BIOLOGY",
+"term_id": "2268"
+}

@@ -78,7 +78,7 @@ def test_run_produces_everything(result) -> None:
     med = res.sensitivity.set_index("scenario")["median_days_pos10_lower_phase1"]
     assert med["optimistic"] <= med["central"] <= med["pessimistic"]
     oos = res.out_of_sample
-    assert list(oos["metrics"]["predictor"]) == ["bucket", "course", "site", "cox"] and oos["brier_rows"] > 0
+    assert list(oos["metrics"]["predictor"]) == ["bucket", "dept", "course", "site", "cox"] and oos["brier_rows"] > 0
     assert 0.5 < oos["auc_cox"] <= 1.0 and 0.0 <= oos["brier_cox"] <= 1.0
     assert (term_dir / "backtest_14d.csv").exists() if (term_dir := out / "9999") else True
     names = {p.name for p in res.figures}

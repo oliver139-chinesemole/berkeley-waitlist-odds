@@ -1,0 +1,123 @@
+{
+"courses": {
+"SLAVIC 100": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "SLAVIC"
+},
+"SLAVIC 133": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "133",
+"subject": "SLAVIC"
+},
+"SLAVIC 134D": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "134D",
+"subject": "SLAVIC"
+},
+"SLAVIC 134E": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "134E",
+"subject": "SLAVIC"
+},
+"SLAVIC 147B": {
+"buckets": {
+"1-5": {
+"n_course": 41,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "147B",
+"subject": "SLAVIC"
+},
+"SLAVIC 170": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "170",
+"subject": "SLAVIC"
+},
+"SLAVIC 45": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "45",
+"subject": "SLAVIC"
+},
+"SLAVIC R5A": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5A",
+"subject": "SLAVIC"
+},
+"SLAVIC R5B": {
+"buckets": {
+"1-5": {
+"n_course": 103,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5B",
+"subject": "SLAVIC"
+}
+},
+"subject": "SLAVIC",
+"term_id": "2268"
+}

@@ -1,0 +1,451 @@
+{
+"courses": {
+"ENGIN 125": {
+"buckets": {
+"1-5": {
+"n_course": 509,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 82,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 220,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "125",
+"subject": "ENGIN"
+},
+"ENGIN 178": {
+"buckets": {
+"1-5": {
+"n_course": 412,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 22,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 196,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "178",
+"subject": "ENGIN"
+},
+"ENGIN 183": {
+"buckets": {
+"1-5": {
+"n_course": 890,
+"pooled": "ENGIN",
+"sections_course": 6
+},
+"16-40": {
+"n_course": 14,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 230,
+"pooled": "ENGIN",
+"sections_course": 3
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "183",
+"subject": "ENGIN"
+},
+"ENGIN 183A": {
+"buckets": {
+"1-5": {
+"n_course": 535,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 337,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"41+": {
+"n_course": 28,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 364,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "183A",
+"subject": "ENGIN"
+},
+"ENGIN 183B": {
+"buckets": {
+"1-5": {
+"n_course": 243,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 91,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "183B",
+"subject": "ENGIN"
+},
+"ENGIN 183C": {
+"buckets": {
+"1-5": {
+"n_course": 407,
+"pooled": "ENGIN",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 12,
+"pooled": "ENGIN",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 189,
+"pooled": "ENGIN",
+"sections_course": 2
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "183C",
+"subject": "ENGIN"
+},
+"ENGIN 183D": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "183D",
+"subject": "ENGIN"
+},
+"ENGIN 183E": {
+"buckets": {
+"1-5": {
+"n_course": 353,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 114,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 177,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "183E",
+"subject": "ENGIN"
+},
+"ENGIN 183G": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "183G",
+"subject": "ENGIN"
+},
+"ENGIN 188": {
+"buckets": {
+"1-5": {
+"n_course": 43,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "188",
+"subject": "ENGIN"
+},
+"ENGIN 189": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "upper",
+"number": "189",
+"subject": "ENGIN"
+},
+"ENGIN 231": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "231",
+"subject": "ENGIN"
+},
+"ENGIN 26": {
+"buckets": {
+"1-5": {
+"n_course": 452,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 229,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 326,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "lower",
+"number": "26",
+"subject": "ENGIN"
+},
+"ENGIN 270A": {
+"buckets": {
+"1-5": {
+"n_course": 62,
+"pooled": "ENGIN",
+"sections_course": 13
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "270A",
+"subject": "ENGIN"
+},
+"ENGIN 270B": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "ENGIN",
+"sections_course": 12
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "270B",
+"subject": "ENGIN"
+},
+"ENGIN 270C": {
+"buckets": {
+"1-5": {
+"n_course": 30,
+"pooled": "ENGIN",
+"sections_course": 11
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "270C",
+"subject": "ENGIN"
+},
+"ENGIN 273": {
+"buckets": {
+"1-5": {
+"n_course": 124,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "273",
+"subject": "ENGIN"
+},
+"ENGIN 283": {
+"buckets": {
+"1-5": {
+"n_course": 206,
+"pooled": "ENGIN",
+"sections_course": 5
+},
+"6-15": {
+"n_course": 39,
+"pooled": "ENGIN",
+"sections_course": 2
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "283",
+"subject": "ENGIN"
+},
+"ENGIN 283A": {
+"buckets": {
+"1-5": {
+"n_course": 103,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 18,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "283A",
+"subject": "ENGIN"
+},
+"ENGIN 283G": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "283G",
+"subject": "ENGIN"
+},
+"ENGIN 29": {
+"buckets": {
+"1-5": {
+"n_course": 90,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "lower",
+"number": "29",
+"subject": "ENGIN"
+},
+"ENGIN 295": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "ENGIN",
+"sections_course": 11
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "295",
+"subject": "ENGIN"
+},
+"ENGIN 298": {
+"buckets": {
+"1-5": {
+"n_course": 168,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "grad",
+"number": "298",
+"subject": "ENGIN"
+},
+"ENGIN 40": {
+"buckets": {
+"1-5": {
+"n_course": 100,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 42,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "lower",
+"number": "40",
+"subject": "ENGIN"
+},
+"ENGIN 7": {
+"buckets": {
+"1-5": {
+"n_course": 373,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 94,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"41+": {
+"n_course": 6,
+"pooled": "ENGIN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 205,
+"pooled": "ENGIN",
+"sections_course": 1
+}
+},
+"dept_group": "ENGIN",
+"level": "lower",
+"number": "7",
+"subject": "ENGIN"
+}
+},
+"subject": "ENGIN",
+"term_id": "2268"
+}

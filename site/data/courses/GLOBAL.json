@@ -1,0 +1,243 @@
+{
+"courses": {
+"GLOBAL 100P": {
+"buckets": {
+"1-5": {
+"n_course": 94,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100P",
+"subject": "GLOBAL"
+},
+"GLOBAL 102": {
+"buckets": {
+"1-5": {
+"n_course": 243,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "GLOBAL"
+},
+"GLOBAL 10B": {
+"buckets": {
+"1-5": {
+"n_course": 139,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 46,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10B",
+"subject": "GLOBAL"
+},
+"GLOBAL 110L": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110L",
+"subject": "GLOBAL"
+},
+"GLOBAL 110Q": {
+"buckets": {
+"1-5": {
+"n_course": 189,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110Q",
+"subject": "GLOBAL"
+},
+"GLOBAL 121": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "121",
+"subject": "GLOBAL"
+},
+"GLOBAL 123L": {
+"buckets": {
+"1-5": {
+"n_course": 155,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 37,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "123L",
+"subject": "GLOBAL"
+},
+"GLOBAL 126": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "126",
+"subject": "GLOBAL"
+},
+"GLOBAL 150Q": {
+"buckets": {
+"1-5": {
+"n_course": 94,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "150Q",
+"subject": "GLOBAL"
+},
+"GLOBAL 173": {
+"buckets": {
+"1-5": {
+"n_course": 425,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 139,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 299,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "173",
+"subject": "GLOBAL"
+},
+"GLOBAL 210": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210",
+"subject": "GLOBAL"
+},
+"GLOBAL 24": {
+"buckets": {
+"1-5": {
+"n_course": 186,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 72,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "GLOBAL"
+},
+"GLOBAL 45": {
+"buckets": {
+"1-5": {
+"n_course": 167,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 51,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "45",
+"subject": "GLOBAL"
+},
+"GLOBAL C10A": {
+"buckets": {
+"1-5": {
+"n_course": 484,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 221,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 332,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C10A",
+"subject": "GLOBAL"
+}
+},
+"subject": "GLOBAL",
+"term_id": "2268"
+}

@@ -1,0 +1,223 @@
+{
+"courses": {
+"HISTART 10": {
+"buckets": {
+"1-5": {
+"n_course": 91,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 32,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "HISTART"
+},
+"HISTART 101": {
+"buckets": {
+"1-5": {
+"n_course": 169,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 52,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101",
+"subject": "HISTART"
+},
+"HISTART 131B": {
+"buckets": {
+"1-5": {
+"n_course": 75,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "131B",
+"subject": "HISTART"
+},
+"HISTART 171": {
+"buckets": {
+"1-5": {
+"n_course": 128,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "171",
+"subject": "HISTART"
+},
+"HISTART 183": {
+"buckets": {
+"1-5": {
+"n_course": 121,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "183",
+"subject": "HISTART"
+},
+"HISTART 185A": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "185A",
+"subject": "HISTART"
+},
+"HISTART 192A": {
+"buckets": {
+"1-5": {
+"n_course": 97,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "192A",
+"subject": "HISTART"
+},
+"HISTART 192B": {
+"buckets": {
+"1-5": {
+"n_course": 50,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "192B",
+"subject": "HISTART"
+},
+"HISTART 192F": {
+"buckets": {
+"1-5": {
+"n_course": 87,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "192F",
+"subject": "HISTART"
+},
+"HISTART 192G": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "192G",
+"subject": "HISTART"
+},
+"HISTART 290": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "290",
+"subject": "HISTART"
+},
+"HISTART 37": {
+"buckets": {
+"1-5": {
+"n_course": 267,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 30,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 126,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "37",
+"subject": "HISTART"
+},
+"HISTART C121A": {
+"buckets": {
+"1-5": {
+"n_course": 121,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 12,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C121A",
+"subject": "HISTART"
+},
+"HISTART R1B": {
+"buckets": {
+"1-5": {
+"n_course": 199,
+"pooled": "OTHER",
+"sections_course": 6
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "HISTART"
+}
+},
+"subject": "HISTART",
+"term_id": "2268"
+}

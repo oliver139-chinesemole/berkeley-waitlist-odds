@@ -1,0 +1,19 @@
+{
+"courses": {
+"AST C225": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C225",
+"subject": "AST"
+}
+},
+"subject": "AST",
+"term_id": "2268"
+}

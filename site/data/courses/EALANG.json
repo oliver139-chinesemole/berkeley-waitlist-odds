@@ -1,0 +1,84 @@
+{
+"courses": {
+"EALANG 114": {
+"buckets": {
+"1-5": {
+"n_course": 58,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "114",
+"subject": "EALANG"
+},
+"EALANG 119": {
+"buckets": {
+"1-5": {
+"n_course": 75,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "119",
+"subject": "EALANG"
+},
+"EALANG 161": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "161",
+"subject": "EALANG"
+},
+"EALANG C120": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C120",
+"subject": "EALANG"
+},
+"EALANG C50": {
+"buckets": {
+"1-5": {
+"n_course": 58,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C50",
+"subject": "EALANG"
+},
+"EALANG R1B": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "EALANG"
+}
+},
+"subject": "EALANG",
+"term_id": "2268"
+}

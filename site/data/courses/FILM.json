@@ -1,0 +1,354 @@
+{
+"courses": {
+"FILM 10": {
+"buckets": {
+"1-5": {
+"n_course": 250,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 100,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "FILM"
+},
+"FILM 125": {
+"buckets": {
+"1-5": {
+"n_course": 240,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 97,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "125",
+"subject": "FILM"
+},
+"FILM 135": {
+"buckets": {
+"1-5": {
+"n_course": 279,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 134,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "135",
+"subject": "FILM"
+},
+"FILM 145": {
+"buckets": {
+"1-5": {
+"n_course": 700,
+"pooled": "OTHER",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 187,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "145",
+"subject": "FILM"
+},
+"FILM 155": {
+"buckets": {
+"1-5": {
+"n_course": 515,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 246,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 369,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "155",
+"subject": "FILM"
+},
+"FILM 170": {
+"buckets": {
+"1-5": {
+"n_course": 206,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "170",
+"subject": "FILM"
+},
+"FILM 171": {
+"buckets": {
+"1-5": {
+"n_course": 178,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "171",
+"subject": "FILM"
+},
+"FILM 172": {
+"buckets": {
+"1-5": {
+"n_course": 185,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 50,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "172",
+"subject": "FILM"
+},
+"FILM 180": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "180",
+"subject": "FILM"
+},
+"FILM 182": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "182",
+"subject": "FILM"
+},
+"FILM 183": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "183",
+"subject": "FILM"
+},
+"FILM 185": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "185",
+"subject": "FILM"
+},
+"FILM 188": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "188",
+"subject": "FILM"
+},
+"FILM 190": {
+"buckets": {
+"1-5": {
+"n_course": 58,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "FILM"
+},
+"FILM 193": {
+"buckets": {
+"1-5": {
+"n_course": 160,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "193",
+"subject": "FILM"
+},
+"FILM 20": {
+"buckets": {
+"1-5": {
+"n_course": 261,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 59,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20",
+"subject": "FILM"
+},
+"FILM 240": {
+"buckets": {
+"1-5": {
+"n_course": 86,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "240",
+"subject": "FILM"
+},
+"FILM 30": {
+"buckets": {
+"1-5": {
+"n_course": 270,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 105,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "30",
+"subject": "FILM"
+},
+"FILM 35": {
+"buckets": {
+"1-5": {
+"n_course": 262,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 159,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "35",
+"subject": "FILM"
+},
+"FILM R1A": {
+"buckets": {
+"1-5": {
+"n_course": 34,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1A",
+"subject": "FILM"
+},
+"FILM R1B": {
+"buckets": {
+"1-5": {
+"n_course": 165,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "FILM"
+}
+},
+"subject": "FILM",
+"term_id": "2268"
+}

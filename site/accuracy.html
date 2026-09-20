@@ -41,7 +41,16 @@
 (function () {
   const { $, esc, pct, num } = BWO;
   const SPLIT = { temporal: "Later joiners scored with a model fit on earlier ones", grouped: "Held-out courses", cross_term: "Fit on Spring 2026, scored on Fall 2026" };
-  const NAMES = { bucket: "Position bucket (baseline)", course: "Course and bucket curve (what the pages use)", site: "Fixed-lead-time number (site v1)", cox: "Cox model" };
+  const NAMES = { bucket: "Position bucket (baseline)", dept: "Department and bucket curve", course: "Course and bucket curve", site: "Fixed-lead-time number (site v1)", cox: "Cox model" };
+  const ORDER = ["bucket", "dept", "course", "site", "cox"];
+  let meta = null;
+  // The predictor the pages use: the department curve at the department level, the course curve otherwise.
+  function pagesPredictor(run) {
+    const cal = run.calibration || {};
+    const preferred = BWO.estimateLevel(meta) === "dept" ? ["dept", "course", "site"] : ["course", "dept", "site"];
+    return preferred.find((k) => cal[k] && cal[k].length) || "site";
+  }
+  function label(k, run) { return (NAMES[k] || k) + (k === pagesPredictor(run) ? " (what the pages use)" : ""); }
 
   function fmt(v, d) { return v == null ? "" : Number(v).toFixed(d == null ? 3 : d); }
   function signed(v) { return v == null ? "" : (v > 0 ? "+" : "") + Number(v).toFixed(3); }
@@ -59,7 +68,7 @@
     for (const q of pts) svg += `<circle class="s3 fill end" r="4.5" cx="${x(q.predicted).toFixed(1)}" cy="${y(q.observed).toFixed(1)}"><title>Decile ${q.decile + 1}: predicted ${pct(q.predicted)}, observed ${pct(q.observed)}, ${num(Math.round(q.n))} joiners</title></circle>`;
     svg += `<text class="lbl" x="${W - R}" y="${H - 4}" text-anchor="end">predicted</text><text class="lbl" transform="rotate(-90)" x="${(-(T + (H - B)) / 2).toFixed(1)}" y="11" text-anchor="middle">observed</text>`;
     const table = `<details class="table"><summary>Show as table</summary><table><thead><tr><th scope="col">Decile</th><th scope="col" class="num">Predicted</th><th scope="col" class="num">Observed</th><th scope="col" class="num">Joiners</th></tr></thead><tbody>${pts.map((q) => `<tr><td>${q.decile + 1}</td><td class="num">${pct(q.predicted)}</td><td class="num">${pct(q.observed)}</td><td class="num">${num(Math.round(q.n))}</td></tr>`).join("")}</tbody></table></details>`;
-    return `<figure class="chart" style="max-width:22rem"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Calibration: predicted against observed share who got in, by decile, ${esc(NAMES[predictor] || predictor)}, ${esc(run.horizon_label)}">${svg}</svg>${table}</figure>`;
+    return `<figure class="chart" style="max-width:22rem"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Calibration: predicted against observed share who got in, by decile, ${esc(label(predictor, run))}, ${esc(run.horizon_label)}">${svg}</svg><figcaption class="muted small">${esc(label(predictor, run))}: predicted against observed, by decile.</figcaption>${table}</figure>`;
   }
 
   // "When the site said about 70%, X% got in": the decile whose prediction is nearest each round number.
@@ -77,7 +86,7 @@
   }
 
   function scoreTable(run) {
-    const rows = run.metrics.map((m) => `<tr><th scope="row">${esc(NAMES[m.predictor] || m.predictor)}</th><td class="num">${fmt(m.brier)}</td><td class="num">${fmt(m.auc)}</td><td class="num">${signed(m.gain)}${m.predictor === "bucket" ? "" : ` <span class="muted small">(${signed(m.gain_ci_low)} to ${signed(m.gain_ci_high)})</span>`}</td><td class="num">${num(m.n_test)}</td></tr>`).join("");
+    const rows = run.metrics.slice().sort((a, b) => ORDER.indexOf(a.predictor) - ORDER.indexOf(b.predictor)).map((m) => `<tr><th scope="row">${esc(label(m.predictor, run))}</th><td class="num">${fmt(m.brier)}</td><td class="num">${fmt(m.auc)}</td><td class="num">${signed(m.gain)}${m.predictor === "bucket" ? "" : ` <span class="muted small">(${signed(m.gain_ci_low)} to ${signed(m.gain_ci_high)})</span>`}</td><td class="num">${num(m.n_test)}</td></tr>`).join("");
     return `<div class="scroll" tabindex="0"><table aria-label="Scores, ${esc(run.horizon_label)}"><thead><tr><th scope="col">Predictor</th><th scope="col" class="num">Brier</th><th scope="col" class="num">AUC</th><th scope="col" class="num">Gain over baseline (95%)</th><th scope="col" class="num">Joiners scored</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }
 
@@ -88,7 +97,7 @@
 
   function runHtml(run) {
     const counts = run.counts ? `<p class="muted small">${num(run.counts.train)} training joiners; ${num(run.counts.test)} scored; ${num(run.counts.unobservable)} could not be followed to this horizon and were not scored.</p>` : "";
-    const predictor = run.calibration && run.calibration.course ? "course" : "site";
+    const predictor = pagesPredictor(run);
     return `<section><h3>${esc(SPLIT[run.split] || run.split)}, ${esc(run.horizon_label)}</h3>${counts}${sentences(run, predictor)}<div class="side">${calibrationPlot(run, predictor)}<div>${scoreTable(run)}${coverage(run)}</div></div></section>`;
   }
 
@@ -101,7 +110,8 @@
     const r = await BWO.load(["backtest"]);
     if (r.state === "failed") { $("status").innerHTML = BWO.failedHtml(); return; }
     if (r.state === "empty") { $("status").innerHTML = BWO.emptyHtml(r.meta); $("prereg").innerHTML = prereg(r.meta || {}, null); return; }
-    const meta = r.meta, bt = r.data.backtest;
+    meta = r.meta;
+    const bt = r.data.backtest;
     BWO.setStamp(meta, BWO.today());
     $("prereg").innerHTML = prereg(meta, bt);
     if (!bt || !bt.runs || !bt.runs.length) {
@@ -111,7 +121,8 @@
     $("status").innerHTML = `<p><strong>${esc(bt.term_name || meta.term_name)}</strong>${bt.data_source === "berkeleytime_history" || meta.data_source === "berkeleytime_history" ? ", from Berkeleytime's public history" : ""}: ${bt.runs.length} backtest ${bt.runs.length === 1 ? "run" : "runs"}, generated ${esc(BWO.fmtDate(bt.generated_at))}.</p>`;
     const order = ["temporal", "grouped", "cross_term"];
     const runs = bt.runs.slice().sort((a, b) => order.indexOf(a.split) - order.indexOf(b.split) || a.which.localeCompare(b.which));
-    $("content").innerHTML = `<h2>Calibration and scores</h2><p class="muted small">Four predictors are scored side by side: ${Object.entries(bt.predictors).map(([k, v]) => `<strong>${esc(NAMES[k] || k)}</strong>: ${esc(v)}`).join("; ")}.</p>` + runs.map(runHtml).join("");
+    const named = ORDER.filter((k) => bt.predictors[k]).concat(Object.keys(bt.predictors).filter((k) => !ORDER.includes(k)));
+    $("content").innerHTML = `<h2>Calibration and scores</h2><p class="muted small">${named.length} predictors are scored side by side: ${named.map((k) => `<strong>${esc(NAMES[k] || k)}</strong>: ${esc(bt.predictors[k])}`).join("; ")}.</p>` + runs.map(runHtml).join("");
   }
   main();
 })();

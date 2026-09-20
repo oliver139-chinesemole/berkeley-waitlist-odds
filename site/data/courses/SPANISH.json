@@ -1,0 +1,180 @@
+{
+"courses": {
+"SPANISH 100": {
+"buckets": {
+"1-5": {
+"n_course": 99,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "SPANISH"
+},
+"SPANISH 102A": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102A",
+"subject": "SPANISH"
+},
+"SPANISH 104A": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "104A",
+"subject": "SPANISH"
+},
+"SPANISH 107B": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "107B",
+"subject": "SPANISH"
+},
+"SPANISH 135": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "135",
+"subject": "SPANISH"
+},
+"SPANISH 161": {
+"buckets": {
+"1-5": {
+"n_course": 52,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "161",
+"subject": "SPANISH"
+},
+"SPANISH 163": {
+"buckets": {
+"1-5": {
+"n_course": 90,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "163",
+"subject": "SPANISH"
+},
+"SPANISH 21": {
+"buckets": {
+"1-5": {
+"n_course": 62,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "21",
+"subject": "SPANISH"
+},
+"SPANISH 22": {
+"buckets": {
+"1-5": {
+"n_course": 44,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "22",
+"subject": "SPANISH"
+},
+"SPANISH 25": {
+"buckets": {
+"1-5": {
+"n_course": 225,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 32,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "25",
+"subject": "SPANISH"
+},
+"SPANISH 280": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "280",
+"subject": "SPANISH"
+},
+"SPANISH 33": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "33",
+"subject": "SPANISH"
+},
+"SPANISH R1A": {
+"buckets": {
+"1-5": {
+"n_course": 48,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1A",
+"subject": "SPANISH"
+}
+},
+"subject": "SPANISH",
+"term_id": "2268"
+}

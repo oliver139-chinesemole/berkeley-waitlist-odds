@@ -1,0 +1,841 @@
+{
+"courses": {
+"HISTORY 1": {
+"buckets": {
+"1-5": {
+"n_course": 97,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 40,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "1",
+"subject": "HISTORY"
+},
+"HISTORY 100AC": {
+"buckets": {
+"1-5": {
+"n_course": 172,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 39,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 109,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "100AC",
+"subject": "HISTORY"
+},
+"HISTORY 100B": {
+"buckets": {
+"1-5": {
+"n_course": 126,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "100B",
+"subject": "HISTORY"
+},
+"HISTORY 100E": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "100E",
+"subject": "HISTORY"
+},
+"HISTORY 100F": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "100F",
+"subject": "HISTORY"
+},
+"HISTORY 100H": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "100H",
+"subject": "HISTORY"
+},
+"HISTORY 100M": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "100M",
+"subject": "HISTORY"
+},
+"HISTORY 100U": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "100U",
+"subject": "HISTORY"
+},
+"HISTORY 102": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "HISTORY",
+"sections_course": 2
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "102",
+"subject": "HISTORY"
+},
+"HISTORY 103A": {
+"buckets": {
+"1-5": {
+"n_course": 72,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "103A",
+"subject": "HISTORY"
+},
+"HISTORY 103B": {
+"buckets": {
+"1-5": {
+"n_course": 158,
+"pooled": "HISTORY",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 18,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "103B",
+"subject": "HISTORY"
+},
+"HISTORY 103D": {
+"buckets": {
+"1-5": {
+"n_course": 154,
+"pooled": "HISTORY",
+"sections_course": 5
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "103D",
+"subject": "HISTORY"
+},
+"HISTORY 103U": {
+"buckets": {
+"1-5": {
+"n_course": 103,
+"pooled": "HISTORY",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 4,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "103U",
+"subject": "HISTORY"
+},
+"HISTORY 104": {
+"buckets": {
+"1-5": {
+"n_course": 184,
+"pooled": "HISTORY",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 22,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "104",
+"subject": "HISTORY"
+},
+"HISTORY 106B": {
+"buckets": {
+"1-5": {
+"n_course": 106,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "106B",
+"subject": "HISTORY"
+},
+"HISTORY 129A": {
+"buckets": {
+"1-5": {
+"n_course": 73,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "129A",
+"subject": "HISTORY"
+},
+"HISTORY 130": {
+"buckets": {
+"1-5": {
+"n_course": 266,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 37,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "130",
+"subject": "HISTORY"
+},
+"HISTORY 131B": {
+"buckets": {
+"1-5": {
+"n_course": 218,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 5,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 119,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "131B",
+"subject": "HISTORY"
+},
+"HISTORY 133B": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "133B",
+"subject": "HISTORY"
+},
+"HISTORY 14": {
+"buckets": {
+"1-5": {
+"n_course": 114,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "14",
+"subject": "HISTORY"
+},
+"HISTORY 160": {
+"buckets": {
+"1-5": {
+"n_course": 235,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 46,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 156,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "160",
+"subject": "HISTORY"
+},
+"HISTORY 166B": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "166B",
+"subject": "HISTORY"
+},
+"HISTORY 169A": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "169A",
+"subject": "HISTORY"
+},
+"HISTORY 175B": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "175B",
+"subject": "HISTORY"
+},
+"HISTORY 185A": {
+"buckets": {
+"1-5": {
+"n_course": 30,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "185A",
+"subject": "HISTORY"
+},
+"HISTORY 188E": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "188E",
+"subject": "HISTORY"
+},
+"HISTORY 198BC": {
+"buckets": {
+"1-5": {
+"n_course": 112,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "198BC",
+"subject": "HISTORY"
+},
+"HISTORY 275E": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "275E",
+"subject": "HISTORY"
+},
+"HISTORY 280A": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "280A",
+"subject": "HISTORY"
+},
+"HISTORY 280D": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "280D",
+"subject": "HISTORY"
+},
+"HISTORY 280F": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "HISTORY",
+"sections_course": 2
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "280F",
+"subject": "HISTORY"
+},
+"HISTORY 280M": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "280M",
+"subject": "HISTORY"
+},
+"HISTORY 280S": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "280S",
+"subject": "HISTORY"
+},
+"HISTORY 280U": {
+"buckets": {
+"1-5": {
+"n_course": 172,
+"pooled": "HISTORY",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 3,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "280U",
+"subject": "HISTORY"
+},
+"HISTORY 283": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "283",
+"subject": "HISTORY"
+},
+"HISTORY 285A": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "285A",
+"subject": "HISTORY"
+},
+"HISTORY 285F": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "285F",
+"subject": "HISTORY"
+},
+"HISTORY 285H": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "285H",
+"subject": "HISTORY"
+},
+"HISTORY 285M": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "285M",
+"subject": "HISTORY"
+},
+"HISTORY 285U": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "HISTORY",
+"sections_course": 2
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "285U",
+"subject": "HISTORY"
+},
+"HISTORY 3": {
+"buckets": {
+"1-5": {
+"n_course": 42,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "3",
+"subject": "HISTORY"
+},
+"HISTORY 30": {
+"buckets": {
+"1-5": {
+"n_course": 234,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 18,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "30",
+"subject": "HISTORY"
+},
+"HISTORY 4A": {
+"buckets": {
+"1-5": {
+"n_course": 56,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "4A",
+"subject": "HISTORY"
+},
+"HISTORY 5": {
+"buckets": {
+"1-5": {
+"n_course": 140,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "5",
+"subject": "HISTORY"
+},
+"HISTORY 6A": {
+"buckets": {
+"1-5": {
+"n_course": 62,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "6A",
+"subject": "HISTORY"
+},
+"HISTORY 7A": {
+"buckets": {
+"1-5": {
+"n_course": 510,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 275,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"41+": {
+"n_course": 66,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 329,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "7A",
+"subject": "HISTORY"
+},
+"HISTORY 8A": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "8A",
+"subject": "HISTORY"
+},
+"HISTORY 98BC": {
+"buckets": {
+"1-5": {
+"n_course": 117,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 21,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "98BC",
+"subject": "HISTORY"
+},
+"HISTORY C159A": {
+"buckets": {
+"1-5": {
+"n_course": 307,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 104,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "C159A",
+"subject": "HISTORY"
+},
+"HISTORY C182C": {
+"buckets": {
+"1-5": {
+"n_course": 136,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "C182C",
+"subject": "HISTORY"
+},
+"HISTORY C183A": {
+"buckets": {
+"1-5": {
+"n_course": 135,
+"pooled": "HISTORY",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "C183A",
+"subject": "HISTORY"
+},
+"HISTORY C184D": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "C184D",
+"subject": "HISTORY"
+},
+"HISTORY C250": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "C250",
+"subject": "HISTORY"
+},
+"HISTORY C254": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "C254",
+"subject": "HISTORY"
+},
+"HISTORY R1B": {
+"buckets": {
+"1-5": {
+"n_course": 121,
+"pooled": "HISTORY",
+"sections_course": 3
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "R1B",
+"subject": "HISTORY"
+}
+},
+"subject": "HISTORY",
+"term_id": "2268"
+}

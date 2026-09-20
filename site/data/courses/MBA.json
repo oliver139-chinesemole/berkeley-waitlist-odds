@@ -1,0 +1,45 @@
+{
+"courses": {
+"MBA 209P": {
+"buckets": {
+"1-5": {
+"n_course": 103,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "209P",
+"subject": "MBA"
+},
+"MBA 237": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "237",
+"subject": "MBA"
+},
+"MBA 375": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "375",
+"subject": "MBA"
+}
+},
+"subject": "MBA",
+"term_id": "2268"
+}

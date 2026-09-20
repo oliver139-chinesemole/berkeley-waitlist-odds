@@ -1,0 +1,94 @@
+{
+"courses": {
+"CMPBIO 198BC": {
+"buckets": {
+"1-5": {
+"n_course": 84,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "198BC",
+"subject": "CMPBIO"
+},
+"CMPBIO 201": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "201",
+"subject": "CMPBIO"
+},
+"CMPBIO 98BC": {
+"buckets": {
+"1-5": {
+"n_course": 70,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "98BC",
+"subject": "CMPBIO"
+},
+"CMPBIO C131": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C131",
+"subject": "CMPBIO"
+},
+"CMPBIO C149": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C149",
+"subject": "CMPBIO"
+},
+"CMPBIO C176": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C176",
+"subject": "CMPBIO"
+}
+},
+"subject": "CMPBIO",
+"term_id": "2268"
+}

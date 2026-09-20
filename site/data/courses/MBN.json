@@ -1,0 +1,166 @@
+{
+"courses": {
+"MBN 10": {
+"buckets": {
+"1-5": {
+"n_course": 493,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 162,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "MBN"
+},
+"MBN 103": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "103",
+"subject": "MBN"
+},
+"MBN 108A": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "108A",
+"subject": "MBN"
+},
+"MBN 170": {
+"buckets": {
+"1-5": {
+"n_course": 140,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "170",
+"subject": "MBN"
+},
+"MBN 190": {
+"buckets": {
+"1-5": {
+"n_course": 293,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 49,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 186,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "MBN"
+},
+"MBN 20": {
+"buckets": {
+"1-5": {
+"n_course": 62,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20",
+"subject": "MBN"
+},
+"MBN 208": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "208",
+"subject": "MBN"
+},
+"MBN 210": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210",
+"subject": "MBN"
+},
+"MBN 24": {
+"buckets": {
+"1-5": {
+"n_course": 52,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "MBN"
+},
+"MBN 245": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "245",
+"subject": "MBN"
+}
+},
+"subject": "MBN",
+"term_id": "2268"
+}

@@ -1,0 +1,419 @@
+{
+"courses": {
+"EECS 116": {
+"buckets": {
+"1-5": {
+"n_course": 75,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "116",
+"subject": "EECS"
+},
+"EECS 126": {
+"buckets": {
+"1-5": {
+"n_course": 725,
+"pooled": "EECS",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 406,
+"pooled": "EECS",
+"sections_course": 1
+},
+"41+": {
+"n_course": 126,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 477,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "126",
+"subject": "EECS"
+},
+"EECS 127": {
+"buckets": {
+"1-5": {
+"n_course": 889,
+"pooled": "EECS",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 609,
+"pooled": "EECS",
+"sections_course": 1
+},
+"41+": {
+"n_course": 322,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 657,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "127",
+"subject": "EECS"
+},
+"EECS 144": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "144",
+"subject": "EECS"
+},
+"EECS 149": {
+"buckets": {
+"1-5": {
+"n_course": 328,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 115,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "149",
+"subject": "EECS"
+},
+"EECS 151": {
+"buckets": {
+"1-5": {
+"n_course": 460,
+"pooled": "EECS",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 294,
+"pooled": "EECS",
+"sections_course": 1
+},
+"41+": {
+"n_course": 130,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 305,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "151",
+"subject": "EECS"
+},
+"EECS 151LA": {
+"buckets": {
+"1-5": {
+"n_course": 649,
+"pooled": "EECS",
+"sections_course": 4
+},
+"16-40": {
+"n_course": 136,
+"pooled": "EECS",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 373,
+"pooled": "EECS",
+"sections_course": 2
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "151LA",
+"subject": "EECS"
+},
+"EECS 151LB": {
+"buckets": {
+"1-5": {
+"n_course": 580,
+"pooled": "EECS",
+"sections_course": 6
+},
+"6-15": {
+"n_course": 67,
+"pooled": "EECS",
+"sections_course": 2
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "151LB",
+"subject": "EECS"
+},
+"EECS 183": {
+"buckets": {
+"1-5": {
+"n_course": 607,
+"pooled": "EECS",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 408,
+"pooled": "EECS",
+"sections_course": 1
+},
+"41+": {
+"n_course": 133,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 444,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "183",
+"subject": "EECS"
+},
+"EECS 216": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "216",
+"subject": "EECS"
+},
+"EECS 225A": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "225A",
+"subject": "EECS"
+},
+"EECS 225B": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "225B",
+"subject": "EECS"
+},
+"EECS 227AT": {
+"buckets": {
+"1-5": {
+"n_course": 201,
+"pooled": "EECS",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 11,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 91,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "227AT",
+"subject": "EECS"
+},
+"EECS 251A": {
+"buckets": {
+"1-5": {
+"n_course": 104,
+"pooled": "EECS",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 11,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 33,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "251A",
+"subject": "EECS"
+},
+"EECS 251LA": {
+"buckets": {
+"1-5": {
+"n_course": 145,
+"pooled": "EECS",
+"sections_course": 5
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "251LA",
+"subject": "EECS"
+},
+"EECS 251LB": {
+"buckets": {
+"1-5": {
+"n_course": 193,
+"pooled": "EECS",
+"sections_course": 6
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "251LB",
+"subject": "EECS"
+},
+"EECS 283A": {
+"buckets": {
+"1-5": {
+"n_course": 257,
+"pooled": "EECS",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 17,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 143,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "283A",
+"subject": "EECS"
+},
+"EECS C106A": {
+"buckets": {
+"1-5": {
+"n_course": 470,
+"pooled": "EECS",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 274,
+"pooled": "EECS",
+"sections_course": 1
+},
+"41+": {
+"n_course": 83,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 327,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "C106A",
+"subject": "EECS"
+},
+"EECS C191A": {
+"buckets": {
+"1-5": {
+"n_course": 293,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 124,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "upper",
+"number": "C191A",
+"subject": "EECS"
+},
+"EECS C206A": {
+"buckets": {
+"1-5": {
+"n_course": 141,
+"pooled": "EECS",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 38,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "C206A",
+"subject": "EECS"
+},
+"EECS C249B": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "EECS",
+"sections_course": 1
+}
+},
+"dept_group": "EECS",
+"level": "grad",
+"number": "C249B",
+"subject": "EECS"
+}
+},
+"subject": "EECS",
+"term_id": "2268"
+}

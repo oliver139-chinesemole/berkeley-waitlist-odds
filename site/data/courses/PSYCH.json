@@ -1,0 +1,380 @@
+{
+"courses": {
+"PSYCH 1": {
+"buckets": {
+"1-5": {
+"n_course": 323,
+"pooled": "PSYCH",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 53,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 127,
+"pooled": "PSYCH",
+"sections_course": 2
+}
+},
+"dept_group": "PSYCH",
+"level": "lower",
+"number": "1",
+"subject": "PSYCH"
+},
+"PSYCH 101": {
+"buckets": {
+"1-5": {
+"n_course": 161,
+"pooled": "PSYCH",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 16,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 67,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "101",
+"subject": "PSYCH"
+},
+"PSYCH 102": {
+"buckets": {
+"1-5": {
+"n_course": 76,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "102",
+"subject": "PSYCH"
+},
+"PSYCH 110": {
+"buckets": {
+"1-5": {
+"n_course": 175,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 32,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "110",
+"subject": "PSYCH"
+},
+"PSYCH 112A": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "112A",
+"subject": "PSYCH"
+},
+"PSYCH 115": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "115",
+"subject": "PSYCH"
+},
+"PSYCH 134": {
+"buckets": {
+"1-5": {
+"n_course": 195,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 14,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 67,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "134",
+"subject": "PSYCH"
+},
+"PSYCH 147": {
+"buckets": {
+"1-5": {
+"n_course": 144,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 14,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 45,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "147",
+"subject": "PSYCH"
+},
+"PSYCH 160": {
+"buckets": {
+"1-5": {
+"n_course": 285,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 26,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 102,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "160",
+"subject": "PSYCH"
+},
+"PSYCH 168": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "168",
+"subject": "PSYCH"
+},
+"PSYCH 192": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "192",
+"subject": "PSYCH"
+},
+"PSYCH 208": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "grad",
+"number": "208",
+"subject": "PSYCH"
+},
+"PSYCH 237G": {
+"buckets": {
+"1-5": {
+"n_course": 420,
+"pooled": "PSYCH",
+"sections_course": 14
+}
+},
+"dept_group": "PSYCH",
+"level": "grad",
+"number": "237G",
+"subject": "PSYCH"
+},
+"PSYCH 24": {
+"buckets": {
+"1-5": {
+"n_course": 64,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "lower",
+"number": "24",
+"subject": "PSYCH"
+},
+"PSYCH 259": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "grad",
+"number": "259",
+"subject": "PSYCH"
+},
+"PSYCH 260A": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "grad",
+"number": "260A",
+"subject": "PSYCH"
+},
+"PSYCH 290J": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "grad",
+"number": "290J",
+"subject": "PSYCH"
+},
+"PSYCH 375": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "grad",
+"number": "375",
+"subject": "PSYCH"
+},
+"PSYCH C120": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "C120",
+"subject": "PSYCH"
+},
+"PSYCH C127": {
+"buckets": {
+"1-5": {
+"n_course": 184,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 77,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "C127",
+"subject": "PSYCH"
+},
+"PSYCH C143": {
+"buckets": {
+"1-5": {
+"n_course": 230,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 51,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "C143",
+"subject": "PSYCH"
+},
+"PSYCH C61": {
+"buckets": {
+"1-5": {
+"n_course": 196,
+"pooled": "PSYCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "lower",
+"number": "C61",
+"subject": "PSYCH"
+},
+"PSYCH H194A": {
+"buckets": {
+"1-5": {
+"n_course": 30,
+"pooled": "PSYCH",
+"sections_course": 1
+}
+},
+"dept_group": "PSYCH",
+"level": "upper",
+"number": "H194A",
+"subject": "PSYCH"
+}
+},
+"subject": "PSYCH",
+"term_id": "2268"
+}

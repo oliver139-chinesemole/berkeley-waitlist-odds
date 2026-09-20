@@ -1,0 +1,171 @@
+{
+"courses": {
+"AEROENG 1": {
+"buckets": {
+"1-5": {
+"n_course": 197,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 80,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "AEROENG"
+},
+"AEROENG 10": {
+"buckets": {
+"1-5": {
+"n_course": 114,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "AEROENG"
+},
+"AEROENG 100": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "AEROENG"
+},
+"AEROENG 122": {
+"buckets": {
+"1-5": {
+"n_course": 59,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "122",
+"subject": "AEROENG"
+},
+"AEROENG C124": {
+"buckets": {
+"1-5": {
+"n_course": 89,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C124",
+"subject": "AEROENG"
+},
+"AEROENG C136": {
+"buckets": {
+"1-5": {
+"n_course": 124,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C136",
+"subject": "AEROENG"
+},
+"AEROENG C136S": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C136S",
+"subject": "AEROENG"
+},
+"AEROENG C162": {
+"buckets": {
+"1-5": {
+"n_course": 199,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C162",
+"subject": "AEROENG"
+},
+"AEROENG C166": {
+"buckets": {
+"1-5": {
+"n_course": 63,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C166",
+"subject": "AEROENG"
+},
+"AEROENG C193P": {
+"buckets": {
+"1-5": {
+"n_course": 246,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 63,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C193P",
+"subject": "AEROENG"
+}
+},
+"subject": "AEROENG",
+"term_id": "2268"
+}

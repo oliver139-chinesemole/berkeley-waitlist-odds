@@ -1,0 +1,205 @@
+{
+"courses": {
+"ASAMST 124": {
+"buckets": {
+"1-5": {
+"n_course": 81,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "124",
+"subject": "ASAMST"
+},
+"ASAMST 128AC": {
+"buckets": {
+"1-5": {
+"n_course": 329,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 83,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 151,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "128AC",
+"subject": "ASAMST"
+},
+"ASAMST 131": {
+"buckets": {
+"1-5": {
+"n_course": 44,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "131",
+"subject": "ASAMST"
+},
+"ASAMST 138": {
+"buckets": {
+"1-5": {
+"n_course": 57,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "138",
+"subject": "ASAMST"
+},
+"ASAMST 141": {
+"buckets": {
+"1-5": {
+"n_course": 59,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "141",
+"subject": "ASAMST"
+},
+"ASAMST 143AC": {
+"buckets": {
+"1-5": {
+"n_course": 148,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 59,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "143AC",
+"subject": "ASAMST"
+},
+"ASAMST 146": {
+"buckets": {
+"1-5": {
+"n_course": 47,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "146",
+"subject": "ASAMST"
+},
+"ASAMST 171": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "171",
+"subject": "ASAMST"
+},
+"ASAMST 176": {
+"buckets": {
+"1-5": {
+"n_course": 64,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "176",
+"subject": "ASAMST"
+},
+"ASAMST 190": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "ASAMST"
+},
+"ASAMST 20AC": {
+"buckets": {
+"1-5": {
+"n_course": 300,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 112,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 186,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20AC",
+"subject": "ASAMST"
+},
+"ASAMST 20C": {
+"buckets": {
+"1-5": {
+"n_course": 79,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20C",
+"subject": "ASAMST"
+},
+"ASAMST R2A": {
+"buckets": {
+"1-5": {
+"n_course": 62,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R2A",
+"subject": "ASAMST"
+}
+},
+"subject": "ASAMST",
+"term_id": "2268"
+}

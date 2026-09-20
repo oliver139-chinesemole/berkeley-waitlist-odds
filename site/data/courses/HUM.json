@@ -1,0 +1,55 @@
+{
+"courses": {
+"HUM 10": {
+"buckets": {
+"1-5": {
+"n_course": 192,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 84,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "HUM"
+},
+"HUM 100": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "HUM"
+},
+"HUM 105": {
+"buckets": {
+"1-5": {
+"n_course": 156,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 41,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "105",
+"subject": "HUM"
+}
+},
+"subject": "HUM",
+"term_id": "2268"
+}

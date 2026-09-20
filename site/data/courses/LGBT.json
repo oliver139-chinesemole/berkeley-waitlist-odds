@@ -1,0 +1,32 @@
+{
+"courses": {
+"LGBT C146A": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C146A",
+"subject": "LGBT"
+},
+"LGBT C146B": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C146B",
+"subject": "LGBT"
+}
+},
+"subject": "LGBT",
+"term_id": "2268"
+}

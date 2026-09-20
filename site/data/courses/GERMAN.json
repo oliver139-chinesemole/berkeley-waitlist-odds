@@ -1,0 +1,102 @@
+{
+"courses": {
+"GERMAN 1": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "GERMAN"
+},
+"GERMAN 100": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "GERMAN"
+},
+"GERMAN 160B": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "160B",
+"subject": "GERMAN"
+},
+"GERMAN 214": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "214",
+"subject": "GERMAN"
+},
+"GERMAN 24": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "GERMAN"
+},
+"GERMAN 256": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "256",
+"subject": "GERMAN"
+},
+"GERMAN R5A": {
+"buckets": {
+"1-5": {
+"n_course": 68,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5A",
+"subject": "GERMAN"
+}
+},
+"subject": "GERMAN",
+"term_id": "2268"
+}

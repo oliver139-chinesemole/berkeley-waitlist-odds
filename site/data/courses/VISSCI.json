@@ -1,0 +1,32 @@
+{
+"courses": {
+"VISSCI 24": {
+"buckets": {
+"1-5": {
+"n_course": 70,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "VISSCI"
+},
+"VISSCI 39": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "39",
+"subject": "VISSCI"
+}
+},
+"subject": "VISSCI",
+"term_id": "2268"
+}

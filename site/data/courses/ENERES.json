@@ -1,0 +1,112 @@
+{
+"courses": {
+"ENERES 276": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "276",
+"subject": "ENERES"
+},
+"ENERES 290A": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "290A",
+"subject": "ENERES"
+},
+"ENERES 295": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "295",
+"subject": "ENERES"
+},
+"ENERES C100": {
+"buckets": {
+"1-5": {
+"n_course": 278,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 110,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C100",
+"subject": "ENERES"
+},
+"ENERES C176": {
+"buckets": {
+"1-5": {
+"n_course": 191,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C176",
+"subject": "ENERES"
+},
+"ENERES C200": {
+"buckets": {
+"1-5": {
+"n_course": 88,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C200",
+"subject": "ENERES"
+},
+"ENERES C223": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C223",
+"subject": "ENERES"
+}
+},
+"subject": "ENERES",
+"term_id": "2268"
+}

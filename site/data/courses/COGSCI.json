@@ -1,0 +1,234 @@
+{
+"courses": {
+"COGSCI 1": {
+"buckets": {
+"1-5": {
+"n_course": 526,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 301,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"41+": {
+"n_course": 81,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 374,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "COGSCI"
+},
+"COGSCI 115": {
+"buckets": {
+"1-5": {
+"n_course": 562,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 193,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 402,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "115",
+"subject": "COGSCI"
+},
+"COGSCI 131": {
+"buckets": {
+"1-5": {
+"n_course": 846,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 121,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 443,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "131",
+"subject": "COGSCI"
+},
+"COGSCI 132": {
+"buckets": {
+"1-5": {
+"n_course": 491,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 98,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 294,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "132",
+"subject": "COGSCI"
+},
+"COGSCI 151": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "151",
+"subject": "COGSCI"
+},
+"COGSCI 175": {
+"buckets": {
+"1-5": {
+"n_course": 806,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 328,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"41+": {
+"n_course": 118,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 425,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "175",
+"subject": "COGSCI"
+},
+"COGSCI 180": {
+"buckets": {
+"1-5": {
+"n_course": 561,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 227,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 408,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "180",
+"subject": "COGSCI"
+},
+"COGSCI 190": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "COGSCI"
+},
+"COGSCI C127": {
+"buckets": {
+"1-5": {
+"n_course": 517,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 209,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 375,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C127",
+"subject": "COGSCI"
+},
+"COGSCI C131": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C131",
+"subject": "COGSCI"
+},
+"COGSCI C142": {
+"buckets": {
+"1-5": {
+"n_course": 151,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 57,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C142",
+"subject": "COGSCI"
+}
+},
+"subject": "COGSCI",
+"term_id": "2268"
+}

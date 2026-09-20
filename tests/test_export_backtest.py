@@ -68,7 +68,7 @@ def test_export_skips_empty_runs_and_labels_predictors(tmp_path: Path) -> None:
     info = json.loads(out.read_text())
     assert info["term_id"] == "2268" and info["term_name"] == "Fall 2026" and info["data_source"] == "berkeleytime_history"
     assert [r["name"] for r in info["runs"]] == ["temporal_days14"]
-    assert set(info["predictors"]) == {"bucket", "course", "site", "cox"}
+    assert set(info["predictors"]) == {"bucket", "dept", "course", "site", "cox"}
     assert "NaN" not in out.read_text()
 
 

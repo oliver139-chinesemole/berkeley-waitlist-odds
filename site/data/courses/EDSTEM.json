@@ -1,0 +1,37 @@
+{
+"courses": {
+"EDSTEM 82": {
+"buckets": {
+"1-5": {
+"n_course": 87,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "82",
+"subject": "EDSTEM"
+},
+"EDSTEM 98": {
+"buckets": {
+"1-5": {
+"n_course": 63,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "98",
+"subject": "EDSTEM"
+}
+},
+"subject": "EDSTEM",
+"term_id": "2268"
+}

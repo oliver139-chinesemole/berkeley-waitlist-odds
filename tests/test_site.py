@@ -420,7 +420,7 @@ def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Pa
         assert "1 backtest run" in out["status"]
         assert "Later joiners scored with a model fit on earlier ones, within 14 days" in html
         assert "When the estimate said about <strong>70%</strong>, <strong>61%</strong> got in within 14 days" in html
-        assert "Fixed-lead-time number (site v1)" in html and "+0.029" in html and "(-0.034 to +0.082)" in html and "2,938" in html
+        assert "Fixed-lead-time number (site v1) (what the pages use)" in html and "+0.029" in html and "(-0.034 to +0.082)" in html and "2,938" in html
         assert "<svg" in html and "Which joiners could be scored" in html and "87,324 training joiners" in html
     finally:
         (full_site / "data" / "backtest.json").unlink()

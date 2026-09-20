@@ -1,0 +1,587 @@
+{
+"courses": {
+"CHEM 103": {
+"buckets": {
+"1-5": {
+"n_course": 151,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "103",
+"subject": "CHEM"
+},
+"CHEM 104A": {
+"buckets": {
+"1-5": {
+"n_course": 94,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "104A",
+"subject": "CHEM"
+},
+"CHEM 105": {
+"buckets": {
+"1-5": {
+"n_course": 157,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 2,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 72,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "105",
+"subject": "CHEM"
+},
+"CHEM 115": {
+"buckets": {
+"1-5": {
+"n_course": 168,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 42,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "115",
+"subject": "CHEM"
+},
+"CHEM 120B": {
+"buckets": {
+"1-5": {
+"n_course": 311,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 71,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 198,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "120B",
+"subject": "CHEM"
+},
+"CHEM 125": {
+"buckets": {
+"1-5": {
+"n_course": 171,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 93,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "125",
+"subject": "CHEM"
+},
+"CHEM 12A": {
+"buckets": {
+"1-5": {
+"n_course": 270,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 55,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 192,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "lower",
+"number": "12A",
+"subject": "CHEM"
+},
+"CHEM 135": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "135",
+"subject": "CHEM"
+},
+"CHEM 195": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "195",
+"subject": "CHEM"
+},
+"CHEM 1A": {
+"buckets": {
+"1-5": {
+"n_course": 1046,
+"pooled": "CHEM",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 725,
+"pooled": "CHEM",
+"sections_course": 3
+},
+"41+": {
+"n_course": 281,
+"pooled": "CHEM",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 751,
+"pooled": "CHEM",
+"sections_course": 3
+}
+},
+"dept_group": "CHEM",
+"level": "lower",
+"number": "1A",
+"subject": "CHEM"
+},
+"CHEM 1AL": {
+"buckets": {
+"1-5": {
+"n_course": 984,
+"pooled": "CHEM",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 695,
+"pooled": "CHEM",
+"sections_course": 3
+},
+"41+": {
+"n_course": 193,
+"pooled": "CHEM",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 737,
+"pooled": "CHEM",
+"sections_course": 3
+}
+},
+"dept_group": "CHEM",
+"level": "lower",
+"number": "1AL",
+"subject": "CHEM"
+},
+"CHEM 220A": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "220A",
+"subject": "CHEM"
+},
+"CHEM 274A": {
+"buckets": {
+"1-5": {
+"n_course": 48,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "274A",
+"subject": "CHEM"
+},
+"CHEM 274B": {
+"buckets": {
+"1-5": {
+"n_course": 50,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "274B",
+"subject": "CHEM"
+},
+"CHEM 277A": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "277A",
+"subject": "CHEM"
+},
+"CHEM 277B": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "277B",
+"subject": "CHEM"
+},
+"CHEM 279": {
+"buckets": {
+"1-5": {
+"n_course": 52,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "279",
+"subject": "CHEM"
+},
+"CHEM 280": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "280",
+"subject": "CHEM"
+},
+"CHEM 281": {
+"buckets": {
+"1-5": {
+"n_course": 49,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "281",
+"subject": "CHEM"
+},
+"CHEM 295": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "295",
+"subject": "CHEM"
+},
+"CHEM 300": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "CHEM",
+"sections_course": 6
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "300",
+"subject": "CHEM"
+},
+"CHEM 301C": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "301C",
+"subject": "CHEM"
+},
+"CHEM 375": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "grad",
+"number": "375",
+"subject": "CHEM"
+},
+"CHEM 3A": {
+"buckets": {
+"1-5": {
+"n_course": 932,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 36,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 456,
+"pooled": "CHEM",
+"sections_course": 2
+}
+},
+"dept_group": "CHEM",
+"level": "lower",
+"number": "3A",
+"subject": "CHEM"
+},
+"CHEM 3AL": {
+"buckets": {
+"1-5": {
+"n_course": 1040,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 719,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"41+": {
+"n_course": 156,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 776,
+"pooled": "CHEM",
+"sections_course": 2
+}
+},
+"dept_group": "CHEM",
+"level": "lower",
+"number": "3AL",
+"subject": "CHEM"
+},
+"CHEM 3B": {
+"buckets": {
+"1-5": {
+"n_course": 784,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 569,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"41+": {
+"n_course": 64,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 573,
+"pooled": "CHEM",
+"sections_course": 2
+}
+},
+"dept_group": "CHEM",
+"level": "lower",
+"number": "3B",
+"subject": "CHEM"
+},
+"CHEM 3BL": {
+"buckets": {
+"1-5": {
+"n_course": 1068,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 704,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"41+": {
+"n_course": 346,
+"pooled": "CHEM",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 796,
+"pooled": "CHEM",
+"sections_course": 2
+}
+},
+"dept_group": "CHEM",
+"level": "lower",
+"number": "3BL",
+"subject": "CHEM"
+},
+"CHEM 4A": {
+"buckets": {
+"1-5": {
+"n_course": 211,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 31,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 97,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "lower",
+"number": "4A",
+"subject": "CHEM"
+},
+"CHEM 96": {
+"buckets": {
+"1-5": {
+"n_course": 190,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "lower",
+"number": "96",
+"subject": "CHEM"
+},
+"CHEM C110L": {
+"buckets": {
+"1-5": {
+"n_course": 150,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 14,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "C110L",
+"subject": "CHEM"
+},
+"CHEM C150": {
+"buckets": {
+"1-5": {
+"n_course": 126,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 20,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "C150",
+"subject": "CHEM"
+},
+"CHEM C191A": {
+"buckets": {
+"1-5": {
+"n_course": 254,
+"pooled": "CHEM",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 76,
+"pooled": "CHEM",
+"sections_course": 1
+}
+},
+"dept_group": "CHEM",
+"level": "upper",
+"number": "C191A",
+"subject": "CHEM"
+}
+},
+"subject": "CHEM",
+"term_id": "2268"
+}

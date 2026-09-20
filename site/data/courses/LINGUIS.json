@@ -1,0 +1,187 @@
+{
+"courses": {
+"LINGUIS 100": {
+"buckets": {
+"1-5": {
+"n_course": 100,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "LINGUIS"
+},
+"LINGUIS 120": {
+"buckets": {
+"1-5": {
+"n_course": 124,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "120",
+"subject": "LINGUIS"
+},
+"LINGUIS 140": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "140",
+"subject": "LINGUIS"
+},
+"LINGUIS 150A": {
+"buckets": {
+"1-5": {
+"n_course": 282,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 80,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "150A",
+"subject": "LINGUIS"
+},
+"LINGUIS 1A": {
+"buckets": {
+"1-5": {
+"n_course": 46,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "LINGUIS"
+},
+"LINGUIS 201": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "201",
+"subject": "LINGUIS"
+},
+"LINGUIS 230": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "230",
+"subject": "LINGUIS"
+},
+"LINGUIS 55AC": {
+"buckets": {
+"1-5": {
+"n_course": 291,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 168,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "55AC",
+"subject": "LINGUIS"
+},
+"LINGUIS C142": {
+"buckets": {
+"1-5": {
+"n_course": 235,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C142",
+"subject": "LINGUIS"
+},
+"LINGUIS C146": {
+"buckets": {
+"1-5": {
+"n_course": 46,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C146",
+"subject": "LINGUIS"
+},
+"LINGUIS H195S": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "H195S",
+"subject": "LINGUIS"
+},
+"LINGUIS R1B": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "LINGUIS"
+}
+},
+"subject": "LINGUIS",
+"term_id": "2268"
+}

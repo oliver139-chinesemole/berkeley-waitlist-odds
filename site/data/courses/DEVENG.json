@@ -1,0 +1,50 @@
+{
+"courses": {
+"DEVENG 220": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "220",
+"subject": "DEVENG"
+},
+"DEVENG 298": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "298",
+"subject": "DEVENG"
+},
+"DEVENG C200": {
+"buckets": {
+"1-5": {
+"n_course": 63,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C200",
+"subject": "DEVENG"
+}
+},
+"subject": "DEVENG",
+"term_id": "2268"
+}

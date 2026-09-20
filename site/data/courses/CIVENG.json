@@ -1,0 +1,451 @@
+{
+"courses": {
+"CIVENG 100": {
+"buckets": {
+"1-5": {
+"n_course": 124,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "100",
+"subject": "CIVENG"
+},
+"CIVENG 108": {
+"buckets": {
+"1-5": {
+"n_course": 117,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "108",
+"subject": "CIVENG"
+},
+"CIVENG 11": {
+"buckets": {
+"1-5": {
+"n_course": 344,
+"pooled": "CIVENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 164,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "11",
+"subject": "CIVENG"
+},
+"CIVENG 111": {
+"buckets": {
+"1-5": {
+"n_course": 301,
+"pooled": "CIVENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 39,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "111",
+"subject": "CIVENG"
+},
+"CIVENG 111L": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "111L",
+"subject": "CIVENG"
+},
+"CIVENG 122": {
+"buckets": {
+"1-5": {
+"n_course": 124,
+"pooled": "CIVENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "122",
+"subject": "CIVENG"
+},
+"CIVENG 124": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "124",
+"subject": "CIVENG"
+},
+"CIVENG 126": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "126",
+"subject": "CIVENG"
+},
+"CIVENG 155": {
+"buckets": {
+"1-5": {
+"n_course": 155,
+"pooled": "CIVENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "155",
+"subject": "CIVENG"
+},
+"CIVENG 167": {
+"buckets": {
+"1-5": {
+"n_course": 216,
+"pooled": "CIVENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 25,
+"pooled": "all",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 136,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "167",
+"subject": "CIVENG"
+},
+"CIVENG 170A": {
+"buckets": {
+"1-5": {
+"n_course": 69,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "170A",
+"subject": "CIVENG"
+},
+"CIVENG 176": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "176",
+"subject": "CIVENG"
+},
+"CIVENG 186": {
+"buckets": {
+"1-5": {
+"n_course": 222,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "186",
+"subject": "CIVENG"
+},
+"CIVENG 187": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "187",
+"subject": "CIVENG"
+},
+"CIVENG 193": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "193",
+"subject": "CIVENG"
+},
+"CIVENG 24": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "24",
+"subject": "CIVENG"
+},
+"CIVENG 244": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "244",
+"subject": "CIVENG"
+},
+"CIVENG 254G": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "254G",
+"subject": "CIVENG"
+},
+"CIVENG 256": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "256",
+"subject": "CIVENG"
+},
+"CIVENG 292B": {
+"buckets": {
+"1-5": {
+"n_course": 85,
+"pooled": "CIVENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "292B",
+"subject": "CIVENG"
+},
+"CIVENG 293A": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "293A",
+"subject": "CIVENG"
+},
+"CIVENG 298": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "298",
+"subject": "CIVENG"
+},
+"CIVENG 60": {
+"buckets": {
+"1-5": {
+"n_course": 236,
+"pooled": "CIVENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 32,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "60",
+"subject": "CIVENG"
+},
+"CIVENG 70": {
+"buckets": {
+"1-5": {
+"n_course": 261,
+"pooled": "CIVENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 42,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "70",
+"subject": "CIVENG"
+},
+"CIVENG 93": {
+"buckets": {
+"1-5": {
+"n_course": 294,
+"pooled": "CIVENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 144,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "93",
+"subject": "CIVENG"
+},
+"CIVENG C103N": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "C103N",
+"subject": "CIVENG"
+},
+"CIVENG C172": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "C172",
+"subject": "CIVENG"
+},
+"CIVENG C231": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "C231",
+"subject": "CIVENG"
+},
+"CIVENG C290U": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "C290U",
+"subject": "CIVENG"
+},
+"CIVENG C30": {
+"buckets": {
+"1-5": {
+"n_course": 374,
+"pooled": "CIVENG",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 143,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "C30",
+"subject": "CIVENG"
+}
+},
+"subject": "CIVENG",
+"term_id": "2268"
+}

@@ -1,0 +1,213 @@
+{
+"courses": {
+"ETHSTD 101B": {
+"buckets": {
+"1-5": {
+"n_course": 185,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101B",
+"subject": "ETHSTD"
+},
+"ETHSTD 11AC": {
+"buckets": {
+"1-5": {
+"n_course": 183,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 99,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "11AC",
+"subject": "ETHSTD"
+},
+"ETHSTD 12": {
+"buckets": {
+"1-5": {
+"n_course": 84,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "12",
+"subject": "ETHSTD"
+},
+"ETHSTD 130": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130",
+"subject": "ETHSTD"
+},
+"ETHSTD 135": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "135",
+"subject": "ETHSTD"
+},
+"ETHSTD 150": {
+"buckets": {
+"1-5": {
+"n_course": 139,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "150",
+"subject": "ETHSTD"
+},
+"ETHSTD 175": {
+"buckets": {
+"1-5": {
+"n_course": 79,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "175",
+"subject": "ETHSTD"
+},
+"ETHSTD 180": {
+"buckets": {
+"1-5": {
+"n_course": 72,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "180",
+"subject": "ETHSTD"
+},
+"ETHSTD 190": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "ETHSTD"
+},
+"ETHSTD 190AC": {
+"buckets": {
+"1-5": {
+"n_course": 177,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190AC",
+"subject": "ETHSTD"
+},
+"ETHSTD 201": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "201",
+"subject": "ETHSTD"
+},
+"ETHSTD 202": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "202",
+"subject": "ETHSTD"
+},
+"ETHSTD 21AC": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "21AC",
+"subject": "ETHSTD"
+},
+"ETHSTD 250": {
+"buckets": {
+"1-5": {
+"n_course": 34,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "250",
+"subject": "ETHSTD"
+}
+},
+"subject": "ETHSTD",
+"term_id": "2268"
+}

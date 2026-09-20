@@ -1,0 +1,357 @@
+{
+"courses": {
+"ART 102": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "ART"
+},
+"ART 103": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "103",
+"subject": "ART"
+},
+"ART 116": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "116",
+"subject": "ART"
+},
+"ART 118": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "118",
+"subject": "ART"
+},
+"ART 119": {
+"buckets": {
+"1-5": {
+"n_course": 65,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "119",
+"subject": "ART"
+},
+"ART 12": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "12",
+"subject": "ART"
+},
+"ART 13": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "13",
+"subject": "ART"
+},
+"ART 132": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "132",
+"subject": "ART"
+},
+"ART 133": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "133",
+"subject": "ART"
+},
+"ART 14": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "14",
+"subject": "ART"
+},
+"ART 15": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "15",
+"subject": "ART"
+},
+"ART 16": {
+"buckets": {
+"1-5": {
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "16",
+"subject": "ART"
+},
+"ART 160": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "160",
+"subject": "ART"
+},
+"ART 165": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "165",
+"subject": "ART"
+},
+"ART 17": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "17",
+"subject": "ART"
+},
+"ART 172": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "172",
+"subject": "ART"
+},
+"ART 173": {
+"buckets": {
+"1-5": {
+"n_course": 30,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "173",
+"subject": "ART"
+},
+"ART 180": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "180",
+"subject": "ART"
+},
+"ART 185": {
+"buckets": {
+"1-5": {
+"n_course": 68,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "185",
+"subject": "ART"
+},
+"ART 21": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "21",
+"subject": "ART"
+},
+"ART 218": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "218",
+"subject": "ART"
+},
+"ART 25": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "25",
+"subject": "ART"
+},
+"ART 26": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "26",
+"subject": "ART"
+},
+"ART 294": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "294",
+"subject": "ART"
+},
+"ART 30": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "30",
+"subject": "ART"
+},
+"ART 375": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "375",
+"subject": "ART"
+},
+"ART 8": {
+"buckets": {
+"1-5": {
+"n_course": 44,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "8",
+"subject": "ART"
+}
+},
+"subject": "ART",
+"term_id": "2268"
+}

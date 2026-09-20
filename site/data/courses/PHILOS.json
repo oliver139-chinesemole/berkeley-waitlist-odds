@@ -1,0 +1,404 @@
+{
+"courses": {
+"PHILOS 100": {
+"buckets": {
+"1-5": {
+"n_course": 402,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 163,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "PHILOS"
+},
+"PHILOS 107": {
+"buckets": {
+"1-5": {
+"n_course": 576,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 178,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 411,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "107",
+"subject": "PHILOS"
+},
+"PHILOS 115": {
+"buckets": {
+"1-5": {
+"n_course": 480,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 126,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 308,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "115",
+"subject": "PHILOS"
+},
+"PHILOS 12A": {
+"buckets": {
+"1-5": {
+"n_course": 518,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 144,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 302,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "12A",
+"subject": "PHILOS"
+},
+"PHILOS 135": {
+"buckets": {
+"1-5": {
+"n_course": 452,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 127,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 310,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "135",
+"subject": "PHILOS"
+},
+"PHILOS 136": {
+"buckets": {
+"1-5": {
+"n_course": 459,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 73,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 282,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "136",
+"subject": "PHILOS"
+},
+"PHILOS 146": {
+"buckets": {
+"1-5": {
+"n_course": 129,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "146",
+"subject": "PHILOS"
+},
+"PHILOS 153": {
+"buckets": {
+"1-5": {
+"n_course": 203,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 55,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "153",
+"subject": "PHILOS"
+},
+"PHILOS 160": {
+"buckets": {
+"1-5": {
+"n_course": 260,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "160",
+"subject": "PHILOS"
+},
+"PHILOS 170": {
+"buckets": {
+"1-5": {
+"n_course": 276,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 72,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "170",
+"subject": "PHILOS"
+},
+"PHILOS 187": {
+"buckets": {
+"1-5": {
+"n_course": 322,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 74,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "187",
+"subject": "PHILOS"
+},
+"PHILOS 190": {
+"buckets": {
+"1-5": {
+"n_course": 209,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "PHILOS"
+},
+"PHILOS 198BC": {
+"buckets": {
+"1-5": {
+"n_course": 86,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "198BC",
+"subject": "PHILOS"
+},
+"PHILOS 2": {
+"buckets": {
+"1-5": {
+"n_course": 444,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 94,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 281,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "2",
+"subject": "PHILOS"
+},
+"PHILOS 200": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "PHILOS"
+},
+"PHILOS 25A": {
+"buckets": {
+"1-5": {
+"n_course": 528,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 58,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 237,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "25A",
+"subject": "PHILOS"
+},
+"PHILOS 290": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "290",
+"subject": "PHILOS"
+},
+"PHILOS 3": {
+"buckets": {
+"1-5": {
+"n_course": 649,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 339,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"41+": {
+"n_course": 45,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 473,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "3",
+"subject": "PHILOS"
+},
+"PHILOS 375": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "375",
+"subject": "PHILOS"
+},
+"PHILOS 7": {
+"buckets": {
+"1-5": {
+"n_course": 256,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 82,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "7",
+"subject": "PHILOS"
+},
+"PHILOS R1B": {
+"buckets": {
+"1-5": {
+"n_course": 77,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "PHILOS"
+}
+},
+"subject": "PHILOS",
+"term_id": "2268"
+}

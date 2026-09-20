@@ -1,0 +1,1017 @@
+{
+"courses": {
+"PBHLTH 101": {
+"buckets": {
+"1-5": {
+"n_course": 614,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 410,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"41+": {
+"n_course": 106,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 450,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "101",
+"subject": "PBHLTH"
+},
+"PBHLTH 116": {
+"buckets": {
+"1-5": {
+"n_course": 594,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 368,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"41+": {
+"n_course": 133,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 393,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "116",
+"subject": "PBHLTH"
+},
+"PBHLTH 142": {
+"buckets": {
+"1-5": {
+"n_course": 677,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 358,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"41+": {
+"n_course": 141,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 440,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "142",
+"subject": "PBHLTH"
+},
+"PBHLTH 142W": {
+"buckets": {
+"1-5": {
+"n_course": 69,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "142W",
+"subject": "PBHLTH"
+},
+"PBHLTH 150B": {
+"buckets": {
+"1-5": {
+"n_course": 683,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 380,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"41+": {
+"n_course": 179,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 495,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "150B",
+"subject": "PBHLTH"
+},
+"PBHLTH 150D": {
+"buckets": {
+"1-5": {
+"n_course": 521,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 254,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"41+": {
+"n_course": 15,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 331,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "150D",
+"subject": "PBHLTH"
+},
+"PBHLTH 155A": {
+"buckets": {
+"1-5": {
+"n_course": 142,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "155A",
+"subject": "PBHLTH"
+},
+"PBHLTH 155D": {
+"buckets": {
+"1-5": {
+"n_course": 259,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 23,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "155D",
+"subject": "PBHLTH"
+},
+"PBHLTH 162A": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "162A",
+"subject": "PBHLTH"
+},
+"PBHLTH 181": {
+"buckets": {
+"1-5": {
+"n_course": 242,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 69,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "181",
+"subject": "PBHLTH"
+},
+"PBHLTH 182": {
+"buckets": {
+"1-5": {
+"n_course": 137,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 23,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "182",
+"subject": "PBHLTH"
+},
+"PBHLTH 196": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "196",
+"subject": "PBHLTH"
+},
+"PBHLTH 200FW": {
+"buckets": {
+"1-5": {
+"n_course": 72,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "200FW",
+"subject": "PBHLTH"
+},
+"PBHLTH 200GW": {
+"buckets": {
+"1-5": {
+"n_course": 53,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "200GW",
+"subject": "PBHLTH"
+},
+"PBHLTH 200J": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "200J",
+"subject": "PBHLTH"
+},
+"PBHLTH 200L": {
+"buckets": {
+"1-5": {
+"n_course": 103,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "200L",
+"subject": "PBHLTH"
+},
+"PBHLTH 202L": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "202L",
+"subject": "PBHLTH"
+},
+"PBHLTH 203A": {
+"buckets": {
+"1-5": {
+"n_course": 87,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "203A",
+"subject": "PBHLTH"
+},
+"PBHLTH 204A": {
+"buckets": {
+"1-5": {
+"n_course": 218,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 66,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 132,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "204A",
+"subject": "PBHLTH"
+},
+"PBHLTH 206": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "206",
+"subject": "PBHLTH"
+},
+"PBHLTH 206BW": {
+"buckets": {
+"1-5": {
+"n_course": 51,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "206BW",
+"subject": "PBHLTH"
+},
+"PBHLTH 207": {
+"buckets": {
+"1-5": {
+"n_course": 99,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 35,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "207",
+"subject": "PBHLTH"
+},
+"PBHLTH 207A": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "207A",
+"subject": "PBHLTH"
+},
+"PBHLTH 207AW": {
+"buckets": {
+"1-5": {
+"n_course": 56,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "207AW",
+"subject": "PBHLTH"
+},
+"PBHLTH 210": {
+"buckets": {
+"1-5": {
+"n_course": 83,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 22,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "210",
+"subject": "PBHLTH"
+},
+"PBHLTH 210W": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "210W",
+"subject": "PBHLTH"
+},
+"PBHLTH 212W": {
+"buckets": {
+"1-5": {
+"n_course": 61,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "212W",
+"subject": "PBHLTH"
+},
+"PBHLTH 213W": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "213W",
+"subject": "PBHLTH"
+},
+"PBHLTH 218B": {
+"buckets": {
+"1-5": {
+"n_course": 141,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 23,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "218B",
+"subject": "PBHLTH"
+},
+"PBHLTH 220DW": {
+"buckets": {
+"1-5": {
+"n_course": 57,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "220DW",
+"subject": "PBHLTH"
+},
+"PBHLTH 223D": {
+"buckets": {
+"1-5": {
+"n_course": 101,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "223D",
+"subject": "PBHLTH"
+},
+"PBHLTH 224W": {
+"buckets": {
+"1-5": {
+"n_course": 87,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "224W",
+"subject": "PBHLTH"
+},
+"PBHLTH 226A": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "226A",
+"subject": "PBHLTH"
+},
+"PBHLTH 226AW": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "226AW",
+"subject": "PBHLTH"
+},
+"PBHLTH 24": {
+"buckets": {
+"1-5": {
+"n_course": 68,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 16,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "lower",
+"number": "24",
+"subject": "PBHLTH"
+},
+"PBHLTH 245": {
+"buckets": {
+"1-5": {
+"n_course": 212,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 48,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "245",
+"subject": "PBHLTH"
+},
+"PBHLTH 249": {
+"buckets": {
+"1-5": {
+"n_course": 67,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "249",
+"subject": "PBHLTH"
+},
+"PBHLTH 250A": {
+"buckets": {
+"1-5": {
+"n_course": 251,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 28,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "250A",
+"subject": "PBHLTH"
+},
+"PBHLTH 250BW": {
+"buckets": {
+"1-5": {
+"n_course": 56,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "250BW",
+"subject": "PBHLTH"
+},
+"PBHLTH 250W": {
+"buckets": {
+"1-5": {
+"n_course": 49,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "250W",
+"subject": "PBHLTH"
+},
+"PBHLTH 251BW": {
+"buckets": {
+"1-5": {
+"n_course": 52,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "251BW",
+"subject": "PBHLTH"
+},
+"PBHLTH 251W": {
+"buckets": {
+"1-5": {
+"n_course": 56,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "251W",
+"subject": "PBHLTH"
+},
+"PBHLTH 252": {
+"buckets": {
+"1-5": {
+"n_course": 154,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 39,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "252",
+"subject": "PBHLTH"
+},
+"PBHLTH 252B": {
+"buckets": {
+"1-5": {
+"n_course": 111,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "252B",
+"subject": "PBHLTH"
+},
+"PBHLTH 252D": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "252D",
+"subject": "PBHLTH"
+},
+"PBHLTH 252W": {
+"buckets": {
+"1-5": {
+"n_course": 41,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "252W",
+"subject": "PBHLTH"
+},
+"PBHLTH 253W": {
+"buckets": {
+"1-5": {
+"n_course": 55,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "253W",
+"subject": "PBHLTH"
+},
+"PBHLTH 255D": {
+"buckets": {
+"1-5": {
+"n_course": 102,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "255D",
+"subject": "PBHLTH"
+},
+"PBHLTH 257W": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "257W",
+"subject": "PBHLTH"
+},
+"PBHLTH 264": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "264",
+"subject": "PBHLTH"
+},
+"PBHLTH 269D": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "269D",
+"subject": "PBHLTH"
+},
+"PBHLTH 269E": {
+"buckets": {
+"1-5": {
+"n_course": 99,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "269E",
+"subject": "PBHLTH"
+},
+"PBHLTH 270": {
+"buckets": {
+"1-5": {
+"n_course": 72,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "270",
+"subject": "PBHLTH"
+},
+"PBHLTH 270A": {
+"buckets": {
+"1-5": {
+"n_course": 119,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "270A",
+"subject": "PBHLTH"
+},
+"PBHLTH 270B": {
+"buckets": {
+"1-5": {
+"n_course": 175,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 74,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "270B",
+"subject": "PBHLTH"
+},
+"PBHLTH 271J": {
+"buckets": {
+"1-5": {
+"n_course": 104,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "271J",
+"subject": "PBHLTH"
+},
+"PBHLTH 275": {
+"buckets": {
+"1-5": {
+"n_course": 131,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "275",
+"subject": "PBHLTH"
+},
+"PBHLTH 290": {
+"buckets": {
+"1-5": {
+"n_course": 71,
+"pooled": "PBHLTH",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 7,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "290",
+"subject": "PBHLTH"
+},
+"PBHLTH 291": {
+"buckets": {
+"1-5": {
+"n_course": 103,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 12,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "291",
+"subject": "PBHLTH"
+},
+"PBHLTH 292": {
+"buckets": {
+"1-5": {
+"n_course": 59,
+"pooled": "PBHLTH",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 7,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "292",
+"subject": "PBHLTH"
+},
+"PBHLTH C233": {
+"buckets": {
+"1-5": {
+"n_course": 75,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "C233",
+"subject": "PBHLTH"
+},
+"PBHLTH C240B": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "C240B",
+"subject": "PBHLTH"
+}
+},
+"subject": "PBHLTH",
+"term_id": "2268"
+}

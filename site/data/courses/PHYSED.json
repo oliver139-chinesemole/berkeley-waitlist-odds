@@ -1,0 +1,175 @@
+{
+"courses": {
+"PHYSED 1": {
+"buckets": {
+"1-5": {
+"n_course": 12137,
+"pooled": "PHYSED",
+"sections_course": 60
+},
+"16-40": {
+"n_course": 510,
+"pooled": "PHYSED",
+"sections_course": 15
+},
+"6-15": {
+"n_course": 4065,
+"pooled": "PHYSED",
+"sections_course": 51
+}
+},
+"dept_group": "PHYSED",
+"level": "lower",
+"number": "1",
+"subject": "PHYSED"
+},
+"PHYSED 121": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "PHYSED",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSED",
+"level": "upper",
+"number": "121",
+"subject": "PHYSED"
+},
+"PHYSED 177": {
+"buckets": {
+"1-5": {
+"n_course": 275,
+"pooled": "PHYSED",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 43,
+"pooled": "PHYSED",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 180,
+"pooled": "PHYSED",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSED",
+"level": "upper",
+"number": "177",
+"subject": "PHYSED"
+},
+"PHYSED 2": {
+"buckets": {
+"1-5": {
+"n_course": 1418,
+"pooled": "PHYSED",
+"sections_course": 12
+},
+"16-40": {
+"n_course": 68,
+"pooled": "PHYSED",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 417,
+"pooled": "PHYSED",
+"sections_course": 6
+}
+},
+"dept_group": "PHYSED",
+"level": "lower",
+"number": "2",
+"subject": "PHYSED"
+},
+"PHYSED 3": {
+"buckets": {
+"1-5": {
+"n_course": 951,
+"pooled": "PHYSED",
+"sections_course": 9
+},
+"16-40": {
+"n_course": 20,
+"pooled": "PHYSED",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 214,
+"pooled": "PHYSED",
+"sections_course": 4
+}
+},
+"dept_group": "PHYSED",
+"level": "lower",
+"number": "3",
+"subject": "PHYSED"
+},
+"PHYSED 32": {
+"buckets": {
+"1-5": {
+"n_course": 488,
+"pooled": "PHYSED",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 223,
+"pooled": "PHYSED",
+"sections_course": 1
+},
+"41+": {
+"n_course": 49,
+"pooled": "PHYSED",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 288,
+"pooled": "PHYSED",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSED",
+"level": "lower",
+"number": "32",
+"subject": "PHYSED"
+},
+"PHYSED 4": {
+"buckets": {
+"1-5": {
+"n_course": 215,
+"pooled": "PHYSED",
+"sections_course": 4
+},
+"6-15": {
+"n_course": 32,
+"pooled": "PHYSED",
+"sections_course": 2
+}
+},
+"dept_group": "PHYSED",
+"level": "lower",
+"number": "4",
+"subject": "PHYSED"
+},
+"PHYSED 5": {
+"buckets": {
+"1-5": {
+"n_course": 92,
+"pooled": "PHYSED",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "PHYSED",
+"sections_course": 1
+}
+},
+"dept_group": "PHYSED",
+"level": "lower",
+"number": "5",
+"subject": "PHYSED"
+}
+},
+"subject": "PHYSED",
+"term_id": "2268"
+}

@@ -1,0 +1,162 @@
+{
+"courses": {
+"FRENCH 1": {
+"buckets": {
+"1-5": {
+"n_course": 85,
+"pooled": "OTHER",
+"sections_course": 7
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "FRENCH"
+},
+"FRENCH 102": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "FRENCH"
+},
+"FRENCH 137": {
+"buckets": {
+"1-5": {
+"n_course": 99,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "137",
+"subject": "FRENCH"
+},
+"FRENCH 141": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "141",
+"subject": "FRENCH"
+},
+"FRENCH 142AC": {
+"buckets": {
+"1-5": {
+"n_course": 46,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "142AC",
+"subject": "FRENCH"
+},
+"FRENCH 2": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "2",
+"subject": "FRENCH"
+},
+"FRENCH 3": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "3",
+"subject": "FRENCH"
+},
+"FRENCH 4": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "4",
+"subject": "FRENCH"
+},
+"FRENCH 43A": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "43A",
+"subject": "FRENCH"
+},
+"FRENCH 48": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "48",
+"subject": "FRENCH"
+},
+"FRENCH 80": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "80",
+"subject": "FRENCH"
+},
+"FRENCH R1B": {
+"buckets": {
+"1-5": {
+"n_course": 111,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "FRENCH"
+}
+},
+"subject": "FRENCH",
+"term_id": "2268"
+}

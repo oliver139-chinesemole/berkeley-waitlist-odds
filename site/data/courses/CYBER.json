@@ -1,0 +1,120 @@
+{
+"courses": {
+"CYBER 200": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "CYBER"
+},
+"CYBER 201": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "201",
+"subject": "CYBER"
+},
+"CYBER 207": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "207",
+"subject": "CYBER"
+},
+"CYBER 210": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210",
+"subject": "CYBER"
+},
+"CYBER 211": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "211",
+"subject": "CYBER"
+},
+"CYBER 212": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "212",
+"subject": "CYBER"
+},
+"CYBER 220": {
+"buckets": {
+"1-5": {
+"n_course": 45,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "220",
+"subject": "CYBER"
+},
+"CYBER 252": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "252",
+"subject": "CYBER"
+}
+},
+"subject": "CYBER",
+"term_id": "2268"
+}

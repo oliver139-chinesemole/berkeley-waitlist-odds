@@ -1,0 +1,146 @@
+{
+"courses": {
+"NUCENG 10": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "NUCENG"
+},
+"NUCENG 100": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "NUCENG"
+},
+"NUCENG 101": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101",
+"subject": "NUCENG"
+},
+"NUCENG 124": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "124",
+"subject": "NUCENG"
+},
+"NUCENG 156": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "156",
+"subject": "NUCENG"
+},
+"NUCENG 175": {
+"buckets": {
+"1-5": {
+"n_course": 56,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "175",
+"subject": "NUCENG"
+},
+"NUCENG 200M": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200M",
+"subject": "NUCENG"
+},
+"NUCENG 24": {
+"buckets": {
+"1-5": {
+"n_course": 136,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "NUCENG"
+},
+"NUCENG 275": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "275",
+"subject": "NUCENG"
+},
+"NUCENG C231": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C231",
+"subject": "NUCENG"
+}
+},
+"subject": "NUCENG",
+"term_id": "2268"
+}

@@ -1,0 +1,58 @@
+{
+"courses": {
+"SASIAN 125": {
+"buckets": {
+"1-5": {
+"n_course": 159,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "125",
+"subject": "SASIAN"
+},
+"SASIAN 131": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "131",
+"subject": "SASIAN"
+},
+"SASIAN R5A": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5A",
+"subject": "SASIAN"
+},
+"SASIAN R5B": {
+"buckets": {
+"1-5": {
+"n_course": 41,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5B",
+"subject": "SASIAN"
+}
+},
+"subject": "SASIAN",
+"term_id": "2268"
+}

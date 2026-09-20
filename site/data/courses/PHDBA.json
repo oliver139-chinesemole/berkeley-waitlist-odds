@@ -1,0 +1,19 @@
+{
+"courses": {
+"PHDBA 239FB": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "239FB",
+"subject": "PHDBA"
+}
+},
+"subject": "PHDBA",
+"term_id": "2268"
+}

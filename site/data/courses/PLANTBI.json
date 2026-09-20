@@ -1,0 +1,135 @@
+{
+"courses": {
+"PLANTBI 135": {
+"buckets": {
+"1-5": {
+"n_course": 149,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "135",
+"subject": "PLANTBI"
+},
+"PLANTBI 170": {
+"buckets": {
+"1-5": {
+"n_course": 83,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "170",
+"subject": "PLANTBI"
+},
+"PLANTBI 20": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20",
+"subject": "PLANTBI"
+},
+"PLANTBI 290": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "290",
+"subject": "PLANTBI"
+},
+"PLANTBI 292": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "292",
+"subject": "PLANTBI"
+},
+"PLANTBI C110L": {
+"buckets": {
+"1-5": {
+"n_course": 295,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 41,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 178,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C110L",
+"subject": "PLANTBI"
+},
+"PLANTBI C112": {
+"buckets": {
+"1-5": {
+"n_course": 282,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 42,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C112",
+"subject": "PLANTBI"
+},
+"PLANTBI C112L": {
+"buckets": {
+"1-5": {
+"n_course": 790,
+"pooled": "OTHER",
+"sections_course": 4
+},
+"6-15": {
+"n_course": 276,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C112L",
+"subject": "PLANTBI"
+}
+},
+"subject": "PLANTBI",
+"term_id": "2268"
+}

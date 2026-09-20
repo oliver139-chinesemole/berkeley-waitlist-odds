@@ -1,0 +1,19 @@
+{
+"courses": {
+"DANISH 1A": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "DANISH"
+}
+},
+"subject": "DANISH",
+"term_id": "2268"
+}

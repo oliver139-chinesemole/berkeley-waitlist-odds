@@ -1,0 +1,205 @@
+{
+"courses": {
+"RHETOR 10": {
+"buckets": {
+"1-5": {
+"n_course": 337,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 111,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "RHETOR"
+},
+"RHETOR 103B": {
+"buckets": {
+"1-5": {
+"n_course": 119,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "103B",
+"subject": "RHETOR"
+},
+"RHETOR 106": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "106",
+"subject": "RHETOR"
+},
+"RHETOR 108": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "108",
+"subject": "RHETOR"
+},
+"RHETOR 120": {
+"buckets": {
+"1-5": {
+"n_course": 186,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 61,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "120",
+"subject": "RHETOR"
+},
+"RHETOR 129AC": {
+"buckets": {
+"1-5": {
+"n_course": 119,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "129AC",
+"subject": "RHETOR"
+},
+"RHETOR 137": {
+"buckets": {
+"1-5": {
+"n_course": 76,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "137",
+"subject": "RHETOR"
+},
+"RHETOR 145": {
+"buckets": {
+"1-5": {
+"n_course": 41,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "145",
+"subject": "RHETOR"
+},
+"RHETOR 157A": {
+"buckets": {
+"1-5": {
+"n_course": 216,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 54,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "157A",
+"subject": "RHETOR"
+},
+"RHETOR 172": {
+"buckets": {
+"1-5": {
+"n_course": 100,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "172",
+"subject": "RHETOR"
+},
+"RHETOR 240G": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "240G",
+"subject": "RHETOR"
+},
+"RHETOR R1A": {
+"buckets": {
+"1-5": {
+"n_course": 96,
+"pooled": "OTHER",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1A",
+"subject": "RHETOR"
+},
+"RHETOR R1B": {
+"buckets": {
+"1-5": {
+"n_course": 75,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "RHETOR"
+}
+},
+"subject": "RHETOR",
+"term_id": "2268"
+}

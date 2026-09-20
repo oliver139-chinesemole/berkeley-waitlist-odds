@@ -1,0 +1,542 @@
+{
+"courses": {
+"CYPLAN 101": {
+"buckets": {
+"1-5": {
+"n_course": 427,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 219,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"41+": {
+"n_course": 23,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 274,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "upper",
+"number": "101",
+"subject": "CYPLAN"
+},
+"CYPLAN 110": {
+"buckets": {
+"1-5": {
+"n_course": 449,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 208,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"41+": {
+"n_course": 24,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 300,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "upper",
+"number": "110",
+"subject": "CYPLAN"
+},
+"CYPLAN 113A": {
+"buckets": {
+"1-5": {
+"n_course": 368,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 71,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 223,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "upper",
+"number": "113A",
+"subject": "CYPLAN"
+},
+"CYPLAN 115": {
+"buckets": {
+"1-5": {
+"n_course": 485,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 152,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 297,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "upper",
+"number": "115",
+"subject": "CYPLAN"
+},
+"CYPLAN 119": {
+"buckets": {
+"1-5": {
+"n_course": 405,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 75,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 231,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "upper",
+"number": "119",
+"subject": "CYPLAN"
+},
+"CYPLAN 124": {
+"buckets": {
+"1-5": {
+"n_course": 246,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 41,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "upper",
+"number": "124",
+"subject": "CYPLAN"
+},
+"CYPLAN 180A": {
+"buckets": {
+"1-5": {
+"n_course": 134,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "upper",
+"number": "180A",
+"subject": "CYPLAN"
+},
+"CYPLAN 180B": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "upper",
+"number": "180B",
+"subject": "CYPLAN"
+},
+"CYPLAN 190": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "upper",
+"number": "190",
+"subject": "CYPLAN"
+},
+"CYPLAN 200": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "200",
+"subject": "CYPLAN"
+},
+"CYPLAN 201A": {
+"buckets": {
+"1-5": {
+"n_course": 88,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "201A",
+"subject": "CYPLAN"
+},
+"CYPLAN 204C": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "204C",
+"subject": "CYPLAN"
+},
+"CYPLAN 205": {
+"buckets": {
+"1-5": {
+"n_course": 223,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 1,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 87,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "205",
+"subject": "CYPLAN"
+},
+"CYPLAN 207": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "207",
+"subject": "CYPLAN"
+},
+"CYPLAN 218": {
+"buckets": {
+"1-5": {
+"n_course": 82,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "218",
+"subject": "CYPLAN"
+},
+"CYPLAN 230": {
+"buckets": {
+"1-5": {
+"n_course": 177,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 14,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 87,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "230",
+"subject": "CYPLAN"
+},
+"CYPLAN 24": {
+"buckets": {
+"1-5": {
+"n_course": 121,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 34,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "lower",
+"number": "24",
+"subject": "CYPLAN"
+},
+"CYPLAN 248": {
+"buckets": {
+"1-5": {
+"n_course": 134,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "248",
+"subject": "CYPLAN"
+},
+"CYPLAN 253": {
+"buckets": {
+"1-5": {
+"n_course": 106,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "253",
+"subject": "CYPLAN"
+},
+"CYPLAN 280C": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "280C",
+"subject": "CYPLAN"
+},
+"CYPLAN 284": {
+"buckets": {
+"1-5": {
+"n_course": 112,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "284",
+"subject": "CYPLAN"
+},
+"CYPLAN 290": {
+"buckets": {
+"1-5": {
+"n_course": 254,
+"pooled": "CYPLAN",
+"sections_course": 4
+},
+"6-15": {
+"n_course": 3,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "290",
+"subject": "CYPLAN"
+},
+"CYPLAN 291": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "291",
+"subject": "CYPLAN"
+},
+"CYPLAN 293": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "293",
+"subject": "CYPLAN"
+},
+"CYPLAN C213": {
+"buckets": {
+"1-5": {
+"n_course": 58,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "C213",
+"subject": "CYPLAN"
+},
+"CYPLAN C215": {
+"buckets": {
+"1-5": {
+"n_course": 20,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "C215",
+"subject": "CYPLAN"
+},
+"CYPLAN C240": {
+"buckets": {
+"1-5": {
+"n_course": 119,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "C240",
+"subject": "CYPLAN"
+},
+"CYPLAN C241": {
+"buckets": {
+"1-5": {
+"n_course": 59,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "C241",
+"subject": "CYPLAN"
+},
+"CYPLAN C243": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "C243",
+"subject": "CYPLAN"
+},
+"CYPLAN C256": {
+"buckets": {
+"1-5": {
+"n_course": 135,
+"pooled": "CYPLAN",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "C256",
+"subject": "CYPLAN"
+},
+"CYPLAN C257H": {
+"buckets": {
+"1-5": {
+"n_course": 48,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "C257H",
+"subject": "CYPLAN"
+},
+"CYPLAN C261": {
+"buckets": {
+"1-5": {
+"n_course": 107,
+"pooled": "CYPLAN",
+"sections_course": 1
+}
+},
+"dept_group": "CYPLAN",
+"level": "grad",
+"number": "C261",
+"subject": "CYPLAN"
+}
+},
+"subject": "CYPLAN",
+"term_id": "2268"
+}

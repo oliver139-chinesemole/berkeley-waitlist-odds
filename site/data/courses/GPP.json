@@ -1,0 +1,73 @@
+{
+"courses": {
+"GPP 105": {
+"buckets": {
+"1-5": {
+"n_course": 186,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "105",
+"subject": "GPP"
+},
+"GPP 115": {
+"buckets": {
+"1-5": {
+"n_course": 555,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 91,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 272,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "115",
+"subject": "GPP"
+},
+"GPP 150": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "150",
+"subject": "GPP"
+},
+"GPP 196": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "196",
+"subject": "GPP"
+}
+},
+"subject": "GPP",
+"term_id": "2268"
+}

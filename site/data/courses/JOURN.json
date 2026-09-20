@@ -1,0 +1,250 @@
+{
+"courses": {
+"JOURN 100": {
+"buckets": {
+"1-5": {
+"n_course": 181,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "JOURN"
+},
+"JOURN 136": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "136",
+"subject": "JOURN"
+},
+"JOURN 200": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "JOURN"
+},
+"JOURN 207": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "207",
+"subject": "JOURN"
+},
+"JOURN 209": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "209",
+"subject": "JOURN"
+},
+"JOURN 210": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210",
+"subject": "JOURN"
+},
+"JOURN 212": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "212",
+"subject": "JOURN"
+},
+"JOURN 213": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "213",
+"subject": "JOURN"
+},
+"JOURN 219": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "219",
+"subject": "JOURN"
+},
+"JOURN 221": {
+"buckets": {
+"1-5": {
+"n_course": 92,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "221",
+"subject": "JOURN"
+},
+"JOURN 226": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "226",
+"subject": "JOURN"
+},
+"JOURN 233": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "233",
+"subject": "JOURN"
+},
+"JOURN 242": {
+"buckets": {
+"1-5": {
+"n_course": 156,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 100,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "242",
+"subject": "JOURN"
+},
+"JOURN 255": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "255",
+"subject": "JOURN"
+},
+"JOURN 262": {
+"buckets": {
+"1-5": {
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "262",
+"subject": "JOURN"
+},
+"JOURN 296": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "296",
+"subject": "JOURN"
+},
+"JOURN 298": {
+"buckets": {
+"1-5": {
+"n_course": 41,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "298",
+"subject": "JOURN"
+},
+"JOURN 39": {
+"buckets": {
+"1-5": {
+"n_course": 93,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "39",
+"subject": "JOURN"
+}
+},
+"subject": "JOURN",
+"term_id": "2268"
+}

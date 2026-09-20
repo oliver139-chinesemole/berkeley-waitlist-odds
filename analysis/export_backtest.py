@@ -99,8 +99,9 @@ def export_backtest(reports_dir: Path | str, out_path: Path | str, *, term_id: s
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "predictors": {
             "bucket": "position bucket alone (the baseline)",
-            "course": "the course-and-bucket curve the pages use, read at each joiner's own horizon",
-            "site": "the literal number the lookup showed when it read the curve at a fixed lead time (site v1)",
+            "dept": "the department-and-bucket curve, read at each joiner's own horizon (what the pages use at the department level)",
+            "course": "a curve per course and bucket, read at each joiner's own horizon (what the pages would use at the course level)",
+            "site": "the literal number the first lookup showed when it read the curve at a fixed lead time (site v1)",
             "cox": "the Cox proportional-hazards model",
         },
         "runs": runs,

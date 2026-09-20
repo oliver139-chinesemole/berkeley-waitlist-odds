@@ -1,0 +1,532 @@
+{
+"courses": {
+"ARCH 100A": {
+"buckets": {
+"1-5": {
+"n_course": 81,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "100A",
+"subject": "ARCH"
+},
+"ARCH 100C": {
+"buckets": {
+"1-5": {
+"n_course": 90,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "100C",
+"subject": "ARCH"
+},
+"ARCH 109": {
+"buckets": {
+"1-5": {
+"n_course": 66,
+"pooled": "ARCH",
+"sections_course": 2
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "109",
+"subject": "ARCH"
+},
+"ARCH 11A": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "lower",
+"number": "11A",
+"subject": "ARCH"
+},
+"ARCH 129": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ARCH",
+"sections_course": 2
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "129",
+"subject": "ARCH"
+},
+"ARCH 130": {
+"buckets": {
+"1-5": {
+"n_course": 272,
+"pooled": "ARCH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 7,
+"pooled": "ARCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 89,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "130",
+"subject": "ARCH"
+},
+"ARCH 139": {
+"buckets": {
+"1-5": {
+"n_course": 35,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "139",
+"subject": "ARCH"
+},
+"ARCH 144": {
+"buckets": {
+"1-5": {
+"n_course": 87,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "144",
+"subject": "ARCH"
+},
+"ARCH 149": {
+"buckets": {
+"1-5": {
+"n_course": 65,
+"pooled": "ARCH",
+"sections_course": 2
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "149",
+"subject": "ARCH"
+},
+"ARCH 150": {
+"buckets": {
+"1-5": {
+"n_course": 213,
+"pooled": "ARCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 78,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "150",
+"subject": "ARCH"
+},
+"ARCH 169": {
+"buckets": {
+"1-5": {
+"n_course": 136,
+"pooled": "ARCH",
+"sections_course": 3
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "169",
+"subject": "ARCH"
+},
+"ARCH 170A": {
+"buckets": {
+"1-5": {
+"n_course": 337,
+"pooled": "ARCH",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 27,
+"pooled": "ARCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 179,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "170A",
+"subject": "ARCH"
+},
+"ARCH 179": {
+"buckets": {
+"1-5": {
+"n_course": 91,
+"pooled": "ARCH",
+"sections_course": 3
+}
+},
+"dept_group": "ARCH",
+"level": "upper",
+"number": "179",
+"subject": "ARCH"
+},
+"ARCH 200A": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "200A",
+"subject": "ARCH"
+},
+"ARCH 201": {
+"buckets": {
+"1-5": {
+"n_course": 56,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "201",
+"subject": "ARCH"
+},
+"ARCH 203": {
+"buckets": {
+"1-5": {
+"n_course": 65,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "203",
+"subject": "ARCH"
+},
+"ARCH 204A": {
+"buckets": {
+"1-5": {
+"n_course": 70,
+"pooled": "ARCH",
+"sections_course": 2
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "204A",
+"subject": "ARCH"
+},
+"ARCH 205A": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "205A",
+"subject": "ARCH"
+},
+"ARCH 207A": {
+"buckets": {
+"1-5": {
+"n_course": 43,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "207A",
+"subject": "ARCH"
+},
+"ARCH 207B": {
+"buckets": {
+"1-5": {
+"n_course": 73,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "207B",
+"subject": "ARCH"
+},
+"ARCH 207C": {
+"buckets": {
+"1-5": {
+"n_course": 73,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "207C",
+"subject": "ARCH"
+},
+"ARCH 207D": {
+"buckets": {
+"1-5": {
+"n_course": 110,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "207D",
+"subject": "ARCH"
+},
+"ARCH 209": {
+"buckets": {
+"1-5": {
+"n_course": 80,
+"pooled": "ARCH",
+"sections_course": 3
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "209",
+"subject": "ARCH"
+},
+"ARCH 220A": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "220A",
+"subject": "ARCH"
+},
+"ARCH 220B": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "220B",
+"subject": "ARCH"
+},
+"ARCH 229": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "ARCH",
+"sections_course": 2
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "229",
+"subject": "ARCH"
+},
+"ARCH 238": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "238",
+"subject": "ARCH"
+},
+"ARCH 239": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "239",
+"subject": "ARCH"
+},
+"ARCH 241": {
+"buckets": {
+"1-5": {
+"n_course": 86,
+"pooled": "ARCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "241",
+"subject": "ARCH"
+},
+"ARCH 242": {
+"buckets": {
+"1-5": {
+"n_course": 41,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "242",
+"subject": "ARCH"
+},
+"ARCH 249": {
+"buckets": {
+"1-5": {
+"n_course": 109,
+"pooled": "ARCH",
+"sections_course": 3
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "249",
+"subject": "ARCH"
+},
+"ARCH 252": {
+"buckets": {
+"1-5": {
+"n_course": 155,
+"pooled": "ARCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 67,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "252",
+"subject": "ARCH"
+},
+"ARCH 260": {
+"buckets": {
+"1-5": {
+"n_course": 132,
+"pooled": "ARCH",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "260",
+"subject": "ARCH"
+},
+"ARCH 269": {
+"buckets": {
+"1-5": {
+"n_course": 202,
+"pooled": "ARCH",
+"sections_course": 3
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "269",
+"subject": "ARCH"
+},
+"ARCH 270": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "270",
+"subject": "ARCH"
+},
+"ARCH 271": {
+"buckets": {
+"1-5": {
+"n_course": 20,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "271",
+"subject": "ARCH"
+},
+"ARCH 279": {
+"buckets": {
+"1-5": {
+"n_course": 140,
+"pooled": "ARCH",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 6,
+"pooled": "ARCH",
+"sections_course": 1
+}
+},
+"dept_group": "ARCH",
+"level": "grad",
+"number": "279",
+"subject": "ARCH"
+}
+},
+"subject": "ARCH",
+"term_id": "2268"
+}

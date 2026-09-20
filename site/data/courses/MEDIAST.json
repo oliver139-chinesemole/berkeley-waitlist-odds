@@ -1,0 +1,175 @@
+{
+"courses": {
+"MEDIAST 10": {
+"buckets": {
+"1-5": {
+"n_course": 529,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 127,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 275,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "MEDIAST"
+},
+"MEDIAST 104E": {
+"buckets": {
+"1-5": {
+"n_course": 254,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 63,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "104E",
+"subject": "MEDIAST"
+},
+"MEDIAST 111B": {
+"buckets": {
+"1-5": {
+"n_course": 424,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 182,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 288,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "111B",
+"subject": "MEDIAST"
+},
+"MEDIAST 112": {
+"buckets": {
+"1-5": {
+"n_course": 270,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 90,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 192,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "112",
+"subject": "MEDIAST"
+},
+"MEDIAST 113": {
+"buckets": {
+"1-5": {
+"n_course": 398,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 205,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 286,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "113",
+"subject": "MEDIAST"
+},
+"MEDIAST 114": {
+"buckets": {
+"1-5": {
+"n_course": 266,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 77,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 172,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "114",
+"subject": "MEDIAST"
+},
+"MEDIAST 180": {
+"buckets": {
+"1-5": {
+"n_course": 298,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 96,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "180",
+"subject": "MEDIAST"
+},
+"MEDIAST 190": {
+"buckets": {
+"1-5": {
+"n_course": 229,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 65,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "MEDIAST"
+}
+},
+"subject": "MEDIAST",
+"term_id": "2268"
+}

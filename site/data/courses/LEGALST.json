@@ -1,0 +1,440 @@
+{
+"courses": {
+"LEGALST 100": {
+"buckets": {
+"1-5": {
+"n_course": 466,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 219,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 314,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "100",
+"subject": "LEGALST"
+},
+"LEGALST 102": {
+"buckets": {
+"1-5": {
+"n_course": 264,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 6,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 94,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "102",
+"subject": "LEGALST"
+},
+"LEGALST 103": {
+"buckets": {
+"1-5": {
+"n_course": 252,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 5,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 85,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "103",
+"subject": "LEGALST"
+},
+"LEGALST 113": {
+"buckets": {
+"1-5": {
+"n_course": 178,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 57,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "113",
+"subject": "LEGALST"
+},
+"LEGALST 132AC": {
+"buckets": {
+"1-5": {
+"n_course": 384,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 99,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 203,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "132AC",
+"subject": "LEGALST"
+},
+"LEGALST 135": {
+"buckets": {
+"1-5": {
+"n_course": 110,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "135",
+"subject": "LEGALST"
+},
+"LEGALST 138": {
+"buckets": {
+"1-5": {
+"n_course": 398,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 75,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 219,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "138",
+"subject": "LEGALST"
+},
+"LEGALST 141": {
+"buckets": {
+"1-5": {
+"n_course": 120,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "141",
+"subject": "LEGALST"
+},
+"LEGALST 142": {
+"buckets": {
+"1-5": {
+"n_course": 244,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 72,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "142",
+"subject": "LEGALST"
+},
+"LEGALST 145": {
+"buckets": {
+"1-5": {
+"n_course": 355,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 32,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 207,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "145",
+"subject": "LEGALST"
+},
+"LEGALST 154": {
+"buckets": {
+"1-5": {
+"n_course": 287,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 59,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "154",
+"subject": "LEGALST"
+},
+"LEGALST 157": {
+"buckets": {
+"1-5": {
+"n_course": 282,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 6,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 90,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "157",
+"subject": "LEGALST"
+},
+"LEGALST 158": {
+"buckets": {
+"1-5": {
+"n_course": 215,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 46,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "158",
+"subject": "LEGALST"
+},
+"LEGALST 160": {
+"buckets": {
+"1-5": {
+"n_course": 282,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 96,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "160",
+"subject": "LEGALST"
+},
+"LEGALST 162AC": {
+"buckets": {
+"1-5": {
+"n_course": 202,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 58,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "162AC",
+"subject": "LEGALST"
+},
+"LEGALST 170": {
+"buckets": {
+"1-5": {
+"n_course": 152,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "170",
+"subject": "LEGALST"
+},
+"LEGALST 177": {
+"buckets": {
+"1-5": {
+"n_course": 308,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 67,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "177",
+"subject": "LEGALST"
+},
+"LEGALST 184": {
+"buckets": {
+"1-5": {
+"n_course": 61,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "184",
+"subject": "LEGALST"
+},
+"LEGALST 190": {
+"buckets": {
+"1-5": {
+"n_course": 691,
+"pooled": "LEGALST",
+"sections_course": 10
+},
+"6-15": {
+"n_course": 22,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "190",
+"subject": "LEGALST"
+},
+"LEGALST 198": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "LEGALST",
+"sections_course": 2
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "198",
+"subject": "LEGALST"
+},
+"LEGALST 39D": {
+"buckets": {
+"1-5": {
+"n_course": 126,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 51,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "lower",
+"number": "39D",
+"subject": "LEGALST"
+},
+"LEGALST H195A": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "upper",
+"number": "H195A",
+"subject": "LEGALST"
+},
+"LEGALST R1B": {
+"buckets": {
+"1-5": {
+"n_course": 127,
+"pooled": "LEGALST",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "LEGALST",
+"sections_course": 1
+}
+},
+"dept_group": "LEGALST",
+"level": "lower",
+"number": "R1B",
+"subject": "LEGALST"
+}
+},
+"subject": "LEGALST",
+"term_id": "2268"
+}

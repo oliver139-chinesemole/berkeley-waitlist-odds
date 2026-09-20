@@ -1,0 +1,58 @@
+{
+"courses": {
+"SEASIAN 101A": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101A",
+"subject": "SEASIAN"
+},
+"SEASIAN 137": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "137",
+"subject": "SEASIAN"
+},
+"SEASIAN R5A": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5A",
+"subject": "SEASIAN"
+},
+"SEASIAN R5B": {
+"buckets": {
+"1-5": {
+"n_course": 83,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5B",
+"subject": "SEASIAN"
+}
+},
+"subject": "SEASIAN",
+"term_id": "2268"
+}

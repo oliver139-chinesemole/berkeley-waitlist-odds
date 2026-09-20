@@ -1,0 +1,997 @@
+{
+"courses": {
+"MUSIC 108": {
+"buckets": {
+"1-5": {
+"n_course": 149,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 42,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "108",
+"subject": "MUSIC"
+},
+"MUSIC 116": {
+"buckets": {
+"1-5": {
+"n_course": 195,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 77,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "116",
+"subject": "MUSIC"
+},
+"MUSIC 128": {
+"buckets": {
+"1-5": {
+"n_course": 212,
+"pooled": "MUSIC",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 17,
+"pooled": "MUSIC",
+"sections_course": 2
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "128",
+"subject": "MUSIC"
+},
+"MUSIC 139": {
+"buckets": {
+"1-5": {
+"n_course": 105,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "139",
+"subject": "MUSIC"
+},
+"MUSIC 140": {
+"buckets": {
+"1-5": {
+"n_course": 135,
+"pooled": "MUSIC",
+"sections_course": 3
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "140",
+"subject": "MUSIC"
+},
+"MUSIC 141": {
+"buckets": {
+"1-5": {
+"n_course": 142,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 33,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"41+": {
+"n_course": 3,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 50,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "141",
+"subject": "MUSIC"
+},
+"MUSIC 141A": {
+"buckets": {
+"1-5": {
+"n_course": 123,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 20,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 41,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "141A",
+"subject": "MUSIC"
+},
+"MUSIC 142": {
+"buckets": {
+"1-5": {
+"n_course": 231,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 32,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 92,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "142",
+"subject": "MUSIC"
+},
+"MUSIC 143": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "143",
+"subject": "MUSIC"
+},
+"MUSIC 144": {
+"buckets": {
+"1-5": {
+"n_course": 291,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 56,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 125,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "144",
+"subject": "MUSIC"
+},
+"MUSIC 145": {
+"buckets": {
+"1-5": {
+"n_course": 194,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 14,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 83,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "145",
+"subject": "MUSIC"
+},
+"MUSIC 147A": {
+"buckets": {
+"1-5": {
+"n_course": 192,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 4,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 83,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "147A",
+"subject": "MUSIC"
+},
+"MUSIC 148": {
+"buckets": {
+"1-5": {
+"n_course": 63,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "148",
+"subject": "MUSIC"
+},
+"MUSIC 149": {
+"buckets": {
+"1-5": {
+"n_course": 132,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 30,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "149",
+"subject": "MUSIC"
+},
+"MUSIC 150": {
+"buckets": {
+"1-5": {
+"n_course": 53,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "150",
+"subject": "MUSIC"
+},
+"MUSIC 151A": {
+"buckets": {
+"1-5": {
+"n_course": 69,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "151A",
+"subject": "MUSIC"
+},
+"MUSIC 154A": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "154A",
+"subject": "MUSIC"
+},
+"MUSIC 155": {
+"buckets": {
+"1-5": {
+"n_course": 251,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "155",
+"subject": "MUSIC"
+},
+"MUSIC 157A": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "157A",
+"subject": "MUSIC"
+},
+"MUSIC 158A": {
+"buckets": {
+"1-5": {
+"n_course": 165,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 66,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "158A",
+"subject": "MUSIC"
+},
+"MUSIC 161A": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "161A",
+"subject": "MUSIC"
+},
+"MUSIC 165": {
+"buckets": {
+"1-5": {
+"n_course": 142,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 2,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 34,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "165",
+"subject": "MUSIC"
+},
+"MUSIC 167A": {
+"buckets": {
+"1-5": {
+"n_course": 62,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 4,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 12,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "167A",
+"subject": "MUSIC"
+},
+"MUSIC 167B": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "167B",
+"subject": "MUSIC"
+},
+"MUSIC 167C": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "167C",
+"subject": "MUSIC"
+},
+"MUSIC 167H": {
+"buckets": {
+"1-5": {
+"n_course": 49,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "167H",
+"subject": "MUSIC"
+},
+"MUSIC 167I": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "167I",
+"subject": "MUSIC"
+},
+"MUSIC 168A": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 6,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168A",
+"subject": "MUSIC"
+},
+"MUSIC 168AS": {
+"buckets": {
+"1-5": {
+"n_course": 64,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168AS",
+"subject": "MUSIC"
+},
+"MUSIC 168B": {
+"buckets": {
+"1-5": {
+"n_course": 46,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168B",
+"subject": "MUSIC"
+},
+"MUSIC 168BS": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168BS",
+"subject": "MUSIC"
+},
+"MUSIC 168C": {
+"buckets": {
+"1-5": {
+"n_course": 47,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168C",
+"subject": "MUSIC"
+},
+"MUSIC 168CE": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168CE",
+"subject": "MUSIC"
+},
+"MUSIC 168CS": {
+"buckets": {
+"1-5": {
+"n_course": 241,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 58,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168CS",
+"subject": "MUSIC"
+},
+"MUSIC 168D": {
+"buckets": {
+"1-5": {
+"n_course": 34,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168D",
+"subject": "MUSIC"
+},
+"MUSIC 168E": {
+"buckets": {
+"1-5": {
+"n_course": 42,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168E",
+"subject": "MUSIC"
+},
+"MUSIC 168ES": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168ES",
+"subject": "MUSIC"
+},
+"MUSIC 168F": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 2,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168F",
+"subject": "MUSIC"
+},
+"MUSIC 168G": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168G",
+"subject": "MUSIC"
+},
+"MUSIC 168H": {
+"buckets": {
+"1-5": {
+"n_course": 34,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168H",
+"subject": "MUSIC"
+},
+"MUSIC 168I": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "168I",
+"subject": "MUSIC"
+},
+"MUSIC 170": {
+"buckets": {
+"1-5": {
+"n_course": 135,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "170",
+"subject": "MUSIC"
+},
+"MUSIC 170A": {
+"buckets": {
+"1-5": {
+"n_course": 190,
+"pooled": "MUSIC",
+"sections_course": 2
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "170A",
+"subject": "MUSIC"
+},
+"MUSIC 172": {
+"buckets": {
+"1-5": {
+"n_course": 79,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "upper",
+"number": "172",
+"subject": "MUSIC"
+},
+"MUSIC 20": {
+"buckets": {
+"1-5": {
+"n_course": 66,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "20",
+"subject": "MUSIC"
+},
+"MUSIC 207": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "grad",
+"number": "207",
+"subject": "MUSIC"
+},
+"MUSIC 208A": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "grad",
+"number": "208A",
+"subject": "MUSIC"
+},
+"MUSIC 25": {
+"buckets": {
+"1-5": {
+"n_course": 330,
+"pooled": "MUSIC",
+"sections_course": 2
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "25",
+"subject": "MUSIC"
+},
+"MUSIC 258A": {
+"buckets": {
+"1-5": {
+"n_course": 48,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "grad",
+"number": "258A",
+"subject": "MUSIC"
+},
+"MUSIC 26AC": {
+"buckets": {
+"1-5": {
+"n_course": 424,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 254,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"41+": {
+"n_course": 51,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 300,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "26AC",
+"subject": "MUSIC"
+},
+"MUSIC 40": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "40",
+"subject": "MUSIC"
+},
+"MUSIC 44": {
+"buckets": {
+"1-5": {
+"n_course": 451,
+"pooled": "MUSIC",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 25,
+"pooled": "MUSIC",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 182,
+"pooled": "MUSIC",
+"sections_course": 2
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "44",
+"subject": "MUSIC"
+},
+"MUSIC 45M": {
+"buckets": {
+"1-5": {
+"n_course": 265,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 40,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 172,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "45M",
+"subject": "MUSIC"
+},
+"MUSIC 48": {
+"buckets": {
+"1-5": {
+"n_course": 286,
+"pooled": "MUSIC",
+"sections_course": 2
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "48",
+"subject": "MUSIC"
+},
+"MUSIC 70": {
+"buckets": {
+"1-5": {
+"n_course": 334,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 2,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 167,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "70",
+"subject": "MUSIC"
+},
+"MUSIC 80": {
+"buckets": {
+"1-5": {
+"n_course": 265,
+"pooled": "MUSIC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 91,
+"pooled": "MUSIC",
+"sections_course": 1
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "80",
+"subject": "MUSIC"
+},
+"MUSIC R1B": {
+"buckets": {
+"1-5": {
+"n_course": 161,
+"pooled": "MUSIC",
+"sections_course": 3
+}
+},
+"dept_group": "MUSIC",
+"level": "lower",
+"number": "R1B",
+"subject": "MUSIC"
+}
+},
+"subject": "MUSIC",
+"term_id": "2268"
+}

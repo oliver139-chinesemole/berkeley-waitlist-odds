@@ -1,0 +1,1476 @@
+{
+"courses": {
+"LAW 200F": {
+"buckets": {
+"1-5": {
+"n_course": 143,
+"pooled": "LAW",
+"sections_course": 4
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "200F",
+"subject": "LAW"
+},
+"LAW 201": {
+"buckets": {
+"1-5": {
+"n_course": 126,
+"pooled": "LAW",
+"sections_course": 4
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "201",
+"subject": "LAW"
+},
+"LAW 202F": {
+"buckets": {
+"1-5": {
+"n_course": 261,
+"pooled": "LAW",
+"sections_course": 8
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "202F",
+"subject": "LAW"
+},
+"LAW 203": {
+"buckets": {
+"1-5": {
+"n_course": 290,
+"pooled": "LAW",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 112,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 160,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "203",
+"subject": "LAW"
+},
+"LAW 206.4A": {
+"buckets": {
+"1-5": {
+"n_course": 803,
+"pooled": "LAW",
+"sections_course": 21
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "206.4A",
+"subject": "LAW"
+},
+"LAW 206.76": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "206.76",
+"subject": "LAW"
+},
+"LAW 207.5": {
+"buckets": {
+"1-5": {
+"n_course": 281,
+"pooled": "LAW",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 112,
+"pooled": "LAW",
+"sections_course": 2
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "207.5",
+"subject": "LAW"
+},
+"LAW 208.81": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "208.81",
+"subject": "LAW"
+},
+"LAW 208.9": {
+"buckets": {
+"1-5": {
+"n_course": 227,
+"pooled": "LAW",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 10,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 58,
+"pooled": "LAW",
+"sections_course": 2
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "208.9",
+"subject": "LAW"
+},
+"LAW 209": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "209",
+"subject": "LAW"
+},
+"LAW 210": {
+"buckets": {
+"1-5": {
+"n_course": 488,
+"pooled": "LAW",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 67,
+"pooled": "LAW",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 276,
+"pooled": "LAW",
+"sections_course": 3
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "210",
+"subject": "LAW"
+},
+"LAW 212.32": {
+"buckets": {
+"1-5": {
+"n_course": 123,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 52,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "212.32",
+"subject": "LAW"
+},
+"LAW 215.4": {
+"buckets": {
+"1-5": {
+"n_course": 150,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 30,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "215.4",
+"subject": "LAW"
+},
+"LAW 216": {
+"buckets": {
+"1-5": {
+"n_course": 119,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "216",
+"subject": "LAW"
+},
+"LAW 222": {
+"buckets": {
+"1-5": {
+"n_course": 229,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 95,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "222",
+"subject": "LAW"
+},
+"LAW 222.12": {
+"buckets": {
+"1-5": {
+"n_course": 67,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "222.12",
+"subject": "LAW"
+},
+"LAW 225": {
+"buckets": {
+"1-5": {
+"n_course": 217,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 68,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 132,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "225",
+"subject": "LAW"
+},
+"LAW 226.14": {
+"buckets": {
+"1-5": {
+"n_course": 132,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 14,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "226.14",
+"subject": "LAW"
+},
+"LAW 226.9": {
+"buckets": {
+"1-5": {
+"n_course": 174,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 89,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "226.9",
+"subject": "LAW"
+},
+"LAW 227.8": {
+"buckets": {
+"1-5": {
+"n_course": 159,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 67,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "227.8",
+"subject": "LAW"
+},
+"LAW 230": {
+"buckets": {
+"1-5": {
+"n_course": 129,
+"pooled": "LAW",
+"sections_course": 4
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "230",
+"subject": "LAW"
+},
+"LAW 231": {
+"buckets": {
+"1-5": {
+"n_course": 226,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 66,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 151,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "231",
+"subject": "LAW"
+},
+"LAW 233": {
+"buckets": {
+"1-5": {
+"n_course": 182,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 90,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "233",
+"subject": "LAW"
+},
+"LAW 234.2": {
+"buckets": {
+"1-5": {
+"n_course": 132,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 71,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "234.2",
+"subject": "LAW"
+},
+"LAW 235.32": {
+"buckets": {
+"1-5": {
+"n_course": 142,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 36,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "235.32",
+"subject": "LAW"
+},
+"LAW 241": {
+"buckets": {
+"1-5": {
+"n_course": 245,
+"pooled": "LAW",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 52,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 166,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "241",
+"subject": "LAW"
+},
+"LAW 243": {
+"buckets": {
+"1-5": {
+"n_course": 402,
+"pooled": "LAW",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 72,
+"pooled": "LAW",
+"sections_course": 3
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "243",
+"subject": "LAW"
+},
+"LAW 243.7": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "243.7",
+"subject": "LAW"
+},
+"LAW 243.72": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "243.72",
+"subject": "LAW"
+},
+"LAW 244.13": {
+"buckets": {
+"1-5": {
+"n_course": 160,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 11,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 105,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "244.13",
+"subject": "LAW"
+},
+"LAW 244.2": {
+"buckets": {
+"1-5": {
+"n_course": 193,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 26,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 106,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "244.2",
+"subject": "LAW"
+},
+"LAW 244.41": {
+"buckets": {
+"1-5": {
+"n_course": 123,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 31,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "244.41",
+"subject": "LAW"
+},
+"LAW 244.43": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "244.43",
+"subject": "LAW"
+},
+"LAW 245": {
+"buckets": {
+"1-5": {
+"n_course": 469,
+"pooled": "LAW",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 147,
+"pooled": "LAW",
+"sections_course": 3
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "245",
+"subject": "LAW"
+},
+"LAW 245.23": {
+"buckets": {
+"1-5": {
+"n_course": 127,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 35,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "245.23",
+"subject": "LAW"
+},
+"LAW 245.4": {
+"buckets": {
+"1-5": {
+"n_course": 136,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 45,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "245.4",
+"subject": "LAW"
+},
+"LAW 245.7": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "245.7",
+"subject": "LAW"
+},
+"LAW 245.9": {
+"buckets": {
+"1-5": {
+"n_course": 55,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "245.9",
+"subject": "LAW"
+},
+"LAW 246.1": {
+"buckets": {
+"1-5": {
+"n_course": 114,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 26,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "246.1",
+"subject": "LAW"
+},
+"LAW 248.7": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "248.7",
+"subject": "LAW"
+},
+"LAW 251.73": {
+"buckets": {
+"1-5": {
+"n_course": 191,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 9,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 129,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "251.73",
+"subject": "LAW"
+},
+"LAW 255.2": {
+"buckets": {
+"1-5": {
+"n_course": 206,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 8,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 36,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "255.2",
+"subject": "LAW"
+},
+"LAW 255.9": {
+"buckets": {
+"1-5": {
+"n_course": 121,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "255.9",
+"subject": "LAW"
+},
+"LAW 256.51": {
+"buckets": {
+"1-5": {
+"n_course": 174,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 27,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "256.51",
+"subject": "LAW"
+},
+"LAW 256.6F": {
+"buckets": {
+"1-5": {
+"n_course": 97,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "256.6F",
+"subject": "LAW"
+},
+"LAW 258": {
+"buckets": {
+"1-5": {
+"n_course": 138,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "258",
+"subject": "LAW"
+},
+"LAW 259A": {
+"buckets": {
+"1-5": {
+"n_course": 102,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "259A",
+"subject": "LAW"
+},
+"LAW 261.2": {
+"buckets": {
+"1-5": {
+"n_course": 59,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 12,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "261.2",
+"subject": "LAW"
+},
+"LAW 262.68": {
+"buckets": {
+"1-5": {
+"n_course": 151,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 70,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "262.68",
+"subject": "LAW"
+},
+"LAW 264.6": {
+"buckets": {
+"1-5": {
+"n_course": 96,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "264.6",
+"subject": "LAW"
+},
+"LAW 267.4": {
+"buckets": {
+"1-5": {
+"n_course": 140,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 46,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "267.4",
+"subject": "LAW"
+},
+"LAW 271": {
+"buckets": {
+"1-5": {
+"n_course": 95,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "271",
+"subject": "LAW"
+},
+"LAW 271.5": {
+"buckets": {
+"1-5": {
+"n_course": 109,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "271.5",
+"subject": "LAW"
+},
+"LAW 272.2": {
+"buckets": {
+"1-5": {
+"n_course": 95,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "272.2",
+"subject": "LAW"
+},
+"LAW 273.74": {
+"buckets": {
+"1-5": {
+"n_course": 81,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "273.74",
+"subject": "LAW"
+},
+"LAW 275.3": {
+"buckets": {
+"1-5": {
+"n_course": 49,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "275.3",
+"subject": "LAW"
+},
+"LAW 276.14": {
+"buckets": {
+"1-5": {
+"n_course": 248,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 22,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 125,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "276.14",
+"subject": "LAW"
+},
+"LAW 276.15": {
+"buckets": {
+"1-5": {
+"n_course": 140,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 20,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 89,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "276.15",
+"subject": "LAW"
+},
+"LAW 276.32": {
+"buckets": {
+"1-5": {
+"n_course": 114,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 22,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "276.32",
+"subject": "LAW"
+},
+"LAW 276.48": {
+"buckets": {
+"1-5": {
+"n_course": 301,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 95,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 212,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "276.48",
+"subject": "LAW"
+},
+"LAW 276.61": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "276.61",
+"subject": "LAW"
+},
+"LAW 276.91": {
+"buckets": {
+"1-5": {
+"n_course": 129,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 11,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "276.91",
+"subject": "LAW"
+},
+"LAW 277.1": {
+"buckets": {
+"1-5": {
+"n_course": 43,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "277.1",
+"subject": "LAW"
+},
+"LAW 278.7": {
+"buckets": {
+"1-5": {
+"n_course": 167,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 37,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "278.7",
+"subject": "LAW"
+},
+"LAW 279.3": {
+"buckets": {
+"1-5": {
+"n_course": 128,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 10,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 66,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "279.3",
+"subject": "LAW"
+},
+"LAW 280A": {
+"buckets": {
+"1-5": {
+"n_course": 127,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 58,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "280A",
+"subject": "LAW"
+},
+"LAW 282.1": {
+"buckets": {
+"1-5": {
+"n_course": 142,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 21,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "282.1",
+"subject": "LAW"
+},
+"LAW 283L": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "283L",
+"subject": "LAW"
+},
+"LAW 284.1": {
+"buckets": {
+"1-5": {
+"n_course": 127,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "284.1",
+"subject": "LAW"
+},
+"LAW 285.4": {
+"buckets": {
+"1-5": {
+"n_course": 179,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 60,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "285.4",
+"subject": "LAW"
+},
+"LAW 285.45": {
+"buckets": {
+"1-5": {
+"n_course": 130,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 37,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "285.45",
+"subject": "LAW"
+},
+"LAW 294.04": {
+"buckets": {
+"1-5": {
+"n_course": 131,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.04",
+"subject": "LAW"
+},
+"LAW 294.06": {
+"buckets": {
+"1-5": {
+"n_course": 251,
+"pooled": "LAW",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 33,
+"pooled": "LAW",
+"sections_course": 2
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.06",
+"subject": "LAW"
+},
+"LAW 294.07": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.07",
+"subject": "LAW"
+},
+"LAW 294.1": {
+"buckets": {
+"1-5": {
+"n_course": 203,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 57,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.1",
+"subject": "LAW"
+},
+"LAW 294.13": {
+"buckets": {
+"1-5": {
+"n_course": 176,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 35,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.13",
+"subject": "LAW"
+},
+"LAW 294.15": {
+"buckets": {
+"1-5": {
+"n_course": 45,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.15",
+"subject": "LAW"
+},
+"LAW 294.19": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.19",
+"subject": "LAW"
+},
+"LAW 294.2": {
+"buckets": {
+"1-5": {
+"n_course": 71,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.2",
+"subject": "LAW"
+},
+"LAW 294.22": {
+"buckets": {
+"1-5": {
+"n_course": 139,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 45,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.22",
+"subject": "LAW"
+},
+"LAW 294.71": {
+"buckets": {
+"1-5": {
+"n_course": 165,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 105,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.71",
+"subject": "LAW"
+},
+"LAW 294.72": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.72",
+"subject": "LAW"
+},
+"LAW 294.73": {
+"buckets": {
+"1-5": {
+"n_course": 225,
+"pooled": "LAW",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 11,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 83,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.73",
+"subject": "LAW"
+},
+"LAW 294.75": {
+"buckets": {
+"1-5": {
+"n_course": 143,
+"pooled": "LAW",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 47,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "294.75",
+"subject": "LAW"
+},
+"LAW 295.4C": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "LAW",
+"sections_course": 1
+}
+},
+"dept_group": "LAW",
+"level": "grad",
+"number": "295.4C",
+"subject": "LAW"
+}
+},
+"subject": "LAW",
+"term_id": "2268"
+}

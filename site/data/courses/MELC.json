@@ -1,0 +1,205 @@
+{
+"courses": {
+"MELC 10": {
+"buckets": {
+"1-5": {
+"n_course": 220,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 81,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "MELC"
+},
+"MELC 103": {
+"buckets": {
+"1-5": {
+"n_course": 240,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 77,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "103",
+"subject": "MELC"
+},
+"MELC 134": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "134",
+"subject": "MELC"
+},
+"MELC 145": {
+"buckets": {
+"1-5": {
+"n_course": 81,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "145",
+"subject": "MELC"
+},
+"MELC 148": {
+"buckets": {
+"1-5": {
+"n_course": 127,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "148",
+"subject": "MELC"
+},
+"MELC 157": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "157",
+"subject": "MELC"
+},
+"MELC 158AC": {
+"buckets": {
+"1-5": {
+"n_course": 241,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 112,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "158AC",
+"subject": "MELC"
+},
+"MELC 34": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "34",
+"subject": "MELC"
+},
+"MELC 39A": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "39A",
+"subject": "MELC"
+},
+"MELC C121": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C121",
+"subject": "MELC"
+},
+"MELC C26": {
+"buckets": {
+"1-5": {
+"n_course": 162,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C26",
+"subject": "MELC"
+},
+"MELC R1A": {
+"buckets": {
+"1-5": {
+"n_course": 44,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1A",
+"subject": "MELC"
+},
+"MELC R1B": {
+"buckets": {
+"1-5": {
+"n_course": 107,
+"pooled": "OTHER",
+"sections_course": 5
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "MELC"
+}
+},
+"subject": "MELC",
+"term_id": "2268"
+}

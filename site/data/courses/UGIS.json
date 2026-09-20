@@ -1,0 +1,32 @@
+{
+"courses": {
+"UGIS 140": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "140",
+"subject": "UGIS"
+},
+"UGIS W158": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "W158",
+"subject": "UGIS"
+}
+},
+"subject": "UGIS",
+"term_id": "2268"
+}

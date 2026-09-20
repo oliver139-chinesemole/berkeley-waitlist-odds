@@ -1,0 +1,240 @@
+{
+"courses": {
+"CHINESE 100XA": {
+"buckets": {
+"1-5": {
+"n_course": 42,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100XA",
+"subject": "CHINESE"
+},
+"CHINESE 10A": {
+"buckets": {
+"1-5": {
+"n_course": 47,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10A",
+"subject": "CHINESE"
+},
+"CHINESE 110A": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110A",
+"subject": "CHINESE"
+},
+"CHINESE 111": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "111",
+"subject": "CHINESE"
+},
+"CHINESE 134": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "134",
+"subject": "CHINESE"
+},
+"CHINESE 156": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "156",
+"subject": "CHINESE"
+},
+"CHINESE 188": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "188",
+"subject": "CHINESE"
+},
+"CHINESE 1A": {
+"buckets": {
+"1-5": {
+"n_course": 120,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "CHINESE"
+},
+"CHINESE 1B": {
+"buckets": {
+"1-5": {
+"n_course": 67,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1B",
+"subject": "CHINESE"
+},
+"CHINESE 1X": {
+"buckets": {
+"1-5": {
+"n_course": 91,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1X",
+"subject": "CHINESE"
+},
+"CHINESE 30A": {
+"buckets": {
+"1-5": {
+"n_course": 91,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "30A",
+"subject": "CHINESE"
+},
+"CHINESE 3A": {
+"buckets": {
+"1-5": {
+"n_course": 169,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "3A",
+"subject": "CHINESE"
+},
+"CHINESE 3X": {
+"buckets": {
+"1-5": {
+"n_course": 90,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "3X",
+"subject": "CHINESE"
+},
+"CHINESE 4A": {
+"buckets": {
+"1-5": {
+"n_course": 86,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "4A",
+"subject": "CHINESE"
+},
+"CHINESE 4B": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "4B",
+"subject": "CHINESE"
+},
+"CHINESE 7A": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "7A",
+"subject": "CHINESE"
+},
+"CHINESE C116": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C116",
+"subject": "CHINESE"
+},
+"CHINESE C223": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C223",
+"subject": "CHINESE"
+}
+},
+"subject": "CHINESE",
+"term_id": "2268"
+}

@@ -1,0 +1,97 @@
+{
+"courses": {
+"SCANDIN 123": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "123",
+"subject": "SCANDIN"
+},
+"SCANDIN 165": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "165",
+"subject": "SCANDIN"
+},
+"SCANDIN 180": {
+"buckets": {
+"1-5": {
+"n_course": 102,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "180",
+"subject": "SCANDIN"
+},
+"SCANDIN 191AC": {
+"buckets": {
+"1-5": {
+"n_course": 40,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "191AC",
+"subject": "SCANDIN"
+},
+"SCANDIN 75": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "75",
+"subject": "SCANDIN"
+},
+"SCANDIN R5A": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5A",
+"subject": "SCANDIN"
+},
+"SCANDIN R5B": {
+"buckets": {
+"1-5": {
+"n_course": 34,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5B",
+"subject": "SCANDIN"
+}
+},
+"subject": "SCANDIN",
+"term_id": "2268"
+}

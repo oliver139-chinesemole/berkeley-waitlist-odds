@@ -1,0 +1,494 @@
+{
+"courses": {
+"INDENG 115": {
+"buckets": {
+"1-5": {
+"n_course": 361,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 223,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"41+": {
+"n_course": 17,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 248,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "115",
+"subject": "INDENG"
+},
+"INDENG 120": {
+"buckets": {
+"1-5": {
+"n_course": 469,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 42,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 278,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "120",
+"subject": "INDENG"
+},
+"INDENG 130": {
+"buckets": {
+"1-5": {
+"n_course": 263,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 83,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "130",
+"subject": "INDENG"
+},
+"INDENG 142A": {
+"buckets": {
+"1-5": {
+"n_course": 634,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 363,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"41+": {
+"n_course": 52,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 415,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "142A",
+"subject": "INDENG"
+},
+"INDENG 145": {
+"buckets": {
+"1-5": {
+"n_course": 157,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 50,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "145",
+"subject": "INDENG"
+},
+"INDENG 150": {
+"buckets": {
+"1-5": {
+"n_course": 162,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 34,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "150",
+"subject": "INDENG"
+},
+"INDENG 153": {
+"buckets": {
+"1-5": {
+"n_course": 392,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 85,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 247,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "153",
+"subject": "INDENG"
+},
+"INDENG 162": {
+"buckets": {
+"1-5": {
+"n_course": 441,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 54,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 254,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "162",
+"subject": "INDENG"
+},
+"INDENG 171": {
+"buckets": {
+"1-5": {
+"n_course": 264,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 30,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 137,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "171",
+"subject": "INDENG"
+},
+"INDENG 172": {
+"buckets": {
+"1-5": {
+"n_course": 549,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 237,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 386,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "172",
+"subject": "INDENG"
+},
+"INDENG 174": {
+"buckets": {
+"1-5": {
+"n_course": 377,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 11,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 213,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "174",
+"subject": "INDENG"
+},
+"INDENG 180": {
+"buckets": {
+"1-5": {
+"n_course": 63,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "upper",
+"number": "180",
+"subject": "INDENG"
+},
+"INDENG 210": {
+"buckets": {
+"1-5": {
+"n_course": 30,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "210",
+"subject": "INDENG"
+},
+"INDENG 211": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "INDENG",
+"sections_course": 4
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "211",
+"subject": "INDENG"
+},
+"INDENG 215": {
+"buckets": {
+"1-5": {
+"n_course": 156,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 50,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "215",
+"subject": "INDENG"
+},
+"INDENG 221": {
+"buckets": {
+"1-5": {
+"n_course": 244,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 96,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "221",
+"subject": "INDENG"
+},
+"INDENG 24": {
+"buckets": {
+"1-5": {
+"n_course": 69,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 41,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "lower",
+"number": "24",
+"subject": "INDENG"
+},
+"INDENG 240": {
+"buckets": {
+"1-5": {
+"n_course": 171,
+"pooled": "INDENG",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 8,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "240",
+"subject": "INDENG"
+},
+"INDENG 241": {
+"buckets": {
+"1-5": {
+"n_course": 170,
+"pooled": "INDENG",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 40,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "241",
+"subject": "INDENG"
+},
+"INDENG 245": {
+"buckets": {
+"1-5": {
+"n_course": 80,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "245",
+"subject": "INDENG"
+},
+"INDENG 250": {
+"buckets": {
+"1-5": {
+"n_course": 71,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "250",
+"subject": "INDENG"
+},
+"INDENG 262A": {
+"buckets": {
+"1-5": {
+"n_course": 65,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "262A",
+"subject": "INDENG"
+},
+"INDENG 263A": {
+"buckets": {
+"1-5": {
+"n_course": 91,
+"pooled": "INDENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "263A",
+"subject": "INDENG"
+},
+"INDENG 266": {
+"buckets": {
+"1-5": {
+"n_course": 106,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "266",
+"subject": "INDENG"
+},
+"INDENG 290": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "290",
+"subject": "INDENG"
+},
+"INDENG 298": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "INDENG",
+"sections_course": 1
+}
+},
+"dept_group": "INDENG",
+"level": "grad",
+"number": "298",
+"subject": "INDENG"
+}
+},
+"subject": "INDENG",
+"term_id": "2268"
+}

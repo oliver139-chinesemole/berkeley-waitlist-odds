@@ -1,0 +1,1114 @@
+{
+"courses": {
+"UGBA 100": {
+"buckets": {
+"1-5": {
+"n_course": 1053,
+"pooled": "UGBA",
+"sections_course": 7
+},
+"6-15": {
+"n_course": 411,
+"pooled": "UGBA",
+"sections_course": 4
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "100",
+"subject": "UGBA"
+},
+"UGBA 101A": {
+"buckets": {
+"1-5": {
+"n_course": 1055,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 450,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"41+": {
+"n_course": 10,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 610,
+"pooled": "UGBA",
+"sections_course": 2
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "101A",
+"subject": "UGBA"
+},
+"UGBA 101B": {
+"buckets": {
+"1-5": {
+"n_course": 949,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 352,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 581,
+"pooled": "UGBA",
+"sections_course": 2
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "101B",
+"subject": "UGBA"
+},
+"UGBA 102A": {
+"buckets": {
+"1-5": {
+"n_course": 1276,
+"pooled": "UGBA",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 434,
+"pooled": "UGBA",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 750,
+"pooled": "UGBA",
+"sections_course": 3
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "102A",
+"subject": "UGBA"
+},
+"UGBA 102B": {
+"buckets": {
+"1-5": {
+"n_course": 681,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 217,
+"pooled": "UGBA",
+"sections_course": 2
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "102B",
+"subject": "UGBA"
+},
+"UGBA 103": {
+"buckets": {
+"1-5": {
+"n_course": 1027,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 386,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 631,
+"pooled": "UGBA",
+"sections_course": 2
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "103",
+"subject": "UGBA"
+},
+"UGBA 104": {
+"buckets": {
+"1-5": {
+"n_course": 691,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 395,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"41+": {
+"n_course": 131,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 473,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "104",
+"subject": "UGBA"
+},
+"UGBA 105": {
+"buckets": {
+"1-5": {
+"n_course": 1116,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 552,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 795,
+"pooled": "UGBA",
+"sections_course": 2
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "105",
+"subject": "UGBA"
+},
+"UGBA 106": {
+"buckets": {
+"1-5": {
+"n_course": 1655,
+"pooled": "UGBA",
+"sections_course": 6
+},
+"16-40": {
+"n_course": 498,
+"pooled": "UGBA",
+"sections_course": 4
+},
+"6-15": {
+"n_course": 1035,
+"pooled": "UGBA",
+"sections_course": 4
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "106",
+"subject": "UGBA"
+},
+"UGBA 107": {
+"buckets": {
+"1-5": {
+"n_course": 708,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 416,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"41+": {
+"n_course": 44,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 517,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "107",
+"subject": "UGBA"
+},
+"UGBA 10X": {
+"buckets": {
+"1-5": {
+"n_course": 672,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 432,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"41+": {
+"n_course": 191,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 500,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "lower",
+"number": "10X",
+"subject": "UGBA"
+},
+"UGBA 117": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "117",
+"subject": "UGBA"
+},
+"UGBA 120AA": {
+"buckets": {
+"1-5": {
+"n_course": 227,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 92,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "120AA",
+"subject": "UGBA"
+},
+"UGBA 120AB": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "120AB",
+"subject": "UGBA"
+},
+"UGBA 122": {
+"buckets": {
+"1-5": {
+"n_course": 287,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 48,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "122",
+"subject": "UGBA"
+},
+"UGBA 125": {
+"buckets": {
+"1-5": {
+"n_course": 240,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 9,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 125,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "125",
+"subject": "UGBA"
+},
+"UGBA 126": {
+"buckets": {
+"1-5": {
+"n_course": 233,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 33,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "126",
+"subject": "UGBA"
+},
+"UGBA 131": {
+"buckets": {
+"1-5": {
+"n_course": 408,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 214,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 287,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "131",
+"subject": "UGBA"
+},
+"UGBA 133": {
+"buckets": {
+"1-5": {
+"n_course": 452,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 142,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 296,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "133",
+"subject": "UGBA"
+},
+"UGBA 135": {
+"buckets": {
+"1-5": {
+"n_course": 1662,
+"pooled": "UGBA",
+"sections_course": 3
+},
+"16-40": {
+"n_course": 15,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 337,
+"pooled": "UGBA",
+"sections_course": 3
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "135",
+"subject": "UGBA"
+},
+"UGBA 137": {
+"buckets": {
+"1-5": {
+"n_course": 421,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 88,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 237,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "137",
+"subject": "UGBA"
+},
+"UGBA 150": {
+"buckets": {
+"1-5": {
+"n_course": 269,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 95,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "150",
+"subject": "UGBA"
+},
+"UGBA 152": {
+"buckets": {
+"1-5": {
+"n_course": 691,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 71,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 351,
+"pooled": "UGBA",
+"sections_course": 2
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "152",
+"subject": "UGBA"
+},
+"UGBA 159": {
+"buckets": {
+"1-5": {
+"n_course": 319,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 12,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 165,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "159",
+"subject": "UGBA"
+},
+"UGBA 160": {
+"buckets": {
+"1-5": {
+"n_course": 298,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 51,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 182,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "160",
+"subject": "UGBA"
+},
+"UGBA 161": {
+"buckets": {
+"1-5": {
+"n_course": 37,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "161",
+"subject": "UGBA"
+},
+"UGBA 168B": {
+"buckets": {
+"1-5": {
+"n_course": 281,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 8,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 133,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "168B",
+"subject": "UGBA"
+},
+"UGBA 170AC": {
+"buckets": {
+"1-5": {
+"n_course": 346,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 36,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 164,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "170AC",
+"subject": "UGBA"
+},
+"UGBA 171A": {
+"buckets": {
+"1-5": {
+"n_course": 96,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "171A",
+"subject": "UGBA"
+},
+"UGBA 175": {
+"buckets": {
+"1-5": {
+"n_course": 291,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 17,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 144,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "175",
+"subject": "UGBA"
+},
+"UGBA 176": {
+"buckets": {
+"1-5": {
+"n_course": 269,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 6,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 99,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "176",
+"subject": "UGBA"
+},
+"UGBA 177": {
+"buckets": {
+"1-5": {
+"n_course": 236,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 43,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "177",
+"subject": "UGBA"
+},
+"UGBA 178": {
+"buckets": {
+"1-5": {
+"n_course": 371,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 15,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 142,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "178",
+"subject": "UGBA"
+},
+"UGBA 179": {
+"buckets": {
+"1-5": {
+"n_course": 306,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 136,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "179",
+"subject": "UGBA"
+},
+"UGBA 180": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "180",
+"subject": "UGBA"
+},
+"UGBA 183": {
+"buckets": {
+"1-5": {
+"n_course": 340,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 13,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 149,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "183",
+"subject": "UGBA"
+},
+"UGBA 190D": {
+"buckets": {
+"1-5": {
+"n_course": 421,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 108,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 213,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "190D",
+"subject": "UGBA"
+},
+"UGBA 190T": {
+"buckets": {
+"1-5": {
+"n_course": 1137,
+"pooled": "UGBA",
+"sections_course": 6
+},
+"6-15": {
+"n_course": 153,
+"pooled": "UGBA",
+"sections_course": 4
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "190T",
+"subject": "UGBA"
+},
+"UGBA 191I": {
+"buckets": {
+"1-5": {
+"n_course": 190,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 38,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "191I",
+"subject": "UGBA"
+},
+"UGBA 191L": {
+"buckets": {
+"1-5": {
+"n_course": 210,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 11,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "191L",
+"subject": "UGBA"
+},
+"UGBA 191P": {
+"buckets": {
+"1-5": {
+"n_course": 487,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 75,
+"pooled": "UGBA",
+"sections_course": 2
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "191P",
+"subject": "UGBA"
+},
+"UGBA 192A": {
+"buckets": {
+"1-5": {
+"n_course": 210,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "192A",
+"subject": "UGBA"
+},
+"UGBA 192N": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "192N",
+"subject": "UGBA"
+},
+"UGBA 192P": {
+"buckets": {
+"1-5": {
+"n_course": 307,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 5,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 133,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "192P",
+"subject": "UGBA"
+},
+"UGBA 192T": {
+"buckets": {
+"1-5": {
+"n_course": 348,
+"pooled": "UGBA",
+"sections_course": 3
+},
+"6-15": {
+"n_course": 15,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "192T",
+"subject": "UGBA"
+},
+"UGBA 193I": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "193I",
+"subject": "UGBA"
+},
+"UGBA 194": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "194",
+"subject": "UGBA"
+},
+"UGBA 195B": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "195B",
+"subject": "UGBA"
+},
+"UGBA 195P": {
+"buckets": {
+"1-5": {
+"n_course": 280,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 109,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "195P",
+"subject": "UGBA"
+},
+"UGBA 196": {
+"buckets": {
+"1-5": {
+"n_course": 105,
+"pooled": "UGBA",
+"sections_course": 3
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "196",
+"subject": "UGBA"
+},
+"UGBA 24": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "lower",
+"number": "24",
+"subject": "UGBA"
+},
+"UGBA 39AC": {
+"buckets": {
+"1-5": {
+"n_course": 171,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 23,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "lower",
+"number": "39AC",
+"subject": "UGBA"
+},
+"UGBA 88": {
+"buckets": {
+"1-5": {
+"n_course": 478,
+"pooled": "UGBA",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 86,
+"pooled": "UGBA",
+"sections_course": 2
+}
+},
+"dept_group": "UGBA",
+"level": "lower",
+"number": "88",
+"subject": "UGBA"
+},
+"UGBA 96": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "lower",
+"number": "96",
+"subject": "UGBA"
+},
+"UGBA C12": {
+"buckets": {
+"1-5": {
+"n_course": 579,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 123,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 368,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "lower",
+"number": "C12",
+"subject": "UGBA"
+},
+"UGBA C196C": {
+"buckets": {
+"1-5": {
+"n_course": 467,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 74,
+"pooled": "UGBA",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 241,
+"pooled": "UGBA",
+"sections_course": 1
+}
+},
+"dept_group": "UGBA",
+"level": "upper",
+"number": "C196C",
+"subject": "UGBA"
+}
+},
+"subject": "UGBA",
+"term_id": "2268"
+}

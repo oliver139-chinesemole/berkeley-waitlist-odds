@@ -1,0 +1,312 @@
+{
+"courses": {
+"LDARCH 101": {
+"buckets": {
+"1-5": {
+"n_course": 46,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101",
+"subject": "LDARCH"
+},
+"LDARCH 103": {
+"buckets": {
+"1-5": {
+"n_course": 53,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "103",
+"subject": "LDARCH"
+},
+"LDARCH 12": {
+"buckets": {
+"1-5": {
+"n_course": 163,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "12",
+"subject": "LDARCH"
+},
+"LDARCH 133": {
+"buckets": {
+"1-5": {
+"n_course": 31,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "133",
+"subject": "LDARCH"
+},
+"LDARCH 134B": {
+"buckets": {
+"1-5": {
+"n_course": 45,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "134B",
+"subject": "LDARCH"
+},
+"LDARCH 154": {
+"buckets": {
+"1-5": {
+"n_course": 107,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "154",
+"subject": "LDARCH"
+},
+"LDARCH 201": {
+"buckets": {
+"1-5": {
+"n_course": 43,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "201",
+"subject": "LDARCH"
+},
+"LDARCH 203": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "203",
+"subject": "LDARCH"
+},
+"LDARCH 224": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "224",
+"subject": "LDARCH"
+},
+"LDARCH 233": {
+"buckets": {
+"1-5": {
+"n_course": 42,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "233",
+"subject": "LDARCH"
+},
+"LDARCH 234": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "234",
+"subject": "LDARCH"
+},
+"LDARCH 234A": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "234A",
+"subject": "LDARCH"
+},
+"LDARCH 252B": {
+"buckets": {
+"1-5": {
+"n_course": 86,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 45,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "252B",
+"subject": "LDARCH"
+},
+"LDARCH 375": {
+"buckets": {
+"1-5": {
+"n_course": 49,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "375",
+"subject": "LDARCH"
+},
+"LDARCH C110A": {
+"buckets": {
+"1-5": {
+"n_course": 261,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 51,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C110A",
+"subject": "LDARCH"
+},
+"LDARCH C171": {
+"buckets": {
+"1-5": {
+"n_course": 164,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C171",
+"subject": "LDARCH"
+},
+"LDARCH C188": {
+"buckets": {
+"1-5": {
+"n_course": 251,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 62,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C188",
+"subject": "LDARCH"
+},
+"LDARCH C203": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C203",
+"subject": "LDARCH"
+},
+"LDARCH C241": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C241",
+"subject": "LDARCH"
+},
+"LDARCH C242": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C242",
+"subject": "LDARCH"
+},
+"LDARCH C250": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C250",
+"subject": "LDARCH"
+},
+"LDARCH C290": {
+"buckets": {
+"1-5": {
+"n_course": 104,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C290",
+"subject": "LDARCH"
+}
+},
+"subject": "LDARCH",
+"term_id": "2268"
+}

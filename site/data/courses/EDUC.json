@@ -1,0 +1,518 @@
+{
+"courses": {
+"EDUC 114A": {
+"buckets": {
+"1-5": {
+"n_course": 119,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "114A",
+"subject": "EDUC"
+},
+"EDUC 140A": {
+"buckets": {
+"1-5": {
+"n_course": 108,
+"pooled": "EDUC",
+"sections_course": 2
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "140A",
+"subject": "EDUC"
+},
+"EDUC 140AC": {
+"buckets": {
+"1-5": {
+"n_course": 76,
+"pooled": "EDUC",
+"sections_course": 2
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "140AC",
+"subject": "EDUC"
+},
+"EDUC 144": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "EDUC",
+"sections_course": 4
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "144",
+"subject": "EDUC"
+},
+"EDUC 155AC": {
+"buckets": {
+"1-5": {
+"n_course": 101,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "155AC",
+"subject": "EDUC"
+},
+"EDUC 163": {
+"buckets": {
+"1-5": {
+"n_course": 111,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "163",
+"subject": "EDUC"
+},
+"EDUC 188": {
+"buckets": {
+"1-5": {
+"n_course": 261,
+"pooled": "EDUC",
+"sections_course": 2
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "188",
+"subject": "EDUC"
+},
+"EDUC 190A": {
+"buckets": {
+"1-5": {
+"n_course": 173,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "190A",
+"subject": "EDUC"
+},
+"EDUC 207B": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "207B",
+"subject": "EDUC"
+},
+"EDUC 207L": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "207L",
+"subject": "EDUC"
+},
+"EDUC 210": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "210",
+"subject": "EDUC"
+},
+"EDUC 213C": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "213C",
+"subject": "EDUC"
+},
+"EDUC 217": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "217",
+"subject": "EDUC"
+},
+"EDUC 220": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "220",
+"subject": "EDUC"
+},
+"EDUC 221": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "221",
+"subject": "EDUC"
+},
+"EDUC 222B": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "222B",
+"subject": "EDUC"
+},
+"EDUC 222C": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "222C",
+"subject": "EDUC"
+},
+"EDUC 231B": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "231B",
+"subject": "EDUC"
+},
+"EDUC 24": {
+"buckets": {
+"1-5": {
+"n_course": 47,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "lower",
+"number": "24",
+"subject": "EDUC"
+},
+"EDUC 241A": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "241A",
+"subject": "EDUC"
+},
+"EDUC 244": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "244",
+"subject": "EDUC"
+},
+"EDUC 265D": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "265D",
+"subject": "EDUC"
+},
+"EDUC 268": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "EDUC",
+"sections_course": 2
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "268",
+"subject": "EDUC"
+},
+"EDUC 271B": {
+"buckets": {
+"1-5": {
+"n_course": 48,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "271B",
+"subject": "EDUC"
+},
+"EDUC 274A": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "274A",
+"subject": "EDUC"
+},
+"EDUC 276A": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "276A",
+"subject": "EDUC"
+},
+"EDUC 281": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "281",
+"subject": "EDUC"
+},
+"EDUC 296A": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "296A",
+"subject": "EDUC"
+},
+"EDUC 298E": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "298E",
+"subject": "EDUC"
+},
+"EDUC 313C": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "313C",
+"subject": "EDUC"
+},
+"EDUC 313E": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "313E",
+"subject": "EDUC"
+},
+"EDUC 313F": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "313F",
+"subject": "EDUC"
+},
+"EDUC 313H": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "313H",
+"subject": "EDUC"
+},
+"EDUC 40AC": {
+"buckets": {
+"1-5": {
+"n_course": 172,
+"pooled": "EDUC",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "all",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "lower",
+"number": "40AC",
+"subject": "EDUC"
+},
+"EDUC 413A": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "413A",
+"subject": "EDUC"
+},
+"EDUC C122": {
+"buckets": {
+"1-5": {
+"n_course": 75,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "C122",
+"subject": "EDUC"
+},
+"EDUC C142": {
+"buckets": {
+"1-5": {
+"n_course": 244,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "C142",
+"subject": "EDUC"
+},
+"EDUC C181": {
+"buckets": {
+"1-5": {
+"n_course": 175,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "C181",
+"subject": "EDUC"
+},
+"EDUC W164": {
+"buckets": {
+"1-5": {
+"n_course": 220,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "W164",
+"subject": "EDUC"
+}
+},
+"subject": "EDUC",
+"term_id": "2268"
+}

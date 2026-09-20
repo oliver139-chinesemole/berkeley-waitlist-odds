@@ -1,0 +1,89 @@
+{
+"courses": {
+"DEVP 209": {
+"buckets": {
+"1-5": {
+"n_course": 97,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "209",
+"subject": "DEVP"
+},
+"DEVP 222": {
+"buckets": {
+"1-5": {
+"n_course": 74,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "222",
+"subject": "DEVP"
+},
+"DEVP 228A": {
+"buckets": {
+"1-5": {
+"n_course": 60,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "228A",
+"subject": "DEVP"
+},
+"DEVP 230": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "230",
+"subject": "DEVP"
+},
+"DEVP 240": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "240",
+"subject": "DEVP"
+},
+"DEVP 290": {
+"buckets": {
+"1-5": {
+"n_course": 52,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "290",
+"subject": "DEVP"
+}
+},
+"subject": "DEVP",
+"term_id": "2268"
+}

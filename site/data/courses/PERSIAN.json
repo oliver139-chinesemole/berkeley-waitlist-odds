@@ -1,0 +1,24 @@
+{
+"courses": {
+"PERSIAN 1A": {
+"buckets": {
+"1-5": {
+"n_course": 48,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "PERSIAN"
+}
+},
+"subject": "PERSIAN",
+"term_id": "2268"
+}

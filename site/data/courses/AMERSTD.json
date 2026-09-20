@@ -1,0 +1,151 @@
+{
+"courses": {
+"AMERSTD 101": {
+"buckets": {
+"1-5": {
+"n_course": 318,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 71,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101",
+"subject": "AMERSTD"
+},
+"AMERSTD 102": {
+"buckets": {
+"1-5": {
+"n_course": 239,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "AMERSTD"
+},
+"AMERSTD 10AC": {
+"buckets": {
+"1-5": {
+"n_course": 330,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 167,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10AC",
+"subject": "AMERSTD"
+},
+"AMERSTD 110": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110",
+"subject": "AMERSTD"
+},
+"AMERSTD 189": {
+"buckets": {
+"1-5": {
+"n_course": 49,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "189",
+"subject": "AMERSTD"
+},
+"AMERSTD 191": {
+"buckets": {
+"1-5": {
+"n_course": 87,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "191",
+"subject": "AMERSTD"
+},
+"AMERSTD C112": {
+"buckets": {
+"1-5": {
+"n_course": 63,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C112",
+"subject": "AMERSTD"
+},
+"AMERSTD C152": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C152",
+"subject": "AMERSTD"
+},
+"AMERSTD C171": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C171",
+"subject": "AMERSTD"
+},
+"AMERSTD H110": {
+"buckets": {
+"1-5": {
+"n_course": 36,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "H110",
+"subject": "AMERSTD"
+}
+},
+"subject": "AMERSTD",
+"term_id": "2268"
+}

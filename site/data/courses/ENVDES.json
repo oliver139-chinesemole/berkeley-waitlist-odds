@@ -1,0 +1,104 @@
+{
+"courses": {
+"ENVDES 1": {
+"buckets": {
+"1-5": {
+"n_course": 338,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 140,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 237,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "ENVDES"
+},
+"ENVDES 102": {
+"buckets": {
+"1-5": {
+"n_course": 316,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 85,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 183,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "ENVDES"
+},
+"ENVDES 195A": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "195A",
+"subject": "ENVDES"
+},
+"ENVDES 202": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "202",
+"subject": "ENVDES"
+},
+"ENVDES 252": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "252",
+"subject": "ENVDES"
+},
+"ENVDES 290": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "290",
+"subject": "ENVDES"
+}
+},
+"subject": "ENVDES",
+"term_id": "2268"
+}

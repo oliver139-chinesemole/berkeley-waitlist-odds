@@ -1,0 +1,392 @@
+{
+"courses": {
+"DATA 144": {
+"buckets": {
+"1-5": {
+"n_course": 911,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 588,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"41+": {
+"n_course": 136,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 655,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "144",
+"subject": "DATA"
+},
+"DATA 145": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "145",
+"subject": "DATA"
+},
+"DATA 188": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "188",
+"subject": "DATA"
+},
+"DATA 200S": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200S",
+"subject": "DATA"
+},
+"DATA 375": {
+"buckets": {
+"1-5": {
+"n_course": 41,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "375",
+"subject": "DATA"
+},
+"DATA 88": {
+"buckets": {
+"1-5": {
+"n_course": 46,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "88",
+"subject": "DATA"
+},
+"DATA 88E": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "88E",
+"subject": "DATA"
+},
+"DATA 94": {
+"buckets": {
+"1-5": {
+"n_course": 48,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "94",
+"subject": "DATA"
+},
+"DATA C100": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C100",
+"subject": "DATA"
+},
+"DATA C101": {
+"buckets": {
+"1-5": {
+"n_course": 345,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 90,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C101",
+"subject": "DATA"
+},
+"DATA C102": {
+"buckets": {
+"1-5": {
+"n_course": 559,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 95,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 323,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C102",
+"subject": "DATA"
+},
+"DATA C104": {
+"buckets": {
+"1-5": {
+"n_course": 949,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 455,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"41+": {
+"n_course": 76,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 633,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C104",
+"subject": "DATA"
+},
+"DATA C131A": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C131A",
+"subject": "DATA"
+},
+"DATA C140": {
+"buckets": {
+"1-5": {
+"n_course": 488,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 304,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 365,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C140",
+"subject": "DATA"
+},
+"DATA C146": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C146",
+"subject": "DATA"
+},
+"DATA C182": {
+"buckets": {
+"1-5": {
+"n_course": 199,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 71,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C182",
+"subject": "DATA"
+},
+"DATA C200": {
+"buckets": {
+"1-5": {
+"n_course": 123,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 72,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C200",
+"subject": "DATA"
+},
+"DATA C4AC": {
+"buckets": {
+"1-5": {
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C4AC",
+"subject": "DATA"
+},
+"DATA C6": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C6",
+"subject": "DATA"
+},
+"DATA C8": {
+"buckets": {
+"1-5": {
+"n_course": 868,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 524,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"41+": {
+"n_course": 200,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 563,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C8",
+"subject": "DATA"
+},
+"DATA C88C": {
+"buckets": {
+"1-5": {
+"n_course": 459,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"16-40": {
+"n_course": 173,
+"pooled": "OTHER",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 268,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C88C",
+"subject": "DATA"
+},
+"DATA C88S": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C88S",
+"subject": "DATA"
+}
+},
+"subject": "DATA",
+"term_id": "2268"
+}

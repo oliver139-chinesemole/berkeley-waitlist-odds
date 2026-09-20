@@ -1,0 +1,786 @@
+{
+"courses": {
+"MECENG 100": {
+"buckets": {
+"1-5": {
+"n_course": 463,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 31,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 273,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "100",
+"subject": "MECENG"
+},
+"MECENG 102B": {
+"buckets": {
+"1-5": {
+"n_course": 356,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 43,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "102B",
+"subject": "MECENG"
+},
+"MECENG 103": {
+"buckets": {
+"1-5": {
+"n_course": 480,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 59,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 288,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "103",
+"subject": "MECENG"
+},
+"MECENG 104": {
+"buckets": {
+"1-5": {
+"n_course": 406,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 85,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 268,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "104",
+"subject": "MECENG"
+},
+"MECENG 106": {
+"buckets": {
+"1-5": {
+"n_course": 532,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 155,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 352,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "106",
+"subject": "MECENG"
+},
+"MECENG 108": {
+"buckets": {
+"1-5": {
+"n_course": 193,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 55,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "108",
+"subject": "MECENG"
+},
+"MECENG 109": {
+"buckets": {
+"1-5": {
+"n_course": 389,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 177,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "109",
+"subject": "MECENG"
+},
+"MECENG 119": {
+"buckets": {
+"1-5": {
+"n_course": 311,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 46,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "119",
+"subject": "MECENG"
+},
+"MECENG 132": {
+"buckets": {
+"1-5": {
+"n_course": 529,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 87,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 349,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "132",
+"subject": "MECENG"
+},
+"MECENG 136HL": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "136HL",
+"subject": "MECENG"
+},
+"MECENG 139": {
+"buckets": {
+"1-5": {
+"n_course": 265,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "139",
+"subject": "MECENG"
+},
+"MECENG 144": {
+"buckets": {
+"1-5": {
+"n_course": 183,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "144",
+"subject": "MECENG"
+},
+"MECENG 163": {
+"buckets": {
+"1-5": {
+"n_course": 348,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 152,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 200,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "163",
+"subject": "MECENG"
+},
+"MECENG 165": {
+"buckets": {
+"1-5": {
+"n_course": 51,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "165",
+"subject": "MECENG"
+},
+"MECENG 185": {
+"buckets": {
+"1-5": {
+"n_course": 146,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 46,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "185",
+"subject": "MECENG"
+},
+"MECENG 193E": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "193E",
+"subject": "MECENG"
+},
+"MECENG 206A": {
+"buckets": {
+"1-5": {
+"n_course": 124,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 11,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 33,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "206A",
+"subject": "MECENG"
+},
+"MECENG 219": {
+"buckets": {
+"1-5": {
+"n_course": 191,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "219",
+"subject": "MECENG"
+},
+"MECENG 236HL": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "236HL",
+"subject": "MECENG"
+},
+"MECENG 236SL": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "236SL",
+"subject": "MECENG"
+},
+"MECENG 236U": {
+"buckets": {
+"1-5": {
+"n_course": 136,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 27,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "236U",
+"subject": "MECENG"
+},
+"MECENG 239": {
+"buckets": {
+"1-5": {
+"n_course": 69,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "239",
+"subject": "MECENG"
+},
+"MECENG 24": {
+"buckets": {
+"1-5": {
+"n_course": 141,
+"pooled": "MECENG",
+"sections_course": 2
+},
+"6-15": {
+"n_course": 12,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "lower",
+"number": "24",
+"subject": "MECENG"
+},
+"MECENG 242": {
+"buckets": {
+"1-5": {
+"n_course": 49,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "242",
+"subject": "MECENG"
+},
+"MECENG 244": {
+"buckets": {
+"1-5": {
+"n_course": 134,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "244",
+"subject": "MECENG"
+},
+"MECENG 249": {
+"buckets": {
+"1-5": {
+"n_course": 181,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 51,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "249",
+"subject": "MECENG"
+},
+"MECENG 250A": {
+"buckets": {
+"1-5": {
+"n_course": 33,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "250A",
+"subject": "MECENG"
+},
+"MECENG 263Z": {
+"buckets": {
+"1-5": {
+"n_course": 79,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "263Z",
+"subject": "MECENG"
+},
+"MECENG 276DS": {
+"buckets": {
+"1-5": {
+"n_course": 139,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "276DS",
+"subject": "MECENG"
+},
+"MECENG 287": {
+"buckets": {
+"1-5": {
+"n_course": 38,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "287",
+"subject": "MECENG"
+},
+"MECENG 292E": {
+"buckets": {
+"1-5": {
+"n_course": 39,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "292E",
+"subject": "MECENG"
+},
+"MECENG 292I": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "292I",
+"subject": "MECENG"
+},
+"MECENG 375": {
+"buckets": {
+"1-5": {
+"n_course": 32,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "375",
+"subject": "MECENG"
+},
+"MECENG 40": {
+"buckets": {
+"1-5": {
+"n_course": 443,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 160,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 287,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "lower",
+"number": "40",
+"subject": "MECENG"
+},
+"MECENG C106A": {
+"buckets": {
+"1-5": {
+"n_course": 185,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 29,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C106A",
+"subject": "MECENG"
+},
+"MECENG C136": {
+"buckets": {
+"1-5": {
+"n_course": 236,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 51,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C136",
+"subject": "MECENG"
+},
+"MECENG C136S": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C136S",
+"subject": "MECENG"
+},
+"MECENG C162": {
+"buckets": {
+"1-5": {
+"n_course": 203,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C162",
+"subject": "MECENG"
+},
+"MECENG C166": {
+"buckets": {
+"1-5": {
+"n_course": 55,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C166",
+"subject": "MECENG"
+},
+"MECENG C178": {
+"buckets": {
+"1-5": {
+"n_course": 235,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 32,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 134,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C178",
+"subject": "MECENG"
+},
+"MECENG C200": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "C200",
+"subject": "MECENG"
+},
+"MECENG C231A": {
+"buckets": {
+"1-5": {
+"n_course": 90,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "C231A",
+"subject": "MECENG"
+},
+"MECENG C232": {
+"buckets": {
+"1-5": {
+"n_course": 166,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "C232",
+"subject": "MECENG"
+},
+"MECENG C278": {
+"buckets": {
+"1-5": {
+"n_course": 182,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 15,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 61,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "C278",
+"subject": "MECENG"
+},
+"MECENG C85": {
+"buckets": {
+"1-5": {
+"n_course": 470,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 156,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 320,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "lower",
+"number": "C85",
+"subject": "MECENG"
+}
+},
+"subject": "MECENG",
+"term_id": "2268"
+}

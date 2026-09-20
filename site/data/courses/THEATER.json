@@ -1,0 +1,369 @@
+{
+"courses": {
+"THEATER 10": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "THEATER",
+"sections_course": 2
+}
+},
+"dept_group": "THEATER",
+"level": "lower",
+"number": "10",
+"subject": "THEATER"
+},
+"THEATER 109": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "109",
+"subject": "THEATER"
+},
+"THEATER 110A": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "THEATER",
+"sections_course": 2
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "110A",
+"subject": "THEATER"
+},
+"THEATER 111": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "111",
+"subject": "THEATER"
+},
+"THEATER 119": {
+"buckets": {
+"1-5": {
+"n_course": 62,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "119",
+"subject": "THEATER"
+},
+"THEATER 121": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "121",
+"subject": "THEATER"
+},
+"THEATER 141": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "141",
+"subject": "THEATER"
+},
+"THEATER 142": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "142",
+"subject": "THEATER"
+},
+"THEATER 144": {
+"buckets": {
+"1-5": {
+"n_course": 69,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "144",
+"subject": "THEATER"
+},
+"THEATER 146A": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "146A",
+"subject": "THEATER"
+},
+"THEATER 151": {
+"buckets": {
+"1-5": {
+"n_course": 99,
+"pooled": "THEATER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "151",
+"subject": "THEATER"
+},
+"THEATER 162": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "162",
+"subject": "THEATER"
+},
+"THEATER 168": {
+"buckets": {
+"1-5": {
+"n_course": 159,
+"pooled": "THEATER",
+"sections_course": 5
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "168",
+"subject": "THEATER"
+},
+"THEATER 172": {
+"buckets": {
+"1-5": {
+"n_course": 51,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "172",
+"subject": "THEATER"
+},
+"THEATER 173": {
+"buckets": {
+"1-5": {
+"n_course": 154,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "173",
+"subject": "THEATER"
+},
+"THEATER 174": {
+"buckets": {
+"1-5": {
+"n_course": 173,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "174",
+"subject": "THEATER"
+},
+"THEATER 175A": {
+"buckets": {
+"1-5": {
+"n_course": 137,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "175A",
+"subject": "THEATER"
+},
+"THEATER 179": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "179",
+"subject": "THEATER"
+},
+"THEATER 181": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "181",
+"subject": "THEATER"
+},
+"THEATER 196": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "upper",
+"number": "196",
+"subject": "THEATER"
+},
+"THEATER 26": {
+"buckets": {
+"1-5": {
+"n_course": 176,
+"pooled": "THEATER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 44,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "lower",
+"number": "26",
+"subject": "THEATER"
+},
+"THEATER 40": {
+"buckets": {
+"1-5": {
+"n_course": 54,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "lower",
+"number": "40",
+"subject": "THEATER"
+},
+"THEATER 52AC": {
+"buckets": {
+"1-5": {
+"n_course": 540,
+"pooled": "THEATER",
+"sections_course": 1
+},
+"16-40": {
+"n_course": 82,
+"pooled": "THEATER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 340,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "lower",
+"number": "52AC",
+"subject": "THEATER"
+},
+"THEATER 60": {
+"buckets": {
+"1-5": {
+"n_course": 256,
+"pooled": "THEATER",
+"sections_course": 1
+},
+"6-15": {
+"n_course": 102,
+"pooled": "THEATER",
+"sections_course": 1
+}
+},
+"dept_group": "THEATER",
+"level": "lower",
+"number": "60",
+"subject": "THEATER"
+},
+"THEATER R1A": {
+"buckets": {
+"1-5": {
+"n_course": 97,
+"pooled": "THEATER",
+"sections_course": 3
+}
+},
+"dept_group": "THEATER",
+"level": "lower",
+"number": "R1A",
+"subject": "THEATER"
+},
+"THEATER R1B": {
+"buckets": {
+"1-5": {
+"n_course": 287,
+"pooled": "THEATER",
+"sections_course": 4
+}
+},
+"dept_group": "THEATER",
+"level": "lower",
+"number": "R1B",
+"subject": "THEATER"
+}
+},
+"subject": "THEATER",
+"term_id": "2268"
+}
