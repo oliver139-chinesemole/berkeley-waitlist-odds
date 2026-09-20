@@ -59,9 +59,13 @@ make backtest TERM=2268             # reports/backtest_2268/: temporal and group
 
 The backtest scores five predictors at each held-out joiner's own horizon (the last automatic waitlist run, the first day of instruction, or a fixed number of days): the position bucket alone, the department-and-bucket curve the site serves, the course-and-bucket curve, the number the first version of the site would have shown, and the Cox model. On Fall 2026 the course-level curve did not beat the bucket baseline, so the site serves department curves with each course's own case count alongside. Scores are IPCW Brier, weighted AUC and decile calibration, with a section bootstrap on the gain over the baseline; `tests/test_backtest.py::test_ipcw_toy_example` shows why rows with an unknown outcome are reweighted rather than dropped.
 
+![Fall 2026, Berkeleytime history: time to clear for lower-division Phase 1 joiners by position bucket](reports/figures_2268_berkeleytime/hero.png)
+
+*Fall 2026 as recorded by Berkeleytime, not this project's own snapshots*: Kaplan-Meier share still waiting, by days since joining, for hypothetical joiners in lower-division courses during Phase 1, by position bucket (`make backfill-analysis TERM=2268`, `reports/figures_2268_berkeleytime/hero.png`). Across all 6,016 sections a joiner at positions 1 to 5 cleared in a median 6.4 days (62% within 14 days); at 6 to 15 the median was 25.7 days (42% within 14 days); at 16 to 40, 25% cleared within 14 days. Each unit of log position multiplies the clearing rate by 0.55. The full report is `reports/report_2268_berkeleytime.md`; the backtests are under `reports/backtest_2268/`.
+
 ![Simulated data: what the reconstruction recovers at 30-minute sampling](reports/figures_validation/reconstruction_validation.png)
 
-*Simulated waitlists, not real data* (`python -m analysis.validation_figure`): left, cumulative admits in one section, true versus reconstructed from the sampled counts; right, true versus estimated hours to clear for every simulated student who cleared, under the central drop scenario. The Fall 2026 hero plot replaces this once the full backfill has run.
+*Simulated waitlists, not real data* (`python -m analysis.validation_figure`): left, cumulative admits in one section, true versus reconstructed from the sampled counts; right, true versus estimated hours to clear for every simulated student who cleared, under the central drop scenario.
 
 ## Data layout (on the `data` branch)
 
