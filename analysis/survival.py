@@ -114,6 +114,7 @@ class CoxResult:
     fitter: CoxPHFitter
     design: pd.DataFrame
     strata: list[str] = field(default_factory=list)
+    rows_available: int = 0  # design rows before any seeded subsample (rows with a missing covariate are already gone)
 
     @property
     def summary(self) -> pd.DataFrame:
@@ -123,6 +124,10 @@ class CoxResult:
     def rows_fit(self) -> int:
         return int(len(self.design))
 
+    @property
+    def subsampled(self) -> bool:
+        return self.rows_available > self.rows_fit
+
 
 def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: float = 0.01, max_rows: int | None = COX_MAX_ROWS, seed: int = 0) -> CoxResult:
     """Cox PH with robust (cluster by section) standard errors; ``strata`` names
@@ -130,6 +135,7 @@ def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: floa
     ``max_rows`` the fit uses a seeded random subsample of that many rows
     (``result.rows_fit`` says how many were used)."""
     design = design_matrix(cohort)
+    rows_available = int(len(design))
     if max_rows is not None and len(design) > int(max_rows):
         design = design.sample(n=int(max_rows), random_state=seed).sort_index()
     strata_cols: list[str] = []
@@ -152,9 +158,9 @@ def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: floa
                 collapsed = collapsed.drop(columns=[fam])
             labels.append(f"{fam}_stratum")
         cph.fit(collapsed, strata=labels, **fit_kwargs)
-        return CoxResult(fitter=cph, design=collapsed, strata=labels)
+        return CoxResult(fitter=cph, design=collapsed, strata=labels, rows_available=rows_available)
     cph.fit(design, **fit_kwargs)
-    return CoxResult(fitter=cph, design=design)
+    return CoxResult(fitter=cph, design=design, rows_available=rows_available)
 
 
 def check_ph(result: CoxResult, *, alpha: float = 0.05, max_rows: int = PH_TEST_MAX_ROWS, seed: int = 0) -> pd.DataFrame:

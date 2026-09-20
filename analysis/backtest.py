@@ -1,13 +1,16 @@
 """Backtests: freeze the model on one set of virtual waitlisters, score another.
 
-Four predictors are scored at each test row's own horizon:
+Five predictors are scored at each test row's own horizon:
 
 - ``bucket``: Kaplan-Meier per position bucket (the baseline);
-- ``course``: Kaplan-Meier per course and bucket with the site's pooling rule
-  (department, then all courses, below ``min_n`` rows), read at the row's horizon;
-- ``site``: the literal number the site would show, i.e. the same pooled
-  curve read at the *training* cell's median lead time before instruction
-  and rounded to two decimals, whatever the test row's own horizon is;
+- ``dept``: Kaplan-Meier per department and bucket (the bucket curve below
+  ``min_n`` rows), read at the row's horizon: what the site serves by default;
+- ``course``: Kaplan-Meier per course and bucket with the pooling rule
+  (department, then all courses, below ``min_n`` rows), read at the row's
+  horizon: the course-level alternative;
+- ``site``: the v1 site number, i.e. the course-level curve read at the
+  *training* cell's median lead time before instruction and rounded to two
+  decimals, whatever the test row's own horizon is;
 - ``cox``: the Cox proportional-hazards fit from ``analysis.survival``.
 
 Scores are inverse-probability-of-censoring weighted (IPCW, Graf 1999). A
@@ -56,7 +59,7 @@ from analysis.survival import BUCKET_ORDER, COX_MAX_ROWS, design_matrix, fit_cox
 
 logger = logging.getLogger(__name__)
 
-PREDICTORS = ("bucket", "course", "site", "cox")
+PREDICTORS = ("bucket", "dept", "course", "site", "cox")
 SPLITS = ("temporal", "grouped", "cross_term")
 BASELINE = "bucket"
 MIN_TRAIN_ROWS = 50
@@ -247,6 +250,16 @@ class PooledKM:
             return self.by_bucket[bucket], "bucket"
         return self.all, "all"  # type: ignore[return-value]
 
+    def predict_dept(self, test: pd.DataFrame, h: np.ndarray) -> np.ndarray:
+        """The department-by-bucket curve at the row's horizon (the bucket curve when the department cell is too small)."""
+        out = np.empty(len(test))
+        depts = self.dept_of(test).to_numpy()
+        buckets = test["position_bucket"].astype(str).to_numpy()
+        for i in range(len(test)):
+            curve = self.by_dept.get((depts[i], buckets[i])) or self.by_bucket.get(buckets[i], self.all)
+            out[i] = curve.p_clear(np.array([h[i]]))[0]  # type: ignore[union-attr]
+        return out
+
     def predict_bucket(self, test: pd.DataFrame, h: np.ndarray) -> np.ndarray:
         out = np.empty(len(test))
         buckets = test["position_bucket"].astype(str).to_numpy()
@@ -433,19 +446,20 @@ def predict_all(train: pd.DataFrame, test: pd.DataFrame, calendar: TermCalendar,
     test = test[observable].reset_index(drop=True)
     h = h[observable]
     if len(test) == 0:
-        empty = pd.DataFrame(columns=["section_id", "course_key", "position_bucket", "phase", "join_time", "duration_days", "event", "horizon_days", "p_bucket", "p_course", "course_level", "p_site", "site_fallback", "p_cox", "cox_fallback"])
+        empty = pd.DataFrame(columns=["section_id", "course_key", "position_bucket", "phase", "join_time", "duration_days", "event", "horizon_days", "p_bucket", "p_dept", "p_course", "course_level", "p_site", "site_fallback", "p_cox", "cox_fallback"])
         empty.attrs.update({"n_excluded": excluded, "n_unobservable": unobservable, "coverage": coverage})
         return empty, notes
     pooled = PooledKM(min_n=min_n).fit(train)
     p_bucket = pooled.predict_bucket(test, h)
+    p_dept = pooled.predict_dept(test, h)
     p_course, level = pooled.predict(test, h)
     p_site, site_fallback = pooled.predict_site(test)
     cox = CoxPredictor(max_rows=cox_max_rows).fit(train)
     p_cox, cox_fallback = cox.predict(test, h, p_bucket)
     if cox.error:
         notes.append(f"Cox fit failed ({cox.error}); the cox column repeats the bucket baseline")
-    elif cox.result is not None and cox.result.rows_fit < len(train):
-        notes.append(f"Cox predictor fit on a seeded random subsample of {cox.result.rows_fit} of {len(train)} training rows")
+    elif cox.result is not None and cox.result.subsampled:
+        notes.append(f"Cox predictor fit on a seeded random subsample of {cox.result.rows_fit} of {cox.result.rows_available} training rows")
     pred = pd.DataFrame(
         {
             "section_id": test["section_id"].astype(str),
@@ -457,6 +471,7 @@ def predict_all(train: pd.DataFrame, test: pd.DataFrame, calendar: TermCalendar,
             "event": test["event"].astype(int),
             "horizon_days": h,
             "p_bucket": p_bucket,
+            "p_dept": p_dept,
             "p_course": p_course,
             "course_level": level,
             "p_site": p_site,
@@ -637,7 +652,7 @@ def write_report(result: BacktestResult, out_dir: Path | str, *, title: str = ""
         _md(result.by_bucket),
         "",
     ]
-    for name in ("cox", "site"):
+    for name in ("dept", "cox", "site"):
         sub = result.calibration[result.calibration["predictor"] == name] if len(result.calibration) else pd.DataFrame()
         lines += [f"## Calibration: {name}", "", _md(sub.drop(columns=["predictor"]) if len(sub) else sub), ""]
     if result.notes:

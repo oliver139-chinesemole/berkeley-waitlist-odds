@@ -114,13 +114,14 @@ def test_temporal_backtest_scores_four_predictors(temporal_result) -> None:
     assert list(m.index) == list(PREDICTORS) and res.n_test == len(res.predictions) > 0
     assert (m["brier"].between(0, 1)).all() and (m["auc"].between(0, 1)).all()
     assert m.at["bucket", "gain"] == 0 and m.at["bucket", "gain_ci_low"] == 0 == m.at["bucket", "gain_ci_high"]
-    for name in ("course", "site", "cox"):
+    for name in ("dept", "course", "site", "cox"):
         assert m.at[name, "gain_ci_low"] <= m.at[name, "gain"] <= m.at[name, "gain_ci_high"]
         assert m.at[name, "brier_baseline"] == m.at["bucket", "brier"]
     # position drives the generator, so ranking by bucket alone is already informative
     assert m.at["bucket", "auc"] > 0.6 and m.at["cox", "auc"] > 0.6
     assert set(res.by_phase["phase"]) == {"phase2"} and len(res.by_bucket) == 4
-    assert {"p_bucket", "p_course", "p_site", "p_cox", "horizon_days", "site_fallback", "cox_fallback"} <= set(res.predictions.columns)
+    assert {"p_bucket", "p_dept", "p_course", "p_site", "p_cox", "horizon_days", "site_fallback", "cox_fallback"} <= set(res.predictions.columns)
+    assert (res.predictions["p_dept"].between(0, 1)).all()
     assert (res.predictions["horizon_days"] == 14.0).all()
     assert any("censored at the split" in n for n in res.notes)
 
@@ -154,7 +155,7 @@ def test_cross_term_and_grouped_runs() -> None:
     assert res.n_train == len(last_term) and res.n_test == len(this_term) and np.isfinite(res.metrics["brier"]).all()
     assert (res.predictions["horizon_days"] > 60).all()  # joins in Oct/Nov, deadline Feb 5
     grouped = run_backtest(this_term, SPRING_2027, split="grouped", which="instruction", folds=3, n_boot=20)
-    assert grouped.n_test == len(this_term) and len(grouped.metrics) == 4 and any("3 folds" in n for n in grouped.notes)
+    assert grouped.n_test == len(this_term) and len(grouped.metrics) == 5 and any("3 folds" in n for n in grouped.notes)
     assert (grouped.predictions["course_level"] != "course").all()  # a course never scores itself
 
 
@@ -174,7 +175,7 @@ def test_cli_writes_reports(tmp_path: Path) -> None:
     for name in ("metrics.csv", "by_phase.csv", "by_bucket.csv", "calibration.csv", "predictions.parquet", "report.md"):
         assert (out / name).exists(), name
     report = (out / "report.md").read_text()
-    assert "## Predictors" in report and "| cox |" in report and "## Calibration: site" in report
+    assert "## Predictors" in report and "| cox |" in report and "| dept |" in report and "## Calibration: site" in report and "## Calibration: dept" in report
     metrics = pd.read_csv(out / "metrics.csv")
     assert list(metrics["predictor"]) == list(PREDICTORS)
     res = run_backtest(cohort, SPRING_2027, split="temporal", which="days:14", n_boot=5)
