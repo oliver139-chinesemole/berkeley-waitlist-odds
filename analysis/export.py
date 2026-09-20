@@ -55,6 +55,7 @@ HORIZONS = (7.0, 14.0, 28.0)  # the fixed horizons index.json and the grids carr
 # course's own curve when it has min_n rows, kept for later terms.
 ESTIMATE_LEVELS = ("dept", "course")
 DEFAULT_ESTIMATE_LEVEL = "dept"
+LEVELS, DEFAULT_LEVEL = ESTIMATE_LEVELS, DEFAULT_ESTIMATE_LEVEL  # the names analysis.run imports
 LEVEL_ORDER = ("lower", "upper", "grad")
 PHASE_ORDER = ("before", "phase1", "between", "phase2", "adjustment", "instruction", "after")
 META_CARRY = ("data_source", "flows", "backfill", "cohort_rows_by_scenario", "prereg_commit", "prereg_date")
