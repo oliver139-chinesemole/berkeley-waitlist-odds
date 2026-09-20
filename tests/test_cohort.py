@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -142,4 +143,4 @@ def test_follow_up_days_is_the_window_a_joiner_could_be_watched() -> None:
     assert at0.at[1, "event"] == 1 and at0.at[1, "duration_min"] == 30.0 and at0.at[1, "follow_up_days"] == pytest.approx(60 / 1440)  # gap at +60 min
     assert at0.at[2, "event"] == 0 and at0.at[2, "duration_min"] == 60.0 and at0.at[2, "follow_up_days"] == pytest.approx(60 / 1440)
     later = cohort[cohort["join_time"] == pd.Timestamp(T0 + timedelta(minutes=90))]
-    assert (later["follow_up_days"] == pytest.approx(30 / 1440)).all()  # after the gap: to the end of the data
+    assert np.allclose(later["follow_up_days"].to_numpy(), 30 / 1440)  # after the gap: to the end of the data
