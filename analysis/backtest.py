@@ -22,6 +22,16 @@ Mann-Whitney statistic; calibration is weighted by decile of the prediction.
 Uncertainty on the gain over the baseline comes from resampling sections,
 not rows, because the rows of one section are copies of the same queue.
 
+Observability comes first. A row is scored at horizon h only if it could
+have been followed to h whatever happened (``follow_up_days >= h``): where a
+gap or the end of the data falls before h, a joiner who cleared before it is
+seen and one who did not is not, so the probability of observing a negative
+is zero and no weighting can recover it. Such rows are excluded and counted,
+by phase. In Berkeleytime's Fall 2026 history a recorder outage from Aug 19
+to Sep 1 makes "cleared by the last automatic waitlist run" and "cleared by
+the first day of instruction" unobservable for every joiner before it; fixed
+horizons (``days:7``, ``days:14``, ``days:28``) are what that term can score.
+
 Splits: ``temporal`` (train before a date, test after; training rows are
 censored at the split date so nothing after it leaks into the fit),
 ``grouped`` (K folds by course, every row scored once out of fold) and
@@ -363,13 +373,15 @@ class BacktestResult:
     which: str
     n_train: int
     n_test: int
-    n_excluded: int
+    n_excluded: int  # test rows already past their horizon when they joined
     metrics: pd.DataFrame
     by_phase: pd.DataFrame
     by_bucket: pd.DataFrame
     calibration: pd.DataFrame
     predictions: pd.DataFrame
     notes: list[str] = field(default_factory=list)
+    n_unobservable: int = 0  # test rows whose follow-up window ends before their horizon
+    coverage: pd.DataFrame = field(default_factory=pd.DataFrame)  # per phase: rows, observable, share
 
     def as_dict(self) -> dict:
         return {
@@ -378,14 +390,32 @@ class BacktestResult:
             "n_train": self.n_train,
             "n_test": self.n_test,
             "n_excluded": self.n_excluded,
+            "n_unobservable": self.n_unobservable,
+            "coverage": self.coverage.to_dict(orient="records") if len(self.coverage) else [],
             "metrics": self.metrics.to_dict(orient="records"),
             "notes": self.notes,
         }
 
 
-def _empty_result(split: str, which: str, n_train: int, n_test: int, note: str) -> BacktestResult:
+def _empty_result(split: str, which: str, n_train: int, n_test: int, notes: list[str], *, n_unobservable: int = 0, coverage: pd.DataFrame | None = None) -> BacktestResult:
     cols = ["predictor", "n_test", "brier_rows", "share_unknown", "brier", "auc", "brier_baseline", "gain", "gain_ci_low", "gain_ci_high", "skill", "share_fallback"]
-    return BacktestResult(split, which, n_train, n_test, 0, pd.DataFrame(columns=cols), pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), [note])
+    return BacktestResult(split, which, n_train, n_test, 0, pd.DataFrame(columns=cols), pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), list(notes), n_unobservable, coverage if coverage is not None else pd.DataFrame())
+
+
+def observability(test: pd.DataFrame, h: np.ndarray) -> tuple[np.ndarray, pd.DataFrame]:
+    """``(observable mask, coverage by phase)``: a row is observable at its horizon
+    when its follow-up window (``follow_up_days``; unlimited when the column is
+    missing or NaN) reaches the horizon."""
+    if "follow_up_days" in test:
+        follow = pd.to_numeric(test["follow_up_days"], errors="coerce").to_numpy(dtype=float)
+        follow = np.where(np.isnan(follow), np.inf, follow)
+    else:
+        follow = np.full(len(test), np.inf)
+    ok = follow + 1e-9 >= h
+    frame = pd.DataFrame({"phase": test["phase"].astype(str).to_numpy(), "observable": ok})
+    cov = frame.groupby("phase").agg(n=("observable", "size"), observable=("observable", "sum")).reset_index()
+    cov["share_observable"] = (cov["observable"] / cov["n"]).round(4)
+    return ok, cov
 
 
 def predict_all(train: pd.DataFrame, test: pd.DataFrame, calendar: TermCalendar, which: str, *, min_n: int = 30) -> tuple[pd.DataFrame, list[str]]:
@@ -397,6 +427,14 @@ def predict_all(train: pd.DataFrame, test: pd.DataFrame, calendar: TermCalendar,
     excluded = int((~keep).sum())
     test = test[keep].reset_index(drop=True)
     h = h[keep]
+    observable, coverage = observability(test, h)
+    unobservable = int((~observable).sum())
+    test = test[observable].reset_index(drop=True)
+    h = h[observable]
+    if len(test) == 0:
+        empty = pd.DataFrame(columns=["section_id", "course_key", "position_bucket", "phase", "join_time", "duration_days", "event", "horizon_days", "p_bucket", "p_course", "course_level", "p_site", "site_fallback", "p_cox", "cox_fallback"])
+        empty.attrs.update({"n_excluded": excluded, "n_unobservable": unobservable, "coverage": coverage})
+        return empty, notes
     pooled = PooledKM(min_n=min_n).fit(train)
     p_bucket = pooled.predict_bucket(test, h)
     p_course, level = pooled.predict(test, h)
@@ -424,7 +462,7 @@ def predict_all(train: pd.DataFrame, test: pd.DataFrame, calendar: TermCalendar,
             "cox_fallback": cox_fallback,
         }
     )
-    pred.attrs["n_excluded"] = excluded
+    pred.attrs.update({"n_excluded": excluded, "n_unobservable": unobservable, "coverage": coverage})
     return pred, notes
 
 
@@ -511,8 +549,10 @@ def run_backtest(
         pairs = [(train_cohort.reset_index(drop=True), cohort)]
         notes.append("cross-term: fit on the training cohort, scored on this term")
     preds: list[pd.DataFrame] = []
+    coverages: list[pd.DataFrame] = []
     n_train = 0
     excluded = 0
+    unobservable = 0
     for train, test in pairs:
         n_train += len(train)
         if len(train) < MIN_TRAIN_ROWS or int(train["event"].sum()) < MIN_TRAIN_EVENTS or len(test) == 0:
@@ -520,14 +560,26 @@ def run_backtest(
             continue
         pred, fold_notes = predict_all(train, test, calendar, which, min_n=min_n)
         excluded += int(pred.attrs.get("n_excluded", 0))
+        unobservable += int(pred.attrs.get("n_unobservable", 0))
+        cov = pred.attrs.get("coverage")
+        if cov is not None and len(cov):
+            coverages.append(cov)
+        pred.attrs = {}  # the coverage frame must not ride along into the parquet metadata
         notes.extend(fold_notes)
-        preds.append(pred)
+        if len(pred):
+            preds.append(pred)
+    coverage = pd.DataFrame()
+    if coverages:
+        coverage = pd.concat(coverages).groupby("phase", as_index=False)[["n", "observable"]].sum()
+        coverage["share_observable"] = (coverage["observable"] / coverage["n"]).round(4)
+    if unobservable:
+        notes.append(f"{unobservable} test rows could not be followed to their horizon (a gap or the end of the data came first) and were not scored; see coverage by phase")
     if not preds or sum(len(p) for p in preds) < MIN_TEST_ROWS:
         n_test = sum(len(p) for p in preds)
-        return _empty_result(split, which, n_train, n_test, f"too few scored rows ({n_test}); need {MIN_TEST_ROWS}")
+        return _empty_result(split, which, n_train, n_test, notes + [f"too few scored rows ({n_test}); need {MIN_TEST_ROWS}"], n_unobservable=unobservable, coverage=coverage)
     pred = pd.concat(preds, ignore_index=True)
     metrics, by_phase, by_bucket, calibration = score(pred, n_boot=n_boot, seed=seed, g_floor=g_floor)
-    return BacktestResult(split, which, n_train, int(len(pred)), excluded, metrics, by_phase, by_bucket, calibration, pred, notes)
+    return BacktestResult(split, which, n_train, int(len(pred)), excluded, metrics, by_phase, by_bucket, calibration, pred, notes, unobservable, coverage)
 
 
 # -------------------------------------------------------------------- report
@@ -554,12 +606,17 @@ def write_report(result: BacktestResult, out_dir: Path | str, *, title: str = ""
     result.by_phase.to_csv(out_dir / "by_phase.csv", index=False)
     result.by_bucket.to_csv(out_dir / "by_bucket.csv", index=False)
     result.calibration.to_csv(out_dir / "calibration.csv", index=False)
+    result.coverage.to_csv(out_dir / "coverage.csv", index=False)
     if len(result.predictions):
         result.predictions.to_parquet(out_dir / "predictions.parquet", index=False)
     lines = [
         f"# Backtest: {title or result.split} ({result.which})",
         "",
-        f"Split `{result.split}`, horizon `{result.which}`: {result.n_train} training rows, {result.n_test} scored test rows, {result.n_excluded} test rows past their horizon at joining (not scored).",
+        f"Split `{result.split}`, horizon `{result.which}`: {result.n_train} training rows, {result.n_test} scored test rows, {result.n_excluded} test rows past their horizon at joining and {result.n_unobservable} whose follow-up ended before their horizon (neither scored).",
+        "",
+        "## Coverage: test rows that could be followed to their horizon, by phase",
+        "",
+        _md(result.coverage),
         "",
         "Every number here is produced by `python -m analysis.backtest`; nothing is edited by hand. `gain` is the baseline's Brier score minus the predictor's (positive is better) with a 95% section-bootstrap interval; `skill` is `1 - brier / brier_baseline`; `share_unknown` is the share of test rows censored before their horizon (weight 0 under IPCW); `share_fallback` is the share of rows the predictor could not cover and scored with the bucket baseline.",
         "",

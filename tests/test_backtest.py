@@ -18,6 +18,7 @@ from analysis.backtest import (
     horizon_days,
     ipcw_weights,
     main,
+    observability,
     run_backtest,
     temporal_split,
     weighted_auc,
@@ -178,3 +179,22 @@ def test_cli_writes_reports(tmp_path: Path) -> None:
     assert list(metrics["predictor"]) == list(PREDICTORS)
     res = run_backtest(cohort, SPRING_2027, split="temporal", which="days:14", n_boot=5)
     assert write_report(res, tmp_path / "again").exists()
+
+
+def test_unobservable_horizons_are_excluded_not_scored() -> None:
+    """A joiner whose section went dark before the horizon cannot be a known negative, so the
+    row is excluded whatever its outcome; rows the data followed far enough are kept."""
+    cohort = synthetic_cohort(n_sections=30, joins_per_section=8)
+    cohort["follow_up_days"] = np.where(cohort["phase"] == "phase2", 5.0, 100.0)
+    cohort.loc[cohort["phase"] == "phase2", "duration_days"] = cohort.loc[cohort["phase"] == "phase2", "duration_days"].clip(upper=5.0)
+    ok, cov = observability(cohort, np.full(len(cohort), 14.0))
+    assert set(cov["phase"]) == {"phase1", "phase2"}
+    assert cov.set_index("phase").at["phase2", "share_observable"] == 0.0 and cov.set_index("phase").at["phase1", "share_observable"] == 1.0
+    res = run_backtest(cohort, SPRING_2027, split="temporal", which="days:14", n_boot=10)
+    assert res.metrics.empty and res.n_unobservable == int((cohort["phase"] == "phase2").sum())
+    assert any("could not be followed" in n for n in res.notes) and len(res.coverage) == 1
+    grouped = run_backtest(cohort, SPRING_2027, split="grouped", which="days:14", folds=3, n_boot=10)
+    assert grouped.n_test == int((cohort["phase"] == "phase1").sum()) and grouped.n_unobservable == int((cohort["phase"] == "phase2").sum())
+    assert set(grouped.predictions["phase"]) == {"phase1"}
+    ok3, _ = observability(cohort.drop(columns=["follow_up_days"]), np.full(len(cohort), 14.0))
+    assert ok3.all()  # no window information: every row is assumed observable

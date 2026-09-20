@@ -34,6 +34,8 @@ backfill-analysis:
 	python -m analysis.run --backfill-dir $(BACKFILL_DIR) --term-id $(TERM) --out analysis/out --site-dir site/data
 
 backtest:
+	python -m analysis.backtest --cohort $(COHORT) --term-id $(TERM) --split temporal --which days:14 --out reports/backtest_$(TERM)/temporal_days14
+	python -m analysis.backtest --cohort $(COHORT) --term-id $(TERM) --split temporal --which days:28 --out reports/backtest_$(TERM)/temporal_days28
+	python -m analysis.backtest --cohort $(COHORT) --term-id $(TERM) --split grouped --which days:14 --out reports/backtest_$(TERM)/grouped_days14
 	python -m analysis.backtest --cohort $(COHORT) --term-id $(TERM) --split temporal --which deadline --out reports/backtest_$(TERM)/temporal_deadline
 	python -m analysis.backtest --cohort $(COHORT) --term-id $(TERM) --split temporal --which instruction --out reports/backtest_$(TERM)/temporal_instruction
-	python -m analysis.backtest --cohort $(COHORT) --term-id $(TERM) --split grouped --which deadline --out reports/backtest_$(TERM)/grouped_deadline

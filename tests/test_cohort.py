@@ -130,3 +130,16 @@ def test_open_section_without_queue_is_not_joinable() -> None:
     assert len(build_cohort(no_flag, ident, SPRING_2027, positions=(1,), join_every_min=0, min_sections_per_group=1)) == 3
     assert len(build_cohort(open_no_queue.drop(columns=["full0"]), ident, SPRING_2027, positions=(1,), join_every_min=0, min_sections_per_group=1)) == 0
     assert joinable(0, False) is False and joinable(0, None) is False and joinable(0, True) is True and joinable(3, False) is True
+
+
+def test_follow_up_days_is_the_window_a_joiner_could_be_watched() -> None:
+    """Censored rows end at the window; cleared rows end inside it; a gap after the join caps it."""
+    f = flows("1", [(1, 0, 3, False), (0, 0, 2, False), (0, 0, 2, True), (0, 0, 2, False)])
+    ident = identity(("1", "COMPSCI 61A", "61A", "LEC"))
+    cohort = build_cohort(f, ident, SPRING_2027, positions=(1, 2), join_every_min=0, min_sections_per_group=1)
+    assert "follow_up_days" in COHORT_COLUMNS and (cohort["duration_days"] <= cohort["follow_up_days"] + 1e-12).all()
+    at0 = cohort[cohort["join_time"] == pd.Timestamp(T0)].set_index("position")
+    assert at0.at[1, "event"] == 1 and at0.at[1, "duration_min"] == 30.0 and at0.at[1, "follow_up_days"] == pytest.approx(60 / 1440)  # gap at +60 min
+    assert at0.at[2, "event"] == 0 and at0.at[2, "duration_min"] == 60.0 and at0.at[2, "follow_up_days"] == pytest.approx(60 / 1440)
+    later = cohort[cohort["join_time"] == pd.Timestamp(T0 + timedelta(minutes=90))]
+    assert (later["follow_up_days"] == pytest.approx(30 / 1440)).all()  # after the gap: to the end of the data

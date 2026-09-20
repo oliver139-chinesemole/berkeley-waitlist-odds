@@ -5,7 +5,10 @@ joined a section's waitlist at a sampled observation time at a given
 position; ``duration_min`` and ``event`` come from the FIFO position model
 under one drop scenario, and the covariates are what a student could know
 at the moment of joining. A row exists only where a waitlist could be joined
-(``joinable``): a queue exists or the section is full.
+(``joinable``): a queue exists or the section is full. ``follow_up_days`` is
+how long the joiner could have been followed whatever happened (to the first
+censored interval after the join, or the end of the section's data): a
+backtest can only score the row at horizons inside that window.
 
 The position walk is the one in ``analysis.positions`` (``time_to_clear``),
 run here in numpy for every joiner of a section at once and only over the
@@ -42,6 +45,7 @@ COHORT_COLUMNS = (
     "duration_min",
     "duration_days",
     "event",
+    "follow_up_days",
     "course_key",
     "subject",
     "catalog_number",
@@ -260,6 +264,15 @@ def build_cohort(
         jr, pp, duration, event = jr[ok], pp[ok], duration[ok], event[ok]
         if len(jr) == 0:
             continue
+        # how long this joiner could have been followed whatever happened: until the
+        # first censored interval after the join, or the end of the section's data
+        cens_idx = np.flatnonzero(censored)
+        follow_ns = np.full(len(jr), t1_ns[-1], dtype=np.int64)
+        if len(cens_idx):
+            nxt = np.searchsorted(cens_idx, jr)
+            has_gap = nxt < len(cens_idx)
+            follow_ns[has_gap] = t0_ns[cens_idx[nxt[has_gap]]]
+        follow_up_days = (follow_ns - t0_ns[jr]) / (_NS_PER_MIN * 1440.0)
         join_times = pd.to_datetime(t0_ns[jr], unit="ns", utc=True)
         unique_rows, inverse = np.unique(jr, return_inverse=True)
         unique_times = pd.to_datetime(t0_ns[unique_rows], unit="ns", utc=True)
@@ -282,6 +295,7 @@ def build_cohort(
                     "duration_min": duration.astype(float),
                     "duration_days": duration.astype(float) / 1440.0,
                     "event": event.astype(int),
+                    "follow_up_days": follow_up_days.astype(float),
                     "course_key": None if info is None else info.get("course_key"),
                     "subject": None if info is None else info.get("subject"),
                     "catalog_number": catalog_number,
