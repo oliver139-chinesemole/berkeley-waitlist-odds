@@ -136,3 +136,18 @@ def test_check_ph_runs_on_small_design(cohort: pd.DataFrame) -> None:
     result = fit_cox(cohort.head(600))
     ph = check_ph(result)
     assert set(ph["violates"].unique()) <= {True, False}
+
+
+def test_cox_design_rounds_durations_and_ph_test_subsamples(cohort: pd.DataFrame) -> None:
+    from analysis.survival import COX_TIME_RESOLUTION_DAYS, design_matrix
+
+    design = design_matrix(cohort)
+    steps = design["duration_days"] / COX_TIME_RESOLUTION_DAYS
+    assert np.allclose(steps, np.round(steps)) and (design["duration_days"] > 0).all()
+    assert (design["duration_days"] >= cohort.loc[design.index, "duration_days"] - 1e-9).all()  # rounded up, never earlier
+    assert design_matrix(cohort, time_resolution_days=0)["duration_days"].equals(cohort.loc[design.index, "duration_days"].astype(float))
+    result = fit_cox(cohort)
+    ph = check_ph(result, max_rows=300)
+    assert (ph["rows_tested"] == 300).all() and {"covariate", "p", "violates"} <= set(ph.columns)
+    full = check_ph(result, max_rows=0)
+    assert (full["rows_tested"] == len(result.design)).all()
