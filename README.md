@@ -8,7 +8,7 @@ Given a UC Berkeley course and a waitlist position, how likely is that spot to c
 
 The scraper has run on GitHub Actions since 2026-09-19 against Fall 2026 as the test term: about 917 priority-list sections plus one of 12 shards of the remaining live sections every 30 minutes, kept on cadence by a self-dispatching workflow chain (docs/RUNBOOK.md section 2). The Spring 2027 switch happens on Oct 4 through the `SCRAPE_TERM` repository variable (docs/RUNBOOK.md step 7); Phase 1 opens Oct 26; the scraper must be collecting Spring 2027 by Mon Oct 12, 2026.
 
-The analysis code is complete and, since 2026-09-20, has real numbers to work on: Fall 2026 is a finished enrollment cycle, and Berkeleytime serves every section's enrollment history through its public API, so `make backfill` pulls that history, `make backfill-analysis` runs the whole pipeline on it, and `make backtest` freezes the model on earlier joiners and scores later ones (docs/BACKFILL_BACKTEST.md, docs/DESIGN_A5.md section 9). The backfilled data lives under `backfill/` (gitignored: it is Berkeleytime's), is labelled `berkeleytime_history` everywhere it appears, and is never counted toward this project's own collection claims. What is done and what is left is kept in docs/HANDOFF.md.
+The analysis code is complete and, since 2026-09-20, has real numbers to work on: Fall 2026 is a finished enrollment cycle, and Berkeleytime serves every section's enrollment history through its public API, so `make backfill` pulls that history, `make backfill-analysis` runs the whole pipeline on it, and `make backtest` freezes the model on earlier joiners and scores later ones (docs/dev/BACKFILL_BACKTEST.md, docs/DESIGN_A5.md section 9). The backfilled data lives under `backfill/` (gitignored: it is Berkeleytime's), is labelled `berkeleytime_history` everywhere it appears, and is never counted toward this project's own collection claims. What is done and what is left is kept in docs/dev/HANDOFF.md.
 
 On novelty: Berkeleytime already records enrollment and waitlist counts and exposes the history publicly. Collecting snapshots is not new. What this project adds is the waitlist-clearing model, the lookup tool, an honest backtest, and a dataset collected under a pinned schema with every gap logged. The last point is not decoration: the pilot pull of Berkeleytime's Fall 2026 history found that its recorder was dark for every section from 2026-08-19 22:45 UTC to 2026-09-01 18:30 UTC, the end of the adjustment period and the first week of instruction, which is when waitlists move most. Fall 2026 can therefore validate Phase 1 and Phase 2 clearing but says nothing about first-week clearing; the Spring 2027 collection, with its 30-minute cadence and gap log, is what closes that hole.
 
@@ -87,8 +87,8 @@ Backfilled Berkeleytime history is not on the data branch and not in the reposit
 
 ## Documents
 
-- docs/HANDOFF.md: what is done, what is left, and how to resume a working session.
-- docs/BACKFILL_BACKTEST.md: the plan for the Fall 2026 backfill and the backtests, with what each step found.
+- docs/dev/HANDOFF.md: what is done, what is left, and how to resume a working session.
+- docs/dev/BACKFILL_BACKTEST.md: the plan for the Fall 2026 backfill and the backtests, with what each step found.
 - docs/PHASE0.md: the sources that were probed, what each returns, rate limits, and the Spring 2027 calendar.
 - docs/DESIGN_A2.md: the build contract for the scraper and storage; docs/DESIGN_A4.md, docs/DESIGN_A5.md and docs/DESIGN_A6.md for the flow reconstruction, the survival analysis (with the backfill and backtest in section 9) and the site.
 - docs/ASSUMPTIONS.md: the assumptions behind the reconstruction, with the numbers from the synthetic validation.

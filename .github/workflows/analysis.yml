@@ -49,7 +49,21 @@ jobs:
       - name: Run the analysis
         shell: bash
         run: |
-          python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir site/data 2>&1 | tee analysis.log
+          python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir analysis/out/site_candidate 2>&1 | tee analysis.log
+      # site/data may hold the Fall 2026 backfill (data_source berkeleytime_history) until this
+      # project's own Spring 2027 snapshots have clearings; an own-data run with no clearings
+      # must not replace it with an empty cohort.
+      - name: Publish site data only when the own snapshots have clearings
+        shell: bash
+        run: |
+          EVENTS=$(python -c "import json; print(json.load(open('analysis/out/site_candidate/meta.json'))['events'])")
+          echo "own-data cohort clearings: $EVENTS"
+          if [ "$EVENTS" -ge 10 ]; then
+            rm -rf site/data && cp -r analysis/out/site_candidate site/data
+            echo "site/data replaced with the own-data estimates"
+          else
+            echo "keeping the published site/data ($(python -c "import json; m=json.load(open('site/data/meta.json')); print(m.get('data_source'), m.get('term_name'), m.get('events'), 'clearings')" 2>/dev/null || echo 'none published'))"
+          fi
       - name: Commit outputs
         id: commit
         shell: bash

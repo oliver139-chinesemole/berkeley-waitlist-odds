@@ -1,15 +1,15 @@
 @docs/SPEC.md
-@docs/FINISH_PLAN_WAITLIST.md
+@docs/dev/FINISH_PLAN_WAITLIST.md
 
 ## How to work in this repo
-- New session: read docs/HANDOFF.md first (what is done, what is left, how to resume), then the Current step line below.
+- New session: read docs/dev/HANDOFF.md first (what is done, what is left, how to resume), then the Current step line below.
 - Before any response or action, check loaded skills and invoke every one that applies
   (superpowers:using-superpowers). Announce which skill you are using.
-- Execute every step through the build loop in docs/FINISH_PLAN_WAITLIST.md section 1.2.
+- Execute every step through the build loop in docs/dev/FINISH_PLAN_WAITLIST.md section 1.2.
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: backfill and backtest landed (2026-09-20, branch backfill-backtest; docs/BACKFILL_BACKTEST.md carries what each step found). Fall 2026 pilot (296 sections of Berkeleytime history) is modelled and backtested; the full pull waits for Oliver's note to Berkeleytime (B2), then `make backfill`, `make backfill-analysis`, `make backtest`, commit site/data + reports and redeploy. Berkeleytime was dark for every section Aug 19 to Sep 1, so Fall 2026 says nothing about first-week clearing; the backtest scores only observable horizons. Site v2 reads the curve at the asker's own horizons (?today= pins the date). A3 chain running; A5/A6 code done; Oct 4 term switch; Nov 9 first own-data analysis; A7 with Oliver. Update this line at the end of every session.
+- Current step: backfill and backtest landed (2026-09-20, branch backfill-backtest; docs/dev/BACKFILL_BACKTEST.md carries what each step found). Fall 2026 pilot (296 sections of Berkeleytime history) is modelled and backtested; the full pull waits for Oliver's note to Berkeleytime (B2), then `make backfill`, `make backfill-analysis`, `make backtest`, commit site/data + reports and redeploy. Berkeleytime was dark for every section Aug 19 to Sep 1, so Fall 2026 says nothing about first-week clearing; the backtest scores only observable horizons. Site v2 reads the curve at the asker's own horizons (?today= pins the date). A3 chain running; A5/A6 code done; Oct 4 term switch; Nov 9 first own-data analysis; A7 with Oliver. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.

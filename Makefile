@@ -1,6 +1,6 @@
 # Analysis entry points. `make analysis` runs on the data branch; the backfill
 # targets run on Berkeleytime's public history for a finished term (laptop only:
-# Berkeleytime blocks GitHub's runners). See docs/BACKFILL_BACKTEST.md.
+# Berkeleytime blocks GitHub's runners). See docs/dev/BACKFILL_BACKTEST.md.
 TERM ?= 2268
 TERM_NAME ?= Fall 2026
 DATA_ROOT ?= ./data-branch

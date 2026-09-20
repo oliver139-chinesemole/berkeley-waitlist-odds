@@ -1,6 +1,6 @@
 # A5 design contract — survival analysis
 
-Binding interfaces for step A5 (docs/FINISH_PLAN_WAITLIST.md A5; docs/SPEC.md section 6). Input: the flows table from `analysis.flows.interval_flows` and section identity from `analysis.panel`, or the same two tables from a backfilled term (section 9). Output: Kaplan-Meier curves, a Cox proportional-hazards fit with its assumption check, sensitivity across drop scenarios, an out-of-sample check, and the precomputed lookup tables the site (A6) reads. One command reproduces everything from the raw Parquet.
+Binding interfaces for step A5 (docs/dev/FINISH_PLAN_WAITLIST.md A5; docs/SPEC.md section 6). Input: the flows table from `analysis.flows.interval_flows` and section identity from `analysis.panel`, or the same two tables from a backfilled term (section 9). Output: Kaplan-Meier curves, a Cox proportional-hazards fit with its assumption check, sensitivity across drop scenarios, an out-of-sample check, and the precomputed lookup tables the site (A6) reads. One command reproduces everything from the raw Parquet.
 
 ## 1. Unit of analysis (`analysis/cohort.py`)
 
@@ -93,7 +93,7 @@ It does not claim causal effects, does not model individual students, and does n
 
 ## 9. Backfill and backtest (`analysis/backfill.py`, `analysis/backtest.py`)
 
-Added 2026-09-20 (docs/BACKFILL_BACKTEST.md). The site is otherwise empty until mid-November; Fall 2026 is a finished cycle whose 15-minute history Berkeleytime serves publicly, so it can be modelled now and used to test the model honestly.
+Added 2026-09-20 (docs/dev/BACKFILL_BACKTEST.md). The site is otherwise empty until mid-November; Fall 2026 is a finished cycle whose 15-minute history Berkeleytime serves publicly, so it can be modelled now and used to test the model honestly.
 
 **Backfill.** `python -m analysis.backfill fetch --term "Fall 2026"` pulls one `GetCatalog` (cached) and one `GetEnrollment` per eligible primary section into `backfill/raw/<term>/` (gzip JSON, one request every 2 s, resumable, failures recorded and retried; the recorded `GetEnrollment` ops are tried in file order because the gateway's schema rejects the second one). Eligible means the same component exclusion as the scraper; selection never reads today's counts (keeping today's waitlisted sections would keep exactly the ones that failed to clear) and is a seeded permutation, so a `--limit 300` pilot is the first 300 of the full pull. `build` turns each history's run-length segments into the panel `interval_flows` reads: a row at each segment's start and end (observed stillness inside a segment is never censored, however long), and a crossing between segments where the change happened; a crossing wider than `GAP_MIN` (180 minutes; Berkeleytime's poll spacing at changes was 15 minutes from July 2026 and 45 to 130 minutes from March to June, so 45 would censor ordinary polls) is a Berkeleytime gap and the interval is flagged `censored`. Outputs `panel.parquet`, `identity.parquet`, `gaps.parquet`, `flows.parquet`, `gap_report.csv` (share of covered section-time dark per UTC day) and `meta.json` (`data_source: berkeleytime_history`). None of this counts toward the collection claims in CLAIMS.md.
 

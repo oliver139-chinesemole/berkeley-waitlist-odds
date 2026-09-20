@@ -20,7 +20,7 @@ python probe/crosscheck_berkeleytime.py --term "Fall 2026" --n 20
 
 Expected: tests green; first fetch writes `snapshots/date=<today>/HHMM-baseline.parquet` with about 25 rows; second writes `HHMM-delta.parquet` with 0 or a few rows and metadata `n_observed` about 25; rebuild returns 2 runs x 25 sections with `observed` true; gap report shows 2 runs; cross-check agrees on at least 18 of 20 within 15-minute drift.
 
-## Exit criteria for A2 (from docs/FINISH_PLAN_WAITLIST.md)
+## Exit criteria for A2 (from docs/dev/FINISH_PLAN_WAITLIST.md)
 
 - [ ] Tests green.
 - [ ] Workflow runs on manual dispatch (needs the GitHub repo; see docs/RUNBOOK.md).

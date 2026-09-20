@@ -1,6 +1,6 @@
 # Handoff: Berkeley Waitlist Odds
 
-Written 2026-09-19 23:20 UTC at the end of the first two working sessions; updated 2026-09-20 00:10 UTC by the third session (its changes are marked "session 3" below) and 2026-09-20 03:30 UTC by the fourth (the backfill and backtest section below). Read this first in a new session, then `CLAUDE.md` (the `Current step` line) and `docs/FINISH_PLAN_WAITLIST.md` (the step checklist and tracker at the bottom).
+Written 2026-09-19 23:20 UTC at the end of the first two working sessions; updated 2026-09-20 00:10 UTC by the third session (its changes are marked "session 3" below) and 2026-09-20 03:30 UTC by the fourth (the backfill and backtest section below). Read this first in a new session, then `CLAUDE.md` (the `Current step` line) and `docs/dev/FINISH_PLAN_WAITLIST.md` (the step checklist and tracker at the bottom).
 
 ## Where everything is
 
@@ -10,7 +10,7 @@ Written 2026-09-19 23:20 UTC at the end of the first two working sessions; updat
 | Live site | https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/ (lookup page, methodology page; shows a no-data state until Spring 2027 waitlists clear) |
 | Data | `data` branch of the repo: `snapshots/date=YYYY-MM-DD/HHMM-{baseline,delta}.parquet`, `catalog/<term_id>/catalog.json`, `catalog/site.json`, `status.json`. Local clone at `./data-branch` (gitignored). 12 snapshots so far, all Fall 2026 test data. |
 | Environment | `source .venv/bin/activate` (Python 3.12.5, pinned in requirements.txt). `gh` is logged in as oliver139-chinesemole; the `origin` remote uses the SSH alias `github-chinesemole`. |
-| Plan and design docs | `docs/FINISH_PLAN_WAITLIST.md` (roadmap), `docs/SPEC.md` (original spec), `docs/PHASE0.md` (data-route evidence), `docs/DESIGN_A2.md` (scraper contract, sections 11 to 15 override earlier ones), `docs/DESIGN_A4.md` (flows), `docs/DESIGN_A5.md` (survival analysis), `docs/DESIGN_A6.md` (site), `docs/ASSUMPTIONS.md` (the documented assumptions with validation numbers) |
+| Plan and design docs | `docs/dev/FINISH_PLAN_WAITLIST.md` (roadmap), `docs/SPEC.md` (original spec), `docs/PHASE0.md` (data-route evidence), `docs/DESIGN_A2.md` (scraper contract, sections 11 to 15 override earlier ones), `docs/DESIGN_A4.md` (flows), `docs/DESIGN_A5.md` (survival analysis), `docs/DESIGN_A6.md` (site), `docs/ASSUMPTIONS.md` (the documented assumptions with validation numbers) |
 | Operations | `docs/RUNBOOK.md` (go-live state, how a run works, what to do when it fails, Sunday check, site and weekly analysis), `docs/DATA_LOG.md` (every outage, switch and decision with UTC times; step A4 reads it as censoring rules), `CLAIMS.md` (every resume claim with its check command and the last measured result) |
 | Memory | `~/.claude/projects/-Users-oliverguo/memory/project_berkeley_waitlist_odds.md` |
 
@@ -37,7 +37,7 @@ Written 2026-09-19 23:20 UTC at the end of the first two working sessions; updat
 
 ## Session 4 (2026-09-20, 01:00Z to 03:30Z): Fall 2026 backfill and the backtests
 
-Branch `backfill-backtest` (docs/BACKFILL_BACKTEST.md is the plan; its checkboxes carry what each step found). Summary:
+Branch `backfill-backtest` (docs/dev/BACKFILL_BACKTEST.md is the plan; its checkboxes carry what each step found). Summary:
 
 - **Backfill** (`analysis/backfill.py`, `make backfill-pilot` / `make backfill`): Berkeleytime's `GetEnrollment` run-length history becomes the panel `interval_flows` reads; within-segment intervals are observed stillness, crossings wider than 180 min are that recorder's gaps and are censored; `gap_report.csv` per day; selection never reads today's counts and is a seeded permutation (a pilot is a prefix of the full pull); resumable gzip cache under `backfill/` (gitignored, Berkeleytime's data, labelled `berkeleytime_history`). The gateway rejects the second recorded `GetEnrollment` op; the recorded ops are tried in order.
 - **Pilot pull** (296 sections): Berkeleytime was dark for every section from 2026-08-19 22:45Z to 2026-09-01 18:30Z (end of adjustment and first week of instruction), plus May 22, May 28 and Jul 18 to 19; its poll spacing at changes was 15 min from July but 45 to 130 min in March to June (hence the 180-min gap rule, not 45). Spring 2026 histories exist (20 of 20 probed, from Phase 1 start).
@@ -49,7 +49,7 @@ Branch `backfill-backtest` (docs/BACKFILL_BACKTEST.md is the plan; its checkboxe
 
 ## What is left
 
-**Backfill, in order (docs/BACKFILL_BACKTEST.md B2 to B6):**
+**Backfill, in order (docs/dev/BACKFILL_BACKTEST.md B2 to B6):**
 1. **Oliver:** two-sentence note to the Berkeleytime team (ASUC OCTO) before the full pull: what the project is, one pass of about 3,600 `GetEnrollment` requests at one per two seconds. Then `make backfill` (Fall 2026, resumable, about 2 hours) and `make backfill TERM=2262 TERM_NAME="Spring 2026"`; both from a laptop.
 2. `make backfill-analysis TERM=2268` (writes `site/data`, labelled `berkeleytime_history`), `make backtest TERM=2268`, and the cross-term run in B3 with the Spring 2026 cohort. Re-read the B3 questions on the full pull; re-measure the three CLAIMS rows; commit `site/data` and `reports/backtest_2268/`; dispatch `pages.yml`. The commit timestamp is the pre-registration date for the Spring 2027 cross-term test (B5).
 3. B5: rebuild `config/priority_courses.txt` from reconstructed waitlist joins (top ~900 sections' courses) and log the new `priority_sha` before Oct 26. B6: fix the resume line, delete the two "Spring 2026" paragraphs (CLAIMS status, plan section 3), LICENSE, homepage, GoatCounter, move session scaffolding under `docs/dev/`.
