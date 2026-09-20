@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Berkeley Waitlist Odds</title>
-<meta name="description" content="How likely is a UC Berkeley waitlist spot at your position to clear, and by when? Estimates from 30-minute enrollment snapshots.">
+<meta name="description" content="How likely is a UC Berkeley waitlist spot at your position to clear before the last automatic waitlist run, and by when? Estimates from enrollment snapshots.">
 <style>
-  :root { --ink: #1c1c1e; --muted: #5b5b60; --line: #d9d9de; --paper: #ffffff; --bg: #f5f5f7; --accent: #003262; --gold: #fdb515; --ok: #1b7f4f; --warn: #a15c00; }
-  @media (prefers-color-scheme: dark) { :root { --ink: #ececf0; --muted: #a2a2aa; --line: #3a3a40; --paper: #1c1c1e; --bg: #101012; --accent: #7cb3e8; --gold: #fdb515; --ok: #5ccf8f; --warn: #f0a94a; } }
+  :root { --ink: #1c1c1e; --muted: #5b5b60; --line: #d9d9de; --paper: #ffffff; --bg: #f5f5f7; --accent: #003262; --gold: #fdb515; --ok: #1b7f4f; --warn: #a15c00; --band: rgba(0, 50, 98, .12); }
+  @media (prefers-color-scheme: dark) { :root { --ink: #ececf0; --muted: #a2a2aa; --line: #3a3a40; --paper: #1c1c1e; --bg: #101012; --accent: #7cb3e8; --gold: #fdb515; --ok: #5ccf8f; --warn: #f0a94a; --band: rgba(124, 179, 232, .18); } }
   * { box-sizing: border-box; }
   body { margin: 0; font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); }
   header { background: var(--accent); color: #fff; padding: 1.25rem 1rem; }
@@ -23,11 +23,13 @@
   button { padding: .65rem 1rem; border: 0; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; }
   button:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
   .big { font-size: 2.2rem; font-weight: 700; line-height: 1.1; margin: .25rem 0; }
+  .big small { font-size: 1rem; font-weight: 400; color: var(--muted); margin-left: .35rem; }
   .muted { color: var(--muted); }
   .tag { display: inline-block; font-size: .8rem; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); margin-left: .25rem; }
   .tag.pooled { color: var(--warn); border-color: var(--warn); }
   svg { width: 100%; height: auto; display: block; }
   .axis { stroke: var(--line); stroke-width: 1; }
+  .band { fill: var(--band); stroke: none; }
   .curve { fill: none; stroke: var(--accent); stroke-width: 2.5; }
   .mark { fill: var(--gold); stroke: var(--accent); stroke-width: 1.5; }
   .lbl { font-size: 11px; fill: var(--muted); }
@@ -35,6 +37,7 @@
   a { color: var(--accent); }
   .hidden { display: none; }
   .error { color: var(--warn); }
+  .note { font-size: .9rem; }
   dl { display: grid; grid-template-columns: max-content 1fr; gap: .25rem .75rem; margin: .5rem 0 0; }
   dt { color: var(--muted); }
   dd { margin: 0; }
@@ -43,7 +46,7 @@
 <body>
 <header>
   <h1>Berkeley Waitlist Odds</h1>
-  <p>You are number N on a waitlist. How often did that spot clear, and how fast?</p>
+  <p>You are number N on a waitlist. How often did that spot clear in time, and how fast?</p>
 </header>
 <main>
   <section class="card" id="status" aria-live="polite">
@@ -77,29 +80,62 @@
 <script>
 (function () {
   const BUCKETS = [[1, 5, "1-5"], [6, 15, "6-15"], [16, 40, "16-40"], [41, 1e9, "41+"]];
+  const DAY = 86400000;
   const $ = (id) => document.getElementById(id);
-  let courses = null, meta = null;
+  let courses = null, meta = null, today = null;
 
   function bucketOf(pos) { for (const [lo, hi, label] of BUCKETS) if (pos >= lo && pos <= hi) return label; return "41+"; }
   function pct(p) { return Math.round(p * 100) + "%"; }
   function esc(s) { return String(s).replace(/[&<>"']/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c])); }
   function fmtDate(iso) { try { return new Date(iso).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }); } catch (e) { return iso; } }
+  function fmtDay(iso) { try { return new Date(iso + "T12:00:00Z").toLocaleDateString(undefined, { dateStyle: "medium", timeZone: "UTC" }); } catch (e) { return iso; } }
+  function days(n) { const r = Math.round(n); return r === 1 ? "1 day" : r + " days"; }
 
-  function curveSvg(curve, horizon) {
+  // Horizons for the asker: days from "today" to the end of the last automatic
+  // waitlist run's day and to 00:00 UTC on the first day of instruction.
+  function horizons() {
+    const d = meta.deadline.split("-").map(Number), i = meta.instruction_start.split("-").map(Number);
+    const deadlineEnd = Date.UTC(d[0], d[1] - 1, d[2] + 1);
+    const instruction = Date.UTC(i[0], i[1] - 1, i[2]);
+    return { deadline: (deadlineEnd - today.getTime()) / DAY, instruction: (instruction - today.getTime()) / DAY };
+  }
+
+  // The curve is a step function on a grid: the last grid point at or before h is
+  // P(cleared within h days); past the grid's reach the last point stands, as a floor.
+  function readCurve(curve, h) {
+    let pt = null;
+    for (const c of curve) { if (c[0] <= h) pt = c; else break; }
+    if (!pt) return { p: 0, lo: null, hi: null, day: 0, capped: false };
+    const reach = curve[curve.length - 1][0];
+    return { p: pt[1], lo: pt[2], hi: pt[3], day: pt[0], capped: h > reach + 1e-9 };
+  }
+
+  function interval(r) { return r.lo == null || r.hi == null ? "" : ` <small>(95% interval ${pct(r.lo)} to ${pct(r.hi)})</small>`; }
+
+  function curveSvg(curve, marks) {
     if (!curve || !curve.length) return "";
     const W = 560, H = 220, L = 44, R = 12, T = 12, B = 36;
-    const maxDay = Math.max(curve[curve.length - 1][0], horizon || 0, 7);
-    const x = (d) => L + (d / maxDay) * (W - L - R);
+    const maxDay = Math.max(curve[curve.length - 1][0], ...marks.filter((m) => m.day > 0).map((m) => m.day), 7);
+    const x = (d) => L + (Math.min(d, maxDay) / maxDay) * (W - L - R);
     const y = (p) => T + (1 - p) * (H - T - B);
     let d = `M ${x(0)} ${y(0)}`;
     for (const [day, p] of curve) d += ` L ${x(day)} ${y(p)}`;
+    let band = "";
+    if (curve.every((c) => c[2] != null && c[3] != null)) {
+      let upper = `M ${x(0)} ${y(0)}`;
+      for (const c of curve) upper += ` L ${x(c[0])} ${y(c[3])}`;
+      let lower = "";
+      for (let i = curve.length - 1; i >= 0; i--) lower += ` L ${x(curve[i][0])} ${y(curve[i][2])}`;
+      band = `<path class="band" d="${upper}${lower} L ${x(0)} ${y(0)} Z"/>`;
+    }
     const ticks = [0, .25, .5, .75, 1].map((p) => `<line class="axis" x1="${L}" x2="${W - R}" y1="${y(p)}" y2="${y(p)}"/><text class="lbl" x="${L - 6}" y="${y(p) + 4}" text-anchor="end">${Math.round(p * 100)}%</text>`).join("");
-    const days = [];
-    for (let dd = 0; dd <= maxDay; dd += maxDay > 28 ? 14 : 7) days.push(dd);
-    const xt = days.map((dd) => `<text class="lbl" x="${x(dd)}" y="${H - B + 16}" text-anchor="middle">${dd}d</text>`).join("");
-    const hz = horizon ? `<line class="axis" stroke-dasharray="4 4" x1="${x(Math.min(horizon, maxDay))}" x2="${x(Math.min(horizon, maxDay))}" y1="${T}" y2="${H - B}"/><text class="lbl" x="${x(Math.min(horizon, maxDay))}" y="${T + 10}" text-anchor="middle">instruction</text>` : "";
+    const step = maxDay > 84 ? 28 : maxDay > 28 ? 14 : 7;
+    const dayTicks = [];
+    for (let dd = 0; dd <= maxDay; dd += step) dayTicks.push(dd);
+    const xt = dayTicks.map((dd) => `<text class="lbl" x="${x(dd)}" y="${H - B + 16}" text-anchor="middle">${dd}d</text>`).join("");
+    const vlines = marks.filter((m) => m.day > 0).map((m, i) => `<line class="axis" stroke-dasharray="4 4" x1="${x(m.day)}" x2="${x(m.day)}" y1="${T}" y2="${H - B}"/><text class="lbl" x="${x(m.day)}" y="${T + 10 + 12 * i}" text-anchor="middle">${esc(m.label)}</text>`).join("");
     const pts = curve.map(([day, p]) => `<circle class="mark" r="3" cx="${x(day)}" cy="${y(p)}"><title>${day} days: ${pct(p)} cleared</title></circle>`).join("");
-    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Share of comparable students who had cleared, by days since joining">${ticks}${xt}${hz}<path class="curve" d="${d}"/>${pts}<text class="lbl" x="${W - R}" y="${H - 4}" text-anchor="end">days since joining the waitlist</text></svg>`;
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Share of comparable students who had cleared, by days since joining, with a 95% band">${band}${ticks}${xt}${vlines}<path class="curve" d="${d}"/>${pts}<text class="lbl" x="${W - R}" y="${H - 4}" text-anchor="end">days since joining the waitlist</text></svg>`;
   }
 
   function render(courseKey, pos) {
@@ -119,17 +155,40 @@
       return;
     }
     const pooledTag = cell.pooled === false ? "" : `<span class="tag pooled" title="Too few cases for this course alone; estimate uses ${cell.pooled === "all" ? "all courses" : "the whole " + esc(cell.pooled) + " department"}">pooled</span>`;
+    const h = horizons();
     const median = cell.median_days == null ? "more than half never cleared in the data" : (cell.median_days < 1 ? Math.round(cell.median_days * 24) + " hours" : cell.median_days.toFixed(1) + " days");
+    const cases = `${cell.sections} sections, ${cell.n} hypothetical joiners, ${cell.events} cleared${cell.n_course != null ? ` (this course alone: ${cell.n_course} joiners in ${cell.sections_course} sections)` : ""}`;
+    let headline, second = "", floor = "";
+    const marks = [];
+    if (h.deadline <= 0) {
+      const last = readCurve(cell.curve, 1e9);
+      headline = `<div class="big">${pct(last.p)}${interval(last)}</div>
+        <p>of comparable students had cleared within ${days(last.day)} of joining. The last automatic waitlist run for ${esc(meta.term_name)} was on ${esc(fmtDay(meta.deadline))}; waitlists are no longer processed automatically, so this is a look back, not a forecast.</p>`;
+    } else {
+      const atDeadline = readCurve(cell.curve, h.deadline);
+      headline = `<div class="big">${pct(atDeadline.p)}${interval(atDeadline)}</div>
+        <p>of comparable students had cleared within ${days(h.deadline)} of joining, the time left before the last automatic waitlist run (${esc(fmtDay(meta.deadline))}).</p>`;
+      marks.push({ day: h.deadline, label: "last waitlist run" });
+      if (atDeadline.capped) floor = `<p class="note muted">The data follow joiners for ${days(atDeadline.day)}; treat this as a floor.</p>`;
+      if (h.instruction > 0) {
+        const atInstruction = readCurve(cell.curve, h.instruction);
+        second = `<p><strong>${pct(atInstruction.p)}</strong> by the first day of instruction (${esc(fmtDay(meta.instruction_start))}, ${days(h.instruction)} from now).</p>`;
+        marks.push({ day: h.instruction, label: "instruction" });
+      } else {
+        second = `<p class="note muted">Instruction has begun; most clearing happens after the first day of class.</p>`;
+      }
+    }
     out.innerHTML = `
       <p class="muted">${esc(courseKey)} · position ${pos} (bucket ${esc(bucket)})${pooledTag}</p>
-      <div class="big">${pct(cell.p_clear_by_instruction)}</div>
-      <p>of comparable students had cleared by the first day of instruction${cell.horizon_days ? ` (joining about ${Math.round(cell.horizon_days)} days before it)` : ""}.</p>
+      ${headline}
+      ${second}
+      ${floor}
       <dl>
         <dt>Median time to clear</dt><dd>${median}</dd>
-        <dt>Cases</dt><dd>${cell.n} hypothetical joiners${cell.n_course != null ? ` (${cell.n_course} in this course)` : ""}, ${cell.events} cleared</dd>
+        <dt>Cases</dt><dd>${cases}</dd>
       </dl>
-      ${curveSvg(cell.curve, cell.horizon_days)}
-      <p class="muted" style="font-size:.85rem">Central drop scenario. Read the <a href="methodology.html">methodology</a> before acting on this.</p>`;
+      ${curveSvg(cell.curve, marks)}
+      <p class="muted" style="font-size:.85rem">Central drop scenario. Shaded band: 95% interval from resampling sections. Read the <a href="methodology.html">methodology</a> before acting on this.</p>`;
     out.classList.remove("hidden");
     out.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
@@ -137,9 +196,12 @@
   function setStatus(html) { $("status").innerHTML = html; }
 
   async function load() {
+    const params = new URLSearchParams(location.search);
+    today = params.get("today") ? new Date(params.get("today") + "T12:00:00Z") : new Date();
+    if (isNaN(today.getTime())) today = new Date();
     let m = null;
     try { const r = await fetch("data/meta.json", { cache: "no-store" }); if (r.ok) m = await r.json(); } catch (e) { m = null; }
-    if (!m || !m.events || m.events < 10) {
+    if (!m || !m.events || m.events < 10 || !m.deadline || !m.instruction_start) {
       setStatus(`<p><strong>No estimates yet.</strong> Snapshots for Spring 2027 enrollment start with Phase 1 on Oct 26, 2026; the first curves appear once enough waitlists have cleared (planned for mid-November). ${m ? `Snapshots so far: ${esc(m.sections)} sections, ${esc(m.cohort_rows)} hypothetical joiners, ${esc(m.events)} clearings.` : ""}</p>`);
       $("form").classList.add("hidden");
       return;
@@ -148,15 +210,21 @@
     try { const r = await fetch("data/courses.json", { cache: "no-store" }); courses = r.ok ? await r.json() : {}; } catch (e) { courses = {}; }
     const keys = Object.keys(courses).sort();
     $("courses").innerHTML = keys.map((k) => `<option value="${esc(k)}">`).join("");
-    setStatus(`<p><strong>${esc(meta.term_name)}</strong>: ${esc(keys.length)} courses with estimates from ${esc(meta.sections)} sections and ${esc(meta.cohort_rows)} hypothetical joiners, ${esc(meta.events)} of whom cleared.</p>`);
-    $("stamp").textContent = "Data through " + fmtDate(meta.join_window ? meta.join_window[1] : meta.generated_at) + "; page generated " + fmtDate(meta.generated_at) + ".";
+    const counts = `${esc(keys.length)} courses with estimates from ${esc(meta.sections)} sections and ${esc(meta.cohort_rows)} hypothetical joiners, ${esc(meta.events)} of whom cleared`;
+    if (meta.data_source === "berkeleytime_history") {
+      setStatus(`<p><strong>${esc(meta.term_name)}</strong>, from Berkeleytime's public 15-minute enrollment history: ${counts}. Live Spring 2027 collection by this project starts Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>`);
+    } else {
+      setStatus(`<p><strong>${esc(meta.term_name)}</strong>: ${counts}.</p>`);
+    }
+    const h = horizons();
+    const when = params.get("today") ? ` Horizons computed for ${esc(params.get("today"))}.` : "";
+    $("stamp").textContent = "Data through " + fmtDate(meta.join_window ? meta.join_window[1] : meta.generated_at) + "; page generated " + fmtDate(meta.generated_at) + "." + when + (h.deadline > 0 ? ` Last automatic waitlist run ${fmtDay(meta.deadline)} (${days(h.deadline)} away).` : "");
     $("form").addEventListener("submit", (ev) => {
       ev.preventDefault();
       const key = $("course").value.trim().toUpperCase().replace(/\s+/g, " ");
       const pos = Math.max(1, parseInt($("position").value, 10) || 1);
       render(key, pos);
     });
-    const params = new URLSearchParams(location.search);
     if (params.get("course")) { $("course").value = params.get("course"); if (params.get("position")) $("position").value = params.get("position"); $("form").requestSubmit(); }
   }
   load();

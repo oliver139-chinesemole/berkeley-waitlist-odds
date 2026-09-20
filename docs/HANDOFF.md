@@ -1,6 +1,6 @@
 # Handoff: Berkeley Waitlist Odds
 
-Written 2026-09-19 23:20 UTC at the end of the first two working sessions; updated 2026-09-20 00:10 UTC by the third session (its changes are marked "session 3" below). Read this first in a new session, then `CLAUDE.md` (the `Current step` line) and `docs/FINISH_PLAN_WAITLIST.md` (the step checklist and tracker at the bottom).
+Written 2026-09-19 23:20 UTC at the end of the first two working sessions; updated 2026-09-20 00:10 UTC by the third session (its changes are marked "session 3" below) and 2026-09-20 03:30 UTC by the fourth (the backfill and backtest section below). Read this first in a new session, then `CLAUDE.md` (the `Current step` line) and `docs/FINISH_PLAN_WAITLIST.md` (the step checklist and tracker at the bottom).
 
 ## Where everything is
 
@@ -35,7 +35,25 @@ Written 2026-09-19 23:20 UTC at the end of the first two working sessions; updat
 
 **Claims.** `CLAIMS.md` rows for the test suite, the cross-check, the public repo, the flow reconstruction, the analysis command and the site are measured. Session 3 re-measured the cadence rows at 23:48Z on Sep 19: 13 runs in the 24 h window (which still holds the cron-only morning), but every slot since the chain started at 19:41Z (8 runs, largest gap 30.1 min, share under 45 min 1.0). The 24 h window can first pass after 19:41Z on Sep 20; re-run rows 5 to 7 then. The `claims-audit` skill at `~/.claude/skills/claims-audit/` re-runs every row.
 
+## Session 4 (2026-09-20, 01:00Z to 03:30Z): Fall 2026 backfill and the backtests
+
+Branch `backfill-backtest` (docs/BACKFILL_BACKTEST.md is the plan; its checkboxes carry what each step found). Summary:
+
+- **Backfill** (`analysis/backfill.py`, `make backfill-pilot` / `make backfill`): Berkeleytime's `GetEnrollment` run-length history becomes the panel `interval_flows` reads; within-segment intervals are observed stillness, crossings wider than 180 min are that recorder's gaps and are censored; `gap_report.csv` per day; selection never reads today's counts and is a seeded permutation (a pilot is a prefix of the full pull); resumable gzip cache under `backfill/` (gitignored, Berkeleytime's data, labelled `berkeleytime_history`). The gateway rejects the second recorded `GetEnrollment` op; the recorded ops are tried in order.
+- **Pilot pull** (296 sections): Berkeleytime was dark for every section from 2026-08-19 22:45Z to 2026-09-01 18:30Z (end of adjustment and first week of instruction), plus May 22, May 28 and Jul 18 to 19; its poll spacing at changes was 15 min from July but 45 to 130 min in March to June (hence the 180-min gap rule, not 45). Spring 2026 histories exist (20 of 20 probed, from Phase 1 start).
+- **Backtest** (`analysis/backtest.py`, `make backtest`): temporal (training rows censored at the split), grouped-by-course and cross-term splits; bucket KM, pooled course KM, the literal site number and Cox scored at each row's own horizon with IPCW, weighted AUC, calibration and a section bootstrap. Observability rule: a row is scored only at horizons inside its `follow_up_days` window (a joiner who cleared before a gap is seen, one who did not is not, so no weighting recovers negatives); on Fall 2026 the deadline and instruction horizons are unobservable for every joiner before the hole, so the term is scored at 14- and 28-day horizons. Pilot results are in CLAIMS.md (Cox +0.037 over the bucket baseline within a regime; every Phase 1 model under-predicts Phase 2; course cells add nothing over buckets).
+- **Cohort**: `joinable` rule (a queue exists or the section is full; 44% of the earlier test rows were impossible joiners), positions 1 to 100, numpy position walk identical to `time_to_clear` and more than 100 times faster, `follow_up_days` column. The whole suite now runs in about 70 s.
+- **Site** (`site/index.html`, `analysis/export.py`): the curve is exported out to each cell's reach with a section-bootstrap band and section counts; the page reads it at the asker's own days left before the last automatic waitlist run (headline) and before instruction (second line), notes a floor past the reach, becomes a look-back after the deadline, labels the Berkeleytime source, and accepts `?today=` (the tests pin it). `p_clear_by_instruction` is the report's number only.
+- **Calendar**: `SPRING_2026`; the last automatic run for terms without an explicit row is the last day to add without a fee (FA26 Sep 11, SP26 Feb 6), because Spring 2027's registrar row puts them on the same day.
+- Docs: DESIGN_A5 (section 9), DESIGN_A6, methodology page, README, DATA_LOG (pilot decision row), CLAIMS (three rows).
+
 ## What is left
+
+**Backfill, in order (docs/BACKFILL_BACKTEST.md B2 to B6):**
+1. **Oliver:** two-sentence note to the Berkeleytime team (ASUC OCTO) before the full pull: what the project is, one pass of about 3,600 `GetEnrollment` requests at one per two seconds. Then `make backfill` (Fall 2026, resumable, about 2 hours) and `make backfill TERM=2262 TERM_NAME="Spring 2026"`; both from a laptop.
+2. `make backfill-analysis TERM=2268` (writes `site/data`, labelled `berkeleytime_history`), `make backtest TERM=2268`, and the cross-term run in B3 with the Spring 2026 cohort. Re-read the B3 questions on the full pull; re-measure the three CLAIMS rows; commit `site/data` and `reports/backtest_2268/`; dispatch `pages.yml`. The commit timestamp is the pre-registration date for the Spring 2027 cross-term test (B5).
+3. B5: rebuild `config/priority_courses.txt` from reconstructed waitlist joins (top ~900 sections' courses) and log the new `priority_sha` before Oct 26. B6: fix the resume line, delete the two "Spring 2026" paragraphs (CLAIMS status, plan section 3), LICENSE, homepage, GoatCounter, move session scaffolding under `docs/dev/`.
+4. A browser pass on the new page states (no browser in the sessions so far).
 
 **Time-gated (nothing to build, just do on the date):**
 1. **Sep 20 after 19:41 UTC, first check in a new session:** `git -C data-branch pull -q && python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24`. Expect about 48 runs, `share_gaps_le_45min` at or above 0.95, `median_missing_share` near 0 (node-id discovery finished with the 00:07Z run on Sep 20; the 00:37Z run observed all 1,287 selected sections, `n_missing` 0, in 1,341 s of the 1,380 s budget, so there is about 40 s of slack at one request per second: a bigger catalog or a slower site trims the shard tail first, never the priority list). If missing share stays around 0.14, the budget is short: a run selects about 917 priority plus about 240 shard sections at one request per second against a 1,380 s budget, so a bigger catalog or slower site trims the shard tail; see docs/RUNBOOK.md section 3. Then re-run the claims audit (rows 5 to 7). Issue #1 ("Scraper gap alert", opened by the 17:58Z monitor run on Sep 19) stays open until a monitor run passes; the chain dispatches the monitor after 15:00 UTC daily, so close it by hand on Sep 21 at the earliest (`gh issue close 1`).
@@ -63,7 +81,7 @@ Written 2026-09-19 23:20 UTC at the end of the first two working sessions; updat
 cd /Users/oliverguo/berkeley-waitlist-odds && source .venv/bin/activate
 git pull -q origin main
 git -C data-branch pull -q || git clone -q --branch data --single-branch git@github-chinesemole:oliver139-chinesemole/berkeley-waitlist-odds.git data-branch
-python -m pytest -q                                   # 295 tests, about 3 minutes; tests/test_site.py needs node (PATH or ~/.nvm)
+python -m pytest -q                                   # 320 tests, about 70 s; tests/test_site.py needs node (PATH or ~/.nvm)
 python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24
 gh run list -R oliver139-chinesemole/berkeley-waitlist-odds --workflow scrape.yml --limit 6
 ```

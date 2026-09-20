@@ -1,4 +1,4 @@
-"""Kaplan-Meier, Cox proportional hazards, sensitivity and out-of-sample scoring.
+"""Kaplan-Meier, Cox proportional hazards and sensitivity across drop scenarios.
 
 See docs/DESIGN_A5.md section 3. Inputs are cohorts from ``analysis.cohort``
 (one row per virtual waitlister with ``duration_days`` and ``event``).
@@ -14,7 +14,6 @@ import numpy as np
 import pandas as pd
 from lifelines import CoxPHFitter, KaplanMeierFitter
 from lifelines.statistics import logrank_test, proportional_hazard_test
-from lifelines.utils import concordance_index
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +21,7 @@ STRATA = ("position_bucket", "level", "dept_group", "phase")
 COX_NUMERIC = ("log_position", "wl_ratio", "days_to_instruction", "reserved")
 COX_CATEGORICAL = {"level": "lower", "dept_group": "OTHER", "phase": "phase1"}
 BUCKET_ORDER = ("1-5", "6-15", "16-40", "41+")
-HORIZON_DAYS = 14.0
+HORIZON_DAYS = 14.0  # the fixed horizon analysis.run uses for its out-of-sample check
 
 
 # ---------------------------------------------------------------- Kaplan-Meier
@@ -171,38 +170,9 @@ def sensitivity(cohorts: dict[str, pd.DataFrame], **kwargs) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-# -------------------------------------------------------------- out of sample
-
-
-def out_of_sample(cohort: pd.DataFrame, *, train_phase: str = "phase1", test_phase: str = "phase2", horizon_days: float = HORIZON_DAYS, deciles: int = 10) -> dict:
-    """Fit on joins in ``train_phase``, score joins in ``test_phase``.
-
-    Concordance uses the partial hazard; the Brier score and calibration use
-    the event "cleared within ``horizon_days``" on test rows with at least
-    that much follow-up (rows censored earlier are excluded, which is stated
-    in the result as ``brier_rows``)."""
-    train = cohort[cohort["phase"] == train_phase]
-    test = cohort[cohort["phase"] == test_phase]
-    if len(train) < 50 or len(test) < 50:
-        return {"train_rows": len(train), "test_rows": len(test), "concordance": float("nan"), "brier_14d": float("nan"), "brier_rows": 0, "calibration": pd.DataFrame()}
-    fit = fit_cox(train)
-    design_test = design_matrix(test)
-    design_test = design_test.reindex(columns=fit.design.columns, fill_value=0.0)
-    hazards = fit.fitter.predict_partial_hazard(design_test.drop(columns=["duration_days", "event", "section_id"]))
-    c_index = concordance_index(design_test["duration_days"], -np.asarray(hazards), design_test["event"])
-    surv = fit.fitter.predict_survival_function(design_test.drop(columns=["duration_days", "event", "section_id"]), times=[horizon_days])
-    p_clear = 1.0 - surv.iloc[0].to_numpy()
-    followed = (design_test["duration_days"] >= horizon_days) | (design_test["event"] == 1)
-    observed = ((design_test["event"] == 1) & (design_test["duration_days"] <= horizon_days)).astype(float)
-    mask = followed.to_numpy()
-    brier = float(np.mean((p_clear[mask] - observed.to_numpy()[mask]) ** 2)) if mask.any() else float("nan")
-    calib = pd.DataFrame({"p": p_clear[mask], "y": observed.to_numpy()[mask]})
-    if len(calib):
-        calib["decile"] = pd.qcut(calib["p"].rank(method="first"), min(deciles, len(calib)), labels=False)
-        calibration = calib.groupby("decile").agg(n=("y", "size"), predicted=("p", "mean"), observed=("y", "mean")).reset_index()
-    else:
-        calibration = pd.DataFrame(columns=["decile", "n", "predicted", "observed"])
-    return {"train_rows": len(train), "test_rows": len(test), "concordance": float(c_index), "brier_14d": brier, "brier_rows": int(mask.sum()), "calibration": calibration}
+# The out-of-sample check lives in analysis.backtest (IPCW-weighted; the old
+# out_of_sample here dropped rows censored before 14 days but kept early
+# clearings, which inflated the clearing rate).
 
 
 # ------------------------------------------------------------------- headline

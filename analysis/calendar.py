@@ -75,11 +75,13 @@ SPRING_2027 = TermCalendar(
     add_drop_deadline=date(2027, 2, 10),
 )
 
-# Fall 2026 (the test term) from the same ICS: Phase 1 for continuing students
-# Apr 13 to Jun 12, 2026; Phase 2 Jul 20 to Aug 16; adjustment from Aug 17;
-# instruction Aug 26; undergraduate add/drop deadline Sep 16. The ICS carries
-# no "last automatic waitlist run" row for FA26, only "Waitlist Purge" on
-# Sep 26; the add/drop deadline is used as the last automatic run.
+# Fall 2026 (the test term, and the backfilled term) from the same ICS: Phase 1
+# for continuing students Apr 13 to Jun 12, 2026; Phase 2 Jul 20 to Aug 16;
+# adjustment from Aug 17; instruction Aug 26; undergraduate add/drop deadline
+# Sep 16. The ICS carries no "last automatic waitlist run" row for FA26 (only
+# "Waitlist Purge" on Sep 26). For Spring 2027 the registrar puts the last
+# automatic run on the same day as "Last Day to Add Without a Fee" (Feb 5), so
+# that day (FA26: Sep 11) stands in for terms without an explicit row.
 FALL_2026 = TermCalendar(
     term_id="2268",
     name="Fall 2026",
@@ -89,11 +91,28 @@ FALL_2026 = TermCalendar(
     phase2_end=date(2026, 8, 16),
     adjustment_start=date(2026, 8, 17),
     instruction_start=date(2026, 8, 26),
-    last_auto_waitlist=date(2026, 9, 16),
+    last_auto_waitlist=date(2026, 9, 11),
     add_drop_deadline=date(2026, 9, 16),
 )
 
-CALENDARS = {c.term_id: c for c in (SPRING_2027, FALL_2026)}
+# Spring 2026 (the cycle before the backfilled one) from the same ICS: Phase 1
+# continuing Oct 27 to Nov 16, 2025; Phase 2 Nov 24 to Jan 11, 2026; adjustment
+# from Jan 12; instruction Jan 20; last day to add without a fee Feb 6 (stands
+# in for the last automatic run, see above); undergraduate add/drop Feb 11.
+SPRING_2026 = TermCalendar(
+    term_id="2262",
+    name="Spring 2026",
+    phase1_start=date(2025, 10, 27),
+    phase1_end=date(2025, 11, 16),
+    phase2_start=date(2025, 11, 24),
+    phase2_end=date(2026, 1, 11),
+    adjustment_start=date(2026, 1, 12),
+    instruction_start=date(2026, 1, 20),
+    last_auto_waitlist=date(2026, 2, 6),
+    add_drop_deadline=date(2026, 2, 11),
+)
+
+CALENDARS = {c.term_id: c for c in (SPRING_2027, FALL_2026, SPRING_2026)}
 
 
 def calendar_for(term_id: str) -> TermCalendar:
