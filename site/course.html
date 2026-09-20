@@ -41,15 +41,16 @@
     const h = index.horizons;
     const trs = BWO.BUCKET_ORDER.filter((b) => row.buckets[b]).map((b) => {
       const s = row.buckets[b];
-      return `<tr class="${b === yourBucket ? "you" : ""}"><th scope="row">${esc(BWO.bucketText(b))}${b === yourBucket ? ' <span class="tag">you</span>' : ""}${s.pooled !== false ? ' <span class="tag pooled">pooled</span>' : ""}</th>${s.p.map((p, i) => `<td class="num">${pct(p)}${s.reach[1] < h[i] ? '<span class="muted small"> floor</span>' : ""}</td>`).join("")}<td class="num">${s.median_days == null ? '<span class="muted">never half</span>' : s.median_days.toFixed(1)}</td><td class="num">${num(s.n)}</td><td class="num">${num(s.events)}</td><td class="num">${num(s.sections)}</td></tr>`;
+      const source = s.pooled === false ? "course" : s.pooled === "all" ? "all" : "dept";
+      return `<tr class="${b === yourBucket ? "you" : ""}"><th scope="row">${esc(BWO.bucketText(b))}${b === yourBucket ? ' <span class="tag">you</span>' : ""}${BWO.pooledTag(s.pooled, source, meta)}</th>${s.p.map((p, i) => `<td class="num">${pct(p)}${s.reach[1] < h[i] ? '<span class="muted small"> floor</span>' : ""}</td>`).join("")}<td class="num">${s.median_days == null ? '<span class="muted">never half</span>' : s.median_days.toFixed(1)}</td><td class="num">${num(s.n)}</td><td class="num">${num(s.events)}</td><td class="num">${num(s.sections)}</td><td class="num">${s.pooled === false ? num(s.n) : `${num(s.n_course || 0)}<span class="sub muted">${BWO.plural(s.sections_course || 0, "section")}</span>`}</td></tr>`;
     }).join("");
-    return `<div class="scroll" tabindex="0"><table aria-label="Share who got in by position and horizon"><thead><tr><th scope="col">Position</th>${h.map((d) => `<th scope="col" class="num">${d} days</th>`).join("")}<th scope="col" class="num">Median days</th><th scope="col" class="num">Cases</th><th scope="col" class="num">Got in</th><th scope="col" class="num">Sections</th></tr></thead><tbody>${trs}</tbody></table></div>`;
+    return `<div class="scroll" tabindex="0"><table aria-label="Share who got in by position and horizon"><thead><tr><th scope="col">Position</th>${h.map((d) => `<th scope="col" class="num">${d} days</th>`).join("")}<th scope="col" class="num">Median days</th><th scope="col" class="num">Cases</th><th scope="col" class="num">Got in</th><th scope="col" class="num">Sections</th><th scope="col" class="num">This course</th></tr></thead><tbody>${trs}</tbody></table></div>`;
   }
 
   function related(bucket) {
     const list = BWO.relatedCourses(index, row, bucket, 5);
     if (!list.length) return "";
-    return `<h2>Other ${esc(row.subject)} courses at ${esc(BWO.bucketText(bucket))}</h2><ul class="findings">${list.map((r) => { const s = r.buckets[bucket]; return `<li><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${BWO.BUCKETS.find((b) => b[2] === bucket)[0]}`)}">${esc(r.key)}</a>: ${pct(s.p[1])} within 14 days <span class="muted">(${num(s.n)} cases)</span></li>`; }).join("")}</ul><p><a href="${BWO.withToday(`courses.html?dept=${encodeURIComponent(row.dept_group)}&bucket=${bucket}`)}">All ${esc(row.dept_group === "OTHER" ? "other" : row.dept_group)} courses</a></p>`;
+    return `<h2>Other ${esc(row.subject)} courses at ${esc(BWO.bucketText(bucket))}</h2><ul class="findings">${list.map((r) => { const s = r.buckets[bucket]; const own = s.pooled === false ? s.n : (s.n_course || 0); return `<li><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${BWO.BUCKETS.find((b) => b[2] === bucket)[0]}`)}">${esc(r.key)}</a>: ${pct(s.p[1])} within 14 days <span class="muted">(${num(own)} of its own cases${s.pooled === false ? "" : `, ${esc(s.pooled)} estimate`})</span></li>`; }).join("")}</ul><p><a href="${BWO.withToday(`courses.html?dept=${encodeURIComponent(row.dept_group)}&bucket=${bucket}`)}">All ${esc(row.dept_group === "OTHER" ? "other" : row.dept_group)} courses</a></p>`;
   }
 
   function render(pos) {
@@ -64,10 +65,11 @@
       <h1>${esc(row.key)} <span class="tag">${esc(row.level ? row.level + " division" : "")}</span></h1>
       <form id="posform" class="row lookup" style="max-width:24rem"><div><label for="position">Your position</label><input id="position" type="number" inputmode="numeric" min="1" max="500" step="1" value="${pos}"></div><div><button type="submit">Update</button></div></form>
       <section class="card" aria-live="polite">
-        <p class="muted">${esc(row.key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${resolved ? BWO.pooledTag(resolved.pooled, resolved.source) : ""}</p>
+        <p class="muted">${esc(row.key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${resolved ? BWO.pooledTag(resolved.pooled, resolved.source, meta) : ""}</p>
         ${head.html}
         ${resolved && resolved.cell ? `<dl class="kv"><dt>Median time to clear</dt><dd>${esc(BWO.medianText(resolved.cell))}</dd><dt>Cases</dt><dd>${esc(BWO.casesHtml(resolved.cell, resolved.own))}</dd></dl>` : ""}
-        <p class="muted small">${resolved ? BWO.pooledSentence(resolved.pooled, resolved.source) : ""} ${BWO.sourceLabel(meta)}. <a href="${BWO.withToday(`index.html?course=${encodeURIComponent(row.key)}&position=${pos}`)}">Open in the lookup</a> for the by-when table and a shareable card.</p>
+        <p class="muted small">${resolved ? BWO.pooledSentence(resolved.pooled, resolved.source, meta) : ""} ${BWO.sourceLabel(meta)}. <a href="${BWO.withToday(`index.html?course=${encodeURIComponent(row.key)}&position=${pos}`)}">Open in the lookup</a> for the by-when table and a shareable card.</p>
+        <p class="muted small">${BWO.levelNote(meta)}</p>
       </section>
       <h2>Every position</h2>
       ${chart}

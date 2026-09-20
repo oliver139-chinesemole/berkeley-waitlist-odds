@@ -62,7 +62,7 @@
       if (!r || !r.cell) continue;
       const v = BWO.readCurve(r.cell.curve, h.deadline > 0 ? h.deadline : 1e9);
       const lo = BWO.BUCKETS.find((x) => x[2] === b)[0];
-      items.push(`<li class="${b === yourBucket ? "you" : ""}"><a href="${BWO.withToday(`?course=${encodeURIComponent(entry.key)}&position=${lo}`)}" data-pos="${lo}"><span class="b">${esc(BWO.bucketText(b))}</span><span class="v">${pct(v.p)}</span>${r.pooled !== false ? '<span class="tag pooled">pooled</span>' : ""}</a></li>`);
+      items.push(`<li class="${b === yourBucket ? "you" : ""}"><a href="${BWO.withToday(`?course=${encodeURIComponent(entry.key)}&position=${lo}`)}" data-pos="${lo}"><span class="b">${esc(BWO.bucketText(b))}</span><span class="v">${pct(v.p)}</span>${BWO.pooledTag(r.pooled, r.source, meta)}</a></li>`);
     }
     return items.length ? `<h2 class="small muted" style="margin-bottom:.25rem">Other positions, same date</h2><ul class="buckets">${items.join("")}</ul>` : "";
   }
@@ -78,7 +78,7 @@
     show(`
       <p class="muted small">${esc(BWO.SITE)} · as of ${esc(BWO.fmtShort(today))}</p>
       ${note || ""}
-      <p class="muted">${esc(key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${BWO.pooledTag(resolved.pooled, resolved.source)}</p>
+      <p class="muted">${esc(key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${BWO.pooledTag(resolved.pooled, resolved.source, meta)}</p>
       ${head.html}
       ${BWO.byWhenHtml(cell, meta, today)}
       ${entry ? bucketRow(entry, bucket, head.h) : ""}
@@ -87,7 +87,8 @@
         <dt>Median time to clear</dt><dd>${esc(BWO.medianText(cell))}</dd>
         <dt>Cases</dt><dd>${esc(BWO.casesHtml(cell, resolved.own))}</dd>
       </dl>
-      <p class="muted small">${BWO.pooledSentence(resolved.pooled, resolved.source)} ${BWO.sourceLabel(meta)}. Central drop scenario; the band is a 95% interval from resampling sections. Read the <a href="methodology.html">methodology</a> before acting on this.</p>
+      <p class="muted small">${BWO.pooledSentence(resolved.pooled, resolved.source, meta)} ${BWO.sourceLabel(meta)}. Central drop scenario; the band is a 95% interval from resampling sections. Read the <a href="methodology.html">methodology</a> before acting on this.</p>
+      <p class="muted small">${BWO.levelNote(meta)}</p>
       <div class="actions"><button type="button" class="quiet" id="copy-link">Copy link</button><button type="button" class="quiet" id="copy-text">Copy as text</button><span id="copied" class="muted small" aria-live="polite"></span></div>
       <p class="muted small">${esc(BWO.VERDICT_NOTE)}</p>
       <p class="muted small"><strong>What this number cannot see:</strong> seats reserved for a category you are not in, time conflicts and unit caps that block an enrollment, and discussion or lab sections with no room. <a href="methodology.html#cannot">What the estimates cannot tell you</a>.</p>`);

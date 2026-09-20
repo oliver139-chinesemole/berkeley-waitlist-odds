@@ -29,7 +29,7 @@
     <div><label for="dept">Department</label><select id="dept"><option value="">All</option></select></div>
     <div><label for="level">Level</label><select id="level"><option value="">All</option><option value="lower">Lower division</option><option value="upper">Upper division</option><option value="grad">Graduate</option></select></div>
     <div><label for="q">Course</label><input id="q" type="search" placeholder="Filter, e.g. cs or math 5" autocomplete="off"></div>
-    <div class="check"><input id="hidepooled" type="checkbox" checked><label for="hidepooled" style="margin:0;font-weight:500">Hide pooled estimates</label></div>
+    <div class="check"><input id="hidepooled" type="checkbox" checked><label for="hidepooled" id="hidepooled-label" style="margin:0;font-weight:500">Hide pooled estimates</label></div>
   </form>
   <p id="count" class="muted small" aria-live="polite"></p>
   <div id="table" class="scroll" tabindex="0"></div>
@@ -84,11 +84,12 @@
 
   function rows() {
     const q = BWO.parseQuery(state.q);
+    const dept = BWO.estimateLevel(meta) === "dept";
     const out = [];
     for (const r of index.courses) {
       const s = r.buckets[state.bucket];
       if (!s) continue;
-      if (!state.pooled && s.pooled !== false) continue;
+      if (!state.pooled && (dept ? s.pooled === "all" : s.pooled !== false)) continue;
       if (state.dept && r.dept_group !== state.dept) continue;
       if (state.level && r.level !== state.level) continue;
       if (q) {
@@ -97,7 +98,7 @@
         const numberOk = !q.numbers.length || q.numbers.some((n) => r.number.startsWith(n) || (n.startsWith("C") && r.number.startsWith(n.slice(1))));
         if (!(subjectOk && numberOk)) continue;
       }
-      out.push({ r, s, p: s.p[state.h], lo: s.lo[state.h], hi: s.hi[state.h], median: s.median_days, n: s.n, sections: s.sections, key: r.key, floor: s.reach[1] < BWO.loaded.index.horizons[state.h] });
+      out.push({ r, s, p: s.p[state.h], lo: s.lo[state.h], hi: s.hi[state.h], median: s.median_days, n: s.pooled === false ? s.n : (s.n_course || 0), pool_n: s.n, sections: s.pooled === false ? s.sections : (s.sections_course || 0), key: r.key, floor: s.reach[1] < BWO.loaded.index.horizons[state.h] });
     }
     const dir = state.dir === "asc" ? 1 : -1;
     out.sort((a, b) => {
@@ -114,10 +115,11 @@
   function render() {
     const list = rows();
     const horizonDays = index.horizons[state.h];
-    $("count").textContent = `${num(list.length)} ${list.length === 1 ? "course" : "courses"} at ${BWO.bucketText(state.bucket)}, share who got in within ${horizonDays} days${state.pooled ? "" : " (pooled estimates hidden)"}.`;
+    const dept = BWO.estimateLevel(meta) === "dept";
+    $("count").textContent = `${num(list.length)} ${list.length === 1 ? "course" : "courses"} at ${BWO.bucketText(state.bucket)}, share who got in within ${horizonDays} days${state.pooled ? "" : dept ? " (estimates pooled over all courses hidden)" : " (pooled estimates hidden)"}${dept ? "; department estimates, cases are the course's own" : ""}.`;
     const head = COLS.map(([id, label, numeric]) => `<th scope="col" class="${numeric ? "num" : ""}" aria-sort="${state.sort === id ? (state.dir === "asc" ? "ascending" : "descending") : "none"}"><button type="button" class="sort" data-sort="${id}">${esc(label)}</button></th>`).join("");
     const shown = state.all ? list : list.slice(0, ROW_CAP);
-    const body = shown.map((x) => `<tr class="course"><td><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(x.key)}&position=${BWO.BUCKETS.find((b) => b[2] === state.bucket)[0]}`)}">${esc(x.key)}</a><span class="sub">${esc(x.r.level ? x.r.level + " division" : "")}${x.s.pooled !== false ? ` · <span class="tag pooled">pooled</span>` : ""}</span></td>
+    const body = shown.map((x) => `<tr class="course"><td><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(x.key)}&position=${BWO.BUCKETS.find((b) => b[2] === state.bucket)[0]}`)}">${esc(x.key)}</a><span class="sub">${esc(x.r.level ? x.r.level + " division" : "")}${dept && x.s.pooled !== "all" ? ` · ${esc(x.s.pooled)} estimate` : ""}${BWO.pooledTag(x.s.pooled, x.s.pooled === "all" ? "all" : "dept", meta) ? ` · ${BWO.pooledTag(x.s.pooled, x.s.pooled === "all" ? "all" : "dept", meta)}` : ""}</span></td>
       <td class="num"><strong>${pct(x.p)}</strong>${x.floor ? ' <span class="muted small" title="The data follow joiners for fewer days than this horizon">floor</span>' : ""}<span class="sub">${x.lo == null ? "" : `${pct(x.lo)} to ${pct(x.hi)}`}</span></td>
       <td class="num rest">${x.median == null ? '<span class="muted">never half</span>' : x.median.toFixed(1)}</td>
       <td class="num rest">${num(x.n)}</td>
@@ -141,7 +143,8 @@
     if (r.state === "failed" || (r.state === "ready" && !r.data.index)) { $("status").innerHTML = BWO.failedHtml(); return; }
     if (r.state === "empty") { $("status").innerHTML = BWO.emptyHtml(r.meta); return; }
     meta = r.meta; index = r.data.index;
-    $("status").innerHTML = BWO.sourceHtml(meta);
+    $("status").innerHTML = BWO.sourceHtml(meta) + `<p class="muted small">${BWO.levelNote(meta)}</p>`;
+    if (BWO.estimateLevel(meta) === "dept") $("hidepooled-label").textContent = "Hide estimates pooled over all courses";
     const depts = Array.from(new Set(index.courses.map((c) => c.dept_group))).sort();
     $("dept").innerHTML = `<option value="">All</option>` + depts.map((d) => `<option value="${esc(d)}">${esc(d === "OTHER" ? "Other departments" : d)}</option>`).join("");
     readState(); syncControls();

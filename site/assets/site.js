@@ -185,16 +185,26 @@ const BWO = (function () {
     if (pooled.all[bucket]) return { cell: pooled.all[bucket], pooled: "all", source: "all" };
     return null;
   }
-  function pooledTag(pooled, source) {
+  // What a course's estimate is: meta.estimate_level "dept" (the department's curve for the
+  // bucket stands in for every course; the course's own cases are counts) or "course".
+  function estimateLevel(meta) { return meta && meta.estimate_level === "course" ? "course" : "dept"; }
+  function pooledTag(pooled, source, meta) {
     if (pooled === false || pooled == null) return "";
+    if (source === "dept" && estimateLevel(meta) === "dept") return "";  // the department curve is the estimate, not a fallback
     const what = source === "all" ? "all courses" : source === "level" ? `all ${esc(pooled)}-division courses` : `the whole ${esc(pooled)} department`;
     return `<span class="tag pooled" title="Too few cases for this course alone; estimate uses ${what}">pooled</span>`;
   }
-  function pooledSentence(pooled, source) {
+  function pooledSentence(pooled, source, meta) {
     if (pooled === false || pooled == null) return "";
     if (source === "all") return "Pooled over all courses at these positions.";
     if (source === "level") return `Pooled over all ${esc(pooled)}-division courses at these positions.`;
+    if (estimateLevel(meta) === "dept") return `Department estimate: the whole ${esc(pooled)} department at these positions.`;
     return `Pooled over the whole ${esc(pooled)} department at these positions.`;
+  }
+  // One sentence on the rule, for the pages' small print.
+  function levelNote(meta) {
+    if (estimateLevel(meta) === "dept") return `Estimates are by department and position, not by course: in the ${esc(meta.term_name)} backtest, course-level curves did not beat the position-only baseline, so a course's own cases are shown as counts next to its department's curve (<a href="accuracy.html">how accurate it was</a>).`;
+    return `Estimates are by course and position when a course has at least ${esc(meta.min_n || 30)} cases, otherwise by department.`;
   }
   function levelOf(number) { const m = String(number || "").match(/(\d+)/); if (!m) return null; const n = parseInt(m[1], 10); return n < 100 ? "lower" : n < 200 ? "upper" : "grad"; }
 
@@ -276,7 +286,8 @@ const BWO = (function () {
   function topCourses(index, n, bucket) {
     const b = bucket || "6-15";
     const byJoins = (x, y) => (y.joins || 0) - (x.joins || 0) || x.key.localeCompare(y.key);
-    const own = index.courses.filter((r) => r.buckets[b] && r.buckets[b].pooled === false).sort(byJoins);
+    const standing = (r) => r.buckets[b] && (r.buckets[b].pooled === false || (r.buckets[b].pooled !== "all" && (r.buckets[b].n_course || 0) >= 30));
+    const own = index.courses.filter(standing).sort(byJoins);
     if (own.length >= (n || 3)) return own.slice(0, n || 3);
     // too few courses stand on their own at that bucket: any own cell, then any course
     const anyOwn = index.courses.filter((r) => !own.includes(r) && Object.values(r.buckets).some((c) => c.pooled === false)).sort(byJoins);
@@ -285,7 +296,7 @@ const BWO = (function () {
   }
   function relatedCourses(index, row, bucket, n) {
     const b = bucket || "6-15";
-    const same = index.courses.filter((r) => r.key !== row.key && r.subject === row.subject && r.buckets[b] && r.buckets[b].pooled === false);
+    const same = index.courses.filter((r) => r.key !== row.key && r.subject === row.subject && r.buckets[b] && r.buckets[b].pooled !== "all");
     same.sort((x, y) => (y.joins || 0) - (x.joins || 0) || x.key.localeCompare(y.key));
     return same.slice(0, n || 5);
   }
@@ -519,7 +530,7 @@ const BWO = (function () {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, sourceHtml, sourceLabel, stamp, setStamp,
-    horizons, keyDates, keyDatesHtml, readCurve, interval, resolveCell, fallbackCell, pooledTag, pooledSentence, levelOf,
+    horizons, keyDates, keyDatesHtml, readCurve, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, levelNote, levelOf,
     parseQuery, findCourse, searchCourses, topCourses, relatedCourses, indexMap,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,

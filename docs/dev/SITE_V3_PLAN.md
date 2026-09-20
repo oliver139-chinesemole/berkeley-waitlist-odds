@@ -317,3 +317,5 @@ Built in one pass on 2026-09-20 in a git worktree (`/Users/oliverguo/berkeley-wa
 | A1 to A5 | done | A5 prints `meta.prereg_commit` once the install commit's hash is passed to `make site-data`; A6, A7 need Spring 2027 |
 | B1 | done | B2 reads `meta.json`; reading the data branch's `status.json` live is not done |
 | X8 | Oliver | |
+
+Rule change the same evening (from the full-pull backtest, docs/dev/BACKFILL_BACKTEST.md B3): course-level curves do not beat the position-bucket baseline, so the exporter's default is `estimate_level="dept"` (every course shows its department's curve for the bucket, its own cases as counts) and the pages read `meta.estimate_level`; `--estimate-level course` keeps the per-course behaviour for a later term.

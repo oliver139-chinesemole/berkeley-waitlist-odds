@@ -43,8 +43,19 @@ def test_pools_cover_all_dept_and_level(cohort: pd.DataFrame, pools: dict) -> No
     assert resolve_pool(pools, "NOPE", "1-5") is None
 
 
-def test_course_cells_are_curves_or_pointers(cohort: pd.DataFrame, pools: dict) -> None:
+def test_course_cells_are_pointers_at_the_department_default(cohort: pd.DataFrame, pools: dict) -> None:
     courses = course_tables(cohort, CAL, min_n=30, n_boot=20, pools=pools)
+    assert courses
+    for key, entry in courses.items():
+        for bucket, cell in entry["buckets"].items():
+            assert set(cell) == {"pooled", "n_course", "sections_course"} and cell["pooled"] in (entry["dept_group"], "all")
+            assert resolve_pool(pools, cell["pooled"], bucket) is not None and cell["n_course"] >= 1
+    with pytest.raises(ValueError):
+        course_tables(cohort, CAL, min_n=30, n_boot=5, pools=pools, estimate_level="section")
+
+
+def test_course_cells_are_curves_or_pointers_at_course_level(cohort: pd.DataFrame, pools: dict) -> None:
+    courses = course_tables(cohort, CAL, min_n=30, n_boot=20, pools=pools, estimate_level="course")
     kinds = {"curve": 0, "pointer": 0}
     for key, entry in courses.items():
         assert entry["subject"] == key.split()[0] and entry["number"] == key.split()[1] and entry["dept_group"] in pools["dept"] | {"OTHER": None}
@@ -59,8 +70,9 @@ def test_course_cells_are_curves_or_pointers(cohort: pd.DataFrame, pools: dict) 
     assert kinds["curve"] > 0 and kinds["pointer"] > 0
 
 
-def test_index_rows_summarise_at_the_fixed_horizons(cohort: pd.DataFrame, pools: dict) -> None:
-    courses = course_tables(cohort, CAL, min_n=30, n_boot=20, pools=pools)
+@pytest.mark.parametrize("level", ["dept", "course"])
+def test_index_rows_summarise_at_the_fixed_horizons(cohort: pd.DataFrame, pools: dict, level: str) -> None:
+    courses = course_tables(cohort, CAL, min_n=30, n_boot=20, pools=pools, estimate_level=level)
     rows = index_rows(courses, pools, {"COMPSCI 0": 17})
     by_key = {r["key"]: r for r in rows}
     assert by_key["COMPSCI 0"]["joins"] == 17 and by_key["MATH 1"]["joins"] == 0
@@ -117,6 +129,9 @@ def test_export_writes_every_file_and_the_forecast_calendar(cohort: pd.DataFrame
     assert meta["data_dates"]["instruction_start"] == "2026-08-26" and meta["data_dates"]["last_auto_waitlist"] == "2026-09-11"
     assert meta["data_source"] == "berkeleytime_history" and meta["terms"] == [{"term_id": "2268", "term_name": "Fall 2026", "data_source": "berkeleytime_history"}]
     assert meta["rank"] is None  # no flows given
+    assert meta["estimate_level"] == "dept"
+    entries = json.loads((tmp_path / "courses" / "COMPSCI.json").read_text())["courses"]
+    assert all(cell["pooled"] is not False for e in entries.values() for cell in e["buckets"].values())
     assert {p.name for p in tmp_path.iterdir()} == {"index.json", "meta.json", "pooled.json", "insights.json", "courses"}
     assert {p.name for p in (tmp_path / "courses").iterdir()} == {"COMPSCI.json", "MATH.json", "STAT.json", "ART.json"}
     assert meta["subject_files"]["ART"] == "courses/ART.json"
@@ -140,9 +155,10 @@ def test_cli_rebuilds_site_data_from_a_saved_cohort(cohort: pd.DataFrame, tmp_pa
     old_meta = tmp_path / "old_meta.json"
     old_meta.write_text(json.dumps({"data_source": "berkeleytime_history", "backfill": {"sections": 296}, "flows": {"admits": 1}, "unrelated": 1}))
     out = tmp_path / "site_data"
-    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--forecast-term", "2272", "--out", str(out), "--meta-from", str(old_meta), "--n-boot", "5", "--prereg-commit", "abc123", "--prereg-date", "2026-09-21"]) == 0
+    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--forecast-term", "2272", "--out", str(out), "--meta-from", str(old_meta), "--n-boot", "5", "--prereg-commit", "abc123", "--prereg-date", "2026-09-21", "--estimate-level", "course"]) == 0
     printed = json.loads(capsys.readouterr().out)
     meta = json.loads((out / "meta.json").read_text())
-    assert printed["courses"] == meta["courses"] and printed["data_source"] == "berkeleytime_history"
+    assert printed["courses"] == meta["courses"] and printed["data_source"] == "berkeleytime_history" and printed["estimate_level"] == "course" and meta["estimate_level"] == "course"
+    assert any(cell["pooled"] is False for e in json.loads((out / "courses" / "COMPSCI.json").read_text())["courses"].values() for cell in e["buckets"].values())
     assert meta["backfill"] == {"sections": 296} and meta["flows"] == {"admits": 1} and "unrelated" not in meta
     assert meta["prereg_commit"] == "abc123" and meta["prereg_date"] == "2026-09-21" and meta["forecast_term_name"] == "Spring 2027"

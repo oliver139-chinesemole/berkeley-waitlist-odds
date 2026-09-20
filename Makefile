@@ -10,6 +10,9 @@ PILOT ?= 300
 COHORT ?= analysis/out/$(TERM)/cohort_central.parquet
 # The term whose dates the site counts down to while a finished cycle stands in for it.
 FORECAST_TERM ?= 2272
+# What a course's site estimate is: dept (the department's curve; the Fall 2026 backtest
+# found course curves add nothing over the position baseline) or course.
+ESTIMATE_LEVEL ?= dept
 
 .PHONY: test flows analysis backfill-pilot backfill backfill-analysis backtest site-data
 
@@ -33,11 +36,11 @@ backfill:
 	python -m analysis.backfill build --term "$(TERM_NAME)" --cache $(BACKFILL_RAW) --out $(BACKFILL_DIR)
 
 backfill-analysis:
-	python -m analysis.run --backfill-dir $(BACKFILL_DIR) --term-id $(TERM) --out analysis/out --site-dir site/data --forecast-term $(FORECAST_TERM)
+	python -m analysis.run --backfill-dir $(BACKFILL_DIR) --term-id $(TERM) --out analysis/out --site-dir site/data --forecast-term $(FORECAST_TERM) --estimate-level $(ESTIMATE_LEVEL)
 
 # Rewrite site/data from a saved cohort (no refit); source labels carried over from the meta.json already there.
 site-data:
-	python -m analysis.export --cohort $(COHORT) --term-id $(TERM) --forecast-term $(FORECAST_TERM) --out site/data --flows analysis/out/$(TERM)/flows.parquet --meta-from site/data/meta.json
+	python -m analysis.export --cohort $(COHORT) --term-id $(TERM) --forecast-term $(FORECAST_TERM) --out site/data --flows analysis/out/$(TERM)/flows.parquet --meta-from site/data/meta.json --estimate-level $(ESTIMATE_LEVEL)
 
 backtest:
 	python -m analysis.backtest --cohort $(COHORT) --term-id $(TERM) --split temporal --which days:14 --out reports/backtest_$(TERM)/temporal_days14

@@ -78,7 +78,7 @@
   }
 
   function extremes() {
-    if (!index) return "";
+    if (!index || BWO.estimateLevel(meta) === "dept") return "";  // every course in a department shares its curve
     const rows = index.courses.map((r) => ({ r, s: r.buckets["6-15"] })).filter((x) => x.s && x.s.pooled === false && x.s.sections >= 3 && x.s.lo != null);
     if (rows.length < 6) return "";
     rows.sort((a, b) => b.s.p[1] - a.s.p[1] || a.r.key.localeCompare(b.r.key));

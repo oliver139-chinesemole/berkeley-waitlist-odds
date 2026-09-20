@@ -9,9 +9,10 @@ Files written under ``out_dir`` (``site/data``):
   band), the median, counts, the pooled flag, and the reconstructed waitlist
   joins the pages rank courses by. Drives search, the Courses table and the
   related-courses list; small enough to load on a phone.
-- ``courses/<SUBJECT>.json``: the full clearing curve of every course cell of
-  that subject with ``min_n`` rows or more; a smaller cell carries only a
-  pointer to its pool and the course's own counts. Loaded on demand.
+- ``courses/<SUBJECT>.json``: per course and bucket, a pointer to the pool
+  that stands in for it plus the course's own counts; at
+  ``estimate_level="course"`` a cell with ``min_n`` rows or more carries its
+  own curve instead. Loaded on demand.
 - ``pooled.json``: department, level and all-course cells per bucket, with
   curves. The fallback for pooled cells and for courses with no data.
 - ``insights.json``: all-course curves by bucket, the hero cut (lower-division
@@ -48,6 +49,12 @@ MIN_N = 30
 N_BOOT = 200
 CURVE_DAYS = (0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 21, 24, 28, 32, 36, 42, 49, 56, 63, 70, 77, 84, 98, 112, 126, 140, 154, 168, 182)
 HORIZONS = (7.0, 14.0, 28.0)  # the fixed horizons index.json and the grids carry
+# What a course's estimate is by default. "dept": the department's curve for the
+# bucket (the Fall 2026 backtest found course-level curves did not beat the
+# position-bucket baseline, docs/dev/BACKFILL_BACKTEST.md B3); "course": the
+# course's own curve when it has min_n rows, kept for later terms.
+ESTIMATE_LEVELS = ("dept", "course")
+DEFAULT_ESTIMATE_LEVEL = "dept"
 LEVEL_ORDER = ("lower", "upper", "grad")
 PHASE_ORDER = ("before", "phase1", "between", "phase2", "adjustment", "instruction", "after")
 META_CARRY = ("data_source", "flows", "backfill", "cohort_rows_by_scenario", "prereg_commit", "prereg_date")
@@ -204,15 +211,19 @@ def resolve_pool(pools: dict, pooled: str, bucket: str) -> dict | None:
     return pools["dept"].get(pooled, {}).get(bucket)
 
 
-def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT, pools: dict | None = None) -> dict:
+def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT, pools: dict | None = None, estimate_level: str = DEFAULT_ESTIMATE_LEVEL) -> dict:
     """``{course_key: {subject, number, level, dept_group, buckets: {bucket: cell}}}``.
 
-    A cell with ``min_n`` rows or more is a curve cell (``_cell``) with
-    ``pooled: false``. A smaller cell is a pointer: ``pooled`` names the
-    department whose curve for the same bucket stands in, or ``"all"`` when the
-    department pool is itself too small, with ``n_course`` and
-    ``sections_course`` for the course alone. A cell with no pool is left out.
+    A pointer cell names in ``pooled`` the department whose curve for the same
+    bucket stands in, or ``"all"`` when the department pool is itself too
+    small, with ``n_course`` and ``sections_course`` for the course alone. At
+    ``estimate_level="dept"`` (the default) every cell is a pointer. At
+    ``"course"`` a cell with ``min_n`` rows or more is a curve cell (``_cell``)
+    with ``pooled: false`` and only smaller cells are pointers. A cell with no
+    pool is left out.
     """
+    if estimate_level not in ESTIMATE_LEVELS:
+        raise ValueError(f"estimate_level must be one of {ESTIMATE_LEVELS}, got {estimate_level!r}")
     out: dict = {}
     if cohort.empty:
         return out
@@ -225,7 +236,7 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
             rows = course_rows[course_rows["position_bucket"] == bucket]
             if len(rows) == 0:
                 continue
-            if len(rows) >= min_n:
+            if estimate_level == "course" and len(rows) >= min_n:
                 cell = _cell(rows, n_boot=n_boot)
                 cell["pooled"] = False
             else:
@@ -367,18 +378,20 @@ def export_site_tables(
     n_boot: int = N_BOOT,
     forecast_calendar: TermCalendar | None = None,
     flows: pd.DataFrame | None = None,
+    estimate_level: str = DEFAULT_ESTIMATE_LEVEL,
 ) -> tuple[Path, Path]:
     """Write the site's JSON under ``out_dir``; returns ``(index.json, meta.json)``.
 
     ``calendar`` is the data term's; ``forecast_calendar`` (default: the same)
     is the term whose dates the pages count down to, so a finished cycle can
-    stand in for the coming one and be labelled as such.
+    stand in for the coming one and be labelled as such. ``estimate_level`` is
+    what a course's estimate is (``course_tables``); ``meta.json`` records it.
     """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     forecast = forecast_calendar or calendar
     pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot)
-    courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot, pools=pools)
+    courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot, pools=pools, estimate_level=estimate_level)
     joins = joins_by_course(cohort, flows)
 
     courses_dir = out_dir / "courses"
@@ -420,6 +433,7 @@ def export_site_tables(
         "scenario": None if cohort.empty else str(cohort["scenario"].iloc[0]),
         "min_n": min_n,
         "n_boot": n_boot,
+        "estimate_level": estimate_level,
         "horizons": list(HORIZONS),
         "positions": sorted(int(p) for p in cohort["position"].unique()) if len(cohort) else [],
         "instruction_start": forecast.instruction_start.isoformat(),
@@ -453,6 +467,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--prereg-date", default=None)
     p.add_argument("--n-boot", type=int, default=N_BOOT)
     p.add_argument("--min-n", type=int, default=MIN_N)
+    p.add_argument("--estimate-level", choices=ESTIMATE_LEVELS, default=DEFAULT_ESTIMATE_LEVEL, help="dept: the department's curve stands in for every course (default); course: a course with min_n rows gets its own curve")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     cohort = pd.read_parquet(args.cohort)
@@ -476,9 +491,10 @@ def main(argv: list[str] | None = None) -> int:
         n_boot=args.n_boot,
         forecast_calendar=calendar_for(args.forecast_term) if args.forecast_term else None,
         flows=flows,
+        estimate_level=args.estimate_level,
     )
     info = json.loads(meta_path.read_text(encoding="utf-8"))
-    print(json.dumps({"index": str(index_path), "meta": str(meta_path), "courses": info["courses"], "events": info["events"], "sections": info["sections"], "data_source": info.get("data_source"), "subject_files": len(info["subject_files"])}, indent=1))
+    print(json.dumps({"index": str(index_path), "meta": str(meta_path), "courses": info["courses"], "events": info["events"], "sections": info["sections"], "data_source": info.get("data_source"), "estimate_level": info["estimate_level"], "subject_files": len(info["subject_files"])}, indent=1))
     return 0
 
 

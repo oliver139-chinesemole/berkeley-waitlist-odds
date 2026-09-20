@@ -120,7 +120,8 @@ def test_site_tables_are_valid_json_with_sample_sizes(result) -> None:
                         assert lo is None or (lo - 1e-9 <= p <= hi + 1e-9 and 0.0 <= lo <= hi <= 1.0)
                 else:
                     pool = pooled["all"][bucket] if cell["pooled"] == "all" else pooled["dept"][cell["pooled"]][bucket]
-                    assert pool["n"] >= 30 and "curve" not in cell and 1 <= cell["sections_course"] <= cell["n_course"] < 30
+                    assert pool["n"] >= 30 and "curve" not in cell and 1 <= cell["sections_course"] <= cell["n_course"]
+                    assert meta["estimate_level"] == "dept" or cell["n_course"] < 30
                 summary = rows[key]["buckets"][bucket]
                 assert summary["pooled"] == cell["pooled"] and len(summary["p"]) == 3 and all(0.0 <= p <= 1.0 for p in summary["p"])
     assert set(insights["all_by_bucket"]) <= {"1-5", "6-15", "16-40", "41+"} and insights["counts"]["courses"] == len(rows)
@@ -136,7 +137,8 @@ def test_export_pooling_rule() -> None:
         for cell in entry["buckets"].values():
             assert cell["pooled"] is not False and "n_course" in cell and "sections_course" in cell
     big = synthetic_cohort(n_sections=8, joins_per_section=40)
-    tables = course_tables(big, cal, min_n=30)
+    assert all(cell["pooled"] is not False for e in course_tables(big, cal, min_n=30).values() for cell in e["buckets"].values())  # department by default
+    tables = course_tables(big, cal, min_n=30, estimate_level="course")
     unpooled = [cell for e in tables.values() for cell in e["buckets"].values() if cell["pooled"] is False]
     assert unpooled and all(cell["n"] >= 30 for cell in unpooled)
 

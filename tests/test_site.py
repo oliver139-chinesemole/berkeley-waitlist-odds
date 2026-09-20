@@ -93,8 +93,17 @@ def cell_of(site_root: Path, key: str, bucket: str) -> dict:
 
 @pytest.fixture(scope="module")
 def full_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    """The default export: department-level estimates, course cells as pointers with the course's own counts."""
     root = tmp_path_factory.mktemp("site_full")
     export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=50)
+    return root
+
+
+@pytest.fixture(scope="module")
+def course_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    """estimate_level="course": a course with 30 or more cases gets its own curve (kept for later terms)."""
+    root = tmp_path_factory.mktemp("site_course")
+    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=50, estimate_level="course")
     return root
 
 
@@ -110,7 +119,7 @@ def narrow_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     """Only positions 1 to 5 ever joined, so every course has a single bucket."""
     root = tmp_path_factory.mktemp("site_narrow")
     cohort = synthetic_cohort()
-    export_site_tables(cohort[cohort["position"] <= 5], CAL, root / "data", n_boot=20)
+    export_site_tables(cohort[cohort["position"] <= 5], CAL, root / "data", n_boot=20, estimate_level="course")
     return root
 
 
@@ -188,10 +197,10 @@ def test_backfill_source_is_labelled(backfill_site: Path) -> None:
 # ------------------------------------------------------------------ lookup
 
 
-def test_lookup_reads_the_curve_at_the_askers_own_horizons(full_site: Path) -> None:
-    cell = cell_of(full_site, "COMPSCI 0", "1-5")
+def test_lookup_reads_the_curve_at_the_askers_own_horizons(course_site: Path) -> None:
+    cell = cell_of(course_site, "COMPSCI 0", "1-5")
     assert cell["sections"] >= 1 and cell["reach_days"] > 0
-    out = render(full_site, course="compsci   0", position="3")
+    out = render(course_site, course="compsci   0", position="3")
     r = out["result"]
     assert not out["result_hidden"]
     assert "COMPSCI 0" in r and "position 3 (positions 1 to 5)" in r
@@ -214,6 +223,7 @@ def test_lookup_reads_the_curve_at_the_askers_own_horizons(full_site: Path) -> N
     assert r.count('class="curve') == 1 and ' H ' in r  # one step-drawn curve
     assert ('class="band"' in r) == (cell["sections"] >= 2 and cell["curve"][0][2] is not None)
     assert '(positions 1 to 5)<span class="tag pooled"' not in r  # the asker's own cell is not pooled
+    assert "Estimates are by course and position when a course has at least 30 cases" in r
     assert "Other positions" in r and 'class="you"' in r and "positions 6 to 15" in r
     assert "Copy link" in r and "Copy as text" in r and "as of Jan 10" in r
     if cell["reach_days"] < 27:
@@ -223,24 +233,58 @@ def test_lookup_reads_the_curve_at_the_askers_own_horizons(full_site: Path) -> N
     assert "course=COMPSCI%200&position=3" in out["location"] and out["title"].startswith("COMPSCI 0 at position 3")
 
 
-def test_lookup_after_the_last_waitlist_run_is_a_look_back(full_site: Path) -> None:
-    cell = cell_of(full_site, "COMPSCI 0", "1-5")
-    out = render(full_site, course="COMPSCI 0", position="3", today="2027-03-01")
+def test_lookup_after_the_last_waitlist_run_is_a_look_back(course_site: Path) -> None:
+    cell = cell_of(course_site, "COMPSCI 0", "1-5")
+    out = render(course_site, course="COMPSCI 0", position="3", today="2027-03-01")
     r = out["result"]
     last = cell["curve"][-1]
     assert f'<div class="big">{pct(last[1])}' in r and "no longer processed automatically" in r and "look back, not a forecast" in r
     assert "by the first day of instruction" not in r and "days away" not in out["stamp"]
 
 
-def test_pooled_estimate_is_labelled(full_site: Path) -> None:
-    subject_file = load(full_site, "courses/COMPSCI.json")
+def test_pooled_estimate_is_labelled(course_site: Path) -> None:
+    subject_file = load(course_site, "courses/COMPSCI.json")
     cell = subject_file["courses"]["COMPSCI 0"]["buckets"]["6-15"]
     assert cell["pooled"] == "COMPSCI" and "n_course" in cell and "curve" not in cell
-    out = render(full_site, course="COMPSCI 0", position="10")
+    out = render(course_site, course="COMPSCI 0", position="10")
     r = out["result"]
     assert 'class="tag pooled"' in r and "COMPSCI department" in r
     assert f"this course alone: {cell['n_course']} joiners in {cell['sections_course']} section" in r
     assert "Pooled over the whole COMPSCI department" in r
+
+
+def test_department_level_is_the_default_estimate(full_site: Path) -> None:
+    """Every course cell points at its department's curve; the course's own cases are counts, and nothing is called pooled."""
+    meta = load(full_site, "meta.json")
+    assert meta["estimate_level"] == "dept"
+    pooled = load(full_site, "pooled.json")
+    dept = pooled["dept"]["COMPSCI"]["1-5"]
+    own = load(full_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]["1-5"]
+    assert own["pooled"] == "COMPSCI" and own["n_course"] >= 30 and "curve" not in own
+    out = render(full_site, course="cs 0", position="3")
+    r = out["result"]
+    assert f'<div class="big">{pct(read_curve(dept["curve"], 27.0)[0])}' in r
+    assert "position 3 (positions 1 to 5)</p>" in r and 'class="tag pooled"' not in r
+    assert "Department estimate: the whole COMPSCI department at these positions." in r
+    assert f"{dept['sections']} sections, {dept['n']} hypothetical joiners, {dept['events']} cleared (this course alone: {own['n_course']} joiners in {own['sections_course']} section" in r
+    assert "Estimates are by department and position, not by course" in r and "course-level curves did not beat the position-only baseline" in r
+    # the course page says the same, with the course's own cases in their own column
+    out = render(full_site, page="course.html", search="?c=cs0&position=3")
+    html = out["elements"]["course"]["html"]
+    assert "Department estimate: the whole COMPSCI department" in html and 'class="tag pooled"' not in html
+    assert '<th scope="col" class="num">This course</th>' in html and f'<td class="num">{own["n_course"]}<span class="sub muted">' in html
+    assert "of its own cases, COMPSCI estimate" in html
+    # the Courses table keeps every course (department estimates are not "pooled"), cases are the course's own
+    out = render(full_site, page="courses.html", search="?bucket=1-5")
+    index = load(full_site, "index.json")
+    rows = [c for c in index["courses"] if "1-5" in c["buckets"] and c["buckets"]["1-5"]["pooled"] != "all"]
+    table = out["elements"]["table"]["html"]
+    assert table.count('<tr class="course">') == len(rows) and "COMPSCI estimate" in table and 'class="tag pooled"' not in table
+    assert "Hide estimates pooled over all courses" == out["elements"]["hidepooled-label"]["text"]
+    assert "department estimates, cases are the course's own" in out["elements"]["count"]["text"]
+    # no most-and-least list on Insights: every course in a department shares its curve
+    out = render(full_site, page="insights.html")
+    assert "Where a mid-list spot moved most" not in out["elements"]["content"]["html"]
 
 
 def test_unknown_course_falls_back_to_the_department_then_level_then_all(full_site: Path) -> None:
@@ -304,38 +348,38 @@ def test_verdict_thresholds() -> None:
 # ------------------------------------------------------------- other pages
 
 
-def test_courses_page_filters_sorts_and_keeps_state_in_the_url(full_site: Path) -> None:
-    index = load(full_site, "index.json")
-    out = render(full_site, page="courses.html", search="?bucket=1-5")
+def test_courses_page_filters_sorts_and_keeps_state_in_the_url(course_site: Path) -> None:
+    index = load(course_site, "index.json")
+    out = render(course_site, page="courses.html", search="?bucket=1-5")
     assert "Simulated term" in out["status"] and not out["elements"]["controls"]["hidden"]
     table = out["elements"]["table"]["html"]
     own = [r for r in index["courses"] if r["buckets"].get("1-5", {}).get("pooled") is False]
     assert own and table.count('<tr class="course">') == len(own) and f"{len(own)} courses at positions 1 to 5" in out["elements"]["count"]["text"]
     assert 'aria-sort="descending"' in table and 'data-sort="p"' in table
     # the default view hides pooled rows; when that hides everything the page says so
-    out = render(full_site, page="courses.html")
+    out = render(course_site, page="courses.html")
     mid_own = [r for r in index["courses"] if r["buckets"].get("6-15", {}).get("pooled") is False]
     assert (out["elements"]["table"]["html"].count('<tr class="course">') == len(mid_own)) and (mid_own or "No courses match" in out["elements"]["table"]["html"])
     # show pooled rows, filter by subject, sort by cases ascending
-    out = render(full_site, page="courses.html", search="?pooled=1&q=cs&sort=n&dir=asc&bucket=1-5")
+    out = render(course_site, page="courses.html", search="?pooled=1&q=cs&sort=n&dir=asc&bucket=1-5")
     table = out["elements"]["table"]["html"]
     rows = [r for r in index["courses"] if r["subject"] == "COMPSCI" and "1-5" in r["buckets"]]
     assert table.count('<tr class="course">') == len(rows) and all(r["key"] in table for r in rows)
     assert 'aria-sort="ascending"' in table and "course.html?c=COMPSCI%200" in table
     assert out["elements"]["bucket"]["value"] == "1-5" and out["elements"]["q"]["value"] == "cs" and out["elements"]["hidepooled"]["value"] == ""
     # an empty filter says so
-    out = render(full_site, page="courses.html", search="?q=zzz")
+    out = render(course_site, page="courses.html", search="?q=zzz")
     assert "No courses match" in out["elements"]["table"]["html"]
 
 
-def test_course_page_shows_every_bucket_and_the_same_headline(full_site: Path) -> None:
-    cell = cell_of(full_site, "COMPSCI 0", "1-5")
-    out = render(full_site, page="course.html", search="?c=cs0&position=3")
+def test_course_page_shows_every_bucket_and_the_same_headline(course_site: Path) -> None:
+    cell = cell_of(course_site, "COMPSCI 0", "1-5")
+    out = render(course_site, page="course.html", search="?c=cs0&position=3")
     html = out["elements"]["course"]["html"]
     assert out["title"].startswith("COMPSCI 0") and "<h1>COMPSCI 0" in html
     at_deadline = read_curve(cell["curve"], 27.0)
     assert f'<div class="big">{pct(at_deadline[0])}' in html and "position 3 (positions 1 to 5)" in html and "within 27 days of joining" in html
-    assert html.count('class="curve') == len([b for b in ("1-5", "6-15", "16-40", "41+") if b in load(full_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]])
+    assert html.count('class="curve') == len([b for b in ("1-5", "6-15", "16-40", "41+") if b in load(course_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]])
     assert 'class="curve s1 you"' in html and "Show as table" in html and 'class="legend"' in html
     assert "Every position" in html and '<th scope="row">positions 1 to 5 <span class="tag">you</span>' in html and "Other COMPSCI courses" in html
     assert "index.html?course=COMPSCI%200&position=3" in html
@@ -360,7 +404,7 @@ def test_insights_page_renders_findings_grid_and_departments(full_site: Path) ->
     assert "Longest follow-up" in html and "positions 41 and up" in html
     assert 'class="dotplot"' in html and "Show as table" in html
     assert ("When waitlists move" in html) == bool(ins.get("daily"))
-    assert "Where a mid-list spot moved most" in html or True  # needs six own cells with two sections; synthetic data may not have them
+    assert "Where a mid-list spot moved most" not in html  # department level: every course in a department shares its curve
 
 
 def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Path) -> None:
