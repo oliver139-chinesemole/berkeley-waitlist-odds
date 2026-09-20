@@ -12,8 +12,8 @@ Work the steps in order through the build loop in `docs/FINISH_PLAN_WAITLIST.md`
 
 ## B0. Apply the patch (5 minutes)
 
-- [ ] `git checkout -b backfill-backtest && git am backfill-backtest.patch`
-- [ ] Check: `python -m pytest -q` is green (about 310 tests). `tests/test_backfill.py` and `tests/test_backtest.py` are new.
+- [x] `git checkout -b backfill-backtest` (2026-09-20; the patch did not exist as a file, so the modules were written in the session: commits f6848f7, 78a2e49 and the observability commit that follows them)
+- [x] Check: `python -m pytest -q` is green: 320 tests in about 70 s (was 295 in 181 s; the cohort walk is now numpy). `tests/test_backfill.py` and `tests/test_backtest.py` are new.
 
 What the patch contains:
 
@@ -28,32 +28,32 @@ What the patch contains:
 
 ## B1. Pilot pull and the gap question (30 minutes)
 
-- [ ] `make backfill-pilot` (300 sections, about 10 minutes, writes `backfill/2268/`).
-- [ ] Read `backfill/2268/gap_report.csv`. The one recorded history in `data/fixtures/` (DATA C100) is dark from 2026-08-19 22:45Z to 2026-09-01 18:30Z, which covers the end of the adjustment period and the first week of instruction. **Decide from the pilot whether that hole hits every section.**
+- [x] `make backfill-pilot` (2026-09-20 01:34Z to 01:45Z; 300 selected, 296 histories, 20,266 segments, 37,978 panel rows; `backfill/2268/`). Also found: the gateway rejects the second recorded `GetEnrollment` op (schema dropped `seatReservationTypes`); `fetch` now tries the recorded ops in order.
+- [x] Read `backfill/2268/gap_report.csv`. **Dark for everyone.** The one recorded history in `data/fixtures/` (DATA C100) is dark from 2026-08-19 22:45Z to 2026-09-01 18:30Z, which covers the end of the adjustment period and the first week of instruction. **Decide from the pilot whether that hole hits every section.**
   - Dark for everyone (`share_time_in_gap` near 1 on Aug 20 to Sep 1): Fall 2026 can validate Phase 1 and Phase 2 clearing (what students need on Oct 26 and Nov 23) but says nothing about first-week clearing. Write that into the methodology page and the README in one sentence each. It is also the best argument for this project's own gap-logged collection; add it to the README novelty paragraph with the measured dates.
   - Scattered: proceed with no caveat beyond the gap report.
-- [ ] Probe Spring 2026: `python -m analysis.backfill fetch --term "Spring 2026" --cache backfill/raw/2262 --limit 20`, then `build`. Check whether histories exist and where they start. If they cover Oct 2025 to Feb 2026, the cross-term backtest in B3 is available.
-- [ ] Log the pilot in `docs/DATA_LOG.md` as a `decision` row (source, date, sections pulled).
+- [x] Probe Spring 2026 (20 of 20 histories, 2025-10-27 to 2026-05-16, 3 of 202 days above 0.5 dark; cross-term available after the full Spring pull): `python -m analysis.backfill fetch --term "Spring 2026" --cache backfill/raw/2262 --limit 20`, then `build`. Check whether histories exist and where they start. If they cover Oct 2025 to Feb 2026, the cross-term backtest in B3 is available.
+- [x] Logged in `docs/DATA_LOG.md` (row 2026-09-20T01:32Z). Two more findings from the pilot: Berkeleytime's poll spacing at changes was 15 min from July 2026 but 45 to 130 min from March to June, so the gap rule is 180 min, not 45 (a 45-min rule censored ordinary polls exactly where queues moved); and the hole makes the deadline and instruction horizons unobservable for every joiner before Aug 19 (a joiner who cleared before the hole is seen, one who did not is not, so no reweighting recovers the negatives): the backtest now excludes rows it cannot follow to their horizon and reports coverage by phase, and Fall 2026 is scored at fixed 14- and 28-day horizons.
 
 ## B2. Full pull (overnight)
 
-- [ ] Oliver: email the Berkeleytime team (ASUC OCTO) before the full pull. Two sentences: what the project is, that you will make one pass of about 4,000 to 6,000 `GetEnrollment` requests at one per two seconds. They are also the likeliest sponsor for the SIS API request.
+- [ ] **Oliver: email the Berkeleytime team (ASUC OCTO) before the full pull.** Not done as of 2026-09-20; the full pull waits for it. Two sentences: what the project is, that you will make one pass of about 4,000 to 6,000 `GetEnrollment` requests at one per two seconds. They are also the likeliest sponsor for the SIS API request.
 - [ ] `make backfill` (resumable; rerun until `failed` is 0 or stable). If Spring 2026 exists: `make backfill TERM=2262 TERM_NAME="Spring 2026"`.
 - [ ] Check: `build` prints sections, `share_censored`, and the ten worst days. Record them in `docs/DATA_LOG.md`.
 
 ## B3. Analysis and backtest
 
-- [ ] `make backfill-analysis` → `analysis/out/2268/report.md`, figures, `site/data/*.json` with `"data_source": "berkeleytime_history"`.
-- [ ] `make backtest` (temporal split at the start of Phase 2, Jul 20; scored against the last waitlist run and against instruction start; plus grouped folds). Reports land in `reports/backtest_2268/`.
-- [ ] If Spring 2026 exists, the real test: `python -m analysis.backtest --cohort analysis/out/2268/cohort_central.parquet --term-id 2268 --split cross_term --train-cohort analysis/out/2262/cohort_central.parquet --which deadline --out reports/backtest_2268/cross_term`. This is the claim the site makes in October: last cycle says something about this one.
-- [ ] Read the reports with `data:validate-data`. What to look for:
-  - Does `course` beat `bucket`? If the Brier gain interval includes zero, course-level cells add noise, and the site should show department-level estimates until it has more than one term.
-  - Does `cox` beat `bucket`, and is it calibrated (predicted vs observed by decile)?
-  - How bad is `site`? See B4.
-  - `share_unknown` by phase. If the adjustment and instruction phases are mostly unknown, say so and do not publish numbers for them.
-- [ ] Add CLAIMS.md rows with the exact commands and measured results. Never type a number you did not see.
+- [x] `make backfill-analysis` on the pilot (site JSON written to a scratch dir, not `site/data`, until the full pull): 21,831 virtual waitlisters per scenario, 9,933 clearings; KM median time to clear 6.4 days at positions 1 to 5, 26 days at 6 to 15; Cox hazard ratio 0.60 per log unit of position; PH violated for position and phase (stratified refit written).
+- [x] `make backtest` on the pilot (reports in a scratch dir until the full pull). Grouped by course, 14 days: Cox Brier gain over the bucket baseline +0.037 [+0.024, +0.053], course cells identical to buckets, site −0.015 [−0.028, +0.000]. Temporal at Jul 20, 14 days (2,938 scored rows, 9,739 unobservable): course −0.014 [−0.064, +0.035], site +0.029 [−0.034, +0.082], Cox −0.196 [−0.227, −0.150] with predictions of 2 to 34% against observed 54 to 77%: a model fit on Phase 1 does not know Phase 2 clears faster. Deadline horizon: only the 2,406 joiners after Sep 1 are observable. 28-day and instruction horizons: nothing observable.
+- [ ] (after the full Spring 2026 pull; the 20-section probe is too small to train on) If Spring 2026 exists, the real test: `python -m analysis.backtest --cohort analysis/out/2268/cohort_central.parquet --term-id 2268 --split cross_term --train-cohort analysis/out/2262/cohort_central.parquet --which deadline --out reports/backtest_2268/cross_term`. This is the claim the site makes in October: last cycle says something about this one.
+- [x] Read the pilot reports (by hand; the `data` plugin is not installed). Answers so far, to be re-read after the full pull:
+  - Does `course` beat `bucket`? No: the interval includes zero (temporal) or the two are identical (grouped, where held-out courses fall back to the pool). With 296 sections almost every course cell is pooled anyway; decide on the full pull.
+  - Does `cox` beat `bucket`, and is it calibrated? Within a regime (grouped) yes, +0.037; across the Phase 1 to Phase 2 split no, and it is badly calibrated (`days_to_instruction` and the phase dummies extrapolate). The site keeps serving KM curves; Cox is a report, not a product.
+  - How bad is `site`? Not worse than the bucket baseline in these tests: the horizon mismatch (curve read at a Phase 1 lead time) over-predicts, and the regime shift makes over-prediction land closer. The B4.1 fix removes the mismatch regardless.
+  - Coverage by phase (the replacement for `share_unknown`): at 14 days, phase 1 62%, phase 2 15%, instruction 56%, adjustment 0%. Fall 2026 numbers for the adjustment period are not publishable; the site's floor note handles horizons past a cell's reach.
+- [x] CLAIMS.md rows added (pilot results, marked as such; re-measure after the full pull).
 
-## B4. Site fixes the backtest will demand (do before publishing any number)
+## B4. Site fixes the backtest will demand (do before publishing any number) — done 2026-09-20 (commit 78a2e49); a browser pass is still due
 
 1. **Horizon.** `analysis/export.py` evaluates each cell once, at the median `days_to_instruction` of its training rows, so a student asking two days before instruction gets the same number as one asking in Phase 1. On simulated data the literal site number predicted 0.92 against an actual 0.49 (Brier 0.43 vs 0.15 for the position-only baseline). Fix: export the curve out to the deadline and have `site/index.html` read it at the asker's own days remaining (today → deadline, from `meta.json` dates). Extend `tests/site/harness.js` to pin "today".
 2. **Deadline.** Headline "cleared by the last automatic waitlist run"; keep "by the first day of instruction" as the second line. Most clearing happens after instruction starts.
@@ -62,7 +62,7 @@ What the patch contains:
 5. **Source label.** When `meta.data_source` is `berkeleytime_history`, the status card reads "Fall 2026, from Berkeleytime's public history. Live Spring 2027 collection starts Oct 26." The no-data state goes away.
 6. `analysis/survival.py::out_of_sample` drops rows censored before 14 days but keeps early clearings, which inflates the clearing rate. Replace it with `analysis.backtest.run_backtest(..., which="days:14")` (IPCW) and delete the old function.
 
-Review with `design:ux-copy` (how a probability reads to a stressed student) and `design:accessibility-review`.
+Review with `design:ux-copy` (how a probability reads to a stressed student) and `design:accessibility-review`. Neither plugin is installed; the copy was reviewed by hand and `tests/test_site.py` renders every state under node. Still open for a human: a pass in a real browser.
 
 ## B5. Use the backfill for Spring 2027
 
