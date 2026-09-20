@@ -15,6 +15,10 @@ import pandas as pd
 from lifelines import CoxPHFitter, KaplanMeierFitter
 from lifelines.statistics import logrank_test, proportional_hazard_test
 
+from analysis import coxfast
+
+coxfast.install()  # lifelines' O(n^2) score residual -> O(n); see analysis/coxfast.py
+
 logger = logging.getLogger(__name__)
 
 STRATA = ("position_bucket", "level", "dept_group", "phase")
