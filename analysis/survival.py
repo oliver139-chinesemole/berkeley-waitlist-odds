@@ -110,11 +110,19 @@ class CoxResult:
     def summary(self) -> pd.DataFrame:
         return self.fitter.summary
 
+    @property
+    def rows_fit(self) -> int:
+        return int(len(self.design))
 
-def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: float = 0.01) -> CoxResult:
+
+def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: float = 0.01, max_rows: int | None = None, seed: int = 0) -> CoxResult:
     """Cox PH with robust (cluster by section) standard errors; ``strata`` names
-    columns of the design matrix (one-hot prefixes are expanded)."""
+    columns of the design matrix (one-hot prefixes are expanded). With
+    ``max_rows`` the fit uses a seeded random subsample of that many rows
+    (``result.rows_fit`` says how many were used)."""
     design = design_matrix(cohort)
+    if max_rows is not None and len(design) > int(max_rows):
+        design = design.sample(n=int(max_rows), random_state=seed).sort_index()
     strata_cols: list[str] = []
     for s in strata:
         strata_cols += [c for c in design.columns if c == s or c.startswith(f"{s}=")]

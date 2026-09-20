@@ -151,3 +151,9 @@ def test_cox_design_rounds_durations_and_ph_test_subsamples(cohort: pd.DataFrame
     assert (ph["rows_tested"] == 300).all() and {"covariate", "p", "violates"} <= set(ph.columns)
     full = check_ph(result, max_rows=0)
     assert (full["rows_tested"] == len(result.design)).all()
+
+
+def test_fit_cox_row_cap(cohort: pd.DataFrame) -> None:
+    capped = fit_cox(cohort, max_rows=500)
+    assert capped.rows_fit == 500 and "log_position" in capped.summary.index
+    assert fit_cox(cohort).rows_fit == len(cohort)
