@@ -272,7 +272,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-interval-min", type=float, default=None)
     p.add_argument("--join-every-min", type=float, default=240)
     p.add_argument("--no-site", action="store_true", help="do not write site/data")
-    p.add_argument("--cox-max-rows", type=int, default=COX_MAX_ROWS, help="seeded row cap for the Cox fits (0 = no cap)")
+    p.add_argument("--cox-max-rows", type=int, default=COX_MAX_ROWS or 0, help="seeded row cap for the Cox fits (0 = no cap, the default)")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     flows = None

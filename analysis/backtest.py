@@ -669,7 +669,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--min-n", type=int, default=30)
     p.add_argument("--no-as-of", action="store_true", help="temporal: do not censor training rows at the split date")
-    p.add_argument("--cox-max-rows", type=int, default=COX_MAX_ROWS, help="seeded row cap for the Cox predictor's fit (0 = no cap)")
+    p.add_argument("--cox-max-rows", type=int, default=COX_MAX_ROWS or 0, help="seeded row cap for the Cox predictor's fit (0 = no cap, the default)")
     p.add_argument("--out", type=Path, default=None, help="report dir (default reports/backtest_<term>/<split>_<which>)")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")

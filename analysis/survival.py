@@ -32,10 +32,11 @@ HORIZON_DAYS = 14.0  # the fixed horizon analysis.run uses for its out-of-sample
 # Fall 2026 cohort; ties let it batch by event time.
 COX_TIME_RESOLUTION_DAYS = 0.01
 PH_TEST_MAX_ROWS = 50_000  # the Schoenfeld test runs on a seeded random subsample above this
-# Default row cap for every Cox fit in the pipeline (analysis.run and the backtest's Cox
-# predictor): a seeded random subsample above this. The full Fall 2026 cohort (475,079 design
-# rows, 49 covariates) did not finish in 40 minutes even with tied times.
-COX_MAX_ROWS = 100_000
+# Optional row cap for every Cox fit in the pipeline (analysis.run --cox-max-rows and the
+# backtest's Cox predictor): a seeded random subsample above it. None means no cap: with the
+# linear-time score residual (analysis/coxfast.py) the full Fall 2026 cohort (475,079 design
+# rows, 49 covariates) fits in 14 s; before it the fit did not finish in 40 minutes.
+COX_MAX_ROWS: int | None = None
 
 
 # ---------------------------------------------------------------- Kaplan-Meier
