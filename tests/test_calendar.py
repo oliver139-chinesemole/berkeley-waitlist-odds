@@ -5,7 +5,7 @@ from datetime import date, datetime, timezone
 
 import pytest
 
-from analysis.calendar import FALL_2026, PHASES, SPRING_2027, calendar_for
+from analysis.calendar import FALL_2026, PHASES, SPRING_2026, SPRING_2027, calendar_for
 
 
 def test_spring_2027_phases() -> None:
@@ -42,7 +42,24 @@ def test_fall_2026_from_the_registrar_ics() -> None:
     assert c.phase_at(date(2026, 9, 16)) == "instruction" and c.phase_at(date(2026, 9, 19)) == "after"
 
 
+def test_spring_2026_from_the_registrar_ics() -> None:
+    c = SPRING_2026
+    assert c.phase_at(date(2025, 10, 26)) == "before" and c.phase_at(date(2025, 10, 27)) == "phase1"
+    assert c.phase_at(date(2025, 11, 16)) == "phase1" and c.phase_at(date(2025, 11, 17)) == "between"
+    assert c.phase_at(date(2025, 11, 24)) == "phase2" and c.phase_at(date(2026, 1, 11)) == "phase2"
+    assert c.phase_at(date(2026, 1, 12)) == "adjustment" and c.phase_at(date(2026, 1, 20)) == "instruction"
+    assert c.phase_at(date(2026, 2, 11)) == "instruction" and c.phase_at(date(2026, 2, 12)) == "after"
+
+
+def test_last_automatic_run_convention() -> None:
+    """Spring 2027 has an explicit row (Feb 5, the last day to add without a fee); the
+    other terms use their last day to add without a fee."""
+    assert SPRING_2027.last_auto_waitlist == date(2027, 2, 5)
+    assert FALL_2026.last_auto_waitlist == date(2026, 9, 11) < FALL_2026.add_drop_deadline
+    assert SPRING_2026.last_auto_waitlist == date(2026, 2, 6) < SPRING_2026.add_drop_deadline
+
+
 def test_calendar_for() -> None:
-    assert calendar_for("2272") is SPRING_2027 and calendar_for(2268) is FALL_2026
+    assert calendar_for("2272") is SPRING_2027 and calendar_for(2268) is FALL_2026 and calendar_for("2262") is SPRING_2026
     with pytest.raises(KeyError):
         calendar_for("2275")

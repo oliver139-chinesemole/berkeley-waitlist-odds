@@ -340,15 +340,18 @@ class BerkeleytimeSource:
         """The persisted op that will be sent for ``operation_name`` with these variables."""
         return select_op(self.ops, operation_name, variables)
 
-    def execute(self, operation_name: str, variables: dict[str, Any]) -> dict[str, Any]:
+    def execute(self, operation_name: str, variables: dict[str, Any], *, op: PersistedOp | None = None) -> dict[str, Any]:
         """POST the persisted operation and return the response's ``data`` object.
 
         GraphQL ``errors`` raise ``ParseError``; a non-200 status without an
         error body is retried on 5xx/429/transport failure (exponential
         backoff with jitter, or ``Retry-After`` when larger) and then raises
         ``BerkeleytimeError``. A 3xx is never followed and raises at once.
+        ``op`` overrides the automatic choice among the recorded operations
+        (several entries can share a name and variables; the gateway's schema
+        may have moved on from some of them).
         """
-        op = self.op_for(operation_name, variables)
+        op = op or self.op_for(operation_name, variables)
         body = {"id": op.id, "variables": variables}
         status = 0
         payload: dict[str, Any] = {}

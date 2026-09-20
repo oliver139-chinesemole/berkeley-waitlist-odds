@@ -2,7 +2,8 @@
 
 See docs/DESIGN_A5.md section 6. ``run_analysis`` takes in-memory inputs so
 it can be tested on simulated data; ``main`` loads them from a checkout of
-the data branch.
+the data branch, or from a backfilled term (``--backfill-dir``, see
+``analysis.backfill``) whose outputs are labelled ``berkeleytime_history``.
 """
 from __future__ import annotations
 
@@ -15,6 +16,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from analysis.backtest import run_backtest
 from analysis.calendar import TermCalendar, calendar_for
 from analysis.cohort import build_cohort
 from analysis.export import export_site_tables
@@ -23,9 +25,11 @@ from analysis.flows import interval_flows, summary as flows_summary
 from analysis.panel import Outage, load_panel, parse_data_log, section_identity
 from analysis.positions import SCENARIOS
 from analysis.profile import profile_panel
-from analysis.survival import STRATA, fit_cox_with_ph_check, headline, headline_median, km_by, km_table, logrank_table, out_of_sample
+from analysis.survival import HORIZON_DAYS, STRATA, fit_cox_with_ph_check, headline, headline_median, km_by, km_table, logrank_table
 
 logger = logging.getLogger(__name__)
+
+OWN_DATA_SOURCE = "own_snapshots"
 
 
 @dataclass
@@ -62,6 +66,10 @@ def _df_to_md(frame: pd.DataFrame, max_rows: int = 40) -> str:
     return "\n".join(lines)
 
 
+def _empty_oos() -> dict:
+    return {"n_train": 0, "n_test": 0, "metrics": pd.DataFrame(), "calibration": pd.DataFrame(), "auc_cox": float("nan"), "brier_cox": float("nan"), "brier_bucket": float("nan"), "brier_rows": 0, "notes": []}
+
+
 def run_analysis(
     panel: pd.DataFrame,
     identity: pd.DataFrame,
@@ -74,7 +82,15 @@ def run_analysis(
     join_every_min: float = 240,
     min_cohort_rows: int = 100,
     site_dir: Path | str | None = None,
+    flows: pd.DataFrame | None = None,
+    site_meta: dict | None = None,
 ) -> AnalysisResult:
+    """Everything from a panel (or precomputed ``flows``) to the report.
+
+    ``flows`` skips ``interval_flows`` (a backfilled term carries its own
+    censoring); ``site_meta`` is merged into ``site/data/meta.json`` and should
+    name the ``data_source``.
+    """
     out_dir = Path(out_dir) / calendar.term_id
     out_dir.mkdir(parents=True, exist_ok=True)
     fig_dir = out_dir / "figures"
@@ -85,7 +101,8 @@ def run_analysis(
     logger.info("profile: %d runs, %d sections, observed share %.3f", prof.runs, prof.sections, prof.observed_share)
     notes.extend(prof.notes)
 
-    flows = interval_flows(panel, outages=list(outages), max_interval_min=max_interval_min)
+    if flows is None:
+        flows = interval_flows(panel, outages=list(outages), max_interval_min=max_interval_min)
     flows.to_parquet(out_dir / "flows.parquet", index=False)
     fsum = flows_summary(flows)
     logger.info("flows: %s", fsum)
@@ -139,23 +156,42 @@ def run_analysis(
     sens = pd.DataFrame({"scenario": list(cohorts), "median_days_pos10_lower_phase1": [headline_median(c) for c in cohorts.values()], "rows": list(cohort_rows.values())})
     sens.to_csv(out_dir / "sensitivity.csv", index=False)
 
-    oos = out_of_sample(cohort) if enough else {"train_rows": 0, "test_rows": 0, "concordance": float("nan"), "brier_14d": float("nan"), "brier_rows": 0, "calibration": pd.DataFrame()}
-    if len(oos["calibration"]):
-        oos["calibration"].to_csv(out_dir / "calibration.csv", index=False)
-        figures.append(plot_calibration(oos["calibration"], fig_dir / "calibration.png", brier=oos["brier_14d"]))
+    # Out of sample: fit on joins before Phase 2 (censored at the split), score joins
+    # after it at a fixed 14-day horizon with IPCW (analysis.backtest).
+    oos = _empty_oos()
+    if enough:
+        bt = run_backtest(cohort, calendar, split="temporal", which=f"days:{int(HORIZON_DAYS)}", n_boot=100)
+        oos.update({"n_train": bt.n_train, "n_test": bt.n_test, "metrics": bt.metrics, "calibration": bt.calibration, "notes": bt.notes})
+        if len(bt.metrics):
+            m = bt.metrics.set_index("predictor")
+            oos.update({"auc_cox": float(m.at["cox", "auc"]), "brier_cox": float(m.at["cox", "brier"]), "brier_bucket": float(m.at["bucket", "brier"]), "brier_rows": int(m.at["cox", "brier_rows"])})
+            bt.metrics.to_csv(out_dir / "backtest_14d.csv", index=False)
+            cox_cal = bt.calibration[bt.calibration["predictor"] == "cox"].drop(columns=["predictor"])
+            if len(cox_cal):
+                cox_cal.to_csv(out_dir / "calibration.csv", index=False)
+                figures.append(plot_calibration(cox_cal, fig_dir / "calibration.png", brier=oos["brier_cox"]))
+        else:
+            notes.extend(bt.notes)
 
     head = headline(cohort, cox_for_headline) if enough else {}
     site_files = None
     if site_dir is not None and len(cohort):
         # meta["cohort_rows"] stays the integer the exporter writes (the page prints it);
         # the per-scenario counts go under their own key.
-        site_files = export_site_tables(cohort, calendar, site_dir, meta={"flows": fsum, "cohort_rows_by_scenario": cohort_rows})
+        meta = {"data_source": OWN_DATA_SOURCE, "flows": fsum, "cohort_rows_by_scenario": cohort_rows}
+        if site_meta:
+            meta.update(site_meta)
+        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta)
 
     report = [
         f"# Waitlist analysis report: {calendar.name} (term {calendar.term_id})",
         "",
         "Generated by `python -m analysis.run`. Every number here reproduces from the data branch; nothing is edited by hand.",
         "",
+    ]
+    if site_meta and site_meta.get("data_source"):
+        report += [f"Data source: `{site_meta['data_source']}`.", ""]
+    report += [
         prof.as_markdown(),
         "",
         "## Flows",
@@ -178,7 +214,18 @@ def run_analysis(
         if cox_strat is not None:
             report += ["Stratified refit:", "", _df_to_md(cox_strat.reset_index()), ""]
     report += ["## Sensitivity to the drop scenario", "", _df_to_md(sens), ""]
-    report += ["## Out of sample (fit on Phase 1 joins, score Phase 2 joins)", "", f"train rows {oos['train_rows']}, test rows {oos['test_rows']}, concordance {oos['concordance']:.3f}, Brier(14 d) {oos['brier_14d']:.3f} on {oos['brier_rows']} rows", "", _df_to_md(oos["calibration"]), ""]
+    report += [
+        f"## Out of sample (fit on joins before Phase 2, censored at the split; score joins after it at {int(HORIZON_DAYS)} days, IPCW)",
+        "",
+        f"train rows {oos['n_train']}, scored test rows {oos['n_test']} ({oos['brier_rows']} with a known outcome); Cox AUC {oos['auc_cox']:.3f}, Brier {oos['brier_cox']:.3f} against {oos['brier_bucket']:.3f} for the position-bucket baseline",
+        "",
+        _df_to_md(oos["metrics"]),
+        "",
+        "Calibration (Cox, weighted deciles):",
+        "",
+        _df_to_md(oos["calibration"][oos["calibration"]["predictor"] == "cox"].drop(columns=["predictor"]) if len(oos["calibration"]) else pd.DataFrame()),
+        "",
+    ]
     if head:
         report += ["## Headline", ""]
         for key, value in head.items():
@@ -212,9 +259,10 @@ def run_analysis(
 
 
 def main(argv: list[str] | None = None) -> int:
-    p = argparse.ArgumentParser(description="Reproduce every table, figure and site file from the data branch.")
+    p = argparse.ArgumentParser(description="Reproduce every table, figure and site file from the data branch (or a backfilled term).")
     p.add_argument("--data-root", type=Path, default=Path("./data-branch"))
-    p.add_argument("--term-id", required=True)
+    p.add_argument("--term-id", default=None, help="SIS term id; required unless --backfill-dir carries one")
+    p.add_argument("--backfill-dir", type=Path, default=None, help="output of `python -m analysis.backfill build` (Berkeleytime history instead of the data branch)")
     p.add_argument("--out", type=Path, default=Path("analysis/out"))
     p.add_argument("--site-dir", type=Path, default=Path("site/data"))
     p.add_argument("--data-log", type=Path, default=Path("docs/DATA_LOG.md"))
@@ -223,10 +271,28 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--no-site", action="store_true", help="do not write site/data")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
-    calendar = calendar_for(args.term_id)
-    panel = load_panel(args.data_root, args.term_id)
-    identity = section_identity(args.data_root, args.term_id)
-    outages = parse_data_log(args.data_log) if args.data_log.exists() else []
+    flows = None
+    site_meta = None
+    if args.backfill_dir is not None:
+        from analysis.backfill import load_backfill
+
+        panel, identity, flows, bmeta = load_backfill(args.backfill_dir)
+        term_id = args.term_id or bmeta["term_id"]
+        if args.term_id and str(args.term_id) != str(bmeta["term_id"]):
+            p.error(f"--term-id {args.term_id} does not match the backfill's term {bmeta['term_id']}")
+        outages: list[Outage] = []
+        site_meta = {
+            "data_source": bmeta.get("data_source", "berkeleytime_history"),
+            "backfill": {k: bmeta.get(k) for k in ("sections", "segments", "gap_min", "crossings_wide", "history_window", "built_at")},
+        }
+    else:
+        if not args.term_id:
+            p.error("--term-id is required without --backfill-dir")
+        term_id = args.term_id
+        panel = load_panel(args.data_root, term_id)
+        identity = section_identity(args.data_root, term_id)
+        outages = parse_data_log(args.data_log) if args.data_log.exists() else []
+    calendar = calendar_for(term_id)
     result = run_analysis(
         panel,
         identity,
@@ -236,6 +302,8 @@ def main(argv: list[str] | None = None) -> int:
         max_interval_min=args.max_interval_min,
         join_every_min=args.join_every_min,
         site_dir=None if args.no_site else args.site_dir,
+        flows=flows,
+        site_meta=site_meta,
     )
     print(json.dumps({"out": str(result.out_dir), "flows": result.flows_summary, "cohort_rows": result.cohort_rows, "notes": result.notes, "figures": [str(f) for f in result.figures]}, indent=1))
     return 0

@@ -7,12 +7,13 @@ import pandas as pd
 import pytest
 
 from analysis.calendar import SPRING_2027
-from analysis.cohort import COHORT_COLUMNS, build_cohort, censoring_horizon, course_level, position_bucket, thin_join_times
+from analysis.cohort import COHORT_COLUMNS, build_cohort, censoring_horizon, course_level, joinable, position_bucket, thin_join_times
 
 T0 = datetime(2026, 10, 27, 12, 0, tzinfo=timezone.utc)  # phase 1 of Spring 2027
 
 
-def flows(section_id: str, rows: list[tuple[int, int, int, bool]], capacity: int = 100, reserved: int | None = None) -> pd.DataFrame:
+def flows(section_id: str, rows: list[tuple[int, int, int, bool]], capacity: int = 100, reserved: int | None = None, full: bool = True) -> pd.DataFrame:
+    """``full`` is the section's ``full0`` flag at every interval (no unreserved seat open)."""
     records = []
     for i, (admits, wl_drops, waitlist0, censored) in enumerate(rows):
         records.append(
@@ -23,6 +24,7 @@ def flows(section_id: str, rows: list[tuple[int, int, int, bool]], capacity: int
                 "interval_min": 30.0,
                 "waitlist0": waitlist0,
                 "capacity0": capacity,
+                "full0": full,
                 "reserved0": reserved,
                 "admits": admits,
                 "wl_joins": 0,
@@ -81,7 +83,7 @@ def test_build_cohort_rows_and_covariates() -> None:
     assert at0.at[1, "position_bucket"] == "1-5" and at0.at[1, "level"] == "lower" and at0.at[1, "phase"] == "phase1"
     assert at0.at[1, "reserved"] and at0.at[1, "wl_ratio"] == pytest.approx(0.03)
     assert at0.at[1, "days_to_instruction"] == pytest.approx((datetime(2027, 1, 19, tzinfo=timezone.utc) - T0).total_seconds() / 86400)
-    # section 2 has an empty waitlist: only position 1 qualifies, never clears, censored at the horizon
+    # section 2 is full with an empty waitlist: only position 1 qualifies, never clears, censored at the horizon
     s2 = cohort[cohort["section_id"] == "2"]
     assert set(s2["position"]) == {1} and (s2["event"] == 0).all() and s2["duration_min"].max() == 60.0
     assert s2["level"].iloc[0] == "grad" and s2["scenario"].iloc[0] == "central"
@@ -112,3 +114,19 @@ def test_empty_flows() -> None:
     empty = flows("1", [(0, 0, 0, False)]).iloc[0:0]
     cohort = build_cohort(empty, identity(("1", "COMPSCI 61A", "61A", "LEC")), SPRING_2027)
     assert len(cohort) == 0 and list(cohort.columns) == list(COHORT_COLUMNS)
+
+
+def test_open_section_without_queue_is_not_joinable() -> None:
+    """Nobody waits behind an open seat: no virtual joiner where seats are open and the queue is empty."""
+    ident = identity(("1", "COMPSCI 61A", "61A", "LEC"))
+    open_no_queue = flows("1", [(0, 0, 0, False)] * 3, full=False)
+    assert len(build_cohort(open_no_queue, ident, SPRING_2027, positions=(1,), join_every_min=0, min_sections_per_group=1)) == 0
+    full_no_queue = flows("1", [(0, 0, 0, False)] * 3, full=True)
+    assert len(build_cohort(full_no_queue, ident, SPRING_2027, positions=(1,), join_every_min=0, min_sections_per_group=1)) == 3
+    open_with_queue = flows("1", [(0, 0, 2, False)] * 3, full=False)  # a queue exists (reserved seats, say): joinable
+    assert len(build_cohort(open_with_queue, ident, SPRING_2027, positions=(1,), join_every_min=0, min_sections_per_group=1)) == 3
+    # without full0 the rule falls back to enrolled0 >= capacity0, then to "not full"
+    no_flag = open_no_queue.drop(columns=["full0"]).assign(enrolled0=100)
+    assert len(build_cohort(no_flag, ident, SPRING_2027, positions=(1,), join_every_min=0, min_sections_per_group=1)) == 3
+    assert len(build_cohort(open_no_queue.drop(columns=["full0"]), ident, SPRING_2027, positions=(1,), join_every_min=0, min_sections_per_group=1)) == 0
+    assert joinable(0, False) is False and joinable(0, None) is False and joinable(0, True) is True and joinable(3, False) is True

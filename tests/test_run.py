@@ -17,8 +17,17 @@ from tests.test_survival import synthetic_cohort
 SUBJECTS = ["COMPSCI", "MATH", "STAT", "ART", "HISTORY"]
 
 
+# Longer queues and fewer drops than the simulator's defaults, so that some virtual
+# waitlisters are still waiting 14 days after joining and the out-of-sample check
+# has known negatives as well as known positives.
+SIM = dict(days=21, join_rate_per_day=10.0, enr_drop_rate_per_day=1.0, wl_drop_rate_per_day=0.5, initial_fill=1.0)
+
+
 def sim_inputs(seed: int = 1):
-    panel, _, _ = simulate(SimConfig(seed=seed))
+    """Simulated panel, identity and a calendar whose Phase 2 starts on day 5, so the
+    out-of-sample check (fit before Phase 2, score 14-day outcomes after it) has
+    rows with a known outcome."""
+    panel, _, _ = simulate(SimConfig(seed=seed, **SIM))
     ids = sorted(panel["section_id"].unique())
     identity = pd.DataFrame(
         [
@@ -41,13 +50,13 @@ def sim_inputs(seed: int = 1):
         term_id="9999",
         name="Simulated term",
         phase1_start=day0,
-        phase1_end=day0 + timedelta(days=6),
-        phase2_start=day0 + timedelta(days=7),
-        phase2_end=day0 + timedelta(days=13),
-        adjustment_start=day0 + timedelta(days=14),
-        instruction_start=day0 + timedelta(days=20),
-        last_auto_waitlist=day0 + timedelta(days=30),
-        add_drop_deadline=day0 + timedelta(days=35),
+        phase1_end=day0 + timedelta(days=4),
+        phase2_start=day0 + timedelta(days=5),
+        phase2_end=day0 + timedelta(days=15),
+        adjustment_start=day0 + timedelta(days=16),
+        instruction_start=day0 + timedelta(days=24),
+        last_auto_waitlist=day0 + timedelta(days=34),
+        add_drop_deadline=day0 + timedelta(days=38),
     )
     return panel, identity, cal
 
@@ -68,7 +77,10 @@ def test_run_produces_everything(result) -> None:
     assert list(res.sensitivity["scenario"]) == ["optimistic", "central", "pessimistic"]
     med = res.sensitivity.set_index("scenario")["median_days_pos10_lower_phase1"]
     assert med["optimistic"] <= med["central"] <= med["pessimistic"]
-    assert 0.5 < res.out_of_sample["concordance"] <= 1.0 and res.out_of_sample["brier_rows"] > 0
+    oos = res.out_of_sample
+    assert list(oos["metrics"]["predictor"]) == ["bucket", "course", "site", "cox"] and oos["brier_rows"] > 0
+    assert 0.5 < oos["auc_cox"] <= 1.0 and 0.0 <= oos["brier_cox"] <= 1.0
+    assert (term_dir / "backtest_14d.csv").exists() if (term_dir := out / "9999") else True
     names = {p.name for p in res.figures}
     assert {"km_position_bucket.png", "km_level.png", "km_dept_group.png", "km_phase.png", "hero.png", "calibration.png"} <= names
     assert all(p.exists() and p.stat().st_size > 1000 for p in res.figures)
@@ -84,7 +96,8 @@ def test_site_tables_are_valid_json_with_sample_sizes(result) -> None:
     courses_path, meta_path = res.site_files
     courses = json.loads(courses_path.read_text())
     meta = json.loads(meta_path.read_text())
-    assert len(courses) == 40 and meta["courses"] == 40 and meta["term_id"] == "9999"
+    # a simulated course whose sections never filled and never queued has no joinable moments, so 40 is an upper bound
+    assert 36 <= len(courses) <= 40 and meta["courses"] == len(courses) and meta["term_id"] == "9999"
     for key, entry in courses.items():
         assert entry["subject"] == key.split()[0] and entry["level"] in ("lower", "upper", "grad")
         for bucket, cell in entry["buckets"].items():
@@ -117,6 +130,7 @@ def test_export_empty(tmp_path: Path) -> None:
 
 def test_run_too_small_writes_notes(tmp_path: Path) -> None:
     panel, identity, cal = sim_inputs()
-    few = panel[panel["section_id"].isin(sorted(panel["section_id"].unique())[:2])]
+    first_days = panel["run_started_at"] < panel["run_started_at"].min() + timedelta(days=3)
+    few = panel[first_days & panel["section_id"].isin(sorted(panel["section_id"].unique())[:2])]
     res = run_analysis(few, identity, cal, tmp_path, join_every_min=1440)
     assert any("too small" in n for n in res.notes) and res.cox_summary is None and (res.out_dir / "report.md").exists()

@@ -17,7 +17,6 @@ from analysis.survival import (
     km_by,
     km_table,
     logrank_table,
-    out_of_sample,
     sensitivity,
 )
 
@@ -131,22 +130,6 @@ def test_sensitivity_and_headline(cohort: pd.DataFrame) -> None:
     assert "share_cleared_by_instruction_by_bucket" in h and 0 <= h["share_cleared_by_instruction_by_bucket"].max() <= 1
     assert 0 < h["position_hazard_ratio_per_log_unit"] < 1
     assert "largest_department_effect" in h and 0 <= h["largest_department_effect"]["p"] <= 1
-
-
-def test_out_of_sample(cohort: pd.DataFrame) -> None:
-    res = out_of_sample(cohort)
-    assert res["train_rows"] > 50 and res["test_rows"] > 50
-    assert 0.5 < res["concordance"] <= 1.0
-    assert 0.0 <= res["brier_14d"] <= 0.25 and res["brier_rows"] > 0
-    calib = res["calibration"]
-    assert len(calib) >= 5 and (calib["n"] > 0).all()
-    assert abs(float((calib["predicted"] - calib["observed"]).mean())) < 0.15
-
-
-def test_out_of_sample_too_small() -> None:
-    small = synthetic_cohort(n_sections=2, joins_per_section=2)
-    res = out_of_sample(small)
-    assert np.isnan(res["concordance"]) and res["brier_rows"] == 0
 
 
 def test_check_ph_runs_on_small_design(cohort: pd.DataFrame) -> None:
