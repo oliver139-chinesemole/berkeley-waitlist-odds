@@ -78,7 +78,7 @@ def test_run_produces_everything(result) -> None:
     med = res.sensitivity.set_index("scenario")["median_days_pos10_lower_phase1"]
     assert med["optimistic"] <= med["central"] <= med["pessimistic"]
     oos = res.out_of_sample
-    assert list(oos["metrics"]["predictor"]) == ["bucket", "course", "site", "cox"] and oos["brier_rows"] > 0
+    assert list(oos["metrics"]["predictor"]) == ["bucket", "dept", "course", "site", "cox"] and oos["brier_rows"] > 0
     assert 0.5 < oos["auc_cox"] <= 1.0 and 0.0 <= oos["brier_cox"] <= 1.0
     assert (term_dir / "backtest_14d.csv").exists() if (term_dir := out / "9999") else True
     names = {p.name for p in res.figures}
@@ -114,15 +114,22 @@ def test_site_tables_are_valid_json_with_sample_sizes(result) -> None:
 def test_export_pooling_rule() -> None:
     cohort = synthetic_cohort(n_sections=8, joins_per_section=4)
     cal = TermCalendar("2272", "x", *([pd.Timestamp("2026-10-26").date()] * 8))
-    tables = course_tables(cohort, cal, min_n=30)
+    tables = course_tables(cohort, cal, min_n=30, level="course")
     # each course has 4 joins x 6 positions = 24 rows spread over buckets: every cell is pooled
     for entry in tables.values():
         for cell in entry["buckets"].values():
             assert cell["pooled"] is not False and "n_course" in cell and "sections_course" in cell
     big = synthetic_cohort(n_sections=8, joins_per_section=40)
-    tables = course_tables(big, cal, min_n=30)
+    tables = course_tables(big, cal, min_n=30, level="course")
     unpooled = [cell for e in tables.values() for cell in e["buckets"].values() if cell["pooled"] is False]
     assert unpooled and all(cell["n"] >= 30 for cell in unpooled)
+    # the default level serves the department curve everywhere, with the course's own counts alongside
+    dept = course_tables(big, cal, min_n=30)
+    for key, entry in dept.items():
+        for cell in entry["buckets"].values():
+            assert cell["pooled"] in (entry["subject"], "OTHER", "all") and cell["n_course"] <= cell["n"] and cell["sections_course"] >= 1
+    with pytest.raises(ValueError):
+        course_tables(big, cal, level="school")
 
 
 def test_export_empty(tmp_path: Path) -> None:
@@ -131,7 +138,7 @@ def test_export_empty(tmp_path: Path) -> None:
     courses_path, meta_path = export_site_tables(empty, cal, tmp_path)
     meta = json.loads(meta_path.read_text())
     assert json.loads(courses_path.read_text()) == {} and meta["cohort_rows"] == 0
-    assert meta["deadline"] == "2026-10-26" and meta["instruction_start"] == "2026-10-26" and meta["positions"] == []
+    assert meta["deadline"] == "2026-10-26" and meta["instruction_start"] == "2026-10-26" and meta["positions"] == [] and meta["estimate_level"] == "dept"
 
 
 def test_run_too_small_writes_notes(tmp_path: Path) -> None:

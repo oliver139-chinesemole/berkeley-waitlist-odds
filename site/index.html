@@ -154,7 +154,10 @@
       out.classList.remove("hidden");
       return;
     }
-    const pooledTag = cell.pooled === false ? "" : `<span class="tag pooled" title="Too few cases for this course alone; estimate uses ${cell.pooled === "all" ? "all courses" : "the whole " + esc(cell.pooled) + " department"}">pooled</span>`;
+    const deptLevel = meta.estimate_level === "dept";
+    const pooledTag = cell.pooled === false ? "" : deptLevel
+      ? `<span class="tag pooled" title="${cell.pooled === "all" ? "Too few cases in this department; the curve is for all courses at this position" : "The curve is the whole " + esc(cell.pooled) + " department's at this position: in the Fall 2026 backtest, course-specific curves predicted held-out students no better than the department's, so the page shows the department curve and this course's own case count"}">${cell.pooled === "all" ? "all courses" : "department estimate"}</span>`
+      : `<span class="tag pooled" title="Too few cases for this course alone; estimate uses ${cell.pooled === "all" ? "all courses" : "the whole " + esc(cell.pooled) + " department"}">pooled</span>`;
     const h = horizons();
     const median = cell.median_days == null ? "more than half never cleared in the data" : (cell.median_days < 1 ? Math.round(cell.median_days * 24) + " hours" : cell.median_days.toFixed(1) + " days");
     const cases = `${cell.sections} sections, ${cell.n} hypothetical joiners, ${cell.events} cleared${cell.n_course != null ? ` (this course alone: ${cell.n_course} joiners in ${cell.sections_course} sections)` : ""}`;

@@ -15,6 +15,10 @@ import pandas as pd
 from lifelines import CoxPHFitter, KaplanMeierFitter
 from lifelines.statistics import logrank_test, proportional_hazard_test
 
+from analysis import coxfast
+
+coxfast.install()  # lifelines' O(n^2) score residual -> O(n); see analysis/coxfast.py
+
 logger = logging.getLogger(__name__)
 
 STRATA = ("position_bucket", "level", "dept_group", "phase")
@@ -22,6 +26,17 @@ COX_NUMERIC = ("log_position", "wl_ratio", "days_to_instruction", "reserved")
 COX_CATEGORICAL = {"level": "lower", "dept_group": "OTHER", "phase": "phase1"}
 BUCKET_ORDER = ("1-5", "6-15", "16-40", "41+")
 HORIZON_DAYS = 14.0  # the fixed horizon analysis.run uses for its out-of-sample check
+# Durations are rounded to this many days before the Cox fit (0.01 day is 14.4 minutes, finer
+# than any source's poll: Berkeleytime 15 min, this project's scraper 30 min). Nearly-unique
+# times send lifelines down its per-row path, which took over eight hours on the 493,364-row
+# Fall 2026 cohort; ties let it batch by event time.
+COX_TIME_RESOLUTION_DAYS = 0.01
+PH_TEST_MAX_ROWS = 50_000  # the Schoenfeld test runs on a seeded random subsample above this
+# Optional row cap for every Cox fit in the pipeline (analysis.run --cox-max-rows and the
+# backtest's Cox predictor): a seeded random subsample above it. None means no cap: with the
+# linear-time score residual (analysis/coxfast.py) the full Fall 2026 cohort (475,079 design
+# rows, 49 covariates) fits in 14 s; before it the fit did not finish in 40 minutes.
+COX_MAX_ROWS: int | None = None
 
 
 # ---------------------------------------------------------------- Kaplan-Meier
@@ -67,13 +82,17 @@ def logrank_table(cohort: pd.DataFrame, by: str) -> pd.DataFrame:
 # ------------------------------------------------------------------------ Cox
 
 
-def design_matrix(cohort: pd.DataFrame) -> pd.DataFrame:
+def design_matrix(cohort: pd.DataFrame, *, time_resolution_days: float = COX_TIME_RESOLUTION_DAYS) -> pd.DataFrame:
     """Covariates for the Cox model: numeric columns as they are (``reserved``
     as 0/1) and one-hot columns for the categorical ones with the reference
-    level dropped. Keeps ``duration_days``, ``event`` and ``section_id``."""
+    level dropped. Keeps ``duration_days`` (rounded up to ``time_resolution_days``
+    so tied times exist and stay positive), ``event`` and ``section_id``."""
     frame = cohort.copy()
+    durations = frame["duration_days"].astype(float)
+    if time_resolution_days and time_resolution_days > 0:
+        durations = np.ceil(durations / time_resolution_days) * time_resolution_days
     cols: dict[str, pd.Series] = {
-        "duration_days": frame["duration_days"].astype(float),
+        "duration_days": durations,
         "event": frame["event"].astype(int),
         "section_id": frame["section_id"].astype(str),
     }
@@ -95,20 +114,35 @@ class CoxResult:
     fitter: CoxPHFitter
     design: pd.DataFrame
     strata: list[str] = field(default_factory=list)
+    rows_available: int = 0  # design rows before any seeded subsample (rows with a missing covariate are already gone)
 
     @property
     def summary(self) -> pd.DataFrame:
         return self.fitter.summary
 
+    @property
+    def rows_fit(self) -> int:
+        return int(len(self.design))
 
-def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: float = 0.01) -> CoxResult:
+    @property
+    def subsampled(self) -> bool:
+        return self.rows_available > self.rows_fit
+
+
+def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: float = 0.01, max_rows: int | None = COX_MAX_ROWS, seed: int = 0) -> CoxResult:
     """Cox PH with robust (cluster by section) standard errors; ``strata`` names
-    columns of the design matrix (one-hot prefixes are expanded)."""
+    columns of the design matrix (one-hot prefixes are expanded). With
+    ``max_rows`` the fit uses a seeded random subsample of that many rows
+    (``result.rows_fit`` says how many were used)."""
     design = design_matrix(cohort)
+    rows_available = int(len(design))
+    if max_rows is not None and len(design) > int(max_rows):
+        design = design.sample(n=int(max_rows), random_state=seed).sort_index()
     strata_cols: list[str] = []
     for s in strata:
         strata_cols += [c for c in design.columns if c == s or c.startswith(f"{s}=")]
     cph = CoxPHFitter(penalizer=penalizer)
+    fit_kwargs = {"duration_col": "duration_days", "event_col": "event", "cluster_col": "section_id", "robust": True, "batch_mode": True}
     if strata_cols:
         # lifelines wants strata as categorical columns: collapse each one-hot family into a label
         collapsed = design.copy()
@@ -123,33 +157,47 @@ def fit_cox(cohort: pd.DataFrame, *, strata: Iterable[str] = (), penalizer: floa
                 collapsed[f"{fam}_stratum"] = collapsed[fam].astype(str)
                 collapsed = collapsed.drop(columns=[fam])
             labels.append(f"{fam}_stratum")
-        cph.fit(collapsed, duration_col="duration_days", event_col="event", cluster_col="section_id", robust=True, strata=labels)
-        return CoxResult(fitter=cph, design=collapsed, strata=labels)
-    cph.fit(design, duration_col="duration_days", event_col="event", cluster_col="section_id", robust=True)
-    return CoxResult(fitter=cph, design=design)
+        cph.fit(collapsed, strata=labels, **fit_kwargs)
+        return CoxResult(fitter=cph, design=collapsed, strata=labels, rows_available=rows_available)
+    cph.fit(design, **fit_kwargs)
+    return CoxResult(fitter=cph, design=design, rows_available=rows_available)
 
 
-def check_ph(result: CoxResult, *, alpha: float = 0.05) -> pd.DataFrame:
-    """Proportional-hazards test per covariate (Schoenfeld residuals, rank transform)."""
-    # lifelines re-reads the training frame, cluster column included
-    test = proportional_hazard_test(result.fitter, result.design, time_transform="rank")
+def check_ph(result: CoxResult, *, alpha: float = 0.05, max_rows: int = PH_TEST_MAX_ROWS, seed: int = 0) -> pd.DataFrame:
+    """Proportional-hazards test per covariate (Schoenfeld residuals, rank transform).
+
+    lifelines runs the test on the frame a fitter was trained on, and its cost
+    grows with rows times event times, so above ``max_rows`` a plain Cox with
+    the same covariates (and strata) is refit on a seeded random subsample and
+    tested instead; 50,000 rows give the test ample power. ``rows_tested`` says
+    which frame was used."""
+    frame = result.design
+    fitter = result.fitter
+    if max_rows and len(frame) > max_rows:
+        # the diagnostic fit has no cluster column, so the frame it is tested on must not either
+        frame = frame.sample(n=int(max_rows), random_state=seed).drop(columns=["section_id"])
+        diagnostic = CoxPHFitter(penalizer=fitter.penalizer)
+        diagnostic.fit(frame, duration_col="duration_days", event_col="event", strata=result.strata or None, batch_mode=True)
+        fitter = diagnostic
+    test = proportional_hazard_test(fitter, frame, time_transform="rank")
     out = test.summary.reset_index()
     out = out.rename(columns={out.columns[0]: "covariate", "-log2(p)": "neg_log2_p"})
     out["violates"] = out["p"] < alpha
+    out["rows_tested"] = int(len(frame))
     return out
 
 
-def fit_cox_with_ph_check(cohort: pd.DataFrame, *, alpha: float = 0.05) -> tuple[CoxResult, pd.DataFrame, CoxResult | None]:
+def fit_cox_with_ph_check(cohort: pd.DataFrame, *, alpha: float = 0.05, max_rows: int | None = COX_MAX_ROWS) -> tuple[CoxResult, pd.DataFrame, CoxResult | None]:
     """Fit, test PH, and refit with the violating covariate families as strata.
     Returns (first fit, PH table, stratified refit or None)."""
-    first = fit_cox(cohort)
+    first = fit_cox(cohort, max_rows=max_rows)
     ph = check_ph(first, alpha=alpha)
     violating = sorted({str(c).split("=")[0] for c in ph.loc[ph["violates"], "covariate"]})
     # only categorical families can be stratified; numeric violators are reported, not stratified
     families = [f for f in violating if f in COX_CATEGORICAL]
     if not families:
         return first, ph, None
-    return first, ph, fit_cox(cohort, strata=families)
+    return first, ph, fit_cox(cohort, strata=families, max_rows=max_rows)
 
 
 # ---------------------------------------------------------------- sensitivity

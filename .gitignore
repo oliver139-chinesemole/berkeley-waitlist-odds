@@ -9,3 +9,4 @@ data-branch/
 *.log
 analysis/out/
 backfill/
+reports/**/predictions.parquet

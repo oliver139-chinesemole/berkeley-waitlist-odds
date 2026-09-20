@@ -87,15 +87,24 @@ def pct(p: float) -> str:
 
 @pytest.fixture(scope="module")
 def full_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    """Course-level export: exercises the course cells and the small-cell pooling path."""
     root = tmp_path_factory.mktemp("site_full")
-    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=50)
+    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=50, level="course")
+    return root
+
+
+@pytest.fixture(scope="module")
+def dept_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    """The default export: department curves with the course's own counts alongside."""
+    root = tmp_path_factory.mktemp("site_dept")
+    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=20)
     return root
 
 
 @pytest.fixture(scope="module")
 def backfill_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     root = tmp_path_factory.mktemp("site_backfill")
-    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=20, meta={"data_source": "berkeleytime_history"})
+    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=20, level="course", meta={"data_source": "berkeleytime_history"})
     return root
 
 
@@ -104,7 +113,7 @@ def narrow_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     """Only positions 1 to 5 ever joined, so every course has a single bucket."""
     root = tmp_path_factory.mktemp("site_narrow")
     cohort = synthetic_cohort()
-    export_site_tables(cohort[cohort["position"] <= 5], CAL, root / "data", n_boot=20)
+    export_site_tables(cohort[cohort["position"] <= 5], CAL, root / "data", n_boot=20, level="course")
     return root
 
 
@@ -215,3 +224,16 @@ def test_missing_bucket_names_the_buckets_with_data(narrow_site: Path) -> None:
 def test_query_string_runs_the_lookup_on_load(full_site: Path) -> None:
     out = render(full_site, search="?course=STAT%202&position=12")
     assert not out["result_hidden"] and "STAT 2" in out["result"] and "position 12" in out["result"]
+
+
+def test_department_level_default_is_labelled(dept_site: Path) -> None:
+    courses = json.loads((dept_site / "data" / "courses.json").read_text())
+    meta = json.loads((dept_site / "data" / "meta.json").read_text())
+    assert meta["estimate_level"] == "dept"
+    cell = courses["COMPSCI 0"]["buckets"]["1-5"]
+    assert cell["pooled"] == "COMPSCI" and cell["n_course"] < cell["n"]
+    out = render(dept_site, course="COMPSCI 0", position="3")
+    r = out["result"]
+    assert 'class="tag pooled"' in r and ">department estimate<" in r and "course-specific curves predicted held-out students no better" in r
+    assert f"this course alone: {cell['n_course']} joiners in {cell['sections_course']} sections" in r
+    assert "Too few cases for this course alone" not in r

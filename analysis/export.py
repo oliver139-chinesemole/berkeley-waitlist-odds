@@ -27,6 +27,13 @@ logger = logging.getLogger(__name__)
 
 MIN_N = 30
 N_BOOT = 200
+# What the page serves. "dept": the department-by-bucket curve for every course (the course's own
+# counts alongside); "course": the course's own curve when it has MIN_N rows, else the department's.
+# The Fall 2026 backtest found course cells no better than the bucket baseline out of time
+# (Brier gain -0.023 [-0.034, -0.011]) and indistinguishable across held-out courses, so dept is
+# the default until a second cycle says otherwise (docs/dev/BACKFILL_BACKTEST.md B3).
+LEVELS = ("dept", "course")
+DEFAULT_LEVEL = "dept"
 CURVE_DAYS = (0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 21, 24, 28, 32, 36, 42, 49, 56, 63, 70, 77, 84, 98, 112, 126, 140, 154, 168, 182)
 
 
@@ -116,15 +123,19 @@ def _estimate(rows: pd.DataFrame, horizon_days: float, *, n_boot: int = N_BOOT) 
     }
 
 
-def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT) -> dict:
+def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT, level: str = DEFAULT_LEVEL) -> dict:
     """``{course_key: {subject, level, buckets: {bucket: cell}}}`` (cell fields in ``_estimate``).
 
     ``horizon_days`` is the median ``days_to_instruction`` of the rows in the
-    cell. Cells with fewer than ``min_n`` rows fall back to the department-level
-    estimate for the same bucket and are marked ``pooled`` (with ``n_course``
-    and ``sections_course`` for the course alone); a department cell that is
+    cell. With ``level="dept"`` every cell is the department-level estimate for
+    the bucket, marked ``pooled: <dept>`` with ``n_course`` and
+    ``sections_course`` for the course alone; with ``level="course"`` a cell
+    with at least ``min_n`` rows is the course's own curve (``pooled: false``)
+    and smaller cells fall back to the department. A department cell that is
     itself too small falls back to the whole cohort's bucket (``pooled: "all"``).
     """
+    if level not in LEVELS:
+        raise ValueError(f"level must be one of {LEVELS}, got {level!r}")
     out: dict = {}
     if cohort.empty:
         return out
@@ -149,7 +160,7 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
             if len(rows) == 0:
                 continue
             horizon = float(rows["days_to_instruction"].median())
-            if len(rows) >= min_n:
+            if level == "course" and len(rows) >= min_n:
                 cell = _estimate(rows, horizon, n_boot=n_boot)
                 cell["pooled"] = False
             else:
@@ -183,11 +194,12 @@ def export_site_tables(
     meta: dict | None = None,
     min_n: int = MIN_N,
     n_boot: int = N_BOOT,
+    level: str = DEFAULT_LEVEL,
 ) -> tuple[Path, Path]:
     """Write ``courses.json`` and ``meta.json`` under ``out_dir``; returns both paths."""
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot)
+    courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot, level=level)
     courses_path = out_dir / "courses.json"
     courses_path.write_text(json.dumps(courses, indent=0, sort_keys=True), encoding="utf-8")
     info = {
@@ -204,6 +216,7 @@ def export_site_tables(
         "scenario": None if cohort.empty else str(cohort["scenario"].iloc[0]),
         "min_n": min_n,
         "n_boot": n_boot,
+        "estimate_level": level,
         "positions": sorted(int(p) for p in cohort["position"].unique()) if len(cohort) else [],
         "instruction_start": calendar.instruction_start.isoformat(),
         "deadline": calendar.last_auto_waitlist.isoformat(),  # last automatic waitlist run (the page's headline horizon)

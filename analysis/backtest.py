@@ -1,13 +1,16 @@
 """Backtests: freeze the model on one set of virtual waitlisters, score another.
 
-Four predictors are scored at each test row's own horizon:
+Five predictors are scored at each test row's own horizon:
 
 - ``bucket``: Kaplan-Meier per position bucket (the baseline);
-- ``course``: Kaplan-Meier per course and bucket with the site's pooling rule
-  (department, then all courses, below ``min_n`` rows), read at the row's horizon;
-- ``site``: the literal number the site would show, i.e. the same pooled
-  curve read at the *training* cell's median lead time before instruction
-  and rounded to two decimals, whatever the test row's own horizon is;
+- ``dept``: Kaplan-Meier per department and bucket (the bucket curve below
+  ``min_n`` rows), read at the row's horizon: what the site serves by default;
+- ``course``: Kaplan-Meier per course and bucket with the pooling rule
+  (department, then all courses, below ``min_n`` rows), read at the row's
+  horizon: the course-level alternative;
+- ``site``: the v1 site number, i.e. the course-level curve read at the
+  *training* cell's median lead time before instruction and rounded to two
+  decimals, whatever the test row's own horizon is;
 - ``cox``: the Cox proportional-hazards fit from ``analysis.survival``.
 
 Scores are inverse-probability-of-censoring weighted (IPCW, Graf 1999). A
@@ -52,11 +55,11 @@ import pandas as pd
 from lifelines import KaplanMeierFitter
 
 from analysis.calendar import TermCalendar, calendar_for
-from analysis.survival import BUCKET_ORDER, design_matrix, fit_cox
+from analysis.survival import BUCKET_ORDER, COX_MAX_ROWS, design_matrix, fit_cox
 
 logger = logging.getLogger(__name__)
 
-PREDICTORS = ("bucket", "course", "site", "cox")
+PREDICTORS = ("bucket", "dept", "course", "site", "cox")
 SPLITS = ("temporal", "grouped", "cross_term")
 BASELINE = "bucket"
 MIN_TRAIN_ROWS = 50
@@ -247,6 +250,16 @@ class PooledKM:
             return self.by_bucket[bucket], "bucket"
         return self.all, "all"  # type: ignore[return-value]
 
+    def predict_dept(self, test: pd.DataFrame, h: np.ndarray) -> np.ndarray:
+        """The department-by-bucket curve at the row's horizon (the bucket curve when the department cell is too small)."""
+        out = np.empty(len(test))
+        depts = self.dept_of(test).to_numpy()
+        buckets = test["position_bucket"].astype(str).to_numpy()
+        for i in range(len(test)):
+            curve = self.by_dept.get((depts[i], buckets[i])) or self.by_bucket.get(buckets[i], self.all)
+            out[i] = curve.p_clear(np.array([h[i]]))[0]  # type: ignore[union-attr]
+        return out
+
     def predict_bucket(self, test: pd.DataFrame, h: np.ndarray) -> np.ndarray:
         out = np.empty(len(test))
         buckets = test["position_bucket"].astype(str).to_numpy()
@@ -291,16 +304,17 @@ class PooledKM:
 
 
 class CoxPredictor:
-    def __init__(self) -> None:
+    def __init__(self, *, max_rows: int | None = COX_MAX_ROWS) -> None:
         self.result = None
         self.columns: list[str] = []
         self.error: str | None = None
         self.depts: set[str] = set()
+        self.max_rows = max_rows
 
     def fit(self, train: pd.DataFrame) -> "CoxPredictor":
         self.depts = {str(d) for d in train["dept_group"].dropna().unique()}
         try:
-            self.result = fit_cox(train)
+            self.result = fit_cox(train, max_rows=self.max_rows)
             self.columns = [c for c in self.result.design.columns if c not in ("duration_days", "event", "section_id")]
         except Exception as exc:  # noqa: BLE001 - a singular fit is a result, not a crash
             self.error = f"{type(exc).__name__}: {exc}"
@@ -418,7 +432,7 @@ def observability(test: pd.DataFrame, h: np.ndarray) -> tuple[np.ndarray, pd.Dat
     return ok, cov
 
 
-def predict_all(train: pd.DataFrame, test: pd.DataFrame, calendar: TermCalendar, which: str, *, min_n: int = 30) -> tuple[pd.DataFrame, list[str]]:
+def predict_all(train: pd.DataFrame, test: pd.DataFrame, calendar: TermCalendar, which: str, *, min_n: int = 30, cox_max_rows: int | None = COX_MAX_ROWS) -> tuple[pd.DataFrame, list[str]]:
     """Fit the four predictors on ``train`` and score every ``test`` row at its horizon."""
     notes: list[str] = []
     test = test.reset_index(drop=True)
@@ -432,17 +446,20 @@ def predict_all(train: pd.DataFrame, test: pd.DataFrame, calendar: TermCalendar,
     test = test[observable].reset_index(drop=True)
     h = h[observable]
     if len(test) == 0:
-        empty = pd.DataFrame(columns=["section_id", "course_key", "position_bucket", "phase", "join_time", "duration_days", "event", "horizon_days", "p_bucket", "p_course", "course_level", "p_site", "site_fallback", "p_cox", "cox_fallback"])
+        empty = pd.DataFrame(columns=["section_id", "course_key", "position_bucket", "phase", "join_time", "duration_days", "event", "horizon_days", "p_bucket", "p_dept", "p_course", "course_level", "p_site", "site_fallback", "p_cox", "cox_fallback"])
         empty.attrs.update({"n_excluded": excluded, "n_unobservable": unobservable, "coverage": coverage})
         return empty, notes
     pooled = PooledKM(min_n=min_n).fit(train)
     p_bucket = pooled.predict_bucket(test, h)
+    p_dept = pooled.predict_dept(test, h)
     p_course, level = pooled.predict(test, h)
     p_site, site_fallback = pooled.predict_site(test)
-    cox = CoxPredictor().fit(train)
+    cox = CoxPredictor(max_rows=cox_max_rows).fit(train)
     p_cox, cox_fallback = cox.predict(test, h, p_bucket)
     if cox.error:
         notes.append(f"Cox fit failed ({cox.error}); the cox column repeats the bucket baseline")
+    elif cox.result is not None and cox.result.subsampled:
+        notes.append(f"Cox predictor fit on a seeded random subsample of {cox.result.rows_fit} of {cox.result.rows_available} training rows")
     pred = pd.DataFrame(
         {
             "section_id": test["section_id"].astype(str),
@@ -454,6 +471,7 @@ def predict_all(train: pd.DataFrame, test: pd.DataFrame, calendar: TermCalendar,
             "event": test["event"].astype(int),
             "horizon_days": h,
             "p_bucket": p_bucket,
+            "p_dept": p_dept,
             "p_course": p_course,
             "course_level": level,
             "p_site": p_site,
@@ -528,6 +546,7 @@ def run_backtest(
     min_n: int = 30,
     g_floor: float = G_FLOOR,
     as_of: bool = True,
+    cox_max_rows: int | None = COX_MAX_ROWS,
 ) -> BacktestResult:
     if split not in SPLITS:
         raise ValueError(f"unknown split {split!r}; expected one of {SPLITS}")
@@ -558,7 +577,7 @@ def run_backtest(
         if len(train) < MIN_TRAIN_ROWS or int(train["event"].sum()) < MIN_TRAIN_EVENTS or len(test) == 0:
             notes.append(f"skipped a fold: {len(train)} training rows with {int(train['event'].sum()) if len(train) else 0} events, {len(test)} test rows")
             continue
-        pred, fold_notes = predict_all(train, test, calendar, which, min_n=min_n)
+        pred, fold_notes = predict_all(train, test, calendar, which, min_n=min_n, cox_max_rows=cox_max_rows)
         excluded += int(pred.attrs.get("n_excluded", 0))
         unobservable += int(pred.attrs.get("n_unobservable", 0))
         cov = pred.attrs.get("coverage")
@@ -633,7 +652,7 @@ def write_report(result: BacktestResult, out_dir: Path | str, *, title: str = ""
         _md(result.by_bucket),
         "",
     ]
-    for name in ("cox", "site"):
+    for name in ("dept", "cox", "site"):
         sub = result.calibration[result.calibration["predictor"] == name] if len(result.calibration) else pd.DataFrame()
         lines += [f"## Calibration: {name}", "", _md(sub.drop(columns=["predictor"]) if len(sub) else sub), ""]
     if result.notes:
@@ -665,6 +684,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--min-n", type=int, default=30)
     p.add_argument("--no-as-of", action="store_true", help="temporal: do not censor training rows at the split date")
+    p.add_argument("--cox-max-rows", type=int, default=COX_MAX_ROWS or 0, help="seeded row cap for the Cox predictor's fit (0 = no cap, the default)")
     p.add_argument("--out", type=Path, default=None, help="report dir (default reports/backtest_<term>/<split>_<which>)")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
@@ -684,6 +704,7 @@ def main(argv: list[str] | None = None) -> int:
         seed=args.seed,
         min_n=args.min_n,
         as_of=not args.no_as_of,
+        cox_max_rows=args.cox_max_rows or None,
     )
     out = args.out or Path("reports") / f"backtest_{args.term_id}" / f"{args.split}_{args.which.replace(':', '')}"
     path = write_report(result, out, title=f"{calendar.name} {args.split}")

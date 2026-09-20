@@ -19,13 +19,13 @@ import pandas as pd
 from analysis.backtest import run_backtest
 from analysis.calendar import TermCalendar, calendar_for
 from analysis.cohort import DEFAULT_POSITIONS, build_cohort
-from analysis.export import export_site_tables
+from analysis.export import DEFAULT_LEVEL, LEVELS, export_site_tables
 from analysis.figures import plot_calibration, plot_km
 from analysis.flows import interval_flows, summary as flows_summary
 from analysis.panel import Outage, load_panel, parse_data_log, section_identity
 from analysis.positions import SCENARIOS
 from analysis.profile import profile_panel
-from analysis.survival import HORIZON_DAYS, STRATA, fit_cox_with_ph_check, headline, headline_median, km_by, km_table, logrank_table
+from analysis.survival import COX_MAX_ROWS, HORIZON_DAYS, STRATA, fit_cox_with_ph_check, headline, headline_median, km_by, km_table, logrank_table
 
 logger = logging.getLogger(__name__)
 
@@ -84,6 +84,8 @@ def run_analysis(
     site_dir: Path | str | None = None,
     flows: pd.DataFrame | None = None,
     site_meta: dict | None = None,
+    cox_max_rows: int | None = COX_MAX_ROWS,
+    site_level: str = DEFAULT_LEVEL,
 ) -> AnalysisResult:
     """Everything from a panel (or precomputed ``flows``) to the report.
 
@@ -138,7 +140,11 @@ def run_analysis(
     cox_summary = ph = cox_strat = None
     if enough:
         try:
-            first, ph, refit = fit_cox_with_ph_check(cohort)
+            first, ph, refit = fit_cox_with_ph_check(cohort, max_rows=cox_max_rows)
+            if first.subsampled:
+                notes.append(f"Cox fit on a seeded random subsample of {first.rows_fit} of {first.rows_available} rows (cox_max_rows)")
+            if int(ph["rows_tested"].iloc[0]) < first.rows_fit:
+                notes.append(f"PH test on a seeded random subsample of {int(ph['rows_tested'].iloc[0])} of the {first.rows_fit} Cox rows")
             cox_summary = first.summary
             cox_summary.to_csv(out_dir / "cox.csv")
             ph.to_csv(out_dir / "cox_ph_test.csv", index=False)
@@ -160,7 +166,7 @@ def run_analysis(
     # after it at a fixed 14-day horizon with IPCW (analysis.backtest).
     oos = _empty_oos()
     if enough:
-        bt = run_backtest(cohort, calendar, split="temporal", which=f"days:{int(HORIZON_DAYS)}", n_boot=100)
+        bt = run_backtest(cohort, calendar, split="temporal", which=f"days:{int(HORIZON_DAYS)}", n_boot=100, cox_max_rows=cox_max_rows)
         oos.update({"n_train": bt.n_train, "n_test": bt.n_test, "metrics": bt.metrics, "calibration": bt.calibration, "notes": bt.notes})
         if len(bt.metrics):
             m = bt.metrics.set_index("predictor")
@@ -181,7 +187,7 @@ def run_analysis(
         meta = {"data_source": OWN_DATA_SOURCE, "flows": fsum, "cohort_rows_by_scenario": cohort_rows}
         if site_meta:
             meta.update(site_meta)
-        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta)
+        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, level=site_level)
 
     report = [
         f"# Waitlist analysis report: {calendar.name} (term {calendar.term_id})",
@@ -269,6 +275,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-interval-min", type=float, default=None)
     p.add_argument("--join-every-min", type=float, default=240)
     p.add_argument("--no-site", action="store_true", help="do not write site/data")
+    p.add_argument("--cox-max-rows", type=int, default=COX_MAX_ROWS or 0, help="seeded row cap for the Cox fits (0 = no cap, the default)")
+    p.add_argument("--estimate-level", choices=LEVELS, default=DEFAULT_LEVEL, help="what site/data serves per course and bucket: the department curve (default) or the course's own")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     flows = None
@@ -304,6 +312,8 @@ def main(argv: list[str] | None = None) -> int:
         site_dir=None if args.no_site else args.site_dir,
         flows=flows,
         site_meta=site_meta,
+        cox_max_rows=args.cox_max_rows or None,
+        site_level=args.estimate_level,
     )
     print(json.dumps({"out": str(result.out_dir), "flows": result.flows_summary, "cohort_rows": result.cohort_rows, "notes": result.notes, "figures": [str(f) for f in result.figures]}, indent=1))
     return 0
