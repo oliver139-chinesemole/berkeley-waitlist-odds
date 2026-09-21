@@ -27,13 +27,15 @@ logger = logging.getLogger(__name__)
 
 MIN_N = 30
 N_BOOT = 200
-# What the page serves. "dept": the department-by-bucket curve for every course (the course's own
-# counts alongside); "course": the course's own curve when it has MIN_N rows, else the department's.
-# The Fall 2026 backtest found course cells no better than the bucket baseline out of time
-# (Brier gain -0.023 [-0.034, -0.011]) and indistinguishable across held-out courses, so dept is
-# the default until a second cycle says otherwise (docs/dev/BACKFILL_BACKTEST.md B3).
-LEVELS = ("dept", "course")
-DEFAULT_LEVEL = "dept"
+# What the page serves. "course": the course's own curve when it has MIN_N rows, else the
+# department's, else all courses; "dept": the department-by-bucket curve for every course (the
+# course's own counts alongside). The cross-term backtest (fit on Spring 2026, score Fall 2026,
+# the test that matches the page's use) has course beating dept beating bucket at every
+# observable horizon (14 d: +0.0095 [+0.0035, +0.0162] and +0.0051 [+0.0010, +0.0086] over
+# bucket), so course is the default; the within-term temporal split had said the opposite,
+# which was the Phase 1 to Phase 2 speed-up, not course noise (docs/dev/BACKFILL_BACKTEST.md B3).
+LEVELS = ("course", "dept")
+DEFAULT_LEVEL = "course"
 CURVE_DAYS = (0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 21, 24, 28, 32, 36, 42, 49, 56, 63, 70, 77, 84, 98, 112, 126, 140, 154, 168, 182)
 
 

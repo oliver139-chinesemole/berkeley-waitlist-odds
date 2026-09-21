@@ -57,7 +57,7 @@ Dates come from the registrar ICS in `data/fixtures/`. `phase_at` uses UTC midni
 
 ## 4. Site tables (`analysis/export.py`)
 
-`export_site_tables(cohort, calendar, out_dir, *, meta=None, min_n=30, n_boot=200, level="dept")` writes `site/data/courses.json`: for each `course_key` and `position_bucket` a cell with
+`export_site_tables(cohort, calendar, out_dir, *, meta=None, min_n=30, n_boot=200, level="course")` writes `site/data/courses.json`: for each `course_key` and `position_bucket` a cell with
 
 | field | meaning |
 | --- | --- |
@@ -66,7 +66,7 @@ Dates come from the registrar ICS in `data/fixtures/`. `phase_at` uses UTC midni
 | `n`, `events`, `sections` | rows, clearings and distinct sections behind the curve |
 | `median_days` | first day at which the curve reaches one half, `null` if never |
 | `p_clear_by_instruction`, `horizon_days` | the curve at the cell's median `days_to_instruction`; the report's number, not the page's |
-| `pooled`, `n_course`, `sections_course` | with `level="dept"` (the default) every cell is the department's curve for the bucket (`pooled: <dept>`, or `"all"` when the department has under `min_n` rows) and the course's own counts ride alongside; with `level="course"` a cell with `min_n` rows is the course's own curve (`pooled: false`) and smaller cells fall back the same way. Department level is the default because the Fall 2026 backtest found course cells no better than the bucket baseline: temporal 14-day Brier gain -0.023 [-0.034, -0.011], grouped +0.003 [-0.000, +0.005] (docs/dev/BACKFILL_BACKTEST.md B3). `meta.estimate_level` tells the page which rule produced the file |
+| `pooled`, `n_course`, `sections_course` | with `level="dept"` (the default) every cell is the department's curve for the bucket (`pooled: <dept>`, or `"all"` when the department has under `min_n` rows) and the course's own counts ride alongside; with `level="course"` a cell with `min_n` rows is the course's own curve (`pooled: false`) and smaller cells fall back the same way. Course level is the default because the cross-term backtest (Spring 2026 fitted, Fall 2026 scored) has course beating dept beating bucket at every horizon (14 d: +0.0095 and +0.0051 over bucket); the within-term temporal split had said the opposite, which was the Phase 1 to Phase 2 speed-up (docs/dev/BACKFILL_BACKTEST.md B3). `meta.estimate_level` tells the page which rule produced the file |
 
 and `site/data/meta.json` with the term, `deadline` (the last automatic waitlist run), `instruction_start`, `add_drop_deadline`, the data window, counts, `positions`, `n_boot`, `data_source` (`own_snapshots` or `berkeleytime_history`) and the generation time. The Kaplan-Meier estimate is computed in numpy (`km_clear_at`) because the bootstrap fits tens of thousands of curves. Numbers are rounded to three decimals; nothing else is post-processed by hand.
 

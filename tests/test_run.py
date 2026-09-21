@@ -123,8 +123,8 @@ def test_export_pooling_rule() -> None:
     tables = course_tables(big, cal, min_n=30, level="course")
     unpooled = [cell for e in tables.values() for cell in e["buckets"].values() if cell["pooled"] is False]
     assert unpooled and all(cell["n"] >= 30 for cell in unpooled)
-    # the default level serves the department curve everywhere, with the course's own counts alongside
-    dept = course_tables(big, cal, min_n=30)
+    # department level serves the department curve everywhere, with the course's own counts alongside
+    dept = course_tables(big, cal, min_n=30, level="dept")
     for key, entry in dept.items():
         for cell in entry["buckets"].values():
             assert cell["pooled"] in (entry["subject"], "OTHER", "all") and cell["n_course"] <= cell["n"] and cell["sections_course"] >= 1
@@ -138,7 +138,7 @@ def test_export_empty(tmp_path: Path) -> None:
     courses_path, meta_path = export_site_tables(empty, cal, tmp_path)
     meta = json.loads(meta_path.read_text())
     assert json.loads(courses_path.read_text()) == {} and meta["cohort_rows"] == 0
-    assert meta["deadline"] == "2026-10-26" and meta["instruction_start"] == "2026-10-26" and meta["positions"] == [] and meta["estimate_level"] == "dept"
+    assert meta["deadline"] == "2026-10-26" and meta["instruction_start"] == "2026-10-26" and meta["positions"] == [] and meta["estimate_level"] == "course"
 
 
 def test_run_too_small_writes_notes(tmp_path: Path) -> None:
