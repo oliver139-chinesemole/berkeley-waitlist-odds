@@ -9,7 +9,7 @@
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: Fall 2026 backfill installed (2026-09-20 19:50Z, PR #5, install commit a7240f4 = pre-registration point): site/data serves department-level Fall 2026 curves labelled berkeleytime_history; backtests in reports/backtest_2268/; CLAIMS rows measured. Spring 2026 pull + cross-term backtests running in the background (docs/dev/STATUS.md section 3); next: read them, decide dept vs bucket-only curves, commit, redeploy (STATUS section 4 item 1), then B5 priority list before Oct 26, Oct 4 term switch, Nov 9 own-data analysis. Site v3 (PR #4, another session's worktree) rebases onto a7240f4. Update this line at the end of every session.
+- Current step: both finished cycles backfilled and analysed (2026-09-21 00:30Z): Fall 2026 serves the site (course-level curves, `estimate_level` course after the cross-term test reversed a one-evening department default; PR #5 install a7240f4, PR #6 level + Spring), Spring 2026 pulled with the cross-term backtests in reports/backtest_2268/cross_term_*. Next: Oliver's decision on serving Spring 2026 curves (docs/dev/STATUS.md section 3), B5 priority list from both cycles before Oct 26, Oct 4 term switch, Nov 9 own-data analysis; site v3 (PR #4) awaits Oliver's review and a rebuild at course level. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.

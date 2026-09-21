@@ -20,7 +20,7 @@
  "courses": 2050,
  "data_source": "berkeleytime_history",
  "deadline": "2026-09-11",
- "estimate_level": "dept",
+ "estimate_level": "course",
  "events": 220196,
  "flows": {
   "admits": 81812,
@@ -34,7 +34,7 @@
   "wl_drops": 24277,
   "wl_joins": 107535
  },
- "generated_at": "2026-09-20T19:43:35+00:00",
+ "generated_at": "2026-09-21T01:56:35+00:00",
  "instruction_start": "2026-08-26",
  "join_window": [
   "2026-03-22T12:26:58+00:00",

@@ -95,9 +95,9 @@ def full_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
 
 @pytest.fixture(scope="module")
 def dept_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    """The default export: department curves with the course's own counts alongside."""
+    """Department-level export: department curves with the course's own counts alongside."""
     root = tmp_path_factory.mktemp("site_dept")
-    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=20)
+    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=20, level="dept")
     return root
 
 
@@ -226,7 +226,7 @@ def test_query_string_runs_the_lookup_on_load(full_site: Path) -> None:
     assert not out["result_hidden"] and "STAT 2" in out["result"] and "position 12" in out["result"]
 
 
-def test_department_level_default_is_labelled(dept_site: Path) -> None:
+def test_department_level_is_labelled(dept_site: Path) -> None:
     courses = json.loads((dept_site / "data" / "courses.json").read_text())
     meta = json.loads((dept_site / "data" / "meta.json").read_text())
     assert meta["estimate_level"] == "dept"
