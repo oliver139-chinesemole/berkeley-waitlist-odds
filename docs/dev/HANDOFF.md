@@ -54,6 +54,13 @@ Branch `backfill-backtest` (docs/dev/BACKFILL_BACKTEST.md is the plan; its check
 - Installed: `site/data` (2,050 courses, `berkeleytime_history`, `estimate_level` dept), `reports/report_2268_berkeleytime.md`, `reports/figures_2268_berkeleytime/`, `reports/backtest_2268/`, data-log row, CLAIMS rows (backfill, analysis, backtest, headline, cadence on the first full chain day: 46 runs, 97.8% of gaps at or under 45 min). Install commit a7240f4 (PR #5) is the pre-registration point.
 - Also: `analysis/priority_from_flows.py` (B5 tool), `analysis/backtest_summary.py`, LICENSE, `docs/dev/`, `docs/dev/STATUS.md`, the weekly workflow's site-data guard (verified: the 18:15Z Sunday run committed only the report), issue #1 closed after the 18:11Z monitor run. Site v3 is being built by another session in a worktree (PR #4) and rebases onto the install commit.
 
+### Session 4, third part (2026-09-20 20:00Z to 2026-09-21 00:30Z): Spring 2026 and the cross-term test
+
+- Spring 2026 pulled under `caffeinate` (6,131 sections, 19:29Z to 23:16Z), built and analysed (531,568 virtual waitlisters, 299,826 clearings; 2 of 202 days dark; adjustment and instruction phases observed). Report at `reports/report_2262_berkeleytime.md`.
+- Cross-term backtests (fit on Spring 2026, score Fall 2026; `reports/backtest_2268/cross_term_*`): course +0.0095, dept +0.0051 over bucket at 14 days, both intervals clear of zero; larger at 28 days and at the deadline; Cox and the v1 site rule worse than bucket. The department-level default lasted one evening: `DEFAULT_LEVEL` is `course` again, `site/data` re-exported, methodology reworded, CLAIMS cross-term row added, data-log row for the Spring pull.
+- Open decision for Oliver: serve Spring 2026 (complete, same season) instead of or alongside Fall 2026; see docs/dev/STATUS.md section 3.
+- Unexplained: a second `analysis.run --backfill-dir backfill/2268 --estimate-level course` run, started while the test suite was running, sat in the Cox/PH stage for 45 minutes at full CPU and was killed; `fit_cox` on the same cohort in isolation took 45 s under load. `site/data` was then written directly with `export_site_tables(level="course")` from the installed cohort and the analysis's own meta (the scratchpad script `export_course.py`; 20 minutes, most of it the course-cell bootstraps). If it recurs, sample the process before killing it.
+
 ## Session 5 (2026-09-20, 18:15Z to 20:30Z): site v3
 
 Built in a git worktree at `/Users/oliverguo/berkeley-waitlist-odds-site` on branch `site-v3` (off `main` at c564c2d) while session oliverguo-29 owned the full pull in the main checkout; the plan is docs/dev/SITE_V3_PLAN.md (section 13 has the progress table), the contract docs/DESIGN_A6.md, the data files docs/DESIGN_A5.md section 4.
@@ -69,7 +76,7 @@ Built in a git worktree at `/Users/oliverguo/berkeley-waitlist-odds-site` on bra
 ## What is left
 
 **Backfill, in order (docs/dev/STATUS.md section 4 is the live list):**
-1. Fall 2026 is installed (PR #5). When the Spring 2026 chain finishes: read the cross-term reports, decide department versus bucket-only curves, commit the Spring report and cross-term reports, data-log row, CLAIMS row; redeploy with `gh workflow run pages.yml`.
+1. Fall 2026 installed (PR #5); Spring 2026 pulled, cross-term read, level back to course (PR #6). Next: Oliver's decision on serving Spring 2026; B5 priority list before Oct 26.
 2. Oliver's note to the Berkeleytime team was to be sent in parallel with the pull (his choice on 2026-09-20).
 3. B5: rebuild `config/priority_courses.txt` from reconstructed waitlist joins (top ~900 sections' courses) and log the new `priority_sha` before Oct 26. B6: fix the resume line, delete the two "Spring 2026" paragraphs (CLAIMS status, plan section 3), LICENSE, homepage, GoatCounter, move session scaffolding under `docs/dev/`.
 4. A browser pass on the new page states (no browser in the sessions so far).
