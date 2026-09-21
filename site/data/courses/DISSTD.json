@@ -3,9 +3,104 @@
 "DISSTD 110": {
 "buckets": {
 "1-5": {
-"n_course": 126,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.183,
+null,
+null
+],
+[
+1.0,
+0.312,
+null,
+null
+],
+[
+2.0,
+0.423,
+null,
+null
+],
+[
+3.0,
+0.463,
+null,
+null
+],
+[
+4.0,
+0.494,
+null,
+null
+],
+[
+5.0,
+0.525,
+null,
+null
+],
+[
+6.0,
+0.536,
+null,
+null
+],
+[
+7.0,
+0.547,
+null,
+null
+],
+[
+8.0,
+0.592,
+null,
+null
+],
+[
+9.0,
+0.717,
+null,
+null
+],
+[
+10.0,
+0.76,
+null,
+null
+],
+[
+12.0,
+0.872,
+null,
+null
+],
+[
+14.0,
+0.872,
+null,
+null
+],
+[
+16.0,
+0.957,
+null,
+null
+],
+[
+16.06,
+0.957,
+null,
+null
+]
+],
+"events": 81,
+"median_days": 4.43,
+"n": 126,
+"pooled": false,
+"reach_days": 16.1,
+"sections": 1
 },
 "6-15": {
 "n_course": 15,

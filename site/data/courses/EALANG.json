@@ -3,9 +3,110 @@
 "EALANG 114": {
 "buckets": {
 "1-5": {
-"n_course": 58,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.208,
+null,
+null
+],
+[
+1.0,
+0.226,
+null,
+null
+],
+[
+2.0,
+0.28,
+null,
+null
+],
+[
+3.0,
+0.347,
+null,
+null
+],
+[
+4.0,
+0.347,
+null,
+null
+],
+[
+5.0,
+0.425,
+null,
+null
+],
+[
+6.0,
+0.504,
+null,
+null
+],
+[
+7.0,
+0.559,
+null,
+null
+],
+[
+8.0,
+0.586,
+null,
+null
+],
+[
+9.0,
+0.704,
+null,
+null
+],
+[
+10.0,
+0.746,
+null,
+null
+],
+[
+12.0,
+0.746,
+null,
+null
+],
+[
+14.0,
+0.746,
+null,
+null
+],
+[
+16.0,
+0.746,
+null,
+null
+],
+[
+18.0,
+0.746,
+null,
+null
+],
+[
+18.21,
+0.746,
+null,
+null
+]
+],
+"events": 32,
+"median_days": 5.49,
+"n": 58,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -16,9 +117,110 @@
 "EALANG 119": {
 "buckets": {
 "1-5": {
-"n_course": 75,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.107,
+null,
+null
+],
+[
+1.0,
+0.2,
+null,
+null
+],
+[
+2.0,
+0.215,
+null,
+null
+],
+[
+3.0,
+0.279,
+null,
+null
+],
+[
+4.0,
+0.279,
+null,
+null
+],
+[
+5.0,
+0.32,
+null,
+null
+],
+[
+6.0,
+0.32,
+null,
+null
+],
+[
+7.0,
+0.32,
+null,
+null
+],
+[
+8.0,
+0.4,
+null,
+null
+],
+[
+9.0,
+0.4,
+null,
+null
+],
+[
+10.0,
+0.4,
+null,
+null
+],
+[
+12.0,
+0.571,
+null,
+null
+],
+[
+14.0,
+0.571,
+null,
+null
+],
+[
+16.0,
+0.714,
+null,
+null
+],
+[
+18.0,
+0.714,
+null,
+null
+],
+[
+18.21,
+0.714,
+null,
+null
+]
+],
+"events": 27,
+"median_days": 11.56,
+"n": 75,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -55,9 +257,110 @@
 "EALANG C50": {
 "buckets": {
 "1-5": {
-"n_course": 58,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.294,
+null,
+null
+],
+[
+1.0,
+0.405,
+null,
+null
+],
+[
+2.0,
+0.536,
+null,
+null
+],
+[
+3.0,
+0.696,
+null,
+null
+],
+[
+4.0,
+0.757,
+null,
+null
+],
+[
+5.0,
+0.858,
+null,
+null
+],
+[
+6.0,
+0.909,
+null,
+null
+],
+[
+7.0,
+0.939,
+null,
+null
+],
+[
+8.0,
+0.939,
+null,
+null
+],
+[
+9.0,
+0.939,
+null,
+null
+],
+[
+10.0,
+0.939,
+null,
+null
+],
+[
+12.0,
+0.939,
+null,
+null
+],
+[
+14.0,
+0.939,
+null,
+null
+],
+[
+16.0,
+0.939,
+null,
+null
+],
+[
+18.0,
+0.939,
+null,
+null
+],
+[
+18.36,
+0.939,
+null,
+null
+]
+],
+"events": 49,
+"median_days": 1.84,
+"n": 58,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 }
 },
 "dept_group": "OTHER",

@@ -3,9 +3,98 @@
 "GWS 10": {
 "buckets": {
 "1-5": {
-"n_course": 205,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.332,
+null,
+null
+],
+[
+1.0,
+0.441,
+null,
+null
+],
+[
+2.0,
+0.57,
+null,
+null
+],
+[
+3.0,
+0.667,
+null,
+null
+],
+[
+4.0,
+0.751,
+null,
+null
+],
+[
+5.0,
+0.773,
+null,
+null
+],
+[
+6.0,
+0.804,
+null,
+null
+],
+[
+7.0,
+0.872,
+null,
+null
+],
+[
+8.0,
+0.872,
+null,
+null
+],
+[
+9.0,
+0.89,
+null,
+null
+],
+[
+10.0,
+0.933,
+null,
+null
+],
+[
+12.0,
+0.944,
+null,
+null
+],
+[
+14.0,
+0.978,
+null,
+null
+],
+[
+15.44,
+1.0,
+null,
+null
+]
+],
+"events": 168,
+"median_days": 1.32,
+"n": 205,
+"pooled": false,
+"reach_days": 15.4,
+"sections": 1
 },
 "6-15": {
 "n_course": 9,
@@ -34,9 +123,110 @@
 "GWS 102": {
 "buckets": {
 "1-5": {
-"n_course": 95,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.116,
+null,
+null
+],
+[
+1.0,
+0.137,
+null,
+null
+],
+[
+2.0,
+0.259,
+null,
+null
+],
+[
+3.0,
+0.334,
+null,
+null
+],
+[
+4.0,
+0.401,
+null,
+null
+],
+[
+5.0,
+0.458,
+null,
+null
+],
+[
+6.0,
+0.504,
+null,
+null
+],
+[
+7.0,
+0.551,
+null,
+null
+],
+[
+8.0,
+0.551,
+null,
+null
+],
+[
+9.0,
+0.605,
+null,
+null
+],
+[
+10.0,
+0.625,
+null,
+null
+],
+[
+12.0,
+0.667,
+null,
+null
+],
+[
+14.0,
+0.692,
+null,
+null
+],
+[
+16.0,
+0.692,
+null,
+null
+],
+[
+18.0,
+0.692,
+null,
+null
+],
+[
+18.21,
+0.692,
+null,
+null
+]
+],
+"events": 52,
+"median_days": 5.84,
+"n": 95,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "6-15": {
 "n_course": 16,
@@ -65,9 +255,140 @@
 "GWS 112": {
 "buckets": {
 "1-5": {
-"n_course": 37,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+38.15,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 37,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -78,9 +399,140 @@
 "GWS 125": {
 "buckets": {
 "1-5": {
-"n_course": 82,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+38.18,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 82,
+"pooled": false,
+"reach_days": 38.2,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -91,14 +543,180 @@
 "GWS 130AC": {
 "buckets": {
 "1-5": {
-"n_course": 174,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.301,
+null,
+null
+],
+[
+1.0,
+0.401,
+null,
+null
+],
+[
+2.0,
+0.513,
+null,
+null
+],
+[
+3.0,
+0.601,
+null,
+null
+],
+[
+4.0,
+0.638,
+null,
+null
+],
+[
+5.0,
+0.692,
+null,
+null
+],
+[
+6.0,
+0.709,
+null,
+null
+],
+[
+7.0,
+0.728,
+null,
+null
+],
+[
+8.0,
+0.755,
+null,
+null
+],
+[
+9.0,
+0.829,
+null,
+null
+],
+[
+10.0,
+0.916,
+null,
+null
+],
+[
+11.66,
+0.93,
+null,
+null
+]
+],
+"events": 133,
+"median_days": 1.83,
+"n": 174,
+"pooled": false,
+"reach_days": 11.7,
+"sections": 1
 },
 "6-15": {
-"n_course": 57,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.036,
+null,
+null
+],
+[
+1.0,
+0.036,
+null,
+null
+],
+[
+2.0,
+0.135,
+null,
+null
+],
+[
+3.0,
+0.194,
+null,
+null
+],
+[
+4.0,
+0.194,
+null,
+null
+],
+[
+5.0,
+0.194,
+null,
+null
+],
+[
+6.0,
+0.194,
+null,
+null
+],
+[
+7.0,
+0.194,
+null,
+null
+],
+[
+8.0,
+0.194,
+null,
+null
+],
+[
+9.0,
+0.194,
+null,
+null
+],
+[
+10.0,
+0.194,
+null,
+null
+],
+[
+12.0,
+0.194,
+null,
+null
+],
+[
+14.0,
+0.664,
+null,
+null
+],
+[
+14.5,
+0.664,
+null,
+null
+]
+],
+"events": 14,
+"median_days": 13.72,
+"n": 57,
+"pooled": false,
+"reach_days": 14.5,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -122,14 +740,192 @@
 "GWS 133AC": {
 "buckets": {
 "1-5": {
-"n_course": 151,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.166,
+null,
+null
+],
+[
+1.0,
+0.194,
+null,
+null
+],
+[
+2.0,
+0.244,
+null,
+null
+],
+[
+3.0,
+0.336,
+null,
+null
+],
+[
+4.0,
+0.353,
+null,
+null
+],
+[
+5.0,
+0.381,
+null,
+null
+],
+[
+6.0,
+0.466,
+null,
+null
+],
+[
+7.0,
+0.494,
+null,
+null
+],
+[
+8.0,
+0.571,
+null,
+null
+],
+[
+9.0,
+0.593,
+null,
+null
+],
+[
+10.0,
+0.628,
+null,
+null
+],
+[
+12.0,
+0.763,
+null,
+null
+],
+[
+14.0,
+0.944,
+null,
+null
+],
+[
+14.09,
+0.972,
+null,
+null
+]
+],
+"events": 95,
+"median_days": 7.0,
+"n": 151,
+"pooled": false,
+"reach_days": 14.1,
+"sections": 1
 },
 "6-15": {
-"n_course": 41,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.049,
+null,
+null
+],
+[
+1.0,
+0.049,
+null,
+null
+],
+[
+2.0,
+0.049,
+null,
+null
+],
+[
+3.0,
+0.108,
+null,
+null
+],
+[
+4.0,
+0.108,
+null,
+null
+],
+[
+5.0,
+0.108,
+null,
+null
+],
+[
+6.0,
+0.108,
+null,
+null
+],
+[
+7.0,
+0.147,
+null,
+null
+],
+[
+8.0,
+0.186,
+null,
+null
+],
+[
+9.0,
+0.186,
+null,
+null
+],
+[
+10.0,
+0.186,
+null,
+null
+],
+[
+12.0,
+0.186,
+null,
+null
+],
+[
+14.0,
+0.593,
+null,
+null
+],
+[
+15.01,
+0.796,
+null,
+null
+]
+],
+"events": 10,
+"median_days": 13.82,
+"n": 41,
+"pooled": false,
+"reach_days": 15.0,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -179,19 +975,292 @@
 "GWS 50AC": {
 "buckets": {
 "1-5": {
-"n_course": 210,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.155,
+null,
+null
+],
+[
+1.0,
+0.221,
+null,
+null
+],
+[
+2.0,
+0.297,
+null,
+null
+],
+[
+3.0,
+0.381,
+null,
+null
+],
+[
+4.0,
+0.464,
+null,
+null
+],
+[
+5.0,
+0.55,
+null,
+null
+],
+[
+6.0,
+0.601,
+null,
+null
+],
+[
+7.0,
+0.634,
+null,
+null
+],
+[
+8.0,
+0.792,
+null,
+null
+],
+[
+9.0,
+0.881,
+null,
+null
+],
+[
+9.96,
+1.0,
+null,
+null
+]
+],
+"events": 125,
+"median_days": 4.32,
+"n": 210,
+"pooled": false,
+"reach_days": 10.0,
+"sections": 1
 },
 "16-40": {
-"n_course": 34,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.21,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 34,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "6-15": {
-"n_course": 114,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.115,
+null,
+null
+],
+[
+14.0,
+0.355,
+null,
+null
+],
+[
+16.0,
+0.516,
+null,
+null
+],
+[
+18.0,
+0.742,
+null,
+null
+],
+[
+18.21,
+0.742,
+null,
+null
+]
+],
+"events": 12,
+"median_days": 15.71,
+"n": 114,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "OTHER",

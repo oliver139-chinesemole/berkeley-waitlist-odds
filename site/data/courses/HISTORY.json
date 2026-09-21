@@ -3,14 +3,216 @@
 "HISTORY 1": {
 "buckets": {
 "1-5": {
-"n_course": 97,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.171,
+null,
+null
+],
+[
+1.0,
+0.196,
+null,
+null
+],
+[
+2.0,
+0.264,
+null,
+null
+],
+[
+3.0,
+0.294,
+null,
+null
+],
+[
+4.0,
+0.294,
+null,
+null
+],
+[
+5.0,
+0.34,
+null,
+null
+],
+[
+6.0,
+0.414,
+null,
+null
+],
+[
+7.0,
+0.463,
+null,
+null
+],
+[
+8.0,
+0.493,
+null,
+null
+],
+[
+9.0,
+0.529,
+null,
+null
+],
+[
+10.0,
+0.529,
+null,
+null
+],
+[
+12.0,
+0.612,
+null,
+null
+],
+[
+14.0,
+0.793,
+null,
+null
+],
+[
+16.0,
+0.793,
+null,
+null
+],
+[
+18.0,
+0.793,
+null,
+null
+],
+[
+18.21,
+0.896,
+null,
+null
+]
+],
+"events": 41,
+"median_days": 8.05,
+"n": 97,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "6-15": {
-"n_course": 40,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.21,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 40,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -21,19 +223,316 @@
 "HISTORY 100AC": {
 "buckets": {
 "1-5": {
-"n_course": 172,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.09,
+null,
+null
+],
+[
+1.0,
+0.109,
+null,
+null
+],
+[
+2.0,
+0.164,
+null,
+null
+],
+[
+3.0,
+0.208,
+null,
+null
+],
+[
+4.0,
+0.297,
+null,
+null
+],
+[
+5.0,
+0.322,
+null,
+null
+],
+[
+6.0,
+0.339,
+null,
+null
+],
+[
+7.0,
+0.404,
+null,
+null
+],
+[
+8.0,
+0.423,
+null,
+null
+],
+[
+9.0,
+0.501,
+null,
+null
+],
+[
+10.0,
+0.513,
+null,
+null
+],
+[
+12.0,
+0.563,
+null,
+null
+],
+[
+14.0,
+0.745,
+null,
+null
+],
+[
+16.0,
+0.851,
+null,
+null
+],
+[
+16.64,
+0.901,
+null,
+null
+]
+],
+"events": 86,
+"median_days": 8.99,
+"n": 172,
+"pooled": false,
+"reach_days": 16.6,
+"sections": 1
 },
 "16-40": {
-"n_course": 39,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.21,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 39,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "6-15": {
-"n_course": 109,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.017,
+null,
+null
+],
+[
+12.0,
+0.037,
+null,
+null
+],
+[
+14.0,
+0.129,
+null,
+null
+],
+[
+16.0,
+0.154,
+null,
+null
+],
+[
+18.0,
+0.154,
+null,
+null
+],
+[
+18.55,
+0.154,
+null,
+null
+]
+],
+"events": 7,
+"median_days": null,
+"n": 109,
+"pooled": false,
+"reach_days": 18.6,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -44,9 +543,128 @@
 "HISTORY 100B": {
 "buckets": {
 "1-5": {
-"n_course": 126,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.04,
+null,
+null
+],
+[
+1.0,
+0.066,
+null,
+null
+],
+[
+2.0,
+0.066,
+null,
+null
+],
+[
+3.0,
+0.084,
+null,
+null
+],
+[
+4.0,
+0.084,
+null,
+null
+],
+[
+5.0,
+0.084,
+null,
+null
+],
+[
+6.0,
+0.084,
+null,
+null
+],
+[
+7.0,
+0.084,
+null,
+null
+],
+[
+8.0,
+0.084,
+null,
+null
+],
+[
+9.0,
+0.113,
+null,
+null
+],
+[
+10.0,
+0.161,
+null,
+null
+],
+[
+12.0,
+0.211,
+null,
+null
+],
+[
+14.0,
+0.272,
+null,
+null
+],
+[
+16.0,
+0.272,
+null,
+null
+],
+[
+18.0,
+0.272,
+null,
+null
+],
+[
+21.0,
+0.272,
+null,
+null
+],
+[
+24.0,
+0.272,
+null,
+null
+],
+[
+28.0,
+0.272,
+null,
+null
+],
+[
+30.81,
+0.272,
+null,
+null
+]
+],
+"events": 21,
+"median_days": null,
+"n": 126,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 9,
@@ -140,9 +758,128 @@
 "HISTORY 103A": {
 "buckets": {
 "1-5": {
-"n_course": 72,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.087,
+null,
+null
+],
+[
+1.0,
+0.102,
+null,
+null
+],
+[
+2.0,
+0.181,
+null,
+null
+],
+[
+3.0,
+0.181,
+null,
+null
+],
+[
+4.0,
+0.181,
+null,
+null
+],
+[
+5.0,
+0.181,
+null,
+null
+],
+[
+6.0,
+0.201,
+null,
+null
+],
+[
+7.0,
+0.201,
+null,
+null
+],
+[
+8.0,
+0.201,
+null,
+null
+],
+[
+9.0,
+0.201,
+null,
+null
+],
+[
+10.0,
+0.222,
+null,
+null
+],
+[
+12.0,
+0.222,
+null,
+null
+],
+[
+14.0,
+0.222,
+null,
+null
+],
+[
+16.0,
+0.222,
+null,
+null
+],
+[
+18.0,
+0.222,
+null,
+null
+],
+[
+21.0,
+0.222,
+null,
+null
+],
+[
+24.0,
+0.222,
+null,
+null
+],
+[
+28.0,
+0.222,
+null,
+null
+],
+[
+30.81,
+0.222,
+null,
+null
+]
+],
+"events": 14,
+"median_days": null,
+"n": 72,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -153,9 +890,134 @@
 "HISTORY 103B": {
 "buckets": {
 "1-5": {
-"n_course": 158,
-"pooled": "HISTORY",
-"sections_course": 2
+"curve": [
+[
+0.5,
+0.039,
+0.029,
+0.058
+],
+[
+1.0,
+0.046,
+0.029,
+0.079
+],
+[
+2.0,
+0.073,
+0.039,
+0.14
+],
+[
+3.0,
+0.087,
+0.039,
+0.182
+],
+[
+4.0,
+0.095,
+0.039,
+0.205
+],
+[
+5.0,
+0.102,
+0.051,
+0.205
+],
+[
+6.0,
+0.11,
+0.051,
+0.229
+],
+[
+7.0,
+0.11,
+0.051,
+0.229
+],
+[
+8.0,
+0.143,
+0.074,
+0.281
+],
+[
+9.0,
+0.162,
+0.103,
+0.281
+],
+[
+10.0,
+0.182,
+0.103,
+0.341
+],
+[
+12.0,
+0.205,
+0.103,
+0.414
+],
+[
+14.0,
+0.205,
+0.103,
+0.414
+],
+[
+16.0,
+0.235,
+0.103,
+0.521
+],
+[
+18.0,
+0.235,
+0.103,
+0.521
+],
+[
+21.0,
+0.235,
+0.103,
+0.521
+],
+[
+24.0,
+0.235,
+0.103,
+0.521
+],
+[
+28.0,
+0.235,
+0.103,
+0.521
+],
+[
+32.0,
+0.235,
+0.103,
+0.521
+],
+[
+35.14,
+0.235,
+0.103,
+0.521
+]
+],
+"events": 28,
+"median_days": null,
+"n": 158,
+"pooled": false,
+"reach_days": 35.1,
+"sections": 2
 },
 "6-15": {
 "n_course": 18,
@@ -171,9 +1033,134 @@
 "HISTORY 103D": {
 "buckets": {
 "1-5": {
-"n_course": 154,
-"pooled": "HISTORY",
-"sections_course": 5
+"curve": [
+[
+0.5,
+0.079,
+0.044,
+0.147
+],
+[
+1.0,
+0.093,
+0.046,
+0.201
+],
+[
+2.0,
+0.144,
+0.049,
+0.305
+],
+[
+3.0,
+0.169,
+0.063,
+0.375
+],
+[
+4.0,
+0.177,
+0.077,
+0.375
+],
+[
+5.0,
+0.187,
+0.092,
+0.375
+],
+[
+6.0,
+0.187,
+0.092,
+0.375
+],
+[
+7.0,
+0.187,
+0.092,
+0.375
+],
+[
+8.0,
+0.187,
+0.092,
+0.375
+],
+[
+9.0,
+0.24,
+0.145,
+0.375
+],
+[
+10.0,
+0.254,
+0.145,
+0.432
+],
+[
+12.0,
+0.254,
+0.145,
+0.432
+],
+[
+14.0,
+0.254,
+0.145,
+0.432
+],
+[
+16.0,
+0.254,
+0.145,
+0.432
+],
+[
+18.0,
+0.254,
+0.145,
+0.432
+],
+[
+21.0,
+0.254,
+0.145,
+0.432
+],
+[
+24.0,
+0.254,
+0.145,
+0.432
+],
+[
+28.0,
+0.254,
+0.145,
+0.432
+],
+[
+32.0,
+0.254,
+0.145,
+0.432
+],
+[
+34.32,
+0.254,
+0.145,
+0.432
+]
+],
+"events": 31,
+"median_days": null,
+"n": 154,
+"pooled": false,
+"reach_days": 34.3,
+"sections": 5
 }
 },
 "dept_group": "HISTORY",
@@ -184,9 +1171,134 @@
 "HISTORY 103U": {
 "buckets": {
 "1-5": {
-"n_course": 103,
-"pooled": "HISTORY",
-"sections_course": 2
+"curve": [
+[
+0.5,
+0.039,
+0.0,
+0.043
+],
+[
+1.0,
+0.039,
+0.0,
+0.043
+],
+[
+2.0,
+0.05,
+0.0,
+0.055
+],
+[
+3.0,
+0.05,
+0.0,
+0.055
+],
+[
+4.0,
+0.05,
+0.0,
+0.055
+],
+[
+5.0,
+0.05,
+0.0,
+0.055
+],
+[
+6.0,
+0.05,
+0.0,
+0.055
+],
+[
+7.0,
+0.077,
+0.0,
+0.085
+],
+[
+8.0,
+0.077,
+0.0,
+0.085
+],
+[
+9.0,
+0.106,
+0.0,
+0.117
+],
+[
+10.0,
+0.106,
+0.0,
+0.117
+],
+[
+12.0,
+0.106,
+0.0,
+0.117
+],
+[
+14.0,
+0.106,
+0.0,
+0.117
+],
+[
+16.0,
+0.106,
+0.0,
+0.117
+],
+[
+18.0,
+0.106,
+0.0,
+0.117
+],
+[
+21.0,
+0.106,
+0.0,
+0.117
+],
+[
+24.0,
+0.106,
+0.0,
+0.117
+],
+[
+28.0,
+0.106,
+0.0,
+0.117
+],
+[
+32.0,
+0.106,
+0.0,
+0.117
+],
+[
+34.99,
+0.106,
+0.0,
+0.117
+]
+],
+"events": 9,
+"median_days": null,
+"n": 103,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 2
 },
 "6-15": {
 "n_course": 4,
@@ -202,9 +1314,110 @@
 "HISTORY 104": {
 "buckets": {
 "1-5": {
-"n_course": 184,
-"pooled": "HISTORY",
-"sections_course": 2
+"curve": [
+[
+0.5,
+0.214,
+0.209,
+0.226
+],
+[
+1.0,
+0.254,
+0.244,
+0.26
+],
+[
+2.0,
+0.304,
+0.295,
+0.323
+],
+[
+3.0,
+0.376,
+0.367,
+0.382
+],
+[
+4.0,
+0.447,
+0.392,
+0.473
+],
+[
+5.0,
+0.496,
+0.392,
+0.543
+],
+[
+6.0,
+0.535,
+0.392,
+0.599
+],
+[
+7.0,
+0.565,
+0.488,
+0.599
+],
+[
+8.0,
+0.637,
+0.552,
+0.678
+],
+[
+9.0,
+0.694,
+0.674,
+0.698
+],
+[
+10.0,
+0.738,
+0.698,
+0.805
+],
+[
+12.0,
+0.782,
+0.765,
+0.805
+],
+[
+14.0,
+0.83,
+0.805,
+0.843
+],
+[
+16.0,
+0.927,
+0.805,
+1.0
+],
+[
+18.0,
+0.927,
+0.805,
+1.0
+],
+[
+18.21,
+0.927,
+0.805,
+1.0
+]
+],
+"events": 107,
+"median_days": 5.04,
+"n": 184,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 2
 },
 "6-15": {
 "n_course": 22,
@@ -220,9 +1433,74 @@
 "HISTORY 106B": {
 "buckets": {
 "1-5": {
-"n_course": 106,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.406,
+null,
+null
+],
+[
+1.0,
+0.515,
+null,
+null
+],
+[
+2.0,
+0.673,
+null,
+null
+],
+[
+3.0,
+0.808,
+null,
+null
+],
+[
+4.0,
+0.883,
+null,
+null
+],
+[
+5.0,
+0.936,
+null,
+null
+],
+[
+6.0,
+0.979,
+null,
+null
+],
+[
+7.0,
+0.979,
+null,
+null
+],
+[
+8.0,
+0.979,
+null,
+null
+],
+[
+8.96,
+0.979,
+null,
+null
+]
+],
+"events": 99,
+"median_days": 0.9,
+"n": 106,
+"pooled": false,
+"reach_days": 9.0,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -233,9 +1511,110 @@
 "HISTORY 129A": {
 "buckets": {
 "1-5": {
-"n_course": 73,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.411,
+null,
+null
+],
+[
+1.0,
+0.496,
+null,
+null
+],
+[
+2.0,
+0.583,
+null,
+null
+],
+[
+3.0,
+0.657,
+null,
+null
+],
+[
+4.0,
+0.732,
+null,
+null
+],
+[
+5.0,
+0.777,
+null,
+null
+],
+[
+6.0,
+0.777,
+null,
+null
+],
+[
+7.0,
+0.792,
+null,
+null
+],
+[
+8.0,
+0.792,
+null,
+null
+],
+[
+9.0,
+0.844,
+null,
+null
+],
+[
+10.0,
+0.862,
+null,
+null
+],
+[
+12.0,
+0.881,
+null,
+null
+],
+[
+14.0,
+0.921,
+null,
+null
+],
+[
+16.0,
+0.921,
+null,
+null
+],
+[
+18.0,
+0.921,
+null,
+null
+],
+[
+18.39,
+0.921,
+null,
+null
+]
+],
+"events": 63,
+"median_days": 1.03,
+"n": 73,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -246,14 +1625,174 @@
 "HISTORY 130": {
 "buckets": {
 "1-5": {
-"n_course": 266,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.411,
+null,
+null
+],
+[
+1.0,
+0.567,
+null,
+null
+],
+[
+2.0,
+0.665,
+null,
+null
+],
+[
+3.0,
+0.773,
+null,
+null
+],
+[
+4.0,
+0.833,
+null,
+null
+],
+[
+5.0,
+0.901,
+null,
+null
+],
+[
+6.0,
+0.921,
+null,
+null
+],
+[
+7.0,
+0.935,
+null,
+null
+],
+[
+8.0,
+0.978,
+null,
+null
+],
+[
+9.0,
+0.978,
+null,
+null
+],
+[
+10.0,
+0.986,
+null,
+null
+],
+[
+10.93,
+0.986,
+null,
+null
+]
+],
+"events": 230,
+"median_days": 0.8,
+"n": 266,
+"pooled": false,
+"reach_days": 10.9,
+"sections": 1
 },
 "6-15": {
-"n_course": 37,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.028,
+null,
+null
+],
+[
+3.0,
+0.028,
+null,
+null
+],
+[
+4.0,
+0.101,
+null,
+null
+],
+[
+5.0,
+0.214,
+null,
+null
+],
+[
+6.0,
+0.409,
+null,
+null
+],
+[
+7.0,
+0.409,
+null,
+null
+],
+[
+8.0,
+0.462,
+null,
+null
+],
+[
+9.0,
+0.462,
+null,
+null
+],
+[
+10.0,
+0.53,
+null,
+null
+],
+[
+12.0,
+0.919,
+null,
+null
+],
+[
+12.07,
+0.919,
+null,
+null
+]
+],
+"events": 19,
+"median_days": 9.79,
+"n": 37,
+"pooled": false,
+"reach_days": 12.1,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -264,9 +1803,110 @@
 "HISTORY 131B": {
 "buckets": {
 "1-5": {
-"n_course": 218,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.143,
+null,
+null
+],
+[
+1.0,
+0.252,
+null,
+null
+],
+[
+2.0,
+0.348,
+null,
+null
+],
+[
+3.0,
+0.471,
+null,
+null
+],
+[
+4.0,
+0.58,
+null,
+null
+],
+[
+5.0,
+0.614,
+null,
+null
+],
+[
+6.0,
+0.657,
+null,
+null
+],
+[
+7.0,
+0.719,
+null,
+null
+],
+[
+8.0,
+0.745,
+null,
+null
+],
+[
+9.0,
+0.768,
+null,
+null
+],
+[
+10.0,
+0.792,
+null,
+null
+],
+[
+12.0,
+0.792,
+null,
+null
+],
+[
+14.0,
+0.792,
+null,
+null
+],
+[
+16.0,
+0.792,
+null,
+null
+],
+[
+18.0,
+0.792,
+null,
+null
+],
+[
+18.21,
+0.792,
+null,
+null
+]
+],
+"events": 140,
+"median_days": 3.5,
+"n": 218,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "16-40": {
 "n_course": 5,
@@ -274,9 +1914,110 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 119,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.017,
+null,
+null
+],
+[
+1.0,
+0.051,
+null,
+null
+],
+[
+2.0,
+0.068,
+null,
+null
+],
+[
+3.0,
+0.142,
+null,
+null
+],
+[
+4.0,
+0.163,
+null,
+null
+],
+[
+5.0,
+0.186,
+null,
+null
+],
+[
+6.0,
+0.198,
+null,
+null
+],
+[
+7.0,
+0.273,
+null,
+null
+],
+[
+8.0,
+0.3,
+null,
+null
+],
+[
+9.0,
+0.364,
+null,
+null
+],
+[
+10.0,
+0.419,
+null,
+null
+],
+[
+12.0,
+0.473,
+null,
+null
+],
+[
+14.0,
+0.473,
+null,
+null
+],
+[
+16.0,
+0.473,
+null,
+null
+],
+[
+18.0,
+0.473,
+null,
+null
+],
+[
+18.21,
+0.473,
+null,
+null
+]
+],
+"events": 39,
+"median_days": null,
+"n": 119,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -300,9 +2041,74 @@
 "HISTORY 14": {
 "buckets": {
 "1-5": {
-"n_course": 114,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.211,
+null,
+null
+],
+[
+1.0,
+0.298,
+null,
+null
+],
+[
+2.0,
+0.422,
+null,
+null
+],
+[
+3.0,
+0.495,
+null,
+null
+],
+[
+4.0,
+0.589,
+null,
+null
+],
+[
+5.0,
+0.636,
+null,
+null
+],
+[
+6.0,
+0.755,
+null,
+null
+],
+[
+7.0,
+0.847,
+null,
+null
+],
+[
+8.0,
+0.908,
+null,
+null
+],
+[
+8.98,
+1.0,
+null,
+null
+]
+],
+"events": 103,
+"median_days": 3.12,
+"n": 114,
+"pooled": false,
+"reach_days": 9.0,
+"sections": 1
 },
 "6-15": {
 "n_course": 9,
@@ -318,19 +2124,316 @@
 "HISTORY 160": {
 "buckets": {
 "1-5": {
-"n_course": 235,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.142,
+null,
+null
+],
+[
+1.0,
+0.219,
+null,
+null
+],
+[
+2.0,
+0.359,
+null,
+null
+],
+[
+3.0,
+0.443,
+null,
+null
+],
+[
+4.0,
+0.539,
+null,
+null
+],
+[
+5.0,
+0.599,
+null,
+null
+],
+[
+6.0,
+0.679,
+null,
+null
+],
+[
+7.0,
+0.771,
+null,
+null
+],
+[
+8.0,
+0.826,
+null,
+null
+],
+[
+9.0,
+0.879,
+null,
+null
+],
+[
+10.0,
+0.879,
+null,
+null
+],
+[
+12.0,
+0.922,
+null,
+null
+],
+[
+14.0,
+0.96,
+null,
+null
+],
+[
+16.0,
+0.98,
+null,
+null
+],
+[
+17.45,
+1.0,
+null,
+null
+]
+],
+"events": 164,
+"median_days": 3.64,
+"n": 235,
+"pooled": false,
+"reach_days": 17.4,
+"sections": 1
 },
 "16-40": {
-"n_course": 46,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.35,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 46,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 },
 "6-15": {
-"n_course": 156,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.029,
+null,
+null
+],
+[
+8.0,
+0.059,
+null,
+null
+],
+[
+9.0,
+0.156,
+null,
+null
+],
+[
+10.0,
+0.179,
+null,
+null
+],
+[
+12.0,
+0.202,
+null,
+null
+],
+[
+14.0,
+0.202,
+null,
+null
+],
+[
+16.0,
+0.379,
+null,
+null
+],
+[
+18.0,
+0.475,
+null,
+null
+],
+[
+18.35,
+0.475,
+null,
+null
+]
+],
+"events": 18,
+"median_days": null,
+"n": 156,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -380,9 +2483,104 @@
 "HISTORY 185A": {
 "buckets": {
 "1-5": {
-"n_course": 30,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.1,
+null,
+null
+],
+[
+1.0,
+0.1,
+null,
+null
+],
+[
+2.0,
+0.147,
+null,
+null
+],
+[
+3.0,
+0.147,
+null,
+null
+],
+[
+4.0,
+0.213,
+null,
+null
+],
+[
+5.0,
+0.279,
+null,
+null
+],
+[
+6.0,
+0.279,
+null,
+null
+],
+[
+7.0,
+0.279,
+null,
+null
+],
+[
+8.0,
+0.475,
+null,
+null
+],
+[
+9.0,
+0.475,
+null,
+null
+],
+[
+10.0,
+0.475,
+null,
+null
+],
+[
+12.0,
+0.672,
+null,
+null
+],
+[
+14.0,
+0.869,
+null,
+null
+],
+[
+16.0,
+0.869,
+null,
+null
+],
+[
+17.35,
+0.934,
+null,
+null
+]
+],
+"events": 17,
+"median_days": 10.75,
+"n": 30,
+"pooled": false,
+"reach_days": 17.4,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -406,9 +2604,128 @@
 "HISTORY 198BC": {
 "buckets": {
 "1-5": {
-"n_course": 112,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.107,
+null,
+null
+],
+[
+1.0,
+0.17,
+null,
+null
+],
+[
+2.0,
+0.253,
+null,
+null
+],
+[
+3.0,
+0.385,
+null,
+null
+],
+[
+4.0,
+0.441,
+null,
+null
+],
+[
+5.0,
+0.532,
+null,
+null
+],
+[
+6.0,
+0.658,
+null,
+null
+],
+[
+7.0,
+0.718,
+null,
+null
+],
+[
+8.0,
+0.779,
+null,
+null
+],
+[
+9.0,
+0.779,
+null,
+null
+],
+[
+10.0,
+0.779,
+null,
+null
+],
+[
+12.0,
+0.779,
+null,
+null
+],
+[
+14.0,
+0.779,
+null,
+null
+],
+[
+16.0,
+0.779,
+null,
+null
+],
+[
+18.0,
+0.779,
+null,
+null
+],
+[
+21.0,
+0.779,
+null,
+null
+],
+[
+24.0,
+0.779,
+null,
+null
+],
+[
+28.0,
+0.779,
+null,
+null
+],
+[
+30.81,
+0.779,
+null,
+null
+]
+],
+"events": 66,
+"median_days": 4.84,
+"n": 112,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 10,
@@ -502,9 +2819,128 @@
 "HISTORY 280U": {
 "buckets": {
 "1-5": {
-"n_course": 172,
-"pooled": "HISTORY",
-"sections_course": 3
+"curve": [
+[
+0.5,
+0.053,
+0.0,
+0.065
+],
+[
+1.0,
+0.085,
+0.0,
+0.09
+],
+[
+2.0,
+0.085,
+0.0,
+0.09
+],
+[
+3.0,
+0.085,
+0.0,
+0.09
+],
+[
+4.0,
+0.106,
+0.0,
+0.113
+],
+[
+5.0,
+0.13,
+0.0,
+0.166
+],
+[
+6.0,
+0.164,
+0.0,
+0.224
+],
+[
+7.0,
+0.181,
+0.0,
+0.243
+],
+[
+8.0,
+0.208,
+0.0,
+0.263
+],
+[
+9.0,
+0.248,
+0.0,
+0.328
+],
+[
+10.0,
+0.258,
+0.0,
+0.328
+],
+[
+12.0,
+0.279,
+0.0,
+0.328
+],
+[
+14.0,
+0.327,
+0.0,
+0.395
+],
+[
+16.0,
+0.327,
+0.0,
+0.395
+],
+[
+18.0,
+0.353,
+0.0,
+0.395
+],
+[
+21.0,
+0.353,
+0.0,
+0.395
+],
+[
+24.0,
+0.353,
+0.0,
+0.395
+],
+[
+28.0,
+0.461,
+0.0,
+0.57
+],
+[
+30.81,
+0.461,
+0.0,
+0.57
+]
+],
+"events": 41,
+"median_days": null,
+"n": 172,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 3
 },
 "6-15": {
 "n_course": 3,
@@ -585,9 +3021,128 @@
 "HISTORY 285U": {
 "buckets": {
 "1-5": {
-"n_course": 32,
-"pooled": "HISTORY",
-"sections_course": 2
+"curve": [
+[
+0.5,
+0.0,
+0.0,
+0.0
+],
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+2.0,
+0.0,
+0.0,
+0.0
+],
+[
+3.0,
+0.0,
+0.0,
+0.0
+],
+[
+4.0,
+0.0,
+0.0,
+0.0
+],
+[
+5.0,
+0.0,
+0.0,
+0.0
+],
+[
+6.0,
+0.0,
+0.0,
+0.0
+],
+[
+7.0,
+0.0,
+0.0,
+0.0
+],
+[
+8.0,
+0.0,
+0.0,
+0.0
+],
+[
+9.0,
+0.0,
+0.0,
+0.0
+],
+[
+10.0,
+0.0,
+0.0,
+0.0
+],
+[
+12.0,
+0.0,
+0.0,
+0.0
+],
+[
+14.0,
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+0.0,
+0.0,
+0.0
+],
+[
+18.0,
+0.0,
+0.0,
+0.0
+],
+[
+21.0,
+0.0,
+0.0,
+0.0
+],
+[
+24.0,
+0.0,
+0.0,
+0.0
+],
+[
+28.0,
+0.0,
+0.0,
+0.0
+],
+[
+30.81,
+0.0,
+0.0,
+0.0
+]
+],
+"events": 0,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 2
 }
 },
 "dept_group": "HISTORY",
@@ -598,9 +3153,110 @@
 "HISTORY 3": {
 "buckets": {
 "1-5": {
-"n_course": 42,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.167,
+null,
+null
+],
+[
+1.0,
+0.167,
+null,
+null
+],
+[
+2.0,
+0.297,
+null,
+null
+],
+[
+3.0,
+0.351,
+null,
+null
+],
+[
+4.0,
+0.379,
+null,
+null
+],
+[
+5.0,
+0.407,
+null,
+null
+],
+[
+6.0,
+0.492,
+null,
+null
+],
+[
+7.0,
+0.492,
+null,
+null
+],
+[
+8.0,
+0.492,
+null,
+null
+],
+[
+9.0,
+0.492,
+null,
+null
+],
+[
+10.0,
+0.492,
+null,
+null
+],
+[
+12.0,
+0.605,
+null,
+null
+],
+[
+14.0,
+0.605,
+null,
+null
+],
+[
+16.0,
+0.718,
+null,
+null
+],
+[
+18.0,
+0.718,
+null,
+null
+],
+[
+18.42,
+0.718,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 11.28,
+"n": 42,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -611,9 +3267,104 @@
 "HISTORY 30": {
 "buckets": {
 "1-5": {
-"n_course": 234,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.433,
+null,
+null
+],
+[
+1.0,
+0.561,
+null,
+null
+],
+[
+2.0,
+0.648,
+null,
+null
+],
+[
+3.0,
+0.672,
+null,
+null
+],
+[
+4.0,
+0.706,
+null,
+null
+],
+[
+5.0,
+0.721,
+null,
+null
+],
+[
+6.0,
+0.721,
+null,
+null
+],
+[
+7.0,
+0.721,
+null,
+null
+],
+[
+8.0,
+0.721,
+null,
+null
+],
+[
+9.0,
+0.721,
+null,
+null
+],
+[
+10.0,
+0.721,
+null,
+null
+],
+[
+12.0,
+0.721,
+null,
+null
+],
+[
+14.0,
+0.721,
+null,
+null
+],
+[
+16.0,
+0.721,
+null,
+null
+],
+[
+16.15,
+0.721,
+null,
+null
+]
+],
+"events": 155,
+"median_days": 0.69,
+"n": 234,
+"pooled": false,
+"reach_days": 16.1,
+"sections": 1
 },
 "6-15": {
 "n_course": 18,
@@ -629,9 +3380,98 @@
 "HISTORY 4A": {
 "buckets": {
 "1-5": {
-"n_course": 56,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.464,
+null,
+null
+],
+[
+1.0,
+0.598,
+null,
+null
+],
+[
+2.0,
+0.716,
+null,
+null
+],
+[
+3.0,
+0.825,
+null,
+null
+],
+[
+4.0,
+0.869,
+null,
+null
+],
+[
+5.0,
+0.869,
+null,
+null
+],
+[
+6.0,
+0.869,
+null,
+null
+],
+[
+7.0,
+0.869,
+null,
+null
+],
+[
+8.0,
+0.869,
+null,
+null
+],
+[
+9.0,
+0.869,
+null,
+null
+],
+[
+10.0,
+0.869,
+null,
+null
+],
+[
+12.0,
+0.869,
+null,
+null
+],
+[
+14.0,
+0.869,
+null,
+null
+],
+[
+15.22,
+0.869,
+null,
+null
+]
+],
+"events": 46,
+"median_days": 0.66,
+"n": 56,
+"pooled": false,
+"reach_days": 15.2,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -642,9 +3482,104 @@
 "HISTORY 5": {
 "buckets": {
 "1-5": {
-"n_course": 140,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.41,
+null,
+null
+],
+[
+1.0,
+0.514,
+null,
+null
+],
+[
+2.0,
+0.63,
+null,
+null
+],
+[
+3.0,
+0.745,
+null,
+null
+],
+[
+4.0,
+0.794,
+null,
+null
+],
+[
+5.0,
+0.846,
+null,
+null
+],
+[
+6.0,
+0.866,
+null,
+null
+],
+[
+7.0,
+0.887,
+null,
+null
+],
+[
+8.0,
+0.897,
+null,
+null
+],
+[
+9.0,
+0.907,
+null,
+null
+],
+[
+10.0,
+0.907,
+null,
+null
+],
+[
+12.0,
+0.907,
+null,
+null
+],
+[
+14.0,
+0.907,
+null,
+null
+],
+[
+16.0,
+0.907,
+null,
+null
+],
+[
+16.46,
+0.907,
+null,
+null
+]
+],
+"events": 114,
+"median_days": 0.93,
+"n": 140,
+"pooled": false,
+"reach_days": 16.5,
+"sections": 1
 },
 "6-15": {
 "n_course": 4,
@@ -660,9 +3595,110 @@
 "HISTORY 6A": {
 "buckets": {
 "1-5": {
-"n_course": 62,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.198,
+null,
+null
+],
+[
+1.0,
+0.305,
+null,
+null
+],
+[
+2.0,
+0.419,
+null,
+null
+],
+[
+3.0,
+0.5,
+null,
+null
+],
+[
+4.0,
+0.542,
+null,
+null
+],
+[
+5.0,
+0.611,
+null,
+null
+],
+[
+6.0,
+0.659,
+null,
+null
+],
+[
+7.0,
+0.732,
+null,
+null
+],
+[
+8.0,
+0.732,
+null,
+null
+],
+[
+9.0,
+0.732,
+null,
+null
+],
+[
+10.0,
+0.732,
+null,
+null
+],
+[
+12.0,
+0.792,
+null,
+null
+],
+[
+14.0,
+0.792,
+null,
+null
+],
+[
+16.0,
+0.792,
+null,
+null
+],
+[
+18.0,
+0.792,
+null,
+null
+],
+[
+18.58,
+0.792,
+null,
+null
+]
+],
+"events": 40,
+"median_days": 2.95,
+"n": 62,
+"pooled": false,
+"reach_days": 18.6,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -673,24 +3709,368 @@
 "HISTORY 7A": {
 "buckets": {
 "1-5": {
-"n_course": 510,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.296,
+null,
+null
+],
+[
+1.0,
+0.489,
+null,
+null
+],
+[
+2.0,
+0.691,
+null,
+null
+],
+[
+3.0,
+0.819,
+null,
+null
+],
+[
+4.0,
+0.908,
+null,
+null
+],
+[
+5.0,
+0.974,
+null,
+null
+],
+[
+6.0,
+0.989,
+null,
+null
+],
+[
+7.0,
+0.997,
+null,
+null
+],
+[
+7.16,
+1.0,
+null,
+null
+]
+],
+"events": 467,
+"median_days": 1.05,
+"n": 510,
+"pooled": false,
+"reach_days": 7.2,
+"sections": 1
 },
 "16-40": {
-"n_course": 275,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.007,
+null,
+null
+],
+[
+1.0,
+0.023,
+null,
+null
+],
+[
+2.0,
+0.023,
+null,
+null
+],
+[
+3.0,
+0.023,
+null,
+null
+],
+[
+4.0,
+0.032,
+null,
+null
+],
+[
+5.0,
+0.032,
+null,
+null
+],
+[
+6.0,
+0.032,
+null,
+null
+],
+[
+7.0,
+0.077,
+null,
+null
+],
+[
+8.0,
+0.124,
+null,
+null
+],
+[
+9.0,
+0.147,
+null,
+null
+],
+[
+10.0,
+0.147,
+null,
+null
+],
+[
+12.0,
+0.168,
+null,
+null
+],
+[
+14.0,
+0.242,
+null,
+null
+],
+[
+16.0,
+0.524,
+null,
+null
+],
+[
+18.0,
+0.556,
+null,
+null
+],
+[
+18.21,
+0.556,
+null,
+null
+]
+],
+"events": 43,
+"median_days": 15.96,
+"n": 275,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "41+": {
-"n_course": 66,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.21,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 66,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "6-15": {
-"n_course": 329,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.018,
+null,
+null
+],
+[
+1.0,
+0.053,
+null,
+null
+],
+[
+2.0,
+0.117,
+null,
+null
+],
+[
+3.0,
+0.211,
+null,
+null
+],
+[
+4.0,
+0.32,
+null,
+null
+],
+[
+5.0,
+0.499,
+null,
+null
+],
+[
+6.0,
+0.636,
+null,
+null
+],
+[
+7.0,
+0.707,
+null,
+null
+],
+[
+8.0,
+0.781,
+null,
+null
+],
+[
+9.0,
+0.823,
+null,
+null
+],
+[
+10.0,
+0.884,
+null,
+null
+],
+[
+12.0,
+0.972,
+null,
+null
+],
+[
+13.06,
+0.994,
+null,
+null
+]
+],
+"events": 237,
+"median_days": 5.0,
+"n": 329,
+"pooled": false,
+"reach_days": 13.1,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -701,9 +4081,110 @@
 "HISTORY 8A": {
 "buckets": {
 "1-5": {
-"n_course": 33,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.186,
+null,
+null
+],
+[
+1.0,
+0.219,
+null,
+null
+],
+[
+2.0,
+0.385,
+null,
+null
+],
+[
+3.0,
+0.385,
+null,
+null
+],
+[
+4.0,
+0.385,
+null,
+null
+],
+[
+5.0,
+0.433,
+null,
+null
+],
+[
+6.0,
+0.48,
+null,
+null
+],
+[
+7.0,
+0.48,
+null,
+null
+],
+[
+8.0,
+0.527,
+null,
+null
+],
+[
+9.0,
+0.632,
+null,
+null
+],
+[
+10.0,
+0.706,
+null,
+null
+],
+[
+12.0,
+0.706,
+null,
+null
+],
+[
+14.0,
+0.706,
+null,
+null
+],
+[
+16.0,
+0.706,
+null,
+null
+],
+[
+18.0,
+0.706,
+null,
+null
+],
+[
+18.38,
+0.706,
+null,
+null
+]
+],
+"events": 18,
+"median_days": 7.52,
+"n": 33,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -714,9 +4195,128 @@
 "HISTORY 98BC": {
 "buckets": {
 "1-5": {
-"n_course": 117,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.103,
+null,
+null
+],
+[
+1.0,
+0.146,
+null,
+null
+],
+[
+2.0,
+0.212,
+null,
+null
+],
+[
+3.0,
+0.254,
+null,
+null
+],
+[
+4.0,
+0.419,
+null,
+null
+],
+[
+5.0,
+0.505,
+null,
+null
+],
+[
+6.0,
+0.546,
+null,
+null
+],
+[
+7.0,
+0.634,
+null,
+null
+],
+[
+8.0,
+0.65,
+null,
+null
+],
+[
+9.0,
+0.734,
+null,
+null
+],
+[
+10.0,
+0.784,
+null,
+null
+],
+[
+12.0,
+0.8,
+null,
+null
+],
+[
+14.0,
+0.891,
+null,
+null
+],
+[
+16.0,
+0.927,
+null,
+null
+],
+[
+18.0,
+0.964,
+null,
+null
+],
+[
+21.0,
+0.964,
+null,
+null
+],
+[
+24.0,
+0.964,
+null,
+null
+],
+[
+28.0,
+0.964,
+null,
+null
+],
+[
+30.81,
+0.964,
+null,
+null
+]
+],
+"events": 77,
+"median_days": 4.9,
+"n": 117,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 21,
@@ -732,14 +4332,246 @@
 "HISTORY C159A": {
 "buckets": {
 "1-5": {
-"n_course": 307,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.116,
+null,
+null
+],
+[
+1.0,
+0.175,
+null,
+null
+],
+[
+2.0,
+0.23,
+null,
+null
+],
+[
+3.0,
+0.257,
+null,
+null
+],
+[
+4.0,
+0.345,
+null,
+null
+],
+[
+5.0,
+0.369,
+null,
+null
+],
+[
+6.0,
+0.401,
+null,
+null
+],
+[
+7.0,
+0.476,
+null,
+null
+],
+[
+8.0,
+0.509,
+null,
+null
+],
+[
+9.0,
+0.561,
+null,
+null
+],
+[
+10.0,
+0.602,
+null,
+null
+],
+[
+12.0,
+0.705,
+null,
+null
+],
+[
+14.0,
+0.804,
+null,
+null
+],
+[
+16.0,
+0.834,
+null,
+null
+],
+[
+18.0,
+0.867,
+null,
+null
+],
+[
+21.0,
+0.867,
+null,
+null
+],
+[
+24.0,
+0.867,
+null,
+null
+],
+[
+28.0,
+0.867,
+null,
+null
+],
+[
+30.88,
+0.867,
+null,
+null
+]
+],
+"events": 162,
+"median_days": 7.52,
+"n": 307,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 },
 "6-15": {
-"n_course": 104,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.019,
+null,
+null
+],
+[
+1.0,
+0.039,
+null,
+null
+],
+[
+2.0,
+0.059,
+null,
+null
+],
+[
+3.0,
+0.059,
+null,
+null
+],
+[
+4.0,
+0.132,
+null,
+null
+],
+[
+5.0,
+0.132,
+null,
+null
+],
+[
+6.0,
+0.132,
+null,
+null
+],
+[
+7.0,
+0.172,
+null,
+null
+],
+[
+8.0,
+0.201,
+null,
+null
+],
+[
+9.0,
+0.284,
+null,
+null
+],
+[
+10.0,
+0.301,
+null,
+null
+],
+[
+12.0,
+0.301,
+null,
+null
+],
+[
+14.0,
+0.301,
+null,
+null
+],
+[
+16.0,
+0.301,
+null,
+null
+],
+[
+18.0,
+0.301,
+null,
+null
+],
+[
+21.0,
+0.301,
+null,
+null
+],
+[
+24.0,
+0.651,
+null,
+null
+],
+[
+24.95,
+1.0,
+null,
+null
+]
+],
+"events": 27,
+"median_days": 21.38,
+"n": 104,
+"pooled": false,
+"reach_days": 24.9,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -750,9 +4582,134 @@
 "HISTORY C182C": {
 "buckets": {
 "1-5": {
-"n_course": 136,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.067,
+null,
+null
+],
+[
+1.0,
+0.075,
+null,
+null
+],
+[
+2.0,
+0.083,
+null,
+null
+],
+[
+3.0,
+0.092,
+null,
+null
+],
+[
+4.0,
+0.111,
+null,
+null
+],
+[
+5.0,
+0.111,
+null,
+null
+],
+[
+6.0,
+0.145,
+null,
+null
+],
+[
+7.0,
+0.157,
+null,
+null
+],
+[
+8.0,
+0.157,
+null,
+null
+],
+[
+9.0,
+0.218,
+null,
+null
+],
+[
+10.0,
+0.237,
+null,
+null
+],
+[
+12.0,
+0.237,
+null,
+null
+],
+[
+14.0,
+0.237,
+null,
+null
+],
+[
+16.0,
+0.237,
+null,
+null
+],
+[
+18.0,
+0.237,
+null,
+null
+],
+[
+21.0,
+0.237,
+null,
+null
+],
+[
+24.0,
+0.237,
+null,
+null
+],
+[
+28.0,
+0.237,
+null,
+null
+],
+[
+32.0,
+0.237,
+null,
+null
+],
+[
+33.94,
+0.237,
+null,
+null
+]
+],
+"events": 23,
+"median_days": null,
+"n": 136,
+"pooled": false,
+"reach_days": 33.9,
+"sections": 1
 },
 "6-15": {
 "n_course": 9,
@@ -768,9 +4725,86 @@
 "HISTORY C183A": {
 "buckets": {
 "1-5": {
-"n_course": 135,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.349,
+null,
+null
+],
+[
+1.0,
+0.481,
+null,
+null
+],
+[
+2.0,
+0.556,
+null,
+null
+],
+[
+3.0,
+0.633,
+null,
+null
+],
+[
+4.0,
+0.772,
+null,
+null
+],
+[
+5.0,
+0.802,
+null,
+null
+],
+[
+6.0,
+0.821,
+null,
+null
+],
+[
+7.0,
+0.871,
+null,
+null
+],
+[
+8.0,
+0.881,
+null,
+null
+],
+[
+9.0,
+0.891,
+null,
+null
+],
+[
+10.0,
+0.935,
+null,
+null
+],
+[
+11.05,
+0.961,
+null,
+null
+]
+],
+"events": 113,
+"median_days": 1.01,
+"n": 135,
+"pooled": false,
+"reach_days": 11.1,
+"sections": 1
 },
 "6-15": {
 "n_course": 1,
@@ -825,9 +4859,110 @@
 "HISTORY R1B": {
 "buckets": {
 "1-5": {
-"n_course": 121,
-"pooled": "HISTORY",
-"sections_course": 3
+"curve": [
+[
+0.5,
+0.066,
+0.024,
+0.109
+],
+[
+1.0,
+0.075,
+0.024,
+0.109
+],
+[
+2.0,
+0.075,
+0.024,
+0.109
+],
+[
+3.0,
+0.097,
+0.053,
+0.143
+],
+[
+4.0,
+0.108,
+0.053,
+0.177
+],
+[
+5.0,
+0.12,
+0.053,
+0.177
+],
+[
+6.0,
+0.167,
+0.083,
+0.285
+],
+[
+7.0,
+0.167,
+0.083,
+0.285
+],
+[
+8.0,
+0.204,
+0.083,
+0.392
+],
+[
+9.0,
+0.219,
+0.083,
+0.392
+],
+[
+10.0,
+0.219,
+0.083,
+0.392
+],
+[
+12.0,
+0.219,
+0.083,
+0.392
+],
+[
+14.0,
+0.245,
+0.153,
+0.392
+],
+[
+16.0,
+0.245,
+0.153,
+0.392
+],
+[
+18.0,
+0.245,
+0.153,
+0.392
+],
+[
+18.4,
+0.245,
+0.153,
+0.392
+]
+],
+"events": 22,
+"median_days": null,
+"n": 121,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 3
 }
 },
 "dept_group": "HISTORY",

@@ -3,9 +3,128 @@
 "ANTHRO 106": {
 "buckets": {
 "1-5": {
-"n_course": 201,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.175,
+null,
+null
+],
+[
+1.0,
+0.213,
+null,
+null
+],
+[
+2.0,
+0.303,
+null,
+null
+],
+[
+3.0,
+0.367,
+null,
+null
+],
+[
+4.0,
+0.415,
+null,
+null
+],
+[
+5.0,
+0.454,
+null,
+null
+],
+[
+6.0,
+0.495,
+null,
+null
+],
+[
+7.0,
+0.531,
+null,
+null
+],
+[
+8.0,
+0.584,
+null,
+null
+],
+[
+9.0,
+0.625,
+null,
+null
+],
+[
+10.0,
+0.661,
+null,
+null
+],
+[
+12.0,
+0.693,
+null,
+null
+],
+[
+14.0,
+0.73,
+null,
+null
+],
+[
+16.0,
+0.743,
+null,
+null
+],
+[
+18.0,
+0.743,
+null,
+null
+],
+[
+21.0,
+0.816,
+null,
+null
+],
+[
+24.0,
+0.837,
+null,
+null
+],
+[
+28.0,
+0.837,
+null,
+null
+],
+[
+30.81,
+0.837,
+null,
+null
+]
+],
+"events": 122,
+"median_days": 6.18,
+"n": 201,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -16,14 +135,252 @@
 "ANTHRO 111": {
 "buckets": {
 "1-5": {
-"n_course": 373,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.217,
+null,
+null
+],
+[
+1.0,
+0.303,
+null,
+null
+],
+[
+2.0,
+0.372,
+null,
+null
+],
+[
+3.0,
+0.429,
+null,
+null
+],
+[
+4.0,
+0.48,
+null,
+null
+],
+[
+5.0,
+0.513,
+null,
+null
+],
+[
+6.0,
+0.564,
+null,
+null
+],
+[
+7.0,
+0.609,
+null,
+null
+],
+[
+8.0,
+0.638,
+null,
+null
+],
+[
+9.0,
+0.673,
+null,
+null
+],
+[
+10.0,
+0.699,
+null,
+null
+],
+[
+12.0,
+0.735,
+null,
+null
+],
+[
+14.0,
+0.779,
+null,
+null
+],
+[
+16.0,
+0.868,
+null,
+null
+],
+[
+18.0,
+0.89,
+null,
+null
+],
+[
+21.0,
+0.901,
+null,
+null
+],
+[
+24.0,
+0.913,
+null,
+null
+],
+[
+28.0,
+0.913,
+null,
+null
+],
+[
+30.89,
+0.913,
+null,
+null
+]
+],
+"events": 229,
+"median_days": 4.43,
+"n": 373,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 },
 "6-15": {
-"n_course": 112,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.036,
+null,
+null
+],
+[
+1.0,
+0.055,
+null,
+null
+],
+[
+2.0,
+0.055,
+null,
+null
+],
+[
+3.0,
+0.055,
+null,
+null
+],
+[
+4.0,
+0.083,
+null,
+null
+],
+[
+5.0,
+0.097,
+null,
+null
+],
+[
+6.0,
+0.097,
+null,
+null
+],
+[
+7.0,
+0.097,
+null,
+null
+],
+[
+8.0,
+0.097,
+null,
+null
+],
+[
+9.0,
+0.097,
+null,
+null
+],
+[
+10.0,
+0.097,
+null,
+null
+],
+[
+12.0,
+0.097,
+null,
+null
+],
+[
+14.0,
+0.097,
+null,
+null
+],
+[
+16.0,
+0.097,
+null,
+null
+],
+[
+18.0,
+0.097,
+null,
+null
+],
+[
+21.0,
+0.097,
+null,
+null
+],
+[
+24.0,
+0.097,
+null,
+null
+],
+[
+28.0,
+0.342,
+null,
+null
+],
+[
+30.89,
+0.835,
+null,
+null
+]
+],
+"events": 14,
+"median_days": 28.27,
+"n": 112,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -34,9 +391,110 @@
 "ANTHRO 112": {
 "buckets": {
 "1-5": {
-"n_course": 165,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.17,
+null,
+null
+],
+[
+1.0,
+0.194,
+null,
+null
+],
+[
+2.0,
+0.264,
+null,
+null
+],
+[
+3.0,
+0.331,
+null,
+null
+],
+[
+4.0,
+0.366,
+null,
+null
+],
+[
+5.0,
+0.438,
+null,
+null
+],
+[
+6.0,
+0.525,
+null,
+null
+],
+[
+7.0,
+0.579,
+null,
+null
+],
+[
+8.0,
+0.635,
+null,
+null
+],
+[
+9.0,
+0.651,
+null,
+null
+],
+[
+10.0,
+0.659,
+null,
+null
+],
+[
+12.0,
+0.659,
+null,
+null
+],
+[
+14.0,
+0.764,
+null,
+null
+],
+[
+16.0,
+0.774,
+null,
+null
+],
+[
+18.0,
+0.904,
+null,
+null
+],
+[
+19.17,
+0.984,
+null,
+null
+]
+],
+"events": 127,
+"median_days": 5.29,
+"n": 165,
+"pooled": false,
+"reach_days": 19.2,
+"sections": 1
 },
 "6-15": {
 "n_course": 25,
@@ -52,9 +510,128 @@
 "ANTHRO 121AC": {
 "buckets": {
 "1-5": {
-"n_course": 173,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.152,
+null,
+null
+],
+[
+1.0,
+0.197,
+null,
+null
+],
+[
+2.0,
+0.23,
+null,
+null
+],
+[
+3.0,
+0.258,
+null,
+null
+],
+[
+4.0,
+0.279,
+null,
+null
+],
+[
+5.0,
+0.323,
+null,
+null
+],
+[
+6.0,
+0.425,
+null,
+null
+],
+[
+7.0,
+0.478,
+null,
+null
+],
+[
+8.0,
+0.496,
+null,
+null
+],
+[
+9.0,
+0.517,
+null,
+null
+],
+[
+10.0,
+0.517,
+null,
+null
+],
+[
+12.0,
+0.599,
+null,
+null
+],
+[
+14.0,
+0.599,
+null,
+null
+],
+[
+16.0,
+0.599,
+null,
+null
+],
+[
+18.0,
+0.615,
+null,
+null
+],
+[
+21.0,
+0.645,
+null,
+null
+],
+[
+24.0,
+0.734,
+null,
+null
+],
+[
+28.0,
+0.822,
+null,
+null
+],
+[
+30.81,
+0.822,
+null,
+null
+]
+],
+"events": 86,
+"median_days": 8.23,
+"n": 173,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -65,9 +642,134 @@
 "ANTHRO 122A": {
 "buckets": {
 "1-5": {
-"n_course": 51,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.176,
+null,
+null
+],
+[
+1.0,
+0.226,
+null,
+null
+],
+[
+2.0,
+0.278,
+null,
+null
+],
+[
+3.0,
+0.33,
+null,
+null
+],
+[
+4.0,
+0.355,
+null,
+null
+],
+[
+5.0,
+0.355,
+null,
+null
+],
+[
+6.0,
+0.355,
+null,
+null
+],
+[
+7.0,
+0.355,
+null,
+null
+],
+[
+8.0,
+0.355,
+null,
+null
+],
+[
+9.0,
+0.355,
+null,
+null
+],
+[
+10.0,
+0.355,
+null,
+null
+],
+[
+12.0,
+0.355,
+null,
+null
+],
+[
+14.0,
+0.355,
+null,
+null
+],
+[
+16.0,
+0.355,
+null,
+null
+],
+[
+18.0,
+0.355,
+null,
+null
+],
+[
+21.0,
+0.355,
+null,
+null
+],
+[
+24.0,
+0.355,
+null,
+null
+],
+[
+28.0,
+0.355,
+null,
+null
+],
+[
+32.0,
+0.355,
+null,
+null
+],
+[
+34.17,
+0.355,
+null,
+null
+]
+],
+"events": 16,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 34.2,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -78,14 +780,258 @@
 "ANTHRO 123A": {
 "buckets": {
 "1-5": {
-"n_course": 234,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.176,
+null,
+null
+],
+[
+1.0,
+0.217,
+null,
+null
+],
+[
+2.0,
+0.281,
+null,
+null
+],
+[
+3.0,
+0.348,
+null,
+null
+],
+[
+4.0,
+0.416,
+null,
+null
+],
+[
+5.0,
+0.447,
+null,
+null
+],
+[
+6.0,
+0.48,
+null,
+null
+],
+[
+7.0,
+0.521,
+null,
+null
+],
+[
+8.0,
+0.579,
+null,
+null
+],
+[
+9.0,
+0.588,
+null,
+null
+],
+[
+10.0,
+0.597,
+null,
+null
+],
+[
+12.0,
+0.608,
+null,
+null
+],
+[
+14.0,
+0.672,
+null,
+null
+],
+[
+16.0,
+0.672,
+null,
+null
+],
+[
+18.0,
+0.686,
+null,
+null
+],
+[
+21.0,
+0.721,
+null,
+null
+],
+[
+24.0,
+0.721,
+null,
+null
+],
+[
+28.0,
+0.767,
+null,
+null
+],
+[
+30.81,
+0.826,
+null,
+null
+]
+],
+"events": 116,
+"median_days": 6.48,
+"n": 234,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
-"n_course": 64,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.079,
+null,
+null
+],
+[
+1.0,
+0.115,
+null,
+null
+],
+[
+2.0,
+0.115,
+null,
+null
+],
+[
+3.0,
+0.14,
+null,
+null
+],
+[
+4.0,
+0.14,
+null,
+null
+],
+[
+5.0,
+0.14,
+null,
+null
+],
+[
+6.0,
+0.14,
+null,
+null
+],
+[
+7.0,
+0.14,
+null,
+null
+],
+[
+8.0,
+0.14,
+null,
+null
+],
+[
+9.0,
+0.14,
+null,
+null
+],
+[
+10.0,
+0.14,
+null,
+null
+],
+[
+12.0,
+0.14,
+null,
+null
+],
+[
+14.0,
+0.14,
+null,
+null
+],
+[
+16.0,
+0.14,
+null,
+null
+],
+[
+18.0,
+0.14,
+null,
+null
+],
+[
+21.0,
+0.14,
+null,
+null
+],
+[
+24.0,
+0.14,
+null,
+null
+],
+[
+28.0,
+0.14,
+null,
+null
+],
+[
+32.0,
+0.509,
+null,
+null
+],
+[
+33.14,
+0.754,
+null,
+null
+]
+],
+"events": 12,
+"median_days": 31.07,
+"n": 64,
+"pooled": false,
+"reach_days": 33.1,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -109,9 +1055,128 @@
 "ANTHRO 128M": {
 "buckets": {
 "1-5": {
-"n_course": 46,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.065,
+null,
+null
+],
+[
+1.0,
+0.117,
+null,
+null
+],
+[
+2.0,
+0.143,
+null,
+null
+],
+[
+3.0,
+0.143,
+null,
+null
+],
+[
+4.0,
+0.143,
+null,
+null
+],
+[
+5.0,
+0.176,
+null,
+null
+],
+[
+6.0,
+0.176,
+null,
+null
+],
+[
+7.0,
+0.245,
+null,
+null
+],
+[
+8.0,
+0.279,
+null,
+null
+],
+[
+9.0,
+0.351,
+null,
+null
+],
+[
+10.0,
+0.387,
+null,
+null
+],
+[
+12.0,
+0.387,
+null,
+null
+],
+[
+14.0,
+0.387,
+null,
+null
+],
+[
+16.0,
+0.387,
+null,
+null
+],
+[
+18.0,
+0.387,
+null,
+null
+],
+[
+21.0,
+0.387,
+null,
+null
+],
+[
+24.0,
+0.387,
+null,
+null
+],
+[
+28.0,
+0.387,
+null,
+null
+],
+[
+30.81,
+0.387,
+null,
+null
+]
+],
+"events": 13,
+"median_days": null,
+"n": 46,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -122,14 +1187,252 @@
 "ANTHRO 136B": {
 "buckets": {
 "1-5": {
-"n_course": 214,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.184,
+null,
+null
+],
+[
+1.0,
+0.252,
+null,
+null
+],
+[
+2.0,
+0.324,
+null,
+null
+],
+[
+3.0,
+0.353,
+null,
+null
+],
+[
+4.0,
+0.394,
+null,
+null
+],
+[
+5.0,
+0.437,
+null,
+null
+],
+[
+6.0,
+0.511,
+null,
+null
+],
+[
+7.0,
+0.534,
+null,
+null
+],
+[
+8.0,
+0.549,
+null,
+null
+],
+[
+9.0,
+0.549,
+null,
+null
+],
+[
+10.0,
+0.567,
+null,
+null
+],
+[
+12.0,
+0.598,
+null,
+null
+],
+[
+14.0,
+0.598,
+null,
+null
+],
+[
+16.0,
+0.598,
+null,
+null
+],
+[
+18.0,
+0.614,
+null,
+null
+],
+[
+21.0,
+0.652,
+null,
+null
+],
+[
+24.0,
+0.677,
+null,
+null
+],
+[
+28.0,
+0.765,
+null,
+null
+],
+[
+31.02,
+0.765,
+null,
+null
+]
+],
+"events": 109,
+"median_days": 5.89,
+"n": 214,
+"pooled": false,
+"reach_days": 31.0,
+"sections": 1
 },
 "6-15": {
-"n_course": 63,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.033,
+null,
+null
+],
+[
+1.0,
+0.052,
+null,
+null
+],
+[
+2.0,
+0.153,
+null,
+null
+],
+[
+3.0,
+0.153,
+null,
+null
+],
+[
+4.0,
+0.153,
+null,
+null
+],
+[
+5.0,
+0.153,
+null,
+null
+],
+[
+6.0,
+0.153,
+null,
+null
+],
+[
+7.0,
+0.153,
+null,
+null
+],
+[
+8.0,
+0.181,
+null,
+null
+],
+[
+9.0,
+0.21,
+null,
+null
+],
+[
+10.0,
+0.21,
+null,
+null
+],
+[
+12.0,
+0.21,
+null,
+null
+],
+[
+14.0,
+0.21,
+null,
+null
+],
+[
+16.0,
+0.21,
+null,
+null
+],
+[
+18.0,
+0.21,
+null,
+null
+],
+[
+21.0,
+0.21,
+null,
+null
+],
+[
+24.0,
+0.21,
+null,
+null
+],
+[
+28.0,
+0.21,
+null,
+null
+],
+[
+31.02,
+0.21,
+null,
+null
+]
+],
+"events": 10,
+"median_days": null,
+"n": 63,
+"pooled": false,
+"reach_days": 31.0,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -153,9 +1456,128 @@
 "ANTHRO 142": {
 "buckets": {
 "1-5": {
-"n_course": 59,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.187,
+null,
+null
+],
+[
+1.0,
+0.302,
+null,
+null
+],
+[
+2.0,
+0.343,
+null,
+null
+],
+[
+3.0,
+0.366,
+null,
+null
+],
+[
+4.0,
+0.416,
+null,
+null
+],
+[
+5.0,
+0.416,
+null,
+null
+],
+[
+6.0,
+0.442,
+null,
+null
+],
+[
+7.0,
+0.442,
+null,
+null
+],
+[
+8.0,
+0.442,
+null,
+null
+],
+[
+9.0,
+0.469,
+null,
+null
+],
+[
+10.0,
+0.522,
+null,
+null
+],
+[
+12.0,
+0.549,
+null,
+null
+],
+[
+14.0,
+0.583,
+null,
+null
+],
+[
+16.0,
+0.75,
+null,
+null
+],
+[
+18.0,
+0.75,
+null,
+null
+],
+[
+21.0,
+0.75,
+null,
+null
+],
+[
+24.0,
+0.75,
+null,
+null
+],
+[
+28.0,
+0.75,
+null,
+null
+],
+[
+30.81,
+0.75,
+null,
+null
+]
+],
+"events": 32,
+"median_days": 9.83,
+"n": 59,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -166,14 +1588,222 @@
 "ANTHRO 149": {
 "buckets": {
 "1-5": {
-"n_course": 341,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.259,
+null,
+null
+],
+[
+1.0,
+0.342,
+null,
+null
+],
+[
+2.0,
+0.402,
+null,
+null
+],
+[
+3.0,
+0.461,
+null,
+null
+],
+[
+4.0,
+0.517,
+null,
+null
+],
+[
+5.0,
+0.569,
+null,
+null
+],
+[
+6.0,
+0.613,
+null,
+null
+],
+[
+7.0,
+0.63,
+null,
+null
+],
+[
+8.0,
+0.65,
+null,
+null
+],
+[
+9.0,
+0.65,
+null,
+null
+],
+[
+10.0,
+0.65,
+null,
+null
+],
+[
+12.0,
+0.7,
+null,
+null
+],
+[
+14.0,
+0.741,
+null,
+null
+],
+[
+16.0,
+0.78,
+null,
+null
+],
+[
+18.0,
+0.78,
+null,
+null
+],
+[
+21.0,
+0.804,
+null,
+null
+],
+[
+24.0,
+0.843,
+null,
+null
+],
+[
+28.0,
+0.882,
+null,
+null
+],
+[
+28.58,
+0.882,
+null,
+null
+]
+],
+"events": 200,
+"median_days": 3.69,
+"n": 341,
+"pooled": false,
+"reach_days": 28.6,
+"sections": 1
 },
 "6-15": {
-"n_course": 44,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.045,
+null,
+null
+],
+[
+1.0,
+0.094,
+null,
+null
+],
+[
+2.0,
+0.144,
+null,
+null
+],
+[
+3.0,
+0.173,
+null,
+null
+],
+[
+4.0,
+0.201,
+null,
+null
+],
+[
+5.0,
+0.201,
+null,
+null
+],
+[
+6.0,
+0.281,
+null,
+null
+],
+[
+7.0,
+0.281,
+null,
+null
+],
+[
+8.0,
+0.346,
+null,
+null
+],
+[
+9.0,
+0.428,
+null,
+null
+],
+[
+10.0,
+0.428,
+null,
+null
+],
+[
+12.0,
+0.428,
+null,
+null
+],
+[
+14.0,
+0.809,
+null,
+null
+],
+[
+15.95,
+1.0,
+null,
+null
+]
+],
+"events": 15,
+"median_days": 12.99,
+"n": 44,
+"pooled": false,
+"reach_days": 15.9,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -184,9 +1814,134 @@
 "ANTHRO 150": {
 "buckets": {
 "1-5": {
-"n_course": 311,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.188,
+null,
+null
+],
+[
+1.0,
+0.321,
+null,
+null
+],
+[
+2.0,
+0.411,
+null,
+null
+],
+[
+3.0,
+0.465,
+null,
+null
+],
+[
+4.0,
+0.505,
+null,
+null
+],
+[
+5.0,
+0.548,
+null,
+null
+],
+[
+6.0,
+0.574,
+null,
+null
+],
+[
+7.0,
+0.594,
+null,
+null
+],
+[
+8.0,
+0.605,
+null,
+null
+],
+[
+9.0,
+0.616,
+null,
+null
+],
+[
+10.0,
+0.616,
+null,
+null
+],
+[
+12.0,
+0.64,
+null,
+null
+],
+[
+14.0,
+0.668,
+null,
+null
+],
+[
+16.0,
+0.676,
+null,
+null
+],
+[
+18.0,
+0.676,
+null,
+null
+],
+[
+21.0,
+0.691,
+null,
+null
+],
+[
+24.0,
+0.708,
+null,
+null
+],
+[
+28.0,
+0.739,
+null,
+null
+],
+[
+32.0,
+0.739,
+null,
+null
+],
+[
+35.17,
+0.739,
+null,
+null
+]
+],
+"events": 180,
+"median_days": 3.92,
+"n": 311,
+"pooled": false,
+"reach_days": 35.2,
+"sections": 1
 },
 "16-40": {
 "n_course": 3,
@@ -194,9 +1949,128 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 92,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.033,
+null,
+null
+],
+[
+1.0,
+0.07,
+null,
+null
+],
+[
+2.0,
+0.098,
+null,
+null
+],
+[
+3.0,
+0.115,
+null,
+null
+],
+[
+4.0,
+0.133,
+null,
+null
+],
+[
+5.0,
+0.152,
+null,
+null
+],
+[
+6.0,
+0.152,
+null,
+null
+],
+[
+7.0,
+0.152,
+null,
+null
+],
+[
+8.0,
+0.152,
+null,
+null
+],
+[
+9.0,
+0.152,
+null,
+null
+],
+[
+10.0,
+0.202,
+null,
+null
+],
+[
+12.0,
+0.23,
+null,
+null
+],
+[
+14.0,
+0.259,
+null,
+null
+],
+[
+16.0,
+0.259,
+null,
+null
+],
+[
+18.0,
+0.259,
+null,
+null
+],
+[
+21.0,
+0.259,
+null,
+null
+],
+[
+24.0,
+0.259,
+null,
+null
+],
+[
+28.0,
+0.259,
+null,
+null
+],
+[
+30.81,
+0.259,
+null,
+null
+]
+],
+"events": 15,
+"median_days": null,
+"n": 92,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -207,14 +2081,252 @@
 "ANTHRO 159": {
 "buckets": {
 "1-5": {
-"n_course": 176,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.197,
+null,
+null
+],
+[
+1.0,
+0.27,
+null,
+null
+],
+[
+2.0,
+0.321,
+null,
+null
+],
+[
+3.0,
+0.336,
+null,
+null
+],
+[
+4.0,
+0.361,
+null,
+null
+],
+[
+5.0,
+0.369,
+null,
+null
+],
+[
+6.0,
+0.378,
+null,
+null
+],
+[
+7.0,
+0.378,
+null,
+null
+],
+[
+8.0,
+0.388,
+null,
+null
+],
+[
+9.0,
+0.408,
+null,
+null
+],
+[
+10.0,
+0.448,
+null,
+null
+],
+[
+12.0,
+0.555,
+null,
+null
+],
+[
+14.0,
+0.57,
+null,
+null
+],
+[
+16.0,
+0.615,
+null,
+null
+],
+[
+18.0,
+0.615,
+null,
+null
+],
+[
+21.0,
+0.615,
+null,
+null
+],
+[
+24.0,
+0.615,
+null,
+null
+],
+[
+28.0,
+0.615,
+null,
+null
+],
+[
+31.08,
+0.615,
+null,
+null
+]
+],
+"events": 80,
+"median_days": 10.45,
+"n": 176,
+"pooled": false,
+"reach_days": 31.1,
+"sections": 1
 },
 "6-15": {
-"n_course": 43,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.048,
+null,
+null
+],
+[
+1.0,
+0.078,
+null,
+null
+],
+[
+2.0,
+0.078,
+null,
+null
+],
+[
+3.0,
+0.078,
+null,
+null
+],
+[
+4.0,
+0.078,
+null,
+null
+],
+[
+5.0,
+0.078,
+null,
+null
+],
+[
+6.0,
+0.078,
+null,
+null
+],
+[
+7.0,
+0.078,
+null,
+null
+],
+[
+8.0,
+0.078,
+null,
+null
+],
+[
+9.0,
+0.078,
+null,
+null
+],
+[
+10.0,
+0.078,
+null,
+null
+],
+[
+12.0,
+0.078,
+null,
+null
+],
+[
+14.0,
+0.078,
+null,
+null
+],
+[
+16.0,
+0.078,
+null,
+null
+],
+[
+18.0,
+0.078,
+null,
+null
+],
+[
+21.0,
+0.078,
+null,
+null
+],
+[
+24.0,
+0.078,
+null,
+null
+],
+[
+28.0,
+0.078,
+null,
+null
+],
+[
+30.9,
+0.078,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 43,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -225,9 +2337,134 @@
 "ANTHRO 183": {
 "buckets": {
 "1-5": {
-"n_course": 43,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.187,
+null,
+null
+],
+[
+1.0,
+0.244,
+null,
+null
+],
+[
+2.0,
+0.338,
+null,
+null
+],
+[
+3.0,
+0.37,
+null,
+null
+],
+[
+4.0,
+0.37,
+null,
+null
+],
+[
+5.0,
+0.44,
+null,
+null
+],
+[
+6.0,
+0.44,
+null,
+null
+],
+[
+7.0,
+0.44,
+null,
+null
+],
+[
+8.0,
+0.44,
+null,
+null
+],
+[
+9.0,
+0.48,
+null,
+null
+],
+[
+10.0,
+0.48,
+null,
+null
+],
+[
+12.0,
+0.564,
+null,
+null
+],
+[
+14.0,
+0.564,
+null,
+null
+],
+[
+16.0,
+0.564,
+null,
+null
+],
+[
+18.0,
+0.636,
+null,
+null
+],
+[
+21.0,
+0.709,
+null,
+null
+],
+[
+24.0,
+0.709,
+null,
+null
+],
+[
+28.0,
+0.806,
+null,
+null
+],
+[
+32.0,
+0.806,
+null,
+null
+],
+[
+34.52,
+1.0,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 11.4,
+"n": 43,
+"pooled": false,
+"reach_days": 34.5,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -238,9 +2475,128 @@
 "ANTHRO 189": {
 "buckets": {
 "1-5": {
-"n_course": 231,
-"pooled": "ANTHRO",
-"sections_course": 2
+"curve": [
+[
+0.5,
+0.247,
+0.246,
+0.25
+],
+[
+1.0,
+0.298,
+0.292,
+0.298
+],
+[
+2.0,
+0.355,
+0.292,
+0.364
+],
+[
+3.0,
+0.413,
+0.401,
+0.481
+],
+[
+4.0,
+0.441,
+0.435,
+0.481
+],
+[
+5.0,
+0.449,
+0.444,
+0.481
+],
+[
+6.0,
+0.539,
+0.481,
+0.545
+],
+[
+7.0,
+0.583,
+0.481,
+0.594
+],
+[
+8.0,
+0.61,
+0.481,
+0.624
+],
+[
+9.0,
+0.629,
+0.481,
+0.645
+],
+[
+10.0,
+0.675,
+0.481,
+0.696
+],
+[
+12.0,
+0.724,
+0.481,
+0.749
+],
+[
+14.0,
+0.738,
+0.481,
+0.763
+],
+[
+16.0,
+0.738,
+0.481,
+0.763
+],
+[
+18.0,
+0.774,
+0.481,
+0.797
+],
+[
+21.0,
+0.795,
+0.481,
+0.816
+],
+[
+24.0,
+0.795,
+0.481,
+0.816
+],
+[
+28.0,
+0.795,
+0.481,
+0.816
+],
+[
+30.81,
+0.795,
+0.481,
+0.816
+]
+],
+"events": 125,
+"median_days": 5.46,
+"n": 231,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 2
 },
 "6-15": {
 "n_course": 8,
@@ -256,9 +2612,140 @@
 "ANTHRO 196": {
 "buckets": {
 "1-5": {
-"n_course": 111,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.215,
+null,
+null
+],
+[
+1.0,
+0.304,
+null,
+null
+],
+[
+2.0,
+0.394,
+null,
+null
+],
+[
+3.0,
+0.462,
+null,
+null
+],
+[
+4.0,
+0.474,
+null,
+null
+],
+[
+5.0,
+0.474,
+null,
+null
+],
+[
+6.0,
+0.487,
+null,
+null
+],
+[
+7.0,
+0.487,
+null,
+null
+],
+[
+8.0,
+0.584,
+null,
+null
+],
+[
+9.0,
+0.599,
+null,
+null
+],
+[
+10.0,
+0.599,
+null,
+null
+],
+[
+12.0,
+0.618,
+null,
+null
+],
+[
+14.0,
+0.618,
+null,
+null
+],
+[
+16.0,
+0.618,
+null,
+null
+],
+[
+18.0,
+0.618,
+null,
+null
+],
+[
+21.0,
+0.618,
+null,
+null
+],
+[
+24.0,
+0.65,
+null,
+null
+],
+[
+28.0,
+0.65,
+null,
+null
+],
+[
+32.0,
+0.685,
+null,
+null
+],
+[
+36.0,
+0.865,
+null,
+null
+],
+[
+37.11,
+1.0,
+null,
+null
+]
+],
+"events": 64,
+"median_days": 7.46,
+"n": 111,
+"pooled": false,
+"reach_days": 37.1,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -308,9 +2795,110 @@
 "ANTHRO 250X": {
 "buckets": {
 "1-5": {
-"n_course": 31,
-"pooled": "ANTHRO",
-"sections_course": 2
+"curve": [
+[
+0.5,
+0.129,
+0.0,
+0.133
+],
+[
+1.0,
+0.129,
+0.0,
+0.133
+],
+[
+2.0,
+0.205,
+0.0,
+0.212
+],
+[
+3.0,
+0.266,
+0.0,
+0.273
+],
+[
+4.0,
+0.449,
+0.0,
+0.455
+],
+[
+5.0,
+0.449,
+0.0,
+0.455
+],
+[
+6.0,
+0.449,
+0.0,
+0.455
+],
+[
+7.0,
+0.449,
+0.0,
+0.455
+],
+[
+8.0,
+0.449,
+0.0,
+0.455
+],
+[
+9.0,
+0.449,
+0.0,
+0.455
+],
+[
+10.0,
+0.449,
+0.0,
+0.455
+],
+[
+12.0,
+0.449,
+0.0,
+0.455
+],
+[
+14.0,
+0.449,
+0.0,
+0.455
+],
+[
+16.0,
+0.449,
+0.0,
+0.455
+],
+[
+18.0,
+0.449,
+0.0,
+0.455
+],
+[
+18.44,
+0.449,
+0.0,
+0.455
+]
+],
+"events": 10,
+"median_days": null,
+"n": 31,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 2
 }
 },
 "dept_group": "ANTHRO",
@@ -347,19 +2935,304 @@
 "ANTHRO 2AC": {
 "buckets": {
 "1-5": {
-"n_course": 368,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.227,
+null,
+null
+],
+[
+1.0,
+0.323,
+null,
+null
+],
+[
+2.0,
+0.449,
+null,
+null
+],
+[
+3.0,
+0.495,
+null,
+null
+],
+[
+4.0,
+0.576,
+null,
+null
+],
+[
+5.0,
+0.657,
+null,
+null
+],
+[
+6.0,
+0.709,
+null,
+null
+],
+[
+7.0,
+0.769,
+null,
+null
+],
+[
+8.0,
+0.813,
+null,
+null
+],
+[
+9.0,
+0.852,
+null,
+null
+],
+[
+10.0,
+0.876,
+null,
+null
+],
+[
+12.0,
+0.946,
+null,
+null
+],
+[
+12.02,
+0.946,
+null,
+null
+]
+],
+"events": 240,
+"median_days": 3.01,
+"n": 368,
+"pooled": false,
+"reach_days": 12.0,
+"sections": 1
 },
 "16-40": {
-"n_course": 189,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.43,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 189,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 },
 "6-15": {
-"n_course": 259,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.012,
+null,
+null
+],
+[
+1.0,
+0.016,
+null,
+null
+],
+[
+2.0,
+0.046,
+null,
+null
+],
+[
+3.0,
+0.065,
+null,
+null
+],
+[
+4.0,
+0.08,
+null,
+null
+],
+[
+5.0,
+0.086,
+null,
+null
+],
+[
+6.0,
+0.111,
+null,
+null
+],
+[
+7.0,
+0.13,
+null,
+null
+],
+[
+8.0,
+0.164,
+null,
+null
+],
+[
+9.0,
+0.193,
+null,
+null
+],
+[
+10.0,
+0.202,
+null,
+null
+],
+[
+12.0,
+0.25,
+null,
+null
+],
+[
+14.0,
+0.383,
+null,
+null
+],
+[
+16.0,
+0.434,
+null,
+null
+],
+[
+18.0,
+0.434,
+null,
+null
+],
+[
+18.21,
+0.434,
+null,
+null
+]
+],
+"events": 48,
+"median_days": null,
+"n": 259,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -383,19 +3256,292 @@
 "ANTHRO 3AC": {
 "buckets": {
 "1-5": {
-"n_course": 400,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.28,
+null,
+null
+],
+[
+1.0,
+0.387,
+null,
+null
+],
+[
+2.0,
+0.554,
+null,
+null
+],
+[
+3.0,
+0.647,
+null,
+null
+],
+[
+4.0,
+0.726,
+null,
+null
+],
+[
+5.0,
+0.805,
+null,
+null
+],
+[
+6.0,
+0.857,
+null,
+null
+],
+[
+7.0,
+0.899,
+null,
+null
+],
+[
+8.0,
+0.94,
+null,
+null
+],
+[
+9.0,
+0.962,
+null,
+null
+],
+[
+10.0,
+0.992,
+null,
+null
+],
+[
+10.09,
+0.992,
+null,
+null
+]
+],
+"events": 318,
+"median_days": 1.6,
+"n": 400,
+"pooled": false,
+"reach_days": 10.1,
+"sections": 1
 },
 "16-40": {
-"n_course": 210,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.02,
+null,
+null
+],
+[
+1.0,
+0.03,
+null,
+null
+],
+[
+2.0,
+0.058,
+null,
+null
+],
+[
+3.0,
+0.064,
+null,
+null
+],
+[
+4.0,
+0.064,
+null,
+null
+],
+[
+5.0,
+0.064,
+null,
+null
+],
+[
+6.0,
+0.064,
+null,
+null
+],
+[
+7.0,
+0.072,
+null,
+null
+],
+[
+8.0,
+0.133,
+null,
+null
+],
+[
+9.0,
+0.143,
+null,
+null
+],
+[
+10.0,
+0.154,
+null,
+null
+],
+[
+12.0,
+0.204,
+null,
+null
+],
+[
+14.0,
+0.204,
+null,
+null
+],
+[
+16.0,
+0.204,
+null,
+null
+],
+[
+18.0,
+0.204,
+null,
+null
+],
+[
+18.21,
+0.204,
+null,
+null
+]
+],
+"events": 25,
+"median_days": null,
+"n": 210,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "6-15": {
-"n_course": 284,
-"pooled": "ANTHRO",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.055,
+null,
+null
+],
+[
+1.0,
+0.07,
+null,
+null
+],
+[
+2.0,
+0.109,
+null,
+null
+],
+[
+3.0,
+0.152,
+null,
+null
+],
+[
+4.0,
+0.198,
+null,
+null
+],
+[
+5.0,
+0.252,
+null,
+null
+],
+[
+6.0,
+0.332,
+null,
+null
+],
+[
+7.0,
+0.372,
+null,
+null
+],
+[
+8.0,
+0.414,
+null,
+null
+],
+[
+9.0,
+0.466,
+null,
+null
+],
+[
+10.0,
+0.538,
+null,
+null
+],
+[
+12.0,
+0.689,
+null,
+null
+],
+[
+14.0,
+0.826,
+null,
+null
+],
+[
+16.0,
+0.953,
+null,
+null
+],
+[
+16.06,
+0.953,
+null,
+null
+]
+],
+"events": 131,
+"median_days": 9.69,
+"n": 284,
+"pooled": false,
+"reach_days": 16.1,
+"sections": 1
 }
 },
 "dept_group": "ANTHRO",
@@ -432,9 +3578,128 @@
 "ANTHRO R5B": {
 "buckets": {
 "1-5": {
-"n_course": 225,
-"pooled": "ANTHRO",
-"sections_course": 6
+"curve": [
+[
+0.5,
+0.036,
+0.012,
+0.064
+],
+[
+1.0,
+0.041,
+0.012,
+0.076
+],
+[
+2.0,
+0.051,
+0.012,
+0.095
+],
+[
+3.0,
+0.057,
+0.012,
+0.105
+],
+[
+4.0,
+0.063,
+0.012,
+0.121
+],
+[
+5.0,
+0.063,
+0.012,
+0.121
+],
+[
+6.0,
+0.069,
+0.022,
+0.121
+],
+[
+7.0,
+0.084,
+0.031,
+0.129
+],
+[
+8.0,
+0.084,
+0.031,
+0.129
+],
+[
+9.0,
+0.138,
+0.054,
+0.205
+],
+[
+10.0,
+0.138,
+0.054,
+0.205
+],
+[
+12.0,
+0.158,
+0.054,
+0.254
+],
+[
+14.0,
+0.175,
+0.074,
+0.267
+],
+[
+16.0,
+0.175,
+0.074,
+0.267
+],
+[
+18.0,
+0.175,
+0.074,
+0.267
+],
+[
+21.0,
+0.175,
+0.074,
+0.267
+],
+[
+24.0,
+0.175,
+0.074,
+0.267
+],
+[
+28.0,
+0.175,
+0.074,
+0.267
+],
+[
+30.81,
+0.175,
+0.074,
+0.267
+]
+],
+"events": 25,
+"median_days": null,
+"n": 225,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 6
 }
 },
 "dept_group": "ANTHRO",

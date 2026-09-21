@@ -3,14 +3,234 @@
 "PUBPOL 101": {
 "buckets": {
 "1-5": {
-"n_course": 583,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.257,
+null,
+null
+],
+[
+1.0,
+0.336,
+null,
+null
+],
+[
+2.0,
+0.518,
+null,
+null
+],
+[
+3.0,
+0.623,
+null,
+null
+],
+[
+4.0,
+0.69,
+null,
+null
+],
+[
+5.0,
+0.741,
+null,
+null
+],
+[
+6.0,
+0.757,
+null,
+null
+],
+[
+7.0,
+0.781,
+null,
+null
+],
+[
+8.0,
+0.795,
+null,
+null
+],
+[
+9.0,
+0.825,
+null,
+null
+],
+[
+10.0,
+0.831,
+null,
+null
+],
+[
+12.0,
+0.864,
+null,
+null
+],
+[
+14.0,
+0.874,
+null,
+null
+],
+[
+16.0,
+0.887,
+null,
+null
+],
+[
+18.0,
+0.887,
+null,
+null
+],
+[
+21.0,
+0.887,
+null,
+null
+],
+[
+24.0,
+0.887,
+null,
+null
+],
+[
+28.0,
+0.887,
+null,
+null
+],
+[
+30.81,
+0.887,
+null,
+null
+]
+],
+"events": 439,
+"median_days": 1.93,
+"n": 583,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 187,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.013,
+null,
+null
+],
+[
+5.0,
+0.027,
+null,
+null
+],
+[
+6.0,
+0.027,
+null,
+null
+],
+[
+7.0,
+0.054,
+null,
+null
+],
+[
+8.0,
+0.096,
+null,
+null
+],
+[
+9.0,
+0.174,
+null,
+null
+],
+[
+10.0,
+0.174,
+null,
+null
+],
+[
+12.0,
+0.195,
+null,
+null
+],
+[
+14.0,
+0.268,
+null,
+null
+],
+[
+16.0,
+0.359,
+null,
+null
+],
+[
+18.0,
+0.359,
+null,
+null
+],
+[
+18.21,
+0.359,
+null,
+null
+]
+],
+"events": 21,
+"median_days": null,
+"n": 187,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "41+": {
 "n_course": 4,
@@ -18,9 +238,128 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 340,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.003,
+null,
+null
+],
+[
+1.0,
+0.03,
+null,
+null
+],
+[
+2.0,
+0.108,
+null,
+null
+],
+[
+3.0,
+0.165,
+null,
+null
+],
+[
+4.0,
+0.217,
+null,
+null
+],
+[
+5.0,
+0.276,
+null,
+null
+],
+[
+6.0,
+0.323,
+null,
+null
+],
+[
+7.0,
+0.388,
+null,
+null
+],
+[
+8.0,
+0.414,
+null,
+null
+],
+[
+9.0,
+0.46,
+null,
+null
+],
+[
+10.0,
+0.503,
+null,
+null
+],
+[
+12.0,
+0.585,
+null,
+null
+],
+[
+14.0,
+0.629,
+null,
+null
+],
+[
+16.0,
+0.681,
+null,
+null
+],
+[
+18.0,
+0.695,
+null,
+null
+],
+[
+21.0,
+0.746,
+null,
+null
+],
+[
+24.0,
+0.746,
+null,
+null
+],
+[
+28.0,
+0.746,
+null,
+null
+],
+[
+30.81,
+0.746,
+null,
+null
+]
+],
+"events": 151,
+"median_days": 9.51,
+"n": 340,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -44,14 +383,252 @@
 "PUBPOL 141": {
 "buckets": {
 "1-5": {
-"n_course": 329,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.156,
+null,
+null
+],
+[
+1.0,
+0.229,
+null,
+null
+],
+[
+2.0,
+0.359,
+null,
+null
+],
+[
+3.0,
+0.406,
+null,
+null
+],
+[
+4.0,
+0.421,
+null,
+null
+],
+[
+5.0,
+0.464,
+null,
+null
+],
+[
+6.0,
+0.493,
+null,
+null
+],
+[
+7.0,
+0.538,
+null,
+null
+],
+[
+8.0,
+0.577,
+null,
+null
+],
+[
+9.0,
+0.605,
+null,
+null
+],
+[
+10.0,
+0.616,
+null,
+null
+],
+[
+12.0,
+0.627,
+null,
+null
+],
+[
+14.0,
+0.67,
+null,
+null
+],
+[
+16.0,
+0.716,
+null,
+null
+],
+[
+18.0,
+0.753,
+null,
+null
+],
+[
+21.0,
+0.822,
+null,
+null
+],
+[
+24.0,
+0.849,
+null,
+null
+],
+[
+28.0,
+0.849,
+null,
+null
+],
+[
+30.81,
+0.849,
+null,
+null
+]
+],
+"events": 212,
+"median_days": 6.06,
+"n": 329,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
-"n_course": 128,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.025,
+null,
+null
+],
+[
+3.0,
+0.068,
+null,
+null
+],
+[
+4.0,
+0.097,
+null,
+null
+],
+[
+5.0,
+0.097,
+null,
+null
+],
+[
+6.0,
+0.097,
+null,
+null
+],
+[
+7.0,
+0.119,
+null,
+null
+],
+[
+8.0,
+0.119,
+null,
+null
+],
+[
+9.0,
+0.158,
+null,
+null
+],
+[
+10.0,
+0.172,
+null,
+null
+],
+[
+12.0,
+0.172,
+null,
+null
+],
+[
+14.0,
+0.172,
+null,
+null
+],
+[
+16.0,
+0.172,
+null,
+null
+],
+[
+18.0,
+0.172,
+null,
+null
+],
+[
+21.0,
+0.172,
+null,
+null
+],
+[
+24.0,
+0.231,
+null,
+null
+],
+[
+28.0,
+0.231,
+null,
+null
+],
+[
+30.99,
+0.231,
+null,
+null
+]
+],
+"events": 19,
+"median_days": null,
+"n": 128,
+"pooled": false,
+"reach_days": 31.0,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -62,9 +639,68 @@
 "PUBPOL 147": {
 "buckets": {
 "1-5": {
-"n_course": 112,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.42,
+null,
+null
+],
+[
+1.0,
+0.598,
+null,
+null
+],
+[
+2.0,
+0.826,
+null,
+null
+],
+[
+3.0,
+0.89,
+null,
+null
+],
+[
+4.0,
+0.918,
+null,
+null
+],
+[
+5.0,
+0.936,
+null,
+null
+],
+[
+6.0,
+0.973,
+null,
+null
+],
+[
+7.0,
+0.991,
+null,
+null
+],
+[
+7.08,
+1.0,
+null,
+null
+]
+],
+"events": 111,
+"median_days": 0.77,
+"n": 112,
+"pooled": false,
+"reach_days": 7.1,
+"sections": 1
 },
 "6-15": {
 "n_course": 11,
@@ -80,14 +716,264 @@
 "PUBPOL 190": {
 "buckets": {
 "1-5": {
-"n_course": 347,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.176,
+null,
+null
+],
+[
+1.0,
+0.231,
+null,
+null
+],
+[
+2.0,
+0.3,
+null,
+null
+],
+[
+3.0,
+0.324,
+null,
+null
+],
+[
+4.0,
+0.339,
+null,
+null
+],
+[
+5.0,
+0.363,
+null,
+null
+],
+[
+6.0,
+0.388,
+null,
+null
+],
+[
+7.0,
+0.432,
+null,
+null
+],
+[
+8.0,
+0.456,
+null,
+null
+],
+[
+9.0,
+0.471,
+null,
+null
+],
+[
+10.0,
+0.471,
+null,
+null
+],
+[
+12.0,
+0.477,
+null,
+null
+],
+[
+14.0,
+0.501,
+null,
+null
+],
+[
+16.0,
+0.514,
+null,
+null
+],
+[
+18.0,
+0.54,
+null,
+null
+],
+[
+21.0,
+0.547,
+null,
+null
+],
+[
+24.0,
+0.577,
+null,
+null
+],
+[
+28.0,
+0.648,
+null,
+null
+],
+[
+32.0,
+0.66,
+null,
+null
+],
+[
+34.67,
+0.66,
+null,
+null
+]
+],
+"events": 165,
+"median_days": 13.69,
+"n": 347,
+"pooled": false,
+"reach_days": 34.7,
+"sections": 1
 },
 "6-15": {
-"n_course": 67,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.03,
+null,
+null
+],
+[
+1.0,
+0.03,
+null,
+null
+],
+[
+2.0,
+0.03,
+null,
+null
+],
+[
+3.0,
+0.066,
+null,
+null
+],
+[
+4.0,
+0.066,
+null,
+null
+],
+[
+5.0,
+0.066,
+null,
+null
+],
+[
+6.0,
+0.066,
+null,
+null
+],
+[
+7.0,
+0.066,
+null,
+null
+],
+[
+8.0,
+0.066,
+null,
+null
+],
+[
+9.0,
+0.066,
+null,
+null
+],
+[
+10.0,
+0.066,
+null,
+null
+],
+[
+12.0,
+0.066,
+null,
+null
+],
+[
+14.0,
+0.066,
+null,
+null
+],
+[
+16.0,
+0.066,
+null,
+null
+],
+[
+18.0,
+0.066,
+null,
+null
+],
+[
+21.0,
+0.066,
+null,
+null
+],
+[
+24.0,
+0.066,
+null,
+null
+],
+[
+28.0,
+0.066,
+null,
+null
+],
+[
+32.0,
+0.066,
+null,
+null
+],
+[
+32.98,
+0.066,
+null,
+null
+]
+],
+"events": 4,
+"median_days": null,
+"n": 67,
+"pooled": false,
+"reach_days": 33.0,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -98,9 +984,140 @@
 "PUBPOL 200A": {
 "buckets": {
 "1-5": {
-"n_course": 37,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+38.06,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 37,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -111,9 +1128,134 @@
 "PUBPOL 210A": {
 "buckets": {
 "1-5": {
-"n_course": 192,
-"pooled": "PUBPOL",
-"sections_course": 2
+"curve": [
+[
+0.5,
+0.099,
+0.077,
+0.125
+],
+[
+1.0,
+0.131,
+0.107,
+0.16
+],
+[
+2.0,
+0.153,
+0.127,
+0.184
+],
+[
+3.0,
+0.187,
+0.158,
+0.222
+],
+[
+4.0,
+0.217,
+0.18,
+0.261
+],
+[
+5.0,
+0.264,
+0.217,
+0.319
+],
+[
+6.0,
+0.279,
+0.244,
+0.319
+],
+[
+7.0,
+0.323,
+0.271,
+0.384
+],
+[
+8.0,
+0.345,
+0.284,
+0.417
+],
+[
+9.0,
+0.345,
+0.284,
+0.417
+],
+[
+10.0,
+0.362,
+0.318,
+0.417
+],
+[
+12.0,
+0.389,
+0.335,
+0.455
+],
+[
+14.0,
+0.411,
+0.356,
+0.476
+],
+[
+16.0,
+0.411,
+0.356,
+0.476
+],
+[
+18.0,
+0.424,
+0.356,
+0.501
+],
+[
+21.0,
+0.424,
+0.356,
+0.501
+],
+[
+24.0,
+0.424,
+0.356,
+0.501
+],
+[
+28.0,
+0.424,
+0.356,
+0.501
+],
+[
+32.0,
+0.424,
+0.356,
+0.501
+],
+[
+32.98,
+0.424,
+0.356,
+0.501
+]
+],
+"events": 66,
+"median_days": null,
+"n": 192,
+"pooled": false,
+"reach_days": 33.0,
+"sections": 2
 }
 },
 "dept_group": "PUBPOL",
@@ -124,9 +1266,128 @@
 "PUBPOL 229": {
 "buckets": {
 "1-5": {
-"n_course": 108,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.121,
+null,
+null
+],
+[
+1.0,
+0.14,
+null,
+null
+],
+[
+2.0,
+0.17,
+null,
+null
+],
+[
+3.0,
+0.233,
+null,
+null
+],
+[
+4.0,
+0.256,
+null,
+null
+],
+[
+5.0,
+0.28,
+null,
+null
+],
+[
+6.0,
+0.319,
+null,
+null
+],
+[
+7.0,
+0.319,
+null,
+null
+],
+[
+8.0,
+0.388,
+null,
+null
+],
+[
+9.0,
+0.431,
+null,
+null
+],
+[
+10.0,
+0.511,
+null,
+null
+],
+[
+12.0,
+0.528,
+null,
+null
+],
+[
+14.0,
+0.528,
+null,
+null
+],
+[
+16.0,
+0.552,
+null,
+null
+],
+[
+18.0,
+0.552,
+null,
+null
+],
+[
+21.0,
+0.552,
+null,
+null
+],
+[
+24.0,
+0.552,
+null,
+null
+],
+[
+28.0,
+0.552,
+null,
+null
+],
+[
+30.81,
+0.552,
+null,
+null
+]
+],
+"events": 46,
+"median_days": 9.98,
+"n": 108,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -137,9 +1398,128 @@
 "PUBPOL 230": {
 "buckets": {
 "1-5": {
-"n_course": 104,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.25,
+null,
+null
+],
+[
+1.0,
+0.32,
+null,
+null
+],
+[
+2.0,
+0.39,
+null,
+null
+],
+[
+3.0,
+0.43,
+null,
+null
+],
+[
+4.0,
+0.495,
+null,
+null
+],
+[
+5.0,
+0.533,
+null,
+null
+],
+[
+6.0,
+0.563,
+null,
+null
+],
+[
+7.0,
+0.6,
+null,
+null
+],
+[
+8.0,
+0.619,
+null,
+null
+],
+[
+9.0,
+0.679,
+null,
+null
+],
+[
+10.0,
+0.7,
+null,
+null
+],
+[
+12.0,
+0.725,
+null,
+null
+],
+[
+14.0,
+0.756,
+null,
+null
+],
+[
+16.0,
+0.786,
+null,
+null
+],
+[
+18.0,
+0.786,
+null,
+null
+],
+[
+21.0,
+0.786,
+null,
+null
+],
+[
+24.0,
+0.786,
+null,
+null
+],
+[
+28.0,
+0.786,
+null,
+null
+],
+[
+30.81,
+0.786,
+null,
+null
+]
+],
+"events": 65,
+"median_days": 4.28,
+"n": 104,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -150,9 +1530,128 @@
 "PUBPOL 235": {
 "buckets": {
 "1-5": {
-"n_course": 158,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.192,
+null,
+null
+],
+[
+1.0,
+0.232,
+null,
+null
+],
+[
+2.0,
+0.252,
+null,
+null
+],
+[
+3.0,
+0.286,
+null,
+null
+],
+[
+4.0,
+0.335,
+null,
+null
+],
+[
+5.0,
+0.394,
+null,
+null
+],
+[
+6.0,
+0.434,
+null,
+null
+],
+[
+7.0,
+0.493,
+null,
+null
+],
+[
+8.0,
+0.518,
+null,
+null
+],
+[
+9.0,
+0.561,
+null,
+null
+],
+[
+10.0,
+0.587,
+null,
+null
+],
+[
+12.0,
+0.65,
+null,
+null
+],
+[
+14.0,
+0.661,
+null,
+null
+],
+[
+16.0,
+0.751,
+null,
+null
+],
+[
+18.0,
+0.796,
+null,
+null
+],
+[
+21.0,
+0.83,
+null,
+null
+],
+[
+24.0,
+0.971,
+null,
+null
+],
+[
+28.0,
+0.971,
+null,
+null
+],
+[
+30.81,
+0.971,
+null,
+null
+]
+],
+"events": 116,
+"median_days": 7.18,
+"n": 158,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 3,
@@ -168,9 +1667,140 @@
 "PUBPOL 240A": {
 "buckets": {
 "1-5": {
-"n_course": 112,
-"pooled": "PUBPOL",
-"sections_course": 2
+"curve": [
+[
+0.5,
+0.099,
+0.079,
+0.115
+],
+[
+1.0,
+0.127,
+0.12,
+0.132
+],
+[
+2.0,
+0.164,
+0.141,
+0.183
+],
+[
+3.0,
+0.174,
+0.141,
+0.201
+],
+[
+4.0,
+0.194,
+0.141,
+0.238
+],
+[
+5.0,
+0.194,
+0.141,
+0.238
+],
+[
+6.0,
+0.215,
+0.141,
+0.276
+],
+[
+7.0,
+0.226,
+0.141,
+0.295
+],
+[
+8.0,
+0.226,
+0.141,
+0.295
+],
+[
+9.0,
+0.226,
+0.141,
+0.295
+],
+[
+10.0,
+0.226,
+0.141,
+0.295
+],
+[
+12.0,
+0.255,
+0.141,
+0.347
+],
+[
+14.0,
+0.255,
+0.141,
+0.347
+],
+[
+16.0,
+0.255,
+0.141,
+0.347
+],
+[
+18.0,
+0.255,
+0.141,
+0.347
+],
+[
+21.0,
+0.304,
+0.141,
+0.434
+],
+[
+24.0,
+0.304,
+0.141,
+0.434
+],
+[
+28.0,
+0.304,
+0.141,
+0.434
+],
+[
+32.0,
+0.304,
+0.141,
+0.434
+],
+[
+36.0,
+0.304,
+0.141,
+0.434
+],
+[
+38.06,
+0.304,
+0.141,
+0.434
+]
+],
+"events": 28,
+"median_days": null,
+"n": 112,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 2
 }
 },
 "dept_group": "PUBPOL",
@@ -194,9 +1824,128 @@
 "PUBPOL 250": {
 "buckets": {
 "1-5": {
-"n_course": 77,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.117,
+null,
+null
+],
+[
+1.0,
+0.117,
+null,
+null
+],
+[
+2.0,
+0.186,
+null,
+null
+],
+[
+3.0,
+0.229,
+null,
+null
+],
+[
+4.0,
+0.303,
+null,
+null
+],
+[
+5.0,
+0.335,
+null,
+null
+],
+[
+6.0,
+0.335,
+null,
+null
+],
+[
+7.0,
+0.367,
+null,
+null
+],
+[
+8.0,
+0.43,
+null,
+null
+],
+[
+9.0,
+0.477,
+null,
+null
+],
+[
+10.0,
+0.525,
+null,
+null
+],
+[
+12.0,
+0.654,
+null,
+null
+],
+[
+14.0,
+0.674,
+null,
+null
+],
+[
+16.0,
+0.699,
+null,
+null
+],
+[
+18.0,
+0.759,
+null,
+null
+],
+[
+21.0,
+0.759,
+null,
+null
+],
+[
+24.0,
+0.759,
+null,
+null
+],
+[
+28.0,
+0.759,
+null,
+null
+],
+[
+30.81,
+0.759,
+null,
+null
+]
+],
+"events": 48,
+"median_days": 9.53,
+"n": 77,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -207,9 +1956,128 @@
 "PUBPOL 255": {
 "buckets": {
 "1-5": {
-"n_course": 139,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.225,
+null,
+null
+],
+[
+1.0,
+0.302,
+null,
+null
+],
+[
+2.0,
+0.432,
+null,
+null
+],
+[
+3.0,
+0.44,
+null,
+null
+],
+[
+4.0,
+0.474,
+null,
+null
+],
+[
+5.0,
+0.533,
+null,
+null
+],
+[
+6.0,
+0.552,
+null,
+null
+],
+[
+7.0,
+0.585,
+null,
+null
+],
+[
+8.0,
+0.64,
+null,
+null
+],
+[
+9.0,
+0.651,
+null,
+null
+],
+[
+10.0,
+0.651,
+null,
+null
+],
+[
+12.0,
+0.675,
+null,
+null
+],
+[
+14.0,
+0.675,
+null,
+null
+],
+[
+16.0,
+0.731,
+null,
+null
+],
+[
+18.0,
+0.731,
+null,
+null
+],
+[
+21.0,
+0.731,
+null,
+null
+],
+[
+24.0,
+0.731,
+null,
+null
+],
+[
+28.0,
+0.731,
+null,
+null
+],
+[
+30.81,
+0.731,
+null,
+null
+]
+],
+"events": 85,
+"median_days": 4.11,
+"n": 139,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 19,
@@ -225,14 +2093,228 @@
 "PUBPOL 259": {
 "buckets": {
 "1-5": {
-"n_course": 195,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.16,
+null,
+null
+],
+[
+1.0,
+0.234,
+null,
+null
+],
+[
+2.0,
+0.309,
+null,
+null
+],
+[
+3.0,
+0.331,
+null,
+null
+],
+[
+4.0,
+0.376,
+null,
+null
+],
+[
+5.0,
+0.463,
+null,
+null
+],
+[
+6.0,
+0.499,
+null,
+null
+],
+[
+7.0,
+0.558,
+null,
+null
+],
+[
+8.0,
+0.628,
+null,
+null
+],
+[
+9.0,
+0.682,
+null,
+null
+],
+[
+10.0,
+0.706,
+null,
+null
+],
+[
+12.0,
+0.743,
+null,
+null
+],
+[
+14.0,
+0.766,
+null,
+null
+],
+[
+16.0,
+0.806,
+null,
+null
+],
+[
+18.0,
+0.838,
+null,
+null
+],
+[
+21.0,
+0.838,
+null,
+null
+],
+[
+24.0,
+0.838,
+null,
+null
+],
+[
+28.0,
+0.838,
+null,
+null
+],
+[
+30.81,
+0.838,
+null,
+null
+]
+],
+"events": 145,
+"median_days": 6.08,
+"n": 195,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
-"n_course": 42,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.107,
+null,
+null
+],
+[
+3.0,
+0.163,
+null,
+null
+],
+[
+4.0,
+0.219,
+null,
+null
+],
+[
+5.0,
+0.279,
+null,
+null
+],
+[
+6.0,
+0.279,
+null,
+null
+],
+[
+7.0,
+0.344,
+null,
+null
+],
+[
+8.0,
+0.377,
+null,
+null
+],
+[
+9.0,
+0.414,
+null,
+null
+],
+[
+10.0,
+0.56,
+null,
+null
+],
+[
+12.0,
+0.637,
+null,
+null
+],
+[
+14.0,
+0.773,
+null,
+null
+],
+[
+16.0,
+0.864,
+null,
+null
+],
+[
+17.18,
+1.0,
+null,
+null
+]
+],
+"events": 28,
+"median_days": 9.82,
+"n": 42,
+"pooled": false,
+"reach_days": 17.2,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -243,9 +2325,128 @@
 "PUBPOL 265": {
 "buckets": {
 "1-5": {
-"n_course": 157,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.13,
+null,
+null
+],
+[
+1.0,
+0.165,
+null,
+null
+],
+[
+2.0,
+0.214,
+null,
+null
+],
+[
+3.0,
+0.258,
+null,
+null
+],
+[
+4.0,
+0.328,
+null,
+null
+],
+[
+5.0,
+0.353,
+null,
+null
+],
+[
+6.0,
+0.379,
+null,
+null
+],
+[
+7.0,
+0.415,
+null,
+null
+],
+[
+8.0,
+0.432,
+null,
+null
+],
+[
+9.0,
+0.432,
+null,
+null
+],
+[
+10.0,
+0.452,
+null,
+null
+],
+[
+12.0,
+0.483,
+null,
+null
+],
+[
+14.0,
+0.564,
+null,
+null
+],
+[
+16.0,
+0.61,
+null,
+null
+],
+[
+18.0,
+0.755,
+null,
+null
+],
+[
+21.0,
+0.771,
+null,
+null
+],
+[
+24.0,
+0.771,
+null,
+null
+],
+[
+28.0,
+0.771,
+null,
+null
+],
+[
+30.81,
+0.771,
+null,
+null
+]
+],
+"events": 83,
+"median_days": 12.24,
+"n": 157,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -256,9 +2457,140 @@
 "PUBPOL 287": {
 "buckets": {
 "1-5": {
-"n_course": 74,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.15,
+null,
+null
+],
+[
+1.0,
+0.208,
+null,
+null
+],
+[
+2.0,
+0.224,
+null,
+null
+],
+[
+3.0,
+0.291,
+null,
+null
+],
+[
+4.0,
+0.291,
+null,
+null
+],
+[
+5.0,
+0.341,
+null,
+null
+],
+[
+6.0,
+0.358,
+null,
+null
+],
+[
+7.0,
+0.482,
+null,
+null
+],
+[
+8.0,
+0.661,
+null,
+null
+],
+[
+9.0,
+0.732,
+null,
+null
+],
+[
+10.0,
+0.771,
+null,
+null
+],
+[
+12.0,
+0.792,
+null,
+null
+],
+[
+14.0,
+0.792,
+null,
+null
+],
+[
+16.0,
+0.792,
+null,
+null
+],
+[
+18.0,
+0.792,
+null,
+null
+],
+[
+21.0,
+0.792,
+null,
+null
+],
+[
+24.0,
+0.792,
+null,
+null
+],
+[
+28.0,
+0.792,
+null,
+null
+],
+[
+32.0,
+0.792,
+null,
+null
+],
+[
+36.0,
+0.792,
+null,
+null
+],
+[
+38.06,
+0.792,
+null,
+null
+]
+],
+"events": 48,
+"median_days": 7.17,
+"n": 74,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -269,9 +2601,140 @@
 "PUBPOL 290": {
 "buckets": {
 "1-5": {
-"n_course": 1100,
-"pooled": "PUBPOL",
-"sections_course": 14
+"curve": [
+[
+0.5,
+0.154,
+0.099,
+0.177
+],
+[
+1.0,
+0.203,
+0.136,
+0.233
+],
+[
+2.0,
+0.266,
+0.172,
+0.307
+],
+[
+3.0,
+0.304,
+0.178,
+0.367
+],
+[
+4.0,
+0.347,
+0.195,
+0.421
+],
+[
+5.0,
+0.372,
+0.214,
+0.447
+],
+[
+6.0,
+0.389,
+0.223,
+0.47
+],
+[
+7.0,
+0.422,
+0.247,
+0.505
+],
+[
+8.0,
+0.46,
+0.265,
+0.555
+],
+[
+9.0,
+0.48,
+0.275,
+0.582
+],
+[
+10.0,
+0.493,
+0.277,
+0.6
+],
+[
+12.0,
+0.514,
+0.291,
+0.626
+],
+[
+14.0,
+0.537,
+0.291,
+0.664
+],
+[
+16.0,
+0.539,
+0.291,
+0.668
+],
+[
+18.0,
+0.541,
+0.291,
+0.672
+],
+[
+21.0,
+0.556,
+0.291,
+0.704
+],
+[
+24.0,
+0.577,
+0.295,
+0.741
+],
+[
+28.0,
+0.595,
+0.295,
+0.777
+],
+[
+32.0,
+0.606,
+0.312,
+0.795
+],
+[
+36.0,
+0.606,
+0.312,
+0.795
+],
+[
+38.06,
+0.606,
+0.312,
+0.795
+]
+],
+"events": 530,
+"median_days": 10.45,
+"n": 1100,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 14
 },
 "16-40": {
 "n_course": 3,
@@ -279,9 +2742,128 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 191,
-"pooled": "PUBPOL",
-"sections_course": 2
+"curve": [
+[
+0.5,
+0.021,
+0.0,
+0.023
+],
+[
+1.0,
+0.032,
+0.0,
+0.035
+],
+[
+2.0,
+0.044,
+0.0,
+0.048
+],
+[
+3.0,
+0.114,
+0.0,
+0.123
+],
+[
+4.0,
+0.133,
+0.0,
+0.144
+],
+[
+5.0,
+0.133,
+0.0,
+0.144
+],
+[
+6.0,
+0.133,
+0.0,
+0.144
+],
+[
+7.0,
+0.141,
+0.0,
+0.152
+],
+[
+8.0,
+0.214,
+0.0,
+0.23
+],
+[
+9.0,
+0.249,
+0.0,
+0.266
+],
+[
+10.0,
+0.283,
+0.0,
+0.302
+],
+[
+12.0,
+0.283,
+0.0,
+0.302
+],
+[
+14.0,
+0.473,
+0.0,
+0.497
+],
+[
+16.0,
+0.588,
+0.0,
+0.615
+],
+[
+18.0,
+0.619,
+0.0,
+0.647
+],
+[
+21.0,
+0.636,
+0.0,
+0.666
+],
+[
+24.0,
+0.636,
+0.0,
+0.666
+],
+[
+28.0,
+0.636,
+0.0,
+0.666
+],
+[
+30.81,
+0.723,
+0.0,
+0.771
+]
+],
+"events": 71,
+"median_days": 14.36,
+"n": 191,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 2
 }
 },
 "dept_group": "PUBPOL",
@@ -292,14 +2874,216 @@
 "PUBPOL C151": {
 "buckets": {
 "1-5": {
-"n_course": 155,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.223,
+null,
+null
+],
+[
+1.0,
+0.27,
+null,
+null
+],
+[
+2.0,
+0.361,
+null,
+null
+],
+[
+3.0,
+0.394,
+null,
+null
+],
+[
+4.0,
+0.428,
+null,
+null
+],
+[
+5.0,
+0.472,
+null,
+null
+],
+[
+6.0,
+0.508,
+null,
+null
+],
+[
+7.0,
+0.544,
+null,
+null
+],
+[
+8.0,
+0.553,
+null,
+null
+],
+[
+9.0,
+0.573,
+null,
+null
+],
+[
+10.0,
+0.596,
+null,
+null
+],
+[
+12.0,
+0.626,
+null,
+null
+],
+[
+14.0,
+0.626,
+null,
+null
+],
+[
+16.0,
+0.626,
+null,
+null
+],
+[
+18.0,
+0.626,
+null,
+null
+],
+[
+18.21,
+0.626,
+null,
+null
+]
+],
+"events": 82,
+"median_days": 5.81,
+"n": 155,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "6-15": {
-"n_course": 66,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.03,
+null,
+null
+],
+[
+1.0,
+0.03,
+null,
+null
+],
+[
+2.0,
+0.03,
+null,
+null
+],
+[
+3.0,
+0.068,
+null,
+null
+],
+[
+4.0,
+0.087,
+null,
+null
+],
+[
+5.0,
+0.13,
+null,
+null
+],
+[
+6.0,
+0.151,
+null,
+null
+],
+[
+7.0,
+0.194,
+null,
+null
+],
+[
+8.0,
+0.257,
+null,
+null
+],
+[
+9.0,
+0.304,
+null,
+null
+],
+[
+10.0,
+0.333,
+null,
+null
+],
+[
+12.0,
+0.508,
+null,
+null
+],
+[
+14.0,
+0.59,
+null,
+null
+],
+[
+16.0,
+0.59,
+null,
+null
+],
+[
+18.0,
+0.59,
+null,
+null
+],
+[
+18.21,
+0.59,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 11.97,
+"n": 66,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",
@@ -310,9 +3094,158 @@
 "PUBPOL C199C": {
 "buckets": {
 "1-5": {
-"n_course": 30,
-"pooled": "PUBPOL",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+60.47,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 30,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 1
 }
 },
 "dept_group": "PUBPOL",

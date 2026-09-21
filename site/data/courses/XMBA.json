@@ -107,9 +107,128 @@
 "XMBA 231": {
 "buckets": {
 "1-5": {
-"n_course": 30,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+30.85,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 30,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -146,9 +265,128 @@
 "XMBA 255": {
 "buckets": {
 "1-5": {
-"n_course": 30,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+30.85,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 30,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -159,9 +397,128 @@
 "XMBA 257": {
 "buckets": {
 "1-5": {
-"n_course": 30,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+30.85,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 30,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -224,9 +581,128 @@
 "XMBA 296": {
 "buckets": {
 "1-5": {
-"n_course": 82,
-"pooled": "OTHER",
-"sections_course": 4
+"curve": [
+[
+0.5,
+0.0,
+0.0,
+0.0
+],
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+2.0,
+0.0,
+0.0,
+0.0
+],
+[
+3.0,
+0.0,
+0.0,
+0.0
+],
+[
+4.0,
+0.0,
+0.0,
+0.0
+],
+[
+5.0,
+0.0,
+0.0,
+0.0
+],
+[
+6.0,
+0.0,
+0.0,
+0.0
+],
+[
+7.0,
+0.0,
+0.0,
+0.0
+],
+[
+8.0,
+0.0,
+0.0,
+0.0
+],
+[
+9.0,
+0.0,
+0.0,
+0.0
+],
+[
+10.0,
+0.0,
+0.0,
+0.0
+],
+[
+12.0,
+0.0,
+0.0,
+0.0
+],
+[
+14.0,
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+0.0,
+0.0,
+0.0
+],
+[
+18.0,
+0.0,
+0.0,
+0.0
+],
+[
+21.0,
+0.0,
+0.0,
+0.0
+],
+[
+24.0,
+0.0,
+0.0,
+0.0
+],
+[
+28.0,
+0.0,
+0.0,
+0.0
+],
+[
+30.85,
+0.0,
+0.0,
+0.0
+]
+],
+"events": 0,
+"median_days": null,
+"n": 82,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 4
 }
 },
 "dept_group": "OTHER",

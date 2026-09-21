@@ -93,17 +93,20 @@ def cell_of(site_root: Path, key: str, bucket: str) -> dict:
 
 @pytest.fixture(scope="module")
 def full_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    """The default export: department-level estimates, course cells as pointers with the course's own counts."""
+    """The default export: a course with 30 or more cases gets its own curve, smaller cells point at the department's."""
     root = tmp_path_factory.mktemp("site_full")
     export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=50)
     return root
 
 
+course_site = full_site  # the lookup tests read the course's own curve; at the default that is what they get
+
+
 @pytest.fixture(scope="module")
-def course_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    """estimate_level="course": a course with 30 or more cases gets its own curve (kept for later terms)."""
-    root = tmp_path_factory.mktemp("site_course")
-    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=50, estimate_level="course")
+def dept_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    """estimate_level="dept": every course cell points at its department's curve; the course's own cases are counts."""
+    root = tmp_path_factory.mktemp("site_dept")
+    export_site_tables(synthetic_cohort(), CAL, root / "data", n_boot=50, estimate_level="dept")
     return root
 
 
@@ -119,7 +122,7 @@ def narrow_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     """Only positions 1 to 5 ever joined, so every course has a single bucket."""
     root = tmp_path_factory.mktemp("site_narrow")
     cohort = synthetic_cohort()
-    export_site_tables(cohort[cohort["position"] <= 5], CAL, root / "data", n_boot=20, estimate_level="course")
+    export_site_tables(cohort[cohort["position"] <= 5], CAL, root / "data", n_boot=20)
     return root
 
 
@@ -253,8 +256,9 @@ def test_pooled_estimate_is_labelled(course_site: Path) -> None:
     assert "Pooled over the whole COMPSCI department" in r
 
 
-def test_department_level_is_the_default_estimate(full_site: Path) -> None:
-    """Every course cell points at its department's curve; the course's own cases are counts, and nothing is called pooled."""
+def test_department_level_estimates(dept_site: Path) -> None:
+    """At estimate_level dept every course cell points at its department's curve; the course's own cases are counts, and nothing is called pooled."""
+    full_site = dept_site
     meta = load(full_site, "meta.json")
     assert meta["estimate_level"] == "dept"
     pooled = load(full_site, "pooled.json")
@@ -404,7 +408,7 @@ def test_insights_page_renders_findings_grid_and_departments(full_site: Path) ->
     assert "Longest follow-up" in html and "positions 41 and up" in html
     assert 'class="dotplot"' in html and "Show as table" in html
     assert ("When waitlists move" in html) == bool(ins.get("daily"))
-    assert "Where a mid-list spot moved most" not in html  # department level: every course in a department shares its curve
+    assert ("Where a mid-list spot moved most" in html) == (len([r for r in load(full_site, "index.json")["courses"] if r["buckets"].get("6-15", {}).get("pooled") is False and r["buckets"]["6-15"]["sections"] >= 3]) >= 6)
 
 
 def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Path) -> None:

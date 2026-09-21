@@ -318,4 +318,4 @@ Built in one pass on 2026-09-20 in a git worktree (`/Users/oliverguo/berkeley-wa
 | B1 | done | B2 reads `meta.json`; reading the data branch's `status.json` live is not done |
 | X8 | Oliver | |
 
-Rule change the same evening (from the full-pull backtest, docs/dev/BACKFILL_BACKTEST.md B3): course-level curves do not beat the position-bucket baseline, so the exporter's default is `estimate_level="dept"` (every course shows its department's curve for the bucket, its own cases as counts) and the pages read `meta.estimate_level`; `--estimate-level course` keeps the per-course behaviour for a later term.
+Rule change the same evening (from the full-pull backtest, docs/dev/BACKFILL_BACKTEST.md B3): course-level curves do not beat the position-bucket baseline, so the exporter got `estimate_level` and the pages read `meta.estimate_level`; the default was `dept` for a few hours until the cross-term backtest (fit on Spring 2026, scored on Fall 2026) showed course identity transfers across cycles, so the default is `course` (own curve at 30+ cases, department then all courses as labelled fallbacks) and `dept` stays available.

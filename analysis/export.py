@@ -49,12 +49,15 @@ MIN_N = 30
 N_BOOT = 200
 CURVE_DAYS = (0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 21, 24, 28, 32, 36, 42, 49, 56, 63, 70, 77, 84, 98, 112, 126, 140, 154, 168, 182)
 HORIZONS = (7.0, 14.0, 28.0)  # the fixed horizons index.json and the grids carry
-# What a course's estimate is by default. "dept": the department's curve for the
-# bucket (the Fall 2026 backtest found course-level curves did not beat the
-# position-bucket baseline, docs/dev/BACKFILL_BACKTEST.md B3); "course": the
-# course's own curve when it has min_n rows, kept for later terms.
+# What a course's estimate is by default. "course": the course's own curve when it
+# has min_n rows, else the department's, else all courses' (the cross-term backtest,
+# fit on Spring 2026 and scored on Fall 2026, found course identity transfers across
+# cycles: course beat the position bucket at 14 days, 28 days and the deadline);
+# "dept": the department's curve for every course (within Fall 2026 the course curve
+# lost to the bucket, which turned out to be the Phase 1 to Phase 2 speed-up, not
+# course noise). docs/dev/BACKFILL_BACKTEST.md B3.
 ESTIMATE_LEVELS = ("dept", "course")
-DEFAULT_ESTIMATE_LEVEL = "dept"
+DEFAULT_ESTIMATE_LEVEL = "course"
 LEVELS, DEFAULT_LEVEL = ESTIMATE_LEVELS, DEFAULT_ESTIMATE_LEVEL  # the names analysis.run imports
 LEVEL_ORDER = ("lower", "upper", "grad")
 PHASE_ORDER = ("before", "phase1", "between", "phase2", "adjustment", "instruction", "after")
@@ -468,7 +471,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--prereg-date", default=None)
     p.add_argument("--n-boot", type=int, default=N_BOOT)
     p.add_argument("--min-n", type=int, default=MIN_N)
-    p.add_argument("--estimate-level", choices=ESTIMATE_LEVELS, default=DEFAULT_ESTIMATE_LEVEL, help="dept: the department's curve stands in for every course (default); course: a course with min_n rows gets its own curve")
+    p.add_argument("--estimate-level", choices=ESTIMATE_LEVELS, default=DEFAULT_ESTIMATE_LEVEL, help="course: a course with min_n rows gets its own curve, else the department's (default); dept: the department's curve stands in for every course")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     cohort = pd.read_parquet(args.cohort)

@@ -10,9 +10,9 @@ PILOT ?= 300
 COHORT ?= analysis/out/$(TERM)/cohort_central.parquet
 # The term whose dates the site counts down to while a finished cycle stands in for it.
 FORECAST_TERM ?= 2272
-# What a course's site estimate is: dept (the department's curve; the Fall 2026 backtest
-# found course curves add nothing over the position baseline) or course.
-ESTIMATE_LEVEL ?= dept
+# What a course's site estimate is: course (its own curve at 30+ cases, else the department's;
+# the cross-term backtest found course identity transfers across cycles) or dept.
+ESTIMATE_LEVEL ?= course
 
 .PHONY: test flows analysis backfill-pilot backfill backfill-analysis backtest site-data
 

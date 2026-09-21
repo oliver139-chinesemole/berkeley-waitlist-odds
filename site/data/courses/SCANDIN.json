@@ -29,9 +29,134 @@
 "SCANDIN 180": {
 "buckets": {
 "1-5": {
-"n_course": 102,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.029,
+null,
+null
+],
+[
+1.0,
+0.04,
+null,
+null
+],
+[
+2.0,
+0.051,
+null,
+null
+],
+[
+3.0,
+0.051,
+null,
+null
+],
+[
+4.0,
+0.064,
+null,
+null
+],
+[
+5.0,
+0.064,
+null,
+null
+],
+[
+6.0,
+0.092,
+null,
+null
+],
+[
+7.0,
+0.092,
+null,
+null
+],
+[
+8.0,
+0.107,
+null,
+null
+],
+[
+9.0,
+0.107,
+null,
+null
+],
+[
+10.0,
+0.107,
+null,
+null
+],
+[
+12.0,
+0.107,
+null,
+null
+],
+[
+14.0,
+0.107,
+null,
+null
+],
+[
+16.0,
+0.127,
+null,
+null
+],
+[
+18.0,
+0.19,
+null,
+null
+],
+[
+21.0,
+0.235,
+null,
+null
+],
+[
+24.0,
+0.284,
+null,
+null
+],
+[
+28.0,
+0.412,
+null,
+null
+],
+[
+32.0,
+0.412,
+null,
+null
+],
+[
+34.99,
+0.412,
+null,
+null
+]
+],
+"events": 21,
+"median_days": null,
+"n": 102,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -42,9 +167,110 @@
 "SCANDIN 191AC": {
 "buckets": {
 "1-5": {
-"n_course": 40,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.1,
+null,
+null
+],
+[
+1.0,
+0.1,
+null,
+null
+],
+[
+2.0,
+0.133,
+null,
+null
+],
+[
+3.0,
+0.133,
+null,
+null
+],
+[
+4.0,
+0.133,
+null,
+null
+],
+[
+5.0,
+0.173,
+null,
+null
+],
+[
+6.0,
+0.173,
+null,
+null
+],
+[
+7.0,
+0.214,
+null,
+null
+],
+[
+8.0,
+0.214,
+null,
+null
+],
+[
+9.0,
+0.214,
+null,
+null
+],
+[
+10.0,
+0.214,
+null,
+null
+],
+[
+12.0,
+0.214,
+null,
+null
+],
+[
+14.0,
+0.214,
+null,
+null
+],
+[
+16.0,
+0.214,
+null,
+null
+],
+[
+18.0,
+0.214,
+null,
+null
+],
+[
+18.36,
+0.214,
+null,
+null
+]
+],
+"events": 7,
+"median_days": null,
+"n": 40,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -81,9 +307,110 @@
 "SCANDIN R5B": {
 "buckets": {
 "1-5": {
-"n_course": 34,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.029,
+null,
+null
+],
+[
+1.0,
+0.029,
+null,
+null
+],
+[
+2.0,
+0.029,
+null,
+null
+],
+[
+3.0,
+0.096,
+null,
+null
+],
+[
+4.0,
+0.096,
+null,
+null
+],
+[
+5.0,
+0.096,
+null,
+null
+],
+[
+6.0,
+0.096,
+null,
+null
+],
+[
+7.0,
+0.201,
+null,
+null
+],
+[
+8.0,
+0.201,
+null,
+null
+],
+[
+9.0,
+0.201,
+null,
+null
+],
+[
+10.0,
+0.351,
+null,
+null
+],
+[
+12.0,
+0.351,
+null,
+null
+],
+[
+14.0,
+0.351,
+null,
+null
+],
+[
+16.0,
+0.351,
+null,
+null
+],
+[
+18.0,
+0.351,
+null,
+null
+],
+[
+18.21,
+0.351,
+null,
+null
+]
+],
+"events": 9,
+"median_days": null,
+"n": 34,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "OTHER",

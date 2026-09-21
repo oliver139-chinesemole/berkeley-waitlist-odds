@@ -40,7 +40,7 @@
   "phase2_start": "2026-11-23"
  },
  "deadline": "2027-02-05",
- "estimate_level": "dept",
+ "estimate_level": "course",
  "events": 220196,
  "files": {
   "index": "index.json",
@@ -61,7 +61,7 @@
  },
  "forecast_term_id": "2272",
  "forecast_term_name": "Spring 2027",
- "generated_at": "2026-09-20T19:56:41+00:00",
+ "generated_at": "2026-09-21T01:12:36+00:00",
  "horizons": [
   7.0,
   14.0,

@@ -55,9 +55,110 @@
 "THEATER 119": {
 "buckets": {
 "1-5": {
-"n_course": 62,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.21,
+null,
+null
+],
+[
+1.0,
+0.278,
+null,
+null
+],
+[
+2.0,
+0.364,
+null,
+null
+],
+[
+3.0,
+0.401,
+null,
+null
+],
+[
+4.0,
+0.438,
+null,
+null
+],
+[
+5.0,
+0.438,
+null,
+null
+],
+[
+6.0,
+0.438,
+null,
+null
+],
+[
+7.0,
+0.438,
+null,
+null
+],
+[
+8.0,
+0.438,
+null,
+null
+],
+[
+9.0,
+0.438,
+null,
+null
+],
+[
+10.0,
+0.438,
+null,
+null
+],
+[
+12.0,
+0.438,
+null,
+null
+],
+[
+14.0,
+0.579,
+null,
+null
+],
+[
+16.0,
+0.579,
+null,
+null
+],
+[
+18.0,
+0.719,
+null,
+null
+],
+[
+18.21,
+0.719,
+null,
+null
+]
+],
+"events": 28,
+"median_days": 13.06,
+"n": 62,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -107,9 +208,110 @@
 "THEATER 144": {
 "buckets": {
 "1-5": {
-"n_course": 69,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.132,
+null,
+null
+],
+[
+1.0,
+0.177,
+null,
+null
+],
+[
+2.0,
+0.239,
+null,
+null
+],
+[
+3.0,
+0.318,
+null,
+null
+],
+[
+4.0,
+0.318,
+null,
+null
+],
+[
+5.0,
+0.318,
+null,
+null
+],
+[
+6.0,
+0.318,
+null,
+null
+],
+[
+7.0,
+0.351,
+null,
+null
+],
+[
+8.0,
+0.432,
+null,
+null
+],
+[
+9.0,
+0.453,
+null,
+null
+],
+[
+10.0,
+0.474,
+null,
+null
+],
+[
+12.0,
+0.474,
+null,
+null
+],
+[
+14.0,
+0.474,
+null,
+null
+],
+[
+16.0,
+0.474,
+null,
+null
+],
+[
+18.0,
+0.474,
+null,
+null
+],
+[
+18.21,
+0.474,
+null,
+null
+]
+],
+"events": 30,
+"median_days": null,
+"n": 69,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -133,9 +335,128 @@
 "THEATER 151": {
 "buckets": {
 "1-5": {
-"n_course": 99,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.092,
+null,
+null
+],
+[
+1.0,
+0.102,
+null,
+null
+],
+[
+2.0,
+0.156,
+null,
+null
+],
+[
+3.0,
+0.25,
+null,
+null
+],
+[
+4.0,
+0.25,
+null,
+null
+],
+[
+5.0,
+0.3,
+null,
+null
+],
+[
+6.0,
+0.35,
+null,
+null
+],
+[
+7.0,
+0.363,
+null,
+null
+],
+[
+8.0,
+0.378,
+null,
+null
+],
+[
+9.0,
+0.413,
+null,
+null
+],
+[
+10.0,
+0.413,
+null,
+null
+],
+[
+12.0,
+0.413,
+null,
+null
+],
+[
+14.0,
+0.413,
+null,
+null
+],
+[
+16.0,
+0.413,
+null,
+null
+],
+[
+18.0,
+0.511,
+null,
+null
+],
+[
+21.0,
+0.511,
+null,
+null
+],
+[
+24.0,
+0.511,
+null,
+null
+],
+[
+28.0,
+0.511,
+null,
+null
+],
+[
+30.85,
+0.511,
+null,
+null
+]
+],
+"events": 36,
+"median_days": 16.16,
+"n": 99,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 },
 "6-15": {
 "n_course": 13,
@@ -164,9 +485,134 @@
 "THEATER 168": {
 "buckets": {
 "1-5": {
-"n_course": 159,
-"pooled": "THEATER",
-"sections_course": 5
+"curve": [
+[
+0.5,
+0.057,
+0.023,
+0.069
+],
+[
+1.0,
+0.064,
+0.023,
+0.078
+],
+[
+2.0,
+0.12,
+0.049,
+0.152
+],
+[
+3.0,
+0.15,
+0.063,
+0.186
+],
+[
+4.0,
+0.157,
+0.063,
+0.197
+],
+[
+5.0,
+0.157,
+0.063,
+0.197
+],
+[
+6.0,
+0.251,
+0.105,
+0.294
+],
+[
+7.0,
+0.299,
+0.16,
+0.409
+],
+[
+8.0,
+0.315,
+0.16,
+0.419
+],
+[
+9.0,
+0.357,
+0.191,
+0.495
+],
+[
+10.0,
+0.357,
+0.191,
+0.495
+],
+[
+12.0,
+0.447,
+0.218,
+0.651
+],
+[
+14.0,
+0.458,
+0.218,
+0.682
+],
+[
+16.0,
+0.481,
+0.246,
+0.682
+],
+[
+18.0,
+0.481,
+0.246,
+0.682
+],
+[
+21.0,
+0.507,
+0.273,
+0.682
+],
+[
+24.0,
+0.507,
+0.273,
+0.682
+],
+[
+28.0,
+0.507,
+0.273,
+0.682
+],
+[
+32.0,
+0.507,
+0.273,
+0.682
+],
+[
+32.98,
+0.507,
+0.273,
+0.682
+]
+],
+"events": 63,
+"median_days": 18.06,
+"n": 159,
+"pooled": false,
+"reach_days": 33.0,
+"sections": 5
 }
 },
 "dept_group": "THEATER",
@@ -177,9 +623,110 @@
 "THEATER 172": {
 "buckets": {
 "1-5": {
-"n_course": 51,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.082,
+null,
+null
+],
+[
+1.0,
+0.082,
+null,
+null
+],
+[
+2.0,
+0.082,
+null,
+null
+],
+[
+3.0,
+0.082,
+null,
+null
+],
+[
+4.0,
+0.105,
+null,
+null
+],
+[
+5.0,
+0.105,
+null,
+null
+],
+[
+6.0,
+0.105,
+null,
+null
+],
+[
+7.0,
+0.105,
+null,
+null
+],
+[
+8.0,
+0.105,
+null,
+null
+],
+[
+9.0,
+0.105,
+null,
+null
+],
+[
+10.0,
+0.105,
+null,
+null
+],
+[
+12.0,
+0.105,
+null,
+null
+],
+[
+14.0,
+0.263,
+null,
+null
+],
+[
+16.0,
+0.433,
+null,
+null
+],
+[
+18.0,
+0.676,
+null,
+null
+],
+[
+18.38,
+0.676,
+null,
+null
+]
+],
+"events": 14,
+"median_days": 17.45,
+"n": 51,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -190,9 +737,128 @@
 "THEATER 173": {
 "buckets": {
 "1-5": {
-"n_course": 154,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.08,
+null,
+null
+],
+[
+1.0,
+0.101,
+null,
+null
+],
+[
+2.0,
+0.166,
+null,
+null
+],
+[
+3.0,
+0.215,
+null,
+null
+],
+[
+4.0,
+0.24,
+null,
+null
+],
+[
+5.0,
+0.279,
+null,
+null
+],
+[
+6.0,
+0.3,
+null,
+null
+],
+[
+7.0,
+0.311,
+null,
+null
+],
+[
+8.0,
+0.322,
+null,
+null
+],
+[
+9.0,
+0.345,
+null,
+null
+],
+[
+10.0,
+0.345,
+null,
+null
+],
+[
+12.0,
+0.345,
+null,
+null
+],
+[
+14.0,
+0.345,
+null,
+null
+],
+[
+16.0,
+0.345,
+null,
+null
+],
+[
+18.0,
+0.345,
+null,
+null
+],
+[
+21.0,
+0.345,
+null,
+null
+],
+[
+24.0,
+0.345,
+null,
+null
+],
+[
+28.0,
+0.345,
+null,
+null
+],
+[
+30.85,
+0.345,
+null,
+null
+]
+],
+"events": 43,
+"median_days": null,
+"n": 154,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -203,9 +869,134 @@
 "THEATER 174": {
 "buckets": {
 "1-5": {
-"n_course": 173,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.117,
+null,
+null
+],
+[
+1.0,
+0.149,
+null,
+null
+],
+[
+2.0,
+0.235,
+null,
+null
+],
+[
+3.0,
+0.235,
+null,
+null
+],
+[
+4.0,
+0.251,
+null,
+null
+],
+[
+5.0,
+0.275,
+null,
+null
+],
+[
+6.0,
+0.307,
+null,
+null
+],
+[
+7.0,
+0.315,
+null,
+null
+],
+[
+8.0,
+0.324,
+null,
+null
+],
+[
+9.0,
+0.324,
+null,
+null
+],
+[
+10.0,
+0.324,
+null,
+null
+],
+[
+12.0,
+0.364,
+null,
+null
+],
+[
+14.0,
+0.378,
+null,
+null
+],
+[
+16.0,
+0.378,
+null,
+null
+],
+[
+18.0,
+0.394,
+null,
+null
+],
+[
+21.0,
+0.394,
+null,
+null
+],
+[
+24.0,
+0.394,
+null,
+null
+],
+[
+28.0,
+0.394,
+null,
+null
+],
+[
+32.0,
+0.394,
+null,
+null
+],
+[
+32.98,
+0.394,
+null,
+null
+]
+],
+"events": 55,
+"median_days": null,
+"n": 173,
+"pooled": false,
+"reach_days": 33.0,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -216,9 +1007,134 @@
 "THEATER 175A": {
 "buckets": {
 "1-5": {
-"n_course": 137,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.073,
+null,
+null
+],
+[
+1.0,
+0.081,
+null,
+null
+],
+[
+2.0,
+0.09,
+null,
+null
+],
+[
+3.0,
+0.098,
+null,
+null
+],
+[
+4.0,
+0.126,
+null,
+null
+],
+[
+5.0,
+0.126,
+null,
+null
+],
+[
+6.0,
+0.126,
+null,
+null
+],
+[
+7.0,
+0.146,
+null,
+null
+],
+[
+8.0,
+0.177,
+null,
+null
+],
+[
+9.0,
+0.189,
+null,
+null
+],
+[
+10.0,
+0.189,
+null,
+null
+],
+[
+12.0,
+0.189,
+null,
+null
+],
+[
+14.0,
+0.189,
+null,
+null
+],
+[
+16.0,
+0.204,
+null,
+null
+],
+[
+18.0,
+0.22,
+null,
+null
+],
+[
+21.0,
+0.251,
+null,
+null
+],
+[
+24.0,
+0.305,
+null,
+null
+],
+[
+28.0,
+0.415,
+null,
+null
+],
+[
+32.0,
+0.492,
+null,
+null
+],
+[
+35.11,
+0.492,
+null,
+null
+]
+],
+"events": 36,
+"median_days": null,
+"n": 137,
+"pooled": false,
+"reach_days": 35.1,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -268,14 +1184,198 @@
 "THEATER 26": {
 "buckets": {
 "1-5": {
-"n_course": 176,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.189,
+null,
+null
+],
+[
+1.0,
+0.237,
+null,
+null
+],
+[
+2.0,
+0.371,
+null,
+null
+],
+[
+3.0,
+0.5,
+null,
+null
+],
+[
+4.0,
+0.532,
+null,
+null
+],
+[
+5.0,
+0.57,
+null,
+null
+],
+[
+6.0,
+0.644,
+null,
+null
+],
+[
+7.0,
+0.724,
+null,
+null
+],
+[
+8.0,
+0.747,
+null,
+null
+],
+[
+9.0,
+0.862,
+null,
+null
+],
+[
+10.0,
+0.908,
+null,
+null
+],
+[
+12.0,
+0.969,
+null,
+null
+],
+[
+13.18,
+1.0,
+null,
+null
+]
+],
+"events": 121,
+"median_days": 3.41,
+"n": 176,
+"pooled": false,
+"reach_days": 13.2,
+"sections": 1
 },
 "6-15": {
-"n_course": 44,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.045,
+null,
+null
+],
+[
+8.0,
+0.045,
+null,
+null
+],
+[
+9.0,
+0.045,
+null,
+null
+],
+[
+10.0,
+0.045,
+null,
+null
+],
+[
+12.0,
+0.141,
+null,
+null
+],
+[
+14.0,
+0.332,
+null,
+null
+],
+[
+16.0,
+0.582,
+null,
+null
+],
+[
+18.0,
+0.582,
+null,
+null
+],
+[
+18.21,
+0.582,
+null,
+null
+]
+],
+"events": 6,
+"median_days": 15.56,
+"n": 44,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -286,9 +1386,110 @@
 "THEATER 40": {
 "buckets": {
 "1-5": {
-"n_course": 54,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.204,
+null,
+null
+],
+[
+1.0,
+0.296,
+null,
+null
+],
+[
+2.0,
+0.389,
+null,
+null
+],
+[
+3.0,
+0.448,
+null,
+null
+],
+[
+4.0,
+0.516,
+null,
+null
+],
+[
+5.0,
+0.516,
+null,
+null
+],
+[
+6.0,
+0.571,
+null,
+null
+],
+[
+7.0,
+0.61,
+null,
+null
+],
+[
+8.0,
+0.649,
+null,
+null
+],
+[
+9.0,
+0.649,
+null,
+null
+],
+[
+10.0,
+0.649,
+null,
+null
+],
+[
+12.0,
+0.649,
+null,
+null
+],
+[
+14.0,
+0.649,
+null,
+null
+],
+[
+16.0,
+0.649,
+null,
+null
+],
+[
+18.0,
+0.649,
+null,
+null
+],
+[
+18.21,
+0.649,
+null,
+null
+]
+],
+"events": 31,
+"median_days": 3.88,
+"n": 54,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -299,19 +1500,370 @@
 "THEATER 52AC": {
 "buckets": {
 "1-5": {
-"n_course": 540,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.151,
+null,
+null
+],
+[
+1.0,
+0.206,
+null,
+null
+],
+[
+2.0,
+0.369,
+null,
+null
+],
+[
+3.0,
+0.451,
+null,
+null
+],
+[
+4.0,
+0.5,
+null,
+null
+],
+[
+5.0,
+0.554,
+null,
+null
+],
+[
+6.0,
+0.577,
+null,
+null
+],
+[
+7.0,
+0.614,
+null,
+null
+],
+[
+8.0,
+0.641,
+null,
+null
+],
+[
+9.0,
+0.668,
+null,
+null
+],
+[
+10.0,
+0.704,
+null,
+null
+],
+[
+12.0,
+0.755,
+null,
+null
+],
+[
+14.0,
+0.803,
+null,
+null
+],
+[
+16.0,
+0.816,
+null,
+null
+],
+[
+18.0,
+0.837,
+null,
+null
+],
+[
+21.0,
+0.849,
+null,
+null
+],
+[
+24.0,
+0.888,
+null,
+null
+],
+[
+28.0,
+0.966,
+null,
+null
+],
+[
+30.81,
+0.966,
+null,
+null
+]
+],
+"events": 379,
+"median_days": 3.95,
+"n": 540,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 82,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.051,
+null,
+null
+],
+[
+9.0,
+0.079,
+null,
+null
+],
+[
+10.0,
+0.142,
+null,
+null
+],
+[
+12.0,
+0.199,
+null,
+null
+],
+[
+14.0,
+0.353,
+null,
+null
+],
+[
+16.0,
+0.538,
+null,
+null
+],
+[
+18.0,
+0.538,
+null,
+null
+],
+[
+21.0,
+0.653,
+null,
+null
+],
+[
+24.0,
+0.653,
+null,
+null
+],
+[
+27.46,
+0.653,
+null,
+null
+]
+],
+"events": 11,
+"median_days": 15.39,
+"n": 82,
+"pooled": false,
+"reach_days": 27.5,
+"sections": 1
 },
 "6-15": {
-"n_course": 340,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.018,
+null,
+null
+],
+[
+1.0,
+0.027,
+null,
+null
+],
+[
+2.0,
+0.08,
+null,
+null
+],
+[
+3.0,
+0.12,
+null,
+null
+],
+[
+4.0,
+0.128,
+null,
+null
+],
+[
+5.0,
+0.162,
+null,
+null
+],
+[
+6.0,
+0.205,
+null,
+null
+],
+[
+7.0,
+0.254,
+null,
+null
+],
+[
+8.0,
+0.316,
+null,
+null
+],
+[
+9.0,
+0.35,
+null,
+null
+],
+[
+10.0,
+0.385,
+null,
+null
+],
+[
+12.0,
+0.41,
+null,
+null
+],
+[
+14.0,
+0.442,
+null,
+null
+],
+[
+16.0,
+0.475,
+null,
+null
+],
+[
+18.0,
+0.489,
+null,
+null
+],
+[
+21.0,
+0.496,
+null,
+null
+],
+[
+24.0,
+0.496,
+null,
+null
+],
+[
+28.0,
+0.589,
+null,
+null
+],
+[
+30.81,
+0.711,
+null,
+null
+]
+],
+"events": 132,
+"median_days": 24.63,
+"n": 340,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -322,14 +1874,252 @@
 "THEATER 60": {
 "buckets": {
 "1-5": {
-"n_course": 256,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.161,
+null,
+null
+],
+[
+1.0,
+0.195,
+null,
+null
+],
+[
+2.0,
+0.309,
+null,
+null
+],
+[
+3.0,
+0.361,
+null,
+null
+],
+[
+4.0,
+0.428,
+null,
+null
+],
+[
+5.0,
+0.469,
+null,
+null
+],
+[
+6.0,
+0.493,
+null,
+null
+],
+[
+7.0,
+0.533,
+null,
+null
+],
+[
+8.0,
+0.538,
+null,
+null
+],
+[
+9.0,
+0.583,
+null,
+null
+],
+[
+10.0,
+0.617,
+null,
+null
+],
+[
+12.0,
+0.634,
+null,
+null
+],
+[
+14.0,
+0.71,
+null,
+null
+],
+[
+16.0,
+0.752,
+null,
+null
+],
+[
+18.0,
+0.78,
+null,
+null
+],
+[
+21.0,
+0.813,
+null,
+null
+],
+[
+24.0,
+0.841,
+null,
+null
+],
+[
+28.0,
+0.936,
+null,
+null
+],
+[
+30.81,
+0.936,
+null,
+null
+]
+],
+"events": 172,
+"median_days": 6.71,
+"n": 256,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
-"n_course": 102,
-"pooled": "THEATER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.06,
+null,
+null
+],
+[
+1.0,
+0.06,
+null,
+null
+],
+[
+2.0,
+0.147,
+null,
+null
+],
+[
+3.0,
+0.159,
+null,
+null
+],
+[
+4.0,
+0.205,
+null,
+null
+],
+[
+5.0,
+0.252,
+null,
+null
+],
+[
+6.0,
+0.277,
+null,
+null
+],
+[
+7.0,
+0.277,
+null,
+null
+],
+[
+8.0,
+0.277,
+null,
+null
+],
+[
+9.0,
+0.277,
+null,
+null
+],
+[
+10.0,
+0.291,
+null,
+null
+],
+[
+12.0,
+0.322,
+null,
+null
+],
+[
+14.0,
+0.322,
+null,
+null
+],
+[
+16.0,
+0.322,
+null,
+null
+],
+[
+18.0,
+0.322,
+null,
+null
+],
+[
+21.0,
+0.322,
+null,
+null
+],
+[
+24.0,
+0.322,
+null,
+null
+],
+[
+28.0,
+0.322,
+null,
+null
+],
+[
+30.81,
+0.576,
+null,
+null
+]
+],
+"events": 30,
+"median_days": 30.12,
+"n": 102,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "THEATER",
@@ -340,9 +2130,110 @@
 "THEATER R1A": {
 "buckets": {
 "1-5": {
-"n_course": 97,
-"pooled": "THEATER",
-"sections_course": 3
+"curve": [
+[
+0.5,
+0.021,
+0.0,
+0.022
+],
+[
+1.0,
+0.032,
+0.0,
+0.044
+],
+[
+2.0,
+0.032,
+0.0,
+0.044
+],
+[
+3.0,
+0.045,
+0.0,
+0.049
+],
+[
+4.0,
+0.045,
+0.0,
+0.049
+],
+[
+5.0,
+0.045,
+0.0,
+0.049
+],
+[
+6.0,
+0.045,
+0.0,
+0.049
+],
+[
+7.0,
+0.045,
+0.0,
+0.049
+],
+[
+8.0,
+0.045,
+0.0,
+0.049
+],
+[
+9.0,
+0.045,
+0.0,
+0.049
+],
+[
+10.0,
+0.045,
+0.0,
+0.049
+],
+[
+12.0,
+0.045,
+0.0,
+0.049
+],
+[
+14.0,
+0.045,
+0.0,
+0.049
+],
+[
+16.0,
+0.045,
+0.0,
+0.049
+],
+[
+18.0,
+0.045,
+0.0,
+0.049
+],
+[
+18.42,
+0.045,
+0.0,
+0.049
+]
+],
+"events": 4,
+"median_days": null,
+"n": 97,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 3
 }
 },
 "dept_group": "THEATER",
@@ -353,9 +2244,128 @@
 "THEATER R1B": {
 "buckets": {
 "1-5": {
-"n_course": 287,
-"pooled": "THEATER",
-"sections_course": 4
+"curve": [
+[
+0.5,
+0.018,
+0.006,
+0.037
+],
+[
+1.0,
+0.029,
+0.006,
+0.069
+],
+[
+2.0,
+0.045,
+0.006,
+0.117
+],
+[
+3.0,
+0.063,
+0.006,
+0.198
+],
+[
+4.0,
+0.071,
+0.006,
+0.212
+],
+[
+5.0,
+0.071,
+0.006,
+0.212
+],
+[
+6.0,
+0.071,
+0.006,
+0.212
+],
+[
+7.0,
+0.077,
+0.006,
+0.22
+],
+[
+8.0,
+0.082,
+0.006,
+0.228
+],
+[
+9.0,
+0.093,
+0.006,
+0.247
+],
+[
+10.0,
+0.098,
+0.006,
+0.258
+],
+[
+12.0,
+0.098,
+0.006,
+0.258
+],
+[
+14.0,
+0.098,
+0.006,
+0.258
+],
+[
+16.0,
+0.098,
+0.006,
+0.258
+],
+[
+18.0,
+0.098,
+0.006,
+0.258
+],
+[
+21.0,
+0.098,
+0.006,
+0.258
+],
+[
+24.0,
+0.098,
+0.006,
+0.258
+],
+[
+28.0,
+0.098,
+0.006,
+0.258
+],
+[
+30.93,
+0.098,
+0.006,
+0.258
+]
+],
+"events": 23,
+"median_days": null,
+"n": 287,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 4
 }
 },
 "dept_group": "THEATER",

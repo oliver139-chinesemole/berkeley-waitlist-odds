@@ -16,19 +16,382 @@
 "MCELLBI 102": {
 "buckets": {
 "1-5": {
-"n_course": 447,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.261,
+null,
+null
+],
+[
+1.0,
+0.322,
+null,
+null
+],
+[
+2.0,
+0.424,
+null,
+null
+],
+[
+3.0,
+0.501,
+null,
+null
+],
+[
+4.0,
+0.569,
+null,
+null
+],
+[
+5.0,
+0.619,
+null,
+null
+],
+[
+6.0,
+0.66,
+null,
+null
+],
+[
+7.0,
+0.68,
+null,
+null
+],
+[
+8.0,
+0.706,
+null,
+null
+],
+[
+9.0,
+0.719,
+null,
+null
+],
+[
+10.0,
+0.751,
+null,
+null
+],
+[
+12.0,
+0.791,
+null,
+null
+],
+[
+14.0,
+0.848,
+null,
+null
+],
+[
+16.0,
+0.892,
+null,
+null
+],
+[
+18.0,
+0.925,
+null,
+null
+],
+[
+21.0,
+0.95,
+null,
+null
+],
+[
+24.0,
+0.95,
+null,
+null
+],
+[
+28.0,
+0.95,
+null,
+null
+],
+[
+30.81,
+0.95,
+null,
+null
+]
+],
+"events": 340,
+"median_days": 2.97,
+"n": 447,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 211,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.01,
+null,
+null
+],
+[
+1.0,
+0.01,
+null,
+null
+],
+[
+2.0,
+0.01,
+null,
+null
+],
+[
+3.0,
+0.01,
+null,
+null
+],
+[
+4.0,
+0.01,
+null,
+null
+],
+[
+5.0,
+0.01,
+null,
+null
+],
+[
+6.0,
+0.01,
+null,
+null
+],
+[
+7.0,
+0.01,
+null,
+null
+],
+[
+8.0,
+0.01,
+null,
+null
+],
+[
+9.0,
+0.01,
+null,
+null
+],
+[
+10.0,
+0.01,
+null,
+null
+],
+[
+12.0,
+0.01,
+null,
+null
+],
+[
+14.0,
+0.01,
+null,
+null
+],
+[
+16.0,
+0.01,
+null,
+null
+],
+[
+18.0,
+0.01,
+null,
+null
+],
+[
+21.0,
+0.01,
+null,
+null
+],
+[
+24.0,
+0.01,
+null,
+null
+],
+[
+28.0,
+0.01,
+null,
+null
+],
+[
+32.0,
+0.212,
+null,
+null
+],
+[
+34.14,
+0.212,
+null,
+null
+]
+],
+"events": 5,
+"median_days": null,
+"n": 211,
+"pooled": false,
+"reach_days": 34.1,
+"sections": 1
 },
 "6-15": {
-"n_course": 316,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.035,
+null,
+null
+],
+[
+1.0,
+0.049,
+null,
+null
+],
+[
+2.0,
+0.105,
+null,
+null
+],
+[
+3.0,
+0.12,
+null,
+null
+],
+[
+4.0,
+0.124,
+null,
+null
+],
+[
+5.0,
+0.129,
+null,
+null
+],
+[
+6.0,
+0.144,
+null,
+null
+],
+[
+7.0,
+0.154,
+null,
+null
+],
+[
+8.0,
+0.176,
+null,
+null
+],
+[
+9.0,
+0.205,
+null,
+null
+],
+[
+10.0,
+0.24,
+null,
+null
+],
+[
+12.0,
+0.247,
+null,
+null
+],
+[
+14.0,
+0.253,
+null,
+null
+],
+[
+16.0,
+0.318,
+null,
+null
+],
+[
+18.0,
+0.37,
+null,
+null
+],
+[
+21.0,
+0.482,
+null,
+null
+],
+[
+24.0,
+0.655,
+null,
+null
+],
+[
+28.0,
+0.772,
+null,
+null
+],
+[
+30.81,
+0.887,
+null,
+null
+]
+],
+"events": 124,
+"median_days": 21.6,
+"n": 316,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -39,19 +402,292 @@
 "MCELLBI 104": {
 "buckets": {
 "1-5": {
-"n_course": 570,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.367,
+null,
+null
+],
+[
+1.0,
+0.485,
+null,
+null
+],
+[
+2.0,
+0.654,
+null,
+null
+],
+[
+3.0,
+0.766,
+null,
+null
+],
+[
+4.0,
+0.871,
+null,
+null
+],
+[
+5.0,
+0.918,
+null,
+null
+],
+[
+6.0,
+0.935,
+null,
+null
+],
+[
+7.0,
+0.956,
+null,
+null
+],
+[
+8.0,
+0.97,
+null,
+null
+],
+[
+9.0,
+0.973,
+null,
+null
+],
+[
+10.0,
+0.976,
+null,
+null
+],
+[
+12.0,
+0.976,
+null,
+null
+],
+[
+14.0,
+0.976,
+null,
+null
+],
+[
+16.0,
+0.976,
+null,
+null
+],
+[
+18.0,
+0.976,
+null,
+null
+],
+[
+21.0,
+0.976,
+null,
+null
+],
+[
+24.0,
+0.976,
+null,
+null
+],
+[
+28.0,
+0.976,
+null,
+null
+],
+[
+29.11,
+0.976,
+null,
+null
+]
+],
+"events": 495,
+"median_days": 1.07,
+"n": 570,
+"pooled": false,
+"reach_days": 29.1,
+"sections": 1
 },
 "16-40": {
-"n_course": 39,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.128,
+null,
+null
+],
+[
+1.0,
+0.179,
+null,
+null
+],
+[
+2.0,
+0.231,
+null,
+null
+],
+[
+3.0,
+0.308,
+null,
+null
+],
+[
+4.0,
+0.385,
+null,
+null
+],
+[
+5.0,
+0.436,
+null,
+null
+],
+[
+6.0,
+0.615,
+null,
+null
+],
+[
+7.0,
+0.769,
+null,
+null
+],
+[
+8.0,
+0.897,
+null,
+null
+],
+[
+9.0,
+0.949,
+null,
+null
+],
+[
+10.0,
+0.949,
+null,
+null
+],
+[
+10.13,
+0.949,
+null,
+null
+]
+],
+"events": 39,
+"median_days": 5.47,
+"n": 39,
+"pooled": false,
+"reach_days": 10.1,
+"sections": 1
 },
 "6-15": {
-"n_course": 185,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.146,
+null,
+null
+],
+[
+1.0,
+0.202,
+null,
+null
+],
+[
+2.0,
+0.287,
+null,
+null
+],
+[
+3.0,
+0.372,
+null,
+null
+],
+[
+4.0,
+0.471,
+null,
+null
+],
+[
+5.0,
+0.558,
+null,
+null
+],
+[
+6.0,
+0.636,
+null,
+null
+],
+[
+7.0,
+0.727,
+null,
+null
+],
+[
+8.0,
+0.822,
+null,
+null
+],
+[
+9.0,
+0.856,
+null,
+null
+],
+[
+10.0,
+0.916,
+null,
+null
+],
+[
+11.13,
+1.0,
+null,
+null
+]
+],
+"events": 135,
+"median_days": 4.14,
+"n": 185,
+"pooled": false,
+"reach_days": 11.1,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -62,14 +698,210 @@
 "MCELLBI 110": {
 "buckets": {
 "1-5": {
-"n_course": 128,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.407,
+null,
+null
+],
+[
+1.0,
+0.534,
+null,
+null
+],
+[
+2.0,
+0.621,
+null,
+null
+],
+[
+3.0,
+0.684,
+null,
+null
+],
+[
+4.0,
+0.716,
+null,
+null
+],
+[
+5.0,
+0.755,
+null,
+null
+],
+[
+6.0,
+0.779,
+null,
+null
+],
+[
+7.0,
+0.779,
+null,
+null
+],
+[
+8.0,
+0.842,
+null,
+null
+],
+[
+9.0,
+0.842,
+null,
+null
+],
+[
+10.0,
+0.842,
+null,
+null
+],
+[
+12.0,
+0.913,
+null,
+null
+],
+[
+14.0,
+0.945,
+null,
+null
+],
+[
+16.0,
+0.96,
+null,
+null
+],
+[
+18.0,
+0.99,
+null,
+null
+],
+[
+19.27,
+0.99,
+null,
+null
+]
+],
+"events": 126,
+"median_days": 0.92,
+"n": 128,
+"pooled": false,
+"reach_days": 19.3,
+"sections": 1
 },
 "6-15": {
-"n_course": 40,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.175,
+null,
+null
+],
+[
+1.0,
+0.375,
+null,
+null
+],
+[
+2.0,
+0.575,
+null,
+null
+],
+[
+3.0,
+0.675,
+null,
+null
+],
+[
+4.0,
+0.7,
+null,
+null
+],
+[
+5.0,
+0.75,
+null,
+null
+],
+[
+6.0,
+0.775,
+null,
+null
+],
+[
+7.0,
+0.8,
+null,
+null
+],
+[
+8.0,
+0.85,
+null,
+null
+],
+[
+9.0,
+0.85,
+null,
+null
+],
+[
+10.0,
+0.85,
+null,
+null
+],
+[
+12.0,
+0.9,
+null,
+null
+],
+[
+14.0,
+0.95,
+null,
+null
+],
+[
+16.0,
+0.975,
+null,
+null
+],
+[
+17.21,
+1.0,
+null,
+null
+]
+],
+"events": 40,
+"median_days": 1.82,
+"n": 40,
+"pooled": false,
+"reach_days": 17.2,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -80,19 +912,388 @@
 "MCELLBI 120": {
 "buckets": {
 "1-5": {
-"n_course": 398,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.283,
+null,
+null
+],
+[
+1.0,
+0.364,
+null,
+null
+],
+[
+2.0,
+0.459,
+null,
+null
+],
+[
+3.0,
+0.519,
+null,
+null
+],
+[
+4.0,
+0.553,
+null,
+null
+],
+[
+5.0,
+0.615,
+null,
+null
+],
+[
+6.0,
+0.627,
+null,
+null
+],
+[
+7.0,
+0.692,
+null,
+null
+],
+[
+8.0,
+0.744,
+null,
+null
+],
+[
+9.0,
+0.756,
+null,
+null
+],
+[
+10.0,
+0.787,
+null,
+null
+],
+[
+12.0,
+0.818,
+null,
+null
+],
+[
+14.0,
+0.838,
+null,
+null
+],
+[
+16.0,
+0.857,
+null,
+null
+],
+[
+18.0,
+0.883,
+null,
+null
+],
+[
+21.0,
+0.898,
+null,
+null
+],
+[
+24.0,
+0.898,
+null,
+null
+],
+[
+28.0,
+0.898,
+null,
+null
+],
+[
+30.81,
+0.898,
+null,
+null
+]
+],
+"events": 312,
+"median_days": 2.62,
+"n": 398,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 62,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.016,
+null,
+null
+],
+[
+1.0,
+0.033,
+null,
+null
+],
+[
+2.0,
+0.033,
+null,
+null
+],
+[
+3.0,
+0.033,
+null,
+null
+],
+[
+4.0,
+0.069,
+null,
+null
+],
+[
+5.0,
+0.089,
+null,
+null
+],
+[
+6.0,
+0.108,
+null,
+null
+],
+[
+7.0,
+0.207,
+null,
+null
+],
+[
+8.0,
+0.346,
+null,
+null
+],
+[
+9.0,
+0.425,
+null,
+null
+],
+[
+10.0,
+0.468,
+null,
+null
+],
+[
+12.0,
+0.489,
+null,
+null
+],
+[
+14.0,
+0.489,
+null,
+null
+],
+[
+16.0,
+0.489,
+null,
+null
+],
+[
+18.0,
+0.489,
+null,
+null
+],
+[
+21.0,
+0.489,
+null,
+null
+],
+[
+24.0,
+0.489,
+null,
+null
+],
+[
+28.0,
+0.489,
+null,
+null
+],
+[
+32.0,
+0.489,
+null,
+null
+],
+[
+34.14,
+0.489,
+null,
+null
+]
+],
+"events": 25,
+"median_days": null,
+"n": 62,
+"pooled": false,
+"reach_days": 34.1,
+"sections": 1
 },
 "6-15": {
-"n_course": 212,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.052,
+null,
+null
+],
+[
+1.0,
+0.106,
+null,
+null
+],
+[
+2.0,
+0.106,
+null,
+null
+],
+[
+3.0,
+0.132,
+null,
+null
+],
+[
+4.0,
+0.18,
+null,
+null
+],
+[
+5.0,
+0.237,
+null,
+null
+],
+[
+6.0,
+0.265,
+null,
+null
+],
+[
+7.0,
+0.379,
+null,
+null
+],
+[
+8.0,
+0.442,
+null,
+null
+],
+[
+9.0,
+0.476,
+null,
+null
+],
+[
+10.0,
+0.513,
+null,
+null
+],
+[
+12.0,
+0.537,
+null,
+null
+],
+[
+14.0,
+0.537,
+null,
+null
+],
+[
+16.0,
+0.537,
+null,
+null
+],
+[
+18.0,
+0.569,
+null,
+null
+],
+[
+21.0,
+0.569,
+null,
+null
+],
+[
+24.0,
+0.569,
+null,
+null
+],
+[
+28.0,
+0.569,
+null,
+null
+],
+[
+32.0,
+0.569,
+null,
+null
+],
+[
+34.82,
+0.569,
+null,
+null
+]
+],
+"events": 102,
+"median_days": 9.23,
+"n": 212,
+"pooled": false,
+"reach_days": 34.8,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -103,9 +1304,140 @@
 "MCELLBI 120L": {
 "buckets": {
 "1-5": {
-"n_course": 168,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.144,
+null,
+null
+],
+[
+1.0,
+0.226,
+null,
+null
+],
+[
+2.0,
+0.251,
+null,
+null
+],
+[
+3.0,
+0.258,
+null,
+null
+],
+[
+4.0,
+0.272,
+null,
+null
+],
+[
+5.0,
+0.286,
+null,
+null
+],
+[
+6.0,
+0.294,
+null,
+null
+],
+[
+7.0,
+0.301,
+null,
+null
+],
+[
+8.0,
+0.309,
+null,
+null
+],
+[
+9.0,
+0.317,
+null,
+null
+],
+[
+10.0,
+0.317,
+null,
+null
+],
+[
+12.0,
+0.376,
+null,
+null
+],
+[
+14.0,
+0.385,
+null,
+null
+],
+[
+16.0,
+0.385,
+null,
+null
+],
+[
+18.0,
+0.474,
+null,
+null
+],
+[
+21.0,
+0.534,
+null,
+null
+],
+[
+24.0,
+0.534,
+null,
+null
+],
+[
+28.0,
+0.534,
+null,
+null
+],
+[
+32.0,
+0.534,
+null,
+null
+],
+[
+36.0,
+0.534,
+null,
+null
+],
+[
+37.03,
+0.534,
+null,
+null
+]
+],
+"events": 71,
+"median_days": 19.29,
+"n": 168,
+"pooled": false,
+"reach_days": 37.0,
+"sections": 1
 },
 "16-40": {
 "n_course": 24,
@@ -113,9 +1445,140 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 73,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.041,
+null,
+null
+],
+[
+1.0,
+0.041,
+null,
+null
+],
+[
+2.0,
+0.041,
+null,
+null
+],
+[
+3.0,
+0.041,
+null,
+null
+],
+[
+4.0,
+0.041,
+null,
+null
+],
+[
+5.0,
+0.041,
+null,
+null
+],
+[
+6.0,
+0.041,
+null,
+null
+],
+[
+7.0,
+0.041,
+null,
+null
+],
+[
+8.0,
+0.041,
+null,
+null
+],
+[
+9.0,
+0.041,
+null,
+null
+],
+[
+10.0,
+0.041,
+null,
+null
+],
+[
+12.0,
+0.093,
+null,
+null
+],
+[
+14.0,
+0.093,
+null,
+null
+],
+[
+16.0,
+0.093,
+null,
+null
+],
+[
+18.0,
+0.161,
+null,
+null
+],
+[
+21.0,
+0.229,
+null,
+null
+],
+[
+24.0,
+0.229,
+null,
+null
+],
+[
+28.0,
+0.229,
+null,
+null
+],
+[
+32.0,
+0.229,
+null,
+null
+],
+[
+36.0,
+0.229,
+null,
+null
+],
+[
+36.31,
+0.229,
+null,
+null
+]
+],
+"events": 12,
+"median_days": null,
+"n": 73,
+"pooled": false,
+"reach_days": 36.3,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -126,9 +1589,62 @@
 "MCELLBI 132": {
 "buckets": {
 "1-5": {
-"n_course": 102,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.431,
+null,
+null
+],
+[
+1.0,
+0.51,
+null,
+null
+],
+[
+2.0,
+0.654,
+null,
+null
+],
+[
+3.0,
+0.732,
+null,
+null
+],
+[
+4.0,
+0.788,
+null,
+null
+],
+[
+5.0,
+0.848,
+null,
+null
+],
+[
+6.0,
+0.971,
+null,
+null
+],
+[
+6.51,
+0.971,
+null,
+null
+]
+],
+"events": 87,
+"median_days": 0.75,
+"n": 102,
+"pooled": false,
+"reach_days": 6.5,
+"sections": 1
 },
 "6-15": {
 "n_course": 3,
@@ -144,9 +1660,128 @@
 "MCELLBI 133L": {
 "buckets": {
 "1-5": {
-"n_course": 324,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.183,
+null,
+null
+],
+[
+1.0,
+0.255,
+null,
+null
+],
+[
+2.0,
+0.334,
+null,
+null
+],
+[
+3.0,
+0.38,
+null,
+null
+],
+[
+4.0,
+0.446,
+null,
+null
+],
+[
+5.0,
+0.498,
+null,
+null
+],
+[
+6.0,
+0.543,
+null,
+null
+],
+[
+7.0,
+0.575,
+null,
+null
+],
+[
+8.0,
+0.605,
+null,
+null
+],
+[
+9.0,
+0.617,
+null,
+null
+],
+[
+10.0,
+0.64,
+null,
+null
+],
+[
+12.0,
+0.66,
+null,
+null
+],
+[
+14.0,
+0.683,
+null,
+null
+],
+[
+16.0,
+0.683,
+null,
+null
+],
+[
+18.0,
+0.71,
+null,
+null
+],
+[
+21.0,
+0.726,
+null,
+null
+],
+[
+24.0,
+0.726,
+null,
+null
+],
+[
+28.0,
+0.726,
+null,
+null
+],
+[
+30.81,
+0.726,
+null,
+null
+]
+],
+"events": 182,
+"median_days": 5.02,
+"n": 324,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
 "n_course": 29,
@@ -154,9 +1789,128 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 216,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.005,
+null,
+null
+],
+[
+1.0,
+0.015,
+null,
+null
+],
+[
+2.0,
+0.015,
+null,
+null
+],
+[
+3.0,
+0.015,
+null,
+null
+],
+[
+4.0,
+0.015,
+null,
+null
+],
+[
+5.0,
+0.02,
+null,
+null
+],
+[
+6.0,
+0.043,
+null,
+null
+],
+[
+7.0,
+0.068,
+null,
+null
+],
+[
+8.0,
+0.1,
+null,
+null
+],
+[
+9.0,
+0.106,
+null,
+null
+],
+[
+10.0,
+0.121,
+null,
+null
+],
+[
+12.0,
+0.209,
+null,
+null
+],
+[
+14.0,
+0.274,
+null,
+null
+],
+[
+16.0,
+0.355,
+null,
+null
+],
+[
+18.0,
+0.381,
+null,
+null
+],
+[
+21.0,
+0.49,
+null,
+null
+],
+[
+24.0,
+0.58,
+null,
+null
+],
+[
+28.0,
+0.58,
+null,
+null
+],
+[
+30.81,
+0.58,
+null,
+null
+]
+],
+"events": 59,
+"median_days": 21.09,
+"n": 216,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -167,9 +1921,134 @@
 "MCELLBI 135A": {
 "buckets": {
 "1-5": {
-"n_course": 318,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.164,
+null,
+null
+],
+[
+1.0,
+0.24,
+null,
+null
+],
+[
+2.0,
+0.344,
+null,
+null
+],
+[
+3.0,
+0.44,
+null,
+null
+],
+[
+4.0,
+0.487,
+null,
+null
+],
+[
+5.0,
+0.508,
+null,
+null
+],
+[
+6.0,
+0.541,
+null,
+null
+],
+[
+7.0,
+0.579,
+null,
+null
+],
+[
+8.0,
+0.613,
+null,
+null
+],
+[
+9.0,
+0.648,
+null,
+null
+],
+[
+10.0,
+0.661,
+null,
+null
+],
+[
+12.0,
+0.71,
+null,
+null
+],
+[
+14.0,
+0.75,
+null,
+null
+],
+[
+16.0,
+0.76,
+null,
+null
+],
+[
+18.0,
+0.771,
+null,
+null
+],
+[
+21.0,
+0.796,
+null,
+null
+],
+[
+24.0,
+0.824,
+null,
+null
+],
+[
+28.0,
+0.853,
+null,
+null
+],
+[
+32.0,
+0.853,
+null,
+null
+],
+[
+34.99,
+0.853,
+null,
+null
+]
+],
+"events": 215,
+"median_days": 4.66,
+"n": 318,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
 },
 "16-40": {
 "n_course": 24,
@@ -177,9 +2056,134 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 155,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.04,
+null,
+null
+],
+[
+1.0,
+0.061,
+null,
+null
+],
+[
+2.0,
+0.103,
+null,
+null
+],
+[
+3.0,
+0.103,
+null,
+null
+],
+[
+4.0,
+0.17,
+null,
+null
+],
+[
+5.0,
+0.193,
+null,
+null
+],
+[
+6.0,
+0.264,
+null,
+null
+],
+[
+7.0,
+0.323,
+null,
+null
+],
+[
+8.0,
+0.366,
+null,
+null
+],
+[
+9.0,
+0.374,
+null,
+null
+],
+[
+10.0,
+0.374,
+null,
+null
+],
+[
+12.0,
+0.402,
+null,
+null
+],
+[
+14.0,
+0.442,
+null,
+null
+],
+[
+16.0,
+0.463,
+null,
+null
+],
+[
+18.0,
+0.463,
+null,
+null
+],
+[
+21.0,
+0.463,
+null,
+null
+],
+[
+24.0,
+0.463,
+null,
+null
+],
+[
+28.0,
+0.463,
+null,
+null
+],
+[
+32.0,
+0.463,
+null,
+null
+],
+[
+34.99,
+0.463,
+null,
+null
+]
+],
+"events": 58,
+"median_days": null,
+"n": 155,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -190,9 +2194,128 @@
 "MCELLBI 136": {
 "buckets": {
 "1-5": {
-"n_course": 472,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.239,
+null,
+null
+],
+[
+1.0,
+0.327,
+null,
+null
+],
+[
+2.0,
+0.464,
+null,
+null
+],
+[
+3.0,
+0.542,
+null,
+null
+],
+[
+4.0,
+0.635,
+null,
+null
+],
+[
+5.0,
+0.691,
+null,
+null
+],
+[
+6.0,
+0.749,
+null,
+null
+],
+[
+7.0,
+0.785,
+null,
+null
+],
+[
+8.0,
+0.807,
+null,
+null
+],
+[
+9.0,
+0.822,
+null,
+null
+],
+[
+10.0,
+0.837,
+null,
+null
+],
+[
+12.0,
+0.842,
+null,
+null
+],
+[
+14.0,
+0.857,
+null,
+null
+],
+[
+16.0,
+0.869,
+null,
+null
+],
+[
+18.0,
+0.869,
+null,
+null
+],
+[
+21.0,
+0.869,
+null,
+null
+],
+[
+24.0,
+0.869,
+null,
+null
+],
+[
+28.0,
+0.869,
+null,
+null
+],
+[
+30.81,
+0.869,
+null,
+null
+]
+],
+"events": 344,
+"median_days": 2.34,
+"n": 472,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
 "n_course": 29,
@@ -200,9 +2323,110 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 167,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.072,
+null,
+null
+],
+[
+1.0,
+0.147,
+null,
+null
+],
+[
+2.0,
+0.224,
+null,
+null
+],
+[
+3.0,
+0.301,
+null,
+null
+],
+[
+4.0,
+0.357,
+null,
+null
+],
+[
+5.0,
+0.438,
+null,
+null
+],
+[
+6.0,
+0.557,
+null,
+null
+],
+[
+7.0,
+0.639,
+null,
+null
+],
+[
+8.0,
+0.72,
+null,
+null
+],
+[
+9.0,
+0.768,
+null,
+null
+],
+[
+10.0,
+0.778,
+null,
+null
+],
+[
+12.0,
+0.827,
+null,
+null
+],
+[
+14.0,
+0.827,
+null,
+null
+],
+[
+16.0,
+0.827,
+null,
+null
+],
+[
+18.0,
+0.827,
+null,
+null
+],
+[
+18.21,
+0.827,
+null,
+null
+]
+],
+"events": 111,
+"median_days": 5.31,
+"n": 167,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -213,9 +2437,128 @@
 "MCELLBI 140": {
 "buckets": {
 "1-5": {
-"n_course": 86,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.38,
+null,
+null
+],
+[
+1.0,
+0.532,
+null,
+null
+],
+[
+2.0,
+0.725,
+null,
+null
+],
+[
+3.0,
+0.829,
+null,
+null
+],
+[
+4.0,
+0.86,
+null,
+null
+],
+[
+5.0,
+0.86,
+null,
+null
+],
+[
+6.0,
+0.86,
+null,
+null
+],
+[
+7.0,
+0.86,
+null,
+null
+],
+[
+8.0,
+0.9,
+null,
+null
+],
+[
+9.0,
+0.9,
+null,
+null
+],
+[
+10.0,
+0.9,
+null,
+null
+],
+[
+12.0,
+0.9,
+null,
+null
+],
+[
+14.0,
+0.9,
+null,
+null
+],
+[
+16.0,
+0.9,
+null,
+null
+],
+[
+18.0,
+0.9,
+null,
+null
+],
+[
+21.0,
+0.9,
+null,
+null
+],
+[
+24.0,
+0.9,
+null,
+null
+],
+[
+28.0,
+0.9,
+null,
+null
+],
+[
+30.81,
+0.9,
+null,
+null
+]
+],
+"events": 70,
+"median_days": 0.91,
+"n": 86,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 3,
@@ -244,14 +2587,204 @@
 "MCELLBI 150": {
 "buckets": {
 "1-5": {
-"n_course": 294,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.296,
+null,
+null
+],
+[
+1.0,
+0.42,
+null,
+null
+],
+[
+2.0,
+0.593,
+null,
+null
+],
+[
+3.0,
+0.688,
+null,
+null
+],
+[
+4.0,
+0.719,
+null,
+null
+],
+[
+5.0,
+0.743,
+null,
+null
+],
+[
+6.0,
+0.752,
+null,
+null
+],
+[
+7.0,
+0.766,
+null,
+null
+],
+[
+8.0,
+0.809,
+null,
+null
+],
+[
+9.0,
+0.814,
+null,
+null
+],
+[
+10.0,
+0.838,
+null,
+null
+],
+[
+12.0,
+0.881,
+null,
+null
+],
+[
+14.0,
+0.918,
+null,
+null
+],
+[
+16.0,
+0.954,
+null,
+null
+],
+[
+17.27,
+1.0,
+null,
+null
+]
+],
+"events": 244,
+"median_days": 1.3,
+"n": 294,
+"pooled": false,
+"reach_days": 17.3,
+"sections": 1
 },
 "6-15": {
-"n_course": 54,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.019,
+null,
+null
+],
+[
+2.0,
+0.198,
+null,
+null
+],
+[
+3.0,
+0.438,
+null,
+null
+],
+[
+4.0,
+0.619,
+null,
+null
+],
+[
+5.0,
+0.785,
+null,
+null
+],
+[
+6.0,
+0.833,
+null,
+null
+],
+[
+7.0,
+0.833,
+null,
+null
+],
+[
+8.0,
+0.857,
+null,
+null
+],
+[
+9.0,
+0.904,
+null,
+null
+],
+[
+10.0,
+0.904,
+null,
+null
+],
+[
+12.0,
+0.976,
+null,
+null
+],
+[
+14.0,
+0.976,
+null,
+null
+],
+[
+16.0,
+0.976,
+null,
+null
+],
+[
+17.76,
+0.976,
+null,
+null
+]
+],
+"events": 47,
+"median_days": 3.3,
+"n": 54,
+"pooled": false,
+"reach_days": 17.8,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -262,9 +2795,134 @@
 "MCELLBI 150L": {
 "buckets": {
 "1-5": {
-"n_course": 125,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.105,
+null,
+null
+],
+[
+1.0,
+0.14,
+null,
+null
+],
+[
+2.0,
+0.184,
+null,
+null
+],
+[
+3.0,
+0.202,
+null,
+null
+],
+[
+4.0,
+0.232,
+null,
+null
+],
+[
+5.0,
+0.232,
+null,
+null
+],
+[
+6.0,
+0.232,
+null,
+null
+],
+[
+7.0,
+0.232,
+null,
+null
+],
+[
+8.0,
+0.28,
+null,
+null
+],
+[
+9.0,
+0.307,
+null,
+null
+],
+[
+10.0,
+0.307,
+null,
+null
+],
+[
+12.0,
+0.418,
+null,
+null
+],
+[
+14.0,
+0.435,
+null,
+null
+],
+[
+16.0,
+0.435,
+null,
+null
+],
+[
+18.0,
+0.435,
+null,
+null
+],
+[
+21.0,
+0.48,
+null,
+null
+],
+[
+24.0,
+0.503,
+null,
+null
+],
+[
+28.0,
+0.503,
+null,
+null
+],
+[
+32.0,
+0.503,
+null,
+null
+],
+[
+34.29,
+0.503,
+null,
+null
+]
+],
+"events": 44,
+"median_days": 21.25,
+"n": 125,
+"pooled": false,
+"reach_days": 34.3,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -275,19 +2933,322 @@
 "MCELLBI 153": {
 "buckets": {
 "1-5": {
-"n_course": 402,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.382,
+null,
+null
+],
+[
+1.0,
+0.511,
+null,
+null
+],
+[
+2.0,
+0.636,
+null,
+null
+],
+[
+3.0,
+0.681,
+null,
+null
+],
+[
+4.0,
+0.747,
+null,
+null
+],
+[
+5.0,
+0.791,
+null,
+null
+],
+[
+6.0,
+0.802,
+null,
+null
+],
+[
+7.0,
+0.827,
+null,
+null
+],
+[
+8.0,
+0.86,
+null,
+null
+],
+[
+9.0,
+0.873,
+null,
+null
+],
+[
+10.0,
+0.887,
+null,
+null
+],
+[
+12.0,
+0.931,
+null,
+null
+],
+[
+14.0,
+0.941,
+null,
+null
+],
+[
+16.0,
+0.947,
+null,
+null
+],
+[
+18.0,
+0.959,
+null,
+null
+],
+[
+21.0,
+0.964,
+null,
+null
+],
+[
+24.0,
+0.964,
+null,
+null
+],
+[
+28.0,
+0.964,
+null,
+null
+],
+[
+30.81,
+0.964,
+null,
+null
+]
+],
+"events": 328,
+"median_days": 0.93,
+"n": 402,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 35,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.057,
+null,
+null
+],
+[
+1.0,
+0.143,
+null,
+null
+],
+[
+2.0,
+0.314,
+null,
+null
+],
+[
+3.0,
+0.343,
+null,
+null
+],
+[
+4.0,
+0.429,
+null,
+null
+],
+[
+5.0,
+0.543,
+null,
+null
+],
+[
+6.0,
+0.714,
+null,
+null
+],
+[
+7.0,
+0.714,
+null,
+null
+],
+[
+8.0,
+0.743,
+null,
+null
+],
+[
+9.0,
+0.743,
+null,
+null
+],
+[
+10.0,
+0.743,
+null,
+null
+],
+[
+12.0,
+0.829,
+null,
+null
+],
+[
+14.0,
+0.886,
+null,
+null
+],
+[
+16.0,
+0.943,
+null,
+null
+],
+[
+17.79,
+0.971,
+null,
+null
+]
+],
+"events": 35,
+"median_days": 4.9,
+"n": 35,
+"pooled": false,
+"reach_days": 17.8,
+"sections": 1
 },
 "6-15": {
-"n_course": 169,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.107,
+null,
+null
+],
+[
+1.0,
+0.21,
+null,
+null
+],
+[
+2.0,
+0.37,
+null,
+null
+],
+[
+3.0,
+0.473,
+null,
+null
+],
+[
+4.0,
+0.642,
+null,
+null
+],
+[
+5.0,
+0.696,
+null,
+null
+],
+[
+6.0,
+0.753,
+null,
+null
+],
+[
+7.0,
+0.753,
+null,
+null
+],
+[
+8.0,
+0.807,
+null,
+null
+],
+[
+9.0,
+0.807,
+null,
+null
+],
+[
+10.0,
+0.807,
+null,
+null
+],
+[
+12.0,
+0.89,
+null,
+null
+],
+[
+14.0,
+0.945,
+null,
+null
+],
+[
+15.4,
+1.0,
+null,
+null
+]
+],
+"events": 142,
+"median_days": 3.16,
+"n": 169,
+"pooled": false,
+"reach_days": 15.4,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -311,9 +3272,158 @@
 "MCELLBI 200A": {
 "buckets": {
 "1-5": {
-"n_course": 31,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.42,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 31,
+"pooled": false,
+"reach_days": 57.4,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -324,9 +3434,158 @@
 "MCELLBI 200B": {
 "buckets": {
 "1-5": {
-"n_course": 31,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.42,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 31,
+"pooled": false,
+"reach_days": 57.4,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -337,9 +3596,158 @@
 "MCELLBI 201B": {
 "buckets": {
 "1-5": {
-"n_course": 32,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.42,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 57.4,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -350,9 +3758,158 @@
 "MCELLBI 227": {
 "buckets": {
 "1-5": {
-"n_course": 32,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.42,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 57.4,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -376,9 +3933,158 @@
 "MCELLBI 275": {
 "buckets": {
 "1-5": {
-"n_course": 32,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.42,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 57.4,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -389,9 +4095,146 @@
 "MCELLBI 290": {
 "buckets": {
 "1-5": {
-"n_course": 80,
-"pooled": "MCELLBI",
-"sections_course": 5
+"curve": [
+[
+0.5,
+0.163,
+0.0,
+0.232
+],
+[
+1.0,
+0.188,
+0.0,
+0.294
+],
+[
+2.0,
+0.281,
+0.0,
+0.387
+],
+[
+3.0,
+0.294,
+0.0,
+0.411
+],
+[
+4.0,
+0.337,
+0.0,
+0.461
+],
+[
+5.0,
+0.368,
+0.0,
+0.515
+],
+[
+6.0,
+0.422,
+0.0,
+0.605
+],
+[
+7.0,
+0.478,
+0.0,
+0.656
+],
+[
+8.0,
+0.497,
+0.0,
+0.691
+],
+[
+9.0,
+0.497,
+0.0,
+0.691
+],
+[
+10.0,
+0.55,
+0.0,
+0.868
+],
+[
+12.0,
+0.55,
+0.0,
+0.868
+],
+[
+14.0,
+0.55,
+0.0,
+0.868
+],
+[
+16.0,
+0.55,
+0.0,
+0.868
+],
+[
+18.0,
+0.55,
+0.0,
+0.868
+],
+[
+21.0,
+0.55,
+0.0,
+0.868
+],
+[
+24.0,
+0.55,
+0.0,
+0.868
+],
+[
+28.0,
+0.55,
+0.0,
+0.868
+],
+[
+32.0,
+0.55,
+0.0,
+0.868
+],
+[
+36.0,
+0.55,
+0.0,
+0.868
+],
+[
+42.0,
+0.55,
+0.0,
+0.868
+],
+[
+43.42,
+0.55,
+0.0,
+0.868
+]
+],
+"events": 37,
+"median_days": 9.27,
+"n": 80,
+"pooled": false,
+"reach_days": 43.4,
+"sections": 5
 }
 },
 "dept_group": "MCELLBI",
@@ -402,9 +4245,158 @@
 "MCELLBI 293A": {
 "buckets": {
 "1-5": {
-"n_course": 30,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.42,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 30,
+"pooled": false,
+"reach_days": 57.4,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -441,9 +4433,98 @@
 "MCELLBI 32": {
 "buckets": {
 "1-5": {
-"n_course": 152,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.546,
+null,
+null
+],
+[
+1.0,
+0.675,
+null,
+null
+],
+[
+2.0,
+0.817,
+null,
+null
+],
+[
+3.0,
+0.852,
+null,
+null
+],
+[
+4.0,
+0.889,
+null,
+null
+],
+[
+5.0,
+0.889,
+null,
+null
+],
+[
+6.0,
+0.889,
+null,
+null
+],
+[
+7.0,
+0.889,
+null,
+null
+],
+[
+8.0,
+0.889,
+null,
+null
+],
+[
+9.0,
+0.889,
+null,
+null
+],
+[
+10.0,
+0.889,
+null,
+null
+],
+[
+12.0,
+0.889,
+null,
+null
+],
+[
+14.0,
+0.889,
+null,
+null
+],
+[
+15.43,
+0.889,
+null,
+null
+]
+],
+"events": 132,
+"median_days": 0.42,
+"n": 152,
+"pooled": false,
+"reach_days": 15.4,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -454,19 +4535,358 @@
 "MCELLBI 32L": {
 "buckets": {
 "1-5": {
-"n_course": 402,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.192,
+null,
+null
+],
+[
+1.0,
+0.256,
+null,
+null
+],
+[
+2.0,
+0.361,
+null,
+null
+],
+[
+3.0,
+0.429,
+null,
+null
+],
+[
+4.0,
+0.483,
+null,
+null
+],
+[
+5.0,
+0.542,
+null,
+null
+],
+[
+6.0,
+0.59,
+null,
+null
+],
+[
+7.0,
+0.627,
+null,
+null
+],
+[
+8.0,
+0.641,
+null,
+null
+],
+[
+9.0,
+0.657,
+null,
+null
+],
+[
+10.0,
+0.663,
+null,
+null
+],
+[
+12.0,
+0.677,
+null,
+null
+],
+[
+14.0,
+0.71,
+null,
+null
+],
+[
+16.0,
+0.737,
+null,
+null
+],
+[
+18.0,
+0.76,
+null,
+null
+],
+[
+21.0,
+0.797,
+null,
+null
+],
+[
+24.0,
+0.882,
+null,
+null
+],
+[
+28.0,
+0.882,
+null,
+null
+],
+[
+30.81,
+0.882,
+null,
+null
+]
+],
+"events": 243,
+"median_days": 4.19,
+"n": 402,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 55,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.21,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 55,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
 },
 "6-15": {
-"n_course": 242,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.004,
+null,
+null
+],
+[
+1.0,
+0.009,
+null,
+null
+],
+[
+2.0,
+0.013,
+null,
+null
+],
+[
+3.0,
+0.013,
+null,
+null
+],
+[
+4.0,
+0.024,
+null,
+null
+],
+[
+5.0,
+0.03,
+null,
+null
+],
+[
+6.0,
+0.053,
+null,
+null
+],
+[
+7.0,
+0.077,
+null,
+null
+],
+[
+8.0,
+0.106,
+null,
+null
+],
+[
+9.0,
+0.159,
+null,
+null
+],
+[
+10.0,
+0.168,
+null,
+null
+],
+[
+12.0,
+0.219,
+null,
+null
+],
+[
+14.0,
+0.256,
+null,
+null
+],
+[
+16.0,
+0.256,
+null,
+null
+],
+[
+18.0,
+0.256,
+null,
+null
+],
+[
+21.0,
+0.256,
+null,
+null
+],
+[
+24.0,
+0.368,
+null,
+null
+],
+[
+28.0,
+0.592,
+null,
+null
+],
+[
+30.81,
+0.728,
+null,
+null
+]
+],
+"events": 45,
+"median_days": 27.14,
+"n": 242,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -490,9 +4910,128 @@
 "MCELLBI C100A": {
 "buckets": {
 "1-5": {
-"n_course": 236,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.252,
+null,
+null
+],
+[
+1.0,
+0.329,
+null,
+null
+],
+[
+2.0,
+0.413,
+null,
+null
+],
+[
+3.0,
+0.51,
+null,
+null
+],
+[
+4.0,
+0.587,
+null,
+null
+],
+[
+5.0,
+0.619,
+null,
+null
+],
+[
+6.0,
+0.674,
+null,
+null
+],
+[
+7.0,
+0.707,
+null,
+null
+],
+[
+8.0,
+0.745,
+null,
+null
+],
+[
+9.0,
+0.751,
+null,
+null
+],
+[
+10.0,
+0.768,
+null,
+null
+],
+[
+12.0,
+0.808,
+null,
+null
+],
+[
+14.0,
+0.823,
+null,
+null
+],
+[
+16.0,
+0.842,
+null,
+null
+],
+[
+18.0,
+0.864,
+null,
+null
+],
+[
+21.0,
+0.89,
+null,
+null
+],
+[
+24.0,
+0.89,
+null,
+null
+],
+[
+28.0,
+0.89,
+null,
+null
+],
+[
+30.81,
+0.89,
+null,
+null
+]
+],
+"events": 177,
+"median_days": 2.96,
+"n": 236,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 27,
@@ -508,14 +5047,276 @@
 "MCELLBI C110L": {
 "buckets": {
 "1-5": {
-"n_course": 152,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.093,
+null,
+null
+],
+[
+1.0,
+0.149,
+null,
+null
+],
+[
+2.0,
+0.157,
+null,
+null
+],
+[
+3.0,
+0.157,
+null,
+null
+],
+[
+4.0,
+0.157,
+null,
+null
+],
+[
+5.0,
+0.157,
+null,
+null
+],
+[
+6.0,
+0.166,
+null,
+null
+],
+[
+7.0,
+0.184,
+null,
+null
+],
+[
+8.0,
+0.193,
+null,
+null
+],
+[
+9.0,
+0.193,
+null,
+null
+],
+[
+10.0,
+0.193,
+null,
+null
+],
+[
+12.0,
+0.215,
+null,
+null
+],
+[
+14.0,
+0.215,
+null,
+null
+],
+[
+16.0,
+0.215,
+null,
+null
+],
+[
+18.0,
+0.257,
+null,
+null
+],
+[
+21.0,
+0.302,
+null,
+null
+],
+[
+24.0,
+0.335,
+null,
+null
+],
+[
+28.0,
+0.378,
+null,
+null
+],
+[
+32.0,
+0.405,
+null,
+null
+],
+[
+36.0,
+0.572,
+null,
+null
+],
+[
+36.06,
+0.572,
+null,
+null
+]
+],
+"events": 44,
+"median_days": 33.94,
+"n": 152,
+"pooled": false,
+"reach_days": 36.1,
+"sections": 1
 },
 "6-15": {
-"n_course": 32,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.031,
+null,
+null
+],
+[
+1.0,
+0.065,
+null,
+null
+],
+[
+2.0,
+0.065,
+null,
+null
+],
+[
+3.0,
+0.065,
+null,
+null
+],
+[
+4.0,
+0.065,
+null,
+null
+],
+[
+5.0,
+0.065,
+null,
+null
+],
+[
+6.0,
+0.065,
+null,
+null
+],
+[
+7.0,
+0.065,
+null,
+null
+],
+[
+8.0,
+0.065,
+null,
+null
+],
+[
+9.0,
+0.065,
+null,
+null
+],
+[
+10.0,
+0.065,
+null,
+null
+],
+[
+12.0,
+0.065,
+null,
+null
+],
+[
+14.0,
+0.065,
+null,
+null
+],
+[
+16.0,
+0.065,
+null,
+null
+],
+[
+18.0,
+0.065,
+null,
+null
+],
+[
+21.0,
+0.065,
+null,
+null
+],
+[
+24.0,
+0.065,
+null,
+null
+],
+[
+28.0,
+0.065,
+null,
+null
+],
+[
+32.0,
+0.065,
+null,
+null
+],
+[
+36.0,
+0.065,
+null,
+null
+],
+[
+36.06,
+0.065,
+null,
+null
+]
+],
+"events": 2,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 36.1,
+"sections": 1
 }
 },
 "dept_group": "MCELLBI",
@@ -526,9 +5327,128 @@
 "MCELLBI C112": {
 "buckets": {
 "1-5": {
-"n_course": 300,
-"pooled": "MCELLBI",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.231,
+null,
+null
+],
+[
+1.0,
+0.299,
+null,
+null
+],
+[
+2.0,
+0.398,
+null,
+null
+],
+[
+3.0,
+0.485,
+null,
+null
+],
+[
+4.0,
+0.55,
+null,
+null
+],
+[
+5.0,
+0.605,
+null,
+null
+],
+[
+6.0,
+0.65,
+null,
+null
+],
+[
+7.0,
+0.687,
+null,
+null
+],
+[
+8.0,
+0.711,
+null,
+null
+],
+[
+9.0,
+0.759,
+null,
+null
+],
+[
+10.0,
+0.788,
+null,
+null
+],
+[
+12.0,
+0.832,
+null,
+null
+],
+[
+14.0,
+0.864,
+null,
+null
+],
+[
+16.0,
+0.881,
+null,
+null
+],
+[
+18.0,
+0.89,
+null,
+null
+],
+[
+21.0,
+0.924,
+null,
+null
+],
+[
+24.0,
+0.924,
+null,
+null
+],
+[
+28.0,
+0.924,
+null,
+null
+],
+[
+30.81,
+0.924,
+null,
+null
+]
+],
+"events": 213,
+"median_days": 3.13,
+"n": 300,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 10,
@@ -544,9 +5464,140 @@
 "MCELLBI C112L": {
 "buckets": {
 "1-5": {
-"n_course": 365,
-"pooled": "MCELLBI",
-"sections_course": 4
+"curve": [
+[
+0.5,
+0.036,
+0.023,
+0.059
+],
+[
+1.0,
+0.072,
+0.06,
+0.082
+],
+[
+2.0,
+0.078,
+0.06,
+0.098
+],
+[
+3.0,
+0.084,
+0.06,
+0.118
+],
+[
+4.0,
+0.084,
+0.06,
+0.118
+],
+[
+5.0,
+0.084,
+0.06,
+0.118
+],
+[
+6.0,
+0.102,
+0.06,
+0.174
+],
+[
+7.0,
+0.113,
+0.074,
+0.178
+],
+[
+8.0,
+0.113,
+0.074,
+0.178
+],
+[
+9.0,
+0.113,
+0.074,
+0.178
+],
+[
+10.0,
+0.113,
+0.074,
+0.178
+],
+[
+12.0,
+0.139,
+0.091,
+0.224
+],
+[
+14.0,
+0.139,
+0.091,
+0.224
+],
+[
+16.0,
+0.151,
+0.091,
+0.26
+],
+[
+18.0,
+0.184,
+0.115,
+0.307
+],
+[
+21.0,
+0.241,
+0.172,
+0.35
+],
+[
+24.0,
+0.241,
+0.172,
+0.35
+],
+[
+28.0,
+0.241,
+0.172,
+0.35
+],
+[
+32.0,
+0.241,
+0.172,
+0.35
+],
+[
+36.0,
+0.241,
+0.172,
+0.35
+],
+[
+37.12,
+0.241,
+0.172,
+0.35
+]
+],
+"events": 57,
+"median_days": null,
+"n": 365,
+"pooled": false,
+"reach_days": 37.1,
+"sections": 4
 }
 },
 "dept_group": "MCELLBI",

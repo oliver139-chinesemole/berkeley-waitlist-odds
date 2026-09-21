@@ -3,9 +3,140 @@
 "RDEV 200": {
 "buckets": {
 "1-5": {
-"n_course": 47,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+38.06,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 47,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -16,9 +147,140 @@
 "RDEV 225": {
 "buckets": {
 "1-5": {
-"n_course": 90,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.323,
+null,
+null
+],
+[
+1.0,
+0.392,
+null,
+null
+],
+[
+2.0,
+0.451,
+null,
+null
+],
+[
+3.0,
+0.498,
+null,
+null
+],
+[
+4.0,
+0.553,
+null,
+null
+],
+[
+5.0,
+0.553,
+null,
+null
+],
+[
+6.0,
+0.568,
+null,
+null
+],
+[
+7.0,
+0.568,
+null,
+null
+],
+[
+8.0,
+0.598,
+null,
+null
+],
+[
+9.0,
+0.598,
+null,
+null
+],
+[
+10.0,
+0.631,
+null,
+null
+],
+[
+12.0,
+0.631,
+null,
+null
+],
+[
+14.0,
+0.631,
+null,
+null
+],
+[
+16.0,
+0.631,
+null,
+null
+],
+[
+18.0,
+0.631,
+null,
+null
+],
+[
+21.0,
+0.631,
+null,
+null
+],
+[
+24.0,
+0.631,
+null,
+null
+],
+[
+28.0,
+0.631,
+null,
+null
+],
+[
+32.0,
+0.631,
+null,
+null
+],
+[
+36.0,
+0.631,
+null,
+null
+],
+[
+38.06,
+0.631,
+null,
+null
+]
+],
+"events": 53,
+"median_days": 3.27,
+"n": 90,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -29,9 +291,140 @@
 "RDEV 250": {
 "buckets": {
 "1-5": {
-"n_course": 184,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.187,
+null,
+null
+],
+[
+1.0,
+0.265,
+null,
+null
+],
+[
+2.0,
+0.333,
+null,
+null
+],
+[
+3.0,
+0.384,
+null,
+null
+],
+[
+4.0,
+0.438,
+null,
+null
+],
+[
+5.0,
+0.453,
+null,
+null
+],
+[
+6.0,
+0.475,
+null,
+null
+],
+[
+7.0,
+0.482,
+null,
+null
+],
+[
+8.0,
+0.482,
+null,
+null
+],
+[
+9.0,
+0.482,
+null,
+null
+],
+[
+10.0,
+0.482,
+null,
+null
+],
+[
+12.0,
+0.482,
+null,
+null
+],
+[
+14.0,
+0.503,
+null,
+null
+],
+[
+16.0,
+0.514,
+null,
+null
+],
+[
+18.0,
+0.514,
+null,
+null
+],
+[
+21.0,
+0.514,
+null,
+null
+],
+[
+24.0,
+0.514,
+null,
+null
+],
+[
+28.0,
+0.514,
+null,
+null
+],
+[
+32.0,
+0.514,
+null,
+null
+],
+[
+36.0,
+0.514,
+null,
+null
+],
+[
+38.0,
+0.514,
+null,
+null
+]
+],
+"events": 83,
+"median_days": 13.95,
+"n": 184,
+"pooled": false,
+"reach_days": 38.0,
+"sections": 1
 },
 "6-15": {
 "n_course": 21,
@@ -47,9 +440,140 @@
 "RDEV 260": {
 "buckets": {
 "1-5": {
-"n_course": 43,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+38.0,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 43,
+"pooled": false,
+"reach_days": 38.0,
+"sections": 1
 }
 },
 "dept_group": "OTHER",

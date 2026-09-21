@@ -137,8 +137,8 @@ def test_export_pooling_rule() -> None:
         for cell in entry["buckets"].values():
             assert cell["pooled"] is not False and "n_course" in cell and "sections_course" in cell
     big = synthetic_cohort(n_sections=8, joins_per_section=40)
-    assert all(cell["pooled"] is not False for e in course_tables(big, cal, min_n=30).values() for cell in e["buckets"].values())  # department by default
-    tables = course_tables(big, cal, min_n=30, estimate_level="course")
+    assert all(cell["pooled"] is not False for e in course_tables(big, cal, min_n=30, estimate_level="dept").values() for cell in e["buckets"].values())  # department level: every cell a pointer
+    tables = course_tables(big, cal, min_n=30)  # course by default
     unpooled = [cell for e in tables.values() for cell in e["buckets"].values() if cell["pooled"] is False]
     assert unpooled and all(cell["n"] >= 30 for cell in unpooled)
 

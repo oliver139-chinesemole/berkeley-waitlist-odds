@@ -204,7 +204,7 @@ const BWO = (function () {
   // One sentence on the rule, for the pages' small print.
   function levelNote(meta) {
     if (estimateLevel(meta) === "dept") return `Estimates are by department and position, not by course: in the ${esc(meta.term_name)} backtest, course-level curves did not beat the position-only baseline, so a course's own cases are shown as counts next to its department's curve (<a href="accuracy.html">how accurate it was</a>).`;
-    return `Estimates are by course and position when a course has at least ${esc(meta.min_n || 30)} cases, otherwise by department.`;
+    return `Estimates are by course and position when a course has at least ${esc(meta.min_n || 30)} cases, otherwise by department (labelled pooled): across whole cycles, a course's own curve predicted better than its position alone (<a href="accuracy.html">how accurate it was</a>).`;
   }
   function levelOf(number) { const m = String(number || "").match(/(\d+)/); if (!m) return null; const n = parseInt(m[1], 10); return n < 100 ? "lower" : n < 200 ? "upper" : "grad"; }
 

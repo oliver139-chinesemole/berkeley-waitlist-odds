@@ -3,14 +3,258 @@
 "POLECON 100": {
 "buckets": {
 "1-5": {
-"n_course": 459,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.169,
+null,
+null
+],
+[
+1.0,
+0.216,
+null,
+null
+],
+[
+2.0,
+0.336,
+null,
+null
+],
+[
+3.0,
+0.43,
+null,
+null
+],
+[
+4.0,
+0.502,
+null,
+null
+],
+[
+5.0,
+0.545,
+null,
+null
+],
+[
+6.0,
+0.588,
+null,
+null
+],
+[
+7.0,
+0.627,
+null,
+null
+],
+[
+8.0,
+0.698,
+null,
+null
+],
+[
+9.0,
+0.735,
+null,
+null
+],
+[
+10.0,
+0.747,
+null,
+null
+],
+[
+12.0,
+0.771,
+null,
+null
+],
+[
+14.0,
+0.795,
+null,
+null
+],
+[
+16.0,
+0.795,
+null,
+null
+],
+[
+18.0,
+0.795,
+null,
+null
+],
+[
+21.0,
+0.809,
+null,
+null
+],
+[
+24.0,
+0.82,
+null,
+null
+],
+[
+28.0,
+0.846,
+null,
+null
+],
+[
+32.0,
+0.973,
+null,
+null
+],
+[
+32.76,
+0.973,
+null,
+null
+]
+],
+"events": 327,
+"median_days": 3.98,
+"n": 459,
+"pooled": false,
+"reach_days": 32.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 233,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.034,
+null,
+null
+],
+[
+18.0,
+0.069,
+null,
+null
+],
+[
+21.0,
+0.069,
+null,
+null
+],
+[
+24.0,
+0.069,
+null,
+null
+],
+[
+28.0,
+0.069,
+null,
+null
+],
+[
+30.9,
+0.069,
+null,
+null
+]
+],
+"events": 4,
+"median_days": null,
+"n": 233,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
 },
 "41+": {
 "n_course": 11,
@@ -18,9 +262,134 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 296,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.031,
+null,
+null
+],
+[
+1.0,
+0.038,
+null,
+null
+],
+[
+2.0,
+0.056,
+null,
+null
+],
+[
+3.0,
+0.069,
+null,
+null
+],
+[
+4.0,
+0.11,
+null,
+null
+],
+[
+5.0,
+0.11,
+null,
+null
+],
+[
+6.0,
+0.139,
+null,
+null
+],
+[
+7.0,
+0.139,
+null,
+null
+],
+[
+8.0,
+0.194,
+null,
+null
+],
+[
+9.0,
+0.246,
+null,
+null
+],
+[
+10.0,
+0.284,
+null,
+null
+],
+[
+12.0,
+0.357,
+null,
+null
+],
+[
+14.0,
+0.412,
+null,
+null
+],
+[
+16.0,
+0.443,
+null,
+null
+],
+[
+18.0,
+0.459,
+null,
+null
+],
+[
+21.0,
+0.459,
+null,
+null
+],
+[
+24.0,
+0.459,
+null,
+null
+],
+[
+28.0,
+0.459,
+null,
+null
+],
+[
+32.0,
+0.459,
+null,
+null
+],
+[
+33.97,
+0.549,
+null,
+null
+]
+],
+"events": 89,
+"median_days": 32.94,
+"n": 296,
+"pooled": false,
+"reach_days": 34.0,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -31,19 +400,382 @@
 "POLECON 101": {
 "buckets": {
 "1-5": {
-"n_course": 428,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.177,
+null,
+null
+],
+[
+1.0,
+0.255,
+null,
+null
+],
+[
+2.0,
+0.387,
+null,
+null
+],
+[
+3.0,
+0.483,
+null,
+null
+],
+[
+4.0,
+0.539,
+null,
+null
+],
+[
+5.0,
+0.594,
+null,
+null
+],
+[
+6.0,
+0.656,
+null,
+null
+],
+[
+7.0,
+0.678,
+null,
+null
+],
+[
+8.0,
+0.732,
+null,
+null
+],
+[
+9.0,
+0.748,
+null,
+null
+],
+[
+10.0,
+0.768,
+null,
+null
+],
+[
+12.0,
+0.807,
+null,
+null
+],
+[
+14.0,
+0.827,
+null,
+null
+],
+[
+16.0,
+0.869,
+null,
+null
+],
+[
+18.0,
+0.929,
+null,
+null
+],
+[
+21.0,
+0.934,
+null,
+null
+],
+[
+24.0,
+0.934,
+null,
+null
+],
+[
+28.0,
+0.934,
+null,
+null
+],
+[
+30.81,
+0.934,
+null,
+null
+]
+],
+"events": 311,
+"median_days": 3.16,
+"n": 428,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 100,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+31.05,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 100,
+"pooled": false,
+"reach_days": 31.1,
+"sections": 1
 },
 "6-15": {
-"n_course": 283,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.011,
+null,
+null
+],
+[
+1.0,
+0.018,
+null,
+null
+],
+[
+2.0,
+0.03,
+null,
+null
+],
+[
+3.0,
+0.058,
+null,
+null
+],
+[
+4.0,
+0.093,
+null,
+null
+],
+[
+5.0,
+0.117,
+null,
+null
+],
+[
+6.0,
+0.151,
+null,
+null
+],
+[
+7.0,
+0.172,
+null,
+null
+],
+[
+8.0,
+0.224,
+null,
+null
+],
+[
+9.0,
+0.243,
+null,
+null
+],
+[
+10.0,
+0.269,
+null,
+null
+],
+[
+12.0,
+0.308,
+null,
+null
+],
+[
+14.0,
+0.336,
+null,
+null
+],
+[
+16.0,
+0.368,
+null,
+null
+],
+[
+18.0,
+0.386,
+null,
+null
+],
+[
+21.0,
+0.468,
+null,
+null
+],
+[
+24.0,
+0.503,
+null,
+null
+],
+[
+28.0,
+0.621,
+null,
+null
+],
+[
+32.0,
+0.648,
+null,
+null
+],
+[
+32.28,
+0.648,
+null,
+null
+]
+],
+"events": 91,
+"median_days": 23.62,
+"n": 283,
+"pooled": false,
+"reach_days": 32.3,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -54,9 +786,80 @@
 "POLECON 107": {
 "buckets": {
 "1-5": {
-"n_course": 53,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.174,
+null,
+null
+],
+[
+1.0,
+0.274,
+null,
+null
+],
+[
+2.0,
+0.44,
+null,
+null
+],
+[
+3.0,
+0.558,
+null,
+null
+],
+[
+4.0,
+0.613,
+null,
+null
+],
+[
+5.0,
+0.668,
+null,
+null
+],
+[
+6.0,
+0.668,
+null,
+null
+],
+[
+7.0,
+0.668,
+null,
+null
+],
+[
+8.0,
+0.668,
+null,
+null
+],
+[
+9.0,
+0.668,
+null,
+null
+],
+[
+9.69,
+0.668,
+null,
+null
+]
+],
+"events": 31,
+"median_days": 2.43,
+"n": 53,
+"pooled": false,
+"reach_days": 9.7,
+"sections": 1
 },
 "6-15": {
 "n_course": 2,
@@ -72,9 +875,128 @@
 "POLECON 156": {
 "buckets": {
 "1-5": {
-"n_course": 332,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.206,
+null,
+null
+],
+[
+1.0,
+0.313,
+null,
+null
+],
+[
+2.0,
+0.4,
+null,
+null
+],
+[
+3.0,
+0.439,
+null,
+null
+],
+[
+4.0,
+0.479,
+null,
+null
+],
+[
+5.0,
+0.513,
+null,
+null
+],
+[
+6.0,
+0.556,
+null,
+null
+],
+[
+7.0,
+0.573,
+null,
+null
+],
+[
+8.0,
+0.598,
+null,
+null
+],
+[
+9.0,
+0.629,
+null,
+null
+],
+[
+10.0,
+0.652,
+null,
+null
+],
+[
+12.0,
+0.711,
+null,
+null
+],
+[
+14.0,
+0.725,
+null,
+null
+],
+[
+16.0,
+0.751,
+null,
+null
+],
+[
+18.0,
+0.793,
+null,
+null
+],
+[
+21.0,
+0.814,
+null,
+null
+],
+[
+24.0,
+0.851,
+null,
+null
+],
+[
+28.0,
+0.851,
+null,
+null
+],
+[
+30.81,
+0.851,
+null,
+null
+]
+],
+"events": 216,
+"median_days": 4.7,
+"n": 332,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
 "n_course": 11,
@@ -82,9 +1004,134 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 191,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.005,
+null,
+null
+],
+[
+1.0,
+0.027,
+null,
+null
+],
+[
+2.0,
+0.083,
+null,
+null
+],
+[
+3.0,
+0.094,
+null,
+null
+],
+[
+4.0,
+0.094,
+null,
+null
+],
+[
+5.0,
+0.144,
+null,
+null
+],
+[
+6.0,
+0.144,
+null,
+null
+],
+[
+7.0,
+0.17,
+null,
+null
+],
+[
+8.0,
+0.177,
+null,
+null
+],
+[
+9.0,
+0.191,
+null,
+null
+],
+[
+10.0,
+0.205,
+null,
+null
+],
+[
+12.0,
+0.205,
+null,
+null
+],
+[
+14.0,
+0.298,
+null,
+null
+],
+[
+16.0,
+0.38,
+null,
+null
+],
+[
+18.0,
+0.47,
+null,
+null
+],
+[
+21.0,
+0.541,
+null,
+null
+],
+[
+24.0,
+0.541,
+null,
+null
+],
+[
+28.0,
+0.541,
+null,
+null
+],
+[
+32.0,
+0.541,
+null,
+null
+],
+[
+35.02,
+0.541,
+null,
+null
+]
+],
+"events": 69,
+"median_days": 18.58,
+"n": 191,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -95,19 +1142,400 @@
 "POLECON 159": {
 "buckets": {
 "1-5": {
-"n_course": 391,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.125,
+null,
+null
+],
+[
+1.0,
+0.201,
+null,
+null
+],
+[
+2.0,
+0.249,
+null,
+null
+],
+[
+3.0,
+0.267,
+null,
+null
+],
+[
+4.0,
+0.292,
+null,
+null
+],
+[
+5.0,
+0.332,
+null,
+null
+],
+[
+6.0,
+0.39,
+null,
+null
+],
+[
+7.0,
+0.424,
+null,
+null
+],
+[
+8.0,
+0.463,
+null,
+null
+],
+[
+9.0,
+0.492,
+null,
+null
+],
+[
+10.0,
+0.55,
+null,
+null
+],
+[
+12.0,
+0.645,
+null,
+null
+],
+[
+14.0,
+0.715,
+null,
+null
+],
+[
+16.0,
+0.746,
+null,
+null
+],
+[
+18.0,
+0.755,
+null,
+null
+],
+[
+21.0,
+0.783,
+null,
+null
+],
+[
+24.0,
+0.783,
+null,
+null
+],
+[
+28.0,
+0.829,
+null,
+null
+],
+[
+32.0,
+0.854,
+null,
+null
+],
+[
+32.95,
+1.0,
+null,
+null
+]
+],
+"events": 226,
+"median_days": 9.1,
+"n": 391,
+"pooled": false,
+"reach_days": 32.9,
+"sections": 1
 },
 "16-40": {
-"n_course": 62,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+35.31,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 62,
+"pooled": false,
+"reach_days": 35.3,
+"sections": 1
 },
 "6-15": {
-"n_course": 251,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.004,
+null,
+null
+],
+[
+1.0,
+0.008,
+null,
+null
+],
+[
+2.0,
+0.026,
+null,
+null
+],
+[
+3.0,
+0.031,
+null,
+null
+],
+[
+4.0,
+0.041,
+null,
+null
+],
+[
+5.0,
+0.047,
+null,
+null
+],
+[
+6.0,
+0.063,
+null,
+null
+],
+[
+7.0,
+0.103,
+null,
+null
+],
+[
+8.0,
+0.137,
+null,
+null
+],
+[
+9.0,
+0.143,
+null,
+null
+],
+[
+10.0,
+0.15,
+null,
+null
+],
+[
+12.0,
+0.203,
+null,
+null
+],
+[
+14.0,
+0.222,
+null,
+null
+],
+[
+16.0,
+0.253,
+null,
+null
+],
+[
+18.0,
+0.277,
+null,
+null
+],
+[
+21.0,
+0.289,
+null,
+null
+],
+[
+24.0,
+0.329,
+null,
+null
+],
+[
+28.0,
+0.329,
+null,
+null
+],
+[
+32.0,
+0.329,
+null,
+null
+],
+[
+36.0,
+0.466,
+null,
+null
+],
+[
+36.14,
+0.466,
+null,
+null
+]
+],
+"events": 48,
+"median_days": null,
+"n": 251,
+"pooled": false,
+"reach_days": 36.1,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -118,14 +1546,210 @@
 "POLECON 85": {
 "buckets": {
 "1-5": {
-"n_course": 134,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.158,
+null,
+null
+],
+[
+1.0,
+0.166,
+null,
+null
+],
+[
+2.0,
+0.267,
+null,
+null
+],
+[
+3.0,
+0.285,
+null,
+null
+],
+[
+4.0,
+0.295,
+null,
+null
+],
+[
+5.0,
+0.38,
+null,
+null
+],
+[
+6.0,
+0.38,
+null,
+null
+],
+[
+7.0,
+0.452,
+null,
+null
+],
+[
+8.0,
+0.488,
+null,
+null
+],
+[
+9.0,
+0.502,
+null,
+null
+],
+[
+10.0,
+0.518,
+null,
+null
+],
+[
+12.0,
+0.518,
+null,
+null
+],
+[
+14.0,
+0.759,
+null,
+null
+],
+[
+16.0,
+0.862,
+null,
+null
+],
+[
+18.0,
+0.862,
+null,
+null
+],
+[
+18.36,
+0.862,
+null,
+null
+]
+],
+"events": 65,
+"median_days": 8.81,
+"n": 134,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 },
 "6-15": {
-"n_course": 42,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.073,
+null,
+null
+],
+[
+1.0,
+0.073,
+null,
+null
+],
+[
+2.0,
+0.189,
+null,
+null
+],
+[
+3.0,
+0.189,
+null,
+null
+],
+[
+4.0,
+0.189,
+null,
+null
+],
+[
+5.0,
+0.29,
+null,
+null
+],
+[
+6.0,
+0.29,
+null,
+null
+],
+[
+7.0,
+0.327,
+null,
+null
+],
+[
+8.0,
+0.327,
+null,
+null
+],
+[
+9.0,
+0.327,
+null,
+null
+],
+[
+10.0,
+0.327,
+null,
+null
+],
+[
+12.0,
+0.327,
+null,
+null
+],
+[
+14.0,
+0.552,
+null,
+null
+],
+[
+16.0,
+0.776,
+null,
+null
+],
+[
+16.19,
+1.0,
+null,
+null
+]
+],
+"events": 17,
+"median_days": 12.7,
+"n": 42,
+"pooled": false,
+"reach_days": 16.2,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -149,14 +1773,252 @@
 "POLECON C160": {
 "buckets": {
 "1-5": {
-"n_course": 365,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.211,
+null,
+null
+],
+[
+1.0,
+0.261,
+null,
+null
+],
+[
+2.0,
+0.374,
+null,
+null
+],
+[
+3.0,
+0.438,
+null,
+null
+],
+[
+4.0,
+0.492,
+null,
+null
+],
+[
+5.0,
+0.53,
+null,
+null
+],
+[
+6.0,
+0.542,
+null,
+null
+],
+[
+7.0,
+0.589,
+null,
+null
+],
+[
+8.0,
+0.633,
+null,
+null
+],
+[
+9.0,
+0.708,
+null,
+null
+],
+[
+10.0,
+0.73,
+null,
+null
+],
+[
+12.0,
+0.8,
+null,
+null
+],
+[
+14.0,
+0.857,
+null,
+null
+],
+[
+16.0,
+0.925,
+null,
+null
+],
+[
+18.0,
+0.948,
+null,
+null
+],
+[
+21.0,
+0.948,
+null,
+null
+],
+[
+24.0,
+0.948,
+null,
+null
+],
+[
+28.0,
+0.948,
+null,
+null
+],
+[
+30.81,
+0.948,
+null,
+null
+]
+],
+"events": 264,
+"median_days": 4.21,
+"n": 365,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
-"n_course": 104,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.01,
+null,
+null
+],
+[
+1.0,
+0.02,
+null,
+null
+],
+[
+2.0,
+0.032,
+null,
+null
+],
+[
+3.0,
+0.068,
+null,
+null
+],
+[
+4.0,
+0.094,
+null,
+null
+],
+[
+5.0,
+0.147,
+null,
+null
+],
+[
+6.0,
+0.147,
+null,
+null
+],
+[
+7.0,
+0.175,
+null,
+null
+],
+[
+8.0,
+0.274,
+null,
+null
+],
+[
+9.0,
+0.305,
+null,
+null
+],
+[
+10.0,
+0.344,
+null,
+null
+],
+[
+12.0,
+0.566,
+null,
+null
+],
+[
+14.0,
+0.593,
+null,
+null
+],
+[
+16.0,
+0.656,
+null,
+null
+],
+[
+18.0,
+0.725,
+null,
+null
+],
+[
+21.0,
+0.725,
+null,
+null
+],
+[
+24.0,
+0.863,
+null,
+null
+],
+[
+28.0,
+0.931,
+null,
+null
+],
+[
+30.81,
+0.931,
+null,
+null
+]
+],
+"events": 42,
+"median_days": 11.49,
+"n": 104,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "OTHER",

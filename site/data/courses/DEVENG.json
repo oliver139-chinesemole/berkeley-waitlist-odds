@@ -3,9 +3,158 @@
 "DEVENG 220": {
 "buckets": {
 "1-5": {
-"n_course": 33,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+60.47,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 33,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -29,9 +178,92 @@
 "DEVENG C200": {
 "buckets": {
 "1-5": {
-"n_course": 63,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.27,
+null,
+null
+],
+[
+1.0,
+0.302,
+null,
+null
+],
+[
+2.0,
+0.355,
+null,
+null
+],
+[
+3.0,
+0.42,
+null,
+null
+],
+[
+4.0,
+0.506,
+null,
+null
+],
+[
+5.0,
+0.527,
+null,
+null
+],
+[
+6.0,
+0.627,
+null,
+null
+],
+[
+7.0,
+0.701,
+null,
+null
+],
+[
+8.0,
+0.726,
+null,
+null
+],
+[
+9.0,
+0.795,
+null,
+null
+],
+[
+10.0,
+0.897,
+null,
+null
+],
+[
+12.0,
+0.949,
+null,
+null
+],
+[
+12.14,
+0.949,
+null,
+null
+]
+],
+"events": 43,
+"median_days": 3.74,
+"n": 63,
+"pooled": false,
+"reach_days": 12.1,
+"sections": 1
 },
 "6-15": {
 "n_course": 14,

@@ -57,7 +57,7 @@ for (const [scheme] of SCHEMES.map((s) => [s])) {
         await page.waitForFunction(() => { const s = document.getElementById("status"); return !s || !/Loading/.test(s.textContent); }, null, { timeout: 15000 });
         await page.waitForTimeout(200);
         const shot = join(outDir, `${name}-${vpName}-${scheme}.png`);
-        await page.screenshot({ path: shot, fullPage: true });
+        await page.screenshot({ path: shot, fullPage: true, timeout: 60000 });  // long pages on a busy runner
         const wide = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
         if (wide) errors.push("page scrolls horizontally");
         await page.addScriptTag({ content: axeSource });

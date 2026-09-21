@@ -3,14 +3,270 @@
 "CYPLAN 101": {
 "buckets": {
 "1-5": {
-"n_course": 427,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.169,
+null,
+null
+],
+[
+1.0,
+0.255,
+null,
+null
+],
+[
+2.0,
+0.319,
+null,
+null
+],
+[
+3.0,
+0.343,
+null,
+null
+],
+[
+4.0,
+0.373,
+null,
+null
+],
+[
+5.0,
+0.392,
+null,
+null
+],
+[
+6.0,
+0.438,
+null,
+null
+],
+[
+7.0,
+0.459,
+null,
+null
+],
+[
+8.0,
+0.478,
+null,
+null
+],
+[
+9.0,
+0.489,
+null,
+null
+],
+[
+10.0,
+0.516,
+null,
+null
+],
+[
+12.0,
+0.545,
+null,
+null
+],
+[
+14.0,
+0.57,
+null,
+null
+],
+[
+16.0,
+0.624,
+null,
+null
+],
+[
+18.0,
+0.654,
+null,
+null
+],
+[
+21.0,
+0.654,
+null,
+null
+],
+[
+24.0,
+0.68,
+null,
+null
+],
+[
+28.0,
+0.68,
+null,
+null
+],
+[
+32.0,
+0.744,
+null,
+null
+],
+[
+34.11,
+0.829,
+null,
+null
+]
+],
+"events": 201,
+"median_days": 9.76,
+"n": 427,
+"pooled": false,
+"reach_days": 34.1,
+"sections": 1
 },
 "16-40": {
-"n_course": 219,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.014,
+null,
+null
+],
+[
+1.0,
+0.029,
+null,
+null
+],
+[
+2.0,
+0.044,
+null,
+null
+],
+[
+3.0,
+0.067,
+null,
+null
+],
+[
+4.0,
+0.08,
+null,
+null
+],
+[
+5.0,
+0.08,
+null,
+null
+],
+[
+6.0,
+0.101,
+null,
+null
+],
+[
+7.0,
+0.123,
+null,
+null
+],
+[
+8.0,
+0.154,
+null,
+null
+],
+[
+9.0,
+0.154,
+null,
+null
+],
+[
+10.0,
+0.154,
+null,
+null
+],
+[
+12.0,
+0.218,
+null,
+null
+],
+[
+14.0,
+0.218,
+null,
+null
+],
+[
+16.0,
+0.218,
+null,
+null
+],
+[
+18.0,
+0.218,
+null,
+null
+],
+[
+21.0,
+0.218,
+null,
+null
+],
+[
+24.0,
+0.218,
+null,
+null
+],
+[
+28.0,
+0.218,
+null,
+null
+],
+[
+32.0,
+0.218,
+null,
+null
+],
+[
+36.0,
+0.218,
+null,
+null
+],
+[
+36.98,
+0.218,
+null,
+null
+]
+],
+"events": 32,
+"median_days": null,
+"n": 219,
+"pooled": false,
+"reach_days": 37.0,
+"sections": 1
 },
 "41+": {
 "n_course": 23,
@@ -18,9 +274,140 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 274,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.041,
+null,
+null
+],
+[
+1.0,
+0.084,
+null,
+null
+],
+[
+2.0,
+0.134,
+null,
+null
+],
+[
+3.0,
+0.151,
+null,
+null
+],
+[
+4.0,
+0.151,
+null,
+null
+],
+[
+5.0,
+0.173,
+null,
+null
+],
+[
+6.0,
+0.208,
+null,
+null
+],
+[
+7.0,
+0.225,
+null,
+null
+],
+[
+8.0,
+0.244,
+null,
+null
+],
+[
+9.0,
+0.244,
+null,
+null
+],
+[
+10.0,
+0.252,
+null,
+null
+],
+[
+12.0,
+0.306,
+null,
+null
+],
+[
+14.0,
+0.306,
+null,
+null
+],
+[
+16.0,
+0.327,
+null,
+null
+],
+[
+18.0,
+0.327,
+null,
+null
+],
+[
+21.0,
+0.387,
+null,
+null
+],
+[
+24.0,
+0.387,
+null,
+null
+],
+[
+28.0,
+0.387,
+null,
+null
+],
+[
+32.0,
+0.387,
+null,
+null
+],
+[
+36.0,
+0.443,
+null,
+null
+],
+[
+36.17,
+0.721,
+null,
+null
+]
+],
+"events": 70,
+"median_days": 36.13,
+"n": 274,
+"pooled": false,
+"reach_days": 36.2,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -31,14 +418,264 @@
 "CYPLAN 110": {
 "buckets": {
 "1-5": {
-"n_course": 449,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.224,
+null,
+null
+],
+[
+1.0,
+0.333,
+null,
+null
+],
+[
+2.0,
+0.437,
+null,
+null
+],
+[
+3.0,
+0.506,
+null,
+null
+],
+[
+4.0,
+0.588,
+null,
+null
+],
+[
+5.0,
+0.637,
+null,
+null
+],
+[
+6.0,
+0.654,
+null,
+null
+],
+[
+7.0,
+0.694,
+null,
+null
+],
+[
+8.0,
+0.705,
+null,
+null
+],
+[
+9.0,
+0.732,
+null,
+null
+],
+[
+10.0,
+0.741,
+null,
+null
+],
+[
+12.0,
+0.804,
+null,
+null
+],
+[
+14.0,
+0.814,
+null,
+null
+],
+[
+16.0,
+0.824,
+null,
+null
+],
+[
+18.0,
+0.824,
+null,
+null
+],
+[
+21.0,
+0.834,
+null,
+null
+],
+[
+24.0,
+0.845,
+null,
+null
+],
+[
+28.0,
+0.896,
+null,
+null
+],
+[
+30.81,
+0.92,
+null,
+null
+]
+],
+"events": 313,
+"median_days": 2.89,
+"n": 449,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 208,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.015,
+null,
+null
+],
+[
+1.0,
+0.031,
+null,
+null
+],
+[
+2.0,
+0.048,
+null,
+null
+],
+[
+3.0,
+0.073,
+null,
+null
+],
+[
+4.0,
+0.092,
+null,
+null
+],
+[
+5.0,
+0.134,
+null,
+null
+],
+[
+6.0,
+0.134,
+null,
+null
+],
+[
+7.0,
+0.156,
+null,
+null
+],
+[
+8.0,
+0.156,
+null,
+null
+],
+[
+9.0,
+0.181,
+null,
+null
+],
+[
+10.0,
+0.181,
+null,
+null
+],
+[
+12.0,
+0.212,
+null,
+null
+],
+[
+14.0,
+0.212,
+null,
+null
+],
+[
+16.0,
+0.212,
+null,
+null
+],
+[
+18.0,
+0.212,
+null,
+null
+],
+[
+21.0,
+0.212,
+null,
+null
+],
+[
+24.0,
+0.212,
+null,
+null
+],
+[
+28.0,
+0.212,
+null,
+null
+],
+[
+32.0,
+0.212,
+null,
+null
+],
+[
+36.0,
+0.212,
+null,
+null
+],
+[
+36.09,
+0.212,
+null,
+null
+]
+],
+"events": 31,
+"median_days": null,
+"n": 208,
+"pooled": false,
+"reach_days": 36.1,
+"sections": 1
 },
 "41+": {
 "n_course": 24,
@@ -46,9 +683,134 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 300,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.027,
+null,
+null
+],
+[
+1.0,
+0.053,
+null,
+null
+],
+[
+2.0,
+0.098,
+null,
+null
+],
+[
+3.0,
+0.134,
+null,
+null
+],
+[
+4.0,
+0.166,
+null,
+null
+],
+[
+5.0,
+0.237,
+null,
+null
+],
+[
+6.0,
+0.262,
+null,
+null
+],
+[
+7.0,
+0.293,
+null,
+null
+],
+[
+8.0,
+0.31,
+null,
+null
+],
+[
+9.0,
+0.349,
+null,
+null
+],
+[
+10.0,
+0.349,
+null,
+null
+],
+[
+12.0,
+0.379,
+null,
+null
+],
+[
+14.0,
+0.407,
+null,
+null
+],
+[
+16.0,
+0.436,
+null,
+null
+],
+[
+18.0,
+0.459,
+null,
+null
+],
+[
+21.0,
+0.459,
+null,
+null
+],
+[
+24.0,
+0.459,
+null,
+null
+],
+[
+28.0,
+0.459,
+null,
+null
+],
+[
+32.0,
+0.599,
+null,
+null
+],
+[
+34.93,
+0.679,
+null,
+null
+]
+],
+"events": 94,
+"median_days": 30.42,
+"n": 300,
+"pooled": false,
+"reach_days": 34.9,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -59,19 +821,406 @@
 "CYPLAN 113A": {
 "buckets": {
 "1-5": {
-"n_course": 368,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.141,
+null,
+null
+],
+[
+1.0,
+0.22,
+null,
+null
+],
+[
+2.0,
+0.317,
+null,
+null
+],
+[
+3.0,
+0.372,
+null,
+null
+],
+[
+4.0,
+0.405,
+null,
+null
+],
+[
+5.0,
+0.442,
+null,
+null
+],
+[
+6.0,
+0.458,
+null,
+null
+],
+[
+7.0,
+0.458,
+null,
+null
+],
+[
+8.0,
+0.458,
+null,
+null
+],
+[
+9.0,
+0.476,
+null,
+null
+],
+[
+10.0,
+0.518,
+null,
+null
+],
+[
+12.0,
+0.573,
+null,
+null
+],
+[
+14.0,
+0.573,
+null,
+null
+],
+[
+16.0,
+0.573,
+null,
+null
+],
+[
+18.0,
+0.573,
+null,
+null
+],
+[
+21.0,
+0.573,
+null,
+null
+],
+[
+24.0,
+0.573,
+null,
+null
+],
+[
+28.0,
+0.573,
+null,
+null
+],
+[
+32.0,
+0.573,
+null,
+null
+],
+[
+36.0,
+0.573,
+null,
+null
+],
+[
+36.17,
+0.573,
+null,
+null
+]
+],
+"events": 174,
+"median_days": 9.73,
+"n": 368,
+"pooled": false,
+"reach_days": 36.2,
+"sections": 1
 },
 "16-40": {
-"n_course": 71,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.014,
+null,
+null
+],
+[
+1.0,
+0.029,
+null,
+null
+],
+[
+2.0,
+0.06,
+null,
+null
+],
+[
+3.0,
+0.077,
+null,
+null
+],
+[
+4.0,
+0.094,
+null,
+null
+],
+[
+5.0,
+0.094,
+null,
+null
+],
+[
+6.0,
+0.094,
+null,
+null
+],
+[
+7.0,
+0.113,
+null,
+null
+],
+[
+8.0,
+0.153,
+null,
+null
+],
+[
+9.0,
+0.195,
+null,
+null
+],
+[
+10.0,
+0.265,
+null,
+null
+],
+[
+12.0,
+0.317,
+null,
+null
+],
+[
+14.0,
+0.317,
+null,
+null
+],
+[
+16.0,
+0.419,
+null,
+null
+],
+[
+18.0,
+0.492,
+null,
+null
+],
+[
+21.0,
+0.492,
+null,
+null
+],
+[
+24.0,
+0.492,
+null,
+null
+],
+[
+28.0,
+0.492,
+null,
+null
+],
+[
+32.0,
+0.492,
+null,
+null
+],
+[
+34.14,
+0.492,
+null,
+null
+]
+],
+"events": 21,
+"median_days": null,
+"n": 71,
+"pooled": false,
+"reach_days": 34.1,
+"sections": 1
 },
 "6-15": {
-"n_course": 223,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.013,
+null,
+null
+],
+[
+1.0,
+0.028,
+null,
+null
+],
+[
+2.0,
+0.058,
+null,
+null
+],
+[
+3.0,
+0.075,
+null,
+null
+],
+[
+4.0,
+0.099,
+null,
+null
+],
+[
+5.0,
+0.099,
+null,
+null
+],
+[
+6.0,
+0.099,
+null,
+null
+],
+[
+7.0,
+0.099,
+null,
+null
+],
+[
+8.0,
+0.106,
+null,
+null
+],
+[
+9.0,
+0.128,
+null,
+null
+],
+[
+10.0,
+0.177,
+null,
+null
+],
+[
+12.0,
+0.233,
+null,
+null
+],
+[
+14.0,
+0.256,
+null,
+null
+],
+[
+16.0,
+0.256,
+null,
+null
+],
+[
+18.0,
+0.256,
+null,
+null
+],
+[
+21.0,
+0.256,
+null,
+null
+],
+[
+24.0,
+0.256,
+null,
+null
+],
+[
+28.0,
+0.256,
+null,
+null
+],
+[
+32.0,
+0.256,
+null,
+null
+],
+[
+36.0,
+0.256,
+null,
+null
+],
+[
+36.34,
+0.256,
+null,
+null
+]
+],
+"events": 37,
+"median_days": null,
+"n": 223,
+"pooled": false,
+"reach_days": 36.3,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -82,19 +1231,382 @@
 "CYPLAN 115": {
 "buckets": {
 "1-5": {
-"n_course": 485,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.258,
+null,
+null
+],
+[
+1.0,
+0.4,
+null,
+null
+],
+[
+2.0,
+0.521,
+null,
+null
+],
+[
+3.0,
+0.596,
+null,
+null
+],
+[
+4.0,
+0.664,
+null,
+null
+],
+[
+5.0,
+0.714,
+null,
+null
+],
+[
+6.0,
+0.721,
+null,
+null
+],
+[
+7.0,
+0.746,
+null,
+null
+],
+[
+8.0,
+0.764,
+null,
+null
+],
+[
+9.0,
+0.785,
+null,
+null
+],
+[
+10.0,
+0.808,
+null,
+null
+],
+[
+12.0,
+0.825,
+null,
+null
+],
+[
+14.0,
+0.831,
+null,
+null
+],
+[
+16.0,
+0.831,
+null,
+null
+],
+[
+18.0,
+0.843,
+null,
+null
+],
+[
+21.0,
+0.855,
+null,
+null
+],
+[
+24.0,
+0.87,
+null,
+null
+],
+[
+28.0,
+0.895,
+null,
+null
+],
+[
+30.81,
+0.895,
+null,
+null
+]
+],
+"events": 335,
+"median_days": 1.76,
+"n": 485,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
-"n_course": 152,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.014,
+null,
+null
+],
+[
+1.0,
+0.029,
+null,
+null
+],
+[
+2.0,
+0.045,
+null,
+null
+],
+[
+3.0,
+0.045,
+null,
+null
+],
+[
+4.0,
+0.054,
+null,
+null
+],
+[
+5.0,
+0.075,
+null,
+null
+],
+[
+6.0,
+0.096,
+null,
+null
+],
+[
+7.0,
+0.155,
+null,
+null
+],
+[
+8.0,
+0.179,
+null,
+null
+],
+[
+9.0,
+0.211,
+null,
+null
+],
+[
+10.0,
+0.227,
+null,
+null
+],
+[
+12.0,
+0.345,
+null,
+null
+],
+[
+14.0,
+0.376,
+null,
+null
+],
+[
+16.0,
+0.376,
+null,
+null
+],
+[
+18.0,
+0.376,
+null,
+null
+],
+[
+21.0,
+0.376,
+null,
+null
+],
+[
+24.0,
+0.376,
+null,
+null
+],
+[
+28.0,
+0.376,
+null,
+null
+],
+[
+31.05,
+0.376,
+null,
+null
+]
+],
+"events": 27,
+"median_days": null,
+"n": 152,
+"pooled": false,
+"reach_days": 31.1,
+"sections": 1
 },
 "6-15": {
-"n_course": 297,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.025,
+null,
+null
+],
+[
+1.0,
+0.062,
+null,
+null
+],
+[
+2.0,
+0.125,
+null,
+null
+],
+[
+3.0,
+0.173,
+null,
+null
+],
+[
+4.0,
+0.228,
+null,
+null
+],
+[
+5.0,
+0.298,
+null,
+null
+],
+[
+6.0,
+0.332,
+null,
+null
+],
+[
+7.0,
+0.368,
+null,
+null
+],
+[
+8.0,
+0.392,
+null,
+null
+],
+[
+9.0,
+0.413,
+null,
+null
+],
+[
+10.0,
+0.413,
+null,
+null
+],
+[
+12.0,
+0.447,
+null,
+null
+],
+[
+14.0,
+0.447,
+null,
+null
+],
+[
+16.0,
+0.447,
+null,
+null
+],
+[
+18.0,
+0.447,
+null,
+null
+],
+[
+21.0,
+0.447,
+null,
+null
+],
+[
+24.0,
+0.447,
+null,
+null
+],
+[
+28.0,
+0.465,
+null,
+null
+],
+[
+32.0,
+0.633,
+null,
+null
+],
+[
+34.32,
+0.706,
+null,
+null
+]
+],
+"events": 98,
+"median_days": 28.47,
+"n": 297,
+"pooled": false,
+"reach_days": 34.3,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -105,19 +1617,382 @@
 "CYPLAN 119": {
 "buckets": {
 "1-5": {
-"n_course": 405,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.248,
+null,
+null
+],
+[
+1.0,
+0.311,
+null,
+null
+],
+[
+2.0,
+0.403,
+null,
+null
+],
+[
+3.0,
+0.481,
+null,
+null
+],
+[
+4.0,
+0.539,
+null,
+null
+],
+[
+5.0,
+0.567,
+null,
+null
+],
+[
+6.0,
+0.6,
+null,
+null
+],
+[
+7.0,
+0.628,
+null,
+null
+],
+[
+8.0,
+0.68,
+null,
+null
+],
+[
+9.0,
+0.697,
+null,
+null
+],
+[
+10.0,
+0.715,
+null,
+null
+],
+[
+12.0,
+0.756,
+null,
+null
+],
+[
+14.0,
+0.767,
+null,
+null
+],
+[
+16.0,
+0.773,
+null,
+null
+],
+[
+18.0,
+0.779,
+null,
+null
+],
+[
+21.0,
+0.779,
+null,
+null
+],
+[
+24.0,
+0.802,
+null,
+null
+],
+[
+28.0,
+0.824,
+null,
+null
+],
+[
+31.17,
+0.824,
+null,
+null
+]
+],
+"events": 259,
+"median_days": 3.18,
+"n": 405,
+"pooled": false,
+"reach_days": 31.2,
+"sections": 1
 },
 "16-40": {
-"n_course": 75,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.045,
+null,
+null
+],
+[
+7.0,
+0.045,
+null,
+null
+],
+[
+8.0,
+0.073,
+null,
+null
+],
+[
+9.0,
+0.105,
+null,
+null
+],
+[
+10.0,
+0.105,
+null,
+null
+],
+[
+12.0,
+0.27,
+null,
+null
+],
+[
+14.0,
+0.379,
+null,
+null
+],
+[
+16.0,
+0.547,
+null,
+null
+],
+[
+18.0,
+0.547,
+null,
+null
+],
+[
+21.0,
+0.547,
+null,
+null
+],
+[
+24.0,
+0.547,
+null,
+null
+],
+[
+28.0,
+0.547,
+null,
+null
+],
+[
+28.83,
+0.547,
+null,
+null
+]
+],
+"events": 12,
+"median_days": 15.96,
+"n": 75,
+"pooled": false,
+"reach_days": 28.8,
+"sections": 1
 },
 "6-15": {
-"n_course": 231,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.018,
+null,
+null
+],
+[
+1.0,
+0.028,
+null,
+null
+],
+[
+2.0,
+0.033,
+null,
+null
+],
+[
+3.0,
+0.061,
+null,
+null
+],
+[
+4.0,
+0.104,
+null,
+null
+],
+[
+5.0,
+0.156,
+null,
+null
+],
+[
+6.0,
+0.205,
+null,
+null
+],
+[
+7.0,
+0.228,
+null,
+null
+],
+[
+8.0,
+0.269,
+null,
+null
+],
+[
+9.0,
+0.305,
+null,
+null
+],
+[
+10.0,
+0.323,
+null,
+null
+],
+[
+12.0,
+0.395,
+null,
+null
+],
+[
+14.0,
+0.407,
+null,
+null
+],
+[
+16.0,
+0.407,
+null,
+null
+],
+[
+18.0,
+0.407,
+null,
+null
+],
+[
+21.0,
+0.407,
+null,
+null
+],
+[
+24.0,
+0.407,
+null,
+null
+],
+[
+28.0,
+0.407,
+null,
+null
+],
+[
+32.0,
+0.407,
+null,
+null
+],
+[
+32.72,
+0.407,
+null,
+null
+]
+],
+"events": 56,
+"median_days": null,
+"n": 231,
+"pooled": false,
+"reach_days": 32.7,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -128,14 +2003,252 @@
 "CYPLAN 124": {
 "buckets": {
 "1-5": {
-"n_course": 246,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.245,
+null,
+null
+],
+[
+1.0,
+0.337,
+null,
+null
+],
+[
+2.0,
+0.449,
+null,
+null
+],
+[
+3.0,
+0.517,
+null,
+null
+],
+[
+4.0,
+0.54,
+null,
+null
+],
+[
+5.0,
+0.546,
+null,
+null
+],
+[
+6.0,
+0.546,
+null,
+null
+],
+[
+7.0,
+0.561,
+null,
+null
+],
+[
+8.0,
+0.561,
+null,
+null
+],
+[
+9.0,
+0.561,
+null,
+null
+],
+[
+10.0,
+0.561,
+null,
+null
+],
+[
+12.0,
+0.595,
+null,
+null
+],
+[
+14.0,
+0.62,
+null,
+null
+],
+[
+16.0,
+0.676,
+null,
+null
+],
+[
+18.0,
+0.722,
+null,
+null
+],
+[
+21.0,
+0.722,
+null,
+null
+],
+[
+24.0,
+0.775,
+null,
+null
+],
+[
+28.0,
+0.888,
+null,
+null
+],
+[
+30.81,
+0.888,
+null,
+null
+]
+],
+"events": 144,
+"median_days": 2.86,
+"n": 246,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
-"n_course": 41,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+30.81,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 41,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -146,9 +2259,134 @@
 "CYPLAN 180A": {
 "buckets": {
 "1-5": {
-"n_course": 134,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.143,
+null,
+null
+],
+[
+1.0,
+0.218,
+null,
+null
+],
+[
+2.0,
+0.244,
+null,
+null
+],
+[
+3.0,
+0.244,
+null,
+null
+],
+[
+4.0,
+0.244,
+null,
+null
+],
+[
+5.0,
+0.254,
+null,
+null
+],
+[
+6.0,
+0.254,
+null,
+null
+],
+[
+7.0,
+0.287,
+null,
+null
+],
+[
+8.0,
+0.297,
+null,
+null
+],
+[
+9.0,
+0.297,
+null,
+null
+],
+[
+10.0,
+0.311,
+null,
+null
+],
+[
+12.0,
+0.311,
+null,
+null
+],
+[
+14.0,
+0.326,
+null,
+null
+],
+[
+16.0,
+0.326,
+null,
+null
+],
+[
+18.0,
+0.326,
+null,
+null
+],
+[
+21.0,
+0.326,
+null,
+null
+],
+[
+24.0,
+0.326,
+null,
+null
+],
+[
+28.0,
+0.326,
+null,
+null
+],
+[
+32.0,
+0.326,
+null,
+null
+],
+[
+32.42,
+0.326,
+null,
+null
+]
+],
+"events": 38,
+"median_days": null,
+"n": 134,
+"pooled": false,
+"reach_days": 32.4,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -159,9 +2397,128 @@
 "CYPLAN 180B": {
 "buckets": {
 "1-5": {
-"n_course": 33,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.153,
+null,
+null
+],
+[
+1.0,
+0.185,
+null,
+null
+],
+[
+2.0,
+0.25,
+null,
+null
+],
+[
+3.0,
+0.284,
+null,
+null
+],
+[
+4.0,
+0.319,
+null,
+null
+],
+[
+5.0,
+0.319,
+null,
+null
+],
+[
+6.0,
+0.319,
+null,
+null
+],
+[
+7.0,
+0.319,
+null,
+null
+],
+[
+8.0,
+0.319,
+null,
+null
+],
+[
+9.0,
+0.319,
+null,
+null
+],
+[
+10.0,
+0.319,
+null,
+null
+],
+[
+12.0,
+0.319,
+null,
+null
+],
+[
+14.0,
+0.319,
+null,
+null
+],
+[
+16.0,
+0.319,
+null,
+null
+],
+[
+18.0,
+0.319,
+null,
+null
+],
+[
+21.0,
+0.319,
+null,
+null
+],
+[
+24.0,
+0.319,
+null,
+null
+],
+[
+28.0,
+0.319,
+null,
+null
+],
+[
+30.81,
+0.319,
+null,
+null
+]
+],
+"events": 10,
+"median_days": null,
+"n": 33,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -185,9 +2542,146 @@
 "CYPLAN 200": {
 "buckets": {
 "1-5": {
-"n_course": 32,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.031,
+null,
+null
+],
+[
+1.0,
+0.031,
+null,
+null
+],
+[
+2.0,
+0.031,
+null,
+null
+],
+[
+3.0,
+0.031,
+null,
+null
+],
+[
+4.0,
+0.031,
+null,
+null
+],
+[
+5.0,
+0.031,
+null,
+null
+],
+[
+6.0,
+0.031,
+null,
+null
+],
+[
+7.0,
+0.031,
+null,
+null
+],
+[
+8.0,
+0.031,
+null,
+null
+],
+[
+9.0,
+0.031,
+null,
+null
+],
+[
+10.0,
+0.031,
+null,
+null
+],
+[
+12.0,
+0.031,
+null,
+null
+],
+[
+14.0,
+0.031,
+null,
+null
+],
+[
+16.0,
+0.031,
+null,
+null
+],
+[
+18.0,
+0.031,
+null,
+null
+],
+[
+21.0,
+0.031,
+null,
+null
+],
+[
+24.0,
+0.031,
+null,
+null
+],
+[
+28.0,
+0.031,
+null,
+null
+],
+[
+32.0,
+0.031,
+null,
+null
+],
+[
+36.0,
+0.031,
+null,
+null
+],
+[
+42.0,
+0.031,
+null,
+null
+],
+[
+48.2,
+0.031,
+null,
+null
+]
+],
+"events": 1,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -198,9 +2692,146 @@
 "CYPLAN 201A": {
 "buckets": {
 "1-5": {
-"n_course": 88,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.298,
+null,
+null
+],
+[
+1.0,
+0.322,
+null,
+null
+],
+[
+2.0,
+0.472,
+null,
+null
+],
+[
+3.0,
+0.536,
+null,
+null
+],
+[
+4.0,
+0.592,
+null,
+null
+],
+[
+5.0,
+0.592,
+null,
+null
+],
+[
+6.0,
+0.636,
+null,
+null
+],
+[
+7.0,
+0.666,
+null,
+null
+],
+[
+8.0,
+0.698,
+null,
+null
+],
+[
+9.0,
+0.715,
+null,
+null
+],
+[
+10.0,
+0.733,
+null,
+null
+],
+[
+12.0,
+0.752,
+null,
+null
+],
+[
+14.0,
+0.752,
+null,
+null
+],
+[
+16.0,
+0.752,
+null,
+null
+],
+[
+18.0,
+0.752,
+null,
+null
+],
+[
+21.0,
+0.752,
+null,
+null
+],
+[
+24.0,
+0.752,
+null,
+null
+],
+[
+28.0,
+0.752,
+null,
+null
+],
+[
+32.0,
+0.752,
+null,
+null
+],
+[
+36.0,
+0.752,
+null,
+null
+],
+[
+42.0,
+0.752,
+null,
+null
+],
+[
+48.2,
+0.752,
+null,
+null
+]
+],
+"events": 59,
+"median_days": 2.18,
+"n": 88,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
 },
 "6-15": {
 "n_course": 2,
@@ -229,9 +2860,128 @@
 "CYPLAN 205": {
 "buckets": {
 "1-5": {
-"n_course": 223,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.104,
+null,
+null
+],
+[
+1.0,
+0.146,
+null,
+null
+],
+[
+2.0,
+0.216,
+null,
+null
+],
+[
+3.0,
+0.25,
+null,
+null
+],
+[
+4.0,
+0.304,
+null,
+null
+],
+[
+5.0,
+0.32,
+null,
+null
+],
+[
+6.0,
+0.362,
+null,
+null
+],
+[
+7.0,
+0.418,
+null,
+null
+],
+[
+8.0,
+0.478,
+null,
+null
+],
+[
+9.0,
+0.485,
+null,
+null
+],
+[
+10.0,
+0.507,
+null,
+null
+],
+[
+12.0,
+0.522,
+null,
+null
+],
+[
+14.0,
+0.542,
+null,
+null
+],
+[
+16.0,
+0.542,
+null,
+null
+],
+[
+18.0,
+0.558,
+null,
+null
+],
+[
+21.0,
+0.558,
+null,
+null
+],
+[
+24.0,
+0.558,
+null,
+null
+],
+[
+28.0,
+0.558,
+null,
+null
+],
+[
+30.81,
+0.558,
+null,
+null
+]
+],
+"events": 102,
+"median_days": 9.21,
+"n": 223,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "16-40": {
 "n_course": 1,
@@ -239,9 +2989,128 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 87,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.012,
+null,
+null
+],
+[
+1.0,
+0.024,
+null,
+null
+],
+[
+2.0,
+0.024,
+null,
+null
+],
+[
+3.0,
+0.024,
+null,
+null
+],
+[
+4.0,
+0.024,
+null,
+null
+],
+[
+5.0,
+0.024,
+null,
+null
+],
+[
+6.0,
+0.024,
+null,
+null
+],
+[
+7.0,
+0.024,
+null,
+null
+],
+[
+8.0,
+0.024,
+null,
+null
+],
+[
+9.0,
+0.057,
+null,
+null
+],
+[
+10.0,
+0.074,
+null,
+null
+],
+[
+12.0,
+0.074,
+null,
+null
+],
+[
+14.0,
+0.182,
+null,
+null
+],
+[
+16.0,
+0.211,
+null,
+null
+],
+[
+18.0,
+0.249,
+null,
+null
+],
+[
+21.0,
+0.249,
+null,
+null
+],
+[
+24.0,
+0.249,
+null,
+null
+],
+[
+28.0,
+0.249,
+null,
+null
+],
+[
+30.81,
+0.249,
+null,
+null
+]
+],
+"events": 11,
+"median_days": null,
+"n": 87,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -265,9 +3134,146 @@
 "CYPLAN 218": {
 "buckets": {
 "1-5": {
-"n_course": 82,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.085,
+null,
+null
+],
+[
+1.0,
+0.085,
+null,
+null
+],
+[
+2.0,
+0.128,
+null,
+null
+],
+[
+3.0,
+0.157,
+null,
+null
+],
+[
+4.0,
+0.157,
+null,
+null
+],
+[
+5.0,
+0.224,
+null,
+null
+],
+[
+6.0,
+0.275,
+null,
+null
+],
+[
+7.0,
+0.275,
+null,
+null
+],
+[
+8.0,
+0.275,
+null,
+null
+],
+[
+9.0,
+0.275,
+null,
+null
+],
+[
+10.0,
+0.275,
+null,
+null
+],
+[
+12.0,
+0.316,
+null,
+null
+],
+[
+14.0,
+0.414,
+null,
+null
+],
+[
+16.0,
+0.414,
+null,
+null
+],
+[
+18.0,
+0.463,
+null,
+null
+],
+[
+21.0,
+0.463,
+null,
+null
+],
+[
+24.0,
+0.463,
+null,
+null
+],
+[
+28.0,
+0.463,
+null,
+null
+],
+[
+32.0,
+0.463,
+null,
+null
+],
+[
+36.0,
+0.463,
+null,
+null
+],
+[
+42.0,
+0.463,
+null,
+null
+],
+[
+48.2,
+0.463,
+null,
+null
+]
+],
+"events": 27,
+"median_days": null,
+"n": 82,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
 },
 "6-15": {
 "n_course": 24,
@@ -283,9 +3289,128 @@
 "CYPLAN 230": {
 "buckets": {
 "1-5": {
-"n_course": 177,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.188,
+null,
+null
+],
+[
+1.0,
+0.254,
+null,
+null
+],
+[
+2.0,
+0.368,
+null,
+null
+],
+[
+3.0,
+0.396,
+null,
+null
+],
+[
+4.0,
+0.448,
+null,
+null
+],
+[
+5.0,
+0.448,
+null,
+null
+],
+[
+6.0,
+0.465,
+null,
+null
+],
+[
+7.0,
+0.49,
+null,
+null
+],
+[
+8.0,
+0.517,
+null,
+null
+],
+[
+9.0,
+0.517,
+null,
+null
+],
+[
+10.0,
+0.517,
+null,
+null
+],
+[
+12.0,
+0.542,
+null,
+null
+],
+[
+14.0,
+0.542,
+null,
+null
+],
+[
+16.0,
+0.542,
+null,
+null
+],
+[
+18.0,
+0.561,
+null,
+null
+],
+[
+21.0,
+0.561,
+null,
+null
+],
+[
+24.0,
+0.561,
+null,
+null
+],
+[
+28.0,
+0.561,
+null,
+null
+],
+[
+30.96,
+0.561,
+null,
+null
+]
+],
+"events": 84,
+"median_days": 7.01,
+"n": 177,
+"pooled": false,
+"reach_days": 31.0,
+"sections": 1
 },
 "16-40": {
 "n_course": 14,
@@ -293,9 +3418,128 @@
 "sections_course": 1
 },
 "6-15": {
-"n_course": 87,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.035,
+null,
+null
+],
+[
+1.0,
+0.048,
+null,
+null
+],
+[
+2.0,
+0.074,
+null,
+null
+],
+[
+3.0,
+0.13,
+null,
+null
+],
+[
+4.0,
+0.159,
+null,
+null
+],
+[
+5.0,
+0.207,
+null,
+null
+],
+[
+6.0,
+0.223,
+null,
+null
+],
+[
+7.0,
+0.223,
+null,
+null
+],
+[
+8.0,
+0.223,
+null,
+null
+],
+[
+9.0,
+0.223,
+null,
+null
+],
+[
+10.0,
+0.223,
+null,
+null
+],
+[
+12.0,
+0.223,
+null,
+null
+],
+[
+14.0,
+0.223,
+null,
+null
+],
+[
+16.0,
+0.223,
+null,
+null
+],
+[
+18.0,
+0.223,
+null,
+null
+],
+[
+21.0,
+0.223,
+null,
+null
+],
+[
+24.0,
+0.223,
+null,
+null
+],
+[
+28.0,
+0.223,
+null,
+null
+],
+[
+30.96,
+0.223,
+null,
+null
+]
+],
+"events": 16,
+"median_days": null,
+"n": 87,
+"pooled": false,
+"reach_days": 31.0,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -306,14 +3550,264 @@
 "CYPLAN 24": {
 "buckets": {
 "1-5": {
-"n_course": 121,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.058,
+null,
+null
+],
+[
+1.0,
+0.137,
+null,
+null
+],
+[
+2.0,
+0.137,
+null,
+null
+],
+[
+3.0,
+0.193,
+null,
+null
+],
+[
+4.0,
+0.219,
+null,
+null
+],
+[
+5.0,
+0.284,
+null,
+null
+],
+[
+6.0,
+0.298,
+null,
+null
+],
+[
+7.0,
+0.298,
+null,
+null
+],
+[
+8.0,
+0.298,
+null,
+null
+],
+[
+9.0,
+0.406,
+null,
+null
+],
+[
+10.0,
+0.514,
+null,
+null
+],
+[
+12.0,
+0.514,
+null,
+null
+],
+[
+14.0,
+0.609,
+null,
+null
+],
+[
+16.0,
+0.609,
+null,
+null
+],
+[
+18.0,
+0.674,
+null,
+null
+],
+[
+21.0,
+0.674,
+null,
+null
+],
+[
+24.0,
+0.674,
+null,
+null
+],
+[
+28.0,
+0.674,
+null,
+null
+],
+[
+32.0,
+0.674,
+null,
+null
+],
+[
+36.0,
+0.674,
+null,
+null
+],
+[
+42.0,
+0.674,
+null,
+null
+],
+[
+49.0,
+0.674,
+null,
+null
+],
+[
+56.0,
+0.674,
+null,
+null
+],
+[
+60.47,
+0.674,
+null,
+null
+]
+],
+"events": 47,
+"median_days": 9.99,
+"n": 121,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 1
 },
 "6-15": {
-"n_course": 34,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.088,
+null,
+null
+],
+[
+1.0,
+0.277,
+null,
+null
+],
+[
+2.0,
+0.277,
+null,
+null
+],
+[
+3.0,
+0.404,
+null,
+null
+],
+[
+4.0,
+0.404,
+null,
+null
+],
+[
+5.0,
+0.513,
+null,
+null
+],
+[
+6.0,
+0.513,
+null,
+null
+],
+[
+7.0,
+0.513,
+null,
+null
+],
+[
+8.0,
+0.513,
+null,
+null
+],
+[
+9.0,
+0.635,
+null,
+null
+],
+[
+10.0,
+0.756,
+null,
+null
+],
+[
+12.0,
+0.756,
+null,
+null
+],
+[
+14.0,
+0.756,
+null,
+null
+],
+[
+16.0,
+0.756,
+null,
+null
+],
+[
+18.0,
+0.756,
+null,
+null
+],
+[
+18.4,
+0.756,
+null,
+null
+]
+],
+"events": 18,
+"median_days": 4.84,
+"n": 34,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -324,9 +3818,128 @@
 "CYPLAN 248": {
 "buckets": {
 "1-5": {
-"n_course": 134,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.067,
+null,
+null
+],
+[
+1.0,
+0.075,
+null,
+null
+],
+[
+2.0,
+0.092,
+null,
+null
+],
+[
+3.0,
+0.101,
+null,
+null
+],
+[
+4.0,
+0.139,
+null,
+null
+],
+[
+5.0,
+0.149,
+null,
+null
+],
+[
+6.0,
+0.149,
+null,
+null
+],
+[
+7.0,
+0.171,
+null,
+null
+],
+[
+8.0,
+0.193,
+null,
+null
+],
+[
+9.0,
+0.216,
+null,
+null
+],
+[
+10.0,
+0.216,
+null,
+null
+],
+[
+12.0,
+0.256,
+null,
+null
+],
+[
+14.0,
+0.408,
+null,
+null
+],
+[
+16.0,
+0.539,
+null,
+null
+],
+[
+18.0,
+0.585,
+null,
+null
+],
+[
+21.0,
+0.585,
+null,
+null
+],
+[
+24.0,
+0.585,
+null,
+null
+],
+[
+28.0,
+0.585,
+null,
+null
+],
+[
+30.81,
+0.585,
+null,
+null
+]
+],
+"events": 45,
+"median_days": 15.31,
+"n": 134,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 15,
@@ -342,9 +3955,128 @@
 "CYPLAN 253": {
 "buckets": {
 "1-5": {
-"n_course": 106,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.202,
+null,
+null
+],
+[
+1.0,
+0.213,
+null,
+null
+],
+[
+2.0,
+0.236,
+null,
+null
+],
+[
+3.0,
+0.248,
+null,
+null
+],
+[
+4.0,
+0.357,
+null,
+null
+],
+[
+5.0,
+0.383,
+null,
+null
+],
+[
+6.0,
+0.461,
+null,
+null
+],
+[
+7.0,
+0.501,
+null,
+null
+],
+[
+8.0,
+0.528,
+null,
+null
+],
+[
+9.0,
+0.528,
+null,
+null
+],
+[
+10.0,
+0.555,
+null,
+null
+],
+[
+12.0,
+0.636,
+null,
+null
+],
+[
+14.0,
+0.636,
+null,
+null
+],
+[
+16.0,
+0.636,
+null,
+null
+],
+[
+18.0,
+0.7,
+null,
+null
+],
+[
+21.0,
+0.7,
+null,
+null
+],
+[
+24.0,
+0.7,
+null,
+null
+],
+[
+28.0,
+0.7,
+null,
+null
+],
+[
+30.81,
+0.7,
+null,
+null
+]
+],
+"events": 58,
+"median_days": 6.2,
+"n": 106,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -368,9 +4100,128 @@
 "CYPLAN 284": {
 "buckets": {
 "1-5": {
-"n_course": 112,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.091,
+null,
+null
+],
+[
+1.0,
+0.091,
+null,
+null
+],
+[
+2.0,
+0.166,
+null,
+null
+],
+[
+3.0,
+0.176,
+null,
+null
+],
+[
+4.0,
+0.199,
+null,
+null
+],
+[
+5.0,
+0.224,
+null,
+null
+],
+[
+6.0,
+0.237,
+null,
+null
+],
+[
+7.0,
+0.251,
+null,
+null
+],
+[
+8.0,
+0.295,
+null,
+null
+],
+[
+9.0,
+0.295,
+null,
+null
+],
+[
+10.0,
+0.312,
+null,
+null
+],
+[
+12.0,
+0.349,
+null,
+null
+],
+[
+14.0,
+0.422,
+null,
+null
+],
+[
+16.0,
+0.449,
+null,
+null
+],
+[
+18.0,
+0.449,
+null,
+null
+],
+[
+21.0,
+0.449,
+null,
+null
+],
+[
+24.0,
+0.504,
+null,
+null
+],
+[
+28.0,
+0.504,
+null,
+null
+],
+[
+30.81,
+0.504,
+null,
+null
+]
+],
+"events": 35,
+"median_days": 21.18,
+"n": 112,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
 },
 "6-15": {
 "n_course": 10,
@@ -386,9 +4237,158 @@
 "CYPLAN 290": {
 "buckets": {
 "1-5": {
-"n_course": 254,
-"pooled": "CYPLAN",
-"sections_course": 4
+"curve": [
+[
+0.5,
+0.156,
+0.018,
+0.197
+],
+[
+1.0,
+0.178,
+0.018,
+0.241
+],
+[
+2.0,
+0.246,
+0.018,
+0.381
+],
+[
+3.0,
+0.264,
+0.018,
+0.397
+],
+[
+4.0,
+0.274,
+0.018,
+0.397
+],
+[
+5.0,
+0.294,
+0.018,
+0.397
+],
+[
+6.0,
+0.331,
+0.018,
+0.421
+],
+[
+7.0,
+0.348,
+0.018,
+0.443
+],
+[
+8.0,
+0.365,
+0.018,
+0.465
+],
+[
+9.0,
+0.39,
+0.045,
+0.489
+],
+[
+10.0,
+0.416,
+0.045,
+0.536
+],
+[
+12.0,
+0.477,
+0.045,
+0.603
+],
+[
+14.0,
+0.485,
+0.045,
+0.614
+],
+[
+16.0,
+0.505,
+0.045,
+0.641
+],
+[
+18.0,
+0.528,
+0.045,
+0.673
+],
+[
+21.0,
+0.528,
+0.045,
+0.673
+],
+[
+24.0,
+0.528,
+0.045,
+0.673
+],
+[
+28.0,
+0.528,
+0.045,
+0.673
+],
+[
+32.0,
+0.528,
+0.045,
+0.673
+],
+[
+36.0,
+0.528,
+0.045,
+0.673
+],
+[
+42.0,
+0.528,
+0.045,
+0.673
+],
+[
+49.0,
+0.528,
+0.045,
+0.673
+],
+[
+56.0,
+0.528,
+0.045,
+0.673
+],
+[
+60.47,
+0.528,
+0.045,
+0.673
+]
+],
+"events": 104,
+"median_days": 15.3,
+"n": 254,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 4
 },
 "6-15": {
 "n_course": 3,
@@ -417,9 +4417,146 @@
 "CYPLAN 293": {
 "buckets": {
 "1-5": {
-"n_course": 38,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+48.2,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 38,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -430,9 +4567,134 @@
 "CYPLAN C213": {
 "buckets": {
 "1-5": {
-"n_course": 58,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.017,
+null,
+null
+],
+[
+1.0,
+0.017,
+null,
+null
+],
+[
+2.0,
+0.017,
+null,
+null
+],
+[
+3.0,
+0.017,
+null,
+null
+],
+[
+4.0,
+0.017,
+null,
+null
+],
+[
+5.0,
+0.017,
+null,
+null
+],
+[
+6.0,
+0.038,
+null,
+null
+],
+[
+7.0,
+0.058,
+null,
+null
+],
+[
+8.0,
+0.058,
+null,
+null
+],
+[
+9.0,
+0.1,
+null,
+null
+],
+[
+10.0,
+0.121,
+null,
+null
+],
+[
+12.0,
+0.121,
+null,
+null
+],
+[
+14.0,
+0.144,
+null,
+null
+],
+[
+16.0,
+0.195,
+null,
+null
+],
+[
+18.0,
+0.195,
+null,
+null
+],
+[
+21.0,
+0.195,
+null,
+null
+],
+[
+24.0,
+0.195,
+null,
+null
+],
+[
+28.0,
+0.249,
+null,
+null
+],
+[
+32.0,
+0.249,
+null,
+null
+],
+[
+32.42,
+0.249,
+null,
+null
+]
+],
+"events": 10,
+"median_days": null,
+"n": 58,
+"pooled": false,
+"reach_days": 32.4,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -456,9 +4718,128 @@
 "CYPLAN C240": {
 "buckets": {
 "1-5": {
-"n_course": 119,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.119,
+null,
+null
+],
+[
+1.0,
+0.119,
+null,
+null
+],
+[
+2.0,
+0.168,
+null,
+null
+],
+[
+3.0,
+0.22,
+null,
+null
+],
+[
+4.0,
+0.262,
+null,
+null
+],
+[
+5.0,
+0.296,
+null,
+null
+],
+[
+6.0,
+0.323,
+null,
+null
+],
+[
+7.0,
+0.351,
+null,
+null
+],
+[
+8.0,
+0.379,
+null,
+null
+],
+[
+9.0,
+0.394,
+null,
+null
+],
+[
+10.0,
+0.411,
+null,
+null
+],
+[
+12.0,
+0.45,
+null,
+null
+],
+[
+14.0,
+0.475,
+null,
+null
+],
+[
+16.0,
+0.55,
+null,
+null
+],
+[
+18.0,
+0.55,
+null,
+null
+],
+[
+21.0,
+0.55,
+null,
+null
+],
+[
+24.0,
+0.55,
+null,
+null
+],
+[
+28.0,
+0.625,
+null,
+null
+],
+[
+31.08,
+0.625,
+null,
+null
+]
+],
+"events": 46,
+"median_days": 14.64,
+"n": 119,
+"pooled": false,
+"reach_days": 31.1,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -469,9 +4850,146 @@
 "CYPLAN C241": {
 "buckets": {
 "1-5": {
-"n_course": 59,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.244,
+null,
+null
+],
+[
+1.0,
+0.244,
+null,
+null
+],
+[
+2.0,
+0.265,
+null,
+null
+],
+[
+3.0,
+0.287,
+null,
+null
+],
+[
+4.0,
+0.33,
+null,
+null
+],
+[
+5.0,
+0.379,
+null,
+null
+],
+[
+6.0,
+0.404,
+null,
+null
+],
+[
+7.0,
+0.456,
+null,
+null
+],
+[
+8.0,
+0.482,
+null,
+null
+],
+[
+9.0,
+0.482,
+null,
+null
+],
+[
+10.0,
+0.482,
+null,
+null
+],
+[
+12.0,
+0.482,
+null,
+null
+],
+[
+14.0,
+0.482,
+null,
+null
+],
+[
+16.0,
+0.482,
+null,
+null
+],
+[
+18.0,
+0.482,
+null,
+null
+],
+[
+21.0,
+0.482,
+null,
+null
+],
+[
+24.0,
+0.482,
+null,
+null
+],
+[
+28.0,
+0.482,
+null,
+null
+],
+[
+32.0,
+0.482,
+null,
+null
+],
+[
+36.0,
+0.482,
+null,
+null
+],
+[
+42.0,
+0.482,
+null,
+null
+],
+[
+48.2,
+0.482,
+null,
+null
+]
+],
+"events": 24,
+"median_days": null,
+"n": 59,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -495,9 +5013,146 @@
 "CYPLAN C256": {
 "buckets": {
 "1-5": {
-"n_course": 135,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.127,
+null,
+null
+],
+[
+1.0,
+0.15,
+null,
+null
+],
+[
+2.0,
+0.207,
+null,
+null
+],
+[
+3.0,
+0.257,
+null,
+null
+],
+[
+4.0,
+0.274,
+null,
+null
+],
+[
+5.0,
+0.341,
+null,
+null
+],
+[
+6.0,
+0.382,
+null,
+null
+],
+[
+7.0,
+0.393,
+null,
+null
+],
+[
+8.0,
+0.446,
+null,
+null
+],
+[
+9.0,
+0.555,
+null,
+null
+],
+[
+10.0,
+0.594,
+null,
+null
+],
+[
+12.0,
+0.636,
+null,
+null
+],
+[
+14.0,
+0.636,
+null,
+null
+],
+[
+16.0,
+0.636,
+null,
+null
+],
+[
+18.0,
+0.636,
+null,
+null
+],
+[
+21.0,
+0.636,
+null,
+null
+],
+[
+24.0,
+0.636,
+null,
+null
+],
+[
+28.0,
+0.636,
+null,
+null
+],
+[
+32.0,
+0.636,
+null,
+null
+],
+[
+36.0,
+0.636,
+null,
+null
+],
+[
+42.0,
+0.636,
+null,
+null
+],
+[
+48.2,
+0.636,
+null,
+null
+]
+],
+"events": 67,
+"median_days": 8.17,
+"n": 135,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
 },
 "6-15": {
 "n_course": 13,
@@ -513,9 +5168,146 @@
 "CYPLAN C257H": {
 "buckets": {
 "1-5": {
-"n_course": 48,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.148,
+null,
+null
+],
+[
+1.0,
+0.17,
+null,
+null
+],
+[
+2.0,
+0.194,
+null,
+null
+],
+[
+3.0,
+0.265,
+null,
+null
+],
+[
+4.0,
+0.317,
+null,
+null
+],
+[
+5.0,
+0.345,
+null,
+null
+],
+[
+6.0,
+0.345,
+null,
+null
+],
+[
+7.0,
+0.345,
+null,
+null
+],
+[
+8.0,
+0.414,
+null,
+null
+],
+[
+9.0,
+0.414,
+null,
+null
+],
+[
+10.0,
+0.414,
+null,
+null
+],
+[
+12.0,
+0.414,
+null,
+null
+],
+[
+14.0,
+0.459,
+null,
+null
+],
+[
+16.0,
+0.509,
+null,
+null
+],
+[
+18.0,
+0.558,
+null,
+null
+],
+[
+21.0,
+0.558,
+null,
+null
+],
+[
+24.0,
+0.558,
+null,
+null
+],
+[
+28.0,
+0.558,
+null,
+null
+],
+[
+32.0,
+0.558,
+null,
+null
+],
+[
+36.0,
+0.558,
+null,
+null
+],
+[
+42.0,
+0.558,
+null,
+null
+],
+[
+48.2,
+0.558,
+null,
+null
+]
+],
+"events": 20,
+"median_days": 15.84,
+"n": 48,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
@@ -526,9 +5318,128 @@
 "CYPLAN C261": {
 "buckets": {
 "1-5": {
-"n_course": 107,
-"pooled": "CYPLAN",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.087,
+null,
+null
+],
+[
+1.0,
+0.087,
+null,
+null
+],
+[
+2.0,
+0.12,
+null,
+null
+],
+[
+3.0,
+0.12,
+null,
+null
+],
+[
+4.0,
+0.185,
+null,
+null
+],
+[
+5.0,
+0.185,
+null,
+null
+],
+[
+6.0,
+0.185,
+null,
+null
+],
+[
+7.0,
+0.215,
+null,
+null
+],
+[
+8.0,
+0.244,
+null,
+null
+],
+[
+9.0,
+0.244,
+null,
+null
+],
+[
+10.0,
+0.244,
+null,
+null
+],
+[
+12.0,
+0.244,
+null,
+null
+],
+[
+14.0,
+0.244,
+null,
+null
+],
+[
+16.0,
+0.244,
+null,
+null
+],
+[
+18.0,
+0.266,
+null,
+null
+],
+[
+21.0,
+0.266,
+null,
+null
+],
+[
+24.0,
+0.266,
+null,
+null
+],
+[
+28.0,
+0.266,
+null,
+null
+],
+[
+31.17,
+0.266,
+null,
+null
+]
+],
+"events": 22,
+"median_days": null,
+"n": 107,
+"pooled": false,
+"reach_days": 31.2,
+"sections": 1
 }
 },
 "dept_group": "CYPLAN",
