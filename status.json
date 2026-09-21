@@ -1,16 +1,16 @@
 {
   "complete": false,
   "kind": "delta",
-  "last_run_at": "2026-09-21T11:07:39.352166+00:00",
+  "last_run_at": "2026-09-21T11:37:42.132206+00:00",
   "missing_share": 0.0008,
   "n_missing": 1,
-  "n_observed": 1271,
+  "n_observed": 1282,
   "n_written": 0,
   "scope": "priority",
-  "shard": "10/12",
-  "snapshot": "data-branch/snapshots/date=2026-09-21/1107-delta.parquet",
+  "shard": "11/12",
+  "snapshot": "data-branch/snapshots/date=2026-09-21/1137-delta.parquet",
   "source": "classes_site",
-  "sweep_seconds": 1385.55,
+  "sweep_seconds": 1318.758,
   "term_id": "2268",
   "version": "0.1.0"
 }
