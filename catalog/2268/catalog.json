@@ -34533,9 +34533,9 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "MELC C120B",
-"last_status": null,
+"last_status": 404,
 "node_id": 532204,
-"probed_at": null,
+"probed_at": "2026-09-21T17:59:38.949727+00:00",
 "section_id": "34949",
 "section_number": "001",
 "subject": "MELC",
@@ -50639,6 +50639,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-20T06:29:10.998054+00:00",
+"updated_at": "2026-09-21T18:00:46.272079+00:00",
 "version": 3
 }
