@@ -46,7 +46,7 @@ Status key: **branch** = written on `site-v3`, not on `main`; **open** = not wri
 | P2 | Scraper throughput: `--min-interval-s 0.5 --max-concurrency 4` in `scrape.yml` (request starts at most 2 per second, 4 pages in flight). `scraper/http.py` already has the worker pool and the global start limiter, so there is no job matrix and still one writer on `data`. Cause and numbers: `docs/DATA_LOG.md` rows dated 2026-09-21, 22 and 23; contract note in `docs/DESIGN_A2.md` section 16 | draft PR, branch `p2-throughput` | **before Oct 4**; nothing changes until it is merged to `main` |
 | P3 | Merge the `scraper/live.py` step so `data/live/latest.json` starts being written (404 today) | branch | this week |
 | P4 | Decide Spring 2026 vs Fall 2026 curves — it changes every number on the site | Oliver | this week |
-| P5 | Rebuild `config/priority_courses.txt` from both cycles' flows (`analysis/priority_from_flows.py` exists; the file's hash is unchanged, so it has not been run). Cover every section that carried a waitlist, then most-joined courses | open | **before Oct 26** |
+| P5 | Rebuild `config/priority_courses.txt` from both cycles' flows: done with `analysis/priority_from_flows.py --top-sections 1500`. 999 course patterns, 1042 live sections in 649 courses per run (hand list: 1,047 in 429), 88.1% of both cycles' joins covered against 47.7%; `priority_sha` in the data-log row. MATH 1A/1B are gone from both sources (Fall 2026 calculus is MATH 51/52, both on the list) | draft PR, branch `p5-priority-list` (stacked on #8) | **before Oct 26** |
 | P6 | GoatCounter on every page before any link is shared | Oliver | before sharing |
 
 ### 3.2 Sections — the feature you asked for
