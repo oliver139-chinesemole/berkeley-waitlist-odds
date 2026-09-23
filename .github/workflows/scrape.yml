@@ -96,7 +96,12 @@ jobs:
         run: |
           # --time-budget-s is passed explicitly so the 29-minute arithmetic
           # above does not depend on the CLI default in scraper/config.py.
-          args=(--term "$TERM_NAME" --source "$SOURCE" --data-root data-branch --time-budget-s 1380 --n-shards 12)
+          # --min-interval-s 0.5 --max-concurrency 4 (2026-09-23, docs/DATA_LOG.md): request
+          # starts at most 2 per second across all workers, up to 4 pages in flight. From
+          # 2026-09-21 the site answered in 2 to 5 s with 20 s read timeouts; at the CLI
+          # defaults (1 per second, 2 in flight) throughput fell to 2/latency and runs
+          # missed 10 to 60% of their selection.
+          args=(--term "$TERM_NAME" --source "$SOURCE" --data-root data-branch --time-budget-s 1380 --n-shards 12 --min-interval-s 0.5 --max-concurrency 4)
           if [ "$FORCE_BASELINE" = "true" ]; then
             args+=(--force-baseline)
           fi
