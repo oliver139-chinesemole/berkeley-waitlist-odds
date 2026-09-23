@@ -52,17 +52,19 @@ jobs:
           python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir analysis/out/site_candidate 2>&1 | tee analysis.log
       # site/data may hold the Fall 2026 backfill (data_source berkeleytime_history) until this
       # project's own Spring 2027 snapshots have clearings; an own-data run with no clearings
-      # must not replace it with an empty cohort.
+      # must not replace it with an empty cohort. Only the Spring 2027 term (2272) may replace it:
+      # the Fall 2026 test term was collected after its last automatic waitlist run (Sep 11), and by
+      # 2026-09-23 its own-data cohort showed 209 post-deadline clearings (docs/DATA_LOG.md).
       - name: Publish site data only when the own snapshots have clearings
         shell: bash
         run: |
           EVENTS=$(python -c "import json; print(json.load(open('analysis/out/site_candidate/meta.json'))['events'])")
           echo "own-data cohort clearings: $EVENTS"
-          if [ "$EVENTS" -ge 10 ]; then
+          if [ "$EVENTS" -ge 10 ] && [ "${{ steps.term.outputs.term_id }}" = "2272" ]; then
             rm -rf site/data && cp -r analysis/out/site_candidate site/data
             echo "site/data replaced with the own-data estimates"
           else
-            echo "keeping the published site/data ($(python -c "import json; m=json.load(open('site/data/meta.json')); print(m.get('data_source'), m.get('term_name'), m.get('events'), 'clearings')" 2>/dev/null || echo 'none published'))"
+            echo "keeping the published site/data (own-data estimates replace it only for term 2272 with 10 or more clearings; published: $(python -c "import json; m=json.load(open('site/data/meta.json')); print(m.get('data_source'), m.get('term_name'), m.get('events'), 'clearings')" 2>/dev/null || echo 'none published'))"
           fi
       - name: Commit outputs
         id: commit
