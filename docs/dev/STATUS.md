@@ -36,6 +36,8 @@ Peer sessions: several Claude Code sessions have been open on this checkout. Run
 
 **Decision for Oliver (not taken):** the page currently serves Fall 2026 curves. Spring 2026 is the more complete cycle (no Aug-style hole, instruction phase observed: 129,039 instruction-phase joiners with a median clear of 3.0 days) and the same season as Spring 2027. Serving Spring 2026 curves, or both cycles pooled, with horizons from the Spring 2027 calendar (site v3's `--forecast-term`) is probably better for October's users. It needs: `analysis.run --backfill-dir backfill/2262 --term-id 2262 --site-dir ...` (or the v3 exporter on `analysis/out/2262/cohort_central.parquet`), the page copy naming Spring 2026, and a CLAIMS row. The Spring 2026 to Fall 2026 cross-term run already shows course curves transfer across cycles.
 
+**2026-09-23 22:40Z (session 6):** collection degraded from 2026-09-21 14:37Z (classes.berkeley.edu pages at 2 to 5 s with 20 s read timeouts; runs observed 400 to 1,160 of about 1,290; nine runs on Sep 22 to 23 exited 4 and wrote nothing; issue #7). Draft PR #8 (branch `p2-throughput`) raises the request policy in scrape.yml to 2 per second with 4 in flight, logs the outage and the decision in docs/DATA_LOG.md, and installs docs/dev/MASTER_PLAN.md, which now leads: read its section 12 for what was verified on Sep 23. Nothing changes until #8 is merged.
+
 ## 4. Still to implement or run (in order)
 
 1. **Done 2026-09-21:** Spring 2026 pulled and analysed, cross-term backtests read, level set to course, reports and rows committed (PR #6). Remaining from it: nothing except Oliver's source decision above.

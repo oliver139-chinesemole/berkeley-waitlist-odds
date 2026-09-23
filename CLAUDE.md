@@ -9,7 +9,7 @@
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: both finished cycles backfilled and analysed (2026-09-21 00:30Z): Fall 2026 serves the site (course-level curves, `estimate_level` course after the cross-term test reversed a one-evening department default; PR #5 install a7240f4, PR #6 level + Spring), Spring 2026 pulled with the cross-term backtests in reports/backtest_2268/cross_term_*. Next: Oliver's decision on serving Spring 2026 curves (docs/dev/STATUS.md section 3), B5 priority list from both cycles before Oct 26, Oct 4 term switch, Nov 9 own-data analysis; site v3 (PR #4) awaits Oliver's review and a rebuild at course level. Update this line at the end of every session.
+- Current step: P2 in draft PR #8 (2026-09-23 22:40Z): scrape.yml request policy raised to 2 per second with 4 in flight after the classes.berkeley.edu slowdown (docs/DATA_LOG.md rows dated 2026-09-21, 22 and 23; nine exit-4 runs on Sep 22 to 23, issue #7); docs/dev/MASTER_PLAN.md installed with a verified section 12; CLAIMS rows 7 to 9 re-measured and failing until the fix lands. Next: Oliver merges #8; then a note row for the first run at the new rate, 24 h later close #7 and re-measure CLAIMS rows 7 to 9; P5 priority list before Oct 26; Oct 4 term switch; PR #4 (site v3) still awaits Oliver's review; Spring 2026 source decision open. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.
