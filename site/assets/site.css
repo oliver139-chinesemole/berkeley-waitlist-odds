@@ -191,8 +191,12 @@ tr.course td .sub { color: var(--muted); font-size: var(--fs-1); display: block;
 .chart .end { stroke: var(--paper); stroke-width: 2; }
 .chart .mark { stroke: var(--gold); stroke-width: 2; }
 .chart .markdot { fill: var(--gold); stroke: var(--ink); stroke-width: 1.5; }
-.chart .lbl { font-size: var(--fs-1); fill: var(--muted); }
+/* Chart labels are the one text outside the scale: their size is in the user units of a
+   viewBox that is scaled to fit, so a step of the scale is a different size in each chart
+   and a 12.8 here crowds the calibration plot's axis. They keep the sizes they had. */
+.chart .lbl { font-size: 11px; fill: var(--muted); }
 .chart .lbl.ink { fill: var(--ink); font-weight: 600; }
+.chart .lbl.date { font-size: 10px; }
 .chart .beyond { fill: url(#hatch); opacity: .9; }
 .chart .cross { stroke: var(--muted); stroke-width: 1; }
 .chart .hit { fill: transparent; cursor: crosshair; }
