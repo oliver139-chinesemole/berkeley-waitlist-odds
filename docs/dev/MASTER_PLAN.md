@@ -77,10 +77,10 @@ The v3 matcher already handles `cs61a`, `CS 61A`, `comp sci 61a`, `data 8` → `
 | Q4 | Title and instructor search (`data structures`, `linear algebra`, `hilfinger`). Needs `titles.json`, lazy-loaded so a plain code query never fetches it | open |
 | Q5 | "Showing COMPSCI 61A for *compsi 61a*" whenever a fuzzy or title match fires | open |
 | Q6 | Miss handling: three nearest candidates, browse-by-department path, and a logged miss event | open |
-| Q7 | Parse course title and instructor from section pages into the catalog — zero extra requests | open, **before Oct 4** |
+| Q7 | Parse course title and instructor from section pages into the catalog — zero extra requests. Done: `SectionRef.title` / `.instructors` from the page's `sf--course-title` and `sf--instructors` elements, written on discovery and on every fetch when they change, last-known kept when a page lacks the element (DESIGN_A2 section 18) | draft PR #10, branch `q7-titles` (stacked on #9); **before Oct 4** |
 | Q8 | `tests/fixtures/course_queries.csv`, about 150 rows, run in pytest and in the node harness | open |
 
-Titles exist in no file the project keeps. Berkeleytime's `GetCatalog` has them for the two backfilled cycles; Q7 is the durable route for Spring 2027.
+Titles and instructors land in `catalog/<term_id>/catalog.json` on the data branch with Q7 (PR #10), filling in as pages are read; Berkeleytime's `GetCatalog` has titles for the two backfilled cycles if the site needs them before Spring 2027's pages exist.
 
 ### 3.4 Design
 

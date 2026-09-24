@@ -87,7 +87,7 @@ Branch `backfill-backtest` (docs/dev/BACKFILL_BACKTEST.md is the plan; its check
 
 **Engineering that could still be done now (not required):**
 - The plan's `superpowers`, `data`, `design` and `humanizer` skills are not installed in this environment; their disciplines were applied by hand. Installing them is section 0 of the plan.
-- Done in session 3: the site render test (above). Measured and closed without a code change: `catalog.json` was rewritten on every run only because the stuck watermark (data log, 20:37Z row) re-probed the same 400 node ids each run and stamped 169 entries with a new `probed_at`; that cost about 7.7 KB (gzip) per run next to a 15.8 KB Parquet delta. Ordinary fetches do not touch the catalog (a live section's entry changes only when its id, status or node id changes), so after the catch-up the file changes only when something is learned.
+- Done in session 3: the site render test (above). Measured and closed without a code change: `catalog.json` was rewritten on every run only because the stuck watermark (data log, 20:37Z row) re-probed the same 400 node ids each run and stamped 169 entries with a new `probed_at`; that cost about 7.7 KB (gzip) per run next to a 15.8 KB Parquet delta. Ordinary fetches do not touch the catalog (a live section's entry changes only when its id, status, node id, course title or instructors change (the last two since Q7, 2026-09-24)), so after the catch-up the file changes only when something is learned.
 
 ## How to resume
 
