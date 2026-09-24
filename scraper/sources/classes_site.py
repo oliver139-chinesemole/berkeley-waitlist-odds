@@ -104,6 +104,8 @@ class SectionRef:
     last_status: int | None = None
     probed_at: str | None = None  # ISO-8601 UTC of the last probe
     node_id: int | None = None
+    title: str = ""  # course title as the page prints it (sf--course-title); "" until a page was read
+    instructors: str = ""  # comma-separated as the page prints them (sf--instructors); "" until read
 
     @property
     def absent(self) -> bool:
@@ -134,6 +136,8 @@ class SectionRef:
                 last_status=None if status is None else int(status),
                 probed_at=None if data.get("probed_at") is None else str(data["probed_at"]),
                 node_id=None if node is None else int(node),
+                title=str(data.get("title") or ""),
+                instructors=str(data.get("instructors") or ""),
             )
         except (KeyError, TypeError, ValueError) as exc:
             raise ValueError(f"section ref malformed: {exc}") from exc
@@ -217,6 +221,7 @@ def parse_section_ref(html: bytes | str, *, node_id: int | None = None) -> tuple
     if node_id is None:
         nid = doc.xpath("//*[@data-history-node-id]/@data-history-node-id")
         node_id = int(nid[0]) if nid and str(nid[0]).isdigit() else None
+    title, instructors = parse_section_meta(doc)
     ref = SectionRef(
         section_id="",
         url_path=href[i:],
@@ -227,6 +232,8 @@ def parse_section_ref(html: bytes | str, *, node_id: int | None = None) -> tuple
         section_number=identity.section_number,
         component=identity.component,
         node_id=node_id,
+        title=title,
+        instructors=instructors,
     )
     return ref, identity
 
@@ -251,7 +258,8 @@ def ref_from_feed_item(node_id: int, url_path: str, title: str) -> tuple[Section
 
 def merge_catalog(existing: list[SectionRef], fresh: list[SectionRef]) -> tuple[list[SectionRef], int]:
     """Union keyed by ``url_path``: known entries keep their learned id and
-    probe state (gaining a node id if they lacked one), new entries are
+    probe state (gaining a node id if they lacked one, and a title or
+    instructors when the fresh ref carries a non-empty one), new entries are
     appended. Returns the merged list and the number added."""
     by_path = {ref.url_path: ref for ref in existing}
     added = 0
@@ -260,8 +268,16 @@ def merge_catalog(existing: list[SectionRef], fresh: list[SectionRef]) -> tuple[
         if current is None:
             by_path[ref.url_path] = ref
             added += 1
-        elif current.node_id is None and ref.node_id is not None:
-            by_path[ref.url_path] = replace(current, node_id=ref.node_id)
+            continue
+        changes: dict[str, Any] = {}
+        if current.node_id is None and ref.node_id is not None:
+            changes["node_id"] = ref.node_id
+        if ref.title and ref.title != current.title:
+            changes["title"] = ref.title
+        if ref.instructors and ref.instructors != current.instructors:
+            changes["instructors"] = ref.instructors
+        if changes:
+            by_path[ref.url_path] = replace(current, **changes)
     return list(by_path.values()), added
 
 
@@ -277,6 +293,20 @@ def _parse_html(html: bytes | str) -> lxml.html.HtmlElement:
         return lxml.html.document_fromstring(html)
     except (lxml.etree.ParserError, lxml.etree.XMLSyntaxError, ValueError) as exc:
         raise ParseError(f"cannot parse HTML: {exc}") from exc
+
+
+def parse_section_meta(html: bytes | str | lxml.html.HtmlElement) -> tuple[str, str]:
+    """``(course title, instructors)`` as the page prints them in its
+    ``sf--course-title`` and ``sf--instructors`` elements, whitespace collapsed;
+    ``""`` for an element that is not there. Read off the page a run fetches
+    anyway, so it costs no request (Q7, 2026-09-23)."""
+    doc = html if isinstance(html, lxml.html.HtmlElement) else _parse_html(html)
+
+    def text_of(cls: str) -> str:
+        nodes = doc.xpath(f"//*[contains(concat(' ', normalize-space(@class), ' '), ' {cls} ')]")
+        return " ".join(nodes[0].text_content().split()) if nodes else ""
+
+    return text_of("sf--course-title"), text_of("sf--instructors")
 
 
 def _load_drupal_settings(doc: lxml.html.HtmlElement) -> dict[str, Any]:
@@ -834,7 +864,13 @@ class ClassesSiteSource:
             remaining = max(0.0, float(time_budget_s) - (self._clock() - started))
         rows, missing_ids, updates = self._fetch_pages(to_fetch, term, remaining)
         rows = prefetched + rows
+        known = catalog.by_path()
         for path, ref in disc.prefetched_refs.items():
+            current = known.get(path)
+            if current is not None:
+                # A re-probed page that lacks the sf-- elements must not blank what an
+                # earlier page taught us: the same rule as the ordinary fetch.
+                ref = replace(ref, title=ref.title or current.title, instructors=ref.instructors or current.instructors)
             updates.setdefault(path, ref)
 
         if updates:
@@ -926,10 +962,27 @@ class ClassesSiteSource:
                     with lock:
                         failed[index] = ref.section_id
                 return
+            # A second lxml parse of a page already parsed for its counts: about a
+            # millisecond next to a network round trip, and it keeps SnapshotRow's
+            # pinned columns out of this.
+            title, instructors = parse_section_meta(payload)
+            title, instructors = title or ref.title, instructors or ref.instructors
             with lock:
                 parsed[index] = row
-                if ref.section_id != row["section_id"] or ref.last_status != 200:
-                    updates[ref.url_path] = replace(ref, section_id=row["section_id"], last_status=200, probed_at=fetched_at.isoformat())
+                if (
+                    ref.section_id != row["section_id"]
+                    or ref.last_status != 200
+                    or ref.title != title
+                    or ref.instructors != instructors
+                ):
+                    updates[ref.url_path] = replace(
+                        ref,
+                        section_id=row["section_id"],
+                        last_status=200,
+                        probed_at=fetched_at.isoformat(),
+                        title=title,
+                        instructors=instructors,
+                    )
 
         if selected:
             self._client.get_many(list(order), on_result, time_budget_s=time_budget_s)

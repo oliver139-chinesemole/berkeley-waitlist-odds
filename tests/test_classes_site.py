@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import logging
+from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -23,6 +24,7 @@ from scraper.sources.classes_site import (
     parse_node_title,
     parse_rss,
     parse_section_page,
+    parse_section_meta,
     parse_section_ref,
     ref_from_feed_item,
 )
@@ -108,8 +110,13 @@ def section_html(
     enrolled: int = 10,
     waitlisted: int = 2,
     term_id: str = "2268",
+    title: str | None = None,
+    instructors: str | None = None,
 ) -> bytes:
-    """A minimal section page shaped like the live one (title, canonical, node id, blob)."""
+    """A minimal section page shaped like the live one (title, canonical, node id, blob,
+    and the ``sf--course-title`` / ``sf--instructors`` elements)."""
+    title = f"{subject} {catalog} title" if title is None else title
+    instructors = f"{subject} {catalog} instructors" if instructors is None else instructors
     year, semester = term_name.split()[1], term_name.split()[0]
     slug = f"/content/{year}-{semester.lower()}-{subject.lower()}-{catalog.lower()}-{class_number.lower()}-{component.lower()}-{class_number.lower()}"
     settings = {
@@ -137,6 +144,8 @@ def section_html(
         '<script type="application/json" data-drupal-selector="drupal-settings-json">'
         + json.dumps(settings)
         + f'</script></head><body><article data-history-node-id="{node_id}"></article>'
+        f'<div class="sf--course-title">{title}</div>'
+        f'<div class="sf--instructors"><p><span class="icon icon-instructor" aria-label="Instructors"></span> {instructors}</p></div>'
         f'<div data-term="{term_id}" data-term-name="{term_name}"></div></body></html>'
     ).encode()
 
@@ -605,3 +614,101 @@ def test_fetch_rejects_bad_shard_and_limit(tmp_path: Path) -> None:
         source.fetch(FALL_2026, priority=PrioritySpec.from_text("COMPSCI *"), shard=(5, 2))
     with pytest.raises(ValueError):
         source.fetch(FALL_2026, limit=0)
+
+
+# -- course title and instructors in the catalog (Q7, 2026-09-23) ---------------------
+
+
+def test_parse_section_meta_real_fixture() -> None:
+    title, instructors = parse_section_meta(SECTION_FIXTURE.read_bytes())
+    assert title == "Introduction to Aerospace Engineering Design"
+    assert instructors == "Mark Wilfried Mueller, Daniel Pruzan"
+    assert parse_section_meta(b"<html><body><p>no sf elements</p></body></html>") == ("", "")
+
+
+def test_parse_section_ref_carries_title_and_instructors() -> None:
+    parsed = parse_section_ref(SECTION_FIXTURE.read_bytes())
+    assert parsed is not None
+    ref, _ = parsed
+    assert ref.title == "Introduction to Aerospace Engineering Design"
+    assert ref.instructors == "Mark Wilfried Mueller, Daniel Pruzan"
+
+
+def test_section_ref_from_dict_without_title_fields() -> None:
+    old = {k: v for k, v in catalog_of(("DATA", "C100"))[0].to_dict().items() if k not in ("title", "instructors")}
+    ref = SectionRef.from_dict(old)
+    assert ref.title == "" and ref.instructors == ""
+    assert SectionRef.from_dict(old | {"title": None, "instructors": None}).title == ""
+
+
+def test_merge_catalog_takes_a_fresh_title_and_keeps_a_learned_one() -> None:
+    base = catalog_of(("COMPSCI", "61A"))[0]
+    known = replace(base, section_id="29147", last_status=200, title="Old title", instructors="A. Person")
+    merged, added = merge_catalog([known], [replace(base, node_id=1012, title="New title", instructors="B. Person")])
+    assert added == 0 and merged[0].section_id == "29147" and merged[0].node_id == 1012
+    assert (merged[0].title, merged[0].instructors) == ("New title", "B. Person")
+    merged, _ = merge_catalog([known], [replace(base, node_id=1012)])
+    assert (merged[0].title, merged[0].instructors) == ("Old title", "A. Person")
+
+
+def test_fetch_writes_title_and_instructors_once(tmp_path: Path) -> None:
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, clock = make_source(tmp_path, small_site())
+    source.fetch(FALL_2026, priority=None)
+    path = tmp_path / "catalog" / "2268" / "catalog.json"
+    entries = {e["url_path"]: e for e in json.loads(path.read_text())["sections"]}
+    cs = entries[slug_of("Fall 2026", "COMPSCI", "61A", "001", "LEC")]
+    assert (cs["title"], cs["instructors"]) == ("COMPSCI 61A title", "COMPSCI 61A instructors")
+    text_before = path.read_text()
+    clock.now = NOW + timedelta(hours=1)
+    source2, _, _ = make_source(tmp_path, small_site(), clock=clock)
+    source2.fetch(FALL_2026, priority=None)
+    assert path.read_text() == text_before
+
+
+def test_reprobed_page_without_the_elements_keeps_learned_title(tmp_path: Path) -> None:
+    """Discovery re-probes node 1012 (watermark just below it); that page prints no course
+    title or instructors; the entry learned both earlier and must keep them."""
+    learned = replace(
+        catalog_of(("COMPSCI", "61A"))[0], section_id="29147", last_status=200, node_id=1012, title="Learned title", instructors="Learned person"
+    )
+    catalog_with(tmp_path, FALL_2026, [learned])
+    site_state(tmp_path, probed=1011, seen=1012)
+    blank = section_html("Fall 2026", "COMPSCI", "61A", "001", "LEC", 29147, 1012, title="", instructors="")
+    cs_url = f"{BASE}{slug_of('Fall 2026', 'COMPSCI', '61A', '001', 'LEC')}"
+    source, _, _ = make_source(tmp_path, small_site(extra={f"{BASE}/node/1012": blank, cs_url: blank}))
+    source.fetch(FALL_2026, priority=None)
+    entries = {e["url_path"]: e for e in json.loads((tmp_path / "catalog" / "2268" / "catalog.json").read_text())["sections"]}
+    cs = entries[slug_of("Fall 2026", "COMPSCI", "61A", "001", "LEC")]
+    assert (cs["title"], cs["instructors"]) == ("Learned title", "Learned person")
+
+
+def test_fetch_rewrites_the_entry_when_only_the_instructors_change(tmp_path: Path) -> None:
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, clock = make_source(tmp_path, small_site())
+    source.fetch(FALL_2026, priority=None)
+    path = tmp_path / "catalog" / "2268" / "catalog.json"
+    text_before = path.read_text()
+    swapped = section_html("Fall 2026", "COMPSCI", "61A", "001", "LEC", 29147, 1012, instructors="New Person")
+    cs_url = f"{BASE}{slug_of('Fall 2026', 'COMPSCI', '61A', '001', 'LEC')}"
+    clock.now = NOW + timedelta(hours=1)
+    source2, _, _ = make_source(tmp_path, small_site(extra={cs_url: swapped, f"{BASE}/node/1012": swapped}), clock=clock)
+    source2.fetch(FALL_2026, priority=None)
+    assert path.read_text() != text_before
+    entries = {e["url_path"]: e for e in json.loads(path.read_text())["sections"]}
+    cs = entries[slug_of("Fall 2026", "COMPSCI", "61A", "001", "LEC")]
+    assert (cs["title"], cs["instructors"]) == ("COMPSCI 61A title", "New Person")
+
+
+def test_fetch_of_a_page_without_the_elements_keeps_learned_values_and_the_file(tmp_path: Path) -> None:
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, clock = make_source(tmp_path, small_site())
+    source.fetch(FALL_2026, priority=None)
+    path = tmp_path / "catalog" / "2268" / "catalog.json"
+    text_before = path.read_text()
+    blank = section_html("Fall 2026", "COMPSCI", "61A", "001", "LEC", 29147, 1012, title="", instructors="")
+    cs_url = f"{BASE}{slug_of('Fall 2026', 'COMPSCI', '61A', '001', 'LEC')}"
+    clock.now = NOW + timedelta(hours=1)
+    source2, _, _ = make_source(tmp_path, small_site(extra={cs_url: blank, f"{BASE}/node/1012": blank}), clock=clock)
+    source2.fetch(FALL_2026, priority=None)
+    assert path.read_text() == text_before
