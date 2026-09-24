@@ -669,3 +669,36 @@ def test_default_user_agent_comes_from_config_and_default_timeout_is_20s() -> No
     assert opener.timeouts == [20.0]
     assert not hasattr(scraper.http, "DEFAULT_USER_AGENT")
     assert not hasattr(scraper.http, "REPO_OWNER")
+
+
+def test_get_many_holds_max_concurrency_requests_open_at_once() -> None:
+    """Four workers must overlap when pages are slower than the start spacing.
+
+    The 2026-09-23 request policy (scrape.yml: 0.5 s spacing, 4 in flight)
+    rests on this: throughput is min(1/min_interval_s, max_concurrency/latency),
+    so a pool that serialised requests would recreate the 2026-09-21 slowdown
+    (docs/DATA_LOG.md) whatever --max-concurrency says. Every open waits at a
+    barrier only four simultaneous opens can pass; a serialised pool times out
+    there and the test fails with BrokenBarrierError.
+    """
+    urls = [f"https://example.test/{i}" for i in range(4)]
+    barrier = threading.Barrier(4, timeout=5.0)
+
+    def held_open() -> FakeResponse:
+        barrier.wait()
+        return FakeResponse(b"ok")
+
+    clock = FakeClock()
+    opener = FakeOpener({u: [held_open] for u in urls}, clock=clock)
+    client = make_client(opener, clock, min_interval_s=0.5, max_concurrency=4)
+    results: dict[str, bytes | HttpError] = {}
+    lock = threading.Lock()
+
+    def on_result(url: str, payload: bytes | HttpError) -> None:
+        with lock:
+            results[url] = payload
+
+    client.get_many(urls, on_result)
+
+    assert [results[u] for u in urls] == [b"ok"] * 4
+    assert sorted(opener.calls) == urls
