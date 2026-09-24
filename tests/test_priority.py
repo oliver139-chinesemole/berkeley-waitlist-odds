@@ -70,3 +70,7 @@ def test_rank_is_the_first_matching_pattern_whatever_its_kind() -> None:
     spec = PrioritySpec.from_text("EL ENG *\nELENG 16A\nDATA C8\n")
     assert spec.rank("ELENG 16A") == 0 and spec.rank("EL ENG 16A") == 0 and spec.rank("DATA C8") == 2
     assert PrioritySpec.from_text("").rank("COMPSCI 61A") is None
+    # fnmatch metacharacters other than * must still be treated as wildcards; duplicates keep the first index
+    assert PrioritySpec.from_text("MATH 5?\nMATH 54\n").rank("MATH 54") == 0
+    assert PrioritySpec.from_text("MATH [15]A\nMATH 1A\n").rank("MATH 1A") == 0
+    assert PrioritySpec.from_text("MATH 54\nMATH 54\n").rank("MATH 54") == 0
