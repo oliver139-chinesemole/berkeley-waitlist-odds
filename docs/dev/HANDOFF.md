@@ -66,7 +66,7 @@ Branch `backfill-backtest` (docs/dev/BACKFILL_BACKTEST.md is the plan; its check
 **Backfill, in order (docs/dev/STATUS.md section 4 is the live list):**
 1. Fall 2026 installed (PR #5); Spring 2026 pulled, cross-term read, level back to course (PR #6). Next: Oliver's decision on serving Spring 2026; B5 priority list before Oct 26.
 2. Oliver's note to the Berkeleytime team was to be sent in parallel with the pull (his choice on 2026-09-20).
-3. B5: rebuild `config/priority_courses.txt` from reconstructed waitlist joins (top ~900 sections' courses) and log the new `priority_sha` before Oct 26. B6: fix the resume line, delete the two "Spring 2026" paragraphs (CLAIMS status, plan section 3), LICENSE, homepage, GoatCounter, move session scaffolding under `docs/dev/`.
+3. B5 (done 2026-09-24 in PR #9; the data-log row has the numbers): rebuild `config/priority_courses.txt` from reconstructed waitlist joins (top ~900 sections' courses) and log the new `priority_sha` before Oct 26. B6: fix the resume line, delete the two "Spring 2026" paragraphs (CLAIMS status, plan section 3), LICENSE, homepage, GoatCounter, move session scaffolding under `docs/dev/`.
 4. A browser pass on the new page states (no browser in the sessions so far).
 
 **Time-gated (nothing to build, just do on the date):**
@@ -80,7 +80,7 @@ Branch `backfill-backtest` (docs/dev/BACKFILL_BACKTEST.md is the plan; its check
 **Oliver's (cannot be done by the assistant):**
 - Sunday two-minute check through Feb 14 (RUNBOOK section 4).
 - Open the live site in a browser once and confirm the no-data state reads well (no browser was available in the sessions).
-- Review `config/priority_courses.txt` before Oct 26: only 99 of 478 waitlisted Fall sections matched the original list; UGBA, MEC ENG and PHYSED were added; ENGLISH, MUSIC, PBHLTH and HISTORY are the next largest gaps. Any edit changes `priority_sha`; log it in the data log.
+- (Superseded 2026-09-24 by the generated list in PR #9.) Review `config/priority_courses.txt` before Oct 26: only 99 of 478 waitlisted Fall sections matched the original list; UGBA, MEC ENG and PHYSED were added; ENGLISH, MUSIC, PBHLTH and HISTORY are the next largest gaps. Any edit changes `priority_sha`; log it in the data log.
 - Optional sponsored request for the SIS Class API (a professor or the ASUC OCTO Berkeleytime team).
 - A7: the r/berkeley post, the resume bullets ("Spring 2027 enrollment cycle", real section and snapshot counts, one headline result), pinning the repo on the GitHub profile, the private interview-prep page, LinkedIn.
 - The design-critique, accessibility and UX-copy reviews the plan names as skills were done by hand; a human pass on the site before the soft launch is still worth doing.
