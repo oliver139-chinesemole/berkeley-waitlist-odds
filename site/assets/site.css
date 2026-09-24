@@ -29,7 +29,8 @@
   --fs-7: 3.0625rem;  /* 49px   */
   --fs-8: 3.8125rem;  /* 61px   */
   /* U3 palette (MASTER_PLAN section 3.4): cool blue-cast surfaces, --blue for data,
-     --gold for "you" and "now" alone, --rust for seats held back. Never red, never green. */
+     --gold for "you" and "now" alone. On the v3 pages --rust carries what --warn used to,
+     error text and the pooled tag; seats held back join it when U2 lands. No red, no green. */
   --bg: #F2F5F9; --paper: #FFFFFF; --ink: #10202E; --line: #C9D4E0;
   --blue: #003262; --gold: #FDB515; --rust: #8C4A1F;
   /* derived from the seven above: text that steps back, hairlines, washes, ink on a fill */
@@ -37,7 +38,11 @@
   --blue-ink: #FFFFFF;
   --tint: rgba(255, 255, 255, .12); --shadow: rgba(16, 32, 46, .12);
   --s1: #86B6EF; --s2: #3987E5; --s3: #1C5CAB; --s4: #0D366B; /* position buckets, light to dark */
-  --focus: var(--gold); /* the one piece of chrome in gold: the control you are on, now */
+  /* The focus ring is chrome, not data, so it is its own token and deliberately outside the
+     rule above: keyboard focus means neither "you" nor "now". It is this yellow because
+     nothing else in the palette is legible on paper, on the wash and on the blue header at
+     once, and because it is the ring this site has always had. The colour is Oliver's call. */
+  --focus: #FDB515;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -47,6 +52,7 @@
     --blue-ink: #0B1622;
     --tint: rgba(255, 255, 255, .12); --shadow: rgba(0, 0, 0, .4);
     --s1: #B7D3F6; --s2: #6DA7EC; --s3: #2A78D6; --s4: #184F95;
+    --focus: #FDB515; /* chrome, as above: the same ring on the dark surfaces */
   }
 }
 * { box-sizing: border-box; }
@@ -81,7 +87,7 @@ p { margin: .5rem 0; }
 .hidden, [hidden] { display: none !important; }
 /* every figure in tabular lining digits: columns line up and the big number reads as data */
 .num, td.num, th.num, table, .big, .lead, .dates, .buckets .v, .readout, .chart .lbl,
-.dotplot .row-d, input[type=number] { font-variant-numeric: tabular-nums lining-nums; }
+.dotplot .row-d, dl.kv dd, .legend, input[type=number] { font-variant-numeric: tabular-nums lining-nums; }
 code { background: var(--hair); padding: .05rem .3rem; border-radius: 4px; font-size: var(--fs-1); }
 hr { border: 0; border-top: 1px solid var(--line); margin: 1.5rem 0; }
 
