@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from analysis.priority_from_flows import coverage, main, rank_courses, render, section_activity
+from analysis.priority_from_flows import catalog_report, coverage, main, rank_courses, render, section_activity
 from scraper.sources.base import PrioritySpec
 
 
@@ -73,3 +73,65 @@ def test_cli_writes_candidate_and_reports(tmp_path: Path) -> None:
     text = out.read_text()
     assert PrioritySpec.from_text(text).patterns == ("STAT 20", "COMPSCI 61A", "MATH 1A")
     assert "Built by `python -m analysis.priority_from_flows`" in text and "test" in text
+
+
+# -- course-total pass and the live-catalog report (review of the 2026-09-23 install) -----
+
+
+def test_course_total_pass_adds_courses_with_many_small_sections() -> None:
+    flows, identity = flows_and_identity()
+    act = section_activity(flows, identity, term_id="2268")
+    only_top = rank_courses(act, top_sections=1)  # section 5 -> STAT 20
+    assert list(only_top["course_key"]) == ["STAT 20"]
+    courses = rank_courses(act, top_sections=1, min_course_joins=8)  # COMPSCI 61A totals 8 over two sections
+    assert list(courses["course_key"]) == ["STAT 20", "COMPSCI 61A"]
+    by_key = courses.set_index("course_key")
+    assert by_key.at["COMPSCI 61A", "top_sections"] == 0 and by_key.at["COMPSCI 61A", "joins"] == 8
+    text = render(courses, source_note="unit test", top_sections=1, min_course_joins=8)
+    lines = {l.split()[0] + " " + l.split()[1]: l for l in text.splitlines() if not l.startswith("#") and l.strip()}
+    assert "by course total" in lines["COMPSCI 61A"] and "by course total" not in lines["STAT 20"]
+    assert "at least 8 joins" in text and "unique section ids" in text
+
+
+def test_catalog_report_counts_live_matches_and_the_selection(tmp_path: Path) -> None:
+    import json
+
+    entries = [
+        {"url_path": "/content/a", "course_key": "COMPSCI 61A", "last_status": 200},
+        {"url_path": "/content/b", "course_key": "COMPSCI 61A", "last_status": 200},
+        {"url_path": "/content/c", "course_key": "STAT 20", "last_status": 200},
+        {"url_path": "/content/d", "course_key": "MATH 1A", "last_status": 404},
+        {"url_path": "/content/e", "course_key": "ART 1", "last_status": 200},
+    ]
+    catalog = tmp_path / "catalog.json"
+    catalog.write_text(json.dumps({"sections": entries}))
+    report = catalog_report(PrioritySpec.from_text("STAT 20\nCOMPSCI 61A\n"), catalog, n_shards=2)
+    assert report["live"] == 4 and report["matched"] == 3 and report["courses"] == 2
+    # one remainder section (ART 1) lands in one of the two shards
+    assert (report["selection_min"], report["selection_max"]) == (3, 4)
+
+
+def test_cli_course_total_and_catalog_flags(tmp_path: Path, capsys) -> None:
+    import json
+
+    flows, identity = flows_and_identity()
+    fdir = tmp_path / "2268"
+    fdir.mkdir()
+    flows.to_parquet(fdir / "flows.parquet", index=False)
+    identity.to_parquet(fdir / "identity.parquet", index=False)
+    catalog = tmp_path / "catalog.json"
+    catalog.write_text(json.dumps({"sections": [
+        {"url_path": "/content/a", "course_key": "COMPSCI 61A", "last_status": 200},
+        {"url_path": "/content/c", "course_key": "STAT 20", "last_status": 200},
+        {"url_path": "/content/e", "course_key": "ART 1", "last_status": 200},
+    ]}))
+    current = tmp_path / "priority_courses.txt"
+    current.write_text("ART 1\n")
+    out = tmp_path / "candidate.txt"
+    assert main(["--flows", str(fdir / "flows.parquet"), "--identity", str(fdir / "identity.parquet"), "--top-sections", "1",
+                 "--min-course-joins", "8", "--catalog", str(catalog), "--n-shards", "2", "--current", str(current), "--out", str(out), "--note", "test"]) == 0
+    assert PrioritySpec.from_text(out.read_text()).patterns == ("STAT 20", "COMPSCI 61A")
+    report = json.loads(capsys.readouterr().out)
+    assert report["min_course_joins"] == 8
+    assert report["candidate"]["live"] == {"live": 3, "matched": 2, "courses": 2, "selection_min": 2, "selection_max": 3}
+    assert report["current"]["live"]["matched"] == 1

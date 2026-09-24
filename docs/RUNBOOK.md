@@ -138,6 +138,8 @@ git fetch origin data && git show origin/data:status.json
 
 Pass: `status.json` shows `"term_id": "2272"` (or the confirmed id) and `"kind": "baseline"`. Add a `term_switch` row to docs/DATA_LOG.md with the `last_run_at` of that run. The Fall 2026 files stay on the `data` branch as test data; everything downstream filters by `term_id`.
 
+Then read `selected=` on the `classes_site term=2272` line of the first few Spring runs' logs against the 1,380 s budget: the priority list is generated from Fall 2026 and Spring 2026 joins, so Spring 2027's match count is unknown until its pages exist (the backfill proxy says about the size of Fall 2026's; docs/DATA_LOG.md priority_list row). If `missing` stays above a few dozen at the new rate, shorten the list.
+
 Deadline: Mon Oct 12, 2026. Phase 1 opens Mon Oct 26.
 
 ### Step 8. Weekly Sunday check
