@@ -384,11 +384,12 @@ const BWO = (function () {
   function nearSubjects(index, token) {
     const limit = token.length <= 5 ? 1 : 2;
     const joins = subjectJoins(index);
-    const out = [];
+    const best = {};  // one entry per subject: its closest spelling
     for (const v of subjectVocab(index)) {
       const d = damerau(token, v.token);
-      if (d > 0 && d <= limit && !out.some((x) => x.subject === v.subject && x.d <= d)) out.push({ subject: v.subject, d, joins: joins[v.subject] || 0 });
+      if (d > 0 && d <= limit && (!(v.subject in best) || d < best[v.subject])) best[v.subject] = d;
     }
+    const out = Object.keys(best).map((subject) => ({ subject, d: best[subject], joins: joins[subject] || 0 }));
     out.sort((a, b) => a.d - b.d || b.joins - a.joins || a.subject.localeCompare(b.subject));
     return out;
   }
@@ -449,7 +450,8 @@ const BWO = (function () {
   // when nothing matched, and then nearest holds up to three courses to offer.
   function matchCourse(index, text) {
     const base = normalise(text);
-    const miss = () => ({ query: String(text == null ? "" : text), key: null, row: null, layer: "miss", ranked: [], nearest: base ? nearestCourses(index, base) : topJoined(index, 3) });
+    const query = String(text == null ? "" : text);
+    const miss = () => ({ query, key: null, row: null, layer: "miss", ranked: [], nearest: base ? nearestCourses(index, base) : topJoined(index, 3) });
     if (!base) return miss();
     const variants = [{ text: base, steps: [] }];
     const add = (t, steps) => { if (t && !variants.some((v) => v.text === t)) variants.push({ text: t, steps }); };
@@ -461,7 +463,7 @@ const BWO = (function () {
     }
     for (const v of variants) {
       const hit = attempt(index, v.text);
-      if (hit) return { query: String(text), key: hit.row.key, row: hit.row, layer: topLayer(v.steps.concat(hit.layer)), ranked: hit.ranked || [hit.row], nearest: [] };
+      if (hit) return { query, key: hit.row.key, row: hit.row, layer: topLayer(v.steps.concat(hit.layer)), ranked: hit.ranked || [hit.row], nearest: [] };
     }
     return miss();
   }
