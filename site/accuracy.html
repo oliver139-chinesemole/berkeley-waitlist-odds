@@ -103,7 +103,7 @@
 
   function prereg(meta, bt) {
     const commit = meta.prereg_commit, date = meta.prereg_date;
-    return `<h2>Pre-registered: the Spring 2027 test</h2><div class="prereg"><p>${commit ? `The Fall 2026 curves this site shows were frozen at commit <code>${esc(String(commit).slice(0, 10))}</code> on ${esc(date || "")}.` : "The Fall 2026 curves this site shows will be frozen at the commit that publishes them; its hash and date will be printed here."} After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>`;
+    return `<h2>Pre-registered: the Spring 2027 test</h2><div class="prereg"><p>${commit ? `The ${esc(meta.term_name)} curves this site shows were frozen at commit <code>${esc(String(commit).slice(0, 10))}</code> on ${esc(date || "")}.` : `The ${esc(meta.term_name)} curves this site shows will be frozen at the commit that publishes them; its hash and date will be printed here.`} After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>`;
   }
 
   async function main() {

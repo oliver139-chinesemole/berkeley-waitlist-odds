@@ -1,175 +1,175 @@
 {
 "courses": {
-"DISSTD 110": {
+"YIDDISH 103": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.117,
+0.099,
 null,
 null
 ],
 [
 1.0,
-0.128,
+0.149,
 null,
 null
 ],
 [
 2.0,
-0.17,
+0.149,
 null,
 null
 ],
 [
 3.0,
-0.218,
+0.174,
 null,
 null
 ],
 [
 4.0,
-0.244,
+0.174,
 null,
 null
 ],
 [
 5.0,
-0.298,
+0.2,
 null,
 null
 ],
 [
 6.0,
-0.344,
+0.226,
 null,
 null
 ],
 [
 7.0,
-0.431,
+0.226,
 null,
 null
 ],
 [
 8.0,
-0.449,
+0.226,
 null,
 null
 ],
 [
 9.0,
-0.51,
+0.226,
 null,
 null
 ],
 [
 10.0,
-0.532,
+0.226,
 null,
 null
 ],
 [
 12.0,
-0.638,
+0.226,
 null,
 null
 ],
 [
 14.0,
-0.729,
+0.226,
 null,
 null
 ],
 [
 16.0,
-0.756,
+0.226,
 null,
 null
 ],
 [
 18.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 21.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 24.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 28.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 32.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 36.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 42.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 49.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 56.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 63.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 70.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 77.0,
-0.791,
+0.226,
 null,
 null
 ],
 [
 79.75,
-0.791,
+0.226,
 null,
 null
 ]
 ],
-"events": 50,
-"median_days": 8.98,
-"n": 94,
+"events": 9,
+"median_days": null,
+"n": 41,
 "pooled": false,
 "reach_days": 79.7,
 "sections": 1
@@ -177,10 +177,10 @@ null
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "110",
-"subject": "DISSTD"
+"number": "103",
+"subject": "YIDDISH"
 }
 },
-"subject": "DISSTD",
+"subject": "YIDDISH",
 "term_id": "2262"
 }

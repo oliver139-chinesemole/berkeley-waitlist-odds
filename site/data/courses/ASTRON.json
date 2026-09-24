@@ -6,277 +6,52 @@
 "curve": [
 [
 0.5,
-0.202,
+0.293,
 null,
 null
 ],
 [
 1.0,
-0.321,
+0.529,
 null,
 null
 ],
 [
 2.0,
-0.488,
+0.812,
 null,
 null
 ],
 [
 3.0,
-0.626,
+0.979,
 null,
 null
 ],
 [
 4.0,
-0.752,
+0.99,
 null,
 null
 ],
 [
-5.0,
-0.848,
-null,
-null
-],
-[
-6.0,
-0.897,
-null,
-null
-],
-[
-7.0,
-0.931,
-null,
-null
-],
-[
-8.0,
-0.961,
-null,
-null
-],
-[
-9.0,
-0.978,
-null,
-null
-],
-[
-10.0,
-0.983,
-null,
-null
-],
-[
-11.74,
+4.63,
 1.0,
 null,
 null
 ]
 ],
-"events": 317,
-"median_days": 2.06,
-"n": 387,
+"events": 101,
+"median_days": 0.93,
+"n": 110,
 "pooled": false,
-"reach_days": 11.7,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.02,
-null,
-null
-],
-[
-1.0,
-0.02,
-null,
-null
-],
-[
-2.0,
-0.02,
-null,
-null
-],
-[
-3.0,
-0.02,
-null,
-null
-],
-[
-4.0,
-0.02,
-null,
-null
-],
-[
-5.0,
-0.02,
-null,
-null
-],
-[
-6.0,
-0.02,
-null,
-null
-],
-[
-7.0,
-0.02,
-null,
-null
-],
-[
-8.0,
-0.032,
-null,
-null
-],
-[
-9.0,
-0.088,
-null,
-null
-],
-[
-10.0,
-0.164,
-null,
-null
-],
-[
-12.0,
-0.164,
-null,
-null
-],
-[
-14.0,
-0.164,
-null,
-null
-],
-[
-16.0,
-0.164,
-null,
-null
-],
-[
-18.0,
-0.164,
-null,
-null
-],
-[
-18.21,
-0.164,
-null,
-null
-]
-],
-"events": 12,
-"median_days": null,
-"n": 155,
-"pooled": false,
-"reach_days": 18.2,
+"reach_days": 4.6,
 "sections": 1
 },
 "6-15": {
-"curve": [
-[
-0.5,
-0.042,
-null,
-null
-],
-[
-1.0,
-0.042,
-null,
-null
-],
-[
-2.0,
-0.047,
-null,
-null
-],
-[
-3.0,
-0.092,
-null,
-null
-],
-[
-4.0,
-0.178,
-null,
-null
-],
-[
-5.0,
-0.25,
-null,
-null
-],
-[
-6.0,
-0.32,
-null,
-null
-],
-[
-7.0,
-0.419,
-null,
-null
-],
-[
-8.0,
-0.522,
-null,
-null
-],
-[
-9.0,
-0.608,
-null,
-null
-],
-[
-10.0,
-0.644,
-null,
-null
-],
-[
-12.0,
-0.801,
-null,
-null
-],
-[
-13.42,
-1.0,
-null,
-null
-]
-],
-"events": 119,
-"median_days": 7.68,
-"n": 245,
-"pooled": false,
-"reach_days": 13.4,
-"sections": 1
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -284,837 +59,1106 @@ null
 "number": "11",
 "subject": "ASTRON"
 },
-"ASTRON 120": {
+"ASTRON 121": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.099,
-null,
-null
-],
-[
-1.0,
-0.118,
-null,
-null
-],
-[
-2.0,
-0.118,
-null,
-null
-],
-[
-3.0,
-0.153,
-null,
-null
-],
-[
-4.0,
-0.153,
-null,
-null
-],
-[
-5.0,
-0.153,
-null,
-null
-],
-[
-6.0,
-0.23,
-null,
-null
-],
-[
-7.0,
-0.318,
-null,
-null
-],
-[
-8.0,
-0.346,
-null,
-null
-],
-[
-9.0,
-0.376,
-null,
-null
-],
-[
-10.0,
-0.406,
-null,
-null
-],
-[
-12.0,
-0.439,
-null,
-null
-],
-[
-14.0,
-0.439,
-null,
-null
-],
-[
-16.0,
-0.439,
-null,
-null
-],
-[
-18.0,
-0.439,
-null,
-null
-],
-[
-21.0,
-0.439,
-null,
-null
-],
-[
-24.0,
-0.439,
-null,
-null
-],
-[
-28.0,
-0.439,
-null,
-null
-],
-[
-30.81,
-0.439,
-null,
-null
-]
-],
-"events": 74,
-"median_days": null,
-"n": 228,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-35.77,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 31,
-"pooled": false,
-"reach_days": 35.8,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-36.63,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 143,
-"pooled": false,
-"reach_days": 36.6,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "120",
-"subject": "ASTRON"
-},
-"ASTRON 160": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.217,
-null,
-null
-],
-[
-1.0,
-0.261,
-null,
-null
-],
-[
-2.0,
-0.318,
-null,
-null
-],
-[
-3.0,
-0.412,
-null,
-null
-],
-[
-4.0,
-0.486,
-null,
-null
-],
-[
-5.0,
-0.576,
-null,
-null
-],
-[
-6.0,
-0.644,
-null,
-null
-],
-[
-7.0,
-0.656,
-null,
-null
-],
-[
-8.0,
-0.665,
-null,
-null
-],
-[
-9.0,
-0.685,
-null,
-null
-],
-[
-10.0,
-0.704,
-null,
-null
-],
-[
-12.0,
-0.757,
-null,
-null
-],
-[
-14.0,
-0.799,
-null,
-null
-],
-[
-16.0,
-0.843,
-null,
-null
-],
-[
-18.0,
-0.843,
-null,
-null
-],
-[
-21.0,
-0.843,
-null,
-null
-],
-[
-24.0,
-0.843,
-null,
-null
-],
-[
-28.0,
-0.843,
-null,
-null
-],
-[
-30.81,
-0.843,
-null,
-null
-]
-],
-"events": 215,
-"median_days": 4.05,
-"n": 323,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.325,
-null,
-null
-],
-[
-24.0,
-0.437,
-null,
-null
-],
-[
-28.0,
-0.789,
-null,
-null
-],
-[
-28.85,
-0.789,
-null,
-null
-]
-],
-"events": 7,
-"median_days": 24.02,
-"n": 34,
-"pooled": false,
-"reach_days": 28.9,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.005,
-null,
-null
-],
-[
-1.0,
-0.015,
-null,
-null
-],
-[
-2.0,
-0.03,
-null,
-null
-],
-[
-3.0,
-0.051,
-null,
-null
-],
-[
-4.0,
-0.051,
-null,
-null
-],
-[
-5.0,
-0.057,
-null,
-null
-],
-[
-6.0,
-0.114,
-null,
-null
-],
-[
-7.0,
 0.167,
 null,
 null
 ],
 [
+1.0,
+0.313,
+null,
+null
+],
+[
+2.0,
+0.356,
+null,
+null
+],
+[
+3.0,
+0.382,
+null,
+null
+],
+[
+4.0,
+0.418,
+null,
+null
+],
+[
+5.0,
+0.427,
+null,
+null
+],
+[
+6.0,
+0.481,
+null,
+null
+],
+[
+7.0,
+0.499,
+null,
+null
+],
+[
 8.0,
-0.191,
+0.535,
 null,
 null
 ],
 [
 9.0,
-0.211,
+0.544,
 null,
 null
 ],
 [
 10.0,
-0.241,
+0.562,
 null,
 null
 ],
 [
 12.0,
-0.312,
+0.572,
 null,
 null
 ],
 [
 14.0,
-0.363,
+0.608,
 null,
 null
 ],
 [
 16.0,
-0.465,
+0.608,
 null,
 null
 ],
 [
 18.0,
-0.527,
+0.608,
 null,
 null
 ],
 [
 21.0,
-0.637,
+0.608,
 null,
 null
 ],
 [
 24.0,
-0.637,
+0.608,
 null,
 null
 ],
 [
 28.0,
-0.637,
+0.608,
 null,
 null
 ],
 [
-30.81,
-0.637,
+32.0,
+0.608,
+null,
+null
+],
+[
+36.0,
+0.608,
+null,
+null
+],
+[
+42.0,
+0.608,
+null,
+null
+],
+[
+49.0,
+0.608,
+null,
+null
+],
+[
+56.0,
+0.608,
+null,
+null
+],
+[
+63.0,
+0.608,
+null,
+null
+],
+[
+70.0,
+0.608,
+null,
+null
+],
+[
+77.0,
+0.608,
+null,
+null
+],
+[
+79.75,
+0.608,
 null,
 null
 ]
 ],
-"events": 73,
-"median_days": 17.38,
-"n": 214,
+"events": 70,
+"median_days": 7.01,
+"n": 121,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.027,
+null,
+null
+],
+[
+7.0,
+0.027,
+null,
+null
+],
+[
+8.0,
+0.081,
+null,
+null
+],
+[
+9.0,
+0.081,
+null,
+null
+],
+[
+10.0,
+0.108,
+null,
+null
+],
+[
+12.0,
+0.162,
+null,
+null
+],
+[
+14.0,
+0.27,
+null,
+null
+],
+[
+16.0,
+0.27,
+null,
+null
+],
+[
+18.0,
+0.27,
+null,
+null
+],
+[
+21.0,
+0.27,
+null,
+null
+],
+[
+24.0,
+0.27,
+null,
+null
+],
+[
+28.0,
+0.27,
+null,
+null
+],
+[
+32.0,
+0.27,
+null,
+null
+],
+[
+36.0,
+0.27,
+null,
+null
+],
+[
+42.0,
+0.27,
+null,
+null
+],
+[
+49.0,
+0.27,
+null,
+null
+],
+[
+53.34,
+0.27,
+null,
+null
+]
+],
+"events": 10,
+"median_days": null,
+"n": 39,
+"pooled": false,
+"reach_days": 53.3,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "160",
+"number": "121",
 "subject": "ASTRON"
 },
-"ASTRON 252": {
+"ASTRON 128": {
 "buckets": {
 "1-5": {
-"n_course": 4,
+"curve": [
+[
+0.5,
+0.171,
+null,
+null
+],
+[
+1.0,
+0.229,
+null,
+null
+],
+[
+2.0,
+0.287,
+null,
+null
+],
+[
+3.0,
+0.328,
+null,
+null
+],
+[
+4.0,
+0.35,
+null,
+null
+],
+[
+5.0,
+0.355,
+null,
+null
+],
+[
+6.0,
+0.425,
+null,
+null
+],
+[
+7.0,
+0.488,
+null,
+null
+],
+[
+8.0,
+0.512,
+null,
+null
+],
+[
+9.0,
+0.547,
+null,
+null
+],
+[
+10.0,
+0.562,
+null,
+null
+],
+[
+12.0,
+0.616,
+null,
+null
+],
+[
+14.0,
+0.65,
+null,
+null
+],
+[
+16.0,
+0.668,
+null,
+null
+],
+[
+18.0,
+0.694,
+null,
+null
+],
+[
+21.0,
+0.761,
+null,
+null
+],
+[
+24.0,
+0.845,
+null,
+null
+],
+[
+28.0,
+0.927,
+null,
+null
+],
+[
+32.0,
+0.951,
+null,
+null
+],
+[
+36.0,
+0.951,
+null,
+null
+],
+[
+42.0,
+0.951,
+null,
+null
+],
+[
+49.0,
+0.951,
+null,
+null
+],
+[
+56.0,
+0.951,
+null,
+null
+],
+[
+63.0,
+0.951,
+null,
+null
+],
+[
+70.0,
+0.951,
+null,
+null
+],
+[
+77.0,
+0.951,
+null,
+null
+],
+[
+79.75,
+0.951,
+null,
+null
+]
+],
+"events": 174,
+"median_days": 7.12,
+"n": 229,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"n_course": 7,
 "pooled": "OTHER",
 "sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.077,
+null,
+null
+],
+[
+1.0,
+0.077,
+null,
+null
+],
+[
+2.0,
+0.077,
+null,
+null
+],
+[
+3.0,
+0.077,
+null,
+null
+],
+[
+4.0,
+0.077,
+null,
+null
+],
+[
+5.0,
+0.077,
+null,
+null
+],
+[
+6.0,
+0.115,
+null,
+null
+],
+[
+7.0,
+0.192,
+null,
+null
+],
+[
+8.0,
+0.231,
+null,
+null
+],
+[
+9.0,
+0.231,
+null,
+null
+],
+[
+10.0,
+0.269,
+null,
+null
+],
+[
+12.0,
+0.269,
+null,
+null
+],
+[
+14.0,
+0.308,
+null,
+null
+],
+[
+16.0,
+0.346,
+null,
+null
+],
+[
+18.0,
+0.346,
+null,
+null
+],
+[
+21.0,
+0.436,
+null,
+null
+],
+[
+24.0,
+0.474,
+null,
+null
+],
+[
+28.0,
+0.615,
+null,
+null
+],
+[
+32.0,
+0.731,
+null,
+null
+],
+[
+36.0,
+0.91,
+null,
+null
+],
+[
+39.06,
+0.987,
+null,
+null
+]
+],
+"events": 78,
+"median_days": 24.72,
+"n": 78,
+"pooled": false,
+"reach_days": 39.1,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
-"level": "grad",
-"number": "252",
+"level": "upper",
+"number": "128",
 "subject": "ASTRON"
 },
-"ASTRON 292": {
+"ASTRON 7B": {
 "buckets": {
 "1-5": {
-"n_course": 4,
-"pooled": "OTHER",
-"sections_course": 1
-}
+"curve": [
+[
+0.5,
+0.213,
+null,
+null
+],
+[
+1.0,
+0.27,
+null,
+null
+],
+[
+2.0,
+0.328,
+null,
+null
+],
+[
+3.0,
+0.357,
+null,
+null
+],
+[
+4.0,
+0.395,
+null,
+null
+],
+[
+5.0,
+0.462,
+null,
+null
+],
+[
+6.0,
+0.51,
+null,
+null
+],
+[
+7.0,
+0.558,
+null,
+null
+],
+[
+8.0,
+0.626,
+null,
+null
+],
+[
+9.0,
+0.648,
+null,
+null
+],
+[
+10.0,
+0.67,
+null,
+null
+],
+[
+12.0,
+0.729,
+null,
+null
+],
+[
+14.0,
+0.766,
+null,
+null
+],
+[
+16.0,
+0.794,
+null,
+null
+],
+[
+18.0,
+0.794,
+null,
+null
+],
+[
+21.0,
+0.794,
+null,
+null
+],
+[
+24.0,
+0.794,
+null,
+null
+],
+[
+28.0,
+0.794,
+null,
+null
+],
+[
+32.0,
+0.794,
+null,
+null
+],
+[
+36.0,
+0.794,
+null,
+null
+],
+[
+36.98,
+0.794,
+null,
+null
+]
+],
+"events": 80,
+"median_days": 5.27,
+"n": 108,
+"pooled": false,
+"reach_days": 37.0,
+"sections": 1
 },
-"dept_group": "OTHER",
-"level": "grad",
-"number": "292",
-"subject": "ASTRON"
-},
-"ASTRON 7A": {
-"buckets": {
-"1-5": {
-"n_course": 4,
+"6-15": {
+"n_course": 6,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "7A",
+"number": "7B",
 "subject": "ASTRON"
 },
-"ASTRON C202": {
+"ASTRON C12": {
 "buckets": {
 "1-5": {
-"n_course": 7,
+"curve": [
+[
+0.5,
+0.527,
+null,
+null
+],
+[
+1.0,
+0.654,
+null,
+null
+],
+[
+2.0,
+0.841,
+null,
+null
+],
+[
+3.0,
+0.897,
+null,
+null
+],
+[
+4.0,
+0.963,
+null,
+null
+],
+[
+5.0,
+0.981,
+null,
+null
+],
+[
+6.0,
+0.981,
+null,
+null
+],
+[
+7.0,
+0.981,
+null,
+null
+],
+[
+8.0,
+0.981,
+null,
+null
+],
+[
+9.0,
+0.981,
+null,
+null
+],
+[
+10.0,
+0.981,
+null,
+null
+],
+[
+12.0,
+0.981,
+null,
+null
+],
+[
+14.0,
+0.981,
+null,
+null
+],
+[
+16.0,
+0.981,
+null,
+null
+],
+[
+17.97,
+0.981,
+null,
+null
+]
+],
+"events": 108,
+"median_days": 0.44,
+"n": 112,
+"pooled": false,
+"reach_days": 18.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C12",
+"subject": "ASTRON"
+},
+"ASTRON C161": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.247,
+null,
+null
+],
+[
+1.0,
+0.311,
+null,
+null
+],
+[
+2.0,
+0.414,
+null,
+null
+],
+[
+3.0,
+0.498,
+null,
+null
+],
+[
+4.0,
+0.567,
+null,
+null
+],
+[
+5.0,
+0.645,
+null,
+null
+],
+[
+6.0,
+0.702,
+null,
+null
+],
+[
+7.0,
+0.762,
+null,
+null
+],
+[
+8.0,
+0.786,
+null,
+null
+],
+[
+9.0,
+0.81,
+null,
+null
+],
+[
+10.0,
+0.834,
+null,
+null
+],
+[
+12.0,
+0.834,
+null,
+null
+],
+[
+14.0,
+0.876,
+null,
+null
+],
+[
+16.0,
+0.921,
+null,
+null
+],
+[
+18.0,
+0.931,
+null,
+null
+],
+[
+21.0,
+0.951,
+null,
+null
+],
+[
+24.0,
+0.951,
+null,
+null
+],
+[
+28.0,
+0.951,
+null,
+null
+],
+[
+32.0,
+0.951,
+null,
+null
+],
+[
+36.0,
+0.951,
+null,
+null
+],
+[
+42.0,
+0.951,
+null,
+null
+],
+[
+49.0,
+0.951,
+null,
+null
+],
+[
+56.0,
+0.951,
+null,
+null
+],
+[
+63.0,
+0.951,
+null,
+null
+],
+[
+70.0,
+0.951,
+null,
+null
+],
+[
+77.0,
+0.951,
+null,
+null
+],
+[
+79.75,
+0.951,
+null,
+null
+]
+],
+"events": 138,
+"median_days": 3.02,
+"n": 162,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C161",
+"subject": "ASTRON"
+},
+"ASTRON C207": {
+"buckets": {
+"1-5": {
+"n_course": 28,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "C202",
+"number": "C207",
 "subject": "ASTRON"
 }
 },
 "subject": "ASTRON",
-"term_id": "2268"
+"term_id": "2262"
 }

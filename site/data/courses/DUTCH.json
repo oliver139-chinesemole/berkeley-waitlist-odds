@@ -1,252 +1,157 @@
 {
 "courses": {
-"DUTCH 1": {
-"buckets": {
-"1-5": {
-"n_course": 1,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "1",
-"subject": "DUTCH"
-},
-"DUTCH 171AC": {
+"DUTCH 161AC": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.16,
+0.222,
 null,
 null
 ],
 [
 1.0,
-0.215,
+0.265,
 null,
 null
 ],
 [
 2.0,
-0.215,
+0.371,
 null,
 null
 ],
 [
 3.0,
-0.234,
+0.45,
 null,
 null
 ],
 [
 4.0,
-0.271,
+0.477,
 null,
 null
 ],
 [
 5.0,
-0.29,
+0.537,
 null,
 null
 ],
 [
 6.0,
-0.29,
+0.588,
 null,
 null
 ],
 [
 7.0,
-0.401,
+0.624,
 null,
 null
 ],
 [
 8.0,
-0.578,
+0.624,
 null,
 null
 ],
 [
 9.0,
-0.578,
+0.644,
 null,
 null
 ],
 [
 10.0,
-0.614,
+0.644,
 null,
 null
 ],
 [
 12.0,
-0.614,
+0.666,
 null,
 null
 ],
 [
 14.0,
-0.742,
+0.666,
 null,
 null
 ],
 [
 16.0,
-0.742,
+0.697,
 null,
 null
 ],
 [
 18.0,
-0.871,
+0.697,
 null,
 null
 ],
 [
-18.21,
-0.871,
+21.0,
+0.697,
+null,
+null
+],
+[
+24.0,
+0.697,
+null,
+null
+],
+[
+28.0,
+0.697,
+null,
+null
+],
+[
+32.0,
+0.697,
+null,
+null
+],
+[
+33.37,
+0.697,
 null,
 null
 ]
 ],
-"events": 37,
-"median_days": 7.2,
-"n": 83,
+"events": 54,
+"median_days": 4.29,
+"n": 96,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 33.4,
 "sections": 1
+}
 },
-"6-15": {
-"n_course": 1,
+"dept_group": "OTHER",
+"level": "upper",
+"number": "161AC",
+"subject": "DUTCH"
+},
+"DUTCH 166": {
+"buckets": {
+"1-5": {
+"n_course": 17,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "171AC",
-"subject": "DUTCH"
-},
-"DUTCH 24": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.182,
-null,
-null
-],
-[
-1.0,
-0.207,
-null,
-null
-],
-[
-2.0,
-0.259,
-null,
-null
-],
-[
-3.0,
-0.259,
-null,
-null
-],
-[
-4.0,
-0.288,
-null,
-null
-],
-[
-5.0,
-0.288,
-null,
-null
-],
-[
-6.0,
-0.318,
-null,
-null
-],
-[
-7.0,
-0.318,
-null,
-null
-],
-[
-8.0,
-0.318,
-null,
-null
-],
-[
-9.0,
-0.318,
-null,
-null
-],
-[
-10.0,
-0.318,
-null,
-null
-],
-[
-12.0,
-0.318,
-null,
-null
-],
-[
-14.0,
-0.454,
-null,
-null
-],
-[
-16.0,
-0.454,
-null,
-null
-],
-[
-18.0,
-0.454,
-null,
-null
-],
-[
-18.21,
-0.454,
-null,
-null
-]
-],
-"events": 14,
-"median_days": null,
-"n": 44,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "24",
+"number": "166",
 "subject": "DUTCH"
 }
 },
 "subject": "DUTCH",
-"term_id": "2268"
+"term_id": "2262"
 }

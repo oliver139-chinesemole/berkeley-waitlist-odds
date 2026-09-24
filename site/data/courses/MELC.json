@@ -1,462 +1,589 @@
 {
 "courses": {
-"MELC 10": {
+"MELC 100": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.284,
-null,
-null
-],
-[
-1.0,
-0.412,
-null,
-null
-],
-[
-2.0,
-0.524,
-null,
-null
-],
-[
-3.0,
-0.593,
-null,
-null
-],
-[
-4.0,
-0.656,
-null,
-null
-],
-[
-5.0,
-0.727,
-null,
-null
-],
-[
-6.0,
-0.752,
-null,
-null
-],
-[
-7.0,
-0.774,
-null,
-null
-],
-[
-8.0,
-0.787,
-null,
-null
-],
-[
-9.0,
-0.815,
-null,
-null
-],
-[
-10.0,
-0.815,
-null,
-null
-],
-[
-12.0,
-0.866,
-null,
-null
-],
-[
-14.0,
-0.966,
-null,
-null
-],
-[
-14.03,
-0.966,
-null,
-null
-]
-],
-"events": 157,
-"median_days": 1.83,
-"n": 220,
-"pooled": false,
-"reach_days": 14.0,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.013,
-null,
-null
-],
-[
-1.0,
-0.027,
-null,
-null
-],
-[
-2.0,
-0.041,
-null,
-null
-],
-[
-3.0,
-0.122,
-null,
-null
-],
-[
-4.0,
-0.219,
-null,
-null
-],
-[
-5.0,
-0.302,
-null,
-null
-],
-[
-6.0,
-0.367,
-null,
-null
-],
-[
-7.0,
-0.389,
-null,
-null
-],
-[
-8.0,
-0.411,
-null,
-null
-],
-[
-9.0,
-0.411,
-null,
-null
-],
-[
-10.0,
-0.411,
-null,
-null
-],
-[
-12.0,
-0.411,
-null,
-null
-],
-[
-14.0,
-0.411,
-null,
-null
-],
-[
-16.0,
-0.411,
-null,
-null
-],
-[
-18.0,
-0.411,
-null,
-null
-],
-[
-18.21,
-0.411,
-null,
-null
-]
-],
-"events": 22,
-"median_days": null,
-"n": 81,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "10",
-"subject": "MELC"
-},
-"MELC 103": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.071,
-null,
-null
-],
-[
-1.0,
-0.098,
-null,
-null
-],
-[
-2.0,
-0.14,
-null,
-null
-],
-[
-3.0,
-0.2,
-null,
-null
-],
-[
-4.0,
-0.28,
-null,
-null
-],
-[
-5.0,
-0.34,
-null,
-null
-],
-[
-6.0,
-0.375,
-null,
-null
-],
-[
-7.0,
-0.439,
-null,
-null
-],
-[
-8.0,
-0.477,
-null,
-null
-],
-[
-9.0,
-0.486,
-null,
-null
-],
-[
-10.0,
-0.486,
-null,
-null
-],
-[
-12.0,
-0.538,
-null,
-null
-],
-[
-14.0,
-0.555,
-null,
-null
-],
-[
-16.0,
-0.555,
-null,
-null
-],
-[
-18.0,
-0.555,
-null,
-null
-],
-[
-21.0,
-0.555,
-null,
-null
-],
-[
-24.0,
-0.555,
-null,
-null
-],
-[
-28.0,
-0.555,
-null,
-null
-],
-[
-30.81,
-0.555,
-null,
-null
-]
-],
-"events": 91,
-"median_days": 10.98,
-"n": 240,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.013,
-null,
-null
-],
-[
-1.0,
-0.026,
-null,
-null
-],
-[
-2.0,
-0.054,
-null,
-null
-],
-[
-3.0,
-0.054,
-null,
-null
-],
-[
-4.0,
-0.14,
-null,
-null
-],
-[
-5.0,
-0.252,
-null,
-null
-],
-[
-6.0,
-0.297,
-null,
-null
-],
-[
-7.0,
-0.398,
-null,
-null
-],
-[
-8.0,
-0.452,
-null,
-null
-],
-[
-9.0,
-0.452,
-null,
-null
-],
-[
-10.0,
-0.452,
-null,
-null
-],
-[
-12.0,
-0.452,
-null,
-null
-],
-[
-14.0,
-0.589,
-null,
-null
-],
-[
-16.0,
-0.589,
-null,
-null
-],
-[
-18.0,
-0.589,
-null,
-null
-],
-[
-18.21,
-0.589,
-null,
-null
-]
-],
-"events": 22,
-"median_days": 12.04,
-"n": 77,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "103",
-"subject": "MELC"
-},
-"MELC 134": {
-"buckets": {
-"1-5": {
-"n_course": 2,
+"n_course": 3,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "134",
+"number": "100",
+"subject": "MELC"
+},
+"MELC 11": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.593,
+null,
+null
+],
+[
+1.0,
+0.708,
+null,
+null
+],
+[
+2.0,
+0.778,
+null,
+null
+],
+[
+3.0,
+0.824,
+null,
+null
+],
+[
+4.0,
+0.923,
+null,
+null
+],
+[
+5.0,
+0.943,
+null,
+null
+],
+[
+6.0,
+0.943,
+null,
+null
+],
+[
+7.0,
+0.943,
+null,
+null
+],
+[
+8.0,
+0.943,
+null,
+null
+],
+[
+9.0,
+0.943,
+null,
+null
+],
+[
+10.0,
+0.943,
+null,
+null
+],
+[
+12.0,
+0.943,
+null,
+null
+],
+[
+14.0,
+0.943,
+null,
+null
+],
+[
+16.0,
+0.943,
+null,
+null
+],
+[
+18.0,
+0.943,
+null,
+null
+],
+[
+21.0,
+0.943,
+null,
+null
+],
+[
+24.0,
+0.943,
+null,
+null
+],
+[
+28.0,
+0.943,
+null,
+null
+],
+[
+32.0,
+0.943,
+null,
+null
+],
+[
+32.83,
+0.943,
+null,
+null
+]
+],
+"events": 72,
+"median_days": 0.32,
+"n": 81,
+"pooled": false,
+"reach_days": 32.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "11",
+"subject": "MELC"
+},
+"MELC 117AC": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.234,
+null,
+null
+],
+[
+1.0,
+0.354,
+null,
+null
+],
+[
+2.0,
+0.481,
+null,
+null
+],
+[
+3.0,
+0.522,
+null,
+null
+],
+[
+4.0,
+0.565,
+null,
+null
+],
+[
+5.0,
+0.652,
+null,
+null
+],
+[
+6.0,
+0.723,
+null,
+null
+],
+[
+7.0,
+0.75,
+null,
+null
+],
+[
+8.0,
+0.76,
+null,
+null
+],
+[
+9.0,
+0.791,
+null,
+null
+],
+[
+10.0,
+0.791,
+null,
+null
+],
+[
+12.0,
+0.823,
+null,
+null
+],
+[
+14.0,
+0.823,
+null,
+null
+],
+[
+16.0,
+0.871,
+null,
+null
+],
+[
+18.0,
+0.871,
+null,
+null
+],
+[
+21.0,
+0.871,
+null,
+null
+],
+[
+22.27,
+0.871,
+null,
+null
+]
+],
+"events": 126,
+"median_days": 2.25,
+"n": 171,
+"pooled": false,
+"reach_days": 22.3,
+"sections": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "117AC",
+"subject": "MELC"
+},
+"MELC 126": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.085,
+null,
+null
+],
+[
+1.0,
+0.085,
+null,
+null
+],
+[
+2.0,
+0.135,
+null,
+null
+],
+[
+3.0,
+0.197,
+null,
+null
+],
+[
+4.0,
+0.246,
+null,
+null
+],
+[
+5.0,
+0.283,
+null,
+null
+],
+[
+6.0,
+0.337,
+null,
+null
+],
+[
+7.0,
+0.368,
+null,
+null
+],
+[
+8.0,
+0.391,
+null,
+null
+],
+[
+9.0,
+0.399,
+null,
+null
+],
+[
+10.0,
+0.407,
+null,
+null
+],
+[
+12.0,
+0.424,
+null,
+null
+],
+[
+14.0,
+0.444,
+null,
+null
+],
+[
+16.0,
+0.444,
+null,
+null
+],
+[
+18.0,
+0.444,
+null,
+null
+],
+[
+21.0,
+0.444,
+null,
+null
+],
+[
+24.0,
+0.444,
+null,
+null
+],
+[
+28.0,
+0.444,
+null,
+null
+],
+[
+32.0,
+0.444,
+null,
+null
+],
+[
+36.0,
+0.444,
+null,
+null
+],
+[
+42.0,
+0.444,
+null,
+null
+],
+[
+49.0,
+0.444,
+null,
+null
+],
+[
+56.0,
+0.444,
+null,
+null
+],
+[
+63.0,
+0.444,
+null,
+null
+],
+[
+70.0,
+0.444,
+null,
+null
+],
+[
+77.0,
+0.444,
+null,
+null
+],
+[
+79.75,
+0.444,
+null,
+null
+]
+],
+"events": 63,
+"median_days": null,
+"n": 167,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.034,
+null,
+null
+],
+[
+10.0,
+0.103,
+null,
+null
+],
+[
+12.0,
+0.248,
+null,
+null
+],
+[
+14.0,
+0.292,
+null,
+null
+],
+[
+16.0,
+0.339,
+null,
+null
+],
+[
+18.0,
+0.339,
+null,
+null
+],
+[
+21.0,
+0.339,
+null,
+null
+],
+[
+24.0,
+0.339,
+null,
+null
+],
+[
+28.0,
+0.339,
+null,
+null
+],
+[
+32.0,
+0.339,
+null,
+null
+],
+[
+35.9,
+0.339,
+null,
+null
+]
+],
+"events": 9,
+"median_days": null,
+"n": 44,
+"pooled": false,
+"reach_days": 35.9,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "126",
 "subject": "MELC"
 },
 "MELC 145": {
@@ -465,110 +592,176 @@ null
 "curve": [
 [
 0.5,
-0.166,
+0.118,
 null,
 null
 ],
 [
 1.0,
-0.232,
+0.118,
 null,
 null
 ],
 [
 2.0,
-0.328,
+0.209,
 null,
 null
 ],
 [
 3.0,
-0.358,
+0.355,
 null,
 null
 ],
 [
 4.0,
-0.358,
+0.448,
 null,
 null
 ],
 [
 5.0,
-0.358,
+0.448,
 null,
 null
 ],
 [
 6.0,
-0.358,
+0.448,
 null,
 null
 ],
 [
 7.0,
-0.358,
+0.462,
 null,
 null
 ],
 [
 8.0,
-0.358,
+0.517,
 null,
 null
 ],
 [
 9.0,
-0.358,
+0.586,
 null,
 null
 ],
 [
 10.0,
-0.358,
+0.586,
 null,
 null
 ],
 [
 12.0,
-0.358,
+0.586,
 null,
 null
 ],
 [
 14.0,
-0.358,
+0.586,
 null,
 null
 ],
 [
 16.0,
-0.358,
+0.603,
 null,
 null
 ],
 [
 18.0,
-0.358,
+0.603,
 null,
 null
 ],
 [
-18.44,
-0.358,
+21.0,
+0.603,
+null,
+null
+],
+[
+24.0,
+0.603,
+null,
+null
+],
+[
+28.0,
+0.603,
+null,
+null
+],
+[
+32.0,
+0.603,
+null,
+null
+],
+[
+36.0,
+0.603,
+null,
+null
+],
+[
+42.0,
+0.603,
+null,
+null
+],
+[
+49.0,
+0.603,
+null,
+null
+],
+[
+56.0,
+0.603,
+null,
+null
+],
+[
+63.0,
+0.603,
+null,
+null
+],
+[
+70.0,
+0.603,
+null,
+null
+],
+[
+77.0,
+0.603,
+null,
+null
+],
+[
+79.75,
+0.603,
 null,
 null
 ]
 ],
-"events": 27,
-"median_days": null,
-"n": 81,
+"events": 55,
+"median_days": 7.61,
+"n": 102,
 "pooled": false,
-"reach_days": 18.4,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 3,
+"n_course": 10,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -584,200 +777,290 @@ null
 "curve": [
 [
 0.5,
-0.199,
+0.114,
 null,
 null
 ],
 [
 1.0,
-0.25,
+0.188,
 null,
 null
 ],
 [
 2.0,
-0.41,
+0.281,
 null,
 null
 ],
 [
 3.0,
-0.562,
+0.373,
 null,
 null
 ],
 [
 4.0,
-0.603,
+0.42,
 null,
 null
 ],
 [
 5.0,
-0.647,
+0.463,
 null,
 null
 ],
 [
 6.0,
-0.669,
+0.497,
 null,
 null
 ],
 [
 7.0,
-0.691,
+0.54,
 null,
 null
 ],
 [
 8.0,
-0.702,
+0.57,
 null,
 null
 ],
 [
 9.0,
-0.721,
+0.57,
 null,
 null
 ],
 [
 10.0,
-0.742,
+0.585,
 null,
 null
 ],
 [
 12.0,
-0.742,
+0.594,
 null,
 null
 ],
 [
 14.0,
-0.925,
+0.713,
 null,
 null
 ],
 [
 16.0,
-0.925,
+0.841,
 null,
 null
 ],
 [
-17.21,
-1.0,
+18.0,
+0.875,
+null,
+null
+],
+[
+21.0,
+0.886,
+null,
+null
+],
+[
+24.0,
+0.886,
+null,
+null
+],
+[
+28.0,
+0.886,
+null,
+null
+],
+[
+32.0,
+0.886,
+null,
+null
+],
+[
+36.0,
+0.886,
+null,
+null
+],
+[
+42.0,
+0.886,
+null,
+null
+],
+[
+49.0,
+0.886,
+null,
+null
+],
+[
+56.0,
+0.886,
+null,
+null
+],
+[
+63.0,
+0.886,
+null,
+null
+],
+[
+70.0,
+0.886,
+null,
+null
+],
+[
+77.0,
+0.886,
+null,
+null
+],
+[
+79.75,
+0.886,
 null,
 null
 ]
 ],
-"events": 87,
-"median_days": 2.35,
-"n": 127,
+"events": 132,
+"median_days": 6.1,
+"n": 194,
 "pooled": false,
-"reach_days": 17.2,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.061,
+0.0,
 null,
 null
 ],
 [
 1.0,
-0.091,
+0.027,
 null,
 null
 ],
 [
 2.0,
-0.184,
+0.225,
 null,
 null
 ],
 [
 3.0,
-0.217,
+0.314,
 null,
 null
 ],
 [
 4.0,
-0.217,
+0.44,
 null,
 null
 ],
 [
 5.0,
-0.288,
+0.514,
 null,
 null
 ],
 [
 6.0,
-0.288,
+0.653,
 null,
 null
 ],
 [
 7.0,
-0.288,
+0.723,
 null,
 null
 ],
 [
 8.0,
-0.288,
+0.792,
 null,
 null
 ],
 [
 9.0,
-0.288,
+0.792,
 null,
 null
 ],
 [
 10.0,
-0.288,
+0.792,
 null,
 null
 ],
 [
 12.0,
-0.288,
+0.792,
 null,
 null
 ],
 [
 14.0,
-0.763,
+0.792,
 null,
 null
 ],
 [
 16.0,
-0.763,
+0.792,
 null,
 null
 ],
 [
-17.21,
-1.0,
+18.0,
+0.792,
+null,
+null
+],
+[
+21.0,
+0.792,
+null,
+null
+],
+[
+24.0,
+0.792,
+null,
+null
+],
+[
+25.25,
+0.792,
 null,
 null
 ]
 ],
-"events": 15,
-"median_days": 13.14,
-"n": 33,
+"events": 21,
+"median_days": 4.69,
+"n": 38,
 "pooled": false,
-"reach_days": 17.2,
+"reach_days": 25.2,
 "sections": 1
 }
 },
@@ -786,207 +1069,296 @@ null
 "number": "148",
 "subject": "MELC"
 },
-"MELC 157": {
-"buckets": {
-"1-5": {
-"n_course": 13,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "157",
-"subject": "MELC"
-},
 "MELC 158AC": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.168,
+0.089,
 null,
 null
 ],
 [
 1.0,
-0.261,
+0.138,
 null,
 null
 ],
 [
 2.0,
-0.43,
+0.195,
 null,
 null
 ],
 [
 3.0,
-0.529,
+0.299,
 null,
 null
 ],
 [
 4.0,
-0.57,
+0.33,
 null,
 null
 ],
 [
 5.0,
-0.601,
+0.356,
 null,
 null
 ],
 [
 6.0,
-0.656,
+0.401,
 null,
 null
 ],
 [
 7.0,
-0.719,
+0.455,
 null,
 null
 ],
 [
 8.0,
-0.795,
+0.474,
 null,
 null
 ],
 [
 9.0,
-0.85,
+0.503,
 null,
 null
 ],
 [
 10.0,
-0.918,
+0.503,
 null,
 null
 ],
 [
 12.0,
-0.959,
+0.503,
 null,
 null
 ],
 [
-13.14,
-1.0,
+14.0,
+0.515,
+null,
+null
+],
+[
+16.0,
+0.515,
+null,
+null
+],
+[
+18.0,
+0.515,
+null,
+null
+],
+[
+21.0,
+0.515,
+null,
+null
+],
+[
+24.0,
+0.515,
+null,
+null
+],
+[
+28.0,
+0.515,
+null,
+null
+],
+[
+32.0,
+0.515,
+null,
+null
+],
+[
+36.0,
+0.515,
+null,
+null
+],
+[
+42.0,
+0.515,
+null,
+null
+],
+[
+49.0,
+0.515,
+null,
+null
+],
+[
+56.0,
+0.515,
+null,
+null
+],
+[
+63.0,
+0.515,
+null,
+null
+],
+[
+70.0,
+0.515,
+null,
+null
+],
+[
+77.0,
+0.515,
+null,
+null
+],
+[
+79.75,
+0.515,
 null,
 null
 ]
 ],
-"events": 186,
-"median_days": 2.35,
-"n": 241,
+"events": 67,
+"median_days": 8.7,
+"n": 159,
 "pooled": false,
-"reach_days": 13.1,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.027,
+0.02,
 null,
 null
 ],
 [
 1.0,
-0.054,
+0.067,
 null,
 null
 ],
 [
 2.0,
-0.148,
+0.114,
 null,
 null
 ],
 [
 3.0,
-0.235,
+0.265,
 null,
 null
 ],
 [
 4.0,
-0.279,
+0.35,
 null,
 null
 ],
 [
 5.0,
-0.357,
+0.35,
 null,
 null
 ],
 [
 6.0,
-0.415,
+0.418,
 null,
 null
 ],
 [
 7.0,
-0.487,
+0.418,
 null,
 null
 ],
 [
 8.0,
-0.588,
+0.496,
 null,
 null
 ],
 [
 9.0,
-0.702,
+0.496,
 null,
 null
 ],
 [
 10.0,
-0.827,
+0.496,
 null,
 null
 ],
 [
 12.0,
-0.865,
+0.496,
 null,
 null
 ],
 [
 14.0,
-0.962,
+0.496,
 null,
 null
 ],
 [
 16.0,
-0.981,
+0.496,
 null,
 null
 ],
 [
-17.21,
-1.0,
+18.0,
+0.496,
+null,
+null
+],
+[
+21.0,
+0.496,
+null,
+null
+],
+[
+24.0,
+0.496,
+null,
+null
+],
+[
+25.37,
+0.496,
 null,
 null
 ]
 ],
-"events": 80,
-"median_days": 7.34,
-"n": 112,
+"events": 18,
+"median_days": null,
+"n": 51,
 "pooled": false,
-"reach_days": 17.2,
+"reach_days": 25.4,
 "sections": 1
 }
 },
@@ -995,147 +1367,7 @@ null
 "number": "158AC",
 "subject": "MELC"
 },
-"MELC 34": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.179,
-null,
-null
-],
-[
-1.0,
-0.238,
-null,
-null
-],
-[
-2.0,
-0.36,
-null,
-null
-],
-[
-3.0,
-0.488,
-null,
-null
-],
-[
-4.0,
-0.584,
-null,
-null
-],
-[
-5.0,
-0.616,
-null,
-null
-],
-[
-6.0,
-0.68,
-null,
-null
-],
-[
-7.0,
-0.751,
-null,
-null
-],
-[
-8.0,
-0.822,
-null,
-null
-],
-[
-9.0,
-0.822,
-null,
-null
-],
-[
-10.0,
-0.822,
-null,
-null
-],
-[
-12.0,
-0.822,
-null,
-null
-],
-[
-14.0,
-0.881,
-null,
-null
-],
-[
-16.0,
-0.881,
-null,
-null
-],
-[
-18.0,
-0.881,
-null,
-null
-],
-[
-18.21,
-0.881,
-null,
-null
-]
-],
-"events": 28,
-"median_days": 3.35,
-"n": 39,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "34",
-"subject": "MELC"
-},
-"MELC 39A": {
-"buckets": {
-"1-5": {
-"n_course": 11,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "39A",
-"subject": "MELC"
-},
-"MELC C121": {
-"buckets": {
-"1-5": {
-"n_course": 26,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C121",
-"subject": "MELC"
-},
-"MELC C26": {
+"MELC 165": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -1147,243 +1379,692 @@ null
 ],
 [
 1.0,
-0.082,
+0.112,
 null,
 null
 ],
 [
 2.0,
-0.123,
+0.157,
 null,
 null
 ],
 [
 3.0,
-0.152,
+0.189,
 null,
 null
 ],
 [
 4.0,
-0.175,
+0.251,
 null,
 null
 ],
 [
 5.0,
-0.175,
+0.32,
 null,
 null
 ],
 [
 6.0,
-0.184,
+0.381,
 null,
 null
 ],
 [
 7.0,
-0.184,
+0.402,
 null,
 null
 ],
 [
 8.0,
-0.193,
+0.423,
 null,
 null
 ],
 [
 9.0,
-0.203,
+0.458,
 null,
 null
 ],
 [
 10.0,
-0.203,
+0.497,
 null,
 null
 ],
 [
 12.0,
-0.203,
+0.497,
 null,
 null
 ],
 [
 14.0,
-0.203,
+0.588,
 null,
 null
 ],
 [
 16.0,
-0.203,
+0.611,
 null,
 null
 ],
 [
 18.0,
-0.203,
+0.731,
 null,
 null
 ],
 [
 21.0,
-0.203,
+0.731,
 null,
 null
 ],
 [
 24.0,
-0.203,
+0.808,
 null,
 null
 ],
 [
 28.0,
-0.203,
+0.808,
 null,
 null
 ],
 [
-30.81,
-0.203,
+32.0,
+0.808,
+null,
+null
+],
+[
+32.18,
+0.808,
 null,
 null
 ]
 ],
-"events": 29,
-"median_days": null,
-"n": 162,
+"events": 69,
+"median_days": 12.47,
+"n": 160,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 32.2,
 "sections": 1
 },
 "6-15": {
-"n_course": 24,
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "165",
+"subject": "MELC"
+},
+"MELC 175": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.111,
+null,
+null
+],
+[
+1.0,
+0.18,
+null,
+null
+],
+[
+2.0,
+0.24,
+null,
+null
+],
+[
+3.0,
+0.329,
+null,
+null
+],
+[
+4.0,
+0.405,
+null,
+null
+],
+[
+5.0,
+0.482,
+null,
+null
+],
+[
+6.0,
+0.524,
+null,
+null
+],
+[
+7.0,
+0.577,
+null,
+null
+],
+[
+8.0,
+0.641,
+null,
+null
+],
+[
+9.0,
+0.678,
+null,
+null
+],
+[
+10.0,
+0.678,
+null,
+null
+],
+[
+12.0,
+0.69,
+null,
+null
+],
+[
+14.0,
+0.709,
+null,
+null
+],
+[
+16.0,
+0.748,
+null,
+null
+],
+[
+18.0,
+0.748,
+null,
+null
+],
+[
+21.0,
+0.748,
+null,
+null
+],
+[
+24.0,
+0.748,
+null,
+null
+],
+[
+25.37,
+0.748,
+null,
+null
+]
+],
+"events": 98,
+"median_days": 5.05,
+"n": 174,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+},
+"6-15": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "175",
+"subject": "MELC"
+},
+"MELC 18": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.38,
+null,
+null
+],
+[
+1.0,
+0.555,
+null,
+null
+],
+[
+2.0,
+0.733,
+null,
+null
+],
+[
+3.0,
+0.775,
+null,
+null
+],
+[
+4.0,
+0.827,
+null,
+null
+],
+[
+5.0,
+0.881,
+null,
+null
+],
+[
+6.0,
+0.881,
+null,
+null
+],
+[
+7.0,
+0.893,
+null,
+null
+],
+[
+8.0,
+0.916,
+null,
+null
+],
+[
+9.0,
+0.916,
+null,
+null
+],
+[
+10.0,
+0.916,
+null,
+null
+],
+[
+12.0,
+0.916,
+null,
+null
+],
+[
+14.0,
+0.916,
+null,
+null
+],
+[
+16.0,
+0.916,
+null,
+null
+],
+[
+18.0,
+0.916,
+null,
+null
+],
+[
+20.86,
+0.916,
+null,
+null
+]
+],
+"events": 157,
+"median_days": 0.78,
+"n": 188,
+"pooled": false,
+"reach_days": 20.9,
+"sections": 1
+},
+"6-15": {
+"n_course": 29,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "C26",
+"number": "18",
 "subject": "MELC"
 },
-"MELC R1A": {
+"MELC 180": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.045,
+0.301,
 null,
 null
 ],
 [
 1.0,
-0.076,
+0.479,
 null,
 null
 ],
 [
 2.0,
-0.109,
+0.767,
 null,
 null
 ],
 [
 3.0,
-0.109,
+0.836,
 null,
 null
 ],
 [
 4.0,
-0.109,
+0.904,
 null,
 null
 ],
 [
 5.0,
-0.109,
+0.973,
 null,
 null
 ],
 [
 6.0,
-0.109,
+0.973,
 null,
 null
 ],
 [
 7.0,
-0.109,
+0.973,
 null,
 null
 ],
 [
 8.0,
-0.109,
+0.973,
 null,
 null
 ],
 [
 9.0,
-0.109,
+0.973,
 null,
 null
 ],
 [
 10.0,
-0.109,
+0.973,
 null,
 null
 ],
 [
 12.0,
-0.208,
+0.973,
 null,
 null
 ],
 [
 14.0,
-0.208,
+0.973,
 null,
 null
 ],
 [
 16.0,
-0.208,
+0.973,
 null,
 null
 ],
 [
 18.0,
-0.208,
+0.973,
 null,
 null
 ],
 [
-18.42,
-0.208,
+19.8,
+0.973,
 null,
 null
 ]
 ],
-"events": 5,
-"median_days": null,
-"n": 44,
+"events": 71,
+"median_days": 1.06,
+"n": 73,
 "pooled": false,
-"reach_days": 18.4,
+"reach_days": 19.8,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
-"level": "lower",
-"number": "R1A",
+"level": "upper",
+"number": "180",
+"subject": "MELC"
+},
+"MELC 298": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.098,
+0.094,
+0.105
+],
+[
+1.0,
+0.157,
+0.105,
+0.188
+],
+[
+2.0,
+0.217,
+0.105,
+0.285
+],
+[
+3.0,
+0.217,
+0.105,
+0.285
+],
+[
+4.0,
+0.217,
+0.105,
+0.285
+],
+[
+5.0,
+0.217,
+0.105,
+0.285
+],
+[
+6.0,
+0.217,
+0.105,
+0.285
+],
+[
+7.0,
+0.217,
+0.105,
+0.285
+],
+[
+8.0,
+0.217,
+0.105,
+0.285
+],
+[
+9.0,
+0.243,
+0.161,
+0.285
+],
+[
+10.0,
+0.243,
+0.161,
+0.285
+],
+[
+12.0,
+0.243,
+0.161,
+0.285
+],
+[
+14.0,
+0.271,
+0.221,
+0.285
+],
+[
+16.0,
+0.271,
+0.221,
+0.285
+],
+[
+18.0,
+0.271,
+0.221,
+0.285
+],
+[
+21.0,
+0.271,
+0.221,
+0.285
+],
+[
+24.0,
+0.271,
+0.221,
+0.285
+],
+[
+28.0,
+0.271,
+0.221,
+0.285
+],
+[
+32.0,
+0.271,
+0.221,
+0.285
+],
+[
+36.0,
+0.271,
+0.221,
+0.285
+],
+[
+42.0,
+0.271,
+0.221,
+0.285
+],
+[
+49.0,
+0.271,
+0.221,
+0.285
+],
+[
+56.0,
+0.271,
+0.221,
+0.285
+],
+[
+63.0,
+0.271,
+0.221,
+0.285
+],
+[
+70.0,
+0.271,
+0.221,
+0.285
+],
+[
+77.0,
+0.271,
+0.221,
+0.285
+],
+[
+79.75,
+0.271,
+0.221,
+0.285
+]
+],
+"events": 13,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "298",
+"subject": "MELC"
+},
+"MELC C120B": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C120B",
 "subject": "MELC"
 },
 "MELC R1B": {
@@ -1392,107 +2073,173 @@ null
 "curve": [
 [
 0.5,
-0.104,
-0.067,
-0.14
+0.045,
+0.0,
+0.1
 ],
 [
 1.0,
-0.114,
-0.067,
-0.164
+0.045,
+0.0,
+0.1
 ],
 [
 2.0,
-0.175,
-0.101,
-0.274
+0.045,
+0.0,
+0.1
 ],
 [
 3.0,
-0.187,
-0.101,
-0.319
+0.068,
+0.0,
+0.15
 ],
 [
 4.0,
-0.211,
-0.116,
-0.319
+0.068,
+0.0,
+0.15
 ],
 [
 5.0,
-0.211,
-0.116,
-0.319
+0.068,
+0.0,
+0.15
 ],
 [
 6.0,
-0.211,
-0.116,
-0.319
+0.068,
+0.0,
+0.15
 ],
 [
 7.0,
-0.211,
-0.116,
-0.319
+0.09,
+0.0,
+0.2
 ],
 [
 8.0,
-0.228,
-0.116,
-0.372
+0.09,
+0.0,
+0.2
 ],
 [
 9.0,
-0.228,
-0.116,
-0.372
+0.09,
+0.0,
+0.2
 ],
 [
 10.0,
-0.228,
-0.116,
-0.372
+0.09,
+0.0,
+0.2
 ],
 [
 12.0,
-0.253,
-0.116,
-0.442
+0.09,
+0.0,
+0.2
 ],
 [
 14.0,
-0.253,
-0.116,
-0.442
+0.09,
+0.0,
+0.2
 ],
 [
 16.0,
-0.253,
-0.116,
-0.442
+0.09,
+0.0,
+0.2
 ],
 [
 18.0,
-0.253,
-0.116,
-0.442
+0.09,
+0.0,
+0.2
 ],
 [
-18.42,
-0.253,
-0.116,
-0.442
+21.0,
+0.09,
+0.0,
+0.2
+],
+[
+24.0,
+0.09,
+0.0,
+0.2
+],
+[
+28.0,
+0.09,
+0.0,
+0.2
+],
+[
+32.0,
+0.09,
+0.0,
+0.2
+],
+[
+36.0,
+0.09,
+0.0,
+0.2
+],
+[
+42.0,
+0.09,
+0.0,
+0.2
+],
+[
+49.0,
+0.09,
+0.0,
+0.2
+],
+[
+56.0,
+0.09,
+0.0,
+0.2
+],
+[
+63.0,
+0.09,
+0.0,
+0.2
+],
+[
+70.0,
+0.09,
+0.0,
+0.2
+],
+[
+77.0,
+0.09,
+0.0,
+0.2
+],
+[
+79.75,
+0.09,
+0.0,
+0.2
 ]
 ],
-"events": 23,
+"events": 4,
 "median_days": null,
-"n": 107,
+"n": 45,
 "pooled": false,
-"reach_days": 18.4,
-"sections": 5
+"reach_days": 79.7,
+"sections": 2
 }
 },
 "dept_group": "OTHER",
@@ -1502,5 +2249,5 @@ null
 }
 },
 "subject": "MELC",
-"term_id": "2268"
+"term_id": "2262"
 }

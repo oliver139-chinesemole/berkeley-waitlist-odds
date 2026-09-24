@@ -1,253 +1,593 @@
 {
 "courses": {
-"DESINV 15": {
+"DESINV 10": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.21,
+0.314,
 null,
 null
 ],
 [
 1.0,
-0.262,
+0.448,
 null,
 null
 ],
 [
 2.0,
-0.38,
+0.592,
 null,
 null
 ],
 [
 3.0,
-0.428,
+0.651,
 null,
 null
 ],
 [
 4.0,
-0.481,
+0.712,
 null,
 null
 ],
 [
 5.0,
-0.53,
+0.73,
 null,
 null
 ],
 [
 6.0,
-0.586,
+0.753,
 null,
 null
 ],
 [
 7.0,
-0.654,
+0.785,
 null,
 null
 ],
 [
 8.0,
-0.703,
+0.801,
 null,
 null
 ],
 [
 9.0,
-0.735,
+0.806,
 null,
 null
 ],
 [
 10.0,
-0.772,
+0.818,
 null,
 null
 ],
 [
 12.0,
-0.836,
+0.838,
 null,
 null
 ],
 [
 14.0,
-0.864,
+0.848,
 null,
 null
 ],
 [
 16.0,
-0.906,
+0.848,
 null,
 null
 ],
 [
 18.0,
-0.906,
+0.848,
 null,
 null
 ],
 [
 21.0,
-0.921,
+0.848,
 null,
 null
 ],
 [
 24.0,
-0.921,
+0.848,
 null,
 null
 ],
 [
 28.0,
-0.921,
+0.848,
 null,
 null
 ],
 [
-30.81,
-0.921,
+32.0,
+0.848,
+null,
+null
+],
+[
+36.0,
+0.848,
+null,
+null
+],
+[
+42.0,
+0.848,
+null,
+null
+],
+[
+49.0,
+0.848,
+null,
+null
+],
+[
+56.0,
+0.848,
+null,
+null
+],
+[
+63.0,
+0.848,
+null,
+null
+],
+[
+70.0,
+0.848,
+null,
+null
+],
+[
+77.0,
+0.848,
+null,
+null
+],
+[
+79.75,
+0.848,
 null,
 null
 ]
 ],
-"events": 264,
-"median_days": 4.29,
-"n": 345,
+"events": 236,
+"median_days": 1.24,
+"n": 302,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.035,
+0.085,
 null,
 null
 ],
 [
 1.0,
-0.05,
+0.12,
 null,
 null
 ],
 [
 2.0,
-0.071,
+0.241,
 null,
 null
 ],
 [
 3.0,
-0.093,
+0.319,
 null,
 null
 ],
 [
 4.0,
-0.1,
+0.355,
 null,
 null
 ],
 [
 5.0,
-0.139,
+0.382,
 null,
 null
 ],
 [
 6.0,
-0.172,
+0.442,
 null,
 null
 ],
 [
 7.0,
-0.205,
+0.453,
 null,
 null
 ],
 [
 8.0,
-0.218,
+0.476,
 null,
 null
 ],
 [
 9.0,
-0.232,
+0.511,
 null,
 null
 ],
 [
 10.0,
-0.24,
+0.525,
 null,
 null
 ],
 [
 12.0,
-0.307,
+0.597,
 null,
 null
 ],
 [
 14.0,
-0.38,
+0.634,
 null,
 null
 ],
 [
 16.0,
-0.448,
+0.695,
 null,
 null
 ],
 [
 18.0,
-0.47,
+0.695,
 null,
 null
 ],
 [
 21.0,
-0.47,
+0.695,
 null,
 null
 ],
 [
 24.0,
-0.51,
+0.695,
+null,
+null
+],
+[
+25.37,
+0.695,
+null,
+null
+]
+],
+"events": 63,
+"median_days": 8.89,
+"n": 122,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "DESINV"
+},
+"DESINV 15": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.246,
+null,
+null
+],
+[
+1.0,
+0.34,
+null,
+null
+],
+[
+2.0,
+0.413,
+null,
+null
+],
+[
+3.0,
+0.501,
+null,
+null
+],
+[
+4.0,
+0.598,
+null,
+null
+],
+[
+5.0,
+0.657,
+null,
+null
+],
+[
+6.0,
+0.733,
+null,
+null
+],
+[
+7.0,
+0.79,
+null,
+null
+],
+[
+8.0,
+0.824,
+null,
+null
+],
+[
+9.0,
+0.855,
+null,
+null
+],
+[
+10.0,
+0.873,
+null,
+null
+],
+[
+12.0,
+0.9,
+null,
+null
+],
+[
+14.0,
+0.922,
+null,
+null
+],
+[
+16.0,
+0.922,
+null,
+null
+],
+[
+18.0,
+0.922,
+null,
+null
+],
+[
+21.0,
+0.933,
+null,
+null
+],
+[
+24.0,
+0.933,
 null,
 null
 ],
 [
 28.0,
-0.589,
+0.933,
 null,
 null
 ],
 [
-30.81,
-0.589,
+32.0,
+0.933,
+null,
+null
+],
+[
+36.0,
+0.933,
+null,
+null
+],
+[
+42.0,
+0.933,
+null,
+null
+],
+[
+49.0,
+0.933,
+null,
+null
+],
+[
+56.0,
+0.933,
+null,
+null
+],
+[
+63.0,
+0.933,
+null,
+null
+],
+[
+70.0,
+0.933,
+null,
+null
+],
+[
+77.0,
+0.933,
+null,
+null
+],
+[
+79.75,
+0.933,
 null,
 null
 ]
 ],
-"events": 71,
-"median_days": 23.18,
-"n": 205,
+"events": 281,
+"median_days": 2.96,
+"n": 355,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.038,
+null,
+null
+],
+[
+1.0,
+0.094,
+null,
+null
+],
+[
+2.0,
+0.139,
+null,
+null
+],
+[
+3.0,
+0.151,
+null,
+null
+],
+[
+4.0,
+0.202,
+null,
+null
+],
+[
+5.0,
+0.241,
+null,
+null
+],
+[
+6.0,
+0.343,
+null,
+null
+],
+[
+7.0,
+0.365,
+null,
+null
+],
+[
+8.0,
+0.407,
+null,
+null
+],
+[
+9.0,
+0.45,
+null,
+null
+],
+[
+10.0,
+0.531,
+null,
+null
+],
+[
+12.0,
+0.675,
+null,
+null
+],
+[
+14.0,
+0.748,
+null,
+null
+],
+[
+16.0,
+0.748,
+null,
+null
+],
+[
+18.0,
+0.798,
+null,
+null
+],
+[
+21.0,
+0.865,
+null,
+null
+],
+[
+24.0,
+0.933,
+null,
+null
+],
+[
+25.37,
+0.933,
+null,
+null
+]
+],
+"events": 98,
+"median_days": 9.79,
+"n": 188,
+"pooled": false,
+"reach_days": 25.4,
 "sections": 1
 }
 },
@@ -259,14 +599,318 @@ null
 "DESINV 190": {
 "buckets": {
 "1-5": {
-"n_course": 24,
+"curve": [
+[
+0.5,
+0.104,
+null,
+null
+],
+[
+1.0,
+0.144,
+null,
+null
+],
+[
+2.0,
+0.266,
+null,
+null
+],
+[
+3.0,
+0.384,
+null,
+null
+],
+[
+4.0,
+0.422,
+null,
+null
+],
+[
+5.0,
+0.422,
+null,
+null
+],
+[
+6.0,
+0.463,
+null,
+null
+],
+[
+7.0,
+0.541,
+null,
+null
+],
+[
+8.0,
+0.588,
+null,
+null
+],
+[
+9.0,
+0.625,
+null,
+null
+],
+[
+10.0,
+0.653,
+null,
+null
+],
+[
+12.0,
+0.674,
+null,
+null
+],
+[
+14.0,
+0.713,
+null,
+null
+],
+[
+16.0,
+0.753,
+null,
+null
+],
+[
+18.0,
+0.753,
+null,
+null
+],
+[
+21.0,
+0.753,
+null,
+null
+],
+[
+24.0,
+0.753,
+null,
+null
+],
+[
+28.0,
+0.753,
+null,
+null
+],
+[
+32.0,
+0.753,
+null,
+null
+],
+[
+36.0,
+0.753,
+null,
+null
+],
+[
+42.0,
+0.753,
+null,
+null
+],
+[
+49.0,
+0.753,
+null,
+null
+],
+[
+56.0,
+0.753,
+null,
+null
+],
+[
+63.0,
+0.753,
+null,
+null
+],
+[
+70.0,
+0.753,
+null,
+null
+],
+[
+77.0,
+0.753,
+null,
+null
+],
+[
+79.75,
+0.753,
+null,
+null
+]
+],
+"events": 95,
+"median_days": 6.29,
+"n": 158,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.029,
+null,
+null
+],
+[
+4.0,
+0.029,
+null,
+null
+],
+[
+5.0,
+0.029,
+null,
+null
+],
+[
+6.0,
+0.063,
+null,
+null
+],
+[
+7.0,
+0.099,
+null,
+null
+],
+[
+8.0,
+0.138,
+null,
+null
+],
+[
+9.0,
+0.216,
+null,
+null
+],
+[
+10.0,
+0.295,
+null,
+null
+],
+[
+12.0,
+0.295,
+null,
+null
+],
+[
+14.0,
+0.496,
+null,
+null
+],
+[
+16.0,
+0.496,
+null,
+null
+],
+[
+18.0,
+0.496,
+null,
+null
+],
+[
+21.0,
+0.496,
+null,
+null
+],
+[
+24.0,
+0.496,
+null,
+null
+],
+[
+28.0,
+0.496,
+null,
+null
+],
+[
+28.36,
+0.496,
+null,
+null
+]
+],
+"events": 10,
+"median_days": null,
+"n": 46,
+"pooled": false,
+"reach_days": 28.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "DESINV"
+},
+"DESINV 190E": {
+"buckets": {
+"1-5": {
+"n_course": 19,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "190",
+"number": "190E",
 "subject": "DESINV"
 },
 "DESINV 195": {
@@ -275,136 +919,172 @@ null
 "curve": [
 [
 0.5,
-0.0,
+0.103,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.103,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.151,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.194,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.257,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.304,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.364,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.383,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.426,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.469,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.557,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.675,
 null,
 null
 ],
 [
 14.0,
-0.0,
+0.702,
 null,
 null
 ],
 [
 16.0,
-0.0,
+0.769,
 null,
 null
 ],
 [
 18.0,
-0.0,
+0.825,
 null,
 null
 ],
 [
 21.0,
-0.0,
+0.825,
 null,
 null
 ],
 [
 24.0,
-0.0,
+0.847,
 null,
 null
 ],
 [
 28.0,
-0.0,
+0.847,
 null,
 null
 ],
 [
 32.0,
-0.0,
+0.847,
 null,
 null
 ],
 [
 36.0,
-0.0,
+0.847,
 null,
 null
 ],
 [
-38.06,
-0.0,
+42.0,
+0.847,
+null,
+null
+],
+[
+49.0,
+0.847,
+null,
+null
+],
+[
+56.0,
+0.847,
+null,
+null
+],
+[
+63.0,
+0.847,
+null,
+null
+],
+[
+70.0,
+0.847,
+null,
+null
+],
+[
+77.0,
+0.847,
+null,
+null
+],
+[
+79.75,
+0.847,
 null,
 null
 ]
 ],
-"events": 0,
-"median_days": null,
-"n": 31,
+"events": 81,
+"median_days": 9.48,
+"n": 139,
 "pooled": false,
-"reach_days": 38.1,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -413,174 +1093,184 @@ null
 "number": "195",
 "subject": "DESINV"
 },
-"DESINV 198": {
-"buckets": {
-"1-5": {
-"n_course": 9,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "198",
-"subject": "DESINV"
-},
-"DESINV 200": {
-"buckets": {
-"1-5": {
-"n_course": 22,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "200",
-"subject": "DESINV"
-},
-"DESINV 202": {
+"DESINV 201": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 1.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 2.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 3.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 4.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 5.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 6.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 7.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 8.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 9.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 10.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 12.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 14.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 16.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 18.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 21.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 24.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 28.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 32.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
 36.0,
 0.0,
-0.0,
-0.0
+null,
+null
 ],
 [
-38.06,
+42.0,
 0.0,
+null,
+null
+],
+[
+49.0,
 0.0,
-0.0
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
 ]
 ],
 "events": 0,
 "median_days": null,
-"n": 65,
+"n": 50,
 "pooled": false,
-"reach_days": 38.1,
-"sections": 4
+"reach_days": 79.7,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "202",
+"number": "201",
 "subject": "DESINV"
 },
 "DESINV 21": {
@@ -589,248 +1279,296 @@ null
 "curve": [
 [
 0.5,
-0.251,
+0.185,
 null,
 null
 ],
 [
 1.0,
-0.324,
+0.237,
 null,
 null
 ],
 [
 2.0,
-0.454,
+0.307,
 null,
 null
 ],
 [
 3.0,
-0.514,
+0.37,
 null,
 null
 ],
 [
 4.0,
-0.544,
+0.424,
 null,
 null
 ],
 [
 5.0,
-0.594,
+0.491,
 null,
 null
 ],
 [
 6.0,
-0.613,
+0.598,
 null,
 null
 ],
 [
 7.0,
-0.631,
+0.639,
 null,
 null
 ],
 [
 8.0,
-0.641,
+0.693,
 null,
 null
 ],
 [
 9.0,
-0.66,
+0.74,
 null,
 null
 ],
 [
 10.0,
-0.665,
+0.76,
 null,
 null
 ],
 [
 12.0,
-0.708,
+0.786,
 null,
 null
 ],
 [
 14.0,
-0.742,
+0.786,
 null,
 null
 ],
 [
 16.0,
-0.798,
+0.804,
 null,
 null
 ],
 [
 18.0,
-0.82,
+0.804,
 null,
 null
 ],
 [
 21.0,
-0.82,
+0.817,
 null,
 null
 ],
 [
 24.0,
-0.82,
+0.817,
 null,
 null
 ],
 [
 28.0,
-0.82,
+0.817,
 null,
 null
 ],
 [
-30.81,
-0.82,
+32.0,
+0.817,
+null,
+null
+],
+[
+36.0,
+0.817,
+null,
+null
+],
+[
+42.0,
+0.817,
+null,
+null
+],
+[
+49.0,
+0.817,
+null,
+null
+],
+[
+56.0,
+0.817,
+null,
+null
+],
+[
+63.0,
+0.817,
+null,
+null
+],
+[
+70.0,
+0.817,
+null,
+null
+],
+[
+77.0,
+0.817,
+null,
+null
+],
+[
+79.75,
+0.817,
 null,
 null
 ]
 ],
-"events": 186,
-"median_days": 2.84,
-"n": 275,
+"events": 160,
+"median_days": 5.17,
+"n": 244,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.035,
+0.017,
 null,
 null
 ],
 [
 1.0,
-0.042,
+0.044,
 null,
 null
 ],
 [
 2.0,
-0.093,
+0.044,
 null,
 null
 ],
 [
 3.0,
-0.167,
+0.044,
 null,
 null
 ],
 [
 4.0,
-0.24,
+0.044,
 null,
 null
 ],
 [
 5.0,
-0.294,
+0.107,
 null,
 null
 ],
 [
 6.0,
-0.356,
+0.186,
 null,
 null
 ],
 [
 7.0,
-0.356,
+0.224,
 null,
 null
 ],
 [
 8.0,
-0.356,
+0.262,
 null,
 null
 ],
 [
 9.0,
-0.356,
+0.342,
 null,
 null
 ],
 [
 10.0,
-0.356,
+0.407,
 null,
 null
 ],
 [
 12.0,
-0.392,
+0.54,
 null,
 null
 ],
 [
 14.0,
-0.438,
+0.586,
 null,
 null
 ],
 [
 16.0,
-0.481,
+0.635,
 null,
 null
 ],
 [
 18.0,
-0.527,
+0.726,
 null,
 null
 ],
 [
 21.0,
-0.527,
+0.726,
 null,
 null
 ],
 [
 24.0,
-0.527,
+0.726,
 null,
 null
 ],
 [
 28.0,
-0.527,
+0.726,
 null,
 null
 ],
 [
-30.81,
-0.527,
+28.25,
+0.726,
 null,
 null
 ]
 ],
-"events": 61,
-"median_days": 16.19,
-"n": 173,
+"events": 51,
+"median_days": 11.81,
+"n": 120,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 28.2,
 "sections": 1
 }
 },
@@ -839,7 +1577,7 @@ null
 "number": "21",
 "subject": "DESINV"
 },
-"DESINV 210": {
+"DESINV 211": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -964,7 +1702,43 @@ null
 0.0
 ],
 [
-38.06,
+42.0,
+0.0,
+0.0,
+0.0
+],
+[
+49.0,
+0.0,
+0.0,
+0.0
+],
+[
+56.0,
+0.0,
+0.0,
+0.0
+],
+[
+63.0,
+0.0,
+0.0,
+0.0
+],
+[
+70.0,
+0.0,
+0.0,
+0.0
+],
+[
+77.0,
+0.0,
+0.0,
+0.0
+],
+[
+79.75,
 0.0,
 0.0,
 0.0
@@ -972,18 +1746,794 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 77,
+"n": 71,
 "pooled": false,
-"reach_days": 38.1,
-"sections": 4
+"reach_days": 79.7,
+"sections": 2
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "210",
+"number": "211",
 "subject": "DESINV"
 },
-"DESINV 213": {
+"DESINV 219": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 50,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "219",
+"subject": "DESINV"
+},
+"DESINV 22": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.19,
+null,
+null
+],
+[
+1.0,
+0.239,
+null,
+null
+],
+[
+2.0,
+0.31,
+null,
+null
+],
+[
+3.0,
+0.361,
+null,
+null
+],
+[
+4.0,
+0.437,
+null,
+null
+],
+[
+5.0,
+0.523,
+null,
+null
+],
+[
+6.0,
+0.622,
+null,
+null
+],
+[
+7.0,
+0.683,
+null,
+null
+],
+[
+8.0,
+0.75,
+null,
+null
+],
+[
+9.0,
+0.762,
+null,
+null
+],
+[
+10.0,
+0.762,
+null,
+null
+],
+[
+12.0,
+0.808,
+null,
+null
+],
+[
+14.0,
+0.818,
+null,
+null
+],
+[
+16.0,
+0.839,
+null,
+null
+],
+[
+18.0,
+0.839,
+null,
+null
+],
+[
+21.0,
+0.839,
+null,
+null
+],
+[
+24.0,
+0.839,
+null,
+null
+],
+[
+28.0,
+0.839,
+null,
+null
+],
+[
+32.0,
+0.839,
+null,
+null
+],
+[
+36.0,
+0.839,
+null,
+null
+],
+[
+42.0,
+0.839,
+null,
+null
+],
+[
+49.0,
+0.839,
+null,
+null
+],
+[
+56.0,
+0.839,
+null,
+null
+],
+[
+63.0,
+0.839,
+null,
+null
+],
+[
+70.0,
+0.839,
+null,
+null
+],
+[
+77.0,
+0.839,
+null,
+null
+],
+[
+79.75,
+0.839,
+null,
+null
+]
+],
+"events": 175,
+"median_days": 4.96,
+"n": 264,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.015,
+null,
+null
+],
+[
+1.0,
+0.022,
+null,
+null
+],
+[
+2.0,
+0.03,
+null,
+null
+],
+[
+3.0,
+0.03,
+null,
+null
+],
+[
+4.0,
+0.047,
+null,
+null
+],
+[
+5.0,
+0.065,
+null,
+null
+],
+[
+6.0,
+0.145,
+null,
+null
+],
+[
+7.0,
+0.186,
+null,
+null
+],
+[
+8.0,
+0.229,
+null,
+null
+],
+[
+9.0,
+0.295,
+null,
+null
+],
+[
+10.0,
+0.349,
+null,
+null
+],
+[
+12.0,
+0.455,
+null,
+null
+],
+[
+14.0,
+0.577,
+null,
+null
+],
+[
+16.0,
+0.736,
+null,
+null
+],
+[
+18.0,
+0.736,
+null,
+null
+],
+[
+21.0,
+0.802,
+null,
+null
+],
+[
+24.0,
+0.802,
+null,
+null
+],
+[
+25.37,
+0.802,
+null,
+null
+]
+],
+"events": 58,
+"median_days": 12.89,
+"n": 144,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "22",
+"subject": "DESINV"
+},
+"DESINV 23": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.231,
+null,
+null
+],
+[
+1.0,
+0.316,
+null,
+null
+],
+[
+2.0,
+0.447,
+null,
+null
+],
+[
+3.0,
+0.509,
+null,
+null
+],
+[
+4.0,
+0.593,
+null,
+null
+],
+[
+5.0,
+0.644,
+null,
+null
+],
+[
+6.0,
+0.669,
+null,
+null
+],
+[
+7.0,
+0.713,
+null,
+null
+],
+[
+8.0,
+0.737,
+null,
+null
+],
+[
+9.0,
+0.747,
+null,
+null
+],
+[
+10.0,
+0.758,
+null,
+null
+],
+[
+12.0,
+0.774,
+null,
+null
+],
+[
+14.0,
+0.774,
+null,
+null
+],
+[
+16.0,
+0.791,
+null,
+null
+],
+[
+18.0,
+0.791,
+null,
+null
+],
+[
+21.0,
+0.802,
+null,
+null
+],
+[
+24.0,
+0.802,
+null,
+null
+],
+[
+28.0,
+0.802,
+null,
+null
+],
+[
+32.0,
+0.802,
+null,
+null
+],
+[
+36.0,
+0.802,
+null,
+null
+],
+[
+42.0,
+0.802,
+null,
+null
+],
+[
+49.0,
+0.802,
+null,
+null
+],
+[
+56.0,
+0.802,
+null,
+null
+],
+[
+63.0,
+0.802,
+null,
+null
+],
+[
+70.0,
+0.802,
+null,
+null
+],
+[
+77.0,
+0.802,
+null,
+null
+],
+[
+79.75,
+0.802,
+null,
+null
+]
+],
+"events": 220,
+"median_days": 2.97,
+"n": 321,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.008,
+null,
+null
+],
+[
+1.0,
+0.026,
+null,
+null
+],
+[
+2.0,
+0.06,
+null,
+null
+],
+[
+3.0,
+0.194,
+null,
+null
+],
+[
+4.0,
+0.244,
+null,
+null
+],
+[
+5.0,
+0.254,
+null,
+null
+],
+[
+6.0,
+0.289,
+null,
+null
+],
+[
+7.0,
+0.327,
+null,
+null
+],
+[
+8.0,
+0.367,
+null,
+null
+],
+[
+9.0,
+0.412,
+null,
+null
+],
+[
+10.0,
+0.442,
+null,
+null
+],
+[
+12.0,
+0.487,
+null,
+null
+],
+[
+14.0,
+0.538,
+null,
+null
+],
+[
+16.0,
+0.538,
+null,
+null
+],
+[
+18.0,
+0.538,
+null,
+null
+],
+[
+21.0,
+0.538,
+null,
+null
+],
+[
+24.0,
+0.538,
+null,
+null
+],
+[
+25.37,
+0.538,
+null,
+null
+]
+],
+"events": 44,
+"median_days": 13.01,
+"n": 122,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "23",
+"subject": "DESINV"
+},
+"DESINV 290": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -1108,7 +2658,43 @@ null
 0.0
 ],
 [
-38.06,
+42.0,
+0.0,
+0.0,
+0.0
+],
+[
+49.0,
+0.0,
+0.0,
+0.0
+],
+[
+56.0,
+0.0,
+0.0,
+0.0
+],
+[
+63.0,
+0.0,
+0.0,
+0.0
+],
+[
+70.0,
+0.0,
+0.0,
+0.0
+],
+[
+77.0,
+0.0,
+0.0,
+0.0
+],
+[
+79.75,
 0.0,
 0.0,
 0.0
@@ -1116,15 +2702,15 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 58,
+"n": 36,
 "pooled": false,
-"reach_days": 38.1,
-"sections": 3
+"reach_days": 79.7,
+"sections": 2
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "213",
+"number": "290",
 "subject": "DESINV"
 },
 "DESINV 95": {
@@ -1252,7 +2838,43 @@ null,
 null
 ],
 [
-38.29,
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -1260,9 +2882,9 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 110,
+"n": 103,
 "pooled": false,
-"reach_days": 38.3,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -1270,8 +2892,21 @@ null
 "level": "lower",
 "number": "95",
 "subject": "DESINV"
+},
+"DESINV 98": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "98",
+"subject": "DESINV"
 }
 },
 "subject": "DESINV",
-"term_id": "2268"
+"term_id": "2262"
 }
