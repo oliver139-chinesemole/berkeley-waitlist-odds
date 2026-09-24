@@ -379,6 +379,8 @@ def test_course_query_fixture_covers_the_table_and_the_misses() -> None:
     assert all(r["expected_key"] for r in rows if r["expected_layer"] != "miss")
     layers = {r["expected_layer"] for r in rows}
     assert layers == {"exact", "alias", "name", "nickname", "filler", "split", "bare", "fuzzy", "miss"}, sorted(layers)
+    out = render(SITE, expression="BWO.LAYERS")  # the fixture's vocabulary is the matcher's, not a copy of it
+    assert layers == set(out["eval"]), (sorted(layers), out["eval"])
 
 
 def test_course_query_fixture_passes_in_the_node_runner_and_here() -> None:
@@ -392,7 +394,10 @@ def test_course_query_fixture_passes_in_the_node_runner_and_here() -> None:
     assert len(report["rows"]) == len(rows)
     for row, got in zip(rows, report["rows"], strict=True):
         want = None if row["expected_layer"] == "miss" else row["expected_key"]
-        assert got["key"] == want, f"{row['query']!r}: wanted {want!r}, got {got['key']!r}"
+        if want == "*":  # the key is whatever the joins ranking puts first; this row is about the layer
+            assert got["key"], f"{row['query']!r}: wanted a course, got nothing"
+        else:
+            assert got["key"] == want, f"{row['query']!r}: wanted {want!r}, got {got['key']!r}"
         assert got["layer"] == row["expected_layer"], f"{row['query']!r}: wanted layer {row['expected_layer']}, got {got['layer']}"
         if row["expected_layer"] == "miss":
             assert len(got["nearest"]) <= 3, f"{row['query']!r}: {got['nearest']}"
@@ -411,6 +416,32 @@ def test_a_miss_offers_the_nearest_courses(full_site: Path) -> None:
     # the page prints them under its own no-match message
     out = render(full_site, course="NOPE 101", position="4")
     assert "Did you mean" in out["result"]
+
+
+def test_a_bare_number_ranks_by_joins(full_site: Path) -> None:
+    """Q2: "7a" is a ranked list, most-joined first, and the lookup uses the first item.
+
+    Pinned to a hand-made index rather than the committed export: the ranking is
+    data, and a refresh may reorder two close courses without anything being wrong.
+    """
+    out = render(full_site, expression="(function(){ const i = {courses: ["
+        "{key: 'HISTORY 7A', subject: 'HISTORY', number: '7A', joins: 348, buckets: {}},"
+        "{key: 'PHYSICS 7A', subject: 'PHYSICS', number: '7A', joins: 288, buckets: {}},"
+        "{key: 'DATA C8', subject: 'DATA', number: 'C8', joins: 5, buckets: {}},"
+        "{key: 'ART 8', subject: 'ART', number: '8', joins: 1, buckets: {}}]};"
+        " const m = BWO.matchCourse(i, '7a');"
+        " return [m.key, m.layer, m.ranked.map((r) => r.key), BWO.matchCourse(i, '8').key]; })()")
+    key, layer, ranked, eight = out["eval"]
+    assert key == "HISTORY 7A" and layer == "bare"
+    assert ranked == ["HISTORY 7A", "PHYSICS 7A"]
+    assert eight == "DATA C8"  # a bare number tries the cross-listed C form too
+
+
+def test_the_matcher_survives_a_half_loaded_index(full_site: Path) -> None:
+    """findCourse returns null rather than throwing before index.json has arrived."""
+    out = render(full_site, expression="[BWO.findCourse({}, 'cs61a'), BWO.findCourse({}, 'asdf'), BWO.findCourse(null, 'cs61a'), BWO.matchCourse({}, 'cs61a').layer, BWO.matchCourse({}, 'cs61a').nearest.length]")
+    assert "eval_error" not in out, out.get("eval_error")
+    assert out["eval"] == [None, None, None, "miss", 0]
 
 
 def test_a_fuzzy_match_says_what_it_showed(full_site: Path) -> None:

@@ -7,6 +7,10 @@
 // same matcher over the same fixture and cannot drift. Prints one JSON object on
 // stdout: every row with the key and layer the matcher returned and the keys it
 // offered as nearest; a one-line summary goes to stderr. Exits 1 on a failure.
+//
+// An expected_key of "*" means "any course, the layer is what this row is for":
+// it is for the rows whose key is decided by the joins ranking in the committed
+// export, which a refresh can reorder without anything being wrong.
 "use strict";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
@@ -49,7 +53,7 @@ export function check(rows, results) {
   rows.forEach((row, i) => {
     const got = results[i];
     const want = row.expected_layer === "miss" ? null : row.expected_key;
-    if (got.key !== want) failures.push(`${JSON.stringify(row.query)}: expected key ${JSON.stringify(want)}, got ${JSON.stringify(got.key)}`);
+    if (want === "*" ? !got.key : got.key !== want) failures.push(`${JSON.stringify(row.query)}: expected key ${JSON.stringify(want)}, got ${JSON.stringify(got.key)}`);
     else if (got.layer !== row.expected_layer) failures.push(`${JSON.stringify(row.query)}: expected layer ${row.expected_layer}, got ${got.layer}`);
     if (row.expected_layer === "miss" && got.nearest.length > 3) failures.push(`${JSON.stringify(row.query)}: ${got.nearest.length} nearest offered, at most 3 allowed`);
   });

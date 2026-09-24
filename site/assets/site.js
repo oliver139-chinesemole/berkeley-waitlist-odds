@@ -253,7 +253,7 @@ const BWO = (function () {
   // ----------------------------------------------------------------- search
   // How a query reached its course, least to most forgiving; a match reports the
   // most forgiving step it needed (docs/DESIGN_A6.md, "Course search").
-  const LAYERS = ["exact", "alias", "name", "nickname", "filler", "split", "bare", "fuzzy"];
+  const LAYERS = ["exact", "alias", "name", "nickname", "filler", "split", "bare", "fuzzy", "miss"];
   // Words a reader types around a course that never name one.
   const FILLER = /^(BERKELEY|UC|CLASS|COURSE|LEC|LECTURE|DIS|DISCUSSION|LAB|SPRING|FALL|SUMMER|\d{4})$/;
 
@@ -264,7 +264,11 @@ const BWO = (function () {
   function splitSuffix(t) { return t.replace(/(\d)\s+([A-Z])$/, "$1$2"); }
   function topLayer(steps) {
     let best = "exact";
-    for (const s of steps) if (LAYERS.indexOf(s) > LAYERS.indexOf(best)) best = s;
+    for (const s of steps) {
+      const rank = LAYERS.indexOf(s);
+      if (rank < 0) throw new Error("unknown match layer: " + s);
+      if (rank > LAYERS.indexOf(best)) best = s;
+    }
     return best;
   }
   // Full subject names, keyed the way a query is normalised ("COMPUTER SCIENCE" and "COMPUTERSCIENCE").
@@ -418,7 +422,8 @@ const BWO = (function () {
     }
     return topJoined(index, 3);
   }
-  // One pass of the matcher over an already-normalised query.
+  // One pass over an already-normalised query, forgiving nothing that is not
+  // written down: a nickname, a subject and number, or a bare number.
   function attempt(index, t) {
     const map = indexMap(index);
     const nick = nicks().courses[t];
@@ -432,12 +437,6 @@ const BWO = (function () {
           if (row) return { row, layer: pair.layer };
         }
       }
-      for (const near of nearSubjects(index, q.token)) {
-        for (const n of q.numbers) {
-          const row = map[near.subject + " " + n];
-          if (row) return { row, layer: "fuzzy" };
-        }
-      }
       return null;
     }
     if (/^\d+[A-Z]*$/.test(q.raw)) {
@@ -446,13 +445,36 @@ const BWO = (function () {
     }
     return null;
   }
+  // The last resort, run only once every variant has failed without fuzzing, so
+  // that a filler word is stripped before it is mistaken for a misspelt subject.
+  function attemptFuzzy(index, t) {
+    const q = parseQuery(t);
+    if (!q || !q.pairs) return null;
+    const map = indexMap(index);
+    for (const near of nearSubjects(index, q.token)) {
+      for (const n of q.numbers) {
+        const row = map[near.subject + " " + n];
+        if (row) return { row, layer: "fuzzy" };
+      }
+    }
+    return null;
+  }
   // The whole matcher: {key, row, layer, ranked, nearest, query}. layer is "miss"
-  // when nothing matched, and then nearest holds up to three courses to offer.
+  // when nothing matched, and then nearest holds up to three courses to offer;
+  // it is computed only if something asks for it, since every keystroke gets here.
   function matchCourse(index, text) {
-    const base = normalise(text);
     const query = String(text == null ? "" : text);
-    const miss = () => ({ query, key: null, row: null, layer: "miss", ranked: [], nearest: base ? nearestCourses(index, base) : topJoined(index, 3) });
-    if (!base) return miss();
+    const base = normalise(text);
+    const courses = index && index.courses ? index.courses : null;
+    let offered = null;
+    const miss = () => ({
+      query, key: null, row: null, layer: "miss", ranked: [],
+      get nearest() {
+        if (!offered) offered = !courses ? [] : base ? nearestCourses(index, base) : topJoined(index, 3);
+        return offered;
+      },
+    });
+    if (!courses || !base) return miss();
     const variants = [{ text: base, steps: [] }];
     const add = (t, steps) => { if (t && !variants.some((v) => v.text === t)) variants.push({ text: t, steps }); };
     add(splitSuffix(base), ["split"]);
@@ -461,9 +483,12 @@ const BWO = (function () {
       add(stripped, ["filler"]);
       add(splitSuffix(stripped), ["filler", "split"]);
     }
-    for (const v of variants) {
-      const hit = attempt(index, v.text);
-      if (hit) return { query, key: hit.row.key, row: hit.row, layer: topLayer(v.steps.concat(hit.layer)), ranked: hit.ranked || [hit.row], nearest: [] };
+    // Least forgiving first: every variant without fuzzing, then every variant with it.
+    for (const pass of [attempt, attemptFuzzy]) {
+      for (const v of variants) {
+        const hit = pass(index, v.text);
+        if (hit) return { query, key: hit.row.key, row: hit.row, layer: topLayer(v.steps.concat(hit.layer)), ranked: hit.ranked || [hit.row], nearest: [] };
+      }
     }
     return miss();
   }
@@ -506,7 +531,6 @@ const BWO = (function () {
   // Courses with their own cell at the given bucket, most-joined first (example chips).
   function topCourses(index, n, bucket) {
     const b = bucket || "6-15";
-    const byJoins = (x, y) => (y.joins || 0) - (x.joins || 0) || x.key.localeCompare(y.key);
     const standing = (r) => r.buckets[b] && (r.buckets[b].pooled === false || (r.buckets[b].pooled !== "all" && (r.buckets[b].n_course || 0) >= 30));
     const own = index.courses.filter(standing).sort(byJoins);
     if (own.length >= (n || 3)) return own.slice(0, n || 3);

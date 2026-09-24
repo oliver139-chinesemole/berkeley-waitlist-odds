@@ -128,12 +128,14 @@ berkeley cs 61 a,COMPSCI 61A,split
 61a,COMPSCI 61A,bare
 61A,COMPSCI 61A,bare
 54,MATH 54,bare
-7a,HISTORY 7A,bare
 1a,CHEM 1A,bare
 16a,MATH 16A,bare
 53,MATH 53,bare
 8,DATA C8,bare
 berkeley 61a,COMPSCI 61A,bare
+lec 61a,COMPSCI 61A,bare
+dis 100,*,bare
+lab 1,*,bare
 compsi 61a,COMPSCI 61A,fuzzy
 phsyics 7a,PHYSICS 7A,fuzzy
 econimics 1,ECON 1,fuzzy
