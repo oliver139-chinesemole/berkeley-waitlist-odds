@@ -1,7 +1,8 @@
 /* Berkeley Waitlist Odds: shared styles (docs/DESIGN_A6.md section 6).
    Tokens first; light is the base, dark redefines only the tokens. Blue is data,
    gold means "you" (your bucket, your marker) and "now" (the dates that are ticking),
-   rust means seats held back, and text tokens carry every label. */
+   rust carries on these pages what --warn used to, error text and the pooled tag, and
+   seats held back join it when U2 lands; text tokens carry every label. */
 /* U4 type: two self-hosted OFL faces, subset to the characters these pages use and
    kept variable on the weight axis, so one file covers regular through bold. Both
    swap in over the system stack below; nothing is fetched from a third party. */
