@@ -111,11 +111,15 @@
 
   async function lookup(text, pos) {
     const bucket = BWO.bucketOf(pos);
-    const row = BWO.findCourse(index, text);
+    const match = BWO.matchCourse(index, text);
+    const row = match.row;
     const q = BWO.parseQuery(text);
+    // Q5: say so whenever a typo in the subject was forgiven.
+    $("status").innerHTML = BWO.sourceHtml(meta) + BWO.showingHtml(match);
     const shown = row ? row.key : (q && q.pairs && q.pairs.length ? `${q.pairs[0].subject} ${q.pairs[0].number}` : (q ? q.raw : String(text).trim().toUpperCase()));
     if (!row) {
-      renderFallback(shown, pos, bucket, q && q.pairs && q.pairs.length ? q.pairs[0].subject : null, q && q.pairs && q.pairs.length ? q.pairs[0].number : null, `No data for <strong>${esc(shown)}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.`);
+      const near = match.nearest.length ? ` Did you mean ${match.nearest.map((r) => `<a href="${BWO.withToday(`?course=${encodeURIComponent(r.key)}&position=${pos}`)}">${esc(r.key)}</a>`).join(", ")}?` : "";
+      renderFallback(shown, pos, bucket, q && q.pairs && q.pairs.length ? q.pairs[0].subject : null, q && q.pairs && q.pairs.length ? q.pairs[0].number : null, `No data for <strong>${esc(shown)}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.${near}`);
       return;
     }
     const subj = await BWO.loadSubject(meta, row.subject);

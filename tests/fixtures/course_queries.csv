@@ -1,0 +1,175 @@
+query,expected_key,expected_layer
+COMPSCI 61A,COMPSCI 61A,exact
+compsci 61a,COMPSCI 61A,exact
+COMPSCI61A,COMPSCI 61A,exact
+compsci61a,COMPSCI 61A,exact
+MATH 54,MATH 54,exact
+math 54,MATH 54,exact
+math54,MATH 54,exact
+STAT 20,STAT 20,exact
+PHYSICS 7A,PHYSICS 7A,exact
+physics 7a,PHYSICS 7A,exact
+ECON 1,ECON 1,exact
+MECENG 40,MECENG 40,exact
+MCELLBI 32,MCELLBI 32,exact
+DATA C8,DATA C8,exact
+data c8,DATA C8,exact
+datac8,DATA C8,exact
+STAT C8,STAT C8,exact
+stat c8,STAT C8,exact
+COLWRIT R1A,COLWRIT R1A,exact
+colwrit r1a,COLWRIT R1A,exact
+ENGIN 7,ENGIN 7,exact
+BIOLOGY 1A,BIOLOGY 1A,exact
+biology 1a,BIOLOGY 1A,exact
+CHEM 1A,CHEM 1A,exact
+PHYSED 1,PHYSED 1,exact
+LS 198,LS 198,exact
+UGBA 100,UGBA 100,exact
+COMPSCI 61B,COMPSCI 61B,exact
+COMPSCI 70,COMPSCI 70,exact
+MATH 53,MATH 53,exact
+STAT 134,STAT 134,exact
+INDENG 172,INDENG 172,exact
+ECON 100A,ECON 100A,exact
+PHYSICS 8A,PHYSICS 8A,exact
+MATH 16A,MATH 16A,exact
+CHEM 3A,CHEM 3A,exact
+ART 8,ART 8,exact
+MEDIAST 10,MEDIAST 10,exact
+POLSCI 1,POLSCI 1,exact
+MUSIC 20,MUSIC 20,exact
+history 7a,HISTORY 7A,exact
+PHYSED 32,PHYSED 32,exact
+comp sci 61a,COMPSCI 61A,exact
+l&s 198,LS 198,exact
+col writ r1a,COLWRIT R1A,exact
+cs 61a,COMPSCI 61A,alias
+cs61a,COMPSCI 61A,alias
+CS61A,COMPSCI 61A,alias
+cs 61b,COMPSCI 61B,alias
+mcb 32,MCELLBI 32,alias
+stats 20,STAT 20,alias
+ds c8,DATA C8,alias
+ds 8,DATA C8,alias
+me 40,MECENG 40,alias
+phys 7a,PHYSICS 7A,alias
+hist 7a,HISTORY 7A,alias
+astro 7a,ASTRON 7A,alias
+poli sci 1,POLSCI 1,alias
+pe 1,PHYSED 1,alias
+pe 32,PHYSED 32,alias
+haas 100,UGBA 100,alias
+ba 100,UGBA 100,alias
+ieor 172,INDENG 172,alias
+media 10,MEDIAST 10,alias
+soc 1,SOCIOL 1,alias
+computer science 61a,COMPSCI 61A,name
+Computer Science 61A,COMPSCI 61A,name
+mechanical engineering 40,MECENG 40,name
+molecular and cell biology 32,MCELLBI 32,name
+mathematics 54,MATH 54,name
+mathematics 53,MATH 53,name
+statistics 20,STAT 20,name
+statistics 134,STAT 134,name
+economics 1,ECON 1,name
+psychology 1,PSYCH 1,name
+sociology 1,SOCIOL 1,name
+chemistry 1a,CHEM 1A,name
+chemistry 3a,CHEM 3A,name
+astronomy 7a,ASTRON 7A,name
+political science 1,POLSCI 1,name
+cognitive science 1,COGSCI 1,name
+media studies 10,MEDIAST 10,name
+rhetoric 10,RHETOR 10,name
+bioengineering 10,BIOENG 10,name
+engineering 7,ENGIN 7,name
+film and media 20,FILM 20,name
+letters and science 198,LS 198,name
+physical education 1,PHYSED 1,name
+art practice 8,ART 8,name
+college writing programs r1a,COLWRIT R1A,name
+industrial engineering and operations research 172,INDENG 172,name
+e7,ENGIN 7,nickname
+E7,ENGIN 7,nickname
+data 8,DATA C8,nickname
+bio 1a,BIOLOGY 1A,nickname
+r&c,COLWRIT R1A,nickname
+R&C,COLWRIT R1A,nickname
+berkeley cs61a,COMPSCI 61A,filler
+cs61a discussion,COMPSCI 61A,filler
+cs61a spring 2027,COMPSCI 61A,filler
+uc berkeley data 8,DATA C8,filler
+uc berkeley cs 61a,COMPSCI 61A,filler
+berkeley math 54,MATH 54,filler
+math 54 lecture,MATH 54,filler
+math 54 lec,MATH 54,filler
+math 54 dis,MATH 54,filler
+chem 1a lab,CHEM 1A,filler
+class cs61a,COMPSCI 61A,filler
+course math 54,MATH 54,filler
+cs 61a class,COMPSCI 61A,filler
+cs61a fall 2026,COMPSCI 61A,filler
+stat 20 summer,STAT 20,filler
+spring cs61a,COMPSCI 61A,filler
+fall math 54,MATH 54,filler
+uc cs61a,COMPSCI 61A,filler
+computer science 61a lecture,COMPSCI 61A,filler
+cs 61 a,COMPSCI 61A,split
+cs61 a,COMPSCI 61A,split
+CS 61 A,COMPSCI 61A,split
+compsci 61 a,COMPSCI 61A,split
+physics 7 a,PHYSICS 7A,split
+chem 1 a,CHEM 1A,split
+math 16 a,MATH 16A,split
+biology 1 a,BIOLOGY 1A,split
+computer science 61 a,COMPSCI 61A,split
+berkeley cs 61 a,COMPSCI 61A,split
+61a,COMPSCI 61A,bare
+61A,COMPSCI 61A,bare
+54,MATH 54,bare
+7a,HISTORY 7A,bare
+1a,CHEM 1A,bare
+16a,MATH 16A,bare
+53,MATH 53,bare
+8,DATA C8,bare
+berkeley 61a,COMPSCI 61A,bare
+compsi 61a,COMPSCI 61A,fuzzy
+phsyics 7a,PHYSICS 7A,fuzzy
+econimics 1,ECON 1,fuzzy
+staistics 20,STAT 20,fuzzy
+copmsci 61a,COMPSCI 61A,fuzzy
+cmpsci 61a,COMPSCI 61A,fuzzy
+matematics 54,MATH 54,fuzzy
+psycology 1,PSYCH 1,fuzzy
+chemsitry 1a,CHEM 1A,fuzzy
+histroy 7a,HISTORY 7A,fuzzy
+bioligy 1a,BIOLOGY 1A,fuzzy
+mecheng 40,MECENG 40,fuzzy
+phsyed 1,PHYSED 1,fuzzy
+berkeley compsi 61a,COMPSCI 61A,fuzzy
+compsi 61 a,COMPSCI 61A,fuzzy
+cs 61x,,miss
+physics 999,,miss
+asdf,,miss
+,,miss
+zzz 1,,miss
+math 9999,,miss
+compsci 9999,,miss
+qqqq 12,,miss
+!!!,,miss
+123456,,miss
+stat 61a,,miss
+data 61a,,miss
+econ 999,,miss
+nope 1,,miss
+xyz 100,,miss
+mathematics 9999,,miss
+computer science 9999,,miss
+berkeley 12345,,miss
+uc berkeley,,miss
+lecture,,miss
+spring 2027,,miss
+0000,,miss
+chem 1z,,miss
+cs 61a1,,miss
