@@ -44225,10 +44225,10 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "PBHLTH 251W",
-"instructors": "Lauren N Nelson, William Hampton Wheeler",
+"instructors": "William Hampton Wheeler",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T14:53:10.511654+00:00",
+"probed_at": "2026-09-24T20:55:16.832593+00:00",
 "section_id": "31411",
 "section_number": "001",
 "subject": "PBHLTH",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-24T15:27:02.744952+00:00",
+"updated_at": "2026-09-24T20:55:49.776144+00:00",
 "version": 3
 }
