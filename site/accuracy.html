@@ -103,7 +103,7 @@
 
   function prereg(meta, bt) {
     const commit = meta.prereg_commit, date = meta.prereg_date;
-    return `<h2>Pre-registered: the Spring 2027 test</h2><div class="prereg"><p>${commit ? `The ${esc(meta.term_name)} curves this site shows were frozen at commit <code>${esc(String(commit).slice(0, 10))}</code> on ${esc(date || "")}.` : `The ${esc(meta.term_name)} curves this site shows will be frozen at the commit that publishes them; its hash and date will be printed here.`} After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>`;
+    return `<h2>Pre-registered: the Spring 2027 test</h2><div class="prereg"><p>${commit ? `The ${esc(meta.term_name)} cohort behind the curves this site shows was frozen at commit <code>${esc(String(commit).slice(0, 10))}</code> on ${esc(date || "")}; the curves are read from it unchanged.` : `The ${esc(meta.term_name)} cohort behind the curves this site shows will be frozen at the commit that publishes it; its hash and date will be printed here.`} After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>`;
   }
 
   async function main() {
@@ -118,7 +118,7 @@
       $("status").innerHTML = `<p><strong>The backtest for ${esc(meta.term_name)} has not been published yet.</strong> The pipeline that writes it is <code>make backtest</code>; its reports land in the repository under <code>reports/backtest_${esc(meta.term_id)}/</code> and on this page.</p>`;
       return;
     }
-    $("status").innerHTML = `<p><strong>${esc(bt.term_name || meta.term_name)}</strong>${bt.data_source === "berkeleytime_history" || meta.data_source === "berkeleytime_history" ? ", from Berkeleytime's public history" : ""}: ${bt.runs.length} backtest ${bt.runs.length === 1 ? "run" : "runs"}, generated ${esc(BWO.fmtDate(bt.generated_at))}.</p>`;
+    $("status").innerHTML = `<p><strong>${esc(bt.term_name || meta.term_name)}</strong>${bt.data_source === "berkeleytime_history" || meta.data_source === "berkeleytime_history" ? ", from Berkeleytime's public history" : ""}: ${bt.runs.length} backtest ${bt.runs.length === 1 ? "run" : "runs"}, generated ${esc(BWO.fmtDate(bt.generated_at))}.</p>${bt.term_id && meta.term_id && String(bt.term_id) !== String(meta.term_id) ? `<p>The pages show ${esc(meta.term_name)} curves; these tests were run on ${esc(bt.term_name)}. The runs headed "Fit on ${esc(meta.term_name)}, scored on ${esc(bt.term_name)}" score the curves the pages show; the others test the same method within ${esc(bt.term_name)}.</p>` : ""}`;
     const order = ["temporal", "grouped", "cross_term"];
     const runs = bt.runs.slice().sort((a, b) => order.indexOf(a.split) - order.indexOf(b.split) || a.which.localeCompare(b.which));
     const named = ORDER.filter((k) => bt.predictors[k]).concat(Object.keys(bt.predictors).filter((k) => !ORDER.includes(k)));

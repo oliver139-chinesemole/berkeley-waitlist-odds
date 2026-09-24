@@ -6,7 +6,7 @@ Static site under `site/`, published by `.github/workflows/pages.yml` to GitHub 
 
 - The pages read precomputed JSON and compute no statistic: a curve is read at a horizon (`BWO.readCurve`, the last grid point at or before the horizon; past the reach the last point stands, as a floor). Nothing simulated is shown outside the labelled figure on the Methods page.
 - Berkeleytime-derived numbers carry "from Berkeleytime's public history" on every page that shows them (`BWO.sourceHtml`, `BWO.sourceLabel`).
-- Horizons count down to the **forecast term** in `meta.json` (`forecast_term_name`, `deadline`, `instruction_start`, `dates`), so Fall 2026 curves can stand in for Spring 2027; the data term is named in the source sentence.
+- Horizons count down to the **forecast term** in `meta.json` (`forecast_term_name`, `deadline`, `instruction_start`, `dates`), so a finished cycle's curves can stand in for Spring 2027 (Fall 2026 until 2026-09-24, Spring 2026 since); the data term is named in the source sentence.
 - "Today" is the browser's date, or `?today=YYYY-MM-DD` (tests pin it; a reader can ask what a page would have said). Internal links keep a pinned date (`BWO.withToday`).
 - States every data page distinguishes: loading (skeleton), fetch failed (says so, offers reload; `state: "failed"` from `BWO.load`), no estimates yet (`meta.json` missing, `events` under 10, or no `deadline`/`instruction_start`: "No estimates yet", the Oct 26 start date and the counts so far; forms hidden), ready.
 - "Got in" in headlines; "cleared" is defined once on the Methods page and used in the analysis. Buttons say what they do.
