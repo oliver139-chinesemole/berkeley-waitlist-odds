@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import fnmatch
+from functools import cached_property
 import hashlib
 import re
 from dataclasses import dataclass, field
@@ -85,6 +86,25 @@ class PrioritySpec:
         subject, catalog = key.rsplit(" ", 1)
         return f"{subject.replace(' ', '')} {catalog}"
 
+    @cached_property
+    def _index(self) -> tuple[dict[str, int], dict[str, int], tuple[tuple[int, str], ...]]:
+        """Exact course patterns and bare subjects by their first index, wildcards in order.
+
+        A generated list is a thousand exact courses, so ``rank`` is a dict lookup
+        instead of a thousand ``fnmatch`` calls per section (6.5 s per run before).
+        """
+        exact: dict[str, int] = {}
+        bare: dict[str, int] = {}
+        wild: list[tuple[int, str]] = []
+        for index, pat in enumerate(self.patterns):
+            if " " not in pat:
+                bare.setdefault(pat, index)
+            elif any(c in pat for c in "*?["):
+                wild.append((index, pat))
+            else:
+                exact.setdefault(pat, index)
+        return exact, bare, tuple(wild)
+
     def rank(self, course_key: str) -> int | None:
         """Index of the first pattern that matches ``course_key``, or None.
 
@@ -93,13 +113,14 @@ class PrioritySpec:
         """
         key = self.normalize(course_key)
         subject = key.rsplit(" ", 1)[0] if " " in key else key
-        for index, pat in enumerate(self.patterns):
-            if " " in pat:
-                if fnmatch.fnmatchcase(key, pat):
-                    return index
-            elif pat == subject:
-                return index
-        return None
+        exact, bare, wild = self._index
+        best = min((i for i in (exact.get(key), bare.get(subject)) if i is not None), default=None)
+        for index, pat in wild:
+            if best is not None and index > best:
+                break
+            if fnmatch.fnmatchcase(key, pat):
+                return index if best is None else min(best, index)
+        return best
 
     def matches(self, course_key: str) -> bool:
         return self.rank(course_key) is not None

@@ -57,3 +57,20 @@ def test_shipped_priority_file_matches_live_site_spellings() -> None:
         assert not spec.matches(key), key
     # Order matters: courses by reconstructed joins, most-joined first.
     assert spec.rank("PHYSED 1") < spec.rank("MATH 54") < spec.rank("CHEM 1A") < spec.rank("COMPSCI 61B") < spec.rank("COMPSCI 61A")
+
+
+def test_rank_is_the_first_matching_pattern_whatever_its_kind() -> None:
+    """The file's order decides, not the pattern's kind: an exact course, a wildcard and a
+    bare subject each win when listed first (the lookup index must keep this)."""
+    assert PrioritySpec.from_text("COMPSCI *\nCOMPSCI 61A\n").rank("COMPSCI 61A") == 0
+    spec = PrioritySpec.from_text("COMPSCI 61A\nCOMPSCI *\nCOMPSCI\n")
+    assert spec.rank("COMPSCI 61A") == 0 and spec.rank("COMPSCI 70") == 1 and spec.rank("compsci 61a") == 0
+    spec = PrioritySpec.from_text("MATH\nMATH 1*\nMATH 54\n")
+    assert spec.rank("MATH 54") == 0 and spec.rank("MATH 1A") == 0 and spec.rank("STAT 20") is None
+    spec = PrioritySpec.from_text("EL ENG *\nELENG 16A\nDATA C8\n")
+    assert spec.rank("ELENG 16A") == 0 and spec.rank("EL ENG 16A") == 0 and spec.rank("DATA C8") == 2
+    assert PrioritySpec.from_text("").rank("COMPSCI 61A") is None
+    # fnmatch metacharacters other than * must still be treated as wildcards; duplicates keep the first index
+    assert PrioritySpec.from_text("MATH 5?\nMATH 54\n").rank("MATH 54") == 0
+    assert PrioritySpec.from_text("MATH [15]A\nMATH 1A\n").rank("MATH 1A") == 0
+    assert PrioritySpec.from_text("MATH 54\nMATH 54\n").rank("MATH 54") == 0

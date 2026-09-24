@@ -45,7 +45,7 @@ Status key: **branch** = written on `site-v3`, not on `main`; **open** = not wri
 | P1 | Merge PR #4 (site v3), run `pages.yml`, curl every page | branch | this week |
 | P2 | Scraper throughput: `--min-interval-s 0.5 --max-concurrency 4` in `scrape.yml` (request starts at most 2 per second, 4 pages in flight). `scraper/http.py` already has the worker pool and the global start limiter, so there is no job matrix and still one writer on `data`. Cause and numbers: `docs/DATA_LOG.md` rows dated 2026-09-21, 22 and 23; contract note in `docs/DESIGN_A2.md` section 16 | draft PR, branch `p2-throughput` | **before Oct 4**; nothing changes until it is merged to `main` |
 | P3 | Merge the `scraper/live.py` step so `data/live/latest.json` starts being written (404 today) | branch | this week |
-| P4 | Decide Spring 2026 vs Fall 2026 curves — it changes every number on the site | Oliver | this week |
+| P4 | Decide Spring 2026 vs Fall 2026 curves — it changes every number on the site. **Decided 2026-09-24: Spring 2026** (draft PR #11 on `site-v3`; numbers in the data-log decision row and HANDOFF session 6) | draft PR #11 | this week |
 | P5 | Rebuild `config/priority_courses.txt` from both cycles' flows. Done with `analysis/priority_from_flows.py --top-sections 1500 --min-course-joins 100 --catalog …`: the courses of the 1,500 most-joined sections plus every course with at least 100 joins (1,013 exact course patterns; 1,213 live sections in 661 courses per run against the hand list's 1,047 in 429; 89.2% of both cycles' joins against 47.7%; 51.0% of section-terms that carried a queue, so "cover every section that carried a waitlist" is not met and would cost about 4,000 pages a run). Numbers and `priority_sha` in the data-log row; the tool's `--catalog` report reproduces the live counts | draft PR #9, branch `p5-priority-list` (stacked on #8) | **before Oct 26** |
 | P6 | GoatCounter on every page before any link is shared | Oliver | before sharing |
 
@@ -108,10 +108,10 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 | D4 | Sections table with live counts (= S1) | open |
 | I5 to I8 | Admits per day against the calendar with the Aug 19 to Sep 1 outage shaded; exit composition; Cox forest plot; hardest and easiest courses | open |
 | B2 | Data-status line read from the data branch's `status.json` | open |
-| X7 | Playwright screenshots in CI — the only way a Claude Code session can see the page | open |
+| X7 | Playwright screenshots in CI — the only way a Claude Code session can see the page | done on `site-v3` (`site-smoke.yml` uploads light and dark screenshots as an artifact) |
 | X8 | Custom domain, before the r/berkeley post | Oliver, optional |
 | — | Department pages (`/dept/COMPSCI`), which is what search engines and subreddit sidebars link | open |
-| — | Off-season home page: countdown to Oct 26 plus last cycle's summary, instead of a form that answers with history | open |
+| — | Off-season home page: countdown to Oct 26 plus last cycle's summary, instead of a form that answers with history | moot: with v3's `--forecast-term 2272` the lookup counts down to Spring 2027's dates and the key-dates list carries Oct 26; revisit only if the browser pass says otherwise |
 
 ### 3.6 Oliver only
 
@@ -154,7 +154,7 @@ Ordering rule: anything that touches collection (P2, P5, Q7) beats anything that
 | # | Decision | Recommendation |
 | --- | --- | --- |
 | 1 | Merge PR #4 now, or hold for v4 work | Merge now. Everything else is blocked behind it and v4 is additive. |
-| 2 | Spring 2026 or Fall 2026 curves | Spring 2026. Same season as Spring 2027, no two-week hole, instruction phase observed — exactly where Fall 2026 is blind. |
+| 2 | Spring 2026 or Fall 2026 curves | Spring 2026. Same season as Spring 2027, no two-week hole, instruction phase observed — exactly where Fall 2026 is blind. **Taken 2026-09-24 (PR #11).** |
 | 3 | Live board as a tab, or only inside the course page | Both, and make the board the home page during the term. |
 | 4 | Section-level odds | Only where n ≥ 30, ladder printed. Never a curve a section did not earn. |
 | 5 | Openings feed | Build it. The alternative is people refreshing the registrar's page. |
@@ -310,6 +310,6 @@ Checked from the repo, the Actions run logs and the `data` branch (the section 9
 - After the merge: a `note` row for the first run at the new rate with its `n_observed` and `sweep_seconds`.
 - Close issue #7 after the first 24 h window with no exit-4 run and `largest_gap_min` under 90 (`gh issue close 7`).
 - Re-measure CLAIMS rows 5 to 7 (snapshots per day, share of gaps at or under 45 min, sweep time) 24 h after P2 lands; on Sep 23 they fail.
-- After P5 merges: `PrioritySpec.rank` is a linear scan over the patterns (6.5 s per run for 999 exact patterns against 3,894 live sections, inside the budget clock); a dict lookup for exact patterns makes it free. Revisit the list size (N about 2,000, roughly 1,250 sections a run) once P2 has a week of sweep times, and read `selected=` in the first Spring 2027 run's log against the budget.
+- `PrioritySpec.rank` was a linear scan over the patterns (6.5 s per run for a thousand exact patterns against 3,894 live sections, inside the budget clock); PR #12 makes it a dict lookup. Revisit the list size (N about 2,000, roughly 1,250 sections a run) once P2 has a week of sweep times, and read `selected=` in the first Spring 2027 run's log against the budget.
 - `analysis.yml` replaced `site/data` whenever the own-data cohort had 10 clearings, whatever the term. The Fall 2026 own-data cohort, collected only after that term's last automatic waitlist run, showed 209 clearings on 2026-09-23 and would have displaced the Berkeleytime backfill (220,196 events) on Sunday Sep 27. The guard now also requires term 2272 (in the P2 PR; decision row in the data log).
 - The live methodology page said "one request per second"; corrected in the P2 PR. The `site-v3` branch's copy of `site/methodology.html` carries the same sentence: change it there before P1 merges.
