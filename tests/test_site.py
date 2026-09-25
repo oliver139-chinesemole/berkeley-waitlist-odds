@@ -349,9 +349,11 @@ def test_cross_listed_number_resolves_with_or_without_the_c(full_site: Path) -> 
 
 QUERIES = ROOT / "tests" / "fixtures" / "course_queries.csv"
 RUNNER = ROOT / "tests" / "site" / "queries.mjs"
-# Every row of the table in docs/dev/NEXT_2026-09-24.md section 4 (A2) has to be in the fixture.
+# Every row of the table in docs/dev/NEXT_2026-09-24.md section 4 (A2) has to be in the fixture, with
+# one substitution: MCELLBI 32 has no course in the Spring 2026 index (PR #11), so the table's
+# "molecular and cell biology 32" is asked as "molecular and cell biology 104", a course in both terms.
 REQUIRED_QUERIES = (
-    "computer science 61a", "Computer Science 61A", "mechanical engineering 40", "molecular and cell biology 32",
+    "computer science 61a", "Computer Science 61A", "mechanical engineering 40", "molecular and cell biology 104",
     "cs 61 a", "cs61 a", "berkeley cs61a", "cs61a discussion", "cs61a spring 2027", "uc berkeley data 8", "61a",
     "compsi 61a", "phsyics 7a", "econimics 1", "staistics 20", "cs 61x", "physics 999", "asdf", "", "data 8", "data c8", "stat c8",
 )
@@ -460,9 +462,11 @@ def test_a_fuzzy_match_says_what_it_showed(full_site: Path) -> None:
 def test_every_subject_has_a_display_name() -> None:
     """Q1: config/subject_names.json names every subject in index.json.
 
-    The Academic Guide's index does not list four of them (DISSTD, ENERES, MBN,
-    QTP), so as the plan allows they are written blank and listed under "_todo";
-    the names asserted here are the 40 most-joined subjects, which are all named.
+    The file covers the Fall 2026 and the Spring 2026 index (the site switches
+    terms by swapping site/data), so this holds on either. The Academic Guide's
+    index does not list three of the subjects (DISSTD, MBN, QTP), so as the plan
+    allows they are written blank and listed under "_todo"; the names asserted
+    here are the 40 most-joined subjects, which are all named in both terms.
     """
     names = json.loads((ROOT / "config" / "subject_names.json").read_text())
     index = json.loads((SITE / "data" / "index.json").read_text())

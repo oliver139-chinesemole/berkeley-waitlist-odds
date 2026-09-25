@@ -11,7 +11,7 @@ PHYSICS 7A,PHYSICS 7A,exact
 physics 7a,PHYSICS 7A,exact
 ECON 1,ECON 1,exact
 MECENG 40,MECENG 40,exact
-MCELLBI 32,MCELLBI 32,exact
+MCELLBI 104,MCELLBI 104,exact
 DATA C8,DATA C8,exact
 data c8,DATA C8,exact
 datac8,DATA C8,exact
@@ -39,7 +39,7 @@ ART 8,ART 8,exact
 MEDIAST 10,MEDIAST 10,exact
 POLSCI 1,POLSCI 1,exact
 MUSIC 20,MUSIC 20,exact
-history 7a,HISTORY 7A,exact
+history 104,HISTORY 104,exact
 PHYSED 32,PHYSED 32,exact
 comp sci 61a,COMPSCI 61A,exact
 l&s 198,LS 198,exact
@@ -48,14 +48,14 @@ cs 61a,COMPSCI 61A,alias
 cs61a,COMPSCI 61A,alias
 CS61A,COMPSCI 61A,alias
 cs 61b,COMPSCI 61B,alias
-mcb 32,MCELLBI 32,alias
+mcb 104,MCELLBI 104,alias
 stats 20,STAT 20,alias
 ds c8,DATA C8,alias
 ds 8,DATA C8,alias
 me 40,MECENG 40,alias
 phys 7a,PHYSICS 7A,alias
-hist 7a,HISTORY 7A,alias
-astro 7a,ASTRON 7A,alias
+hist 104,HISTORY 104,alias
+astro 11,ASTRON 11,alias
 poli sci 1,POLSCI 1,alias
 pe 1,PHYSED 1,alias
 pe 32,PHYSED 32,alias
@@ -67,7 +67,7 @@ soc 1,SOCIOL 1,alias
 computer science 61a,COMPSCI 61A,name
 Computer Science 61A,COMPSCI 61A,name
 mechanical engineering 40,MECENG 40,name
-molecular and cell biology 32,MCELLBI 32,name
+molecular and cell biology 104,MCELLBI 104,name
 mathematics 54,MATH 54,name
 mathematics 53,MATH 53,name
 statistics 20,STAT 20,name
@@ -77,12 +77,12 @@ psychology 1,PSYCH 1,name
 sociology 1,SOCIOL 1,name
 chemistry 1a,CHEM 1A,name
 chemistry 3a,CHEM 3A,name
-astronomy 7a,ASTRON 7A,name
+astronomy 11,ASTRON 11,name
 political science 1,POLSCI 1,name
 cognitive science 1,COGSCI 1,name
 media studies 10,MEDIAST 10,name
-rhetoric 10,RHETOR 10,name
-bioengineering 10,BIOENG 10,name
+rhetoric 103b,RHETOR 103B,name
+bioengineering 100,BIOENG 100,name
 engineering 7,ENGIN 7,name
 film and media 20,FILM 20,name
 letters and science 198,LS 198,name
@@ -128,8 +128,8 @@ berkeley cs 61 a,COMPSCI 61A,split
 61a,COMPSCI 61A,bare
 61A,COMPSCI 61A,bare
 54,MATH 54,bare
-1a,CHEM 1A,bare
-16a,MATH 16A,bare
+1al,CHEM 1AL,bare
+100a,ECON 100A,bare
 53,MATH 53,bare
 8,DATA C8,bare
 berkeley 61a,COMPSCI 61A,bare
@@ -145,7 +145,7 @@ cmpsci 61a,COMPSCI 61A,fuzzy
 matematics 54,MATH 54,fuzzy
 psycology 1,PSYCH 1,fuzzy
 chemsitry 1a,CHEM 1A,fuzzy
-histroy 7a,HISTORY 7A,fuzzy
+histroy 104,HISTORY 104,fuzzy
 bioligy 1a,BIOLOGY 1A,fuzzy
 mecheng 40,MECENG 40,fuzzy
 phsyed 1,PHYSED 1,fuzzy
