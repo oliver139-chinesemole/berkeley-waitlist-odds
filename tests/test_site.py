@@ -476,7 +476,7 @@ def test_department_page_shows_the_pool_curve_and_every_course(course_site: Path
     pool = load(site, "pooled.json")["dept"]["COMPSCI"]["6-15"]
     out = render(site, page="dept.html", search="?subject=COMPSCI", expression="BWO.subjectName('COMPSCI')")
     name = out["eval"]
-    assert name == "COMPSCI"  # no display names on this branch: the code stands in
+    assert name in ("COMPSCI", "Computer Science")  # the code on this branch; the generated name once PR #17 is merged
     els = out["elements"]
     assert els["dept-name"]["text"] == name and out["title"].startswith(f"{name} courses")
     rows = sorted((r for r in index["courses"] if r["subject"] == "COMPSCI"), key=lambda r: -r["joins"])
@@ -523,12 +523,15 @@ def test_department_page_without_a_display_name_and_grouped_subjects(course_site
     # a small subject is pooled with the other small ones: the curve says so
     assert "DISSTD is grouped with the smaller departments" in els["summary"]["html"]
     assert "The smaller departments together, positions 6 to 15" in els["pool"]["html"]
-    out = render(site, page="dept.html", search="?subject=art")
-    assert out["elements"]["dept-name"]["text"] == "ART" and len(dept_rows(out["elements"]["table"]["html"])) == 15
-    # a display name, once the generated map is on the branch, is used; the code stays the fallback
-    out = render(site, page="dept.html", search="?subject=cs", expression="(BWO.SUBJECT_NAMES = {COMPSCI: 'Computer Science'}, [BWO.subjectName('COMPSCI'), BWO.subjectName('DISSTD')])")
-    assert out["eval"] == ["Computer Science", "DISSTD"]
-    assert out["elements"]["dept-name"]["text"] == "COMPSCI"  # "cs" resolves through the aliases; rendered before the map was set
+    out = render(site, page="dept.html", search="?subject=art", expression="BWO.subjectName('ART')")
+    assert out["elements"]["dept-name"]["text"] == out["eval"] and out["eval"] in ("ART", "Art Practice")
+    assert len(dept_rows(out["elements"]["table"]["html"])) == 15 and "Every ART course" in out["elements"]["table"]["html"]
+    # "cs" resolves through the aliases
+    out = render(site, page="dept.html", search="?subject=cs", expression="BWO.subjectName('COMPSCI')")
+    assert out["elements"]["dept-name"]["text"] == out["eval"] and "Every COMPSCI course" in out["elements"]["table"]["html"]
+    # a display name from the generated map (PR #17) is used; a missing or empty one falls back to the code
+    out = render(site, page="dept.html", search="?subject=cs", expression="(BWO.SUBJECT_NAMES = {COMPSCI: 'Computer Science', DISSTD: ''}, [BWO.subjectName('COMPSCI'), BWO.subjectName('DISSTD'), BWO.subjectName('NOPE')])")
+    assert out["eval"] == ["Computer Science", "DISSTD", "NOPE"]
 
 
 def test_unknown_department_names_the_nearest(course_site: Path) -> None:
