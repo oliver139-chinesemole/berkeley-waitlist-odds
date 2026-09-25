@@ -155,6 +155,11 @@ mecheng 40,MECENG 40,fuzzy
 phsyed 1,PHYSED 1,fuzzy
 berkeley compsi 61a,COMPSCI 61A,fuzzy
 compsi 61 a,COMPSCI 61A,fuzzy
+data structures,COMPSCI 61B,title
+linear algebra,MATH 54,title
+hilfinger,COMPSCI 61B,title
+introduction,*,title
+the data structures,COMPSCI 61B,title
 cs 61x,,miss
 physics 999,,miss
 asdf,,miss
@@ -180,3 +185,7 @@ spring 2027,,miss
 chem 1z,,miss
 cs 61a1,,miss
 business administration 135,,miss
+quantum basketweaving,,miss
+data structures 2,,miss
+data,,miss
+and,,miss

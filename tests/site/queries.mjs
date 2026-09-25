@@ -8,6 +8,11 @@
 // stdout: every row with the key and layer the matcher returned and the keys it
 // offered as nearest; a one-line summary goes to stderr. Exits 1 on a failure.
 //
+// The title layer reads tests/fixtures/titles_sample.json, served as data/titles.json
+// (HARNESS_TITLES_FILE), since the committed site/data has no titles file yet; every
+// query goes through BWO.matchCourseAsync, the path the pages use, and the whole
+// fixture may request titles.json at most once.
+//
 // An expected_key of "*" means "any course, the layer is what this row is for":
 // it is for the rows whose key is decided by the joins ranking in the committed
 // export, which a refresh can reorder without anything being wrong.
@@ -23,6 +28,7 @@ const FIXTURE = path.join(ROOT, "tests", "fixtures", "course_queries.csv");
 const HARNESS = path.join(HERE, "harness.js");
 const PAGE = path.join(ROOT, "site", "index.html");
 const SITE = path.join(ROOT, "site");
+const TITLES = path.join(ROOT, "tests", "fixtures", "titles_sample.json");
 
 // The fixture is plain CSV: three fields, no quoting, no commas inside a field.
 export function readFixture(text) {
@@ -38,14 +44,16 @@ export function readFixture(text) {
 
 // One harness run for the whole fixture: the page loads the real index.json once.
 export function runQueries(queries) {
-  const expression = `(function () { var qs = ${JSON.stringify(queries)}; return qs.map(function (q) {
-    var m = BWO.matchCourse(BWO.loaded.index, q);
-    return { key: m.key, layer: m.layer, nearest: (m.nearest || []).map(function (r) { return r.key; }) };
-  }); })()`;
-  const out = execFileSync(process.execPath, [HARNESS, PAGE, SITE, "", "", "", expression], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+  const expression = `(async function () { var qs = ${JSON.stringify(queries)}, out = [];
+    for (var i = 0; i < qs.length; i++) {
+      var m = await BWO.matchCourseAsync(BWO.loaded.index, qs[i]);
+      out.push({ key: m.key, layer: m.layer, nearest: (m.nearest || []).map(function (r) { return r.key; }) });
+    }
+    return out; })()`;
+  const out = execFileSync(process.execPath, [HARNESS, PAGE, SITE, "", "", "", expression], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024, env: { ...process.env, HARNESS_TITLES_FILE: TITLES } });
   const parsed = JSON.parse(out);
   if (parsed.eval_error) throw new Error(`harness could not evaluate the fixture: ${parsed.eval_error}`);
-  return parsed.eval;
+  return { results: parsed.eval, titleFetches: parsed.fetches.filter((u) => u === "data/titles.json").length };
 }
 
 export function check(rows, results) {
@@ -61,8 +69,9 @@ export function check(rows, results) {
 }
 
 const rows = readFixture(fs.readFileSync(FIXTURE, "utf8"));
-const results = runQueries(rows.map((r) => r.query));
+const { results, titleFetches } = runQueries(rows.map((r) => r.query));
 const failures = check(rows, results);
+if (titleFetches > 1) failures.push(`titles.json was requested ${titleFetches} times; at most once per page load`);
 process.stdout.write(JSON.stringify({ rows: rows.map((r, i) => ({ ...r, ...results[i] })), failures }));
 process.stderr.write(`${rows.length - failures.length} of ${rows.length} fixture queries matched\n`);
 for (const f of failures) process.stderr.write(`  ${f}\n`);
