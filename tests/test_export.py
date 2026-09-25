@@ -162,3 +162,22 @@ def test_cli_rebuilds_site_data_from_a_saved_cohort(cohort: pd.DataFrame, tmp_pa
     assert all(cell["pooled"] is not False for e in json.loads((out / "courses" / "COMPSCI.json").read_text())["courses"].values() for cell in e["buckets"].values())
     assert meta["backfill"] == {"sections": 296} and meta["flows"] == {"admits": 1} and "unrelated" not in meta
     assert meta["prereg_commit"] == "abc123" and meta["prereg_date"] == "2026-09-21" and meta["forecast_term_name"] == "Spring 2027"
+
+
+def test_cli_carries_no_labels_from_another_terms_meta(cohort: pd.DataFrame, tmp_path: Path) -> None:
+    """`make site-data` carries source labels from the meta.json already in site/data; when that
+    file describes another term (Spring 2026 labels, a Fall 2026 cohort) nothing may be carried."""
+    cohort_path = tmp_path / "cohort.parquet"
+    cohort.to_parquet(cohort_path, index=False)
+    old_meta = tmp_path / "old_meta.json"
+    old_meta.write_text(json.dumps({
+        "term_id": "2262", "data_source": "berkeleytime_history", "backfill": {"sections": 6131},
+        "flows": {"wl_joins": 109421}, "cohort_rows_by_scenario": {"central": 531568}, "prereg_commit": "7f348ed", "prereg_date": "2026-09-21",
+    }))
+    out = tmp_path / "site"
+    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--forecast-term", "2272", "--out", str(out), "--meta-from", str(old_meta), "--n-boot", "5"]) == 0
+    meta = json.loads((out / "meta.json").read_text())
+    assert meta["term_id"] == "2268"
+    for key in ("backfill", "flows", "cohort_rows_by_scenario", "prereg_commit", "prereg_date"):
+        assert key not in meta, key
+    assert meta.get("data_source") != "berkeleytime_history"

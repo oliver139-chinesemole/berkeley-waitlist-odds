@@ -3,7 +3,7 @@
 "RUSSIAN 1": {
 "buckets": {
 "1-5": {
-"n_course": 6,
+"n_course": 3,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -15,5 +15,5 @@
 }
 },
 "subject": "RUSSIAN",
-"term_id": "2268"
+"term_id": "2262"
 }

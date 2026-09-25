@@ -1,112 +1,24 @@
 {
 "courses": {
+"NATAMST 105": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "105",
+"subject": "NATAMST"
+},
 "NATAMST 110": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.114,
-null,
-null
-],
-[
-1.0,
-0.114,
-null,
-null
-],
-[
-2.0,
-0.145,
-null,
-null
-],
-[
-3.0,
-0.145,
-null,
-null
-],
-[
-4.0,
-0.208,
-null,
-null
-],
-[
-5.0,
-0.243,
-null,
-null
-],
-[
-6.0,
-0.243,
-null,
-null
-],
-[
-7.0,
-0.279,
-null,
-null
-],
-[
-8.0,
-0.351,
-null,
-null
-],
-[
-9.0,
-0.351,
-null,
-null
-],
-[
-10.0,
-0.351,
-null,
-null
-],
-[
-12.0,
-0.351,
-null,
-null
-],
-[
-14.0,
-0.351,
-null,
-null
-],
-[
-16.0,
-0.351,
-null,
-null
-],
-[
-18.0,
-0.351,
-null,
-null
-],
-[
-18.36,
-0.351,
-null,
-null
-]
-],
-"events": 11,
-"median_days": null,
-"n": 35,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -114,162 +26,137 @@ null
 "number": "110",
 "subject": "NATAMST"
 },
-"NATAMST 120": {
-"buckets": {
-"1-5": {
-"n_course": 29,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "120",
-"subject": "NATAMST"
-},
-"NATAMST 149": {
-"buckets": {
-"1-5": {
-"n_course": 29,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "149",
-"subject": "NATAMST"
-},
-"NATAMST 179": {
+"NATAMST 158": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.124,
+0.154,
 null,
 null
 ],
 [
 1.0,
-0.206,
+0.269,
 null,
 null
 ],
 [
 2.0,
-0.262,
+0.41,
 null,
 null
 ],
 [
 3.0,
-0.291,
+0.538,
 null,
 null
 ],
 [
 4.0,
-0.291,
+0.633,
 null,
 null
 ],
 [
 5.0,
-0.291,
+0.675,
 null,
 null
 ],
 [
 6.0,
-0.291,
+0.749,
 null,
 null
 ],
 [
 7.0,
-0.291,
+0.749,
 null,
 null
 ],
 [
 8.0,
-0.291,
+0.882,
 null,
 null
 ],
 [
 9.0,
-0.291,
+0.911,
 null,
 null
 ],
 [
 10.0,
-0.291,
+0.911,
 null,
 null
 ],
 [
 12.0,
-0.291,
+0.911,
 null,
 null
 ],
 [
 14.0,
-0.291,
+0.911,
 null,
 null
 ],
 [
 16.0,
-0.291,
+0.911,
 null,
 null
 ],
 [
 18.0,
-0.291,
+0.911,
 null,
 null
 ],
 [
 21.0,
-0.291,
+0.911,
 null,
 null
 ],
 [
-24.0,
-0.291,
-null,
-null
-],
-[
-28.0,
-0.291,
-null,
-null
-],
-[
-28.02,
-0.291,
+21.91,
+0.911,
 null,
 null
 ]
 ],
-"events": 11,
-"median_days": null,
-"n": 41,
+"events": 68,
+"median_days": 2.82,
+"n": 78,
 "pooled": false,
-"reach_days": 28.0,
+"reach_days": 21.9,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "179",
+"number": "158",
+"subject": "NATAMST"
+},
+"NATAMST 178": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "178",
 "subject": "NATAMST"
 },
 "NATAMST 190": {
@@ -278,136 +165,172 @@ null
 "curve": [
 [
 0.5,
-0.0,
-0.0,
-0.0
+0.104,
+0.029,
+0.143
 ],
 [
 1.0,
-0.0,
-0.0,
-0.0
+0.125,
+0.029,
+0.177
 ],
 [
 2.0,
-0.0,
-0.0,
-0.0
+0.159,
+0.061,
+0.211
 ],
 [
 3.0,
-0.0,
-0.0,
-0.0
+0.182,
+0.061,
+0.246
 ],
 [
 4.0,
-0.0,
-0.0,
-0.0
+0.218,
+0.061,
+0.301
 ],
 [
 5.0,
-0.0,
-0.0,
-0.0
+0.23,
+0.061,
+0.32
 ],
 [
 6.0,
-0.0,
-0.0,
-0.0
+0.267,
+0.061,
+0.376
 ],
 [
 7.0,
-0.0,
-0.0,
-0.0
+0.267,
+0.061,
+0.376
 ],
 [
 8.0,
-0.0,
-0.0,
-0.0
+0.28,
+0.061,
+0.396
 ],
 [
 9.0,
-0.0,
-0.0,
-0.0
+0.28,
+0.061,
+0.396
 ],
 [
 10.0,
-0.0,
-0.0,
-0.0
+0.293,
+0.061,
+0.416
 ],
 [
 12.0,
-0.0,
-0.0,
-0.0
+0.306,
+0.061,
+0.436
 ],
 [
 14.0,
-0.0,
-0.0,
-0.0
+0.366,
+0.108,
+0.501
 ],
 [
 16.0,
-0.0,
-0.0,
-0.0
+0.4,
+0.108,
+0.55
 ],
 [
 18.0,
-0.0,
-0.0,
-0.0
+0.4,
+0.108,
+0.55
 ],
 [
 21.0,
-0.0,
-0.0,
-0.0
+0.419,
+0.108,
+0.576
 ],
 [
 24.0,
-0.0,
-0.0,
-0.0
+0.419,
+0.108,
+0.576
 ],
 [
 28.0,
-0.0,
-0.0,
-0.0
+0.419,
+0.108,
+0.576
 ],
 [
 32.0,
-0.0,
-0.0,
-0.0
+0.419,
+0.108,
+0.576
 ],
 [
 36.0,
-0.0,
-0.0,
-0.0
+0.419,
+0.108,
+0.576
 ],
 [
-38.12,
-0.0,
-0.0,
-0.0
+42.0,
+0.419,
+0.108,
+0.576
+],
+[
+49.0,
+0.419,
+0.108,
+0.576
+],
+[
+56.0,
+0.419,
+0.108,
+0.576
+],
+[
+63.0,
+0.419,
+0.108,
+0.576
+],
+[
+70.0,
+0.419,
+0.108,
+0.576
+],
+[
+77.0,
+0.419,
+0.108,
+0.576
+],
+[
+79.75,
+0.419,
+0.108,
+0.576
 ]
 ],
-"events": 0,
+"events": 34,
 "median_days": null,
-"n": 67,
+"n": 97,
 "pooled": false,
-"reach_days": 38.1,
+"reach_days": 79.7,
 "sections": 2
 }
 },
@@ -416,85 +339,510 @@ null
 "number": "190",
 "subject": "NATAMST"
 },
-"NATAMST 20A": {
+"NATAMST 194B": {
 "buckets": {
 "1-5": {
-"n_course": 26,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "20A",
-"subject": "NATAMST"
-},
-"NATAMST 39A": {
-"buckets": {
-"1-5": {
-"n_course": 29,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "39A",
-"subject": "NATAMST"
-},
-"NATAMST C152": {
-"buckets": {
-"1-5": {
-"n_course": 4,
+"n_course": 13,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "C152",
+"number": "194B",
 "subject": "NATAMST"
 },
-"NATAMST C70": {
+"NATAMST C22AC": {
 "buckets": {
 "1-5": {
-"n_course": 28,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.044,
+null,
+null
+],
+[
+1.0,
+0.057,
+null,
+null
+],
+[
+2.0,
+0.079,
+null,
+null
+],
+[
+3.0,
+0.083,
+null,
+null
+],
+[
+4.0,
+0.094,
+null,
+null
+],
+[
+5.0,
+0.141,
+null,
+null
+],
+[
+6.0,
+0.185,
+null,
+null
+],
+[
+7.0,
+0.245,
+null,
+null
+],
+[
+8.0,
+0.28,
+null,
+null
+],
+[
+9.0,
+0.309,
+null,
+null
+],
+[
+10.0,
+0.352,
+null,
+null
+],
+[
+12.0,
+0.451,
+null,
+null
+],
+[
+14.0,
+0.531,
+null,
+null
+],
+[
+16.0,
+0.648,
+null,
+null
+],
+[
+18.0,
+0.671,
+null,
+null
+],
+[
+21.0,
+0.756,
+null,
+null
+],
+[
+24.0,
+0.832,
+null,
+null
+],
+[
+28.0,
+0.851,
+null,
+null
+],
+[
+32.0,
+0.851,
+null,
+null
+],
+[
+36.0,
+0.851,
+null,
+null
+],
+[
+42.0,
+0.851,
+null,
+null
+],
+[
+49.0,
+0.851,
+null,
+null
+],
+[
+56.0,
+0.851,
+null,
+null
+],
+[
+63.0,
+0.851,
+null,
+null
+],
+[
+70.0,
+0.851,
+null,
+null
+],
+[
+77.0,
+0.851,
+null,
+null
+],
+[
+79.75,
+0.851,
+null,
+null
+]
+],
+"events": 108,
+"median_days": 12.99,
+"n": 251,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.018,
+null,
+null
+],
+[
+12.0,
+0.054,
+null,
+null
+],
+[
+14.0,
+0.076,
+null,
+null
+],
+[
+16.0,
+0.168,
+null,
+null
+],
+[
+18.0,
+0.168,
+null,
+null
+],
+[
+21.0,
+0.315,
+null,
+null
+],
+[
+24.0,
+0.72,
+null,
+null
+],
+[
+28.0,
+0.84,
+null,
+null
+],
+[
+32.0,
+0.84,
+null,
+null
+],
+[
+35.14,
+0.84,
+null,
+null
+]
+],
+"events": 32,
+"median_days": 21.78,
+"n": 106,
+"pooled": false,
+"reach_days": 35.1,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "C70",
+"number": "C22AC",
 "subject": "NATAMST"
 },
-"NATAMST C73AC": {
+"NATAMST R1B": {
 "buckets": {
 "1-5": {
-"n_course": 28,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 35,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "C73AC",
-"subject": "NATAMST"
-},
-"NATAMST R1A": {
-"buckets": {
-"1-5": {
-"n_course": 21,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "R1A",
+"number": "R1B",
 "subject": "NATAMST"
 }
 },
 "subject": "NATAMST",
-"term_id": "2268"
+"term_id": "2262"
 }

@@ -1,32 +1,32 @@
 {
 "courses": {
-"MILSCI 1": {
+"FOLKLOR C262B": {
 "buckets": {
 "1-5": {
-"n_course": 2,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "1",
-"subject": "MILSCI"
-},
-"MILSCI 431": {
-"buckets": {
-"1-5": {
-"n_course": 29,
+"n_course": 24,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "431",
-"subject": "MILSCI"
+"number": "C262B",
+"subject": "FOLKLOR"
+},
+"FOLKLOR C288": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
-"subject": "MILSCI",
-"term_id": "2268"
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C288",
+"subject": "FOLKLOR"
+}
+},
+"subject": "FOLKLOR",
+"term_id": "2262"
 }

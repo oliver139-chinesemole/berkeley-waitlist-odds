@@ -6,316 +6,269 @@
 "curve": [
 [
 0.5,
-0.227,
-0.155,
-0.259
+0.326,
+0.128,
+0.38
 ],
 [
 1.0,
-0.285,
-0.176,
-0.332
+0.463,
+0.153,
+0.548
 ],
 [
 2.0,
-0.338,
-0.176,
-0.404
+0.639,
+0.211,
+0.756
 ],
 [
 3.0,
-0.419,
-0.302,
-0.469
+0.708,
+0.282,
+0.825
 ],
 [
 4.0,
-0.481,
-0.317,
-0.546
+0.749,
+0.363,
+0.855
 ],
 [
 5.0,
-0.575,
-0.332,
-0.665
+0.765,
+0.395,
+0.866
 ],
 [
 6.0,
-0.657,
-0.349,
-0.769
+0.772,
+0.419,
+0.869
 ],
 [
 7.0,
-0.702,
-0.435,
-0.799
+0.772,
+0.419,
+0.869
 ],
 [
 8.0,
-0.715,
-0.452,
-0.811
+0.783,
+0.47,
+0.869
 ],
 [
 9.0,
-0.749,
-0.49,
-0.843
+0.788,
+0.495,
+0.869
 ],
 [
 10.0,
-0.76,
-0.509,
-0.85
+0.796,
+0.508,
+0.875
 ],
 [
 12.0,
-0.766,
-0.509,
-0.859
+0.832,
+0.578,
+0.902
 ],
 [
 14.0,
-0.775,
-0.542,
-0.859
+0.838,
+0.592,
+0.906
 ],
 [
 16.0,
-0.799,
-0.612,
-0.859
+0.842,
+0.592,
+0.913
 ],
 [
 18.0,
-0.799,
-0.612,
-0.859
+0.842,
+0.592,
+0.913
 ],
 [
 21.0,
-0.799,
-0.612,
-0.859
+0.842,
+0.592,
+0.913
 ],
 [
 24.0,
-0.799,
-0.612,
-0.859
+0.842,
+0.592,
+0.913
 ],
 [
 28.0,
-0.799,
-0.612,
-0.859
+0.842,
+0.592,
+0.913
 ],
 [
-30.81,
-0.799,
-0.612,
-0.859
+32.0,
+0.842,
+0.592,
+0.913
+],
+[
+36.0,
+0.842,
+0.592,
+0.913
+],
+[
+42.0,
+0.842,
+0.592,
+0.913
+],
+[
+49.0,
+0.842,
+0.592,
+0.913
+],
+[
+56.0,
+0.842,
+0.592,
+0.913
+],
+[
+63.0,
+0.842,
+0.592,
+0.913
+],
+[
+70.0,
+0.842,
+0.592,
+0.913
+],
+[
+77.0,
+0.842,
+0.592,
+0.913
+],
+[
+79.75,
+0.842,
+0.592,
+0.913
 ]
 ],
-"events": 214,
-"median_days": 4.19,
-"n": 323,
+"events": 465,
+"median_days": 1.16,
+"n": 613,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 79.7,
 "sections": 2
 },
 "16-40": {
-"curve": [
-[
-0.5,
-0.019,
-null,
-null
-],
-[
-1.0,
-0.057,
-null,
-null
-],
-[
-2.0,
-0.094,
-null,
-null
-],
-[
-3.0,
-0.132,
-null,
-null
-],
-[
-4.0,
-0.274,
-null,
-null
-],
-[
-5.0,
-0.328,
-null,
-null
-],
-[
-6.0,
-0.444,
-null,
-null
-],
-[
-7.0,
-0.444,
-null,
-null
-],
-[
-8.0,
-0.444,
-null,
-null
-],
-[
-9.0,
-0.519,
-null,
-null
-],
-[
-10.0,
-0.667,
-null,
-null
-],
-[
-12.0,
-0.852,
-null,
-null
-],
-[
-14.0,
-0.926,
-null,
-null
-],
-[
-15.9,
-1.0,
-null,
-null
-]
-],
-"events": 34,
-"median_days": 8.73,
-"n": 53,
-"pooled": false,
-"reach_days": 15.9,
-"sections": 1
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.039,
-0.029,
-0.08
+0.074,
+0.067,
+0.1
 ],
 [
 1.0,
-0.071,
-0.069,
-0.08
+0.133,
+0.1,
+0.141
 ],
 [
 2.0,
-0.11,
-0.08,
-0.118
+0.26,
+0.1,
+0.301
 ],
 [
 3.0,
-0.195,
-0.158,
-0.371
+0.45,
+0.187,
+0.515
 ],
 [
 4.0,
-0.28,
-0.263,
-0.371
+0.655,
+0.401,
+0.712
 ],
 [
 5.0,
-0.32,
-0.313,
-0.371
+0.791,
+0.521,
+0.85
 ],
 [
 6.0,
-0.423,
-0.371,
-0.442
+0.872,
+0.521,
+0.94
 ],
 [
 7.0,
-0.547,
-0.546,
-0.564
+0.872,
+0.521,
+0.94
 ],
 [
 8.0,
-0.547,
-0.546,
-0.564
+0.872,
+0.521,
+0.94
 ],
 [
 9.0,
-0.617,
-0.564,
-0.636
+0.872,
+0.521,
+0.94
 ],
 [
 10.0,
-0.706,
-0.564,
-0.745
+0.872,
+0.521,
+0.94
 ],
 [
 12.0,
-0.871,
-0.564,
-0.909
+0.963,
+0.76,
+1.0
 ],
 [
-14.0,
-0.926,
-0.564,
-0.964
-],
-[
-15.9,
-1.0,
-1.0,
+12.22,
+0.963,
+0.76,
 1.0
 ]
 ],
-"events": 86,
-"median_days": 6.56,
-"n": 127,
+"events": 157,
+"median_days": 3.27,
+"n": 234,
 "pooled": false,
-"reach_days": 15.9,
+"reach_days": 12.2,
 "sections": 2
 }
 },
-"dept_group": "PSYCH",
+"dept_group": "OTHER",
 "level": "lower",
 "number": "1",
 "subject": "PSYCH"
@@ -326,828 +279,19 @@ null
 "curve": [
 [
 0.5,
-0.206,
-0.0,
-0.211
+0.248,
+null,
+null
 ],
 [
 1.0,
-0.256,
-0.0,
-0.263
-],
-[
-2.0,
 0.302,
-0.0,
-0.31
-],
-[
-3.0,
-0.402,
-0.0,
-0.411
-],
-[
-4.0,
-0.431,
-0.0,
-0.441
-],
-[
-5.0,
-0.501,
-0.0,
-0.513
-],
-[
-6.0,
-0.532,
-0.0,
-0.545
-],
-[
-7.0,
-0.58,
-0.0,
-0.593
-],
-[
-8.0,
-0.68,
-0.0,
-0.694
-],
-[
-9.0,
-0.698,
-0.0,
-0.712
-],
-[
-10.0,
-0.698,
-0.0,
-0.712
-],
-[
-12.0,
-0.726,
-0.0,
-0.741
-],
-[
-14.0,
-0.775,
-0.0,
-0.791
-],
-[
-16.0,
-0.795,
-0.0,
-0.812
-],
-[
-18.0,
-0.795,
-0.0,
-0.812
-],
-[
-21.0,
-0.795,
-0.0,
-0.812
-],
-[
-24.0,
-0.795,
-0.0,
-0.812
-],
-[
-28.0,
-0.795,
-0.0,
-0.812
-],
-[
-32.0,
-0.795,
-0.0,
-0.812
-],
-[
-33.88,
-0.795,
-0.0,
-0.812
-]
-],
-"events": 109,
-"median_days": 4.93,
-"n": 161,
-"pooled": false,
-"reach_days": 33.9,
-"sections": 2
-},
-"16-40": {
-"n_course": 16,
-"pooled": "PSYCH",
-"sections_course": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.075,
-null,
-null
-],
-[
-1.0,
-0.09,
 null,
 null
 ],
 [
 2.0,
-0.09,
-null,
-null
-],
-[
-3.0,
-0.09,
-null,
-null
-],
-[
-4.0,
-0.09,
-null,
-null
-],
-[
-5.0,
-0.108,
-null,
-null
-],
-[
-6.0,
-0.127,
-null,
-null
-],
-[
-7.0,
-0.145,
-null,
-null
-],
-[
-8.0,
-0.32,
-null,
-null
-],
-[
-9.0,
-0.354,
-null,
-null
-],
-[
-10.0,
-0.354,
-null,
-null
-],
-[
-12.0,
-0.483,
-null,
-null
-],
-[
-14.0,
-0.828,
-null,
-null
-],
-[
-15.92,
-1.0,
-null,
-null
-]
-],
-"events": 34,
-"median_days": 12.82,
-"n": 67,
-"pooled": false,
-"reach_days": 15.9,
-"sections": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "101",
-"subject": "PSYCH"
-},
-"PSYCH 102": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.226,
-null,
-null
-],
-[
-1.0,
-0.24,
-null,
-null
-],
-[
-2.0,
-0.267,
-null,
-null
-],
-[
-3.0,
-0.321,
-null,
-null
-],
-[
-4.0,
-0.432,
-null,
-null
-],
-[
-5.0,
-0.56,
-null,
-null
-],
-[
-6.0,
-0.645,
-null,
-null
-],
-[
-7.0,
-0.645,
-null,
-null
-],
-[
-8.0,
-0.645,
-null,
-null
-],
-[
-9.0,
-0.645,
-null,
-null
-],
-[
-10.0,
-0.645,
-null,
-null
-],
-[
-12.0,
-0.645,
-null,
-null
-],
-[
-14.0,
-0.645,
-null,
-null
-],
-[
-16.0,
-0.645,
-null,
-null
-],
-[
-18.0,
-0.645,
-null,
-null
-],
-[
-21.0,
-0.645,
-null,
-null
-],
-[
-24.0,
-0.645,
-null,
-null
-],
-[
-28.0,
-0.645,
-null,
-null
-],
-[
-32.0,
-0.645,
-null,
-null
-],
-[
-36.0,
-0.645,
-null,
-null
-],
-[
-42.0,
-0.645,
-null,
-null
-],
-[
-48.2,
-0.645,
-null,
-null
-]
-],
-"events": 47,
-"median_days": 4.32,
-"n": 76,
-"pooled": false,
-"reach_days": 48.2,
-"sections": 1
-},
-"6-15": {
-"n_course": 4,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "102",
-"subject": "PSYCH"
-},
-"PSYCH 110": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.178,
-null,
-null
-],
-[
-1.0,
-0.259,
-null,
-null
-],
-[
-2.0,
-0.34,
-null,
-null
-],
-[
-3.0,
-0.365,
-null,
-null
-],
-[
-4.0,
-0.413,
-null,
-null
-],
-[
-5.0,
-0.516,
-null,
-null
-],
-[
-6.0,
-0.544,
-null,
-null
-],
-[
-7.0,
-0.559,
-null,
-null
-],
-[
-8.0,
-0.581,
-null,
-null
-],
-[
-9.0,
-0.598,
-null,
-null
-],
-[
-10.0,
-0.598,
-null,
-null
-],
-[
-12.0,
-0.608,
-null,
-null
-],
-[
-14.0,
-0.608,
-null,
-null
-],
-[
-16.0,
-0.652,
-null,
-null
-],
-[
-18.0,
-0.652,
-null,
-null
-],
-[
-21.0,
-0.652,
-null,
-null
-],
-[
-24.0,
-0.652,
-null,
-null
-],
-[
-28.0,
-0.652,
-null,
-null
-],
-[
-32.0,
-0.652,
-null,
-null
-],
-[
-36.0,
-0.652,
-null,
-null
-],
-[
-42.0,
-0.652,
-null,
-null
-],
-[
-48.2,
-0.652,
-null,
-null
-]
-],
-"events": 100,
-"median_days": 4.81,
-"n": 175,
-"pooled": false,
-"reach_days": 48.2,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.156,
-null,
-null
-],
-[
-1.0,
-0.312,
-null,
-null
-],
-[
-2.0,
-0.45,
-null,
-null
-],
-[
-3.0,
-0.45,
-null,
-null
-],
-[
-4.0,
-0.45,
-null,
-null
-],
-[
-5.0,
-0.45,
-null,
-null
-],
-[
-6.0,
-0.45,
-null,
-null
-],
-[
-7.0,
-0.45,
-null,
-null
-],
-[
-8.0,
-0.45,
-null,
-null
-],
-[
-9.0,
-0.45,
-null,
-null
-],
-[
-10.0,
-0.45,
-null,
-null
-],
-[
-12.0,
-0.45,
-null,
-null
-],
-[
-14.0,
-0.45,
-null,
-null
-],
-[
-15.83,
-0.45,
-null,
-null
-]
-],
-"events": 16,
-"median_days": 15.83,
-"n": 32,
-"pooled": false,
-"reach_days": 15.8,
-"sections": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "110",
-"subject": "PSYCH"
-},
-"PSYCH 112A": {
-"buckets": {
-"1-5": {
-"n_course": 25,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "112A",
-"subject": "PSYCH"
-},
-"PSYCH 115": {
-"buckets": {
-"1-5": {
-"n_course": 24,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "115",
-"subject": "PSYCH"
-},
-"PSYCH 134": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.314,
-null,
-null
-],
-[
-1.0,
-0.413,
-null,
-null
-],
-[
-2.0,
-0.454,
-null,
-null
-],
-[
-3.0,
-0.533,
-null,
-null
-],
-[
-4.0,
-0.587,
-null,
-null
-],
-[
-5.0,
-0.669,
-null,
-null
-],
-[
-6.0,
-0.688,
-null,
-null
-],
-[
-7.0,
-0.688,
-null,
-null
-],
-[
-8.0,
-0.694,
-null,
-null
-],
-[
-9.0,
-0.701,
-null,
-null
-],
-[
-10.0,
-0.701,
-null,
-null
-],
-[
-12.0,
-0.701,
-null,
-null
-],
-[
-14.0,
-0.701,
-null,
-null
-],
-[
-16.0,
-0.734,
-null,
-null
-],
-[
-18.0,
-0.734,
-null,
-null
-],
-[
-21.0,
-0.734,
-null,
-null
-],
-[
-24.0,
-0.734,
-null,
-null
-],
-[
-28.0,
-0.734,
-null,
-null
-],
-[
-32.0,
-0.734,
-null,
-null
-],
-[
-36.0,
-0.734,
-null,
-null
-],
-[
-42.0,
-0.734,
-null,
-null
-],
-[
-48.2,
-0.734,
-null,
-null
-]
-],
-"events": 136,
-"median_days": 2.83,
-"n": 195,
-"pooled": false,
-"reach_days": 48.2,
-"sections": 1
-},
-"16-40": {
-"n_course": 14,
-"pooled": "PSYCH",
-"sections_course": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.104,
-null,
-null
-],
-[
-1.0,
-0.194,
-null,
-null
-],
-[
-2.0,
-0.388,
+0.383,
 null,
 null
 ],
@@ -1159,325 +303,1498 @@ null
 ],
 [
 4.0,
-0.463,
+0.519,
 null,
 null
 ],
 [
 5.0,
-0.528,
+0.56,
 null,
 null
 ],
 [
 6.0,
-0.626,
+0.603,
 null,
 null
 ],
 [
 7.0,
-0.658,
+0.627,
 null,
 null
 ],
 [
 8.0,
-0.658,
+0.69,
 null,
 null
 ],
 [
 9.0,
-0.658,
+0.722,
 null,
 null
 ],
 [
 10.0,
-0.658,
+0.742,
 null,
 null
 ],
 [
 12.0,
-0.658,
+0.862,
 null,
 null
 ],
 [
 14.0,
-0.658,
-null,
-null
-],
-[
-15.83,
-0.658,
-null,
-null
-]
-],
-"events": 46,
-"median_days": 4.54,
-"n": 67,
-"pooled": false,
-"reach_days": 15.8,
-"sections": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "134",
-"subject": "PSYCH"
-},
-"PSYCH 147": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.195,
-null,
-null
-],
-[
-1.0,
-0.238,
-null,
-null
-],
-[
-2.0,
-0.313,
-null,
-null
-],
-[
-3.0,
-0.336,
-null,
-null
-],
-[
-4.0,
-0.344,
-null,
-null
-],
-[
-5.0,
-0.38,
-null,
-null
-],
-[
-6.0,
-0.38,
-null,
-null
-],
-[
-7.0,
-0.39,
-null,
-null
-],
-[
-8.0,
-0.39,
-null,
-null
-],
-[
-9.0,
-0.41,
-null,
-null
-],
-[
-10.0,
-0.421,
-null,
-null
-],
-[
-12.0,
-0.465,
-null,
-null
-],
-[
-14.0,
-0.488,
+0.878,
 null,
 null
 ],
 [
 16.0,
-0.526,
+0.878,
 null,
 null
 ],
 [
 18.0,
-0.526,
+0.878,
 null,
 null
 ],
 [
 21.0,
-0.526,
+0.878,
 null,
 null
 ],
 [
 24.0,
-0.526,
+0.878,
 null,
 null
 ],
 [
 28.0,
-0.526,
+0.878,
 null,
 null
 ],
 [
 32.0,
-0.526,
+0.878,
 null,
 null
 ],
 [
 36.0,
-0.526,
+0.878,
 null,
 null
 ],
 [
 42.0,
-0.526,
+0.878,
 null,
 null
 ],
 [
-48.2,
-0.526,
+49.0,
+0.878,
+null,
+null
+],
+[
+56.0,
+0.878,
+null,
+null
+],
+[
+63.0,
+0.878,
+null,
+null
+],
+[
+70.0,
+0.878,
+null,
+null
+],
+[
+77.0,
+0.878,
+null,
+null
+],
+[
+79.75,
+0.878,
 null,
 null
 ]
 ],
-"events": 65,
-"median_days": 15.83,
-"n": 144,
+"events": 159,
+"median_days": 3.87,
+"n": 211,
 "pooled": false,
-"reach_days": 48.2,
+"reach_days": 79.7,
 "sections": 1
 },
 "16-40": {
-"n_course": 14,
-"pooled": "PSYCH",
-"sections_course": 1
-},
-"6-15": {
 "curve": [
 [
 0.5,
-0.067,
+0.027,
 null,
 null
 ],
 [
 1.0,
-0.067,
+0.027,
 null,
 null
 ],
 [
 2.0,
-0.21,
+0.055,
 null,
 null
 ],
 [
 3.0,
-0.21,
+0.055,
 null,
 null
 ],
 [
 4.0,
-0.21,
+0.118,
 null,
 null
 ],
 [
 5.0,
-0.21,
+0.216,
 null,
 null
 ],
 [
 6.0,
-0.21,
+0.287,
 null,
 null
 ],
 [
 7.0,
-0.21,
+0.287,
 null,
 null
 ],
 [
 8.0,
-0.21,
+0.358,
 null,
 null
 ],
 [
 9.0,
-0.21,
+0.358,
 null,
 null
 ],
 [
 10.0,
-0.21,
+0.358,
 null,
 null
 ],
 [
 12.0,
-0.408,
+0.62,
 null,
 null
 ],
 [
 14.0,
-0.704,
+0.81,
 null,
 null
 ],
 [
-15.83,
-0.704,
+16.0,
+0.81,
+null,
+null
+],
+[
+17.38,
+0.937,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 10.74,
+"n": 37,
+"pooled": false,
+"reach_days": 17.4,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.053,
+null,
+null
+],
+[
+1.0,
+0.053,
+null,
+null
+],
+[
+2.0,
+0.053,
+null,
+null
+],
+[
+3.0,
+0.083,
+null,
+null
+],
+[
+4.0,
+0.145,
+null,
+null
+],
+[
+5.0,
+0.209,
+null,
+null
+],
+[
+6.0,
+0.279,
+null,
+null
+],
+[
+7.0,
+0.279,
+null,
+null
+],
+[
+8.0,
+0.349,
+null,
+null
+],
+[
+9.0,
+0.349,
+null,
+null
+],
+[
+10.0,
+0.349,
+null,
+null
+],
+[
+12.0,
+0.602,
+null,
+null
+],
+[
+14.0,
+0.845,
+null,
+null
+],
+[
+16.0,
+0.845,
+null,
+null
+],
+[
+17.38,
+0.956,
+null,
+null
+]
+],
+"events": 69,
+"median_days": 10.74,
+"n": 113,
+"pooled": false,
+"reach_days": 17.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101",
+"subject": "PSYCH"
+},
+"PSYCH 110": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.242,
+null,
+null
+],
+[
+1.0,
+0.284,
+null,
+null
+],
+[
+2.0,
+0.369,
+null,
+null
+],
+[
+3.0,
+0.431,
+null,
+null
+],
+[
+4.0,
+0.507,
+null,
+null
+],
+[
+5.0,
+0.526,
+null,
+null
+],
+[
+6.0,
+0.549,
+null,
+null
+],
+[
+7.0,
+0.58,
+null,
+null
+],
+[
+8.0,
+0.58,
+null,
+null
+],
+[
+9.0,
+0.58,
+null,
+null
+],
+[
+10.0,
+0.59,
+null,
+null
+],
+[
+12.0,
+0.669,
+null,
+null
+],
+[
+14.0,
+0.7,
+null,
+null
+],
+[
+16.0,
+0.7,
+null,
+null
+],
+[
+18.0,
+0.711,
+null,
+null
+],
+[
+21.0,
+0.711,
+null,
+null
+],
+[
+24.0,
+0.711,
+null,
+null
+],
+[
+28.0,
+0.711,
+null,
+null
+],
+[
+32.0,
+0.711,
+null,
+null
+],
+[
+36.0,
+0.711,
+null,
+null
+],
+[
+42.0,
+0.711,
+null,
+null
+],
+[
+49.0,
+0.711,
+null,
+null
+],
+[
+56.0,
+0.711,
+null,
+null
+],
+[
+63.0,
+0.711,
+null,
+null
+],
+[
+70.0,
+0.711,
+null,
+null
+],
+[
+77.0,
+0.711,
+null,
+null
+],
+[
+79.75,
+0.711,
+null,
+null
+]
+],
+"events": 108,
+"median_days": 3.84,
+"n": 174,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.1,
+null,
+null
+],
+[
+1.0,
+0.1,
+null,
+null
+],
+[
+2.0,
+0.1,
+null,
+null
+],
+[
+3.0,
+0.1,
+null,
+null
+],
+[
+4.0,
+0.153,
+null,
+null
+],
+[
+5.0,
+0.153,
+null,
+null
+],
+[
+6.0,
+0.256,
+null,
+null
+],
+[
+7.0,
+0.344,
+null,
+null
+],
+[
+8.0,
+0.344,
+null,
+null
+],
+[
+9.0,
+0.344,
+null,
+null
+],
+[
+10.0,
+0.344,
+null,
+null
+],
+[
+12.0,
+0.836,
+null,
+null
+],
+[
+14.0,
+0.836,
+null,
+null
+],
+[
+16.0,
+0.918,
+null,
+null
+],
+[
+18.0,
+0.918,
+null,
+null
+],
+[
+19.33,
+0.918,
 null,
 null
 ]
 ],
 "events": 18,
-"median_days": 12.95,
-"n": 45,
+"median_days": 10.16,
+"n": 40,
 "pooled": false,
-"reach_days": 15.8,
+"reach_days": 19.3,
 "sections": 1
 }
 },
-"dept_group": "PSYCH",
+"dept_group": "OTHER",
 "level": "upper",
-"number": "147",
+"number": "110",
+"subject": "PSYCH"
+},
+"PSYCH 119": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.293,
+null,
+null
+],
+[
+1.0,
+0.429,
+null,
+null
+],
+[
+2.0,
+0.524,
+null,
+null
+],
+[
+3.0,
+0.586,
+null,
+null
+],
+[
+4.0,
+0.626,
+null,
+null
+],
+[
+5.0,
+0.638,
+null,
+null
+],
+[
+6.0,
+0.682,
+null,
+null
+],
+[
+7.0,
+0.691,
+null,
+null
+],
+[
+8.0,
+0.7,
+null,
+null
+],
+[
+9.0,
+0.71,
+null,
+null
+],
+[
+10.0,
+0.715,
+null,
+null
+],
+[
+12.0,
+0.764,
+null,
+null
+],
+[
+14.0,
+0.787,
+null,
+null
+],
+[
+16.0,
+0.807,
+null,
+null
+],
+[
+18.0,
+0.807,
+null,
+null
+],
+[
+21.0,
+0.807,
+null,
+null
+],
+[
+24.0,
+0.807,
+null,
+null
+],
+[
+28.0,
+0.807,
+null,
+null
+],
+[
+32.0,
+0.807,
+null,
+null
+],
+[
+36.0,
+0.807,
+null,
+null
+],
+[
+42.0,
+0.807,
+null,
+null
+],
+[
+49.0,
+0.807,
+null,
+null
+],
+[
+56.0,
+0.807,
+null,
+null
+],
+[
+63.0,
+0.807,
+null,
+null
+],
+[
+70.0,
+0.807,
+null,
+null
+],
+[
+77.0,
+0.807,
+null,
+null
+],
+[
+79.75,
+0.807,
+null,
+null
+]
+],
+"events": 221,
+"median_days": 1.69,
+"n": 298,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.074,
+null,
+null
+],
+[
+1.0,
+0.136,
+null,
+null
+],
+[
+2.0,
+0.222,
+null,
+null
+],
+[
+3.0,
+0.284,
+null,
+null
+],
+[
+4.0,
+0.441,
+null,
+null
+],
+[
+5.0,
+0.494,
+null,
+null
+],
+[
+6.0,
+0.635,
+null,
+null
+],
+[
+7.0,
+0.71,
+null,
+null
+],
+[
+8.0,
+0.725,
+null,
+null
+],
+[
+9.0,
+0.725,
+null,
+null
+],
+[
+10.0,
+0.745,
+null,
+null
+],
+[
+12.0,
+0.801,
+null,
+null
+],
+[
+14.0,
+0.801,
+null,
+null
+],
+[
+16.0,
+0.801,
+null,
+null
+],
+[
+18.0,
+0.801,
+null,
+null
+],
+[
+19.35,
+0.801,
+null,
+null
+]
+],
+"events": 58,
+"median_days": 5.01,
+"n": 81,
+"pooled": false,
+"reach_days": 19.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "119",
+"subject": "PSYCH"
+},
+"PSYCH 130": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.154,
+null,
+null
+],
+[
+1.0,
+0.192,
+null,
+null
+],
+[
+2.0,
+0.238,
+null,
+null
+],
+[
+3.0,
+0.333,
+null,
+null
+],
+[
+4.0,
+0.414,
+null,
+null
+],
+[
+5.0,
+0.531,
+null,
+null
+],
+[
+6.0,
+0.566,
+null,
+null
+],
+[
+7.0,
+0.58,
+null,
+null
+],
+[
+8.0,
+0.648,
+null,
+null
+],
+[
+9.0,
+0.67,
+null,
+null
+],
+[
+10.0,
+0.67,
+null,
+null
+],
+[
+12.0,
+0.703,
+null,
+null
+],
+[
+14.0,
+0.738,
+null,
+null
+],
+[
+16.0,
+0.738,
+null,
+null
+],
+[
+18.0,
+0.768,
+null,
+null
+],
+[
+21.0,
+0.768,
+null,
+null
+],
+[
+24.0,
+0.768,
+null,
+null
+],
+[
+28.0,
+0.768,
+null,
+null
+],
+[
+32.0,
+0.768,
+null,
+null
+],
+[
+36.0,
+0.768,
+null,
+null
+],
+[
+42.0,
+0.768,
+null,
+null
+],
+[
+49.0,
+0.768,
+null,
+null
+],
+[
+56.0,
+0.768,
+null,
+null
+],
+[
+63.0,
+0.768,
+null,
+null
+],
+[
+70.0,
+0.768,
+null,
+null
+],
+[
+77.0,
+0.768,
+null,
+null
+],
+[
+79.75,
+0.768,
+null,
+null
+]
+],
+"events": 121,
+"median_days": 4.49,
+"n": 189,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.051,
+null,
+null
+],
+[
+1.0,
+0.051,
+null,
+null
+],
+[
+2.0,
+0.087,
+null,
+null
+],
+[
+3.0,
+0.165,
+null,
+null
+],
+[
+4.0,
+0.185,
+null,
+null
+],
+[
+5.0,
+0.324,
+null,
+null
+],
+[
+6.0,
+0.493,
+null,
+null
+],
+[
+7.0,
+0.539,
+null,
+null
+],
+[
+8.0,
+0.562,
+null,
+null
+],
+[
+9.0,
+0.631,
+null,
+null
+],
+[
+10.0,
+0.71,
+null,
+null
+],
+[
+12.0,
+0.789,
+null,
+null
+],
+[
+14.0,
+0.895,
+null,
+null
+],
+[
+16.0,
+0.895,
+null,
+null
+],
+[
+18.0,
+0.93,
+null,
+null
+],
+[
+19.31,
+0.93,
+null,
+null
+]
+],
+"events": 41,
+"median_days": 6.58,
+"n": 59,
+"pooled": false,
+"reach_days": 19.3,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130",
+"subject": "PSYCH"
+},
+"PSYCH 131": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.286,
+null,
+null
+],
+[
+1.0,
+0.341,
+null,
+null
+],
+[
+2.0,
+0.432,
+null,
+null
+],
+[
+3.0,
+0.514,
+null,
+null
+],
+[
+4.0,
+0.524,
+null,
+null
+],
+[
+5.0,
+0.536,
+null,
+null
+],
+[
+6.0,
+0.555,
+null,
+null
+],
+[
+7.0,
+0.587,
+null,
+null
+],
+[
+8.0,
+0.663,
+null,
+null
+],
+[
+9.0,
+0.684,
+null,
+null
+],
+[
+10.0,
+0.684,
+null,
+null
+],
+[
+12.0,
+0.715,
+null,
+null
+],
+[
+14.0,
+0.724,
+null,
+null
+],
+[
+16.0,
+0.724,
+null,
+null
+],
+[
+18.0,
+0.735,
+null,
+null
+],
+[
+21.0,
+0.735,
+null,
+null
+],
+[
+24.0,
+0.735,
+null,
+null
+],
+[
+28.0,
+0.735,
+null,
+null
+],
+[
+32.0,
+0.735,
+null,
+null
+],
+[
+36.0,
+0.735,
+null,
+null
+],
+[
+42.0,
+0.735,
+null,
+null
+],
+[
+49.0,
+0.735,
+null,
+null
+],
+[
+56.0,
+0.735,
+null,
+null
+],
+[
+63.0,
+0.735,
+null,
+null
+],
+[
+70.0,
+0.735,
+null,
+null
+],
+[
+77.0,
+0.735,
+null,
+null
+],
+[
+79.75,
+0.735,
+null,
+null
+]
+],
+"events": 135,
+"median_days": 2.71,
+"n": 207,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.118,
+null,
+null
+],
+[
+1.0,
+0.118,
+null,
+null
+],
+[
+2.0,
+0.201,
+null,
+null
+],
+[
+3.0,
+0.293,
+null,
+null
+],
+[
+4.0,
+0.293,
+null,
+null
+],
+[
+5.0,
+0.293,
+null,
+null
+],
+[
+6.0,
+0.293,
+null,
+null
+],
+[
+7.0,
+0.402,
+null,
+null
+],
+[
+8.0,
+0.577,
+null,
+null
+],
+[
+9.0,
+0.698,
+null,
+null
+],
+[
+10.0,
+0.698,
+null,
+null
+],
+[
+12.0,
+0.773,
+null,
+null
+],
+[
+14.0,
+0.887,
+null,
+null
+],
+[
+16.0,
+0.887,
+null,
+null
+],
+[
+18.0,
+0.887,
+null,
+null
+],
+[
+20.17,
+0.887,
+null,
+null
+]
+],
+"events": 48,
+"median_days": 7.59,
+"n": 76,
+"pooled": false,
+"reach_days": 20.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "131",
 "subject": "PSYCH"
 },
 "PSYCH 160": {
@@ -1486,773 +1803,267 @@ null
 "curve": [
 [
 0.5,
-0.301,
+0.368,
 null,
 null
 ],
 [
 1.0,
-0.349,
+0.518,
 null,
 null
 ],
 [
 2.0,
-0.392,
+0.638,
 null,
 null
 ],
 [
 3.0,
-0.405,
+0.684,
 null,
 null
 ],
 [
 4.0,
-0.449,
+0.698,
 null,
 null
 ],
 [
 5.0,
-0.495,
+0.717,
 null,
 null
 ],
 [
 6.0,
-0.533,
+0.749,
 null,
 null
 ],
 [
 7.0,
-0.549,
+0.765,
 null,
 null
 ],
 [
 8.0,
-0.56,
+0.781,
 null,
 null
 ],
 [
 9.0,
-0.587,
+0.784,
 null,
 null
 ],
 [
 10.0,
-0.587,
+0.787,
 null,
 null
 ],
 [
 12.0,
-0.61,
+0.798,
 null,
 null
 ],
 [
 14.0,
-0.618,
+0.798,
 null,
 null
 ],
 [
 16.0,
-0.618,
+0.798,
 null,
 null
 ],
 [
 18.0,
-0.618,
+0.798,
 null,
 null
 ],
 [
 21.0,
-0.618,
+0.798,
 null,
 null
 ],
 [
 24.0,
-0.618,
+0.798,
 null,
 null
 ],
 [
 28.0,
-0.618,
+0.798,
 null,
 null
 ],
 [
 32.0,
-0.618,
+0.798,
 null,
 null
 ],
 [
 36.0,
-0.618,
+0.798,
 null,
 null
 ],
 [
 42.0,
-0.618,
+0.798,
 null,
 null
 ],
 [
-48.2,
-0.618,
+49.0,
+0.798,
+null,
+null
+],
+[
+56.0,
+0.798,
+null,
+null
+],
+[
+63.0,
+0.798,
+null,
+null
+],
+[
+70.0,
+0.798,
+null,
+null
+],
+[
+77.0,
+0.798,
+null,
+null
+],
+[
+79.75,
+0.798,
 null,
 null
 ]
 ],
-"events": 150,
-"median_days": 5.04,
-"n": 285,
+"events": 352,
+"median_days": 0.93,
+"n": 458,
 "pooled": false,
-"reach_days": 48.2,
+"reach_days": 79.7,
 "sections": 1
 },
 "16-40": {
-"n_course": 26,
-"pooled": "PSYCH",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.077,
+null,
+null
+],
+[
+1.0,
+0.09,
+null,
+null
+],
+[
+2.0,
+0.17,
+null,
+null
+],
+[
+3.0,
+0.251,
+null,
+null
+],
+[
+4.0,
+0.291,
+null,
+null
+],
+[
+5.0,
+0.42,
+null,
+null
+],
+[
+6.0,
+0.542,
+null,
+null
+],
+[
+7.0,
+0.68,
+null,
+null
+],
+[
+8.0,
+0.741,
+null,
+null
+],
+[
+9.0,
+0.741,
+null,
+null
+],
+[
+10.0,
+0.741,
+null,
+null
+],
+[
+12.0,
+0.882,
+null,
+null
+],
+[
+13.37,
+0.882,
+null,
+null
+]
+],
+"events": 58,
+"median_days": 5.73,
+"n": 78,
+"pooled": false,
+"reach_days": 13.4,
+"sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.07,
-null,
-null
-],
-[
-1.0,
-0.121,
-null,
-null
-],
-[
-2.0,
-0.143,
-null,
-null
-],
-[
-3.0,
-0.143,
-null,
-null
-],
-[
-4.0,
-0.189,
-null,
-null
-],
-[
-5.0,
-0.235,
-null,
-null
-],
-[
-6.0,
-0.296,
-null,
-null
-],
-[
-7.0,
-0.357,
-null,
-null
-],
-[
-8.0,
-0.357,
-null,
-null
-],
-[
-9.0,
-0.504,
-null,
-null
-],
-[
-10.0,
-0.504,
-null,
-null
-],
-[
-12.0,
-0.702,
-null,
-null
-],
-[
-14.0,
-0.901,
-null,
-null
-],
-[
-15.85,
-0.967,
-null,
-null
-]
-],
-"events": 49,
-"median_days": 8.74,
-"n": 102,
-"pooled": false,
-"reach_days": 15.9,
-"sections": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "160",
-"subject": "PSYCH"
-},
-"PSYCH 168": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-30.81,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 31,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "168",
-"subject": "PSYCH"
-},
-"PSYCH 192": {
-"buckets": {
-"1-5": {
-"n_course": 6,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "192",
-"subject": "PSYCH"
-},
-"PSYCH 208": {
-"buckets": {
-"1-5": {
-"n_course": 1,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "grad",
-"number": "208",
-"subject": "PSYCH"
-},
-"PSYCH 237G": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-0.0,
-0.0
-],
-[
-1.0,
-0.0,
-0.0,
-0.0
-],
-[
-2.0,
-0.0,
-0.0,
-0.0
-],
-[
-3.0,
-0.0,
-0.0,
-0.0
-],
-[
-4.0,
-0.0,
-0.0,
-0.0
-],
-[
-5.0,
-0.0,
-0.0,
-0.0
-],
-[
-6.0,
-0.0,
-0.0,
-0.0
-],
-[
-7.0,
-0.0,
-0.0,
-0.0
-],
-[
-8.0,
-0.0,
-0.0,
-0.0
-],
-[
-9.0,
-0.0,
-0.0,
-0.0
-],
-[
-10.0,
-0.0,
-0.0,
-0.0
-],
-[
-12.0,
-0.0,
-0.0,
-0.0
-],
-[
-14.0,
-0.0,
-0.0,
-0.0
-],
-[
-16.0,
-0.0,
-0.0,
-0.0
-],
-[
-18.0,
-0.0,
-0.0,
-0.0
-],
-[
-21.0,
-0.0,
-0.0,
-0.0
-],
-[
-24.0,
-0.0,
-0.0,
-0.0
-],
-[
-28.0,
-0.0,
-0.0,
-0.0
-],
-[
-32.0,
-0.0,
-0.0,
-0.0
-],
-[
-36.0,
-0.0,
-0.0,
-0.0
-],
-[
-42.0,
-0.0,
-0.0,
-0.0
-],
-[
-49.0,
-0.0,
-0.0,
-0.0
-],
-[
-56.0,
-0.0,
-0.0,
-0.0
-],
-[
-60.47,
-0.0,
-0.0,
-0.0
-]
-],
-"events": 0,
-"median_days": null,
-"n": 420,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 14
-}
-},
-"dept_group": "PSYCH",
-"level": "grad",
-"number": "237G",
-"subject": "PSYCH"
-},
-"PSYCH 24": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.016,
-null,
-null
-],
-[
-1.0,
-0.05,
-null,
-null
-],
-[
-2.0,
-0.088,
-null,
-null
-],
-[
-3.0,
-0.088,
-null,
-null
-],
-[
-4.0,
-0.172,
-null,
-null
-],
-[
-5.0,
-0.172,
-null,
-null
-],
-[
-6.0,
-0.172,
-null,
-null
-],
-[
-7.0,
-0.172,
-null,
-null
-],
-[
-8.0,
-0.25,
-null,
-null
-],
-[
-9.0,
-0.344,
-null,
-null
-],
-[
-10.0,
-0.437,
-null,
-null
-],
-[
-12.0,
-0.437,
-null,
-null
-],
-[
-14.0,
-0.437,
-null,
-null
-],
-[
-16.0,
-0.606,
-null,
-null
-],
-[
-18.0,
-0.606,
-null,
-null
-],
-[
-21.0,
-0.606,
-null,
-null
-],
-[
-24.0,
-0.606,
-null,
-null
-],
-[
-28.0,
-0.606,
-null,
-null
-],
-[
-30.81,
-0.606,
-null,
-null
-]
-],
-"events": 21,
-"median_days": 15.92,
-"n": 64,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "lower",
-"number": "24",
-"subject": "PSYCH"
-},
-"PSYCH 259": {
-"buckets": {
-"1-5": {
-"n_course": 26,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "grad",
-"number": "259",
-"subject": "PSYCH"
-},
-"PSYCH 260A": {
-"buckets": {
-"1-5": {
-"n_course": 4,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "grad",
-"number": "260A",
-"subject": "PSYCH"
-},
-"PSYCH 290J": {
-"buckets": {
-"1-5": {
-"n_course": 2,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "grad",
-"number": "290J",
-"subject": "PSYCH"
-},
-"PSYCH 375": {
-"buckets": {
-"1-5": {
-"n_course": 22,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "grad",
-"number": "375",
-"subject": "PSYCH"
-},
-"PSYCH C120": {
-"buckets": {
-"1-5": {
-"n_course": 27,
-"pooled": "PSYCH",
-"sections_course": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "C120",
-"subject": "PSYCH"
-},
-"PSYCH C127": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.104,
+0.069,
 null,
 null
 ],
@@ -2264,531 +2075,133 @@ null
 ],
 [
 2.0,
-0.213,
+0.289,
 null,
 null
 ],
 [
 3.0,
-0.231,
+0.444,
 null,
 null
 ],
 [
 4.0,
-0.336,
+0.553,
 null,
 null
 ],
 [
 5.0,
-0.403,
+0.677,
 null,
 null
 ],
 [
 6.0,
-0.417,
+0.746,
 null,
 null
 ],
 [
 7.0,
-0.452,
+0.809,
 null,
 null
 ],
 [
 8.0,
-0.502,
+0.841,
 null,
 null
 ],
 [
 9.0,
-0.527,
+0.846,
 null,
 null
 ],
 [
 10.0,
-0.527,
+0.846,
 null,
 null
 ],
 [
 12.0,
-0.557,
+0.908,
 null,
 null
 ],
 [
 14.0,
-0.601,
+0.908,
 null,
 null
 ],
 [
-16.0,
-0.659,
-null,
-null
-],
-[
-18.0,
-0.659,
-null,
-null
-],
-[
-21.0,
-0.659,
-null,
-null
-],
-[
-24.0,
-0.659,
-null,
-null
-],
-[
-28.0,
-0.659,
-null,
-null
-],
-[
-32.0,
-0.659,
-null,
-null
-],
-[
-36.0,
-0.659,
-null,
-null
-],
-[
-42.0,
-0.659,
-null,
-null
-],
-[
-48.2,
-0.659,
+14.05,
+0.908,
 null,
 null
 ]
 ],
-"events": 96,
-"median_days": 7.97,
-"n": 184,
+"events": 183,
+"median_days": 3.51,
+"n": 219,
 "pooled": false,
-"reach_days": 48.2,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.013,
-null,
-null
-],
-[
-1.0,
-0.013,
-null,
-null
-],
-[
-2.0,
-0.055,
-null,
-null
-],
-[
-3.0,
-0.055,
-null,
-null
-],
-[
-4.0,
-0.117,
-null,
-null
-],
-[
-5.0,
-0.181,
-null,
-null
-],
-[
-6.0,
-0.181,
-null,
-null
-],
-[
-7.0,
-0.181,
-null,
-null
-],
-[
-8.0,
-0.257,
-null,
-null
-],
-[
-9.0,
-0.299,
-null,
-null
-],
-[
-10.0,
-0.299,
-null,
-null
-],
-[
-12.0,
-0.488,
-null,
-null
-],
-[
-14.0,
-0.488,
-null,
-null
-],
-[
-16.0,
-0.641,
-null,
-null
-],
-[
-18.0,
-0.641,
-null,
-null
-],
-[
-18.42,
-0.641,
-null,
-null
-]
-],
-"events": 26,
-"median_days": 15.82,
-"n": 77,
-"pooled": false,
-"reach_days": 18.4,
+"reach_days": 14.1,
 "sections": 1
 }
 },
-"dept_group": "PSYCH",
+"dept_group": "OTHER",
 "level": "upper",
-"number": "C127",
+"number": "160",
 "subject": "PSYCH"
 },
-"PSYCH C143": {
+"PSYCH 167AC": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.231,
+0.249,
 null,
 null
 ],
 [
 1.0,
-0.315,
+0.346,
 null,
 null
 ],
 [
 2.0,
-0.387,
+0.503,
 null,
 null
 ],
 [
 3.0,
-0.418,
+0.599,
 null,
 null
 ],
 [
 4.0,
-0.487,
+0.643,
 null,
 null
 ],
 [
 5.0,
-0.487,
+0.691,
 null,
 null
 ],
 [
 6.0,
-0.494,
-null,
-null
-],
-[
-7.0,
-0.494,
-null,
-null
-],
-[
-8.0,
-0.494,
-null,
-null
-],
-[
-9.0,
-0.531,
-null,
-null
-],
-[
-10.0,
-0.531,
-null,
-null
-],
-[
-12.0,
-0.531,
-null,
-null
-],
-[
-14.0,
-0.531,
-null,
-null
-],
-[
-16.0,
-0.575,
-null,
-null
-],
-[
-18.0,
-0.575,
-null,
-null
-],
-[
-21.0,
-0.575,
-null,
-null
-],
-[
-24.0,
-0.575,
-null,
-null
-],
-[
-28.0,
-0.575,
-null,
-null
-],
-[
-32.0,
-0.575,
-null,
-null
-],
-[
-36.0,
-0.575,
-null,
-null
-],
-[
-42.0,
-0.575,
-null,
-null
-],
-[
-48.2,
-0.575,
-null,
-null
-]
-],
-"events": 114,
-"median_days": 8.63,
-"n": 230,
-"pooled": false,
-"reach_days": 48.2,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.137,
-null,
-null
-],
-[
-1.0,
-0.314,
-null,
-null
-],
-[
-2.0,
-0.314,
-null,
-null
-],
-[
-3.0,
-0.314,
-null,
-null
-],
-[
-4.0,
-0.393,
-null,
-null
-],
-[
-5.0,
-0.393,
-null,
-null
-],
-[
-6.0,
-0.393,
-null,
-null
-],
-[
-7.0,
-0.393,
-null,
-null
-],
-[
-8.0,
-0.393,
-null,
-null
-],
-[
-9.0,
-0.696,
-null,
-null
-],
-[
-10.0,
-0.696,
-null,
-null
-],
-[
-12.0,
-0.696,
-null,
-null
-],
-[
-14.0,
-0.696,
-null,
-null
-],
-[
-15.83,
-0.696,
-null,
-null
-]
-],
-"events": 25,
-"median_days": 8.64,
-"n": 51,
-"pooled": false,
-"reach_days": 15.8,
-"sections": 1
-}
-},
-"dept_group": "PSYCH",
-"level": "upper",
-"number": "C143",
-"subject": "PSYCH"
-},
-"PSYCH C61": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.287,
-null,
-null
-],
-[
-1.0,
-0.388,
-null,
-null
-],
-[
-2.0,
-0.487,
-null,
-null
-],
-[
-3.0,
-0.545,
-null,
-null
-],
-[
-4.0,
-0.564,
-null,
-null
-],
-[
-5.0,
-0.623,
-null,
-null
-],
-[
-6.0,
-0.693,
+0.714,
 null,
 null
 ],
@@ -2800,90 +2213,247 @@ null
 ],
 [
 8.0,
-0.745,
+0.727,
 null,
 null
 ],
 [
 9.0,
-0.745,
+0.727,
 null,
 null
 ],
 [
 10.0,
-0.762,
+0.727,
 null,
 null
 ],
 [
 12.0,
-0.788,
+0.75,
 null,
 null
 ],
 [
 14.0,
-0.788,
+0.75,
 null,
 null
 ],
 [
 16.0,
-0.788,
+0.75,
 null,
 null
 ],
 [
 18.0,
-0.788,
+0.75,
 null,
 null
 ],
 [
 21.0,
-0.788,
+0.75,
 null,
 null
 ],
 [
 24.0,
-0.788,
+0.75,
 null,
 null
 ],
 [
 28.0,
-0.788,
+0.75,
 null,
 null
 ],
 [
-31.05,
-0.788,
+32.0,
+0.75,
+null,
+null
+],
+[
+36.0,
+0.75,
+null,
+null
+],
+[
+42.0,
+0.75,
+null,
+null
+],
+[
+49.0,
+0.75,
+null,
+null
+],
+[
+56.0,
+0.75,
+null,
+null
+],
+[
+63.0,
+0.75,
+null,
+null
+],
+[
+70.0,
+0.75,
+null,
+null
+],
+[
+77.0,
+0.75,
+null,
+null
+],
+[
+79.75,
+0.75,
 null,
 null
 ]
 ],
-"events": 137,
-"median_days": 2.09,
-"n": 196,
+"events": 259,
+"median_days": 1.91,
+"n": 381,
 "pooled": false,
-"reach_days": 31.1,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 15,
-"pooled": "PSYCH",
+"curve": [
+[
+0.5,
+0.063,
+null,
+null
+],
+[
+1.0,
+0.08,
+null,
+null
+],
+[
+2.0,
+0.176,
+null,
+null
+],
+[
+3.0,
+0.258,
+null,
+null
+],
+[
+4.0,
+0.318,
+null,
+null
+],
+[
+5.0,
+0.366,
+null,
+null
+],
+[
+6.0,
+0.497,
+null,
+null
+],
+[
+7.0,
+0.569,
+null,
+null
+],
+[
+8.0,
+0.647,
+null,
+null
+],
+[
+9.0,
+0.724,
+null,
+null
+],
+[
+10.0,
+0.724,
+null,
+null
+],
+[
+12.0,
+0.822,
+null,
+null
+],
+[
+13.02,
+0.822,
+null,
+null
+]
+],
+"events": 111,
+"median_days": 6.02,
+"n": 176,
+"pooled": false,
+"reach_days": 13.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "167AC",
+"subject": "PSYCH"
+},
+"PSYCH 205": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
 "sections_course": 1
 }
 },
-"dept_group": "PSYCH",
-"level": "lower",
-"number": "C61",
+"dept_group": "OTHER",
+"level": "grad",
+"number": "205",
 "subject": "PSYCH"
 },
-"PSYCH H194A": {
+"PSYCH 207": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "207",
+"subject": "PSYCH"
+},
+"PSYCH 293": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -3014,7 +2584,37 @@ null,
 null
 ],
 [
-48.2,
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -3022,18 +2622,1772 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 30,
+"n": 43,
 "pooled": false,
-"reach_days": 48.2,
+"reach_days": 79.7,
 "sections": 1
 }
 },
-"dept_group": "PSYCH",
+"dept_group": "OTHER",
+"level": "grad",
+"number": "293",
+"subject": "PSYCH"
+},
+"PSYCH C111": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.21,
+null,
+null
+],
+[
+1.0,
+0.316,
+null,
+null
+],
+[
+2.0,
+0.405,
+null,
+null
+],
+[
+3.0,
+0.476,
+null,
+null
+],
+[
+4.0,
+0.524,
+null,
+null
+],
+[
+5.0,
+0.574,
+null,
+null
+],
+[
+6.0,
+0.656,
+null,
+null
+],
+[
+7.0,
+0.708,
+null,
+null
+],
+[
+8.0,
+0.741,
+null,
+null
+],
+[
+9.0,
+0.741,
+null,
+null
+],
+[
+10.0,
+0.741,
+null,
+null
+],
+[
+12.0,
+0.825,
+null,
+null
+],
+[
+14.0,
+0.85,
+null,
+null
+],
+[
+16.0,
+0.85,
+null,
+null
+],
+[
+18.0,
+0.85,
+null,
+null
+],
+[
+21.0,
+0.85,
+null,
+null
+],
+[
+23.34,
+0.85,
+null,
+null
+]
+],
+"events": 166,
+"median_days": 3.6,
+"n": 238,
+"pooled": false,
+"reach_days": 23.3,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.042,
+null,
+null
+],
+[
+1.0,
+0.07,
+null,
+null
+],
+[
+2.0,
+0.175,
+null,
+null
+],
+[
+3.0,
+0.208,
+null,
+null
+],
+[
+4.0,
+0.277,
+null,
+null
+],
+[
+5.0,
+0.277,
+null,
+null
+],
+[
+6.0,
+0.313,
+null,
+null
+],
+[
+7.0,
+0.385,
+null,
+null
+],
+[
+8.0,
+0.484,
+null,
+null
+],
+[
+9.0,
+0.641,
+null,
+null
+],
+[
+10.0,
+0.686,
+null,
+null
+],
+[
+12.0,
+0.894,
+null,
+null
+],
+[
+12.54,
+1.0,
+null,
+null
+]
+],
+"events": 46,
+"median_days": 8.09,
+"n": 74,
+"pooled": false,
+"reach_days": 12.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
 "level": "upper",
-"number": "H194A",
+"number": "C111",
+"subject": "PSYCH"
+},
+"PSYCH C115C": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.26,
+null,
+null
+],
+[
+1.0,
+0.386,
+null,
+null
+],
+[
+2.0,
+0.467,
+null,
+null
+],
+[
+3.0,
+0.547,
+null,
+null
+],
+[
+4.0,
+0.584,
+null,
+null
+],
+[
+5.0,
+0.604,
+null,
+null
+],
+[
+6.0,
+0.604,
+null,
+null
+],
+[
+7.0,
+0.604,
+null,
+null
+],
+[
+8.0,
+0.615,
+null,
+null
+],
+[
+9.0,
+0.615,
+null,
+null
+],
+[
+10.0,
+0.615,
+null,
+null
+],
+[
+12.0,
+0.64,
+null,
+null
+],
+[
+14.0,
+0.666,
+null,
+null
+],
+[
+16.0,
+0.666,
+null,
+null
+],
+[
+18.0,
+0.666,
+null,
+null
+],
+[
+21.0,
+0.666,
+null,
+null
+],
+[
+24.0,
+0.666,
+null,
+null
+],
+[
+28.0,
+0.666,
+null,
+null
+],
+[
+32.0,
+0.666,
+null,
+null
+],
+[
+36.0,
+0.666,
+null,
+null
+],
+[
+42.0,
+0.666,
+null,
+null
+],
+[
+49.0,
+0.666,
+null,
+null
+],
+[
+56.0,
+0.666,
+null,
+null
+],
+[
+63.0,
+0.666,
+null,
+null
+],
+[
+70.0,
+0.666,
+null,
+null
+],
+[
+77.0,
+0.666,
+null,
+null
+],
+[
+79.75,
+0.666,
+null,
+null
+]
+],
+"events": 80,
+"median_days": 2.56,
+"n": 134,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C115C",
+"subject": "PSYCH"
+},
+"PSYCH C123": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.302,
+null,
+null
+],
+[
+1.0,
+0.402,
+null,
+null
+],
+[
+2.0,
+0.462,
+null,
+null
+],
+[
+3.0,
+0.561,
+null,
+null
+],
+[
+4.0,
+0.644,
+null,
+null
+],
+[
+5.0,
+0.666,
+null,
+null
+],
+[
+6.0,
+0.716,
+null,
+null
+],
+[
+7.0,
+0.729,
+null,
+null
+],
+[
+8.0,
+0.755,
+null,
+null
+],
+[
+9.0,
+0.782,
+null,
+null
+],
+[
+10.0,
+0.782,
+null,
+null
+],
+[
+12.0,
+0.824,
+null,
+null
+],
+[
+14.0,
+0.84,
+null,
+null
+],
+[
+16.0,
+0.84,
+null,
+null
+],
+[
+18.0,
+0.84,
+null,
+null
+],
+[
+21.0,
+0.84,
+null,
+null
+],
+[
+24.0,
+0.84,
+null,
+null
+],
+[
+28.0,
+0.84,
+null,
+null
+],
+[
+32.0,
+0.84,
+null,
+null
+],
+[
+35.0,
+0.84,
+null,
+null
+]
+],
+"events": 103,
+"median_days": 2.33,
+"n": 143,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C123",
+"subject": "PSYCH"
+},
+"PSYCH C126": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.164,
+null,
+null
+],
+[
+1.0,
+0.237,
+null,
+null
+],
+[
+2.0,
+0.283,
+null,
+null
+],
+[
+3.0,
+0.331,
+null,
+null
+],
+[
+4.0,
+0.391,
+null,
+null
+],
+[
+5.0,
+0.474,
+null,
+null
+],
+[
+6.0,
+0.567,
+null,
+null
+],
+[
+7.0,
+0.663,
+null,
+null
+],
+[
+8.0,
+0.716,
+null,
+null
+],
+[
+9.0,
+0.72,
+null,
+null
+],
+[
+10.0,
+0.736,
+null,
+null
+],
+[
+12.0,
+0.779,
+null,
+null
+],
+[
+14.0,
+0.804,
+null,
+null
+],
+[
+16.0,
+0.819,
+null,
+null
+],
+[
+18.0,
+0.819,
+null,
+null
+],
+[
+21.0,
+0.819,
+null,
+null
+],
+[
+24.0,
+0.819,
+null,
+null
+],
+[
+28.0,
+0.819,
+null,
+null
+],
+[
+32.0,
+0.819,
+null,
+null
+],
+[
+36.0,
+0.819,
+null,
+null
+],
+[
+42.0,
+0.819,
+null,
+null
+],
+[
+49.0,
+0.819,
+null,
+null
+],
+[
+56.0,
+0.819,
+null,
+null
+],
+[
+63.0,
+0.819,
+null,
+null
+],
+[
+70.0,
+0.819,
+null,
+null
+],
+[
+77.0,
+0.819,
+null,
+null
+],
+[
+79.75,
+0.819,
+null,
+null
+]
+],
+"events": 230,
+"median_days": 5.38,
+"n": 305,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.12,
+null,
+null
+],
+[
+8.0,
+0.2,
+null,
+null
+],
+[
+9.0,
+0.2,
+null,
+null
+],
+[
+10.0,
+0.346,
+null,
+null
+],
+[
+12.0,
+0.542,
+null,
+null
+],
+[
+13.75,
+0.935,
+null,
+null
+]
+],
+"events": 18,
+"median_days": 11.66,
+"n": 32,
+"pooled": false,
+"reach_days": 13.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.03,
+null,
+null
+],
+[
+1.0,
+0.053,
+null,
+null
+],
+[
+2.0,
+0.076,
+null,
+null
+],
+[
+3.0,
+0.1,
+null,
+null
+],
+[
+4.0,
+0.132,
+null,
+null
+],
+[
+5.0,
+0.203,
+null,
+null
+],
+[
+6.0,
+0.384,
+null,
+null
+],
+[
+7.0,
+0.656,
+null,
+null
+],
+[
+8.0,
+0.719,
+null,
+null
+],
+[
+9.0,
+0.756,
+null,
+null
+],
+[
+10.0,
+0.786,
+null,
+null
+],
+[
+12.0,
+0.847,
+null,
+null
+],
+[
+14.0,
+0.878,
+null,
+null
+],
+[
+16.0,
+0.878,
+null,
+null
+],
+[
+16.42,
+0.878,
+null,
+null
+]
+],
+"events": 98,
+"median_days": 6.24,
+"n": 132,
+"pooled": false,
+"reach_days": 16.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C126",
+"subject": "PSYCH"
+},
+"PSYCH C127": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.464,
+null,
+null
+],
+[
+1.0,
+0.604,
+null,
+null
+],
+[
+2.0,
+0.678,
+null,
+null
+],
+[
+3.0,
+0.719,
+null,
+null
+],
+[
+4.0,
+0.75,
+null,
+null
+],
+[
+5.0,
+0.775,
+null,
+null
+],
+[
+6.0,
+0.79,
+null,
+null
+],
+[
+7.0,
+0.82,
+null,
+null
+],
+[
+8.0,
+0.852,
+null,
+null
+],
+[
+9.0,
+0.852,
+null,
+null
+],
+[
+10.0,
+0.858,
+null,
+null
+],
+[
+12.0,
+0.891,
+null,
+null
+],
+[
+14.0,
+0.891,
+null,
+null
+],
+[
+16.0,
+0.891,
+null,
+null
+],
+[
+18.0,
+0.891,
+null,
+null
+],
+[
+21.0,
+0.891,
+null,
+null
+],
+[
+23.34,
+0.891,
+null,
+null
+]
+],
+"events": 328,
+"median_days": 0.57,
+"n": 408,
+"pooled": false,
+"reach_days": 23.3,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.051,
+null,
+null
+],
+[
+1.0,
+0.051,
+null,
+null
+],
+[
+2.0,
+0.078,
+null,
+null
+],
+[
+3.0,
+0.106,
+null,
+null
+],
+[
+4.0,
+0.309,
+null,
+null
+],
+[
+5.0,
+0.467,
+null,
+null
+],
+[
+6.0,
+0.467,
+null,
+null
+],
+[
+7.0,
+0.569,
+null,
+null
+],
+[
+8.0,
+0.677,
+null,
+null
+],
+[
+9.0,
+0.677,
+null,
+null
+],
+[
+10.0,
+0.677,
+null,
+null
+],
+[
+11.76,
+1.0,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 6.22,
+"n": 41,
+"pooled": false,
+"reach_days": 11.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.123,
+null,
+null
+],
+[
+1.0,
+0.222,
+null,
+null
+],
+[
+2.0,
+0.345,
+null,
+null
+],
+[
+3.0,
+0.435,
+null,
+null
+],
+[
+4.0,
+0.482,
+null,
+null
+],
+[
+5.0,
+0.54,
+null,
+null
+],
+[
+6.0,
+0.54,
+null,
+null
+],
+[
+7.0,
+0.627,
+null,
+null
+],
+[
+8.0,
+0.72,
+null,
+null
+],
+[
+9.0,
+0.72,
+null,
+null
+],
+[
+10.0,
+0.72,
+null,
+null
+],
+[
+11.76,
+1.0,
+null,
+null
+]
+],
+"events": 95,
+"median_days": 4.07,
+"n": 151,
+"pooled": false,
+"reach_days": 11.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C127",
+"subject": "PSYCH"
+},
+"PSYCH C143": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.296,
+null,
+null
+],
+[
+1.0,
+0.377,
+null,
+null
+],
+[
+2.0,
+0.476,
+null,
+null
+],
+[
+3.0,
+0.575,
+null,
+null
+],
+[
+4.0,
+0.608,
+null,
+null
+],
+[
+5.0,
+0.608,
+null,
+null
+],
+[
+6.0,
+0.608,
+null,
+null
+],
+[
+7.0,
+0.636,
+null,
+null
+],
+[
+8.0,
+0.636,
+null,
+null
+],
+[
+9.0,
+0.636,
+null,
+null
+],
+[
+10.0,
+0.636,
+null,
+null
+],
+[
+12.0,
+0.681,
+null,
+null
+],
+[
+14.0,
+0.681,
+null,
+null
+],
+[
+16.0,
+0.681,
+null,
+null
+],
+[
+18.0,
+0.681,
+null,
+null
+],
+[
+21.0,
+0.681,
+null,
+null
+],
+[
+24.0,
+0.681,
+null,
+null
+],
+[
+28.0,
+0.681,
+null,
+null
+],
+[
+32.0,
+0.681,
+null,
+null
+],
+[
+36.0,
+0.681,
+null,
+null
+],
+[
+42.0,
+0.681,
+null,
+null
+],
+[
+49.0,
+0.681,
+null,
+null
+],
+[
+56.0,
+0.681,
+null,
+null
+],
+[
+63.0,
+0.681,
+null,
+null
+],
+[
+70.0,
+0.681,
+null,
+null
+],
+[
+77.0,
+0.681,
+null,
+null
+],
+[
+79.75,
+0.681,
+null,
+null
+]
+],
+"events": 189,
+"median_days": 2.28,
+"n": 310,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.029,
+null,
+null
+],
+[
+1.0,
+0.114,
+null,
+null
+],
+[
+2.0,
+0.146,
+null,
+null
+],
+[
+3.0,
+0.18,
+null,
+null
+],
+[
+4.0,
+0.259,
+null,
+null
+],
+[
+5.0,
+0.439,
+null,
+null
+],
+[
+6.0,
+0.551,
+null,
+null
+],
+[
+7.0,
+0.808,
+null,
+null
+],
+[
+8.0,
+0.808,
+null,
+null
+],
+[
+9.0,
+0.808,
+null,
+null
+],
+[
+10.0,
+0.808,
+null,
+null
+],
+[
+12.0,
+0.904,
+null,
+null
+],
+[
+12.25,
+1.0,
+null,
+null
+]
+],
+"events": 20,
+"median_days": 6.0,
+"n": 36,
+"pooled": false,
+"reach_days": 12.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.118,
+null,
+null
+],
+[
+1.0,
+0.158,
+null,
+null
+],
+[
+2.0,
+0.22,
+null,
+null
+],
+[
+3.0,
+0.276,
+null,
+null
+],
+[
+4.0,
+0.389,
+null,
+null
+],
+[
+5.0,
+0.49,
+null,
+null
+],
+[
+6.0,
+0.598,
+null,
+null
+],
+[
+7.0,
+0.738,
+null,
+null
+],
+[
+8.0,
+0.76,
+null,
+null
+],
+[
+9.0,
+0.76,
+null,
+null
+],
+[
+10.0,
+0.76,
+null,
+null
+],
+[
+12.0,
+0.869,
+null,
+null
+],
+[
+13.16,
+0.869,
+null,
+null
+]
+],
+"events": 72,
+"median_days": 5.15,
+"n": 129,
+"pooled": false,
+"reach_days": 13.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C143",
+"subject": "PSYCH"
+},
+"PSYCH C61": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.535,
+null,
+null
+],
+[
+1.0,
+0.622,
+null,
+null
+],
+[
+2.0,
+0.712,
+null,
+null
+],
+[
+3.0,
+0.757,
+null,
+null
+],
+[
+4.0,
+0.786,
+null,
+null
+],
+[
+5.0,
+0.798,
+null,
+null
+],
+[
+6.0,
+0.847,
+null,
+null
+],
+[
+7.0,
+0.903,
+null,
+null
+],
+[
+8.0,
+0.927,
+null,
+null
+],
+[
+9.0,
+0.927,
+null,
+null
+],
+[
+10.0,
+0.927,
+null,
+null
+],
+[
+12.0,
+0.935,
+null,
+null
+],
+[
+14.0,
+0.944,
+null,
+null
+],
+[
+16.0,
+0.944,
+null,
+null
+],
+[
+18.0,
+0.944,
+null,
+null
+],
+[
+21.0,
+0.944,
+null,
+null
+],
+[
+24.0,
+0.944,
+null,
+null
+],
+[
+28.0,
+0.944,
+null,
+null
+],
+[
+28.63,
+0.944,
+null,
+null
+]
+],
+"events": 185,
+"median_days": 0.28,
+"n": 221,
+"pooled": false,
+"reach_days": 28.6,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.055,
+null,
+null
+],
+[
+1.0,
+0.112,
+null,
+null
+],
+[
+2.0,
+0.112,
+null,
+null
+],
+[
+3.0,
+0.112,
+null,
+null
+],
+[
+4.0,
+0.112,
+null,
+null
+],
+[
+5.0,
+0.112,
+null,
+null
+],
+[
+6.0,
+0.112,
+null,
+null
+],
+[
+7.0,
+0.53,
+null,
+null
+],
+[
+8.0,
+0.739,
+null,
+null
+],
+[
+9.0,
+0.791,
+null,
+null
+],
+[
+10.0,
+0.861,
+null,
+null
+],
+[
+12.0,
+0.861,
+null,
+null
+],
+[
+12.44,
+1.0,
+null,
+null
+]
+],
+"events": 20,
+"median_days": 6.98,
+"n": 37,
+"pooled": false,
+"reach_days": 12.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C61",
 "subject": "PSYCH"
 }
 },
 "subject": "PSYCH",
-"term_id": "2268"
+"term_id": "2262"
 }

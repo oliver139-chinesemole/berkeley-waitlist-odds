@@ -1,143 +1,309 @@
 {
 "courses": {
-"SEASIAN 101A": {
+"SEASIAN 101B": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.262,
+0.033,
 null,
 null
 ],
 [
 1.0,
-0.284,
+0.033,
 null,
 null
 ],
 [
 2.0,
-0.447,
+0.033,
 null,
 null
 ],
 [
 3.0,
-0.472,
+0.033,
 null,
 null
 ],
 [
 4.0,
-0.472,
+0.068,
 null,
 null
 ],
 [
 5.0,
-0.472,
+0.14,
 null,
 null
 ],
 [
 6.0,
-0.472,
+0.211,
 null,
 null
 ],
 [
 7.0,
-0.472,
+0.247,
 null,
 null
 ],
 [
 8.0,
-0.472,
+0.287,
 null,
 null
 ],
 [
 9.0,
-0.472,
+0.287,
 null,
 null
 ],
 [
 10.0,
-0.67,
+0.287,
 null,
 null
 ],
 [
 12.0,
-0.868,
+0.287,
 null,
 null
 ],
 [
 14.0,
-0.868,
+0.287,
 null,
 null
 ],
 [
 16.0,
-0.868,
+0.287,
 null,
 null
 ],
 [
 18.0,
-0.868,
+0.287,
 null,
 null
 ],
 [
-18.21,
-0.868,
+21.0,
+0.287,
+null,
+null
+],
+[
+24.0,
+0.287,
+null,
+null
+],
+[
+28.0,
+0.287,
+null,
+null
+],
+[
+32.0,
+0.287,
+null,
+null
+],
+[
+36.0,
+0.287,
+null,
+null
+],
+[
+42.0,
+0.287,
+null,
+null
+],
+[
+49.0,
+0.287,
+null,
+null
+],
+[
+56.0,
+0.287,
+null,
+null
+],
+[
+63.0,
+0.287,
+null,
+null
+],
+[
+70.0,
+0.287,
+null,
+null
+],
+[
+77.0,
+0.287,
+null,
+null
+],
+[
+79.75,
+0.287,
 null,
 null
 ]
 ],
-"events": 29,
-"median_days": 9.99,
-"n": 54,
+"events": 8,
+"median_days": null,
+"n": 30,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "101A",
+"number": "101B",
 "subject": "SEASIAN"
 },
-"SEASIAN 137": {
+"SEASIAN 168AC": {
 "buckets": {
 "1-5": {
-"n_course": 3,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.514,
+null,
+null
+],
+[
+1.0,
+0.681,
+null,
+null
+],
+[
+2.0,
+0.694,
+null,
+null
+],
+[
+3.0,
+0.694,
+null,
+null
+],
+[
+4.0,
+0.747,
+null,
+null
+],
+[
+5.0,
+0.747,
+null,
+null
+],
+[
+6.0,
+0.797,
+null,
+null
+],
+[
+7.0,
+0.823,
+null,
+null
+],
+[
+8.0,
+0.882,
+null,
+null
+],
+[
+9.0,
+0.882,
+null,
+null
+],
+[
+10.0,
+0.882,
+null,
+null
+],
+[
+12.0,
+0.882,
+null,
+null
+],
+[
+14.0,
+0.882,
+null,
+null
+],
+[
+16.0,
+0.882,
+null,
+null
+],
+[
+18.0,
+0.882,
+null,
+null
+],
+[
+21.0,
+0.882,
+null,
+null
+],
+[
+24.0,
+0.882,
+null,
+null
+],
+[
+24.93,
+0.882,
+null,
+null
+]
+],
+"events": 58,
+"median_days": 0.36,
+"n": 72,
+"pooled": false,
+"reach_days": 24.9,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "137",
-"subject": "SEASIAN"
-},
-"SEASIAN R5A": {
-"buckets": {
-"1-5": {
-"n_course": 19,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "R5A",
+"number": "168AC",
 "subject": "SEASIAN"
 },
 "SEASIAN R5B": {
@@ -146,107 +312,173 @@ null
 "curve": [
 [
 0.5,
-0.11,
-0.033,
-0.2
+0.087,
+null,
+null
 ],
 [
 1.0,
-0.138,
-0.033,
-0.307
+0.087,
+null,
+null
 ],
 [
 2.0,
-0.182,
-0.033,
-0.36
+0.117,
+null,
+null
 ],
 [
 3.0,
-0.182,
-0.033,
-0.36
+0.117,
+null,
+null
 ],
 [
 4.0,
-0.182,
-0.033,
-0.36
+0.117,
+null,
+null
 ],
 [
 5.0,
-0.182,
-0.033,
-0.36
+0.117,
+null,
+null
 ],
 [
 6.0,
-0.182,
-0.033,
-0.36
+0.152,
+null,
+null
 ],
 [
 7.0,
-0.222,
-0.033,
-0.36
+0.191,
+null,
+null
 ],
 [
 8.0,
-0.242,
-0.087,
-0.36
+0.191,
+null,
+null
 ],
 [
 9.0,
-0.242,
-0.087,
-0.36
+0.191,
+null,
+null
 ],
 [
 10.0,
-0.298,
-0.087,
-0.422
+0.191,
+null,
+null
 ],
 [
 12.0,
-0.328,
-0.157,
-0.422
+0.191,
+null,
+null
 ],
 [
 14.0,
-0.328,
-0.157,
-0.422
+0.191,
+null,
+null
 ],
 [
 16.0,
-0.328,
-0.157,
-0.422
+0.191,
+null,
+null
 ],
 [
 18.0,
-0.328,
-0.157,
-0.422
+0.191,
+null,
+null
 ],
 [
-18.57,
-0.328,
-0.157,
-0.422
+21.0,
+0.191,
+null,
+null
+],
+[
+24.0,
+0.191,
+null,
+null
+],
+[
+28.0,
+0.191,
+null,
+null
+],
+[
+32.0,
+0.191,
+null,
+null
+],
+[
+36.0,
+0.191,
+null,
+null
+],
+[
+42.0,
+0.191,
+null,
+null
+],
+[
+49.0,
+0.191,
+null,
+null
+],
+[
+56.0,
+0.191,
+null,
+null
+],
+[
+63.0,
+0.191,
+null,
+null
+],
+[
+70.0,
+0.191,
+null,
+null
+],
+[
+77.0,
+0.191,
+null,
+null
+],
+[
+79.75,
+0.191,
+null,
+null
 ]
 ],
-"events": 20,
+"events": 6,
 "median_days": null,
-"n": 83,
+"n": 35,
 "pooled": false,
-"reach_days": 18.6,
-"sections": 4
+"reach_days": 79.7,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -256,5 +488,5 @@ null
 }
 },
 "subject": "SEASIAN",
-"term_id": "2268"
+"term_id": "2262"
 }

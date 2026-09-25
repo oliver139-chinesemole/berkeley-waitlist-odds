@@ -1,71 +1,84 @@
 {
 "courses": {
-"HMEDSCI 205A": {
+"HMEDSCI 205B": {
 "buckets": {
 "1-5": {
-"n_course": 3,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "205A",
-"subject": "HMEDSCI"
-},
-"HMEDSCI 216A": {
-"buckets": {
-"1-5": {
-"n_course": 7,
+"n_course": 24,
 "pooled": "OTHER",
 "sections_course": 2
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "216A",
+"number": "205B",
 "subject": "HMEDSCI"
 },
-"HMEDSCI 216C": {
+"HMEDSCI 205D": {
 "buckets": {
 "1-5": {
-"n_course": 9,
+"n_course": 12,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "205D",
+"subject": "HMEDSCI"
+},
+"HMEDSCI 216B": {
+"buckets": {
+"1-5": {
+"n_course": 24,
 "pooled": "OTHER",
 "sections_course": 2
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "216C",
+"number": "216B",
 "subject": "HMEDSCI"
 },
-"HMEDSCI 261A": {
+"HMEDSCI 216D": {
 "buckets": {
 "1-5": {
-"n_course": 3,
+"n_course": 12,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "261A",
+"number": "216D",
 "subject": "HMEDSCI"
 },
-"HMEDSCI 261C": {
+"HMEDSCI 261B": {
 "buckets": {
 "1-5": {
-"n_course": 5,
+"n_course": 12,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "261C",
+"number": "261B",
+"subject": "HMEDSCI"
+},
+"HMEDSCI 271": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "271",
 "subject": "HMEDSCI"
 }
 },
 "subject": "HMEDSCI",
-"term_id": "2268"
+"term_id": "2262"
 }

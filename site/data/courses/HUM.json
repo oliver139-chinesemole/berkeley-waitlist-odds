@@ -1,459 +1,274 @@
 {
 "courses": {
-"HUM 10": {
+"HUM 120": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.095,
+0.104,
 null,
 null
 ],
 [
 1.0,
-0.122,
+0.189,
 null,
 null
 ],
 [
 2.0,
-0.225,
+0.264,
 null,
 null
 ],
 [
 3.0,
-0.303,
+0.365,
 null,
 null
 ],
 [
 4.0,
-0.354,
+0.428,
 null,
 null
 ],
 [
 5.0,
-0.446,
+0.5,
 null,
 null
 ],
 [
 6.0,
-0.56,
+0.604,
 null,
 null
 ],
 [
 7.0,
-0.583,
+0.649,
 null,
 null
 ],
 [
 8.0,
-0.624,
+0.724,
 null,
 null
 ],
 [
 9.0,
-0.641,
+0.79,
 null,
 null
 ],
 [
 10.0,
-0.69,
+0.882,
 null,
 null
 ],
 [
 12.0,
-0.69,
+0.913,
 null,
 null
 ],
 [
 14.0,
-0.785,
+0.913,
 null,
 null
 ],
 [
 16.0,
-0.857,
+0.921,
 null,
 null
 ],
 [
 18.0,
-0.952,
+0.921,
 null,
 null
 ],
 [
-18.21,
-0.952,
+21.0,
+0.921,
+null,
+null
+],
+[
+24.0,
+0.921,
+null,
+null
+],
+[
+28.0,
+0.921,
+null,
+null
+],
+[
+32.0,
+0.921,
+null,
+null
+],
+[
+36.0,
+0.921,
+null,
+null
+],
+[
+42.0,
+0.921,
+null,
+null
+],
+[
+49.0,
+0.921,
+null,
+null
+],
+[
+56.0,
+0.921,
+null,
+null
+],
+[
+63.0,
+0.921,
+null,
+null
+],
+[
+70.0,
+0.921,
+null,
+null
+],
+[
+77.0,
+0.921,
+null,
+null
+],
+[
+79.75,
+0.921,
 null,
 null
 ]
 ],
-"events": 115,
-"median_days": 5.49,
-"n": 192,
+"events": 189,
+"median_days": 4.94,
+"n": 222,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.0,
+0.033,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.115,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.18,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.311,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.426,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.541,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.672,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.721,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.754,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.787,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.902,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.967,
 null,
 null
 ],
 [
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-18.21,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 84,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "10",
-"subject": "HUM"
-},
-"HUM 100": {
-"buckets": {
-"1-5": {
-"n_course": 6,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "100",
-"subject": "HUM"
-},
-"HUM 105": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.149,
-null,
-null
-],
-[
+13.73,
 1.0,
-0.19,
-null,
-null
-],
-[
-2.0,
-0.247,
-null,
-null
-],
-[
-3.0,
-0.271,
-null,
-null
-],
-[
-4.0,
-0.296,
-null,
-null
-],
-[
-5.0,
-0.341,
-null,
-null
-],
-[
-6.0,
-0.412,
-null,
-null
-],
-[
-7.0,
-0.476,
-null,
-null
-],
-[
-8.0,
-0.519,
-null,
-null
-],
-[
-9.0,
-0.555,
-null,
-null
-],
-[
-10.0,
-0.569,
-null,
-null
-],
-[
-12.0,
-0.61,
-null,
-null
-],
-[
-14.0,
-0.659,
-null,
-null
-],
-[
-16.0,
-0.811,
-null,
-null
-],
-[
-18.0,
-0.811,
-null,
-null
-],
-[
-18.21,
-0.811,
 null,
 null
 ]
 ],
-"events": 77,
-"median_days": 7.5,
-"n": 156,
+"events": 61,
+"median_days": 4.28,
+"n": 61,
 "pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.045,
-null,
-null
-],
-[
-10.0,
-0.045,
-null,
-null
-],
-[
-12.0,
-0.045,
-null,
-null
-],
-[
-14.0,
-0.141,
-null,
-null
-],
-[
-16.0,
-0.141,
-null,
-null
-],
-[
-18.0,
-0.141,
-null,
-null
-],
-[
-18.21,
-0.141,
-null,
-null
-]
-],
-"events": 2,
-"median_days": null,
-"n": 41,
-"pooled": false,
-"reach_days": 18.2,
+"reach_days": 13.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "105",
+"number": "120",
 "subject": "HUM"
 }
 },
 "subject": "HUM",
-"term_id": "2268"
+"term_id": "2262"
 }

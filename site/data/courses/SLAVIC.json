@@ -1,309 +1,908 @@
 {
 "courses": {
-"SLAVIC 100": {
+"SLAVIC 131": {
 "buckets": {
 "1-5": {
-"n_course": 5,
+"n_course": 28,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "100",
+"number": "131",
 "subject": "SLAVIC"
 },
-"SLAVIC 133": {
+"SLAVIC 134F": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.145,
+0.066,
 null,
 null
 ],
 [
 1.0,
-0.145,
+0.066,
 null,
 null
 ],
 [
 2.0,
-0.206,
+0.102,
 null,
 null
 ],
 [
 3.0,
-0.27,
+0.154,
 null,
 null
 ],
 [
 4.0,
-0.369,
+0.169,
 null,
 null
 ],
 [
 5.0,
-0.369,
+0.184,
 null,
 null
 ],
 [
 6.0,
-0.406,
+0.201,
 null,
 null
 ],
 [
 7.0,
-0.443,
+0.237,
 null,
 null
 ],
 [
 8.0,
-0.443,
+0.256,
 null,
 null
 ],
 [
 9.0,
-0.443,
+0.256,
 null,
 null
 ],
 [
 10.0,
-0.443,
+0.256,
 null,
 null
 ],
 [
 12.0,
-0.443,
+0.256,
 null,
 null
 ],
 [
 14.0,
-0.443,
+0.276,
 null,
 null
 ],
 [
 16.0,
-0.443,
+0.276,
 null,
 null
 ],
 [
 18.0,
-0.443,
+0.276,
 null,
 null
 ],
 [
-18.45,
-0.443,
-null,
-null
-]
-],
-"events": 14,
-"median_days": null,
-"n": 35,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "133",
-"subject": "SLAVIC"
-},
-"SLAVIC 134D": {
-"buckets": {
-"1-5": {
-"n_course": 4,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "134D",
-"subject": "SLAVIC"
-},
-"SLAVIC 134E": {
-"buckets": {
-"1-5": {
-"n_course": 2,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "134E",
-"subject": "SLAVIC"
-},
-"SLAVIC 147B": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.098,
+21.0,
+0.276,
 null,
 null
 ],
 [
-1.0,
-0.146,
+24.0,
+0.276,
 null,
 null
 ],
 [
-2.0,
-0.2,
+28.0,
+0.276,
 null,
 null
 ],
 [
-3.0,
-0.2,
+32.0,
+0.276,
 null,
 null
 ],
 [
-4.0,
-0.268,
+36.0,
+0.276,
 null,
 null
 ],
 [
-5.0,
-0.268,
+42.0,
+0.276,
 null,
 null
 ],
 [
-6.0,
-0.306,
+49.0,
+0.276,
 null,
 null
 ],
 [
-7.0,
-0.345,
+56.0,
+0.276,
 null,
 null
 ],
 [
-8.0,
-0.383,
+63.0,
+0.276,
 null,
 null
 ],
 [
-9.0,
-0.383,
+70.0,
+0.276,
 null,
 null
 ],
 [
-10.0,
-0.383,
+77.0,
+0.276,
 null,
 null
 ],
 [
-12.0,
-0.425,
-null,
-null
-],
-[
-14.0,
-0.671,
-null,
-null
-],
-[
-16.0,
-0.671,
-null,
-null
-],
-[
-18.0,
-0.671,
-null,
-null
-],
-[
-18.21,
-0.671,
+79.75,
+0.276,
 null,
 null
 ]
 ],
 "events": 20,
-"median_days": 12.0,
-"n": 41,
+"median_days": null,
+"n": 92,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "147B",
+"number": "134F",
 "subject": "SLAVIC"
 },
-"SLAVIC 170": {
+"SLAVIC 148AC": {
 "buckets": {
 "1-5": {
-"n_course": 7,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.081,
+null,
+null
+],
+[
+1.0,
+0.092,
+null,
+null
+],
+[
+2.0,
+0.103,
+null,
+null
+],
+[
+3.0,
+0.141,
+null,
+null
+],
+[
+4.0,
+0.141,
+null,
+null
+],
+[
+5.0,
+0.228,
+null,
+null
+],
+[
+6.0,
+0.301,
+null,
+null
+],
+[
+7.0,
+0.376,
+null,
+null
+],
+[
+8.0,
+0.376,
+null,
+null
+],
+[
+9.0,
+0.418,
+null,
+null
+],
+[
+10.0,
+0.439,
+null,
+null
+],
+[
+12.0,
+0.459,
+null,
+null
+],
+[
+14.0,
+0.538,
+null,
+null
+],
+[
+16.0,
+0.538,
+null,
+null
+],
+[
+18.0,
+0.538,
+null,
+null
+],
+[
+21.0,
+0.571,
+null,
+null
+],
+[
+24.0,
+0.571,
+null,
+null
+],
+[
+28.0,
+0.571,
+null,
+null
+],
+[
+32.0,
+0.571,
+null,
+null
+],
+[
+36.0,
+0.571,
+null,
+null
+],
+[
+42.0,
+0.571,
+null,
+null
+],
+[
+49.0,
+0.571,
+null,
+null
+],
+[
+56.0,
+0.571,
+null,
+null
+],
+[
+63.0,
+0.571,
+null,
+null
+],
+[
+70.0,
+0.571,
+null,
+null
+],
+[
+77.0,
+0.571,
+null,
+null
+],
+[
+79.75,
+0.571,
+null,
+null
+]
+],
+"events": 35,
+"median_days": 13.01,
+"n": 100,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "170",
+"number": "148AC",
 "subject": "SLAVIC"
 },
-"SLAVIC 45": {
+"SLAVIC 39N": {
 "buckets": {
 "1-5": {
-"n_course": 18,
+"curve": [
+[
+0.5,
+0.132,
+null,
+null
+],
+[
+1.0,
+0.132,
+null,
+null
+],
+[
+2.0,
+0.132,
+null,
+null
+],
+[
+3.0,
+0.156,
+null,
+null
+],
+[
+4.0,
+0.156,
+null,
+null
+],
+[
+5.0,
+0.226,
+null,
+null
+],
+[
+6.0,
+0.355,
+null,
+null
+],
+[
+7.0,
+0.355,
+null,
+null
+],
+[
+8.0,
+0.443,
+null,
+null
+],
+[
+9.0,
+0.502,
+null,
+null
+],
+[
+10.0,
+0.502,
+null,
+null
+],
+[
+12.0,
+0.56,
+null,
+null
+],
+[
+14.0,
+0.56,
+null,
+null
+],
+[
+16.0,
+0.56,
+null,
+null
+],
+[
+18.0,
+0.56,
+null,
+null
+],
+[
+21.0,
+0.56,
+null,
+null
+],
+[
+24.0,
+0.56,
+null,
+null
+],
+[
+28.0,
+0.56,
+null,
+null
+],
+[
+28.32,
+0.56,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 8.21,
+"n": 53,
+"pooled": false,
+"reach_days": 28.3,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "39N",
+"subject": "SLAVIC"
+},
+"SLAVIC 46": {
+"buckets": {
+"1-5": {
+"n_course": 3,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "45",
+"number": "46",
 "subject": "SLAVIC"
 },
-"SLAVIC R5A": {
+"SLAVIC 49AC": {
 "buckets": {
 "1-5": {
-"n_course": 29,
+"curve": [
+[
+0.5,
+0.127,
+null,
+null
+],
+[
+1.0,
+0.151,
+null,
+null
+],
+[
+2.0,
+0.175,
+null,
+null
+],
+[
+3.0,
+0.175,
+null,
+null
+],
+[
+4.0,
+0.229,
+null,
+null
+],
+[
+5.0,
+0.277,
+null,
+null
+],
+[
+6.0,
+0.299,
+null,
+null
+],
+[
+7.0,
+0.312,
+null,
+null
+],
+[
+8.0,
+0.326,
+null,
+null
+],
+[
+9.0,
+0.382,
+null,
+null
+],
+[
+10.0,
+0.382,
+null,
+null
+],
+[
+12.0,
+0.429,
+null,
+null
+],
+[
+14.0,
+0.429,
+null,
+null
+],
+[
+16.0,
+0.429,
+null,
+null
+],
+[
+18.0,
+0.429,
+null,
+null
+],
+[
+21.0,
+0.429,
+null,
+null
+],
+[
+24.0,
+0.429,
+null,
+null
+],
+[
+28.0,
+0.429,
+null,
+null
+],
+[
+32.0,
+0.429,
+null,
+null
+],
+[
+35.71,
+0.429,
+null,
+null
+]
+],
+"events": 46,
+"median_days": null,
+"n": 144,
+"pooled": false,
+"reach_days": 35.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 26,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "R5A",
+"number": "49AC",
+"subject": "SLAVIC"
+},
+"SLAVIC 50": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.17,
+null,
+null
+],
+[
+1.0,
+0.29,
+null,
+null
+],
+[
+2.0,
+0.399,
+null,
+null
+],
+[
+3.0,
+0.468,
+null,
+null
+],
+[
+4.0,
+0.57,
+null,
+null
+],
+[
+5.0,
+0.595,
+null,
+null
+],
+[
+6.0,
+0.607,
+null,
+null
+],
+[
+7.0,
+0.607,
+null,
+null
+],
+[
+8.0,
+0.607,
+null,
+null
+],
+[
+9.0,
+0.624,
+null,
+null
+],
+[
+10.0,
+0.624,
+null,
+null
+],
+[
+12.0,
+0.624,
+null,
+null
+],
+[
+14.0,
+0.718,
+null,
+null
+],
+[
+16.0,
+0.746,
+null,
+null
+],
+[
+18.0,
+0.746,
+null,
+null
+],
+[
+21.0,
+0.778,
+null,
+null
+],
+[
+24.0,
+0.834,
+null,
+null
+],
+[
+25.37,
+0.834,
+null,
+null
+]
+],
+"events": 122,
+"median_days": 3.1,
+"n": 221,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.033,
+null,
+null
+],
+[
+1.0,
+0.033,
+null,
+null
+],
+[
+2.0,
+0.108,
+null,
+null
+],
+[
+3.0,
+0.148,
+null,
+null
+],
+[
+4.0,
+0.196,
+null,
+null
+],
+[
+5.0,
+0.315,
+null,
+null
+],
+[
+6.0,
+0.315,
+null,
+null
+],
+[
+7.0,
+0.315,
+null,
+null
+],
+[
+8.0,
+0.315,
+null,
+null
+],
+[
+9.0,
+0.315,
+null,
+null
+],
+[
+10.0,
+0.315,
+null,
+null
+],
+[
+12.0,
+0.315,
+null,
+null
+],
+[
+14.0,
+0.658,
+null,
+null
+],
+[
+16.0,
+0.658,
+null,
+null
+],
+[
+18.0,
+0.658,
+null,
+null
+],
+[
+21.0,
+0.658,
+null,
+null
+],
+[
+24.0,
+0.658,
+null,
+null
+],
+[
+25.37,
+0.658,
+null,
+null
+]
+],
+"events": 8,
+"median_days": 12.26,
+"n": 30,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "50",
 "subject": "SLAVIC"
 },
 "SLAVIC R5B": {
@@ -312,107 +911,173 @@ null
 "curve": [
 [
 0.5,
-0.05,
-0.021,
-0.109
+0.044,
+0.0,
+0.065
 ],
 [
 1.0,
-0.06,
-0.037,
-0.109
+0.044,
+0.0,
+0.065
 ],
 [
 2.0,
-0.06,
-0.037,
-0.109
+0.044,
+0.0,
+0.065
 ],
 [
 3.0,
-0.085,
-0.07,
-0.109
+0.044,
+0.0,
+0.065
 ],
 [
 4.0,
-0.085,
-0.07,
-0.109
+0.044,
+0.0,
+0.065
 ],
 [
 5.0,
-0.085,
-0.07,
-0.109
+0.044,
+0.0,
+0.065
 ],
 [
 6.0,
-0.085,
-0.07,
-0.109
+0.08,
+0.0,
+0.12
 ],
 [
 7.0,
-0.085,
-0.07,
-0.109
+0.08,
+0.0,
+0.12
 ],
 [
 8.0,
-0.085,
-0.07,
-0.109
+0.08,
+0.0,
+0.12
 ],
 [
 9.0,
-0.085,
-0.07,
-0.109
+0.08,
+0.0,
+0.12
 ],
 [
 10.0,
-0.085,
-0.07,
-0.109
+0.137,
+0.0,
+0.208
 ],
 [
 12.0,
-0.085,
-0.07,
-0.109
+0.159,
+0.0,
+0.243
 ],
 [
 14.0,
-0.085,
-0.07,
-0.109
+0.226,
+0.0,
+0.346
 ],
 [
 16.0,
-0.168,
-0.07,
-0.389
+0.226,
+0.0,
+0.346
 ],
 [
 18.0,
-0.272,
-0.07,
-0.389
+0.306,
+0.0,
+0.477
 ],
 [
-18.59,
-0.272,
-0.07,
-0.389
+21.0,
+0.306,
+0.0,
+0.477
+],
+[
+24.0,
+0.306,
+0.0,
+0.477
+],
+[
+28.0,
+0.306,
+0.0,
+0.477
+],
+[
+32.0,
+0.306,
+0.0,
+0.477
+],
+[
+36.0,
+0.306,
+0.0,
+0.477
+],
+[
+42.0,
+0.306,
+0.0,
+0.477
+],
+[
+49.0,
+0.306,
+0.0,
+0.477
+],
+[
+56.0,
+0.306,
+0.0,
+0.477
+],
+[
+63.0,
+0.306,
+0.0,
+0.477
+],
+[
+70.0,
+0.306,
+0.0,
+0.477
+],
+[
+77.0,
+0.306,
+0.0,
+0.477
+],
+[
+79.75,
+0.306,
+0.0,
+0.477
 ]
 ],
-"events": 12,
+"events": 15,
 "median_days": null,
-"n": 103,
+"n": 68,
 "pooled": false,
-"reach_days": 18.6,
-"sections": 3
+"reach_days": 79.7,
+"sections": 2
 }
 },
 "dept_group": "OTHER",
@@ -422,5 +1087,5 @@ null
 }
 },
 "subject": "SLAVIC",
-"term_id": "2268"
+"term_id": "2262"
 }

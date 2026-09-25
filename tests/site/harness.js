@@ -80,10 +80,29 @@ const document = {
   querySelectorAll() { return []; },
 };
 
+// Relative URLs are files under <site root>. The one absolute URL a page fetches
+// is the live file on the data branch (LIVE_URL in course.html): it is served
+// from HARNESS_LIVE_FILE, and 404s when that variable is unset, as it does in a
+// checkout with no data branch. Any other absolute URL stays a 404.
+const LIVE_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/live/latest.json";
+
+// Every URL the page asked for, in order; the page context sees it as __fetches.
+const fetches = [];
 async function fetchStub(url) {
-  const file = path.join(root, url.split("?")[0]);
-  if (!fs.existsSync(file)) return { ok: false, status: 404, json: async () => { throw new Error("404"); } };
+  fetches.push(url);
+  const file = url === LIVE_URL ? process.env.HARNESS_LIVE_FILE || "" : path.join(root, url.split("?")[0]);
+  // HARNESS_FAIL_FETCH: every request fails as a network error would, the titles file included.
   if (process.env.HARNESS_FAIL_FETCH) throw new TypeError("Failed to fetch");
+  // HARNESS_TITLES_FILE=<json>: serve that file as data/titles.json and have meta.json name it,
+  // so the title layer can run against any site root (a missing file is a 404, a broken one fails to parse).
+  const titles = process.env.HARNESS_TITLES_FILE;
+  if (titles && (url === "data/titles.json" || url === "data/meta.json")) {
+    const src = url === "data/titles.json" ? titles : file;
+    if (!fs.existsSync(src)) return { ok: false, status: 404, json: async () => { throw new Error("404"); } };
+    const text = fs.readFileSync(src, "utf8");
+    return { ok: true, status: 200, json: async () => (url === "data/meta.json" ? { titles_file: "titles.json", ...JSON.parse(text) } : JSON.parse(text)) };
+  }
+  if (!file || !fs.existsSync(file)) return { ok: false, status: 404, json: async () => { throw new Error("404"); } };
   const text = fs.readFileSync(file, "utf8");
   return { ok: true, status: 200, json: async () => JSON.parse(text) };
 }
@@ -121,8 +140,20 @@ const sandbox = {
   clearTimeout,
   encodeURIComponent,
   decodeURIComponent,
+  __fetches: fetches,
 };
 sandbox.window = sandbox;
+// HARNESS_NOW (an ISO timestamp) pins Date.now(), so the ages a page prints from
+// observed_at are fixed numbers; without it the real clock is used, as in a browser.
+// A typo must not fall back to the real clock and fail as a baffling age.
+if (process.env.HARNESS_NOW) {
+  const pinnedNow = Date.parse(process.env.HARNESS_NOW);
+  if (Number.isNaN(pinnedNow)) throw new Error("HARNESS_NOW is not a date Date.parse understands: " + process.env.HARNESS_NOW);
+  sandbox.Date = class extends Date {
+    constructor(...args) { super(...(args.length ? args : [pinnedNow])); }
+    static now() { return pinnedNow; }
+  };
+}
 vm.createContext(sandbox);
 for (const s of scripts) {
   if (s[1]) {
@@ -157,6 +188,7 @@ async function settle(n) { for (let i = 0; i < n; i++) await tick(); }
   out.result_hidden = !!get("result").hidden || get("result").classes.has("hidden");
   out.stamp = get("stamp").textContent;
   out.location = sandbox.location.href;
+  out.fetches = fetches;
   if (expression) {
     try {
       const value = vm.runInContext(expression, sandbox);

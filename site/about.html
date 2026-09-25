@@ -23,7 +23,7 @@
   <p>This site is not affiliated with, endorsed by, or maintained by UC Berkeley, the Office of the Registrar, or Berkeleytime. It reads public enrollment counts and publishes historical frequencies. Nothing here is a guarantee, an official estimate, or advice from any department.</p>
 
   <h2>Where the numbers come from</h2>
-  <p>Two sources, and every page says which one it is showing. This project's own scraper reads the public section pages of classes.berkeley.edu every 30 minutes during an enrollment cycle and stores the counts. Until that collection has a full cycle, the estimates come from the Fall 2026 cycle as recorded in <a href="https://berkeleytime.com">Berkeleytime</a>'s public enrollment history; those numbers are labelled <em>from Berkeleytime's public history</em> wherever they appear. Neither source contains student identities or positions: the data are aggregate counts, and the odds are for hypothetical students reconstructed under stated assumptions. The <a href="methodology.html">methodology</a> page explains how, and the <a href="accuracy.html">accuracy</a> page shows how well past estimates held up.</p>
+  <p>Two sources, and every page says which one it is showing. This project's own scraper reads the public section pages of classes.berkeley.edu every 30 minutes during an enrollment cycle and stores the counts. Until that collection has a full cycle, the estimates come from the Spring 2026 cycle (the same season and calendar shape as Spring 2027) as recorded in <a href="https://berkeleytime.com">Berkeleytime</a>'s public enrollment history; those numbers are labelled <em>from Berkeleytime's public history</em> wherever they appear. Neither source contains student identities or positions: the data are aggregate counts, and the odds are for hypothetical students reconstructed under stated assumptions. The <a href="methodology.html">methodology</a> page explains how, and the <a href="accuracy.html">accuracy</a> page shows how well past estimates held up.</p>
 
   <h2>Data status</h2>
   <p id="data-status" class="muted">Loading the data status…</p>
@@ -52,7 +52,7 @@
     if (r.state === "empty") { el.innerHTML = BWO.emptyHtml(r.meta); return; }
     const m = r.meta;
     const src = m.data_source === "berkeleytime_history" ? "Berkeleytime's public history" : "this project's own snapshots";
-    el.innerHTML = `<strong>${esc(m.term_name)}</strong>, ${src}: ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners of whom ${esc(num(m.events))} cleared. Data through ${esc(BWO.fmtDate(m.join_window ? m.join_window[1] : m.generated_at))}; files generated ${esc(BWO.fmtDate(m.generated_at))}.${m.prereg_commit ? ` The Fall 2026 model was frozen at commit <code>${esc(String(m.prereg_commit).slice(0, 10))}</code> on ${esc(m.prereg_date || "")} for the Spring 2027 test.` : ""}`;
+    el.innerHTML = `<strong>${esc(m.term_name)}</strong>, ${src}: ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners of whom ${esc(num(m.events))} cleared. Data through ${esc(BWO.fmtDate(m.join_window ? m.join_window[1] : m.generated_at))}; files generated ${esc(BWO.fmtDate(m.generated_at))}.${m.prereg_commit ? ` The ${esc(m.term_name)} cohort behind the curves was frozen at commit <code>${esc(String(m.prereg_commit).slice(0, 10))}</code> on ${esc(m.prereg_date || "")} for the Spring 2027 test.` : ""}`;
     BWO.liveStatus(el);
     BWO.setStamp(m, BWO.today());
   }

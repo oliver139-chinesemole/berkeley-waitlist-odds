@@ -1,19 +1,366 @@
 {
 "courses": {
-"GMS C215": {
+"GMS 200": {
 "buckets": {
 "1-5": {
-"n_course": 29,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.106,
+null,
+null
+],
+[
+1.0,
+0.13,
+null,
+null
+],
+[
+2.0,
+0.167,
+null,
+null
+],
+[
+3.0,
+0.167,
+null,
+null
+],
+[
+4.0,
+0.233,
+null,
+null
+],
+[
+5.0,
+0.287,
+null,
+null
+],
+[
+6.0,
+0.332,
+null,
+null
+],
+[
+7.0,
+0.379,
+null,
+null
+],
+[
+8.0,
+0.448,
+null,
+null
+],
+[
+9.0,
+0.517,
+null,
+null
+],
+[
+10.0,
+0.536,
+null,
+null
+],
+[
+12.0,
+0.555,
+null,
+null
+],
+[
+14.0,
+0.652,
+null,
+null
+],
+[
+16.0,
+0.672,
+null,
+null
+],
+[
+18.0,
+0.697,
+null,
+null
+],
+[
+21.0,
+0.748,
+null,
+null
+],
+[
+24.0,
+0.748,
+null,
+null
+],
+[
+28.0,
+0.748,
+null,
+null
+],
+[
+32.0,
+0.748,
+null,
+null
+],
+[
+36.0,
+0.748,
+null,
+null
+],
+[
+42.0,
+0.748,
+null,
+null
+],
+[
+49.0,
+0.748,
+null,
+null
+],
+[
+56.0,
+0.748,
+null,
+null
+],
+[
+63.0,
+0.748,
+null,
+null
+],
+[
+70.0,
+0.748,
+null,
+null
+],
+[
+77.0,
+0.748,
+null,
+null
+],
+[
+79.75,
+0.748,
+null,
+null
+]
+],
+"events": 48,
+"median_days": 8.96,
+"n": 85,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "C215",
+"number": "200",
+"subject": "GMS"
+},
+"GMS 201": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.24,
+null,
+null
+],
+[
+1.0,
+0.289,
+null,
+null
+],
+[
+2.0,
+0.289,
+null,
+null
+],
+[
+3.0,
+0.365,
+null,
+null
+],
+[
+4.0,
+0.365,
+null,
+null
+],
+[
+5.0,
+0.365,
+null,
+null
+],
+[
+6.0,
+0.365,
+null,
+null
+],
+[
+7.0,
+0.455,
+null,
+null
+],
+[
+8.0,
+0.487,
+null,
+null
+],
+[
+9.0,
+0.52,
+null,
+null
+],
+[
+10.0,
+0.52,
+null,
+null
+],
+[
+12.0,
+0.52,
+null,
+null
+],
+[
+14.0,
+0.588,
+null,
+null
+],
+[
+16.0,
+0.588,
+null,
+null
+],
+[
+18.0,
+0.588,
+null,
+null
+],
+[
+21.0,
+0.629,
+null,
+null
+],
+[
+24.0,
+0.629,
+null,
+null
+],
+[
+28.0,
+0.629,
+null,
+null
+],
+[
+32.0,
+0.629,
+null,
+null
+],
+[
+36.0,
+0.629,
+null,
+null
+],
+[
+42.0,
+0.629,
+null,
+null
+],
+[
+49.0,
+0.629,
+null,
+null
+],
+[
+56.0,
+0.629,
+null,
+null
+],
+[
+63.0,
+0.629,
+null,
+null
+],
+[
+70.0,
+0.629,
+null,
+null
+],
+[
+77.0,
+0.629,
+null,
+null
+],
+[
+79.75,
+0.629,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 8.47,
+"n": 42,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "201",
 "subject": "GMS"
 }
 },
 "subject": "GMS",
-"term_id": "2268"
+"term_id": "2262"
 }

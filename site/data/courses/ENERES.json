@@ -1,582 +1,975 @@
 {
 "courses": {
-"ENERES 276": {
-"buckets": {
-"1-5": {
-"n_course": 6,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "276",
-"subject": "ENERES"
-},
-"ENERES 290A": {
-"buckets": {
-"1-5": {
-"n_course": 24,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "290A",
-"subject": "ENERES"
-},
-"ENERES 295": {
-"buckets": {
-"1-5": {
-"n_course": 2,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "295",
-"subject": "ENERES"
-},
-"ENERES C100": {
+"ENERES 102": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.171,
+0.145,
 null,
 null
 ],
 [
 1.0,
-0.251,
+0.192,
 null,
 null
 ],
 [
 2.0,
-0.343,
+0.241,
 null,
 null
 ],
 [
 3.0,
-0.395,
+0.284,
 null,
 null
 ],
 [
 4.0,
-0.463,
+0.351,
 null,
 null
 ],
 [
 5.0,
-0.501,
-null,
-null
-],
-[
-6.0,
-0.552,
-null,
-null
-],
-[
-7.0,
-0.574,
-null,
-null
-],
-[
-8.0,
-0.579,
-null,
-null
-],
-[
-9.0,
-0.579,
-null,
-null
-],
-[
-10.0,
-0.579,
-null,
-null
-],
-[
-12.0,
-0.579,
-null,
-null
-],
-[
-14.0,
-0.579,
-null,
-null
-],
-[
-16.0,
-0.579,
-null,
-null
-],
-[
-18.0,
-0.579,
-null,
-null
-],
-[
-21.0,
-0.579,
-null,
-null
-],
-[
-24.0,
-0.579,
-null,
-null
-],
-[
-28.0,
-0.579,
-null,
-null
-],
-[
-32.0,
-0.579,
-null,
-null
-],
-[
-36.0,
-0.579,
-null,
-null
-],
-[
-42.0,
-0.579,
-null,
-null
-],
-[
-49.0,
-0.579,
-null,
-null
-],
-[
-56.0,
-0.579,
-null,
-null
-],
-[
-60.47,
-0.579,
-null,
-null
-]
-],
-"events": 140,
-"median_days": 4.85,
-"n": 278,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-},
-"16-40": {
-"n_course": 7,
-"pooled": "OTHER",
-"sections_course": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.056,
-null,
-null
-],
-[
-1.0,
-0.056,
-null,
-null
-],
-[
-2.0,
-0.116,
-null,
-null
-],
-[
-3.0,
-0.152,
-null,
-null
-],
-[
-4.0,
-0.26,
-null,
-null
-],
-[
-5.0,
-0.297,
-null,
-null
-],
-[
-6.0,
-0.439,
-null,
-null
-],
-[
-7.0,
-0.513,
-null,
-null
-],
-[
-8.0,
-0.587,
-null,
-null
-],
-[
-9.0,
-0.665,
-null,
-null
-],
-[
-10.0,
-0.7,
-null,
-null
-],
-[
-12.0,
-0.7,
-null,
-null
-],
-[
-14.0,
-0.7,
-null,
-null
-],
-[
-16.0,
-0.7,
-null,
-null
-],
-[
-18.0,
-0.7,
-null,
-null
-],
-[
-18.21,
-0.7,
-null,
-null
-]
-],
-"events": 54,
-"median_days": 6.79,
-"n": 110,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C100",
-"subject": "ENERES"
-},
-"ENERES C176": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.296,
-null,
-null
-],
-[
-1.0,
-0.363,
-null,
-null
-],
-[
-2.0,
-0.515,
-null,
-null
-],
-[
-3.0,
-0.584,
-null,
-null
-],
-[
-4.0,
-0.631,
-null,
-null
-],
-[
-5.0,
-0.652,
-null,
-null
-],
-[
-6.0,
-0.689,
-null,
-null
-],
-[
-7.0,
-0.721,
-null,
-null
-],
-[
-8.0,
-0.755,
-null,
-null
-],
-[
-9.0,
-0.777,
-null,
-null
-],
-[
-10.0,
-0.812,
-null,
-null
-],
-[
-12.0,
-0.837,
-null,
-null
-],
-[
-14.0,
-0.837,
-null,
-null
-],
-[
-16.0,
-0.837,
-null,
-null
-],
-[
-18.0,
-0.837,
-null,
-null
-],
-[
-21.0,
-0.837,
-null,
-null
-],
-[
-24.0,
-0.837,
-null,
-null
-],
-[
-28.0,
-0.837,
-null,
-null
-],
-[
-30.81,
-0.837,
-null,
-null
-]
-],
-"events": 135,
-"median_days": 1.92,
-"n": 191,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C176",
-"subject": "ENERES"
-},
-"ENERES C200": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.125,
-null,
-null
-],
-[
-1.0,
-0.183,
-null,
-null
-],
-[
-2.0,
-0.195,
-null,
-null
-],
-[
-3.0,
-0.235,
-null,
-null
-],
-[
-4.0,
-0.277,
-null,
-null
-],
-[
-5.0,
-0.319,
-null,
-null
-],
-[
-6.0,
 0.383,
 null,
 null
 ],
 [
+6.0,
+0.538,
+null,
+null
+],
+[
 7.0,
-0.439,
+0.601,
 null,
 null
 ],
 [
 8.0,
-0.514,
+0.63,
 null,
 null
 ],
 [
 9.0,
-0.554,
+0.64,
 null,
 null
 ],
 [
 10.0,
-0.677,
+0.64,
 null,
 null
 ],
 [
 12.0,
-0.677,
+0.64,
 null,
 null
 ],
 [
 14.0,
-0.769,
+0.66,
 null,
 null
 ],
 [
 16.0,
-0.769,
+0.66,
 null,
 null
 ],
 [
 18.0,
-0.846,
+0.66,
 null,
 null
 ],
 [
-18.21,
-0.846,
+21.0,
+0.671,
+null,
+null
+],
+[
+24.0,
+0.671,
+null,
+null
+],
+[
+28.0,
+0.671,
+null,
+null
+],
+[
+32.0,
+0.671,
+null,
+null
+],
+[
+36.0,
+0.671,
+null,
+null
+],
+[
+42.0,
+0.671,
+null,
+null
+],
+[
+49.0,
+0.671,
+null,
+null
+],
+[
+56.0,
+0.671,
+null,
+null
+],
+[
+63.0,
+0.671,
+null,
+null
+],
+[
+70.0,
+0.671,
+null,
+null
+],
+[
+77.0,
+0.671,
+null,
+null
+],
+[
+79.75,
+0.671,
 null,
 null
 ]
 ],
-"events": 48,
-"median_days": 7.42,
-"n": 88,
+"events": 88,
+"median_days": 5.93,
+"n": 165,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "ENERES"
+},
+"ENERES 254": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.2,
+null,
+null
+],
+[
+1.0,
+0.259,
+null,
+null
+],
+[
+2.0,
+0.302,
+null,
+null
+],
+[
+3.0,
+0.36,
+null,
+null
+],
+[
+4.0,
+0.392,
+null,
+null
+],
+[
+5.0,
+0.471,
+null,
+null
+],
+[
+6.0,
+0.513,
+null,
+null
+],
+[
+7.0,
+0.54,
+null,
+null
+],
+[
+8.0,
+0.54,
+null,
+null
+],
+[
+9.0,
+0.552,
+null,
+null
+],
+[
+10.0,
+0.552,
+null,
+null
+],
+[
+12.0,
+0.6,
+null,
+null
+],
+[
+14.0,
+0.642,
+null,
+null
+],
+[
+16.0,
+0.663,
+null,
+null
+],
+[
+18.0,
+0.663,
+null,
+null
+],
+[
+21.0,
+0.705,
+null,
+null
+],
+[
+24.0,
+0.705,
+null,
+null
+],
+[
+28.0,
+0.705,
+null,
+null
+],
+[
+32.0,
+0.705,
+null,
+null
+],
+[
+36.0,
+0.705,
+null,
+null
+],
+[
+42.0,
+0.705,
+null,
+null
+],
+[
+49.0,
+0.705,
+null,
+null
+],
+[
+56.0,
+0.705,
+null,
+null
+],
+[
+63.0,
+0.705,
+null,
+null
+],
+[
+70.0,
+0.705,
+null,
+null
+],
+[
+77.0,
+0.705,
+null,
+null
+],
+[
+79.75,
+0.705,
+null,
+null
+]
+],
+"events": 85,
+"median_days": 5.49,
+"n": 162,
+"pooled": false,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 17,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.16,
+null,
+null
+],
+[
+1.0,
+0.218,
+null,
+null
+],
+[
+2.0,
+0.218,
+null,
+null
+],
+[
+3.0,
+0.283,
+null,
+null
+],
+[
+4.0,
+0.283,
+null,
+null
+],
+[
+5.0,
+0.359,
+null,
+null
+],
+[
+6.0,
+0.359,
+null,
+null
+],
+[
+7.0,
+0.359,
+null,
+null
+],
+[
+8.0,
+0.405,
+null,
+null
+],
+[
+9.0,
+0.405,
+null,
+null
+],
+[
+10.0,
+0.405,
+null,
+null
+],
+[
+12.0,
+0.405,
+null,
+null
+],
+[
+14.0,
+0.405,
+null,
+null
+],
+[
+16.0,
+0.405,
+null,
+null
+],
+[
+18.0,
+0.405,
+null,
+null
+],
+[
+21.0,
+0.405,
+null,
+null
+],
+[
+24.0,
+0.405,
+null,
+null
+],
+[
+25.37,
+0.405,
+null,
+null
+]
+],
+"events": 13,
+"median_days": null,
+"n": 38,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "C200",
+"number": "254",
 "subject": "ENERES"
 },
-"ENERES C223": {
+"ENERES 293D": {
 "buckets": {
 "1-5": {
-"n_course": 14,
+"n_course": 10,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "C223",
+"number": "293D",
+"subject": "ENERES"
+},
+"ENERES C124": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.11,
+null,
+null
+],
+[
+1.0,
+0.11,
+null,
+null
+],
+[
+2.0,
+0.159,
+null,
+null
+],
+[
+3.0,
+0.159,
+null,
+null
+],
+[
+4.0,
+0.193,
+null,
+null
+],
+[
+5.0,
+0.228,
+null,
+null
+],
+[
+6.0,
+0.283,
+null,
+null
+],
+[
+7.0,
+0.301,
+null,
+null
+],
+[
+8.0,
+0.301,
+null,
+null
+],
+[
+9.0,
+0.301,
+null,
+null
+],
+[
+10.0,
+0.322,
+null,
+null
+],
+[
+12.0,
+0.342,
+null,
+null
+],
+[
+14.0,
+0.342,
+null,
+null
+],
+[
+16.0,
+0.342,
+null,
+null
+],
+[
+18.0,
+0.342,
+null,
+null
+],
+[
+21.0,
+0.342,
+null,
+null
+],
+[
+24.0,
+0.342,
+null,
+null
+],
+[
+28.0,
+0.342,
+null,
+null
+],
+[
+32.0,
+0.342,
+null,
+null
+],
+[
+36.0,
+0.342,
+null,
+null
+],
+[
+42.0,
+0.342,
+null,
+null
+],
+[
+49.0,
+0.342,
+null,
+null
+],
+[
+56.0,
+0.342,
+null,
+null
+],
+[
+63.0,
+0.342,
+null,
+null
+],
+[
+70.0,
+0.342,
+null,
+null
+],
+[
+77.0,
+0.342,
+null,
+null
+],
+[
+79.75,
+0.342,
+null,
+null
+]
+],
+"events": 20,
+"median_days": null,
+"n": 65,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C124",
+"subject": "ENERES"
+},
+"ENERES C160": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.199,
+null,
+null
+],
+[
+1.0,
+0.316,
+null,
+null
+],
+[
+2.0,
+0.411,
+null,
+null
+],
+[
+3.0,
+0.466,
+null,
+null
+],
+[
+4.0,
+0.483,
+null,
+null
+],
+[
+5.0,
+0.578,
+null,
+null
+],
+[
+6.0,
+0.604,
+null,
+null
+],
+[
+7.0,
+0.625,
+null,
+null
+],
+[
+8.0,
+0.662,
+null,
+null
+],
+[
+9.0,
+0.669,
+null,
+null
+],
+[
+10.0,
+0.678,
+null,
+null
+],
+[
+12.0,
+0.695,
+null,
+null
+],
+[
+14.0,
+0.716,
+null,
+null
+],
+[
+16.0,
+0.778,
+null,
+null
+],
+[
+18.0,
+0.778,
+null,
+null
+],
+[
+21.0,
+0.778,
+null,
+null
+],
+[
+24.0,
+0.778,
+null,
+null
+],
+[
+28.0,
+0.778,
+null,
+null
+],
+[
+32.0,
+0.778,
+null,
+null
+],
+[
+36.0,
+0.778,
+null,
+null
+],
+[
+42.0,
+0.778,
+null,
+null
+],
+[
+49.0,
+0.778,
+null,
+null
+],
+[
+56.0,
+0.778,
+null,
+null
+],
+[
+63.0,
+0.778,
+null,
+null
+],
+[
+70.0,
+0.778,
+null,
+null
+],
+[
+77.0,
+0.778,
+null,
+null
+],
+[
+79.75,
+0.778,
+null,
+null
+]
+],
+"events": 131,
+"median_days": 4.14,
+"n": 207,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.049,
+null,
+null
+],
+[
+2.0,
+0.049,
+null,
+null
+],
+[
+3.0,
+0.074,
+null,
+null
+],
+[
+4.0,
+0.074,
+null,
+null
+],
+[
+5.0,
+0.102,
+null,
+null
+],
+[
+6.0,
+0.133,
+null,
+null
+],
+[
+7.0,
+0.133,
+null,
+null
+],
+[
+8.0,
+0.169,
+null,
+null
+],
+[
+9.0,
+0.169,
+null,
+null
+],
+[
+10.0,
+0.169,
+null,
+null
+],
+[
+12.0,
+0.218,
+null,
+null
+],
+[
+14.0,
+0.218,
+null,
+null
+],
+[
+16.0,
+0.36,
+null,
+null
+],
+[
+18.0,
+0.36,
+null,
+null
+],
+[
+21.0,
+0.36,
+null,
+null
+],
+[
+24.0,
+0.36,
+null,
+null
+],
+[
+25.37,
+0.36,
+null,
+null
+]
+],
+"events": 9,
+"median_days": null,
+"n": 47,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C160",
 "subject": "ENERES"
 }
 },
 "subject": "ENERES",
-"term_id": "2268"
+"term_id": "2262"
 }
