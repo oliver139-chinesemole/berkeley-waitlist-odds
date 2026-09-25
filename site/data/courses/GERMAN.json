@@ -1,0 +1,322 @@
+{
+"courses": {
+"GERMAN 1": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "GERMAN"
+},
+"GERMAN 100": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "GERMAN"
+},
+"GERMAN 160B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.052,
+null,
+null
+],
+[
+1.0,
+0.052,
+null,
+null
+],
+[
+2.0,
+0.052,
+null,
+null
+],
+[
+3.0,
+0.052,
+null,
+null
+],
+[
+4.0,
+0.074,
+null,
+null
+],
+[
+5.0,
+0.074,
+null,
+null
+],
+[
+6.0,
+0.074,
+null,
+null
+],
+[
+7.0,
+0.074,
+null,
+null
+],
+[
+8.0,
+0.074,
+null,
+null
+],
+[
+9.0,
+0.074,
+null,
+null
+],
+[
+10.0,
+0.074,
+null,
+null
+],
+[
+12.0,
+0.074,
+null,
+null
+],
+[
+14.0,
+0.074,
+null,
+null
+],
+[
+16.0,
+0.074,
+null,
+null
+],
+[
+18.0,
+0.074,
+null,
+null
+],
+[
+21.0,
+0.074,
+null,
+null
+],
+[
+24.0,
+0.074,
+null,
+null
+],
+[
+28.0,
+0.074,
+null,
+null
+],
+[
+30.81,
+0.074,
+null,
+null
+]
+],
+"events": 4,
+"median_days": null,
+"n": 60,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "160B",
+"subject": "GERMAN"
+},
+"GERMAN 214": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "214",
+"subject": "GERMAN"
+},
+"GERMAN 24": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "GERMAN"
+},
+"GERMAN 256": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "256",
+"subject": "GERMAN"
+},
+"GERMAN R5A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.03,
+0.0,
+0.066
+],
+[
+1.0,
+0.03,
+0.0,
+0.066
+],
+[
+2.0,
+0.068,
+0.0,
+0.155
+],
+[
+3.0,
+0.068,
+0.0,
+0.155
+],
+[
+4.0,
+0.068,
+0.0,
+0.155
+],
+[
+5.0,
+0.068,
+0.0,
+0.155
+],
+[
+6.0,
+0.093,
+0.0,
+0.211
+],
+[
+7.0,
+0.093,
+0.0,
+0.211
+],
+[
+8.0,
+0.093,
+0.0,
+0.211
+],
+[
+9.0,
+0.127,
+0.0,
+0.29
+],
+[
+10.0,
+0.127,
+0.0,
+0.29
+],
+[
+12.0,
+0.127,
+0.0,
+0.29
+],
+[
+14.0,
+0.127,
+0.0,
+0.29
+],
+[
+16.0,
+0.127,
+0.0,
+0.29
+],
+[
+18.0,
+0.127,
+0.0,
+0.29
+],
+[
+18.37,
+0.127,
+0.0,
+0.29
+]
+],
+"events": 6,
+"median_days": null,
+"n": 68,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5A",
+"subject": "GERMAN"
+}
+},
+"subject": "GERMAN",
+"term_id": "2268"
+}

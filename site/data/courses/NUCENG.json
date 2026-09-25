@@ -1,0 +1,348 @@
+{
+"courses": {
+"NUCENG 10": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "NUCENG"
+},
+"NUCENG 100": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "NUCENG"
+},
+"NUCENG 101": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101",
+"subject": "NUCENG"
+},
+"NUCENG 124": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "124",
+"subject": "NUCENG"
+},
+"NUCENG 156": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "156",
+"subject": "NUCENG"
+},
+"NUCENG 175": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.125,
+null,
+null
+],
+[
+1.0,
+0.143,
+null,
+null
+],
+[
+2.0,
+0.161,
+null,
+null
+],
+[
+3.0,
+0.2,
+null,
+null
+],
+[
+4.0,
+0.2,
+null,
+null
+],
+[
+5.0,
+0.336,
+null,
+null
+],
+[
+6.0,
+0.405,
+null,
+null
+],
+[
+7.0,
+0.508,
+null,
+null
+],
+[
+8.0,
+0.57,
+null,
+null
+],
+[
+9.0,
+0.57,
+null,
+null
+],
+[
+10.0,
+0.656,
+null,
+null
+],
+[
+12.0,
+0.742,
+null,
+null
+],
+[
+14.0,
+0.742,
+null,
+null
+],
+[
+16.0,
+0.742,
+null,
+null
+],
+[
+18.0,
+0.742,
+null,
+null
+],
+[
+18.42,
+0.742,
+null,
+null
+]
+],
+"events": 30,
+"median_days": 6.98,
+"n": 56,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "175",
+"subject": "NUCENG"
+},
+"NUCENG 200M": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200M",
+"subject": "NUCENG"
+},
+"NUCENG 24": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.045,
+0.028,
+0.067
+],
+[
+1.0,
+0.069,
+0.043,
+0.103
+],
+[
+2.0,
+0.079,
+0.043,
+0.127
+],
+[
+3.0,
+0.13,
+0.043,
+0.255
+],
+[
+4.0,
+0.13,
+0.043,
+0.255
+],
+[
+5.0,
+0.13,
+0.043,
+0.255
+],
+[
+6.0,
+0.13,
+0.043,
+0.255
+],
+[
+7.0,
+0.13,
+0.043,
+0.255
+],
+[
+8.0,
+0.146,
+0.068,
+0.255
+],
+[
+9.0,
+0.146,
+0.068,
+0.255
+],
+[
+10.0,
+0.146,
+0.068,
+0.255
+],
+[
+12.0,
+0.175,
+0.068,
+0.317
+],
+[
+14.0,
+0.175,
+0.068,
+0.317
+],
+[
+16.0,
+0.175,
+0.068,
+0.317
+],
+[
+18.0,
+0.175,
+0.068,
+0.317
+],
+[
+18.56,
+0.175,
+0.068,
+0.317
+]
+],
+"events": 17,
+"median_days": null,
+"n": 136,
+"pooled": false,
+"reach_days": 18.6,
+"sections": 2
+},
+"6-15": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "NUCENG"
+},
+"NUCENG 275": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "275",
+"subject": "NUCENG"
+},
+"NUCENG C231": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C231",
+"subject": "NUCENG"
+}
+},
+"subject": "NUCENG",
+"term_id": "2268"
+}

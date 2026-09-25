@@ -1,0 +1,4141 @@
+{
+"courses": {
+"INTEGBI 108": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.253,
+null,
+null
+],
+[
+1.0,
+0.343,
+null,
+null
+],
+[
+2.0,
+0.433,
+null,
+null
+],
+[
+3.0,
+0.483,
+null,
+null
+],
+[
+4.0,
+0.528,
+null,
+null
+],
+[
+5.0,
+0.584,
+null,
+null
+],
+[
+6.0,
+0.628,
+null,
+null
+],
+[
+7.0,
+0.67,
+null,
+null
+],
+[
+8.0,
+0.703,
+null,
+null
+],
+[
+9.0,
+0.733,
+null,
+null
+],
+[
+10.0,
+0.76,
+null,
+null
+],
+[
+12.0,
+0.832,
+null,
+null
+],
+[
+14.0,
+0.892,
+null,
+null
+],
+[
+16.0,
+0.916,
+null,
+null
+],
+[
+18.0,
+0.944,
+null,
+null
+],
+[
+21.0,
+0.972,
+null,
+null
+],
+[
+24.0,
+0.972,
+null,
+null
+],
+[
+28.0,
+0.972,
+null,
+null
+],
+[
+30.81,
+0.972,
+null,
+null
+]
+],
+"events": 317,
+"median_days": 3.48,
+"n": 414,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"n_course": 28,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.022,
+null,
+null
+],
+[
+1.0,
+0.027,
+null,
+null
+],
+[
+2.0,
+0.064,
+null,
+null
+],
+[
+3.0,
+0.088,
+null,
+null
+],
+[
+4.0,
+0.11,
+null,
+null
+],
+[
+5.0,
+0.132,
+null,
+null
+],
+[
+6.0,
+0.143,
+null,
+null
+],
+[
+7.0,
+0.143,
+null,
+null
+],
+[
+8.0,
+0.143,
+null,
+null
+],
+[
+9.0,
+0.143,
+null,
+null
+],
+[
+10.0,
+0.143,
+null,
+null
+],
+[
+12.0,
+0.215,
+null,
+null
+],
+[
+14.0,
+0.267,
+null,
+null
+],
+[
+16.0,
+0.313,
+null,
+null
+],
+[
+18.0,
+0.323,
+null,
+null
+],
+[
+21.0,
+0.354,
+null,
+null
+],
+[
+24.0,
+0.464,
+null,
+null
+],
+[
+28.0,
+0.634,
+null,
+null
+],
+[
+32.0,
+0.812,
+null,
+null
+],
+[
+32.86,
+0.812,
+null,
+null
+]
+],
+"events": 76,
+"median_days": 24.71,
+"n": 223,
+"pooled": false,
+"reach_days": 32.9,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "108",
+"subject": "INTEGBI"
+},
+"INTEGBI 11": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.134,
+null,
+null
+],
+[
+1.0,
+0.161,
+null,
+null
+],
+[
+2.0,
+0.207,
+null,
+null
+],
+[
+3.0,
+0.215,
+null,
+null
+],
+[
+4.0,
+0.252,
+null,
+null
+],
+[
+5.0,
+0.277,
+null,
+null
+],
+[
+6.0,
+0.312,
+null,
+null
+],
+[
+7.0,
+0.354,
+null,
+null
+],
+[
+8.0,
+0.392,
+null,
+null
+],
+[
+9.0,
+0.404,
+null,
+null
+],
+[
+10.0,
+0.411,
+null,
+null
+],
+[
+12.0,
+0.458,
+null,
+null
+],
+[
+14.0,
+0.569,
+null,
+null
+],
+[
+16.0,
+0.643,
+null,
+null
+],
+[
+18.0,
+0.731,
+null,
+null
+],
+[
+21.0,
+0.758,
+null,
+null
+],
+[
+24.0,
+0.864,
+null,
+null
+],
+[
+28.0,
+0.864,
+null,
+null
+],
+[
+30.06,
+0.864,
+null,
+null
+]
+],
+"events": 150,
+"median_days": 12.31,
+"n": 322,
+"pooled": false,
+"reach_days": 30.1,
+"sections": 1
+},
+"16-40": {
+"n_course": 18,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.018,
+null,
+null
+],
+[
+1.0,
+0.024,
+null,
+null
+],
+[
+2.0,
+0.037,
+null,
+null
+],
+[
+3.0,
+0.037,
+null,
+null
+],
+[
+4.0,
+0.037,
+null,
+null
+],
+[
+5.0,
+0.037,
+null,
+null
+],
+[
+6.0,
+0.037,
+null,
+null
+],
+[
+7.0,
+0.045,
+null,
+null
+],
+[
+8.0,
+0.045,
+null,
+null
+],
+[
+9.0,
+0.056,
+null,
+null
+],
+[
+10.0,
+0.056,
+null,
+null
+],
+[
+12.0,
+0.099,
+null,
+null
+],
+[
+14.0,
+0.2,
+null,
+null
+],
+[
+16.0,
+0.2,
+null,
+null
+],
+[
+18.0,
+0.2,
+null,
+null
+],
+[
+21.0,
+0.2,
+null,
+null
+],
+[
+24.0,
+0.242,
+null,
+null
+],
+[
+28.0,
+0.242,
+null,
+null
+],
+[
+30.06,
+0.242,
+null,
+null
+]
+],
+"events": 17,
+"median_days": null,
+"n": 171,
+"pooled": false,
+"reach_days": 30.1,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "11",
+"subject": "INTEGBI"
+},
+"INTEGBI 114": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.351,
+null,
+null
+],
+[
+1.0,
+0.461,
+null,
+null
+],
+[
+2.0,
+0.606,
+null,
+null
+],
+[
+3.0,
+0.654,
+null,
+null
+],
+[
+4.0,
+0.698,
+null,
+null
+],
+[
+5.0,
+0.74,
+null,
+null
+],
+[
+6.0,
+0.758,
+null,
+null
+],
+[
+7.0,
+0.809,
+null,
+null
+],
+[
+8.0,
+0.859,
+null,
+null
+],
+[
+9.0,
+0.859,
+null,
+null
+],
+[
+10.0,
+0.87,
+null,
+null
+],
+[
+12.0,
+0.926,
+null,
+null
+],
+[
+14.0,
+0.926,
+null,
+null
+],
+[
+16.0,
+0.926,
+null,
+null
+],
+[
+16.96,
+0.926,
+null,
+null
+]
+],
+"events": 142,
+"median_days": 1.17,
+"n": 186,
+"pooled": false,
+"reach_days": 17.0,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.048,
+null,
+null
+],
+[
+1.0,
+0.12,
+null,
+null
+],
+[
+2.0,
+0.297,
+null,
+null
+],
+[
+3.0,
+0.367,
+null,
+null
+],
+[
+4.0,
+0.367,
+null,
+null
+],
+[
+5.0,
+0.367,
+null,
+null
+],
+[
+6.0,
+0.367,
+null,
+null
+],
+[
+7.0,
+0.367,
+null,
+null
+],
+[
+8.0,
+0.399,
+null,
+null
+],
+[
+9.0,
+0.464,
+null,
+null
+],
+[
+10.0,
+0.502,
+null,
+null
+],
+[
+12.0,
+0.544,
+null,
+null
+],
+[
+14.0,
+0.751,
+null,
+null
+],
+[
+16.0,
+0.851,
+null,
+null
+],
+[
+16.23,
+1.0,
+null,
+null
+]
+],
+"events": 43,
+"median_days": 9.25,
+"n": 88,
+"pooled": false,
+"reach_days": 16.2,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "114",
+"subject": "INTEGBI"
+},
+"INTEGBI 118": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "118",
+"subject": "INTEGBI"
+},
+"INTEGBI 123": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "123",
+"subject": "INTEGBI"
+},
+"INTEGBI 130": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.293,
+null,
+null
+],
+[
+1.0,
+0.365,
+null,
+null
+],
+[
+2.0,
+0.449,
+null,
+null
+],
+[
+3.0,
+0.483,
+null,
+null
+],
+[
+4.0,
+0.53,
+null,
+null
+],
+[
+5.0,
+0.565,
+null,
+null
+],
+[
+6.0,
+0.589,
+null,
+null
+],
+[
+7.0,
+0.642,
+null,
+null
+],
+[
+8.0,
+0.713,
+null,
+null
+],
+[
+9.0,
+0.713,
+null,
+null
+],
+[
+10.0,
+0.756,
+null,
+null
+],
+[
+12.0,
+0.803,
+null,
+null
+],
+[
+14.0,
+0.865,
+null,
+null
+],
+[
+16.0,
+0.865,
+null,
+null
+],
+[
+17.11,
+0.865,
+null,
+null
+]
+],
+"events": 71,
+"median_days": 3.01,
+"n": 99,
+"pooled": false,
+"reach_days": 17.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "130",
+"subject": "INTEGBI"
+},
+"INTEGBI 131": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.252,
+null,
+null
+],
+[
+1.0,
+0.366,
+null,
+null
+],
+[
+2.0,
+0.545,
+null,
+null
+],
+[
+3.0,
+0.64,
+null,
+null
+],
+[
+4.0,
+0.699,
+null,
+null
+],
+[
+5.0,
+0.765,
+null,
+null
+],
+[
+6.0,
+0.819,
+null,
+null
+],
+[
+7.0,
+0.856,
+null,
+null
+],
+[
+8.0,
+0.887,
+null,
+null
+],
+[
+9.0,
+0.908,
+null,
+null
+],
+[
+10.0,
+0.908,
+null,
+null
+],
+[
+12.0,
+0.919,
+null,
+null
+],
+[
+14.0,
+0.937,
+null,
+null
+],
+[
+16.0,
+0.944,
+null,
+null
+],
+[
+18.0,
+0.953,
+null,
+null
+],
+[
+21.0,
+0.953,
+null,
+null
+],
+[
+24.0,
+0.953,
+null,
+null
+],
+[
+28.0,
+0.953,
+null,
+null
+],
+[
+30.88,
+0.953,
+null,
+null
+]
+],
+"events": 480,
+"median_days": 1.65,
+"n": 621,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.018,
+null,
+null
+],
+[
+3.0,
+0.023,
+null,
+null
+],
+[
+4.0,
+0.063,
+null,
+null
+],
+[
+5.0,
+0.099,
+null,
+null
+],
+[
+6.0,
+0.115,
+null,
+null
+],
+[
+7.0,
+0.138,
+null,
+null
+],
+[
+8.0,
+0.144,
+null,
+null
+],
+[
+9.0,
+0.163,
+null,
+null
+],
+[
+10.0,
+0.184,
+null,
+null
+],
+[
+12.0,
+0.28,
+null,
+null
+],
+[
+14.0,
+0.444,
+null,
+null
+],
+[
+16.0,
+0.566,
+null,
+null
+],
+[
+18.0,
+0.748,
+null,
+null
+],
+[
+21.0,
+0.905,
+null,
+null
+],
+[
+22.77,
+0.941,
+null,
+null
+]
+],
+"events": 121,
+"median_days": 14.81,
+"n": 227,
+"pooled": false,
+"reach_days": 22.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.035,
+null,
+null
+],
+[
+1.0,
+0.049,
+null,
+null
+],
+[
+2.0,
+0.137,
+null,
+null
+],
+[
+3.0,
+0.222,
+null,
+null
+],
+[
+4.0,
+0.273,
+null,
+null
+],
+[
+5.0,
+0.3,
+null,
+null
+],
+[
+6.0,
+0.361,
+null,
+null
+],
+[
+7.0,
+0.419,
+null,
+null
+],
+[
+8.0,
+0.47,
+null,
+null
+],
+[
+9.0,
+0.546,
+null,
+null
+],
+[
+10.0,
+0.596,
+null,
+null
+],
+[
+12.0,
+0.692,
+null,
+null
+],
+[
+14.0,
+0.775,
+null,
+null
+],
+[
+16.0,
+0.813,
+null,
+null
+],
+[
+18.0,
+0.835,
+null,
+null
+],
+[
+21.0,
+0.835,
+null,
+null
+],
+[
+24.0,
+0.835,
+null,
+null
+],
+[
+28.0,
+0.835,
+null,
+null
+],
+[
+30.88,
+0.835,
+null,
+null
+]
+],
+"events": 235,
+"median_days": 8.14,
+"n": 434,
+"pooled": false,
+"reach_days": 30.9,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "131",
+"subject": "INTEGBI"
+},
+"INTEGBI 131L": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "131L",
+"subject": "INTEGBI"
+},
+"INTEGBI 134L": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.238,
+null,
+null
+],
+[
+1.0,
+0.305,
+null,
+null
+],
+[
+2.0,
+0.429,
+null,
+null
+],
+[
+3.0,
+0.491,
+null,
+null
+],
+[
+4.0,
+0.564,
+null,
+null
+],
+[
+5.0,
+0.608,
+null,
+null
+],
+[
+6.0,
+0.641,
+null,
+null
+],
+[
+7.0,
+0.664,
+null,
+null
+],
+[
+8.0,
+0.714,
+null,
+null
+],
+[
+9.0,
+0.745,
+null,
+null
+],
+[
+10.0,
+0.759,
+null,
+null
+],
+[
+12.0,
+0.807,
+null,
+null
+],
+[
+14.0,
+0.825,
+null,
+null
+],
+[
+16.0,
+0.852,
+null,
+null
+],
+[
+18.0,
+0.889,
+null,
+null
+],
+[
+21.0,
+0.889,
+null,
+null
+],
+[
+24.0,
+0.889,
+null,
+null
+],
+[
+28.0,
+0.889,
+null,
+null
+],
+[
+30.81,
+0.889,
+null,
+null
+]
+],
+"events": 173,
+"median_days": 3.13,
+"n": 237,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.039,
+null,
+null
+],
+[
+1.0,
+0.039,
+null,
+null
+],
+[
+2.0,
+0.081,
+null,
+null
+],
+[
+3.0,
+0.147,
+null,
+null
+],
+[
+4.0,
+0.235,
+null,
+null
+],
+[
+5.0,
+0.257,
+null,
+null
+],
+[
+6.0,
+0.327,
+null,
+null
+],
+[
+7.0,
+0.373,
+null,
+null
+],
+[
+8.0,
+0.42,
+null,
+null
+],
+[
+9.0,
+0.519,
+null,
+null
+],
+[
+10.0,
+0.519,
+null,
+null
+],
+[
+12.0,
+0.677,
+null,
+null
+],
+[
+14.0,
+0.731,
+null,
+null
+],
+[
+16.0,
+0.892,
+null,
+null
+],
+[
+18.0,
+0.964,
+null,
+null
+],
+[
+18.21,
+0.964,
+null,
+null
+]
+],
+"events": 39,
+"median_days": 8.94,
+"n": 51,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "134L",
+"subject": "INTEGBI"
+},
+"INTEGBI 135": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "135",
+"subject": "INTEGBI"
+},
+"INTEGBI 136": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "136",
+"subject": "INTEGBI"
+},
+"INTEGBI 160": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.316,
+null,
+null
+],
+[
+1.0,
+0.432,
+null,
+null
+],
+[
+2.0,
+0.584,
+null,
+null
+],
+[
+3.0,
+0.648,
+null,
+null
+],
+[
+4.0,
+0.69,
+null,
+null
+],
+[
+5.0,
+0.726,
+null,
+null
+],
+[
+6.0,
+0.767,
+null,
+null
+],
+[
+7.0,
+0.797,
+null,
+null
+],
+[
+8.0,
+0.807,
+null,
+null
+],
+[
+9.0,
+0.822,
+null,
+null
+],
+[
+10.0,
+0.834,
+null,
+null
+],
+[
+12.0,
+0.852,
+null,
+null
+],
+[
+14.0,
+0.878,
+null,
+null
+],
+[
+16.0,
+0.89,
+null,
+null
+],
+[
+18.0,
+0.904,
+null,
+null
+],
+[
+21.0,
+0.904,
+null,
+null
+],
+[
+24.0,
+0.904,
+null,
+null
+],
+[
+28.0,
+0.904,
+null,
+null
+],
+[
+30.81,
+0.904,
+null,
+null
+]
+],
+"events": 339,
+"median_days": 1.3,
+"n": 445,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"n_course": 9,
+"pooled": "INTEGBI",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.039,
+null,
+null
+],
+[
+1.0,
+0.049,
+null,
+null
+],
+[
+2.0,
+0.161,
+null,
+null
+],
+[
+3.0,
+0.265,
+null,
+null
+],
+[
+4.0,
+0.317,
+null,
+null
+],
+[
+5.0,
+0.388,
+null,
+null
+],
+[
+6.0,
+0.422,
+null,
+null
+],
+[
+7.0,
+0.46,
+null,
+null
+],
+[
+8.0,
+0.46,
+null,
+null
+],
+[
+9.0,
+0.48,
+null,
+null
+],
+[
+10.0,
+0.528,
+null,
+null
+],
+[
+12.0,
+0.553,
+null,
+null
+],
+[
+14.0,
+0.553,
+null,
+null
+],
+[
+16.0,
+0.553,
+null,
+null
+],
+[
+18.0,
+0.553,
+null,
+null
+],
+[
+18.21,
+0.553,
+null,
+null
+]
+],
+"events": 42,
+"median_days": 9.02,
+"n": 104,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "160",
+"subject": "INTEGBI"
+},
+"INTEGBI 164L": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "164L",
+"subject": "INTEGBI"
+},
+"INTEGBI 173LF": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.139,
+null,
+null
+],
+[
+1.0,
+0.182,
+null,
+null
+],
+[
+2.0,
+0.242,
+null,
+null
+],
+[
+3.0,
+0.325,
+null,
+null
+],
+[
+4.0,
+0.358,
+null,
+null
+],
+[
+5.0,
+0.401,
+null,
+null
+],
+[
+6.0,
+0.428,
+null,
+null
+],
+[
+7.0,
+0.466,
+null,
+null
+],
+[
+8.0,
+0.476,
+null,
+null
+],
+[
+9.0,
+0.476,
+null,
+null
+],
+[
+10.0,
+0.476,
+null,
+null
+],
+[
+12.0,
+0.476,
+null,
+null
+],
+[
+14.0,
+0.487,
+null,
+null
+],
+[
+16.0,
+0.487,
+null,
+null
+],
+[
+18.0,
+0.487,
+null,
+null
+],
+[
+21.0,
+0.487,
+null,
+null
+],
+[
+24.0,
+0.487,
+null,
+null
+],
+[
+28.0,
+0.487,
+null,
+null
+],
+[
+32.0,
+0.487,
+null,
+null
+],
+[
+35.22,
+0.487,
+null,
+null
+]
+],
+"events": 64,
+"median_days": null,
+"n": 152,
+"pooled": false,
+"reach_days": 35.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+35.05,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 30,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "173LF",
+"subject": "INTEGBI"
+},
+"INTEGBI 177LF": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "177LF",
+"subject": "INTEGBI"
+},
+"INTEGBI 184L": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "184L",
+"subject": "INTEGBI"
+},
+"INTEGBI 192": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "192",
+"subject": "INTEGBI"
+},
+"INTEGBI 193": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "193",
+"subject": "INTEGBI"
+},
+"INTEGBI 24": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.014,
+0.0,
+0.023
+],
+[
+1.0,
+0.014,
+0.0,
+0.023
+],
+[
+2.0,
+0.014,
+0.0,
+0.023
+],
+[
+3.0,
+0.014,
+0.0,
+0.023
+],
+[
+4.0,
+0.014,
+0.0,
+0.023
+],
+[
+5.0,
+0.014,
+0.0,
+0.023
+],
+[
+6.0,
+0.014,
+0.0,
+0.023
+],
+[
+7.0,
+0.014,
+0.0,
+0.023
+],
+[
+8.0,
+0.014,
+0.0,
+0.023
+],
+[
+9.0,
+0.014,
+0.0,
+0.023
+],
+[
+10.0,
+0.014,
+0.0,
+0.023
+],
+[
+12.0,
+0.055,
+0.0,
+0.112
+],
+[
+14.0,
+0.055,
+0.0,
+0.112
+],
+[
+16.0,
+0.055,
+0.0,
+0.112
+],
+[
+18.0,
+0.055,
+0.0,
+0.112
+],
+[
+18.45,
+0.055,
+0.0,
+0.112
+]
+],
+"events": 2,
+"median_days": null,
+"n": 78,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 2
+},
+"6-15": {
+"n_course": 4,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "24",
+"subject": "INTEGBI"
+},
+"INTEGBI 286": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "286",
+"subject": "INTEGBI"
+},
+"INTEGBI 290": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "290",
+"subject": "INTEGBI"
+},
+"INTEGBI 292": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+0.0,
+0.0
+],
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+2.0,
+0.0,
+0.0,
+0.0
+],
+[
+3.0,
+0.0,
+0.0,
+0.0
+],
+[
+4.0,
+0.0,
+0.0,
+0.0
+],
+[
+5.0,
+0.0,
+0.0,
+0.0
+],
+[
+6.0,
+0.0,
+0.0,
+0.0
+],
+[
+7.0,
+0.0,
+0.0,
+0.0
+],
+[
+8.0,
+0.0,
+0.0,
+0.0
+],
+[
+9.0,
+0.0,
+0.0,
+0.0
+],
+[
+10.0,
+0.0,
+0.0,
+0.0
+],
+[
+12.0,
+0.0,
+0.0,
+0.0
+],
+[
+14.0,
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+0.0,
+0.0,
+0.0
+],
+[
+18.0,
+0.0,
+0.0,
+0.0
+],
+[
+21.0,
+0.0,
+0.0,
+0.0
+],
+[
+24.0,
+0.0,
+0.0,
+0.0
+],
+[
+28.0,
+0.0,
+0.0,
+0.0
+],
+[
+32.0,
+0.0,
+0.0,
+0.0
+],
+[
+36.0,
+0.0,
+0.0,
+0.0
+],
+[
+42.0,
+0.0,
+0.0,
+0.0
+],
+[
+49.0,
+0.0,
+0.0,
+0.0
+],
+[
+56.0,
+0.0,
+0.0,
+0.0
+],
+[
+60.47,
+0.0,
+0.0,
+0.0
+]
+],
+"events": 0,
+"median_days": null,
+"n": 54,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 2
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "292",
+"subject": "INTEGBI"
+},
+"INTEGBI 375": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "375",
+"subject": "INTEGBI"
+},
+"INTEGBI 400": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "grad",
+"number": "400",
+"subject": "INTEGBI"
+},
+"INTEGBI 43": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "43",
+"subject": "INTEGBI"
+},
+"INTEGBI 77A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.308,
+null,
+null
+],
+[
+1.0,
+0.426,
+null,
+null
+],
+[
+2.0,
+0.599,
+null,
+null
+],
+[
+3.0,
+0.696,
+null,
+null
+],
+[
+4.0,
+0.801,
+null,
+null
+],
+[
+5.0,
+0.888,
+null,
+null
+],
+[
+6.0,
+0.953,
+null,
+null
+],
+[
+7.0,
+0.972,
+null,
+null
+],
+[
+7.75,
+0.991,
+null,
+null
+]
+],
+"events": 180,
+"median_days": 1.2,
+"n": 215,
+"pooled": false,
+"reach_days": 7.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.152,
+null,
+null
+],
+[
+1.0,
+0.152,
+null,
+null
+],
+[
+2.0,
+0.386,
+null,
+null
+],
+[
+3.0,
+0.386,
+null,
+null
+],
+[
+4.0,
+0.57,
+null,
+null
+],
+[
+5.0,
+0.724,
+null,
+null
+],
+[
+6.0,
+0.827,
+null,
+null
+],
+[
+7.0,
+0.862,
+null,
+null
+],
+[
+7.75,
+0.965,
+null,
+null
+]
+],
+"events": 34,
+"median_days": 3.61,
+"n": 40,
+"pooled": false,
+"reach_days": 7.8,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "77A",
+"subject": "INTEGBI"
+},
+"INTEGBI 84": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.089,
+0.0,
+0.132
+],
+[
+1.0,
+0.101,
+0.0,
+0.151
+],
+[
+2.0,
+0.153,
+0.0,
+0.226
+],
+[
+3.0,
+0.18,
+0.0,
+0.268
+],
+[
+4.0,
+0.195,
+0.0,
+0.29
+],
+[
+5.0,
+0.195,
+0.0,
+0.29
+],
+[
+6.0,
+0.229,
+0.0,
+0.344
+],
+[
+7.0,
+0.229,
+0.0,
+0.344
+],
+[
+8.0,
+0.229,
+0.0,
+0.344
+],
+[
+9.0,
+0.229,
+0.0,
+0.344
+],
+[
+10.0,
+0.249,
+0.0,
+0.379
+],
+[
+12.0,
+0.27,
+0.0,
+0.418
+],
+[
+14.0,
+0.361,
+0.0,
+0.584
+],
+[
+16.0,
+0.361,
+0.0,
+0.584
+],
+[
+18.0,
+0.361,
+0.0,
+0.584
+],
+[
+21.0,
+0.361,
+0.0,
+0.584
+],
+[
+24.0,
+0.361,
+0.0,
+0.584
+],
+[
+28.0,
+0.361,
+0.0,
+0.584
+],
+[
+32.0,
+0.361,
+0.0,
+0.584
+],
+[
+36.0,
+0.361,
+0.0,
+0.584
+],
+[
+42.0,
+0.361,
+0.0,
+0.584
+],
+[
+49.0,
+0.361,
+0.0,
+0.584
+],
+[
+56.0,
+0.361,
+0.0,
+0.584
+],
+[
+60.47,
+0.361,
+0.0,
+0.584
+]
+],
+"events": 23,
+"median_days": null,
+"n": 80,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 2
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "84",
+"subject": "INTEGBI"
+},
+"INTEGBI C105": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.082,
+null,
+null
+],
+[
+1.0,
+0.089,
+null,
+null
+],
+[
+2.0,
+0.102,
+null,
+null
+],
+[
+3.0,
+0.138,
+null,
+null
+],
+[
+4.0,
+0.138,
+null,
+null
+],
+[
+5.0,
+0.154,
+null,
+null
+],
+[
+6.0,
+0.189,
+null,
+null
+],
+[
+7.0,
+0.206,
+null,
+null
+],
+[
+8.0,
+0.242,
+null,
+null
+],
+[
+9.0,
+0.262,
+null,
+null
+],
+[
+10.0,
+0.294,
+null,
+null
+],
+[
+12.0,
+0.294,
+null,
+null
+],
+[
+14.0,
+0.32,
+null,
+null
+],
+[
+16.0,
+0.346,
+null,
+null
+],
+[
+18.0,
+0.346,
+null,
+null
+],
+[
+21.0,
+0.359,
+null,
+null
+],
+[
+24.0,
+0.373,
+null,
+null
+],
+[
+28.0,
+0.445,
+null,
+null
+],
+[
+32.0,
+0.505,
+null,
+null
+],
+[
+36.0,
+0.645,
+null,
+null
+],
+[
+36.17,
+0.645,
+null,
+null
+]
+],
+"events": 53,
+"median_days": 31.46,
+"n": 161,
+"pooled": false,
+"reach_days": 36.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C105",
+"subject": "INTEGBI"
+},
+"INTEGBI C110L": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.131,
+null,
+null
+],
+[
+1.0,
+0.184,
+null,
+null
+],
+[
+2.0,
+0.203,
+null,
+null
+],
+[
+3.0,
+0.221,
+null,
+null
+],
+[
+4.0,
+0.262,
+null,
+null
+],
+[
+5.0,
+0.277,
+null,
+null
+],
+[
+6.0,
+0.317,
+null,
+null
+],
+[
+7.0,
+0.334,
+null,
+null
+],
+[
+8.0,
+0.334,
+null,
+null
+],
+[
+9.0,
+0.334,
+null,
+null
+],
+[
+10.0,
+0.334,
+null,
+null
+],
+[
+12.0,
+0.334,
+null,
+null
+],
+[
+14.0,
+0.334,
+null,
+null
+],
+[
+16.0,
+0.347,
+null,
+null
+],
+[
+18.0,
+0.347,
+null,
+null
+],
+[
+21.0,
+0.347,
+null,
+null
+],
+[
+24.0,
+0.347,
+null,
+null
+],
+[
+28.0,
+0.347,
+null,
+null
+],
+[
+32.0,
+0.347,
+null,
+null
+],
+[
+36.0,
+0.347,
+null,
+null
+],
+[
+36.4,
+0.347,
+null,
+null
+]
+],
+"events": 54,
+"median_days": null,
+"n": 178,
+"pooled": false,
+"reach_days": 36.4,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+36.4,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 35,
+"pooled": false,
+"reach_days": 36.4,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C110L",
+"subject": "INTEGBI"
+},
+"INTEGBI C139": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.16,
+null,
+null
+],
+[
+1.0,
+0.217,
+null,
+null
+],
+[
+2.0,
+0.289,
+null,
+null
+],
+[
+3.0,
+0.305,
+null,
+null
+],
+[
+4.0,
+0.316,
+null,
+null
+],
+[
+5.0,
+0.326,
+null,
+null
+],
+[
+6.0,
+0.355,
+null,
+null
+],
+[
+7.0,
+0.382,
+null,
+null
+],
+[
+8.0,
+0.393,
+null,
+null
+],
+[
+9.0,
+0.403,
+null,
+null
+],
+[
+10.0,
+0.411,
+null,
+null
+],
+[
+12.0,
+0.453,
+null,
+null
+],
+[
+14.0,
+0.516,
+null,
+null
+],
+[
+16.0,
+0.559,
+null,
+null
+],
+[
+18.0,
+0.626,
+null,
+null
+],
+[
+21.0,
+0.677,
+null,
+null
+],
+[
+24.0,
+0.687,
+null,
+null
+],
+[
+28.0,
+0.7,
+null,
+null
+],
+[
+32.0,
+0.7,
+null,
+null
+],
+[
+34.32,
+0.7,
+null,
+null
+]
+],
+"events": 191,
+"median_days": 13.64,
+"n": 398,
+"pooled": false,
+"reach_days": 34.3,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.02,
+null,
+null
+],
+[
+4.0,
+0.02,
+null,
+null
+],
+[
+5.0,
+0.02,
+null,
+null
+],
+[
+6.0,
+0.02,
+null,
+null
+],
+[
+7.0,
+0.02,
+null,
+null
+],
+[
+8.0,
+0.02,
+null,
+null
+],
+[
+9.0,
+0.02,
+null,
+null
+],
+[
+10.0,
+0.02,
+null,
+null
+],
+[
+12.0,
+0.02,
+null,
+null
+],
+[
+14.0,
+0.02,
+null,
+null
+],
+[
+16.0,
+0.02,
+null,
+null
+],
+[
+18.0,
+0.02,
+null,
+null
+],
+[
+21.0,
+0.02,
+null,
+null
+],
+[
+24.0,
+0.02,
+null,
+null
+],
+[
+28.0,
+0.02,
+null,
+null
+],
+[
+32.0,
+0.02,
+null,
+null
+],
+[
+34.93,
+0.02,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 164,
+"pooled": false,
+"reach_days": 34.9,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.034,
+null,
+null
+],
+[
+1.0,
+0.077,
+null,
+null
+],
+[
+2.0,
+0.1,
+null,
+null
+],
+[
+3.0,
+0.108,
+null,
+null
+],
+[
+4.0,
+0.108,
+null,
+null
+],
+[
+5.0,
+0.108,
+null,
+null
+],
+[
+6.0,
+0.108,
+null,
+null
+],
+[
+7.0,
+0.126,
+null,
+null
+],
+[
+8.0,
+0.145,
+null,
+null
+],
+[
+9.0,
+0.15,
+null,
+null
+],
+[
+10.0,
+0.15,
+null,
+null
+],
+[
+12.0,
+0.15,
+null,
+null
+],
+[
+14.0,
+0.15,
+null,
+null
+],
+[
+16.0,
+0.15,
+null,
+null
+],
+[
+18.0,
+0.15,
+null,
+null
+],
+[
+21.0,
+0.161,
+null,
+null
+],
+[
+24.0,
+0.161,
+null,
+null
+],
+[
+28.0,
+0.161,
+null,
+null
+],
+[
+32.0,
+0.161,
+null,
+null
+],
+[
+35.14,
+0.161,
+null,
+null
+]
+],
+"events": 38,
+"median_days": null,
+"n": 268,
+"pooled": false,
+"reach_days": 35.1,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C139",
+"subject": "INTEGBI"
+},
+"INTEGBI C143A": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C143A",
+"subject": "INTEGBI"
+},
+"INTEGBI C144": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.242,
+null,
+null
+],
+[
+1.0,
+0.359,
+null,
+null
+],
+[
+2.0,
+0.436,
+null,
+null
+],
+[
+3.0,
+0.555,
+null,
+null
+],
+[
+4.0,
+0.611,
+null,
+null
+],
+[
+5.0,
+0.672,
+null,
+null
+],
+[
+6.0,
+0.718,
+null,
+null
+],
+[
+7.0,
+0.754,
+null,
+null
+],
+[
+8.0,
+0.793,
+null,
+null
+],
+[
+9.0,
+0.793,
+null,
+null
+],
+[
+10.0,
+0.827,
+null,
+null
+],
+[
+12.0,
+0.827,
+null,
+null
+],
+[
+14.0,
+0.827,
+null,
+null
+],
+[
+16.0,
+0.827,
+null,
+null
+],
+[
+18.0,
+0.827,
+null,
+null
+],
+[
+21.0,
+0.827,
+null,
+null
+],
+[
+24.0,
+0.827,
+null,
+null
+],
+[
+28.0,
+0.827,
+null,
+null
+],
+[
+30.81,
+0.827,
+null,
+null
+]
+],
+"events": 131,
+"median_days": 2.52,
+"n": 195,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C144",
+"subject": "INTEGBI"
+},
+"INTEGBI C156": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.079,
+null,
+null
+],
+[
+1.0,
+0.099,
+null,
+null
+],
+[
+2.0,
+0.142,
+null,
+null
+],
+[
+3.0,
+0.178,
+null,
+null
+],
+[
+4.0,
+0.199,
+null,
+null
+],
+[
+5.0,
+0.199,
+null,
+null
+],
+[
+6.0,
+0.205,
+null,
+null
+],
+[
+7.0,
+0.205,
+null,
+null
+],
+[
+8.0,
+0.212,
+null,
+null
+],
+[
+9.0,
+0.219,
+null,
+null
+],
+[
+10.0,
+0.219,
+null,
+null
+],
+[
+12.0,
+0.219,
+null,
+null
+],
+[
+14.0,
+0.254,
+null,
+null
+],
+[
+16.0,
+0.304,
+null,
+null
+],
+[
+18.0,
+0.304,
+null,
+null
+],
+[
+21.0,
+0.304,
+null,
+null
+],
+[
+24.0,
+0.304,
+null,
+null
+],
+[
+28.0,
+0.304,
+null,
+null
+],
+[
+32.0,
+0.304,
+null,
+null
+],
+[
+35.08,
+0.304,
+null,
+null
+]
+],
+"events": 51,
+"median_days": null,
+"n": 216,
+"pooled": false,
+"reach_days": 35.1,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+32.42,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 56,
+"pooled": false,
+"reach_days": 32.4,
+"sections": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C156",
+"subject": "INTEGBI"
+},
+"INTEGBI C166": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "upper",
+"number": "C166",
+"subject": "INTEGBI"
+},
+"INTEGBI C96": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.074,
+null,
+null
+],
+[
+1.0,
+0.105,
+null,
+null
+],
+[
+2.0,
+0.13,
+null,
+null
+],
+[
+3.0,
+0.146,
+null,
+null
+],
+[
+4.0,
+0.164,
+null,
+null
+],
+[
+5.0,
+0.164,
+null,
+null
+],
+[
+6.0,
+0.195,
+null,
+null
+],
+[
+7.0,
+0.255,
+null,
+null
+],
+[
+8.0,
+0.286,
+null,
+null
+],
+[
+9.0,
+0.286,
+null,
+null
+],
+[
+10.0,
+0.308,
+null,
+null
+],
+[
+12.0,
+0.308,
+null,
+null
+],
+[
+14.0,
+0.308,
+null,
+null
+],
+[
+16.0,
+0.308,
+null,
+null
+],
+[
+18.0,
+0.308,
+null,
+null
+],
+[
+21.0,
+0.308,
+null,
+null
+],
+[
+24.0,
+0.308,
+null,
+null
+],
+[
+28.0,
+0.308,
+null,
+null
+],
+[
+30.82,
+0.308,
+null,
+null
+]
+],
+"events": 35,
+"median_days": null,
+"n": 137,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 22,
+"pooled": "INTEGBI",
+"sections_course": 1
+}
+},
+"dept_group": "INTEGBI",
+"level": "lower",
+"number": "C96",
+"subject": "INTEGBI"
+}
+},
+"subject": "INTEGBI",
+"term_id": "2268"
+}

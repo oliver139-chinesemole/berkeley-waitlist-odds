@@ -1,0 +1,125 @@
+{
+"courses": {
+"PERSIAN 1A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.021,
+null,
+null
+],
+[
+1.0,
+0.021,
+null,
+null
+],
+[
+2.0,
+0.046,
+null,
+null
+],
+[
+3.0,
+0.046,
+null,
+null
+],
+[
+4.0,
+0.046,
+null,
+null
+],
+[
+5.0,
+0.046,
+null,
+null
+],
+[
+6.0,
+0.046,
+null,
+null
+],
+[
+7.0,
+0.046,
+null,
+null
+],
+[
+8.0,
+0.046,
+null,
+null
+],
+[
+9.0,
+0.141,
+null,
+null
+],
+[
+10.0,
+0.141,
+null,
+null
+],
+[
+12.0,
+0.141,
+null,
+null
+],
+[
+14.0,
+0.141,
+null,
+null
+],
+[
+16.0,
+0.141,
+null,
+null
+],
+[
+18.0,
+0.141,
+null,
+null
+],
+[
+18.21,
+0.141,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 48,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "PERSIAN"
+}
+},
+"subject": "PERSIAN",
+"term_id": "2268"
+}

@@ -1,0 +1,19 @@
+{
+"courses": {
+"GMS C215": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C215",
+"subject": "GMS"
+}
+},
+"subject": "GMS",
+"term_id": "2268"
+}

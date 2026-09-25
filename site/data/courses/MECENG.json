@@ -1,0 +1,8653 @@
+{
+"courses": {
+"MECENG 100": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.256,
+null,
+null
+],
+[
+1.0,
+0.368,
+null,
+null
+],
+[
+2.0,
+0.472,
+null,
+null
+],
+[
+3.0,
+0.5,
+null,
+null
+],
+[
+4.0,
+0.534,
+null,
+null
+],
+[
+5.0,
+0.588,
+null,
+null
+],
+[
+6.0,
+0.638,
+null,
+null
+],
+[
+7.0,
+0.69,
+null,
+null
+],
+[
+8.0,
+0.733,
+null,
+null
+],
+[
+9.0,
+0.796,
+null,
+null
+],
+[
+10.0,
+0.81,
+null,
+null
+],
+[
+12.0,
+0.866,
+null,
+null
+],
+[
+14.0,
+0.912,
+null,
+null
+],
+[
+16.0,
+0.937,
+null,
+null
+],
+[
+18.0,
+0.942,
+null,
+null
+],
+[
+21.0,
+0.942,
+null,
+null
+],
+[
+24.0,
+0.942,
+null,
+null
+],
+[
+28.0,
+0.942,
+null,
+null
+],
+[
+30.81,
+0.942,
+null,
+null
+]
+],
+"events": 354,
+"median_days": 3.02,
+"n": 463,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.1,
+null,
+null
+],
+[
+12.0,
+0.1,
+null,
+null
+],
+[
+14.0,
+0.1,
+null,
+null
+],
+[
+16.0,
+0.1,
+null,
+null
+],
+[
+18.0,
+0.1,
+null,
+null
+],
+[
+21.0,
+0.1,
+null,
+null
+],
+[
+24.0,
+0.19,
+null,
+null
+],
+[
+28.0,
+0.19,
+null,
+null
+],
+[
+30.0,
+0.19,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 31,
+"pooled": false,
+"reach_days": 30.0,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.041,
+null,
+null
+],
+[
+1.0,
+0.09,
+null,
+null
+],
+[
+2.0,
+0.163,
+null,
+null
+],
+[
+3.0,
+0.196,
+null,
+null
+],
+[
+4.0,
+0.233,
+null,
+null
+],
+[
+5.0,
+0.256,
+null,
+null
+],
+[
+6.0,
+0.285,
+null,
+null
+],
+[
+7.0,
+0.311,
+null,
+null
+],
+[
+8.0,
+0.332,
+null,
+null
+],
+[
+9.0,
+0.367,
+null,
+null
+],
+[
+10.0,
+0.396,
+null,
+null
+],
+[
+12.0,
+0.396,
+null,
+null
+],
+[
+14.0,
+0.427,
+null,
+null
+],
+[
+16.0,
+0.489,
+null,
+null
+],
+[
+18.0,
+0.574,
+null,
+null
+],
+[
+21.0,
+0.72,
+null,
+null
+],
+[
+24.0,
+0.774,
+null,
+null
+],
+[
+28.0,
+0.774,
+null,
+null
+],
+[
+30.81,
+0.774,
+null,
+null
+]
+],
+"events": 126,
+"median_days": 16.09,
+"n": 273,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "100",
+"subject": "MECENG"
+},
+"MECENG 102B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.291,
+null,
+null
+],
+[
+1.0,
+0.363,
+null,
+null
+],
+[
+2.0,
+0.472,
+null,
+null
+],
+[
+3.0,
+0.553,
+null,
+null
+],
+[
+4.0,
+0.579,
+null,
+null
+],
+[
+5.0,
+0.605,
+null,
+null
+],
+[
+6.0,
+0.646,
+null,
+null
+],
+[
+7.0,
+0.682,
+null,
+null
+],
+[
+8.0,
+0.705,
+null,
+null
+],
+[
+9.0,
+0.709,
+null,
+null
+],
+[
+10.0,
+0.723,
+null,
+null
+],
+[
+12.0,
+0.738,
+null,
+null
+],
+[
+14.0,
+0.744,
+null,
+null
+],
+[
+16.0,
+0.785,
+null,
+null
+],
+[
+18.0,
+0.8,
+null,
+null
+],
+[
+21.0,
+0.822,
+null,
+null
+],
+[
+24.0,
+0.852,
+null,
+null
+],
+[
+28.0,
+0.852,
+null,
+null
+],
+[
+30.81,
+0.852,
+null,
+null
+]
+],
+"events": 246,
+"median_days": 2.25,
+"n": 356,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.024,
+null,
+null
+],
+[
+1.0,
+0.024,
+null,
+null
+],
+[
+2.0,
+0.024,
+null,
+null
+],
+[
+3.0,
+0.024,
+null,
+null
+],
+[
+4.0,
+0.054,
+null,
+null
+],
+[
+5.0,
+0.219,
+null,
+null
+],
+[
+6.0,
+0.253,
+null,
+null
+],
+[
+7.0,
+0.253,
+null,
+null
+],
+[
+8.0,
+0.253,
+null,
+null
+],
+[
+9.0,
+0.253,
+null,
+null
+],
+[
+10.0,
+0.253,
+null,
+null
+],
+[
+12.0,
+0.253,
+null,
+null
+],
+[
+14.0,
+0.306,
+null,
+null
+],
+[
+16.0,
+0.306,
+null,
+null
+],
+[
+18.0,
+0.306,
+null,
+null
+],
+[
+21.0,
+0.306,
+null,
+null
+],
+[
+24.0,
+0.422,
+null,
+null
+],
+[
+28.0,
+0.422,
+null,
+null
+],
+[
+30.81,
+0.422,
+null,
+null
+]
+],
+"events": 10,
+"median_days": null,
+"n": 43,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "102B",
+"subject": "MECENG"
+},
+"MECENG 103": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.268,
+null,
+null
+],
+[
+1.0,
+0.348,
+null,
+null
+],
+[
+2.0,
+0.46,
+null,
+null
+],
+[
+3.0,
+0.533,
+null,
+null
+],
+[
+4.0,
+0.595,
+null,
+null
+],
+[
+5.0,
+0.65,
+null,
+null
+],
+[
+6.0,
+0.693,
+null,
+null
+],
+[
+7.0,
+0.732,
+null,
+null
+],
+[
+8.0,
+0.755,
+null,
+null
+],
+[
+9.0,
+0.762,
+null,
+null
+],
+[
+10.0,
+0.779,
+null,
+null
+],
+[
+12.0,
+0.807,
+null,
+null
+],
+[
+14.0,
+0.847,
+null,
+null
+],
+[
+16.0,
+0.847,
+null,
+null
+],
+[
+18.0,
+0.847,
+null,
+null
+],
+[
+21.0,
+0.847,
+null,
+null
+],
+[
+24.0,
+0.847,
+null,
+null
+],
+[
+28.0,
+0.847,
+null,
+null
+],
+[
+30.81,
+0.847,
+null,
+null
+]
+],
+"events": 340,
+"median_days": 2.41,
+"n": 480,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.08,
+null,
+null
+],
+[
+18.0,
+0.188,
+null,
+null
+],
+[
+21.0,
+0.248,
+null,
+null
+],
+[
+24.0,
+0.248,
+null,
+null
+],
+[
+28.0,
+0.248,
+null,
+null
+],
+[
+30.81,
+0.248,
+null,
+null
+]
+],
+"events": 9,
+"median_days": null,
+"n": 59,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.025,
+null,
+null
+],
+[
+1.0,
+0.051,
+null,
+null
+],
+[
+2.0,
+0.082,
+null,
+null
+],
+[
+3.0,
+0.11,
+null,
+null
+],
+[
+4.0,
+0.118,
+null,
+null
+],
+[
+5.0,
+0.172,
+null,
+null
+],
+[
+6.0,
+0.191,
+null,
+null
+],
+[
+7.0,
+0.229,
+null,
+null
+],
+[
+8.0,
+0.254,
+null,
+null
+],
+[
+9.0,
+0.265,
+null,
+null
+],
+[
+10.0,
+0.305,
+null,
+null
+],
+[
+12.0,
+0.413,
+null,
+null
+],
+[
+14.0,
+0.518,
+null,
+null
+],
+[
+16.0,
+0.592,
+null,
+null
+],
+[
+18.0,
+0.649,
+null,
+null
+],
+[
+21.0,
+0.672,
+null,
+null
+],
+[
+24.0,
+0.672,
+null,
+null
+],
+[
+28.0,
+0.672,
+null,
+null
+],
+[
+30.81,
+0.672,
+null,
+null
+]
+],
+"events": 114,
+"median_days": 13.13,
+"n": 288,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "103",
+"subject": "MECENG"
+},
+"MECENG 104": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.342,
+null,
+null
+],
+[
+1.0,
+0.431,
+null,
+null
+],
+[
+2.0,
+0.546,
+null,
+null
+],
+[
+3.0,
+0.591,
+null,
+null
+],
+[
+4.0,
+0.636,
+null,
+null
+],
+[
+5.0,
+0.698,
+null,
+null
+],
+[
+6.0,
+0.748,
+null,
+null
+],
+[
+7.0,
+0.759,
+null,
+null
+],
+[
+8.0,
+0.762,
+null,
+null
+],
+[
+9.0,
+0.777,
+null,
+null
+],
+[
+10.0,
+0.792,
+null,
+null
+],
+[
+12.0,
+0.835,
+null,
+null
+],
+[
+14.0,
+0.849,
+null,
+null
+],
+[
+16.0,
+0.849,
+null,
+null
+],
+[
+18.0,
+0.86,
+null,
+null
+],
+[
+21.0,
+0.918,
+null,
+null
+],
+[
+24.0,
+0.931,
+null,
+null
+],
+[
+28.0,
+0.931,
+null,
+null
+],
+[
+30.81,
+0.931,
+null,
+null
+]
+],
+"events": 313,
+"median_days": 1.49,
+"n": 406,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.012,
+null,
+null
+],
+[
+1.0,
+0.012,
+null,
+null
+],
+[
+2.0,
+0.037,
+null,
+null
+],
+[
+3.0,
+0.088,
+null,
+null
+],
+[
+4.0,
+0.164,
+null,
+null
+],
+[
+5.0,
+0.213,
+null,
+null
+],
+[
+6.0,
+0.229,
+null,
+null
+],
+[
+7.0,
+0.261,
+null,
+null
+],
+[
+8.0,
+0.278,
+null,
+null
+],
+[
+9.0,
+0.334,
+null,
+null
+],
+[
+10.0,
+0.373,
+null,
+null
+],
+[
+12.0,
+0.373,
+null,
+null
+],
+[
+14.0,
+0.373,
+null,
+null
+],
+[
+16.0,
+0.396,
+null,
+null
+],
+[
+18.0,
+0.396,
+null,
+null
+],
+[
+21.0,
+0.396,
+null,
+null
+],
+[
+24.0,
+0.396,
+null,
+null
+],
+[
+28.0,
+0.512,
+null,
+null
+],
+[
+30.81,
+0.512,
+null,
+null
+]
+],
+"events": 27,
+"median_days": 27.47,
+"n": 85,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.087,
+null,
+null
+],
+[
+1.0,
+0.13,
+null,
+null
+],
+[
+2.0,
+0.247,
+null,
+null
+],
+[
+3.0,
+0.288,
+null,
+null
+],
+[
+4.0,
+0.32,
+null,
+null
+],
+[
+5.0,
+0.34,
+null,
+null
+],
+[
+6.0,
+0.416,
+null,
+null
+],
+[
+7.0,
+0.478,
+null,
+null
+],
+[
+8.0,
+0.521,
+null,
+null
+],
+[
+9.0,
+0.521,
+null,
+null
+],
+[
+10.0,
+0.521,
+null,
+null
+],
+[
+12.0,
+0.532,
+null,
+null
+],
+[
+14.0,
+0.544,
+null,
+null
+],
+[
+16.0,
+0.552,
+null,
+null
+],
+[
+18.0,
+0.56,
+null,
+null
+],
+[
+21.0,
+0.56,
+null,
+null
+],
+[
+24.0,
+0.56,
+null,
+null
+],
+[
+28.0,
+0.661,
+null,
+null
+],
+[
+30.81,
+0.661,
+null,
+null
+]
+],
+"events": 131,
+"median_days": 7.35,
+"n": 268,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "104",
+"subject": "MECENG"
+},
+"MECENG 106": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.25,
+null,
+null
+],
+[
+1.0,
+0.36,
+null,
+null
+],
+[
+2.0,
+0.484,
+null,
+null
+],
+[
+3.0,
+0.547,
+null,
+null
+],
+[
+4.0,
+0.624,
+null,
+null
+],
+[
+5.0,
+0.677,
+null,
+null
+],
+[
+6.0,
+0.714,
+null,
+null
+],
+[
+7.0,
+0.753,
+null,
+null
+],
+[
+8.0,
+0.781,
+null,
+null
+],
+[
+9.0,
+0.795,
+null,
+null
+],
+[
+10.0,
+0.803,
+null,
+null
+],
+[
+12.0,
+0.854,
+null,
+null
+],
+[
+14.0,
+0.874,
+null,
+null
+],
+[
+16.0,
+0.922,
+null,
+null
+],
+[
+18.0,
+0.932,
+null,
+null
+],
+[
+21.0,
+0.961,
+null,
+null
+],
+[
+22.03,
+0.961,
+null,
+null
+]
+],
+"events": 394,
+"median_days": 2.22,
+"n": 532,
+"pooled": false,
+"reach_days": 22.0,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.007,
+null,
+null
+],
+[
+2.0,
+0.007,
+null,
+null
+],
+[
+3.0,
+0.007,
+null,
+null
+],
+[
+4.0,
+0.007,
+null,
+null
+],
+[
+5.0,
+0.023,
+null,
+null
+],
+[
+6.0,
+0.023,
+null,
+null
+],
+[
+7.0,
+0.023,
+null,
+null
+],
+[
+8.0,
+0.023,
+null,
+null
+],
+[
+9.0,
+0.023,
+null,
+null
+],
+[
+10.0,
+0.034,
+null,
+null
+],
+[
+12.0,
+0.044,
+null,
+null
+],
+[
+14.0,
+0.079,
+null,
+null
+],
+[
+16.0,
+0.079,
+null,
+null
+],
+[
+18.0,
+0.079,
+null,
+null
+],
+[
+21.0,
+0.079,
+null,
+null
+],
+[
+24.0,
+0.17,
+null,
+null
+],
+[
+28.0,
+0.17,
+null,
+null
+],
+[
+32.0,
+0.17,
+null,
+null
+],
+[
+34.05,
+0.17,
+null,
+null
+]
+],
+"events": 13,
+"median_days": null,
+"n": 155,
+"pooled": false,
+"reach_days": 34.1,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.052,
+null,
+null
+],
+[
+1.0,
+0.097,
+null,
+null
+],
+[
+2.0,
+0.125,
+null,
+null
+],
+[
+3.0,
+0.149,
+null,
+null
+],
+[
+4.0,
+0.205,
+null,
+null
+],
+[
+5.0,
+0.216,
+null,
+null
+],
+[
+6.0,
+0.254,
+null,
+null
+],
+[
+7.0,
+0.284,
+null,
+null
+],
+[
+8.0,
+0.325,
+null,
+null
+],
+[
+9.0,
+0.33,
+null,
+null
+],
+[
+10.0,
+0.335,
+null,
+null
+],
+[
+12.0,
+0.335,
+null,
+null
+],
+[
+14.0,
+0.343,
+null,
+null
+],
+[
+16.0,
+0.343,
+null,
+null
+],
+[
+18.0,
+0.354,
+null,
+null
+],
+[
+21.0,
+0.471,
+null,
+null
+],
+[
+24.0,
+0.523,
+null,
+null
+],
+[
+28.0,
+0.523,
+null,
+null
+],
+[
+30.81,
+0.523,
+null,
+null
+]
+],
+"events": 109,
+"median_days": 23.44,
+"n": 352,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "106",
+"subject": "MECENG"
+},
+"MECENG 108": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.337,
+null,
+null
+],
+[
+1.0,
+0.423,
+null,
+null
+],
+[
+2.0,
+0.471,
+null,
+null
+],
+[
+3.0,
+0.521,
+null,
+null
+],
+[
+4.0,
+0.532,
+null,
+null
+],
+[
+5.0,
+0.552,
+null,
+null
+],
+[
+6.0,
+0.613,
+null,
+null
+],
+[
+7.0,
+0.654,
+null,
+null
+],
+[
+8.0,
+0.683,
+null,
+null
+],
+[
+9.0,
+0.711,
+null,
+null
+],
+[
+10.0,
+0.718,
+null,
+null
+],
+[
+12.0,
+0.762,
+null,
+null
+],
+[
+14.0,
+0.779,
+null,
+null
+],
+[
+16.0,
+0.805,
+null,
+null
+],
+[
+18.0,
+0.823,
+null,
+null
+],
+[
+21.0,
+0.841,
+null,
+null
+],
+[
+24.0,
+0.858,
+null,
+null
+],
+[
+28.0,
+0.858,
+null,
+null
+],
+[
+30.81,
+0.858,
+null,
+null
+]
+],
+"events": 145,
+"median_days": 2.64,
+"n": 193,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.055,
+null,
+null
+],
+[
+1.0,
+0.093,
+null,
+null
+],
+[
+2.0,
+0.131,
+null,
+null
+],
+[
+3.0,
+0.131,
+null,
+null
+],
+[
+4.0,
+0.131,
+null,
+null
+],
+[
+5.0,
+0.131,
+null,
+null
+],
+[
+6.0,
+0.131,
+null,
+null
+],
+[
+7.0,
+0.131,
+null,
+null
+],
+[
+8.0,
+0.131,
+null,
+null
+],
+[
+9.0,
+0.131,
+null,
+null
+],
+[
+10.0,
+0.131,
+null,
+null
+],
+[
+12.0,
+0.131,
+null,
+null
+],
+[
+14.0,
+0.131,
+null,
+null
+],
+[
+16.0,
+0.131,
+null,
+null
+],
+[
+18.0,
+0.131,
+null,
+null
+],
+[
+21.0,
+0.17,
+null,
+null
+],
+[
+24.0,
+0.17,
+null,
+null
+],
+[
+28.0,
+0.234,
+null,
+null
+],
+[
+30.81,
+0.234,
+null,
+null
+]
+],
+"events": 9,
+"median_days": null,
+"n": 55,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "108",
+"subject": "MECENG"
+},
+"MECENG 109": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.35,
+null,
+null
+],
+[
+1.0,
+0.43,
+null,
+null
+],
+[
+2.0,
+0.532,
+null,
+null
+],
+[
+3.0,
+0.617,
+null,
+null
+],
+[
+4.0,
+0.66,
+null,
+null
+],
+[
+5.0,
+0.687,
+null,
+null
+],
+[
+6.0,
+0.71,
+null,
+null
+],
+[
+7.0,
+0.737,
+null,
+null
+],
+[
+8.0,
+0.772,
+null,
+null
+],
+[
+9.0,
+0.818,
+null,
+null
+],
+[
+10.0,
+0.859,
+null,
+null
+],
+[
+12.0,
+0.895,
+null,
+null
+],
+[
+14.0,
+0.929,
+null,
+null
+],
+[
+16.0,
+0.941,
+null,
+null
+],
+[
+18.0,
+0.946,
+null,
+null
+],
+[
+21.0,
+0.946,
+null,
+null
+],
+[
+24.0,
+0.946,
+null,
+null
+],
+[
+28.0,
+0.946,
+null,
+null
+],
+[
+30.81,
+0.946,
+null,
+null
+]
+],
+"events": 324,
+"median_days": 1.64,
+"n": 389,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.091,
+null,
+null
+],
+[
+1.0,
+0.148,
+null,
+null
+],
+[
+2.0,
+0.172,
+null,
+null
+],
+[
+3.0,
+0.231,
+null,
+null
+],
+[
+4.0,
+0.288,
+null,
+null
+],
+[
+5.0,
+0.308,
+null,
+null
+],
+[
+6.0,
+0.364,
+null,
+null
+],
+[
+7.0,
+0.371,
+null,
+null
+],
+[
+8.0,
+0.393,
+null,
+null
+],
+[
+9.0,
+0.4,
+null,
+null
+],
+[
+10.0,
+0.408,
+null,
+null
+],
+[
+12.0,
+0.434,
+null,
+null
+],
+[
+14.0,
+0.463,
+null,
+null
+],
+[
+16.0,
+0.527,
+null,
+null
+],
+[
+18.0,
+0.573,
+null,
+null
+],
+[
+21.0,
+0.663,
+null,
+null
+],
+[
+24.0,
+0.7,
+null,
+null
+],
+[
+28.0,
+0.766,
+null,
+null
+],
+[
+30.81,
+0.766,
+null,
+null
+]
+],
+"events": 94,
+"median_days": 14.71,
+"n": 177,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "109",
+"subject": "MECENG"
+},
+"MECENG 119": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.237,
+null,
+null
+],
+[
+1.0,
+0.356,
+null,
+null
+],
+[
+2.0,
+0.478,
+null,
+null
+],
+[
+3.0,
+0.54,
+null,
+null
+],
+[
+4.0,
+0.594,
+null,
+null
+],
+[
+5.0,
+0.659,
+null,
+null
+],
+[
+6.0,
+0.663,
+null,
+null
+],
+[
+7.0,
+0.681,
+null,
+null
+],
+[
+8.0,
+0.681,
+null,
+null
+],
+[
+9.0,
+0.686,
+null,
+null
+],
+[
+10.0,
+0.691,
+null,
+null
+],
+[
+12.0,
+0.701,
+null,
+null
+],
+[
+14.0,
+0.725,
+null,
+null
+],
+[
+16.0,
+0.745,
+null,
+null
+],
+[
+18.0,
+0.767,
+null,
+null
+],
+[
+21.0,
+0.798,
+null,
+null
+],
+[
+24.0,
+0.806,
+null,
+null
+],
+[
+28.0,
+0.806,
+null,
+null
+],
+[
+30.81,
+0.806,
+null,
+null
+]
+],
+"events": 215,
+"median_days": 2.33,
+"n": 311,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.208,
+null,
+null
+],
+[
+3.0,
+0.234,
+null,
+null
+],
+[
+4.0,
+0.259,
+null,
+null
+],
+[
+5.0,
+0.259,
+null,
+null
+],
+[
+6.0,
+0.259,
+null,
+null
+],
+[
+7.0,
+0.259,
+null,
+null
+],
+[
+8.0,
+0.259,
+null,
+null
+],
+[
+9.0,
+0.259,
+null,
+null
+],
+[
+10.0,
+0.259,
+null,
+null
+],
+[
+12.0,
+0.259,
+null,
+null
+],
+[
+14.0,
+0.259,
+null,
+null
+],
+[
+16.0,
+0.259,
+null,
+null
+],
+[
+18.0,
+0.259,
+null,
+null
+],
+[
+21.0,
+0.259,
+null,
+null
+],
+[
+24.0,
+0.259,
+null,
+null
+],
+[
+28.0,
+0.259,
+null,
+null
+],
+[
+32.0,
+0.259,
+null,
+null
+],
+[
+32.01,
+0.259,
+null,
+null
+]
+],
+"events": 11,
+"median_days": null,
+"n": 46,
+"pooled": false,
+"reach_days": 32.0,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "119",
+"subject": "MECENG"
+},
+"MECENG 132": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.276,
+null,
+null
+],
+[
+1.0,
+0.375,
+null,
+null
+],
+[
+2.0,
+0.444,
+null,
+null
+],
+[
+3.0,
+0.49,
+null,
+null
+],
+[
+4.0,
+0.529,
+null,
+null
+],
+[
+5.0,
+0.554,
+null,
+null
+],
+[
+6.0,
+0.576,
+null,
+null
+],
+[
+7.0,
+0.593,
+null,
+null
+],
+[
+8.0,
+0.612,
+null,
+null
+],
+[
+9.0,
+0.631,
+null,
+null
+],
+[
+10.0,
+0.661,
+null,
+null
+],
+[
+12.0,
+0.712,
+null,
+null
+],
+[
+14.0,
+0.733,
+null,
+null
+],
+[
+16.0,
+0.758,
+null,
+null
+],
+[
+18.0,
+0.764,
+null,
+null
+],
+[
+21.0,
+0.764,
+null,
+null
+],
+[
+24.0,
+0.764,
+null,
+null
+],
+[
+28.0,
+0.764,
+null,
+null
+],
+[
+30.81,
+0.764,
+null,
+null
+]
+],
+"events": 337,
+"median_days": 3.17,
+"n": 529,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.016,
+null,
+null
+],
+[
+5.0,
+0.051,
+null,
+null
+],
+[
+6.0,
+0.069,
+null,
+null
+],
+[
+7.0,
+0.088,
+null,
+null
+],
+[
+8.0,
+0.088,
+null,
+null
+],
+[
+9.0,
+0.088,
+null,
+null
+],
+[
+10.0,
+0.088,
+null,
+null
+],
+[
+12.0,
+0.114,
+null,
+null
+],
+[
+14.0,
+0.147,
+null,
+null
+],
+[
+16.0,
+0.147,
+null,
+null
+],
+[
+18.0,
+0.192,
+null,
+null
+],
+[
+21.0,
+0.192,
+null,
+null
+],
+[
+24.0,
+0.192,
+null,
+null
+],
+[
+28.0,
+0.192,
+null,
+null
+],
+[
+30.81,
+0.192,
+null,
+null
+]
+],
+"events": 8,
+"median_days": null,
+"n": 87,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.023,
+null,
+null
+],
+[
+1.0,
+0.038,
+null,
+null
+],
+[
+2.0,
+0.117,
+null,
+null
+],
+[
+3.0,
+0.151,
+null,
+null
+],
+[
+4.0,
+0.196,
+null,
+null
+],
+[
+5.0,
+0.216,
+null,
+null
+],
+[
+6.0,
+0.229,
+null,
+null
+],
+[
+7.0,
+0.26,
+null,
+null
+],
+[
+8.0,
+0.274,
+null,
+null
+],
+[
+9.0,
+0.278,
+null,
+null
+],
+[
+10.0,
+0.278,
+null,
+null
+],
+[
+12.0,
+0.306,
+null,
+null
+],
+[
+14.0,
+0.355,
+null,
+null
+],
+[
+16.0,
+0.384,
+null,
+null
+],
+[
+18.0,
+0.41,
+null,
+null
+],
+[
+21.0,
+0.41,
+null,
+null
+],
+[
+24.0,
+0.41,
+null,
+null
+],
+[
+28.0,
+0.41,
+null,
+null
+],
+[
+30.81,
+0.41,
+null,
+null
+]
+],
+"events": 99,
+"median_days": null,
+"n": 349,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "132",
+"subject": "MECENG"
+},
+"MECENG 136HL": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "136HL",
+"subject": "MECENG"
+},
+"MECENG 139": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.309,
+null,
+null
+],
+[
+1.0,
+0.458,
+null,
+null
+],
+[
+2.0,
+0.558,
+null,
+null
+],
+[
+3.0,
+0.606,
+null,
+null
+],
+[
+4.0,
+0.645,
+null,
+null
+],
+[
+5.0,
+0.668,
+null,
+null
+],
+[
+6.0,
+0.728,
+null,
+null
+],
+[
+7.0,
+0.783,
+null,
+null
+],
+[
+8.0,
+0.802,
+null,
+null
+],
+[
+9.0,
+0.808,
+null,
+null
+],
+[
+10.0,
+0.814,
+null,
+null
+],
+[
+12.0,
+0.82,
+null,
+null
+],
+[
+14.0,
+0.82,
+null,
+null
+],
+[
+16.0,
+0.82,
+null,
+null
+],
+[
+18.0,
+0.82,
+null,
+null
+],
+[
+21.0,
+0.82,
+null,
+null
+],
+[
+24.0,
+0.82,
+null,
+null
+],
+[
+28.0,
+0.82,
+null,
+null
+],
+[
+30.81,
+0.82,
+null,
+null
+]
+],
+"events": 190,
+"median_days": 1.32,
+"n": 265,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "139",
+"subject": "MECENG"
+},
+"MECENG 144": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.258,
+null,
+null
+],
+[
+1.0,
+0.38,
+null,
+null
+],
+[
+2.0,
+0.43,
+null,
+null
+],
+[
+3.0,
+0.506,
+null,
+null
+],
+[
+4.0,
+0.567,
+null,
+null
+],
+[
+5.0,
+0.582,
+null,
+null
+],
+[
+6.0,
+0.591,
+null,
+null
+],
+[
+7.0,
+0.6,
+null,
+null
+],
+[
+8.0,
+0.618,
+null,
+null
+],
+[
+9.0,
+0.618,
+null,
+null
+],
+[
+10.0,
+0.618,
+null,
+null
+],
+[
+12.0,
+0.629,
+null,
+null
+],
+[
+14.0,
+0.642,
+null,
+null
+],
+[
+16.0,
+0.657,
+null,
+null
+],
+[
+18.0,
+0.657,
+null,
+null
+],
+[
+21.0,
+0.687,
+null,
+null
+],
+[
+24.0,
+0.729,
+null,
+null
+],
+[
+28.0,
+0.753,
+null,
+null
+],
+[
+32.0,
+0.753,
+null,
+null
+],
+[
+32.42,
+0.753,
+null,
+null
+]
+],
+"events": 111,
+"median_days": 2.9,
+"n": 183,
+"pooled": false,
+"reach_days": 32.4,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "144",
+"subject": "MECENG"
+},
+"MECENG 163": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.19,
+null,
+null
+],
+[
+1.0,
+0.268,
+null,
+null
+],
+[
+2.0,
+0.356,
+null,
+null
+],
+[
+3.0,
+0.425,
+null,
+null
+],
+[
+4.0,
+0.481,
+null,
+null
+],
+[
+5.0,
+0.525,
+null,
+null
+],
+[
+6.0,
+0.566,
+null,
+null
+],
+[
+7.0,
+0.612,
+null,
+null
+],
+[
+8.0,
+0.647,
+null,
+null
+],
+[
+9.0,
+0.69,
+null,
+null
+],
+[
+10.0,
+0.732,
+null,
+null
+],
+[
+12.0,
+0.8,
+null,
+null
+],
+[
+14.0,
+0.836,
+null,
+null
+],
+[
+16.0,
+0.852,
+null,
+null
+],
+[
+18.0,
+0.852,
+null,
+null
+],
+[
+21.0,
+0.852,
+null,
+null
+],
+[
+24.0,
+0.852,
+null,
+null
+],
+[
+28.0,
+0.852,
+null,
+null
+],
+[
+30.81,
+0.852,
+null,
+null
+]
+],
+"events": 256,
+"median_days": 4.51,
+"n": 348,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.007,
+null,
+null
+],
+[
+1.0,
+0.007,
+null,
+null
+],
+[
+2.0,
+0.042,
+null,
+null
+],
+[
+3.0,
+0.05,
+null,
+null
+],
+[
+4.0,
+0.057,
+null,
+null
+],
+[
+5.0,
+0.065,
+null,
+null
+],
+[
+6.0,
+0.065,
+null,
+null
+],
+[
+7.0,
+0.081,
+null,
+null
+],
+[
+8.0,
+0.097,
+null,
+null
+],
+[
+9.0,
+0.129,
+null,
+null
+],
+[
+10.0,
+0.146,
+null,
+null
+],
+[
+12.0,
+0.163,
+null,
+null
+],
+[
+14.0,
+0.163,
+null,
+null
+],
+[
+16.0,
+0.204,
+null,
+null
+],
+[
+18.0,
+0.214,
+null,
+null
+],
+[
+21.0,
+0.214,
+null,
+null
+],
+[
+24.0,
+0.214,
+null,
+null
+],
+[
+28.0,
+0.214,
+null,
+null
+],
+[
+32.0,
+0.214,
+null,
+null
+],
+[
+36.0,
+0.214,
+null,
+null
+],
+[
+36.17,
+0.214,
+null,
+null
+]
+],
+"events": 26,
+"median_days": null,
+"n": 152,
+"pooled": false,
+"reach_days": 36.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.077,
+null,
+null
+],
+[
+1.0,
+0.132,
+null,
+null
+],
+[
+2.0,
+0.204,
+null,
+null
+],
+[
+3.0,
+0.248,
+null,
+null
+],
+[
+4.0,
+0.294,
+null,
+null
+],
+[
+5.0,
+0.323,
+null,
+null
+],
+[
+6.0,
+0.335,
+null,
+null
+],
+[
+7.0,
+0.388,
+null,
+null
+],
+[
+8.0,
+0.447,
+null,
+null
+],
+[
+9.0,
+0.47,
+null,
+null
+],
+[
+10.0,
+0.488,
+null,
+null
+],
+[
+12.0,
+0.506,
+null,
+null
+],
+[
+14.0,
+0.527,
+null,
+null
+],
+[
+16.0,
+0.577,
+null,
+null
+],
+[
+18.0,
+0.577,
+null,
+null
+],
+[
+21.0,
+0.577,
+null,
+null
+],
+[
+24.0,
+0.577,
+null,
+null
+],
+[
+28.0,
+0.577,
+null,
+null
+],
+[
+32.0,
+0.577,
+null,
+null
+],
+[
+35.16,
+0.577,
+null,
+null
+]
+],
+"events": 100,
+"median_days": 10.46,
+"n": 200,
+"pooled": false,
+"reach_days": 35.2,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "163",
+"subject": "MECENG"
+},
+"MECENG 165": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.084,
+null,
+null
+],
+[
+1.0,
+0.106,
+null,
+null
+],
+[
+2.0,
+0.106,
+null,
+null
+],
+[
+3.0,
+0.106,
+null,
+null
+],
+[
+4.0,
+0.106,
+null,
+null
+],
+[
+5.0,
+0.106,
+null,
+null
+],
+[
+6.0,
+0.106,
+null,
+null
+],
+[
+7.0,
+0.106,
+null,
+null
+],
+[
+8.0,
+0.106,
+null,
+null
+],
+[
+9.0,
+0.106,
+null,
+null
+],
+[
+10.0,
+0.106,
+null,
+null
+],
+[
+12.0,
+0.106,
+null,
+null
+],
+[
+14.0,
+0.106,
+null,
+null
+],
+[
+16.0,
+0.106,
+null,
+null
+],
+[
+18.0,
+0.106,
+null,
+null
+],
+[
+21.0,
+0.106,
+null,
+null
+],
+[
+24.0,
+0.106,
+null,
+null
+],
+[
+28.0,
+0.106,
+null,
+null
+],
+[
+32.0,
+0.106,
+null,
+null
+],
+[
+36.0,
+0.106,
+null,
+null
+],
+[
+42.0,
+0.106,
+null,
+null
+],
+[
+49.0,
+0.106,
+null,
+null
+],
+[
+49.01,
+0.106,
+null,
+null
+]
+],
+"events": 5,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 49.0,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "165",
+"subject": "MECENG"
+},
+"MECENG 185": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.125,
+null,
+null
+],
+[
+1.0,
+0.2,
+null,
+null
+],
+[
+2.0,
+0.208,
+null,
+null
+],
+[
+3.0,
+0.208,
+null,
+null
+],
+[
+4.0,
+0.208,
+null,
+null
+],
+[
+5.0,
+0.208,
+null,
+null
+],
+[
+6.0,
+0.208,
+null,
+null
+],
+[
+7.0,
+0.216,
+null,
+null
+],
+[
+8.0,
+0.216,
+null,
+null
+],
+[
+9.0,
+0.216,
+null,
+null
+],
+[
+10.0,
+0.216,
+null,
+null
+],
+[
+12.0,
+0.226,
+null,
+null
+],
+[
+14.0,
+0.226,
+null,
+null
+],
+[
+16.0,
+0.226,
+null,
+null
+],
+[
+18.0,
+0.226,
+null,
+null
+],
+[
+21.0,
+0.226,
+null,
+null
+],
+[
+24.0,
+0.226,
+null,
+null
+],
+[
+28.0,
+0.226,
+null,
+null
+],
+[
+32.0,
+0.226,
+null,
+null
+],
+[
+36.0,
+0.226,
+null,
+null
+],
+[
+36.11,
+0.226,
+null,
+null
+]
+],
+"events": 31,
+"median_days": null,
+"n": 146,
+"pooled": false,
+"reach_days": 36.1,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.044,
+null,
+null
+],
+[
+1.0,
+0.095,
+null,
+null
+],
+[
+2.0,
+0.095,
+null,
+null
+],
+[
+3.0,
+0.095,
+null,
+null
+],
+[
+4.0,
+0.095,
+null,
+null
+],
+[
+5.0,
+0.095,
+null,
+null
+],
+[
+6.0,
+0.095,
+null,
+null
+],
+[
+7.0,
+0.095,
+null,
+null
+],
+[
+8.0,
+0.095,
+null,
+null
+],
+[
+9.0,
+0.095,
+null,
+null
+],
+[
+10.0,
+0.095,
+null,
+null
+],
+[
+12.0,
+0.095,
+null,
+null
+],
+[
+14.0,
+0.095,
+null,
+null
+],
+[
+16.0,
+0.095,
+null,
+null
+],
+[
+18.0,
+0.095,
+null,
+null
+],
+[
+21.0,
+0.095,
+null,
+null
+],
+[
+24.0,
+0.095,
+null,
+null
+],
+[
+28.0,
+0.095,
+null,
+null
+],
+[
+32.0,
+0.095,
+null,
+null
+],
+[
+36.0,
+0.095,
+null,
+null
+],
+[
+36.11,
+0.095,
+null,
+null
+]
+],
+"events": 4,
+"median_days": null,
+"n": 46,
+"pooled": false,
+"reach_days": 36.1,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "185",
+"subject": "MECENG"
+},
+"MECENG 193E": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "193E",
+"subject": "MECENG"
+},
+"MECENG 206A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.091,
+null,
+null
+],
+[
+1.0,
+0.153,
+null,
+null
+],
+[
+2.0,
+0.171,
+null,
+null
+],
+[
+3.0,
+0.191,
+null,
+null
+],
+[
+4.0,
+0.191,
+null,
+null
+],
+[
+5.0,
+0.202,
+null,
+null
+],
+[
+6.0,
+0.202,
+null,
+null
+],
+[
+7.0,
+0.212,
+null,
+null
+],
+[
+8.0,
+0.223,
+null,
+null
+],
+[
+9.0,
+0.223,
+null,
+null
+],
+[
+10.0,
+0.236,
+null,
+null
+],
+[
+12.0,
+0.236,
+null,
+null
+],
+[
+14.0,
+0.271,
+null,
+null
+],
+[
+16.0,
+0.289,
+null,
+null
+],
+[
+18.0,
+0.346,
+null,
+null
+],
+[
+21.0,
+0.346,
+null,
+null
+],
+[
+24.0,
+0.346,
+null,
+null
+],
+[
+28.0,
+0.346,
+null,
+null
+],
+[
+32.0,
+0.346,
+null,
+null
+],
+[
+36.0,
+0.346,
+null,
+null
+],
+[
+42.0,
+0.346,
+null,
+null
+],
+[
+48.2,
+0.346,
+null,
+null
+]
+],
+"events": 32,
+"median_days": null,
+"n": 124,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
+},
+"16-40": {
+"n_course": 11,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.21,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 33,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "206A",
+"subject": "MECENG"
+},
+"MECENG 219": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.115,
+null,
+null
+],
+[
+1.0,
+0.188,
+null,
+null
+],
+[
+2.0,
+0.251,
+null,
+null
+],
+[
+3.0,
+0.34,
+null,
+null
+],
+[
+4.0,
+0.368,
+null,
+null
+],
+[
+5.0,
+0.396,
+null,
+null
+],
+[
+6.0,
+0.45,
+null,
+null
+],
+[
+7.0,
+0.498,
+null,
+null
+],
+[
+8.0,
+0.54,
+null,
+null
+],
+[
+9.0,
+0.578,
+null,
+null
+],
+[
+10.0,
+0.589,
+null,
+null
+],
+[
+12.0,
+0.624,
+null,
+null
+],
+[
+14.0,
+0.684,
+null,
+null
+],
+[
+16.0,
+0.684,
+null,
+null
+],
+[
+18.0,
+0.701,
+null,
+null
+],
+[
+21.0,
+0.72,
+null,
+null
+],
+[
+24.0,
+0.72,
+null,
+null
+],
+[
+28.0,
+0.72,
+null,
+null
+],
+[
+30.81,
+0.72,
+null,
+null
+]
+],
+"events": 100,
+"median_days": 7.03,
+"n": 191,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 19,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "219",
+"subject": "MECENG"
+},
+"MECENG 236HL": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "236HL",
+"subject": "MECENG"
+},
+"MECENG 236SL": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "236SL",
+"subject": "MECENG"
+},
+"MECENG 236U": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.118,
+null,
+null
+],
+[
+1.0,
+0.157,
+null,
+null
+],
+[
+2.0,
+0.288,
+null,
+null
+],
+[
+3.0,
+0.351,
+null,
+null
+],
+[
+4.0,
+0.389,
+null,
+null
+],
+[
+5.0,
+0.409,
+null,
+null
+],
+[
+6.0,
+0.513,
+null,
+null
+],
+[
+7.0,
+0.535,
+null,
+null
+],
+[
+8.0,
+0.64,
+null,
+null
+],
+[
+9.0,
+0.682,
+null,
+null
+],
+[
+10.0,
+0.682,
+null,
+null
+],
+[
+12.0,
+0.75,
+null,
+null
+],
+[
+14.0,
+0.75,
+null,
+null
+],
+[
+16.0,
+0.75,
+null,
+null
+],
+[
+18.0,
+0.75,
+null,
+null
+],
+[
+21.0,
+0.75,
+null,
+null
+],
+[
+24.0,
+0.75,
+null,
+null
+],
+[
+28.0,
+0.75,
+null,
+null
+],
+[
+32.0,
+0.75,
+null,
+null
+],
+[
+36.0,
+0.75,
+null,
+null
+],
+[
+38.06,
+0.75,
+null,
+null
+]
+],
+"events": 77,
+"median_days": 5.81,
+"n": 136,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 27,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "236U",
+"subject": "MECENG"
+},
+"MECENG 239": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.073,
+null,
+null
+],
+[
+1.0,
+0.073,
+null,
+null
+],
+[
+2.0,
+0.088,
+null,
+null
+],
+[
+3.0,
+0.12,
+null,
+null
+],
+[
+4.0,
+0.136,
+null,
+null
+],
+[
+5.0,
+0.154,
+null,
+null
+],
+[
+6.0,
+0.154,
+null,
+null
+],
+[
+7.0,
+0.192,
+null,
+null
+],
+[
+8.0,
+0.192,
+null,
+null
+],
+[
+9.0,
+0.192,
+null,
+null
+],
+[
+10.0,
+0.213,
+null,
+null
+],
+[
+12.0,
+0.266,
+null,
+null
+],
+[
+14.0,
+0.413,
+null,
+null
+],
+[
+16.0,
+0.444,
+null,
+null
+],
+[
+18.0,
+0.487,
+null,
+null
+],
+[
+21.0,
+0.487,
+null,
+null
+],
+[
+24.0,
+0.615,
+null,
+null
+],
+[
+28.0,
+0.615,
+null,
+null
+],
+[
+32.0,
+0.744,
+null,
+null
+],
+[
+32.9,
+0.744,
+null,
+null
+]
+],
+"events": 26,
+"median_days": 22.51,
+"n": 69,
+"pooled": false,
+"reach_days": 32.9,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "239",
+"subject": "MECENG"
+},
+"MECENG 24": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.157,
+0.064,
+0.204
+],
+[
+1.0,
+0.21,
+0.087,
+0.272
+],
+[
+2.0,
+0.243,
+0.159,
+0.285
+],
+[
+3.0,
+0.252,
+0.187,
+0.285
+],
+[
+4.0,
+0.252,
+0.187,
+0.285
+],
+[
+5.0,
+0.252,
+0.187,
+0.285
+],
+[
+6.0,
+0.272,
+0.187,
+0.315
+],
+[
+7.0,
+0.272,
+0.187,
+0.315
+],
+[
+8.0,
+0.272,
+0.187,
+0.315
+],
+[
+9.0,
+0.284,
+0.187,
+0.333
+],
+[
+10.0,
+0.284,
+0.187,
+0.333
+],
+[
+12.0,
+0.309,
+0.259,
+0.333
+],
+[
+14.0,
+0.387,
+0.303,
+0.432
+],
+[
+16.0,
+0.387,
+0.303,
+0.432
+],
+[
+18.0,
+0.387,
+0.303,
+0.432
+],
+[
+21.0,
+0.387,
+0.303,
+0.432
+],
+[
+24.0,
+0.387,
+0.303,
+0.432
+],
+[
+28.0,
+0.387,
+0.303,
+0.432
+],
+[
+32.0,
+0.387,
+0.303,
+0.432
+],
+[
+36.0,
+0.387,
+0.303,
+0.432
+],
+[
+42.0,
+0.387,
+0.303,
+0.432
+],
+[
+49.0,
+0.387,
+0.303,
+0.432
+],
+[
+56.0,
+0.387,
+0.303,
+0.432
+],
+[
+60.47,
+0.387,
+0.303,
+0.432
+]
+],
+"events": 44,
+"median_days": null,
+"n": 141,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 2
+},
+"6-15": {
+"n_course": 12,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "lower",
+"number": "24",
+"subject": "MECENG"
+},
+"MECENG 242": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.061,
+null,
+null
+],
+[
+1.0,
+0.061,
+null,
+null
+],
+[
+2.0,
+0.106,
+null,
+null
+],
+[
+3.0,
+0.106,
+null,
+null
+],
+[
+4.0,
+0.153,
+null,
+null
+],
+[
+5.0,
+0.253,
+null,
+null
+],
+[
+6.0,
+0.253,
+null,
+null
+],
+[
+7.0,
+0.253,
+null,
+null
+],
+[
+8.0,
+0.28,
+null,
+null
+],
+[
+9.0,
+0.28,
+null,
+null
+],
+[
+10.0,
+0.37,
+null,
+null
+],
+[
+12.0,
+0.528,
+null,
+null
+],
+[
+14.0,
+0.528,
+null,
+null
+],
+[
+16.0,
+0.65,
+null,
+null
+],
+[
+18.0,
+0.694,
+null,
+null
+],
+[
+21.0,
+0.745,
+null,
+null
+],
+[
+24.0,
+0.745,
+null,
+null
+],
+[
+28.0,
+0.745,
+null,
+null
+],
+[
+30.81,
+0.745,
+null,
+null
+]
+],
+"events": 25,
+"median_days": 11.84,
+"n": 49,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "242",
+"subject": "MECENG"
+},
+"MECENG 244": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.224,
+null,
+null
+],
+[
+1.0,
+0.255,
+null,
+null
+],
+[
+2.0,
+0.333,
+null,
+null
+],
+[
+3.0,
+0.407,
+null,
+null
+],
+[
+4.0,
+0.449,
+null,
+null
+],
+[
+5.0,
+0.476,
+null,
+null
+],
+[
+6.0,
+0.513,
+null,
+null
+],
+[
+7.0,
+0.56,
+null,
+null
+],
+[
+8.0,
+0.579,
+null,
+null
+],
+[
+9.0,
+0.607,
+null,
+null
+],
+[
+10.0,
+0.627,
+null,
+null
+],
+[
+12.0,
+0.637,
+null,
+null
+],
+[
+14.0,
+0.674,
+null,
+null
+],
+[
+16.0,
+0.701,
+null,
+null
+],
+[
+18.0,
+0.701,
+null,
+null
+],
+[
+21.0,
+0.732,
+null,
+null
+],
+[
+24.0,
+0.732,
+null,
+null
+],
+[
+28.0,
+0.792,
+null,
+null
+],
+[
+32.0,
+0.896,
+null,
+null
+],
+[
+36.0,
+0.896,
+null,
+null
+],
+[
+36.07,
+1.0,
+null,
+null
+]
+],
+"events": 89,
+"median_days": 5.59,
+"n": 134,
+"pooled": false,
+"reach_days": 36.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "244",
+"subject": "MECENG"
+},
+"MECENG 249": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.305,
+null,
+null
+],
+[
+1.0,
+0.362,
+null,
+null
+],
+[
+2.0,
+0.464,
+null,
+null
+],
+[
+3.0,
+0.496,
+null,
+null
+],
+[
+4.0,
+0.549,
+null,
+null
+],
+[
+5.0,
+0.622,
+null,
+null
+],
+[
+6.0,
+0.658,
+null,
+null
+],
+[
+7.0,
+0.702,
+null,
+null
+],
+[
+8.0,
+0.76,
+null,
+null
+],
+[
+9.0,
+0.76,
+null,
+null
+],
+[
+10.0,
+0.767,
+null,
+null
+],
+[
+12.0,
+0.806,
+null,
+null
+],
+[
+14.0,
+0.814,
+null,
+null
+],
+[
+16.0,
+0.841,
+null,
+null
+],
+[
+18.0,
+0.871,
+null,
+null
+],
+[
+21.0,
+0.891,
+null,
+null
+],
+[
+24.0,
+0.911,
+null,
+null
+],
+[
+28.0,
+0.946,
+null,
+null
+],
+[
+30.81,
+0.946,
+null,
+null
+]
+],
+"events": 143,
+"median_days": 3.02,
+"n": 181,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.078,
+null,
+null
+],
+[
+1.0,
+0.118,
+null,
+null
+],
+[
+2.0,
+0.158,
+null,
+null
+],
+[
+3.0,
+0.29,
+null,
+null
+],
+[
+4.0,
+0.36,
+null,
+null
+],
+[
+5.0,
+0.416,
+null,
+null
+],
+[
+6.0,
+0.471,
+null,
+null
+],
+[
+7.0,
+0.499,
+null,
+null
+],
+[
+8.0,
+0.59,
+null,
+null
+],
+[
+9.0,
+0.59,
+null,
+null
+],
+[
+10.0,
+0.649,
+null,
+null
+],
+[
+11.07,
+0.902,
+null,
+null
+]
+],
+"events": 30,
+"median_days": 7.03,
+"n": 51,
+"pooled": false,
+"reach_days": 11.1,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "249",
+"subject": "MECENG"
+},
+"MECENG 250A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.061,
+null,
+null
+],
+[
+1.0,
+0.061,
+null,
+null
+],
+[
+2.0,
+0.093,
+null,
+null
+],
+[
+3.0,
+0.093,
+null,
+null
+],
+[
+4.0,
+0.093,
+null,
+null
+],
+[
+5.0,
+0.131,
+null,
+null
+],
+[
+6.0,
+0.131,
+null,
+null
+],
+[
+7.0,
+0.206,
+null,
+null
+],
+[
+8.0,
+0.206,
+null,
+null
+],
+[
+9.0,
+0.206,
+null,
+null
+],
+[
+10.0,
+0.206,
+null,
+null
+],
+[
+12.0,
+0.206,
+null,
+null
+],
+[
+14.0,
+0.295,
+null,
+null
+],
+[
+16.0,
+0.295,
+null,
+null
+],
+[
+18.0,
+0.409,
+null,
+null
+],
+[
+21.0,
+0.409,
+null,
+null
+],
+[
+24.0,
+0.409,
+null,
+null
+],
+[
+28.0,
+0.409,
+null,
+null
+],
+[
+30.81,
+0.409,
+null,
+null
+]
+],
+"events": 10,
+"median_days": null,
+"n": 33,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "250A",
+"subject": "MECENG"
+},
+"MECENG 263Z": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.141,
+null,
+null
+],
+[
+1.0,
+0.168,
+null,
+null
+],
+[
+2.0,
+0.24,
+null,
+null
+],
+[
+3.0,
+0.24,
+null,
+null
+],
+[
+4.0,
+0.322,
+null,
+null
+],
+[
+5.0,
+0.34,
+null,
+null
+],
+[
+6.0,
+0.358,
+null,
+null
+],
+[
+7.0,
+0.376,
+null,
+null
+],
+[
+8.0,
+0.433,
+null,
+null
+],
+[
+9.0,
+0.433,
+null,
+null
+],
+[
+10.0,
+0.433,
+null,
+null
+],
+[
+12.0,
+0.433,
+null,
+null
+],
+[
+14.0,
+0.433,
+null,
+null
+],
+[
+16.0,
+0.433,
+null,
+null
+],
+[
+18.0,
+0.433,
+null,
+null
+],
+[
+21.0,
+0.433,
+null,
+null
+],
+[
+24.0,
+0.433,
+null,
+null
+],
+[
+28.0,
+0.433,
+null,
+null
+],
+[
+32.0,
+0.433,
+null,
+null
+],
+[
+36.0,
+0.433,
+null,
+null
+],
+[
+42.0,
+0.433,
+null,
+null
+],
+[
+48.2,
+0.433,
+null,
+null
+]
+],
+"events": 29,
+"median_days": null,
+"n": 79,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "263Z",
+"subject": "MECENG"
+},
+"MECENG 276DS": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.202,
+null,
+null
+],
+[
+1.0,
+0.294,
+null,
+null
+],
+[
+2.0,
+0.386,
+null,
+null
+],
+[
+3.0,
+0.511,
+null,
+null
+],
+[
+4.0,
+0.586,
+null,
+null
+],
+[
+5.0,
+0.665,
+null,
+null
+],
+[
+6.0,
+0.727,
+null,
+null
+],
+[
+7.0,
+0.797,
+null,
+null
+],
+[
+8.0,
+0.806,
+null,
+null
+],
+[
+9.0,
+0.806,
+null,
+null
+],
+[
+10.0,
+0.824,
+null,
+null
+],
+[
+12.0,
+0.834,
+null,
+null
+],
+[
+14.0,
+0.834,
+null,
+null
+],
+[
+16.0,
+0.834,
+null,
+null
+],
+[
+18.0,
+0.834,
+null,
+null
+],
+[
+21.0,
+0.834,
+null,
+null
+],
+[
+24.0,
+0.834,
+null,
+null
+],
+[
+28.0,
+0.834,
+null,
+null
+],
+[
+32.0,
+0.834,
+null,
+null
+],
+[
+36.0,
+0.834,
+null,
+null
+],
+[
+42.0,
+0.834,
+null,
+null
+],
+[
+48.2,
+0.834,
+null,
+null
+]
+],
+"events": 105,
+"median_days": 2.85,
+"n": 139,
+"pooled": false,
+"reach_days": 48.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "276DS",
+"subject": "MECENG"
+},
+"MECENG 287": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.184,
+null,
+null
+],
+[
+1.0,
+0.211,
+null,
+null
+],
+[
+2.0,
+0.211,
+null,
+null
+],
+[
+3.0,
+0.211,
+null,
+null
+],
+[
+4.0,
+0.408,
+null,
+null
+],
+[
+5.0,
+0.581,
+null,
+null
+],
+[
+6.0,
+0.65,
+null,
+null
+],
+[
+7.0,
+0.72,
+null,
+null
+],
+[
+8.0,
+0.72,
+null,
+null
+],
+[
+9.0,
+0.76,
+null,
+null
+],
+[
+10.0,
+0.8,
+null,
+null
+],
+[
+12.0,
+0.84,
+null,
+null
+],
+[
+14.0,
+0.84,
+null,
+null
+],
+[
+16.0,
+0.84,
+null,
+null
+],
+[
+18.0,
+0.84,
+null,
+null
+],
+[
+18.5,
+0.84,
+null,
+null
+]
+],
+"events": 26,
+"median_days": 4.7,
+"n": 38,
+"pooled": false,
+"reach_days": 18.5,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "287",
+"subject": "MECENG"
+},
+"MECENG 292E": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.026,
+null,
+null
+],
+[
+1.0,
+0.053,
+null,
+null
+],
+[
+2.0,
+0.053,
+null,
+null
+],
+[
+3.0,
+0.053,
+null,
+null
+],
+[
+4.0,
+0.053,
+null,
+null
+],
+[
+5.0,
+0.053,
+null,
+null
+],
+[
+6.0,
+0.053,
+null,
+null
+],
+[
+7.0,
+0.091,
+null,
+null
+],
+[
+8.0,
+0.13,
+null,
+null
+],
+[
+9.0,
+0.172,
+null,
+null
+],
+[
+10.0,
+0.172,
+null,
+null
+],
+[
+12.0,
+0.172,
+null,
+null
+],
+[
+14.0,
+0.172,
+null,
+null
+],
+[
+16.0,
+0.172,
+null,
+null
+],
+[
+18.0,
+0.172,
+null,
+null
+],
+[
+21.0,
+0.172,
+null,
+null
+],
+[
+24.0,
+0.172,
+null,
+null
+],
+[
+28.0,
+0.172,
+null,
+null
+],
+[
+30.81,
+0.172,
+null,
+null
+]
+],
+"events": 5,
+"median_days": null,
+"n": 39,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "292E",
+"subject": "MECENG"
+},
+"MECENG 292I": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "292I",
+"subject": "MECENG"
+},
+"MECENG 375": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.413,
+null,
+null
+],
+[
+1.0,
+0.511,
+null,
+null
+],
+[
+2.0,
+0.682,
+null,
+null
+],
+[
+3.0,
+0.753,
+null,
+null
+],
+[
+4.0,
+0.753,
+null,
+null
+],
+[
+5.0,
+0.823,
+null,
+null
+],
+[
+6.0,
+0.823,
+null,
+null
+],
+[
+7.0,
+0.823,
+null,
+null
+],
+[
+8.0,
+0.823,
+null,
+null
+],
+[
+9.0,
+0.823,
+null,
+null
+],
+[
+10.0,
+0.823,
+null,
+null
+],
+[
+12.0,
+0.823,
+null,
+null
+],
+[
+14.0,
+0.823,
+null,
+null
+],
+[
+16.0,
+0.823,
+null,
+null
+],
+[
+18.0,
+0.823,
+null,
+null
+],
+[
+18.09,
+0.823,
+null,
+null
+]
+],
+"events": 25,
+"median_days": 0.8,
+"n": 32,
+"pooled": false,
+"reach_days": 18.1,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "375",
+"subject": "MECENG"
+},
+"MECENG 40": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.243,
+null,
+null
+],
+[
+1.0,
+0.31,
+null,
+null
+],
+[
+2.0,
+0.442,
+null,
+null
+],
+[
+3.0,
+0.5,
+null,
+null
+],
+[
+4.0,
+0.55,
+null,
+null
+],
+[
+5.0,
+0.584,
+null,
+null
+],
+[
+6.0,
+0.619,
+null,
+null
+],
+[
+7.0,
+0.648,
+null,
+null
+],
+[
+8.0,
+0.675,
+null,
+null
+],
+[
+9.0,
+0.7,
+null,
+null
+],
+[
+10.0,
+0.715,
+null,
+null
+],
+[
+12.0,
+0.72,
+null,
+null
+],
+[
+14.0,
+0.753,
+null,
+null
+],
+[
+16.0,
+0.766,
+null,
+null
+],
+[
+18.0,
+0.766,
+null,
+null
+],
+[
+21.0,
+0.766,
+null,
+null
+],
+[
+24.0,
+0.766,
+null,
+null
+],
+[
+28.0,
+0.766,
+null,
+null
+],
+[
+30.81,
+0.766,
+null,
+null
+]
+],
+"events": 279,
+"median_days": 3.03,
+"n": 443,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.032,
+null,
+null
+],
+[
+1.0,
+0.039,
+null,
+null
+],
+[
+2.0,
+0.045,
+null,
+null
+],
+[
+3.0,
+0.045,
+null,
+null
+],
+[
+4.0,
+0.045,
+null,
+null
+],
+[
+5.0,
+0.045,
+null,
+null
+],
+[
+6.0,
+0.045,
+null,
+null
+],
+[
+7.0,
+0.045,
+null,
+null
+],
+[
+8.0,
+0.045,
+null,
+null
+],
+[
+9.0,
+0.045,
+null,
+null
+],
+[
+10.0,
+0.045,
+null,
+null
+],
+[
+12.0,
+0.045,
+null,
+null
+],
+[
+14.0,
+0.045,
+null,
+null
+],
+[
+16.0,
+0.045,
+null,
+null
+],
+[
+18.0,
+0.045,
+null,
+null
+],
+[
+21.0,
+0.045,
+null,
+null
+],
+[
+24.0,
+0.045,
+null,
+null
+],
+[
+28.0,
+0.045,
+null,
+null
+],
+[
+30.81,
+0.045,
+null,
+null
+]
+],
+"events": 7,
+"median_days": null,
+"n": 160,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.088,
+null,
+null
+],
+[
+1.0,
+0.103,
+null,
+null
+],
+[
+2.0,
+0.133,
+null,
+null
+],
+[
+3.0,
+0.145,
+null,
+null
+],
+[
+4.0,
+0.158,
+null,
+null
+],
+[
+5.0,
+0.158,
+null,
+null
+],
+[
+6.0,
+0.163,
+null,
+null
+],
+[
+7.0,
+0.173,
+null,
+null
+],
+[
+8.0,
+0.189,
+null,
+null
+],
+[
+9.0,
+0.207,
+null,
+null
+],
+[
+10.0,
+0.219,
+null,
+null
+],
+[
+12.0,
+0.254,
+null,
+null
+],
+[
+14.0,
+0.303,
+null,
+null
+],
+[
+16.0,
+0.37,
+null,
+null
+],
+[
+18.0,
+0.396,
+null,
+null
+],
+[
+21.0,
+0.396,
+null,
+null
+],
+[
+24.0,
+0.396,
+null,
+null
+],
+[
+28.0,
+0.396,
+null,
+null
+],
+[
+30.81,
+0.396,
+null,
+null
+]
+],
+"events": 73,
+"median_days": null,
+"n": 287,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "lower",
+"number": "40",
+"subject": "MECENG"
+},
+"MECENG C106A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.076,
+null,
+null
+],
+[
+1.0,
+0.128,
+null,
+null
+],
+[
+2.0,
+0.141,
+null,
+null
+],
+[
+3.0,
+0.148,
+null,
+null
+],
+[
+4.0,
+0.148,
+null,
+null
+],
+[
+5.0,
+0.148,
+null,
+null
+],
+[
+6.0,
+0.164,
+null,
+null
+],
+[
+7.0,
+0.19,
+null,
+null
+],
+[
+8.0,
+0.215,
+null,
+null
+],
+[
+9.0,
+0.215,
+null,
+null
+],
+[
+10.0,
+0.225,
+null,
+null
+],
+[
+12.0,
+0.225,
+null,
+null
+],
+[
+14.0,
+0.225,
+null,
+null
+],
+[
+16.0,
+0.225,
+null,
+null
+],
+[
+18.0,
+0.239,
+null,
+null
+],
+[
+21.0,
+0.239,
+null,
+null
+],
+[
+24.0,
+0.239,
+null,
+null
+],
+[
+28.0,
+0.239,
+null,
+null
+],
+[
+32.0,
+0.239,
+null,
+null
+],
+[
+36.0,
+0.239,
+null,
+null
+],
+[
+36.92,
+0.239,
+null,
+null
+]
+],
+"events": 36,
+"median_days": null,
+"n": 185,
+"pooled": false,
+"reach_days": 36.9,
+"sections": 1
+},
+"6-15": {
+"n_course": 29,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C106A",
+"subject": "MECENG"
+},
+"MECENG C136": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.219,
+null,
+null
+],
+[
+1.0,
+0.285,
+null,
+null
+],
+[
+2.0,
+0.327,
+null,
+null
+],
+[
+3.0,
+0.357,
+null,
+null
+],
+[
+4.0,
+0.384,
+null,
+null
+],
+[
+5.0,
+0.396,
+null,
+null
+],
+[
+6.0,
+0.42,
+null,
+null
+],
+[
+7.0,
+0.439,
+null,
+null
+],
+[
+8.0,
+0.458,
+null,
+null
+],
+[
+9.0,
+0.492,
+null,
+null
+],
+[
+10.0,
+0.507,
+null,
+null
+],
+[
+12.0,
+0.552,
+null,
+null
+],
+[
+14.0,
+0.569,
+null,
+null
+],
+[
+16.0,
+0.569,
+null,
+null
+],
+[
+18.0,
+0.589,
+null,
+null
+],
+[
+21.0,
+0.611,
+null,
+null
+],
+[
+24.0,
+0.652,
+null,
+null
+],
+[
+28.0,
+0.717,
+null,
+null
+],
+[
+32.0,
+0.752,
+null,
+null
+],
+[
+32.42,
+0.752,
+null,
+null
+]
+],
+"events": 124,
+"median_days": 9.8,
+"n": 236,
+"pooled": false,
+"reach_days": 32.4,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.08,
+null,
+null
+],
+[
+1.0,
+0.08,
+null,
+null
+],
+[
+2.0,
+0.08,
+null,
+null
+],
+[
+3.0,
+0.08,
+null,
+null
+],
+[
+4.0,
+0.08,
+null,
+null
+],
+[
+5.0,
+0.08,
+null,
+null
+],
+[
+6.0,
+0.129,
+null,
+null
+],
+[
+7.0,
+0.129,
+null,
+null
+],
+[
+8.0,
+0.129,
+null,
+null
+],
+[
+9.0,
+0.187,
+null,
+null
+],
+[
+10.0,
+0.187,
+null,
+null
+],
+[
+12.0,
+0.187,
+null,
+null
+],
+[
+14.0,
+0.268,
+null,
+null
+],
+[
+16.0,
+0.268,
+null,
+null
+],
+[
+18.0,
+0.268,
+null,
+null
+],
+[
+21.0,
+0.268,
+null,
+null
+],
+[
+24.0,
+0.268,
+null,
+null
+],
+[
+28.0,
+0.268,
+null,
+null
+],
+[
+32.0,
+0.268,
+null,
+null
+],
+[
+33.94,
+0.268,
+null,
+null
+]
+],
+"events": 10,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 33.9,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C136",
+"subject": "MECENG"
+},
+"MECENG C136S": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C136S",
+"subject": "MECENG"
+},
+"MECENG C162": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.223,
+null,
+null
+],
+[
+1.0,
+0.291,
+null,
+null
+],
+[
+2.0,
+0.375,
+null,
+null
+],
+[
+3.0,
+0.424,
+null,
+null
+],
+[
+4.0,
+0.454,
+null,
+null
+],
+[
+5.0,
+0.486,
+null,
+null
+],
+[
+6.0,
+0.498,
+null,
+null
+],
+[
+7.0,
+0.512,
+null,
+null
+],
+[
+8.0,
+0.512,
+null,
+null
+],
+[
+9.0,
+0.512,
+null,
+null
+],
+[
+10.0,
+0.52,
+null,
+null
+],
+[
+12.0,
+0.546,
+null,
+null
+],
+[
+14.0,
+0.564,
+null,
+null
+],
+[
+16.0,
+0.598,
+null,
+null
+],
+[
+18.0,
+0.61,
+null,
+null
+],
+[
+21.0,
+0.61,
+null,
+null
+],
+[
+24.0,
+0.61,
+null,
+null
+],
+[
+28.0,
+0.61,
+null,
+null
+],
+[
+32.0,
+0.61,
+null,
+null
+],
+[
+32.42,
+0.61,
+null,
+null
+]
+],
+"events": 107,
+"median_days": 6.26,
+"n": 203,
+"pooled": false,
+"reach_days": 32.4,
+"sections": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C162",
+"subject": "MECENG"
+},
+"MECENG C166": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.128,
+null,
+null
+],
+[
+1.0,
+0.147,
+null,
+null
+],
+[
+2.0,
+0.26,
+null,
+null
+],
+[
+3.0,
+0.298,
+null,
+null
+],
+[
+4.0,
+0.298,
+null,
+null
+],
+[
+5.0,
+0.298,
+null,
+null
+],
+[
+6.0,
+0.363,
+null,
+null
+],
+[
+7.0,
+0.363,
+null,
+null
+],
+[
+8.0,
+0.429,
+null,
+null
+],
+[
+9.0,
+0.429,
+null,
+null
+],
+[
+10.0,
+0.429,
+null,
+null
+],
+[
+12.0,
+0.486,
+null,
+null
+],
+[
+14.0,
+0.59,
+null,
+null
+],
+[
+16.0,
+0.59,
+null,
+null
+],
+[
+18.0,
+0.59,
+null,
+null
+],
+[
+21.0,
+0.59,
+null,
+null
+],
+[
+24.0,
+0.59,
+null,
+null
+],
+[
+28.0,
+0.59,
+null,
+null
+],
+[
+30.81,
+0.59,
+null,
+null
+]
+],
+"events": 27,
+"median_days": 12.03,
+"n": 55,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C166",
+"subject": "MECENG"
+},
+"MECENG C178": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.15,
+null,
+null
+],
+[
+1.0,
+0.155,
+null,
+null
+],
+[
+2.0,
+0.187,
+null,
+null
+],
+[
+3.0,
+0.244,
+null,
+null
+],
+[
+4.0,
+0.29,
+null,
+null
+],
+[
+5.0,
+0.3,
+null,
+null
+],
+[
+6.0,
+0.322,
+null,
+null
+],
+[
+7.0,
+0.328,
+null,
+null
+],
+[
+8.0,
+0.334,
+null,
+null
+],
+[
+9.0,
+0.354,
+null,
+null
+],
+[
+10.0,
+0.354,
+null,
+null
+],
+[
+12.0,
+0.374,
+null,
+null
+],
+[
+14.0,
+0.408,
+null,
+null
+],
+[
+16.0,
+0.408,
+null,
+null
+],
+[
+18.0,
+0.427,
+null,
+null
+],
+[
+21.0,
+0.447,
+null,
+null
+],
+[
+24.0,
+0.5,
+null,
+null
+],
+[
+28.0,
+0.5,
+null,
+null
+],
+[
+32.0,
+0.5,
+null,
+null
+],
+[
+36.0,
+0.5,
+null,
+null
+],
+[
+36.71,
+0.5,
+null,
+null
+]
+],
+"events": 91,
+"median_days": null,
+"n": 235,
+"pooled": false,
+"reach_days": 36.7,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+35.85,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 35.9,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.008,
+null,
+null
+],
+[
+3.0,
+0.017,
+null,
+null
+],
+[
+4.0,
+0.025,
+null,
+null
+],
+[
+5.0,
+0.043,
+null,
+null
+],
+[
+6.0,
+0.053,
+null,
+null
+],
+[
+7.0,
+0.064,
+null,
+null
+],
+[
+8.0,
+0.074,
+null,
+null
+],
+[
+9.0,
+0.074,
+null,
+null
+],
+[
+10.0,
+0.074,
+null,
+null
+],
+[
+12.0,
+0.074,
+null,
+null
+],
+[
+14.0,
+0.074,
+null,
+null
+],
+[
+16.0,
+0.074,
+null,
+null
+],
+[
+18.0,
+0.074,
+null,
+null
+],
+[
+21.0,
+0.074,
+null,
+null
+],
+[
+24.0,
+0.074,
+null,
+null
+],
+[
+28.0,
+0.074,
+null,
+null
+],
+[
+32.0,
+0.074,
+null,
+null
+],
+[
+36.0,
+0.074,
+null,
+null
+],
+[
+36.98,
+0.074,
+null,
+null
+]
+],
+"events": 8,
+"median_days": null,
+"n": 134,
+"pooled": false,
+"reach_days": 37.0,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "upper",
+"number": "C178",
+"subject": "MECENG"
+},
+"MECENG C200": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "C200",
+"subject": "MECENG"
+},
+"MECENG C231A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.29,
+null,
+null
+],
+[
+1.0,
+0.419,
+null,
+null
+],
+[
+2.0,
+0.481,
+null,
+null
+],
+[
+3.0,
+0.574,
+null,
+null
+],
+[
+4.0,
+0.687,
+null,
+null
+],
+[
+5.0,
+0.731,
+null,
+null
+],
+[
+6.0,
+0.763,
+null,
+null
+],
+[
+7.0,
+0.797,
+null,
+null
+],
+[
+8.0,
+0.797,
+null,
+null
+],
+[
+9.0,
+0.814,
+null,
+null
+],
+[
+10.0,
+0.814,
+null,
+null
+],
+[
+12.0,
+0.814,
+null,
+null
+],
+[
+14.0,
+0.814,
+null,
+null
+],
+[
+16.0,
+0.814,
+null,
+null
+],
+[
+18.0,
+0.814,
+null,
+null
+],
+[
+21.0,
+0.814,
+null,
+null
+],
+[
+24.0,
+0.814,
+null,
+null
+],
+[
+28.0,
+0.814,
+null,
+null
+],
+[
+30.81,
+0.814,
+null,
+null
+]
+],
+"events": 65,
+"median_days": 2.01,
+"n": 90,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "C231A",
+"subject": "MECENG"
+},
+"MECENG C232": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.205,
+null,
+null
+],
+[
+1.0,
+0.273,
+null,
+null
+],
+[
+2.0,
+0.391,
+null,
+null
+],
+[
+3.0,
+0.494,
+null,
+null
+],
+[
+4.0,
+0.556,
+null,
+null
+],
+[
+5.0,
+0.585,
+null,
+null
+],
+[
+6.0,
+0.616,
+null,
+null
+],
+[
+7.0,
+0.662,
+null,
+null
+],
+[
+8.0,
+0.71,
+null,
+null
+],
+[
+9.0,
+0.71,
+null,
+null
+],
+[
+10.0,
+0.719,
+null,
+null
+],
+[
+12.0,
+0.746,
+null,
+null
+],
+[
+14.0,
+0.798,
+null,
+null
+],
+[
+16.0,
+0.809,
+null,
+null
+],
+[
+18.0,
+0.833,
+null,
+null
+],
+[
+21.0,
+0.875,
+null,
+null
+],
+[
+24.0,
+0.875,
+null,
+null
+],
+[
+28.0,
+0.875,
+null,
+null
+],
+[
+30.81,
+0.875,
+null,
+null
+]
+],
+"events": 123,
+"median_days": 3.04,
+"n": 166,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "MECENG",
+"sections_course": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "C232",
+"subject": "MECENG"
+},
+"MECENG C278": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.061,
+null,
+null
+],
+[
+1.0,
+0.084,
+null,
+null
+],
+[
+2.0,
+0.141,
+null,
+null
+],
+[
+3.0,
+0.202,
+null,
+null
+],
+[
+4.0,
+0.202,
+null,
+null
+],
+[
+5.0,
+0.233,
+null,
+null
+],
+[
+6.0,
+0.25,
+null,
+null
+],
+[
+7.0,
+0.276,
+null,
+null
+],
+[
+8.0,
+0.276,
+null,
+null
+],
+[
+9.0,
+0.276,
+null,
+null
+],
+[
+10.0,
+0.287,
+null,
+null
+],
+[
+12.0,
+0.34,
+null,
+null
+],
+[
+14.0,
+0.372,
+null,
+null
+],
+[
+16.0,
+0.411,
+null,
+null
+],
+[
+18.0,
+0.477,
+null,
+null
+],
+[
+21.0,
+0.549,
+null,
+null
+],
+[
+24.0,
+0.574,
+null,
+null
+],
+[
+28.0,
+0.574,
+null,
+null
+],
+[
+30.81,
+0.574,
+null,
+null
+]
+],
+"events": 58,
+"median_days": 19.02,
+"n": 182,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"n_course": 15,
+"pooled": "MECENG",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.179,
+null,
+null
+],
+[
+16.0,
+0.282,
+null,
+null
+],
+[
+18.0,
+0.282,
+null,
+null
+],
+[
+18.21,
+0.282,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 61,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "grad",
+"number": "C278",
+"subject": "MECENG"
+},
+"MECENG C85": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.191,
+null,
+null
+],
+[
+1.0,
+0.263,
+null,
+null
+],
+[
+2.0,
+0.368,
+null,
+null
+],
+[
+3.0,
+0.427,
+null,
+null
+],
+[
+4.0,
+0.484,
+null,
+null
+],
+[
+5.0,
+0.551,
+null,
+null
+],
+[
+6.0,
+0.619,
+null,
+null
+],
+[
+7.0,
+0.698,
+null,
+null
+],
+[
+8.0,
+0.718,
+null,
+null
+],
+[
+9.0,
+0.727,
+null,
+null
+],
+[
+10.0,
+0.743,
+null,
+null
+],
+[
+12.0,
+0.757,
+null,
+null
+],
+[
+14.0,
+0.757,
+null,
+null
+],
+[
+16.0,
+0.757,
+null,
+null
+],
+[
+18.0,
+0.757,
+null,
+null
+],
+[
+21.0,
+0.757,
+null,
+null
+],
+[
+24.0,
+0.757,
+null,
+null
+],
+[
+28.0,
+0.757,
+null,
+null
+],
+[
+30.81,
+0.757,
+null,
+null
+]
+],
+"events": 282,
+"median_days": 4.24,
+"n": 470,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.013,
+null,
+null
+],
+[
+1.0,
+0.027,
+null,
+null
+],
+[
+2.0,
+0.027,
+null,
+null
+],
+[
+3.0,
+0.027,
+null,
+null
+],
+[
+4.0,
+0.035,
+null,
+null
+],
+[
+5.0,
+0.044,
+null,
+null
+],
+[
+6.0,
+0.044,
+null,
+null
+],
+[
+7.0,
+0.044,
+null,
+null
+],
+[
+8.0,
+0.074,
+null,
+null
+],
+[
+9.0,
+0.095,
+null,
+null
+],
+[
+10.0,
+0.153,
+null,
+null
+],
+[
+12.0,
+0.204,
+null,
+null
+],
+[
+14.0,
+0.204,
+null,
+null
+],
+[
+16.0,
+0.345,
+null,
+null
+],
+[
+18.0,
+0.457,
+null,
+null
+],
+[
+21.0,
+0.457,
+null,
+null
+],
+[
+24.0,
+0.457,
+null,
+null
+],
+[
+28.0,
+0.457,
+null,
+null
+],
+[
+30.81,
+0.457,
+null,
+null
+]
+],
+"events": 32,
+"median_days": null,
+"n": 156,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.025,
+null,
+null
+],
+[
+1.0,
+0.042,
+null,
+null
+],
+[
+2.0,
+0.083,
+null,
+null
+],
+[
+3.0,
+0.126,
+null,
+null
+],
+[
+4.0,
+0.146,
+null,
+null
+],
+[
+5.0,
+0.186,
+null,
+null
+],
+[
+6.0,
+0.256,
+null,
+null
+],
+[
+7.0,
+0.335,
+null,
+null
+],
+[
+8.0,
+0.396,
+null,
+null
+],
+[
+9.0,
+0.435,
+null,
+null
+],
+[
+10.0,
+0.465,
+null,
+null
+],
+[
+12.0,
+0.521,
+null,
+null
+],
+[
+14.0,
+0.547,
+null,
+null
+],
+[
+16.0,
+0.578,
+null,
+null
+],
+[
+18.0,
+0.598,
+null,
+null
+],
+[
+21.0,
+0.598,
+null,
+null
+],
+[
+24.0,
+0.598,
+null,
+null
+],
+[
+28.0,
+0.598,
+null,
+null
+],
+[
+30.81,
+0.598,
+null,
+null
+]
+],
+"events": 118,
+"median_days": 11.02,
+"n": 320,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "MECENG",
+"level": "lower",
+"number": "C85",
+"subject": "MECENG"
+}
+},
+"subject": "MECENG",
+"term_id": "2268"
+}

@@ -1,0 +1,19 @@
+{
+"courses": {
+"CDSS 94": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "94",
+"subject": "CDSS"
+}
+},
+"subject": "CDSS",
+"term_id": "2268"
+}

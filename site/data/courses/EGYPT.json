@@ -1,0 +1,19 @@
+{
+"courses": {
+"EGYPT 100A": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100A",
+"subject": "EGYPT"
+}
+},
+"subject": "EGYPT",
+"term_id": "2268"
+}

@@ -1,0 +1,3027 @@
+{
+"courses": {
+"CIVENG 100": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.252,
+null,
+null
+],
+[
+1.0,
+0.322,
+null,
+null
+],
+[
+2.0,
+0.375,
+null,
+null
+],
+[
+3.0,
+0.448,
+null,
+null
+],
+[
+4.0,
+0.516,
+null,
+null
+],
+[
+5.0,
+0.547,
+null,
+null
+],
+[
+6.0,
+0.599,
+null,
+null
+],
+[
+7.0,
+0.632,
+null,
+null
+],
+[
+8.0,
+0.643,
+null,
+null
+],
+[
+9.0,
+0.643,
+null,
+null
+],
+[
+10.0,
+0.654,
+null,
+null
+],
+[
+12.0,
+0.688,
+null,
+null
+],
+[
+14.0,
+0.745,
+null,
+null
+],
+[
+16.0,
+0.793,
+null,
+null
+],
+[
+18.0,
+0.793,
+null,
+null
+],
+[
+21.0,
+0.793,
+null,
+null
+],
+[
+24.0,
+0.793,
+null,
+null
+],
+[
+28.0,
+0.793,
+null,
+null
+],
+[
+30.81,
+0.793,
+null,
+null
+]
+],
+"events": 85,
+"median_days": 3.81,
+"n": 124,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "100",
+"subject": "CIVENG"
+},
+"CIVENG 108": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.291,
+null,
+null
+],
+[
+1.0,
+0.385,
+null,
+null
+],
+[
+2.0,
+0.489,
+null,
+null
+],
+[
+3.0,
+0.61,
+null,
+null
+],
+[
+4.0,
+0.715,
+null,
+null
+],
+[
+5.0,
+0.804,
+null,
+null
+],
+[
+6.0,
+0.877,
+null,
+null
+],
+[
+7.0,
+0.958,
+null,
+null
+],
+[
+8.0,
+0.958,
+null,
+null
+],
+[
+9.0,
+0.979,
+null,
+null
+],
+[
+10.0,
+0.979,
+null,
+null
+],
+[
+12.0,
+0.979,
+null,
+null
+],
+[
+14.0,
+0.979,
+null,
+null
+],
+[
+16.0,
+0.979,
+null,
+null
+],
+[
+18.0,
+0.979,
+null,
+null
+],
+[
+18.17,
+0.979,
+null,
+null
+]
+],
+"events": 99,
+"median_days": 2.04,
+"n": 117,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "108",
+"subject": "CIVENG"
+},
+"CIVENG 11": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.239,
+null,
+null
+],
+[
+1.0,
+0.309,
+null,
+null
+],
+[
+2.0,
+0.414,
+null,
+null
+],
+[
+3.0,
+0.514,
+null,
+null
+],
+[
+4.0,
+0.563,
+null,
+null
+],
+[
+5.0,
+0.607,
+null,
+null
+],
+[
+6.0,
+0.672,
+null,
+null
+],
+[
+7.0,
+0.69,
+null,
+null
+],
+[
+8.0,
+0.695,
+null,
+null
+],
+[
+9.0,
+0.71,
+null,
+null
+],
+[
+10.0,
+0.715,
+null,
+null
+],
+[
+12.0,
+0.737,
+null,
+null
+],
+[
+14.0,
+0.791,
+null,
+null
+],
+[
+16.0,
+0.81,
+null,
+null
+],
+[
+18.0,
+0.819,
+null,
+null
+],
+[
+21.0,
+0.819,
+null,
+null
+],
+[
+24.0,
+0.819,
+null,
+null
+],
+[
+28.0,
+0.819,
+null,
+null
+],
+[
+30.81,
+0.819,
+null,
+null
+]
+],
+"events": 232,
+"median_days": 2.91,
+"n": 344,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.056,
+null,
+null
+],
+[
+1.0,
+0.088,
+null,
+null
+],
+[
+2.0,
+0.101,
+null,
+null
+],
+[
+3.0,
+0.137,
+null,
+null
+],
+[
+4.0,
+0.161,
+null,
+null
+],
+[
+5.0,
+0.169,
+null,
+null
+],
+[
+6.0,
+0.239,
+null,
+null
+],
+[
+7.0,
+0.266,
+null,
+null
+],
+[
+8.0,
+0.275,
+null,
+null
+],
+[
+9.0,
+0.317,
+null,
+null
+],
+[
+10.0,
+0.338,
+null,
+null
+],
+[
+12.0,
+0.37,
+null,
+null
+],
+[
+14.0,
+0.396,
+null,
+null
+],
+[
+16.0,
+0.423,
+null,
+null
+],
+[
+18.0,
+0.423,
+null,
+null
+],
+[
+21.0,
+0.423,
+null,
+null
+],
+[
+24.0,
+0.49,
+null,
+null
+],
+[
+28.0,
+0.529,
+null,
+null
+],
+[
+30.81,
+0.529,
+null,
+null
+]
+],
+"events": 53,
+"median_days": 24.08,
+"n": 164,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "11",
+"subject": "CIVENG"
+},
+"CIVENG 111": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.293,
+null,
+null
+],
+[
+1.0,
+0.362,
+null,
+null
+],
+[
+2.0,
+0.509,
+null,
+null
+],
+[
+3.0,
+0.577,
+null,
+null
+],
+[
+4.0,
+0.623,
+null,
+null
+],
+[
+5.0,
+0.656,
+null,
+null
+],
+[
+6.0,
+0.7,
+null,
+null
+],
+[
+7.0,
+0.735,
+null,
+null
+],
+[
+8.0,
+0.74,
+null,
+null
+],
+[
+9.0,
+0.746,
+null,
+null
+],
+[
+10.0,
+0.752,
+null,
+null
+],
+[
+12.0,
+0.785,
+null,
+null
+],
+[
+14.0,
+0.817,
+null,
+null
+],
+[
+16.0,
+0.817,
+null,
+null
+],
+[
+18.0,
+0.817,
+null,
+null
+],
+[
+21.0,
+0.826,
+null,
+null
+],
+[
+24.0,
+0.826,
+null,
+null
+],
+[
+28.0,
+0.853,
+null,
+null
+],
+[
+30.81,
+0.853,
+null,
+null
+]
+],
+"events": 216,
+"median_days": 1.9,
+"n": 301,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.026,
+null,
+null
+],
+[
+1.0,
+0.053,
+null,
+null
+],
+[
+2.0,
+0.053,
+null,
+null
+],
+[
+3.0,
+0.14,
+null,
+null
+],
+[
+4.0,
+0.203,
+null,
+null
+],
+[
+5.0,
+0.203,
+null,
+null
+],
+[
+6.0,
+0.203,
+null,
+null
+],
+[
+7.0,
+0.203,
+null,
+null
+],
+[
+8.0,
+0.203,
+null,
+null
+],
+[
+9.0,
+0.203,
+null,
+null
+],
+[
+10.0,
+0.203,
+null,
+null
+],
+[
+12.0,
+0.203,
+null,
+null
+],
+[
+14.0,
+0.203,
+null,
+null
+],
+[
+16.0,
+0.402,
+null,
+null
+],
+[
+18.0,
+0.502,
+null,
+null
+],
+[
+21.0,
+0.502,
+null,
+null
+],
+[
+24.0,
+0.502,
+null,
+null
+],
+[
+28.0,
+0.502,
+null,
+null
+],
+[
+29.02,
+0.502,
+null,
+null
+]
+],
+"events": 10,
+"median_days": 16.44,
+"n": 39,
+"pooled": false,
+"reach_days": 29.0,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "111",
+"subject": "CIVENG"
+},
+"CIVENG 111L": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "111L",
+"subject": "CIVENG"
+},
+"CIVENG 122": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.083,
+null,
+null
+],
+[
+1.0,
+0.092,
+null,
+null
+],
+[
+2.0,
+0.119,
+null,
+null
+],
+[
+3.0,
+0.119,
+null,
+null
+],
+[
+4.0,
+0.139,
+null,
+null
+],
+[
+5.0,
+0.149,
+null,
+null
+],
+[
+6.0,
+0.183,
+null,
+null
+],
+[
+7.0,
+0.183,
+null,
+null
+],
+[
+8.0,
+0.183,
+null,
+null
+],
+[
+9.0,
+0.195,
+null,
+null
+],
+[
+10.0,
+0.195,
+null,
+null
+],
+[
+12.0,
+0.317,
+null,
+null
+],
+[
+14.0,
+0.335,
+null,
+null
+],
+[
+16.0,
+0.354,
+null,
+null
+],
+[
+18.0,
+0.374,
+null,
+null
+],
+[
+21.0,
+0.416,
+null,
+null
+],
+[
+24.0,
+0.416,
+null,
+null
+],
+[
+28.0,
+0.416,
+null,
+null
+],
+[
+32.0,
+0.416,
+null,
+null
+],
+[
+34.79,
+0.416,
+null,
+null
+]
+],
+"events": 35,
+"median_days": null,
+"n": 124,
+"pooled": false,
+"reach_days": 34.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "122",
+"subject": "CIVENG"
+},
+"CIVENG 124": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "124",
+"subject": "CIVENG"
+},
+"CIVENG 126": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "126",
+"subject": "CIVENG"
+},
+"CIVENG 155": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.295,
+null,
+null
+],
+[
+1.0,
+0.424,
+null,
+null
+],
+[
+2.0,
+0.492,
+null,
+null
+],
+[
+3.0,
+0.54,
+null,
+null
+],
+[
+4.0,
+0.547,
+null,
+null
+],
+[
+5.0,
+0.592,
+null,
+null
+],
+[
+6.0,
+0.64,
+null,
+null
+],
+[
+7.0,
+0.69,
+null,
+null
+],
+[
+8.0,
+0.74,
+null,
+null
+],
+[
+9.0,
+0.761,
+null,
+null
+],
+[
+10.0,
+0.761,
+null,
+null
+],
+[
+12.0,
+0.772,
+null,
+null
+],
+[
+14.0,
+0.807,
+null,
+null
+],
+[
+16.0,
+0.807,
+null,
+null
+],
+[
+18.0,
+0.831,
+null,
+null
+],
+[
+21.0,
+0.831,
+null,
+null
+],
+[
+24.0,
+0.831,
+null,
+null
+],
+[
+28.0,
+0.831,
+null,
+null
+],
+[
+30.81,
+0.831,
+null,
+null
+]
+],
+"events": 108,
+"median_days": 2.01,
+"n": 155,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "155",
+"subject": "CIVENG"
+},
+"CIVENG 167": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.118,
+null,
+null
+],
+[
+1.0,
+0.178,
+null,
+null
+],
+[
+2.0,
+0.254,
+null,
+null
+],
+[
+3.0,
+0.264,
+null,
+null
+],
+[
+4.0,
+0.297,
+null,
+null
+],
+[
+5.0,
+0.326,
+null,
+null
+],
+[
+6.0,
+0.337,
+null,
+null
+],
+[
+7.0,
+0.35,
+null,
+null
+],
+[
+8.0,
+0.356,
+null,
+null
+],
+[
+9.0,
+0.386,
+null,
+null
+],
+[
+10.0,
+0.41,
+null,
+null
+],
+[
+12.0,
+0.516,
+null,
+null
+],
+[
+14.0,
+0.534,
+null,
+null
+],
+[
+16.0,
+0.534,
+null,
+null
+],
+[
+18.0,
+0.534,
+null,
+null
+],
+[
+21.0,
+0.573,
+null,
+null
+],
+[
+24.0,
+0.767,
+null,
+null
+],
+[
+28.0,
+0.767,
+null,
+null
+],
+[
+30.81,
+0.767,
+null,
+null
+]
+],
+"events": 93,
+"median_days": 11.98,
+"n": 216,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"n_course": 25,
+"pooled": "all",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.042,
+null,
+null
+],
+[
+14.0,
+0.042,
+null,
+null
+],
+[
+16.0,
+0.042,
+null,
+null
+],
+[
+18.0,
+0.042,
+null,
+null
+],
+[
+21.0,
+0.066,
+null,
+null
+],
+[
+24.0,
+0.172,
+null,
+null
+],
+[
+28.0,
+0.259,
+null,
+null
+],
+[
+32.0,
+0.637,
+null,
+null
+],
+[
+34.03,
+0.806,
+null,
+null
+]
+],
+"events": 19,
+"median_days": 31.14,
+"n": 136,
+"pooled": false,
+"reach_days": 34.0,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "167",
+"subject": "CIVENG"
+},
+"CIVENG 170A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.101,
+null,
+null
+],
+[
+1.0,
+0.101,
+null,
+null
+],
+[
+2.0,
+0.119,
+null,
+null
+],
+[
+3.0,
+0.119,
+null,
+null
+],
+[
+4.0,
+0.119,
+null,
+null
+],
+[
+5.0,
+0.119,
+null,
+null
+],
+[
+6.0,
+0.165,
+null,
+null
+],
+[
+7.0,
+0.212,
+null,
+null
+],
+[
+8.0,
+0.26,
+null,
+null
+],
+[
+9.0,
+0.26,
+null,
+null
+],
+[
+10.0,
+0.319,
+null,
+null
+],
+[
+12.0,
+0.319,
+null,
+null
+],
+[
+14.0,
+0.652,
+null,
+null
+],
+[
+16.0,
+0.652,
+null,
+null
+],
+[
+18.0,
+0.652,
+null,
+null
+],
+[
+21.0,
+0.652,
+null,
+null
+],
+[
+24.0,
+0.826,
+null,
+null
+],
+[
+28.0,
+0.826,
+null,
+null
+],
+[
+30.81,
+0.826,
+null,
+null
+]
+],
+"events": 26,
+"median_days": 12.23,
+"n": 69,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "170A",
+"subject": "CIVENG"
+},
+"CIVENG 176": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "176",
+"subject": "CIVENG"
+},
+"CIVENG 186": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.312,
+null,
+null
+],
+[
+1.0,
+0.462,
+null,
+null
+],
+[
+2.0,
+0.565,
+null,
+null
+],
+[
+3.0,
+0.673,
+null,
+null
+],
+[
+4.0,
+0.69,
+null,
+null
+],
+[
+5.0,
+0.73,
+null,
+null
+],
+[
+6.0,
+0.758,
+null,
+null
+],
+[
+7.0,
+0.772,
+null,
+null
+],
+[
+8.0,
+0.772,
+null,
+null
+],
+[
+9.0,
+0.772,
+null,
+null
+],
+[
+10.0,
+0.781,
+null,
+null
+],
+[
+12.0,
+0.806,
+null,
+null
+],
+[
+14.0,
+0.839,
+null,
+null
+],
+[
+16.0,
+0.882,
+null,
+null
+],
+[
+18.0,
+0.882,
+null,
+null
+],
+[
+21.0,
+0.882,
+null,
+null
+],
+[
+24.0,
+0.882,
+null,
+null
+],
+[
+28.0,
+0.882,
+null,
+null
+],
+[
+30.81,
+0.882,
+null,
+null
+]
+],
+"events": 164,
+"median_days": 1.34,
+"n": 222,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "186",
+"subject": "CIVENG"
+},
+"CIVENG 187": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "187",
+"subject": "CIVENG"
+},
+"CIVENG 193": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "193",
+"subject": "CIVENG"
+},
+"CIVENG 24": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.109,
+null,
+null
+],
+[
+1.0,
+0.109,
+null,
+null
+],
+[
+2.0,
+0.141,
+null,
+null
+],
+[
+3.0,
+0.141,
+null,
+null
+],
+[
+4.0,
+0.141,
+null,
+null
+],
+[
+5.0,
+0.141,
+null,
+null
+],
+[
+6.0,
+0.141,
+null,
+null
+],
+[
+7.0,
+0.141,
+null,
+null
+],
+[
+8.0,
+0.141,
+null,
+null
+],
+[
+9.0,
+0.141,
+null,
+null
+],
+[
+10.0,
+0.141,
+null,
+null
+],
+[
+12.0,
+0.141,
+null,
+null
+],
+[
+14.0,
+0.141,
+null,
+null
+],
+[
+16.0,
+0.141,
+null,
+null
+],
+[
+18.0,
+0.141,
+null,
+null
+],
+[
+18.21,
+0.141,
+null,
+null
+]
+],
+"events": 5,
+"median_days": null,
+"n": 39,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "24",
+"subject": "CIVENG"
+},
+"CIVENG 244": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "244",
+"subject": "CIVENG"
+},
+"CIVENG 254G": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "254G",
+"subject": "CIVENG"
+},
+"CIVENG 256": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "256",
+"subject": "CIVENG"
+},
+"CIVENG 292B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.075,
+null,
+null
+],
+[
+1.0,
+0.101,
+null,
+null
+],
+[
+2.0,
+0.128,
+null,
+null
+],
+[
+3.0,
+0.17,
+null,
+null
+],
+[
+4.0,
+0.17,
+null,
+null
+],
+[
+5.0,
+0.233,
+null,
+null
+],
+[
+6.0,
+0.267,
+null,
+null
+],
+[
+7.0,
+0.322,
+null,
+null
+],
+[
+8.0,
+0.322,
+null,
+null
+],
+[
+9.0,
+0.342,
+null,
+null
+],
+[
+10.0,
+0.342,
+null,
+null
+],
+[
+12.0,
+0.342,
+null,
+null
+],
+[
+14.0,
+0.342,
+null,
+null
+],
+[
+16.0,
+0.342,
+null,
+null
+],
+[
+18.0,
+0.342,
+null,
+null
+],
+[
+18.43,
+0.342,
+null,
+null
+]
+],
+"events": 23,
+"median_days": null,
+"n": 85,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "292B",
+"subject": "CIVENG"
+},
+"CIVENG 293A": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "293A",
+"subject": "CIVENG"
+},
+"CIVENG 298": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "298",
+"subject": "CIVENG"
+},
+"CIVENG 60": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.166,
+null,
+null
+],
+[
+1.0,
+0.219,
+null,
+null
+],
+[
+2.0,
+0.297,
+null,
+null
+],
+[
+3.0,
+0.368,
+null,
+null
+],
+[
+4.0,
+0.414,
+null,
+null
+],
+[
+5.0,
+0.426,
+null,
+null
+],
+[
+6.0,
+0.463,
+null,
+null
+],
+[
+7.0,
+0.521,
+null,
+null
+],
+[
+8.0,
+0.534,
+null,
+null
+],
+[
+9.0,
+0.547,
+null,
+null
+],
+[
+10.0,
+0.594,
+null,
+null
+],
+[
+12.0,
+0.663,
+null,
+null
+],
+[
+14.0,
+0.671,
+null,
+null
+],
+[
+16.0,
+0.671,
+null,
+null
+],
+[
+18.0,
+0.671,
+null,
+null
+],
+[
+21.0,
+0.699,
+null,
+null
+],
+[
+24.0,
+0.714,
+null,
+null
+],
+[
+28.0,
+0.755,
+null,
+null
+],
+[
+30.81,
+0.755,
+null,
+null
+]
+],
+"events": 133,
+"median_days": 6.35,
+"n": 236,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.067,
+null,
+null
+],
+[
+9.0,
+0.067,
+null,
+null
+],
+[
+10.0,
+0.144,
+null,
+null
+],
+[
+12.0,
+0.144,
+null,
+null
+],
+[
+14.0,
+0.316,
+null,
+null
+],
+[
+16.0,
+0.316,
+null,
+null
+],
+[
+18.0,
+0.316,
+null,
+null
+],
+[
+21.0,
+0.316,
+null,
+null
+],
+[
+23.95,
+0.316,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 24.0,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "60",
+"subject": "CIVENG"
+},
+"CIVENG 70": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.21,
+null,
+null
+],
+[
+1.0,
+0.293,
+null,
+null
+],
+[
+2.0,
+0.384,
+null,
+null
+],
+[
+3.0,
+0.426,
+null,
+null
+],
+[
+4.0,
+0.439,
+null,
+null
+],
+[
+5.0,
+0.479,
+null,
+null
+],
+[
+6.0,
+0.514,
+null,
+null
+],
+[
+7.0,
+0.567,
+null,
+null
+],
+[
+8.0,
+0.62,
+null,
+null
+],
+[
+9.0,
+0.649,
+null,
+null
+],
+[
+10.0,
+0.673,
+null,
+null
+],
+[
+12.0,
+0.735,
+null,
+null
+],
+[
+14.0,
+0.735,
+null,
+null
+],
+[
+16.0,
+0.758,
+null,
+null
+],
+[
+18.0,
+0.769,
+null,
+null
+],
+[
+21.0,
+0.782,
+null,
+null
+],
+[
+24.0,
+0.8,
+null,
+null
+],
+[
+28.0,
+0.8,
+null,
+null
+],
+[
+30.81,
+0.8,
+null,
+null
+]
+],
+"events": 179,
+"median_days": 5.39,
+"n": 261,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+30.17,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 42,
+"pooled": false,
+"reach_days": 30.2,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "70",
+"subject": "CIVENG"
+},
+"CIVENG 93": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.284,
+null,
+null
+],
+[
+1.0,
+0.349,
+null,
+null
+],
+[
+2.0,
+0.453,
+null,
+null
+],
+[
+3.0,
+0.524,
+null,
+null
+],
+[
+4.0,
+0.569,
+null,
+null
+],
+[
+5.0,
+0.62,
+null,
+null
+],
+[
+6.0,
+0.642,
+null,
+null
+],
+[
+7.0,
+0.652,
+null,
+null
+],
+[
+8.0,
+0.662,
+null,
+null
+],
+[
+9.0,
+0.699,
+null,
+null
+],
+[
+10.0,
+0.725,
+null,
+null
+],
+[
+12.0,
+0.743,
+null,
+null
+],
+[
+14.0,
+0.759,
+null,
+null
+],
+[
+16.0,
+0.768,
+null,
+null
+],
+[
+18.0,
+0.778,
+null,
+null
+],
+[
+21.0,
+0.789,
+null,
+null
+],
+[
+24.0,
+0.84,
+null,
+null
+],
+[
+28.0,
+0.868,
+null,
+null
+],
+[
+30.81,
+0.868,
+null,
+null
+]
+],
+"events": 204,
+"median_days": 2.68,
+"n": 294,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.091,
+null,
+null
+],
+[
+1.0,
+0.156,
+null,
+null
+],
+[
+2.0,
+0.202,
+null,
+null
+],
+[
+3.0,
+0.273,
+null,
+null
+],
+[
+4.0,
+0.333,
+null,
+null
+],
+[
+5.0,
+0.351,
+null,
+null
+],
+[
+6.0,
+0.435,
+null,
+null
+],
+[
+7.0,
+0.493,
+null,
+null
+],
+[
+8.0,
+0.524,
+null,
+null
+],
+[
+9.0,
+0.578,
+null,
+null
+],
+[
+10.0,
+0.6,
+null,
+null
+],
+[
+12.0,
+0.6,
+null,
+null
+],
+[
+14.0,
+0.6,
+null,
+null
+],
+[
+16.0,
+0.6,
+null,
+null
+],
+[
+18.0,
+0.6,
+null,
+null
+],
+[
+21.0,
+0.6,
+null,
+null
+],
+[
+24.0,
+0.6,
+null,
+null
+],
+[
+28.0,
+0.656,
+null,
+null
+],
+[
+30.81,
+0.656,
+null,
+null
+]
+],
+"events": 73,
+"median_days": 7.77,
+"n": 144,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "93",
+"subject": "CIVENG"
+},
+"CIVENG C103N": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "C103N",
+"subject": "CIVENG"
+},
+"CIVENG C172": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "upper",
+"number": "C172",
+"subject": "CIVENG"
+},
+"CIVENG C231": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "C231",
+"subject": "CIVENG"
+},
+"CIVENG C290U": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "CIVENG",
+"sections_course": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "grad",
+"number": "C290U",
+"subject": "CIVENG"
+},
+"CIVENG C30": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.186,
+0.0,
+0.195
+],
+[
+1.0,
+0.217,
+0.0,
+0.228
+],
+[
+2.0,
+0.26,
+0.0,
+0.273
+],
+[
+3.0,
+0.323,
+0.0,
+0.339
+],
+[
+4.0,
+0.34,
+0.0,
+0.357
+],
+[
+5.0,
+0.348,
+0.0,
+0.365
+],
+[
+6.0,
+0.397,
+0.0,
+0.417
+],
+[
+7.0,
+0.431,
+0.0,
+0.453
+],
+[
+8.0,
+0.468,
+0.0,
+0.493
+],
+[
+9.0,
+0.518,
+0.0,
+0.546
+],
+[
+10.0,
+0.547,
+0.0,
+0.577
+],
+[
+12.0,
+0.571,
+0.0,
+0.604
+],
+[
+14.0,
+0.571,
+0.0,
+0.604
+],
+[
+16.0,
+0.571,
+0.0,
+0.604
+],
+[
+18.0,
+0.592,
+0.0,
+0.628
+],
+[
+21.0,
+0.592,
+0.0,
+0.628
+],
+[
+24.0,
+0.592,
+0.0,
+0.628
+],
+[
+28.0,
+0.592,
+0.0,
+0.628
+],
+[
+32.0,
+0.592,
+0.0,
+0.628
+],
+[
+36.0,
+0.592,
+0.0,
+0.628
+],
+[
+38.29,
+0.592,
+0.0,
+0.628
+]
+],
+"events": 168,
+"median_days": 8.8,
+"n": 374,
+"pooled": false,
+"reach_days": 38.3,
+"sections": 2
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.028,
+null,
+null
+],
+[
+1.0,
+0.028,
+null,
+null
+],
+[
+2.0,
+0.028,
+null,
+null
+],
+[
+3.0,
+0.036,
+null,
+null
+],
+[
+4.0,
+0.036,
+null,
+null
+],
+[
+5.0,
+0.036,
+null,
+null
+],
+[
+6.0,
+0.047,
+null,
+null
+],
+[
+7.0,
+0.047,
+null,
+null
+],
+[
+8.0,
+0.047,
+null,
+null
+],
+[
+9.0,
+0.047,
+null,
+null
+],
+[
+10.0,
+0.047,
+null,
+null
+],
+[
+12.0,
+0.047,
+null,
+null
+],
+[
+14.0,
+0.047,
+null,
+null
+],
+[
+16.0,
+0.047,
+null,
+null
+],
+[
+18.0,
+0.047,
+null,
+null
+],
+[
+21.0,
+0.047,
+null,
+null
+],
+[
+24.0,
+0.047,
+null,
+null
+],
+[
+28.0,
+0.047,
+null,
+null
+],
+[
+30.81,
+0.047,
+null,
+null
+]
+],
+"events": 6,
+"median_days": null,
+"n": 143,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "CIVENG",
+"level": "lower",
+"number": "C30",
+"subject": "CIVENG"
+}
+},
+"subject": "CIVENG",
+"term_id": "2268"
+}

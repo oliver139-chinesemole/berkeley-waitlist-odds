@@ -1,0 +1,1302 @@
+{
+"courses": {
+"MBN 10": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.443,
+null,
+null
+],
+[
+1.0,
+0.628,
+null,
+null
+],
+[
+2.0,
+0.814,
+null,
+null
+],
+[
+3.0,
+0.896,
+null,
+null
+],
+[
+4.0,
+0.959,
+null,
+null
+],
+[
+5.0,
+0.99,
+null,
+null
+],
+[
+5.94,
+1.0,
+null,
+null
+]
+],
+"events": 461,
+"median_days": 0.65,
+"n": 493,
+"pooled": false,
+"reach_days": 5.9,
+"sections": 1
+},
+"16-40": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.019,
+null,
+null
+],
+[
+1.0,
+0.077,
+null,
+null
+],
+[
+2.0,
+0.314,
+null,
+null
+],
+[
+3.0,
+0.397,
+null,
+null
+],
+[
+4.0,
+0.543,
+null,
+null
+],
+[
+5.0,
+0.702,
+null,
+null
+],
+[
+6.0,
+0.854,
+null,
+null
+],
+[
+7.0,
+0.924,
+null,
+null
+],
+[
+8.0,
+0.979,
+null,
+null
+],
+[
+9.0,
+0.993,
+null,
+null
+],
+[
+9.26,
+0.993,
+null,
+null
+]
+],
+"events": 146,
+"median_days": 3.79,
+"n": 162,
+"pooled": false,
+"reach_days": 9.3,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10",
+"subject": "MBN"
+},
+"MBN 103": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.051,
+null,
+null
+],
+[
+1.0,
+0.085,
+null,
+null
+],
+[
+2.0,
+0.103,
+null,
+null
+],
+[
+3.0,
+0.121,
+null,
+null
+],
+[
+4.0,
+0.121,
+null,
+null
+],
+[
+5.0,
+0.121,
+null,
+null
+],
+[
+6.0,
+0.121,
+null,
+null
+],
+[
+7.0,
+0.121,
+null,
+null
+],
+[
+8.0,
+0.121,
+null,
+null
+],
+[
+9.0,
+0.121,
+null,
+null
+],
+[
+10.0,
+0.121,
+null,
+null
+],
+[
+12.0,
+0.121,
+null,
+null
+],
+[
+14.0,
+0.121,
+null,
+null
+],
+[
+16.0,
+0.121,
+null,
+null
+],
+[
+18.0,
+0.121,
+null,
+null
+],
+[
+21.0,
+0.121,
+null,
+null
+],
+[
+24.0,
+0.121,
+null,
+null
+],
+[
+28.0,
+0.121,
+null,
+null
+],
+[
+32.0,
+0.121,
+null,
+null
+],
+[
+36.0,
+0.121,
+null,
+null
+],
+[
+42.0,
+0.121,
+null,
+null
+],
+[
+49.0,
+0.121,
+null,
+null
+],
+[
+56.0,
+0.121,
+null,
+null
+],
+[
+60.47,
+0.121,
+null,
+null
+]
+],
+"events": 7,
+"median_days": null,
+"n": 60,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "103",
+"subject": "MBN"
+},
+"MBN 108A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.224,
+null,
+null
+],
+[
+1.0,
+0.303,
+null,
+null
+],
+[
+2.0,
+0.498,
+null,
+null
+],
+[
+3.0,
+0.544,
+null,
+null
+],
+[
+4.0,
+0.593,
+null,
+null
+],
+[
+5.0,
+0.651,
+null,
+null
+],
+[
+6.0,
+0.709,
+null,
+null
+],
+[
+7.0,
+0.742,
+null,
+null
+],
+[
+8.0,
+0.806,
+null,
+null
+],
+[
+9.0,
+0.871,
+null,
+null
+],
+[
+10.0,
+0.871,
+null,
+null
+],
+[
+12.0,
+0.957,
+null,
+null
+],
+[
+12.41,
+1.0,
+null,
+null
+]
+],
+"events": 41,
+"median_days": 2.13,
+"n": 54,
+"pooled": false,
+"reach_days": 12.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "108A",
+"subject": "MBN"
+},
+"MBN 170": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.065,
+null,
+null
+],
+[
+1.0,
+0.072,
+null,
+null
+],
+[
+2.0,
+0.11,
+null,
+null
+],
+[
+3.0,
+0.118,
+null,
+null
+],
+[
+4.0,
+0.143,
+null,
+null
+],
+[
+5.0,
+0.17,
+null,
+null
+],
+[
+6.0,
+0.17,
+null,
+null
+],
+[
+7.0,
+0.188,
+null,
+null
+],
+[
+8.0,
+0.197,
+null,
+null
+],
+[
+9.0,
+0.207,
+null,
+null
+],
+[
+10.0,
+0.207,
+null,
+null
+],
+[
+12.0,
+0.228,
+null,
+null
+],
+[
+14.0,
+0.265,
+null,
+null
+],
+[
+16.0,
+0.265,
+null,
+null
+],
+[
+18.0,
+0.265,
+null,
+null
+],
+[
+21.0,
+0.265,
+null,
+null
+],
+[
+24.0,
+0.265,
+null,
+null
+],
+[
+28.0,
+0.265,
+null,
+null
+],
+[
+32.0,
+0.265,
+null,
+null
+],
+[
+36.0,
+0.265,
+null,
+null
+],
+[
+42.0,
+0.265,
+null,
+null
+],
+[
+49.0,
+0.265,
+null,
+null
+],
+[
+56.0,
+0.265,
+null,
+null
+],
+[
+60.47,
+0.265,
+null,
+null
+]
+],
+"events": 31,
+"median_days": null,
+"n": 140,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "170",
+"subject": "MBN"
+},
+"MBN 190": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.069,
+null,
+null
+],
+[
+1.0,
+0.098,
+null,
+null
+],
+[
+2.0,
+0.098,
+null,
+null
+],
+[
+3.0,
+0.102,
+null,
+null
+],
+[
+4.0,
+0.102,
+null,
+null
+],
+[
+5.0,
+0.107,
+null,
+null
+],
+[
+6.0,
+0.116,
+null,
+null
+],
+[
+7.0,
+0.116,
+null,
+null
+],
+[
+8.0,
+0.121,
+null,
+null
+],
+[
+9.0,
+0.127,
+null,
+null
+],
+[
+10.0,
+0.133,
+null,
+null
+],
+[
+12.0,
+0.133,
+null,
+null
+],
+[
+14.0,
+0.133,
+null,
+null
+],
+[
+16.0,
+0.133,
+null,
+null
+],
+[
+18.0,
+0.154,
+null,
+null
+],
+[
+21.0,
+0.166,
+null,
+null
+],
+[
+24.0,
+0.18,
+null,
+null
+],
+[
+28.0,
+0.18,
+null,
+null
+],
+[
+32.0,
+0.18,
+null,
+null
+],
+[
+36.0,
+0.18,
+null,
+null
+]
+],
+"events": 39,
+"median_days": null,
+"n": 293,
+"pooled": false,
+"reach_days": 36.0,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+36.17,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 49,
+"pooled": false,
+"reach_days": 36.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.011,
+null,
+null
+],
+[
+1.0,
+0.017,
+null,
+null
+],
+[
+2.0,
+0.017,
+null,
+null
+],
+[
+3.0,
+0.017,
+null,
+null
+],
+[
+4.0,
+0.017,
+null,
+null
+],
+[
+5.0,
+0.017,
+null,
+null
+],
+[
+6.0,
+0.017,
+null,
+null
+],
+[
+7.0,
+0.017,
+null,
+null
+],
+[
+8.0,
+0.017,
+null,
+null
+],
+[
+9.0,
+0.017,
+null,
+null
+],
+[
+10.0,
+0.017,
+null,
+null
+],
+[
+12.0,
+0.017,
+null,
+null
+],
+[
+14.0,
+0.017,
+null,
+null
+],
+[
+16.0,
+0.017,
+null,
+null
+],
+[
+18.0,
+0.017,
+null,
+null
+],
+[
+21.0,
+0.017,
+null,
+null
+],
+[
+24.0,
+0.017,
+null,
+null
+],
+[
+28.0,
+0.017,
+null,
+null
+],
+[
+32.0,
+0.017,
+null,
+null
+],
+[
+36.0,
+0.017,
+null,
+null
+],
+[
+36.17,
+0.017,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 186,
+"pooled": false,
+"reach_days": 36.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "MBN"
+},
+"MBN 20": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+60.47,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 62,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20",
+"subject": "MBN"
+},
+"MBN 208": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "208",
+"subject": "MBN"
+},
+"MBN 210": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210",
+"subject": "MBN"
+},
+"MBN 24": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.077,
+null,
+null
+],
+[
+1.0,
+0.161,
+null,
+null
+],
+[
+2.0,
+0.161,
+null,
+null
+],
+[
+3.0,
+0.307,
+null,
+null
+],
+[
+4.0,
+0.307,
+null,
+null
+],
+[
+5.0,
+0.307,
+null,
+null
+],
+[
+6.0,
+0.307,
+null,
+null
+],
+[
+7.0,
+0.307,
+null,
+null
+],
+[
+8.0,
+0.307,
+null,
+null
+],
+[
+9.0,
+0.307,
+null,
+null
+],
+[
+10.0,
+0.307,
+null,
+null
+],
+[
+12.0,
+0.307,
+null,
+null
+],
+[
+14.0,
+0.307,
+null,
+null
+],
+[
+16.0,
+0.307,
+null,
+null
+],
+[
+18.0,
+0.307,
+null,
+null
+],
+[
+18.21,
+0.307,
+null,
+null
+]
+],
+"events": 12,
+"median_days": null,
+"n": 52,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "MBN"
+},
+"MBN 245": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "245",
+"subject": "MBN"
+}
+},
+"subject": "MBN",
+"term_id": "2268"
+}

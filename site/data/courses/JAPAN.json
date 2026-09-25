@@ -1,0 +1,172 @@
+{
+"courses": {
+"JAPAN 10A": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10A",
+"subject": "JAPAN"
+},
+"JAPAN 155": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "155",
+"subject": "JAPAN"
+},
+"JAPAN 1A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.074,
+0.0,
+0.108
+],
+[
+1.0,
+0.074,
+0.0,
+0.108
+],
+[
+2.0,
+0.074,
+0.0,
+0.108
+],
+[
+3.0,
+0.074,
+0.0,
+0.108
+],
+[
+4.0,
+0.141,
+0.0,
+0.216
+],
+[
+5.0,
+0.141,
+0.0,
+0.216
+],
+[
+6.0,
+0.209,
+0.0,
+0.334
+],
+[
+7.0,
+0.209,
+0.0,
+0.334
+],
+[
+8.0,
+0.288,
+0.0,
+0.508
+],
+[
+9.0,
+0.288,
+0.0,
+0.508
+],
+[
+10.0,
+0.407,
+0.0,
+0.719
+],
+[
+12.0,
+0.407,
+0.0,
+0.719
+],
+[
+14.0,
+0.473,
+0.0,
+0.825
+],
+[
+16.0,
+0.473,
+0.0,
+0.825
+],
+[
+18.0,
+0.473,
+0.0,
+0.825
+],
+[
+18.38,
+0.473,
+0.0,
+0.825
+]
+],
+"events": 12,
+"median_days": null,
+"n": 41,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 5
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "JAPAN"
+},
+"JAPAN 7A": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "7A",
+"subject": "JAPAN"
+},
+"JAPAN C176": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C176",
+"subject": "JAPAN"
+}
+},
+"subject": "JAPAN",
+"term_id": "2268"
+}

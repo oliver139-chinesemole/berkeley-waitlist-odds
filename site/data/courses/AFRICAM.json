@@ -1,0 +1,1212 @@
+{
+"courses": {
+"AFRICAM 114": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "114",
+"subject": "AFRICAM"
+},
+"AFRICAM 136L": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "136L",
+"subject": "AFRICAM"
+},
+"AFRICAM 139": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.08,
+null,
+null
+],
+[
+1.0,
+0.131,
+null,
+null
+],
+[
+2.0,
+0.131,
+null,
+null
+],
+[
+3.0,
+0.158,
+null,
+null
+],
+[
+4.0,
+0.158,
+null,
+null
+],
+[
+5.0,
+0.19,
+null,
+null
+],
+[
+6.0,
+0.254,
+null,
+null
+],
+[
+7.0,
+0.254,
+null,
+null
+],
+[
+8.0,
+0.288,
+null,
+null
+],
+[
+9.0,
+0.288,
+null,
+null
+],
+[
+10.0,
+0.431,
+null,
+null
+],
+[
+12.0,
+0.431,
+null,
+null
+],
+[
+14.0,
+0.431,
+null,
+null
+],
+[
+16.0,
+0.431,
+null,
+null
+],
+[
+18.0,
+0.431,
+null,
+null
+],
+[
+21.0,
+0.431,
+null,
+null
+],
+[
+24.0,
+0.431,
+null,
+null
+],
+[
+28.0,
+0.431,
+null,
+null
+],
+[
+30.81,
+0.431,
+null,
+null
+]
+],
+"events": 15,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "139",
+"subject": "AFRICAM"
+},
+"AFRICAM 144": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.25,
+null,
+null
+],
+[
+1.0,
+0.25,
+null,
+null
+],
+[
+2.0,
+0.336,
+null,
+null
+],
+[
+3.0,
+0.358,
+null,
+null
+],
+[
+4.0,
+0.358,
+null,
+null
+],
+[
+5.0,
+0.416,
+null,
+null
+],
+[
+6.0,
+0.451,
+null,
+null
+],
+[
+7.0,
+0.577,
+null,
+null
+],
+[
+8.0,
+0.63,
+null,
+null
+],
+[
+9.0,
+0.63,
+null,
+null
+],
+[
+10.0,
+0.63,
+null,
+null
+],
+[
+12.0,
+0.691,
+null,
+null
+],
+[
+14.0,
+0.815,
+null,
+null
+],
+[
+16.0,
+0.938,
+null,
+null
+],
+[
+16.19,
+0.938,
+null,
+null
+]
+],
+"events": 29,
+"median_days": 6.13,
+"n": 48,
+"pooled": false,
+"reach_days": 16.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "144",
+"subject": "AFRICAM"
+},
+"AFRICAM 159": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "159",
+"subject": "AFRICAM"
+},
+"AFRICAM 194A": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "194A",
+"subject": "AFRICAM"
+},
+"AFRICAM 198BC": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "198BC",
+"subject": "AFRICAM"
+},
+"AFRICAM 240": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "240",
+"subject": "AFRICAM"
+},
+"AFRICAM 241": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "241",
+"subject": "AFRICAM"
+},
+"AFRICAM 27AC": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.175,
+null,
+null
+],
+[
+1.0,
+0.285,
+null,
+null
+],
+[
+2.0,
+0.4,
+null,
+null
+],
+[
+3.0,
+0.528,
+null,
+null
+],
+[
+4.0,
+0.703,
+null,
+null
+],
+[
+5.0,
+0.774,
+null,
+null
+],
+[
+6.0,
+0.851,
+null,
+null
+],
+[
+7.0,
+0.902,
+null,
+null
+],
+[
+8.0,
+0.935,
+null,
+null
+],
+[
+9.0,
+0.953,
+null,
+null
+],
+[
+10.0,
+0.988,
+null,
+null
+],
+[
+10.71,
+1.0,
+null,
+null
+]
+],
+"events": 245,
+"median_days": 2.75,
+"n": 327,
+"pooled": false,
+"reach_days": 10.7,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.024,
+null,
+null
+],
+[
+3.0,
+0.062,
+null,
+null
+],
+[
+4.0,
+0.062,
+null,
+null
+],
+[
+5.0,
+0.062,
+null,
+null
+],
+[
+6.0,
+0.062,
+null,
+null
+],
+[
+7.0,
+0.062,
+null,
+null
+],
+[
+8.0,
+0.062,
+null,
+null
+],
+[
+9.0,
+0.062,
+null,
+null
+],
+[
+10.0,
+0.062,
+null,
+null
+],
+[
+12.0,
+0.062,
+null,
+null
+],
+[
+14.0,
+0.062,
+null,
+null
+],
+[
+16.0,
+0.062,
+null,
+null
+],
+[
+18.0,
+0.062,
+null,
+null
+],
+[
+18.21,
+0.062,
+null,
+null
+]
+],
+"events": 5,
+"median_days": null,
+"n": 97,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.025,
+null,
+null
+],
+[
+1.0,
+0.057,
+null,
+null
+],
+[
+2.0,
+0.102,
+null,
+null
+],
+[
+3.0,
+0.114,
+null,
+null
+],
+[
+4.0,
+0.155,
+null,
+null
+],
+[
+5.0,
+0.199,
+null,
+null
+],
+[
+6.0,
+0.24,
+null,
+null
+],
+[
+7.0,
+0.321,
+null,
+null
+],
+[
+8.0,
+0.393,
+null,
+null
+],
+[
+9.0,
+0.434,
+null,
+null
+],
+[
+10.0,
+0.434,
+null,
+null
+],
+[
+12.0,
+0.539,
+null,
+null
+],
+[
+14.0,
+0.662,
+null,
+null
+],
+[
+16.0,
+0.662,
+null,
+null
+],
+[
+18.0,
+0.662,
+null,
+null
+],
+[
+18.21,
+0.662,
+null,
+null
+]
+],
+"events": 67,
+"median_days": 11.06,
+"n": 200,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "27AC",
+"subject": "AFRICAM"
+},
+"AFRICAM 5A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.084,
+null,
+null
+],
+[
+1.0,
+0.127,
+null,
+null
+],
+[
+2.0,
+0.16,
+null,
+null
+],
+[
+3.0,
+0.249,
+null,
+null
+],
+[
+4.0,
+0.323,
+null,
+null
+],
+[
+5.0,
+0.4,
+null,
+null
+],
+[
+6.0,
+0.469,
+null,
+null
+],
+[
+7.0,
+0.482,
+null,
+null
+],
+[
+8.0,
+0.582,
+null,
+null
+],
+[
+9.0,
+0.673,
+null,
+null
+],
+[
+10.0,
+0.777,
+null,
+null
+],
+[
+12.0,
+0.822,
+null,
+null
+],
+[
+14.0,
+0.822,
+null,
+null
+],
+[
+16.0,
+0.822,
+null,
+null
+],
+[
+18.0,
+0.822,
+null,
+null
+],
+[
+18.21,
+0.822,
+null,
+null
+]
+],
+"events": 133,
+"median_days": 7.05,
+"n": 242,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"16-40": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.009,
+null,
+null
+],
+[
+5.0,
+0.017,
+null,
+null
+],
+[
+6.0,
+0.026,
+null,
+null
+],
+[
+7.0,
+0.026,
+null,
+null
+],
+[
+8.0,
+0.075,
+null,
+null
+],
+[
+9.0,
+0.096,
+null,
+null
+],
+[
+10.0,
+0.172,
+null,
+null
+],
+[
+12.0,
+0.198,
+null,
+null
+],
+[
+14.0,
+0.198,
+null,
+null
+],
+[
+16.0,
+0.198,
+null,
+null
+],
+[
+18.0,
+0.198,
+null,
+null
+],
+[
+18.5,
+0.198,
+null,
+null
+]
+],
+"events": 18,
+"median_days": null,
+"n": 152,
+"pooled": false,
+"reach_days": 18.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "5A",
+"subject": "AFRICAM"
+},
+"AFRICAM 98BC": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.234,
+null,
+null
+],
+[
+1.0,
+0.34,
+null,
+null
+],
+[
+2.0,
+0.428,
+null,
+null
+],
+[
+3.0,
+0.476,
+null,
+null
+],
+[
+4.0,
+0.534,
+null,
+null
+],
+[
+5.0,
+0.64,
+null,
+null
+],
+[
+6.0,
+0.73,
+null,
+null
+],
+[
+7.0,
+0.73,
+null,
+null
+],
+[
+8.0,
+0.73,
+null,
+null
+],
+[
+9.0,
+0.73,
+null,
+null
+],
+[
+10.0,
+0.797,
+null,
+null
+],
+[
+12.0,
+0.865,
+null,
+null
+],
+[
+13.94,
+1.0,
+null,
+null
+]
+],
+"events": 33,
+"median_days": 3.22,
+"n": 47,
+"pooled": false,
+"reach_days": 13.9,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "98BC",
+"subject": "AFRICAM"
+},
+"AFRICAM C133A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+35.68,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 83,
+"pooled": false,
+"reach_days": 35.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C133A",
+"subject": "AFRICAM"
+},
+"AFRICAM R1B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.067,
+null,
+null
+],
+[
+1.0,
+0.093,
+null,
+null
+],
+[
+2.0,
+0.198,
+null,
+null
+],
+[
+3.0,
+0.198,
+null,
+null
+],
+[
+4.0,
+0.23,
+null,
+null
+],
+[
+5.0,
+0.413,
+null,
+null
+],
+[
+6.0,
+0.511,
+null,
+null
+],
+[
+7.0,
+0.511,
+null,
+null
+],
+[
+8.0,
+0.511,
+null,
+null
+],
+[
+9.0,
+0.511,
+null,
+null
+],
+[
+10.0,
+0.511,
+null,
+null
+],
+[
+12.0,
+0.651,
+null,
+null
+],
+[
+14.0,
+0.651,
+null,
+null
+],
+[
+16.0,
+0.651,
+null,
+null
+],
+[
+18.0,
+0.651,
+null,
+null
+],
+[
+18.59,
+0.651,
+null,
+null
+]
+],
+"events": 18,
+"median_days": 5.99,
+"n": 45,
+"pooled": false,
+"reach_days": 18.6,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1B",
+"subject": "AFRICAM"
+}
+},
+"subject": "AFRICAM",
+"term_id": "2268"
+}

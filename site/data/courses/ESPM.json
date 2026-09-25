@@ -1,0 +1,6395 @@
+{
+"courses": {
+"ESPM 100": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.174,
+null,
+null
+],
+[
+1.0,
+0.256,
+null,
+null
+],
+[
+2.0,
+0.319,
+null,
+null
+],
+[
+3.0,
+0.396,
+null,
+null
+],
+[
+4.0,
+0.444,
+null,
+null
+],
+[
+5.0,
+0.482,
+null,
+null
+],
+[
+6.0,
+0.557,
+null,
+null
+],
+[
+7.0,
+0.607,
+null,
+null
+],
+[
+8.0,
+0.685,
+null,
+null
+],
+[
+9.0,
+0.737,
+null,
+null
+],
+[
+10.0,
+0.759,
+null,
+null
+],
+[
+12.0,
+0.782,
+null,
+null
+],
+[
+14.0,
+0.854,
+null,
+null
+],
+[
+16.0,
+0.867,
+null,
+null
+],
+[
+18.0,
+0.879,
+null,
+null
+],
+[
+21.0,
+0.885,
+null,
+null
+],
+[
+24.0,
+0.896,
+null,
+null
+],
+[
+28.0,
+0.896,
+null,
+null
+],
+[
+30.81,
+0.896,
+null,
+null
+]
+],
+"events": 312,
+"median_days": 5.08,
+"n": 446,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.009,
+null,
+null
+],
+[
+1.0,
+0.028,
+null,
+null
+],
+[
+2.0,
+0.037,
+null,
+null
+],
+[
+3.0,
+0.048,
+null,
+null
+],
+[
+4.0,
+0.065,
+null,
+null
+],
+[
+5.0,
+0.065,
+null,
+null
+],
+[
+6.0,
+0.071,
+null,
+null
+],
+[
+7.0,
+0.078,
+null,
+null
+],
+[
+8.0,
+0.078,
+null,
+null
+],
+[
+9.0,
+0.093,
+null,
+null
+],
+[
+10.0,
+0.111,
+null,
+null
+],
+[
+12.0,
+0.188,
+null,
+null
+],
+[
+14.0,
+0.251,
+null,
+null
+],
+[
+16.0,
+0.307,
+null,
+null
+],
+[
+18.0,
+0.32,
+null,
+null
+],
+[
+21.0,
+0.32,
+null,
+null
+],
+[
+24.0,
+0.32,
+null,
+null
+],
+[
+28.0,
+0.32,
+null,
+null
+],
+[
+32.0,
+0.32,
+null,
+null
+],
+[
+34.96,
+0.32,
+null,
+null
+]
+],
+"events": 39,
+"median_days": null,
+"n": 225,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "100",
+"subject": "ESPM"
+},
+"ESPM 101A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.224,
+null,
+null
+],
+[
+1.0,
+0.287,
+null,
+null
+],
+[
+2.0,
+0.378,
+null,
+null
+],
+[
+3.0,
+0.43,
+null,
+null
+],
+[
+4.0,
+0.491,
+null,
+null
+],
+[
+5.0,
+0.509,
+null,
+null
+],
+[
+6.0,
+0.527,
+null,
+null
+],
+[
+7.0,
+0.574,
+null,
+null
+],
+[
+8.0,
+0.612,
+null,
+null
+],
+[
+9.0,
+0.617,
+null,
+null
+],
+[
+10.0,
+0.644,
+null,
+null
+],
+[
+12.0,
+0.695,
+null,
+null
+],
+[
+14.0,
+0.74,
+null,
+null
+],
+[
+16.0,
+0.753,
+null,
+null
+],
+[
+18.0,
+0.753,
+null,
+null
+],
+[
+21.0,
+0.753,
+null,
+null
+],
+[
+24.0,
+0.753,
+null,
+null
+],
+[
+28.0,
+0.753,
+null,
+null
+],
+[
+30.81,
+0.753,
+null,
+null
+]
+],
+"events": 202,
+"median_days": 4.12,
+"n": 340,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.213,
+null,
+null
+],
+[
+16.0,
+0.662,
+null,
+null
+],
+[
+18.0,
+0.831,
+null,
+null
+],
+[
+18.21,
+0.831,
+null,
+null
+]
+],
+"events": 7,
+"median_days": 15.45,
+"n": 40,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.035,
+null,
+null
+],
+[
+1.0,
+0.046,
+null,
+null
+],
+[
+2.0,
+0.089,
+null,
+null
+],
+[
+3.0,
+0.141,
+null,
+null
+],
+[
+4.0,
+0.185,
+null,
+null
+],
+[
+5.0,
+0.192,
+null,
+null
+],
+[
+6.0,
+0.213,
+null,
+null
+],
+[
+7.0,
+0.25,
+null,
+null
+],
+[
+8.0,
+0.304,
+null,
+null
+],
+[
+9.0,
+0.312,
+null,
+null
+],
+[
+10.0,
+0.369,
+null,
+null
+],
+[
+12.0,
+0.455,
+null,
+null
+],
+[
+14.0,
+0.585,
+null,
+null
+],
+[
+16.0,
+0.638,
+null,
+null
+],
+[
+18.0,
+0.638,
+null,
+null
+],
+[
+21.0,
+0.638,
+null,
+null
+],
+[
+24.0,
+0.638,
+null,
+null
+],
+[
+28.0,
+0.638,
+null,
+null
+],
+[
+30.84,
+0.638,
+null,
+null
+]
+],
+"events": 78,
+"median_days": 12.76,
+"n": 203,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "101A",
+"subject": "ESPM"
+},
+"ESPM 108A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.036,
+null,
+null
+],
+[
+1.0,
+0.036,
+null,
+null
+],
+[
+2.0,
+0.049,
+null,
+null
+],
+[
+3.0,
+0.064,
+null,
+null
+],
+[
+4.0,
+0.089,
+null,
+null
+],
+[
+5.0,
+0.089,
+null,
+null
+],
+[
+6.0,
+0.089,
+null,
+null
+],
+[
+7.0,
+0.089,
+null,
+null
+],
+[
+8.0,
+0.089,
+null,
+null
+],
+[
+9.0,
+0.089,
+null,
+null
+],
+[
+10.0,
+0.089,
+null,
+null
+],
+[
+12.0,
+0.105,
+null,
+null
+],
+[
+14.0,
+0.179,
+null,
+null
+],
+[
+16.0,
+0.179,
+null,
+null
+],
+[
+18.0,
+0.202,
+null,
+null
+],
+[
+21.0,
+0.202,
+null,
+null
+],
+[
+24.0,
+0.234,
+null,
+null
+],
+[
+28.0,
+0.437,
+null,
+null
+],
+[
+30.81,
+0.719,
+null,
+null
+]
+],
+"events": 27,
+"median_days": 28.83,
+"n": 169,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.21,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 38,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "108A",
+"subject": "ESPM"
+},
+"ESPM 116B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.182,
+null,
+null
+],
+[
+1.0,
+0.217,
+null,
+null
+],
+[
+2.0,
+0.31,
+null,
+null
+],
+[
+3.0,
+0.454,
+null,
+null
+],
+[
+4.0,
+0.536,
+null,
+null
+],
+[
+5.0,
+0.584,
+null,
+null
+],
+[
+6.0,
+0.602,
+null,
+null
+],
+[
+7.0,
+0.628,
+null,
+null
+],
+[
+8.0,
+0.674,
+null,
+null
+],
+[
+9.0,
+0.719,
+null,
+null
+],
+[
+10.0,
+0.755,
+null,
+null
+],
+[
+12.0,
+0.773,
+null,
+null
+],
+[
+14.0,
+0.79,
+null,
+null
+],
+[
+16.0,
+0.79,
+null,
+null
+],
+[
+18.0,
+0.79,
+null,
+null
+],
+[
+21.0,
+0.79,
+null,
+null
+],
+[
+24.0,
+0.79,
+null,
+null
+],
+[
+28.0,
+0.79,
+null,
+null
+],
+[
+30.81,
+0.79,
+null,
+null
+]
+],
+"events": 104,
+"median_days": 3.59,
+"n": 149,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "116B",
+"subject": "ESPM"
+},
+"ESPM 118": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.278,
+null,
+null
+],
+[
+1.0,
+0.332,
+null,
+null
+],
+[
+2.0,
+0.369,
+null,
+null
+],
+[
+3.0,
+0.426,
+null,
+null
+],
+[
+4.0,
+0.443,
+null,
+null
+],
+[
+5.0,
+0.466,
+null,
+null
+],
+[
+6.0,
+0.49,
+null,
+null
+],
+[
+7.0,
+0.495,
+null,
+null
+],
+[
+8.0,
+0.538,
+null,
+null
+],
+[
+9.0,
+0.554,
+null,
+null
+],
+[
+10.0,
+0.565,
+null,
+null
+],
+[
+12.0,
+0.572,
+null,
+null
+],
+[
+14.0,
+0.586,
+null,
+null
+],
+[
+16.0,
+0.602,
+null,
+null
+],
+[
+18.0,
+0.623,
+null,
+null
+],
+[
+21.0,
+0.685,
+null,
+null
+],
+[
+24.0,
+0.724,
+null,
+null
+],
+[
+28.0,
+0.724,
+null,
+null
+],
+[
+30.81,
+0.724,
+null,
+null
+]
+],
+"events": 158,
+"median_days": 7.04,
+"n": 290,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.057,
+null,
+null
+],
+[
+1.0,
+0.069,
+null,
+null
+],
+[
+2.0,
+0.081,
+null,
+null
+],
+[
+3.0,
+0.171,
+null,
+null
+],
+[
+4.0,
+0.213,
+null,
+null
+],
+[
+5.0,
+0.241,
+null,
+null
+],
+[
+6.0,
+0.241,
+null,
+null
+],
+[
+7.0,
+0.27,
+null,
+null
+],
+[
+8.0,
+0.27,
+null,
+null
+],
+[
+9.0,
+0.286,
+null,
+null
+],
+[
+10.0,
+0.302,
+null,
+null
+],
+[
+12.0,
+0.352,
+null,
+null
+],
+[
+14.0,
+0.352,
+null,
+null
+],
+[
+16.0,
+0.352,
+null,
+null
+],
+[
+18.0,
+0.352,
+null,
+null
+],
+[
+21.0,
+0.442,
+null,
+null
+],
+[
+24.0,
+0.442,
+null,
+null
+],
+[
+28.0,
+0.703,
+null,
+null
+],
+[
+31.75,
+0.703,
+null,
+null
+]
+],
+"events": 33,
+"median_days": 24.72,
+"n": 89,
+"pooled": false,
+"reach_days": 31.8,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "118",
+"subject": "ESPM"
+},
+"ESPM 132": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "132",
+"subject": "ESPM"
+},
+"ESPM 136": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.269,
+null,
+null
+],
+[
+1.0,
+0.358,
+null,
+null
+],
+[
+2.0,
+0.456,
+null,
+null
+],
+[
+3.0,
+0.555,
+null,
+null
+],
+[
+4.0,
+0.6,
+null,
+null
+],
+[
+5.0,
+0.615,
+null,
+null
+],
+[
+6.0,
+0.639,
+null,
+null
+],
+[
+7.0,
+0.652,
+null,
+null
+],
+[
+8.0,
+0.66,
+null,
+null
+],
+[
+9.0,
+0.674,
+null,
+null
+],
+[
+10.0,
+0.697,
+null,
+null
+],
+[
+12.0,
+0.738,
+null,
+null
+],
+[
+14.0,
+0.766,
+null,
+null
+],
+[
+16.0,
+0.78,
+null,
+null
+],
+[
+18.0,
+0.795,
+null,
+null
+],
+[
+21.0,
+0.846,
+null,
+null
+],
+[
+24.0,
+0.846,
+null,
+null
+],
+[
+28.0,
+0.846,
+null,
+null
+],
+[
+30.81,
+0.846,
+null,
+null
+]
+],
+"events": 261,
+"median_days": 2.28,
+"n": 385,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.019,
+null,
+null
+],
+[
+7.0,
+0.056,
+null,
+null
+],
+[
+8.0,
+0.074,
+null,
+null
+],
+[
+9.0,
+0.074,
+null,
+null
+],
+[
+10.0,
+0.074,
+null,
+null
+],
+[
+12.0,
+0.074,
+null,
+null
+],
+[
+14.0,
+0.074,
+null,
+null
+],
+[
+16.0,
+0.074,
+null,
+null
+],
+[
+18.0,
+0.074,
+null,
+null
+],
+[
+21.0,
+0.074,
+null,
+null
+],
+[
+24.0,
+0.074,
+null,
+null
+],
+[
+28.0,
+0.074,
+null,
+null
+],
+[
+30.81,
+0.074,
+null,
+null
+]
+],
+"events": 4,
+"median_days": null,
+"n": 81,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.025,
+null,
+null
+],
+[
+1.0,
+0.047,
+null,
+null
+],
+[
+2.0,
+0.065,
+null,
+null
+],
+[
+3.0,
+0.113,
+null,
+null
+],
+[
+4.0,
+0.183,
+null,
+null
+],
+[
+5.0,
+0.271,
+null,
+null
+],
+[
+6.0,
+0.308,
+null,
+null
+],
+[
+7.0,
+0.357,
+null,
+null
+],
+[
+8.0,
+0.363,
+null,
+null
+],
+[
+9.0,
+0.37,
+null,
+null
+],
+[
+10.0,
+0.37,
+null,
+null
+],
+[
+12.0,
+0.37,
+null,
+null
+],
+[
+14.0,
+0.378,
+null,
+null
+],
+[
+16.0,
+0.378,
+null,
+null
+],
+[
+18.0,
+0.378,
+null,
+null
+],
+[
+21.0,
+0.378,
+null,
+null
+],
+[
+24.0,
+0.459,
+null,
+null
+],
+[
+28.0,
+0.459,
+null,
+null
+],
+[
+32.0,
+0.459,
+null,
+null
+],
+[
+33.97,
+0.459,
+null,
+null
+]
+],
+"events": 75,
+"median_days": null,
+"n": 240,
+"pooled": false,
+"reach_days": 34.0,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "136",
+"subject": "ESPM"
+},
+"ESPM 137": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.302,
+null,
+null
+],
+[
+1.0,
+0.411,
+null,
+null
+],
+[
+2.0,
+0.51,
+null,
+null
+],
+[
+3.0,
+0.57,
+null,
+null
+],
+[
+4.0,
+0.622,
+null,
+null
+],
+[
+5.0,
+0.646,
+null,
+null
+],
+[
+6.0,
+0.658,
+null,
+null
+],
+[
+7.0,
+0.671,
+null,
+null
+],
+[
+8.0,
+0.697,
+null,
+null
+],
+[
+9.0,
+0.738,
+null,
+null
+],
+[
+10.0,
+0.766,
+null,
+null
+],
+[
+12.0,
+0.794,
+null,
+null
+],
+[
+14.0,
+0.807,
+null,
+null
+],
+[
+16.0,
+0.807,
+null,
+null
+],
+[
+18.0,
+0.807,
+null,
+null
+],
+[
+18.37,
+0.807,
+null,
+null
+]
+],
+"events": 86,
+"median_days": 1.81,
+"n": 124,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "137",
+"subject": "ESPM"
+},
+"ESPM 142": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "142",
+"subject": "ESPM"
+},
+"ESPM 15": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.361,
+null,
+null
+],
+[
+1.0,
+0.495,
+null,
+null
+],
+[
+2.0,
+0.621,
+null,
+null
+],
+[
+3.0,
+0.749,
+null,
+null
+],
+[
+4.0,
+0.82,
+null,
+null
+],
+[
+5.0,
+0.846,
+null,
+null
+],
+[
+6.0,
+0.869,
+null,
+null
+],
+[
+7.0,
+0.896,
+null,
+null
+],
+[
+8.0,
+0.909,
+null,
+null
+],
+[
+9.0,
+0.919,
+null,
+null
+],
+[
+10.0,
+0.919,
+null,
+null
+],
+[
+12.0,
+0.925,
+null,
+null
+],
+[
+14.0,
+0.925,
+null,
+null
+],
+[
+16.0,
+0.925,
+null,
+null
+],
+[
+18.0,
+0.925,
+null,
+null
+],
+[
+21.0,
+0.925,
+null,
+null
+],
+[
+24.0,
+0.925,
+null,
+null
+],
+[
+28.0,
+0.925,
+null,
+null
+],
+[
+30.81,
+0.925,
+null,
+null
+]
+],
+"events": 312,
+"median_days": 1.03,
+"n": 381,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.052,
+null,
+null
+],
+[
+1.0,
+0.089,
+null,
+null
+],
+[
+2.0,
+0.167,
+null,
+null
+],
+[
+3.0,
+0.33,
+null,
+null
+],
+[
+4.0,
+0.472,
+null,
+null
+],
+[
+5.0,
+0.675,
+null,
+null
+],
+[
+6.0,
+0.756,
+null,
+null
+],
+[
+7.0,
+0.919,
+null,
+null
+],
+[
+8.0,
+0.939,
+null,
+null
+],
+[
+9.0,
+0.98,
+null,
+null
+],
+[
+10.0,
+0.98,
+null,
+null
+],
+[
+10.19,
+1.0,
+null,
+null
+]
+],
+"events": 50,
+"median_days": 4.0,
+"n": 58,
+"pooled": false,
+"reach_days": 10.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.115,
+null,
+null
+],
+[
+1.0,
+0.199,
+null,
+null
+],
+[
+2.0,
+0.269,
+null,
+null
+],
+[
+3.0,
+0.406,
+null,
+null
+],
+[
+4.0,
+0.535,
+null,
+null
+],
+[
+5.0,
+0.638,
+null,
+null
+],
+[
+6.0,
+0.75,
+null,
+null
+],
+[
+7.0,
+0.897,
+null,
+null
+],
+[
+8.0,
+0.922,
+null,
+null
+],
+[
+9.0,
+0.974,
+null,
+null
+],
+[
+10.0,
+0.974,
+null,
+null
+],
+[
+10.19,
+1.0,
+null,
+null
+]
+],
+"events": 124,
+"median_days": 3.68,
+"n": 157,
+"pooled": false,
+"reach_days": 10.2,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "15",
+"subject": "ESPM"
+},
+"ESPM 154": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.191,
+null,
+null
+],
+[
+1.0,
+0.244,
+null,
+null
+],
+[
+2.0,
+0.371,
+null,
+null
+],
+[
+3.0,
+0.436,
+null,
+null
+],
+[
+4.0,
+0.45,
+null,
+null
+],
+[
+5.0,
+0.45,
+null,
+null
+],
+[
+6.0,
+0.496,
+null,
+null
+],
+[
+7.0,
+0.527,
+null,
+null
+],
+[
+8.0,
+0.527,
+null,
+null
+],
+[
+9.0,
+0.527,
+null,
+null
+],
+[
+10.0,
+0.527,
+null,
+null
+],
+[
+12.0,
+0.544,
+null,
+null
+],
+[
+14.0,
+0.563,
+null,
+null
+],
+[
+16.0,
+0.583,
+null,
+null
+],
+[
+18.0,
+0.608,
+null,
+null
+],
+[
+21.0,
+0.608,
+null,
+null
+],
+[
+24.0,
+0.608,
+null,
+null
+],
+[
+28.0,
+0.608,
+null,
+null
+],
+[
+32.0,
+0.608,
+null,
+null
+],
+[
+36.0,
+0.608,
+null,
+null
+],
+[
+38.0,
+0.608,
+null,
+null
+]
+],
+"events": 50,
+"median_days": 6.07,
+"n": 100,
+"pooled": false,
+"reach_days": 38.0,
+"sections": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "154",
+"subject": "ESPM"
+},
+"ESPM 157": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.28,
+null,
+null
+],
+[
+1.0,
+0.394,
+null,
+null
+],
+[
+2.0,
+0.424,
+null,
+null
+],
+[
+3.0,
+0.487,
+null,
+null
+],
+[
+4.0,
+0.531,
+null,
+null
+],
+[
+5.0,
+0.541,
+null,
+null
+],
+[
+6.0,
+0.55,
+null,
+null
+],
+[
+7.0,
+0.569,
+null,
+null
+],
+[
+8.0,
+0.588,
+null,
+null
+],
+[
+9.0,
+0.598,
+null,
+null
+],
+[
+10.0,
+0.624,
+null,
+null
+],
+[
+12.0,
+0.645,
+null,
+null
+],
+[
+14.0,
+0.657,
+null,
+null
+],
+[
+16.0,
+0.657,
+null,
+null
+],
+[
+18.0,
+0.666,
+null,
+null
+],
+[
+21.0,
+0.675,
+null,
+null
+],
+[
+24.0,
+0.688,
+null,
+null
+],
+[
+28.0,
+0.688,
+null,
+null
+],
+[
+32.0,
+0.688,
+null,
+null
+],
+[
+34.14,
+0.688,
+null,
+null
+]
+],
+"events": 173,
+"median_days": 3.39,
+"n": 292,
+"pooled": false,
+"reach_days": 34.1,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+34.99,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 33,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.052,
+null,
+null
+],
+[
+1.0,
+0.146,
+null,
+null
+],
+[
+2.0,
+0.21,
+null,
+null
+],
+[
+3.0,
+0.286,
+null,
+null
+],
+[
+4.0,
+0.303,
+null,
+null
+],
+[
+5.0,
+0.321,
+null,
+null
+],
+[
+6.0,
+0.349,
+null,
+null
+],
+[
+7.0,
+0.349,
+null,
+null
+],
+[
+8.0,
+0.349,
+null,
+null
+],
+[
+9.0,
+0.349,
+null,
+null
+],
+[
+10.0,
+0.349,
+null,
+null
+],
+[
+12.0,
+0.349,
+null,
+null
+],
+[
+14.0,
+0.359,
+null,
+null
+],
+[
+16.0,
+0.359,
+null,
+null
+],
+[
+18.0,
+0.359,
+null,
+null
+],
+[
+21.0,
+0.372,
+null,
+null
+],
+[
+24.0,
+0.372,
+null,
+null
+],
+[
+28.0,
+0.372,
+null,
+null
+],
+[
+32.0,
+0.372,
+null,
+null
+],
+[
+34.99,
+0.372,
+null,
+null
+]
+],
+"events": 45,
+"median_days": null,
+"n": 135,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "157",
+"subject": "ESPM"
+},
+"ESPM 160AC": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "160AC",
+"subject": "ESPM"
+},
+"ESPM 175A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+0.0,
+0.0
+],
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+2.0,
+0.0,
+0.0,
+0.0
+],
+[
+3.0,
+0.0,
+0.0,
+0.0
+],
+[
+4.0,
+0.0,
+0.0,
+0.0
+],
+[
+5.0,
+0.0,
+0.0,
+0.0
+],
+[
+6.0,
+0.0,
+0.0,
+0.0
+],
+[
+7.0,
+0.0,
+0.0,
+0.0
+],
+[
+8.0,
+0.0,
+0.0,
+0.0
+],
+[
+9.0,
+0.0,
+0.0,
+0.0
+],
+[
+10.0,
+0.0,
+0.0,
+0.0
+],
+[
+12.0,
+0.0,
+0.0,
+0.0
+],
+[
+14.0,
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+0.0,
+0.0,
+0.0
+],
+[
+18.0,
+0.0,
+0.0,
+0.0
+],
+[
+21.0,
+0.0,
+0.0,
+0.0
+],
+[
+24.0,
+0.0,
+0.0,
+0.0
+],
+[
+28.0,
+0.0,
+0.0,
+0.0
+],
+[
+32.0,
+0.0,
+0.0,
+0.0
+],
+[
+36.0,
+0.0,
+0.0,
+0.0
+],
+[
+42.0,
+0.0,
+0.0,
+0.0
+],
+[
+49.0,
+0.0,
+0.0,
+0.0
+],
+[
+56.0,
+0.0,
+0.0,
+0.0
+],
+[
+60.47,
+0.0,
+0.0,
+0.0
+]
+],
+"events": 0,
+"median_days": null,
+"n": 70,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 2
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "175A",
+"subject": "ESPM"
+},
+"ESPM 175L": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+60.47,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 59,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "175L",
+"subject": "ESPM"
+},
+"ESPM 182": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.147,
+null,
+null
+],
+[
+1.0,
+0.216,
+null,
+null
+],
+[
+2.0,
+0.316,
+null,
+null
+],
+[
+3.0,
+0.36,
+null,
+null
+],
+[
+4.0,
+0.367,
+null,
+null
+],
+[
+5.0,
+0.374,
+null,
+null
+],
+[
+6.0,
+0.389,
+null,
+null
+],
+[
+7.0,
+0.405,
+null,
+null
+],
+[
+8.0,
+0.405,
+null,
+null
+],
+[
+9.0,
+0.405,
+null,
+null
+],
+[
+10.0,
+0.415,
+null,
+null
+],
+[
+12.0,
+0.425,
+null,
+null
+],
+[
+14.0,
+0.425,
+null,
+null
+],
+[
+16.0,
+0.425,
+null,
+null
+],
+[
+18.0,
+0.425,
+null,
+null
+],
+[
+21.0,
+0.425,
+null,
+null
+],
+[
+24.0,
+0.425,
+null,
+null
+],
+[
+28.0,
+0.425,
+null,
+null
+],
+[
+31.23,
+0.425,
+null,
+null
+]
+],
+"events": 71,
+"median_days": null,
+"n": 184,
+"pooled": false,
+"reach_days": 31.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.051,
+null,
+null
+],
+[
+3.0,
+0.132,
+null,
+null
+],
+[
+4.0,
+0.159,
+null,
+null
+],
+[
+5.0,
+0.187,
+null,
+null
+],
+[
+6.0,
+0.187,
+null,
+null
+],
+[
+7.0,
+0.187,
+null,
+null
+],
+[
+8.0,
+0.187,
+null,
+null
+],
+[
+9.0,
+0.187,
+null,
+null
+],
+[
+10.0,
+0.187,
+null,
+null
+],
+[
+12.0,
+0.187,
+null,
+null
+],
+[
+14.0,
+0.187,
+null,
+null
+],
+[
+16.0,
+0.187,
+null,
+null
+],
+[
+18.0,
+0.187,
+null,
+null
+],
+[
+21.0,
+0.187,
+null,
+null
+],
+[
+24.0,
+0.187,
+null,
+null
+],
+[
+28.0,
+0.187,
+null,
+null
+],
+[
+30.81,
+0.187,
+null,
+null
+]
+],
+"events": 7,
+"median_days": null,
+"n": 41,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "182",
+"subject": "ESPM"
+},
+"ESPM 185": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.148,
+null,
+null
+],
+[
+1.0,
+0.212,
+null,
+null
+],
+[
+2.0,
+0.23,
+null,
+null
+],
+[
+3.0,
+0.23,
+null,
+null
+],
+[
+4.0,
+0.23,
+null,
+null
+],
+[
+5.0,
+0.23,
+null,
+null
+],
+[
+6.0,
+0.241,
+null,
+null
+],
+[
+7.0,
+0.252,
+null,
+null
+],
+[
+8.0,
+0.252,
+null,
+null
+],
+[
+9.0,
+0.33,
+null,
+null
+],
+[
+10.0,
+0.344,
+null,
+null
+],
+[
+12.0,
+0.419,
+null,
+null
+],
+[
+14.0,
+0.454,
+null,
+null
+],
+[
+16.0,
+0.475,
+null,
+null
+],
+[
+18.0,
+0.499,
+null,
+null
+],
+[
+21.0,
+0.527,
+null,
+null
+],
+[
+24.0,
+0.574,
+null,
+null
+],
+[
+28.0,
+0.574,
+null,
+null
+],
+[
+32.0,
+0.574,
+null,
+null
+],
+[
+34.11,
+0.574,
+null,
+null
+]
+],
+"events": 46,
+"median_days": 19.33,
+"n": 115,
+"pooled": false,
+"reach_days": 34.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 8,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "185",
+"subject": "ESPM"
+},
+"ESPM 194A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+60.47,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 44,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "194A",
+"subject": "ESPM"
+},
+"ESPM 2": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.209,
+null,
+null
+],
+[
+1.0,
+0.292,
+null,
+null
+],
+[
+2.0,
+0.415,
+null,
+null
+],
+[
+3.0,
+0.479,
+null,
+null
+],
+[
+4.0,
+0.546,
+null,
+null
+],
+[
+5.0,
+0.594,
+null,
+null
+],
+[
+6.0,
+0.635,
+null,
+null
+],
+[
+7.0,
+0.655,
+null,
+null
+],
+[
+8.0,
+0.672,
+null,
+null
+],
+[
+9.0,
+0.677,
+null,
+null
+],
+[
+10.0,
+0.691,
+null,
+null
+],
+[
+12.0,
+0.713,
+null,
+null
+],
+[
+14.0,
+0.713,
+null,
+null
+],
+[
+16.0,
+0.72,
+null,
+null
+],
+[
+18.0,
+0.72,
+null,
+null
+],
+[
+21.0,
+0.72,
+null,
+null
+],
+[
+24.0,
+0.72,
+null,
+null
+],
+[
+28.0,
+0.72,
+null,
+null
+],
+[
+30.81,
+0.72,
+null,
+null
+]
+],
+"events": 219,
+"median_days": 3.45,
+"n": 363,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.041,
+null,
+null
+],
+[
+1.0,
+0.041,
+null,
+null
+],
+[
+2.0,
+0.041,
+null,
+null
+],
+[
+3.0,
+0.075,
+null,
+null
+],
+[
+4.0,
+0.112,
+null,
+null
+],
+[
+5.0,
+0.153,
+null,
+null
+],
+[
+6.0,
+0.196,
+null,
+null
+],
+[
+7.0,
+0.349,
+null,
+null
+],
+[
+8.0,
+0.399,
+null,
+null
+],
+[
+9.0,
+0.453,
+null,
+null
+],
+[
+10.0,
+0.601,
+null,
+null
+],
+[
+12.0,
+0.701,
+null,
+null
+],
+[
+12.14,
+0.701,
+null,
+null
+]
+],
+"events": 28,
+"median_days": 9.69,
+"n": 74,
+"pooled": false,
+"reach_days": 12.1,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.055,
+null,
+null
+],
+[
+1.0,
+0.055,
+null,
+null
+],
+[
+2.0,
+0.084,
+null,
+null
+],
+[
+3.0,
+0.137,
+null,
+null
+],
+[
+4.0,
+0.213,
+null,
+null
+],
+[
+5.0,
+0.26,
+null,
+null
+],
+[
+6.0,
+0.338,
+null,
+null
+],
+[
+7.0,
+0.474,
+null,
+null
+],
+[
+8.0,
+0.516,
+null,
+null
+],
+[
+9.0,
+0.559,
+null,
+null
+],
+[
+10.0,
+0.634,
+null,
+null
+],
+[
+12.0,
+0.673,
+null,
+null
+],
+[
+14.0,
+0.673,
+null,
+null
+],
+[
+16.0,
+0.673,
+null,
+null
+],
+[
+18.0,
+0.673,
+null,
+null
+],
+[
+21.0,
+0.673,
+null,
+null
+],
+[
+24.0,
+0.673,
+null,
+null
+],
+[
+28.0,
+0.673,
+null,
+null
+],
+[
+30.81,
+0.673,
+null,
+null
+]
+],
+"events": 73,
+"median_days": 7.76,
+"n": 165,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "2",
+"subject": "ESPM"
+},
+"ESPM 201C": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "201C",
+"subject": "ESPM"
+},
+"ESPM 211A": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "211A",
+"subject": "ESPM"
+},
+"ESPM 215": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "215",
+"subject": "ESPM"
+},
+"ESPM 217": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "217",
+"subject": "ESPM"
+},
+"ESPM 226": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "226",
+"subject": "ESPM"
+},
+"ESPM 230": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "230",
+"subject": "ESPM"
+},
+"ESPM 231": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.15,
+null,
+null
+],
+[
+1.0,
+0.199,
+null,
+null
+],
+[
+2.0,
+0.266,
+null,
+null
+],
+[
+3.0,
+0.354,
+null,
+null
+],
+[
+4.0,
+0.399,
+null,
+null
+],
+[
+5.0,
+0.437,
+null,
+null
+],
+[
+6.0,
+0.467,
+null,
+null
+],
+[
+7.0,
+0.487,
+null,
+null
+],
+[
+8.0,
+0.539,
+null,
+null
+],
+[
+9.0,
+0.539,
+null,
+null
+],
+[
+10.0,
+0.539,
+null,
+null
+],
+[
+12.0,
+0.628,
+null,
+null
+],
+[
+14.0,
+0.697,
+null,
+null
+],
+[
+16.0,
+0.712,
+null,
+null
+],
+[
+18.0,
+0.743,
+null,
+null
+],
+[
+21.0,
+0.743,
+null,
+null
+],
+[
+24.0,
+0.743,
+null,
+null
+],
+[
+28.0,
+0.829,
+null,
+null
+],
+[
+30.81,
+0.886,
+null,
+null
+]
+],
+"events": 80,
+"median_days": 7.5,
+"n": 127,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "231",
+"subject": "ESPM"
+},
+"ESPM 244": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.196,
+null,
+null
+],
+[
+1.0,
+0.196,
+null,
+null
+],
+[
+2.0,
+0.196,
+null,
+null
+],
+[
+3.0,
+0.221,
+null,
+null
+],
+[
+4.0,
+0.221,
+null,
+null
+],
+[
+5.0,
+0.304,
+null,
+null
+],
+[
+6.0,
+0.304,
+null,
+null
+],
+[
+7.0,
+0.336,
+null,
+null
+],
+[
+8.0,
+0.431,
+null,
+null
+],
+[
+9.0,
+0.431,
+null,
+null
+],
+[
+10.0,
+0.431,
+null,
+null
+],
+[
+12.0,
+0.431,
+null,
+null
+],
+[
+14.0,
+0.431,
+null,
+null
+],
+[
+16.0,
+0.431,
+null,
+null
+],
+[
+18.0,
+0.431,
+null,
+null
+],
+[
+21.0,
+0.431,
+null,
+null
+],
+[
+24.0,
+0.431,
+null,
+null
+],
+[
+28.0,
+0.431,
+null,
+null
+],
+[
+30.81,
+0.431,
+null,
+null
+]
+],
+"events": 17,
+"median_days": null,
+"n": 46,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "244",
+"subject": "ESPM"
+},
+"ESPM 290": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.166,
+0.0,
+0.186
+],
+[
+1.0,
+0.211,
+0.0,
+0.238
+],
+[
+2.0,
+0.241,
+0.0,
+0.273
+],
+[
+3.0,
+0.289,
+0.0,
+0.328
+],
+[
+4.0,
+0.355,
+0.0,
+0.402
+],
+[
+5.0,
+0.406,
+0.0,
+0.46
+],
+[
+6.0,
+0.406,
+0.0,
+0.46
+],
+[
+7.0,
+0.443,
+0.0,
+0.503
+],
+[
+8.0,
+0.462,
+0.0,
+0.525
+],
+[
+9.0,
+0.462,
+0.0,
+0.525
+],
+[
+10.0,
+0.462,
+0.0,
+0.525
+],
+[
+12.0,
+0.507,
+0.0,
+0.525
+],
+[
+14.0,
+0.531,
+0.0,
+0.557
+],
+[
+16.0,
+0.563,
+0.0,
+0.67
+],
+[
+18.0,
+0.639,
+0.0,
+1.0
+],
+[
+21.0,
+0.639,
+0.0,
+1.0
+],
+[
+24.0,
+0.639,
+0.0,
+1.0
+],
+[
+28.0,
+0.784,
+0.0,
+1.0
+],
+[
+31.17,
+0.856,
+0.0,
+1.0
+]
+],
+"events": 39,
+"median_days": 11.68,
+"n": 73,
+"pooled": false,
+"reach_days": 31.2,
+"sections": 3
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "290",
+"subject": "ESPM"
+},
+"ESPM 42": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.156,
+null,
+null
+],
+[
+1.0,
+0.2,
+null,
+null
+],
+[
+2.0,
+0.359,
+null,
+null
+],
+[
+3.0,
+0.469,
+null,
+null
+],
+[
+4.0,
+0.585,
+null,
+null
+],
+[
+5.0,
+0.632,
+null,
+null
+],
+[
+6.0,
+0.653,
+null,
+null
+],
+[
+7.0,
+0.689,
+null,
+null
+],
+[
+8.0,
+0.733,
+null,
+null
+],
+[
+9.0,
+0.74,
+null,
+null
+],
+[
+10.0,
+0.74,
+null,
+null
+],
+[
+12.0,
+0.748,
+null,
+null
+],
+[
+14.0,
+0.748,
+null,
+null
+],
+[
+16.0,
+0.822,
+null,
+null
+],
+[
+18.0,
+0.882,
+null,
+null
+],
+[
+18.21,
+0.882,
+null,
+null
+]
+],
+"events": 131,
+"median_days": 3.29,
+"n": 189,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.017,
+null,
+null
+],
+[
+3.0,
+0.017,
+null,
+null
+],
+[
+4.0,
+0.035,
+null,
+null
+],
+[
+5.0,
+0.035,
+null,
+null
+],
+[
+6.0,
+0.127,
+null,
+null
+],
+[
+7.0,
+0.203,
+null,
+null
+],
+[
+8.0,
+0.229,
+null,
+null
+],
+[
+9.0,
+0.229,
+null,
+null
+],
+[
+10.0,
+0.229,
+null,
+null
+],
+[
+12.0,
+0.229,
+null,
+null
+],
+[
+14.0,
+0.229,
+null,
+null
+],
+[
+16.0,
+0.339,
+null,
+null
+],
+[
+18.0,
+0.421,
+null,
+null
+],
+[
+18.34,
+0.421,
+null,
+null
+]
+],
+"events": 13,
+"median_days": null,
+"n": 63,
+"pooled": false,
+"reach_days": 18.3,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "42",
+"subject": "ESPM"
+},
+"ESPM 50AC": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.157,
+null,
+null
+],
+[
+1.0,
+0.252,
+null,
+null
+],
+[
+2.0,
+0.402,
+null,
+null
+],
+[
+3.0,
+0.494,
+null,
+null
+],
+[
+4.0,
+0.572,
+null,
+null
+],
+[
+5.0,
+0.632,
+null,
+null
+],
+[
+6.0,
+0.68,
+null,
+null
+],
+[
+7.0,
+0.703,
+null,
+null
+],
+[
+8.0,
+0.72,
+null,
+null
+],
+[
+9.0,
+0.734,
+null,
+null
+],
+[
+10.0,
+0.742,
+null,
+null
+],
+[
+12.0,
+0.748,
+null,
+null
+],
+[
+14.0,
+0.759,
+null,
+null
+],
+[
+16.0,
+0.776,
+null,
+null
+],
+[
+18.0,
+0.784,
+null,
+null
+],
+[
+21.0,
+0.814,
+null,
+null
+],
+[
+24.0,
+0.85,
+null,
+null
+],
+[
+28.0,
+0.922,
+null,
+null
+],
+[
+30.81,
+0.93,
+null,
+null
+]
+],
+"events": 679,
+"median_days": 3.1,
+"n": 993,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.019,
+null,
+null
+],
+[
+1.0,
+0.033,
+null,
+null
+],
+[
+2.0,
+0.057,
+null,
+null
+],
+[
+3.0,
+0.057,
+null,
+null
+],
+[
+4.0,
+0.057,
+null,
+null
+],
+[
+5.0,
+0.057,
+null,
+null
+],
+[
+6.0,
+0.057,
+null,
+null
+],
+[
+7.0,
+0.057,
+null,
+null
+],
+[
+8.0,
+0.065,
+null,
+null
+],
+[
+9.0,
+0.073,
+null,
+null
+],
+[
+10.0,
+0.079,
+null,
+null
+],
+[
+12.0,
+0.096,
+null,
+null
+],
+[
+14.0,
+0.172,
+null,
+null
+],
+[
+16.0,
+0.232,
+null,
+null
+],
+[
+18.0,
+0.232,
+null,
+null
+],
+[
+21.0,
+0.232,
+null,
+null
+],
+[
+24.0,
+0.232,
+null,
+null
+],
+[
+28.0,
+0.232,
+null,
+null
+],
+[
+31.02,
+0.25,
+null,
+null
+]
+],
+"events": 83,
+"median_days": null,
+"n": 690,
+"pooled": false,
+"reach_days": 31.0,
+"sections": 1
+},
+"41+": {
+"curve": [
+[
+0.5,
+0.015,
+null,
+null
+],
+[
+1.0,
+0.026,
+null,
+null
+],
+[
+2.0,
+0.054,
+null,
+null
+],
+[
+3.0,
+0.059,
+null,
+null
+],
+[
+4.0,
+0.059,
+null,
+null
+],
+[
+5.0,
+0.059,
+null,
+null
+],
+[
+6.0,
+0.059,
+null,
+null
+],
+[
+7.0,
+0.059,
+null,
+null
+],
+[
+8.0,
+0.059,
+null,
+null
+],
+[
+9.0,
+0.059,
+null,
+null
+],
+[
+10.0,
+0.059,
+null,
+null
+],
+[
+12.0,
+0.059,
+null,
+null
+],
+[
+14.0,
+0.059,
+null,
+null
+],
+[
+16.0,
+0.059,
+null,
+null
+],
+[
+18.0,
+0.059,
+null,
+null
+],
+[
+21.0,
+0.059,
+null,
+null
+],
+[
+24.0,
+0.059,
+null,
+null
+],
+[
+28.0,
+0.059,
+null,
+null
+],
+[
+31.02,
+0.059,
+null,
+null
+]
+],
+"events": 22,
+"median_days": null,
+"n": 404,
+"pooled": false,
+"reach_days": 31.0,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.029,
+null,
+null
+],
+[
+1.0,
+0.056,
+null,
+null
+],
+[
+2.0,
+0.104,
+null,
+null
+],
+[
+3.0,
+0.123,
+null,
+null
+],
+[
+4.0,
+0.144,
+null,
+null
+],
+[
+5.0,
+0.166,
+null,
+null
+],
+[
+6.0,
+0.204,
+null,
+null
+],
+[
+7.0,
+0.25,
+null,
+null
+],
+[
+8.0,
+0.286,
+null,
+null
+],
+[
+9.0,
+0.32,
+null,
+null
+],
+[
+10.0,
+0.343,
+null,
+null
+],
+[
+12.0,
+0.423,
+null,
+null
+],
+[
+14.0,
+0.462,
+null,
+null
+],
+[
+16.0,
+0.469,
+null,
+null
+],
+[
+18.0,
+0.469,
+null,
+null
+],
+[
+21.0,
+0.469,
+null,
+null
+],
+[
+24.0,
+0.469,
+null,
+null
+],
+[
+28.0,
+0.469,
+null,
+null
+],
+[
+30.81,
+0.469,
+null,
+null
+]
+],
+"events": 221,
+"median_days": null,
+"n": 739,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "50AC",
+"subject": "ESPM"
+},
+"ESPM 90": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.196,
+null,
+null
+],
+[
+1.0,
+0.261,
+null,
+null
+],
+[
+2.0,
+0.326,
+null,
+null
+],
+[
+3.0,
+0.384,
+null,
+null
+],
+[
+4.0,
+0.493,
+null,
+null
+],
+[
+5.0,
+0.594,
+null,
+null
+],
+[
+6.0,
+0.628,
+null,
+null
+],
+[
+7.0,
+0.64,
+null,
+null
+],
+[
+8.0,
+0.696,
+null,
+null
+],
+[
+9.0,
+0.759,
+null,
+null
+],
+[
+10.0,
+0.796,
+null,
+null
+],
+[
+12.0,
+0.796,
+null,
+null
+],
+[
+14.0,
+0.823,
+null,
+null
+],
+[
+16.0,
+0.853,
+null,
+null
+],
+[
+18.0,
+0.874,
+null,
+null
+],
+[
+21.0,
+0.895,
+null,
+null
+],
+[
+24.0,
+0.921,
+null,
+null
+],
+[
+28.0,
+0.937,
+null,
+null
+],
+[
+30.81,
+0.937,
+null,
+null
+]
+],
+"events": 170,
+"median_days": 4.1,
+"n": 247,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "lower",
+"number": "90",
+"subject": "ESPM"
+},
+"ESPM C103": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.244,
+null,
+null
+],
+[
+1.0,
+0.332,
+null,
+null
+],
+[
+2.0,
+0.421,
+null,
+null
+],
+[
+3.0,
+0.465,
+null,
+null
+],
+[
+4.0,
+0.51,
+null,
+null
+],
+[
+5.0,
+0.542,
+null,
+null
+],
+[
+6.0,
+0.558,
+null,
+null
+],
+[
+7.0,
+0.576,
+null,
+null
+],
+[
+8.0,
+0.616,
+null,
+null
+],
+[
+9.0,
+0.638,
+null,
+null
+],
+[
+10.0,
+0.638,
+null,
+null
+],
+[
+12.0,
+0.665,
+null,
+null
+],
+[
+14.0,
+0.678,
+null,
+null
+],
+[
+16.0,
+0.686,
+null,
+null
+],
+[
+18.0,
+0.699,
+null,
+null
+],
+[
+21.0,
+0.712,
+null,
+null
+],
+[
+24.0,
+0.736,
+null,
+null
+],
+[
+28.0,
+0.736,
+null,
+null
+],
+[
+30.81,
+0.736,
+null,
+null
+]
+],
+"events": 196,
+"median_days": 3.79,
+"n": 322,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.008,
+null,
+null
+],
+[
+2.0,
+0.017,
+null,
+null
+],
+[
+3.0,
+0.086,
+null,
+null
+],
+[
+4.0,
+0.125,
+null,
+null
+],
+[
+5.0,
+0.187,
+null,
+null
+],
+[
+6.0,
+0.242,
+null,
+null
+],
+[
+7.0,
+0.277,
+null,
+null
+],
+[
+8.0,
+0.29,
+null,
+null
+],
+[
+9.0,
+0.29,
+null,
+null
+],
+[
+10.0,
+0.29,
+null,
+null
+],
+[
+12.0,
+0.29,
+null,
+null
+],
+[
+14.0,
+0.29,
+null,
+null
+],
+[
+16.0,
+0.315,
+null,
+null
+],
+[
+18.0,
+0.315,
+null,
+null
+],
+[
+21.0,
+0.315,
+null,
+null
+],
+[
+24.0,
+0.315,
+null,
+null
+],
+[
+28.0,
+0.315,
+null,
+null
+],
+[
+30.81,
+0.315,
+null,
+null
+]
+],
+"events": 30,
+"median_days": null,
+"n": 128,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C103",
+"subject": "ESPM"
+},
+"ESPM C104": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C104",
+"subject": "ESPM"
+},
+"ESPM C105": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.096,
+null,
+null
+],
+[
+1.0,
+0.123,
+null,
+null
+],
+[
+2.0,
+0.123,
+null,
+null
+],
+[
+3.0,
+0.123,
+null,
+null
+],
+[
+4.0,
+0.152,
+null,
+null
+],
+[
+5.0,
+0.183,
+null,
+null
+],
+[
+6.0,
+0.234,
+null,
+null
+],
+[
+7.0,
+0.234,
+null,
+null
+],
+[
+8.0,
+0.234,
+null,
+null
+],
+[
+9.0,
+0.284,
+null,
+null
+],
+[
+10.0,
+0.284,
+null,
+null
+],
+[
+12.0,
+0.298,
+null,
+null
+],
+[
+14.0,
+0.298,
+null,
+null
+],
+[
+16.0,
+0.298,
+null,
+null
+],
+[
+18.0,
+0.32,
+null,
+null
+],
+[
+21.0,
+0.345,
+null,
+null
+],
+[
+24.0,
+0.378,
+null,
+null
+],
+[
+28.0,
+0.378,
+null,
+null
+],
+[
+32.0,
+0.378,
+null,
+null
+],
+[
+36.0,
+0.378,
+null,
+null
+],
+[
+37.15,
+0.378,
+null,
+null
+]
+],
+"events": 33,
+"median_days": null,
+"n": 116,
+"pooled": false,
+"reach_days": 37.2,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C105",
+"subject": "ESPM"
+},
+"ESPM C110A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.266,
+null,
+null
+],
+[
+1.0,
+0.335,
+null,
+null
+],
+[
+2.0,
+0.42,
+null,
+null
+],
+[
+3.0,
+0.494,
+null,
+null
+],
+[
+4.0,
+0.532,
+null,
+null
+],
+[
+5.0,
+0.532,
+null,
+null
+],
+[
+6.0,
+0.538,
+null,
+null
+],
+[
+7.0,
+0.558,
+null,
+null
+],
+[
+8.0,
+0.565,
+null,
+null
+],
+[
+9.0,
+0.579,
+null,
+null
+],
+[
+10.0,
+0.579,
+null,
+null
+],
+[
+12.0,
+0.608,
+null,
+null
+],
+[
+14.0,
+0.616,
+null,
+null
+],
+[
+16.0,
+0.616,
+null,
+null
+],
+[
+18.0,
+0.616,
+null,
+null
+],
+[
+21.0,
+0.627,
+null,
+null
+],
+[
+24.0,
+0.639,
+null,
+null
+],
+[
+28.0,
+0.67,
+null,
+null
+],
+[
+32.0,
+0.71,
+null,
+null
+],
+[
+34.26,
+0.71,
+null,
+null
+]
+],
+"events": 133,
+"median_days": 3.13,
+"n": 228,
+"pooled": false,
+"reach_days": 34.3,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.02,
+null,
+null
+],
+[
+3.0,
+0.08,
+null,
+null
+],
+[
+4.0,
+0.167,
+null,
+null
+],
+[
+5.0,
+0.286,
+null,
+null
+],
+[
+6.0,
+0.476,
+null,
+null
+],
+[
+7.0,
+0.476,
+null,
+null
+],
+[
+8.0,
+0.476,
+null,
+null
+],
+[
+9.0,
+0.476,
+null,
+null
+],
+[
+10.0,
+0.476,
+null,
+null
+],
+[
+12.0,
+0.476,
+null,
+null
+],
+[
+14.0,
+0.476,
+null,
+null
+],
+[
+16.0,
+0.476,
+null,
+null
+],
+[
+18.0,
+0.476,
+null,
+null
+],
+[
+21.0,
+0.476,
+null,
+null
+],
+[
+24.0,
+0.476,
+null,
+null
+],
+[
+28.0,
+0.476,
+null,
+null
+],
+[
+32.0,
+0.476,
+null,
+null
+],
+[
+34.96,
+0.476,
+null,
+null
+]
+],
+"events": 21,
+"median_days": null,
+"n": 54,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C110A",
+"subject": "ESPM"
+},
+"ESPM C125": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.04,
+null,
+null
+],
+[
+1.0,
+0.04,
+null,
+null
+],
+[
+2.0,
+0.06,
+null,
+null
+],
+[
+3.0,
+0.127,
+null,
+null
+],
+[
+4.0,
+0.15,
+null,
+null
+],
+[
+5.0,
+0.15,
+null,
+null
+],
+[
+6.0,
+0.15,
+null,
+null
+],
+[
+7.0,
+0.15,
+null,
+null
+],
+[
+8.0,
+0.15,
+null,
+null
+],
+[
+9.0,
+0.179,
+null,
+null
+],
+[
+10.0,
+0.179,
+null,
+null
+],
+[
+12.0,
+0.179,
+null,
+null
+],
+[
+14.0,
+0.215,
+null,
+null
+],
+[
+16.0,
+0.253,
+null,
+null
+],
+[
+18.0,
+0.253,
+null,
+null
+],
+[
+21.0,
+0.306,
+null,
+null
+],
+[
+24.0,
+0.375,
+null,
+null
+],
+[
+28.0,
+0.453,
+null,
+null
+],
+[
+32.0,
+0.453,
+null,
+null
+],
+[
+34.29,
+0.453,
+null,
+null
+]
+],
+"events": 13,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 34.3,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C125",
+"subject": "ESPM"
+},
+"ESPM C126": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.267,
+null,
+null
+],
+[
+1.0,
+0.335,
+null,
+null
+],
+[
+2.0,
+0.476,
+null,
+null
+],
+[
+3.0,
+0.658,
+null,
+null
+],
+[
+4.0,
+0.729,
+null,
+null
+],
+[
+5.0,
+0.729,
+null,
+null
+],
+[
+6.0,
+0.76,
+null,
+null
+],
+[
+7.0,
+0.76,
+null,
+null
+],
+[
+8.0,
+0.76,
+null,
+null
+],
+[
+9.0,
+0.76,
+null,
+null
+],
+[
+10.0,
+0.76,
+null,
+null
+],
+[
+12.0,
+0.76,
+null,
+null
+],
+[
+14.0,
+0.76,
+null,
+null
+],
+[
+15.17,
+0.76,
+null,
+null
+]
+],
+"events": 76,
+"median_days": 2.05,
+"n": 118,
+"pooled": false,
+"reach_days": 15.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C126",
+"subject": "ESPM"
+},
+"ESPM C179A": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "C179A",
+"subject": "ESPM"
+},
+"ESPM C218": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.08,
+null,
+null
+],
+[
+1.0,
+0.101,
+null,
+null
+],
+[
+2.0,
+0.123,
+null,
+null
+],
+[
+3.0,
+0.123,
+null,
+null
+],
+[
+4.0,
+0.123,
+null,
+null
+],
+[
+5.0,
+0.149,
+null,
+null
+],
+[
+6.0,
+0.149,
+null,
+null
+],
+[
+7.0,
+0.149,
+null,
+null
+],
+[
+8.0,
+0.149,
+null,
+null
+],
+[
+9.0,
+0.149,
+null,
+null
+],
+[
+10.0,
+0.149,
+null,
+null
+],
+[
+12.0,
+0.149,
+null,
+null
+],
+[
+14.0,
+0.187,
+null,
+null
+],
+[
+16.0,
+0.187,
+null,
+null
+],
+[
+18.0,
+0.187,
+null,
+null
+],
+[
+21.0,
+0.187,
+null,
+null
+],
+[
+24.0,
+0.187,
+null,
+null
+],
+[
+28.0,
+0.187,
+null,
+null
+],
+[
+32.0,
+0.187,
+null,
+null
+],
+[
+36.0,
+0.187,
+null,
+null
+],
+[
+40.47,
+0.187,
+null,
+null
+]
+],
+"events": 8,
+"median_days": null,
+"n": 50,
+"pooled": false,
+"reach_days": 40.5,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "C218",
+"subject": "ESPM"
+},
+"ESPM C223": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "grad",
+"number": "C223",
+"subject": "ESPM"
+},
+"ESPM H175A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.444,
+null,
+null
+],
+[
+1.0,
+0.474,
+null,
+null
+],
+[
+2.0,
+0.536,
+null,
+null
+],
+[
+3.0,
+0.69,
+null,
+null
+],
+[
+4.0,
+0.69,
+null,
+null
+],
+[
+5.0,
+0.69,
+null,
+null
+],
+[
+6.0,
+0.814,
+null,
+null
+],
+[
+7.0,
+0.938,
+null,
+null
+],
+[
+8.0,
+0.938,
+null,
+null
+],
+[
+9.0,
+0.938,
+null,
+null
+],
+[
+9.19,
+1.0,
+null,
+null
+]
+],
+"events": 34,
+"median_days": 1.04,
+"n": 36,
+"pooled": false,
+"reach_days": 9.2,
+"sections": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "H175A",
+"subject": "ESPM"
+},
+"ESPM H175L": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "ESPM",
+"sections_course": 1
+}
+},
+"dept_group": "ESPM",
+"level": "upper",
+"number": "H175L",
+"subject": "ESPM"
+}
+},
+"subject": "ESPM",
+"term_id": "2268"
+}

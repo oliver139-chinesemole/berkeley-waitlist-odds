@@ -1,0 +1,1066 @@
+{
+"courses": {
+"SPANISH 100": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.092,
+0.0,
+0.102
+],
+[
+1.0,
+0.113,
+0.0,
+0.126
+],
+[
+2.0,
+0.165,
+0.0,
+0.184
+],
+[
+3.0,
+0.231,
+0.0,
+0.256
+],
+[
+4.0,
+0.3,
+0.0,
+0.332
+],
+[
+5.0,
+0.362,
+0.0,
+0.401
+],
+[
+6.0,
+0.4,
+0.0,
+0.444
+],
+[
+7.0,
+0.44,
+0.0,
+0.488
+],
+[
+8.0,
+0.454,
+0.0,
+0.502
+],
+[
+9.0,
+0.48,
+0.0,
+0.531
+],
+[
+10.0,
+0.48,
+0.0,
+0.531
+],
+[
+12.0,
+0.48,
+0.0,
+0.531
+],
+[
+14.0,
+0.48,
+0.0,
+0.531
+],
+[
+16.0,
+0.48,
+0.0,
+0.531
+],
+[
+18.0,
+0.48,
+0.0,
+0.531
+],
+[
+21.0,
+0.48,
+0.0,
+0.531
+],
+[
+24.0,
+0.48,
+0.0,
+0.531
+],
+[
+28.0,
+0.48,
+0.0,
+0.531
+],
+[
+30.81,
+0.48,
+0.0,
+0.531
+]
+],
+"events": 42,
+"median_days": null,
+"n": 99,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "SPANISH"
+},
+"SPANISH 102A": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102A",
+"subject": "SPANISH"
+},
+"SPANISH 104A": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "104A",
+"subject": "SPANISH"
+},
+"SPANISH 107B": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "107B",
+"subject": "SPANISH"
+},
+"SPANISH 135": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "135",
+"subject": "SPANISH"
+},
+"SPANISH 161": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.039,
+null,
+null
+],
+[
+1.0,
+0.039,
+null,
+null
+],
+[
+2.0,
+0.059,
+null,
+null
+],
+[
+3.0,
+0.059,
+null,
+null
+],
+[
+4.0,
+0.08,
+null,
+null
+],
+[
+5.0,
+0.08,
+null,
+null
+],
+[
+6.0,
+0.08,
+null,
+null
+],
+[
+7.0,
+0.08,
+null,
+null
+],
+[
+8.0,
+0.08,
+null,
+null
+],
+[
+9.0,
+0.08,
+null,
+null
+],
+[
+10.0,
+0.104,
+null,
+null
+],
+[
+12.0,
+0.104,
+null,
+null
+],
+[
+14.0,
+0.104,
+null,
+null
+],
+[
+16.0,
+0.104,
+null,
+null
+],
+[
+18.0,
+0.104,
+null,
+null
+],
+[
+21.0,
+0.104,
+null,
+null
+],
+[
+24.0,
+0.104,
+null,
+null
+],
+[
+28.0,
+0.104,
+null,
+null
+],
+[
+32.0,
+0.104,
+null,
+null
+],
+[
+33.97,
+0.104,
+null,
+null
+]
+],
+"events": 5,
+"median_days": null,
+"n": 52,
+"pooled": false,
+"reach_days": 34.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "161",
+"subject": "SPANISH"
+},
+"SPANISH 163": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.011,
+null,
+null
+],
+[
+1.0,
+0.011,
+null,
+null
+],
+[
+2.0,
+0.023,
+null,
+null
+],
+[
+3.0,
+0.023,
+null,
+null
+],
+[
+4.0,
+0.023,
+null,
+null
+],
+[
+5.0,
+0.023,
+null,
+null
+],
+[
+6.0,
+0.023,
+null,
+null
+],
+[
+7.0,
+0.023,
+null,
+null
+],
+[
+8.0,
+0.023,
+null,
+null
+],
+[
+9.0,
+0.023,
+null,
+null
+],
+[
+10.0,
+0.023,
+null,
+null
+],
+[
+12.0,
+0.023,
+null,
+null
+],
+[
+14.0,
+0.023,
+null,
+null
+],
+[
+16.0,
+0.023,
+null,
+null
+],
+[
+18.0,
+0.023,
+null,
+null
+],
+[
+21.0,
+0.023,
+null,
+null
+],
+[
+24.0,
+0.023,
+null,
+null
+],
+[
+28.0,
+0.023,
+null,
+null
+],
+[
+32.0,
+0.023,
+null,
+null
+],
+[
+32.98,
+0.023,
+null,
+null
+]
+],
+"events": 2,
+"median_days": null,
+"n": 90,
+"pooled": false,
+"reach_days": 33.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "163",
+"subject": "SPANISH"
+},
+"SPANISH 21": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.082,
+null,
+null
+],
+[
+1.0,
+0.116,
+null,
+null
+],
+[
+2.0,
+0.175,
+null,
+null
+],
+[
+3.0,
+0.175,
+null,
+null
+],
+[
+4.0,
+0.195,
+null,
+null
+],
+[
+5.0,
+0.264,
+null,
+null
+],
+[
+6.0,
+0.29,
+null,
+null
+],
+[
+7.0,
+0.29,
+null,
+null
+],
+[
+8.0,
+0.316,
+null,
+null
+],
+[
+9.0,
+0.347,
+null,
+null
+],
+[
+10.0,
+0.347,
+null,
+null
+],
+[
+12.0,
+0.347,
+null,
+null
+],
+[
+14.0,
+0.347,
+null,
+null
+],
+[
+16.0,
+0.347,
+null,
+null
+],
+[
+18.0,
+0.347,
+null,
+null
+],
+[
+18.41,
+0.347,
+null,
+null
+]
+],
+"events": 17,
+"median_days": null,
+"n": 62,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "21",
+"subject": "SPANISH"
+},
+"SPANISH 22": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.047,
+null,
+null
+],
+[
+1.0,
+0.047,
+null,
+null
+],
+[
+2.0,
+0.047,
+null,
+null
+],
+[
+3.0,
+0.047,
+null,
+null
+],
+[
+4.0,
+0.047,
+null,
+null
+],
+[
+5.0,
+0.047,
+null,
+null
+],
+[
+6.0,
+0.047,
+null,
+null
+],
+[
+7.0,
+0.093,
+null,
+null
+],
+[
+8.0,
+0.093,
+null,
+null
+],
+[
+9.0,
+0.093,
+null,
+null
+],
+[
+10.0,
+0.146,
+null,
+null
+],
+[
+12.0,
+0.266,
+null,
+null
+],
+[
+14.0,
+0.266,
+null,
+null
+],
+[
+16.0,
+0.266,
+null,
+null
+],
+[
+18.0,
+0.266,
+null,
+null
+],
+[
+18.43,
+0.266,
+null,
+null
+]
+],
+"events": 6,
+"median_days": null,
+"n": 44,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "22",
+"subject": "SPANISH"
+},
+"SPANISH 25": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.277,
+null,
+null
+],
+[
+1.0,
+0.377,
+null,
+null
+],
+[
+2.0,
+0.461,
+null,
+null
+],
+[
+3.0,
+0.473,
+null,
+null
+],
+[
+4.0,
+0.523,
+null,
+null
+],
+[
+5.0,
+0.587,
+null,
+null
+],
+[
+6.0,
+0.66,
+null,
+null
+],
+[
+7.0,
+0.668,
+null,
+null
+],
+[
+8.0,
+0.696,
+null,
+null
+],
+[
+9.0,
+0.696,
+null,
+null
+],
+[
+10.0,
+0.706,
+null,
+null
+],
+[
+12.0,
+0.725,
+null,
+null
+],
+[
+14.0,
+0.753,
+null,
+null
+],
+[
+16.0,
+0.784,
+null,
+null
+],
+[
+18.0,
+0.808,
+null,
+null
+],
+[
+21.0,
+0.808,
+null,
+null
+],
+[
+24.0,
+0.808,
+null,
+null
+],
+[
+25.51,
+0.808,
+null,
+null
+]
+],
+"events": 137,
+"median_days": 3.52,
+"n": 225,
+"pooled": false,
+"reach_days": 25.5,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.21,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "25",
+"subject": "SPANISH"
+},
+"SPANISH 280": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "280",
+"subject": "SPANISH"
+},
+"SPANISH 33": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "33",
+"subject": "SPANISH"
+},
+"SPANISH R1A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.021,
+0.0,
+0.062
+],
+[
+1.0,
+0.021,
+0.0,
+0.062
+],
+[
+2.0,
+0.021,
+0.0,
+0.062
+],
+[
+3.0,
+0.021,
+0.0,
+0.062
+],
+[
+4.0,
+0.021,
+0.0,
+0.062
+],
+[
+5.0,
+0.051,
+0.0,
+0.148
+],
+[
+6.0,
+0.083,
+0.0,
+0.242
+],
+[
+7.0,
+0.083,
+0.0,
+0.242
+],
+[
+8.0,
+0.116,
+0.0,
+0.337
+],
+[
+9.0,
+0.156,
+0.0,
+0.448
+],
+[
+10.0,
+0.156,
+0.0,
+0.448
+],
+[
+12.0,
+0.156,
+0.0,
+0.448
+],
+[
+14.0,
+0.156,
+0.0,
+0.448
+],
+[
+16.0,
+0.156,
+0.0,
+0.448
+],
+[
+18.0,
+0.156,
+0.0,
+0.448
+],
+[
+18.37,
+0.156,
+0.0,
+0.448
+]
+],
+"events": 5,
+"median_days": null,
+"n": 48,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 3
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1A",
+"subject": "SPANISH"
+}
+},
+"subject": "SPANISH",
+"term_id": "2268"
+}

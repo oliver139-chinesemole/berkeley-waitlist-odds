@@ -112,6 +112,14 @@ jobs:
           # so they show up in the Actions history; nothing is committed in either case.
           python -m scraper.fetch "${args[@]}" 2>&1 | tee fetch.log
 
+      - name: Write live/latest.json
+        # The last observation of every full or waitlisted section, for the site's
+        # live counts (docs/DESIGN_A6.md); lands in the same commit as the snapshot.
+        # continue-on-error: this file must never cost a collection run.
+        continue-on-error: true
+        shell: bash
+        run: python -m scraper.live --data-root data-branch --term "$TERM_NAME" --out data-branch/live/latest.json
+
       - name: Commit and push snapshot
         shell: bash
         working-directory: data-branch

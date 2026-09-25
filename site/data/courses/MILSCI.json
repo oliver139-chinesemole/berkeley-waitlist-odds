@@ -1,0 +1,32 @@
+{
+"courses": {
+"MILSCI 1": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "MILSCI"
+},
+"MILSCI 431": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "431",
+"subject": "MILSCI"
+}
+},
+"subject": "MILSCI",
+"term_id": "2268"
+}

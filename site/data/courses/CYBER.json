@@ -1,0 +1,476 @@
+{
+"courses": {
+"CYBER 200": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "CYBER"
+},
+"CYBER 201": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "201",
+"subject": "CYBER"
+},
+"CYBER 207": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.167,
+null,
+null
+],
+[
+1.0,
+0.167,
+null,
+null
+],
+[
+2.0,
+0.167,
+null,
+null
+],
+[
+3.0,
+0.167,
+null,
+null
+],
+[
+4.0,
+0.167,
+null,
+null
+],
+[
+5.0,
+0.167,
+null,
+null
+],
+[
+6.0,
+0.167,
+null,
+null
+],
+[
+7.0,
+0.306,
+null,
+null
+],
+[
+8.0,
+0.444,
+null,
+null
+],
+[
+9.0,
+0.583,
+null,
+null
+],
+[
+10.0,
+0.722,
+null,
+null
+],
+[
+10.63,
+1.0,
+null,
+null
+]
+],
+"events": 29,
+"median_days": 8.83,
+"n": 33,
+"pooled": false,
+"reach_days": 10.6,
+"sections": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "207",
+"subject": "CYBER"
+},
+"CYBER 210": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210",
+"subject": "CYBER"
+},
+"CYBER 211": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "211",
+"subject": "CYBER"
+},
+"CYBER 212": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.218,
+null,
+null
+],
+[
+1.0,
+0.218,
+null,
+null
+],
+[
+2.0,
+0.325,
+null,
+null
+],
+[
+3.0,
+0.325,
+null,
+null
+],
+[
+4.0,
+0.325,
+null,
+null
+],
+[
+5.0,
+0.325,
+null,
+null
+],
+[
+6.0,
+0.325,
+null,
+null
+],
+[
+7.0,
+0.505,
+null,
+null
+],
+[
+8.0,
+0.505,
+null,
+null
+],
+[
+9.0,
+0.505,
+null,
+null
+],
+[
+10.0,
+0.505,
+null,
+null
+],
+[
+12.0,
+0.865,
+null,
+null
+],
+[
+14.0,
+0.865,
+null,
+null
+],
+[
+16.0,
+0.865,
+null,
+null
+],
+[
+18.0,
+0.865,
+null,
+null
+],
+[
+18.56,
+0.865,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 6.49,
+"n": 39,
+"pooled": false,
+"reach_days": 18.6,
+"sections": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "212",
+"subject": "CYBER"
+},
+"CYBER 220": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.156,
+null,
+null
+],
+[
+1.0,
+0.212,
+null,
+null
+],
+[
+2.0,
+0.371,
+null,
+null
+],
+[
+3.0,
+0.404,
+null,
+null
+],
+[
+4.0,
+0.404,
+null,
+null
+],
+[
+5.0,
+0.404,
+null,
+null
+],
+[
+6.0,
+0.404,
+null,
+null
+],
+[
+7.0,
+0.503,
+null,
+null
+],
+[
+8.0,
+0.61,
+null,
+null
+],
+[
+9.0,
+0.61,
+null,
+null
+],
+[
+10.0,
+0.688,
+null,
+null
+],
+[
+11.44,
+0.955,
+null,
+null
+]
+],
+"events": 29,
+"median_days": 6.34,
+"n": 45,
+"pooled": false,
+"reach_days": 11.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "220",
+"subject": "CYBER"
+},
+"CYBER 252": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.211,
+null,
+null
+],
+[
+1.0,
+0.314,
+null,
+null
+],
+[
+2.0,
+0.384,
+null,
+null
+],
+[
+3.0,
+0.466,
+null,
+null
+],
+[
+4.0,
+0.548,
+null,
+null
+],
+[
+5.0,
+0.548,
+null,
+null
+],
+[
+6.0,
+0.548,
+null,
+null
+],
+[
+7.0,
+0.684,
+null,
+null
+],
+[
+8.0,
+0.774,
+null,
+null
+],
+[
+9.0,
+0.774,
+null,
+null
+],
+[
+10.0,
+0.774,
+null,
+null
+],
+[
+12.0,
+0.955,
+null,
+null
+],
+[
+14.0,
+0.955,
+null,
+null
+],
+[
+16.0,
+0.955,
+null,
+null
+],
+[
+18.0,
+0.955,
+null,
+null
+],
+[
+18.39,
+0.955,
+null,
+null
+]
+],
+"events": 26,
+"median_days": 3.5,
+"n": 38,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "252",
+"subject": "CYBER"
+}
+},
+"subject": "CYBER",
+"term_id": "2268"
+}

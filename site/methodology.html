@@ -3,59 +3,78 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Methodology · Berkeley Waitlist Odds</title>
-<style>
-  :root { --ink: #1c1c1e; --muted: #5b5b60; --line: #d9d9de; --paper: #ffffff; --bg: #f5f5f7; --accent: #003262; }
-  @media (prefers-color-scheme: dark) { :root { --ink: #ececf0; --muted: #a2a2aa; --line: #3a3a40; --paper: #1c1c1e; --bg: #101012; --accent: #7cb3e8; } }
-  body { margin: 0; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); }
-  header { background: var(--accent); color: #fff; padding: 1.25rem 1rem; }
-  header h1 { margin: 0; font-size: 1.4rem; }
-  main { max-width: 42rem; margin: 0 auto; padding: 1rem 1rem 3rem; background: var(--paper); }
-  h2 { font-size: 1.15rem; margin-top: 1.75rem; }
-  a { color: var(--accent); }
-  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
-  td, th { border-bottom: 1px solid var(--line); padding: .35rem .5rem; text-align: left; }
-  code { background: var(--bg); padding: .05rem .3rem; border-radius: 4px; font-size: .9em; }
-</style>
+<title>Methods · Berkeley Waitlist Odds</title>
+<meta name="description" content="Where the waitlist odds come from: the data, how counts become flows, how flows become clearing curves, how the estimates are tested, and what they cannot tell you.">
+<meta name="theme-color" content="#003262">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Methods · Berkeley Waitlist Odds">
+<meta property="og:description" content="How aggregate enrollment counts become clearing odds, and what they cannot see.">
+<meta property="og:image" content="https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<header><h1><a href="./" style="color:#fff;text-decoration:none">Berkeley Waitlist Odds</a> · Methodology</h1></header>
-<main>
-<p>This page explains where the numbers come from and what they cannot tell you. The full write-up with every assumption is in the repository: <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/blob/main/docs/ASSUMPTIONS.md">docs/ASSUMPTIONS.md</a>.</p>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="in">
+  <a class="brand" href="index.html">Berkeley Waitlist Odds</a>
+  <nav aria-label="Site"><a href="index.html">Lookup</a><a href="courses.html">Courses</a><a href="insights.html">Insights</a><a href="accuracy.html">Accuracy</a><a href="methodology.html" aria-current="page">Methods</a></nav>
+</div></header>
+<main id="main">
+<h1>How this works</h1>
+<p>This page explains where the numbers come from and what they cannot tell you. The full write-up with every assumption is in the repository: <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/blob/main/docs/ASSUMPTIONS.md">docs/ASSUMPTIONS.md</a>. How well the estimates held up is on the <a href="accuracy.html">accuracy</a> page.</p>
+<p id="data-status" class="muted small"></p>
 
-<h2>Data</h2>
-<p>Two sources, and the page says which one it is showing.</p>
-<p><strong>This project's own snapshots (Spring 2027).</strong> A scraper on GitHub Actions reads the public section pages of <a href="https://classes.berkeley.edu">classes.berkeley.edu</a>, which carry the enrolled count, capacity, waitlist count and waitlist capacity of every section, and stores one Parquet file per run on the repository's <code>data</code> branch. High-demand sections (a fixed priority list: computer science, data science, statistics, engineering, the large introductory courses in math, economics, physics, chemistry, biology, business and physical education, and the reading and composition courses) are read every 30 minutes; every other section is read about every six hours. Only pages the site's robots.txt allows are requested, at most two requests per second. Collection for Spring 2027 starts when Phase 1 opens on Oct 26, 2026.</p>
-<p><strong>Berkeleytime's public history (Fall 2026).</strong> Until Spring 2027 waitlists start clearing, the estimates come from the Fall 2026 enrollment cycle as recorded by <a href="https://berkeleytime.com">Berkeleytime</a>, which polls the same counts and serves each section's history through its public API. That history is the run-length form of Berkeleytime's poll (from March 22, 2026 to the end of the term; every 15 minutes from July, every 45 to 130 minutes in the spring); its own outages are treated as gaps, never as stillness, and the share of section-time lost per day is published in the analysis output. One of those outages matters here: Berkeleytime recorded nothing for any section from Aug 19 to Sep 1, 2026, which covers the end of the adjustment period and the first week of instruction. The Fall 2026 numbers therefore describe clearing during Phase 1 and Phase 2 and cannot say how waitlists moved in the first week of class; this project's own Spring 2027 collection is what closes that hole. These numbers are labelled <em>from Berkeleytime's public history</em> on the lookup page and are not part of this project's own collection.</p>
+<h2 id="data">Data</h2>
+<p>Two sources, and every page says which one it is showing.</p>
+<p><strong>This project's own snapshots (Spring 2027).</strong> A scraper on GitHub Actions reads the public section pages of <a href="https://classes.berkeley.edu">classes.berkeley.edu</a>, which carry the enrolled count, capacity, waitlist count and waitlist capacity of every section, and stores one Parquet file per run on the repository's <code>data</code> branch. High-demand sections (a priority list generated from the previous cycles' reconstructed waitlist joins) are read every 30 minutes; every other section is read about every six hours. Only pages the site's robots.txt allows are requested; the request rate is set in the scraper workflow and every change to it is dated in the project's <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/blob/main/docs/DATA_LOG.md">data log</a>. Collection for Spring 2027 starts when Phase 1 opens on Oct 26, 2026.</p>
+<p><strong>Berkeleytime's public history (Fall 2026).</strong> Until Spring 2027 waitlists start clearing, the estimates come from the Fall 2026 enrollment cycle as recorded by <a href="https://berkeleytime.com">Berkeleytime</a>, which polls the same counts and serves each section's history through its public API. That history is the run-length form of Berkeleytime's poll (from March 22, 2026 to the end of the term; every 15 minutes from July, every 45 to 130 minutes in the spring); its own outages are treated as gaps, never as stillness, and the share of section-time lost per day is published in the analysis output. One of those outages matters here: Berkeleytime recorded nothing for any section from Aug 19 to Sep 1, 2026, which covers the end of the adjustment period and the first week of instruction. The Fall 2026 numbers therefore describe clearing during Phase 1 and Phase 2 and cannot say how waitlists moved in the first week of class; this project's own Spring 2027 collection is what closes that hole. These numbers are labelled <em>from Berkeleytime's public history</em> on every page that shows them and are not part of this project's own collection.</p>
 <p>Neither source observes student identities or positions: the data are aggregate counts.</p>
 
-<h2>From counts to flows</h2>
+<h2 id="flows">From counts to flows</h2>
 <p>Between two readings of a section, the change in the enrolled and waitlisted counts is split into admits from the waitlist, joins, drops from the waitlist, direct enrolments and drops from enrolment, under the rule that a seat cannot go to a newcomer while someone is queued. Events that cancel within one interval are invisible, so every flow is a lower bound. On simulated waitlists sampled every 30 minutes the reconstruction recovers about 91% of admits and 96% of joins, and every interval containing a single event exactly.</p>
 
 <figure>
   <img src="figures/reconstruction_validation.png" alt="Two panels on simulated data: cumulative admits, true versus reconstructed, for one section; and true versus estimated hours to clear for simulated students" style="max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px">
-  <figcaption style="font-size:.9rem;color:var(--muted)">Simulated waitlists, not real data: what the reconstruction recovers when counts are sampled every 30 minutes.</figcaption>
+  <figcaption class="muted small">Simulated waitlists, not real data: what the reconstruction recovers when counts are sampled every 30 minutes. This is the only simulated figure on the site.</figcaption>
 </figure>
 
-<h2>From flows to odds</h2>
-<p>For each section and each sampled moment at which a waitlist could be joined (a queue exists, or the section is full), hypothetical students are placed at positions 1, 2, 3, 5, 7, 10, 15, 20, 30, 40, 60 and 100 of the queue as it stood then. Each moves up by one place per admit ahead of them; a waitlist drop moves them up with the probability that the dropped student was ahead (the "central" scenario; the analysis also computes the best and worst cases, in which every drop was ahead or behind). The time until the hypothetical student reaches the front is the outcome; if the data ends, the section vanishes, or a collection gap intervenes first, the outcome is censored, which survival analysis handles correctly.</p>
-<p>The headline number is the Kaplan-Meier estimate of having cleared within the time you have left: the page counts the days from today to the last automatic waitlist run of the term and reads the curve for your course and position there, with a 95% interval from resampling sections. A second line gives the share cleared by the first day of instruction, because most clearing happens after classes begin. The curve is the course's own when it has at least 30 cases at that position; otherwise it is the department's, or all courses', and labelled as pooled. That order is what the cross-term test supports: models fitted on Spring 2026 and scored on Fall 2026 predicted better with the course's curve than with the department's (Brier gain +0.010 over the position bucket alone at 14 days, against +0.005 for the department), while within a single term the speed-up between Phase 1 and Phase 2 makes any finer curve look worse than the bucket. When your horizon is longer than the data followed anyone, the page says so and shows the value it can support as a floor. A Cox proportional-hazards model relates the clearing rate to position, list length relative to capacity, course level, department, enrollment phase and days remaining before instruction; its assumptions are checked and reported in the analysis output, and it is not used for the page because it ranks well but is poorly calibrated across phases and terms.</p>
+<h2 id="odds">From flows to odds</h2>
+<p>For each section and each sampled moment at which a waitlist could be joined (a queue exists, or the section is full), hypothetical students are placed at positions 1 to 100 of the queue as it stood then. Each moves up by one place per admit ahead of them; a waitlist drop moves them up with the probability that the dropped student was ahead (the "central" scenario; the analysis also computes the best and worst cases, in which every drop was ahead or behind). The time until the hypothetical student reaches the front is the outcome; if the data ends, the section vanishes, or a collection gap intervenes first, the outcome is censored, which survival analysis handles correctly.</p>
+<p><strong>"Got in" and "cleared" mean the same thing here:</strong> the hypothetical student reached the front of the queue and a seat went to that position. The pages say <em>got in</em>; the analysis code and reports say <em>cleared</em>. Neither means the student's enrollment went through: a time conflict, a unit cap or a full discussion section can still block it.</p>
+<p>The headline number is the Kaplan-Meier estimate of having got in within the time you have left: the page counts the days from today to the last automatic waitlist run of the term and reads the curve for your course and position there, with a 95% interval from resampling sections. The by-when table reads the same curve at 7 and 14 days and at the first day of instruction. The curve is the course's own for that position bucket when the course has at least 30 cases; otherwise the department's, otherwise all courses', and the page labels the fallback as pooled. That rule comes from the backtests: within Fall 2026, curves fitted per course predicted later joiners no better than the position bucket alone, because clearing sped up for everyone once Phase 2 opened; across whole cycles (fit on Spring 2026, scored on Fall 2026) course identity transferred, and the course curve beat the position bucket at 14 days, 28 days and the last automatic run (the <a href="accuracy.html">accuracy</a> page has the scores). when your horizon is longer than the data followed anyone, the page says so and shows the value it can support as a floor. The verdict words (Likely, Could go either way, Unlikely, Too little data to call) are fixed cut-offs printed next to every verdict, not a model. A Cox proportional-hazards model relates the clearing rate to position, list length relative to capacity, course level, department, enrollment phase and days remaining before instruction; its assumptions are checked and reported in the analysis output, and it is not used for any number on the pages.</p>
 
-<h2>How the estimates are tested</h2>
-<p>The model is frozen on one set of hypothetical joiners and scored on another it has not seen: joiners after a date against joiners before it (with the earlier joiners' outcomes cut off at that date, so nothing later leaks in), courses held out as a group, and, once two cycles exist, one term against the next. Every test row is scored at its own horizon with inverse-probability-of-censoring weights, so joiners whose outcome was still unknown at that horizon are neither dropped (which would keep the fast clearings and lose the slow ones) nor counted as failures. The reports compare four predictors: the position bucket alone, the course-and-bucket curve this page uses, the literal number this page would have shown, and the Cox model; they are in <code>reports/backtest_&lt;term&gt;/</code> in the repository.</p>
+<h2 id="tested">How the estimates are tested</h2>
+<p>The model is frozen on one set of hypothetical joiners and scored on another it has not seen: joiners after a date against joiners before it (with the earlier joiners' outcomes cut off at that date, so nothing later leaks in), courses held out as a group, and, once two cycles exist, one term against the next. Every test row is scored at its own horizon with inverse-probability-of-censoring weights, so joiners whose outcome was still unknown at that horizon are neither dropped (which would keep the fast clearings and lose the slow ones) nor counted as failures. The reports compare four predictors: the position bucket alone, the course-and-bucket curve the pages use, the literal number the first version of the lookup showed, and the Cox model; they are in <code>reports/backtest_&lt;term&gt;/</code> in the repository and summarised on the <a href="accuracy.html">accuracy</a> page, which also states what will be scored on Spring 2027 before that data exists.</p>
 
-<h2>What this cannot tell you</h2>
+<h2 id="cannot">What this cannot tell you</h2>
 <ul>
   <li>Reserved seats break strict queue order: a section can hold seats for a category you are not in, and its waitlist can stand still while seats are open.</li>
+  <li>Time conflicts, unit caps and full discussion or lab sections can stop an enrollment that the queue would otherwise have allowed; the counts do not see them.</li>
   <li>Departments process some waitlists by hand and the registrar runs the automatic process in batches, so time to clear includes processing delay.</li>
   <li>Estimates describe one past cycle. Policies, capacities and demand change between terms; the Fall 2026 numbers stand in for Spring 2027 until this project's own data exist.</li>
   <li>Small courses give noisy numbers; the sample size and the interval are printed with every estimate for that reason.</li>
 </ul>
 
-<h2>Reproducing the numbers</h2>
-<p>Everything is public: the scraper, the snapshots, the reconstruction, the models and this page. <code>make analysis TERM=2272</code> in the repository rebuilds every table, figure and the JSON behind this page from the raw Parquet files; <code>make backfill-analysis TERM=2268</code> does the same from the Fall 2026 history, and <code>make backtest</code> writes the test reports. The claims and the commands that verify them are in <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/blob/main/CLAIMS.md">CLAIMS.md</a>.</p>
-
-<p><a href="./">Back to the lookup</a></p>
+<h2 id="reproduce">Reproducing the numbers</h2>
+<p>Everything is public: the scraper, the snapshots, the reconstruction, the models and these pages. <code>make analysis TERM=2272</code> in the repository rebuilds every table, figure and the JSON behind the pages from the raw Parquet files; <code>make backfill-analysis TERM=2268</code> does the same from the Fall 2026 history, <code>make backtest</code> writes the test reports and <code>make site-data</code> rewrites the site's files from a saved cohort. The pages compute nothing: they read curves at a day and print what they find. The claims and the commands that verify them are in <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/blob/main/CLAIMS.md">CLAIMS.md</a>.</p>
 </main>
+<footer>
+  <p><a href="index.html">Back to the lookup</a> · <a href="about.html">About</a> · <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds">Source and data</a></p>
+  <p id="stamp"></p>
+</footer>
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  const { $, esc, num } = BWO;
+  async function main() {
+    const r = await BWO.load([]);
+    if (r.state !== "ready") return;
+    const m = r.meta;
+    $("data-status").innerHTML = `Showing: <strong>${esc(m.term_name)}</strong>, ${m.data_source === "berkeleytime_history" ? "from Berkeleytime's public history" : "this project's own snapshots"}; ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners, ${esc(num(m.events))} of whom got in. Horizons on the pages count down to ${esc(m.forecast_term_name || m.term_name)}'s dates.`;
+    BWO.setStamp(m, BWO.today());
+  }
+  main();
+})();
+</script>
 </body>
 </html>

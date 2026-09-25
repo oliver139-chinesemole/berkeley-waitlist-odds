@@ -1,0 +1,340 @@
+{
+"courses": {
+"KOREAN 10A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.215,
+null,
+null
+],
+[
+1.0,
+0.313,
+null,
+null
+],
+[
+2.0,
+0.444,
+null,
+null
+],
+[
+3.0,
+0.444,
+null,
+null
+],
+[
+4.0,
+0.444,
+null,
+null
+],
+[
+5.0,
+0.583,
+null,
+null
+],
+[
+6.0,
+0.815,
+null,
+null
+],
+[
+7.0,
+0.815,
+null,
+null
+],
+[
+8.0,
+0.907,
+null,
+null
+],
+[
+9.0,
+0.907,
+null,
+null
+],
+[
+10.0,
+0.954,
+null,
+null
+],
+[
+10.83,
+0.954,
+null,
+null
+]
+],
+"events": 26,
+"median_days": 4.2,
+"n": 33,
+"pooled": false,
+"reach_days": 10.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10A",
+"subject": "KOREAN"
+},
+"KOREAN 10AX": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10AX",
+"subject": "KOREAN"
+},
+"KOREAN 186": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "186",
+"subject": "KOREAN"
+},
+"KOREAN 189": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.073,
+null,
+null
+],
+[
+1.0,
+0.073,
+null,
+null
+],
+[
+2.0,
+0.073,
+null,
+null
+],
+[
+3.0,
+0.073,
+null,
+null
+],
+[
+4.0,
+0.073,
+null,
+null
+],
+[
+5.0,
+0.279,
+null,
+null
+],
+[
+6.0,
+0.317,
+null,
+null
+],
+[
+7.0,
+0.431,
+null,
+null
+],
+[
+8.0,
+0.431,
+null,
+null
+],
+[
+9.0,
+0.431,
+null,
+null
+],
+[
+10.0,
+0.431,
+null,
+null
+],
+[
+12.0,
+0.573,
+null,
+null
+],
+[
+14.0,
+0.744,
+null,
+null
+],
+[
+16.0,
+0.744,
+null,
+null
+],
+[
+18.0,
+0.744,
+null,
+null
+],
+[
+18.21,
+0.744,
+null,
+null
+]
+],
+"events": 17,
+"median_days": 10.67,
+"n": 41,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "189",
+"subject": "KOREAN"
+},
+"KOREAN 1A": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1A",
+"subject": "KOREAN"
+},
+"KOREAN 1AX": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1AX",
+"subject": "KOREAN"
+},
+"KOREAN 7A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.422,
+null,
+null
+],
+[
+1.0,
+0.578,
+null,
+null
+],
+[
+2.0,
+0.647,
+null,
+null
+],
+[
+3.0,
+0.723,
+null,
+null
+],
+[
+4.0,
+0.83,
+null,
+null
+],
+[
+5.0,
+0.915,
+null,
+null
+],
+[
+6.0,
+0.915,
+null,
+null
+],
+[
+7.0,
+0.958,
+null,
+null
+],
+[
+8.0,
+0.958,
+null,
+null
+],
+[
+8.49,
+1.0,
+null,
+null
+]
+],
+"events": 41,
+"median_days": 0.87,
+"n": 45,
+"pooled": false,
+"reach_days": 8.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "7A",
+"subject": "KOREAN"
+}
+},
+"subject": "KOREAN",
+"term_id": "2268"
+}

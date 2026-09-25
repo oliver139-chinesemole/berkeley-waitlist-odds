@@ -1,0 +1,19 @@
+{
+"courses": {
+"CELTIC 16": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "16",
+"subject": "CELTIC"
+}
+},
+"subject": "CELTIC",
+"term_id": "2268"
+}

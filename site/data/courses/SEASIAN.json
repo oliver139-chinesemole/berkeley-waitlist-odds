@@ -1,0 +1,260 @@
+{
+"courses": {
+"SEASIAN 101A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.262,
+null,
+null
+],
+[
+1.0,
+0.284,
+null,
+null
+],
+[
+2.0,
+0.447,
+null,
+null
+],
+[
+3.0,
+0.472,
+null,
+null
+],
+[
+4.0,
+0.472,
+null,
+null
+],
+[
+5.0,
+0.472,
+null,
+null
+],
+[
+6.0,
+0.472,
+null,
+null
+],
+[
+7.0,
+0.472,
+null,
+null
+],
+[
+8.0,
+0.472,
+null,
+null
+],
+[
+9.0,
+0.472,
+null,
+null
+],
+[
+10.0,
+0.67,
+null,
+null
+],
+[
+12.0,
+0.868,
+null,
+null
+],
+[
+14.0,
+0.868,
+null,
+null
+],
+[
+16.0,
+0.868,
+null,
+null
+],
+[
+18.0,
+0.868,
+null,
+null
+],
+[
+18.21,
+0.868,
+null,
+null
+]
+],
+"events": 29,
+"median_days": 9.99,
+"n": 54,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101A",
+"subject": "SEASIAN"
+},
+"SEASIAN 137": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "137",
+"subject": "SEASIAN"
+},
+"SEASIAN R5A": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5A",
+"subject": "SEASIAN"
+},
+"SEASIAN R5B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.11,
+0.033,
+0.2
+],
+[
+1.0,
+0.138,
+0.033,
+0.307
+],
+[
+2.0,
+0.182,
+0.033,
+0.36
+],
+[
+3.0,
+0.182,
+0.033,
+0.36
+],
+[
+4.0,
+0.182,
+0.033,
+0.36
+],
+[
+5.0,
+0.182,
+0.033,
+0.36
+],
+[
+6.0,
+0.182,
+0.033,
+0.36
+],
+[
+7.0,
+0.222,
+0.033,
+0.36
+],
+[
+8.0,
+0.242,
+0.087,
+0.36
+],
+[
+9.0,
+0.242,
+0.087,
+0.36
+],
+[
+10.0,
+0.298,
+0.087,
+0.422
+],
+[
+12.0,
+0.328,
+0.157,
+0.422
+],
+[
+14.0,
+0.328,
+0.157,
+0.422
+],
+[
+16.0,
+0.328,
+0.157,
+0.422
+],
+[
+18.0,
+0.328,
+0.157,
+0.422
+],
+[
+18.57,
+0.328,
+0.157,
+0.422
+]
+],
+"events": 20,
+"median_days": null,
+"n": 83,
+"pooled": false,
+"reach_days": 18.6,
+"sections": 4
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5B",
+"subject": "SEASIAN"
+}
+},
+"subject": "SEASIAN",
+"term_id": "2268"
+}

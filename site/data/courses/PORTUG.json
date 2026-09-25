@@ -1,0 +1,45 @@
+{
+"courses": {
+"PORTUG 104": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "104",
+"subject": "PORTUG"
+},
+"PORTUG 27": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "27",
+"subject": "PORTUG"
+},
+"PORTUG 50": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "50",
+"subject": "PORTUG"
+}
+},
+"subject": "PORTUG",
+"term_id": "2268"
+}

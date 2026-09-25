@@ -1,0 +1,19 @@
+{
+"courses": {
+"IAS C176": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C176",
+"subject": "IAS"
+}
+},
+"subject": "IAS",
+"term_id": "2268"
+}

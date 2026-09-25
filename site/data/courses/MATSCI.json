@@ -1,0 +1,1309 @@
+{
+"courses": {
+"MATSCI 102": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.077,
+null,
+null
+],
+[
+1.0,
+0.103,
+null,
+null
+],
+[
+2.0,
+0.128,
+null,
+null
+],
+[
+3.0,
+0.237,
+null,
+null
+],
+[
+4.0,
+0.265,
+null,
+null
+],
+[
+5.0,
+0.265,
+null,
+null
+],
+[
+6.0,
+0.304,
+null,
+null
+],
+[
+7.0,
+0.304,
+null,
+null
+],
+[
+8.0,
+0.391,
+null,
+null
+],
+[
+9.0,
+0.502,
+null,
+null
+],
+[
+10.0,
+0.502,
+null,
+null
+],
+[
+12.0,
+0.613,
+null,
+null
+],
+[
+14.0,
+0.723,
+null,
+null
+],
+[
+16.0,
+0.723,
+null,
+null
+],
+[
+18.0,
+0.723,
+null,
+null
+],
+[
+18.21,
+0.723,
+null,
+null
+]
+],
+"events": 19,
+"median_days": 8.72,
+"n": 43,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "102",
+"subject": "MATSCI"
+},
+"MATSCI 113": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "113",
+"subject": "MATSCI"
+},
+"MATSCI 123": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.247,
+null,
+null
+],
+[
+1.0,
+0.301,
+null,
+null
+],
+[
+2.0,
+0.402,
+null,
+null
+],
+[
+3.0,
+0.436,
+null,
+null
+],
+[
+4.0,
+0.453,
+null,
+null
+],
+[
+5.0,
+0.507,
+null,
+null
+],
+[
+6.0,
+0.525,
+null,
+null
+],
+[
+7.0,
+0.562,
+null,
+null
+],
+[
+8.0,
+0.675,
+null,
+null
+],
+[
+9.0,
+0.736,
+null,
+null
+],
+[
+10.0,
+0.776,
+null,
+null
+],
+[
+12.0,
+0.858,
+null,
+null
+],
+[
+14.0,
+0.898,
+null,
+null
+],
+[
+16.0,
+0.919,
+null,
+null
+],
+[
+17.0,
+0.919,
+null,
+null
+]
+],
+"events": 56,
+"median_days": 4.99,
+"n": 73,
+"pooled": false,
+"reach_days": 17.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "123",
+"subject": "MATSCI"
+},
+"MATSCI 131": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.13,
+null,
+null
+],
+[
+1.0,
+0.159,
+null,
+null
+],
+[
+2.0,
+0.226,
+null,
+null
+],
+[
+3.0,
+0.232,
+null,
+null
+],
+[
+4.0,
+0.245,
+null,
+null
+],
+[
+5.0,
+0.245,
+null,
+null
+],
+[
+6.0,
+0.268,
+null,
+null
+],
+[
+7.0,
+0.339,
+null,
+null
+],
+[
+8.0,
+0.395,
+null,
+null
+],
+[
+9.0,
+0.404,
+null,
+null
+],
+[
+10.0,
+0.413,
+null,
+null
+],
+[
+12.0,
+0.549,
+null,
+null
+],
+[
+14.0,
+0.603,
+null,
+null
+],
+[
+16.0,
+0.617,
+null,
+null
+],
+[
+18.0,
+0.708,
+null,
+null
+],
+[
+21.0,
+0.735,
+null,
+null
+],
+[
+24.0,
+0.809,
+null,
+null
+],
+[
+28.0,
+0.809,
+null,
+null
+],
+[
+30.81,
+0.809,
+null,
+null
+]
+],
+"events": 91,
+"median_days": 11.0,
+"n": 195,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.014,
+null,
+null
+],
+[
+1.0,
+0.014,
+null,
+null
+],
+[
+2.0,
+0.032,
+null,
+null
+],
+[
+3.0,
+0.032,
+null,
+null
+],
+[
+4.0,
+0.032,
+null,
+null
+],
+[
+5.0,
+0.032,
+null,
+null
+],
+[
+6.0,
+0.032,
+null,
+null
+],
+[
+7.0,
+0.057,
+null,
+null
+],
+[
+8.0,
+0.084,
+null,
+null
+],
+[
+9.0,
+0.115,
+null,
+null
+],
+[
+10.0,
+0.115,
+null,
+null
+],
+[
+12.0,
+0.192,
+null,
+null
+],
+[
+14.0,
+0.25,
+null,
+null
+],
+[
+16.0,
+0.25,
+null,
+null
+],
+[
+18.0,
+0.333,
+null,
+null
+],
+[
+21.0,
+0.333,
+null,
+null
+],
+[
+24.0,
+0.333,
+null,
+null
+],
+[
+28.0,
+0.333,
+null,
+null
+],
+[
+30.81,
+0.333,
+null,
+null
+]
+],
+"events": 9,
+"median_days": null,
+"n": 69,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "131",
+"subject": "MATSCI"
+},
+"MATSCI 200A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.287,
+null,
+null
+],
+[
+1.0,
+0.327,
+null,
+null
+],
+[
+2.0,
+0.327,
+null,
+null
+],
+[
+3.0,
+0.447,
+null,
+null
+],
+[
+4.0,
+0.539,
+null,
+null
+],
+[
+5.0,
+0.539,
+null,
+null
+],
+[
+6.0,
+0.539,
+null,
+null
+],
+[
+7.0,
+0.539,
+null,
+null
+],
+[
+8.0,
+0.539,
+null,
+null
+],
+[
+9.0,
+0.539,
+null,
+null
+],
+[
+10.0,
+0.539,
+null,
+null
+],
+[
+12.0,
+0.539,
+null,
+null
+],
+[
+14.0,
+0.539,
+null,
+null
+],
+[
+16.0,
+0.539,
+null,
+null
+],
+[
+18.0,
+0.539,
+null,
+null
+],
+[
+18.44,
+0.539,
+null,
+null
+]
+],
+"events": 25,
+"median_days": 3.73,
+"n": 55,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200A",
+"subject": "MATSCI"
+},
+"MATSCI 24": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.104,
+null,
+null
+],
+[
+1.0,
+0.149,
+null,
+null
+],
+[
+2.0,
+0.219,
+null,
+null
+],
+[
+3.0,
+0.277,
+null,
+null
+],
+[
+4.0,
+0.277,
+null,
+null
+],
+[
+5.0,
+0.277,
+null,
+null
+],
+[
+6.0,
+0.307,
+null,
+null
+],
+[
+7.0,
+0.307,
+null,
+null
+],
+[
+8.0,
+0.307,
+null,
+null
+],
+[
+9.0,
+0.307,
+null,
+null
+],
+[
+10.0,
+0.307,
+null,
+null
+],
+[
+12.0,
+0.307,
+null,
+null
+],
+[
+14.0,
+0.307,
+null,
+null
+],
+[
+16.0,
+0.307,
+null,
+null
+],
+[
+18.0,
+0.307,
+null,
+null
+],
+[
+18.21,
+0.307,
+null,
+null
+]
+],
+"events": 13,
+"median_days": null,
+"n": 49,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "MATSCI"
+},
+"MATSCI 45": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.117,
+null,
+null
+],
+[
+1.0,
+0.135,
+null,
+null
+],
+[
+2.0,
+0.233,
+null,
+null
+],
+[
+3.0,
+0.281,
+null,
+null
+],
+[
+4.0,
+0.361,
+null,
+null
+],
+[
+5.0,
+0.392,
+null,
+null
+],
+[
+6.0,
+0.455,
+null,
+null
+],
+[
+7.0,
+0.471,
+null,
+null
+],
+[
+8.0,
+0.53,
+null,
+null
+],
+[
+9.0,
+0.568,
+null,
+null
+],
+[
+10.0,
+0.602,
+null,
+null
+],
+[
+12.0,
+0.663,
+null,
+null
+],
+[
+14.0,
+0.693,
+null,
+null
+],
+[
+16.0,
+0.748,
+null,
+null
+],
+[
+18.0,
+0.748,
+null,
+null
+],
+[
+18.21,
+0.748,
+null,
+null
+]
+],
+"events": 95,
+"median_days": 7.32,
+"n": 187,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+18.21,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.037,
+null,
+null
+],
+[
+1.0,
+0.037,
+null,
+null
+],
+[
+2.0,
+0.037,
+null,
+null
+],
+[
+3.0,
+0.037,
+null,
+null
+],
+[
+4.0,
+0.037,
+null,
+null
+],
+[
+5.0,
+0.037,
+null,
+null
+],
+[
+6.0,
+0.037,
+null,
+null
+],
+[
+7.0,
+0.037,
+null,
+null
+],
+[
+8.0,
+0.037,
+null,
+null
+],
+[
+9.0,
+0.037,
+null,
+null
+],
+[
+10.0,
+0.037,
+null,
+null
+],
+[
+12.0,
+0.118,
+null,
+null
+],
+[
+14.0,
+0.118,
+null,
+null
+],
+[
+16.0,
+0.118,
+null,
+null
+],
+[
+18.0,
+0.118,
+null,
+null
+],
+[
+18.21,
+0.118,
+null,
+null
+]
+],
+"events": 6,
+"median_days": null,
+"n": 116,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "45",
+"subject": "MATSCI"
+},
+"MATSCI 45L": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.054,
+0.028,
+0.076
+],
+[
+1.0,
+0.069,
+0.034,
+0.107
+],
+[
+2.0,
+0.086,
+0.042,
+0.123
+],
+[
+3.0,
+0.113,
+0.062,
+0.151
+],
+[
+4.0,
+0.142,
+0.07,
+0.209
+],
+[
+5.0,
+0.172,
+0.09,
+0.226
+],
+[
+6.0,
+0.183,
+0.095,
+0.236
+],
+[
+7.0,
+0.207,
+0.113,
+0.272
+],
+[
+8.0,
+0.227,
+0.156,
+0.285
+],
+[
+9.0,
+0.272,
+0.156,
+0.372
+],
+[
+10.0,
+0.291,
+0.177,
+0.393
+],
+[
+12.0,
+0.315,
+0.177,
+0.455
+],
+[
+14.0,
+0.393,
+0.258,
+0.52
+],
+[
+16.0,
+0.541,
+0.478,
+0.603
+],
+[
+18.0,
+0.567,
+0.487,
+0.663
+],
+[
+18.4,
+0.567,
+0.487,
+0.663
+]
+],
+"events": 71,
+"median_days": 15.41,
+"n": 280,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 4
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "45L",
+"subject": "MATSCI"
+},
+"MATSCI C135": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C135",
+"subject": "MATSCI"
+},
+"MATSCI C150": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C150",
+"subject": "MATSCI"
+},
+"MATSCI C208": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.152,
+null,
+null
+],
+[
+1.0,
+0.213,
+null,
+null
+],
+[
+2.0,
+0.247,
+null,
+null
+],
+[
+3.0,
+0.247,
+null,
+null
+],
+[
+4.0,
+0.285,
+null,
+null
+],
+[
+5.0,
+0.365,
+null,
+null
+],
+[
+6.0,
+0.365,
+null,
+null
+],
+[
+7.0,
+0.484,
+null,
+null
+],
+[
+8.0,
+0.531,
+null,
+null
+],
+[
+9.0,
+0.671,
+null,
+null
+],
+[
+10.0,
+0.812,
+null,
+null
+],
+[
+11.16,
+0.937,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 7.24,
+"n": 33,
+"pooled": false,
+"reach_days": 11.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C208",
+"subject": "MATSCI"
+},
+"MATSCI C211": {
+"buckets": {
+"1-5": {
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C211",
+"subject": "MATSCI"
+}
+},
+"subject": "MATSCI",
+"term_id": "2268"
+}

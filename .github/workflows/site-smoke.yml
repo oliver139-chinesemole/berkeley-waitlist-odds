@@ -1,0 +1,59 @@
+# Browser smoke test for the static site: every page at a phone and a laptop
+# viewport, light and dark, screenshots uploaded as an artifact, axe-core with
+# zero serious violations. Runs on changes under site/ or tests/site/. The site
+# itself has no build step; Playwright is a test dependency only.
+name: site-smoke
+
+on:
+  push:
+    branches-ignore:
+      - data
+    paths:
+      - "site/**"
+      - "tests/site/**"
+      - "analysis/export.py"
+      - ".github/workflows/site-smoke.yml"
+  pull_request:
+    paths:
+      - "site/**"
+      - "tests/site/**"
+      - "analysis/export.py"
+      - ".github/workflows/site-smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Playwright and axe-core (test dependencies only)
+        run: |
+          npm init -y >/dev/null
+          npm install --no-save playwright@1.62.1 axe-core@4.10.3
+          npx playwright install --with-deps chromium
+      - name: Build the site with synthetic data
+        run: python tests/site/export_fixture.py /tmp/site
+      - name: Serve and smoke-test every page
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 --directory /tmp/site >/tmp/http.log 2>&1 &
+          sleep 1
+          node tests/site/smoke.mjs http://127.0.0.1:8000 screenshots 2027-01-10
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: site-screenshots-${{ github.run_id }}
+          path: screenshots
+          retention-days: 14
+          if-no-files-found: ignore

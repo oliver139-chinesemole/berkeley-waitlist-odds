@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accuracy · Berkeley Waitlist Odds</title>
+<meta name="description" content="How accurate the waitlist estimates were: calibration by decile, scores against a position-only baseline, what could not be tested, and the pre-registered Spring 2027 test.">
+<meta name="theme-color" content="#003262">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Accuracy · Berkeley Waitlist Odds">
+<meta property="og:description" content="When the site said 70%, how many got in?">
+<meta property="og:image" content="https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="in">
+  <a class="brand" href="index.html">Berkeley Waitlist Odds</a>
+  <nav aria-label="Site"><a href="index.html">Lookup</a><a href="courses.html">Courses</a><a href="insights.html">Insights</a><a href="accuracy.html" aria-current="page">Accuracy</a><a href="methodology.html">Methods</a></nav>
+</div></header>
+<main id="main" class="wide">
+  <h1>How accurate were the estimates?</h1>
+  <p class="muted">The model is frozen on one set of hypothetical joiners and scored on joiners it never saw, each at their own horizon, with inverse-probability-of-censoring weights. Every number here is copied from the backtest reports in the repository.</p>
+  <section id="status" class="status" aria-live="polite"><p class="muted">Loading data…</p><div class="skeleton" style="width:70%"></div></section>
+  <div id="content"></div>
+  <h2>What could not be tested on Fall 2026</h2>
+  <ul class="findings">
+    <li><strong>The first week of instruction.</strong> Berkeleytime recorded nothing for any section from Aug 19 to Sep 1, 2026, which covers the end of the adjustment period and the first week of class, so no joiner's outcome at the first-day-of-class or last-run horizon is observable. Fall 2026 validates clearing during Phase 1 and Phase 2 only; the 14- and 28-day horizons are the ones scored.</li>
+    <li><strong>Reserved seats.</strong> A section can hold seats for a category the joiner is not in; the counts do not say who was eligible, so the estimates treat the queue as first-in-first-out.</li>
+    <li><strong>The Cox model across the Phase 1 to Phase 2 shift.</strong> Fit on Phase 1 joiners, it under-predicts Phase 2 clearing; its scores are shown for honesty, but the pages use the Kaplan-Meier curves, not the model.</li>
+  </ul>
+  <div id="prereg"></div>
+</main>
+<footer class="wide">
+  <p>Brier score: mean squared error of a probability (lower is better). Gain: the baseline's Brier score minus the predictor's, with a 95% interval from resampling sections. AUC: how often a joiner who got in was given a higher probability than one who did not. <a href="methodology.html">How this works</a></p>
+  <p id="stamp"></p>
+</footer>
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  const { $, esc, pct, num } = BWO;
+  const SPLIT = { temporal: "Later joiners scored with a model fit on earlier ones", grouped: "Held-out courses", cross_term: "Fit on Spring 2026, scored on Fall 2026" };
+  const NAMES = { bucket: "Position bucket (baseline)", dept: "Department and bucket curve", course: "Course and bucket curve", site: "Fixed-lead-time number (site v1)", cox: "Cox model" };
+  const ORDER = ["bucket", "dept", "course", "site", "cox"];
+  let meta = null;
+  // The predictor the pages use: the department curve at the department level, the course curve otherwise.
+  function pagesPredictor(run) {
+    const cal = run.calibration || {};
+    const preferred = BWO.estimateLevel(meta) === "dept" ? ["dept", "course", "site"] : ["course", "dept", "site"];
+    return preferred.find((k) => cal[k] && cal[k].length) || "site";
+  }
+  function label(k, run) { return (NAMES[k] || k) + (k === pagesPredictor(run) ? " (what the pages use)" : ""); }
+
+  function fmt(v, d) { return v == null ? "" : Number(v).toFixed(d == null ? 3 : d); }
+  function signed(v) { return v == null ? "" : (v > 0 ? "+" : "") + Number(v).toFixed(3); }
+
+  function calibrationPlot(run, predictor) {
+    const pts = (run.calibration || {})[predictor];
+    if (!pts || !pts.length) return "";
+    const W = 320, H = 300, L = 40, R = 12, T = 12, B = 40;
+    const x = (p) => L + p * (W - L - R), y = (p) => T + (1 - p) * (H - T - B);
+    let svg = "";
+    for (const p of [0, .25, .5, .75, 1]) svg += `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(p).toFixed(1)}" y2="${y(p).toFixed(1)}"/><text class="lbl" x="${L - 6}" y="${(y(p) + 4).toFixed(1)}" text-anchor="end">${Math.round(p * 100)}%</text><text class="lbl" x="${x(p).toFixed(1)}" y="${H - B + 14}" text-anchor="middle">${Math.round(p * 100)}%</text>`;
+    svg += `<line class="axis" x1="${x(0)}" y1="${y(0)}" x2="${x(1)}" y2="${y(1)}"/>`;
+    const path = pts.map((q, i) => `${i ? "L" : "M"} ${x(q.predicted).toFixed(1)} ${y(q.observed).toFixed(1)}`).join(" ");
+    svg += `<path class="curve s3" d="${path}"/>`;
+    for (const q of pts) svg += `<circle class="s3 fill end" r="4.5" cx="${x(q.predicted).toFixed(1)}" cy="${y(q.observed).toFixed(1)}"><title>Decile ${q.decile + 1}: predicted ${pct(q.predicted)}, observed ${pct(q.observed)}, ${num(Math.round(q.n))} joiners</title></circle>`;
+    svg += `<text class="lbl" x="${W - R}" y="${H - 4}" text-anchor="end">predicted</text><text class="lbl" transform="rotate(-90)" x="${(-(T + (H - B)) / 2).toFixed(1)}" y="11" text-anchor="middle">observed</text>`;
+    const table = `<details class="table"><summary>Show as table</summary><table><thead><tr><th scope="col">Decile</th><th scope="col" class="num">Predicted</th><th scope="col" class="num">Observed</th><th scope="col" class="num">Joiners</th></tr></thead><tbody>${pts.map((q) => `<tr><td>${q.decile + 1}</td><td class="num">${pct(q.predicted)}</td><td class="num">${pct(q.observed)}</td><td class="num">${num(Math.round(q.n))}</td></tr>`).join("")}</tbody></table></details>`;
+    return `<figure class="chart" style="max-width:22rem"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Calibration: predicted against observed share who got in, by decile, ${esc(label(predictor, run))}, ${esc(run.horizon_label)}">${svg}</svg><figcaption class="muted small">${esc(label(predictor, run))}: predicted against observed, by decile.</figcaption>${table}</figure>`;
+  }
+
+  // "When the site said about 70%, X% got in": the decile whose prediction is nearest each round number.
+  function sentences(run, predictor) {
+    const pts = (run.calibration || {})[predictor];
+    if (!pts || !pts.length) return "";
+    const out = [];
+    for (const target of [0.3, 0.5, 0.7, 0.9]) {
+      let best = null;
+      for (const q of pts) if (!best || Math.abs(q.predicted - target) < Math.abs(best.predicted - target)) best = q;
+      if (best && Math.abs(best.predicted - target) <= 0.08 && !out.some((o) => o.decile === best.decile)) out.push(best);
+    }
+    if (!out.length) return "";
+    return `<ul class="findings">${out.map((q) => `<li>When the estimate said about <strong>${pct(q.predicted)}</strong>, <strong>${pct(q.observed)}</strong> got in ${esc(run.horizon_label)} (${num(Math.round(q.n))} joiners).</li>`).join("")}</ul>`;
+  }
+
+  function scoreTable(run) {
+    const rows = run.metrics.slice().sort((a, b) => ORDER.indexOf(a.predictor) - ORDER.indexOf(b.predictor)).map((m) => `<tr><th scope="row">${esc(label(m.predictor, run))}</th><td class="num">${fmt(m.brier)}</td><td class="num">${fmt(m.auc)}</td><td class="num">${signed(m.gain)}${m.predictor === "bucket" ? "" : ` <span class="muted small">(${signed(m.gain_ci_low)} to ${signed(m.gain_ci_high)})</span>`}</td><td class="num">${num(m.n_test)}</td></tr>`).join("");
+    return `<div class="scroll" tabindex="0"><table aria-label="Scores, ${esc(run.horizon_label)}"><thead><tr><th scope="col">Predictor</th><th scope="col" class="num">Brier</th><th scope="col" class="num">AUC</th><th scope="col" class="num">Gain over baseline (95%)</th><th scope="col" class="num">Joiners scored</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
+
+  function coverage(run) {
+    if (!run.coverage || !run.coverage.length) return "";
+    return `<details class="table"><summary>Which joiners could be scored, by phase</summary><table><thead><tr><th scope="col">Phase at joining</th><th scope="col" class="num">Joiners</th><th scope="col" class="num">Observable at this horizon</th></tr></thead><tbody>${run.coverage.map((c) => `<tr><td>${esc(c.phase)}</td><td class="num">${num(c.n)}</td><td class="num">${pct(c.share_observable)}</td></tr>`).join("")}</tbody></table></details>`;
+  }
+
+  function runHtml(run) {
+    const counts = run.counts ? `<p class="muted small">${num(run.counts.train)} training joiners; ${num(run.counts.test)} scored; ${num(run.counts.unobservable)} could not be followed to this horizon and were not scored.</p>` : "";
+    const predictor = pagesPredictor(run);
+    return `<section><h3>${esc(SPLIT[run.split] || run.split)}, ${esc(run.horizon_label)}</h3>${counts}${sentences(run, predictor)}<div class="side">${calibrationPlot(run, predictor)}<div>${scoreTable(run)}${coverage(run)}</div></div></section>`;
+  }
+
+  function prereg(meta, bt) {
+    const commit = meta.prereg_commit, date = meta.prereg_date;
+    return `<h2>Pre-registered: the Spring 2027 test</h2><div class="prereg"><p>${commit ? `The Fall 2026 curves this site shows were frozen at commit <code>${esc(String(commit).slice(0, 10))}</code> on ${esc(date || "")}.` : "The Fall 2026 curves this site shows will be frozen at the commit that publishes them; its hash and date will be printed here."} After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>`;
+  }
+
+  async function main() {
+    const r = await BWO.load(["backtest"]);
+    if (r.state === "failed") { $("status").innerHTML = BWO.failedHtml(); return; }
+    if (r.state === "empty") { $("status").innerHTML = BWO.emptyHtml(r.meta); $("prereg").innerHTML = prereg(r.meta || {}, null); return; }
+    meta = r.meta;
+    const bt = r.data.backtest;
+    BWO.setStamp(meta, BWO.today());
+    $("prereg").innerHTML = prereg(meta, bt);
+    if (!bt || !bt.runs || !bt.runs.length) {
+      $("status").innerHTML = `<p><strong>The backtest for ${esc(meta.term_name)} has not been published yet.</strong> The pipeline that writes it is <code>make backtest</code>; its reports land in the repository under <code>reports/backtest_${esc(meta.term_id)}/</code> and on this page.</p>`;
+      return;
+    }
+    $("status").innerHTML = `<p><strong>${esc(bt.term_name || meta.term_name)}</strong>${bt.data_source === "berkeleytime_history" || meta.data_source === "berkeleytime_history" ? ", from Berkeleytime's public history" : ""}: ${bt.runs.length} backtest ${bt.runs.length === 1 ? "run" : "runs"}, generated ${esc(BWO.fmtDate(bt.generated_at))}.</p>`;
+    const order = ["temporal", "grouped", "cross_term"];
+    const runs = bt.runs.slice().sort((a, b) => order.indexOf(a.split) - order.indexOf(b.split) || a.which.localeCompare(b.which));
+    const named = ORDER.filter((k) => bt.predictors[k]).concat(Object.keys(bt.predictors).filter((k) => !ORDER.includes(k)));
+    $("content").innerHTML = `<h2>Calibration and scores</h2><p class="muted small">${named.length} predictors are scored side by side: ${named.map((k) => `<strong>${esc(NAMES[k] || k)}</strong>: ${esc(bt.predictors[k])}`).join("; ")}.</p>` + runs.map(runHtml).join("");
+  }
+  main();
+})();
+</script>
+</body>
+</html>

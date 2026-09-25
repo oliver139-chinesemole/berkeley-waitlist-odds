@@ -1,0 +1,229 @@
+{
+"courses": {
+"LS 198": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.096,
+0.078,
+0.113
+],
+[
+1.0,
+0.119,
+0.089,
+0.146
+],
+[
+2.0,
+0.171,
+0.135,
+0.206
+],
+[
+3.0,
+0.217,
+0.167,
+0.269
+],
+[
+4.0,
+0.245,
+0.182,
+0.305
+],
+[
+5.0,
+0.27,
+0.199,
+0.345
+],
+[
+6.0,
+0.29,
+0.209,
+0.377
+],
+[
+7.0,
+0.311,
+0.23,
+0.399
+],
+[
+8.0,
+0.33,
+0.242,
+0.427
+],
+[
+9.0,
+0.344,
+0.253,
+0.443
+],
+[
+10.0,
+0.376,
+0.281,
+0.482
+],
+[
+12.0,
+0.395,
+0.298,
+0.497
+],
+[
+14.0,
+0.423,
+0.327,
+0.537
+],
+[
+16.0,
+0.438,
+0.33,
+0.569
+],
+[
+18.0,
+0.442,
+0.338,
+0.574
+],
+[
+21.0,
+0.442,
+0.338,
+0.574
+],
+[
+24.0,
+0.442,
+0.338,
+0.574
+],
+[
+28.0,
+0.442,
+0.338,
+0.574
+],
+[
+30.81,
+0.442,
+0.338,
+0.574
+]
+],
+"events": 392,
+"median_days": null,
+"n": 1290,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 18
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "198",
+"subject": "LS"
+},
+"LS C12": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C12",
+"subject": "LS"
+},
+"LS C120T": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C120T",
+"subject": "LS"
+},
+"LS C180Y": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C180Y",
+"subject": "LS"
+},
+"LS C196C": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C196C",
+"subject": "LS"
+},
+"LS C70U": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C70U",
+"subject": "LS"
+},
+"LS C70V": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C70V",
+"subject": "LS"
+},
+"LS C70Y": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C70Y",
+"subject": "LS"
+}
+},
+"subject": "LS",
+"term_id": "2268"
+}

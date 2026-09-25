@@ -1,0 +1,500 @@
+{
+"courses": {
+"NATAMST 110": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.114,
+null,
+null
+],
+[
+1.0,
+0.114,
+null,
+null
+],
+[
+2.0,
+0.145,
+null,
+null
+],
+[
+3.0,
+0.145,
+null,
+null
+],
+[
+4.0,
+0.208,
+null,
+null
+],
+[
+5.0,
+0.243,
+null,
+null
+],
+[
+6.0,
+0.243,
+null,
+null
+],
+[
+7.0,
+0.279,
+null,
+null
+],
+[
+8.0,
+0.351,
+null,
+null
+],
+[
+9.0,
+0.351,
+null,
+null
+],
+[
+10.0,
+0.351,
+null,
+null
+],
+[
+12.0,
+0.351,
+null,
+null
+],
+[
+14.0,
+0.351,
+null,
+null
+],
+[
+16.0,
+0.351,
+null,
+null
+],
+[
+18.0,
+0.351,
+null,
+null
+],
+[
+18.36,
+0.351,
+null,
+null
+]
+],
+"events": 11,
+"median_days": null,
+"n": 35,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110",
+"subject": "NATAMST"
+},
+"NATAMST 120": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "120",
+"subject": "NATAMST"
+},
+"NATAMST 149": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "149",
+"subject": "NATAMST"
+},
+"NATAMST 179": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.124,
+null,
+null
+],
+[
+1.0,
+0.206,
+null,
+null
+],
+[
+2.0,
+0.262,
+null,
+null
+],
+[
+3.0,
+0.291,
+null,
+null
+],
+[
+4.0,
+0.291,
+null,
+null
+],
+[
+5.0,
+0.291,
+null,
+null
+],
+[
+6.0,
+0.291,
+null,
+null
+],
+[
+7.0,
+0.291,
+null,
+null
+],
+[
+8.0,
+0.291,
+null,
+null
+],
+[
+9.0,
+0.291,
+null,
+null
+],
+[
+10.0,
+0.291,
+null,
+null
+],
+[
+12.0,
+0.291,
+null,
+null
+],
+[
+14.0,
+0.291,
+null,
+null
+],
+[
+16.0,
+0.291,
+null,
+null
+],
+[
+18.0,
+0.291,
+null,
+null
+],
+[
+21.0,
+0.291,
+null,
+null
+],
+[
+24.0,
+0.291,
+null,
+null
+],
+[
+28.0,
+0.291,
+null,
+null
+],
+[
+28.02,
+0.291,
+null,
+null
+]
+],
+"events": 11,
+"median_days": null,
+"n": 41,
+"pooled": false,
+"reach_days": 28.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "179",
+"subject": "NATAMST"
+},
+"NATAMST 190": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+0.0,
+0.0
+],
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+2.0,
+0.0,
+0.0,
+0.0
+],
+[
+3.0,
+0.0,
+0.0,
+0.0
+],
+[
+4.0,
+0.0,
+0.0,
+0.0
+],
+[
+5.0,
+0.0,
+0.0,
+0.0
+],
+[
+6.0,
+0.0,
+0.0,
+0.0
+],
+[
+7.0,
+0.0,
+0.0,
+0.0
+],
+[
+8.0,
+0.0,
+0.0,
+0.0
+],
+[
+9.0,
+0.0,
+0.0,
+0.0
+],
+[
+10.0,
+0.0,
+0.0,
+0.0
+],
+[
+12.0,
+0.0,
+0.0,
+0.0
+],
+[
+14.0,
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+0.0,
+0.0,
+0.0
+],
+[
+18.0,
+0.0,
+0.0,
+0.0
+],
+[
+21.0,
+0.0,
+0.0,
+0.0
+],
+[
+24.0,
+0.0,
+0.0,
+0.0
+],
+[
+28.0,
+0.0,
+0.0,
+0.0
+],
+[
+32.0,
+0.0,
+0.0,
+0.0
+],
+[
+36.0,
+0.0,
+0.0,
+0.0
+],
+[
+38.12,
+0.0,
+0.0,
+0.0
+]
+],
+"events": 0,
+"median_days": null,
+"n": 67,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "NATAMST"
+},
+"NATAMST 20A": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20A",
+"subject": "NATAMST"
+},
+"NATAMST 39A": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "39A",
+"subject": "NATAMST"
+},
+"NATAMST C152": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C152",
+"subject": "NATAMST"
+},
+"NATAMST C70": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C70",
+"subject": "NATAMST"
+},
+"NATAMST C73AC": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C73AC",
+"subject": "NATAMST"
+},
+"NATAMST R1A": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R1A",
+"subject": "NATAMST"
+}
+},
+"subject": "NATAMST",
+"term_id": "2268"
+}

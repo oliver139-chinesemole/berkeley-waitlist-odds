@@ -1,0 +1,775 @@
+{
+"courses": {
+"GPP 105": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.125,
+null,
+null
+],
+[
+1.0,
+0.19,
+null,
+null
+],
+[
+2.0,
+0.234,
+null,
+null
+],
+[
+3.0,
+0.281,
+null,
+null
+],
+[
+4.0,
+0.372,
+null,
+null
+],
+[
+5.0,
+0.412,
+null,
+null
+],
+[
+6.0,
+0.429,
+null,
+null
+],
+[
+7.0,
+0.509,
+null,
+null
+],
+[
+8.0,
+0.545,
+null,
+null
+],
+[
+9.0,
+0.545,
+null,
+null
+],
+[
+10.0,
+0.557,
+null,
+null
+],
+[
+12.0,
+0.569,
+null,
+null
+],
+[
+14.0,
+0.569,
+null,
+null
+],
+[
+16.0,
+0.569,
+null,
+null
+],
+[
+18.0,
+0.593,
+null,
+null
+],
+[
+21.0,
+0.622,
+null,
+null
+],
+[
+24.0,
+0.622,
+null,
+null
+],
+[
+28.0,
+0.622,
+null,
+null
+],
+[
+30.81,
+0.622,
+null,
+null
+]
+],
+"events": 84,
+"median_days": 6.49,
+"n": 186,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "105",
+"subject": "GPP"
+},
+"GPP 115": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.361,
+null,
+null
+],
+[
+1.0,
+0.514,
+null,
+null
+],
+[
+2.0,
+0.672,
+null,
+null
+],
+[
+3.0,
+0.736,
+null,
+null
+],
+[
+4.0,
+0.802,
+null,
+null
+],
+[
+5.0,
+0.833,
+null,
+null
+],
+[
+6.0,
+0.838,
+null,
+null
+],
+[
+7.0,
+0.85,
+null,
+null
+],
+[
+8.0,
+0.86,
+null,
+null
+],
+[
+9.0,
+0.863,
+null,
+null
+],
+[
+10.0,
+0.872,
+null,
+null
+],
+[
+12.0,
+0.884,
+null,
+null
+],
+[
+14.0,
+0.899,
+null,
+null
+],
+[
+16.0,
+0.908,
+null,
+null
+],
+[
+18.0,
+0.912,
+null,
+null
+],
+[
+21.0,
+0.925,
+null,
+null
+],
+[
+24.0,
+0.925,
+null,
+null
+],
+[
+28.0,
+0.935,
+null,
+null
+],
+[
+30.81,
+0.935,
+null,
+null
+]
+],
+"events": 461,
+"median_days": 0.96,
+"n": 555,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.012,
+null,
+null
+],
+[
+3.0,
+0.133,
+null,
+null
+],
+[
+4.0,
+0.225,
+null,
+null
+],
+[
+5.0,
+0.258,
+null,
+null
+],
+[
+6.0,
+0.314,
+null,
+null
+],
+[
+7.0,
+0.314,
+null,
+null
+],
+[
+8.0,
+0.314,
+null,
+null
+],
+[
+9.0,
+0.314,
+null,
+null
+],
+[
+10.0,
+0.314,
+null,
+null
+],
+[
+12.0,
+0.314,
+null,
+null
+],
+[
+14.0,
+0.314,
+null,
+null
+],
+[
+16.0,
+0.593,
+null,
+null
+],
+[
+18.0,
+0.796,
+null,
+null
+],
+[
+18.21,
+0.796,
+null,
+null
+]
+],
+"events": 26,
+"median_days": 14.83,
+"n": 91,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.045,
+null,
+null
+],
+[
+1.0,
+0.091,
+null,
+null
+],
+[
+2.0,
+0.245,
+null,
+null
+],
+[
+3.0,
+0.331,
+null,
+null
+],
+[
+4.0,
+0.462,
+null,
+null
+],
+[
+5.0,
+0.521,
+null,
+null
+],
+[
+6.0,
+0.56,
+null,
+null
+],
+[
+7.0,
+0.589,
+null,
+null
+],
+[
+8.0,
+0.619,
+null,
+null
+],
+[
+9.0,
+0.657,
+null,
+null
+],
+[
+10.0,
+0.696,
+null,
+null
+],
+[
+12.0,
+0.737,
+null,
+null
+],
+[
+14.0,
+0.801,
+null,
+null
+],
+[
+16.0,
+0.81,
+null,
+null
+],
+[
+18.0,
+0.81,
+null,
+null
+],
+[
+21.0,
+0.81,
+null,
+null
+],
+[
+24.0,
+0.81,
+null,
+null
+],
+[
+28.0,
+0.81,
+null,
+null
+],
+[
+30.81,
+0.81,
+null,
+null
+]
+],
+"events": 162,
+"median_days": 4.54,
+"n": 272,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "115",
+"subject": "GPP"
+},
+"GPP 150": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.108,
+0.095,
+0.125
+],
+[
+1.0,
+0.135,
+0.125,
+0.143
+],
+[
+2.0,
+0.197,
+0.143,
+0.255
+],
+[
+3.0,
+0.237,
+0.143,
+0.323
+],
+[
+4.0,
+0.36,
+0.143,
+0.526
+],
+[
+5.0,
+0.495,
+0.265,
+0.661
+],
+[
+6.0,
+0.541,
+0.265,
+0.729
+],
+[
+7.0,
+0.541,
+0.265,
+0.729
+],
+[
+8.0,
+0.541,
+0.265,
+0.729
+],
+[
+9.0,
+0.541,
+0.265,
+0.729
+],
+[
+10.0,
+0.541,
+0.265,
+0.729
+],
+[
+12.0,
+0.541,
+0.265,
+0.729
+],
+[
+14.0,
+0.541,
+0.265,
+0.729
+],
+[
+16.0,
+0.541,
+0.265,
+0.729
+],
+[
+17.7,
+0.541,
+0.265,
+0.729
+]
+],
+"events": 15,
+"median_days": 5.11,
+"n": 37,
+"pooled": false,
+"reach_days": 17.7,
+"sections": 2
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "150",
+"subject": "GPP"
+},
+"GPP 196": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.42,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 36,
+"pooled": false,
+"reach_days": 57.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "196",
+"subject": "GPP"
+}
+},
+"subject": "GPP",
+"term_id": "2268"
+}

@@ -1,0 +1,555 @@
+{
+"courses": {
+"ITALIAN 1": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "OTHER",
+"sections_course": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "ITALIAN"
+},
+"ITALIAN 120": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "120",
+"subject": "ITALIAN"
+},
+"ITALIAN 130A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.113,
+null,
+null
+],
+[
+1.0,
+0.127,
+null,
+null
+],
+[
+2.0,
+0.159,
+null,
+null
+],
+[
+3.0,
+0.174,
+null,
+null
+],
+[
+4.0,
+0.197,
+null,
+null
+],
+[
+5.0,
+0.288,
+null,
+null
+],
+[
+6.0,
+0.335,
+null,
+null
+],
+[
+7.0,
+0.335,
+null,
+null
+],
+[
+8.0,
+0.359,
+null,
+null
+],
+[
+9.0,
+0.423,
+null,
+null
+],
+[
+10.0,
+0.476,
+null,
+null
+],
+[
+12.0,
+0.476,
+null,
+null
+],
+[
+14.0,
+0.528,
+null,
+null
+],
+[
+16.0,
+0.607,
+null,
+null
+],
+[
+18.0,
+0.705,
+null,
+null
+],
+[
+18.43,
+0.705,
+null,
+null
+]
+],
+"events": 26,
+"median_days": 12.48,
+"n": 71,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130A",
+"subject": "ITALIAN"
+},
+"ITALIAN 160": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "160",
+"subject": "ITALIAN"
+},
+"ITALIAN 2": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "2",
+"subject": "ITALIAN"
+},
+"ITALIAN 40": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.287,
+null,
+null
+],
+[
+1.0,
+0.426,
+null,
+null
+],
+[
+2.0,
+0.571,
+null,
+null
+],
+[
+3.0,
+0.717,
+null,
+null
+],
+[
+4.0,
+0.791,
+null,
+null
+],
+[
+5.0,
+0.836,
+null,
+null
+],
+[
+6.0,
+0.861,
+null,
+null
+],
+[
+7.0,
+0.877,
+null,
+null
+],
+[
+8.0,
+0.877,
+null,
+null
+],
+[
+9.0,
+0.877,
+null,
+null
+],
+[
+10.0,
+0.877,
+null,
+null
+],
+[
+12.0,
+0.923,
+null,
+null
+],
+[
+14.0,
+0.969,
+null,
+null
+],
+[
+16.0,
+0.969,
+null,
+null
+],
+[
+18.0,
+0.985,
+null,
+null
+],
+[
+18.06,
+0.985,
+null,
+null
+]
+],
+"events": 120,
+"median_days": 1.34,
+"n": 140,
+"pooled": false,
+"reach_days": 18.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "40",
+"subject": "ITALIAN"
+},
+"ITALIAN 70AC": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.191,
+null,
+null
+],
+[
+1.0,
+0.25,
+null,
+null
+],
+[
+2.0,
+0.333,
+null,
+null
+],
+[
+3.0,
+0.45,
+null,
+null
+],
+[
+4.0,
+0.475,
+null,
+null
+],
+[
+5.0,
+0.525,
+null,
+null
+],
+[
+6.0,
+0.65,
+null,
+null
+],
+[
+7.0,
+0.65,
+null,
+null
+],
+[
+8.0,
+0.677,
+null,
+null
+],
+[
+9.0,
+0.735,
+null,
+null
+],
+[
+10.0,
+0.735,
+null,
+null
+],
+[
+12.0,
+0.765,
+null,
+null
+],
+[
+14.0,
+0.765,
+null,
+null
+],
+[
+16.0,
+0.765,
+null,
+null
+],
+[
+18.0,
+0.765,
+null,
+null
+],
+[
+18.21,
+0.765,
+null,
+null
+]
+],
+"events": 41,
+"median_days": 4.62,
+"n": 80,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "70AC",
+"subject": "ITALIAN"
+},
+"ITALIAN R5A": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5A",
+"subject": "ITALIAN"
+},
+"ITALIAN R5B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.02,
+0.0,
+0.03
+],
+[
+1.0,
+0.02,
+0.0,
+0.03
+],
+[
+2.0,
+0.02,
+0.0,
+0.03
+],
+[
+3.0,
+0.02,
+0.0,
+0.03
+],
+[
+4.0,
+0.02,
+0.0,
+0.03
+],
+[
+5.0,
+0.02,
+0.0,
+0.03
+],
+[
+6.0,
+0.02,
+0.0,
+0.03
+],
+[
+7.0,
+0.02,
+0.0,
+0.03
+],
+[
+8.0,
+0.02,
+0.0,
+0.03
+],
+[
+9.0,
+0.02,
+0.0,
+0.03
+],
+[
+10.0,
+0.02,
+0.0,
+0.03
+],
+[
+12.0,
+0.038,
+0.0,
+0.053
+],
+[
+14.0,
+0.038,
+0.0,
+0.053
+],
+[
+16.0,
+0.038,
+0.0,
+0.053
+],
+[
+18.0,
+0.038,
+0.0,
+0.053
+],
+[
+21.0,
+0.082,
+0.0,
+0.101
+],
+[
+24.0,
+0.082,
+0.0,
+0.101
+],
+[
+28.0,
+0.082,
+0.0,
+0.101
+],
+[
+30.81,
+0.082,
+0.0,
+0.101
+]
+],
+"events": 4,
+"median_days": null,
+"n": 99,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "R5B",
+"subject": "ITALIAN"
+}
+},
+"subject": "ITALIAN",
+"term_id": "2268"
+}

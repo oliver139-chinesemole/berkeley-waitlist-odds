@@ -1,0 +1,19 @@
+{
+"courses": {
+"RUSSIAN 1": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "RUSSIAN"
+}
+},
+"subject": "RUSSIAN",
+"term_id": "2268"
+}

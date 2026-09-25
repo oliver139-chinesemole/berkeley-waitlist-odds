@@ -1,0 +1,1309 @@
+{
+"courses": {
+"JOURN 100": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.074,
+null,
+null
+],
+[
+1.0,
+0.116,
+null,
+null
+],
+[
+2.0,
+0.146,
+null,
+null
+],
+[
+3.0,
+0.197,
+null,
+null
+],
+[
+4.0,
+0.238,
+null,
+null
+],
+[
+5.0,
+0.268,
+null,
+null
+],
+[
+6.0,
+0.283,
+null,
+null
+],
+[
+7.0,
+0.299,
+null,
+null
+],
+[
+8.0,
+0.299,
+null,
+null
+],
+[
+9.0,
+0.299,
+null,
+null
+],
+[
+10.0,
+0.309,
+null,
+null
+],
+[
+12.0,
+0.33,
+null,
+null
+],
+[
+14.0,
+0.369,
+null,
+null
+],
+[
+16.0,
+0.396,
+null,
+null
+],
+[
+18.0,
+0.458,
+null,
+null
+],
+[
+21.0,
+0.609,
+null,
+null
+],
+[
+24.0,
+0.673,
+null,
+null
+],
+[
+28.0,
+0.673,
+null,
+null
+],
+[
+30.81,
+0.673,
+null,
+null
+]
+],
+"events": 71,
+"median_days": 18.63,
+"n": 181,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "100",
+"subject": "JOURN"
+},
+"JOURN 136": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.031,
+null,
+null
+],
+[
+1.0,
+0.031,
+null,
+null
+],
+[
+2.0,
+0.062,
+null,
+null
+],
+[
+3.0,
+0.062,
+null,
+null
+],
+[
+4.0,
+0.102,
+null,
+null
+],
+[
+5.0,
+0.102,
+null,
+null
+],
+[
+6.0,
+0.102,
+null,
+null
+],
+[
+7.0,
+0.102,
+null,
+null
+],
+[
+8.0,
+0.102,
+null,
+null
+],
+[
+9.0,
+0.102,
+null,
+null
+],
+[
+10.0,
+0.102,
+null,
+null
+],
+[
+12.0,
+0.102,
+null,
+null
+],
+[
+14.0,
+0.102,
+null,
+null
+],
+[
+16.0,
+0.102,
+null,
+null
+],
+[
+18.0,
+0.102,
+null,
+null
+],
+[
+18.21,
+0.102,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "136",
+"subject": "JOURN"
+},
+"JOURN 200": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 4
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "JOURN"
+},
+"JOURN 207": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "207",
+"subject": "JOURN"
+},
+"JOURN 209": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "209",
+"subject": "JOURN"
+},
+"JOURN 210": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210",
+"subject": "JOURN"
+},
+"JOURN 212": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "212",
+"subject": "JOURN"
+},
+"JOURN 213": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "213",
+"subject": "JOURN"
+},
+"JOURN 219": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "219",
+"subject": "JOURN"
+},
+"JOURN 221": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.186,
+null,
+null
+],
+[
+1.0,
+0.197,
+null,
+null
+],
+[
+2.0,
+0.266,
+null,
+null
+],
+[
+3.0,
+0.36,
+null,
+null
+],
+[
+4.0,
+0.457,
+null,
+null
+],
+[
+5.0,
+0.482,
+null,
+null
+],
+[
+6.0,
+0.495,
+null,
+null
+],
+[
+7.0,
+0.549,
+null,
+null
+],
+[
+8.0,
+0.564,
+null,
+null
+],
+[
+9.0,
+0.598,
+null,
+null
+],
+[
+10.0,
+0.615,
+null,
+null
+],
+[
+12.0,
+0.654,
+null,
+null
+],
+[
+14.0,
+0.732,
+null,
+null
+],
+[
+16.0,
+0.732,
+null,
+null
+],
+[
+18.0,
+0.732,
+null,
+null
+],
+[
+21.0,
+0.732,
+null,
+null
+],
+[
+24.0,
+0.732,
+null,
+null
+],
+[
+28.0,
+0.732,
+null,
+null
+],
+[
+30.81,
+0.732,
+null,
+null
+]
+],
+"events": 56,
+"median_days": 6.12,
+"n": 92,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "221",
+"subject": "JOURN"
+},
+"JOURN 226": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.052,
+null,
+null
+],
+[
+1.0,
+0.052,
+null,
+null
+],
+[
+2.0,
+0.052,
+null,
+null
+],
+[
+3.0,
+0.052,
+null,
+null
+],
+[
+4.0,
+0.052,
+null,
+null
+],
+[
+5.0,
+0.052,
+null,
+null
+],
+[
+6.0,
+0.052,
+null,
+null
+],
+[
+7.0,
+0.052,
+null,
+null
+],
+[
+8.0,
+0.052,
+null,
+null
+],
+[
+9.0,
+0.052,
+null,
+null
+],
+[
+10.0,
+0.052,
+null,
+null
+],
+[
+12.0,
+0.052,
+null,
+null
+],
+[
+14.0,
+0.052,
+null,
+null
+],
+[
+16.0,
+0.052,
+null,
+null
+],
+[
+18.0,
+0.052,
+null,
+null
+],
+[
+21.0,
+0.052,
+null,
+null
+],
+[
+24.0,
+0.052,
+null,
+null
+],
+[
+28.0,
+0.052,
+null,
+null
+],
+[
+32.0,
+0.052,
+null,
+null
+],
+[
+36.0,
+0.052,
+null,
+null
+],
+[
+37.81,
+0.052,
+null,
+null
+]
+],
+"events": 2,
+"median_days": null,
+"n": 39,
+"pooled": false,
+"reach_days": 37.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "226",
+"subject": "JOURN"
+},
+"JOURN 233": {
+"buckets": {
+"1-5": {
+"n_course": 27,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "233",
+"subject": "JOURN"
+},
+"JOURN 242": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.038,
+null,
+null
+],
+[
+1.0,
+0.066,
+null,
+null
+],
+[
+2.0,
+0.066,
+null,
+null
+],
+[
+3.0,
+0.066,
+null,
+null
+],
+[
+4.0,
+0.073,
+null,
+null
+],
+[
+5.0,
+0.11,
+null,
+null
+],
+[
+6.0,
+0.119,
+null,
+null
+],
+[
+7.0,
+0.119,
+null,
+null
+],
+[
+8.0,
+0.119,
+null,
+null
+],
+[
+9.0,
+0.119,
+null,
+null
+],
+[
+10.0,
+0.119,
+null,
+null
+],
+[
+12.0,
+0.119,
+null,
+null
+],
+[
+14.0,
+0.119,
+null,
+null
+],
+[
+16.0,
+0.119,
+null,
+null
+],
+[
+18.0,
+0.119,
+null,
+null
+],
+[
+21.0,
+0.119,
+null,
+null
+],
+[
+24.0,
+0.119,
+null,
+null
+],
+[
+28.0,
+0.119,
+null,
+null
+],
+[
+30.81,
+0.119,
+null,
+null
+]
+],
+"events": 16,
+"median_days": null,
+"n": 156,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"16-40": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.03,
+null,
+null
+],
+[
+1.0,
+0.062,
+null,
+null
+],
+[
+2.0,
+0.062,
+null,
+null
+],
+[
+3.0,
+0.062,
+null,
+null
+],
+[
+4.0,
+0.062,
+null,
+null
+],
+[
+5.0,
+0.105,
+null,
+null
+],
+[
+6.0,
+0.105,
+null,
+null
+],
+[
+7.0,
+0.105,
+null,
+null
+],
+[
+8.0,
+0.105,
+null,
+null
+],
+[
+9.0,
+0.105,
+null,
+null
+],
+[
+10.0,
+0.105,
+null,
+null
+],
+[
+12.0,
+0.105,
+null,
+null
+],
+[
+14.0,
+0.105,
+null,
+null
+],
+[
+16.0,
+0.105,
+null,
+null
+],
+[
+18.0,
+0.105,
+null,
+null
+],
+[
+21.0,
+0.105,
+null,
+null
+],
+[
+24.0,
+0.105,
+null,
+null
+],
+[
+28.0,
+0.105,
+null,
+null
+],
+[
+30.81,
+0.105,
+null,
+null
+]
+],
+"events": 9,
+"median_days": null,
+"n": 100,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "242",
+"subject": "JOURN"
+},
+"JOURN 255": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "255",
+"subject": "JOURN"
+},
+"JOURN 262": {
+"buckets": {
+"1-5": {
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "262",
+"subject": "JOURN"
+},
+"JOURN 296": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+36.46,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 32,
+"pooled": false,
+"reach_days": 36.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "296",
+"subject": "JOURN"
+},
+"JOURN 298": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+0.0,
+0.0
+],
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+2.0,
+0.0,
+0.0,
+0.0
+],
+[
+3.0,
+0.0,
+0.0,
+0.0
+],
+[
+4.0,
+0.0,
+0.0,
+0.0
+],
+[
+5.0,
+0.0,
+0.0,
+0.0
+],
+[
+6.0,
+0.0,
+0.0,
+0.0
+],
+[
+7.0,
+0.0,
+0.0,
+0.0
+],
+[
+8.0,
+0.0,
+0.0,
+0.0
+],
+[
+9.0,
+0.0,
+0.0,
+0.0
+],
+[
+10.0,
+0.0,
+0.0,
+0.0
+],
+[
+12.0,
+0.0,
+0.0,
+0.0
+],
+[
+14.0,
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+0.0,
+0.0,
+0.0
+],
+[
+18.0,
+0.0,
+0.0,
+0.0
+],
+[
+21.0,
+0.0,
+0.0,
+0.0
+],
+[
+24.0,
+0.0,
+0.0,
+0.0
+],
+[
+28.0,
+0.0,
+0.0,
+0.0
+],
+[
+32.0,
+0.0,
+0.0,
+0.0
+],
+[
+36.0,
+0.0,
+0.0,
+0.0
+],
+[
+36.11,
+0.0,
+0.0,
+0.0
+]
+],
+"events": 0,
+"median_days": null,
+"n": 41,
+"pooled": false,
+"reach_days": 36.1,
+"sections": 4
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "298",
+"subject": "JOURN"
+},
+"JOURN 39": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.119,
+null,
+null
+],
+[
+1.0,
+0.193,
+null,
+null
+],
+[
+2.0,
+0.264,
+null,
+null
+],
+[
+3.0,
+0.38,
+null,
+null
+],
+[
+4.0,
+0.449,
+null,
+null
+],
+[
+5.0,
+0.483,
+null,
+null
+],
+[
+6.0,
+0.571,
+null,
+null
+],
+[
+7.0,
+0.646,
+null,
+null
+],
+[
+8.0,
+0.667,
+null,
+null
+],
+[
+9.0,
+0.718,
+null,
+null
+],
+[
+10.0,
+0.744,
+null,
+null
+],
+[
+12.0,
+0.795,
+null,
+null
+],
+[
+14.0,
+0.949,
+null,
+null
+],
+[
+15.48,
+1.0,
+null,
+null
+]
+],
+"events": 54,
+"median_days": 5.24,
+"n": 93,
+"pooled": false,
+"reach_days": 15.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "39",
+"subject": "JOURN"
+}
+},
+"subject": "JOURN",
+"term_id": "2268"
+}

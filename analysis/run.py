@@ -86,12 +86,14 @@ def run_analysis(
     site_meta: dict | None = None,
     cox_max_rows: int | None = COX_MAX_ROWS,
     site_level: str = DEFAULT_LEVEL,
+    forecast_calendar: TermCalendar | None = None,
 ) -> AnalysisResult:
     """Everything from a panel (or precomputed ``flows``) to the report.
 
     ``flows`` skips ``interval_flows`` (a backfilled term carries its own
     censoring); ``site_meta`` is merged into ``site/data/meta.json`` and should
-    name the ``data_source``.
+    name the ``data_source``; ``forecast_calendar`` is the term whose dates the
+    site counts down to when a finished cycle stands in for the coming one.
     """
     out_dir = Path(out_dir) / calendar.term_id
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -187,7 +189,7 @@ def run_analysis(
         meta = {"data_source": OWN_DATA_SOURCE, "flows": fsum, "cohort_rows_by_scenario": cohort_rows}
         if site_meta:
             meta.update(site_meta)
-        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, level=site_level)
+        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, forecast_calendar=forecast_calendar, flows=flows, estimate_level=site_level)
 
     report = [
         f"# Waitlist analysis report: {calendar.name} (term {calendar.term_id})",
@@ -277,6 +279,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--no-site", action="store_true", help="do not write site/data")
     p.add_argument("--cox-max-rows", type=int, default=COX_MAX_ROWS or 0, help="seeded row cap for the Cox fits (0 = no cap, the default)")
     p.add_argument("--estimate-level", choices=LEVELS, default=DEFAULT_LEVEL, help="what site/data serves per course and bucket: the department curve (default) or the course's own")
+    p.add_argument("--forecast-term", default=None, help="SIS term id whose dates the site counts down to (default: the analysed term); 2272 when Fall 2026 stands in for Spring 2027")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     flows = None
@@ -314,6 +317,7 @@ def main(argv: list[str] | None = None) -> int:
         site_meta=site_meta,
         cox_max_rows=args.cox_max_rows or None,
         site_level=args.estimate_level,
+        forecast_calendar=calendar_for(args.forecast_term) if args.forecast_term else None,
     )
     print(json.dumps({"out": str(result.out_dir), "flows": result.flows_summary, "cohort_rows": result.cohort_rows, "notes": result.notes, "figures": [str(f) for f in result.figures]}, indent=1))
     return 0

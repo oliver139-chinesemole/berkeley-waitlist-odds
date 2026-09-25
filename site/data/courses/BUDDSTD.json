@@ -1,0 +1,423 @@
+{
+"courses": {
+"BUDDSTD C116": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.126,
+null,
+null
+],
+[
+1.0,
+0.16,
+null,
+null
+],
+[
+2.0,
+0.16,
+null,
+null
+],
+[
+3.0,
+0.253,
+null,
+null
+],
+[
+4.0,
+0.3,
+null,
+null
+],
+[
+5.0,
+0.3,
+null,
+null
+],
+[
+6.0,
+0.3,
+null,
+null
+],
+[
+7.0,
+0.3,
+null,
+null
+],
+[
+8.0,
+0.35,
+null,
+null
+],
+[
+9.0,
+0.35,
+null,
+null
+],
+[
+10.0,
+0.35,
+null,
+null
+],
+[
+12.0,
+0.431,
+null,
+null
+],
+[
+14.0,
+0.526,
+null,
+null
+],
+[
+16.0,
+0.526,
+null,
+null
+],
+[
+18.0,
+0.621,
+null,
+null
+],
+[
+21.0,
+0.621,
+null,
+null
+],
+[
+22.03,
+0.621,
+null,
+null
+]
+],
+"events": 12,
+"median_days": 13.06,
+"n": 32,
+"pooled": false,
+"reach_days": 22.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C116",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C117": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C117",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C120": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.168,
+null,
+null
+],
+[
+1.0,
+0.168,
+null,
+null
+],
+[
+2.0,
+0.2,
+null,
+null
+],
+[
+3.0,
+0.267,
+null,
+null
+],
+[
+4.0,
+0.267,
+null,
+null
+],
+[
+5.0,
+0.31,
+null,
+null
+],
+[
+6.0,
+0.483,
+null,
+null
+],
+[
+7.0,
+0.483,
+null,
+null
+],
+[
+8.0,
+0.53,
+null,
+null
+],
+[
+9.0,
+0.53,
+null,
+null
+],
+[
+10.0,
+0.597,
+null,
+null
+],
+[
+12.0,
+0.597,
+null,
+null
+],
+[
+14.0,
+0.677,
+null,
+null
+],
+[
+16.0,
+0.677,
+null,
+null
+],
+[
+18.0,
+0.839,
+null,
+null
+],
+[
+18.42,
+0.839,
+null,
+null
+]
+],
+"events": 18,
+"median_days": 7.31,
+"n": 36,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C120",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C214": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C214",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C215": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C215",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C220": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C220",
+"subject": "BUDDSTD"
+},
+"BUDDSTD C50": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.264,
+null,
+null
+],
+[
+1.0,
+0.405,
+null,
+null
+],
+[
+2.0,
+0.45,
+null,
+null
+],
+[
+3.0,
+0.492,
+null,
+null
+],
+[
+4.0,
+0.543,
+null,
+null
+],
+[
+5.0,
+0.624,
+null,
+null
+],
+[
+6.0,
+0.651,
+null,
+null
+],
+[
+7.0,
+0.651,
+null,
+null
+],
+[
+8.0,
+0.651,
+null,
+null
+],
+[
+9.0,
+0.704,
+null,
+null
+],
+[
+10.0,
+0.704,
+null,
+null
+],
+[
+12.0,
+0.77,
+null,
+null
+],
+[
+14.0,
+0.862,
+null,
+null
+],
+[
+16.0,
+0.954,
+null,
+null
+],
+[
+18.0,
+0.954,
+null,
+null
+],
+[
+21.0,
+0.954,
+null,
+null
+],
+[
+24.0,
+0.954,
+null,
+null
+],
+[
+24.95,
+0.954,
+null,
+null
+]
+],
+"events": 49,
+"median_days": 3.29,
+"n": 77,
+"pooled": false,
+"reach_days": 24.9,
+"sections": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C50",
+"subject": "BUDDSTD"
+}
+},
+"subject": "BUDDSTD",
+"term_id": "2268"
+}

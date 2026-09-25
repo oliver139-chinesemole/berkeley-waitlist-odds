@@ -1,0 +1,2687 @@
+{
+"courses": {
+"LDARCH 101": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+60.47,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 46,
+"pooled": false,
+"reach_days": 60.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "101",
+"subject": "LDARCH"
+},
+"LDARCH 103": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+56.46,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 53,
+"pooled": false,
+"reach_days": 56.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "103",
+"subject": "LDARCH"
+},
+"LDARCH 12": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.173,
+null,
+null
+],
+[
+1.0,
+0.214,
+null,
+null
+],
+[
+2.0,
+0.263,
+null,
+null
+],
+[
+3.0,
+0.279,
+null,
+null
+],
+[
+4.0,
+0.306,
+null,
+null
+],
+[
+5.0,
+0.365,
+null,
+null
+],
+[
+6.0,
+0.446,
+null,
+null
+],
+[
+7.0,
+0.487,
+null,
+null
+],
+[
+8.0,
+0.559,
+null,
+null
+],
+[
+9.0,
+0.593,
+null,
+null
+],
+[
+10.0,
+0.593,
+null,
+null
+],
+[
+12.0,
+0.679,
+null,
+null
+],
+[
+14.0,
+0.694,
+null,
+null
+],
+[
+16.0,
+0.694,
+null,
+null
+],
+[
+18.0,
+0.694,
+null,
+null
+],
+[
+21.0,
+0.694,
+null,
+null
+],
+[
+24.0,
+0.694,
+null,
+null
+],
+[
+28.0,
+0.694,
+null,
+null
+],
+[
+30.81,
+0.694,
+null,
+null
+]
+],
+"events": 82,
+"median_days": 7.04,
+"n": 163,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "12",
+"subject": "LDARCH"
+},
+"LDARCH 133": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+38.12,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 31,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "133",
+"subject": "LDARCH"
+},
+"LDARCH 134B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.24,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 45,
+"pooled": false,
+"reach_days": 57.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "134B",
+"subject": "LDARCH"
+},
+"LDARCH 154": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.244,
+null,
+null
+],
+[
+1.0,
+0.315,
+null,
+null
+],
+[
+2.0,
+0.403,
+null,
+null
+],
+[
+3.0,
+0.462,
+null,
+null
+],
+[
+4.0,
+0.485,
+null,
+null
+],
+[
+5.0,
+0.51,
+null,
+null
+],
+[
+6.0,
+0.597,
+null,
+null
+],
+[
+7.0,
+0.649,
+null,
+null
+],
+[
+8.0,
+0.663,
+null,
+null
+],
+[
+9.0,
+0.705,
+null,
+null
+],
+[
+10.0,
+0.758,
+null,
+null
+],
+[
+12.0,
+0.793,
+null,
+null
+],
+[
+14.0,
+0.793,
+null,
+null
+],
+[
+16.0,
+0.793,
+null,
+null
+],
+[
+18.0,
+0.793,
+null,
+null
+],
+[
+21.0,
+0.793,
+null,
+null
+],
+[
+24.0,
+0.793,
+null,
+null
+],
+[
+28.0,
+0.793,
+null,
+null
+],
+[
+30.81,
+0.793,
+null,
+null
+]
+],
+"events": 67,
+"median_days": 4.41,
+"n": 107,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "154",
+"subject": "LDARCH"
+},
+"LDARCH 201": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.24,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 43,
+"pooled": false,
+"reach_days": 57.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "201",
+"subject": "LDARCH"
+},
+"LDARCH 203": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "203",
+"subject": "LDARCH"
+},
+"LDARCH 224": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+30.81,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 33,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "224",
+"subject": "LDARCH"
+},
+"LDARCH 233": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+38.06,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 42,
+"pooled": false,
+"reach_days": 38.1,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "233",
+"subject": "LDARCH"
+},
+"LDARCH 234": {
+"buckets": {
+"1-5": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "234",
+"subject": "LDARCH"
+},
+"LDARCH 234A": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "234A",
+"subject": "LDARCH"
+},
+"LDARCH 252B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.093,
+null,
+null
+],
+[
+1.0,
+0.093,
+null,
+null
+],
+[
+2.0,
+0.093,
+null,
+null
+],
+[
+3.0,
+0.146,
+null,
+null
+],
+[
+4.0,
+0.203,
+null,
+null
+],
+[
+5.0,
+0.269,
+null,
+null
+],
+[
+6.0,
+0.269,
+null,
+null
+],
+[
+7.0,
+0.269,
+null,
+null
+],
+[
+8.0,
+0.286,
+null,
+null
+],
+[
+9.0,
+0.354,
+null,
+null
+],
+[
+10.0,
+0.371,
+null,
+null
+],
+[
+12.0,
+0.409,
+null,
+null
+],
+[
+14.0,
+0.409,
+null,
+null
+],
+[
+16.0,
+0.448,
+null,
+null
+],
+[
+18.0,
+0.509,
+null,
+null
+],
+[
+21.0,
+0.554,
+null,
+null
+],
+[
+24.0,
+0.656,
+null,
+null
+],
+[
+28.0,
+0.742,
+null,
+null
+],
+[
+30.81,
+0.771,
+null,
+null
+]
+],
+"events": 43,
+"median_days": 17.96,
+"n": 86,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.133,
+null,
+null
+],
+[
+1.0,
+0.133,
+null,
+null
+],
+[
+2.0,
+0.133,
+null,
+null
+],
+[
+3.0,
+0.212,
+null,
+null
+],
+[
+4.0,
+0.3,
+null,
+null
+],
+[
+5.0,
+0.416,
+null,
+null
+],
+[
+6.0,
+0.416,
+null,
+null
+],
+[
+7.0,
+0.416,
+null,
+null
+],
+[
+8.0,
+0.416,
+null,
+null
+],
+[
+9.0,
+0.533,
+null,
+null
+],
+[
+10.0,
+0.533,
+null,
+null
+],
+[
+12.0,
+0.533,
+null,
+null
+],
+[
+14.0,
+0.533,
+null,
+null
+],
+[
+16.0,
+0.533,
+null,
+null
+],
+[
+18.0,
+0.533,
+null,
+null
+],
+[
+21.0,
+0.533,
+null,
+null
+],
+[
+24.0,
+0.533,
+null,
+null
+],
+[
+28.0,
+0.533,
+null,
+null
+],
+[
+30.81,
+0.533,
+null,
+null
+]
+],
+"events": 18,
+"median_days": 8.38,
+"n": 45,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "252B",
+"subject": "LDARCH"
+},
+"LDARCH 375": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.082,
+null,
+null
+],
+[
+1.0,
+0.082,
+null,
+null
+],
+[
+2.0,
+0.106,
+null,
+null
+],
+[
+3.0,
+0.158,
+null,
+null
+],
+[
+4.0,
+0.21,
+null,
+null
+],
+[
+5.0,
+0.21,
+null,
+null
+],
+[
+6.0,
+0.294,
+null,
+null
+],
+[
+7.0,
+0.323,
+null,
+null
+],
+[
+8.0,
+0.391,
+null,
+null
+],
+[
+9.0,
+0.459,
+null,
+null
+],
+[
+10.0,
+0.5,
+null,
+null
+],
+[
+12.0,
+0.556,
+null,
+null
+],
+[
+14.0,
+0.611,
+null,
+null
+],
+[
+16.0,
+0.722,
+null,
+null
+],
+[
+18.0,
+0.792,
+null,
+null
+],
+[
+18.41,
+0.792,
+null,
+null
+]
+],
+"events": 23,
+"median_days": 9.98,
+"n": 49,
+"pooled": false,
+"reach_days": 18.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "375",
+"subject": "LDARCH"
+},
+"LDARCH C110A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.215,
+null,
+null
+],
+[
+1.0,
+0.315,
+null,
+null
+],
+[
+2.0,
+0.408,
+null,
+null
+],
+[
+3.0,
+0.46,
+null,
+null
+],
+[
+4.0,
+0.498,
+null,
+null
+],
+[
+5.0,
+0.527,
+null,
+null
+],
+[
+6.0,
+0.585,
+null,
+null
+],
+[
+7.0,
+0.634,
+null,
+null
+],
+[
+8.0,
+0.645,
+null,
+null
+],
+[
+9.0,
+0.652,
+null,
+null
+],
+[
+10.0,
+0.652,
+null,
+null
+],
+[
+12.0,
+0.652,
+null,
+null
+],
+[
+14.0,
+0.696,
+null,
+null
+],
+[
+16.0,
+0.732,
+null,
+null
+],
+[
+18.0,
+0.768,
+null,
+null
+],
+[
+21.0,
+0.795,
+null,
+null
+],
+[
+24.0,
+0.821,
+null,
+null
+],
+[
+28.0,
+0.821,
+null,
+null
+],
+[
+30.81,
+0.821,
+null,
+null
+]
+],
+"events": 171,
+"median_days": 4.08,
+"n": 261,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.02,
+null,
+null
+],
+[
+1.0,
+0.02,
+null,
+null
+],
+[
+2.0,
+0.062,
+null,
+null
+],
+[
+3.0,
+0.11,
+null,
+null
+],
+[
+4.0,
+0.11,
+null,
+null
+],
+[
+5.0,
+0.11,
+null,
+null
+],
+[
+6.0,
+0.11,
+null,
+null
+],
+[
+7.0,
+0.11,
+null,
+null
+],
+[
+8.0,
+0.11,
+null,
+null
+],
+[
+9.0,
+0.11,
+null,
+null
+],
+[
+10.0,
+0.11,
+null,
+null
+],
+[
+12.0,
+0.11,
+null,
+null
+],
+[
+14.0,
+0.11,
+null,
+null
+],
+[
+16.0,
+0.11,
+null,
+null
+],
+[
+18.0,
+0.11,
+null,
+null
+],
+[
+21.0,
+0.11,
+null,
+null
+],
+[
+24.0,
+0.11,
+null,
+null
+],
+[
+28.0,
+0.11,
+null,
+null
+],
+[
+28.02,
+0.11,
+null,
+null
+]
+],
+"events": 5,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 28.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C110A",
+"subject": "LDARCH"
+},
+"LDARCH C171": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.141,
+null,
+null
+],
+[
+1.0,
+0.182,
+null,
+null
+],
+[
+2.0,
+0.278,
+null,
+null
+],
+[
+3.0,
+0.351,
+null,
+null
+],
+[
+4.0,
+0.385,
+null,
+null
+],
+[
+5.0,
+0.423,
+null,
+null
+],
+[
+6.0,
+0.511,
+null,
+null
+],
+[
+7.0,
+0.589,
+null,
+null
+],
+[
+8.0,
+0.601,
+null,
+null
+],
+[
+9.0,
+0.638,
+null,
+null
+],
+[
+10.0,
+0.679,
+null,
+null
+],
+[
+12.0,
+0.707,
+null,
+null
+],
+[
+14.0,
+0.723,
+null,
+null
+],
+[
+16.0,
+0.741,
+null,
+null
+],
+[
+18.0,
+0.741,
+null,
+null
+],
+[
+21.0,
+0.796,
+null,
+null
+],
+[
+24.0,
+0.867,
+null,
+null
+],
+[
+28.0,
+0.867,
+null,
+null
+],
+[
+30.81,
+0.867,
+null,
+null
+]
+],
+"events": 92,
+"median_days": 5.82,
+"n": 164,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C171",
+"subject": "LDARCH"
+},
+"LDARCH C188": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.148,
+null,
+null
+],
+[
+1.0,
+0.226,
+null,
+null
+],
+[
+2.0,
+0.328,
+null,
+null
+],
+[
+3.0,
+0.394,
+null,
+null
+],
+[
+4.0,
+0.427,
+null,
+null
+],
+[
+5.0,
+0.559,
+null,
+null
+],
+[
+6.0,
+0.565,
+null,
+null
+],
+[
+7.0,
+0.613,
+null,
+null
+],
+[
+8.0,
+0.685,
+null,
+null
+],
+[
+9.0,
+0.733,
+null,
+null
+],
+[
+10.0,
+0.757,
+null,
+null
+],
+[
+12.0,
+0.815,
+null,
+null
+],
+[
+14.0,
+0.865,
+null,
+null
+],
+[
+16.0,
+0.916,
+null,
+null
+],
+[
+18.0,
+0.966,
+null,
+null
+],
+[
+21.0,
+0.966,
+null,
+null
+],
+[
+24.0,
+0.966,
+null,
+null
+],
+[
+28.0,
+0.966,
+null,
+null
+],
+[
+30.81,
+0.966,
+null,
+null
+]
+],
+"events": 174,
+"median_days": 4.63,
+"n": 251,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.016,
+null,
+null
+],
+[
+1.0,
+0.016,
+null,
+null
+],
+[
+2.0,
+0.035,
+null,
+null
+],
+[
+3.0,
+0.035,
+null,
+null
+],
+[
+4.0,
+0.035,
+null,
+null
+],
+[
+5.0,
+0.119,
+null,
+null
+],
+[
+6.0,
+0.15,
+null,
+null
+],
+[
+7.0,
+0.215,
+null,
+null
+],
+[
+8.0,
+0.259,
+null,
+null
+],
+[
+9.0,
+0.259,
+null,
+null
+],
+[
+10.0,
+0.365,
+null,
+null
+],
+[
+12.0,
+0.524,
+null,
+null
+],
+[
+14.0,
+0.691,
+null,
+null
+],
+[
+16.0,
+0.794,
+null,
+null
+],
+[
+18.0,
+0.794,
+null,
+null
+],
+[
+18.21,
+0.794,
+null,
+null
+]
+],
+"events": 18,
+"median_days": 11.77,
+"n": 62,
+"pooled": false,
+"reach_days": 18.2,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C188",
+"subject": "LDARCH"
+},
+"LDARCH C203": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+33.47,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 36,
+"pooled": false,
+"reach_days": 33.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C203",
+"subject": "LDARCH"
+},
+"LDARCH C241": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C241",
+"subject": "LDARCH"
+},
+"LDARCH C242": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C242",
+"subject": "LDARCH"
+},
+"LDARCH C250": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C250",
+"subject": "LDARCH"
+},
+"LDARCH C290": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.077,
+null,
+null
+],
+[
+1.0,
+0.088,
+null,
+null
+],
+[
+2.0,
+0.099,
+null,
+null
+],
+[
+3.0,
+0.123,
+null,
+null
+],
+[
+4.0,
+0.146,
+null,
+null
+],
+[
+5.0,
+0.201,
+null,
+null
+],
+[
+6.0,
+0.228,
+null,
+null
+],
+[
+7.0,
+0.256,
+null,
+null
+],
+[
+8.0,
+0.344,
+null,
+null
+],
+[
+9.0,
+0.359,
+null,
+null
+],
+[
+10.0,
+0.405,
+null,
+null
+],
+[
+12.0,
+0.439,
+null,
+null
+],
+[
+14.0,
+0.439,
+null,
+null
+],
+[
+16.0,
+0.477,
+null,
+null
+],
+[
+18.0,
+0.477,
+null,
+null
+],
+[
+21.0,
+0.498,
+null,
+null
+],
+[
+24.0,
+0.498,
+null,
+null
+],
+[
+28.0,
+0.498,
+null,
+null
+],
+[
+30.84,
+0.498,
+null,
+null
+]
+],
+"events": 37,
+"median_days": null,
+"n": 104,
+"pooled": false,
+"reach_days": 30.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C290",
+"subject": "LDARCH"
+}
+},
+"subject": "LDARCH",
+"term_id": "2268"
+}
