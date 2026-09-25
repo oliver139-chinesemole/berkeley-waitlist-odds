@@ -132,8 +132,8 @@ berkeley cs 61 a,COMPSCI 61A,split
 61a,COMPSCI 61A,bare
 61A,COMPSCI 61A,bare
 54,MATH 54,bare
-1al,CHEM 1AL,bare
-100a,ECON 100A,bare
+1al,*,bare
+100a,*,bare
 53,MATH 53,bare
 8,DATA C8,bare
 berkeley 61a,COMPSCI 61A,bare
