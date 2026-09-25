@@ -430,13 +430,6 @@ def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Pa
         (full_site / "data" / "backtest.json").unlink()
 
 
-def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
-    out = render(full_site, page="about.html")
-    assert "Simulated term" in out["elements"]["data-status"]["html"] and "this project's own snapshots" in out["elements"]["data-status"]["html"]
-    out = render(full_site, page="methodology.html")
-    assert "Showing: <strong>Simulated term</strong>" in out["elements"]["data-status"]["html"]
-
-
 # ------------------------------------------------ live data status (B2)
 # BWO.liveStatus appends one sentence read from the data branch's status.json
 # (served by the harness from HARNESS_STATUS_FILE; unset, the URL 404s).
@@ -536,3 +529,10 @@ def test_live_status_failure_leaves_the_page_as_it_was(full_site: Path, tmp_path
     no_time = tmp_path / "no_time.json"
     no_time.write_text(json.dumps({k: v for k, v in json.loads(STATUS_FIXTURE.read_text()).items() if k != "last_run_at"}))
     assert status_line(full_site, page, no_time) == before
+
+
+def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
+    out = render(full_site, page="about.html")
+    assert "Simulated term" in out["elements"]["data-status"]["html"] and "this project's own snapshots" in out["elements"]["data-status"]["html"]
+    out = render(full_site, page="methodology.html")
+    assert "Showing: <strong>Simulated term</strong>" in out["elements"]["data-status"]["html"]
