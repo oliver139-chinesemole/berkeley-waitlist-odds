@@ -57,6 +57,7 @@ The public class schedule at [classes.berkeley.edu](https://classes.berkeley.edu
 - Open browser devtools → Network tab → filter XHR/fetch while searching for a class. Identify the JSON endpoint(s) the page calls, their parameters, and pagination.
 - Reproduce those calls in Python `requests`. Verify the JSON contains enrolled/max/waitlist fields per section.
 - Check `https://classes.berkeley.edu/robots.txt` and comply with it. Throttle to ≤1 request/second, set a User-Agent identifying the project with a contact email, cache aggressively, and scrape during off-peak hours where possible. Public, login-free, factual data at polite rates is standard practice, but stop and reassess if the site blocks or objects.
+  - Amended 2026-09-23: the deployed policy is at most 2 requests per second with 4 pages in flight (`docs/DESIGN_A2.md` section 16; decision row in `docs/DATA_LOG.md`), chosen after the site's own latency rose to 2 to 5 s per page; the CLI default stays 1 per second with 2 in flight.
 
 **Route C — read Berkeleytime's open-source code for reference.**
 The [Berkeleytime repo](https://github.com/asuc-octo/berkeleytime) (see the datapuller/backend packages) shows exactly how a student org consumes the SIS APIs — field names, term/section ID conventions, update strategies. Read it before designing the schema regardless of which route wins. Do not copy code wholesale; it's a reference for conventions.

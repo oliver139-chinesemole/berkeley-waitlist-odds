@@ -66,7 +66,7 @@ Review with `design:ux-copy` (how a probability reads to a stressed student) and
 
 ## B5. Use the backfill for Spring 2027
 
-- [ ] Rebuild `config/priority_courses.txt` from data: rank Fall 2026 (and Spring 2026) courses by reconstructed waitlist joins, take the top ~900 sections' courses. Only 99 of 478 waitlisted Fall sections matched the hand-written list. Log the new `priority_sha` in the data log before Oct 26.
+- [x] (2026-09-24, PR #9: top 1,500 sections' courses plus every course with at least 100 joins over both cycles; data-log row has the numbers and `priority_sha`) Rebuild `config/priority_courses.txt` from data: rank Fall 2026 (and Spring 2026) courses by reconstructed waitlist joins, take the top ~900 sections' courses. Only 99 of 478 waitlisted Fall sections matched the hand-written list. Log the new `priority_sha` in the data log before Oct 26.
 - [ ] Pre-register: once Fall 2026 numbers are on the site, the commit timestamp is the prediction date. In February, run the cross-term backtest Fall 2026 → Spring 2027 on this project's own snapshots. "Predictions committed before the outcomes existed" is the headline validation.
 
 ## B6. Repo hygiene (Oliver, 20 minutes)

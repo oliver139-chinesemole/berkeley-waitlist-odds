@@ -73,12 +73,25 @@ Built in a git worktree at `/Users/oliverguo/berkeley-waitlist-odds-site` on bra
 - **Rule change, same evening**: the full-pull backtest (from oliverguo-29) showed course-level curves do not beat the position-bucket baseline (temporal Brier gain -0.023 [-0.034, -0.011]; grouped +0.003), so the exporter got `estimate_level` with `dept` as the default and `meta.estimate_level` driving the pages' copy; the cross-term backtest later that night (fit on Spring 2026, scored on Fall 2026: course +0.0095 over bucket at 14 days, +0.0246 at 28 days, +0.0191 at the deadline; department gained less) showed the within-term loss was the Phase 1 to Phase 2 speed-up, so the default went back to `course` and `dept` stays selectable.
 - **Not done**: landing (needs the install commit first: rebase, `make site-data` with `--prereg-commit`, merge, `pages.yml`); GoatCounter; L11 my waitlists, L12 compare, L14 term selector, L15 outcome form, C5 sparklines, C6 CSV, D5, D6, I7 Cox forest plot; the README hero plot.
 
+## Session 6 (2026-09-23 21:00Z to 2026-09-24 09:00Z): the master plan, the collection fixes, the Spring 2026 source
+
+Read `docs/dev/MASTER_PLAN.md` first from now on; its section 12 records what this session verified against the repo. Everything below is in draft PRs for Oliver's review, in two stacks: `main` ← #8 ← #9 ← #10 ← #12, and `main` ← #4 (site v3) ← #11. `docs/DATA_LOG.md`, `CLAIMS.md`, `CLAUDE.md` and `docs/dev/STATUS.md` will conflict trivially between the stacks at merge time (both append or edit the same lines): keep both sides.
+
+- **Diagnosis (PR #8).** classes.berkeley.edu slowed from 2026-09-21 14:37Z (2 to 5 s per page, 20 s read timeouts). The client spaces request starts 1 s apart whatever the worker count, so with 2 workers throughput fell to 2/latency; ten runs exceeded `--max-missing-share 0.5` and wrote nothing (issue #7). scrape.yml now passes `--min-interval-s 0.5 --max-concurrency 4` (DESIGN_A2 section 16; CLI defaults unchanged). Same PR: analysis.yml replaces `site/data` only for term 2272; the Fall 2026 own-data cohort had 209 post-deadline clearings and would have displaced the Berkeleytime backfill on Sunday Sep 27.
+- **Priority list (PR #9).** `config/priority_courses.txt` is generated: `analysis/priority_from_flows.py --top-sections 1500 --min-course-joins 100 --catalog ...` over both cycles gives 1,013 exact course patterns (14 by course total, the reading-and-composition courses among them), 1,213 live sections in 661 courses per run, 89.2% of reconstructed joins and 51.0% of queued section-terms (hand list: 47.7% and 29.7%). `--catalog` reports what a run fetches, which is where the live numbers in the data log come from. MATH 1A/1B no longer exist: Fall 2026 calculus is MATH 51/52.
+- **Catalog titles (PR #10).** `catalog.json` entries carry `title` and `instructors` read off the section page (DESIGN_A2 section 18), zero extra requests; both write paths keep learned values when a page lacks the elements.
+- **Spring 2026 source (PR #11, on site-v3).** The page serves Spring 2026 for Spring 2027 (P4): Fall 2026 gives own curves to courses carrying 62.0% of Spring 2026's joins, Spring 2026 99.5%; Phase 1 joiners at positions 1 to 5 got in within 14 days 66% of the time in Spring 2026 against 48% in Fall 2026. Numbers in the data-log decision row. Fall 2026 stays frozen at a7240f4 for the pre-registered test.
+- **Reviews.** Every PR was reviewed by a subagent ("with fixes" each time; fixed). Lesson: the worktree guard is session-wide, so switching worktrees while a reviewer runs breaks its shell.
+- **This PR (#12).** `PrioritySpec.rank` is a dict lookup for exact patterns (it scanned a thousand patterns per section, 6.5 s a run); this handoff section; plan rows brought up to date (P4 decided, X7 already done on site-v3, the off-season home page moot now that v3 counts down to Spring 2027).
+
+After the merges, in order: a data-log note row for the first run at the new rate and with the new `priority_sha` (`n_observed`, `sweep_seconds`); close #7 after a clean 24 h and re-measure CLAIMS rows 7 to 9; Oct 4 term switch (RUNBOOK step 7, read `selected=`); `pages.yml` after #11 and the CLAIMS check against the live `meta.json`; count catalog entries with empty titles per component after about twelve runs; Q4 `titles.json` from the catalog. Waiting for #4: search Q1 to Q3, the section board S1 to S3, design U1 to U4.
+
 ## What is left
 
 **Backfill, in order (docs/dev/STATUS.md section 4 is the live list):**
 1. Fall 2026 installed (PR #5); Spring 2026 pulled, cross-term read, level back to course (PR #6). Next: Oliver's decision on serving Spring 2026; B5 priority list before Oct 26.
 2. Oliver's note to the Berkeleytime team was to be sent in parallel with the pull (his choice on 2026-09-20).
-3. B5: rebuild `config/priority_courses.txt` from reconstructed waitlist joins (top ~900 sections' courses) and log the new `priority_sha` before Oct 26. B6: fix the resume line, delete the two "Spring 2026" paragraphs (CLAIMS status, plan section 3), LICENSE, homepage, GoatCounter, move session scaffolding under `docs/dev/`.
+3. B5 (done 2026-09-24 in PR #9; the data-log row has the numbers): rebuild `config/priority_courses.txt` from reconstructed waitlist joins (top ~900 sections' courses) and log the new `priority_sha` before Oct 26. B6: fix the resume line, delete the two "Spring 2026" paragraphs (CLAIMS status, plan section 3), LICENSE, homepage, GoatCounter, move session scaffolding under `docs/dev/`.
 4. A browser pass on the new page states (no browser in the sessions so far).
 
 **Time-gated (nothing to build, just do on the date):**
@@ -92,14 +105,14 @@ Built in a git worktree at `/Users/oliverguo/berkeley-waitlist-odds-site` on bra
 **Oliver's (cannot be done by the assistant):**
 - Sunday two-minute check through Feb 14 (RUNBOOK section 4).
 - Open the live site in a browser once and confirm the no-data state reads well (no browser was available in the sessions).
-- Review `config/priority_courses.txt` before Oct 26: only 99 of 478 waitlisted Fall sections matched the original list; UGBA, MEC ENG and PHYSED were added; ENGLISH, MUSIC, PBHLTH and HISTORY are the next largest gaps. Any edit changes `priority_sha`; log it in the data log.
+- (Superseded 2026-09-24 by the generated list in PR #9.) Review `config/priority_courses.txt` before Oct 26: only 99 of 478 waitlisted Fall sections matched the original list; UGBA, MEC ENG and PHYSED were added; ENGLISH, MUSIC, PBHLTH and HISTORY are the next largest gaps. Any edit changes `priority_sha`; log it in the data log.
 - Optional sponsored request for the SIS Class API (a professor or the ASUC OCTO Berkeleytime team).
 - A7: the r/berkeley post, the resume bullets ("Spring 2027 enrollment cycle", real section and snapshot counts, one headline result), pinning the repo on the GitHub profile, the private interview-prep page, LinkedIn.
 - The design-critique, accessibility and UX-copy reviews the plan names as skills were done by hand; a human pass on the site before the soft launch is still worth doing.
 
 **Engineering that could still be done now (not required):**
 - The plan's `superpowers`, `data`, `design` and `humanizer` skills are not installed in this environment; their disciplines were applied by hand. Installing them is section 0 of the plan.
-- Done in session 3: the site render test (above). Measured and closed without a code change: `catalog.json` was rewritten on every run only because the stuck watermark (data log, 20:37Z row) re-probed the same 400 node ids each run and stamped 169 entries with a new `probed_at`; that cost about 7.7 KB (gzip) per run next to a 15.8 KB Parquet delta. Ordinary fetches do not touch the catalog (a live section's entry changes only when its id, status or node id changes), so after the catch-up the file changes only when something is learned.
+- Done in session 3: the site render test (above). Measured and closed without a code change: `catalog.json` was rewritten on every run only because the stuck watermark (data log, 20:37Z row) re-probed the same 400 node ids each run and stamped 169 entries with a new `probed_at`; that cost about 7.7 KB (gzip) per run next to a 15.8 KB Parquet delta. Ordinary fetches do not touch the catalog (a live section's entry changes only when its id, status, node id, course title or instructors change (the last two since Q7, 2026-09-24)), so after the catch-up the file changes only when something is learned.
 
 ## How to resume
 
