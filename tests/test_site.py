@@ -484,10 +484,10 @@ def title_fetches(out: dict) -> int:
 
 
 def test_titles_load_only_for_a_title_query_and_only_once() -> None:
-    """Q4: a code query, a digit, a bare subject and the combobox never fetch titles.json; the first title query fetches it once."""
+    """Q4: a code query, a digit, a bare subject, stop words alone and the combobox never fetch titles.json; the first title query fetches it once."""
     out = render(SITE, env=WITH_TITLES, expression="""(async () => {
         const i = BWO.loaded.index, n = () => __fetches.filter((u) => u === 'data/titles.json').length, seen = [];
-        for (const q of ['cs61a', 'compsi 61a', 'data structures 2', 'data', 'computer science', 'lecture', 'cs 61x']) { await BWO.matchCourseAsync(i, q); }
+        for (const q of ['cs61a', 'compsi 61a', 'data structures 2', 'data', 'computer science', 'lecture', 'cs 61x', 'and', 'the', 'of the', 'the data']) { await BWO.matchCourseAsync(i, q); }
         seen.push(n());
         BWO.searchCourses(i, 'data structures', 8); BWO.searchCourses(i, 'hilfinger', 8); BWO.matchCourse(i, 'data structures');
         seen.push(n());

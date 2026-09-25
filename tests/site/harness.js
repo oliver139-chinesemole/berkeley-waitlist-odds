@@ -85,6 +85,8 @@ const fetches = [];
 async function fetchStub(url) {
   fetches.push(url);
   const file = path.join(root, url.split("?")[0]);
+  // HARNESS_FAIL_FETCH: every request fails as a network error would, the titles file included.
+  if (process.env.HARNESS_FAIL_FETCH) throw new TypeError("Failed to fetch");
   // HARNESS_TITLES_FILE=<json>: serve that file as data/titles.json and have meta.json name it,
   // so the title layer can run against any site root (a missing file is a 404, a broken one fails to parse).
   const titles = process.env.HARNESS_TITLES_FILE;
@@ -95,7 +97,6 @@ async function fetchStub(url) {
     return { ok: true, status: 200, json: async () => (url === "data/meta.json" ? { titles_file: "titles.json", ...JSON.parse(text) } : JSON.parse(text)) };
   }
   if (!fs.existsSync(file)) return { ok: false, status: 404, json: async () => { throw new Error("404"); } };
-  if (process.env.HARNESS_FAIL_FETCH) throw new TypeError("Failed to fetch");
   const text = fs.readFileSync(file, "utf8");
   return { ok: true, status: 200, json: async () => JSON.parse(text) };
 }

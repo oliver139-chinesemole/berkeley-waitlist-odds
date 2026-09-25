@@ -530,21 +530,25 @@ const BWO = (function () {
     }
     return titlesLoad;
   }
-  // The readings of a query worth a title search (as typed, then without filler), or
-  // null when it is not title-shaped: a digit, all filler, under three characters, or
-  // a subject on its own ("data", "cs", "computer science").
+  // Words a title query ignores: "the data structures" is "data structures", and
+  // "and" alone is nothing (hundreds of catalog titles contain AND).
+  const STOP_WORDS = new Set(["THE", "AND", "OF", "TO", "IN", "A", "AN", "FOR", "WITH", "ON"]);
+  // The readings of a query worth a title search (as typed, then without filler;
+  // stop words dropped from both), or null when it is not title-shaped: a digit,
+  // under three characters, nothing but filler and stop words, or a subject on its
+  // own ("data", "cs", "the data", "computer science").
   function titleQueries(index, text) {
     if (/\d/.test(String(text == null ? "" : text))) return null;
     const t = normalise(text);
-    const stripped = stripFiller(t);
-    if (t.length < 3 || !stripped) return null;
+    if (t.length < 3 || !stripFiller(t)) return null;
     const known = subjectJoins(index);
     const out = [];
-    for (const v of [t, stripped]) {
+    for (const v of [t, stripFiller(t)].map((x) => x.split(" ").filter((w) => w && !STOP_WORDS.has(w)).join(" "))) {
+      if (!v) continue;
       if (subjectCandidates(v).some((c) => c.subject in known || c.subject in SUBJECT_NAMES)) return null;
       if (!out.includes(v)) out.push(v);
     }
-    return out;
+    return out.length ? out : null;
   }
   // Whole tokens only: every query word is a word of the title, or every query word
   // is a word of one instructor's name and one of them is the surname. Title hits
