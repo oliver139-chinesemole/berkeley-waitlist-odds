@@ -15,8 +15,9 @@ Two data regimes exist. Until this project's own Spring 2027 snapshots have clea
 | v2, two pages (`site/index.html`, `site/methodology.html`), data in `site/data/courses.json` + `meta.json` | `main` | **Live.** Serves Fall 2026 (Berkeleytime history), course-level curves, Spring 2027 horizons. |
 | v3, eight pages on shared assets, split data files, course matcher, accuracy page, live-count writer | branch `site-v3`, PR #4 (open, not draft, checks green, untouched since 2026-09-21) | Built and reviewed by a session; waiting for Oliver's browser pass and merge. |
 | P4: v3 data re-exported from the **Spring 2026** cycle with the Spring 2027 calendar; pages name the term from `meta.json` | branch `p4-spring-source`, PR #11 (draft, stacked on `site-v3`) | Reviewed ("with fixes", fixed). Merge after #4, then run `pages.yml`. |
+| Session 7 (2026-09-24): course search Q1 to Q3 and Q8; palette U3 and type U4 | branches `q1-q3-search` (PR #17) and `u3-u4-design` (PR #16), drafts stacked on `site-v3` | Each reviewed by a subagent with one fix round; rebase onto `main` after #4. #16 opens with three decisions for Oliver (the substituted interface face, the gold focus ring, `--rust` on error text and the pooled tag). |
 
-Merge order for the site: #4, then #11, then `gh workflow run pages.yml`, then `curl -s https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/data/meta.json | python -m json.tool | head` must show `term_name` Spring 2026, `forecast_term_name` Spring 2027, `estimate_level` course, `data_source` berkeleytime_history.
+Merge order for the site: #15 (session 7 docs, any time), #4, then #11, then `gh workflow run pages.yml`, then #17 and #16 rebased onto `main`, then `curl -s https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/data/meta.json | python -m json.tool | head` must show `term_name` Spring 2026, `forecast_term_name` Spring 2027, `estimate_level` course, `data_source` berkeleytime_history.
 
 ## 3. The v3 site (branch `site-v3`)
 
@@ -62,7 +63,7 @@ Gotchas that cost time in September 2026:
 - The cohort and flows inputs (`analysis/out/<term>/`) and the backfills (`backfill/<term>/`) are gitignored and exist only in the main checkout at `/Users/oliverguo/berkeley-waitlist-odds`; a worktree does not have them. Pass absolute paths.
 - Claude Code worktrees: `EnterWorktree` creates `.claude/worktrees/<name>` on branch `worktree-<name>` from `origin/main`; the guard refuses git pointed elsewhere (`-C`, command substitution, shell variables next to git) and heredocs containing git-ish words, so write scripts and long files with the Write tool and run them by path. Do not switch worktrees while a reviewer subagent runs: the guard is session-wide.
 - `python -m pytest -q` hides the summary line (addopts already has `-q`).
-- The methodology page's request-rate sentence deliberately names no number: the scraper's rate is set in `scrape.yml` and logged in `docs/DATA_LOG.md` (one request per second until 2026-09-23, at most two per second with four in flight after PR #8).
+- The methodology page's request-rate sentence deliberately names no number: the scraper's rate is set in `scrape.yml` and logged in `docs/DATA_LOG.md` (one request per second until 2026-09-23, at most two per second with four in flight after PR #8). Fixed on `site-v3` in session 7 (commit ea61bf4): the sentence links the data log and the priority list is described as generated, not fixed.
 
 ## 5. Done (v3, PR #4, plus #11)
 
@@ -72,12 +73,14 @@ From `docs/dev/SITE_V3_PLAN.md` section 13 and MASTER_PLAN section 2: shared ass
 
 Nothing site-side should start before #4 merges (P1): stacking on an unmerged branch produces conflicts, not speed. After #4 and #11:
 
+Session 7 (2026-09-24) worked Track B of `docs/dev/NEXT_2026-09-24.md` while #4 waited: B1 (the methodology sentence, on `site-v3`), B2 (PR #17) and B3 (PR #16) stacked on `site-v3`; B4 was not started because the scraper's stop rule fired (see `docs/dev/HANDOFF.md` session 7).
+
 | ID | Item | Status | Notes |
 | --- | --- | --- | --- |
 | P3 | `live/latest.json` starts being written | lands with #4 | verify the file on the `data` branch after the first run |
 | P6 | GoatCounter on every page | Oliver | needs his site code; visits cannot be backfilled, so before any link is shared |
-| S1 | Live section board: one row per section, enrolled/capacity, waitlist/capacity, seats open, seats open but reserved, "read N minutes ago" | open | wiring over `live/latest.json`; every row says how long ago it was read; never claims to know a student's own position |
-| S2 | Reserved-seat line per row from `open_reserved` ("4 seats open, all reserved") | open | registrar's wording |
+| S1 | Live section board: one row per section, enrolled/capacity, waitlist/capacity, seats open, seats open but reserved, "read N minutes ago" | open | wiring over `live/latest.json`; every row says how long ago it was read; never claims to know a student's own position. Session 7 left a ready brief for the fixture and the xfail test (B4 in `docs/dev/NEXT_2026-09-24.md`; the brief text is in `docs/dev/HANDOFF.md` session 7) |
+| S2 | Reserved-seat line per row from `open_reserved` ("4 seats open, all reserved") | open | registrar's wording. `scraper/live.py` on `site-v3` does **not** emit `reserved_count` or `open_reserved` (its `COLUMNS` stop at `observed_at`; `scraper/schema.py` has both), so A3's data-side change is those two columns plus the selection rule |
 | S3 | Staleness warning when a section is off the priority list and its number is six hours old | open | the priority list is generated (PR #9); `meta`/live file carry the read time |
 | S4 | Section history export: daily waitlist series, admits per week, deepest position that cleared | open | needs own data (after Oct 26) |
 | S5 | Section fallback ladder printed on the page; a section-level curve only where n ≥ 30 | open | |
@@ -85,7 +88,7 @@ Nothing site-side should start before #4 merges (P1): stacking on an unmerged br
 | S7 | "Which section should I waitlist": queue depth, admits per week, deepest cleared, side by side; not a model output | open | |
 | S8 | Recent openings feed from consecutive own snapshots | open | needs own data |
 | S9 | Watchlist in `localStorage` + `Notification` while the tab is open; no backend | open | |
-| Q1 | Full subject names (`computer science 61a`) from a generated `config/subject_names.json`; hand nicknames in a separate file | open | the catalog has subject codes only; names must come from the site's listing markup or Berkeleytime |
+| Q1 | Full subject names (`computer science 61a`) from a generated `config/subject_names.json`; hand nicknames in a separate file | draft PR #17 (stacked on `site-v3`) | generated `config/subject_names.json` (an Internet Archive snapshot of the Academic Guide's subject list, recorded as `_source`; 133 of 137 named, four under `_todo`) and hand-written `config/course_nicknames.json`; `scripts/subject_names.py --check` runs in the tests |
 | Q2 | Filler stripping (`berkeley cs61a`, `cs61a discussion`), split suffix (`cs 61 a`), bare number (`61a`) | open | |
 | Q3 | Fuzzy subject only (Damerau-Levenshtein ≤1 up to five characters, ≤2 above); numbers never fuzzed | open | |
 | Q4 | Title and instructor search; `titles.json` lazy-loaded so a plain code query never fetches it | open | titles and instructors land in `catalog/<term>/catalog.json` on the `data` branch with PR #10 (Q7); the exporter can read them from there |
