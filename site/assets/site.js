@@ -198,7 +198,7 @@ const BWO = (function () {
   // passed over, from the counts in the data files (cell.n, own.n_course, meta.min_n);
   // then the section rung, which has no curves yet.
   const SECTION_RUNG = "Section curves need this project's own Spring 2027 snapshots; none exist before Oct 26, 2026.";
-  function deptText(d) { return d === "OTHER" ? "the smaller departments together" : `the ${esc(d)} department`; }
+  function deptText(d) { return d === "OTHER" ? "the other departments" : `the ${esc(d)} department`; }
   // The ladder's first sentence. `resolved` is BWO.resolveCell's or BWO.fallbackCell's result;
   // `entry` carries the course key and dept_group (a stub for a course with no data).
   function pooledSentence(resolved, entry, bucket, meta) {
@@ -206,7 +206,7 @@ const BWO = (function () {
     const key = esc(entry && entry.key ? entry.key : "This course");
     const where = bucketText(bucket);
     const n = num(resolved.cell.n);
-    if (resolved.source === "course") return `This curve: ${key}, ${where}, n = ${n}.`;
+    if (resolved.source === "course") return `This curve: ${key}, ${where}, n&nbsp;=&nbsp;${n}.`;
     const minN = num(meta && meta.min_n ? meta.min_n : 30);
     const own = resolved.own;
     const course = own ? `${key} had ${plural(own.n_course, "case")}` : `${key} had no cases`;
@@ -221,7 +221,7 @@ const BWO = (function () {
       const dept = entry && entry.dept_group;
       if (resolved.source === "all" && own && dept) why += `; ${deptText(dept)} also had fewer than ${minN}`;
     }
-    return `This curve: ${what}, ${where} (${why}), n = ${n}.`;
+    return `This curve: ${what}, ${where} (${why}), n&nbsp;=&nbsp;${n}.`;
   }
   function ladderHtml(resolved, entry, bucket, meta) {
     if (!resolved || !resolved.cell) return "";

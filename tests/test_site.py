@@ -467,33 +467,34 @@ def ladder(html: str) -> str:
 def test_ladder_names_the_course_when_it_has_its_own_curve(course_site: Path) -> None:
     cell = cell_of(course_site, "COMPSCI 0", "1-5")
     assert cell["pooled"] is False
-    rung = f"This curve: COMPSCI 0, positions 1 to 5, n = {cell['n']:,}."
+    rung = f"This curve: COMPSCI 0, positions 1 to 5, n&nbsp;=&nbsp;{cell['n']:,}."
     assert ladder(render(course_site, course="COMPSCI 0", position="3")["result"]) == f"{rung} {SECTION_RUNG}"
     html = render(course_site, page="course.html", search="?c=COMPSCI%200&position=3")["elements"]["course"]["html"]
     assert ladder(html) == f"{rung} {SECTION_RUNG}"
+    assert html.index('<p class="muted small ladder">') < html.index("<h2>Every position</h2>")  # in the headline card, not under the chart
 
 
 def test_ladder_names_the_department_and_why_when_the_course_is_pooled(course_site: Path) -> None:
     own = load(course_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]["6-15"]
     pool = load(course_site, "pooled.json")["dept"]["COMPSCI"]["6-15"]
     assert own["pooled"] == "COMPSCI" and own["n_course"] < 30
-    rung = f"This curve: the COMPSCI department, positions 6 to 15 (COMPSCI 0 had {own['n_course']} cases, fewer than 30), n = {pool['n']:,}."
+    rung = f"This curve: the COMPSCI department, positions 6 to 15 (COMPSCI 0 had {own['n_course']} cases, fewer than 30), n&nbsp;=&nbsp;{pool['n']:,}."
     assert ladder(render(course_site, course="COMPSCI 0", position="10")["result"]) == f"{rung} {SECTION_RUNG}"
     html = render(course_site, page="course.html", search="?c=COMPSCI%200&position=10")["elements"]["course"]["html"]
     assert ladder(html) == f"{rung} {SECTION_RUNG}"
-    # subjects too small for a department of their own are grouped as OTHER, which the ladder does not print as a name
+    # subjects too small for a department of their own are grouped as OTHER, printed as the other departments
     art = load(course_site, "courses/ART.json")["courses"]["ART 11"]["buckets"]["6-15"]
     assert art["pooled"] == "OTHER"
     other = load(course_site, "pooled.json")["dept"]["OTHER"]["6-15"]
     r = render(course_site, course="ART 11", position="10")["result"]
-    assert ladder(r) == f"This curve: the smaller departments together, positions 6 to 15 (ART 11 had {art['n_course']} cases, fewer than 30), n = {other['n']:,}. {SECTION_RUNG}"
+    assert ladder(r) == f"This curve: the other departments, positions 6 to 15 (ART 11 had {art['n_course']} cases, fewer than 30), n&nbsp;=&nbsp;{other['n']:,}. {SECTION_RUNG}"
 
 
 def test_ladder_names_all_courses_and_why_when_the_department_is_too_small(solo_site: Path) -> None:
     own = load(solo_site, "courses/ART.json")["courses"]["ART 11"]["buckets"]
     pooled = load(solo_site, "pooled.json")
     assert own["1-5"]["pooled"] is False and own["6-15"]["pooled"] == "all" and "6-15" not in pooled["dept"]["ART"]
-    rung = f"This curve: all courses, positions 6 to 15 (ART 11 had {own['6-15']['n_course']} cases, fewer than 30; the ART department also had fewer than 30), n = {pooled['all']['6-15']['n']:,}."
+    rung = f"This curve: all courses, positions 6 to 15 (ART 11 had {own['6-15']['n_course']} cases, fewer than 30; the ART department also had fewer than 30), n&nbsp;=&nbsp;{pooled['all']['6-15']['n']:,}."
     assert ladder(render(solo_site, course="ART 11", position="10")["result"]) == f"{rung} {SECTION_RUNG}"
     html = render(solo_site, page="course.html", search="?c=ART%2011&position=10")["elements"]["course"]["html"]
     assert ladder(html) == f"{rung} {SECTION_RUNG}"
@@ -503,20 +504,20 @@ def test_ladder_on_the_unknown_course_fallbacks(full_site: Path) -> None:
     pooled = load(full_site, "pooled.json")
     # known subject, unknown number: the department rung
     r = render(full_site, course="COMPSCI 999", position="4")["result"]
-    assert ladder(r) == f"This curve: the COMPSCI department, positions 1 to 5 (COMPSCI 999 had no cases), n = {pooled['dept']['COMPSCI']['1-5']['n']:,}. {SECTION_RUNG}"
+    assert ladder(r) == f"This curve: the COMPSCI department, positions 1 to 5 (COMPSCI 999 had no cases), n&nbsp;=&nbsp;{pooled['dept']['COMPSCI']['1-5']['n']:,}. {SECTION_RUNG}"
     # unknown subject, upper-division number: the level pool
     r = render(full_site, course="NOPE 101", position="4")["result"]
-    assert ladder(r) == f"This curve: all upper-division courses, positions 1 to 5 (NOPE 101 had no cases), n = {pooled['level']['upper']['1-5']['n']:,}. {SECTION_RUNG}"
+    assert ladder(r) == f"This curve: all upper-division courses, positions 1 to 5 (NOPE 101 had no cases), n&nbsp;=&nbsp;{pooled['level']['upper']['1-5']['n']:,}. {SECTION_RUNG}"
     # unknown subject, graduate number with no graduate pool: all courses
     assert "grad" not in pooled["level"]
     r = render(full_site, course="NOPE 201", position="4")["result"]
-    assert ladder(r) == f"This curve: all courses, positions 1 to 5 (NOPE 201 had no cases), n = {pooled['all']['1-5']['n']:,}. {SECTION_RUNG}"
+    assert ladder(r) == f"This curve: all courses, positions 1 to 5 (NOPE 201 had no cases), n&nbsp;=&nbsp;{pooled['all']['1-5']['n']:,}. {SECTION_RUNG}"
 
 
 def test_ladder_at_department_level_estimates(dept_site: Path) -> None:
     own = load(dept_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]["1-5"]
     pool = load(dept_site, "pooled.json")["dept"]["COMPSCI"]["1-5"]
-    rung = f"This curve: the COMPSCI department, positions 1 to 5 (estimates are by department; COMPSCI 0 had {own['n_course']} cases), n = {pool['n']:,}."
+    rung = f"This curve: the COMPSCI department, positions 1 to 5 (estimates are by department; COMPSCI 0 had {own['n_course']} cases), n&nbsp;=&nbsp;{pool['n']:,}."
     assert ladder(render(dept_site, course="COMPSCI 0", position="3")["result"]) == f"{rung} {SECTION_RUNG}"
     html = render(dept_site, page="course.html", search="?c=COMPSCI%200&position=3")["elements"]["course"]["html"]
     assert ladder(html) == f"{rung} {SECTION_RUNG}"
@@ -525,6 +526,6 @@ def test_ladder_at_department_level_estimates(dept_site: Path) -> None:
 def test_ladder_reads_min_n_from_meta(course_site: Path) -> None:
     """The threshold in the why is meta.min_n, not a constant."""
     out = render(course_site, expression="(function(){ const m = Object.assign({}, BWO.loaded.meta, {min_n: 40}); return BWO.ladderHtml({cell: {n: 500}, pooled: 'COMPSCI', source: 'dept', own: {n_course: 1, sections_course: 1}}, {key: 'COMPSCI 0', dept_group: 'COMPSCI'}, '6-15', m); })()")
-    assert "(COMPSCI 0 had 1 case, fewer than 40), n = 500." in out["eval"]
+    assert "(COMPSCI 0 had 1 case, fewer than 40), n&nbsp;=&nbsp;500." in out["eval"]
     out = render(course_site, expression="BWO.pooledSentence({cell: {n: 1234}, pooled: false, source: 'course', own: null}, {key: 'COMPSCI 0'}, '41+', BWO.loaded.meta)")
-    assert out["eval"] == "This curve: COMPSCI 0, positions 41 and up, n = 1,234."
+    assert out["eval"] == "This curve: COMPSCI 0, positions 41 and up, n&nbsp;=&nbsp;1,234."
