@@ -614,7 +614,15 @@ def main(argv: list[str] | None = None) -> int:
     meta: dict = {}
     if args.meta_from and args.meta_from.exists():
         old = json.loads(args.meta_from.read_text(encoding="utf-8"))
-        meta.update({k: old[k] for k in META_CARRY if k in old})
+        if old.get("term_id") not in (None, str(args.term_id)):
+            # Labels describe a cohort. Carrying Spring 2026's onto a Fall 2026 export (the
+            # Makefile default for a while) would mislabel every page.
+            logging.getLogger(__name__).warning(
+                "--meta-from %s describes term %s, not %s: carrying none of its labels; pass --data-source and --prereg-* explicitly",
+                args.meta_from, old.get("term_id"), args.term_id,
+            )
+        else:
+            meta.update({k: old[k] for k in META_CARRY if k in old})
     if args.data_source:
         meta["data_source"] = args.data_source
     if args.prereg_commit:

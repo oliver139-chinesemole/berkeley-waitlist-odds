@@ -6,106 +6,173 @@
 "curve": [
 [
 0.5,
-0.183,
+0.117,
 null,
 null
 ],
 [
 1.0,
-0.312,
+0.128,
 null,
 null
 ],
 [
 2.0,
-0.423,
+0.17,
 null,
 null
 ],
 [
 3.0,
-0.463,
+0.218,
 null,
 null
 ],
 [
 4.0,
-0.494,
+0.244,
 null,
 null
 ],
 [
 5.0,
-0.525,
+0.298,
 null,
 null
 ],
 [
 6.0,
-0.536,
+0.344,
 null,
 null
 ],
 [
 7.0,
-0.547,
+0.431,
 null,
 null
 ],
 [
 8.0,
-0.592,
+0.449,
 null,
 null
 ],
 [
 9.0,
-0.717,
+0.51,
 null,
 null
 ],
 [
 10.0,
-0.76,
+0.532,
 null,
 null
 ],
 [
 12.0,
-0.872,
+0.638,
 null,
 null
 ],
 [
 14.0,
-0.872,
+0.729,
 null,
 null
 ],
 [
 16.0,
-0.957,
+0.756,
 null,
 null
 ],
 [
-16.06,
-0.957,
+18.0,
+0.791,
+null,
+null
+],
+[
+21.0,
+0.791,
+null,
+null
+],
+[
+24.0,
+0.791,
+null,
+null
+],
+[
+28.0,
+0.791,
+null,
+null
+],
+[
+32.0,
+0.791,
+null,
+null
+],
+[
+36.0,
+0.791,
+null,
+null
+],
+[
+42.0,
+0.791,
+null,
+null
+],
+[
+49.0,
+0.791,
+null,
+null
+],
+[
+56.0,
+0.791,
+null,
+null
+],
+[
+63.0,
+0.791,
+null,
+null
+],
+[
+70.0,
+0.791,
+null,
+null
+],
+[
+77.0,
+0.791,
+null,
+null
+],
+[
+79.75,
+0.791,
 null,
 null
 ]
 ],
-"events": 81,
-"median_days": 4.43,
-"n": 126,
+"events": 50,
+"median_days": 8.98,
+"n": 94,
 "pooled": false,
-"reach_days": 16.1,
+"reach_days": 79.7,
 "sections": 1
-},
-"6-15": {
-"n_course": 15,
-"pooled": "OTHER",
-"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -115,5 +182,5 @@ null
 }
 },
 "subject": "DISSTD",
-"term_id": "2268"
+"term_id": "2262"
 }

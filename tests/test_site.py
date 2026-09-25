@@ -10,10 +10,13 @@ from __future__ import annotations
 import glob
 import json
 import os
+import re
 import shutil
 import subprocess
+import sys
 from datetime import date
 from pathlib import Path
+from urllib.parse import unquote
 
 import pytest
 
@@ -26,7 +29,7 @@ from tests.test_survival import synthetic_cohort
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 HARNESS = ROOT / "tests" / "site" / "harness.js"
-PAGES = ("index.html", "courses.html", "course.html", "insights.html", "accuracy.html", "methodology.html", "about.html", "404.html")
+PAGES = ("index.html", "courses.html", "course.html", "dept.html", "insights.html", "accuracy.html", "methodology.html", "about.html", "404.html")
 
 
 def find_node() -> str | None:
@@ -253,7 +256,7 @@ def test_pooled_estimate_is_labelled(course_site: Path) -> None:
     r = out["result"]
     assert 'class="tag pooled"' in r and "COMPSCI department" in r
     assert f"this course alone: {cell['n_course']} joiners in {cell['sections_course']} section" in r
-    assert "Pooled over the whole COMPSCI department" in r
+    assert f"This curve: the COMPSCI department, positions 6 to 15 (COMPSCI 0 had {cell['n_course']} cases, fewer than 30)" in r
 
 
 def test_department_level_estimates(dept_site: Path) -> None:
@@ -269,13 +272,13 @@ def test_department_level_estimates(dept_site: Path) -> None:
     r = out["result"]
     assert f'<div class="big">{pct(read_curve(dept["curve"], 27.0)[0])}' in r
     assert "position 3 (positions 1 to 5)</p>" in r and 'class="tag pooled"' not in r
-    assert "Department estimate: the whole COMPSCI department at these positions." in r
+    assert "This curve: the COMPSCI department, positions 1 to 5 (estimates are by department; COMPSCI 0 had" in r
     assert f"{dept['sections']} sections, {dept['n']} hypothetical joiners, {dept['events']} cleared (this course alone: {own['n_course']} joiners in {own['sections_course']} section" in r
     assert "Estimates are by department and position, not by course" in r and "course-level curves did not beat the position-only baseline" in r
     # the course page says the same, with the course's own cases in their own column
     out = render(full_site, page="course.html", search="?c=cs0&position=3")
     html = out["elements"]["course"]["html"]
-    assert "Department estimate: the whole COMPSCI department" in html and 'class="tag pooled"' not in html
+    assert "This curve: the COMPSCI department, positions 1 to 5 (estimates are by department;" in html and 'class="tag pooled"' not in html
     assert '<th scope="col" class="num">This course</th>' in html and f'<td class="num">{own["n_course"]}<span class="sub muted">' in html
     assert "of its own cases, COMPSCI estimate" in html
     # the Courses table keeps every course (department estimates are not "pooled"), cases are the course's own
@@ -339,9 +342,253 @@ def test_search_is_forgiving(full_site: Path) -> None:
     assert out["eval"][0] == "MATH 1" and all(k.startswith("MATH 1") for k in out["eval"])
 
 
+def test_search_and_related_before_and_after_the_index_loads() -> None:
+    """searchCourses has matchCourse's guard (nothing loaded yet: no suggestions, no error); relatedCourses ranks the matcher's way."""
+    out = render(Path("/nonexistent"), expression="[null, undefined, {}].map((i) => { try { return BWO.searchCourses(i, 'cs61a', 8); } catch (e) { return String(e); } })")
+    assert out["eval"] == [[], [], []]
+    rows = (
+        "{key: 'MATH 9', subject: 'MATH', joins: 5, buckets: {'6-15': {pooled: false}}},"
+        "{key: 'MATH 2', subject: 'MATH', joins: 5, buckets: {'6-15': {pooled: false}}},"
+        "{key: 'MATH 3', subject: 'MATH', joins: 7, buckets: {'6-15': {pooled: 'MATH'}}},"
+        "{key: 'MATH 4', subject: 'MATH', buckets: {'6-15': {pooled: false}}},"
+        "{key: 'MATH 5', subject: 'MATH', joins: 9, buckets: {'6-15': {pooled: 'all'}}},"
+        "{key: 'MATH 1', subject: 'MATH', joins: 1, buckets: {'6-15': {pooled: false}}}"
+    )
+    out = render(Path("/nonexistent"), expression=f"(function(){{ const i = {{courses: [{rows}]}}; return BWO.relatedCourses(i, i.courses[5], '6-15', 5).map((r) => r.key); }})()")
+    assert out["eval"] == ["MATH 3", "MATH 2", "MATH 9", "MATH 4"]  # joins descending, then key; a missing count is 0
+
+
 def test_cross_listed_number_resolves_with_or_without_the_c(full_site: Path) -> None:
     out = render(full_site, expression="(function(){ const i = {courses: [{key: 'DATA C8', subject: 'DATA', number: 'C8', joins: 5, buckets: {}}, {key: 'DATA 100', subject: 'DATA', number: '100', joins: 1, buckets: {}}]}; return ['data 8', 'DATA C8', 'datac8', 'ds 8', 'ds c8'].map((t) => (BWO.findCourse(i, t) || {}).key); })()")
     assert out["eval"] == ["DATA C8"] * 5
+
+
+# ------------------------------------------------------- course search (Q1, Q2, Q3, Q8)
+
+QUERIES = ROOT / "tests" / "fixtures" / "course_queries.csv"
+RUNNER = ROOT / "tests" / "site" / "queries.mjs"
+# Every row of the table in docs/dev/NEXT_2026-09-24.md section 4 (A2) has to be in the fixture, with
+# one substitution: MCELLBI 32 has no course in the Spring 2026 index (PR #11), so the table's
+# "molecular and cell biology 32" is asked as "molecular and cell biology 104", a course in both terms.
+REQUIRED_QUERIES = (
+    "computer science 61a", "Computer Science 61A", "mechanical engineering 40", "molecular and cell biology 104",
+    "cs 61 a", "cs61 a", "berkeley cs61a", "cs61a discussion", "cs61a spring 2027", "uc berkeley data 8", "61a",
+    "compsi 61a", "phsyics 7a", "econimics 1", "staistics 20", "cs 61x", "physics 999", "asdf", "", "data 8", "data c8", "stat c8",
+)
+
+
+def fixture_rows() -> list[dict[str, str]]:
+    import csv
+
+    with QUERIES.open(newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def test_course_query_fixture_covers_the_table_and_the_misses() -> None:
+    """The fixture is the requirement written down: about 150 rows, every row of the plan's table, 20 or more misses."""
+    rows = fixture_rows()
+    assert 140 <= len(rows) <= 190, len(rows)
+    assert '"' not in QUERIES.read_text(), "the fixture is plain CSV; a quoted field would need a real parser in both runners"
+    queries = [r["query"] for r in rows]
+    assert len(queries) == len(set(queries)), sorted(q for q in queries if queries.count(q) > 1)
+    for query in REQUIRED_QUERIES:
+        assert query in queries, query
+    misses = [r for r in rows if r["expected_layer"] == "miss"]
+    assert len(misses) >= 20, len(misses)
+    assert all(r["expected_key"] == "" for r in misses)
+    assert all(r["expected_key"] for r in rows if r["expected_layer"] != "miss")
+    layers = {r["expected_layer"] for r in rows}
+    out = render(SITE, expression="BWO.LAYERS")  # the fixture's vocabulary is the matcher's, not a copy of it
+    assert out["eval"] and layers == set(out["eval"]), (sorted(layers), out["eval"])
+
+
+def test_course_query_fixture_passes_in_the_node_runner_and_here() -> None:
+    """One fixture, both runners: tests/site/queries.mjs drives the matcher through the harness and this reads its rows."""
+    proc = subprocess.run([str(NODE), str(RUNNER)], capture_output=True, text=True, timeout=120, check=False)
+    assert proc.stdout, proc.stderr
+    report = json.loads(proc.stdout)
+    assert report["failures"] == [], "\n".join(report["failures"])
+    assert proc.returncode == 0, proc.stderr
+    rows = fixture_rows()
+    assert len(report["rows"]) == len(rows)
+    for row, got in zip(rows, report["rows"], strict=True):
+        want = None if row["expected_layer"] == "miss" else row["expected_key"]
+        if want == "*":  # the key is whatever the joins ranking puts first; this row is about the layer
+            assert got["key"], f"{row['query']!r}: wanted a course, got nothing"
+        else:
+            assert got["key"] == want, f"{row['query']!r}: wanted {want!r}, got {got['key']!r}"
+        assert got["layer"] == row["expected_layer"], f"{row['query']!r}: wanted layer {row['expected_layer']}, got {got['layer']}"
+        if row["expected_layer"] == "miss":
+            assert len(got["nearest"]) <= 3, f"{row['query']!r}: {got['nearest']}"
+
+
+def test_a_miss_offers_the_nearest_courses(full_site: Path) -> None:
+    """No match, three nearest offered: where the subject is unambiguous the offers come from it."""
+    out = render(SITE, expression="['cs 61x', 'physics 999', 'asdf', ''].map((t) => BWO.matchCourse(BWO.loaded.index, t).nearest.map((r) => r.key))")
+    cs, physics, asdf, empty = out["eval"]
+    assert cs and all(k.startswith("COMPSCI ") for k in cs), cs
+    assert physics and all(k.startswith("PHYSICS ") for k in physics), physics
+    assert len(asdf) <= 3 and len(empty) <= 3
+    # a hit offers nothing: nearest is only for the no-match message
+    out = render(SITE, expression="BWO.matchCourse(BWO.loaded.index, 'cs61a').nearest.length")
+    assert out["eval"] == 0
+    # the page prints them under its own no-match message
+    out = render(full_site, course="NOPE 101", position="4")
+    assert "Did you mean" in out["result"]
+
+
+def test_a_bare_number_ranks_by_joins(full_site: Path) -> None:
+    """Q2: "7a" is a ranked list, most-joined first, and the lookup uses the first item.
+
+    Pinned to a hand-made index rather than the committed export: the ranking is
+    data, and a refresh may reorder two close courses without anything being wrong.
+    """
+    out = render(full_site, expression="(function(){ const i = {courses: ["
+        "{key: 'HISTORY 7A', subject: 'HISTORY', number: '7A', joins: 348, buckets: {}},"
+        "{key: 'PHYSICS 7A', subject: 'PHYSICS', number: '7A', joins: 288, buckets: {}},"
+        "{key: 'DATA C8', subject: 'DATA', number: 'C8', joins: 5, buckets: {}},"
+        "{key: 'ART 8', subject: 'ART', number: '8', joins: 1, buckets: {}}]};"
+        " const m = BWO.matchCourse(i, '7a');"
+        " return [m.key, m.layer, m.ranked.map((r) => r.key), BWO.matchCourse(i, '8').key]; })()")
+    key, layer, ranked, eight = out["eval"]
+    assert key == "HISTORY 7A" and layer == "bare"
+    assert ranked == ["HISTORY 7A", "PHYSICS 7A"]
+    assert eight == "DATA C8"  # a bare number tries the cross-listed C form too
+
+
+def test_the_matcher_survives_a_half_loaded_index(full_site: Path) -> None:
+    """findCourse returns null rather than throwing before index.json has arrived."""
+    out = render(full_site, expression="[BWO.findCourse({}, 'cs61a'), BWO.findCourse({}, 'asdf'), BWO.findCourse(null, 'cs61a'), BWO.matchCourse({}, 'cs61a').layer, BWO.matchCourse({}, 'cs61a').nearest.length]")
+    assert "eval_error" not in out, out.get("eval_error")
+    assert out["eval"] == [None, None, None, "miss", 0]
+
+
+def test_a_fuzzy_match_says_what_it_showed(full_site: Path) -> None:
+    """Q5: 'Showing COMPSCI 61A for compsi 61a' whenever a typo in the subject was forgiven, and never otherwise."""
+    out = render(SITE, expression="[BWO.showingHtml(BWO.matchCourse(BWO.loaded.index, 'compsi 61a')), BWO.showingHtml(BWO.matchCourse(BWO.loaded.index, 'cs 61a'))]")
+    fuzzy, plain = out["eval"]
+    assert "Showing <strong>COMPSCI 61A</strong> for <em>compsi 61a</em>" in fuzzy
+    assert plain == ""
+    # the lookup puts the line in the page's status area
+    out = render(full_site, course="compsi 0", position="3")
+    assert "Showing <strong>COMPSCI 0</strong> for <em>compsi 0</em>" in out["status"]
+    out = render(full_site, course="cs 0", position="3")
+    assert "Showing" not in out["status"]
+
+
+TITLES = ROOT / "tests" / "fixtures" / "titles_sample.json"
+WITH_TITLES = {"HARNESS_TITLES_FILE": str(TITLES)}
+
+
+def title_fetches(out: dict) -> int:
+    return sum(1 for url in out["fetches"] if url == "data/titles.json")
+
+
+def test_titles_load_only_for_a_title_query_and_only_once() -> None:
+    """Q4: a code query, a digit, a bare subject, stop words alone and the combobox never fetch titles.json; the first title query fetches it once."""
+    out = render(SITE, env=WITH_TITLES, expression="""(async () => {
+        const i = BWO.loaded.index, n = () => __fetches.filter((u) => u === 'data/titles.json').length, seen = [];
+        for (const q of ['cs61a', 'compsi 61a', 'data structures 2', 'data', 'computer science', 'lecture', 'cs 61x', 'and', 'the', 'of the', 'the data']) { await BWO.matchCourseAsync(i, q); }
+        seen.push(n());
+        BWO.searchCourses(i, 'data structures', 8); BWO.searchCourses(i, 'hilfinger', 8); BWO.matchCourse(i, 'data structures');
+        seen.push(n());
+        const m = await BWO.matchCourseAsync(i, 'data structures');
+        seen.push(m.key, m.layer, n());
+        await BWO.matchCourseAsync(i, 'hilfinger'); await BWO.matchCourseAsync(i, 'quantum basketweaving');
+        seen.push(n());
+        return seen; })()""")
+    assert "eval_error" not in out, out.get("eval_error")
+    assert out["eval"] == [0, 0, "COMPSCI 61B", "title", 1, 1]
+    # the page's own load fetches nothing of it either, and neither does a code lookup
+    out = render(SITE, env=WITH_TITLES, course="cs61a", position="10")
+    assert "COMPSCI 61A" in out["result"] and title_fetches(out) == 0
+
+
+def test_title_hits_are_whole_tokens_ranked_by_joins() -> None:
+    """Every query word a whole word of the title, or of one instructor's name including the surname; ties by joins."""
+    rows = ", ".join(
+        f"{{key: '{k}', subject: '{k.split()[0]}', number: '{k.split()[1]}', joins: {j}, buckets: {{}}}}"
+        for k, j in (("COMPSCI 61A", 5), ("DATA C8", 9), ("STAT 20", 1), ("ECON 1", 7), ("ASTRON 11", 3), ("COMPSCI 61B", 2))
+    )
+    queries = ["denero", "john denero", "introduction", "Data Structures", "berkeley data structures", "structure", "john", "intro", "yokota hilfinger", "business communication"]
+    out = render(SITE, env=WITH_TITLES, expression=f"""(async () => {{ const i = {{courses: [{rows}]}}; const out = [];
+        for (const q of {json.dumps(queries)}) {{ const m = await BWO.matchCourseAsync(i, q); out.push([m.layer, m.ranked.map((r) => r.key)]); }}
+        return out; }})()""")
+    assert "eval_error" not in out, out.get("eval_error")
+    got = dict(zip(queries, out["eval"], strict=True))
+    assert got["denero"] == ["title", ["DATA C8", "COMPSCI 61A"]]  # one instructor, two courses: most-joined first
+    assert got["john denero"] == got["denero"]
+    assert got["introduction"] == ["title", ["ECON 1", "ASTRON 11", "STAT 20"]]
+    assert got["Data Structures"] == ["title", ["COMPSCI 61B"]] and got["berkeley data structures"] == ["title", ["COMPSCI 61B"]]
+    assert got["structure"] == ["title", ["COMPSCI 61A"]]  # "Structures" is another word: whole tokens only
+    for query in ("john", "intro", "yokota hilfinger", "business communication"):  # a first name, a prefix, two people, a course not in this index
+        assert got[query] == ["miss", []], query
+
+
+def test_a_title_query_works_end_to_end_and_says_what_it_showed() -> None:
+    """The lookup form and the course page's ?c= take the async path; both print the Showing line for a title hit."""
+    out = render(SITE, env=WITH_TITLES, course="data structures", position="10")
+    assert "Showing <strong>COMPSCI 61B</strong> for <em>data structures</em>." in out["status"]
+    assert "COMPSCI 61B · position 10" in out["result"] and title_fetches(out) == 1
+    out = render(SITE, page="course.html", search="?c=hilfinger", env=WITH_TITLES)
+    assert "Showing <strong>COMPSCI 61B</strong> for <em>hilfinger</em>." in out["status"] and out["title"].startswith("COMPSCI 61B")
+
+
+def test_the_title_layer_is_skipped_silently_without_titles(tmp_path: Path) -> None:
+    """No titles_file in meta, a missing file or a broken one: a title query is an ordinary miss, fetched at most once."""
+    broken = tmp_path / "broken.json"
+    broken.write_text("{not json")
+    expression = "(async () => { const i = BWO.loaded.index; const a = await BWO.matchCourseAsync(i, 'data structures'); const b = await BWO.matchCourseAsync(i, 'hilfinger'); return [a.layer, b.layer, a.nearest.length > 0]; })()"
+    for env, fetched in (({}, 0), ({"HARNESS_TITLES_FILE": str(tmp_path / "absent.json")}, 1), ({"HARNESS_TITLES_FILE": str(broken)}, 1)):
+        out = render(SITE, env=env, expression=expression)
+        assert "eval_error" not in out, (env, out.get("eval_error"))
+        assert out["eval"] == ["miss", "miss", True], env
+        assert title_fetches(out) == fetched, (env, out["fetches"])
+
+
+def test_every_subject_has_a_display_name() -> None:
+    """Q1: config/subject_names.json names every subject in index.json.
+
+    The file covers the Fall 2026 and the Spring 2026 index (the site switches
+    terms by swapping site/data), so this holds on either. The Academic Guide's
+    index does not list three of the subjects (DISSTD, MBN, QTP), so as the plan
+    allows they are written blank and listed under "_todo"; the names asserted
+    here are the 40 most-joined subjects, which are all named in both terms.
+    """
+    names = json.loads((ROOT / "config" / "subject_names.json").read_text())
+    index = json.loads((SITE / "data" / "index.json").read_text())
+    assert names["_source"].startswith("https://") and "classes.berkeley.edu" not in names["_source"]
+    assert names["_fetched"]
+    joins: dict[str, int] = {}
+    for row in index["courses"]:
+        joins[row["subject"]] = joins.get(row["subject"], 0) + (row["joins"] or 0)
+    assert set(joins) <= set(names["names"]), sorted(set(joins) - set(names["names"]))
+    blank = sorted(code for code, name in names["names"].items() if not name)
+    assert blank == sorted(names["_todo"]), (blank, names["_todo"])
+    top40 = sorted(joins, key=lambda s: (-joins[s], s))[:40]
+    assert [s for s in top40 if not names["names"][s]] == []
+    # the hand-written nicknames are a separate file, so regenerating never clobbers them
+    nicknames = json.loads((ROOT / "config" / "course_nicknames.json").read_text())["nicknames"]
+    assert nicknames["E7"] == "ENGIN 7" and nicknames["DATA 8"] == "DATA C8" and nicknames["HAAS"] == "UGBA"
+
+
+def test_site_js_carries_the_generated_names() -> None:
+    """The site ships only site/, so the two config files travel in site.js; the generator keeps them in step."""
+    proc = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "subject_names.py"), "--check"],
+        capture_output=True, text=True, timeout=60, check=False, cwd=str(ROOT),
+    )
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    names = json.loads((ROOT / "config" / "subject_names.json").read_text())
+    out = render(SITE, expression="[BWO.SUBJECT_NAMES['COMPSCI'], BWO.SUBJECT_NAMES['MCELLBI'], Object.keys(BWO.SUBJECT_NAMES).length, Object.keys(BWO.COURSE_NICKNAMES).length]")
+    compsci, mcellbi, named, nicknames = out["eval"]
+    assert compsci == names["names"]["COMPSCI"] and mcellbi == names["names"]["MCELLBI"]
+    assert named == len([n for n in names["names"].values() if n]) and nicknames == 5
+    # the Guide's "X, Y" names are stored in reading order, and their Guide spelling travels too
+    assert names["names"]["HISTART"] == "History of Art" and names["aliases"]["HISTART"] == "Art, History of"
+    assert names["names"]["THEATER"] == "Theater, Dance, and Performance Studies" and "THEATER" not in names["aliases"]
+    aliases = render(SITE, expression="BWO.SUBJECT_NAME_ALIASES")["eval"]
+    assert aliases == names["aliases"]
 
 
 def test_verdict_thresholds() -> None:
@@ -390,6 +637,17 @@ def test_course_page_shows_every_bucket_and_the_same_headline(course_site: Path)
     assert out["elements"].get("live", {"html": ""})["html"] == ""  # no live file: the block stays hidden, no error
 
 
+def test_course_page_says_which_course_a_forgiven_query_showed() -> None:
+    """Q5 on the course page: a fuzzy, name or nickname match prints the lookup's "Showing X for query" line; an exact key does not."""
+    for query, key in (("compsi%2061a", "COMPSCI 61A"), ("computer%20science%2061a", "COMPSCI 61A"), ("e7", "ENGIN 7")):
+        out = render(SITE, page="course.html", search=f"?c={query}")
+        assert f'Showing <strong>{key}</strong> for <em>{unquote(query)}</em>.' in out["status"], (query, out["status"])
+        assert out["title"].startswith(key)
+    for query in ("COMPSCI%2061A", "cs61a"):  # exact, and an alias: nothing was forgiven
+        out = render(SITE, page="course.html", search=f"?c={query}")
+        assert "Showing" not in out["status"] and out["title"].startswith("COMPSCI 61A"), (query, out["status"])
+
+
 def test_course_page_without_a_course(full_site: Path) -> None:
     out = render(full_site, page="course.html", search="?c=NOPE%201")
     assert "No data for" in out["status"] and "NOPE 1" in out["status"] and "index.html?course=NOPE%201" in out["status"]
@@ -430,8 +688,355 @@ def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Pa
         (full_site / "data" / "backtest.json").unlink()
 
 
+# ------------------------------------------------ live data status (B2)
+# BWO.liveStatus appends one sentence read from the data branch's status.json
+# (served by the harness from HARNESS_STATUS_FILE; unset, the URL 404s).
+STATUS_FIXTURE = ROOT / "tests" / "fixtures" / "status_sample.json"
+STATUS_PAGES = {  # page -> (query, id of the element that carries the status line)
+    "index.html": ("", "status"),
+    "courses.html": ("", "status"),
+    "course.html": ("?c=cs0&position=3", "status"),
+    "insights.html": ("", "status"),
+    "accuracy.html": ("", "status"),
+    "about.html": ("", "data-status"),
+    "methodology.html": ("", "data-status"),
+}
+
+
+def status_file(tmp_path: Path, minutes_ago: float, **changes: object) -> Path:
+    """The fixture with last_run_at moved to ``minutes_ago`` before now (the page measures against the real clock)."""
+    from datetime import datetime, timedelta, timezone
+
+    status = json.loads(STATUS_FIXTURE.read_text())
+    status["last_run_at"] = (datetime.now(timezone.utc) - timedelta(minutes=minutes_ago)).isoformat()
+    status.update(changes)
+    path = tmp_path / f"status_{minutes_ago}.json"
+    path.write_text(json.dumps(status))
+    return path
+
+
+def status_line(site_root: Path, page: str, status: Path | None) -> str:
+    query, el = STATUS_PAGES[page]
+    out = render(site_root, page=page, search=query, env={"HARNESS_STATUS_FILE": str(status)} if status else None)
+    return out["elements"][el]["html"]
+
+
+def test_status_fixture_has_the_fields_the_scraper_writes() -> None:
+    assert sorted(json.loads(STATUS_FIXTURE.read_text())) == [
+        "complete", "kind", "last_run_at", "missing_share", "n_missing", "n_observed", "n_written",
+        "scope", "shard", "snapshot", "source", "sweep_seconds", "term_id", "version",
+    ]
+
+
+@pytest.mark.parametrize("page", sorted(STATUS_PAGES))
+def test_live_status_sentence_follows_the_status_line(full_site: Path, tmp_path: Path, page: str) -> None:
+    import re
+
+    fixture = json.loads(STATUS_FIXTURE.read_text())
+    before = status_line(full_site, page, None)
+    after = status_line(full_site, page, status_file(tmp_path, 12))
+    assert after.startswith(before) and after != before
+    added = after[len(before):]
+    sentence = f"This project's last Fall 2026 snapshot ran about 12 min ago: {fixture['n_observed']:,} sections read, {fixture['n_missing']:,} not reached."
+    assert sentence == "This project's last Fall 2026 snapshot ran about 12 min ago: 1,425 sections read, 1 not reached."
+    escaped = sentence.replace("'", "&#39;")  # the page escapes the sentence like every other text it prints
+    assert re.search(r"This project&#39;s last Fall 2026 snapshot ran about \d+ min ago: ", added) and escaped in added
+    # A <p> status line gets an inline span; a status region gets its own paragraph.
+    assert added == (f' <span class="live-status">{escaped}</span>' if STATUS_PAGES[page][1] == "data-status" else f'<p class="muted small live-status">{escaped}</p>')
+
+
+def test_live_status_older_than_90_minutes_is_in_hours(full_site: Path, tmp_path: Path) -> None:
+    html = status_line(full_site, "index.html", status_file(tmp_path, 185, n_observed=1, n_missing=0))
+    assert "This project&#39;s last Fall 2026 snapshot ran about 3 hours ago: 1 section read, 0 not reached." in html
+    html = status_line(full_site, "about.html", status_file(tmp_path, 89))
+    assert "This project&#39;s last Fall 2026 snapshot ran about 89 min ago: 1,425 sections read, 1 not reached." in html
+
+
+@pytest.mark.parametrize(
+    ("status", "now", "expected"),
+    [
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 12345, "n_missing": 2}, "2026-09-25T18:00:20Z", "This project's last snapshot ran about 1 min ago: 12,345 sections read, 2 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 1, "n_missing": 1}, "2026-09-25T19:30:00Z", "This project's last snapshot ran about 90 min ago: 1 section read, 1 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 0, "n_missing": 0}, "2026-09-25T19:31:00Z", "This project's last snapshot ran about 2 hours ago: 0 sections read, 0 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 5, "n_missing": 0}, "2026-09-25T17:58:00Z", "This project's last snapshot ran about 1 min ago: 5 sections read, 0 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 5, "n_missing": 0, "term_id": "2272"}, "2026-09-25T18:05:00Z", "This project's last Spring 2027 snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 5, "n_missing": 0, "term_id": "2265"}, "2026-09-25T18:05:00Z", "This project's last Summer 2026 snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 5, "n_missing": 0, "term_id": "9999"}, "2026-09-25T18:05:00Z", "This project's last snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+        ({"n_observed": 5, "n_missing": 0}, "2026-09-25T18:00:00Z", None),
+        ({"last_run_at": "not a date", "n_observed": 5, "n_missing": 0}, "2026-09-25T18:00:00Z", None),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_missing": 0}, "2026-09-25T18:10:00Z", None),
+        (None, "2026-09-25T18:00:00Z", None),
+    ],
+)
+def test_live_status_text(full_site: Path, status: dict | None, now: str, expected: str | None) -> None:
+    out = render(full_site, page="about.html", today=None, expression=f"BWO.liveStatusText({json.dumps(status)}, Date.parse({json.dumps(now)}))")
+    assert "eval_error" not in out, out.get("eval_error")
+    assert out.get("eval") == expected
+
+
+@pytest.mark.parametrize("page", sorted(STATUS_PAGES))
+def test_live_status_failure_leaves_the_page_as_it_was(full_site: Path, tmp_path: Path, page: str) -> None:
+    before = status_line(full_site, page, None)
+    assert "last snapshot" not in before and "live-status" not in before
+    if page == "index.html":  # byte for byte what the page printed before the live line existed
+        out = render(full_site, expression="BWO.sourceHtml(BWO.loaded.meta)")
+        assert out["status"] == before == out["eval"]
+    truncated = tmp_path / "truncated.json"
+    truncated.write_text(STATUS_FIXTURE.read_text()[:60])
+    assert status_line(full_site, page, truncated) == before  # render() asserts the harness exited 0: nothing threw
+    no_time = tmp_path / "no_time.json"
+    no_time.write_text(json.dumps({k: v for k, v in json.loads(STATUS_FIXTURE.read_text()).items() if k != "last_run_at"}))
+    assert status_line(full_site, page, no_time) == before
+    # The fetch itself rejects (a dropped connection), with a good file behind it: still the line as it was.
+    query, el = STATUS_PAGES[page]
+    out = render(full_site, page=page, search=query, env={"HARNESS_STATUS_FILE": str(status_file(tmp_path, 12)), "HARNESS_STATUS_REJECT": "1"})
+    assert out["elements"][el]["html"] == before
+
+
 def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
     out = render(full_site, page="about.html")
     assert "Simulated term" in out["elements"]["data-status"]["html"] and "this project's own snapshots" in out["elements"]["data-status"]["html"]
     out = render(full_site, page="methodology.html")
     assert "Showing: <strong>Simulated term</strong>" in out["elements"]["data-status"]["html"]
+
+
+# ------------------------------------------------------------- department page
+
+
+def dept_copy(site_root: Path, tmp_path: Path) -> Path:
+    """A copy of the export with distinct joins on the COMPSCI rows (the synthetic cohort has none),
+    so the order the page prints is pinned, plus one DISSTD course: a subject with no display name."""
+    root = tmp_path / "site"
+    shutil.copytree(site_root, root)
+    path = root / "data" / "index.json"
+    index = json.loads(path.read_text())
+    compsci = sorted((r for r in index["courses"] if r["subject"] == "COMPSCI"), key=lambda r: r["key"])
+    for i, r in enumerate(compsci):
+        r["joins"] = (i * 7) % len(compsci) + 1  # 7 is coprime with 15: distinct, and not the key order
+    art = next(r for r in index["courses"] if r["key"] == "ART 11")
+    index["courses"].append({**art, "key": "DISSTD 10", "subject": "DISSTD", "number": "10", "joins": 3})
+    path.write_text(json.dumps(index))
+    return root
+
+
+def jspct(p: float) -> str:
+    """pct() as the page rounds it: JavaScript's Math.round sends a half up, Python's round() to even (0.945 is 95% there, 94% here)."""
+    return f"{int(p * 100 + 0.5)}%"
+
+
+def dept_rows(html: str) -> list[str]:
+    return html.split('<tr class="course">')[1:]
+
+
+def controls_hidden(out: dict) -> bool:
+    """The bucket form starts hidden in the markup (checked below); a page that never shows it never touches it."""
+    return out["elements"].get("controls", {"hidden": True})["hidden"]
+
+
+def test_department_page_shows_the_pool_curve_and_every_course(course_site: Path, tmp_path: Path) -> None:
+    site = dept_copy(course_site, tmp_path)
+    index = load(site, "index.json")
+    pool = load(site, "pooled.json")["dept"]["COMPSCI"]["6-15"]
+    out = render(site, page="dept.html", search="?subject=COMPSCI", expression="BWO.subjectName('COMPSCI')")
+    name = out["eval"]
+    assert name in ("COMPSCI", "Computer Science")  # the code on this branch; the generated name once PR #17 is merged
+    els = out["elements"]
+    assert els["dept-name"]["text"] == name and out["title"].startswith(f"{name} courses")
+    rows = sorted((r for r in index["courses"] if r["subject"] == "COMPSCI"), key=lambda r: -r["joins"])
+    assert len(rows) == 15
+    summary = els["summary"]["html"]
+    assert "15 courses with estimates in Simulated term, this project's own snapshots" in summary
+    # the department's pool at the default bucket, positions 6 to 15, read at the three horizons
+    assert els["bucket"]["value"] == "6-15" and not els["controls"]["hidden"]
+    curve = els["pool"]["html"]
+    assert curve.count('class="curve') == 1 and 'class="curve s2"' in curve and 'class="band"' in curve and 'role="img"' in curve and "Show as table" in curve
+    assert "All COMPSCI courses together, positions 6 to 15" in curve
+    for h in (7.0, 14.0, 28.0):
+        p, lo, hi, _ = read_curve(pool["curve"], h)
+        assert f"<strong>{jspct(p)}</strong>" in curve and f"{jspct(lo)} to {jspct(hi)}" in curve
+    assert f"{pool['sections']} sections, {pool['n']} hypothetical joiners, {pool['events']} cleared" in curve
+    # no "you" and no "now" on this page: no gold marks, no thick curve
+    assert 'class="mark"' not in curve and " you" not in curve and 'class="tag">you' not in curve
+    # every COMPSCI course, most-joined first, with its own share within 14 days at the bucket and a link
+    table = els["table"]["html"]
+    trs = dept_rows(table)
+    assert len(trs) == 15
+    for tr, r in zip(trs, rows):
+        s = r["buckets"]["6-15"]
+        assert f'course.html?c={r["key"].replace(" ", "%20")}&position=6&today=2027-01-10"' in tr
+        assert f">{r['key']}</a>" in tr and f"<strong>{jspct(s['p'][1])}</strong>" in tr and f"{jspct(s['lo'][1])} to {jspct(s['hi'][1])}" in tr
+        assert f"{r['level']} division" in tr and f"{s['n_course']} cases in {s['sections_course']} section" in tr
+    assert 'aria-label="COMPSCI courses at positions 6 to 15"' in table and "Share who got in within 14 days" in table
+    # another bucket: the course's own curves where it has 30 cases, and the pool follows
+    out = render(site, page="dept.html", search="?subject=COMPSCI&bucket=1-5")
+    trs = dept_rows(out["elements"]["table"]["html"])
+    assert len(trs) == 15
+    for tr, r in zip(trs, rows):
+        s = r["buckets"]["1-5"]
+        assert f"<strong>{jspct(s['p'][1])}</strong>" in tr and f"{s['n']} cases in {s['sections']} section" in tr and "pooled" not in tr
+    assert "positions 1 to 5" in out["elements"]["pool"]["html"] and out["elements"]["bucket"]["value"] == "1-5"
+
+
+def test_department_page_without_a_display_name_and_grouped_subjects(course_site: Path, tmp_path: Path) -> None:
+    site = dept_copy(course_site, tmp_path)
+    out = render(site, page="dept.html", search="?subject=DISSTD")
+    els = out["elements"]
+    assert els["dept-name"]["text"] == "DISSTD" and out["title"].startswith("DISSTD courses")
+    assert "1 course with estimates" in els["summary"]["html"] and len(dept_rows(els["table"]["html"])) == 1
+    # a small subject is pooled with the other small ones: the curve says so
+    assert "DISSTD is grouped with the smaller departments" in els["summary"]["html"]
+    assert "The smaller departments together, positions 6 to 15" in els["pool"]["html"]
+    out = render(site, page="dept.html", search="?subject=art", expression="BWO.subjectName('ART')")
+    assert out["elements"]["dept-name"]["text"] == out["eval"] and out["eval"] in ("ART", "Art Practice")
+    assert len(dept_rows(out["elements"]["table"]["html"])) == 15 and "Every ART course" in out["elements"]["table"]["html"]
+    # "cs" resolves through the aliases
+    out = render(site, page="dept.html", search="?subject=cs", expression="BWO.subjectName('COMPSCI')")
+    assert out["elements"]["dept-name"]["text"] == out["eval"] and "Every COMPSCI course" in out["elements"]["table"]["html"]
+    # a display name from the generated map (PR #17) is used; a missing or empty one falls back to the code
+    out = render(site, page="dept.html", search="?subject=cs", expression="(BWO.SUBJECT_NAMES = {COMPSCI: 'Computer Science', DISSTD: ''}, [BWO.subjectName('COMPSCI'), BWO.subjectName('DISSTD'), BWO.subjectName('NOPE')])")
+    assert out["eval"] == ["Computer Science", "DISSTD", "NOPE"]
+
+
+def test_unknown_department_names_the_nearest(course_site: Path) -> None:
+    out = render(course_site, page="dept.html", search="?subject=NOPE")
+    els = out["elements"]
+    assert "No such department" in els["summary"]["html"] and "NOPE" in els["summary"]["html"]
+    assert 1 <= els["summary"]["html"].count("dept.html?subject=") <= 3
+    assert els["pool"]["html"] == "" and els["table"]["html"] == "" and controls_hidden(out)
+    assert out["title"].startswith("No such department")
+    assert "Simulated term" in out["status"]
+    out = render(course_site, page="dept.html", search="?subject=COMP")
+    assert "No such department" in out["elements"]["summary"]["html"] and "dept.html?subject=COMPSCI" in out["elements"]["summary"]["html"]
+    # no subject at all: every department, as links
+    out = render(course_site, page="dept.html")
+    summary = out["elements"]["summary"]["html"]
+    assert "No such department" not in summary and all(f"dept.html?subject={s}" in summary for s in ("ART", "COMPSCI", "MATH", "STAT"))
+
+
+def test_department_page_shell_and_states(course_site: Path, tmp_path: Path) -> None:
+    html = (SITE / "dept.html").read_text()
+    assert '<meta property="og:title"' in html and '<meta property="og:description"' in html
+    assert '<nav aria-label="Site">' in html and "aria-current" not in html and "<footer" in html and 'id="stamp"' in html
+    assert '<form id="controls" class="controls" style="max-width:20rem" hidden>' in html
+    assert html.index('<script src="assets/site.js"></script>') < html.index("BWO.subjectName")
+    out = render(course_site, page="dept.html", search="?subject=COMPSCI")
+    meta = load(course_site, "meta.json")
+    assert out["status"].startswith("<p><strong>Simulated term</strong>") and f"{meta['courses']} courses with estimates from" in out["status"]
+    assert out["stamp"].startswith("Data through")
+    assert out["location"] == "https://example.test/dept.html?subject=COMPSCI&today=2027-01-10"  # nothing in the URL is rewritten
+    out = render(tmp_path, page="dept.html", search="?subject=COMPSCI")
+    assert "No estimates yet" in out["status"] and controls_hidden(out)
+    out = render(course_site, page="dept.html", search="?subject=COMPSCI", env={"HARNESS_FAIL_FETCH": "1"})
+    assert "Could not load the estimates" in out["status"] and controls_hidden(out)
+
+
+def test_course_page_links_its_department(course_site: Path) -> None:
+    out = render(course_site, page="course.html", search="?c=cs0&position=10")
+    html = out["elements"]["course"]["html"]
+    assert 'href="dept.html?subject=COMPSCI&bucket=6-15&today=2027-01-10">All COMPSCI courses</a>' in html
+
+
+def test_course_page_links_its_department_without_related_courses(course_site: Path, tmp_path: Path) -> None:
+    """DISSTD 10 is the only DISSTD course: no related-courses block, but the department link still shows."""
+    site = dept_copy(course_site, tmp_path)
+    art = load(site, "courses/ART.json")
+    (site / "data" / "courses" / "DISSTD.json").write_text(json.dumps({**art, "courses": {"DISSTD 10": art["courses"]["ART 11"]}}))
+    meta = load(site, "meta.json")
+    meta["subject_files"]["DISSTD"] = "courses/DISSTD.json"
+    (site / "data" / "meta.json").write_text(json.dumps(meta))
+    out = render(site, page="course.html", search="?c=DISSTD%2010&position=10")
+    html = out["elements"]["course"]["html"]
+    assert "Other DISSTD courses" not in html
+    assert 'href="dept.html?subject=DISSTD&bucket=6-15&today=2027-01-10">All DISSTD courses</a>' in html
+
+# ------------------------------------------------------ the fallback ladder (S5)
+
+SECTION_RUNG = "Section curves need this project's own Spring 2027 snapshots; none exist before Oct 26, 2026."
+
+
+@pytest.fixture(scope="module")
+def solo_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    """ART 11 is the whole ART department: 36 cases at positions 1 to 5 (its own curve, and a department pool),
+    12 at positions 6 to 15 (too few for the course and for the department, so the cell points at all courses)."""
+    root = tmp_path_factory.mktemp("site_solo")
+    cohort = synthetic_cohort()
+    cohort.loc[cohort["course_key"] == "ART 11", "dept_group"] = "ART"
+    export_site_tables(cohort, CAL, root / "data", n_boot=20)
+    return root
+
+
+def ladder(html: str) -> str:
+    """The ladder paragraph: the rung for the curve shown, then the section rung, last."""
+    found = re.findall(r'<p class="muted small ladder">(.*?)</p>', html, flags=re.S)
+    assert len(found) == 1, html
+    text = " ".join(found[0].split())
+    assert text.endswith(SECTION_RUNG), text
+    assert text.count(SECTION_RUNG) == 1
+    return text
+
+
+def test_ladder_names_the_course_when_it_has_its_own_curve(course_site: Path) -> None:
+    cell = cell_of(course_site, "COMPSCI 0", "1-5")
+    assert cell["pooled"] is False
+    rung = f"This curve: COMPSCI 0, positions 1 to 5, n&nbsp;=&nbsp;{cell['n']:,}."
+    assert ladder(render(course_site, course="COMPSCI 0", position="3")["result"]) == f"{rung} {SECTION_RUNG}"
+    html = render(course_site, page="course.html", search="?c=COMPSCI%200&position=3")["elements"]["course"]["html"]
+    assert ladder(html) == f"{rung} {SECTION_RUNG}"
+    assert html.index('<p class="muted small ladder">') < html.index("<h2>Every position</h2>")  # in the headline card, not under the chart
+
+
+def test_ladder_names_the_department_and_why_when_the_course_is_pooled(course_site: Path) -> None:
+    own = load(course_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]["6-15"]
+    pool = load(course_site, "pooled.json")["dept"]["COMPSCI"]["6-15"]
+    assert own["pooled"] == "COMPSCI" and own["n_course"] < 30
+    rung = f"This curve: the COMPSCI department, positions 6 to 15 (COMPSCI 0 had {own['n_course']} cases, fewer than 30), n&nbsp;=&nbsp;{pool['n']:,}."
+    assert ladder(render(course_site, course="COMPSCI 0", position="10")["result"]) == f"{rung} {SECTION_RUNG}"
+    html = render(course_site, page="course.html", search="?c=COMPSCI%200&position=10")["elements"]["course"]["html"]
+    assert ladder(html) == f"{rung} {SECTION_RUNG}"
+    # subjects too small for a department of their own are grouped as OTHER, printed as the other departments
+    art = load(course_site, "courses/ART.json")["courses"]["ART 11"]["buckets"]["6-15"]
+    assert art["pooled"] == "OTHER"
+    other = load(course_site, "pooled.json")["dept"]["OTHER"]["6-15"]
+    r = render(course_site, course="ART 11", position="10")["result"]
+    assert ladder(r) == f"This curve: the other departments, positions 6 to 15 (ART 11 had {art['n_course']} cases, fewer than 30), n&nbsp;=&nbsp;{other['n']:,}. {SECTION_RUNG}"
+
+
+def test_ladder_names_all_courses_and_why_when_the_department_is_too_small(solo_site: Path) -> None:
+    own = load(solo_site, "courses/ART.json")["courses"]["ART 11"]["buckets"]
+    pooled = load(solo_site, "pooled.json")
+    assert own["1-5"]["pooled"] is False and own["6-15"]["pooled"] == "all" and "6-15" not in pooled["dept"]["ART"]
+    rung = f"This curve: all courses, positions 6 to 15 (ART 11 had {own['6-15']['n_course']} cases, fewer than 30; the ART department also had fewer than 30), n&nbsp;=&nbsp;{pooled['all']['6-15']['n']:,}."
+    assert ladder(render(solo_site, course="ART 11", position="10")["result"]) == f"{rung} {SECTION_RUNG}"
+    html = render(solo_site, page="course.html", search="?c=ART%2011&position=10")["elements"]["course"]["html"]
+    assert ladder(html) == f"{rung} {SECTION_RUNG}"
+
+
+def test_ladder_on_the_unknown_course_fallbacks(full_site: Path) -> None:
+    pooled = load(full_site, "pooled.json")
+    # known subject, unknown number: the department rung
+    r = render(full_site, course="COMPSCI 999", position="4")["result"]
+    assert ladder(r) == f"This curve: the COMPSCI department, positions 1 to 5 (COMPSCI 999 had no cases), n&nbsp;=&nbsp;{pooled['dept']['COMPSCI']['1-5']['n']:,}. {SECTION_RUNG}"
+    # unknown subject, upper-division number: the level pool
+    r = render(full_site, course="NOPE 101", position="4")["result"]
+    assert ladder(r) == f"This curve: all upper-division courses, positions 1 to 5 (NOPE 101 had no cases), n&nbsp;=&nbsp;{pooled['level']['upper']['1-5']['n']:,}. {SECTION_RUNG}"
+    # unknown subject, graduate number with no graduate pool: all courses
+    assert "grad" not in pooled["level"]
+    r = render(full_site, course="NOPE 201", position="4")["result"]
+    assert ladder(r) == f"This curve: all courses, positions 1 to 5 (NOPE 201 had no cases), n&nbsp;=&nbsp;{pooled['all']['1-5']['n']:,}. {SECTION_RUNG}"
+
+
+def test_ladder_at_department_level_estimates(dept_site: Path) -> None:
+    own = load(dept_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]["1-5"]
+    pool = load(dept_site, "pooled.json")["dept"]["COMPSCI"]["1-5"]
+    rung = f"This curve: the COMPSCI department, positions 1 to 5 (estimates are by department; COMPSCI 0 had {own['n_course']} cases), n&nbsp;=&nbsp;{pool['n']:,}."
+    assert ladder(render(dept_site, course="COMPSCI 0", position="3")["result"]) == f"{rung} {SECTION_RUNG}"
+    html = render(dept_site, page="course.html", search="?c=COMPSCI%200&position=3")["elements"]["course"]["html"]
+    assert ladder(html) == f"{rung} {SECTION_RUNG}"
+
+
+def test_ladder_reads_min_n_from_meta(course_site: Path) -> None:
+    """The threshold in the why is meta.min_n, not a constant."""
+    out = render(course_site, expression="(function(){ const m = Object.assign({}, BWO.loaded.meta, {min_n: 40}); return BWO.ladderHtml({cell: {n: 500}, pooled: 'COMPSCI', source: 'dept', own: {n_course: 1, sections_course: 1}}, {key: 'COMPSCI 0', dept_group: 'COMPSCI'}, '6-15', m); })()")
+    assert "(COMPSCI 0 had 1 case, fewer than 40), n&nbsp;=&nbsp;500." in out["eval"]
+    out = render(course_site, expression="BWO.pooledSentence({cell: {n: 1234}, pooled: false, source: 'course', own: null}, {key: 'COMPSCI 0'}, '41+', BWO.loaded.meta)")
+    assert out["eval"] == "This curve: COMPSCI 0, positions 41 and up, n&nbsp;=&nbsp;1,234."

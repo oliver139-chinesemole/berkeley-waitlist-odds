@@ -1,413 +1,175 @@
 {
 "courses": {
-"CMPBIO 198BC": {
+"CMPBIO 276": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.119,
-null,
-null
-],
-[
-1.0,
-0.143,
-null,
-null
-],
-[
-2.0,
-0.156,
-null,
-null
-],
-[
-3.0,
-0.213,
-null,
-null
-],
-[
-4.0,
-0.329,
-null,
-null
-],
-[
-5.0,
-0.401,
-null,
-null
-],
-[
-6.0,
-0.465,
-null,
-null
-],
-[
-7.0,
-0.567,
-null,
-null
-],
-[
-8.0,
-0.61,
-null,
-null
-],
-[
-9.0,
-0.61,
-null,
-null
-],
-[
-10.0,
-0.61,
-null,
-null
-],
-[
-12.0,
-0.61,
-null,
-null
-],
-[
-14.0,
-0.61,
-null,
-null
-],
-[
-16.0,
-0.61,
-null,
-null
-],
-[
-18.0,
-0.61,
-null,
-null
-],
-[
-18.21,
-0.61,
-null,
-null
-]
-],
-"events": 35,
-"median_days": 6.41,
-"n": 84,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
-"n_course": 4,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "198BC",
-"subject": "CMPBIO"
-},
-"CMPBIO 201": {
-"buckets": {
-"1-5": {
-"n_course": 22,
+"n_course": 7,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "201",
+"number": "276",
 "subject": "CMPBIO"
 },
-"CMPBIO 98BC": {
+"CMPBIO 290": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.043,
-null,
-null
-],
-[
-1.0,
-0.073,
-null,
-null
-],
-[
-2.0,
-0.15,
-null,
-null
-],
-[
-3.0,
-0.182,
-null,
-null
-],
-[
-4.0,
-0.182,
-null,
-null
-],
-[
-5.0,
-0.182,
-null,
-null
-],
-[
-6.0,
-0.182,
-null,
-null
-],
-[
-7.0,
-0.247,
-null,
-null
-],
-[
-8.0,
-0.28,
-null,
-null
-],
-[
-9.0,
-0.32,
-null,
-null
-],
-[
-10.0,
-0.362,
-null,
-null
-],
-[
-12.0,
-0.362,
-null,
-null
-],
-[
-14.0,
-0.362,
-null,
-null
-],
-[
-16.0,
-0.362,
-null,
-null
-],
-[
-18.0,
-0.362,
-null,
-null
-],
-[
-18.21,
-0.362,
-null,
-null
-]
-],
-"events": 17,
-"median_days": null,
-"n": 70,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
 "n_course": 4,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
-"level": "lower",
-"number": "98BC",
+"level": "grad",
+"number": "290",
 "subject": "CMPBIO"
 },
-"CMPBIO C131": {
+"CMPBIO C146": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.03,
-null,
-null
-],
-[
-1.0,
-0.03,
-null,
-null
-],
-[
-2.0,
-0.03,
-null,
-null
-],
-[
-3.0,
-0.03,
-null,
-null
-],
-[
-4.0,
-0.074,
-null,
-null
-],
-[
-5.0,
-0.074,
-null,
-null
-],
-[
-6.0,
-0.074,
-null,
-null
-],
-[
-7.0,
-0.074,
-null,
-null
-],
-[
-8.0,
-0.074,
-null,
-null
-],
-[
-9.0,
-0.074,
-null,
-null
-],
-[
-10.0,
-0.074,
-null,
-null
-],
-[
-12.0,
-0.074,
-null,
-null
-],
-[
-14.0,
-0.074,
-null,
-null
-],
-[
-16.0,
-0.074,
-null,
-null
-],
-[
-18.0,
-0.074,
-null,
-null
-],
-[
-21.0,
-0.074,
-null,
-null
-],
-[
-24.0,
-0.074,
-null,
-null
-],
-[
-28.0,
-0.074,
-null,
-null
-],
-[
-32.0,
-0.074,
-null,
-null
-],
-[
-32.42,
-0.074,
-null,
-null
-]
-],
-"events": 2,
-"median_days": null,
-"n": 33,
-"pooled": false,
-"reach_days": 32.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C131",
-"subject": "CMPBIO"
-},
-"CMPBIO C149": {
-"buckets": {
-"1-5": {
-"n_course": 1,
+"n_course": 9,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "C149",
+"number": "C146",
 "subject": "CMPBIO"
 },
 "CMPBIO C176": {
 "buckets": {
 "1-5": {
-"n_course": 22,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.241,
+null,
+null
+],
+[
+1.0,
+0.44,
+null,
+null
+],
+[
+2.0,
+0.53,
+null,
+null
+],
+[
+3.0,
+0.587,
+null,
+null
+],
+[
+4.0,
+0.624,
+null,
+null
+],
+[
+5.0,
+0.681,
+null,
+null
+],
+[
+6.0,
+0.681,
+null,
+null
+],
+[
+7.0,
+0.681,
+null,
+null
+],
+[
+8.0,
+0.713,
+null,
+null
+],
+[
+9.0,
+0.713,
+null,
+null
+],
+[
+10.0,
+0.76,
+null,
+null
+],
+[
+12.0,
+0.76,
+null,
+null
+],
+[
+14.0,
+0.76,
+null,
+null
+],
+[
+16.0,
+0.76,
+null,
+null
+],
+[
+18.0,
+0.76,
+null,
+null
+],
+[
+21.0,
+0.76,
+null,
+null
+],
+[
+24.0,
+0.76,
+null,
+null
+],
+[
+28.0,
+0.76,
+null,
+null
+],
+[
+32.0,
+0.76,
+null,
+null
+],
+[
+34.24,
+0.76,
+null,
+null
+]
+],
+"events": 40,
+"median_days": 1.8,
+"n": 58,
+"pooled": false,
+"reach_days": 34.2,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -417,5 +179,5 @@ null
 }
 },
 "subject": "CMPBIO",
-"term_id": "2268"
+"term_id": "2262"
 }

@@ -1,19 +1,32 @@
 {
 "courses": {
-"IAS C176": {
+"IAS 157AC": {
 "buckets": {
 "1-5": {
-"n_course": 10,
+"n_course": 18,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "C176",
+"number": "157AC",
+"subject": "IAS"
+},
+"IAS C118": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C118",
 "subject": "IAS"
 }
 },
 "subject": "IAS",
-"term_id": "2268"
+"term_id": "2262"
 }

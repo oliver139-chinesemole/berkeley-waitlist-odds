@@ -73,7 +73,7 @@
     if (!rows.length) return "";
     rows.sort((a, b) => b.p - a.p || a.dept.localeCompare(b.dept));
     const html = rows.map((r) => `<div class="row-d"><span>${esc(r.dept === "OTHER" ? "Other departments" : r.dept)}</span><span class="track" aria-hidden="true">${r.lo == null ? "" : `<span class="iv" style="left:${(r.lo * 100).toFixed(1)}%;width:${((r.hi - r.lo) * 100).toFixed(1)}%"></span>`}<span class="pt" style="left:${(r.p * 100).toFixed(1)}%"></span></span><span class="num"><strong>${pct(r.p)}</strong></span></div>`).join("");
-    const table = `<details class="table"><summary>Show as table</summary><div class="scroll" tabindex="0"><table><thead><tr><th scope="col">Department</th><th scope="col" class="num">Within 28 days</th><th scope="col" class="num">95% interval</th><th scope="col" class="num">Cases</th><th scope="col" class="num">Sections</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc(r.dept)}</td><td class="num">${pct(r.p)}${r.capped ? " (floor)" : ""}</td><td class="num">${r.lo == null ? "" : `${pct(r.lo)} to ${pct(r.hi)}`}</td><td class="num">${num(r.n)}</td><td class="num">${num(r.sections)}</td></tr>`).join("")}</tbody></table></div></details>`;
+    const table = `<details class="table"><summary>Show as table</summary><div class="scroll" tabindex="0"><table><thead><tr><th scope="col">Department</th><th scope="col" class="num">Within 28 days</th><th scope="col" class="num">95% interval</th><th scope="col" class="num">Cases</th><th scope="col" class="num">Sections</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc(r.dept === "OTHER" ? "Other departments" : r.dept)}</td><td class="num">${pct(r.p)}${r.capped ? " (floor)" : ""}</td><td class="num">${r.lo == null ? "" : `${pct(r.lo)} to ${pct(r.hi)}`}</td><td class="num">${num(r.n)}</td><td class="num">${num(r.sections)}</td></tr>`).join("")}</tbody></table></div></details>`;
     return `<div class="dotplot" role="img" aria-label="Share who got in within 28 days at positions 6 to 15, by department, with 95% intervals">${html}</div><p class="muted small">Dot: share who got in within 28 days at positions 6 to 15; bar: 95% interval from resampling sections. Departments with at least 30 cases in at least two sections.</p>${table}`;
   }
 
@@ -136,6 +136,7 @@
     if (r.state === "empty") { $("status").innerHTML = BWO.emptyHtml(r.meta); return; }
     meta = r.meta; ins = r.data.insights; pooled = r.data.pooled || { dept: {} }; index = r.data.index;
     $("status").innerHTML = BWO.sourceHtml(meta);
+    BWO.liveStatus($("status"));
     const today = BWO.today();
     const heroSeries = BWO.BUCKET_ORDER.filter((b) => ins.hero[b]).map((b, i) => ({ label: BWO.bucketText(b), short: b, curve: ins.hero[b].curve, cls: "s" + (BWO.BUCKET_ORDER.indexOf(b) + 1), band: false }));
     const allSeries = BWO.BUCKET_ORDER.filter((b) => ins.all_by_bucket[b]).map((b) => ({ label: BWO.bucketText(b), short: b, curve: ins.all_by_bucket[b].curve, cls: "s" + (BWO.BUCKET_ORDER.indexOf(b) + 1), band: false }));

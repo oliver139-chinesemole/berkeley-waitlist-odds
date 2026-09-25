@@ -8,7 +8,7 @@
 //
 // <base url> serves the site with a data/ directory beside it (a static file
 // server over a copy of site/ with the JSON the tests export, or the live site).
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createRequire } from "node:module";
 
@@ -29,6 +29,7 @@ const PAGES = [
   ["lookup", `index.html?today=${today}&course=${course}&position=3`],
   ["courses", `courses.html?today=${today}`],
   ["course", `course.html?today=${today}&c=${course}&position=3`],
+  ["dept", `dept.html?today=${today}&subject=${encodeURIComponent(courseKey.split(" ")[0])}`],
   ["insights", `insights.html?today=${today}`],
   ["accuracy", `accuracy.html?today=${today}`],
   ["methodology", "methodology.html"],
@@ -38,12 +39,25 @@ const PAGES = [
 const VIEWPORTS = [["phone", 390, 844], ["laptop", 1280, 800]];
 const SCHEMES = ["light", "dark"];
 
+// The data branch's status.json (BWO.liveStatus) never comes from GitHub here:
+// every render gets tests/fixtures/status_sample.json with last_run_at 12
+// minutes ago, so the sentence and the screenshots are the same on every run.
+const STATUS_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/status.json";
+const statusFixture = JSON.parse(readFileSync(new URL("../fixtures/status_sample.json", import.meta.url), "utf8"));
+const serveStatus = (route) => route.fulfill({
+  status: 200,
+  contentType: "application/json",
+  headers: { "access-control-allow-origin": "*" },
+  body: JSON.stringify({ ...statusFixture, last_run_at: new Date(Date.now() - 12 * 60000).toISOString() }),
+});
+
 const browser = await chromium.launch();
 const failures = [];
 const report = [];
 for (const [scheme] of SCHEMES.map((s) => [s])) {
   for (const [vpName, width, height] of VIEWPORTS) {
     const context = await browser.newContext({ viewport: { width, height }, colorScheme: scheme, reducedMotion: "reduce" });
+    await context.route(STATUS_URL, serveStatus);
     for (const [name, path] of PAGES) {
       const page = await context.newPage();
       const errors = [];
@@ -76,6 +90,37 @@ for (const [scheme] of SCHEMES.map((s) => [s])) {
     }
     await context.close();
   }
+}
+// One more render: the status request drops (a GitHub outage, an offline
+// reader). The page must stay as it was: no sentence, no page error, and no
+// console error beyond Chromium's own line for the failed load of that URL.
+{
+  const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, colorScheme: "light", reducedMotion: "reduce" });
+  await context.route(STATUS_URL, (route) => route.abort("connectionfailed"));
+  const page = await context.newPage();
+  const errors = [], browserLines = [];
+  page.on("console", (msg) => {
+    if (msg.type() !== "error") return;
+    const at = (msg.location() && msg.location().url) || "";
+    if (at === STATUS_URL && /^Failed to load resource/.test(msg.text())) browserLines.push(msg.text());
+    else errors.push(`console: ${msg.text()}`);
+  });
+  page.on("pageerror", (err) => errors.push(`pageerror: ${err.message}`));
+  const url = base.replace(/\/$/, "") + `/index.html?today=${today}`;
+  try {
+    const dropped = page.waitForEvent("requestfailed", { predicate: (req) => req.url() === STATUS_URL, timeout: 15000 });
+    await page.goto(url, { waitUntil: "networkidle" });
+    await page.waitForFunction(() => { const s = document.getElementById("status"); return !s || !/Loading/.test(s.textContent); }, null, { timeout: 15000 });
+    await dropped;
+    await page.waitForTimeout(300);
+    if (await page.evaluate(() => !!document.querySelector(".live-status"))) errors.push("status sentence shown although the request failed");
+    if (!(await page.evaluate(() => /from Berkeleytime|<strong>/.test(document.getElementById("status").innerHTML)))) errors.push("status line missing");
+  } catch (err) {
+    errors.push(`exception: ${err.message}`);
+  }
+  report.push({ page: "index, status request dropped", viewport: "laptop", scheme: "light", url, errors, browser_lines: browserLines });
+  if (errors.length) failures.push(`index status-dropped laptop light: ${errors.join("; ")}`);
+  await context.close();
 }
 await browser.close();
 writeFileSync(join(outDir, "report.json"), JSON.stringify(report, null, 1));
