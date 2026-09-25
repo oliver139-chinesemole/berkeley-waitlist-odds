@@ -1,0 +1,17 @@
+{
+  "generated_at": "2027-01-10T12:00:00+00:00",
+  "term_id": "2272",
+  "term_name": "Spring 2027",
+  "only_active": false,
+  "n_sections": 7,
+  "columns": ["section_id", "course_key", "subject", "catalog_number", "component", "section_number", "enrolled", "capacity", "waitlist", "waitlist_capacity", "reserved_count", "open_reserved", "status", "observed_at"],
+  "rows": [
+    ["30174", "COMPSCI 61A", "COMPSCI", "61A", "LEC", "001", 20, 30, 0, 10, 0, 0, "O", "2027-01-10T11:48:00+00:00"],
+    ["30175", "COMPSCI 61A", "COMPSCI", "61A", "DIS", "101", 30, 30, 5, 10, 0, 0, "W", "2027-01-10T11:53:00+00:00"],
+    ["30176", "COMPSCI 61A", "COMPSCI", "61A", "DIS", "102", 30, 30, 0, 0, 0, 0, "C", "2027-01-10T11:57:00+00:00"],
+    ["30177", "COMPSCI 61A", "COMPSCI", "61A", "DIS", "103", 26, 30, 0, 10, 10, 4, "C", "2027-01-10T11:55:00+00:00"],
+    ["30178", "COMPSCI 61A", "COMPSCI", "61A", "DIS", "104", 28, 30, 0, 10, 0, 0, "O", "2027-01-10T05:00:00+00:00"],
+    ["31180", "MATH 1A", "MATH", "1A", "LEC", "001", 180, 200, 0, 20, 0, 0, "O", "2027-01-10T11:50:00+00:00"],
+    ["31181", "MATH 1A", "MATH", "1A", "DIS", "101", 25, 25, 3, 10, 0, 0, "W", "2027-01-10T11:52:00+00:00"]
+  ]
+}
