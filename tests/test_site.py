@@ -456,8 +456,18 @@ def dept_copy(site_root: Path, tmp_path: Path) -> Path:
     return root
 
 
+def jspct(p: float) -> str:
+    """pct() as the page rounds it: JavaScript's Math.round sends a half up, Python's round() to even (0.945 is 95% there, 94% here)."""
+    return f"{int(p * 100 + 0.5)}%"
+
+
 def dept_rows(html: str) -> list[str]:
     return html.split('<tr class="course">')[1:]
+
+
+def controls_hidden(out: dict) -> bool:
+    """The bucket form starts hidden in the markup (checked below); a page that never shows it never touches it."""
+    return out["elements"].get("controls", {"hidden": True})["hidden"]
 
 
 def test_department_page_shows_the_pool_curve_and_every_course(course_site: Path, tmp_path: Path) -> None:
@@ -479,8 +489,8 @@ def test_department_page_shows_the_pool_curve_and_every_course(course_site: Path
     assert curve.count('class="curve') == 1 and 'class="curve s2"' in curve and 'class="band"' in curve and 'role="img"' in curve and "Show as table" in curve
     assert "All COMPSCI courses together, positions 6 to 15" in curve
     for h in (7.0, 14.0, 28.0):
-        p, lo, hi = read_curve(pool["curve"], h)
-        assert f"<strong>{pct(p)}</strong>" in curve and f"{pct(lo)} to {pct(hi)}" in curve
+        p, lo, hi, _ = read_curve(pool["curve"], h)
+        assert f"<strong>{jspct(p)}</strong>" in curve and f"{jspct(lo)} to {jspct(hi)}" in curve
     assert f"{pool['sections']} sections, {pool['n']} hypothetical joiners, {pool['events']} cleared" in curve
     # no "you" and no "now" on this page: no gold marks, no thick curve
     assert 'class="mark"' not in curve and " you" not in curve and 'class="tag">you' not in curve
@@ -491,8 +501,8 @@ def test_department_page_shows_the_pool_curve_and_every_course(course_site: Path
     for tr, r in zip(trs, rows):
         s = r["buckets"]["6-15"]
         assert f'course.html?c={r["key"].replace(" ", "%20")}&position=6&today=2027-01-10"' in tr
-        assert f">{r['key']}</a>" in tr and f"<strong>{pct(s['p'][1])}</strong>" in tr and f"{pct(s['lo'][1])} to {pct(s['hi'][1])}" in tr
-        assert f"{r['level']} division" in tr
+        assert f">{r['key']}</a>" in tr and f"<strong>{jspct(s['p'][1])}</strong>" in tr and f"{jspct(s['lo'][1])} to {jspct(s['hi'][1])}" in tr
+        assert f"{r['level']} division" in tr and f"{s['n_course']} cases in {s['sections_course']} section" in tr
     assert 'aria-label="COMPSCI courses at positions 6 to 15"' in table and "Share who got in within 14 days" in table
     # another bucket: the course's own curves where it has 30 cases, and the pool follows
     out = render(site, page="dept.html", search="?subject=COMPSCI&bucket=1-5")
@@ -500,7 +510,7 @@ def test_department_page_shows_the_pool_curve_and_every_course(course_site: Path
     assert len(trs) == 15
     for tr, r in zip(trs, rows):
         s = r["buckets"]["1-5"]
-        assert f"<strong>{pct(s['p'][1])}</strong>" in tr and f">{s['n']}<" in tr and "pooled" not in tr
+        assert f"<strong>{jspct(s['p'][1])}</strong>" in tr and f"{s['n']} cases in {s['sections']} section" in tr and "pooled" not in tr
     assert "positions 1 to 5" in out["elements"]["pool"]["html"] and out["elements"]["bucket"]["value"] == "1-5"
 
 
@@ -526,7 +536,7 @@ def test_unknown_department_names_the_nearest(course_site: Path) -> None:
     els = out["elements"]
     assert "No such department" in els["summary"]["html"] and "NOPE" in els["summary"]["html"]
     assert 1 <= els["summary"]["html"].count("dept.html?subject=") <= 3
-    assert els["pool"]["html"] == "" and els["table"]["html"] == "" and els["controls"]["hidden"]
+    assert els["pool"]["html"] == "" and els["table"]["html"] == "" and controls_hidden(out)
     assert out["title"].startswith("No such department")
     assert "Simulated term" in out["status"]
     out = render(course_site, page="dept.html", search="?subject=COMP")
@@ -541,6 +551,7 @@ def test_department_page_shell_and_states(course_site: Path, tmp_path: Path) -> 
     html = (SITE / "dept.html").read_text()
     assert '<meta property="og:title"' in html and '<meta property="og:description"' in html
     assert '<nav aria-label="Site">' in html and "aria-current" not in html and "<footer" in html and 'id="stamp"' in html
+    assert '<form id="controls" class="controls" style="max-width:20rem" hidden>' in html
     assert html.index('<script src="assets/site.js"></script>') < html.index("BWO.subjectName")
     out = render(course_site, page="dept.html", search="?subject=COMPSCI")
     meta = load(course_site, "meta.json")
@@ -548,9 +559,9 @@ def test_department_page_shell_and_states(course_site: Path, tmp_path: Path) -> 
     assert out["stamp"].startswith("Data through")
     assert out["location"] == "https://example.test/dept.html?subject=COMPSCI&today=2027-01-10"  # nothing in the URL is rewritten
     out = render(tmp_path, page="dept.html", search="?subject=COMPSCI")
-    assert "No estimates yet" in out["status"] and out["elements"]["controls"]["hidden"]
+    assert "No estimates yet" in out["status"] and controls_hidden(out)
     out = render(course_site, page="dept.html", search="?subject=COMPSCI", env={"HARNESS_FAIL_FETCH": "1"})
-    assert "Could not load the estimates" in out["status"] and out["elements"]["controls"]["hidden"]
+    assert "Could not load the estimates" in out["status"] and controls_hidden(out)
 
 
 def test_course_page_links_its_department(course_site: Path) -> None:

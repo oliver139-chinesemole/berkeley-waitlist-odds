@@ -537,3 +537,40 @@ const BWO = (function () {
   };
 })();
 if (typeof window !== "undefined") window.BWO = BWO;
+
+// ------------------------------------------------------ department pages (C5)
+// dept.html?subject=CODE. Kept in one block at the end so parallel branches merge.
+// A subject's display name: the generated map when it is on the branch (BWO.SUBJECT_NAMES), else the code.
+BWO.subjectName = function (code) { return (BWO.SUBJECT_NAMES && BWO.SUBJECT_NAMES[code]) || code; };
+// The subject a ?subject= value names, as the index spells it ("cs", "Comp Sci" and "compsci" are COMPSCI), or null.
+BWO.resolveSubject = function (index, text) {
+  const t = String(text || "").toUpperCase().replace(/[^A-Z0-9&\s]/g, " ").replace(/\s+/g, " ").trim();
+  if (!t) return null;
+  const subjects = new Set(index.courses.map((r) => r.subject));
+  const squashed = t.replace(/[\s&]+/g, "");
+  for (const s of [t, BWO.SUBJECT_ALIASES[t], squashed, BWO.SUBJECT_ALIASES[squashed]]) if (s && subjects.has(s)) return s;
+  return null;
+};
+// Up to n subjects near an unknown one: prefix and alias matches from the course search, then by edit distance.
+BWO.nearestSubjects = function (index, text, n) {
+  const want = String(text || "").toUpperCase().replace(/[^A-Z0-9&]/g, "");
+  const out = [];
+  for (const r of BWO.searchCourses(index, text, 50)) if (!out.includes(r.subject)) out.push(r.subject);
+  const dist = (a, b) => {
+    let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      const cur = [i];
+      for (let j = 1; j <= b.length; j++) cur.push(Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)));
+      prev = cur;
+    }
+    return prev[b.length];
+  };
+  const rest = Array.from(new Set(index.courses.map((r) => r.subject))).filter((s) => !out.includes(s));
+  rest.sort((a, b) => dist(want, a) - dist(want, b) || a.localeCompare(b));
+  return out.concat(rest).slice(0, n || 3);
+};
+// Every course of a subject, most-joined first, then by number.
+BWO.deptCourses = function (index, subject) {
+  return index.courses.filter((r) => r.subject === subject)
+    .sort((a, b) => (b.joins || 0) - (a.joins || 0) || a.key.localeCompare(b.key, "en", { numeric: true }));
+};
