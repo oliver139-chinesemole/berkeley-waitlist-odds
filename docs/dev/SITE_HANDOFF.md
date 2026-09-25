@@ -103,7 +103,7 @@ Session 7 (2026-09-24) worked Track B of `docs/dev/NEXT_2026-09-24.md` while #4 
 | U5 | Density: lookup and board dense at 38/68 rem; insights and accuracy at 64 rem with air | open | |
 | U6 | One animation (queue strip fills, gold tick drops), one signal (freshness dot); `prefers-reduced-motion` off | open | |
 | U7 | Section status as a blue ramp, never red/green | PR #20 (the board's ramp); PR #22 raises --s1 | |
-| U8 | No all-caps labels, no single accented headline word, no monospace standing in for "data" | «U8STATUS» | |
+| U8 | No all-caps labels, no single accented headline word, no monospace standing in for "data" | PR #31 (session 9): audit file, 3 of 8 findings fixed, 5 for Oliver | |
 | L11 | My waitlists in `localStorage` | open | |
 | L15 | Outcome form: course, position, date joined, outcome | open | the only individual-level ground truth |
 | C5, C6 | Row sparklines; CSV download of the current view | open | |
