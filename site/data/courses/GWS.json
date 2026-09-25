@@ -6,98 +6,134 @@
 "curve": [
 [
 0.5,
-0.332,
+0.217,
 null,
 null
 ],
 [
 1.0,
-0.441,
+0.307,
 null,
 null
 ],
 [
 2.0,
-0.57,
+0.486,
 null,
 null
 ],
 [
 3.0,
-0.667,
+0.508,
 null,
 null
 ],
 [
 4.0,
-0.751,
+0.57,
 null,
 null
 ],
 [
 5.0,
-0.773,
+0.598,
 null,
 null
 ],
 [
 6.0,
-0.804,
+0.648,
 null,
 null
 ],
 [
 7.0,
-0.872,
+0.666,
 null,
 null
 ],
 [
 8.0,
-0.872,
+0.666,
 null,
 null
 ],
 [
 9.0,
-0.89,
+0.738,
 null,
 null
 ],
 [
 10.0,
-0.933,
+0.738,
 null,
 null
 ],
 [
 12.0,
-0.944,
+0.738,
 null,
 null
 ],
 [
 14.0,
-0.978,
+0.85,
 null,
 null
 ],
 [
-15.44,
-1.0,
+16.0,
+0.85,
+null,
+null
+],
+[
+18.0,
+0.85,
+null,
+null
+],
+[
+21.0,
+0.85,
+null,
+null
+],
+[
+24.0,
+0.85,
+null,
+null
+],
+[
+28.0,
+0.85,
+null,
+null
+],
+[
+32.0,
+0.85,
+null,
+null
+],
+[
+34.05,
+0.85,
 null,
 null
 ]
 ],
-"events": 168,
-"median_days": 1.32,
-"n": 205,
+"events": 68,
+"median_days": 2.19,
+"n": 109,
 "pooled": false,
-"reach_days": 15.4,
+"reach_days": 34.1,
 "sections": 1
 },
 "6-15": {
-"n_course": 9,
+"n_course": 2,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -107,142 +143,208 @@ null
 "number": "10",
 "subject": "GWS"
 },
-"GWS 100AC": {
-"buckets": {
-"1-5": {
-"n_course": 25,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "100AC",
-"subject": "GWS"
-},
-"GWS 102": {
+"GWS 101": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.116,
+0.193,
 null,
 null
 ],
 [
 1.0,
-0.137,
+0.193,
 null,
 null
 ],
 [
 2.0,
-0.259,
+0.228,
 null,
 null
 ],
 [
 3.0,
-0.334,
+0.301,
 null,
 null
 ],
 [
 4.0,
-0.401,
+0.325,
 null,
 null
 ],
 [
 5.0,
-0.458,
+0.352,
 null,
 null
 ],
 [
 6.0,
-0.504,
+0.352,
 null,
 null
 ],
 [
 7.0,
-0.551,
+0.382,
 null,
 null
 ],
 [
 8.0,
-0.551,
+0.397,
 null,
 null
 ],
 [
 9.0,
-0.605,
+0.397,
 null,
 null
 ],
 [
 10.0,
-0.625,
+0.397,
 null,
 null
 ],
 [
 12.0,
-0.667,
+0.413,
 null,
 null
 ],
 [
 14.0,
-0.692,
+0.449,
 null,
 null
 ],
 [
 16.0,
-0.692,
+0.471,
 null,
 null
 ],
 [
 18.0,
-0.692,
+0.471,
 null,
 null
 ],
 [
-18.21,
-0.692,
+21.0,
+0.471,
+null,
+null
+],
+[
+24.0,
+0.471,
+null,
+null
+],
+[
+28.0,
+0.471,
+null,
+null
+],
+[
+32.0,
+0.471,
+null,
+null
+],
+[
+36.0,
+0.471,
+null,
+null
+],
+[
+42.0,
+0.471,
+null,
+null
+],
+[
+49.0,
+0.471,
+null,
+null
+],
+[
+56.0,
+0.471,
+null,
+null
+],
+[
+63.0,
+0.471,
+null,
+null
+],
+[
+70.0,
+0.471,
+null,
+null
+],
+[
+77.0,
+0.471,
+null,
+null
+],
+[
+79.75,
+0.471,
 null,
 null
 ]
 ],
-"events": 52,
-"median_days": 5.84,
+"events": 38,
+"median_days": null,
 "n": 95,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 16,
+"n_course": 8,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "102",
+"number": "101",
+"subject": "GWS"
+},
+"GWS 104": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "104",
 "subject": "GWS"
 },
 "GWS 111": {
 "buckets": {
 "1-5": {
-"n_course": 15,
+"n_course": 10,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -252,484 +354,293 @@ null
 "number": "111",
 "subject": "GWS"
 },
-"GWS 112": {
+"GWS 129": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.0,
+0.277,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.416,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.643,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.725,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.839,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.885,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.908,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.92,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.931,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.931,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.931,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.931,
 null,
 null
 ],
 [
 14.0,
-0.0,
+0.931,
 null,
 null
 ],
 [
 16.0,
-0.0,
+0.931,
 null,
 null
 ],
 [
 18.0,
-0.0,
+0.931,
 null,
 null
 ],
 [
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-38.15,
-0.0,
+19.17,
+0.931,
 null,
 null
 ]
 ],
-"events": 0,
-"median_days": null,
-"n": 37,
+"events": 105,
+"median_days": 1.3,
+"n": 129,
 "pooled": false,
-"reach_days": 38.1,
+"reach_days": 19.2,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "112",
-"subject": "GWS"
-},
-"GWS 125": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-38.18,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 82,
-"pooled": false,
-"reach_days": 38.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "125",
-"subject": "GWS"
-},
-"GWS 130AC": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.301,
-null,
-null
-],
-[
-1.0,
-0.401,
-null,
-null
-],
-[
-2.0,
-0.513,
-null,
-null
-],
-[
-3.0,
-0.601,
-null,
-null
-],
-[
-4.0,
-0.638,
-null,
-null
-],
-[
-5.0,
-0.692,
-null,
-null
-],
-[
-6.0,
-0.709,
-null,
-null
-],
-[
-7.0,
-0.728,
-null,
-null
-],
-[
-8.0,
-0.755,
-null,
-null
-],
-[
-9.0,
-0.829,
-null,
-null
-],
-[
-10.0,
-0.916,
-null,
-null
-],
-[
-11.66,
-0.93,
-null,
-null
-]
-],
-"events": 133,
-"median_days": 1.83,
-"n": 174,
-"pooled": false,
-"reach_days": 11.7,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.036,
-null,
-null
-],
-[
-1.0,
-0.036,
-null,
-null
-],
-[
-2.0,
-0.135,
-null,
-null
-],
-[
-3.0,
-0.194,
-null,
-null
-],
-[
-4.0,
-0.194,
-null,
-null
-],
-[
-5.0,
-0.194,
-null,
-null
-],
-[
-6.0,
-0.194,
-null,
-null
-],
-[
-7.0,
-0.194,
-null,
-null
-],
-[
-8.0,
-0.194,
-null,
-null
-],
-[
-9.0,
-0.194,
-null,
-null
-],
-[
-10.0,
-0.194,
-null,
-null
-],
-[
-12.0,
-0.194,
-null,
-null
-],
-[
-14.0,
-0.664,
-null,
-null
-],
-[
-14.5,
-0.664,
-null,
-null
-]
-],
-"events": 14,
-"median_days": 13.72,
-"n": 57,
-"pooled": false,
-"reach_days": 14.5,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "130AC",
+"number": "129",
 "subject": "GWS"
 },
 "GWS 131": {
 "buckets": {
 "1-5": {
-"n_course": 3,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.117,
+null,
+null
+],
+[
+1.0,
+0.15,
+null,
+null
+],
+[
+2.0,
+0.211,
+null,
+null
+],
+[
+3.0,
+0.274,
+null,
+null
+],
+[
+4.0,
+0.318,
+null,
+null
+],
+[
+5.0,
+0.363,
+null,
+null
+],
+[
+6.0,
+0.439,
+null,
+null
+],
+[
+7.0,
+0.501,
+null,
+null
+],
+[
+8.0,
+0.555,
+null,
+null
+],
+[
+9.0,
+0.628,
+null,
+null
+],
+[
+10.0,
+0.674,
+null,
+null
+],
+[
+12.0,
+0.736,
+null,
+null
+],
+[
+14.0,
+0.79,
+null,
+null
+],
+[
+16.0,
+0.79,
+null,
+null
+],
+[
+18.0,
+0.79,
+null,
+null
+],
+[
+21.0,
+0.79,
+null,
+null
+],
+[
+24.0,
+0.79,
+null,
+null
+],
+[
+28.0,
+0.79,
+null,
+null
+],
+[
+32.0,
+0.79,
+null,
+null
+],
+[
+36.0,
+0.79,
+null,
+null
+],
+[
+42.0,
+0.79,
+null,
+null
+],
+[
+49.0,
+0.79,
+null,
+null
+],
+[
+56.0,
+0.79,
+null,
+null
+],
+[
+63.0,
+0.79,
+null,
+null
+],
+[
+70.0,
+0.79,
+null,
+null
+],
+[
+77.0,
+0.79,
+null,
+null
+],
+[
+79.75,
+0.79,
+null,
+null
+]
+],
+"events": 99,
+"median_days": 6.78,
+"n": 154,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -737,55 +648,245 @@ null
 "number": "131",
 "subject": "GWS"
 },
-"GWS 133AC": {
+"GWS 132AC": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.166,
+0.228,
 null,
 null
 ],
 [
 1.0,
-0.194,
+0.251,
 null,
 null
 ],
 [
 2.0,
-0.244,
+0.345,
 null,
 null
 ],
 [
 3.0,
-0.336,
+0.402,
 null,
 null
 ],
 [
 4.0,
-0.353,
+0.43,
 null,
 null
 ],
 [
 5.0,
-0.381,
+0.534,
 null,
 null
 ],
 [
 6.0,
-0.466,
+0.621,
 null,
 null
 ],
 [
 7.0,
-0.494,
+0.721,
+null,
+null
+],
+[
+8.0,
+0.765,
+null,
+null
+],
+[
+9.0,
+0.804,
+null,
+null
+],
+[
+10.0,
+0.82,
+null,
+null
+],
+[
+12.0,
+0.861,
+null,
+null
+],
+[
+14.0,
+0.893,
+null,
+null
+],
+[
+15.7,
+0.893,
+null,
+null
+]
+],
+"events": 153,
+"median_days": 4.66,
+"n": 216,
+"pooled": false,
+"reach_days": 15.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "132AC",
+"subject": "GWS"
+},
+"GWS 14": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.322,
+null,
+null
+],
+[
+1.0,
+0.423,
+null,
+null
+],
+[
+2.0,
+0.556,
+null,
+null
+],
+[
+3.0,
+0.712,
+null,
+null
+],
+[
+4.0,
+0.817,
+null,
+null
+],
+[
+5.0,
+0.859,
+null,
+null
+],
+[
+6.0,
+0.883,
+null,
+null
+],
+[
+7.0,
+0.911,
+null,
+null
+],
+[
+8.0,
+0.925,
+null,
+null
+],
+[
+9.0,
+0.935,
+null,
+null
+],
+[
+10.0,
+0.946,
+null,
+null
+],
+[
+12.0,
+0.957,
+null,
+null
+],
+[
+13.83,
+0.957,
+null,
+null
+]
+],
+"events": 326,
+"median_days": 1.59,
+"n": 404,
+"pooled": false,
+"reach_days": 13.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.055,
+null,
+null
+],
+[
+1.0,
+0.197,
+null,
+null
+],
+[
+2.0,
+0.235,
+null,
+null
+],
+[
+3.0,
+0.311,
+null,
+null
+],
+[
+4.0,
+0.394,
+null,
+null
+],
+[
+5.0,
+0.528,
+null,
+null
+],
+[
+6.0,
+0.528,
+null,
+null
+],
+[
+7.0,
+0.528,
 null,
 null
 ],
@@ -797,260 +898,51 @@ null
 ],
 [
 9.0,
-0.593,
+0.619,
 null,
 null
 ],
 [
 10.0,
-0.628,
+0.681,
 null,
 null
 ],
 [
 12.0,
-0.763,
+0.814,
 null,
 null
 ],
 [
 14.0,
-0.944,
+0.814,
 null,
 null
 ],
 [
-14.09,
-0.972,
+15.7,
+0.814,
 null,
 null
 ]
 ],
-"events": 95,
-"median_days": 7.0,
-"n": 151,
+"events": 71,
+"median_days": 4.64,
+"n": 150,
 "pooled": false,
-"reach_days": 14.1,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.049,
-null,
-null
-],
-[
-1.0,
-0.049,
-null,
-null
-],
-[
-2.0,
-0.049,
-null,
-null
-],
-[
-3.0,
-0.108,
-null,
-null
-],
-[
-4.0,
-0.108,
-null,
-null
-],
-[
-5.0,
-0.108,
-null,
-null
-],
-[
-6.0,
-0.108,
-null,
-null
-],
-[
-7.0,
-0.147,
-null,
-null
-],
-[
-8.0,
-0.186,
-null,
-null
-],
-[
-9.0,
-0.186,
-null,
-null
-],
-[
-10.0,
-0.186,
-null,
-null
-],
-[
-12.0,
-0.186,
-null,
-null
-],
-[
-14.0,
-0.593,
-null,
-null
-],
-[
-15.01,
-0.796,
-null,
-null
-]
-],
-"events": 10,
-"median_days": 13.82,
-"n": 41,
-"pooled": false,
-"reach_days": 15.0,
+"reach_days": 15.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
-"level": "upper",
-"number": "133AC",
+"level": "lower",
+"number": "14",
 "subject": "GWS"
 },
-"GWS 142": {
+"GWS 200": {
 "buckets": {
 "1-5": {
-"n_course": 19,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "142",
-"subject": "GWS"
-},
-"GWS 235": {
-"buckets": {
-"1-5": {
-"n_course": 19,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "235",
-"subject": "GWS"
-},
-"GWS 236": {
-"buckets": {
-"1-5": {
-"n_course": 2,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "236",
-"subject": "GWS"
-},
-"GWS 50AC": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.155,
-null,
-null
-],
-[
-1.0,
-0.221,
-null,
-null
-],
-[
-2.0,
-0.297,
-null,
-null
-],
-[
-3.0,
-0.381,
-null,
-null
-],
-[
-4.0,
-0.464,
-null,
-null
-],
-[
-5.0,
-0.55,
-null,
-null
-],
-[
-6.0,
-0.601,
-null,
-null
-],
-[
-7.0,
-0.634,
-null,
-null
-],
-[
-8.0,
-0.792,
-null,
-null
-],
-[
-9.0,
-0.881,
-null,
-null
-],
-[
-9.96,
-1.0,
-null,
-null
-]
-],
-"events": 125,
-"median_days": 4.32,
-"n": 210,
-"pooled": false,
-"reach_days": 10.0,
-"sections": 1
-},
-"16-40": {
 "curve": [
 [
 0.5,
@@ -1143,7 +1035,73 @@ null,
 null
 ],
 [
-18.21,
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -1151,12 +1109,200 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 34,
+"n": 47,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
 "sections": 1
+}
 },
-"6-15": {
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "GWS"
+},
+"GWS 210": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.012,
+0.0,
+0.022
+],
+[
+1.0,
+0.012,
+0.0,
+0.022
+],
+[
+2.0,
+0.012,
+0.0,
+0.022
+],
+[
+3.0,
+0.012,
+0.0,
+0.022
+],
+[
+4.0,
+0.012,
+0.0,
+0.022
+],
+[
+5.0,
+0.012,
+0.0,
+0.022
+],
+[
+6.0,
+0.012,
+0.0,
+0.022
+],
+[
+7.0,
+0.012,
+0.0,
+0.022
+],
+[
+8.0,
+0.028,
+0.0,
+0.053
+],
+[
+9.0,
+0.028,
+0.0,
+0.053
+],
+[
+10.0,
+0.028,
+0.0,
+0.053
+],
+[
+12.0,
+0.028,
+0.0,
+0.053
+],
+[
+14.0,
+0.028,
+0.0,
+0.053
+],
+[
+16.0,
+0.028,
+0.0,
+0.053
+],
+[
+18.0,
+0.028,
+0.0,
+0.053
+],
+[
+21.0,
+0.028,
+0.0,
+0.053
+],
+[
+24.0,
+0.028,
+0.0,
+0.053
+],
+[
+28.0,
+0.028,
+0.0,
+0.053
+],
+[
+32.0,
+0.028,
+0.0,
+0.053
+],
+[
+36.0,
+0.028,
+0.0,
+0.053
+],
+[
+42.0,
+0.028,
+0.0,
+0.053
+],
+[
+49.0,
+0.028,
+0.0,
+0.053
+],
+[
+56.0,
+0.028,
+0.0,
+0.053
+],
+[
+63.0,
+0.028,
+0.0,
+0.053
+],
+[
+70.0,
+0.028,
+0.0,
+0.053
+],
+[
+77.0,
+0.028,
+0.0,
+0.053
+],
+[
+79.75,
+0.028,
+0.0,
+0.053
+]
+],
+"events": 2,
+"median_days": null,
+"n": 84,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 3
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "210",
+"subject": "GWS"
+},
+"GWS 220": {
+"buckets": {
+"1-5": {
 "curve": [
 [
 0.5,
@@ -1226,49 +1372,321 @@ null
 ],
 [
 12.0,
-0.115,
+0.0,
 null,
 null
 ],
 [
 14.0,
-0.355,
+0.0,
 null,
 null
 ],
 [
 16.0,
-0.516,
+0.0,
 null,
 null
 ],
 [
 18.0,
-0.742,
+0.0,
 null,
 null
 ],
 [
-18.21,
-0.742,
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
 null,
 null
 ]
 ],
-"events": 12,
-"median_days": 15.71,
-"n": 114,
+"events": 0,
+"median_days": null,
+"n": 32,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
+"level": "grad",
+"number": "220",
+"subject": "GWS"
+},
+"GWS 24": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
 "level": "lower",
-"number": "50AC",
+"number": "24",
+"subject": "GWS"
+},
+"GWS 40": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "40",
+"subject": "GWS"
+},
+"GWS C180Y": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.1,
+null,
+null
+],
+[
+1.0,
+0.146,
+null,
+null
+],
+[
+2.0,
+0.23,
+null,
+null
+],
+[
+3.0,
+0.256,
+null,
+null
+],
+[
+4.0,
+0.283,
+null,
+null
+],
+[
+5.0,
+0.31,
+null,
+null
+],
+[
+6.0,
+0.373,
+null,
+null
+],
+[
+7.0,
+0.406,
+null,
+null
+],
+[
+8.0,
+0.406,
+null,
+null
+],
+[
+9.0,
+0.406,
+null,
+null
+],
+[
+10.0,
+0.406,
+null,
+null
+],
+[
+12.0,
+0.45,
+null,
+null
+],
+[
+14.0,
+0.45,
+null,
+null
+],
+[
+16.0,
+0.45,
+null,
+null
+],
+[
+18.0,
+0.45,
+null,
+null
+],
+[
+21.0,
+0.45,
+null,
+null
+],
+[
+24.0,
+0.45,
+null,
+null
+],
+[
+28.0,
+0.45,
+null,
+null
+],
+[
+32.0,
+0.45,
+null,
+null
+],
+[
+36.0,
+0.45,
+null,
+null
+],
+[
+42.0,
+0.45,
+null,
+null
+],
+[
+49.0,
+0.45,
+null,
+null
+],
+[
+56.0,
+0.45,
+null,
+null
+],
+[
+63.0,
+0.45,
+null,
+null
+],
+[
+70.0,
+0.45,
+null,
+null
+],
+[
+77.0,
+0.45,
+null,
+null
+],
+[
+79.75,
+0.45,
+null,
+null
+]
+],
+"events": 34,
+"median_days": null,
+"n": 90,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C180Y",
 "subject": "GWS"
 }
 },
 "subject": "GWS",
-"term_id": "2268"
+"term_id": "2262"
 }

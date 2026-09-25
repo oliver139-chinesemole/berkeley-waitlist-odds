@@ -1,332 +1,135 @@
 {
 "courses": {
-"RHETOR 10": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.179,
-null,
-null
-],
-[
-1.0,
-0.236,
-null,
-null
-],
-[
-2.0,
-0.281,
-null,
-null
-],
-[
-3.0,
-0.303,
-null,
-null
-],
-[
-4.0,
-0.324,
-null,
-null
-],
-[
-5.0,
-0.371,
-null,
-null
-],
-[
-6.0,
-0.396,
-null,
-null
-],
-[
-7.0,
-0.431,
-null,
-null
-],
-[
-8.0,
-0.457,
-null,
-null
-],
-[
-9.0,
-0.475,
-null,
-null
-],
-[
-10.0,
-0.507,
-null,
-null
-],
-[
-12.0,
-0.541,
-null,
-null
-],
-[
-14.0,
-0.589,
-null,
-null
-],
-[
-16.0,
-0.719,
-null,
-null
-],
-[
-18.0,
-0.781,
-null,
-null
-],
-[
-21.0,
-0.916,
-null,
-null
-],
-[
-21.93,
-0.983,
-null,
-null
-]
-],
-"events": 178,
-"median_days": 9.91,
-"n": 337,
-"pooled": false,
-"reach_days": 21.9,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.02,
-null,
-null
-],
-[
-2.0,
-0.053,
-null,
-null
-],
-[
-3.0,
-0.053,
-null,
-null
-],
-[
-4.0,
-0.053,
-null,
-null
-],
-[
-5.0,
-0.053,
-null,
-null
-],
-[
-6.0,
-0.053,
-null,
-null
-],
-[
-7.0,
-0.053,
-null,
-null
-],
-[
-8.0,
-0.053,
-null,
-null
-],
-[
-9.0,
-0.053,
-null,
-null
-],
-[
-10.0,
-0.053,
-null,
-null
-],
-[
-12.0,
-0.053,
-null,
-null
-],
-[
-14.0,
-0.053,
-null,
-null
-],
-[
-16.0,
-0.112,
-null,
-null
-],
-[
-18.0,
-0.283,
-null,
-null
-],
-[
-18.4,
-0.283,
-null,
-null
-]
-],
-"events": 8,
-"median_days": null,
-"n": 111,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "10",
-"subject": "RHETOR"
-},
 "RHETOR 103B": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.407,
+0.307,
 null,
 null
 ],
 [
 1.0,
-0.561,
+0.399,
 null,
 null
 ],
 [
 2.0,
-0.698,
+0.543,
 null,
 null
 ],
 [
 3.0,
-0.708,
+0.599,
 null,
 null
 ],
 [
 4.0,
-0.775,
+0.652,
 null,
 null
 ],
 [
 5.0,
-0.832,
+0.774,
 null,
 null
 ],
 [
 6.0,
-0.832,
+0.863,
 null,
 null
 ],
 [
 7.0,
-0.843,
+0.919,
 null,
 null
 ],
 [
 8.0,
-0.933,
+0.919,
 null,
 null
 ],
 [
 9.0,
-0.933,
+0.919,
 null,
 null
 ],
 [
 10.0,
-0.933,
+0.919,
 null,
 null
 ],
 [
 12.0,
-0.966,
+0.919,
 null,
 null
 ],
 [
 14.0,
-0.978,
+0.932,
 null,
 null
 ],
 [
 16.0,
-0.978,
+0.932,
 null,
 null
 ],
 [
-17.94,
-1.0,
+18.0,
+0.932,
+null,
+null
+],
+[
+21.0,
+0.932,
+null,
+null
+],
+[
+24.0,
+0.932,
+null,
+null
+],
+[
+28.0,
+0.932,
+null,
+null
+],
+[
+28.68,
+0.932,
 null,
 null
 ]
 ],
-"events": 106,
-"median_days": 0.85,
-"n": 119,
+"events": 158,
+"median_days": 1.64,
+"n": 210,
 "pooled": false,
-"reach_days": 17.9,
+"reach_days": 28.7,
 "sections": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -334,162 +137,496 @@ null
 "number": "103B",
 "subject": "RHETOR"
 },
-"RHETOR 106": {
-"buckets": {
-"1-5": {
-"n_course": 6,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "106",
-"subject": "RHETOR"
-},
-"RHETOR 108": {
-"buckets": {
-"1-5": {
-"n_course": 21,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "108",
-"subject": "RHETOR"
-},
-"RHETOR 120": {
+"RHETOR 104": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.055,
+0.111,
 null,
 null
 ],
 [
 1.0,
-0.078,
+0.133,
 null,
 null
 ],
 [
 2.0,
-0.089,
+0.202,
 null,
 null
 ],
 [
 3.0,
-0.125,
+0.249,
 null,
 null
 ],
 [
 4.0,
-0.144,
+0.249,
 null,
 null
 ],
 [
 5.0,
-0.157,
+0.274,
 null,
 null
 ],
 [
 6.0,
-0.157,
+0.324,
 null,
 null
 ],
 [
 7.0,
-0.171,
+0.35,
 null,
 null
 ],
 [
 8.0,
-0.186,
+0.404,
 null,
 null
 ],
 [
 9.0,
-0.186,
+0.404,
 null,
 null
 ],
 [
 10.0,
-0.186,
+0.404,
 null,
 null
 ],
 [
 12.0,
-0.194,
+0.404,
 null,
 null
 ],
 [
 14.0,
-0.203,
+0.404,
 null,
 null
 ],
 [
 16.0,
-0.224,
+0.404,
 null,
 null
 ],
 [
 18.0,
-0.224,
+0.404,
 null,
 null
 ],
 [
 21.0,
-0.224,
+0.404,
 null,
 null
 ],
 [
 24.0,
-0.224,
+0.404,
 null,
 null
 ],
 [
 28.0,
-0.224,
+0.404,
 null,
 null
 ],
 [
 32.0,
-0.224,
+0.404,
 null,
 null
 ],
 [
-35.02,
-0.224,
+36.0,
+0.404,
+null,
+null
+],
+[
+42.0,
+0.404,
+null,
+null
+],
+[
+49.0,
+0.404,
+null,
+null
+],
+[
+56.0,
+0.404,
+null,
+null
+],
+[
+63.0,
+0.404,
+null,
+null
+],
+[
+70.0,
+0.404,
+null,
+null
+],
+[
+77.0,
+0.404,
+null,
+null
+],
+[
+79.75,
+0.404,
 null,
 null
 ]
 ],
-"events": 35,
+"events": 17,
 "median_days": null,
-"n": 186,
+"n": 45,
 "pooled": false,
-"reach_days": 35.0,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "104",
+"subject": "RHETOR"
+},
+"RHETOR 109": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.125,
+null,
+null
+],
+[
+1.0,
+0.16,
+null,
+null
+],
+[
+2.0,
+0.184,
+null,
+null
+],
+[
+3.0,
+0.211,
+null,
+null
+],
+[
+4.0,
+0.225,
+null,
+null
+],
+[
+5.0,
+0.296,
+null,
+null
+],
+[
+6.0,
+0.404,
+null,
+null
+],
+[
+7.0,
+0.506,
+null,
+null
+],
+[
+8.0,
+0.598,
+null,
+null
+],
+[
+9.0,
+0.652,
+null,
+null
+],
+[
+10.0,
+0.652,
+null,
+null
+],
+[
+12.0,
+0.691,
+null,
+null
+],
+[
+14.0,
+0.691,
+null,
+null
+],
+[
+16.0,
+0.717,
+null,
+null
+],
+[
+18.0,
+0.717,
+null,
+null
+],
+[
+21.0,
+0.717,
+null,
+null
+],
+[
+24.0,
+0.717,
+null,
+null
+],
+[
+28.0,
+0.717,
+null,
+null
+],
+[
+32.0,
+0.717,
+null,
+null
+],
+[
+33.68,
+0.717,
+null,
+null
+]
+],
+"events": 48,
+"median_days": 6.29,
+"n": 89,
+"pooled": false,
+"reach_days": 33.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "109",
+"subject": "RHETOR"
+},
+"RHETOR 114": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.098,
+null,
+null
+],
+[
+1.0,
+0.113,
+null,
+null
+],
+[
+2.0,
+0.198,
+null,
+null
+],
+[
+3.0,
+0.228,
+null,
+null
+],
+[
+4.0,
+0.266,
+null,
+null
+],
+[
+5.0,
+0.273,
+null,
+null
+],
+[
+6.0,
+0.326,
+null,
+null
+],
+[
+7.0,
+0.361,
+null,
+null
+],
+[
+8.0,
+0.38,
+null,
+null
+],
+[
+9.0,
+0.398,
+null,
+null
+],
+[
+10.0,
+0.409,
+null,
+null
+],
+[
+12.0,
+0.419,
+null,
+null
+],
+[
+14.0,
+0.419,
+null,
+null
+],
+[
+16.0,
+0.443,
+null,
+null
+],
+[
+18.0,
+0.443,
+null,
+null
+],
+[
+21.0,
+0.472,
+null,
+null
+],
+[
+24.0,
+0.472,
+null,
+null
+],
+[
+28.0,
+0.472,
+null,
+null
+],
+[
+32.0,
+0.472,
+null,
+null
+],
+[
+36.0,
+0.472,
+null,
+null
+],
+[
+42.0,
+0.472,
+null,
+null
+],
+[
+49.0,
+0.472,
+null,
+null
+],
+[
+56.0,
+0.472,
+null,
+null
+],
+[
+63.0,
+0.472,
+null,
+null
+],
+[
+70.0,
+0.472,
+null,
+null
+],
+[
+77.0,
+0.472,
+null,
+null
+],
+[
+79.75,
+0.472,
+null,
+null
+]
+],
+"events": 58,
+"median_days": null,
+"n": 154,
+"pooled": false,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
@@ -532,103 +669,642 @@ null
 ],
 [
 6.0,
-0.0,
+0.04,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.04,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.12,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.12,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.12,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.12,
 null,
 null
 ],
 [
 14.0,
-0.0,
+0.12,
 null,
 null
 ],
 [
 16.0,
-0.0,
+0.12,
 null,
 null
 ],
 [
 18.0,
-0.0,
+0.12,
 null,
 null
 ],
 [
 21.0,
-0.0,
+0.12,
 null,
 null
 ],
 [
 24.0,
-0.0,
+0.12,
 null,
 null
 ],
 [
-28.0,
-0.0,
-null,
-null
-],
-[
-31.11,
-0.0,
+25.37,
+0.12,
 null,
 null
 ]
 ],
-"events": 0,
+"events": 3,
 "median_days": null,
-"n": 61,
+"n": 40,
 "pooled": false,
-"reach_days": 31.1,
+"reach_days": 25.4,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "120",
+"number": "114",
 "subject": "RHETOR"
 },
-"RHETOR 129AC": {
+"RHETOR 121": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.178,
+0.097,
+null,
+null
+],
+[
+1.0,
+0.109,
+null,
+null
+],
+[
+2.0,
+0.144,
+null,
+null
+],
+[
+3.0,
+0.144,
+null,
+null
+],
+[
+4.0,
+0.17,
+null,
+null
+],
+[
+5.0,
+0.17,
+null,
+null
+],
+[
+6.0,
+0.274,
+null,
+null
+],
+[
+7.0,
+0.289,
+null,
+null
+],
+[
+8.0,
+0.289,
+null,
+null
+],
+[
+9.0,
+0.306,
+null,
+null
+],
+[
+10.0,
+0.306,
+null,
+null
+],
+[
+12.0,
+0.306,
+null,
+null
+],
+[
+14.0,
+0.327,
+null,
+null
+],
+[
+16.0,
+0.35,
+null,
+null
+],
+[
+18.0,
+0.35,
+null,
+null
+],
+[
+21.0,
+0.422,
+null,
+null
+],
+[
+24.0,
+0.46,
+null,
+null
+],
+[
+28.0,
+0.46,
+null,
+null
+],
+[
+32.0,
+0.46,
+null,
+null
+],
+[
+36.0,
+0.46,
+null,
+null
+],
+[
+42.0,
+0.46,
+null,
+null
+],
+[
+49.0,
+0.46,
+null,
+null
+],
+[
+56.0,
+0.46,
+null,
+null
+],
+[
+63.0,
+0.46,
+null,
+null
+],
+[
+70.0,
+0.46,
+null,
+null
+],
+[
+77.0,
+0.46,
+null,
+null
+],
+[
+79.75,
+0.46,
+null,
+null
+]
+],
+"events": 29,
+"median_days": null,
+"n": 95,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "121",
+"subject": "RHETOR"
+},
+"RHETOR 123": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.106,
+null,
+null
+],
+[
+1.0,
+0.153,
+null,
+null
+],
+[
+2.0,
+0.185,
+null,
+null
+],
+[
+3.0,
+0.217,
+null,
+null
+],
+[
+4.0,
+0.217,
+null,
+null
+],
+[
+5.0,
+0.273,
+null,
+null
+],
+[
+6.0,
+0.313,
+null,
+null
+],
+[
+7.0,
+0.313,
+null,
+null
+],
+[
+8.0,
+0.335,
+null,
+null
+],
+[
+9.0,
+0.335,
+null,
+null
+],
+[
+10.0,
+0.335,
+null,
+null
+],
+[
+12.0,
+0.384,
+null,
+null
+],
+[
+14.0,
+0.384,
+null,
+null
+],
+[
+16.0,
+0.384,
+null,
+null
+],
+[
+18.0,
+0.384,
+null,
+null
+],
+[
+21.0,
+0.384,
+null,
+null
+],
+[
+24.0,
+0.384,
+null,
+null
+],
+[
+28.0,
+0.384,
+null,
+null
+],
+[
+32.0,
+0.384,
+null,
+null
+],
+[
+36.0,
+0.384,
+null,
+null
+],
+[
+42.0,
+0.384,
+null,
+null
+],
+[
+49.0,
+0.384,
+null,
+null
+],
+[
+56.0,
+0.384,
+null,
+null
+],
+[
+63.0,
+0.384,
+null,
+null
+],
+[
+70.0,
+0.384,
+null,
+null
+],
+[
+77.0,
+0.384,
+null,
+null
+],
+[
+79.75,
+0.384,
+null,
+null
+]
+],
+"events": 22,
+"median_days": null,
+"n": 67,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "123",
+"subject": "RHETOR"
+},
+"RHETOR 137": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.118,
+null,
+null
+],
+[
+1.0,
+0.13,
+null,
+null
+],
+[
+2.0,
+0.179,
+null,
+null
+],
+[
+3.0,
+0.254,
+null,
+null
+],
+[
+4.0,
+0.267,
+null,
+null
+],
+[
+5.0,
+0.307,
+null,
+null
+],
+[
+6.0,
+0.364,
+null,
+null
+],
+[
+7.0,
+0.42,
+null,
+null
+],
+[
+8.0,
+0.435,
+null,
+null
+],
+[
+9.0,
+0.435,
+null,
+null
+],
+[
+10.0,
+0.451,
+null,
+null
+],
+[
+12.0,
+0.451,
+null,
+null
+],
+[
+14.0,
+0.451,
+null,
+null
+],
+[
+16.0,
+0.626,
+null,
+null
+],
+[
+18.0,
+0.626,
+null,
+null
+],
+[
+21.0,
+0.73,
+null,
+null
+],
+[
+24.0,
+0.73,
+null,
+null
+],
+[
+28.0,
+0.73,
+null,
+null
+],
+[
+32.0,
+0.73,
+null,
+null
+],
+[
+36.0,
+0.73,
+null,
+null
+],
+[
+42.0,
+0.73,
+null,
+null
+],
+[
+49.0,
+0.73,
+null,
+null
+],
+[
+56.0,
+0.73,
+null,
+null
+],
+[
+63.0,
+0.73,
+null,
+null
+],
+[
+70.0,
+0.73,
+null,
+null
+],
+[
+77.0,
+0.73,
+null,
+null
+],
+[
+79.75,
+0.73,
+null,
+null
+]
+],
+"events": 49,
+"median_days": 14.26,
+"n": 85,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "137",
+"subject": "RHETOR"
+},
+"RHETOR 155": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.207,
 null,
 null
 ],
@@ -640,738 +1316,567 @@ null
 ],
 [
 2.0,
-0.344,
+0.291,
 null,
 null
 ],
 [
 3.0,
-0.456,
+0.33,
 null,
 null
 ],
 [
 4.0,
-0.527,
+0.391,
 null,
 null
 ],
 [
 5.0,
-0.539,
+0.5,
 null,
 null
 ],
 [
 6.0,
-0.539,
+0.575,
 null,
 null
 ],
 [
 7.0,
-0.539,
+0.65,
 null,
 null
 ],
 [
 8.0,
-0.539,
+0.682,
 null,
 null
 ],
 [
 9.0,
-0.574,
+0.714,
 null,
 null
 ],
 [
 10.0,
-0.601,
+0.745,
 null,
 null
 ],
 [
 12.0,
-0.724,
+0.873,
 null,
 null
 ],
 [
 14.0,
-0.793,
+0.873,
 null,
 null
 ],
 [
-16.0,
-0.844,
-null,
-null
-],
-[
-18.0,
-0.948,
-null,
-null
-],
-[
-18.21,
-0.948,
+14.48,
+1.0,
 null,
 null
 ]
 ],
-"events": 68,
-"median_days": 3.17,
-"n": 119,
+"events": 40,
+"median_days": 4.86,
+"n": 68,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 14.5,
 "sections": 1
+}
 },
-"6-15": {
-"n_course": 15,
+"dept_group": "OTHER",
+"level": "upper",
+"number": "155",
+"subject": "RHETOR"
+},
+"RHETOR 167": {
+"buckets": {
+"1-5": {
+"n_course": 4,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "129AC",
+"number": "167",
 "subject": "RHETOR"
 },
-"RHETOR 137": {
+"RHETOR 173": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.066,
+0.206,
 null,
 null
 ],
 [
 1.0,
-0.066,
+0.413,
 null,
 null
 ],
 [
 2.0,
-0.107,
+0.524,
 null,
 null
 ],
 [
 3.0,
-0.107,
+0.635,
 null,
 null
 ],
 [
 4.0,
-0.139,
+0.799,
 null,
 null
 ],
 [
 5.0,
-0.172,
+0.92,
 null,
 null
 ],
 [
 6.0,
-0.288,
+0.94,
 null,
 null
 ],
 [
 7.0,
-0.305,
+0.96,
 null,
 null
 ],
 [
 8.0,
-0.305,
+0.96,
 null,
 null
 ],
 [
 9.0,
-0.401,
+0.96,
 null,
 null
 ],
 [
 10.0,
-0.401,
+0.96,
 null,
 null
 ],
 [
 12.0,
-0.501,
+0.96,
 null,
 null
 ],
 [
 14.0,
-0.501,
+0.96,
 null,
 null
 ],
 [
 16.0,
-0.501,
+0.96,
 null,
 null
 ],
 [
 18.0,
-0.501,
-null,
-null
-],
-[
-18.21,
-0.501,
-null,
-null
-]
-],
-"events": 26,
-"median_days": 10.27,
-"n": 76,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
-"n_course": 10,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "137",
-"subject": "RHETOR"
-},
-"RHETOR 145": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.122,
-null,
-null
-],
-[
-1.0,
-0.122,
-null,
-null
-],
-[
-2.0,
-0.205,
-null,
-null
-],
-[
-3.0,
-0.205,
-null,
-null
-],
-[
-4.0,
-0.205,
-null,
-null
-],
-[
-5.0,
-0.205,
-null,
-null
-],
-[
-6.0,
-0.283,
-null,
-null
-],
-[
-7.0,
-0.323,
-null,
-null
-],
-[
-8.0,
-0.323,
-null,
-null
-],
-[
-9.0,
-0.323,
-null,
-null
-],
-[
-10.0,
-0.323,
-null,
-null
-],
-[
-12.0,
-0.323,
-null,
-null
-],
-[
-14.0,
-0.323,
-null,
-null
-],
-[
-16.0,
-0.323,
-null,
-null
-],
-[
-18.0,
-0.323,
-null,
-null
-],
-[
-18.36,
-0.323,
-null,
-null
-]
-],
-"events": 11,
-"median_days": null,
-"n": 41,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "145",
-"subject": "RHETOR"
-},
-"RHETOR 157A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.089,
-null,
-null
-],
-[
-1.0,
-0.118,
-null,
-null
-],
-[
-2.0,
-0.172,
-null,
-null
-],
-[
-3.0,
-0.207,
-null,
-null
-],
-[
-4.0,
-0.246,
-null,
-null
-],
-[
-5.0,
-0.275,
-null,
-null
-],
-[
-6.0,
-0.299,
-null,
-null
-],
-[
-7.0,
-0.299,
-null,
-null
-],
-[
-8.0,
-0.299,
-null,
-null
-],
-[
-9.0,
-0.305,
-null,
-null
-],
-[
-10.0,
-0.305,
-null,
-null
-],
-[
-12.0,
-0.305,
-null,
-null
-],
-[
-14.0,
-0.305,
-null,
-null
-],
-[
-16.0,
-0.305,
-null,
-null
-],
-[
-18.0,
-0.305,
+0.96,
 null,
 null
 ],
 [
 21.0,
-0.305,
+0.96,
 null,
 null
 ],
 [
 24.0,
-0.305,
+0.96,
 null,
 null
 ],
 [
 28.0,
-0.305,
+0.96,
+null,
+null
+],
+[
+30.1,
+0.96,
+null,
+null
+]
+],
+"events": 57,
+"median_days": 1.91,
+"n": 63,
+"pooled": false,
+"reach_days": 30.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "173",
+"subject": "RHETOR"
+},
+"RHETOR 20": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.076,
+null,
+null
+],
+[
+1.0,
+0.122,
+null,
+null
+],
+[
+2.0,
+0.168,
+null,
+null
+],
+[
+3.0,
+0.251,
+null,
+null
+],
+[
+4.0,
+0.265,
+null,
+null
+],
+[
+5.0,
+0.278,
+null,
+null
+],
+[
+6.0,
+0.278,
+null,
+null
+],
+[
+7.0,
+0.325,
+null,
+null
+],
+[
+8.0,
+0.342,
+null,
+null
+],
+[
+9.0,
+0.342,
+null,
+null
+],
+[
+10.0,
+0.342,
+null,
+null
+],
+[
+12.0,
+0.342,
+null,
+null
+],
+[
+14.0,
+0.36,
+null,
+null
+],
+[
+16.0,
+0.36,
+null,
+null
+],
+[
+18.0,
+0.36,
+null,
+null
+],
+[
+21.0,
+0.36,
+null,
+null
+],
+[
+24.0,
+0.36,
+null,
+null
+],
+[
+28.0,
+0.36,
 null,
 null
 ],
 [
 32.0,
-0.305,
+0.36,
 null,
 null
 ],
 [
-32.98,
-0.305,
+36.0,
+0.36,
+null,
+null
+],
+[
+42.0,
+0.36,
+null,
+null
+],
+[
+49.0,
+0.36,
+null,
+null
+],
+[
+56.0,
+0.36,
+null,
+null
+],
+[
+63.0,
+0.36,
+null,
+null
+],
+[
+70.0,
+0.36,
+null,
+null
+],
+[
+77.0,
+0.36,
+null,
+null
+],
+[
+79.75,
+0.36,
 null,
 null
 ]
 ],
-"events": 60,
+"events": 29,
 "median_days": null,
-"n": 216,
+"n": 95,
 "pooled": false,
-"reach_days": 33.0,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-30.43,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 54,
-"pooled": false,
-"reach_days": 30.4,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
-"level": "upper",
-"number": "157A",
+"level": "lower",
+"number": "20",
 "subject": "RHETOR"
 },
-"RHETOR 172": {
+"RHETOR 24": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.071,
-null,
-null
-],
-[
-1.0,
-0.071,
-null,
-null
-],
-[
-2.0,
-0.094,
-null,
-null
-],
-[
-3.0,
-0.094,
-null,
-null
-],
-[
-4.0,
-0.122,
-null,
-null
-],
-[
-5.0,
-0.155,
-null,
-null
-],
-[
-6.0,
-0.19,
-null,
-null
-],
-[
-7.0,
-0.246,
-null,
-null
-],
-[
-8.0,
-0.282,
-null,
-null
-],
-[
-9.0,
-0.379,
-null,
-null
-],
-[
-10.0,
-0.379,
-null,
-null
-],
-[
-12.0,
-0.446,
-null,
-null
-],
-[
-14.0,
-0.48,
-null,
-null
-],
-[
-16.0,
-0.48,
-null,
-null
-],
-[
-18.0,
-0.52,
-null,
-null
-],
-[
-21.0,
-0.58,
-null,
-null
-],
-[
-24.0,
-0.64,
-null,
-null
-],
-[
-28.0,
-0.64,
-null,
-null
-],
-[
-30.81,
-0.64,
-null,
-null
-]
-],
-"events": 32,
-"median_days": 16.3,
-"n": 100,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
+"n_course": 20,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
-"level": "upper",
-"number": "172",
+"level": "lower",
+"number": "24",
 "subject": "RHETOR"
 },
 "RHETOR 240G": {
 "buckets": {
 "1-5": {
-"n_course": 22,
+"curve": [
+[
+0.5,
+0.146,
+0.0,
+0.181
+],
+[
+1.0,
+0.212,
+0.0,
+0.22
+],
+[
+2.0,
+0.279,
+0.0,
+0.298
+],
+[
+3.0,
+0.332,
+0.0,
+0.36
+],
+[
+4.0,
+0.365,
+0.0,
+0.399
+],
+[
+5.0,
+0.445,
+0.0,
+0.469
+],
+[
+6.0,
+0.473,
+0.0,
+0.503
+],
+[
+7.0,
+0.506,
+0.0,
+0.545
+],
+[
+8.0,
+0.506,
+0.0,
+0.545
+],
+[
+9.0,
+0.506,
+0.0,
+0.545
+],
+[
+10.0,
+0.506,
+0.0,
+0.545
+],
+[
+12.0,
+0.506,
+0.0,
+0.545
+],
+[
+14.0,
+0.506,
+0.0,
+0.545
+],
+[
+16.0,
+0.541,
+0.0,
+0.595
+],
+[
+18.0,
+0.541,
+0.0,
+0.595
+],
+[
+21.0,
+0.541,
+0.0,
+0.595
+],
+[
+24.0,
+0.541,
+0.0,
+0.595
+],
+[
+28.0,
+0.541,
+0.0,
+0.595
+],
+[
+32.0,
+0.541,
+0.0,
+0.595
+],
+[
+35.07,
+0.541,
+0.0,
+0.595
+]
+],
+"events": 50,
+"median_days": 6.4,
+"n": 110,
+"pooled": false,
+"reach_days": 35.1,
+"sections": 3
+},
+"6-15": {
+"n_course": 1,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -1381,232 +1886,25 @@ null
 "number": "240G",
 "subject": "RHETOR"
 },
-"RHETOR R1A": {
+"RHETOR 302": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.021,
-0.0,
-0.037
-],
-[
-1.0,
-0.032,
-0.0,
-0.079
-],
-[
-2.0,
-0.032,
-0.0,
-0.079
-],
-[
-3.0,
-0.032,
-0.0,
-0.079
-],
-[
-4.0,
-0.032,
-0.0,
-0.079
-],
-[
-5.0,
-0.032,
-0.0,
-0.079
-],
-[
-6.0,
-0.032,
-0.0,
-0.079
-],
-[
-7.0,
-0.032,
-0.0,
-0.079
-],
-[
-8.0,
-0.032,
-0.0,
-0.079
-],
-[
-9.0,
-0.032,
-0.0,
-0.079
-],
-[
-10.0,
-0.032,
-0.0,
-0.079
-],
-[
-12.0,
-0.032,
-0.0,
-0.079
-],
-[
-14.0,
-0.032,
-0.0,
-0.079
-],
-[
-16.0,
-0.032,
-0.0,
-0.079
-],
-[
-18.0,
-0.032,
-0.0,
-0.079
-],
-[
-18.44,
-0.032,
-0.0,
-0.079
-]
-],
-"events": 3,
-"median_days": null,
-"n": 96,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 3
-},
-"6-15": {
-"n_course": 4,
+"n_course": 17,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
-"level": "lower",
-"number": "R1A",
+"level": "grad",
+"number": "302",
 "subject": "RHETOR"
 },
 "RHETOR R1B": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.055,
-0.024,
-0.103
-],
-[
-1.0,
-0.055,
-0.024,
-0.103
-],
-[
-2.0,
-0.108,
-0.083,
-0.148
-],
-[
-3.0,
-0.127,
-0.083,
-0.196
-],
-[
-4.0,
-0.127,
-0.083,
-0.196
-],
-[
-5.0,
-0.127,
-0.083,
-0.196
-],
-[
-6.0,
-0.127,
-0.083,
-0.196
-],
-[
-7.0,
-0.151,
-0.127,
-0.196
-],
-[
-8.0,
-0.174,
-0.127,
-0.246
-],
-[
-9.0,
-0.203,
-0.127,
-0.309
-],
-[
-10.0,
-0.203,
-0.127,
-0.309
-],
-[
-12.0,
-0.231,
-0.178,
-0.309
-],
-[
-14.0,
-0.304,
-0.178,
-0.482
-],
-[
-16.0,
-0.341,
-0.178,
-0.568
-],
-[
-18.0,
-0.341,
-0.178,
-0.568
-],
-[
-18.57,
-0.414,
-0.178,
-0.676
-]
-],
-"events": 16,
-"median_days": null,
-"n": 75,
-"pooled": false,
-"reach_days": 18.6,
-"sections": 2
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 3
 }
 },
 "dept_group": "OTHER",
@@ -1616,5 +1914,5 @@ null
 }
 },
 "subject": "RHETOR",
-"term_id": "2268"
+"term_id": "2262"
 }

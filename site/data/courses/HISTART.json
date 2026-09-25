@@ -1,6 +1,463 @@
 {
 "courses": {
-"HISTART 10": {
+"HISTART 11": {
+"buckets": {
+"1-5": {
+"n_course": 26,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "11",
+"subject": "HISTART"
+},
+"HISTART 111": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "111",
+"subject": "HISTART"
+},
+"HISTART 132AC": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.158,
+null,
+null
+],
+[
+1.0,
+0.195,
+null,
+null
+],
+[
+2.0,
+0.245,
+null,
+null
+],
+[
+3.0,
+0.254,
+null,
+null
+],
+[
+4.0,
+0.274,
+null,
+null
+],
+[
+5.0,
+0.29,
+null,
+null
+],
+[
+6.0,
+0.323,
+null,
+null
+],
+[
+7.0,
+0.342,
+null,
+null
+],
+[
+8.0,
+0.354,
+null,
+null
+],
+[
+9.0,
+0.367,
+null,
+null
+],
+[
+10.0,
+0.38,
+null,
+null
+],
+[
+12.0,
+0.394,
+null,
+null
+],
+[
+14.0,
+0.444,
+null,
+null
+],
+[
+16.0,
+0.453,
+null,
+null
+],
+[
+18.0,
+0.453,
+null,
+null
+],
+[
+21.0,
+0.453,
+null,
+null
+],
+[
+24.0,
+0.453,
+null,
+null
+],
+[
+28.0,
+0.453,
+null,
+null
+],
+[
+32.0,
+0.453,
+null,
+null
+],
+[
+36.0,
+0.453,
+null,
+null
+],
+[
+39.73,
+0.453,
+null,
+null
+]
+],
+"events": 88,
+"median_days": null,
+"n": 228,
+"pooled": false,
+"reach_days": 39.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.009,
+null,
+null
+],
+[
+1.0,
+0.009,
+null,
+null
+],
+[
+2.0,
+0.009,
+null,
+null
+],
+[
+3.0,
+0.009,
+null,
+null
+],
+[
+4.0,
+0.009,
+null,
+null
+],
+[
+5.0,
+0.009,
+null,
+null
+],
+[
+6.0,
+0.009,
+null,
+null
+],
+[
+7.0,
+0.009,
+null,
+null
+],
+[
+8.0,
+0.009,
+null,
+null
+],
+[
+9.0,
+0.009,
+null,
+null
+],
+[
+10.0,
+0.009,
+null,
+null
+],
+[
+12.0,
+0.038,
+null,
+null
+],
+[
+14.0,
+0.038,
+null,
+null
+],
+[
+16.0,
+0.038,
+null,
+null
+],
+[
+18.0,
+0.038,
+null,
+null
+],
+[
+21.0,
+0.038,
+null,
+null
+],
+[
+24.0,
+0.145,
+null,
+null
+],
+[
+28.0,
+0.339,
+null,
+null
+],
+[
+32.0,
+0.547,
+null,
+null
+],
+[
+36.0,
+0.673,
+null,
+null
+],
+[
+39.73,
+0.782,
+null,
+null
+]
+],
+"events": 25,
+"median_days": 31.07,
+"n": 115,
+"pooled": false,
+"reach_days": 39.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "132AC",
+"subject": "HISTART"
+},
+"HISTART 190B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.103,
+null,
+null
+],
+[
+1.0,
+0.154,
+null,
+null
+],
+[
+2.0,
+0.179,
+null,
+null
+],
+[
+3.0,
+0.261,
+null,
+null
+],
+[
+4.0,
+0.32,
+null,
+null
+],
+[
+5.0,
+0.382,
+null,
+null
+],
+[
+6.0,
+0.45,
+null,
+null
+],
+[
+7.0,
+0.554,
+null,
+null
+],
+[
+8.0,
+0.691,
+null,
+null
+],
+[
+9.0,
+0.725,
+null,
+null
+],
+[
+10.0,
+0.725,
+null,
+null
+],
+[
+12.0,
+0.76,
+null,
+null
+],
+[
+14.0,
+0.76,
+null,
+null
+],
+[
+16.0,
+0.76,
+null,
+null
+],
+[
+18.0,
+0.76,
+null,
+null
+],
+[
+21.0,
+0.76,
+null,
+null
+],
+[
+24.0,
+0.76,
+null,
+null
+],
+[
+28.0,
+0.76,
+null,
+null
+],
+[
+32.0,
+0.76,
+null,
+null
+],
+[
+33.02,
+0.76,
+null,
+null
+]
+],
+"events": 25,
+"median_days": 6.69,
+"n": 39,
+"pooled": false,
+"reach_days": 33.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190B",
+"subject": "HISTART"
+},
+"HISTART 190T": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190T",
+"subject": "HISTART"
+},
+"HISTART 192A": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -12,746 +469,7 @@ null
 ],
 [
 1.0,
-0.067,
-null,
-null
-],
-[
-2.0,
-0.067,
-null,
-null
-],
-[
-3.0,
-0.103,
-null,
-null
-],
-[
-4.0,
-0.103,
-null,
-null
-],
-[
-5.0,
-0.13,
-null,
-null
-],
-[
-6.0,
-0.13,
-null,
-null
-],
-[
-7.0,
-0.144,
-null,
-null
-],
-[
-8.0,
-0.161,
-null,
-null
-],
-[
-9.0,
-0.197,
-null,
-null
-],
-[
-10.0,
-0.234,
-null,
-null
-],
-[
-12.0,
-0.276,
-null,
-null
-],
-[
-14.0,
-0.334,
-null,
-null
-],
-[
-16.0,
-0.39,
-null,
-null
-],
-[
-18.0,
-0.39,
-null,
-null
-],
-[
-18.43,
-0.39,
-null,
-null
-]
-],
-"events": 22,
-"median_days": null,
-"n": 91,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-18.43,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 32,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "10",
-"subject": "HISTART"
-},
-"HISTART 101": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.256,
-null,
-null
-],
-[
-1.0,
-0.293,
-null,
-null
-],
-[
-2.0,
-0.331,
-null,
-null
-],
-[
-3.0,
-0.418,
-null,
-null
-],
-[
-4.0,
-0.468,
-null,
-null
-],
-[
-5.0,
-0.5,
-null,
-null
-],
-[
-6.0,
-0.516,
-null,
-null
-],
-[
-7.0,
-0.623,
-null,
-null
-],
-[
-8.0,
-0.688,
-null,
-null
-],
-[
-9.0,
-0.688,
-null,
-null
-],
-[
-10.0,
-0.688,
-null,
-null
-],
-[
-12.0,
-0.688,
-null,
-null
-],
-[
-14.0,
-0.726,
-null,
-null
-],
-[
-16.0,
-0.726,
-null,
-null
-],
-[
-18.0,
-0.726,
-null,
-null
-],
-[
-21.0,
-0.726,
-null,
-null
-],
-[
-24.0,
-0.726,
-null,
-null
-],
-[
-28.0,
-0.726,
-null,
-null
-],
-[
-32.0,
-0.726,
-null,
-null
-],
-[
-35.11,
-0.726,
-null,
-null
-]
-],
-"events": 106,
-"median_days": 5.83,
-"n": 169,
-"pooled": false,
-"reach_days": 35.1,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.019,
-null,
-null
-],
-[
-1.0,
-0.019,
-null,
-null
-],
-[
-2.0,
-0.06,
-null,
-null
-],
-[
-3.0,
-0.06,
-null,
-null
-],
-[
-4.0,
-0.06,
-null,
-null
-],
-[
-5.0,
-0.111,
-null,
-null
-],
-[
-6.0,
-0.111,
-null,
-null
-],
-[
-7.0,
-0.111,
-null,
-null
-],
-[
-8.0,
-0.111,
-null,
-null
-],
-[
-9.0,
-0.111,
-null,
-null
-],
-[
-10.0,
-0.111,
-null,
-null
-],
-[
-12.0,
-0.111,
-null,
-null
-],
-[
-14.0,
-0.172,
-null,
-null
-],
-[
-16.0,
-0.172,
-null,
-null
-],
-[
-18.0,
-0.172,
-null,
-null
-],
-[
-21.0,
-0.172,
-null,
-null
-],
-[
-24.0,
-0.172,
-null,
-null
-],
-[
-28.0,
-0.172,
-null,
-null
-],
-[
-32.0,
-0.172,
-null,
-null
-],
-[
-34.82,
-0.172,
-null,
-null
-]
-],
-"events": 7,
-"median_days": null,
-"n": 52,
-"pooled": false,
-"reach_days": 34.8,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "101",
-"subject": "HISTART"
-},
-"HISTART 131B": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.122,
-null,
-null
-],
-[
-1.0,
-0.151,
-null,
-null
-],
-[
-2.0,
-0.181,
-null,
-null
-],
-[
-3.0,
-0.216,
-null,
-null
-],
-[
-4.0,
-0.216,
-null,
-null
-],
-[
-5.0,
-0.272,
-null,
-null
-],
-[
-6.0,
-0.348,
-null,
-null
-],
-[
-7.0,
-0.391,
-null,
-null
-],
-[
-8.0,
-0.391,
-null,
-null
-],
-[
-9.0,
-0.452,
-null,
-null
-],
-[
-10.0,
-0.452,
-null,
-null
-],
-[
-12.0,
-0.525,
-null,
-null
-],
-[
-14.0,
-0.598,
-null,
-null
-],
-[
-16.0,
-0.671,
-null,
-null
-],
-[
-18.0,
-0.671,
-null,
-null
-],
-[
-18.43,
-0.671,
-null,
-null
-]
-],
-"events": 32,
-"median_days": 11.69,
-"n": 75,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "131B",
-"subject": "HISTART"
-},
-"HISTART 171": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.079,
-null,
-null
-],
-[
-1.0,
-0.079,
-null,
-null
-],
-[
-2.0,
-0.096,
-null,
-null
-],
-[
-3.0,
-0.106,
-null,
-null
-],
-[
-4.0,
-0.148,
-null,
-null
-],
-[
-5.0,
-0.148,
-null,
-null
-],
-[
-6.0,
-0.182,
-null,
-null
-],
-[
-7.0,
-0.182,
-null,
-null
-],
-[
-8.0,
-0.206,
-null,
-null
-],
-[
-9.0,
-0.219,
-null,
-null
-],
-[
-10.0,
-0.219,
-null,
-null
-],
-[
-12.0,
-0.246,
-null,
-null
-],
-[
-14.0,
-0.286,
-null,
-null
-],
-[
-16.0,
-0.286,
-null,
-null
-],
-[
-18.0,
-0.286,
-null,
-null
-],
-[
-21.0,
-0.354,
-null,
-null
-],
-[
-24.0,
-0.518,
-null,
-null
-],
-[
-28.0,
-0.639,
-null,
-null
-],
-[
-30.81,
-0.639,
-null,
-null
-]
-],
-"events": 33,
-"median_days": 23.61,
-"n": 128,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 26,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "171",
-"subject": "HISTART"
-},
-"HISTART 183": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.084,
-null,
-null
-],
-[
-1.0,
-0.084,
+0.094,
 null,
 null
 ],
@@ -763,257 +481,119 @@ null
 ],
 [
 3.0,
-0.104,
-null,
-null
-],
-[
-4.0,
-0.142,
-null,
-null
-],
-[
-5.0,
-0.156,
-null,
-null
-],
-[
-6.0,
-0.156,
-null,
-null
-],
-[
-7.0,
-0.172,
-null,
-null
-],
-[
-8.0,
-0.172,
-null,
-null
-],
-[
-9.0,
-0.172,
-null,
-null
-],
-[
-10.0,
-0.191,
-null,
-null
-],
-[
-12.0,
-0.307,
-null,
-null
-],
-[
-14.0,
-0.378,
-null,
-null
-],
-[
-16.0,
-0.378,
-null,
-null
-],
-[
-18.0,
-0.378,
-null,
-null
-],
-[
-21.0,
-0.378,
-null,
-null
-],
-[
-24.0,
-0.378,
-null,
-null
-],
-[
-28.0,
-0.378,
-null,
-null
-],
-[
-30.81,
-0.378,
-null,
-null
-]
-],
-"events": 27,
-"median_days": null,
-"n": 121,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 19,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "183",
-"subject": "HISTART"
-},
-"HISTART 185A": {
-"buckets": {
-"1-5": {
-"n_course": 23,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "185A",
-"subject": "HISTART"
-},
-"HISTART 192A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
 0.094,
-0.0,
-0.146
-],
-[
-1.0,
-0.127,
-0.0,
-0.196
-],
-[
-2.0,
-0.181,
-0.0,
-0.28
-],
-[
-3.0,
-0.216,
-0.0,
-0.33
+null,
+null
 ],
 [
 4.0,
-0.265,
-0.0,
-0.401
+0.094,
+null,
+null
 ],
 [
 5.0,
-0.278,
-0.0,
-0.42
+0.14,
+null,
+null
 ],
 [
 6.0,
-0.278,
-0.0,
-0.42
+0.166,
+null,
+null
 ],
 [
 7.0,
-0.278,
-0.0,
-0.42
+0.193,
+null,
+null
 ],
 [
 8.0,
-0.278,
-0.0,
-0.42
+0.193,
+null,
+null
 ],
 [
 9.0,
-0.278,
-0.0,
-0.42
+0.193,
+null,
+null
 ],
 [
 10.0,
-0.278,
-0.0,
-0.42
+0.193,
+null,
+null
 ],
 [
 12.0,
-0.278,
-0.0,
-0.42
+0.193,
+null,
+null
 ],
 [
 14.0,
-0.34,
-0.0,
-0.522
+0.193,
+null,
+null
 ],
 [
 16.0,
-0.34,
-0.0,
-0.522
+0.193,
+null,
+null
 ],
 [
 18.0,
-0.34,
-0.0,
-0.522
+0.193,
+null,
+null
 ],
 [
 21.0,
-0.34,
-0.0,
-0.522
+0.193,
+null,
+null
 ],
 [
 24.0,
-0.34,
-0.0,
-0.522
+0.193,
+null,
+null
 ],
 [
 28.0,
-0.34,
-0.0,
-0.522
+0.193,
+null,
+null
 ],
 [
-30.81,
-0.34,
-0.0,
-0.522
+32.0,
+0.193,
+null,
+null
+],
+[
+36.0,
+0.193,
+null,
+null
+],
+[
+39.73,
+0.193,
+null,
+null
 ]
 ],
-"events": 28,
+"events": 9,
 "median_days": null,
-"n": 97,
+"n": 55,
 "pooled": false,
-"reach_days": 30.8,
-"sections": 2
+"reach_days": 39.7,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -1024,133 +604,27 @@ null
 "HISTART 192B": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.103,
-null,
-null
-],
-[
-1.0,
-0.145,
-null,
-null
-],
-[
-2.0,
-0.145,
-null,
-null
-],
-[
-3.0,
-0.169,
-null,
-null
-],
-[
-4.0,
-0.169,
-null,
-null
-],
-[
-5.0,
-0.169,
-null,
-null
-],
-[
-6.0,
-0.169,
-null,
-null
-],
-[
-7.0,
-0.169,
-null,
-null
-],
-[
-8.0,
-0.169,
-null,
-null
-],
-[
-9.0,
-0.169,
-null,
-null
-],
-[
-10.0,
-0.169,
-null,
-null
-],
-[
-12.0,
-0.169,
-null,
-null
-],
-[
-14.0,
-0.169,
-null,
-null
-],
-[
-16.0,
-0.169,
-null,
-null
-],
-[
-18.0,
-0.169,
-null,
-null
-],
-[
-21.0,
-0.169,
-null,
-null
-],
-[
-24.0,
-0.169,
-null,
-null
-],
-[
-28.0,
-0.169,
-null,
-null
-],
-[
-30.81,
-0.169,
-null,
-null
-]
-],
-"events": 8,
-"median_days": null,
-"n": 50,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
+"n_course": 22,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
 "number": "192B",
+"subject": "HISTART"
+},
+"HISTART 192CU": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "192CU",
 "subject": "HISTART"
 },
 "HISTART 192F": {
@@ -1159,130 +633,172 @@ null
 "curve": [
 [
 0.5,
-0.034,
+0.092,
 null,
 null
 ],
 [
 1.0,
-0.034,
+0.092,
 null,
 null
 ],
 [
 2.0,
-0.047,
+0.103,
 null,
 null
 ],
 [
 3.0,
-0.047,
+0.103,
 null,
 null
 ],
 [
 4.0,
-0.061,
+0.103,
 null,
 null
 ],
 [
 5.0,
-0.061,
+0.138,
 null,
 null
 ],
 [
 6.0,
-0.061,
+0.163,
 null,
 null
 ],
 [
 7.0,
-0.076,
+0.175,
 null,
 null
 ],
 [
 8.0,
-0.09,
+0.202,
 null,
 null
 ],
 [
 9.0,
-0.09,
+0.202,
 null,
 null
 ],
 [
 10.0,
-0.09,
+0.202,
 null,
 null
 ],
 [
 12.0,
-0.107,
+0.218,
 null,
 null
 ],
 [
 14.0,
-0.107,
+0.292,
 null,
 null
 ],
 [
 16.0,
-0.16,
+0.353,
 null,
 null
 ],
 [
 18.0,
-0.16,
+0.353,
 null,
 null
 ],
 [
 21.0,
-0.192,
+0.578,
 null,
 null
 ],
 [
 24.0,
-0.226,
+0.648,
 null,
 null
 ],
 [
 28.0,
-0.226,
+0.754,
 null,
 null
 ],
 [
 32.0,
-0.226,
+0.754,
 null,
 null
 ],
 [
-35.31,
-0.226,
+36.0,
+0.754,
+null,
+null
+],
+[
+42.0,
+0.754,
+null,
+null
+],
+[
+49.0,
+0.754,
+null,
+null
+],
+[
+56.0,
+0.754,
+null,
+null
+],
+[
+63.0,
+0.754,
+null,
+null
+],
+[
+70.0,
+0.754,
+null,
+null
+],
+[
+77.0,
+0.754,
+null,
+null
+],
+[
+79.75,
+0.754,
 null,
 null
 ]
 ],
-"events": 12,
-"median_days": null,
-"n": 87,
+"events": 39,
+"median_days": 20.77,
+"n": 100,
 "pooled": false,
-"reach_days": 35.3,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -1291,499 +807,395 @@ null
 "number": "192F",
 "subject": "HISTART"
 },
-"HISTART 192G": {
+"HISTART 192H": {
 "buckets": {
 "1-5": {
-"n_course": 19,
+"n_course": 27,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "192G",
+"number": "192H",
 "subject": "HISTART"
 },
-"HISTART 290": {
-"buckets": {
-"1-5": {
-"n_course": 8,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "290",
-"subject": "HISTART"
-},
-"HISTART 37": {
+"HISTART 34": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.211,
+0.07,
 null,
 null
 ],
 [
 1.0,
-0.289,
+0.105,
 null,
 null
 ],
 [
 2.0,
-0.393,
+0.187,
 null,
 null
 ],
 [
 3.0,
-0.469,
+0.274,
 null,
 null
 ],
 [
 4.0,
-0.574,
+0.322,
 null,
 null
 ],
 [
 5.0,
-0.629,
+0.355,
 null,
 null
 ],
 [
 6.0,
-0.71,
+0.404,
 null,
 null
 ],
 [
 7.0,
-0.743,
+0.444,
 null,
 null
 ],
 [
 8.0,
-0.81,
+0.542,
 null,
 null
 ],
 [
 9.0,
-0.865,
+0.559,
 null,
 null
 ],
 [
 10.0,
-0.873,
+0.567,
 null,
 null
 ],
 [
 12.0,
-0.912,
+0.575,
 null,
 null
 ],
 [
 14.0,
-0.947,
+0.608,
 null,
 null
 ],
 [
 16.0,
-0.965,
+0.624,
 null,
 null
 ],
 [
 18.0,
-0.965,
+0.633,
 null,
 null
 ],
 [
 21.0,
-0.965,
-null,
-null
-],
-[
-23.61,
-0.965,
-null,
-null
-]
-],
-"events": 196,
-"median_days": 3.46,
-"n": 267,
-"pooled": false,
-"reach_days": 23.6,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-18.21,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 30,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.01,
-null,
-null
-],
-[
-3.0,
-0.03,
-null,
-null
-],
-[
-4.0,
-0.03,
-null,
-null
-],
-[
-5.0,
-0.03,
-null,
-null
-],
-[
-6.0,
-0.043,
-null,
-null
-],
-[
-7.0,
-0.083,
-null,
-null
-],
-[
-8.0,
-0.124,
-null,
-null
-],
-[
-9.0,
-0.255,
-null,
-null
-],
-[
-10.0,
-0.291,
-null,
-null
-],
-[
-12.0,
-0.357,
-null,
-null
-],
-[
-14.0,
-0.518,
-null,
-null
-],
-[
-16.0,
-0.759,
-null,
-null
-],
-[
-18.0,
-0.849,
-null,
-null
-],
-[
-18.21,
-0.849,
-null,
-null
-]
-],
-"events": 36,
-"median_days": 13.58,
-"n": 126,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "37",
-"subject": "HISTART"
-},
-"HISTART C121A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.017,
-null,
-null
-],
-[
-1.0,
-0.017,
-null,
-null
-],
-[
-2.0,
-0.017,
-null,
-null
-],
-[
-3.0,
-0.017,
-null,
-null
-],
-[
-4.0,
-0.028,
-null,
-null
-],
-[
-5.0,
-0.028,
-null,
-null
-],
-[
-6.0,
-0.028,
-null,
-null
-],
-[
-7.0,
-0.028,
-null,
-null
-],
-[
-8.0,
-0.028,
-null,
-null
-],
-[
-9.0,
-0.028,
-null,
-null
-],
-[
-10.0,
-0.057,
-null,
-null
-],
-[
-12.0,
-0.095,
-null,
-null
-],
-[
-14.0,
-0.157,
-null,
-null
-],
-[
-16.0,
-0.157,
-null,
-null
-],
-[
-18.0,
-0.189,
-null,
-null
-],
-[
-21.0,
-0.189,
+0.633,
 null,
 null
 ],
 [
 24.0,
-0.189,
+0.633,
 null,
 null
 ],
 [
 28.0,
-0.189,
+0.633,
 null,
 null
 ],
 [
-30.71,
-0.594,
+32.0,
+0.633,
+null,
+null
+],
+[
+36.0,
+0.633,
+null,
+null
+],
+[
+42.0,
+0.633,
+null,
+null
+],
+[
+49.0,
+0.633,
+null,
+null
+],
+[
+56.0,
+0.633,
+null,
+null
+],
+[
+63.0,
+0.633,
+null,
+null
+],
+[
+70.0,
+0.633,
+null,
+null
+],
+[
+77.0,
+0.633,
+null,
+null
+],
+[
+79.75,
+0.633,
 null,
 null
 ]
 ],
-"events": 12,
-"median_days": 29.66,
-"n": 121,
+"events": 101,
+"median_days": 7.36,
+"n": 201,
 "pooled": false,
-"reach_days": 30.7,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 12,
+"n_course": 27,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
+"level": "lower",
+"number": "34",
+"subject": "HISTART"
+},
+"HISTART 82": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "82",
+"subject": "HISTART"
+},
+"HISTART C120B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.127,
+null,
+null
+],
+[
+1.0,
+0.172,
+null,
+null
+],
+[
+2.0,
+0.261,
+null,
+null
+],
+[
+3.0,
+0.32,
+null,
+null
+],
+[
+4.0,
+0.332,
+null,
+null
+],
+[
+5.0,
+0.356,
+null,
+null
+],
+[
+6.0,
+0.383,
+null,
+null
+],
+[
+7.0,
+0.397,
+null,
+null
+],
+[
+8.0,
+0.458,
+null,
+null
+],
+[
+9.0,
+0.507,
+null,
+null
+],
+[
+10.0,
+0.524,
+null,
+null
+],
+[
+12.0,
+0.524,
+null,
+null
+],
+[
+14.0,
+0.524,
+null,
+null
+],
+[
+16.0,
+0.637,
+null,
+null
+],
+[
+18.0,
+0.663,
+null,
+null
+],
+[
+21.0,
+0.719,
+null,
+null
+],
+[
+24.0,
+0.747,
+null,
+null
+],
+[
+28.0,
+0.747,
+null,
+null
+],
+[
+32.0,
+0.747,
+null,
+null
+],
+[
+36.0,
+0.747,
+null,
+null
+],
+[
+42.0,
+0.747,
+null,
+null
+],
+[
+49.0,
+0.747,
+null,
+null
+],
+[
+56.0,
+0.747,
+null,
+null
+],
+[
+63.0,
+0.747,
+null,
+null
+],
+[
+70.0,
+0.747,
+null,
+null
+],
+[
+77.0,
+0.747,
+null,
+null
+],
+[
+79.75,
+0.747,
+null,
+null
+]
+],
+"events": 52,
+"median_days": 8.23,
+"n": 96,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
 "level": "upper",
-"number": "C121A",
+"number": "C120B",
 "subject": "HISTART"
 },
 "HISTART R1B": {
@@ -1792,107 +1204,173 @@ null
 "curve": [
 [
 0.5,
-0.097,
-0.064,
-0.127
+0.104,
+0.052,
+0.219
 ],
 [
 1.0,
-0.114,
-0.076,
-0.154
+0.111,
+0.065,
+0.219
 ],
 [
 2.0,
-0.133,
-0.076,
-0.193
+0.111,
+0.065,
+0.219
 ],
 [
 3.0,
-0.152,
-0.082,
-0.226
+0.127,
+0.073,
+0.263
 ],
 [
 4.0,
-0.166,
-0.084,
-0.249
+0.134,
+0.082,
+0.282
 ],
 [
 5.0,
-0.196,
-0.099,
-0.3
+0.165,
+0.111,
+0.283
 ],
 [
 6.0,
-0.203,
-0.099,
-0.319
+0.174,
+0.117,
+0.295
 ],
 [
 7.0,
-0.203,
-0.099,
-0.319
+0.211,
+0.117,
+0.356
 ],
 [
 8.0,
-0.232,
-0.102,
-0.38
+0.25,
+0.127,
+0.416
 ],
 [
 9.0,
-0.267,
-0.102,
-0.456
+0.25,
+0.127,
+0.416
 ],
 [
 10.0,
-0.314,
-0.157,
-0.47
+0.26,
+0.138,
+0.421
 ],
 [
 12.0,
-0.328,
-0.157,
-0.492
+0.28,
+0.148,
+0.464
 ],
 [
 14.0,
-0.383,
-0.234,
-0.544
+0.28,
+0.148,
+0.464
 ],
 [
 16.0,
-0.419,
-0.253,
-0.557
+0.28,
+0.148,
+0.464
 ],
 [
 18.0,
-0.469,
-0.253,
-0.661
+0.28,
+0.148,
+0.464
 ],
 [
-18.52,
-0.469,
-0.253,
-0.661
+21.0,
+0.28,
+0.148,
+0.464
+],
+[
+24.0,
+0.28,
+0.148,
+0.464
+],
+[
+28.0,
+0.28,
+0.148,
+0.464
+],
+[
+32.0,
+0.28,
+0.148,
+0.464
+],
+[
+36.0,
+0.28,
+0.148,
+0.464
+],
+[
+42.0,
+0.28,
+0.148,
+0.464
+],
+[
+49.0,
+0.28,
+0.148,
+0.464
+],
+[
+56.0,
+0.28,
+0.148,
+0.464
+],
+[
+63.0,
+0.28,
+0.148,
+0.464
+],
+[
+70.0,
+0.28,
+0.148,
+0.464
+],
+[
+77.0,
+0.28,
+0.148,
+0.464
+],
+[
+79.75,
+0.28,
+0.148,
+0.464
 ]
 ],
-"events": 53,
+"events": 35,
 "median_days": null,
-"n": 199,
+"n": 147,
 "pooled": false,
-"reach_days": 18.5,
-"sections": 6
+"reach_days": 79.7,
+"sections": 9
 }
 },
 "dept_group": "OTHER",
@@ -1902,5 +1380,5 @@ null
 }
 },
 "subject": "HISTART",
-"term_id": "2268"
+"term_id": "2262"
 }

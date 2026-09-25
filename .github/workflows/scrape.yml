@@ -113,7 +113,7 @@ jobs:
           python -m scraper.fetch "${args[@]}" 2>&1 | tee fetch.log
 
       - name: Write live/latest.json
-        # The last observation of every full or waitlisted section, for the site's
+        # The last observation of every section of a course with a full or waitlisted one, for the site's
         # live counts (docs/DESIGN_A6.md); lands in the same commit as the snapshot.
         # continue-on-error: this file must never cost a collection run.
         continue-on-error: true

@@ -1,0 +1,191 @@
+{
+"courses": {
+"GSPDP 375": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.2,
+null,
+null
+],
+[
+1.0,
+0.211,
+null,
+null
+],
+[
+2.0,
+0.378,
+null,
+null
+],
+[
+3.0,
+0.478,
+null,
+null
+],
+[
+4.0,
+0.556,
+null,
+null
+],
+[
+5.0,
+0.656,
+null,
+null
+],
+[
+6.0,
+0.744,
+null,
+null
+],
+[
+7.0,
+0.801,
+null,
+null
+],
+[
+8.0,
+0.836,
+null,
+null
+],
+[
+9.0,
+0.848,
+null,
+null
+],
+[
+10.0,
+0.848,
+null,
+null
+],
+[
+12.0,
+0.883,
+null,
+null
+],
+[
+14.0,
+0.883,
+null,
+null
+],
+[
+16.0,
+0.883,
+null,
+null
+],
+[
+18.0,
+0.883,
+null,
+null
+],
+[
+21.0,
+0.883,
+null,
+null
+],
+[
+24.0,
+0.883,
+null,
+null
+],
+[
+28.0,
+0.883,
+null,
+null
+],
+[
+32.0,
+0.883,
+null,
+null
+],
+[
+36.0,
+0.883,
+null,
+null
+],
+[
+42.0,
+0.883,
+null,
+null
+],
+[
+49.0,
+0.883,
+null,
+null
+],
+[
+56.0,
+0.883,
+null,
+null
+],
+[
+63.0,
+0.883,
+null,
+null
+],
+[
+70.0,
+0.883,
+null,
+null
+],
+[
+77.0,
+0.883,
+null,
+null
+],
+[
+79.75,
+0.883,
+null,
+null
+]
+],
+"events": 79,
+"median_days": 3.15,
+"n": 90,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "375",
+"subject": "GSPDP"
+}
+},
+"subject": "GSPDP",
+"term_id": "2262"
+}

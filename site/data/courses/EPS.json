@@ -1,648 +1,1101 @@
 {
 "courses": {
-"EPS 100A": {
+"EPS 100B": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.159,
+0.059,
 null,
 null
 ],
 [
 1.0,
-0.211,
+0.069,
 null,
 null
 ],
 [
 2.0,
-0.328,
+0.143,
 null,
 null
 ],
 [
 3.0,
-0.358,
+0.165,
 null,
 null
 ],
 [
 4.0,
-0.358,
+0.165,
 null,
 null
 ],
 [
 5.0,
-0.358,
+0.222,
 null,
 null
 ],
 [
 6.0,
-0.427,
+0.345,
 null,
 null
 ],
 [
 7.0,
-0.427,
+0.345,
 null,
 null
 ],
 [
 8.0,
-0.427,
-null,
-null
-],
-[
-9.0,
-0.488,
-null,
-null
-],
-[
-10.0,
-0.488,
-null,
-null
-],
-[
-12.0,
-0.488,
-null,
-null
-],
-[
-14.0,
-0.488,
-null,
-null
-],
-[
-16.0,
-0.488,
-null,
-null
-],
-[
-18.0,
-0.488,
-null,
-null
-],
-[
-18.21,
-0.488,
-null,
-null
-]
-],
-"events": 32,
-"median_days": null,
-"n": 82,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
-"n_course": 4,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "100A",
-"subject": "EPS"
-},
-"EPS 102": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.216,
-null,
-null
-],
-[
-1.0,
-0.293,
-null,
-null
-],
-[
-2.0,
-0.335,
-null,
-null
-],
-[
-3.0,
-0.395,
-null,
-null
-],
-[
-4.0,
-0.452,
-null,
-null
-],
-[
-5.0,
-0.498,
-null,
-null
-],
-[
-6.0,
-0.514,
-null,
-null
-],
-[
-7.0,
-0.52,
-null,
-null
-],
-[
-8.0,
-0.566,
-null,
-null
-],
-[
-9.0,
-0.573,
-null,
-null
-],
-[
-10.0,
-0.573,
-null,
-null
-],
-[
-12.0,
-0.635,
-null,
-null
-],
-[
-14.0,
-0.689,
-null,
-null
-],
-[
-16.0,
-0.778,
-null,
-null
-],
-[
-18.0,
-0.79,
-null,
-null
-],
-[
-21.0,
-0.79,
-null,
-null
-],
-[
-24.0,
-0.79,
-null,
-null
-],
-[
-28.0,
-0.79,
-null,
-null
-],
-[
-30.81,
-0.79,
-null,
-null
-]
-],
-"events": 157,
-"median_days": 5.04,
-"n": 265,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.012,
-null,
-null
-],
-[
-1.0,
-0.051,
-null,
-null
-],
-[
-2.0,
-0.077,
-null,
-null
-],
-[
-3.0,
-0.09,
-null,
-null
-],
-[
-4.0,
-0.121,
-null,
-null
-],
-[
-5.0,
-0.151,
-null,
-null
-],
-[
-6.0,
-0.167,
-null,
-null
-],
-[
-7.0,
-0.184,
-null,
-null
-],
-[
-8.0,
-0.218,
-null,
-null
-],
-[
-9.0,
-0.218,
-null,
-null
-],
-[
-10.0,
-0.218,
-null,
-null
-],
-[
-12.0,
-0.264,
-null,
-null
-],
-[
-14.0,
-0.264,
-null,
-null
-],
-[
-16.0,
-0.326,
-null,
-null
-],
-[
-18.0,
-0.356,
-null,
-null
-],
-[
-21.0,
-0.505,
-null,
-null
-],
-[
-24.0,
-0.505,
-null,
-null
-],
-[
-28.0,
-0.505,
-null,
-null
-],
-[
-28.87,
-0.505,
-null,
-null
-]
-],
-"events": 24,
-"median_days": 19.7,
-"n": 83,
-"pooled": false,
-"reach_days": 28.9,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "102",
-"subject": "EPS"
-},
-"EPS 109": {
-"buckets": {
-"1-5": {
-"n_course": 2,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "109",
-"subject": "EPS"
-},
-"EPS 116": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.181,
-null,
-null
-],
-[
-1.0,
-0.201,
-null,
-null
-],
-[
-2.0,
-0.224,
-null,
-null
-],
-[
-3.0,
-0.248,
-null,
-null
-],
-[
-4.0,
-0.274,
-null,
-null
-],
-[
-5.0,
-0.274,
-null,
-null
-],
-[
-6.0,
-0.334,
-null,
-null
-],
-[
-7.0,
 0.401,
 null,
 null
 ],
 [
-8.0,
-0.634,
-null,
-null
-],
-[
 9.0,
-0.634,
+0.401,
 null,
 null
 ],
 [
 10.0,
-0.634,
+0.401,
 null,
 null
 ],
 [
 12.0,
-0.634,
+0.495,
 null,
 null
 ],
 [
 14.0,
-0.756,
+0.527,
 null,
 null
 ],
 [
 16.0,
-0.756,
+0.562,
 null,
 null
 ],
 [
 18.0,
-0.878,
-null,
-null
-],
-[
-18.21,
-0.878,
-null,
-null
-]
-],
-"events": 26,
-"median_days": 7.35,
-"n": 50,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "116",
-"subject": "EPS"
-},
-"EPS 117": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.13,
-null,
-null
-],
-[
-1.0,
-0.163,
-null,
-null
-],
-[
-2.0,
-0.233,
-null,
-null
-],
-[
-3.0,
-0.277,
-null,
-null
-],
-[
-4.0,
-0.323,
-null,
-null
-],
-[
-5.0,
-0.364,
-null,
-null
-],
-[
-6.0,
-0.39,
-null,
-null
-],
-[
-7.0,
-0.416,
-null,
-null
-],
-[
-8.0,
-0.45,
-null,
-null
-],
-[
-9.0,
-0.468,
-null,
-null
-],
-[
-10.0,
-0.504,
-null,
-null
-],
-[
-12.0,
-0.584,
-null,
-null
-],
-[
-14.0,
-0.584,
-null,
-null
-],
-[
-16.0,
-0.66,
-null,
-null
-],
-[
-18.0,
-0.72,
+0.562,
 null,
 null
 ],
 [
 21.0,
-0.743,
+0.562,
 null,
 null
 ],
 [
 24.0,
-0.743,
+0.562,
 null,
 null
 ],
 [
 28.0,
-0.743,
+0.588,
 null,
 null
 ],
 [
-30.81,
-0.743,
+32.0,
+0.588,
+null,
+null
+],
+[
+36.0,
+0.588,
+null,
+null
+],
+[
+42.0,
+0.588,
+null,
+null
+],
+[
+49.0,
+0.588,
+null,
+null
+],
+[
+56.0,
+0.588,
+null,
+null
+],
+[
+63.0,
+0.588,
+null,
+null
+],
+[
+70.0,
+0.588,
+null,
+null
+],
+[
+77.0,
+0.588,
+null,
+null
+],
+[
+79.75,
+0.588,
 null,
 null
 ]
 ],
-"events": 88,
-"median_days": 9.52,
-"n": 163,
+"events": 46,
+"median_days": 12.12,
+"n": 102,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 7,
+"n_course": 12,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "117",
+"number": "100B",
+"subject": "EPS"
+},
+"EPS 103": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.143,
+null,
+null
+],
+[
+1.0,
+0.154,
+null,
+null
+],
+[
+2.0,
+0.296,
+null,
+null
+],
+[
+3.0,
+0.309,
+null,
+null
+],
+[
+4.0,
+0.354,
+null,
+null
+],
+[
+5.0,
+0.354,
+null,
+null
+],
+[
+6.0,
+0.372,
+null,
+null
+],
+[
+7.0,
+0.426,
+null,
+null
+],
+[
+8.0,
+0.464,
+null,
+null
+],
+[
+9.0,
+0.464,
+null,
+null
+],
+[
+10.0,
+0.502,
+null,
+null
+],
+[
+12.0,
+0.591,
+null,
+null
+],
+[
+14.0,
+0.615,
+null,
+null
+],
+[
+16.0,
+0.615,
+null,
+null
+],
+[
+18.0,
+0.615,
+null,
+null
+],
+[
+21.0,
+0.615,
+null,
+null
+],
+[
+24.0,
+0.615,
+null,
+null
+],
+[
+28.0,
+0.615,
+null,
+null
+],
+[
+32.0,
+0.615,
+null,
+null
+],
+[
+36.0,
+0.615,
+null,
+null
+],
+[
+42.0,
+0.615,
+null,
+null
+],
+[
+49.0,
+0.615,
+null,
+null
+],
+[
+56.0,
+0.615,
+null,
+null
+],
+[
+63.0,
+0.615,
+null,
+null
+],
+[
+70.0,
+0.615,
+null,
+null
+],
+[
+77.0,
+0.615,
+null,
+null
+],
+[
+79.75,
+0.615,
+null,
+null
+]
+],
+"events": 43,
+"median_days": 9.15,
+"n": 92,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "103",
+"subject": "EPS"
+},
+"EPS 113": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.075,
+null,
+null
+],
+[
+1.0,
+0.116,
+null,
+null
+],
+[
+2.0,
+0.14,
+null,
+null
+],
+[
+3.0,
+0.145,
+null,
+null
+],
+[
+4.0,
+0.172,
+null,
+null
+],
+[
+5.0,
+0.172,
+null,
+null
+],
+[
+6.0,
+0.263,
+null,
+null
+],
+[
+7.0,
+0.294,
+null,
+null
+],
+[
+8.0,
+0.311,
+null,
+null
+],
+[
+9.0,
+0.311,
+null,
+null
+],
+[
+10.0,
+0.311,
+null,
+null
+],
+[
+12.0,
+0.447,
+null,
+null
+],
+[
+14.0,
+0.577,
+null,
+null
+],
+[
+16.0,
+0.677,
+null,
+null
+],
+[
+18.0,
+0.912,
+null,
+null
+],
+[
+21.0,
+0.912,
+null,
+null
+],
+[
+24.0,
+0.912,
+null,
+null
+],
+[
+25.37,
+0.912,
+null,
+null
+]
+],
+"events": 82,
+"median_days": 13.26,
+"n": 174,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.02,
+null,
+null
+],
+[
+1.0,
+0.059,
+null,
+null
+],
+[
+2.0,
+0.059,
+null,
+null
+],
+[
+3.0,
+0.08,
+null,
+null
+],
+[
+4.0,
+0.102,
+null,
+null
+],
+[
+5.0,
+0.102,
+null,
+null
+],
+[
+6.0,
+0.227,
+null,
+null
+],
+[
+7.0,
+0.254,
+null,
+null
+],
+[
+8.0,
+0.254,
+null,
+null
+],
+[
+9.0,
+0.254,
+null,
+null
+],
+[
+10.0,
+0.254,
+null,
+null
+],
+[
+12.0,
+0.542,
+null,
+null
+],
+[
+14.0,
+0.593,
+null,
+null
+],
+[
+16.0,
+0.695,
+null,
+null
+],
+[
+17.46,
+1.0,
+null,
+null
+]
+],
+"events": 25,
+"median_days": 11.52,
+"n": 51,
+"pooled": false,
+"reach_days": 17.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "113",
+"subject": "EPS"
+},
+"EPS 118": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "118",
+"subject": "EPS"
+},
+"EPS 122": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.073,
+null,
+null
+],
+[
+1.0,
+0.09,
+null,
+null
+],
+[
+2.0,
+0.125,
+null,
+null
+],
+[
+3.0,
+0.173,
+null,
+null
+],
+[
+4.0,
+0.203,
+null,
+null
+],
+[
+5.0,
+0.222,
+null,
+null
+],
+[
+6.0,
+0.233,
+null,
+null
+],
+[
+7.0,
+0.276,
+null,
+null
+],
+[
+8.0,
+0.333,
+null,
+null
+],
+[
+9.0,
+0.346,
+null,
+null
+],
+[
+10.0,
+0.359,
+null,
+null
+],
+[
+12.0,
+0.423,
+null,
+null
+],
+[
+14.0,
+0.455,
+null,
+null
+],
+[
+16.0,
+0.455,
+null,
+null
+],
+[
+18.0,
+0.455,
+null,
+null
+],
+[
+21.0,
+0.455,
+null,
+null
+],
+[
+24.0,
+0.455,
+null,
+null
+],
+[
+27.54,
+0.455,
+null,
+null
+]
+],
+"events": 43,
+"median_days": null,
+"n": 127,
+"pooled": false,
+"reach_days": 27.5,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.04,
+null,
+null
+],
+[
+9.0,
+0.04,
+null,
+null
+],
+[
+10.0,
+0.096,
+null,
+null
+],
+[
+12.0,
+0.153,
+null,
+null
+],
+[
+14.0,
+0.209,
+null,
+null
+],
+[
+16.0,
+0.27,
+null,
+null
+],
+[
+18.0,
+0.343,
+null,
+null
+],
+[
+21.0,
+0.343,
+null,
+null
+],
+[
+24.0,
+0.437,
+null,
+null
+],
+[
+28.0,
+0.437,
+null,
+null
+],
+[
+32.0,
+0.437,
+null,
+null
+],
+[
+35.0,
+0.437,
+null,
+null
+]
+],
+"events": 7,
+"median_days": null,
+"n": 41,
+"pooled": false,
+"reach_days": 35.0,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "122",
+"subject": "EPS"
+},
+"EPS 127": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.068,
+null,
+null
+],
+[
+1.0,
+0.081,
+null,
+null
+],
+[
+2.0,
+0.13,
+null,
+null
+],
+[
+3.0,
+0.238,
+null,
+null
+],
+[
+4.0,
+0.353,
+null,
+null
+],
+[
+5.0,
+0.383,
+null,
+null
+],
+[
+6.0,
+0.407,
+null,
+null
+],
+[
+7.0,
+0.477,
+null,
+null
+],
+[
+8.0,
+0.519,
+null,
+null
+],
+[
+9.0,
+0.53,
+null,
+null
+],
+[
+10.0,
+0.53,
+null,
+null
+],
+[
+12.0,
+0.546,
+null,
+null
+],
+[
+14.0,
+0.546,
+null,
+null
+],
+[
+16.0,
+0.566,
+null,
+null
+],
+[
+18.0,
+0.566,
+null,
+null
+],
+[
+21.0,
+0.566,
+null,
+null
+],
+[
+24.0,
+0.566,
+null,
+null
+],
+[
+25.37,
+0.566,
+null,
+null
+]
+],
+"events": 72,
+"median_days": 7.7,
+"n": 152,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.03,
+null,
+null
+],
+[
+2.0,
+0.061,
+null,
+null
+],
+[
+3.0,
+0.061,
+null,
+null
+],
+[
+4.0,
+0.182,
+null,
+null
+],
+[
+5.0,
+0.215,
+null,
+null
+],
+[
+6.0,
+0.215,
+null,
+null
+],
+[
+7.0,
+0.286,
+null,
+null
+],
+[
+8.0,
+0.405,
+null,
+null
+],
+[
+9.0,
+0.445,
+null,
+null
+],
+[
+10.0,
+0.491,
+null,
+null
+],
+[
+12.0,
+0.491,
+null,
+null
+],
+[
+14.0,
+0.491,
+null,
+null
+],
+[
+16.0,
+0.491,
+null,
+null
+],
+[
+18.0,
+0.491,
+null,
+null
+],
+[
+19.05,
+0.491,
+null,
+null
+]
+],
+"events": 14,
+"median_days": null,
+"n": 33,
+"pooled": false,
+"reach_days": 19.1,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "127",
 "subject": "EPS"
 },
 "EPS 150": {
 "buckets": {
 "1-5": {
-"n_course": 1,
+"n_course": 19,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -652,17 +1105,30 @@ null
 "number": "150",
 "subject": "EPS"
 },
-"EPS 215": {
+"EPS 24": {
 "buckets": {
 "1-5": {
-"n_course": 8,
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "EPS"
+},
+"EPS 290": {
+"buckets": {
+"1-5": {
+"n_course": 11,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "215",
+"number": "290",
 "subject": "EPS"
 },
 "EPS 50": {
@@ -671,130 +1137,173 @@ null
 "curve": [
 [
 0.5,
-0.227,
+0.337,
 null,
 null
 ],
 [
 1.0,
-0.277,
+0.398,
 null,
 null
 ],
 [
 2.0,
-0.33,
+0.497,
 null,
 null
 ],
 [
 3.0,
-0.394,
+0.539,
 null,
 null
 ],
 [
 4.0,
-0.481,
+0.582,
 null,
 null
 ],
 [
 5.0,
-0.514,
+0.663,
 null,
 null
 ],
 [
 6.0,
-0.569,
+0.723,
 null,
 null
 ],
 [
 7.0,
-0.593,
+0.735,
 null,
 null
 ],
 [
 8.0,
-0.601,
+0.773,
 null,
 null
 ],
 [
 9.0,
-0.601,
+0.786,
 null,
 null
 ],
 [
 10.0,
-0.601,
+0.786,
 null,
 null
 ],
 [
 12.0,
-0.628,
+0.786,
 null,
 null
 ],
 [
 14.0,
-0.746,
+0.828,
 null,
 null
 ],
 [
 16.0,
-0.781,
+0.847,
 null,
 null
 ],
 [
 18.0,
-0.836,
+0.847,
 null,
 null
 ],
 [
 21.0,
-0.877,
+0.847,
 null,
 null
 ],
 [
 24.0,
-0.877,
+0.847,
 null,
 null
 ],
 [
 28.0,
-0.918,
+0.847,
 null,
 null
 ],
 [
-28.13,
-0.918,
+32.0,
+0.847,
+null,
+null
+],
+[
+36.0,
+0.847,
+null,
+null
+],
+[
+42.0,
+0.847,
+null,
+null
+],
+[
+49.0,
+0.847,
+null,
+null
+],
+[
+56.0,
+0.847,
+null,
+null
+],
+[
+63.0,
+0.847,
+null,
+null
+],
+[
+70.0,
+0.847,
+null,
+null
+],
+[
+77.0,
+0.847,
+null,
+null
+],
+[
+79.75,
+0.847,
 null,
 null
 ]
 ],
-"events": 137,
-"median_days": 4.49,
-"n": 231,
+"events": 99,
+"median_days": 2.03,
+"n": 135,
 "pooled": false,
-"reach_days": 28.1,
+"reach_days": 79.7,
 "sections": 1
-},
-"6-15": {
-"n_course": 20,
-"pooled": "OTHER",
-"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -802,438 +1311,299 @@ null
 "number": "50",
 "subject": "EPS"
 },
-"EPS 7": {
+"EPS 81": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.732,
+0.295,
 null,
 null
 ],
 [
 1.0,
-0.911,
-null,
-null
-],
-[
-1.43,
-1.0,
-null,
-null
-]
-],
-"events": 165,
-"median_days": 0.23,
-"n": 168,
-"pooled": false,
-"reach_days": 1.4,
-"sections": 1
-},
-"6-15": {
-"n_course": 7,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "7",
-"subject": "EPS"
-},
-"EPS 80": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.159,
-null,
-null
-],
-[
-1.0,
-0.281,
+0.453,
 null,
 null
 ],
 [
 2.0,
-0.363,
+0.49,
 null,
 null
 ],
 [
 3.0,
-0.387,
+0.53,
 null,
 null
 ],
 [
 4.0,
-0.42,
+0.53,
 null,
 null
 ],
 [
 5.0,
-0.483,
+0.611,
 null,
 null
 ],
 [
 6.0,
-0.547,
+0.611,
 null,
 null
 ],
 [
 7.0,
-0.584,
+0.611,
 null,
 null
 ],
 [
 8.0,
-0.627,
+0.611,
 null,
 null
 ],
 [
 9.0,
-0.645,
+0.611,
 null,
 null
 ],
 [
 10.0,
-0.645,
+0.611,
 null,
 null
 ],
 [
 12.0,
-0.803,
+0.611,
 null,
 null
 ],
 [
 14.0,
-0.895,
+0.611,
 null,
 null
 ],
 [
 16.0,
-0.947,
-null,
-null
-],
-[
-16.11,
-0.947,
-null,
-null
-]
-],
-"events": 89,
-"median_days": 5.08,
-"n": 152,
-"pooled": false,
-"reach_days": 16.1,
-"sections": 1
-},
-"6-15": {
-"n_course": 13,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "80",
-"subject": "EPS"
-},
-"EPS 82": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.335,
-null,
-null
-],
-[
-1.0,
-0.516,
-null,
-null
-],
-[
-2.0,
-0.718,
-null,
-null
-],
-[
-3.0,
-0.814,
-null,
-null
-],
-[
-4.0,
-0.898,
-null,
-null
-],
-[
-5.0,
-0.939,
-null,
-null
-],
-[
-6.0,
-0.969,
-null,
-null
-],
-[
-7.0,
-0.988,
-null,
-null
-],
-[
-7.48,
-0.994,
-null,
-null
-]
-],
-"events": 417,
-"median_days": 0.95,
-"n": 464,
-"pooled": false,
-"reach_days": 7.5,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.093,
-null,
-null
-],
-[
-10.0,
-0.206,
-null,
-null
-],
-[
-12.0,
-0.206,
-null,
-null
-],
-[
-14.0,
-0.206,
-null,
-null
-],
-[
-16.0,
-0.206,
+0.611,
 null,
 null
 ],
 [
 18.0,
-0.206,
+0.611,
 null,
 null
 ],
 [
-18.21,
-0.206,
+21.0,
+0.611,
+null,
+null
+],
+[
+24.0,
+0.611,
+null,
+null
+],
+[
+28.0,
+0.611,
+null,
+null
+],
+[
+32.0,
+0.611,
+null,
+null
+],
+[
+36.0,
+0.611,
+null,
+null
+],
+[
+42.0,
+0.611,
+null,
+null
+],
+[
+49.0,
+0.611,
+null,
+null
+],
+[
+56.0,
+0.611,
+null,
+null
+],
+[
+63.0,
+0.611,
+null,
+null
+],
+[
+70.0,
+0.611,
+null,
+null
+],
+[
+77.0,
+0.611,
+null,
+null
+],
+[
+79.75,
+0.611,
 null,
 null
 ]
 ],
-"events": 8,
-"median_days": null,
-"n": 116,
+"events": 35,
+"median_days": 2.05,
+"n": 61,
 "pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.057,
-null,
-null
-],
-[
-1.0,
-0.104,
-null,
-null
-],
-[
-2.0,
-0.265,
-null,
-null
-],
-[
-3.0,
-0.34,
-null,
-null
-],
-[
-4.0,
-0.423,
-null,
-null
-],
-[
-5.0,
-0.519,
-null,
-null
-],
-[
-6.0,
-0.592,
-null,
-null
-],
-[
-7.0,
-0.624,
-null,
-null
-],
-[
-8.0,
-0.688,
-null,
-null
-],
-[
-9.0,
-0.765,
-null,
-null
-],
-[
-10.0,
-0.784,
-null,
-null
-],
-[
-12.0,
-0.833,
-null,
-null
-],
-[
-14.0,
-0.861,
-null,
-null
-],
-[
-15.96,
-1.0,
-null,
-null
-]
-],
-"events": 180,
-"median_days": 4.83,
-"n": 284,
-"pooled": false,
-"reach_days": 16.0,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "82",
+"number": "81",
 "subject": "EPS"
 },
 "EPS 88": {
 "buckets": {
 "1-5": {
-"n_course": 12,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.302,
+null,
+null
+],
+[
+1.0,
+0.408,
+null,
+null
+],
+[
+2.0,
+0.45,
+null,
+null
+],
+[
+3.0,
+0.556,
+null,
+null
+],
+[
+4.0,
+0.6,
+null,
+null
+],
+[
+5.0,
+0.645,
+null,
+null
+],
+[
+6.0,
+0.718,
+null,
+null
+],
+[
+7.0,
+0.744,
+null,
+null
+],
+[
+8.0,
+0.795,
+null,
+null
+],
+[
+9.0,
+0.821,
+null,
+null
+],
+[
+10.0,
+0.821,
+null,
+null
+],
+[
+12.0,
+0.872,
+null,
+null
+],
+[
+14.0,
+0.898,
+null,
+null
+],
+[
+16.0,
+0.898,
+null,
+null
+],
+[
+18.0,
+0.898,
+null,
+null
+],
+[
+21.0,
+0.898,
+null,
+null
+],
+[
+21.89,
+0.898,
+null,
+null
+]
+],
+"events": 41,
+"median_days": 2.14,
+"n": 50,
+"pooled": false,
+"reach_days": 21.9,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -1241,123 +1611,440 @@ null
 "number": "88",
 "subject": "EPS"
 },
-"EPS C181": {
+"EPS C12": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.182,
+0.512,
 null,
 null
 ],
 [
 1.0,
-0.255,
+0.618,
 null,
 null
 ],
 [
 2.0,
-0.314,
+0.706,
 null,
 null
 ],
 [
 3.0,
-0.39,
+0.803,
 null,
 null
 ],
 [
 4.0,
-0.475,
+0.889,
 null,
 null
 ],
 [
 5.0,
-0.574,
+0.937,
 null,
 null
 ],
 [
 6.0,
-0.595,
+0.972,
 null,
 null
 ],
 [
 7.0,
-0.638,
+0.981,
 null,
 null
 ],
 [
 8.0,
-0.668,
+0.981,
 null,
 null
 ],
 [
 9.0,
-0.742,
+0.981,
 null,
 null
 ],
 [
 10.0,
-0.742,
+0.981,
 null,
 null
 ],
 [
 12.0,
-0.845,
+0.981,
+null,
+null
+],
+[
+12.17,
+0.981,
+null,
+null
+]
+],
+"events": 162,
+"median_days": 0.48,
+"n": 170,
+"pooled": false,
+"reach_days": 12.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C12",
+"subject": "EPS"
+},
+"EPS C180": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.066,
+null,
+null
+],
+[
+1.0,
+0.076,
+null,
+null
+],
+[
+2.0,
+0.076,
+null,
+null
+],
+[
+3.0,
+0.076,
+null,
+null
+],
+[
+4.0,
+0.086,
+null,
+null
+],
+[
+5.0,
+0.139,
+null,
+null
+],
+[
+6.0,
+0.139,
+null,
+null
+],
+[
+7.0,
+0.161,
+null,
+null
+],
+[
+8.0,
+0.161,
+null,
+null
+],
+[
+9.0,
+0.184,
+null,
+null
+],
+[
+10.0,
+0.184,
+null,
+null
+],
+[
+12.0,
+0.196,
 null,
 null
 ],
 [
 14.0,
-0.897,
+0.362,
 null,
 null
 ],
 [
 16.0,
-0.897,
+0.45,
 null,
 null
 ],
 [
 18.0,
-0.948,
+0.47,
 null,
 null
 ],
 [
-18.06,
-0.948,
+21.0,
+0.568,
+null,
+null
+],
+[
+24.0,
+0.601,
+null,
+null
+],
+[
+28.0,
+0.601,
+null,
+null
+],
+[
+32.0,
+0.601,
+null,
+null
+],
+[
+36.0,
+0.601,
+null,
+null
+],
+[
+42.0,
+0.601,
+null,
+null
+],
+[
+49.0,
+0.601,
+null,
+null
+],
+[
+56.0,
+0.601,
+null,
+null
+],
+[
+63.0,
+0.601,
+null,
+null
+],
+[
+70.0,
+0.601,
+null,
+null
+],
+[
+77.0,
+0.601,
+null,
+null
+],
+[
+79.75,
+0.601,
 null,
 null
 ]
 ],
-"events": 48,
-"median_days": 4.18,
-"n": 72,
+"events": 44,
+"median_days": 18.17,
+"n": 111,
 "pooled": false,
-"reach_days": 18.1,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 1,
+"n_course": 8,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "C181",
+"number": "C180",
+"subject": "EPS"
+},
+"EPS C182": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C182",
+"subject": "EPS"
+},
+"EPS C183": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.135,
+null,
+null
+],
+[
+1.0,
+0.175,
+null,
+null
+],
+[
+2.0,
+0.202,
+null,
+null
+],
+[
+3.0,
+0.269,
+null,
+null
+],
+[
+4.0,
+0.312,
+null,
+null
+],
+[
+5.0,
+0.371,
+null,
+null
+],
+[
+6.0,
+0.371,
+null,
+null
+],
+[
+7.0,
+0.419,
+null,
+null
+],
+[
+8.0,
+0.454,
+null,
+null
+],
+[
+9.0,
+0.471,
+null,
+null
+],
+[
+10.0,
+0.505,
+null,
+null
+],
+[
+12.0,
+0.55,
+null,
+null
+],
+[
+14.0,
+0.603,
+null,
+null
+],
+[
+16.0,
+0.603,
+null,
+null
+],
+[
+18.0,
+0.603,
+null,
+null
+],
+[
+21.0,
+0.603,
+null,
+null
+],
+[
+24.0,
+0.603,
+null,
+null
+],
+[
+28.0,
+0.603,
+null,
+null
+],
+[
+28.07,
+0.603,
+null,
+null
+]
+],
+"events": 40,
+"median_days": 9.98,
+"n": 84,
+"pooled": false,
+"reach_days": 28.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C183",
 "subject": "EPS"
 },
 "EPS C20": {
@@ -1366,433 +2053,395 @@ null
 "curve": [
 [
 0.5,
-0.232,
-0.174,
-0.28
+0.26,
+null,
+null
 ],
 [
 1.0,
-0.358,
-0.256,
-0.441
+0.423,
+null,
+null
 ],
 [
 2.0,
-0.549,
-0.441,
-0.639
+0.591,
+null,
+null
 ],
 [
 3.0,
-0.658,
-0.544,
-0.75
+0.681,
+null,
+null
 ],
 [
 4.0,
-0.729,
-0.613,
-0.825
+0.759,
+null,
+null
 ],
 [
 5.0,
-0.79,
-0.663,
-0.898
+0.817,
+null,
+null
 ],
 [
 6.0,
-0.85,
-0.738,
-0.945
+0.876,
+null,
+null
 ],
 [
 7.0,
-0.885,
-0.789,
-0.967
+0.91,
+null,
+null
 ],
 [
 8.0,
-0.898,
-0.806,
-0.975
+0.93,
+null,
+null
 ],
 [
 9.0,
-0.918,
-0.84,
-0.985
+0.933,
+null,
+null
 ],
 [
 10.0,
-0.928,
-0.856,
-0.993
+0.938,
+null,
+null
 ],
 [
 12.0,
-0.936,
-0.867,
-1.0
+0.938,
+null,
+null
 ],
 [
 14.0,
-0.939,
-0.873,
-1.0
+0.942,
+null,
+null
 ],
 [
 16.0,
-0.955,
-0.907,
-1.0
+0.942,
+null,
+null
 ],
 [
 18.0,
-0.988,
-0.975,
-1.0
+0.942,
+null,
+null
 ],
 [
-18.21,
-0.994,
-0.988,
-1.0
+21.0,
+0.942,
+null,
+null
+],
+[
+24.0,
+0.942,
+null,
+null
+],
+[
+28.0,
+0.942,
+null,
+null
+],
+[
+32.0,
+0.942,
+null,
+null
+],
+[
+36.0,
+0.942,
+null,
+null
+],
+[
+42.0,
+0.942,
+null,
+null
+],
+[
+49.0,
+0.942,
+null,
+null
+],
+[
+56.0,
+0.942,
+null,
+null
+],
+[
+63.0,
+0.942,
+null,
+null
+],
+[
+70.0,
+0.942,
+null,
+null
+],
+[
+77.0,
+0.942,
+null,
+null
+],
+[
+79.75,
+0.942,
+null,
+null
 ]
 ],
-"events": 591,
-"median_days": 1.7,
-"n": 716,
+"events": 552,
+"median_days": 1.52,
+"n": 682,
 "pooled": false,
-"reach_days": 18.2,
-"sections": 2
+"reach_days": 79.7,
+"sections": 1
 },
 "16-40": {
 "curve": [
 [
 0.5,
-0.0,
-0.0,
-0.0
-],
-[
-1.0,
-0.0,
-0.0,
-0.0
-],
-[
-2.0,
-0.0,
-0.0,
-0.0
-],
-[
-3.0,
-0.005,
-0.0,
-0.007
-],
-[
-4.0,
-0.038,
-0.028,
-0.042
-],
-[
-5.0,
-0.058,
-0.028,
-0.072
-],
-[
-6.0,
-0.099,
-0.079,
-0.138
-],
-[
-7.0,
-0.135,
-0.102,
-0.201
-],
-[
-8.0,
-0.145,
-0.102,
-0.234
-],
-[
-9.0,
-0.19,
-0.167,
-0.234
-],
-[
-10.0,
-0.251,
-0.244,
-0.258
-],
-[
-12.0,
-0.33,
-0.285,
-0.338
-],
-[
-14.0,
-0.458,
-0.285,
-0.493
-],
-[
-16.0,
-0.673,
-0.285,
-0.727
-],
-[
-18.0,
-0.774,
-0.285,
-0.821
-],
-[
-18.21,
-0.774,
-0.285,
-0.821
-]
-],
-"events": 91,
-"median_days": 14.23,
-"n": 291,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 2
-},
-"41+": {
-"curve": [
-[
-0.5,
-0.0,
+0.049,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.108,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.222,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.231,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.275,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.322,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.322,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.322,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.322,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.322,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.322,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.322,
 null,
 null
 ],
 [
 14.0,
-0.0,
+0.322,
 null,
 null
 ],
 [
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.4,
-null,
-null
-],
-[
-18.21,
-0.4,
+15.7,
+0.322,
 null,
 null
 ]
 ],
-"events": 2,
+"events": 41,
 "median_days": null,
-"n": 43,
+"n": 142,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 15.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.01,
-0.008,
-0.013
+0.081,
+null,
+null
 ],
 [
 1.0,
-0.021,
-0.017,
-0.025
+0.217,
+null,
+null
 ],
 [
 2.0,
-0.091,
-0.074,
-0.107
+0.317,
+null,
+null
 ],
 [
 3.0,
-0.187,
-0.145,
-0.228
+0.365,
+null,
+null
 ],
 [
 4.0,
-0.295,
-0.226,
-0.36
+0.451,
+null,
+null
 ],
 [
 5.0,
-0.393,
-0.294,
-0.487
+0.478,
+null,
+null
 ],
 [
 6.0,
-0.443,
-0.34,
-0.542
+0.529,
+null,
+null
 ],
 [
 7.0,
-0.517,
-0.434,
-0.598
+0.592,
+null,
+null
 ],
 [
 8.0,
-0.589,
-0.549,
-0.627
+0.655,
+null,
+null
 ],
 [
 9.0,
-0.633,
-0.616,
-0.649
+0.689,
+null,
+null
 ],
 [
 10.0,
-0.662,
-0.633,
-0.69
+0.709,
+null,
+null
 ],
 [
 12.0,
-0.725,
-0.693,
-0.758
+0.793,
+null,
+null
 ],
 [
 14.0,
-0.791,
-0.768,
-0.813
+0.962,
+null,
+null
 ],
 [
-16.0,
-0.82,
-0.768,
-0.929
-],
-[
-18.0,
-0.82,
-0.768,
-0.929
-],
-[
-18.21,
-0.82,
-0.768,
-0.929
+14.76,
+1.0,
+null,
+null
 ]
 ],
-"events": 265,
-"median_days": 6.74,
-"n": 484,
+"events": 205,
+"median_days": 5.23,
+"n": 349,
 "pooled": false,
-"reach_days": 18.2,
-"sections": 2
+"reach_days": 14.8,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
 "number": "C20",
 "subject": "EPS"
+},
+"EPS C241": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C241",
+"subject": "EPS"
+},
+"EPS C242": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C242",
+"subject": "EPS"
 }
 },
 "subject": "EPS",
-"term_id": "2268"
+"term_id": "2262"
 }

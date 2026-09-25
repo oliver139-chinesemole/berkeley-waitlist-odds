@@ -1,220 +1,142 @@
 {
 "courses": {
-"CHINESE 100XA": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.143,
-null,
-null
-],
-[
-1.0,
-0.143,
-null,
-null
-],
-[
-2.0,
-0.229,
-null,
-null
-],
-[
-3.0,
-0.229,
-null,
-null
-],
-[
-4.0,
-0.229,
-null,
-null
-],
-[
-5.0,
-0.229,
-null,
-null
-],
-[
-6.0,
-0.31,
-null,
-null
-],
-[
-7.0,
-0.31,
-null,
-null
-],
-[
-8.0,
-0.351,
-null,
-null
-],
-[
-9.0,
-0.654,
-null,
-null
-],
-[
-10.0,
-0.748,
-null,
-null
-],
-[
-12.0,
-0.798,
-null,
-null
-],
-[
-14.0,
-0.798,
-null,
-null
-],
-[
-16.0,
-0.798,
-null,
-null
-],
-[
-17.86,
-0.95,
-null,
-null
-]
-],
-"events": 25,
-"median_days": 8.98,
-"n": 42,
-"pooled": false,
-"reach_days": 17.9,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "100XA",
-"subject": "CHINESE"
-},
 "CHINESE 10A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.149,
-0.0,
-0.163
+0.099,
+null,
+null
 ],
 [
 1.0,
-0.172,
-0.0,
-0.188
+0.122,
+null,
+null
 ],
 [
 2.0,
-0.245,
-0.0,
-0.267
+0.195,
+null,
+null
 ],
 [
 3.0,
-0.276,
-0.0,
-0.299
+0.195,
+null,
+null
 ],
 [
 4.0,
-0.276,
-0.0,
-0.299
+0.195,
+null,
+null
 ],
 [
 5.0,
-0.507,
-0.0,
-0.533
+0.257,
+null,
+null
 ],
 [
 6.0,
-0.648,
-0.0,
-0.666
+0.296,
+null,
+null
 ],
 [
 7.0,
-0.683,
-0.0,
-0.7
+0.296,
+null,
+null
 ],
 [
 8.0,
-0.718,
-0.0,
-0.733
+0.296,
+null,
+null
 ],
 [
 9.0,
-0.718,
-0.0,
-0.733
+0.296,
+null,
+null
 ],
 [
 10.0,
-0.718,
-0.0,
-0.733
+0.296,
+null,
+null
 ],
 [
 12.0,
-0.824,
-0.0,
-0.833
+0.39,
+null,
+null
 ],
 [
 14.0,
-0.824,
-0.0,
-0.833
+0.542,
+null,
+null
 ],
 [
 16.0,
-0.824,
-0.0,
-0.833
+0.593,
+null,
+null
 ],
 [
 18.0,
-0.824,
-0.0,
-0.833
+0.593,
+null,
+null
 ],
 [
-18.07,
-0.824,
-0.0,
-0.833
+21.0,
+0.593,
+null,
+null
+],
+[
+24.0,
+0.593,
+null,
+null
+],
+[
+28.0,
+0.593,
+null,
+null
+],
+[
+32.0,
+0.593,
+null,
+null
+],
+[
+36.0,
+0.593,
+null,
+null
+],
+[
+39.73,
+0.593,
+null,
+null
 ]
 ],
-"events": 28,
-"median_days": 4.84,
-"n": 47,
+"events": 18,
+"median_days": 13.59,
+"n": 51,
 "pooled": false,
-"reach_days": 18.1,
-"sections": 2
+"reach_days": 39.7,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -222,157 +144,476 @@ null
 "number": "10A",
 "subject": "CHINESE"
 },
-"CHINESE 110A": {
-"buckets": {
-"1-5": {
-"n_course": 15,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "110A",
-"subject": "CHINESE"
-},
-"CHINESE 111": {
-"buckets": {
-"1-5": {
-"n_course": 1,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "111",
-"subject": "CHINESE"
-},
-"CHINESE 134": {
-"buckets": {
-"1-5": {
-"n_course": 14,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "134",
-"subject": "CHINESE"
-},
-"CHINESE 156": {
+"CHINESE 10B": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.176,
+0.022,
 null,
 null
 ],
 [
 1.0,
-0.176,
+0.022,
 null,
 null
 ],
 [
 2.0,
-0.228,
+0.022,
 null,
 null
 ],
 [
 3.0,
-0.474,
+0.022,
 null,
 null
 ],
 [
 4.0,
-0.668,
+0.022,
 null,
 null
 ],
 [
 5.0,
-0.668,
+0.022,
 null,
 null
 ],
 [
 6.0,
-0.778,
+0.05,
 null,
 null
 ],
 [
 7.0,
-0.806,
+0.091,
 null,
 null
 ],
 [
 8.0,
-0.834,
+0.133,
 null,
 null
 ],
 [
 9.0,
-0.889,
+0.133,
 null,
 null
 ],
 [
 10.0,
-0.889,
+0.133,
 null,
 null
 ],
 [
 12.0,
-0.889,
+0.133,
 null,
 null
 ],
 [
 14.0,
-0.926,
+0.387,
 null,
 null
 ],
 [
 16.0,
-0.926,
+0.387,
 null,
 null
 ],
 [
 18.0,
-0.926,
+0.552,
 null,
 null
 ],
 [
-18.21,
-0.926,
+21.0,
+0.552,
+null,
+null
+],
+[
+24.0,
+0.552,
+null,
+null
+],
+[
+28.0,
+0.552,
+null,
+null
+],
+[
+32.0,
+0.552,
+null,
+null
+],
+[
+36.0,
+0.552,
+null,
+null
+],
+[
+42.0,
+0.552,
+null,
+null
+],
+[
+49.0,
+0.552,
+null,
+null
+],
+[
+56.0,
+0.552,
+null,
+null
+],
+[
+63.0,
+0.552,
+null,
+null
+],
+[
+70.0,
+0.552,
+null,
+null
+],
+[
+77.0,
+0.552,
+null,
+null
+],
+[
+79.75,
+0.552,
 null,
 null
 ]
 ],
-"events": 34,
-"median_days": 3.1,
-"n": 40,
+"events": 33,
+"median_days": 17.89,
+"n": 89,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
 "sections": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10B",
+"subject": "CHINESE"
+},
+"CHINESE 10X": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.133,
+0.124,
+0.14
+],
+[
+1.0,
+0.182,
+0.173,
+0.19
+],
+[
+2.0,
+0.309,
+0.3,
+0.316
+],
+[
+3.0,
+0.461,
+0.456,
+0.465
+],
+[
+4.0,
+0.536,
+0.496,
+0.564
+],
+[
+5.0,
+0.596,
+0.544,
+0.632
+],
+[
+6.0,
+0.634,
+0.605,
+0.654
+],
+[
+7.0,
+0.634,
+0.605,
+0.654
+],
+[
+8.0,
+0.662,
+0.605,
+0.697
+],
+[
+9.0,
+0.676,
+0.644,
+0.697
+],
+[
+10.0,
+0.704,
+0.697,
+0.723
+],
+[
+12.0,
+0.704,
+0.697,
+0.723
+],
+[
+14.0,
+0.704,
+0.697,
+0.723
+],
+[
+16.0,
+0.764,
+0.719,
+0.862
+],
+[
+18.0,
+0.764,
+0.719,
+0.862
+],
+[
+21.0,
+0.764,
+0.719,
+0.862
+],
+[
+24.0,
+0.764,
+0.719,
+0.862
+],
+[
+28.0,
+0.764,
+0.719,
+0.862
+],
+[
+32.0,
+0.764,
+0.719,
+0.862
+],
+[
+35.88,
+0.764,
+0.719,
+0.862
+]
+],
+"events": 89,
+"median_days": 3.56,
+"n": 151,
+"pooled": false,
+"reach_days": 35.9,
+"sections": 2
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "10X",
+"subject": "CHINESE"
+},
+"CHINESE 153": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.119,
+null,
+null
+],
+[
+1.0,
+0.16,
+null,
+null
+],
+[
+2.0,
+0.218,
+null,
+null
+],
+[
+3.0,
+0.253,
+null,
+null
+],
+[
+4.0,
+0.281,
+null,
+null
+],
+[
+5.0,
+0.32,
+null,
+null
+],
+[
+6.0,
+0.351,
+null,
+null
+],
+[
+7.0,
+0.396,
+null,
+null
+],
+[
+8.0,
+0.432,
+null,
+null
+],
+[
+9.0,
+0.432,
+null,
+null
+],
+[
+10.0,
+0.469,
+null,
+null
+],
+[
+12.0,
+0.482,
+null,
+null
+],
+[
+14.0,
+0.495,
+null,
+null
+],
+[
+16.0,
+0.495,
+null,
+null
+],
+[
+18.0,
+0.495,
+null,
+null
+],
+[
+21.0,
+0.548,
+null,
+null
+],
+[
+24.0,
+0.562,
+null,
+null
+],
+[
+28.0,
+0.624,
+null,
+null
+],
+[
+32.0,
+0.699,
+null,
+null
+],
+[
+36.0,
+0.724,
+null,
+null
+],
+[
+37.25,
+0.724,
+null,
+null
+]
+],
+"events": 65,
+"median_days": 19.18,
+"n": 126,
+"pooled": false,
+"reach_days": 37.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "156",
+"number": "153",
 "subject": "CHINESE"
 },
 "CHINESE 188": {
@@ -381,83 +622,124 @@ null
 "curve": [
 [
 0.5,
-0.387,
+0.211,
 null,
 null
 ],
 [
 1.0,
-0.538,
+0.234,
 null,
 null
 ],
 [
 2.0,
-0.664,
+0.336,
 null,
 null
 ],
 [
 3.0,
-0.731,
+0.369,
 null,
 null
 ],
 [
 4.0,
-0.798,
+0.407,
 null,
 null
 ],
 [
 5.0,
-0.832,
+0.455,
 null,
 null
 ],
 [
 6.0,
-0.832,
+0.465,
 null,
 null
 ],
 [
 7.0,
-0.832,
+0.525,
 null,
 null
 ],
 [
 8.0,
-0.832,
+0.552,
 null,
 null
 ],
 [
 9.0,
-0.832,
+0.552,
 null,
 null
 ],
 [
 10.0,
-0.832,
+0.647,
 null,
 null
 ],
 [
-10.87,
-0.832,
+12.0,
+0.684,
+null,
+null
+],
+[
+14.0,
+0.684,
+null,
+null
+],
+[
+16.0,
+0.774,
+null,
+null
+],
+[
+18.0,
+0.774,
+null,
+null
+],
+[
+21.0,
+0.865,
+null,
+null
+],
+[
+24.0,
+0.932,
+null,
+null
+],
+[
+25.39,
+0.932,
 null,
 null
 ]
 ],
-"events": 28,
-"median_days": 0.91,
-"n": 37,
+"events": 80,
+"median_days": 6.03,
+"n": 150,
 "pooled": false,
-"reach_days": 10.9,
+"reach_days": 25.4,
 "sections": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -471,106 +753,130 @@ null
 "curve": [
 [
 0.5,
-0.102,
-0.076,
-0.156
+0.156,
+0.11,
+0.202
 ],
 [
 1.0,
-0.137,
-0.103,
-0.221
+0.225,
+0.125,
+0.29
 ],
 [
 2.0,
-0.155,
-0.117,
-0.236
+0.321,
+0.125,
+0.368
 ],
 [
 3.0,
-0.155,
-0.117,
-0.236
+0.361,
+0.125,
+0.4
 ],
 [
 4.0,
-0.176,
-0.149,
-0.236
+0.411,
+0.213,
+0.457
 ],
 [
 5.0,
-0.198,
-0.165,
-0.307
+0.48,
+0.213,
+0.499
 ],
 [
 6.0,
-0.273,
-0.236,
-0.394
+0.56,
+0.213,
+0.583
 ],
 [
 7.0,
-0.307,
-0.236,
-0.394
+0.595,
+0.213,
+0.627
 ],
 [
 8.0,
-0.376,
-0.236,
-0.416
+0.632,
+0.213,
+0.689
 ],
 [
 9.0,
-0.389,
-0.236,
-0.435
+0.655,
+0.213,
+0.736
 ],
 [
 10.0,
-0.43,
-0.236,
-0.497
+0.704,
+0.37,
+0.751
 ],
 [
 12.0,
-0.444,
-0.236,
-0.518
+0.721,
+0.37,
+0.784
 ],
 [
 14.0,
-0.55,
-0.236,
-0.678
+0.771,
+0.58,
+0.806
 ],
 [
 16.0,
-0.602,
-0.236,
-0.756
+0.811,
+0.58,
+0.833
 ],
 [
 18.0,
-0.676,
-0.236,
-0.86
+0.832,
+0.58,
+0.875
 ],
 [
-18.5,
-0.676,
-0.236,
-0.86
+21.0,
+0.832,
+0.58,
+0.875
+],
+[
+24.0,
+0.832,
+0.58,
+0.875
+],
+[
+28.0,
+0.832,
+0.58,
+0.875
+],
+[
+32.0,
+0.832,
+0.58,
+0.875
+],
+[
+35.2,
+0.832,
+0.58,
+0.875
 ]
 ],
-"events": 56,
-"median_days": 12.54,
-"n": 120,
+"events": 169,
+"median_days": 5.14,
+"n": 284,
 "pooled": false,
-"reach_days": 18.5,
+"reach_days": 35.2,
 "sections": 3
 }
 },
@@ -582,128 +888,9 @@ null
 "CHINESE 1B": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.166,
-null,
-null
-],
-[
-1.0,
-0.246,
-null,
-null
-],
-[
-2.0,
-0.367,
-null,
-null
-],
-[
-3.0,
-0.444,
-null,
-null
-],
-[
-4.0,
-0.467,
-null,
-null
-],
-[
-5.0,
-0.491,
-null,
-null
-],
-[
-6.0,
-0.565,
-null,
-null
-],
-[
-7.0,
-0.616,
-null,
-null
-],
-[
-8.0,
-0.616,
-null,
-null
-],
-[
-9.0,
-0.675,
-null,
-null
-],
-[
-10.0,
-0.675,
-null,
-null
-],
-[
-12.0,
-0.716,
-null,
-null
-],
-[
-14.0,
-0.716,
-null,
-null
-],
-[
-16.0,
-0.716,
-null,
-null
-],
-[
-18.0,
-0.716,
-null,
-null
-],
-[
-21.0,
-0.716,
-null,
-null
-],
-[
-24.0,
-0.716,
-null,
-null
-],
-[
-28.0,
-0.716,
-null,
-null
-],
-[
-30.81,
-0.716,
-null,
-null
-]
-],
-"events": 37,
-"median_days": 5.29,
-"n": 67,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
+"n_course": 16,
+"pooled": "OTHER",
+"sections_course": 2
 }
 },
 "dept_group": "OTHER",
@@ -717,107 +904,131 @@ null
 "curve": [
 [
 0.5,
-0.1,
-0.098,
-0.1
+0.182,
+null,
+null
 ],
 [
 1.0,
-0.1,
-0.098,
-0.1
+0.305,
+null,
+null
 ],
 [
 2.0,
-0.124,
-0.123,
-0.124
+0.447,
+null,
+null
 ],
 [
 3.0,
-0.183,
-0.177,
-0.188
+0.528,
+null,
+null
 ],
 [
 4.0,
-0.251,
-0.208,
-0.299
+0.658,
+null,
+null
 ],
 [
 5.0,
-0.286,
-0.277,
-0.299
+0.674,
+null,
+null
 ],
 [
 6.0,
-0.306,
-0.299,
-0.317
+0.674,
+null,
+null
 ],
 [
 7.0,
-0.329,
-0.299,
-0.366
+0.674,
+null,
+null
 ],
 [
 8.0,
-0.329,
-0.299,
-0.366
+0.674,
+null,
+null
 ],
 [
 9.0,
-0.329,
-0.299,
-0.366
+0.674,
+null,
+null
 ],
 [
 10.0,
-0.362,
-0.349,
-0.366
+0.699,
+null,
+null
 ],
 [
 12.0,
-0.437,
-0.408,
-0.471
+0.699,
+null,
+null
 ],
 [
 14.0,
-0.512,
-0.471,
-0.526
+0.733,
+null,
+null
 ],
 [
 16.0,
-0.553,
-0.471,
-0.594
+0.777,
+null,
+null
 ],
 [
 18.0,
-0.598,
-0.471,
-0.662
+0.777,
+null,
+null
 ],
 [
-18.4,
-0.665,
-0.603,
-0.665
+21.0,
+0.777,
+null,
+null
+],
+[
+24.0,
+0.777,
+null,
+null
+],
+[
+28.0,
+0.777,
+null,
+null
+],
+[
+32.0,
+0.777,
+null,
+null
+],
+[
+34.9,
+0.777,
+null,
+null
 ]
 ],
-"events": 31,
-"median_days": 13.04,
-"n": 91,
+"events": 47,
+"median_days": 2.72,
+"n": 76,
 "pooled": false,
-"reach_days": 18.4,
-"sections": 2
+"reach_days": 34.9,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -825,31 +1036,44 @@ null
 "number": "1X",
 "subject": "CHINESE"
 },
-"CHINESE 30A": {
+"CHINESE 30X": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "30X",
+"subject": "CHINESE"
+},
+"CHINESE 3B": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.122,
+0.151,
 null,
 null
 ],
 [
 1.0,
-0.135,
+0.19,
 null,
 null
 ],
 [
 2.0,
-0.231,
+0.253,
 null,
 null
 ],
 [
 3.0,
-0.231,
+0.253,
 null,
 null
 ],
@@ -861,478 +1085,94 @@ null
 ],
 [
 5.0,
-0.294,
+0.306,
 null,
 null
 ],
 [
 6.0,
-0.329,
+0.417,
 null,
 null
 ],
 [
 7.0,
-0.363,
+0.59,
 null,
 null
 ],
 [
 8.0,
-0.381,
+0.619,
 null,
 null
 ],
 [
 9.0,
-0.381,
+0.619,
 null,
 null
 ],
 [
 10.0,
-0.479,
+0.619,
 null,
 null
 ],
 [
 12.0,
-0.653,
+0.654,
 null,
 null
 ],
 [
 14.0,
-0.653,
+0.688,
 null,
 null
 ],
 [
 16.0,
-0.653,
+0.777,
 null,
 null
 ],
 [
 18.0,
-0.775,
+0.777,
 null,
 null
 ],
 [
 21.0,
-0.775,
+0.777,
 null,
 null
 ],
 [
 24.0,
-0.775,
+0.777,
 null,
 null
 ],
 [
-28.0,
-0.775,
-null,
-null
-],
-[
-30.81,
-0.775,
+27.95,
+0.777,
 null,
 null
 ]
 ],
-"events": 45,
-"median_days": 10.45,
-"n": 91,
+"events": 31,
+"median_days": 6.39,
+"n": 62,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 27.9,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "30A",
-"subject": "CHINESE"
-},
-"CHINESE 3A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.126,
-null,
-null
-],
-[
-1.0,
-0.169,
-null,
-null
-],
-[
-2.0,
-0.201,
-null,
-null
-],
-[
-3.0,
-0.261,
-null,
-null
-],
-[
-4.0,
-0.304,
-null,
-null
-],
-[
-5.0,
-0.321,
-null,
-null
-],
-[
-6.0,
-0.355,
-null,
-null
-],
-[
-7.0,
-0.402,
-null,
-null
-],
-[
-8.0,
-0.412,
-null,
-null
-],
-[
-9.0,
-0.457,
-null,
-null
-],
-[
-10.0,
-0.457,
-null,
-null
-],
-[
-12.0,
-0.54,
-null,
-null
-],
-[
-14.0,
-0.54,
-null,
-null
-],
-[
-16.0,
-0.54,
-null,
-null
-],
-[
-18.0,
-0.54,
-null,
-null
-],
-[
-21.0,
-0.54,
-null,
-null
-],
-[
-24.0,
-0.54,
-null,
-null
-],
-[
-28.0,
-0.54,
-null,
-null
-],
-[
-30.81,
-0.54,
-null,
-null
-]
-],
-"events": 71,
-"median_days": 10.74,
-"n": 169,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "3A",
-"subject": "CHINESE"
-},
-"CHINESE 3X": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.101,
-null,
-null
-],
-[
-1.0,
-0.135,
-null,
-null
-],
-[
-2.0,
-0.21,
-null,
-null
-],
-[
-3.0,
-0.266,
-null,
-null
-],
-[
-4.0,
-0.296,
-null,
-null
-],
-[
-5.0,
-0.363,
-null,
-null
-],
-[
-6.0,
-0.431,
-null,
-null
-],
-[
-7.0,
-0.502,
-null,
-null
-],
-[
-8.0,
-0.561,
-null,
-null
-],
-[
-9.0,
-0.583,
-null,
-null
-],
-[
-10.0,
-0.607,
-null,
-null
-],
-[
-12.0,
-0.632,
-null,
-null
-],
-[
-14.0,
-0.632,
-null,
-null
-],
-[
-16.0,
-0.632,
-null,
-null
-],
-[
-18.0,
-0.632,
-null,
-null
-],
-[
-18.29,
-0.632,
-null,
-null
-]
-],
-"events": 42,
-"median_days": 6.82,
-"n": 90,
-"pooled": false,
-"reach_days": 18.3,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "3X",
-"subject": "CHINESE"
-},
-"CHINESE 4A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.071,
-null,
-null
-],
-[
-1.0,
-0.096,
-null,
-null
-],
-[
-2.0,
-0.096,
-null,
-null
-],
-[
-3.0,
-0.096,
-null,
-null
-],
-[
-4.0,
-0.096,
-null,
-null
-],
-[
-5.0,
-0.096,
-null,
-null
-],
-[
-6.0,
-0.096,
-null,
-null
-],
-[
-7.0,
-0.096,
-null,
-null
-],
-[
-8.0,
-0.096,
-null,
-null
-],
-[
-9.0,
-0.096,
-null,
-null
-],
-[
-10.0,
-0.096,
-null,
-null
-],
-[
-12.0,
-0.096,
-null,
-null
-],
-[
-14.0,
-0.096,
-null,
-null
-],
-[
-16.0,
-0.096,
-null,
-null
-],
-[
-18.0,
-0.096,
-null,
-null
-],
-[
-21.0,
-0.096,
-null,
-null
-],
-[
-24.0,
-0.096,
-null,
-null
-],
-[
-28.0,
-0.096,
-null,
-null
-],
-[
-30.81,
-0.096,
-null,
-null
-]
-],
-"events": 8,
-"median_days": null,
-"n": 86,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "4A",
+"number": "3B",
 "subject": "CHINESE"
 },
 "CHINESE 4B": {
@@ -1341,64 +1181,172 @@ null
 "curve": [
 [
 0.5,
-0.355,
+0.095,
 null,
 null
 ],
 [
 1.0,
-0.484,
+0.108,
 null,
 null
 ],
 [
 2.0,
-0.518,
+0.136,
 null,
 null
 ],
 [
 3.0,
-0.719,
+0.238,
 null,
 null
 ],
 [
 4.0,
-0.759,
+0.238,
 null,
 null
 ],
 [
 5.0,
-0.799,
+0.373,
 null,
 null
 ],
 [
 6.0,
-0.88,
+0.373,
 null,
 null
 ],
 [
 7.0,
-0.96,
+0.42,
 null,
 null
 ],
 [
-7.04,
-0.96,
+8.0,
+0.473,
+null,
+null
+],
+[
+9.0,
+0.612,
+null,
+null
+],
+[
+10.0,
+0.673,
+null,
+null
+],
+[
+12.0,
+0.775,
+null,
+null
+],
+[
+14.0,
+0.8,
+null,
+null
+],
+[
+16.0,
+0.8,
+null,
+null
+],
+[
+18.0,
+0.8,
+null,
+null
+],
+[
+21.0,
+0.8,
+null,
+null
+],
+[
+24.0,
+0.8,
+null,
+null
+],
+[
+28.0,
+0.8,
+null,
+null
+],
+[
+32.0,
+0.8,
+null,
+null
+],
+[
+36.0,
+0.8,
+null,
+null
+],
+[
+42.0,
+0.8,
+null,
+null
+],
+[
+49.0,
+0.8,
+null,
+null
+],
+[
+56.0,
+0.8,
+null,
+null
+],
+[
+63.0,
+0.8,
+null,
+null
+],
+[
+70.0,
+0.8,
+null,
+null
+],
+[
+77.0,
+0.8,
+null,
+null
+],
+[
+79.75,
+0.8,
 null,
 null
 ]
 ],
-"events": 28,
-"median_days": 1.65,
-"n": 31,
+"events": 48,
+"median_days": 8.21,
+"n": 74,
 "pooled": false,
-"reach_days": 7.0,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -1407,46 +1355,146 @@ null
 "number": "4B",
 "subject": "CHINESE"
 },
-"CHINESE 7A": {
+"CHINESE 51": {
 "buckets": {
 "1-5": {
-"n_course": 17,
+"curve": [
+[
+0.5,
+0.257,
+null,
+null
+],
+[
+1.0,
+0.286,
+null,
+null
+],
+[
+2.0,
+0.358,
+null,
+null
+],
+[
+3.0,
+0.358,
+null,
+null
+],
+[
+4.0,
+0.442,
+null,
+null
+],
+[
+5.0,
+0.577,
+null,
+null
+],
+[
+6.0,
+0.677,
+null,
+null
+],
+[
+7.0,
+0.706,
+null,
+null
+],
+[
+8.0,
+0.794,
+null,
+null
+],
+[
+9.0,
+0.794,
+null,
+null
+],
+[
+10.0,
+0.882,
+null,
+null
+],
+[
+12.0,
+0.882,
+null,
+null
+],
+[
+14.0,
+0.882,
+null,
+null
+],
+[
+16.0,
+0.882,
+null,
+null
+],
+[
+18.0,
+0.882,
+null,
+null
+],
+[
+21.0,
+0.882,
+null,
+null
+],
+[
+24.0,
+0.882,
+null,
+null
+],
+[
+27.86,
+0.882,
+null,
+null
+]
+],
+"events": 48,
+"median_days": 4.17,
+"n": 70,
+"pooled": false,
+"reach_days": 27.9,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "51",
+"subject": "CHINESE"
+},
+"CHINESE 7B": {
+"buckets": {
+"1-5": {
+"n_course": 6,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "7A",
-"subject": "CHINESE"
-},
-"CHINESE C116": {
-"buckets": {
-"1-5": {
-"n_course": 27,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C116",
-"subject": "CHINESE"
-},
-"CHINESE C223": {
-"buckets": {
-"1-5": {
-"n_course": 1,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "C223",
+"number": "7B",
 "subject": "CHINESE"
 }
 },
 "subject": "CHINESE",
-"term_id": "2268"
+"term_id": "2262"
 }

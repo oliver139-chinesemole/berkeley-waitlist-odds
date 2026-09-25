@@ -1,688 +1,273 @@
 {
 "courses": {
-"HISTORY 1": {
+"HISTORY 100D": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.171,
-null,
-null
+0.197,
+0.188,
+0.231
 ],
 [
 1.0,
-0.196,
-null,
-null
+0.28,
+0.261,
+0.352
 ],
 [
 2.0,
-0.264,
-null,
-null
+0.375,
+0.371,
+0.393
 ],
 [
 3.0,
-0.294,
-null,
-null
+0.403,
+0.394,
+0.439
 ],
 [
 4.0,
-0.294,
-null,
-null
+0.412,
+0.394,
+0.486
 ],
 [
 5.0,
-0.34,
-null,
-null
+0.44,
+0.429,
+0.486
 ],
 [
 6.0,
-0.414,
-null,
-null
+0.528,
+0.486,
+0.54
 ],
 [
 7.0,
-0.463,
-null,
-null
+0.548,
+0.486,
+0.565
 ],
 [
 8.0,
-0.493,
-null,
-null
+0.646,
+0.55,
+0.671
 ],
 [
 9.0,
-0.529,
-null,
-null
+0.658,
+0.55,
+0.685
 ],
 [
 10.0,
-0.529,
-null,
-null
+0.694,
+0.55,
+0.728
 ],
 [
 12.0,
-0.612,
-null,
-null
+0.805,
+0.55,
+0.866
 ],
 [
 14.0,
-0.793,
-null,
-null
+0.858,
+0.55,
+0.946
 ],
 [
 16.0,
-0.793,
-null,
-null
+0.858,
+0.55,
+0.946
 ],
 [
 18.0,
-0.793,
-null,
-null
-],
-[
-18.21,
-0.896,
-null,
-null
-]
-],
-"events": 41,
-"median_days": 8.05,
-"n": 97,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-18.21,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 40,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "lower",
-"number": "1",
-"subject": "HISTORY"
-},
-"HISTORY 100AC": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.09,
-null,
-null
-],
-[
-1.0,
-0.109,
-null,
-null
-],
-[
-2.0,
-0.164,
-null,
-null
-],
-[
-3.0,
-0.208,
-null,
-null
-],
-[
-4.0,
-0.297,
-null,
-null
-],
-[
-5.0,
-0.322,
-null,
-null
-],
-[
-6.0,
-0.339,
-null,
-null
-],
-[
-7.0,
-0.404,
-null,
-null
-],
-[
-8.0,
-0.423,
-null,
-null
-],
-[
-9.0,
-0.501,
-null,
-null
-],
-[
-10.0,
-0.513,
-null,
-null
-],
-[
-12.0,
-0.563,
-null,
-null
-],
-[
-14.0,
-0.745,
-null,
-null
-],
-[
-16.0,
-0.851,
-null,
-null
-],
-[
-16.64,
-0.901,
-null,
-null
-]
-],
-"events": 86,
-"median_days": 8.99,
-"n": 172,
-"pooled": false,
-"reach_days": 16.6,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-18.21,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 39,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.017,
-null,
-null
-],
-[
-12.0,
-0.037,
-null,
-null
-],
-[
-14.0,
-0.129,
-null,
-null
-],
-[
-16.0,
-0.154,
-null,
-null
-],
-[
-18.0,
-0.154,
-null,
-null
-],
-[
-18.55,
-0.154,
-null,
-null
-]
-],
-"events": 7,
-"median_days": null,
-"n": 109,
-"pooled": false,
-"reach_days": 18.6,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "100AC",
-"subject": "HISTORY"
-},
-"HISTORY 100B": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.04,
-null,
-null
-],
-[
-1.0,
-0.066,
-null,
-null
-],
-[
-2.0,
-0.066,
-null,
-null
-],
-[
-3.0,
-0.084,
-null,
-null
-],
-[
-4.0,
-0.084,
-null,
-null
-],
-[
-5.0,
-0.084,
-null,
-null
-],
-[
-6.0,
-0.084,
-null,
-null
-],
-[
-7.0,
-0.084,
-null,
-null
-],
-[
-8.0,
-0.084,
-null,
-null
-],
-[
-9.0,
-0.113,
-null,
-null
-],
-[
-10.0,
-0.161,
-null,
-null
-],
-[
-12.0,
-0.211,
-null,
-null
-],
-[
-14.0,
-0.272,
-null,
-null
-],
-[
-16.0,
-0.272,
-null,
-null
-],
-[
-18.0,
-0.272,
-null,
-null
+0.858,
+0.55,
+0.946
 ],
 [
 21.0,
-0.272,
-null,
-null
+0.858,
+0.55,
+0.946
 ],
 [
 24.0,
-0.272,
-null,
-null
+0.858,
+0.55,
+0.946
 ],
 [
 28.0,
-0.272,
-null,
-null
+0.858,
+0.55,
+0.946
 ],
 [
-30.81,
-0.272,
-null,
-null
+32.0,
+0.858,
+0.55,
+0.946
+],
+[
+32.28,
+0.858,
+0.55,
+0.946
 ]
 ],
-"events": 21,
-"median_days": null,
-"n": 126,
+"events": 87,
+"median_days": 5.71,
+"n": 122,
 "pooled": false,
-"reach_days": 30.8,
-"sections": 1
+"reach_days": 32.3,
+"sections": 2
 },
 "6-15": {
-"n_course": 9,
+"n_course": 16,
 "pooled": "HISTORY",
 "sections_course": 1
 }
 },
 "dept_group": "HISTORY",
 "level": "upper",
-"number": "100B",
+"number": "100D",
 "subject": "HISTORY"
 },
 "HISTORY 100E": {
 "buckets": {
 "1-5": {
-"n_course": 10,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.314,
+null,
+null
+],
+[
+1.0,
+0.486,
+null,
+null
+],
+[
+2.0,
+0.571,
+null,
+null
+],
+[
+3.0,
+0.657,
+null,
+null
+],
+[
+4.0,
+0.686,
+null,
+null
+],
+[
+5.0,
+0.714,
+null,
+null
+],
+[
+6.0,
+0.714,
+null,
+null
+],
+[
+7.0,
+0.714,
+null,
+null
+],
+[
+8.0,
+0.714,
+null,
+null
+],
+[
+9.0,
+0.714,
+null,
+null
+],
+[
+10.0,
+0.714,
+null,
+null
+],
+[
+12.0,
+0.714,
+null,
+null
+],
+[
+14.0,
+0.714,
+null,
+null
+],
+[
+16.0,
+0.714,
+null,
+null
+],
+[
+18.0,
+0.714,
+null,
+null
+],
+[
+21.0,
+0.714,
+null,
+null
+],
+[
+24.0,
+0.714,
+null,
+null
+],
+[
+28.0,
+0.714,
+null,
+null
+],
+[
+28.77,
+0.714,
+null,
+null
+]
+],
+"events": 25,
+"median_days": 1.0,
+"n": 35,
+"pooled": false,
+"reach_days": 28.8,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -693,7 +278,7 @@ null
 "HISTORY 100F": {
 "buckets": {
 "1-5": {
-"n_course": 5,
+"n_course": 1,
 "pooled": "HISTORY",
 "sections_course": 1
 }
@@ -703,38 +288,113 @@ null
 "number": "100F",
 "subject": "HISTORY"
 },
-"HISTORY 100H": {
-"buckets": {
-"1-5": {
-"n_course": 3,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "100H",
-"subject": "HISTORY"
-},
-"HISTORY 100M": {
-"buckets": {
-"1-5": {
-"n_course": 6,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "100M",
-"subject": "HISTORY"
-},
 "HISTORY 100U": {
 "buckets": {
 "1-5": {
-"n_course": 14,
-"pooled": "HISTORY",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.51,
+null,
+null
+],
+[
+1.0,
+0.684,
+null,
+null
+],
+[
+2.0,
+0.731,
+null,
+null
+],
+[
+3.0,
+0.763,
+null,
+null
+],
+[
+4.0,
+0.854,
+null,
+null
+],
+[
+5.0,
+0.909,
+null,
+null
+],
+[
+6.0,
+0.909,
+null,
+null
+],
+[
+7.0,
+0.909,
+null,
+null
+],
+[
+8.0,
+0.927,
+null,
+null
+],
+[
+9.0,
+0.927,
+null,
+null
+],
+[
+10.0,
+0.945,
+null,
+null
+],
+[
+12.0,
+0.945,
+null,
+null
+],
+[
+14.0,
+0.945,
+null,
+null
+],
+[
+16.0,
+0.945,
+null,
+null
+],
+[
+18.0,
+0.945,
+null,
+null
+],
+[
+19.28,
+0.945,
+null,
+null
+]
+],
+"events": 59,
+"median_days": 0.47,
+"n": 65,
+"pooled": false,
+"reach_days": 19.3,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -742,149 +402,197 @@ null
 "number": "100U",
 "subject": "HISTORY"
 },
-"HISTORY 102": {
+"HISTORY 101B": {
 "buckets": {
 "1-5": {
-"n_course": 4,
+"n_course": 12,
 "pooled": "HISTORY",
-"sections_course": 2
+"sections_course": 1
 }
 },
 "dept_group": "HISTORY",
 "level": "upper",
-"number": "102",
+"number": "101B",
 "subject": "HISTORY"
 },
-"HISTORY 103A": {
+"HISTORY 102": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.087,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 1.0,
-0.102,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 2.0,
-0.181,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 3.0,
-0.181,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 4.0,
-0.181,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 5.0,
-0.181,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 6.0,
-0.201,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 7.0,
-0.201,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 8.0,
-0.201,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 9.0,
-0.201,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 10.0,
-0.222,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 12.0,
-0.222,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 14.0,
-0.222,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 16.0,
-0.222,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 18.0,
-0.222,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 21.0,
-0.222,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 24.0,
-0.222,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
 28.0,
-0.222,
-null,
-null
+0.0,
+0.0,
+0.0
 ],
 [
-30.81,
-0.222,
-null,
-null
+32.0,
+0.0,
+0.0,
+0.0
+],
+[
+36.0,
+0.0,
+0.0,
+0.0
+],
+[
+42.0,
+0.0,
+0.0,
+0.0
+],
+[
+49.0,
+0.0,
+0.0,
+0.0
+],
+[
+56.0,
+0.0,
+0.0,
+0.0
+],
+[
+63.0,
+0.0,
+0.0,
+0.0
+],
+[
+70.0,
+0.0,
+0.0,
+0.0
+],
+[
+77.0,
+0.0,
+0.0,
+0.0
+],
+[
+79.75,
+0.0,
+0.0,
+0.0
 ]
 ],
-"events": 14,
+"events": 0,
 "median_days": null,
-"n": 72,
+"n": 104,
 "pooled": false,
-"reach_days": 30.8,
-"sections": 1
+"reach_days": 79.7,
+"sections": 7
 }
 },
 "dept_group": "HISTORY",
 "level": "upper",
-"number": "103A",
+"number": "102",
 "subject": "HISTORY"
 },
 "HISTORY 103B": {
@@ -893,136 +601,173 @@ null
 "curve": [
 [
 0.5,
-0.039,
-0.029,
-0.058
+0.1,
+0.074,
+0.154
 ],
 [
 1.0,
-0.046,
-0.029,
-0.079
+0.1,
+0.074,
+0.154
 ],
 [
 2.0,
-0.073,
-0.039,
-0.14
+0.128,
+0.095,
+0.196
 ],
 [
 3.0,
-0.087,
-0.039,
-0.182
+0.171,
+0.158,
+0.196
 ],
 [
 4.0,
-0.095,
-0.039,
-0.205
+0.213,
+0.196,
+0.221
 ],
 [
 5.0,
-0.102,
-0.051,
-0.205
+0.229,
+0.221,
+0.241
 ],
 [
 6.0,
-0.11,
-0.051,
-0.229
+0.262,
+0.221,
+0.342
 ],
 [
 7.0,
-0.11,
-0.051,
-0.229
+0.296,
+0.221,
+0.443
 ],
 [
 8.0,
-0.143,
-0.074,
-0.281
+0.315,
+0.221,
+0.494
 ],
 [
 9.0,
-0.162,
-0.103,
-0.281
+0.371,
+0.308,
+0.494
 ],
 [
 10.0,
-0.182,
-0.103,
-0.341
+0.408,
+0.308,
+0.595
 ],
 [
 12.0,
-0.205,
-0.103,
-0.414
+0.445,
+0.337,
+0.646
 ],
 [
 14.0,
-0.205,
-0.103,
-0.414
+0.464,
+0.337,
+0.696
 ],
 [
 16.0,
-0.235,
-0.103,
-0.521
+0.529,
+0.441,
+0.696
 ],
 [
 18.0,
-0.235,
-0.103,
-0.521
+0.558,
+0.441,
+0.757
 ],
 [
 21.0,
-0.235,
-0.103,
-0.521
+0.588,
+0.441,
+0.818
 ],
 [
 24.0,
-0.235,
-0.103,
-0.521
+0.588,
+0.441,
+0.818
 ],
 [
 28.0,
-0.235,
-0.103,
-0.521
+0.588,
+0.441,
+0.818
 ],
 [
 32.0,
-0.235,
-0.103,
-0.521
+0.588,
+0.441,
+0.818
 ],
 [
-35.14,
-0.235,
-0.103,
-0.521
+36.0,
+0.588,
+0.441,
+0.818
+],
+[
+42.0,
+0.588,
+0.441,
+0.818
+],
+[
+49.0,
+0.588,
+0.441,
+0.818
+],
+[
+56.0,
+0.588,
+0.441,
+0.818
+],
+[
+63.0,
+0.588,
+0.441,
+0.818
+],
+[
+70.0,
+0.588,
+0.441,
+0.818
+],
+[
+77.0,
+0.588,
+0.441,
+0.818
+],
+[
+79.75,
+0.588,
+0.441,
+0.818
 ]
 ],
-"events": 28,
-"median_days": null,
-"n": 158,
+"events": 35,
+"median_days": 14.35,
+"n": 80,
 "pooled": false,
-"reach_days": 35.1,
+"reach_days": 79.7,
 "sections": 2
-},
-"6-15": {
-"n_course": 18,
-"pooled": "HISTORY",
-"sections_course": 1
 }
 },
 "dept_group": "HISTORY",
@@ -1036,136 +781,280 @@ null
 "curve": [
 [
 0.5,
-0.079,
-0.044,
-0.147
+0.062,
+0.037,
+0.093
 ],
 [
 1.0,
-0.093,
-0.046,
-0.201
+0.076,
+0.063,
+0.093
 ],
 [
 2.0,
-0.144,
-0.049,
-0.305
+0.09,
+0.063,
+0.124
 ],
 [
 3.0,
-0.169,
-0.063,
-0.375
+0.15,
+0.142,
+0.159
 ],
 [
 4.0,
+0.18,
 0.177,
-0.077,
-0.375
+0.182
 ],
 [
 5.0,
-0.187,
-0.092,
-0.375
+0.18,
+0.177,
+0.182
 ],
 [
 6.0,
-0.187,
-0.092,
-0.375
+0.205,
+0.182,
+0.233
 ],
 [
 7.0,
-0.187,
-0.092,
-0.375
+0.224,
+0.218,
+0.233
 ],
 [
 8.0,
-0.187,
-0.092,
-0.375
+0.224,
+0.218,
+0.233
 ],
 [
 9.0,
-0.24,
-0.145,
-0.375
+0.253,
+0.218,
+0.295
 ],
 [
 10.0,
-0.254,
-0.145,
-0.432
+0.284,
+0.237,
+0.342
 ],
 [
 12.0,
-0.254,
-0.145,
-0.432
+0.381,
+0.282,
+0.491
 ],
 [
 14.0,
-0.254,
-0.145,
-0.432
+0.395,
+0.282,
+0.519
 ],
 [
 16.0,
-0.254,
-0.145,
-0.432
+0.412,
+0.324,
+0.519
 ],
 [
 18.0,
-0.254,
-0.145,
-0.432
+0.412,
+0.324,
+0.519
 ],
 [
 21.0,
-0.254,
-0.145,
-0.432
+0.412,
+0.324,
+0.519
 ],
 [
 24.0,
-0.254,
-0.145,
-0.432
+0.412,
+0.324,
+0.519
 ],
 [
 28.0,
-0.254,
-0.145,
-0.432
+0.412,
+0.324,
+0.519
 ],
 [
 32.0,
-0.254,
-0.145,
-0.432
+0.412,
+0.324,
+0.519
 ],
 [
-34.32,
-0.254,
-0.145,
-0.432
+36.0,
+0.412,
+0.324,
+0.519
+],
+[
+39.73,
+0.412,
+0.324,
+0.519
 ]
 ],
-"events": 31,
+"events": 46,
 "median_days": null,
-"n": 154,
+"n": 146,
 "pooled": false,
-"reach_days": 34.3,
-"sections": 5
+"reach_days": 39.7,
+"sections": 2
 }
 },
 "dept_group": "HISTORY",
 "level": "upper",
 "number": "103D",
+"subject": "HISTORY"
+},
+"HISTORY 103M": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.068,
+0.034,
+0.2
+],
+[
+1.0,
+0.096,
+0.07,
+0.2
+],
+[
+2.0,
+0.111,
+0.089,
+0.2
+],
+[
+3.0,
+0.157,
+0.148,
+0.2
+],
+[
+4.0,
+0.157,
+0.148,
+0.2
+],
+[
+5.0,
+0.204,
+0.2,
+0.209
+],
+[
+6.0,
+0.204,
+0.2,
+0.209
+],
+[
+7.0,
+0.256,
+0.2,
+0.275
+],
+[
+8.0,
+0.256,
+0.2,
+0.275
+],
+[
+9.0,
+0.256,
+0.2,
+0.275
+],
+[
+10.0,
+0.298,
+0.275,
+0.36
+],
+[
+12.0,
+0.345,
+0.275,
+0.52
+],
+[
+14.0,
+0.345,
+0.275,
+0.52
+],
+[
+16.0,
+0.345,
+0.275,
+0.52
+],
+[
+18.0,
+0.345,
+0.275,
+0.52
+],
+[
+21.0,
+0.345,
+0.275,
+0.52
+],
+[
+24.0,
+0.345,
+0.275,
+0.52
+],
+[
+28.0,
+0.345,
+0.275,
+0.52
+],
+[
+32.0,
+0.345,
+0.275,
+0.52
+],
+[
+34.16,
+0.345,
+0.275,
+0.52
+]
+],
+"events": 21,
+"median_days": null,
+"n": 74,
+"pooled": false,
+"reach_days": 34.2,
+"sections": 2
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "103M",
 "subject": "HISTORY"
 },
 "HISTORY 103U": {
@@ -1174,136 +1063,131 @@ null
 "curve": [
 [
 0.5,
-0.039,
-0.0,
-0.043
+0.133,
+null,
+null
 ],
 [
 1.0,
-0.039,
-0.0,
-0.043
+0.167,
+null,
+null
 ],
 [
 2.0,
-0.05,
-0.0,
-0.055
+0.167,
+null,
+null
 ],
 [
 3.0,
-0.05,
-0.0,
-0.055
+0.208,
+null,
+null
 ],
 [
 4.0,
-0.05,
-0.0,
-0.055
+0.208,
+null,
+null
 ],
 [
 5.0,
-0.05,
-0.0,
-0.055
+0.208,
+null,
+null
 ],
 [
 6.0,
-0.05,
-0.0,
-0.055
+0.258,
+null,
+null
 ],
 [
 7.0,
-0.077,
-0.0,
-0.085
+0.414,
+null,
+null
 ],
 [
 8.0,
-0.077,
-0.0,
-0.085
+0.414,
+null,
+null
 ],
 [
 9.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
 10.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
 12.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
 14.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
 16.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
 18.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
 21.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
 24.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
 28.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
 32.0,
-0.106,
-0.0,
-0.117
+0.414,
+null,
+null
 ],
 [
-34.99,
-0.106,
-0.0,
-0.117
+33.39,
+0.414,
+null,
+null
 ]
 ],
-"events": 9,
+"events": 10,
 "median_days": null,
-"n": 103,
+"n": 30,
 "pooled": false,
-"reach_days": 35.0,
-"sections": 2
-},
-"6-15": {
-"n_course": 4,
-"pooled": "HISTORY",
-"sections_course": 1
+"reach_days": 33.4,
+"sections": 1
 }
 },
 "dept_group": "HISTORY",
@@ -1317,110 +1201,176 @@ null
 "curve": [
 [
 0.5,
-0.214,
-0.209,
-0.226
+0.139,
+0.116,
+0.186
 ],
 [
 1.0,
-0.254,
-0.244,
-0.26
+0.148,
+0.116,
+0.212
 ],
 [
 2.0,
-0.304,
-0.295,
-0.323
+0.157,
+0.13,
+0.212
 ],
 [
 3.0,
-0.376,
-0.367,
-0.382
+0.184,
+0.13,
+0.288
 ],
 [
 4.0,
-0.447,
-0.392,
-0.473
+0.223,
+0.13,
+0.39
 ],
 [
 5.0,
-0.496,
-0.392,
-0.543
+0.264,
+0.18,
+0.415
 ],
 [
 6.0,
-0.535,
-0.392,
-0.599
+0.329,
+0.235,
+0.491
 ],
 [
 7.0,
-0.565,
-0.488,
-0.599
+0.373,
+0.271,
+0.548
 ],
 [
 8.0,
-0.637,
-0.552,
-0.678
+0.373,
+0.271,
+0.548
 ],
 [
 9.0,
-0.694,
-0.674,
-0.698
+0.386,
+0.271,
+0.578
 ],
 [
 10.0,
-0.738,
-0.698,
-0.805
+0.386,
+0.271,
+0.578
 ],
 [
 12.0,
-0.782,
-0.765,
-0.805
+0.444,
+0.372,
+0.578
 ],
 [
 14.0,
-0.83,
-0.805,
-0.843
+0.48,
+0.438,
+0.578
 ],
 [
 16.0,
-0.927,
-0.805,
-1.0
+0.48,
+0.438,
+0.578
 ],
 [
 18.0,
-0.927,
-0.805,
-1.0
+0.48,
+0.438,
+0.578
 ],
 [
-18.21,
-0.927,
-0.805,
-1.0
+21.0,
+0.48,
+0.438,
+0.578
+],
+[
+24.0,
+0.48,
+0.438,
+0.578
+],
+[
+28.0,
+0.48,
+0.438,
+0.578
+],
+[
+32.0,
+0.48,
+0.438,
+0.578
+],
+[
+36.0,
+0.48,
+0.438,
+0.578
+],
+[
+42.0,
+0.48,
+0.438,
+0.578
+],
+[
+49.0,
+0.48,
+0.438,
+0.578
+],
+[
+56.0,
+0.48,
+0.438,
+0.578
+],
+[
+63.0,
+0.48,
+0.438,
+0.578
+],
+[
+70.0,
+0.48,
+0.438,
+0.578
+],
+[
+77.0,
+0.48,
+0.438,
+0.578
+],
+[
+79.75,
+0.48,
+0.438,
+0.578
 ]
 ],
-"events": 107,
-"median_days": 5.04,
-"n": 184,
+"events": 48,
+"median_days": null,
+"n": 130,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
 "sections": 2
 },
 "6-15": {
-"n_course": 22,
+"n_course": 1,
 "pooled": "HISTORY",
 "sections_course": 1
 }
@@ -1430,1380 +1380,145 @@ null
 "number": "104",
 "subject": "HISTORY"
 },
-"HISTORY 106B": {
+"HISTORY 106A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.406,
+0.125,
 null,
 null
 ],
 [
 1.0,
-0.515,
-null,
-null
-],
-[
-2.0,
-0.673,
-null,
-null
-],
-[
-3.0,
-0.808,
-null,
-null
-],
-[
-4.0,
-0.883,
-null,
-null
-],
-[
-5.0,
-0.936,
-null,
-null
-],
-[
-6.0,
-0.979,
-null,
-null
-],
-[
-7.0,
-0.979,
-null,
-null
-],
-[
-8.0,
-0.979,
-null,
-null
-],
-[
-8.96,
-0.979,
-null,
-null
-]
-],
-"events": 99,
-"median_days": 0.9,
-"n": 106,
-"pooled": false,
-"reach_days": 9.0,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "106B",
-"subject": "HISTORY"
-},
-"HISTORY 129A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.411,
-null,
-null
-],
-[
-1.0,
-0.496,
-null,
-null
-],
-[
-2.0,
-0.583,
-null,
-null
-],
-[
-3.0,
-0.657,
-null,
-null
-],
-[
-4.0,
-0.732,
-null,
-null
-],
-[
-5.0,
-0.777,
-null,
-null
-],
-[
-6.0,
-0.777,
-null,
-null
-],
-[
-7.0,
-0.792,
-null,
-null
-],
-[
-8.0,
-0.792,
-null,
-null
-],
-[
-9.0,
-0.844,
-null,
-null
-],
-[
-10.0,
-0.862,
-null,
-null
-],
-[
-12.0,
-0.881,
-null,
-null
-],
-[
-14.0,
-0.921,
-null,
-null
-],
-[
-16.0,
-0.921,
-null,
-null
-],
-[
-18.0,
-0.921,
-null,
-null
-],
-[
-18.39,
-0.921,
-null,
-null
-]
-],
-"events": 63,
-"median_days": 1.03,
-"n": 73,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "129A",
-"subject": "HISTORY"
-},
-"HISTORY 130": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.411,
-null,
-null
-],
-[
-1.0,
-0.567,
-null,
-null
-],
-[
-2.0,
-0.665,
-null,
-null
-],
-[
-3.0,
-0.773,
-null,
-null
-],
-[
-4.0,
-0.833,
-null,
-null
-],
-[
-5.0,
-0.901,
-null,
-null
-],
-[
-6.0,
-0.921,
-null,
-null
-],
-[
-7.0,
-0.935,
-null,
-null
-],
-[
-8.0,
-0.978,
-null,
-null
-],
-[
-9.0,
-0.978,
-null,
-null
-],
-[
-10.0,
-0.986,
-null,
-null
-],
-[
-10.93,
-0.986,
-null,
-null
-]
-],
-"events": 230,
-"median_days": 0.8,
-"n": 266,
-"pooled": false,
-"reach_days": 10.9,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.028,
-null,
-null
-],
-[
-3.0,
-0.028,
-null,
-null
-],
-[
-4.0,
-0.101,
-null,
-null
-],
-[
-5.0,
-0.214,
-null,
-null
-],
-[
-6.0,
-0.409,
-null,
-null
-],
-[
-7.0,
-0.409,
-null,
-null
-],
-[
-8.0,
-0.462,
-null,
-null
-],
-[
-9.0,
-0.462,
-null,
-null
-],
-[
-10.0,
-0.53,
-null,
-null
-],
-[
-12.0,
-0.919,
-null,
-null
-],
-[
-12.07,
-0.919,
-null,
-null
-]
-],
-"events": 19,
-"median_days": 9.79,
-"n": 37,
-"pooled": false,
-"reach_days": 12.1,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "130",
-"subject": "HISTORY"
-},
-"HISTORY 131B": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.143,
-null,
-null
-],
-[
-1.0,
-0.252,
-null,
-null
-],
-[
-2.0,
-0.348,
-null,
-null
-],
-[
-3.0,
-0.471,
-null,
-null
-],
-[
-4.0,
-0.58,
-null,
-null
-],
-[
-5.0,
-0.614,
-null,
-null
-],
-[
-6.0,
-0.657,
-null,
-null
-],
-[
-7.0,
-0.719,
-null,
-null
-],
-[
-8.0,
-0.745,
-null,
-null
-],
-[
-9.0,
-0.768,
-null,
-null
-],
-[
-10.0,
-0.792,
-null,
-null
-],
-[
-12.0,
-0.792,
-null,
-null
-],
-[
-14.0,
-0.792,
-null,
-null
-],
-[
-16.0,
-0.792,
-null,
-null
-],
-[
-18.0,
-0.792,
-null,
-null
-],
-[
-18.21,
-0.792,
-null,
-null
-]
-],
-"events": 140,
-"median_days": 3.5,
-"n": 218,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"16-40": {
-"n_course": 5,
-"pooled": "HISTORY",
-"sections_course": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.017,
-null,
-null
-],
-[
-1.0,
-0.051,
-null,
-null
-],
-[
-2.0,
-0.068,
-null,
-null
-],
-[
-3.0,
 0.142,
 null,
 null
 ],
 [
+2.0,
+0.176,
+null,
+null
+],
+[
+3.0,
+0.286,
+null,
+null
+],
+[
 4.0,
-0.163,
+0.349,
 null,
 null
 ],
 [
 5.0,
-0.186,
+0.429,
 null,
 null
 ],
 [
 6.0,
-0.198,
+0.505,
 null,
 null
 ],
 [
 7.0,
-0.273,
+0.621,
 null,
 null
 ],
 [
 8.0,
-0.3,
+0.668,
 null,
 null
 ],
 [
 9.0,
-0.364,
+0.698,
 null,
 null
 ],
 [
 10.0,
-0.419,
+0.698,
 null,
 null
 ],
 [
 12.0,
-0.473,
+0.767,
 null,
 null
 ],
 [
 14.0,
-0.473,
+0.814,
 null,
 null
 ],
 [
 16.0,
-0.473,
+0.814,
 null,
 null
 ],
 [
 18.0,
-0.473,
-null,
-null
-],
-[
-18.21,
-0.473,
-null,
-null
-]
-],
-"events": 39,
-"median_days": null,
-"n": 119,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "131B",
-"subject": "HISTORY"
-},
-"HISTORY 133B": {
-"buckets": {
-"1-5": {
-"n_course": 12,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "133B",
-"subject": "HISTORY"
-},
-"HISTORY 14": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.211,
-null,
-null
-],
-[
-1.0,
-0.298,
-null,
-null
-],
-[
-2.0,
-0.422,
-null,
-null
-],
-[
-3.0,
-0.495,
-null,
-null
-],
-[
-4.0,
-0.589,
-null,
-null
-],
-[
-5.0,
-0.636,
-null,
-null
-],
-[
-6.0,
-0.755,
-null,
-null
-],
-[
-7.0,
-0.847,
-null,
-null
-],
-[
-8.0,
-0.908,
-null,
-null
-],
-[
-8.98,
-1.0,
-null,
-null
-]
-],
-"events": 103,
-"median_days": 3.12,
-"n": 114,
-"pooled": false,
-"reach_days": 9.0,
-"sections": 1
-},
-"6-15": {
-"n_course": 9,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "lower",
-"number": "14",
-"subject": "HISTORY"
-},
-"HISTORY 160": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.142,
-null,
-null
-],
-[
-1.0,
-0.219,
-null,
-null
-],
-[
-2.0,
-0.359,
-null,
-null
-],
-[
-3.0,
-0.443,
-null,
-null
-],
-[
-4.0,
-0.539,
-null,
-null
-],
-[
-5.0,
-0.599,
-null,
-null
-],
-[
-6.0,
-0.679,
-null,
-null
-],
-[
-7.0,
-0.771,
-null,
-null
-],
-[
-8.0,
-0.826,
-null,
-null
-],
-[
-9.0,
-0.879,
-null,
-null
-],
-[
-10.0,
-0.879,
-null,
-null
-],
-[
-12.0,
-0.922,
-null,
-null
-],
-[
-14.0,
-0.96,
-null,
-null
-],
-[
-16.0,
-0.98,
-null,
-null
-],
-[
-17.45,
-1.0,
-null,
-null
-]
-],
-"events": 164,
-"median_days": 3.64,
-"n": 235,
-"pooled": false,
-"reach_days": 17.4,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-18.35,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 46,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.029,
-null,
-null
-],
-[
-8.0,
-0.059,
-null,
-null
-],
-[
-9.0,
-0.156,
-null,
-null
-],
-[
-10.0,
-0.179,
-null,
-null
-],
-[
-12.0,
-0.202,
-null,
-null
-],
-[
-14.0,
-0.202,
-null,
-null
-],
-[
-16.0,
-0.379,
-null,
-null
-],
-[
-18.0,
-0.475,
-null,
-null
-],
-[
-18.35,
-0.475,
-null,
-null
-]
-],
-"events": 18,
-"median_days": null,
-"n": 156,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "160",
-"subject": "HISTORY"
-},
-"HISTORY 166B": {
-"buckets": {
-"1-5": {
-"n_course": 12,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "166B",
-"subject": "HISTORY"
-},
-"HISTORY 169A": {
-"buckets": {
-"1-5": {
-"n_course": 9,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "169A",
-"subject": "HISTORY"
-},
-"HISTORY 175B": {
-"buckets": {
-"1-5": {
-"n_course": 7,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "175B",
-"subject": "HISTORY"
-},
-"HISTORY 185A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.1,
-null,
-null
-],
-[
-1.0,
-0.1,
-null,
-null
-],
-[
-2.0,
-0.147,
-null,
-null
-],
-[
-3.0,
-0.147,
-null,
-null
-],
-[
-4.0,
-0.213,
-null,
-null
-],
-[
-5.0,
-0.279,
-null,
-null
-],
-[
-6.0,
-0.279,
-null,
-null
-],
-[
-7.0,
-0.279,
-null,
-null
-],
-[
-8.0,
-0.475,
-null,
-null
-],
-[
-9.0,
-0.475,
-null,
-null
-],
-[
-10.0,
-0.475,
-null,
-null
-],
-[
-12.0,
-0.672,
-null,
-null
-],
-[
-14.0,
-0.869,
-null,
-null
-],
-[
-16.0,
-0.869,
-null,
-null
-],
-[
-17.35,
-0.934,
-null,
-null
-]
-],
-"events": 17,
-"median_days": 10.75,
-"n": 30,
-"pooled": false,
-"reach_days": 17.4,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "185A",
-"subject": "HISTORY"
-},
-"HISTORY 188E": {
-"buckets": {
-"1-5": {
-"n_course": 18,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "188E",
-"subject": "HISTORY"
-},
-"HISTORY 198BC": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.107,
-null,
-null
-],
-[
-1.0,
-0.17,
-null,
-null
-],
-[
-2.0,
-0.253,
-null,
-null
-],
-[
-3.0,
-0.385,
-null,
-null
-],
-[
-4.0,
-0.441,
-null,
-null
-],
-[
-5.0,
-0.532,
-null,
-null
-],
-[
-6.0,
-0.658,
-null,
-null
-],
-[
-7.0,
-0.718,
-null,
-null
-],
-[
-8.0,
-0.779,
-null,
-null
-],
-[
-9.0,
-0.779,
-null,
-null
-],
-[
-10.0,
-0.779,
-null,
-null
-],
-[
-12.0,
-0.779,
-null,
-null
-],
-[
-14.0,
-0.779,
-null,
-null
-],
-[
-16.0,
-0.779,
-null,
-null
-],
-[
-18.0,
-0.779,
+0.814,
 null,
 null
 ],
 [
 21.0,
-0.779,
+0.814,
 null,
 null
 ],
 [
-24.0,
-0.779,
-null,
-null
-],
-[
-28.0,
-0.779,
-null,
-null
-],
-[
-30.81,
-0.779,
+21.36,
+0.814,
 null,
 null
 ]
 ],
-"events": 66,
-"median_days": 4.84,
-"n": 112,
+"events": 61,
+"median_days": 5.72,
+"n": 139,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 21.4,
 "sections": 1
 },
 "6-15": {
-"n_course": 10,
+"n_course": 20,
 "pooled": "HISTORY",
 "sections_course": 1
 }
 },
 "dept_group": "HISTORY",
 "level": "upper",
-"number": "198BC",
+"number": "106A",
 "subject": "HISTORY"
 },
-"HISTORY 275E": {
+"HISTORY 109C": {
 "buckets": {
 "1-5": {
-"n_course": 2,
+"n_course": 13,
 "pooled": "HISTORY",
 "sections_course": 1
 }
 },
 "dept_group": "HISTORY",
-"level": "grad",
-"number": "275E",
+"level": "upper",
+"number": "109C",
 "subject": "HISTORY"
 },
-"HISTORY 280A": {
-"buckets": {
-"1-5": {
-"n_course": 3,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "grad",
-"number": "280A",
-"subject": "HISTORY"
-},
-"HISTORY 280D": {
-"buckets": {
-"1-5": {
-"n_course": 1,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "grad",
-"number": "280D",
-"subject": "HISTORY"
-},
-"HISTORY 280F": {
-"buckets": {
-"1-5": {
-"n_course": 23,
-"pooled": "HISTORY",
-"sections_course": 2
-}
-},
-"dept_group": "HISTORY",
-"level": "grad",
-"number": "280F",
-"subject": "HISTORY"
-},
-"HISTORY 280M": {
-"buckets": {
-"1-5": {
-"n_course": 6,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "grad",
-"number": "280M",
-"subject": "HISTORY"
-},
-"HISTORY 280S": {
+"HISTORY 11": {
 "buckets": {
 "1-5": {
 "n_course": 8,
@@ -2812,148 +1527,24 @@ null
 }
 },
 "dept_group": "HISTORY",
-"level": "grad",
-"number": "280S",
+"level": "lower",
+"number": "11",
 "subject": "HISTORY"
 },
-"HISTORY 280U": {
+"HISTORY 112C": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.053,
-0.0,
-0.065
-],
-[
-1.0,
-0.085,
-0.0,
-0.09
-],
-[
-2.0,
-0.085,
-0.0,
-0.09
-],
-[
-3.0,
-0.085,
-0.0,
-0.09
-],
-[
-4.0,
-0.106,
-0.0,
-0.113
-],
-[
-5.0,
-0.13,
-0.0,
-0.166
-],
-[
-6.0,
-0.164,
-0.0,
-0.224
-],
-[
-7.0,
-0.181,
-0.0,
-0.243
-],
-[
-8.0,
-0.208,
-0.0,
-0.263
-],
-[
-9.0,
-0.248,
-0.0,
-0.328
-],
-[
-10.0,
-0.258,
-0.0,
-0.328
-],
-[
-12.0,
-0.279,
-0.0,
-0.328
-],
-[
-14.0,
-0.327,
-0.0,
-0.395
-],
-[
-16.0,
-0.327,
-0.0,
-0.395
-],
-[
-18.0,
-0.353,
-0.0,
-0.395
-],
-[
-21.0,
-0.353,
-0.0,
-0.395
-],
-[
-24.0,
-0.353,
-0.0,
-0.395
-],
-[
-28.0,
-0.461,
-0.0,
-0.57
-],
-[
-30.81,
-0.461,
-0.0,
-0.57
-]
-],
-"events": 41,
-"median_days": null,
-"n": 172,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 3
-},
-"6-15": {
-"n_course": 3,
+"n_course": 8,
 "pooled": "HISTORY",
 "sections_course": 1
 }
 },
 "dept_group": "HISTORY",
-"level": "grad",
-"number": "280U",
+"level": "upper",
+"number": "112C",
 "subject": "HISTORY"
 },
-"HISTORY 283": {
+"HISTORY 116D": {
 "buckets": {
 "1-5": {
 "n_course": 18,
@@ -2962,781 +1553,316 @@ null
 }
 },
 "dept_group": "HISTORY",
-"level": "grad",
-"number": "283",
+"level": "upper",
+"number": "116D",
 "subject": "HISTORY"
 },
-"HISTORY 285A": {
+"HISTORY 118C": {
 "buckets": {
 "1-5": {
-"n_course": 2,
+"n_course": 12,
 "pooled": "HISTORY",
 "sections_course": 1
 }
 },
 "dept_group": "HISTORY",
-"level": "grad",
-"number": "285A",
+"level": "upper",
+"number": "118C",
 "subject": "HISTORY"
 },
-"HISTORY 285F": {
-"buckets": {
-"1-5": {
-"n_course": 3,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "grad",
-"number": "285F",
-"subject": "HISTORY"
-},
-"HISTORY 285H": {
-"buckets": {
-"1-5": {
-"n_course": 4,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "grad",
-"number": "285H",
-"subject": "HISTORY"
-},
-"HISTORY 285M": {
-"buckets": {
-"1-5": {
-"n_course": 3,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "grad",
-"number": "285M",
-"subject": "HISTORY"
-},
-"HISTORY 285U": {
+"HISTORY 121A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.0,
-0.0,
-0.0
+0.293,
+null,
+null
 ],
 [
 1.0,
-0.0,
-0.0,
-0.0
+0.455,
+null,
+null
 ],
 [
 2.0,
-0.0,
-0.0,
-0.0
+0.596,
+null,
+null
 ],
 [
 3.0,
-0.0,
-0.0,
-0.0
+0.665,
+null,
+null
 ],
 [
 4.0,
-0.0,
-0.0,
-0.0
+0.726,
+null,
+null
 ],
 [
 5.0,
-0.0,
-0.0,
-0.0
+0.801,
+null,
+null
 ],
 [
 6.0,
-0.0,
-0.0,
-0.0
+0.829,
+null,
+null
 ],
 [
 7.0,
-0.0,
-0.0,
-0.0
+0.872,
+null,
+null
 ],
 [
 8.0,
-0.0,
-0.0,
-0.0
+0.888,
+null,
+null
 ],
 [
 9.0,
-0.0,
-0.0,
-0.0
+0.907,
+null,
+null
 ],
 [
 10.0,
-0.0,
-0.0,
-0.0
+0.907,
+null,
+null
 ],
 [
 12.0,
-0.0,
-0.0,
-0.0
+0.907,
+null,
+null
 ],
 [
 14.0,
-0.0,
-0.0,
-0.0
+0.907,
+null,
+null
 ],
 [
 16.0,
-0.0,
-0.0,
-0.0
+0.907,
+null,
+null
 ],
 [
 18.0,
-0.0,
-0.0,
-0.0
+0.907,
+null,
+null
 ],
 [
 21.0,
-0.0,
-0.0,
-0.0
+0.907,
+null,
+null
 ],
 [
 24.0,
-0.0,
-0.0,
-0.0
-],
-[
-28.0,
-0.0,
-0.0,
-0.0
-],
-[
-30.81,
-0.0,
-0.0,
-0.0
-]
-],
-"events": 0,
-"median_days": null,
-"n": 32,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 2
-}
-},
-"dept_group": "HISTORY",
-"level": "grad",
-"number": "285U",
-"subject": "HISTORY"
-},
-"HISTORY 3": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.167,
+0.907,
 null,
 null
 ],
 [
-1.0,
-0.167,
-null,
-null
-],
-[
-2.0,
-0.297,
-null,
-null
-],
-[
-3.0,
-0.351,
-null,
-null
-],
-[
-4.0,
-0.379,
-null,
-null
-],
-[
-5.0,
-0.407,
-null,
-null
-],
-[
-6.0,
-0.492,
-null,
-null
-],
-[
-7.0,
-0.492,
-null,
-null
-],
-[
-8.0,
-0.492,
-null,
-null
-],
-[
-9.0,
-0.492,
-null,
-null
-],
-[
-10.0,
-0.492,
-null,
-null
-],
-[
-12.0,
-0.605,
-null,
-null
-],
-[
-14.0,
-0.605,
-null,
-null
-],
-[
-16.0,
-0.718,
-null,
-null
-],
-[
-18.0,
-0.718,
-null,
-null
-],
-[
-18.42,
-0.718,
+24.89,
+0.907,
 null,
 null
 ]
 ],
-"events": 23,
-"median_days": 11.28,
-"n": 42,
+"events": 82,
+"median_days": 1.22,
+"n": 99,
 "pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "lower",
-"number": "3",
-"subject": "HISTORY"
-},
-"HISTORY 30": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.433,
-null,
-null
-],
-[
-1.0,
-0.561,
-null,
-null
-],
-[
-2.0,
-0.648,
-null,
-null
-],
-[
-3.0,
-0.672,
-null,
-null
-],
-[
-4.0,
-0.706,
-null,
-null
-],
-[
-5.0,
-0.721,
-null,
-null
-],
-[
-6.0,
-0.721,
-null,
-null
-],
-[
-7.0,
-0.721,
-null,
-null
-],
-[
-8.0,
-0.721,
-null,
-null
-],
-[
-9.0,
-0.721,
-null,
-null
-],
-[
-10.0,
-0.721,
-null,
-null
-],
-[
-12.0,
-0.721,
-null,
-null
-],
-[
-14.0,
-0.721,
-null,
-null
-],
-[
-16.0,
-0.721,
-null,
-null
-],
-[
-16.15,
-0.721,
-null,
-null
-]
-],
-"events": 155,
-"median_days": 0.69,
-"n": 234,
-"pooled": false,
-"reach_days": 16.1,
+"reach_days": 24.9,
 "sections": 1
 },
 "6-15": {
-"n_course": 18,
+"n_course": 6,
 "pooled": "HISTORY",
 "sections_course": 1
 }
 },
 "dept_group": "HISTORY",
-"level": "lower",
-"number": "30",
+"level": "upper",
+"number": "121A",
 "subject": "HISTORY"
 },
-"HISTORY 4A": {
+"HISTORY 122AC": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.464,
+0.281,
 null,
 null
 ],
 [
 1.0,
-0.598,
+0.423,
 null,
 null
 ],
 [
 2.0,
-0.716,
+0.603,
 null,
 null
 ],
 [
 3.0,
-0.825,
+0.682,
 null,
 null
 ],
 [
 4.0,
-0.869,
+0.744,
 null,
 null
 ],
 [
 5.0,
-0.869,
+0.771,
 null,
 null
 ],
 [
 6.0,
-0.869,
+0.788,
 null,
 null
 ],
 [
 7.0,
-0.869,
+0.804,
 null,
 null
 ],
 [
 8.0,
-0.869,
+0.82,
 null,
 null
 ],
 [
 9.0,
-0.869,
+0.838,
 null,
 null
 ],
 [
 10.0,
-0.869,
+0.856,
 null,
 null
 ],
 [
 12.0,
-0.869,
+0.892,
 null,
 null
 ],
 [
 14.0,
-0.869,
-null,
-null
-],
-[
-15.22,
-0.869,
-null,
-null
-]
-],
-"events": 46,
-"median_days": 0.66,
-"n": 56,
-"pooled": false,
-"reach_days": 15.2,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "lower",
-"number": "4A",
-"subject": "HISTORY"
-},
-"HISTORY 5": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.41,
-null,
-null
-],
-[
-1.0,
-0.514,
-null,
-null
-],
-[
-2.0,
-0.63,
-null,
-null
-],
-[
-3.0,
-0.745,
-null,
-null
-],
-[
-4.0,
-0.794,
-null,
-null
-],
-[
-5.0,
-0.846,
-null,
-null
-],
-[
-6.0,
-0.866,
-null,
-null
-],
-[
-7.0,
-0.887,
-null,
-null
-],
-[
-8.0,
-0.897,
-null,
-null
-],
-[
-9.0,
-0.907,
-null,
-null
-],
-[
-10.0,
-0.907,
-null,
-null
-],
-[
-12.0,
-0.907,
-null,
-null
-],
-[
-14.0,
-0.907,
+0.892,
 null,
 null
 ],
 [
 16.0,
-0.907,
+0.892,
 null,
 null
 ],
 [
-16.46,
-0.907,
+18.0,
+0.892,
+null,
+null
+],
+[
+21.0,
+0.892,
+null,
+null
+],
+[
+24.0,
+0.892,
+null,
+null
+],
+[
+26.1,
+0.892,
 null,
 null
 ]
 ],
-"events": 114,
-"median_days": 0.93,
+"events": 104,
+"median_days": 1.33,
 "n": 140,
 "pooled": false,
-"reach_days": 16.5,
+"reach_days": 26.1,
 "sections": 1
 },
 "6-15": {
-"n_course": 4,
+"n_course": 7,
 "pooled": "HISTORY",
 "sections_course": 1
 }
 },
 "dept_group": "HISTORY",
-"level": "lower",
-"number": "5",
+"level": "upper",
+"number": "122AC",
 "subject": "HISTORY"
 },
-"HISTORY 6A": {
+"HISTORY 126A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.198,
+0.614,
 null,
 null
 ],
 [
 1.0,
-0.305,
+0.818,
 null,
 null
 ],
 [
 2.0,
-0.419,
+0.87,
 null,
 null
 ],
 [
 3.0,
-0.5,
+0.87,
 null,
 null
 ],
 [
 4.0,
-0.542,
-null,
-null
-],
-[
-5.0,
-0.611,
-null,
-null
-],
-[
-6.0,
-0.659,
-null,
-null
-],
-[
-7.0,
-0.732,
-null,
-null
-],
-[
-8.0,
-0.732,
-null,
-null
-],
-[
-9.0,
-0.732,
-null,
-null
-],
-[
-10.0,
-0.732,
-null,
-null
-],
-[
-12.0,
-0.792,
-null,
-null
-],
-[
-14.0,
-0.792,
-null,
-null
-],
-[
-16.0,
-0.792,
-null,
-null
-],
-[
-18.0,
-0.792,
-null,
-null
-],
-[
-18.58,
-0.792,
-null,
-null
-]
-],
-"events": 40,
-"median_days": 2.95,
-"n": 62,
-"pooled": false,
-"reach_days": 18.6,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "lower",
-"number": "6A",
-"subject": "HISTORY"
-},
-"HISTORY 7A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.296,
-null,
-null
-],
-[
-1.0,
-0.489,
-null,
-null
-],
-[
-2.0,
-0.691,
-null,
-null
-],
-[
-3.0,
-0.819,
-null,
-null
-],
-[
-4.0,
-0.908,
+0.922,
 null,
 null
 ],
@@ -3748,289 +1874,1431 @@ null
 ],
 [
 6.0,
-0.989,
+0.974,
 null,
 null
 ],
 [
 7.0,
-0.997,
+0.974,
 null,
 null
 ],
 [
-7.16,
-1.0,
+8.0,
+0.974,
+null,
+null
+],
+[
+9.0,
+0.974,
+null,
+null
+],
+[
+10.0,
+0.974,
+null,
+null
+],
+[
+12.0,
+0.974,
+null,
+null
+],
+[
+14.0,
+0.974,
+null,
+null
+],
+[
+16.0,
+0.974,
+null,
+null
+],
+[
+18.0,
+0.974,
+null,
+null
+],
+[
+21.0,
+0.974,
+null,
+null
+],
+[
+24.0,
+0.974,
+null,
+null
+],
+[
+28.0,
+0.974,
+null,
+null
+],
+[
+28.39,
+0.974,
 null,
 null
 ]
 ],
-"events": 467,
-"median_days": 1.05,
-"n": 510,
+"events": 42,
+"median_days": 0.21,
+"n": 44,
 "pooled": false,
-"reach_days": 7.2,
+"reach_days": 28.4,
+"sections": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "126A",
+"subject": "HISTORY"
+},
+"HISTORY 129A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.2,
+null,
+null
+],
+[
+1.0,
+0.254,
+null,
+null
+],
+[
+2.0,
+0.35,
+null,
+null
+],
+[
+3.0,
+0.448,
+null,
+null
+],
+[
+4.0,
+0.519,
+null,
+null
+],
+[
+5.0,
+0.573,
+null,
+null
+],
+[
+6.0,
+0.618,
+null,
+null
+],
+[
+7.0,
+0.641,
+null,
+null
+],
+[
+8.0,
+0.748,
+null,
+null
+],
+[
+9.0,
+0.79,
+null,
+null
+],
+[
+10.0,
+0.818,
+null,
+null
+],
+[
+12.0,
+0.851,
+null,
+null
+],
+[
+14.0,
+0.872,
+null,
+null
+],
+[
+16.0,
+0.915,
+null,
+null
+],
+[
+18.0,
+0.915,
+null,
+null
+],
+[
+21.0,
+0.915,
+null,
+null
+],
+[
+24.0,
+0.915,
+null,
+null
+],
+[
+25.24,
+0.915,
+null,
+null
+]
+],
+"events": 86,
+"median_days": 3.44,
+"n": 116,
+"pooled": false,
+"reach_days": 25.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 1,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "129A",
+"subject": "HISTORY"
+},
+"HISTORY 139AC": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.489,
+null,
+null
+],
+[
+1.0,
+0.637,
+null,
+null
+],
+[
+2.0,
+0.748,
+null,
+null
+],
+[
+3.0,
+0.812,
+null,
+null
+],
+[
+4.0,
+0.846,
+null,
+null
+],
+[
+5.0,
+0.87,
+null,
+null
+],
+[
+6.0,
+0.889,
+null,
+null
+],
+[
+7.0,
+0.907,
+null,
+null
+],
+[
+8.0,
+0.93,
+null,
+null
+],
+[
+9.0,
+0.93,
+null,
+null
+],
+[
+10.0,
+0.93,
+null,
+null
+],
+[
+12.0,
+0.93,
+null,
+null
+],
+[
+14.0,
+0.93,
+null,
+null
+],
+[
+14.15,
+0.93,
+null,
+null
+]
+],
+"events": 380,
+"median_days": 0.55,
+"n": 468,
+"pooled": false,
+"reach_days": 14.1,
 "sections": 1
 },
 "16-40": {
-"curve": [
-[
-0.5,
-0.007,
-null,
-null
-],
-[
-1.0,
-0.023,
-null,
-null
-],
-[
-2.0,
-0.023,
-null,
-null
-],
-[
-3.0,
-0.023,
-null,
-null
-],
-[
-4.0,
-0.032,
-null,
-null
-],
-[
-5.0,
-0.032,
-null,
-null
-],
-[
-6.0,
-0.032,
-null,
-null
-],
-[
-7.0,
-0.077,
-null,
-null
-],
-[
-8.0,
-0.124,
-null,
-null
-],
-[
-9.0,
-0.147,
-null,
-null
-],
-[
-10.0,
-0.147,
-null,
-null
-],
-[
-12.0,
-0.168,
-null,
-null
-],
-[
-14.0,
-0.242,
-null,
-null
-],
-[
-16.0,
-0.524,
-null,
-null
-],
-[
-18.0,
-0.556,
-null,
-null
-],
-[
-18.21,
-0.556,
-null,
-null
-]
-],
-"events": 43,
-"median_days": 15.96,
-"n": 275,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"41+": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-18.21,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 66,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
+"n_course": 4,
+"pooled": "all",
+"sections_course": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.018,
+0.105,
 null,
 null
 ],
 [
 1.0,
-0.053,
+0.166,
 null,
 null
 ],
 [
 2.0,
-0.117,
+0.364,
 null,
 null
 ],
 [
 3.0,
-0.211,
+0.519,
 null,
 null
 ],
 [
 4.0,
-0.32,
+0.653,
 null,
 null
 ],
 [
 5.0,
-0.499,
+0.653,
 null,
 null
 ],
 [
 6.0,
-0.636,
+0.757,
 null,
 null
 ],
 [
 7.0,
-0.707,
+0.757,
+null,
+null
+],
+[
+7.39,
+0.757,
+null,
+null
+]
+],
+"events": 84,
+"median_days": 2.91,
+"n": 148,
+"pooled": false,
+"reach_days": 7.4,
+"sections": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "139AC",
+"subject": "HISTORY"
+},
+"HISTORY 159B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.522,
+null,
+null
+],
+[
+1.0,
+0.716,
+null,
+null
+],
+[
+2.0,
+0.836,
+null,
+null
+],
+[
+3.0,
+0.955,
+null,
+null
+],
+[
+4.0,
+0.955,
+null,
+null
+],
+[
+5.0,
+0.955,
+null,
+null
+],
+[
+6.0,
+0.955,
+null,
+null
+],
+[
+7.0,
+0.955,
+null,
+null
+],
+[
+8.0,
+0.955,
+null,
+null
+],
+[
+9.0,
+0.955,
+null,
+null
+],
+[
+10.0,
+0.955,
+null,
+null
+],
+[
+12.0,
+0.955,
+null,
+null
+],
+[
+14.0,
+0.955,
+null,
+null
+],
+[
+16.0,
+0.955,
+null,
+null
+],
+[
+18.0,
+0.955,
+null,
+null
+],
+[
+20.25,
+0.955,
+null,
+null
+]
+],
+"events": 64,
+"median_days": 0.45,
+"n": 67,
+"pooled": false,
+"reach_days": 20.2,
+"sections": 1
+},
+"6-15": {
+"n_course": 4,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "159B",
+"subject": "HISTORY"
+},
+"HISTORY 167C": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.296,
+null,
+null
+],
+[
+1.0,
+0.296,
+null,
+null
+],
+[
+2.0,
+0.432,
+null,
+null
+],
+[
+3.0,
+0.491,
+null,
+null
+],
+[
+4.0,
+0.514,
+null,
+null
+],
+[
+5.0,
+0.621,
+null,
+null
+],
+[
+6.0,
+0.747,
+null,
+null
+],
+[
+7.0,
+0.842,
+null,
+null
+],
+[
+8.0,
+0.842,
+null,
+null
+],
+[
+9.0,
+0.842,
+null,
+null
+],
+[
+10.0,
+0.842,
+null,
+null
+],
+[
+12.0,
+0.842,
+null,
+null
+],
+[
+14.0,
+0.842,
+null,
+null
+],
+[
+16.0,
+0.874,
+null,
+null
+],
+[
+18.0,
+0.874,
+null,
+null
+],
+[
+21.0,
+0.874,
+null,
+null
+],
+[
+24.0,
+0.874,
+null,
+null
+],
+[
+28.0,
+0.874,
+null,
+null
+],
+[
+28.1,
+0.874,
+null,
+null
+]
+],
+"events": 39,
+"median_days": 3.99,
+"n": 54,
+"pooled": false,
+"reach_days": 28.1,
+"sections": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "167C",
+"subject": "HISTORY"
+},
+"HISTORY 180": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "180",
+"subject": "HISTORY"
+},
+"HISTORY 180T": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.182,
+null,
+null
+],
+[
+1.0,
+0.236,
+null,
+null
+],
+[
+2.0,
+0.256,
+null,
+null
+],
+[
+3.0,
+0.256,
+null,
+null
+],
+[
+4.0,
+0.417,
+null,
+null
+],
+[
+5.0,
+0.457,
+null,
+null
+],
+[
+6.0,
+0.483,
+null,
+null
+],
+[
+7.0,
+0.483,
+null,
+null
+],
+[
+8.0,
+0.577,
+null,
+null
+],
+[
+9.0,
+0.647,
+null,
+null
+],
+[
+10.0,
+0.718,
+null,
+null
+],
+[
+12.0,
+0.718,
+null,
+null
+],
+[
+14.0,
+0.906,
+null,
+null
+],
+[
+16.0,
+0.906,
+null,
+null
+],
+[
+18.0,
+0.906,
+null,
+null
+],
+[
+21.0,
+0.906,
+null,
+null
+],
+[
+24.0,
+0.906,
+null,
+null
+],
+[
+28.0,
+0.906,
+null,
+null
+],
+[
+32.0,
+0.906,
+null,
+null
+],
+[
+34.72,
+0.906,
+null,
+null
+]
+],
+"events": 31,
+"median_days": 7.54,
+"n": 55,
+"pooled": false,
+"reach_days": 34.7,
+"sections": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "180T",
+"subject": "HISTORY"
+},
+"HISTORY 185B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.136,
+null,
+null
+],
+[
+1.0,
+0.136,
+null,
+null
+],
+[
+2.0,
+0.249,
+null,
+null
+],
+[
+3.0,
+0.3,
+null,
+null
+],
+[
+4.0,
+0.3,
+null,
+null
+],
+[
+5.0,
+0.327,
+null,
+null
+],
+[
+6.0,
+0.356,
+null,
+null
+],
+[
+7.0,
+0.428,
+null,
+null
+],
+[
+8.0,
+0.46,
+null,
+null
+],
+[
+9.0,
+0.477,
+null,
+null
+],
+[
+10.0,
+0.477,
+null,
+null
+],
+[
+12.0,
+0.477,
+null,
+null
+],
+[
+14.0,
+0.562,
+null,
+null
+],
+[
+16.0,
+0.598,
+null,
+null
+],
+[
+18.0,
+0.598,
+null,
+null
+],
+[
+21.0,
+0.719,
+null,
+null
+],
+[
+24.0,
+0.799,
+null,
+null
+],
+[
+28.0,
+0.799,
+null,
+null
+],
+[
+32.0,
+0.799,
+null,
+null
+],
+[
+36.0,
+0.799,
+null,
+null
+],
+[
+42.0,
+0.799,
+null,
+null
+],
+[
+49.0,
+0.799,
+null,
+null
+],
+[
+56.0,
+0.799,
+null,
+null
+],
+[
+63.0,
+0.799,
+null,
+null
+],
+[
+70.0,
+0.799,
+null,
+null
+],
+[
+77.0,
+0.799,
+null,
+null
+],
+[
+79.75,
+0.799,
+null,
+null
+]
+],
+"events": 53,
+"median_days": 13.21,
+"n": 81,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 5,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "185B",
+"subject": "HISTORY"
+},
+"HISTORY 198BC": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "upper",
+"number": "198BC",
+"subject": "HISTORY"
+},
+"HISTORY 275B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.107,
+null,
+null
+],
+[
+1.0,
+0.188,
+null,
+null
+],
+[
+2.0,
+0.215,
+null,
+null
+],
+[
+3.0,
+0.242,
+null,
+null
+],
+[
+4.0,
+0.242,
+null,
+null
+],
+[
+5.0,
+0.242,
+null,
+null
+],
+[
+6.0,
+0.272,
+null,
+null
+],
+[
+7.0,
+0.272,
+null,
+null
+],
+[
+8.0,
+0.272,
+null,
+null
+],
+[
+9.0,
+0.272,
+null,
+null
+],
+[
+10.0,
+0.272,
+null,
+null
+],
+[
+12.0,
+0.405,
+null,
+null
+],
+[
+14.0,
+0.475,
+null,
+null
+],
+[
+16.0,
+0.475,
+null,
+null
+],
+[
+18.0,
+0.475,
+null,
+null
+],
+[
+21.0,
+0.475,
+null,
+null
+],
+[
+24.0,
+0.475,
+null,
+null
+],
+[
+28.0,
+0.475,
+null,
+null
+],
+[
+32.0,
+0.475,
+null,
+null
+],
+[
+36.0,
+0.475,
+null,
+null
+],
+[
+42.0,
+0.475,
+null,
+null
+],
+[
+49.0,
+0.475,
+null,
+null
+],
+[
+56.0,
+0.475,
+null,
+null
+],
+[
+63.0,
+0.475,
+null,
+null
+],
+[
+70.0,
+0.475,
+null,
+null
+],
+[
+77.0,
+0.475,
+null,
+null
+],
+[
+79.75,
+0.475,
+null,
+null
+]
+],
+"events": 16,
+"median_days": null,
+"n": 38,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "275B",
+"subject": "HISTORY"
+},
+"HISTORY 280B": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "280B",
+"subject": "HISTORY"
+},
+"HISTORY 280E": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "280E",
+"subject": "HISTORY"
+},
+"HISTORY 280H": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "280H",
+"subject": "HISTORY"
+},
+"HISTORY 285D": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "285D",
+"subject": "HISTORY"
+},
+"HISTORY 285F": {
+"buckets": {
+"1-5": {
+"n_course": 15,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "285F",
+"subject": "HISTORY"
+},
+"HISTORY 375": {
+"buckets": {
+"1-5": {
+"n_course": 16,
+"pooled": "HISTORY",
+"sections_course": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "grad",
+"number": "375",
+"subject": "HISTORY"
+},
+"HISTORY 4B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.241,
+null,
+null
+],
+[
+1.0,
+0.328,
+null,
+null
+],
+[
+2.0,
+0.424,
+null,
+null
+],
+[
+3.0,
+0.535,
+null,
+null
+],
+[
+4.0,
+0.579,
+null,
+null
+],
+[
+5.0,
+0.639,
+null,
+null
+],
+[
+6.0,
+0.666,
+null,
+null
+],
+[
+7.0,
+0.716,
+null,
+null
+],
+[
+8.0,
+0.716,
+null,
+null
+],
+[
+9.0,
+0.773,
+null,
+null
+],
+[
+10.0,
+0.792,
+null,
+null
+],
+[
+12.0,
+0.811,
+null,
+null
+],
+[
+14.0,
+0.834,
+null,
+null
+],
+[
+16.0,
+0.882,
+null,
+null
+],
+[
+18.0,
+0.882,
+null,
+null
+],
+[
+21.0,
+0.911,
+null,
+null
+],
+[
+24.0,
+0.911,
+null,
+null
+],
+[
+27.54,
+0.911,
+null,
+null
+]
+],
+"events": 80,
+"median_days": 2.66,
+"n": 114,
+"pooled": false,
+"reach_days": 27.5,
+"sections": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "4B",
+"subject": "HISTORY"
+},
+"HISTORY 6B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.356,
+null,
+null
+],
+[
+1.0,
+0.521,
+null,
+null
+],
+[
+2.0,
+0.74,
+null,
+null
+],
+[
+3.0,
+0.781,
+null,
+null
+],
+[
+4.0,
+0.781,
+null,
+null
+],
+[
+5.0,
+0.781,
+null,
+null
+],
+[
+6.0,
+0.781,
+null,
+null
+],
+[
+7.0,
+0.781,
 null,
 null
 ],
@@ -4042,284 +3310,322 @@ null
 ],
 [
 9.0,
-0.823,
+0.781,
 null,
 null
 ],
 [
 10.0,
-0.884,
+0.781,
 null,
 null
 ],
 [
 12.0,
-0.972,
-null,
-null
-],
-[
-13.06,
-0.994,
-null,
-null
-]
-],
-"events": 237,
-"median_days": 5.0,
-"n": 329,
-"pooled": false,
-"reach_days": 13.1,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "lower",
-"number": "7A",
-"subject": "HISTORY"
-},
-"HISTORY 8A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.186,
-null,
-null
-],
-[
-1.0,
-0.219,
-null,
-null
-],
-[
-2.0,
-0.385,
-null,
-null
-],
-[
-3.0,
-0.385,
-null,
-null
-],
-[
-4.0,
-0.385,
-null,
-null
-],
-[
-5.0,
-0.433,
-null,
-null
-],
-[
-6.0,
-0.48,
-null,
-null
-],
-[
-7.0,
-0.48,
-null,
-null
-],
-[
-8.0,
-0.527,
-null,
-null
-],
-[
-9.0,
-0.632,
-null,
-null
-],
-[
-10.0,
-0.706,
-null,
-null
-],
-[
-12.0,
-0.706,
+0.781,
 null,
 null
 ],
 [
 14.0,
-0.706,
+0.781,
 null,
 null
 ],
 [
 16.0,
-0.706,
+0.781,
 null,
 null
 ],
 [
 18.0,
-0.706,
-null,
-null
-],
-[
-18.38,
-0.706,
-null,
-null
-]
-],
-"events": 18,
-"median_days": 7.52,
-"n": 33,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "lower",
-"number": "8A",
-"subject": "HISTORY"
-},
-"HISTORY 98BC": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.103,
-null,
-null
-],
-[
-1.0,
-0.146,
-null,
-null
-],
-[
-2.0,
-0.212,
-null,
-null
-],
-[
-3.0,
-0.254,
-null,
-null
-],
-[
-4.0,
-0.419,
-null,
-null
-],
-[
-5.0,
-0.505,
-null,
-null
-],
-[
-6.0,
-0.546,
-null,
-null
-],
-[
-7.0,
-0.634,
-null,
-null
-],
-[
-8.0,
-0.65,
-null,
-null
-],
-[
-9.0,
-0.734,
-null,
-null
-],
-[
-10.0,
-0.784,
-null,
-null
-],
-[
-12.0,
-0.8,
-null,
-null
-],
-[
-14.0,
-0.891,
-null,
-null
-],
-[
-16.0,
-0.927,
-null,
-null
-],
-[
-18.0,
-0.964,
+0.781,
 null,
 null
 ],
 [
 21.0,
-0.964,
+0.781,
 null,
 null
 ],
 [
 24.0,
-0.964,
+0.781,
 null,
 null
 ],
 [
-28.0,
-0.964,
-null,
-null
-],
-[
-30.81,
-0.964,
+27.54,
+0.781,
 null,
 null
 ]
 ],
-"events": 77,
-"median_days": 4.9,
-"n": 117,
+"events": 57,
+"median_days": 0.96,
+"n": 73,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 27.5,
 "sections": 1
+}
 },
-"6-15": {
-"n_course": 21,
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "6B",
+"subject": "HISTORY"
+},
+"HISTORY 7B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.593,
+null,
+null
+],
+[
+1.0,
+0.785,
+null,
+null
+],
+[
+2.0,
+0.899,
+null,
+null
+],
+[
+3.0,
+0.952,
+null,
+null
+],
+[
+4.0,
+0.975,
+null,
+null
+],
+[
+5.0,
+0.975,
+null,
+null
+],
+[
+6.0,
+0.975,
+null,
+null
+],
+[
+7.0,
+0.975,
+null,
+null
+],
+[
+8.0,
+0.975,
+null,
+null
+],
+[
+9.0,
+0.975,
+null,
+null
+],
+[
+10.0,
+0.975,
+null,
+null
+],
+[
+12.0,
+0.975,
+null,
+null
+],
+[
+14.0,
+0.975,
+null,
+null
+],
+[
+16.0,
+0.975,
+null,
+null
+],
+[
+18.0,
+0.975,
+null,
+null
+],
+[
+21.0,
+0.975,
+null,
+null
+],
+[
+21.74,
+0.975,
+null,
+null
+]
+],
+"events": 338,
+"median_days": 0.29,
+"n": 368,
+"pooled": false,
+"reach_days": 21.7,
+"sections": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "7B",
+"subject": "HISTORY"
+},
+"HISTORY 8B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.308,
+null,
+null
+],
+[
+1.0,
+0.432,
+null,
+null
+],
+[
+2.0,
+0.53,
+null,
+null
+],
+[
+3.0,
+0.619,
+null,
+null
+],
+[
+4.0,
+0.671,
+null,
+null
+],
+[
+5.0,
+0.738,
+null,
+null
+],
+[
+6.0,
+0.785,
+null,
+null
+],
+[
+7.0,
+0.809,
+null,
+null
+],
+[
+8.0,
+0.809,
+null,
+null
+],
+[
+9.0,
+0.822,
+null,
+null
+],
+[
+10.0,
+0.822,
+null,
+null
+],
+[
+12.0,
+0.847,
+null,
+null
+],
+[
+14.0,
+0.931,
+null,
+null
+],
+[
+16.0,
+0.931,
+null,
+null
+],
+[
+18.0,
+0.931,
+null,
+null
+],
+[
+21.0,
+0.931,
+null,
+null
+],
+[
+24.0,
+0.931,
+null,
+null
+],
+[
+24.95,
+0.931,
+null,
+null
+]
+],
+"events": 93,
+"median_days": 1.74,
+"n": 114,
+"pooled": false,
+"reach_days": 24.9,
+"sections": 1
+}
+},
+"dept_group": "HISTORY",
+"level": "lower",
+"number": "8B",
+"subject": "HISTORY"
+},
+"HISTORY 98BC": {
+"buckets": {
+"1-5": {
+"n_course": 7,
 "pooled": "HISTORY",
 "sections_course": 1
 }
@@ -4329,498 +3635,10 @@ null
 "number": "98BC",
 "subject": "HISTORY"
 },
-"HISTORY C159A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.116,
-null,
-null
-],
-[
-1.0,
-0.175,
-null,
-null
-],
-[
-2.0,
-0.23,
-null,
-null
-],
-[
-3.0,
-0.257,
-null,
-null
-],
-[
-4.0,
-0.345,
-null,
-null
-],
-[
-5.0,
-0.369,
-null,
-null
-],
-[
-6.0,
-0.401,
-null,
-null
-],
-[
-7.0,
-0.476,
-null,
-null
-],
-[
-8.0,
-0.509,
-null,
-null
-],
-[
-9.0,
-0.561,
-null,
-null
-],
-[
-10.0,
-0.602,
-null,
-null
-],
-[
-12.0,
-0.705,
-null,
-null
-],
-[
-14.0,
-0.804,
-null,
-null
-],
-[
-16.0,
-0.834,
-null,
-null
-],
-[
-18.0,
-0.867,
-null,
-null
-],
-[
-21.0,
-0.867,
-null,
-null
-],
-[
-24.0,
-0.867,
-null,
-null
-],
-[
-28.0,
-0.867,
-null,
-null
-],
-[
-30.88,
-0.867,
-null,
-null
-]
-],
-"events": 162,
-"median_days": 7.52,
-"n": 307,
-"pooled": false,
-"reach_days": 30.9,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.019,
-null,
-null
-],
-[
-1.0,
-0.039,
-null,
-null
-],
-[
-2.0,
-0.059,
-null,
-null
-],
-[
-3.0,
-0.059,
-null,
-null
-],
-[
-4.0,
-0.132,
-null,
-null
-],
-[
-5.0,
-0.132,
-null,
-null
-],
-[
-6.0,
-0.132,
-null,
-null
-],
-[
-7.0,
-0.172,
-null,
-null
-],
-[
-8.0,
-0.201,
-null,
-null
-],
-[
-9.0,
-0.284,
-null,
-null
-],
-[
-10.0,
-0.301,
-null,
-null
-],
-[
-12.0,
-0.301,
-null,
-null
-],
-[
-14.0,
-0.301,
-null,
-null
-],
-[
-16.0,
-0.301,
-null,
-null
-],
-[
-18.0,
-0.301,
-null,
-null
-],
-[
-21.0,
-0.301,
-null,
-null
-],
-[
-24.0,
-0.651,
-null,
-null
-],
-[
-24.95,
-1.0,
-null,
-null
-]
-],
-"events": 27,
-"median_days": 21.38,
-"n": 104,
-"pooled": false,
-"reach_days": 24.9,
-"sections": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "C159A",
-"subject": "HISTORY"
-},
-"HISTORY C182C": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.067,
-null,
-null
-],
-[
-1.0,
-0.075,
-null,
-null
-],
-[
-2.0,
-0.083,
-null,
-null
-],
-[
-3.0,
-0.092,
-null,
-null
-],
-[
-4.0,
-0.111,
-null,
-null
-],
-[
-5.0,
-0.111,
-null,
-null
-],
-[
-6.0,
-0.145,
-null,
-null
-],
-[
-7.0,
-0.157,
-null,
-null
-],
-[
-8.0,
-0.157,
-null,
-null
-],
-[
-9.0,
-0.218,
-null,
-null
-],
-[
-10.0,
-0.237,
-null,
-null
-],
-[
-12.0,
-0.237,
-null,
-null
-],
-[
-14.0,
-0.237,
-null,
-null
-],
-[
-16.0,
-0.237,
-null,
-null
-],
-[
-18.0,
-0.237,
-null,
-null
-],
-[
-21.0,
-0.237,
-null,
-null
-],
-[
-24.0,
-0.237,
-null,
-null
-],
-[
-28.0,
-0.237,
-null,
-null
-],
-[
-32.0,
-0.237,
-null,
-null
-],
-[
-33.94,
-0.237,
-null,
-null
-]
-],
-"events": 23,
-"median_days": null,
-"n": 136,
-"pooled": false,
-"reach_days": 33.9,
-"sections": 1
-},
-"6-15": {
-"n_course": 9,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "C182C",
-"subject": "HISTORY"
-},
-"HISTORY C183A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.349,
-null,
-null
-],
-[
-1.0,
-0.481,
-null,
-null
-],
-[
-2.0,
-0.556,
-null,
-null
-],
-[
-3.0,
-0.633,
-null,
-null
-],
-[
-4.0,
-0.772,
-null,
-null
-],
-[
-5.0,
-0.802,
-null,
-null
-],
-[
-6.0,
-0.821,
-null,
-null
-],
-[
-7.0,
-0.871,
-null,
-null
-],
-[
-8.0,
-0.881,
-null,
-null
-],
-[
-9.0,
-0.891,
-null,
-null
-],
-[
-10.0,
-0.935,
-null,
-null
-],
-[
-11.05,
-0.961,
-null,
-null
-]
-],
-"events": 113,
-"median_days": 1.01,
-"n": 135,
-"pooled": false,
-"reach_days": 11.1,
-"sections": 1
-},
-"6-15": {
-"n_course": 1,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "upper",
-"number": "C183A",
-"subject": "HISTORY"
-},
 "HISTORY C184D": {
 "buckets": {
 "1-5": {
-"n_course": 23,
+"n_course": 11,
 "pooled": "HISTORY",
 "sections_course": 1
 }
@@ -4830,23 +3648,10 @@ null
 "number": "C184D",
 "subject": "HISTORY"
 },
-"HISTORY C250": {
-"buckets": {
-"1-5": {
-"n_course": 2,
-"pooled": "HISTORY",
-"sections_course": 1
-}
-},
-"dept_group": "HISTORY",
-"level": "grad",
-"number": "C250",
-"subject": "HISTORY"
-},
 "HISTORY C254": {
 "buckets": {
 "1-5": {
-"n_course": 24,
+"n_course": 12,
 "pooled": "HISTORY",
 "sections_course": 1
 }
@@ -4862,106 +3667,136 @@ null
 "curve": [
 [
 0.5,
-0.066,
-0.024,
-0.109
+0.075,
+0.053,
+0.125
 ],
 [
 1.0,
 0.075,
-0.024,
-0.109
+0.053,
+0.125
 ],
 [
 2.0,
-0.075,
-0.024,
-0.109
+0.102,
+0.053,
+0.25
 ],
 [
 3.0,
-0.097,
+0.102,
 0.053,
-0.143
+0.25
 ],
 [
 4.0,
-0.108,
+0.13,
 0.053,
-0.177
+0.25
 ],
 [
 5.0,
-0.12,
+0.13,
 0.053,
-0.177
+0.25
 ],
 [
 6.0,
-0.167,
-0.083,
-0.285
+0.162,
+0.139,
+0.25
 ],
 [
 7.0,
-0.167,
-0.083,
-0.285
+0.162,
+0.139,
+0.25
 ],
 [
 8.0,
-0.204,
-0.083,
-0.392
+0.162,
+0.139,
+0.25
 ],
 [
 9.0,
-0.219,
-0.083,
-0.392
+0.162,
+0.139,
+0.25
 ],
 [
 10.0,
-0.219,
-0.083,
-0.392
+0.162,
+0.139,
+0.25
 ],
 [
 12.0,
-0.219,
-0.083,
-0.392
+0.162,
+0.139,
+0.25
 ],
 [
 14.0,
-0.245,
-0.153,
-0.392
+0.162,
+0.139,
+0.25
 ],
 [
 16.0,
-0.245,
-0.153,
-0.392
+0.162,
+0.139,
+0.25
 ],
 [
 18.0,
-0.245,
-0.153,
-0.392
+0.162,
+0.139,
+0.25
 ],
 [
-18.4,
-0.245,
-0.153,
-0.392
+21.0,
+0.162,
+0.139,
+0.25
+],
+[
+24.0,
+0.162,
+0.139,
+0.25
+],
+[
+28.0,
+0.162,
+0.139,
+0.25
+],
+[
+32.0,
+0.162,
+0.139,
+0.25
+],
+[
+36.0,
+0.162,
+0.139,
+0.25
+],
+[
+39.73,
+0.162,
+0.139,
+0.25
 ]
 ],
-"events": 22,
+"events": 6,
 "median_days": null,
-"n": 121,
+"n": 41,
 "pooled": false,
-"reach_days": 18.4,
+"reach_days": 39.7,
 "sections": 3
 }
 },
@@ -4972,5 +3807,5 @@ null
 }
 },
 "subject": "HISTORY",
-"term_id": "2268"
+"term_id": "2262"
 }
