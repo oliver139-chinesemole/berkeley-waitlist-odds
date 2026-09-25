@@ -3,6 +3,7 @@
   "term_id": "2272",
   "term_name": "Spring 2027",
   "only_active": false,
+  "selection": "courses_with_a_full_or_waitlisted_section",
   "n_sections": 8,
   "columns": ["section_id", "course_key", "subject", "catalog_number", "component", "section_number", "enrolled", "capacity", "waitlist", "waitlist_capacity", "reserved_count", "open_reserved", "status", "observed_at"],
   "rows": [
