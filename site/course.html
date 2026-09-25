@@ -110,8 +110,15 @@
     return `${open}, ${num(reserved)} of them reserved`;
   }
 
-  // The blue ramp, lightest to darkest; never a traffic light.
+  // A count and its capacity as a ratio; an em dash for either half that is missing,
+  // so the ratio never reads a null as a zero.
+  function ratio(count, capacity) { return `${count == null ? "—" : num(count)} / ${capacity == null ? "—" : num(capacity)}`; }
+
+  // The blue ramp, lightest to darkest; never a traffic light. A section whose
+  // waitlist and capacity are both unknown gets no word and no class: unknown is
+  // not the same as none waiting.
   function statusOf(s, seats) {
+    if (s.waitlist == null && s.capacity == null) return { cls: "", word: "—" };
     if (Number(s.waitlist) > 0) return { cls: "status-waitlist", word: "waitlist" };
     if (seats === 0) return { cls: "status-full", word: "full" };
     if (seats > 0 && Number(s.open_reserved) >= seats) return { cls: "status-reserved", word: "full and reserved" };
@@ -127,7 +134,7 @@
   function boardRow(s) {
     const seats = seatsOpen(s), st = statusOf(s, seats), mins = minutesSince(s.observed_at);
     const stale = mins != null && mins >= STALE_MINUTES;
-    return `<tr><td>${esc(s.component || "")} ${esc(s.section_number || "")}</td><td class="num">${num(s.enrolled)} / ${num(s.capacity)}</td><td class="num">${num(s.waitlist)} / ${num(s.waitlist_capacity)}</td><td>${esc(seatsText(seats, s.open_reserved))}</td><td class="${st.cls}">${esc(st.word)}</td><td>${esc(readText(mins))}${stale ? `<span class="stale">${esc(STALE_NOTE)}</span>` : ""}</td></tr>`;
+    return `<tr><td>${esc(s.component || "")} ${esc(s.section_number || "")}</td><td class="num">${ratio(s.enrolled, s.capacity)}</td><td class="num">${ratio(s.waitlist, s.waitlist_capacity)}</td><td>${esc(seatsText(seats, s.open_reserved))}</td><td${st.cls ? ` class="${st.cls}"` : ""}>${esc(st.word)}</td><td>${esc(readText(mins))}${stale ? `<span class="stale">${esc(STALE_NOTE)}</span>` : ""}</td></tr>`;
   }
 
   // Live section counts from the data branch (own snapshots only); the block stays hidden when the file is absent.
