@@ -26,7 +26,7 @@ from tests.test_survival import synthetic_cohort
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 HARNESS = ROOT / "tests" / "site" / "harness.js"
-PAGES = ("index.html", "courses.html", "course.html", "insights.html", "accuracy.html", "methodology.html", "about.html", "404.html")
+PAGES = ("index.html", "courses.html", "course.html", "dept.html", "insights.html", "accuracy.html", "methodology.html", "about.html", "404.html")
 
 
 def find_node() -> str | None:
@@ -435,3 +435,125 @@ def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
     assert "Simulated term" in out["elements"]["data-status"]["html"] and "this project's own snapshots" in out["elements"]["data-status"]["html"]
     out = render(full_site, page="methodology.html")
     assert "Showing: <strong>Simulated term</strong>" in out["elements"]["data-status"]["html"]
+
+
+# ------------------------------------------------------------- department page
+
+
+def dept_copy(site_root: Path, tmp_path: Path) -> Path:
+    """A copy of the export with distinct joins on the COMPSCI rows (the synthetic cohort has none),
+    so the order the page prints is pinned, plus one DISSTD course: a subject with no display name."""
+    root = tmp_path / "site"
+    shutil.copytree(site_root, root)
+    path = root / "data" / "index.json"
+    index = json.loads(path.read_text())
+    compsci = sorted((r for r in index["courses"] if r["subject"] == "COMPSCI"), key=lambda r: r["key"])
+    for i, r in enumerate(compsci):
+        r["joins"] = (i * 7) % len(compsci) + 1  # 7 is coprime with 15: distinct, and not the key order
+    art = next(r for r in index["courses"] if r["key"] == "ART 11")
+    index["courses"].append({**art, "key": "DISSTD 10", "subject": "DISSTD", "number": "10", "joins": 3})
+    path.write_text(json.dumps(index))
+    return root
+
+
+def dept_rows(html: str) -> list[str]:
+    return html.split('<tr class="course">')[1:]
+
+
+def test_department_page_shows_the_pool_curve_and_every_course(course_site: Path, tmp_path: Path) -> None:
+    site = dept_copy(course_site, tmp_path)
+    index = load(site, "index.json")
+    pool = load(site, "pooled.json")["dept"]["COMPSCI"]["6-15"]
+    out = render(site, page="dept.html", search="?subject=COMPSCI", expression="BWO.subjectName('COMPSCI')")
+    name = out["eval"]
+    assert name == "COMPSCI"  # no display names on this branch: the code stands in
+    els = out["elements"]
+    assert els["dept-name"]["text"] == name and out["title"].startswith(f"{name} courses")
+    rows = sorted((r for r in index["courses"] if r["subject"] == "COMPSCI"), key=lambda r: -r["joins"])
+    assert len(rows) == 15
+    summary = els["summary"]["html"]
+    assert "15 courses with estimates in Simulated term, this project's own snapshots" in summary
+    # the department's pool at the default bucket, positions 6 to 15, read at the three horizons
+    assert els["bucket"]["value"] == "6-15" and not els["controls"]["hidden"]
+    curve = els["pool"]["html"]
+    assert curve.count('class="curve') == 1 and 'class="curve s2"' in curve and 'class="band"' in curve and 'role="img"' in curve and "Show as table" in curve
+    assert "All COMPSCI courses together, positions 6 to 15" in curve
+    for h in (7.0, 14.0, 28.0):
+        p, lo, hi = read_curve(pool["curve"], h)
+        assert f"<strong>{pct(p)}</strong>" in curve and f"{pct(lo)} to {pct(hi)}" in curve
+    assert f"{pool['sections']} sections, {pool['n']} hypothetical joiners, {pool['events']} cleared" in curve
+    # no "you" and no "now" on this page: no gold marks, no thick curve
+    assert 'class="mark"' not in curve and " you" not in curve and 'class="tag">you' not in curve
+    # every COMPSCI course, most-joined first, with its own share within 14 days at the bucket and a link
+    table = els["table"]["html"]
+    trs = dept_rows(table)
+    assert len(trs) == 15
+    for tr, r in zip(trs, rows):
+        s = r["buckets"]["6-15"]
+        assert f'course.html?c={r["key"].replace(" ", "%20")}&position=6&today=2027-01-10"' in tr
+        assert f">{r['key']}</a>" in tr and f"<strong>{pct(s['p'][1])}</strong>" in tr and f"{pct(s['lo'][1])} to {pct(s['hi'][1])}" in tr
+        assert f"{r['level']} division" in tr
+    assert 'aria-label="COMPSCI courses at positions 6 to 15"' in table and "Share who got in within 14 days" in table
+    # another bucket: the course's own curves where it has 30 cases, and the pool follows
+    out = render(site, page="dept.html", search="?subject=COMPSCI&bucket=1-5")
+    trs = dept_rows(out["elements"]["table"]["html"])
+    assert len(trs) == 15
+    for tr, r in zip(trs, rows):
+        s = r["buckets"]["1-5"]
+        assert f"<strong>{pct(s['p'][1])}</strong>" in tr and f">{s['n']}<" in tr and "pooled" not in tr
+    assert "positions 1 to 5" in out["elements"]["pool"]["html"] and out["elements"]["bucket"]["value"] == "1-5"
+
+
+def test_department_page_without_a_display_name_and_grouped_subjects(course_site: Path, tmp_path: Path) -> None:
+    site = dept_copy(course_site, tmp_path)
+    out = render(site, page="dept.html", search="?subject=DISSTD")
+    els = out["elements"]
+    assert els["dept-name"]["text"] == "DISSTD" and out["title"].startswith("DISSTD courses")
+    assert "1 course with estimates" in els["summary"]["html"] and len(dept_rows(els["table"]["html"])) == 1
+    # a small subject is pooled with the other small ones: the curve says so
+    assert "DISSTD is grouped with the smaller departments" in els["summary"]["html"]
+    assert "The smaller departments together, positions 6 to 15" in els["pool"]["html"]
+    out = render(site, page="dept.html", search="?subject=art")
+    assert out["elements"]["dept-name"]["text"] == "ART" and len(dept_rows(out["elements"]["table"]["html"])) == 15
+    # a display name, once the generated map is on the branch, is used; the code stays the fallback
+    out = render(site, page="dept.html", search="?subject=cs", expression="(BWO.SUBJECT_NAMES = {COMPSCI: 'Computer Science'}, [BWO.subjectName('COMPSCI'), BWO.subjectName('DISSTD')])")
+    assert out["eval"] == ["Computer Science", "DISSTD"]
+    assert out["elements"]["dept-name"]["text"] == "COMPSCI"  # "cs" resolves through the aliases; rendered before the map was set
+
+
+def test_unknown_department_names_the_nearest(course_site: Path) -> None:
+    out = render(course_site, page="dept.html", search="?subject=NOPE")
+    els = out["elements"]
+    assert "No such department" in els["summary"]["html"] and "NOPE" in els["summary"]["html"]
+    assert 1 <= els["summary"]["html"].count("dept.html?subject=") <= 3
+    assert els["pool"]["html"] == "" and els["table"]["html"] == "" and els["controls"]["hidden"]
+    assert out["title"].startswith("No such department")
+    assert "Simulated term" in out["status"]
+    out = render(course_site, page="dept.html", search="?subject=COMP")
+    assert "No such department" in out["elements"]["summary"]["html"] and "dept.html?subject=COMPSCI" in out["elements"]["summary"]["html"]
+    # no subject at all: every department, as links
+    out = render(course_site, page="dept.html")
+    summary = out["elements"]["summary"]["html"]
+    assert "No such department" not in summary and all(f"dept.html?subject={s}" in summary for s in ("ART", "COMPSCI", "MATH", "STAT"))
+
+
+def test_department_page_shell_and_states(course_site: Path, tmp_path: Path) -> None:
+    html = (SITE / "dept.html").read_text()
+    assert '<meta property="og:title"' in html and '<meta property="og:description"' in html
+    assert '<nav aria-label="Site">' in html and "aria-current" not in html and "<footer" in html and 'id="stamp"' in html
+    assert html.index('<script src="assets/site.js"></script>') < html.index("BWO.subjectName")
+    out = render(course_site, page="dept.html", search="?subject=COMPSCI")
+    meta = load(course_site, "meta.json")
+    assert out["status"].startswith("<p><strong>Simulated term</strong>") and f"{meta['courses']} courses with estimates from" in out["status"]
+    assert out["stamp"].startswith("Data through")
+    assert out["location"] == "https://example.test/dept.html?subject=COMPSCI&today=2027-01-10"  # nothing in the URL is rewritten
+    out = render(tmp_path, page="dept.html", search="?subject=COMPSCI")
+    assert "No estimates yet" in out["status"] and out["elements"]["controls"]["hidden"]
+    out = render(course_site, page="dept.html", search="?subject=COMPSCI", env={"HARNESS_FAIL_FETCH": "1"})
+    assert "Could not load the estimates" in out["status"] and out["elements"]["controls"]["hidden"]
+
+
+def test_course_page_links_its_department(course_site: Path) -> None:
+    out = render(course_site, page="course.html", search="?c=cs0&position=10")
+    html = out["elements"]["course"]["html"]
+    assert 'href="dept.html?subject=COMPSCI&bucket=6-15&today=2027-01-10">All COMPSCI courses</a>' in html
