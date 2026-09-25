@@ -1,19 +1,19 @@
 {
 "courses": {
-"AST C225": {
+"MFE 230O": {
 "buckets": {
 "1-5": {
-"n_course": 13,
+"n_course": 1,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "C225",
-"subject": "AST"
+"number": "230O",
+"subject": "MFE"
 }
 },
-"subject": "AST",
-"term_id": "2268"
+"subject": "MFE",
+"term_id": "2262"
 }

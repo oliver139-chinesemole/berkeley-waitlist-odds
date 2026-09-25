@@ -6,100 +6,146 @@
 "curve": [
 [
 0.5,
-0.762,
+0.501,
 null,
 null
 ],
 [
 1.0,
-0.91,
+0.674,
 null,
 null
 ],
 [
 2.0,
-0.987,
+0.854,
 null,
 null
 ],
 [
 3.0,
-0.987,
+0.93,
 null,
 null
 ],
 [
 4.0,
-0.987,
+0.966,
 null,
 null
 ],
 [
 5.0,
-0.987,
+0.982,
 null,
 null
 ],
 [
 6.0,
-0.987,
+0.995,
 null,
 null
 ],
 [
 7.0,
-0.987,
+0.995,
 null,
 null
 ],
 [
 8.0,
-0.987,
+0.995,
 null,
 null
 ],
 [
 9.0,
-0.987,
+0.995,
 null,
 null
 ],
 [
 10.0,
-0.987,
+0.995,
 null,
 null
 ],
 [
 12.0,
-0.987,
+0.995,
 null,
 null
 ],
 [
 14.0,
-0.987,
+0.995,
 null,
 null
 ],
 [
-16.0,
-0.987,
-null,
-null
-],
-[
-16.78,
-0.987,
+14.27,
+0.995,
 null,
 null
 ]
 ],
-"events": 94,
-"median_days": 0.11,
-"n": 100,
+"events": 453,
+"median_days": 0.49,
+"n": 475,
 "pooled": false,
-"reach_days": 16.8,
+"reach_days": 14.3,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.061,
+null,
+null
+],
+[
+1.0,
+0.152,
+null,
+null
+],
+[
+2.0,
+0.364,
+null,
+null
+],
+[
+3.0,
+0.576,
+null,
+null
+],
+[
+4.0,
+0.788,
+null,
+null
+],
+[
+5.0,
+0.879,
+null,
+null
+],
+[
+5.97,
+1.0,
+null,
+null
+]
+],
+"events": 33,
+"median_days": 2.63,
+"n": 33,
+"pooled": false,
+"reach_days": 6.0,
 "sections": 1
 }
 },
@@ -108,136 +154,478 @@ null
 "number": "100",
 "subject": "LINGUIS"
 },
-"LINGUIS 120": {
+"LINGUIS 110": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.435,
+0.259,
 null,
 null
 ],
 [
 1.0,
-0.533,
+0.346,
 null,
 null
 ],
 [
 2.0,
-0.633,
+0.429,
 null,
 null
 ],
 [
 3.0,
-0.684,
+0.495,
 null,
 null
 ],
 [
 4.0,
-0.756,
+0.503,
 null,
 null
 ],
 [
 5.0,
-0.825,
+0.563,
 null,
 null
 ],
 [
 6.0,
-0.837,
+0.701,
 null,
 null
 ],
 [
 7.0,
-0.837,
+0.733,
 null,
 null
 ],
 [
 8.0,
-0.837,
+0.741,
 null,
 null
 ],
 [
 9.0,
-0.849,
+0.776,
 null,
 null
 ],
 [
 10.0,
-0.849,
+0.776,
 null,
 null
 ],
 [
 12.0,
-0.89,
+0.868,
 null,
 null
 ],
 [
 14.0,
-0.904,
+0.877,
 null,
 null
 ],
 [
 16.0,
-0.968,
+0.877,
 null,
 null
 ],
 [
 18.0,
-0.968,
+0.877,
 null,
 null
 ],
 [
-18.21,
-0.968,
+21.0,
+0.877,
+null,
+null
+],
+[
+24.0,
+0.877,
+null,
+null
+],
+[
+28.0,
+0.877,
+null,
+null
+],
+[
+32.0,
+0.877,
+null,
+null
+],
+[
+36.0,
+0.877,
+null,
+null
+],
+[
+42.0,
+0.877,
+null,
+null
+],
+[
+49.0,
+0.877,
+null,
+null
+],
+[
+56.0,
+0.877,
+null,
+null
+],
+[
+63.0,
+0.877,
+null,
+null
+],
+[
+70.0,
+0.877,
+null,
+null
+],
+[
+77.0,
+0.877,
+null,
+null
+],
+[
+79.75,
+0.877,
 null,
 null
 ]
 ],
-"events": 105,
-"median_days": 0.75,
-"n": 124,
+"events": 123,
+"median_days": 3.02,
+"n": 165,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 1,
+"n_course": 3,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "120",
+"number": "110",
 "subject": "LINGUIS"
 },
-"LINGUIS 140": {
+"LINGUIS 113": {
 "buckets": {
 "1-5": {
-"n_course": 9,
+"curve": [
+[
+0.5,
+0.202,
+null,
+null
+],
+[
+1.0,
+0.266,
+null,
+null
+],
+[
+2.0,
+0.348,
+null,
+null
+],
+[
+3.0,
+0.383,
+null,
+null
+],
+[
+4.0,
+0.383,
+null,
+null
+],
+[
+5.0,
+0.383,
+null,
+null
+],
+[
+6.0,
+0.46,
+null,
+null
+],
+[
+7.0,
+0.46,
+null,
+null
+],
+[
+8.0,
+0.46,
+null,
+null
+],
+[
+9.0,
+0.46,
+null,
+null
+],
+[
+10.0,
+0.46,
+null,
+null
+],
+[
+12.0,
+0.46,
+null,
+null
+],
+[
+14.0,
+0.46,
+null,
+null
+],
+[
+16.0,
+0.46,
+null,
+null
+],
+[
+18.0,
+0.46,
+null,
+null
+],
+[
+21.0,
+0.46,
+null,
+null
+],
+[
+24.0,
+0.46,
+null,
+null
+],
+[
+28.0,
+0.46,
+null,
+null
+],
+[
+32.0,
+0.46,
+null,
+null
+],
+[
+36.0,
+0.46,
+null,
+null
+],
+[
+42.0,
+0.46,
+null,
+null
+],
+[
+49.0,
+0.46,
+null,
+null
+],
+[
+56.0,
+0.46,
+null,
+null
+],
+[
+63.0,
+0.46,
+null,
+null
+],
+[
+70.0,
+0.46,
+null,
+null
+],
+[
+77.0,
+0.46,
+null,
+null
+],
+[
+79.75,
+0.46,
+null,
+null
+]
+],
+"events": 29,
+"median_days": null,
+"n": 70,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "113",
+"subject": "LINGUIS"
+},
+"LINGUIS 121": {
+"buckets": {
+"1-5": {
+"n_course": 24,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "140",
+"number": "121",
+"subject": "LINGUIS"
+},
+"LINGUIS 130": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.372,
+null,
+null
+],
+[
+1.0,
+0.47,
+null,
+null
+],
+[
+2.0,
+0.57,
+null,
+null
+],
+[
+3.0,
+0.651,
+null,
+null
+],
+[
+4.0,
+0.678,
+null,
+null
+],
+[
+5.0,
+0.754,
+null,
+null
+],
+[
+6.0,
+0.813,
+null,
+null
+],
+[
+7.0,
+0.865,
+null,
+null
+],
+[
+8.0,
+0.875,
+null,
+null
+],
+[
+9.0,
+0.943,
+null,
+null
+],
+[
+10.0,
+0.977,
+null,
+null
+],
+[
+12.0,
+0.989,
+null,
+null
+],
+[
+13.38,
+0.989,
+null,
+null
+]
+],
+"events": 116,
+"median_days": 1.45,
+"n": 137,
+"pooled": false,
+"reach_days": 13.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130",
 "subject": "LINGUIS"
 },
 "LINGUIS 150A": {
@@ -246,254 +634,218 @@ null
 "curve": [
 [
 0.5,
-0.143,
+0.297,
 null,
 null
 ],
 [
 1.0,
-0.174,
+0.382,
 null,
 null
 ],
 [
 2.0,
-0.238,
+0.482,
 null,
 null
 ],
 [
 3.0,
-0.331,
+0.576,
 null,
 null
 ],
 [
 4.0,
-0.364,
+0.677,
 null,
 null
 ],
 [
 5.0,
-0.429,
+0.738,
 null,
 null
 ],
 [
 6.0,
-0.504,
+0.794,
 null,
 null
 ],
 [
 7.0,
-0.555,
+0.834,
 null,
 null
 ],
 [
 8.0,
-0.584,
+0.844,
 null,
 null
 ],
 [
 9.0,
-0.607,
+0.844,
 null,
 null
 ],
 [
 10.0,
-0.639,
+0.844,
 null,
 null
 ],
 [
 12.0,
-0.689,
+0.844,
 null,
 null
 ],
 [
 14.0,
-0.783,
+0.844,
 null,
 null
 ],
 [
 16.0,
-0.783,
+0.844,
 null,
 null
 ],
 [
 18.0,
-0.791,
+0.844,
 null,
 null
 ],
 [
 21.0,
-0.809,
+0.844,
 null,
 null
 ],
 [
 24.0,
-0.809,
+0.844,
 null,
 null
 ],
 [
-28.0,
-0.809,
-null,
-null
-],
-[
-30.81,
-0.809,
+27.74,
+0.844,
 null,
 null
 ]
 ],
-"events": 164,
-"median_days": 5.99,
-"n": 282,
+"events": 115,
+"median_days": 2.23,
+"n": 161,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 27.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.0,
+0.111,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.111,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.153,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.153,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.153,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.153,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.247,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.247,
 null,
 null
 ],
 [
 8.0,
-0.039,
+0.247,
 null,
 null
 ],
 [
 9.0,
-0.081,
+0.247,
 null,
 null
 ],
 [
 10.0,
-0.081,
+0.247,
 null,
 null
 ],
 [
 12.0,
-0.103,
+0.247,
 null,
 null
 ],
 [
 14.0,
-0.176,
+0.247,
 null,
 null
 ],
 [
 16.0,
-0.282,
+0.247,
 null,
 null
 ],
 [
-18.0,
-0.282,
-null,
-null
-],
-[
-21.0,
-0.282,
-null,
-null
-],
-[
-24.0,
-0.347,
-null,
-null
-],
-[
-28.0,
-0.419,
-null,
-null
-],
-[
-32.0,
-0.419,
-null,
-null
-],
-[
-34.09,
-0.419,
+16.21,
+0.247,
 null,
 null
 ]
 ],
-"events": 16,
+"events": 6,
 "median_days": null,
-"n": 80,
+"n": 30,
 "pooled": false,
-"reach_days": 34.1,
+"reach_days": 16.2,
 "sections": 1
 }
 },
@@ -502,578 +854,56 @@ null
 "number": "150A",
 "subject": "LINGUIS"
 },
-"LINGUIS 1A": {
+"LINGUIS 156": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.0,
-0.0,
-0.0
-],
-[
-1.0,
-0.0,
-0.0,
-0.0
-],
-[
-2.0,
-0.0,
-0.0,
-0.0
-],
-[
-3.0,
-0.0,
-0.0,
-0.0
-],
-[
-4.0,
-0.0,
-0.0,
-0.0
-],
-[
-5.0,
-0.0,
-0.0,
-0.0
-],
-[
-6.0,
-0.0,
-0.0,
-0.0
-],
-[
-7.0,
-0.0,
-0.0,
-0.0
-],
-[
-8.0,
-0.0,
-0.0,
-0.0
-],
-[
-9.0,
-0.0,
-0.0,
-0.0
-],
-[
-10.0,
-0.0,
-0.0,
-0.0
-],
-[
-12.0,
-0.0,
-0.0,
-0.0
-],
-[
-14.0,
-0.0,
-0.0,
-0.0
-],
-[
-16.0,
-0.0,
-0.0,
-0.0
-],
-[
-18.0,
-0.0,
-0.0,
-0.0
-],
-[
-21.0,
-0.0,
-0.0,
-0.0
-],
-[
-24.0,
-0.0,
-0.0,
-0.0
-],
-[
-28.0,
-0.0,
-0.0,
-0.0
-],
-[
-32.0,
-0.0,
-0.0,
-0.0
-],
-[
-36.0,
-0.0,
-0.0,
-0.0
-],
-[
-38.0,
-0.0,
-0.0,
-0.0
-]
-],
-"events": 0,
-"median_days": null,
-"n": 46,
-"pooled": false,
-"reach_days": 38.0,
-"sections": 2
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "1A",
-"subject": "LINGUIS"
-},
-"LINGUIS 201": {
-"buckets": {
-"1-5": {
-"n_course": 3,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "201",
-"subject": "LINGUIS"
-},
-"LINGUIS 230": {
-"buckets": {
-"1-5": {
-"n_course": 4,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "230",
-"subject": "LINGUIS"
-},
-"LINGUIS 55AC": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.145,
-null,
-null
-],
-[
-1.0,
-0.181,
-null,
-null
-],
-[
-2.0,
-0.221,
-null,
-null
-],
-[
-3.0,
-0.298,
-null,
-null
-],
-[
-4.0,
-0.339,
-null,
-null
-],
-[
-5.0,
-0.382,
-null,
-null
-],
-[
-6.0,
-0.463,
-null,
-null
-],
-[
-7.0,
-0.486,
-null,
-null
-],
-[
-8.0,
-0.5,
-null,
-null
-],
-[
-9.0,
-0.537,
-null,
-null
-],
-[
-10.0,
-0.547,
-null,
-null
-],
-[
-12.0,
-0.576,
-null,
-null
-],
-[
-14.0,
-0.627,
-null,
-null
-],
-[
-16.0,
-0.64,
-null,
-null
-],
-[
-18.0,
-0.655,
-null,
-null
-],
-[
-21.0,
-0.671,
-null,
-null
-],
-[
-24.0,
-0.735,
-null,
-null
-],
-[
-28.0,
-0.735,
-null,
-null
-],
-[
-30.2,
-0.735,
-null,
-null
-]
-],
-"events": 164,
-"median_days": 7.39,
-"n": 291,
-"pooled": false,
-"reach_days": 30.2,
-"sections": 1
-},
-"16-40": {
-"n_course": 25,
-"pooled": "OTHER",
-"sections_course": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.018,
-null,
-null
-],
-[
-1.0,
-0.024,
-null,
-null
-],
-[
-2.0,
-0.043,
-null,
-null
-],
-[
-3.0,
-0.05,
-null,
-null
-],
-[
-4.0,
-0.05,
-null,
-null
-],
-[
-5.0,
-0.057,
-null,
-null
-],
-[
-6.0,
-0.089,
-null,
-null
-],
-[
-7.0,
-0.089,
-null,
-null
-],
-[
-8.0,
-0.089,
-null,
-null
-],
-[
-9.0,
-0.109,
-null,
-null
-],
-[
-10.0,
-0.109,
-null,
-null
-],
-[
-12.0,
-0.136,
-null,
-null
-],
-[
-14.0,
-0.197,
-null,
-null
-],
-[
-16.0,
-0.197,
-null,
-null
-],
-[
-18.0,
-0.197,
-null,
-null
-],
-[
-21.0,
-0.197,
-null,
-null
-],
-[
-24.0,
-0.197,
-null,
-null
-],
-[
-28.0,
-0.197,
-null,
-null
-],
-[
-32.0,
-0.197,
-null,
-null
-],
-[
-32.42,
-0.197,
-null,
-null
-]
-],
-"events": 21,
-"median_days": null,
-"n": 168,
-"pooled": false,
-"reach_days": 32.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "55AC",
-"subject": "LINGUIS"
-},
-"LINGUIS C142": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.324,
-null,
-null
-],
-[
-1.0,
-0.365,
-null,
-null
-],
-[
-2.0,
-0.403,
-null,
-null
-],
-[
-3.0,
-0.498,
-null,
-null
-],
-[
-4.0,
-0.564,
-null,
-null
-],
-[
-5.0,
-0.592,
-null,
-null
-],
-[
-6.0,
-0.627,
-null,
-null
-],
-[
-7.0,
-0.641,
-null,
-null
-],
-[
-8.0,
-0.674,
-null,
-null
-],
-[
-9.0,
-0.674,
-null,
-null
-],
-[
-10.0,
-0.682,
-null,
-null
-],
-[
-12.0,
-0.7,
-null,
-null
-],
-[
-14.0,
-0.744,
-null,
-null
-],
-[
-16.0,
-0.767,
-null,
-null
-],
-[
-18.0,
-0.779,
-null,
-null
-],
-[
-21.0,
-0.779,
-null,
-null
-],
-[
-24.0,
-0.779,
-null,
-null
-],
-[
-28.0,
-0.779,
-null,
-null
-],
-[
-30.81,
-0.779,
-null,
-null
-]
-],
-"events": 151,
-"median_days": 3.02,
-"n": 235,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 24,
+"n_course": 22,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "C142",
+"number": "156",
+"subject": "LINGUIS"
+},
+"LINGUIS 1B": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1B",
+"subject": "LINGUIS"
+},
+"LINGUIS 24": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "24",
+"subject": "LINGUIS"
+},
+"LINGUIS 47": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "47",
 "subject": "LINGUIS"
 },
 "LINGUIS C146": {
@@ -1201,7 +1031,43 @@ null,
 null
 ],
 [
-37.3,
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -1209,9 +1075,9 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 46,
+"n": 47,
 "pooled": false,
-"reach_days": 37.3,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -1220,23 +1086,195 @@ null
 "number": "C146",
 "subject": "LINGUIS"
 },
-"LINGUIS H195S": {
+"LINGUIS C189": {
 "buckets": {
 "1-5": {
-"n_course": 2,
+"curve": [
+[
+0.5,
+0.208,
+null,
+null
+],
+[
+1.0,
+0.318,
+null,
+null
+],
+[
+2.0,
+0.438,
+null,
+null
+],
+[
+3.0,
+0.49,
+null,
+null
+],
+[
+4.0,
+0.561,
+null,
+null
+],
+[
+5.0,
+0.614,
+null,
+null
+],
+[
+6.0,
+0.691,
+null,
+null
+],
+[
+7.0,
+0.729,
+null,
+null
+],
+[
+8.0,
+0.773,
+null,
+null
+],
+[
+9.0,
+0.784,
+null,
+null
+],
+[
+10.0,
+0.79,
+null,
+null
+],
+[
+12.0,
+0.796,
+null,
+null
+],
+[
+14.0,
+0.803,
+null,
+null
+],
+[
+16.0,
+0.803,
+null,
+null
+],
+[
+18.0,
+0.803,
+null,
+null
+],
+[
+21.0,
+0.803,
+null,
+null
+],
+[
+24.0,
+0.803,
+null,
+null
+],
+[
+28.0,
+0.803,
+null,
+null
+],
+[
+32.0,
+0.803,
+null,
+null
+],
+[
+36.0,
+0.803,
+null,
+null
+],
+[
+42.0,
+0.803,
+null,
+null
+],
+[
+49.0,
+0.803,
+null,
+null
+],
+[
+56.0,
+0.803,
+null,
+null
+],
+[
+63.0,
+0.803,
+null,
+null
+],
+[
+70.0,
+0.803,
+null,
+null
+],
+[
+77.0,
+0.803,
+null,
+null
+],
+[
+79.75,
+0.803,
+null,
+null
+]
+],
+"events": 187,
+"median_days": 3.23,
+"n": 267,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 26,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "H195S",
+"number": "C189",
 "subject": "LINGUIS"
 },
 "LINGUIS R1B": {
 "buckets": {
 "1-5": {
-"n_course": 19,
+"n_course": 26,
 "pooled": "OTHER",
 "sections_course": 2
 }
@@ -1248,5 +1286,5 @@ null
 }
 },
 "subject": "LINGUIS",
-"term_id": "2268"
+"term_id": "2262"
 }

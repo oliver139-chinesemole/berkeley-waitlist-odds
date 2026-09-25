@@ -1,32 +1,144 @@
 {
 "courses": {
-"LGBT C146A": {
+"LGBT 100": {
 "buckets": {
 "1-5": {
-"n_course": 19,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.103,
+null,
+null
+],
+[
+1.0,
+0.103,
+null,
+null
+],
+[
+2.0,
+0.138,
+null,
+null
+],
+[
+3.0,
+0.158,
+null,
+null
+],
+[
+4.0,
+0.179,
+null,
+null
+],
+[
+5.0,
+0.221,
+null,
+null
+],
+[
+6.0,
+0.294,
+null,
+null
+],
+[
+7.0,
+0.464,
+null,
+null
+],
+[
+8.0,
+0.489,
+null,
+null
+],
+[
+9.0,
+0.586,
+null,
+null
+],
+[
+10.0,
+0.586,
+null,
+null
+],
+[
+12.0,
+0.669,
+null,
+null
+],
+[
+14.0,
+0.724,
+null,
+null
+],
+[
+16.0,
+0.779,
+null,
+null
+],
+[
+18.0,
+0.779,
+null,
+null
+],
+[
+21.0,
+0.816,
+null,
+null
+],
+[
+24.0,
+0.816,
+null,
+null
+],
+[
+28.0,
+0.816,
+null,
+null
+],
+[
+32.0,
+0.816,
+null,
+null
+],
+[
+32.35,
+0.816,
+null,
+null
+]
+],
+"events": 35,
+"median_days": 8.1,
+"n": 58,
+"pooled": false,
+"reach_days": 32.4,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "C146A",
-"subject": "LGBT"
-},
-"LGBT C146B": {
-"buckets": {
-"1-5": {
-"n_course": 19,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C146B",
+"number": "100",
 "subject": "LGBT"
 }
 },
 "subject": "LGBT",
-"term_id": "2268"
+"term_id": "2262"
 }

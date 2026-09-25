@@ -1,123 +1,22 @@
 {
 "courses": {
-"JEWISH 100": {
+"JEWISH 120": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.152,
-null,
-null
-],
-[
-1.0,
-0.273,
-null,
-null
-],
-[
-2.0,
-0.304,
-null,
-null
-],
-[
-3.0,
-0.368,
-null,
-null
-],
-[
-4.0,
-0.368,
-null,
-null
-],
-[
-5.0,
-0.368,
-null,
-null
-],
-[
-6.0,
-0.368,
-null,
-null
-],
-[
-7.0,
-0.598,
-null,
-null
-],
-[
-8.0,
-0.655,
-null,
-null
-],
-[
-9.0,
-0.713,
-null,
-null
-],
-[
-10.0,
-0.713,
-null,
-null
-],
-[
-12.0,
-0.713,
-null,
-null
-],
-[
-14.0,
-0.713,
-null,
-null
-],
-[
-16.0,
-0.713,
-null,
-null
-],
-[
-18.0,
-0.713,
-null,
-null
-],
-[
-18.21,
-0.713,
-null,
-null
-]
-],
-"events": 18,
-"median_days": 6.6,
-"n": 33,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "100",
+"number": "120",
 "subject": "JEWISH"
 },
 "JEWISH 120A": {
 "buckets": {
 "1-5": {
-"n_course": 7,
+"n_course": 19,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -130,7 +29,7 @@ null
 "JEWISH 121B": {
 "buckets": {
 "1-5": {
-"n_course": 10,
+"n_course": 14,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -139,8 +38,21 @@ null
 "level": "upper",
 "number": "121B",
 "subject": "JEWISH"
+},
+"JEWISH 122A": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "122A",
+"subject": "JEWISH"
 }
 },
 "subject": "JEWISH",
-"term_id": "2268"
+"term_id": "2262"
 }
