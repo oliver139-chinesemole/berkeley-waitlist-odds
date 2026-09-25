@@ -9,6 +9,8 @@ ages are fixed numbers.
 
 The first test pins what the page renders today. The second pins A3 (S1 to S3):
 it was a strict xfail until A3 was built, and the marker came off with the board.
+The last pins S6: cross-listed partners (DATA C8 and STAT C8, SIS ids 20817 and
+20818 in the Fall 2026 catalog) are separate rows, and each page shows only its own.
 """
 from __future__ import annotations
 
@@ -40,12 +42,17 @@ STATUS_CLASSES = ("status-open", "status-waitlist", "status-full", "status-reser
 
 @pytest.fixture(scope="module")
 def live_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    """The synthetic export, with two courses renamed to the keys the live fixture uses."""
+    """The synthetic export, with four courses renamed to the keys the live fixture uses.
+
+    DATA C8 and STAT C8 are a cross-listed pair; the subject is taken from the new key
+    too, so DATA C8 (renamed from COMPSCI 4) sits under DATA as it does in the catalog.
+    """
     root = tmp_path_factory.mktemp("site_live")
     cohort = synthetic_cohort().copy()
-    renames = {"COMPSCI 0": "COMPSCI 61A", "MATH 1": "MATH 1A"}
+    renames = {"COMPSCI 0": "COMPSCI 61A", "MATH 1": "MATH 1A", "COMPSCI 4": "DATA C8", "STAT 2": "STAT C8"}
     keys = [renames.get(k, k) for k in cohort["course_key"].astype(str)]
     cohort["course_key"] = keys
+    cohort["subject"] = [k.split(" ", 1)[0] for k in keys]
     cohort["catalog_number"] = [k.split(" ", 1)[1] for k in keys]
     export_site_tables(cohort, CAL, root / "data", n_boot=20)
     return root
@@ -144,3 +151,35 @@ def test_the_board_table_carries_the_phone_rows_class(live_site: Path) -> None:
     assert selectors and all(s.startswith("table.board") for part in selectors for s in (x.strip() for x in part.split(","))), selectors
     assert "tabular-nums lining-nums" in body  # figures stay aligned on the second line
     assert not re.search(r"(?<!-)color\s*:|background", body)  # no colour change
+
+
+# S6: a cross-listed pair, one row each in the fixture, with the ratios the page prints.
+CROSSLISTED = {
+    "DATA C8": ("400 / 400", "25 / 50", "read 2 min ago"),  # section_id 20817
+    "STAT C8": ("380 / 400", "12 / 50", "read 11 min ago"),  # section_id 20818
+}
+# What a merged row would print: the two sections' counts summed.
+MERGED = ("780 / 800", "37 / 100", "780", "37")
+
+
+@pytest.mark.parametrize("key", sorted(CROSSLISTED))
+def test_cross_listed_sections_are_separate_rows(live_site: Path, key: str) -> None:
+    """Each partner's page shows exactly its own row with its own counts; the pair is never merged."""
+    (partner,) = set(CROSSLISTED) - {key}
+    out = render(live_site, page="course.html", search="?c=" + key.replace(" ", "+"), env=LIVE_ENV)
+    html = board(out)
+    assert "Sections now" in html, key
+    body = html.split("<tbody>")[1]
+    assert body.count("<tr") == 1, body  # one row, not the partner's as well
+    section, enrolled, waitlist, seats, status, age = cells(row_of(body, "LEC 001"))
+    own_enrolled, own_waitlist, own_age = CROSSLISTED[key]
+    assert enrolled == f' class="num">{own_enrolled}' and waitlist == f' class="num">{own_waitlist}', (enrolled, waitlist)
+    assert own_age in age
+    other_enrolled, other_waitlist, other_age = CROSSLISTED[partner]
+    for text in (other_enrolled, other_waitlist, other_age, partner):
+        assert text not in html, f"{key} shows {partner}'s {text!r}"
+    page = " ".join(el["html"] for el in out["elements"].values())
+    for text in MERGED[:2]:
+        assert text not in page, f"{key}: a merged count {text!r} on the page"
+    for text in MERGED[2:]:
+        assert not re.search(rf"(?<![\d.]){text}(?![\d.])", html), f"{key}: a merged count {text!r} in the board"
