@@ -571,3 +571,17 @@ def test_course_page_links_its_department(course_site: Path) -> None:
     out = render(course_site, page="course.html", search="?c=cs0&position=10")
     html = out["elements"]["course"]["html"]
     assert 'href="dept.html?subject=COMPSCI&bucket=6-15&today=2027-01-10">All COMPSCI courses</a>' in html
+
+
+def test_course_page_links_its_department_without_related_courses(course_site: Path, tmp_path: Path) -> None:
+    """DISSTD 10 is the only DISSTD course: no related-courses block, but the department link still shows."""
+    site = dept_copy(course_site, tmp_path)
+    art = load(site, "courses/ART.json")
+    (site / "data" / "courses" / "DISSTD.json").write_text(json.dumps({**art, "courses": {"DISSTD 10": art["courses"]["ART 11"]}}))
+    meta = load(site, "meta.json")
+    meta["subject_files"]["DISSTD"] = "courses/DISSTD.json"
+    (site / "data" / "meta.json").write_text(json.dumps(meta))
+    out = render(site, page="course.html", search="?c=DISSTD%2010&position=10")
+    html = out["elements"]["course"]["html"]
+    assert "Other DISSTD courses" not in html
+    assert 'href="dept.html?subject=DISSTD&bucket=6-15&today=2027-01-10">All DISSTD courses</a>' in html

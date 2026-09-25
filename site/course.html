@@ -49,8 +49,10 @@
 
   function related(bucket) {
     const list = BWO.relatedCourses(index, row, bucket, 5);
-    if (!list.length) return "";
-    return `<h2>Other ${esc(row.subject)} courses at ${esc(BWO.bucketText(bucket))}</h2><p class="small"><a href="${BWO.withToday(`dept.html?subject=${encodeURIComponent(row.subject)}&bucket=${bucket}`)}">All ${esc(row.subject)} courses</a> <span class="muted">on the department page</span></p><ul class="findings">${list.map((r) => { const s = r.buckets[bucket]; const own = s.pooled === false ? s.n : (s.n_course || 0); return `<li><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${BWO.BUCKETS.find((b) => b[2] === bucket)[0]}`)}">${esc(r.key)}</a>: ${pct(s.p[1])} within 14 days <span class="muted">(${num(own)} of its own cases${s.pooled === false ? "" : `, ${esc(s.pooled)} estimate`})</span></li>`; }).join("")}</ul><p><a href="${BWO.withToday(`courses.html?dept=${encodeURIComponent(row.dept_group)}&bucket=${bucket}`)}">${esc(row.dept_group === "OTHER" ? "The smaller departments" : row.dept_group)} in the Courses table</a></p>`;
+    // The department link shows whenever the subject is known, with or without related courses.
+    const dept = row.subject ? `<p class="small"><a href="${BWO.withToday(`dept.html?subject=${encodeURIComponent(row.subject)}&bucket=${bucket}`)}">All ${esc(row.subject)} courses</a> <span class="muted">on the department page</span></p>` : "";
+    if (!list.length) return dept;
+    return `<h2>Other ${esc(row.subject)} courses at ${esc(BWO.bucketText(bucket))}</h2>${dept}<ul class="findings">${list.map((r) => { const s = r.buckets[bucket]; const own = s.pooled === false ? s.n : (s.n_course || 0); return `<li><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${BWO.BUCKETS.find((b) => b[2] === bucket)[0]}`)}">${esc(r.key)}</a>: ${pct(s.p[1])} within 14 days <span class="muted">(${num(own)} of its own cases${s.pooled === false ? "" : `, ${esc(s.pooled)} estimate`})</span></li>`; }).join("")}</ul><p><a href="${BWO.withToday(`courses.html?dept=${encodeURIComponent(row.dept_group)}&bucket=${bucket}`)}">${esc(row.dept_group === "OTHER" ? "The smaller departments" : row.dept_group)} in the Courses table</a></p>`;
   }
 
   function render(pos) {
