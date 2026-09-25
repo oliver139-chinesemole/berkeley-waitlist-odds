@@ -37,8 +37,12 @@
   /* derived from the seven above: text that steps back, hairlines, washes, ink on a fill */
   --muted: #4E6379; --hair: #E2E9F1; --wash: #E7EDF6; --band: rgba(0, 50, 98, .12);
   --blue-ink: #FFFFFF;
+  /* --tint is the hover wash on the header's nav links, the one place it is used: a
+     white wash lifts the dark --blue header (#003262 hovered is #1F4B75, 1.42:1 against it). */
   --tint: rgba(255, 255, 255, .12); --shadow: rgba(16, 32, 46, .12);
-  --s1: #86B6EF; --s2: #3987E5; --s3: #1C5CAB; --s4: #0D366B; /* position buckets, light to dark */
+  /* position buckets and the board's section status, light to dark. --s1 (the first bucket
+     curve, "open" on the board) is 3.02:1 on --paper, the 3:1 a graphic needs to be seen. */
+  --s1: #5297E8; --s2: #3987E5; --s3: #1C5CAB; --s4: #0D366B;
   /* The focus ring is chrome, not data, so it is its own token and deliberately outside the
      rule above: keyboard focus means neither "you" nor "now". It is this yellow because
      nothing else in the palette is legible on paper, on the wash and on the blue header at
@@ -51,7 +55,9 @@
     --blue: #7FB2E5; --gold: #FDB515; --rust: #D08A4A;
     --muted: #9BADBF; --hair: #1E2D3C; --wash: #1B2A39; --band: rgba(127, 178, 229, .18);
     --blue-ink: #0B1622;
-    --tint: rgba(255, 255, 255, .12); --shadow: rgba(0, 0, 0, .4);
+    /* the header is the light --blue here, so the hover wash is --blue-ink's dark, not white:
+       #7FB2E5 hovered is #6A96C2 (1.39:1 against it, near light's 1.42), --blue-ink on it 5.86:1 */
+    --tint: rgba(11, 22, 34, .18); --shadow: rgba(0, 0, 0, .4);
     --s1: #B7D3F6; --s2: #6DA7EC; --s3: #2A78D6; --s4: #184F95;
     --focus: #FDB515; /* chrome, as above: the same ring on the dark surfaces */
   }
