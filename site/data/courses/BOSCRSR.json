@@ -1,19 +1,19 @@
 {
 "courses": {
-"QTP 100": {
+"BOSCRSR 117B": {
 "buckets": {
 "1-5": {
-"n_course": 18,
+"n_course": 8,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "100",
-"subject": "QTP"
+"number": "117B",
+"subject": "BOSCRSR"
 }
 },
-"subject": "QTP",
-"term_id": "2268"
+"subject": "BOSCRSR",
+"term_id": "2262"
 }

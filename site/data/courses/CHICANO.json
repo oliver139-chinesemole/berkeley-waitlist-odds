@@ -1,287 +1,371 @@
 {
 "courses": {
-"CHICANO 130": {
+"CHICANO 110": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.174,
+0.137,
 null,
 null
 ],
 [
 1.0,
-0.251,
+0.194,
 null,
 null
 ],
 [
 2.0,
-0.326,
+0.234,
 null,
 null
 ],
 [
 3.0,
-0.366,
+0.242,
 null,
 null
 ],
 [
 4.0,
-0.408,
+0.266,
 null,
 null
 ],
 [
 5.0,
-0.439,
+0.324,
 null,
 null
 ],
 [
 6.0,
-0.439,
+0.324,
 null,
 null
 ],
 [
 7.0,
-0.447,
+0.358,
 null,
 null
 ],
 [
 8.0,
-0.456,
+0.358,
 null,
 null
 ],
 [
 9.0,
-0.456,
+0.367,
 null,
 null
 ],
 [
 10.0,
-0.456,
+0.367,
 null,
 null
 ],
 [
 12.0,
-0.482,
+0.367,
 null,
 null
 ],
 [
 14.0,
-0.482,
+0.376,
 null,
 null
 ],
 [
 16.0,
-0.482,
+0.407,
 null,
 null
 ],
 [
 18.0,
-0.482,
+0.42,
 null,
 null
 ],
 [
 21.0,
-0.505,
+0.434,
 null,
 null
 ],
 [
 24.0,
-0.554,
+0.471,
 null,
 null
 ],
 [
 28.0,
-0.837,
-null,
-null
-],
-[
-30.81,
-0.892,
-null,
-null
-]
-],
-"events": 91,
-"median_days": 19.51,
-"n": 186,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "130",
-"subject": "CHICANO"
-},
-"CHICANO 132": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.103,
-null,
-null
-],
-[
-1.0,
-0.148,
-null,
-null
-],
-[
-2.0,
-0.233,
-null,
-null
-],
-[
-3.0,
-0.267,
-null,
-null
-],
-[
-4.0,
-0.284,
-null,
-null
-],
-[
-5.0,
-0.284,
-null,
-null
-],
-[
-6.0,
-0.284,
-null,
-null
-],
-[
-7.0,
-0.307,
-null,
-null
-],
-[
-8.0,
-0.307,
-null,
-null
-],
-[
-9.0,
-0.307,
-null,
-null
-],
-[
-10.0,
-0.32,
-null,
-null
-],
-[
-12.0,
-0.348,
-null,
-null
-],
-[
-14.0,
-0.403,
-null,
-null
-],
-[
-16.0,
-0.425,
-null,
-null
-],
-[
-18.0,
-0.425,
-null,
-null
-],
-[
-21.0,
-0.425,
-null,
-null
-],
-[
-24.0,
-0.425,
-null,
-null
-],
-[
-28.0,
-0.425,
+0.491,
 null,
 null
 ],
 [
 32.0,
-0.425,
+0.516,
 null,
 null
 ],
 [
 36.0,
-0.425,
+0.541,
 null,
 null
 ],
 [
-36.17,
-0.425,
+42.0,
+0.607,
+null,
+null
+],
+[
+49.0,
+0.663,
+null,
+null
+],
+[
+56.0,
+0.789,
+null,
+null
+],
+[
+63.0,
+0.789,
+null,
+null
+],
+[
+70.0,
+0.789,
+null,
+null
+],
+[
+77.0,
+0.789,
+null,
+null
+],
+[
+79.75,
+0.789,
 null,
 null
 ]
 ],
-"events": 46,
-"median_days": null,
-"n": 138,
+"events": 61,
+"median_days": 30.4,
+"n": 124,
 "pooled": false,
-"reach_days": 36.2,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 10,
+"n_course": 25,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "132",
+"number": "110",
 "subject": "CHICANO"
 },
-"CHICANO 135B": {
+"CHICANO 131": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.123,
+null,
+null
+],
+[
+1.0,
+0.149,
+null,
+null
+],
+[
+2.0,
+0.209,
+null,
+null
+],
+[
+3.0,
+0.275,
+null,
+null
+],
+[
+4.0,
+0.342,
+null,
+null
+],
+[
+5.0,
+0.368,
+null,
+null
+],
+[
+6.0,
+0.408,
+null,
+null
+],
+[
+7.0,
+0.481,
+null,
+null
+],
+[
+8.0,
+0.555,
+null,
+null
+],
+[
+9.0,
+0.576,
+null,
+null
+],
+[
+10.0,
+0.597,
+null,
+null
+],
+[
+12.0,
+0.63,
+null,
+null
+],
+[
+14.0,
+0.647,
+null,
+null
+],
+[
+16.0,
+0.675,
+null,
+null
+],
+[
+18.0,
+0.687,
+null,
+null
+],
+[
+21.0,
+0.701,
+null,
+null
+],
+[
+24.0,
+0.701,
+null,
+null
+],
+[
+28.0,
+0.701,
+null,
+null
+],
+[
+32.0,
+0.701,
+null,
+null
+],
+[
+36.0,
+0.701,
+null,
+null
+],
+[
+42.0,
+0.701,
+null,
+null
+],
+[
+49.0,
+0.701,
+null,
+null
+],
+[
+56.0,
+0.701,
+null,
+null
+],
+[
+63.0,
+0.701,
+null,
+null
+],
+[
+70.0,
+0.701,
+null,
+null
+],
+[
+77.0,
+0.701,
+null,
+null
+],
+[
+79.75,
+0.701,
+null,
+null
+]
+],
+"events": 101,
+"median_days": 7.13,
+"n": 154,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "131",
+"subject": "CHICANO"
+},
+"CHICANO 141": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -293,279 +377,166 @@ null
 ],
 [
 1.0,
-0.174,
+0.191,
 null,
 null
 ],
 [
 2.0,
-0.211,
+0.27,
 null,
 null
 ],
 [
 3.0,
-0.245,
+0.324,
 null,
 null
 ],
 [
 4.0,
-0.288,
+0.387,
 null,
 null
 ],
 [
 5.0,
-0.288,
+0.45,
 null,
 null
 ],
 [
 6.0,
-0.297,
+0.495,
 null,
 null
 ],
 [
 7.0,
-0.316,
+0.551,
 null,
 null
 ],
 [
 8.0,
-0.336,
+0.57,
 null,
 null
 ],
 [
 9.0,
-0.336,
+0.6,
 null,
 null
 ],
 [
 10.0,
-0.336,
+0.61,
 null,
 null
 ],
 [
 12.0,
-0.36,
+0.62,
 null,
 null
 ],
 [
 14.0,
-0.388,
+0.62,
 null,
 null
 ],
 [
 16.0,
-0.43,
+0.757,
 null,
 null
 ],
 [
 18.0,
-0.477,
+0.789,
 null,
 null
 ],
 [
 21.0,
-0.477,
+0.8,
 null,
 null
 ],
 [
 24.0,
-0.477,
+0.811,
 null,
 null
 ],
 [
 28.0,
-0.477,
+0.833,
 null,
 null
 ],
 [
 32.0,
-0.477,
+0.889,
 null,
 null
 ],
 [
 36.0,
-0.477,
+0.922,
 null,
 null
 ],
 [
-38.32,
-0.477,
+42.0,
+0.967,
+null,
+null
+],
+[
+49.0,
+0.967,
+null,
+null
+],
+[
+56.0,
+0.967,
+null,
+null
+],
+[
+63.0,
+0.967,
+null,
+null
+],
+[
+70.0,
+0.967,
+null,
+null
+],
+[
+77.0,
+0.967,
+null,
+null
+],
+[
+79.75,
+0.967,
 null,
 null
 ]
 ],
-"events": 54,
-"median_days": null,
-"n": 149,
+"events": 101,
+"median_days": 6.22,
+"n": 115,
 "pooled": false,
-"reach_days": 38.3,
-"sections": 1
-},
-"6-15": {
-"n_course": 10,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "135B",
-"subject": "CHICANO"
-},
-"CHICANO 141": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.13,
-null,
-null
-],
-[
-1.0,
-0.186,
-null,
-null
-],
-[
-2.0,
-0.211,
-null,
-null
-],
-[
-3.0,
-0.211,
-null,
-null
-],
-[
-4.0,
-0.237,
-null,
-null
-],
-[
-5.0,
-0.281,
-null,
-null
-],
-[
-6.0,
-0.31,
-null,
-null
-],
-[
-7.0,
-0.31,
-null,
-null
-],
-[
-8.0,
-0.413,
-null,
-null
-],
-[
-9.0,
-0.494,
-null,
-null
-],
-[
-10.0,
-0.511,
-null,
-null
-],
-[
-12.0,
-0.511,
-null,
-null
-],
-[
-14.0,
-0.511,
-null,
-null
-],
-[
-16.0,
-0.511,
-null,
-null
-],
-[
-18.0,
-0.535,
-null,
-null
-],
-[
-21.0,
-0.559,
-null,
-null
-],
-[
-24.0,
-0.559,
-null,
-null
-],
-[
-28.0,
-0.559,
-null,
-null
-],
-[
-32.0,
-0.559,
-null,
-null
-],
-[
-36.0,
-0.559,
-null,
-null
-],
-[
-38.2,
-0.559,
-null,
-null
-]
-],
-"events": 42,
-"median_days": 9.08,
-"n": 102,
-"pooled": false,
-"reach_days": 38.2,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -574,318 +545,737 @@ null
 "number": "141",
 "subject": "CHICANO"
 },
-"CHICANO 161": {
+"CHICANO 146": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.116,
+0.0,
 null,
 null
 ],
 [
 1.0,
-0.116,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.188,
+0.0,
 null,
 null
 ],
 [
 3.0,
-0.203,
+0.0,
 null,
 null
 ],
 [
 4.0,
-0.271,
+0.0,
 null,
 null
 ],
 [
 5.0,
-0.323,
+0.0,
 null,
 null
 ],
 [
 6.0,
-0.341,
+0.0,
 null,
 null
 ],
 [
 7.0,
-0.341,
+0.0,
 null,
 null
 ],
 [
 8.0,
-0.341,
+0.0,
 null,
 null
 ],
 [
 9.0,
-0.36,
+0.0,
 null,
 null
 ],
 [
 10.0,
-0.379,
+0.0,
 null,
 null
 ],
 [
 12.0,
-0.4,
+0.0,
 null,
 null
 ],
 [
 14.0,
-0.445,
+0.0,
 null,
 null
 ],
 [
 16.0,
-0.468,
+0.0,
 null,
 null
 ],
 [
 18.0,
-0.468,
+0.0,
 null,
 null
 ],
 [
 21.0,
-0.468,
+0.0,
 null,
 null
 ],
 [
 24.0,
-0.468,
+0.0,
 null,
 null
 ],
 [
 28.0,
-0.468,
+0.0,
 null,
 null
 ],
 [
 32.0,
-0.468,
+0.0,
 null,
 null
 ],
 [
 36.0,
-0.468,
+0.0,
 null,
 null
 ],
 [
-38.26,
-0.468,
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
 null,
 null
 ]
 ],
-"events": 29,
+"events": 0,
 "median_days": null,
-"n": 80,
+"n": 50,
 "pooled": false,
-"reach_days": 38.3,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "161",
+"number": "146",
 "subject": "CHICANO"
 },
-"CHICANO 165": {
-"buckets": {
-"1-5": {
-"n_course": 21,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "165",
-"subject": "CHICANO"
-},
-"CHICANO 175": {
-"buckets": {
-"1-5": {
-"n_course": 18,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "175",
-"subject": "CHICANO"
-},
-"CHICANO 180": {
+"CHICANO 172": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.126,
-0.0,
-0.173
+0.159,
+null,
+null
 ],
 [
 1.0,
-0.14,
-0.0,
-0.201
+0.238,
+null,
+null
 ],
 [
 2.0,
-0.182,
-0.0,
-0.242
+0.311,
+null,
+null
 ],
 [
 3.0,
-0.258,
-0.0,
-0.313
+0.372,
+null,
+null
 ],
 [
 4.0,
-0.3,
-0.0,
-0.373
+0.398,
+null,
+null
 ],
 [
 5.0,
-0.377,
-0.0,
-0.433
+0.412,
+null,
+null
 ],
 [
 6.0,
-0.411,
-0.0,
-0.433
+0.412,
+null,
+null
 ],
 [
 7.0,
-0.423,
-0.0,
-0.448
+0.444,
+null,
+null
 ],
 [
 8.0,
-0.448,
-0.0,
-0.466
+0.461,
+null,
+null
 ],
 [
 9.0,
-0.502,
-0.0,
-0.541
+0.469,
+null,
+null
 ],
 [
 10.0,
-0.509,
-0.0,
-0.541
+0.469,
+null,
+null
 ],
 [
 12.0,
-0.565,
-0.0,
-0.62
+0.494,
+null,
+null
 ],
 [
 14.0,
-0.629,
-0.0,
-0.719
+0.52,
+null,
+null
 ],
 [
 16.0,
-0.629,
-0.0,
-0.719
+0.52,
+null,
+null
 ],
 [
 18.0,
-0.67,
-0.0,
-0.747
+0.52,
+null,
+null
 ],
 [
 21.0,
-0.682,
-0.0,
-0.779
+0.52,
+null,
+null
 ],
 [
 24.0,
-0.682,
-0.0,
-0.779
+0.53,
+null,
+null
 ],
 [
 28.0,
-0.682,
-0.0,
-0.779
+0.54,
+null,
+null
 ],
 [
 32.0,
-0.682,
-0.0,
-0.779
+0.576,
+null,
+null
 ],
 [
 36.0,
-0.682,
-0.0,
-0.779
+0.6,
+null,
+null
 ],
 [
-38.2,
-0.682,
-0.0,
-0.779
+42.0,
+0.688,
+null,
+null
+],
+[
+49.0,
+0.844,
+null,
+null
+],
+[
+56.0,
+0.844,
+null,
+null
+],
+[
+63.0,
+0.844,
+null,
+null
+],
+[
+70.0,
+0.844,
+null,
+null
+],
+[
+77.0,
+0.844,
+null,
+null
+],
+[
+79.75,
+0.844,
+null,
+null
 ]
 ],
-"events": 120,
-"median_days": 8.98,
-"n": 248,
+"events": 100,
+"median_days": 12.51,
+"n": 164,
 "pooled": false,
-"reach_days": 38.2,
-"sections": 3
+"reach_days": 79.7,
+"sections": 1
 },
 "6-15": {
-"n_course": 8,
+"n_course": 5,
 "pooled": "OTHER",
 "sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "172",
+"subject": "CHICANO"
+},
+"CHICANO 174": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.14,
+null,
+null
+],
+[
+1.0,
+0.225,
+null,
+null
+],
+[
+2.0,
+0.347,
+null,
+null
+],
+[
+3.0,
+0.416,
+null,
+null
+],
+[
+4.0,
+0.482,
+null,
+null
+],
+[
+5.0,
+0.516,
+null,
+null
+],
+[
+6.0,
+0.565,
+null,
+null
+],
+[
+7.0,
+0.577,
+null,
+null
+],
+[
+8.0,
+0.608,
+null,
+null
+],
+[
+9.0,
+0.627,
+null,
+null
+],
+[
+10.0,
+0.646,
+null,
+null
+],
+[
+12.0,
+0.659,
+null,
+null
+],
+[
+14.0,
+0.705,
+null,
+null
+],
+[
+16.0,
+0.747,
+null,
+null
+],
+[
+18.0,
+0.774,
+null,
+null
+],
+[
+21.0,
+0.808,
+null,
+null
+],
+[
+24.0,
+0.829,
+null,
+null
+],
+[
+28.0,
+0.85,
+null,
+null
+],
+[
+32.0,
+0.923,
+null,
+null
+],
+[
+36.0,
+0.923,
+null,
+null
+],
+[
+42.0,
+0.923,
+null,
+null
+],
+[
+49.0,
+0.923,
+null,
+null
+],
+[
+56.0,
+0.923,
+null,
+null
+],
+[
+63.0,
+0.923,
+null,
+null
+],
+[
+70.0,
+0.923,
+null,
+null
+],
+[
+77.0,
+0.923,
+null,
+null
+],
+[
+79.75,
+0.923,
+null,
+null
+]
+],
+"events": 150,
+"median_days": 4.76,
+"n": 193,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "174",
+"subject": "CHICANO"
+},
+"CHICANO 176": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.113,
+null,
+null
+],
+[
+1.0,
+0.151,
+null,
+null
+],
+[
+2.0,
+0.241,
+null,
+null
+],
+[
+3.0,
+0.326,
+null,
+null
+],
+[
+4.0,
+0.433,
+null,
+null
+],
+[
+5.0,
+0.526,
+null,
+null
+],
+[
+6.0,
+0.572,
+null,
+null
+],
+[
+7.0,
+0.623,
+null,
+null
+],
+[
+8.0,
+0.691,
+null,
+null
+],
+[
+9.0,
+0.717,
+null,
+null
+],
+[
+10.0,
+0.746,
+null,
+null
+],
+[
+12.0,
+0.785,
+null,
+null
+],
+[
+14.0,
+0.813,
+null,
+null
+],
+[
+16.0,
+0.849,
+null,
+null
+],
+[
+18.0,
+0.874,
+null,
+null
+],
+[
+21.0,
+0.874,
+null,
+null
+],
+[
+24.0,
+0.874,
+null,
+null
+],
+[
+28.0,
+0.874,
+null,
+null
+],
+[
+32.0,
+0.874,
+null,
+null
+],
+[
+36.0,
+0.874,
+null,
+null
+],
+[
+42.0,
+0.874,
+null,
+null
+],
+[
+49.0,
+0.874,
+null,
+null
+],
+[
+56.0,
+0.874,
+null,
+null
+],
+[
+63.0,
+0.874,
+null,
+null
+],
+[
+70.0,
+0.874,
+null,
+null
+],
+[
+77.0,
+0.874,
+null,
+null
+],
+[
+79.75,
+0.874,
+null,
+null
+]
+],
+"events": 168,
+"median_days": 4.86,
+"n": 213,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "176",
+"subject": "CHICANO"
+},
+"CHICANO 180": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "OTHER",
+"sections_course": 2
 }
 },
 "dept_group": "OTHER",
@@ -893,143 +1283,192 @@ null
 "number": "180",
 "subject": "CHICANO"
 },
-"CHICANO 190": {
+"CHICANO 180AC": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.1,
-0.025,
-0.151
+0.141,
+null,
+null
 ],
 [
 1.0,
-0.133,
-0.025,
-0.205
+0.172,
+null,
+null
 ],
 [
 2.0,
-0.144,
-0.025,
-0.223
+0.283,
+null,
+null
 ],
 [
 3.0,
-0.177,
-0.025,
-0.279
+0.414,
+null,
+null
 ],
 [
 4.0,
-0.177,
-0.025,
-0.279
+0.495,
+null,
+null
 ],
 [
 5.0,
-0.191,
-0.025,
-0.301
+0.556,
+null,
+null
 ],
 [
 6.0,
-0.191,
-0.025,
-0.301
+0.622,
+null,
+null
 ],
 [
 7.0,
-0.206,
-0.025,
-0.326
+0.678,
+null,
+null
 ],
 [
 8.0,
-0.222,
-0.025,
-0.351
+0.678,
+null,
+null
 ],
 [
 9.0,
-0.254,
-0.025,
-0.401
+0.69,
+null,
+null
 ],
 [
 10.0,
-0.27,
-0.025,
-0.426
+0.701,
+null,
+null
 ],
 [
 12.0,
-0.32,
-0.025,
-0.5
+0.701,
+null,
+null
 ],
 [
 14.0,
-0.365,
-0.155,
-0.5
+0.701,
+null,
+null
 ],
 [
 16.0,
-0.365,
-0.155,
-0.5
+0.701,
+null,
+null
 ],
 [
 18.0,
-0.365,
-0.155,
-0.5
+0.701,
+null,
+null
 ],
 [
 21.0,
-0.365,
-0.155,
-0.5
+0.701,
+null,
+null
 ],
 [
 24.0,
-0.365,
-0.155,
-0.5
+0.701,
+null,
+null
 ],
 [
 28.0,
-0.365,
-0.155,
-0.5
+0.701,
+null,
+null
 ],
 [
 32.0,
-0.365,
-0.155,
-0.5
+0.701,
+null,
+null
 ],
 [
 36.0,
-0.365,
-0.155,
-0.5
+0.701,
+null,
+null
 ],
 [
-38.26,
-0.365,
-0.155,
-0.5
+42.0,
+0.701,
+null,
+null
+],
+[
+49.0,
+0.701,
+null,
+null
+],
+[
+56.0,
+0.701,
+null,
+null
+],
+[
+63.0,
+0.701,
+null,
+null
+],
+[
+70.0,
+0.701,
+null,
+null
+],
+[
+77.0,
+0.701,
+null,
+null
+],
+[
+79.75,
+0.701,
+null,
+null
 ]
 ],
-"events": 28,
-"median_days": null,
-"n": 100,
+"events": 68,
+"median_days": 4.09,
+"n": 99,
 "pooled": false,
-"reach_days": 38.3,
-"sections": 2
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "180AC",
+"subject": "CHICANO"
+},
+"CHICANO 190": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -1037,12 +1476,359 @@ null
 "number": "190",
 "subject": "CHICANO"
 },
+"CHICANO 20": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.133,
+null,
+null
+],
+[
+1.0,
+0.189,
+null,
+null
+],
+[
+2.0,
+0.309,
+null,
+null
+],
+[
+3.0,
+0.402,
+null,
+null
+],
+[
+4.0,
+0.41,
+null,
+null
+],
+[
+5.0,
+0.48,
+null,
+null
+],
+[
+6.0,
+0.488,
+null,
+null
+],
+[
+7.0,
+0.539,
+null,
+null
+],
+[
+8.0,
+0.565,
+null,
+null
+],
+[
+9.0,
+0.565,
+null,
+null
+],
+[
+10.0,
+0.574,
+null,
+null
+],
+[
+12.0,
+0.615,
+null,
+null
+],
+[
+14.0,
+0.678,
+null,
+null
+],
+[
+16.0,
+0.708,
+null,
+null
+],
+[
+18.0,
+0.708,
+null,
+null
+],
+[
+21.0,
+0.708,
+null,
+null
+],
+[
+24.0,
+0.708,
+null,
+null
+],
+[
+28.0,
+0.708,
+null,
+null
+],
+[
+32.0,
+0.708,
+null,
+null
+],
+[
+36.0,
+0.708,
+null,
+null
+],
+[
+42.0,
+0.708,
+null,
+null
+],
+[
+49.0,
+0.708,
+null,
+null
+],
+[
+56.0,
+0.708,
+null,
+null
+],
+[
+63.0,
+0.708,
+null,
+null
+],
+[
+70.0,
+0.708,
+null,
+null
+],
+[
+77.0,
+0.708,
+null,
+null
+],
+[
+79.75,
+0.708,
+null,
+null
+]
+],
+"events": 91,
+"median_days": 6.65,
+"n": 161,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "20",
+"subject": "CHICANO"
+},
 "CHICANO 24": {
 "buckets": {
 "1-5": {
-"n_course": 21,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+0.0,
+0.0
+],
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+2.0,
+0.0,
+0.0,
+0.0
+],
+[
+3.0,
+0.0,
+0.0,
+0.0
+],
+[
+4.0,
+0.0,
+0.0,
+0.0
+],
+[
+5.0,
+0.0,
+0.0,
+0.0
+],
+[
+6.0,
+0.0,
+0.0,
+0.0
+],
+[
+7.0,
+0.0,
+0.0,
+0.0
+],
+[
+8.0,
+0.0,
+0.0,
+0.0
+],
+[
+9.0,
+0.0,
+0.0,
+0.0
+],
+[
+10.0,
+0.0,
+0.0,
+0.0
+],
+[
+12.0,
+0.0,
+0.0,
+0.0
+],
+[
+14.0,
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+0.0,
+0.0,
+0.0
+],
+[
+18.0,
+0.0,
+0.0,
+0.0
+],
+[
+21.0,
+0.0,
+0.0,
+0.0
+],
+[
+24.0,
+0.0,
+0.0,
+0.0
+],
+[
+28.0,
+0.0,
+0.0,
+0.0
+],
+[
+32.0,
+0.0,
+0.0,
+0.0
+],
+[
+36.0,
+0.0,
+0.0,
+0.0
+],
+[
+42.0,
+0.0,
+0.0,
+0.0
+],
+[
+49.0,
+0.0,
+0.0,
+0.0
+],
+[
+56.0,
+0.0,
+0.0,
+0.0
+],
+[
+63.0,
+0.0,
+0.0,
+0.0
+],
+[
+70.0,
+0.0,
+0.0,
+0.0
+],
+[
+77.0,
+0.0,
+0.0,
+0.0
+],
+[
+79.75,
+0.0,
+0.0,
+0.0
+]
+],
+"events": 0,
+"median_days": null,
+"n": 30,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 2
 }
 },
 "dept_group": "OTHER",
@@ -1050,129 +1836,23 @@ null
 "number": "24",
 "subject": "CHICANO"
 },
-"CHICANO 50": {
+"CHICANO 70": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.267,
-null,
-null
-],
-[
-1.0,
-0.353,
-null,
-null
-],
-[
-2.0,
-0.495,
-null,
-null
-],
-[
-3.0,
-0.605,
-null,
-null
-],
-[
-4.0,
-0.732,
-null,
-null
-],
-[
-5.0,
-0.809,
-null,
-null
-],
-[
-6.0,
-0.809,
-null,
-null
-],
-[
-7.0,
-0.868,
-null,
-null
-],
-[
-8.0,
-0.868,
-null,
-null
-],
-[
-9.0,
-0.868,
-null,
-null
-],
-[
-10.0,
-0.868,
-null,
-null
-],
-[
-12.0,
-0.868,
-null,
-null
-],
-[
-14.0,
-0.868,
-null,
-null
-],
-[
-16.0,
-0.868,
-null,
-null
-],
-[
-18.0,
-0.868,
-null,
-null
-],
-[
-18.35,
-0.868,
-null,
-null
-]
-],
-"events": 90,
-"median_days": 2.02,
-"n": 129,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-},
-"6-15": {
-"n_course": 3,
+"n_course": 14,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "50",
+"number": "70",
 "subject": "CHICANO"
 },
 "CHICANO C144L": {
 "buckets": {
 "1-5": {
-"n_course": 14,
+"n_course": 21,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -1182,25 +1862,192 @@ null
 "number": "C144L",
 "subject": "CHICANO"
 },
-"CHICANO R1A": {
+"CHICANO C166": {
 "buckets": {
 "1-5": {
-"n_course": 20,
+"n_course": 2,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
-"level": "lower",
-"number": "R1A",
+"level": "upper",
+"number": "C166",
 "subject": "CHICANO"
 },
 "CHICANO R1B": {
 "buckets": {
 "1-5": {
-"n_course": 21,
-"pooled": "OTHER",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.16,
+null,
+null
+],
+[
+1.0,
+0.19,
+null,
+null
+],
+[
+2.0,
+0.19,
+null,
+null
+],
+[
+3.0,
+0.24,
+null,
+null
+],
+[
+4.0,
+0.281,
+null,
+null
+],
+[
+5.0,
+0.311,
+null,
+null
+],
+[
+6.0,
+0.311,
+null,
+null
+],
+[
+7.0,
+0.322,
+null,
+null
+],
+[
+8.0,
+0.332,
+null,
+null
+],
+[
+9.0,
+0.343,
+null,
+null
+],
+[
+10.0,
+0.365,
+null,
+null
+],
+[
+12.0,
+0.365,
+null,
+null
+],
+[
+14.0,
+0.389,
+null,
+null
+],
+[
+16.0,
+0.413,
+null,
+null
+],
+[
+18.0,
+0.413,
+null,
+null
+],
+[
+21.0,
+0.413,
+null,
+null
+],
+[
+24.0,
+0.413,
+null,
+null
+],
+[
+28.0,
+0.413,
+null,
+null
+],
+[
+32.0,
+0.413,
+null,
+null
+],
+[
+36.0,
+0.413,
+null,
+null
+],
+[
+42.0,
+0.413,
+null,
+null
+],
+[
+49.0,
+0.413,
+null,
+null
+],
+[
+56.0,
+0.413,
+null,
+null
+],
+[
+63.0,
+0.413,
+null,
+null
+],
+[
+70.0,
+0.413,
+null,
+null
+],
+[
+77.0,
+0.413,
+null,
+null
+],
+[
+79.75,
+0.413,
+null,
+null
+]
+],
+"events": 40,
+"median_days": null,
+"n": 100,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
 }
 },
 "dept_group": "OTHER",
@@ -1210,5 +2057,5 @@ null
 }
 },
 "subject": "CHICANO",
-"term_id": "2268"
+"term_id": "2262"
 }

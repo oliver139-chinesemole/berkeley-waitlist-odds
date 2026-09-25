@@ -31,7 +31,7 @@
 <script src="assets/site.js"></script>
 <script>
 (function () {
-  const { $, esc, pct, num } = BWO;
+  const { $, esc, pct, num, plural } = BWO;
   const LIVE_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/live/latest.json";
   let meta, index, pooled, entry, row, today;
 
@@ -50,7 +50,7 @@
   function related(bucket) {
     const list = BWO.relatedCourses(index, row, bucket, 5);
     if (!list.length) return "";
-    return `<h2>Other ${esc(row.subject)} courses at ${esc(BWO.bucketText(bucket))}</h2><ul class="findings">${list.map((r) => { const s = r.buckets[bucket]; const own = s.pooled === false ? s.n : (s.n_course || 0); return `<li><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${BWO.BUCKETS.find((b) => b[2] === bucket)[0]}`)}">${esc(r.key)}</a>: ${pct(s.p[1])} within 14 days <span class="muted">(${num(own)} of its own cases${s.pooled === false ? "" : `, ${esc(s.pooled)} estimate`})</span></li>`; }).join("")}</ul><p><a href="${BWO.withToday(`courses.html?dept=${encodeURIComponent(row.dept_group)}&bucket=${bucket}`)}">All ${esc(row.dept_group === "OTHER" ? "other" : row.dept_group)} courses</a></p>`;
+    return `<h2>Other ${esc(row.subject)} courses at ${esc(BWO.bucketText(bucket))}</h2><ul class="findings">${list.map((r) => { const s = r.buckets[bucket]; const own = s.pooled === false ? s.n : (s.n_course || 0); return `<li><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${BWO.BUCKETS.find((b) => b[2] === bucket)[0]}`)}">${esc(r.key)}</a>: ${pct(s.p[1])} within 14 days <span class="muted">(${num(own)} of its own cases${s.pooled === false ? "" : `, ${esc(s.pooled === "OTHER" ? "other departments" : s.pooled)} estimate`})</span></li>`; }).join("")}</ul><p><a href="${BWO.withToday(`courses.html?dept=${encodeURIComponent(row.dept_group)}&bucket=${bucket}`)}">All ${esc(row.dept_group === "OTHER" ? "other" : row.dept_group)} courses</a></p>`;
   }
 
   function render(pos) {
@@ -84,6 +84,64 @@
     live();
   }
 
+  // The live section board (docs/DESIGN_A6.md). Every figure below is a count
+  // the registrar published, or arithmetic on two of them; nothing here is an
+  // estimate, and nothing here is about the reader's own place in a queue.
+  const HOUR = 60, STALE_MINUTES = 6 * HOUR;
+  const STALE_NOTE = "; this section is not on the every-30-minutes list, so the count may have moved";
+
+  // Minutes from observed_at to now; null when the stamp will not parse.
+  function minutesSince(iso) { const t = new Date(iso).getTime(); return isNaN(t) ? null : Math.max(0, Math.round((Date.now() - t) / 60000)); }
+
+  // Seats open: capacity minus enrolled, floored at 0; null when either count is missing.
+  function seatsOpen(s) {
+    if (s.capacity == null || s.enrolled == null) return null;
+    const cap = Number(s.capacity), taken = Number(s.enrolled);
+    return isNaN(cap) || isNaN(taken) ? null : Math.max(0, cap - taken);
+  }
+
+  // The reserved line, in the registrar's own wording.
+  function seatsText(seats, openReserved) {
+    if (seats == null) return "—";
+    const open = `${plural(seats, "seat")} open`;
+    if (seats === 0) return open;
+    const reserved = Number(openReserved) || 0;
+    if (reserved >= seats) return `${open}, all reserved`;
+    if (reserved <= 0) return `${open}, anyone can take them`;
+    return `${open}, ${num(reserved)} of them reserved`;
+  }
+
+  // A count and its capacity as a ratio; an em dash for either half that is missing,
+  // so the ratio never reads a null as a zero.
+  function ratio(count, capacity) { return `${count == null ? "—" : num(count)} / ${capacity == null ? "—" : num(capacity)}`; }
+
+  // A section with any of enrolled, capacity and waitlist missing is not read:
+  // its status and seats are em dashes, since a partial row could otherwise read
+  // as open, and unknown is not the same as none waiting.
+  function unread(s) { return s.enrolled == null || s.capacity == null || s.waitlist == null; }
+
+  // The blue ramp, lightest to darkest; never a traffic light. An unread section
+  // gets no word and no class.
+  function statusOf(s, seats) {
+    if (unread(s)) return { cls: "", word: "—", label: "not read" };
+    if (Number(s.waitlist) > 0) return { cls: "status-waitlist", word: "waitlist" };
+    if (seats === 0) return { cls: "status-full", word: "full" };
+    if (seats > 0 && Number(s.open_reserved) >= seats) return { cls: "status-reserved", word: "full and reserved" };
+    return { cls: "status-open", word: "open" };
+  }
+
+  // How long ago this row was read: minutes under an hour, whole hours after that.
+  function readText(mins) {
+    if (mins == null) return "—";
+    return mins < HOUR ? `read ${num(mins)} min ago` : `read ${plural(Math.floor(mins / HOUR), "hour")} ago`;
+  }
+
+  function boardRow(s) {
+    const seats = unread(s) ? null : seatsOpen(s), st = statusOf(s, seats), mins = minutesSince(s.observed_at);
+    const stale = mins != null && mins >= STALE_MINUTES;
+    return `<tr><td>${esc(s.component || "")} ${esc(s.section_number || "")}</td><td class="num">${ratio(s.enrolled, s.capacity)}</td><td class="num">${ratio(s.waitlist, s.waitlist_capacity)}</td><td>${esc(seatsText(seats, s.open_reserved))}</td><td${st.cls ? ` class="${st.cls}"` : ""}${st.label ? ` aria-label="${esc(st.label)}"` : ""}>${esc(st.word)}</td><td>${esc(readText(mins))}${stale ? `<span class="stale">${esc(STALE_NOTE)}</span>` : ""}</td></tr>`;
+  }
+
   // Live section counts from the data branch (own snapshots only); the block stays hidden when the file is absent.
   async function live() {
     const r = await BWO.fetchJson(LIVE_URL);
@@ -94,7 +152,7 @@
     const newest = mine.map((s) => new Date(s.observed_at).getTime()).filter((v) => !isNaN(v));
     const age = newest.length ? Math.round((Date.now() - Math.max(...newest)) / 60000) : null;
     $("live").innerHTML = `<h2>Sections now</h2><p class="muted small">This project's own snapshots of classes.berkeley.edu${age != null ? `, as of ${age} min ago` : ""}${r.data.term_name ? ` (${esc(r.data.term_name)})` : ""}.</p>
-      <div class="scroll" tabindex="0"><table aria-label="Sections now"><thead><tr><th scope="col">Section</th><th scope="col" class="num">Enrolled</th><th scope="col" class="num">Waitlist</th><th scope="col">Status</th></tr></thead><tbody>${mine.map((s) => `<tr><td>${esc(s.component || "")} ${esc(s.section_number || "")}</td><td class="num">${num(s.enrolled)} / ${num(s.capacity)}</td><td class="num">${num(s.waitlist)} / ${num(s.waitlist_capacity)}</td><td>${esc(s.status || "")}</td></tr>`).join("")}</tbody></table></div>`;
+      <div class="scroll" tabindex="0"><table class="board" aria-label="Sections now"><thead><tr><th scope="col">Section</th><th scope="col" class="num">Enrolled</th><th scope="col" class="num">Waitlist</th><th scope="col">Seats</th><th scope="col">Status</th><th scope="col">Read</th></tr></thead><tbody>${mine.map(boardRow).join("")}</tbody></table></div>`;
   }
 
   async function main() {
@@ -106,7 +164,8 @@
     $("dates").innerHTML = BWO.keyDatesHtml(meta, today);
     BWO.setStamp(meta, today);
     const c = BWO.params().get("c") || "";
-    row = BWO.findCourse(index, c);
+    const match = await BWO.matchCourseAsync(index, c, meta);
+    row = match.row;
     if (!row) {
       $("status").innerHTML = `<p class="error">No data for <strong>${esc(c || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which falls back to the department, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
       return;
@@ -115,7 +174,7 @@
     entry = subj && subj.courses ? subj.courses[row.key] : null;
     if (!entry) { $("status").innerHTML = `<p class="error">Could not load the curves for <strong>${esc(row.key)}</strong>. Check your connection and try again. <button type="button" class="quiet" onclick="location.reload()">Reload</button></p>`; return; }
     entry.key = row.key;
-    $("status").innerHTML = BWO.sourceHtml(meta);
+    $("status").innerHTML = BWO.sourceHtml(meta) + BWO.showingHtml(match, ["fuzzy", "name", "nickname", "title"]);
     render(positionFromUrl());
   }
   main();

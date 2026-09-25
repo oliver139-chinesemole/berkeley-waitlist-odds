@@ -6,136 +6,172 @@
 "curve": [
 [
 0.5,
-0.086,
+0.051,
 null,
 null
 ],
 [
 1.0,
-0.104,
+0.069,
 null,
 null
 ],
 [
 2.0,
-0.123,
+0.107,
 null,
 null
 ],
 [
 3.0,
-0.133,
+0.127,
 null,
 null
 ],
 [
 4.0,
-0.133,
+0.127,
 null,
 null
 ],
 [
 5.0,
-0.133,
+0.137,
 null,
 null
 ],
 [
 6.0,
-0.133,
+0.137,
 null,
 null
 ],
 [
 7.0,
-0.133,
+0.137,
 null,
 null
 ],
 [
 8.0,
-0.158,
+0.151,
 null,
 null
 ],
 [
 9.0,
-0.158,
+0.178,
 null,
 null
 ],
 [
 10.0,
-0.158,
+0.205,
 null,
 null
 ],
 [
 12.0,
-0.158,
+0.232,
 null,
 null
 ],
 [
 14.0,
-0.158,
+0.273,
 null,
 null
 ],
 [
 16.0,
-0.158,
+0.318,
 null,
 null
 ],
 [
 18.0,
-0.158,
+0.318,
 null,
 null
 ],
 [
 21.0,
-0.158,
+0.318,
 null,
 null
 ],
 [
 24.0,
-0.158,
+0.318,
 null,
 null
 ],
 [
 28.0,
-0.158,
+0.318,
 null,
 null
 ],
 [
 32.0,
-0.158,
+0.318,
 null,
 null
 ],
 [
 36.0,
-0.158,
+0.318,
 null,
 null
 ],
 [
-36.31,
-0.158,
+42.0,
+0.318,
+null,
+null
+],
+[
+49.0,
+0.318,
+null,
+null
+],
+[
+56.0,
+0.318,
+null,
+null
+],
+[
+63.0,
+0.318,
+null,
+null
+],
+[
+70.0,
+0.318,
+null,
+null
+],
+[
+77.0,
+0.318,
+null,
+null
+],
+[
+79.75,
+0.318,
 null,
 null
 ]
 ],
-"events": 17,
+"events": 28,
 "median_days": null,
-"n": 119,
+"n": 122,
 "pooled": false,
-"reach_days": 36.3,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -144,154 +180,118 @@ null
 "number": "114A",
 "subject": "EDUC"
 },
-"EDUC 140A": {
+"EDUC 132": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.263,
-0.0,
-0.335
+0.189,
+null,
+null
 ],
 [
 1.0,
-0.371,
-0.0,
-0.468
+0.216,
+null,
+null
 ],
 [
 2.0,
-0.413,
-0.0,
-0.519
+0.324,
+null,
+null
 ],
 [
 3.0,
-0.487,
-0.0,
-0.612
+0.432,
+null,
+null
 ],
 [
 4.0,
-0.498,
-0.0,
-0.626
+0.492,
+null,
+null
 ],
 [
 5.0,
-0.511,
-0.0,
-0.644
+0.492,
+null,
+null
 ],
 [
 6.0,
-0.511,
-0.0,
-0.644
+0.57,
+null,
+null
 ],
 [
 7.0,
-0.539,
-0.0,
-0.681
+0.57,
+null,
+null
 ],
 [
 8.0,
-0.554,
-0.0,
-0.703
+0.57,
+null,
+null
 ],
 [
 9.0,
-0.571,
-0.0,
-0.727
+0.57,
+null,
+null
 ],
 [
 10.0,
-0.571,
-0.0,
-0.727
+0.609,
+null,
+null
 ],
 [
 12.0,
-0.571,
-0.0,
-0.727
+0.648,
+null,
+null
 ],
 [
 14.0,
-0.571,
-0.0,
-0.727
+0.727,
+null,
+null
 ],
 [
 16.0,
-0.596,
-0.0,
-0.766
+0.772,
+null,
+null
 ],
 [
 18.0,
-0.596,
-0.0,
-0.766
+0.829,
+null,
+null
 ],
 [
-21.0,
-0.596,
-0.0,
-0.766
-],
-[
-24.0,
-0.596,
-0.0,
-0.766
-],
-[
-28.0,
-0.596,
-0.0,
-0.766
-],
-[
-32.0,
-0.596,
-0.0,
-0.766
-],
-[
-36.0,
-0.596,
-0.0,
-0.766
-],
-[
-42.0,
-0.596,
-0.0,
-0.766
-],
-[
-43.42,
-0.596,
-0.0,
-0.766
+20.97,
+0.829,
+null,
+null
 ]
 ],
-"events": 57,
-"median_days": 4.23,
-"n": 108,
+"events": 26,
+"median_days": 5.54,
+"n": 37,
 "pooled": false,
-"reach_days": 43.4,
-"sections": 2
+"reach_days": 21.0,
+"sections": 1
 }
 },
 "dept_group": "EDUC",
 "level": "upper",
-"number": "140A",
+"number": "132",
 "subject": "EDUC"
 },
 "EDUC 140AC": {
@@ -300,106 +300,230 @@ null
 "curve": [
 [
 0.5,
-0.252,
-0.22,
-0.289
+0.179,
+0.152,
+0.217
 ],
 [
 1.0,
-0.321,
-0.296,
-0.348
+0.225,
+0.186,
+0.279
 ],
 [
 2.0,
-0.439,
-0.348,
-0.502
+0.293,
+0.276,
+0.319
 ],
 [
 3.0,
-0.473,
-0.421,
-0.502
+0.373,
+0.347,
+0.408
 ],
 [
 4.0,
-0.492,
-0.421,
-0.538
+0.407,
+0.394,
+0.425
 ],
 [
 5.0,
-0.532,
-0.421,
-0.609
+0.463,
+0.455,
+0.471
 ],
 [
 6.0,
-0.614,
-0.469,
-0.716
+0.553,
+0.535,
+0.583
 ],
 [
 7.0,
-0.682,
-0.575,
-0.756
+0.604,
+0.569,
+0.655
 ],
 [
 8.0,
-0.682,
-0.575,
-0.756
+0.616,
+0.58,
+0.668
 ],
 [
 9.0,
-0.682,
-0.575,
-0.756
+0.628,
+0.58,
+0.696
 ],
 [
 10.0,
-0.727,
-0.681,
-0.756
+0.644,
+0.58,
+0.728
 ],
 [
 12.0,
-0.727,
-0.681,
-0.756
+0.655,
+0.602,
+0.728
 ],
 [
 14.0,
-0.727,
-0.681,
-0.756
+0.731,
+0.728,
+0.751
 ],
 [
 16.0,
-0.773,
-0.756,
-0.773
+0.77,
+0.728,
+0.813
 ],
 [
 18.0,
-0.773,
-0.756,
-0.773
+0.77,
+0.728,
+0.813
 ],
 [
-18.4,
-0.773,
-0.756,
-0.773
+21.0,
+0.77,
+0.728,
+0.813
+],
+[
+24.0,
+0.77,
+0.728,
+0.813
+],
+[
+28.0,
+0.77,
+0.728,
+0.813
+],
+[
+30.79,
+0.77,
+0.728,
+0.813
 ]
 ],
-"events": 47,
-"median_days": 4.53,
-"n": 76,
+"events": 180,
+"median_days": 5.42,
+"n": 327,
 "pooled": false,
-"reach_days": 18.4,
+"reach_days": 30.8,
+"sections": 2
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.038,
+0.0,
+0.054
+],
+[
+1.0,
+0.038,
+0.0,
+0.054
+],
+[
+2.0,
+0.038,
+0.0,
+0.054
+],
+[
+3.0,
+0.064,
+0.054,
+0.077
+],
+[
+4.0,
+0.064,
+0.054,
+0.077
+],
+[
+5.0,
+0.064,
+0.054,
+0.077
+],
+[
+6.0,
+0.093,
+0.054,
+0.161
+],
+[
+7.0,
+0.093,
+0.054,
+0.161
+],
+[
+8.0,
+0.128,
+0.11,
+0.161
+],
+[
+9.0,
+0.163,
+0.161,
+0.165
+],
+[
+10.0,
+0.163,
+0.161,
+0.165
+],
+[
+12.0,
+0.163,
+0.161,
+0.165
+],
+[
+14.0,
+0.163,
+0.161,
+0.165
+],
+[
+16.0,
+0.163,
+0.161,
+0.165
+],
+[
+18.0,
+0.163,
+0.161,
+0.165
+],
+[
+18.77,
+0.163,
+0.161,
+0.165
+]
+],
+"events": 6,
+"median_days": null,
+"n": 55,
+"pooled": false,
+"reach_days": 18.8,
 "sections": 2
 }
 },
@@ -408,17 +532,184 @@ null
 "number": "140AC",
 "subject": "EDUC"
 },
-"EDUC 144": {
+"EDUC 154": {
 "buckets": {
 "1-5": {
-"n_course": 5,
-"pooled": "EDUC",
-"sections_course": 4
+"curve": [
+[
+0.5,
+0.165,
+null,
+null
+],
+[
+1.0,
+0.192,
+null,
+null
+],
+[
+2.0,
+0.261,
+null,
+null
+],
+[
+3.0,
+0.315,
+null,
+null
+],
+[
+4.0,
+0.395,
+null,
+null
+],
+[
+5.0,
+0.416,
+null,
+null
+],
+[
+6.0,
+0.47,
+null,
+null
+],
+[
+7.0,
+0.493,
+null,
+null
+],
+[
+8.0,
+0.529,
+null,
+null
+],
+[
+9.0,
+0.544,
+null,
+null
+],
+[
+10.0,
+0.664,
+null,
+null
+],
+[
+12.0,
+0.709,
+null,
+null
+],
+[
+14.0,
+0.709,
+null,
+null
+],
+[
+16.0,
+0.814,
+null,
+null
+],
+[
+18.0,
+0.814,
+null,
+null
+],
+[
+21.0,
+0.814,
+null,
+null
+],
+[
+24.0,
+0.814,
+null,
+null
+],
+[
+28.0,
+0.814,
+null,
+null
+],
+[
+32.0,
+0.814,
+null,
+null
+],
+[
+36.0,
+0.814,
+null,
+null
+],
+[
+42.0,
+0.814,
+null,
+null
+],
+[
+49.0,
+0.814,
+null,
+null
+],
+[
+56.0,
+0.814,
+null,
+null
+],
+[
+63.0,
+0.814,
+null,
+null
+],
+[
+70.0,
+0.814,
+null,
+null
+],
+[
+77.0,
+0.814,
+null,
+null
+],
+[
+79.75,
+0.814,
+null,
+null
+]
+],
+"events": 73,
+"median_days": 7.02,
+"n": 125,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
 }
 },
 "dept_group": "EDUC",
 "level": "upper",
-"number": "144",
+"number": "154",
 "subject": "EDUC"
 },
 "EDUC 155AC": {
@@ -427,124 +718,136 @@ null
 "curve": [
 [
 0.5,
-0.081,
+0.179,
 null,
 null
 ],
 [
 1.0,
-0.092,
+0.244,
 null,
 null
 ],
 [
 2.0,
-0.126,
+0.347,
 null,
 null
 ],
 [
 3.0,
-0.187,
+0.347,
 null,
 null
 ],
 [
 4.0,
-0.23,
+0.425,
 null,
 null
 ],
 [
 5.0,
-0.277,
+0.517,
 null,
 null
 ],
 [
 6.0,
-0.309,
+0.517,
 null,
 null
 ],
 [
 7.0,
-0.402,
+0.517,
 null,
 null
 ],
 [
 8.0,
-0.422,
+0.517,
 null,
 null
 ],
 [
 9.0,
-0.441,
+0.517,
 null,
 null
 ],
 [
 10.0,
-0.441,
+0.517,
 null,
 null
 ],
 [
 12.0,
-0.46,
+0.517,
 null,
 null
 ],
 [
 14.0,
-0.46,
+0.517,
 null,
 null
 ],
 [
 16.0,
-0.46,
+0.517,
 null,
 null
 ],
 [
 18.0,
-0.46,
+0.517,
 null,
 null
 ],
 [
 21.0,
-0.46,
+0.517,
 null,
 null
 ],
 [
 24.0,
-0.46,
+0.517,
 null,
 null
 ],
 [
 28.0,
-0.46,
+0.517,
 null,
 null
 ],
 [
-30.81,
-0.46,
+32.0,
+0.517,
+null,
+null
+],
+[
+36.0,
+0.517,
+null,
+null
+],
+[
+36.41,
+0.517,
 null,
 null
 ]
 ],
-"events": 33,
-"median_days": null,
-"n": 101,
+"events": 15,
+"median_days": 4.85,
+"n": 35,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 36.4,
 "sections": 1
 }
 },
@@ -553,409 +856,20 @@ null
 "number": "155AC",
 "subject": "EDUC"
 },
+"EDUC 161C": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "161C",
+"subject": "EDUC"
+},
 "EDUC 163": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.192,
-null,
-null
-],
-[
-1.0,
-0.23,
-null,
-null
-],
-[
-2.0,
-0.32,
-null,
-null
-],
-[
-3.0,
-0.352,
-null,
-null
-],
-[
-4.0,
-0.386,
-null,
-null
-],
-[
-5.0,
-0.399,
-null,
-null
-],
-[
-6.0,
-0.44,
-null,
-null
-],
-[
-7.0,
-0.454,
-null,
-null
-],
-[
-8.0,
-0.468,
-null,
-null
-],
-[
-9.0,
-0.499,
-null,
-null
-],
-[
-10.0,
-0.517,
-null,
-null
-],
-[
-12.0,
-0.517,
-null,
-null
-],
-[
-14.0,
-0.517,
-null,
-null
-],
-[
-16.0,
-0.517,
-null,
-null
-],
-[
-18.0,
-0.517,
-null,
-null
-],
-[
-21.0,
-0.517,
-null,
-null
-],
-[
-24.0,
-0.517,
-null,
-null
-],
-[
-28.0,
-0.517,
-null,
-null
-],
-[
-30.81,
-0.517,
-null,
-null
-]
-],
-"events": 49,
-"median_days": 9.68,
-"n": 111,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "EDUC",
-"level": "upper",
-"number": "163",
-"subject": "EDUC"
-},
-"EDUC 188": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.156,
-0.137,
-0.163
-],
-[
-1.0,
-0.184,
-0.153,
-0.196
-],
-[
-2.0,
-0.277,
-0.217,
-0.299
-],
-[
-3.0,
-0.314,
-0.267,
-0.331
-],
-[
-4.0,
-0.385,
-0.303,
-0.415
-],
-[
-5.0,
-0.44,
-0.423,
-0.445
-],
-[
-6.0,
-0.464,
-0.443,
-0.471
-],
-[
-7.0,
-0.507,
-0.486,
-0.514
-],
-[
-8.0,
-0.52,
-0.508,
-0.524
-],
-[
-9.0,
-0.558,
-0.553,
-0.583
-],
-[
-10.0,
-0.599,
-0.592,
-0.621
-],
-[
-12.0,
-0.671,
-0.644,
-0.848
-],
-[
-14.0,
-0.739,
-0.722,
-0.848
-],
-[
-16.0,
-0.764,
-0.749,
-0.848
-],
-[
-18.0,
-0.764,
-0.749,
-0.848
-],
-[
-21.0,
-0.791,
-0.778,
-0.848
-],
-[
-24.0,
-0.791,
-0.778,
-0.848
-],
-[
-28.0,
-0.791,
-0.778,
-0.848
-],
-[
-30.81,
-0.791,
-0.778,
-0.848
-]
-],
-"events": 142,
-"median_days": 6.51,
-"n": 261,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 2
-}
-},
-"dept_group": "EDUC",
-"level": "upper",
-"number": "188",
-"subject": "EDUC"
-},
-"EDUC 190A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.151,
-null,
-null
-],
-[
-1.0,
-0.188,
-null,
-null
-],
-[
-2.0,
-0.351,
-null,
-null
-],
-[
-3.0,
-0.401,
-null,
-null
-],
-[
-4.0,
-0.427,
-null,
-null
-],
-[
-5.0,
-0.456,
-null,
-null
-],
-[
-6.0,
-0.494,
-null,
-null
-],
-[
-7.0,
-0.502,
-null,
-null
-],
-[
-8.0,
-0.502,
-null,
-null
-],
-[
-9.0,
-0.502,
-null,
-null
-],
-[
-10.0,
-0.502,
-null,
-null
-],
-[
-12.0,
-0.512,
-null,
-null
-],
-[
-14.0,
-0.525,
-null,
-null
-],
-[
-16.0,
-0.553,
-null,
-null
-],
-[
-18.0,
-0.553,
-null,
-null
-],
-[
-21.0,
-0.553,
-null,
-null
-],
-[
-24.0,
-0.553,
-null,
-null
-],
-[
-28.0,
-0.553,
-null,
-null
-],
-[
-32.0,
-0.553,
-null,
-null
-],
-[
-32.42,
-0.553,
-null,
-null
-]
-],
-"events": 84,
-"median_days": 6.66,
-"n": 173,
-"pooled": false,
-"reach_days": 32.4,
-"sections": 1
-}
-},
-"dept_group": "EDUC",
-"level": "upper",
-"number": "190A",
-"subject": "EDUC"
-},
-"EDUC 207B": {
 "buckets": {
 "1-5": {
 "n_course": 26,
@@ -964,14 +878,238 @@ null
 }
 },
 "dept_group": "EDUC",
+"level": "upper",
+"number": "163",
+"subject": "EDUC"
+},
+"EDUC 166": {
+"buckets": {
+"1-5": {
+"n_course": 9,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "166",
+"subject": "EDUC"
+},
+"EDUC 168": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.074,
+null,
+null
+],
+[
+1.0,
+0.083,
+null,
+null
+],
+[
+2.0,
+0.101,
+null,
+null
+],
+[
+3.0,
+0.121,
+null,
+null
+],
+[
+4.0,
+0.131,
+null,
+null
+],
+[
+5.0,
+0.173,
+null,
+null
+],
+[
+6.0,
+0.219,
+null,
+null
+],
+[
+7.0,
+0.269,
+null,
+null
+],
+[
+8.0,
+0.295,
+null,
+null
+],
+[
+9.0,
+0.323,
+null,
+null
+],
+[
+10.0,
+0.323,
+null,
+null
+],
+[
+12.0,
+0.357,
+null,
+null
+],
+[
+14.0,
+0.357,
+null,
+null
+],
+[
+16.0,
+0.387,
+null,
+null
+],
+[
+18.0,
+0.387,
+null,
+null
+],
+[
+21.0,
+0.387,
+null,
+null
+],
+[
+24.0,
+0.387,
+null,
+null
+],
+[
+28.0,
+0.387,
+null,
+null
+],
+[
+32.0,
+0.387,
+null,
+null
+],
+[
+36.0,
+0.387,
+null,
+null
+],
+[
+42.0,
+0.387,
+null,
+null
+],
+[
+49.0,
+0.387,
+null,
+null
+],
+[
+56.0,
+0.387,
+null,
+null
+],
+[
+63.0,
+0.387,
+null,
+null
+],
+[
+70.0,
+0.387,
+null,
+null
+],
+[
+77.0,
+0.387,
+null,
+null
+],
+[
+79.75,
+0.387,
+null,
+null
+]
+],
+"events": 34,
+"median_days": null,
+"n": 126,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "168",
+"subject": "EDUC"
+},
+"EDUC 202D": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
 "level": "grad",
-"number": "207B",
+"number": "202D",
+"subject": "EDUC"
+},
+"EDUC 207C": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "207C",
 "subject": "EDUC"
 },
 "EDUC 207L": {
 "buckets": {
 "1-5": {
-"n_course": 24,
+"n_course": 21,
 "pooled": "EDUC",
 "sections_course": 1
 }
@@ -981,443 +1119,278 @@ null
 "number": "207L",
 "subject": "EDUC"
 },
-"EDUC 210": {
+"EDUC 208": {
 "buckets": {
 "1-5": {
-"n_course": 25,
+"n_course": 12,
 "pooled": "EDUC",
 "sections_course": 1
 }
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "210",
+"number": "208",
 "subject": "EDUC"
 },
-"EDUC 213C": {
+"EDUC 213D": {
 "buckets": {
 "1-5": {
-"n_course": 24,
+"n_course": 26,
 "pooled": "EDUC",
 "sections_course": 1
 }
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "213C",
+"number": "213D",
 "subject": "EDUC"
 },
-"EDUC 217": {
-"buckets": {
-"1-5": {
-"n_course": 5,
-"pooled": "EDUC",
-"sections_course": 1
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "217",
-"subject": "EDUC"
-},
-"EDUC 220": {
-"buckets": {
-"1-5": {
-"n_course": 5,
-"pooled": "EDUC",
-"sections_course": 1
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "220",
-"subject": "EDUC"
-},
-"EDUC 221": {
-"buckets": {
-"1-5": {
-"n_course": 2,
-"pooled": "EDUC",
-"sections_course": 1
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "221",
-"subject": "EDUC"
-},
-"EDUC 222B": {
-"buckets": {
-"1-5": {
-"n_course": 5,
-"pooled": "EDUC",
-"sections_course": 1
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "222B",
-"subject": "EDUC"
-},
-"EDUC 222C": {
-"buckets": {
-"1-5": {
-"n_course": 5,
-"pooled": "EDUC",
-"sections_course": 1
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "222C",
-"subject": "EDUC"
-},
-"EDUC 231B": {
-"buckets": {
-"1-5": {
-"n_course": 5,
-"pooled": "EDUC",
-"sections_course": 1
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "231B",
-"subject": "EDUC"
-},
-"EDUC 24": {
+"EDUC 215": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.087,
+0.0,
 null,
 null
 ],
 [
 1.0,
-0.087,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.087,
+0.0,
 null,
 null
 ],
 [
 3.0,
-0.117,
+0.0,
 null,
 null
 ],
 [
 4.0,
-0.208,
+0.0,
 null,
 null
 ],
 [
 5.0,
-0.208,
+0.0,
 null,
 null
 ],
 [
 6.0,
-0.241,
+0.0,
 null,
 null
 ],
 [
 7.0,
-0.241,
+0.0,
 null,
 null
 ],
 [
 8.0,
-0.241,
+0.0,
 null,
 null
 ],
 [
 9.0,
-0.241,
+0.0,
 null,
 null
 ],
 [
 10.0,
-0.295,
+0.0,
 null,
 null
 ],
 [
 12.0,
-0.295,
+0.0,
 null,
 null
 ],
 [
 14.0,
-0.295,
+0.0,
 null,
 null
 ],
 [
 16.0,
-0.295,
+0.0,
 null,
 null
 ],
 [
 18.0,
-0.295,
+0.0,
 null,
 null
 ],
 [
-18.39,
-0.295,
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
 null,
 null
 ]
 ],
-"events": 10,
+"events": 0,
 "median_days": null,
-"n": 47,
+"n": 30,
 "pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "EDUC",
-"level": "lower",
-"number": "24",
-"subject": "EDUC"
-},
-"EDUC 241A": {
-"buckets": {
-"1-5": {
-"n_course": 2,
-"pooled": "EDUC",
-"sections_course": 1
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "241A",
-"subject": "EDUC"
-},
-"EDUC 244": {
-"buckets": {
-"1-5": {
-"n_course": 17,
-"pooled": "EDUC",
-"sections_course": 1
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "244",
-"subject": "EDUC"
-},
-"EDUC 265D": {
-"buckets": {
-"1-5": {
-"n_course": 2,
-"pooled": "EDUC",
-"sections_course": 1
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "265D",
-"subject": "EDUC"
-},
-"EDUC 268": {
-"buckets": {
-"1-5": {
-"n_course": 13,
-"pooled": "EDUC",
-"sections_course": 2
-}
-},
-"dept_group": "EDUC",
-"level": "grad",
-"number": "268",
-"subject": "EDUC"
-},
-"EDUC 271B": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.167,
-null,
-null
-],
-[
-1.0,
-0.167,
-null,
-null
-],
-[
-2.0,
-0.211,
-null,
-null
-],
-[
-3.0,
-0.26,
-null,
-null
-],
-[
-4.0,
-0.26,
-null,
-null
-],
-[
-5.0,
-0.311,
-null,
-null
-],
-[
-6.0,
-0.388,
-null,
-null
-],
-[
-7.0,
-0.515,
-null,
-null
-],
-[
-8.0,
-0.631,
-null,
-null
-],
-[
-9.0,
-0.631,
-null,
-null
-],
-[
-10.0,
-0.704,
-null,
-null
-],
-[
-12.0,
-0.789,
-null,
-null
-],
-[
-14.0,
-0.789,
-null,
-null
-],
-[
-16.0,
-0.789,
-null,
-null
-],
-[
-18.0,
-0.789,
-null,
-null
-],
-[
-18.41,
-0.789,
-null,
-null
-]
-],
-"events": 30,
-"median_days": 6.86,
-"n": 48,
-"pooled": false,
-"reach_days": 18.4,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "271B",
+"number": "215",
 "subject": "EDUC"
 },
-"EDUC 274A": {
+"EDUC 223B": {
 "buckets": {
 "1-5": {
-"n_course": 6,
+"n_course": 1,
 "pooled": "EDUC",
 "sections_course": 1
 }
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "274A",
+"number": "223B",
 "subject": "EDUC"
 },
-"EDUC 276A": {
+"EDUC 226B": {
 "buckets": {
 "1-5": {
-"n_course": 6,
+"n_course": 11,
 "pooled": "EDUC",
 "sections_course": 1
 }
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "276A",
+"number": "226B",
 "subject": "EDUC"
 },
-"EDUC 281": {
+"EDUC 236": {
 "buckets": {
 "1-5": {
-"n_course": 4,
+"n_course": 10,
 "pooled": "EDUC",
 "sections_course": 1
 }
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "281",
+"number": "236",
 "subject": "EDUC"
 },
-"EDUC 296A": {
+"EDUC 239A": {
 "buckets": {
 "1-5": {
-"n_course": 3,
+"n_course": 23,
 "pooled": "EDUC",
 "sections_course": 1
 }
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "296A",
+"number": "239A",
 "subject": "EDUC"
 },
-"EDUC 298E": {
+"EDUC 250C": {
+"buckets": {
+"1-5": {
+"n_course": 1,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "250C",
+"subject": "EDUC"
+},
+"EDUC 261C": {
 "buckets": {
 "1-5": {
 "n_course": 27,
@@ -1427,10 +1400,156 @@ null
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "298E",
+"number": "261C",
 "subject": "EDUC"
 },
-"EDUC 313C": {
+"EDUC 271G": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.121,
+null,
+null
+],
+[
+1.0,
+0.137,
+null,
+null
+],
+[
+2.0,
+0.243,
+null,
+null
+],
+[
+3.0,
+0.304,
+null,
+null
+],
+[
+4.0,
+0.331,
+null,
+null
+],
+[
+5.0,
+0.384,
+null,
+null
+],
+[
+6.0,
+0.473,
+null,
+null
+],
+[
+7.0,
+0.55,
+null,
+null
+],
+[
+8.0,
+0.571,
+null,
+null
+],
+[
+9.0,
+0.583,
+null,
+null
+],
+[
+10.0,
+0.594,
+null,
+null
+],
+[
+12.0,
+0.609,
+null,
+null
+],
+[
+14.0,
+0.707,
+null,
+null
+],
+[
+16.0,
+0.765,
+null,
+null
+],
+[
+18.0,
+0.866,
+null,
+null
+],
+[
+21.0,
+0.866,
+null,
+null
+],
+[
+23.87,
+0.866,
+null,
+null
+]
+],
+"events": 82,
+"median_days": 6.33,
+"n": 144,
+"pooled": false,
+"reach_days": 23.9,
+"sections": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "271G",
+"subject": "EDUC"
+},
+"EDUC 280B": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "280B",
+"subject": "EDUC"
+},
+"EDUC 290A": {
+"buckets": {
+"1-5": {
+"n_course": 3,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "290A",
+"subject": "EDUC"
+},
+"EDUC 298E": {
 "buckets": {
 "1-5": {
 "n_course": 22,
@@ -1440,13 +1559,26 @@ null
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "313C",
+"number": "298E",
+"subject": "EDUC"
+},
+"EDUC 313D": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "313D",
 "subject": "EDUC"
 },
 "EDUC 313E": {
 "buckets": {
 "1-5": {
-"n_course": 23,
+"n_course": 22,
 "pooled": "EDUC",
 "sections_course": 1
 }
@@ -1456,30 +1588,43 @@ null
 "number": "313E",
 "subject": "EDUC"
 },
-"EDUC 313F": {
+"EDUC 313G": {
 "buckets": {
 "1-5": {
-"n_course": 22,
+"n_course": 24,
 "pooled": "EDUC",
 "sections_course": 1
 }
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "313F",
+"number": "313G",
 "subject": "EDUC"
 },
-"EDUC 313H": {
+"EDUC 313I": {
 "buckets": {
 "1-5": {
-"n_course": 23,
+"n_course": 21,
 "pooled": "EDUC",
 "sections_course": 1
 }
 },
 "dept_group": "EDUC",
 "level": "grad",
-"number": "313H",
+"number": "313I",
+"subject": "EDUC"
+},
+"EDUC 392": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "grad",
+"number": "392",
 "subject": "EDUC"
 },
 "EDUC 40AC": {
@@ -1488,106 +1633,125 @@ null
 "curve": [
 [
 0.5,
-0.206,
+0.358,
 null,
 null
 ],
 [
 1.0,
-0.296,
+0.495,
 null,
 null
 ],
 [
 2.0,
-0.429,
+0.559,
 null,
 null
 ],
 [
 3.0,
-0.567,
+0.64,
 null,
 null
 ],
 [
 4.0,
-0.694,
+0.718,
 null,
 null
 ],
 [
 5.0,
-0.705,
+0.718,
 null,
 null
 ],
 [
 6.0,
-0.74,
+0.718,
 null,
 null
 ],
 [
 7.0,
-0.767,
+0.774,
 null,
 null
 ],
 [
 8.0,
-0.78,
+0.774,
 null,
 null
 ],
 [
 9.0,
-0.837,
+0.774,
 null,
 null
 ],
 [
 10.0,
-0.898,
+0.774,
 null,
 null
 ],
 [
 12.0,
-0.939,
+0.774,
 null,
 null
 ],
 [
 14.0,
-0.939,
+0.774,
 null,
 null
 ],
 [
 16.0,
-0.959,
+0.774,
 null,
 null
 ],
 [
-17.35,
-0.98,
+18.0,
+0.774,
+null,
+null
+],
+[
+21.0,
+0.774,
+null,
+null
+],
+[
+24.0,
+0.774,
+null,
+null
+],
+[
+28.0,
+0.774,
+null,
+null
+],
+[
+30.82,
+0.774,
 null,
 null
 ]
 ],
-"events": 122,
-"median_days": 2.61,
-"n": 172,
+"events": 46,
+"median_days": 1.41,
+"n": 68,
 "pooled": false,
-"reach_days": 17.4,
+"reach_days": 30.8,
 "sections": 1
-},
-"6-15": {
-"n_course": 8,
-"pooled": "all",
-"sections_course": 1
 }
 },
 "dept_group": "EDUC",
@@ -1595,144 +1759,25 @@ null
 "number": "40AC",
 "subject": "EDUC"
 },
-"EDUC 413A": {
+"EDUC 58": {
 "buckets": {
 "1-5": {
-"n_course": 22,
+"n_course": 14,
 "pooled": "EDUC",
 "sections_course": 1
 }
 },
 "dept_group": "EDUC",
-"level": "grad",
-"number": "413A",
+"level": "lower",
+"number": "58",
 "subject": "EDUC"
 },
 "EDUC C122": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.027,
-null,
-null
-],
-[
-1.0,
-0.027,
-null,
-null
-],
-[
-2.0,
-0.041,
-null,
-null
-],
-[
-3.0,
-0.072,
-null,
-null
-],
-[
-4.0,
-0.119,
-null,
-null
-],
-[
-5.0,
-0.119,
-null,
-null
-],
-[
-6.0,
-0.119,
-null,
-null
-],
-[
-7.0,
-0.119,
-null,
-null
-],
-[
-8.0,
-0.119,
-null,
-null
-],
-[
-9.0,
-0.119,
-null,
-null
-],
-[
-10.0,
-0.119,
-null,
-null
-],
-[
-12.0,
-0.119,
-null,
-null
-],
-[
-14.0,
-0.119,
-null,
-null
-],
-[
-16.0,
-0.119,
-null,
-null
-],
-[
-18.0,
-0.119,
-null,
-null
-],
-[
-21.0,
-0.119,
-null,
-null
-],
-[
-24.0,
-0.119,
-null,
-null
-],
-[
-28.0,
-0.119,
-null,
-null
-],
-[
-30.81,
-0.119,
-null,
-null
-]
-],
-"events": 8,
-"median_days": null,
-"n": 75,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
+"n_course": 11,
+"pooled": "EDUC",
+"sections_course": 1
 }
 },
 "dept_group": "EDUC",
@@ -1746,124 +1791,212 @@ null
 "curve": [
 [
 0.5,
-0.14,
+0.097,
+0.0,
+0.099
+],
+[
+1.0,
+0.137,
+0.0,
+0.14
+],
+[
+2.0,
+0.163,
+0.0,
+0.167
+],
+[
+3.0,
+0.199,
+0.0,
+0.204
+],
+[
+4.0,
+0.279,
+0.0,
+0.286
+],
+[
+5.0,
+0.302,
+0.0,
+0.31
+],
+[
+6.0,
+0.389,
+0.0,
+0.402
+],
+[
+7.0,
+0.422,
+0.0,
+0.437
+],
+[
+8.0,
+0.459,
+0.0,
+0.477
+],
+[
+9.0,
+0.496,
+0.0,
+0.517
+],
+[
+10.0,
+0.496,
+0.0,
+0.517
+],
+[
+12.0,
+0.522,
+0.0,
+0.547
+],
+[
+14.0,
+0.611,
+0.0,
+0.665
+],
+[
+16.0,
+0.611,
+0.0,
+0.665
+],
+[
+18.0,
+0.611,
+0.0,
+0.665
+],
+[
+21.0,
+0.611,
+0.0,
+0.665
+],
+[
+24.0,
+0.611,
+0.0,
+0.665
+],
+[
+25.52,
+0.611,
+0.0,
+0.665
+]
+],
+"events": 50,
+"median_days": 11.76,
+"n": 136,
+"pooled": false,
+"reach_days": 25.5,
+"sections": 2
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
 null,
 null
 ],
 [
 1.0,
-0.183,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.274,
+0.0,
 null,
 null
 ],
 [
 3.0,
-0.311,
+0.0,
 null,
 null
 ],
 [
 4.0,
-0.369,
+0.0,
 null,
 null
 ],
 [
 5.0,
-0.401,
+0.0,
 null,
 null
 ],
 [
 6.0,
-0.467,
+0.0,
 null,
 null
 ],
 [
 7.0,
-0.493,
+0.0,
 null,
 null
 ],
 [
 8.0,
-0.528,
+0.0,
 null,
 null
 ],
 [
 9.0,
-0.558,
+0.0,
 null,
 null
 ],
 [
 10.0,
-0.565,
+0.0,
 null,
 null
 ],
 [
 12.0,
-0.574,
+0.0,
 null,
 null
 ],
 [
 14.0,
-0.603,
+0.0,
 null,
 null
 ],
 [
-16.0,
-0.62,
-null,
-null
-],
-[
-18.0,
-0.62,
-null,
-null
-],
-[
-21.0,
-0.62,
-null,
-null
-],
-[
-24.0,
-0.62,
-null,
-null
-],
-[
-28.0,
-0.62,
-null,
-null
-],
-[
-30.81,
-0.62,
+15.7,
+0.0,
 null,
 null
 ]
 ],
-"events": 120,
-"median_days": 7.01,
-"n": 244,
+"events": 0,
+"median_days": null,
+"n": 41,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 15.7,
 "sections": 1
 }
 },
@@ -1872,259 +2005,808 @@ null
 "number": "C142",
 "subject": "EDUC"
 },
-"EDUC C181": {
+"EDUC W140A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.087,
+0.155,
+0.0,
+0.166
+],
+[
+1.0,
+0.215,
+0.0,
+0.23
+],
+[
+2.0,
+0.343,
+0.0,
+0.366
+],
+[
+3.0,
+0.427,
+0.0,
+0.457
+],
+[
+4.0,
+0.493,
+0.0,
+0.527
+],
+[
+5.0,
+0.522,
+0.0,
+0.558
+],
+[
+6.0,
+0.533,
+0.0,
+0.57
+],
+[
+7.0,
+0.577,
+0.0,
+0.619
+],
+[
+8.0,
+0.619,
+0.0,
+0.666
+],
+[
+9.0,
+0.627,
+0.0,
+0.675
+],
+[
+10.0,
+0.627,
+0.0,
+0.675
+],
+[
+12.0,
+0.627,
+0.0,
+0.675
+],
+[
+14.0,
+0.627,
+0.0,
+0.675
+],
+[
+16.0,
+0.627,
+0.0,
+0.675
+],
+[
+18.0,
+0.627,
+0.0,
+0.675
+],
+[
+21.0,
+0.627,
+0.0,
+0.675
+],
+[
+24.0,
+0.627,
+0.0,
+0.675
+],
+[
+28.0,
+0.627,
+0.0,
+0.675
+],
+[
+32.0,
+0.627,
+0.0,
+0.675
+],
+[
+36.0,
+0.627,
+0.0,
+0.675
+],
+[
+42.0,
+0.627,
+0.0,
+0.675
+],
+[
+49.0,
+0.627,
+0.0,
+0.675
+],
+[
+56.0,
+0.627,
+0.0,
+0.675
+],
+[
+63.0,
+0.627,
+0.0,
+0.675
+],
+[
+70.0,
+0.627,
+0.0,
+0.675
+],
+[
+77.0,
+0.627,
+0.0,
+0.675
+],
+[
+79.75,
+0.627,
+0.0,
+0.675
+]
+],
+"events": 136,
+"median_days": 4.47,
+"n": 245,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 2
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "W140A",
+"subject": "EDUC"
+},
+"EDUC W144": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.19,
+0.187,
+0.211
+],
+[
+1.0,
+0.227,
+0.223,
+0.263
+],
+[
+2.0,
+0.321,
+0.316,
+0.322
+],
+[
+3.0,
+0.341,
+0.316,
+0.345
+],
+[
+4.0,
+0.398,
+0.395,
+0.421
+],
+[
+5.0,
+0.43,
+0.423,
+0.474
+],
+[
+6.0,
+0.439,
+0.434,
+0.474
+],
+[
+7.0,
+0.458,
+0.457,
+0.474
+],
+[
+8.0,
+0.468,
+0.468,
+0.474
+],
+[
+9.0,
+0.479,
+0.474,
+0.482
+],
+[
+10.0,
+0.479,
+0.474,
+0.482
+],
+[
+12.0,
+0.479,
+0.474,
+0.482
+],
+[
+14.0,
+0.522,
+0.474,
+0.535
+],
+[
+16.0,
+0.547,
+0.474,
+0.566
+],
+[
+18.0,
+0.547,
+0.474,
+0.566
+],
+[
+21.0,
+0.547,
+0.474,
+0.566
+],
+[
+24.0,
+0.547,
+0.474,
+0.566
+],
+[
+28.0,
+0.547,
+0.474,
+0.566
+],
+[
+32.0,
+0.547,
+0.474,
+0.566
+],
+[
+36.0,
+0.547,
+0.474,
+0.566
+],
+[
+42.0,
+0.547,
+0.474,
+0.566
+],
+[
+49.0,
+0.547,
+0.474,
+0.566
+],
+[
+56.0,
+0.547,
+0.474,
+0.566
+],
+[
+63.0,
+0.547,
+0.474,
+0.566
+],
+[
+70.0,
+0.547,
+0.474,
+0.566
+],
+[
+77.0,
+0.547,
+0.474,
+0.566
+],
+[
+79.75,
+0.547,
+0.474,
+0.566
+]
+],
+"events": 77,
+"median_days": 12.88,
+"n": 166,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 2
+},
+"6-15": {
+"n_course": 10,
+"pooled": "EDUC",
+"sections_course": 1
+}
+},
+"dept_group": "EDUC",
+"level": "upper",
+"number": "W144",
+"subject": "EDUC"
+},
+"EDUC W161": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.298,
 null,
 null
 ],
 [
 1.0,
-0.117,
+0.426,
 null,
 null
 ],
 [
 2.0,
-0.16,
+0.535,
 null,
 null
 ],
 [
 3.0,
-0.191,
+0.574,
 null,
 null
 ],
 [
 4.0,
-0.218,
+0.586,
 null,
 null
 ],
 [
 5.0,
-0.239,
+0.593,
 null,
 null
 ],
 [
 6.0,
-0.286,
+0.646,
 null,
 null
 ],
 [
 7.0,
-0.317,
+0.677,
 null,
 null
 ],
 [
 8.0,
-0.343,
+0.753,
 null,
 null
 ],
 [
 9.0,
-0.343,
+0.792,
 null,
 null
 ],
 [
 10.0,
-0.354,
+0.818,
 null,
 null
 ],
 [
 12.0,
-0.374,
+0.832,
 null,
 null
 ],
 [
 14.0,
-0.386,
+0.874,
 null,
 null
 ],
 [
 16.0,
-0.397,
+0.892,
 null,
 null
 ],
 [
 18.0,
-0.397,
+0.892,
 null,
 null
 ],
 [
 21.0,
-0.397,
+0.892,
 null,
 null
 ],
 [
 24.0,
-0.397,
+0.892,
 null,
 null
 ],
 [
-28.0,
-0.397,
-null,
-null
-],
-[
-32.0,
-0.397,
-null,
-null
-],
-[
-35.97,
-0.397,
+25.8,
+0.892,
 null,
 null
 ]
 ],
-"events": 57,
-"median_days": null,
-"n": 175,
+"events": 137,
+"median_days": 1.49,
+"n": 196,
 "pooled": false,
-"reach_days": 36.0,
+"reach_days": 25.8,
 "sections": 1
 }
 },
 "dept_group": "EDUC",
 "level": "upper",
-"number": "C181",
+"number": "W161",
 "subject": "EDUC"
 },
-"EDUC W164": {
+"EDUC W190A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.291,
+0.15,
 null,
 null
 ],
 [
 1.0,
-0.383,
+0.205,
 null,
 null
 ],
 [
 2.0,
-0.506,
+0.267,
 null,
 null
 ],
 [
 3.0,
-0.639,
+0.284,
 null,
 null
 ],
 [
 4.0,
-0.724,
+0.301,
 null,
 null
 ],
 [
 5.0,
-0.766,
+0.32,
 null,
 null
 ],
 [
 6.0,
-0.808,
+0.402,
 null,
 null
 ],
 [
 7.0,
-0.817,
+0.495,
 null,
 null
 ],
 [
 8.0,
-0.834,
+0.517,
 null,
 null
 ],
 [
 9.0,
-0.852,
+0.549,
 null,
 null
 ],
 [
 10.0,
-0.852,
+0.557,
 null,
 null
 ],
 [
 12.0,
-0.852,
+0.611,
 null,
 null
 ],
 [
 14.0,
-0.902,
+0.65,
 null,
 null
 ],
 [
 16.0,
-0.902,
+0.671,
 null,
 null
 ],
 [
 18.0,
-0.902,
+0.696,
 null,
 null
 ],
 [
-18.21,
-0.902,
+21.0,
+0.708,
+null,
+null
+],
+[
+24.0,
+0.708,
+null,
+null
+],
+[
+28.0,
+0.708,
+null,
+null
+],
+[
+32.0,
+0.708,
+null,
+null
+],
+[
+36.0,
+0.708,
+null,
+null
+],
+[
+42.0,
+0.708,
+null,
+null
+],
+[
+49.0,
+0.708,
+null,
+null
+],
+[
+56.0,
+0.708,
+null,
+null
+],
+[
+63.0,
+0.708,
+null,
+null
+],
+[
+70.0,
+0.708,
+null,
+null
+],
+[
+77.0,
+0.708,
+null,
+null
+],
+[
+79.75,
+0.708,
 null,
 null
 ]
 ],
-"events": 164,
-"median_days": 1.95,
-"n": 220,
+"events": 112,
+"median_days": 7.19,
+"n": 223,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.012,
+null,
+null
+],
+[
+1.0,
+0.025,
+null,
+null
+],
+[
+2.0,
+0.039,
+null,
+null
+],
+[
+3.0,
+0.039,
+null,
+null
+],
+[
+4.0,
+0.039,
+null,
+null
+],
+[
+5.0,
+0.039,
+null,
+null
+],
+[
+6.0,
+0.057,
+null,
+null
+],
+[
+7.0,
+0.157,
+null,
+null
+],
+[
+8.0,
+0.201,
+null,
+null
+],
+[
+9.0,
+0.201,
+null,
+null
+],
+[
+10.0,
+0.201,
+null,
+null
+],
+[
+12.0,
+0.201,
+null,
+null
+],
+[
+14.0,
+0.274,
+null,
+null
+],
+[
+16.0,
+0.406,
+null,
+null
+],
+[
+18.0,
+0.406,
+null,
+null
+],
+[
+21.0,
+0.406,
+null,
+null
+],
+[
+24.0,
+0.406,
+null,
+null
+],
+[
+28.0,
+0.406,
+null,
+null
+],
+[
+32.0,
+0.406,
+null,
+null
+],
+[
+34.05,
+0.406,
+null,
+null
+]
+],
+"events": 16,
+"median_days": null,
+"n": 88,
+"pooled": false,
+"reach_days": 34.1,
 "sections": 1
 }
 },
 "dept_group": "EDUC",
 "level": "upper",
-"number": "W164",
+"number": "W190A",
 "subject": "EDUC"
 }
 },
 "subject": "EDUC",
-"term_id": "2268"
+"term_id": "2262"
 }

@@ -1,263 +1,615 @@
 {
 "courses": {
-"PLANTBI 135": {
+"PLANTBI 101L": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.243,
+0.031,
 null,
 null
 ],
 [
 1.0,
-0.278,
+0.065,
 null,
 null
 ],
 [
 2.0,
-0.355,
+0.087,
 null,
 null
 ],
 [
 3.0,
-0.419,
+0.087,
 null,
 null
 ],
 [
 4.0,
-0.442,
+0.087,
 null,
 null
 ],
 [
 5.0,
-0.466,
+0.087,
 null,
 null
 ],
 [
 6.0,
-0.506,
+0.087,
 null,
 null
 ],
 [
 7.0,
-0.549,
+0.142,
 null,
 null
 ],
 [
 8.0,
-0.584,
+0.142,
 null,
 null
 ],
 [
 9.0,
-0.592,
+0.184,
 null,
 null
 ],
 [
 10.0,
-0.611,
+0.184,
 null,
 null
 ],
 [
 12.0,
-0.651,
+0.229,
 null,
 null
 ],
 [
 14.0,
-0.749,
+0.283,
 null,
 null
 ],
 [
 16.0,
-0.828,
+0.283,
 null,
 null
 ],
 [
 18.0,
-0.828,
+0.283,
 null,
 null
 ],
 [
 21.0,
-0.845,
+0.283,
 null,
 null
 ],
 [
 24.0,
-0.845,
+0.283,
 null,
 null
 ],
 [
 28.0,
-0.867,
+0.283,
 null,
 null
 ],
 [
 32.0,
-0.9,
+0.283,
 null,
 null
 ],
 [
 36.0,
-0.967,
+0.283,
 null,
 null
 ],
 [
-37.33,
-1.0,
+42.0,
+0.283,
+null,
+null
+],
+[
+49.0,
+0.283,
+null,
+null
+],
+[
+56.0,
+0.283,
+null,
+null
+],
+[
+63.0,
+0.283,
+null,
+null
+],
+[
+70.0,
+0.283,
+null,
+null
+],
+[
+77.0,
+0.283,
+null,
+null
+],
+[
+79.75,
+0.283,
 null,
 null
 ]
 ],
-"events": 107,
-"median_days": 5.83,
-"n": 149,
+"events": 21,
+"median_days": null,
+"n": 97,
 "pooled": false,
-"reach_days": 37.3,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "135",
+"number": "101L",
 "subject": "PLANTBI"
 },
-"PLANTBI 170": {
+"PLANTBI 120": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.28,
+0.211,
 null,
 null
 ],
 [
 1.0,
-0.305,
+0.28,
 null,
 null
 ],
 [
 2.0,
-0.444,
+0.345,
 null,
 null
 ],
 [
 3.0,
-0.564,
+0.452,
 null,
 null
 ],
 [
 4.0,
-0.673,
+0.499,
 null,
 null
 ],
 [
 5.0,
-0.727,
+0.588,
 null,
 null
 ],
 [
 6.0,
-0.793,
+0.663,
 null,
 null
 ],
 [
 7.0,
-0.844,
+0.722,
 null,
 null
 ],
 [
 8.0,
-0.844,
+0.762,
 null,
 null
 ],
 [
 9.0,
-0.844,
+0.775,
 null,
 null
 ],
 [
 10.0,
-0.844,
+0.775,
 null,
 null
 ],
 [
 12.0,
-0.844,
+0.803,
 null,
 null
 ],
 [
 14.0,
-0.844,
+0.803,
 null,
 null
 ],
 [
 16.0,
-0.844,
+0.803,
 null,
 null
 ],
 [
-16.71,
-0.844,
+18.0,
+0.803,
+null,
+null
+],
+[
+21.0,
+0.803,
+null,
+null
+],
+[
+24.0,
+0.803,
+null,
+null
+],
+[
+26.27,
+0.803,
 null,
 null
 ]
 ],
-"events": 57,
-"median_days": 2.59,
-"n": 83,
+"events": 114,
+"median_days": 4.13,
+"n": 182,
 "pooled": false,
-"reach_days": 16.7,
+"reach_days": 26.3,
 "sections": 1
 },
 "6-15": {
-"n_course": 7,
+"n_course": 18,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "170",
+"number": "120",
 "subject": "PLANTBI"
 },
-"PLANTBI 20": {
+"PLANTBI 120L": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.216,
+null,
+null
+],
+[
+1.0,
+0.235,
+null,
+null
+],
+[
+2.0,
+0.308,
+null,
+null
+],
+[
+3.0,
+0.386,
+null,
+null
+],
+[
+4.0,
+0.401,
+null,
+null
+],
+[
+5.0,
+0.43,
+null,
+null
+],
+[
+6.0,
+0.453,
+null,
+null
+],
+[
+7.0,
+0.47,
+null,
+null
+],
+[
+8.0,
+0.518,
+null,
+null
+],
+[
+9.0,
+0.518,
+null,
+null
+],
+[
+10.0,
+0.557,
+null,
+null
+],
+[
+12.0,
+0.567,
+null,
+null
+],
+[
+14.0,
+0.567,
+null,
+null
+],
+[
+16.0,
+0.567,
+null,
+null
+],
+[
+18.0,
+0.567,
+null,
+null
+],
+[
+21.0,
+0.567,
+null,
+null
+],
+[
+24.0,
+0.567,
+null,
+null
+],
+[
+28.0,
+0.567,
+null,
+null
+],
+[
+32.0,
+0.567,
+null,
+null
+],
+[
+36.0,
+0.567,
+null,
+null
+],
+[
+42.0,
+0.567,
+null,
+null
+],
+[
+49.0,
+0.567,
+null,
+null
+],
+[
+56.0,
+0.567,
+null,
+null
+],
+[
+63.0,
+0.567,
+null,
+null
+],
+[
+70.0,
+0.567,
+null,
+null
+],
+[
+77.0,
+0.567,
+null,
+null
+],
+[
+79.75,
+0.567,
+null,
+null
+]
+],
+"events": 82,
+"median_days": 7.5,
+"n": 169,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.047,
+null,
+null
+],
+[
+1.0,
+0.047,
+null,
+null
+],
+[
+2.0,
+0.047,
+null,
+null
+],
+[
+3.0,
+0.103,
+null,
+null
+],
+[
+4.0,
+0.159,
+null,
+null
+],
+[
+5.0,
+0.159,
+null,
+null
+],
+[
+6.0,
+0.188,
+null,
+null
+],
+[
+7.0,
+0.188,
+null,
+null
+],
+[
+8.0,
+0.225,
+null,
+null
+],
+[
+9.0,
+0.225,
+null,
+null
+],
+[
+10.0,
+0.225,
+null,
+null
+],
+[
+12.0,
+0.225,
+null,
+null
+],
+[
+14.0,
+0.225,
+null,
+null
+],
+[
+16.0,
+0.225,
+null,
+null
+],
+[
+18.0,
+0.225,
+null,
+null
+],
+[
+21.0,
+0.225,
+null,
+null
+],
+[
+24.0,
+0.225,
+null,
+null
+],
+[
+25.37,
+0.225,
+null,
+null
+]
+],
+"events": 8,
+"median_days": null,
+"n": 46,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "120L",
+"subject": "PLANTBI"
+},
+"PLANTBI 150": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -400,7 +752,591 @@ null,
 null
 ],
 [
-60.47,
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 66,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "150",
+"subject": "PLANTBI"
+},
+"PLANTBI 160": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.045,
+null,
+null
+],
+[
+1.0,
+0.061,
+null,
+null
+],
+[
+2.0,
+0.093,
+null,
+null
+],
+[
+3.0,
+0.142,
+null,
+null
+],
+[
+4.0,
+0.142,
+null,
+null
+],
+[
+5.0,
+0.159,
+null,
+null
+],
+[
+6.0,
+0.194,
+null,
+null
+],
+[
+7.0,
+0.194,
+null,
+null
+],
+[
+8.0,
+0.194,
+null,
+null
+],
+[
+9.0,
+0.194,
+null,
+null
+],
+[
+10.0,
+0.194,
+null,
+null
+],
+[
+12.0,
+0.194,
+null,
+null
+],
+[
+14.0,
+0.194,
+null,
+null
+],
+[
+16.0,
+0.194,
+null,
+null
+],
+[
+18.0,
+0.194,
+null,
+null
+],
+[
+21.0,
+0.194,
+null,
+null
+],
+[
+24.0,
+0.194,
+null,
+null
+],
+[
+28.0,
+0.194,
+null,
+null
+],
+[
+32.0,
+0.194,
+null,
+null
+],
+[
+36.0,
+0.194,
+null,
+null
+],
+[
+42.0,
+0.194,
+null,
+null
+],
+[
+49.0,
+0.194,
+null,
+null
+],
+[
+56.0,
+0.194,
+null,
+null
+],
+[
+63.0,
+0.194,
+null,
+null
+],
+[
+70.0,
+0.194,
+null,
+null
+],
+[
+77.0,
+0.194,
+null,
+null
+],
+[
+79.75,
+0.194,
+null,
+null
+]
+],
+"events": 12,
+"median_days": null,
+"n": 67,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "160",
+"subject": "PLANTBI"
+},
+"PLANTBI 165": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.157,
+null,
+null
+],
+[
+1.0,
+0.225,
+null,
+null
+],
+[
+2.0,
+0.267,
+null,
+null
+],
+[
+3.0,
+0.321,
+null,
+null
+],
+[
+4.0,
+0.365,
+null,
+null
+],
+[
+5.0,
+0.377,
+null,
+null
+],
+[
+6.0,
+0.377,
+null,
+null
+],
+[
+7.0,
+0.413,
+null,
+null
+],
+[
+8.0,
+0.413,
+null,
+null
+],
+[
+9.0,
+0.413,
+null,
+null
+],
+[
+10.0,
+0.413,
+null,
+null
+],
+[
+12.0,
+0.413,
+null,
+null
+],
+[
+14.0,
+0.428,
+null,
+null
+],
+[
+16.0,
+0.428,
+null,
+null
+],
+[
+18.0,
+0.428,
+null,
+null
+],
+[
+21.0,
+0.428,
+null,
+null
+],
+[
+24.0,
+0.428,
+null,
+null
+],
+[
+28.0,
+0.428,
+null,
+null
+],
+[
+32.0,
+0.428,
+null,
+null
+],
+[
+36.0,
+0.428,
+null,
+null
+],
+[
+42.0,
+0.428,
+null,
+null
+],
+[
+49.0,
+0.428,
+null,
+null
+],
+[
+56.0,
+0.428,
+null,
+null
+],
+[
+63.0,
+0.428,
+null,
+null
+],
+[
+70.0,
+0.428,
+null,
+null
+],
+[
+77.0,
+0.428,
+null,
+null
+],
+[
+79.75,
+0.428,
+null,
+null
+]
+],
+"events": 42,
+"median_days": null,
+"n": 110,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "165",
+"subject": "PLANTBI"
+},
+"PLANTBI 190": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "190",
+"subject": "PLANTBI"
+},
+"PLANTBI 199S": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "199S",
+"subject": "PLANTBI"
+},
+"PLANTBI 220F": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -410,34 +1346,21 @@ null
 "median_days": null,
 "n": 31,
 "pooled": false,
-"reach_days": 60.5,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
-"level": "lower",
-"number": "20",
-"subject": "PLANTBI"
-},
-"PLANTBI 290": {
-"buckets": {
-"1-5": {
-"n_course": 6,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
 "level": "grad",
-"number": "290",
+"number": "220F",
 "subject": "PLANTBI"
 },
 "PLANTBI 292": {
 "buckets": {
 "1-5": {
-"n_course": 24,
+"n_course": 18,
 "pooled": "OTHER",
-"sections_course": 4
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -445,670 +1368,315 @@ null
 "number": "292",
 "subject": "PLANTBI"
 },
-"PLANTBI C110L": {
+"PLANTBI 40": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.082,
+0.559,
 null,
 null
 ],
 [
 1.0,
-0.117,
+0.78,
 null,
 null
 ],
 [
 2.0,
-0.132,
+0.936,
 null,
 null
 ],
 [
 3.0,
-0.151,
+0.982,
 null,
 null
 ],
 [
 4.0,
-0.163,
+0.991,
 null,
 null
 ],
 [
 5.0,
-0.167,
+0.991,
 null,
 null
 ],
 [
 6.0,
+0.991,
+null,
+null
+],
+[
+7.0,
+0.991,
+null,
+null
+],
+[
+8.0,
+0.991,
+null,
+null
+],
+[
+9.0,
+0.991,
+null,
+null
+],
+[
+10.0,
+0.991,
+null,
+null
+],
+[
+12.0,
+0.991,
+null,
+null
+],
+[
+14.0,
+0.991,
+null,
+null
+],
+[
+16.0,
+0.991,
+null,
+null
+],
+[
+18.0,
+0.991,
+null,
+null
+],
+[
+21.0,
+0.991,
+null,
+null
+],
+[
+24.0,
+0.991,
+null,
+null
+],
+[
+25.11,
+0.991,
+null,
+null
+]
+],
+"events": 109,
+"median_days": 0.43,
+"n": 113,
+"pooled": false,
+"reach_days": 25.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 3,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "40",
+"subject": "PLANTBI"
+},
+"PLANTBI C103": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
 0.185,
 null,
 null
 ],
 [
-7.0,
-0.199,
-null,
-null
-],
-[
-8.0,
-0.209,
-null,
-null
-],
-[
-9.0,
-0.209,
-null,
-null
-],
-[
-10.0,
-0.209,
-null,
-null
-],
-[
-12.0,
-0.228,
-null,
-null
-],
-[
-14.0,
-0.248,
-null,
-null
-],
-[
-16.0,
-0.297,
-null,
-null
-],
-[
-18.0,
-0.297,
-null,
-null
-],
-[
-21.0,
-0.297,
-null,
-null
-],
-[
-24.0,
-0.297,
-null,
-null
-],
-[
-28.0,
-0.297,
-null,
-null
-],
-[
-32.0,
-0.297,
-null,
-null
-],
-[
-36.0,
-0.297,
-null,
-null
-],
-[
-36.17,
-0.297,
-null,
-null
-]
-],
-"events": 68,
-"median_days": null,
-"n": 295,
-"pooled": false,
-"reach_days": 36.2,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
 1.0,
-0.0,
+0.243,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.318,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.398,
 null,
 null
 ],
 [
 4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-30.81,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 41,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-36.98,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 178,
-"pooled": false,
-"reach_days": 37.0,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C110L",
-"subject": "PLANTBI"
-},
-"PLANTBI C112": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.235,
-null,
-null
-],
-[
-1.0,
-0.296,
-null,
-null
-],
-[
-2.0,
-0.391,
-null,
-null
-],
-[
-3.0,
 0.461,
 null,
 null
 ],
 [
-4.0,
-0.506,
-null,
-null
-],
-[
 5.0,
-0.563,
+0.48,
 null,
 null
 ],
 [
 6.0,
-0.616,
+0.49,
 null,
 null
 ],
 [
 7.0,
-0.634,
+0.54,
 null,
 null
 ],
 [
 8.0,
-0.648,
+0.551,
 null,
 null
 ],
 [
 9.0,
-0.662,
+0.573,
 null,
 null
 ],
 [
 10.0,
-0.681,
+0.584,
 null,
 null
 ],
 [
 12.0,
-0.696,
+0.595,
 null,
 null
 ],
 [
 14.0,
-0.707,
+0.595,
 null,
 null
 ],
 [
 16.0,
-0.727,
+0.595,
 null,
 null
 ],
 [
 18.0,
-0.735,
+0.595,
 null,
 null
 ],
 [
 21.0,
-0.784,
+0.595,
 null,
 null
 ],
 [
 24.0,
-0.784,
+0.595,
 null,
 null
 ],
 [
 28.0,
-0.784,
-null,
-null
-],
-[
-30.81,
-0.784,
-null,
-null
-]
-],
-"events": 189,
-"median_days": 3.77,
-"n": 282,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.026,
-null,
-null
-],
-[
-2.0,
-0.026,
-null,
-null
-],
-[
-3.0,
-0.026,
-null,
-null
-],
-[
-4.0,
-0.052,
-null,
-null
-],
-[
-5.0,
-0.133,
-null,
-null
-],
-[
-6.0,
-0.133,
-null,
-null
-],
-[
-7.0,
-0.133,
-null,
-null
-],
-[
-8.0,
-0.133,
-null,
-null
-],
-[
-9.0,
-0.168,
-null,
-null
-],
-[
-10.0,
-0.168,
-null,
-null
-],
-[
-12.0,
-0.168,
-null,
-null
-],
-[
-14.0,
-0.168,
-null,
-null
-],
-[
-16.0,
-0.168,
-null,
-null
-],
-[
-18.0,
-0.168,
-null,
-null
-],
-[
-21.0,
-0.168,
-null,
-null
-],
-[
-24.0,
-0.168,
-null,
-null
-],
-[
-28.0,
-0.232,
+0.595,
 null,
 null
 ],
 [
 32.0,
-0.232,
+0.595,
 null,
 null
 ],
 [
-32.8,
-0.232,
+36.0,
+0.595,
+null,
+null
+],
+[
+42.0,
+0.595,
+null,
+null
+],
+[
+49.0,
+0.595,
+null,
+null
+],
+[
+56.0,
+0.595,
+null,
+null
+],
+[
+63.0,
+0.595,
+null,
+null
+],
+[
+70.0,
+0.595,
+null,
+null
+],
+[
+77.0,
+0.595,
+null,
+null
+],
+[
+79.75,
+0.595,
 null,
 null
 ]
 ],
-"events": 7,
-"median_days": null,
-"n": 42,
+"events": 69,
+"median_days": 6.16,
+"n": 130,
 "pooled": false,
-"reach_days": 32.8,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "C112",
+"number": "C103",
 "subject": "PLANTBI"
 },
 "PLANTBI C112L": {
@@ -1117,281 +1685,1012 @@ null
 "curve": [
 [
 0.5,
-0.07,
-0.053,
-0.086
+0.133,
+0.0,
+0.17
 ],
 [
 1.0,
-0.1,
-0.072,
-0.125
+0.156,
+0.0,
+0.196
 ],
 [
 2.0,
-0.124,
-0.081,
-0.164
+0.234,
+0.0,
+0.253
 ],
 [
 3.0,
-0.129,
-0.081,
-0.175
+0.272,
+0.0,
+0.313
 ],
 [
 4.0,
-0.131,
-0.081,
-0.178
+0.289,
+0.0,
+0.348
 ],
 [
 5.0,
-0.134,
-0.081,
-0.184
+0.324,
+0.0,
+0.376
 ],
 [
 6.0,
-0.14,
-0.081,
-0.197
+0.398,
+0.0,
+0.434
 ],
 [
 7.0,
-0.147,
-0.087,
-0.204
+0.464,
+0.0,
+0.523
 ],
 [
 8.0,
-0.151,
-0.087,
-0.21
+0.49,
+0.0,
+0.557
 ],
 [
 9.0,
-0.154,
-0.087,
-0.218
+0.496,
+0.0,
+0.569
 ],
 [
 10.0,
-0.16,
-0.087,
-0.229
+0.511,
+0.0,
+0.604
 ],
 [
 12.0,
-0.175,
-0.095,
-0.255
+0.541,
+0.0,
+0.674
 ],
 [
 14.0,
-0.18,
-0.095,
-0.269
+0.565,
+0.0,
+0.689
 ],
 [
 16.0,
-0.183,
-0.095,
-0.277
+0.573,
+0.0,
+0.689
 ],
 [
 18.0,
-0.202,
-0.107,
-0.301
+0.573,
+0.0,
+0.689
 ],
 [
 21.0,
-0.239,
-0.134,
-0.372
+0.573,
+0.0,
+0.689
 ],
 [
 24.0,
-0.258,
-0.151,
-0.397
+0.573,
+0.0,
+0.689
 ],
 [
 28.0,
-0.258,
-0.151,
-0.397
+0.573,
+0.0,
+0.689
 ],
 [
 32.0,
-0.258,
-0.151,
-0.397
+0.573,
+0.0,
+0.689
 ],
 [
 36.0,
-0.258,
-0.151,
-0.397
+0.573,
+0.0,
+0.689
 ],
 [
-36.14,
-0.258,
-0.151,
-0.397
+42.0,
+0.573,
+0.0,
+0.689
+],
+[
+49.0,
+0.573,
+0.0,
+0.689
+],
+[
+56.0,
+0.573,
+0.0,
+0.689
+],
+[
+63.0,
+0.573,
+0.0,
+0.689
+],
+[
+70.0,
+0.573,
+0.0,
+0.689
+],
+[
+77.0,
+0.573,
+0.0,
+0.689
+],
+[
+79.75,
+0.573,
+0.0,
+0.689
 ]
 ],
-"events": 148,
-"median_days": null,
-"n": 790,
+"events": 133,
+"median_days": 9.14,
+"n": 279,
 "pooled": false,
-"reach_days": 36.1,
-"sections": 4
+"reach_days": 79.7,
+"sections": 3
 },
 "6-15": {
-"curve": [
-[
-0.5,
-0.0,
-0.0,
-0.0
-],
-[
-1.0,
-0.0,
-0.0,
-0.0
-],
-[
-2.0,
-0.004,
-0.0,
-0.012
-],
-[
-3.0,
-0.004,
-0.0,
-0.012
-],
-[
-4.0,
-0.004,
-0.0,
-0.012
-],
-[
-5.0,
-0.004,
-0.0,
-0.012
-],
-[
-6.0,
-0.004,
-0.0,
-0.012
-],
-[
-7.0,
-0.004,
-0.0,
-0.012
-],
-[
-8.0,
-0.004,
-0.0,
-0.012
-],
-[
-9.0,
-0.004,
-0.0,
-0.012
-],
-[
-10.0,
-0.004,
-0.0,
-0.012
-],
-[
-12.0,
-0.004,
-0.0,
-0.012
-],
-[
-14.0,
-0.027,
-0.0,
-0.072
-],
-[
-16.0,
-0.027,
-0.0,
-0.072
-],
-[
-18.0,
-0.027,
-0.0,
-0.072
-],
-[
-21.0,
-0.027,
-0.0,
-0.072
-],
-[
-24.0,
-0.027,
-0.0,
-0.072
-],
-[
-28.0,
-0.027,
-0.0,
-0.072
-],
-[
-32.0,
-0.027,
-0.0,
-0.072
-],
-[
-36.0,
-0.027,
-0.0,
-0.072
-],
-[
-36.14,
-0.027,
-0.0,
-0.072
-]
-],
-"events": 5,
-"median_days": null,
-"n": 276,
-"pooled": false,
-"reach_days": 36.1,
-"sections": 4
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 2
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
 "number": "C112L",
 "subject": "PLANTBI"
+},
+"PLANTBI C114": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.014,
+null,
+null
+],
+[
+1.0,
+0.029,
+null,
+null
+],
+[
+2.0,
+0.029,
+null,
+null
+],
+[
+3.0,
+0.029,
+null,
+null
+],
+[
+4.0,
+0.029,
+null,
+null
+],
+[
+5.0,
+0.029,
+null,
+null
+],
+[
+6.0,
+0.083,
+null,
+null
+],
+[
+7.0,
+0.083,
+null,
+null
+],
+[
+8.0,
+0.121,
+null,
+null
+],
+[
+9.0,
+0.121,
+null,
+null
+],
+[
+10.0,
+0.121,
+null,
+null
+],
+[
+12.0,
+0.165,
+null,
+null
+],
+[
+14.0,
+0.165,
+null,
+null
+],
+[
+16.0,
+0.165,
+null,
+null
+],
+[
+18.0,
+0.165,
+null,
+null
+],
+[
+21.0,
+0.165,
+null,
+null
+],
+[
+24.0,
+0.165,
+null,
+null
+],
+[
+28.0,
+0.165,
+null,
+null
+],
+[
+32.0,
+0.165,
+null,
+null
+],
+[
+36.0,
+0.165,
+null,
+null
+],
+[
+42.0,
+0.165,
+null,
+null
+],
+[
+49.0,
+0.165,
+null,
+null
+],
+[
+56.0,
+0.165,
+null,
+null
+],
+[
+63.0,
+0.165,
+null,
+null
+],
+[
+70.0,
+0.165,
+null,
+null
+],
+[
+77.0,
+0.165,
+null,
+null
+],
+[
+79.75,
+0.165,
+null,
+null
+]
+],
+"events": 9,
+"median_days": null,
+"n": 71,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C114",
+"subject": "PLANTBI"
+},
+"PLANTBI C134": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.076,
+null,
+null
+],
+[
+1.0,
+0.092,
+null,
+null
+],
+[
+2.0,
+0.092,
+null,
+null
+],
+[
+3.0,
+0.092,
+null,
+null
+],
+[
+4.0,
+0.11,
+null,
+null
+],
+[
+5.0,
+0.129,
+null,
+null
+],
+[
+6.0,
+0.188,
+null,
+null
+],
+[
+7.0,
+0.188,
+null,
+null
+],
+[
+8.0,
+0.188,
+null,
+null
+],
+[
+9.0,
+0.209,
+null,
+null
+],
+[
+10.0,
+0.209,
+null,
+null
+],
+[
+12.0,
+0.275,
+null,
+null
+],
+[
+14.0,
+0.275,
+null,
+null
+],
+[
+16.0,
+0.301,
+null,
+null
+],
+[
+18.0,
+0.301,
+null,
+null
+],
+[
+21.0,
+0.301,
+null,
+null
+],
+[
+24.0,
+0.301,
+null,
+null
+],
+[
+28.0,
+0.301,
+null,
+null
+],
+[
+32.0,
+0.301,
+null,
+null
+],
+[
+36.0,
+0.301,
+null,
+null
+],
+[
+42.0,
+0.301,
+null,
+null
+],
+[
+49.0,
+0.301,
+null,
+null
+],
+[
+56.0,
+0.301,
+null,
+null
+],
+[
+63.0,
+0.301,
+null,
+null
+],
+[
+70.0,
+0.301,
+null,
+null
+],
+[
+77.0,
+0.301,
+null,
+null
+],
+[
+79.75,
+0.301,
+null,
+null
+]
+],
+"events": 16,
+"median_days": null,
+"n": 66,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C134",
+"subject": "PLANTBI"
+},
+"PLANTBI C146": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.073,
+null,
+null
+],
+[
+1.0,
+0.099,
+null,
+null
+],
+[
+2.0,
+0.161,
+null,
+null
+],
+[
+3.0,
+0.199,
+null,
+null
+],
+[
+4.0,
+0.239,
+null,
+null
+],
+[
+5.0,
+0.294,
+null,
+null
+],
+[
+6.0,
+0.373,
+null,
+null
+],
+[
+7.0,
+0.482,
+null,
+null
+],
+[
+8.0,
+0.517,
+null,
+null
+],
+[
+9.0,
+0.517,
+null,
+null
+],
+[
+10.0,
+0.517,
+null,
+null
+],
+[
+12.0,
+0.517,
+null,
+null
+],
+[
+14.0,
+0.517,
+null,
+null
+],
+[
+16.0,
+0.517,
+null,
+null
+],
+[
+18.0,
+0.517,
+null,
+null
+],
+[
+21.0,
+0.517,
+null,
+null
+],
+[
+24.0,
+0.517,
+null,
+null
+],
+[
+28.0,
+0.517,
+null,
+null
+],
+[
+32.0,
+0.517,
+null,
+null
+],
+[
+36.0,
+0.517,
+null,
+null
+],
+[
+42.0,
+0.517,
+null,
+null
+],
+[
+49.0,
+0.517,
+null,
+null
+],
+[
+56.0,
+0.517,
+null,
+null
+],
+[
+63.0,
+0.517,
+null,
+null
+],
+[
+70.0,
+0.517,
+null,
+null
+],
+[
+77.0,
+0.517,
+null,
+null
+],
+[
+79.75,
+0.517,
+null,
+null
+]
+],
+"events": 37,
+"median_days": 7.36,
+"n": 82,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C146",
+"subject": "PLANTBI"
+},
+"PLANTBI C148": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.221,
+null,
+null
+],
+[
+1.0,
+0.291,
+null,
+null
+],
+[
+2.0,
+0.361,
+null,
+null
+],
+[
+3.0,
+0.438,
+null,
+null
+],
+[
+4.0,
+0.481,
+null,
+null
+],
+[
+5.0,
+0.544,
+null,
+null
+],
+[
+6.0,
+0.567,
+null,
+null
+],
+[
+7.0,
+0.626,
+null,
+null
+],
+[
+8.0,
+0.646,
+null,
+null
+],
+[
+9.0,
+0.722,
+null,
+null
+],
+[
+10.0,
+0.763,
+null,
+null
+],
+[
+12.0,
+0.799,
+null,
+null
+],
+[
+14.0,
+0.813,
+null,
+null
+],
+[
+16.0,
+0.835,
+null,
+null
+],
+[
+18.0,
+0.843,
+null,
+null
+],
+[
+21.0,
+0.843,
+null,
+null
+],
+[
+24.0,
+0.852,
+null,
+null
+],
+[
+28.0,
+0.852,
+null,
+null
+],
+[
+32.0,
+0.852,
+null,
+null
+],
+[
+36.0,
+0.852,
+null,
+null
+],
+[
+42.0,
+0.852,
+null,
+null
+],
+[
+49.0,
+0.852,
+null,
+null
+],
+[
+56.0,
+0.852,
+null,
+null
+],
+[
+63.0,
+0.852,
+null,
+null
+],
+[
+70.0,
+0.852,
+null,
+null
+],
+[
+77.0,
+0.852,
+null,
+null
+],
+[
+79.75,
+0.852,
+null,
+null
+]
+],
+"events": 155,
+"median_days": 4.41,
+"n": 215,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.097,
+null,
+null
+],
+[
+14.0,
+0.372,
+null,
+null
+],
+[
+16.0,
+0.372,
+null,
+null
+],
+[
+18.0,
+0.791,
+null,
+null
+],
+[
+18.49,
+0.791,
+null,
+null
+]
+],
+"events": 11,
+"median_days": 16.26,
+"n": 32,
+"pooled": false,
+"reach_days": 18.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C148",
+"subject": "PLANTBI"
 }
 },
 "subject": "PLANTBI",
-"term_id": "2268"
+"term_id": "2262"
 }

@@ -87,7 +87,7 @@ Backfilled Berkeleytime history is not on the data branch and not in the reposit
 - From classes.berkeley.edu only a priority list of about 1,213 sections in 661 courses (`config/priority_courses.txt`, generated from the two finished cycles: the courses with the most reconstructed waitlist joins, plus every course with at least 100 joins) is observed every 30 minutes. The rest rotate through 12 shards, so each is observed about every 6 hours. The SIS API would remove this limit, but API Central does not grant it to students.
 - Reserved seats break pure FIFO. A waitlist can sit still while open seats exist.
 - GitHub Actions schedules drift and sometimes skip runs. Gaps are logged in docs/DATA_LOG.md and treated as censoring, not as zero flow. Berkeleytime's own gaps in the Fall 2026 history are treated the same way, and the largest of them (Aug 19 to Sep 1, 2026, every section) removes the first week of instruction from what Fall 2026 can say.
-- One enrollment cycle at a time. Fall 2026 numbers stand in for Spring 2027 until this project's own data exist; policies, capacities and demand change between terms.
+- One enrollment cycle at a time. Spring 2026 numbers stand in for Spring 2027 (Fall 2026's did until 2026-09-24) until this project's own data exist; policies, capacities and demand change between terms.
 
 ## Documents
 

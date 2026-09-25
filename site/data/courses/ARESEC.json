@@ -1,19 +1,19 @@
 {
 "courses": {
-"LANPRO 380": {
+"ARESEC 259": {
 "buckets": {
 "1-5": {
-"n_course": 1,
+"n_course": 8,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "380",
-"subject": "LANPRO"
+"number": "259",
+"subject": "ARESEC"
 }
 },
-"subject": "LANPRO",
-"term_id": "2268"
+"subject": "ARESEC",
+"term_id": "2262"
 }
