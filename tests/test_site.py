@@ -15,6 +15,7 @@ import subprocess
 import sys
 from datetime import date
 from pathlib import Path
+from urllib.parse import unquote
 
 import pytest
 
@@ -548,6 +549,17 @@ def test_course_page_shows_every_bucket_and_the_same_headline(course_site: Path)
     assert "Every position" in html and '<th scope="row">positions 1 to 5 <span class="tag">you</span>' in html and "Other COMPSCI courses" in html
     assert "index.html?course=COMPSCI%200&position=3" in html
     assert out["elements"].get("live", {"html": ""})["html"] == ""  # no live file: the block stays hidden, no error
+
+
+def test_course_page_says_which_course_a_forgiven_query_showed() -> None:
+    """Q5 on the course page: a fuzzy, name or nickname match prints the lookup's "Showing X for query" line; an exact key does not."""
+    for query, key in (("compsi%2061a", "COMPSCI 61A"), ("computer%20science%2061a", "COMPSCI 61A"), ("e7", "ENGIN 7")):
+        out = render(SITE, page="course.html", search=f"?c={query}")
+        assert f'Showing <strong>{key}</strong> for <em>{unquote(query)}</em>.' in out["status"], (query, out["status"])
+        assert out["title"].startswith(key)
+    for query in ("COMPSCI%2061A", "cs61a"):  # exact, and an alias: nothing was forgiven
+        out = render(SITE, page="course.html", search=f"?c={query}")
+        assert "Showing" not in out["status"] and out["title"].startswith("COMPSCI 61A"), (query, out["status"])
 
 
 def test_course_page_without_a_course(full_site: Path) -> None:

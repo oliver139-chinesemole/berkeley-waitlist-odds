@@ -508,9 +508,11 @@ const BWO = (function () {
     return miss();
   }
   function findCourse(index, text) { return matchCourse(index, text).row; }
-  // "Showing COMPSCI 61A for compsi 61a", printed whenever a typo in the subject was forgiven.
-  function showingHtml(m) {
-    if (!m || m.layer !== "fuzzy" || !m.key) return "";
+  // "Showing COMPSCI 61A for compsi 61a", printed when the match needed one of the
+  // given layers: the lookup names a forgiven typo; the course page, whose ?c= can
+  // hold anything a link carried, also names a full-name or nickname match.
+  function showingHtml(m, layers) {
+    if (!m || !m.key || !(layers || ["fuzzy"]).includes(m.layer)) return "";
     return `<p class="note">Showing <strong>${esc(m.key)}</strong> for <em>${esc(String(m.query).trim())}</em>.</p>`;
   }
   // Ranked suggestions for the combobox: prefix matches on the subject (aliases
