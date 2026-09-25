@@ -155,6 +155,7 @@
     meta = r.meta; index = r.data.index; pooled = r.data.pooled || { all: {}, dept: {}, level: {} };
     $("dates").innerHTML = BWO.keyDatesHtml(meta, today);
     $("status").innerHTML = BWO.sourceHtml(meta);
+    BWO.liveStatus($("status"));
     $("form").hidden = false;
     const examples = BWO.topCourses(index, 3, "6-15");
     if (examples.length) {

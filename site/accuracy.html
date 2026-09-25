@@ -116,9 +116,11 @@
     $("prereg").innerHTML = prereg(meta, bt);
     if (!bt || !bt.runs || !bt.runs.length) {
       $("status").innerHTML = `<p><strong>The backtest for ${esc(meta.term_name)} has not been published yet.</strong> The pipeline that writes it is <code>make backtest</code>; its reports land in the repository under <code>reports/backtest_${esc(meta.term_id)}/</code> and on this page.</p>`;
+      BWO.liveStatus($("status"));
       return;
     }
     $("status").innerHTML = `<p><strong>${esc(bt.term_name || meta.term_name)}</strong>${bt.data_source === "berkeleytime_history" || meta.data_source === "berkeleytime_history" ? ", from Berkeleytime's public history" : ""}: ${bt.runs.length} backtest ${bt.runs.length === 1 ? "run" : "runs"}, generated ${esc(BWO.fmtDate(bt.generated_at))}.</p>${bt.term_id && meta.term_id && String(bt.term_id) !== String(meta.term_id) ? `<p>The pages show ${esc(meta.term_name)} curves; these tests were run on ${esc(bt.term_name)}. The runs headed "Fit on ${esc(meta.term_name)}, scored on ${esc(bt.term_name)}" score the curves the pages show; the others test the same method within ${esc(bt.term_name)}.</p>` : ""}`;
+    BWO.liveStatus($("status"));
     const order = ["temporal", "grouped", "cross_term"];
     const runs = bt.runs.slice().sort((a, b) => order.indexOf(a.split) - order.indexOf(b.split) || a.which.localeCompare(b.which));
     const named = ORDER.filter((k) => bt.predictors[k]).concat(Object.keys(bt.predictors).filter((k) => !ORDER.includes(k)));

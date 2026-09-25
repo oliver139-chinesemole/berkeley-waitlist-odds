@@ -71,6 +71,7 @@
     if (r.state !== "ready") return;
     const m = r.meta;
     $("data-status").innerHTML = `Showing: <strong>${esc(m.term_name)}</strong>, ${m.data_source === "berkeleytime_history" ? "from Berkeleytime's public history" : "this project's own snapshots"}; ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners, ${esc(num(m.events))} of whom got in. Horizons on the pages count down to ${esc(m.forecast_term_name || m.term_name)}'s dates.`;
+    BWO.liveStatus($("data-status"));
     BWO.setStamp(m, BWO.today());
   }
   main();

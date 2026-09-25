@@ -144,6 +144,7 @@
     if (r.state === "empty") { $("status").innerHTML = BWO.emptyHtml(r.meta); return; }
     meta = r.meta; index = r.data.index;
     $("status").innerHTML = BWO.sourceHtml(meta) + `<p class="muted small">${BWO.levelNote(meta)}</p>`;
+    BWO.liveStatus($("status"));
     if (BWO.estimateLevel(meta) === "dept") $("hidepooled-label").textContent = "Hide estimates pooled over all courses";
     const depts = Array.from(new Set(index.courses.map((c) => c.dept_group))).sort();
     $("dept").innerHTML = `<option value="">All</option>` + depts.map((d) => `<option value="${esc(d)}">${esc(d === "OTHER" ? "Other departments" : d)}</option>`).join("");

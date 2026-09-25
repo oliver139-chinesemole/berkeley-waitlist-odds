@@ -162,6 +162,43 @@ const BWO = (function () {
     }
     return `<p><strong>${esc(meta.term_name)}</strong>: ${counts}.</p>`;
   }
+  // ------------------------------------------------ live data status (B2)
+  // One sentence appended to a page's status line from the data branch's
+  // status.json (scraper/fetch.py rewrites it after every snapshot): how long ago
+  // the last snapshot ran, how many sections it read and how many it did not
+  // reach. Counts and a relative time, no statistic. The CDN caches the file for
+  // about five minutes, so the age is never given in seconds. Any failure
+  // (network, non-200, bad JSON, no last_run_at) leaves the page as it was.
+  const STATUS_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/status.json";
+  function liveStatusText(s, now) {
+    if (!s || typeof s !== "object" || !s.last_run_at) return null;
+    // Python writes microseconds; keep three digits, the precision every browser parses.
+    const t = Date.parse(String(s.last_run_at).replace(/(\.\d{3})\d+/, "$1"));
+    if (isNaN(t) || !Number.isFinite(s.n_observed) || !Number.isFinite(s.n_missing)) return null;
+    const mins = Math.max(1, Math.round((now - t) / 60000));
+    const ago = mins <= 90 ? `about ${mins} min ago` : `about ${plural(Math.round(mins / 60), "hour")} ago`;
+    // Berkeley term ids: 2, the year's last two digits, then 2 Spring, 5 Summer, 8 Fall (2268 is Fall 2026).
+    // The term is named so the line cannot be read as the collection the source sentence says starts later.
+    const t2 = /^2(\d\d)([258])$/.exec(String(s.term_id));
+    const term = t2 ? `${{ 2: "Spring", 5: "Summer", 8: "Fall" }[t2[2]]} 20${t2[1]} ` : "";
+    return `This project's last ${term}snapshot ran ${ago}: ${plural(s.n_observed, "section")} read, ${num(s.n_missing)} not reached.`;
+  }
+  // Called after the page has set its status line; never awaited, so it cannot
+  // hold up first paint or the data loads.
+  function liveStatus(el) {
+    if (!el) return;
+    const run = async () => {
+      try {
+        const r = await fetch(STATUS_URL, { cache: "default" });
+        if (!r.ok) return;
+        const text = liveStatusText(await r.json(), Date.now());
+        if (!text) return;
+        el.innerHTML += el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`;
+      } catch (e) { /* the page stays as it was */ }
+    };
+    if (typeof document !== "undefined" && document.readyState === "loading") document.addEventListener("DOMContentLoaded", run, { once: true });
+    else run();
+  }
   function sourceLabel(meta) {
     return meta.data_source === "berkeleytime_history" ? `${esc(meta.term_name)}, from Berkeleytime's public history` : `${esc(meta.term_name)}, this project's own snapshots`;
   }
@@ -898,6 +935,7 @@ const BWO = (function () {
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
+    liveStatus, liveStatusText,
   };
 })();
 if (typeof window !== "undefined") window.BWO = BWO;

@@ -53,6 +53,7 @@
     const m = r.meta;
     const src = m.data_source === "berkeleytime_history" ? "Berkeleytime's public history" : "this project's own snapshots";
     el.innerHTML = `<strong>${esc(m.term_name)}</strong>, ${src}: ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners of whom ${esc(num(m.events))} cleared. Data through ${esc(BWO.fmtDate(m.join_window ? m.join_window[1] : m.generated_at))}; files generated ${esc(BWO.fmtDate(m.generated_at))}.${m.prereg_commit ? ` The ${esc(m.term_name)} cohort behind the curves was frozen at commit <code>${esc(String(m.prereg_commit).slice(0, 10))}</code> on ${esc(m.prereg_date || "")} for the Spring 2027 test.` : ""}`;
+    BWO.liveStatus(el);
     BWO.setStamp(m, BWO.today());
   }
   main();

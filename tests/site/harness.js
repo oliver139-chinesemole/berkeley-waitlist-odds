@@ -107,7 +107,21 @@ async function fetchStub(url) {
   return { ok: true, status: 200, json: async () => JSON.parse(text) };
 }
 
-const scripts = [...html.matchAll(/<script(?:\s+src="([^"]+)")?>([\s\S]*?)<\/script>/g)];
+// The data branch's status.json (BWO.liveStatus) is served from
+// HARNESS_STATUS_FILE when that variable names a file; unset, the URL goes to
+// fetchStub and 404s like every other absolute URL. HARNESS_STATUS_REJECT makes
+// that one fetch reject, as a dropped connection does in a browser.
+const STATUS_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/status.json";
+async function pageFetch(url, opts) {
+  if (url === STATUS_URL && process.env.HARNESS_STATUS_REJECT) throw new TypeError("Failed to fetch");
+  if (url === STATUS_URL && process.env.HARNESS_STATUS_FILE) {
+    const text = fs.readFileSync(process.env.HARNESS_STATUS_FILE, "utf8");
+    return { ok: true, status: 200, json: async () => JSON.parse(text) };
+  }
+  return fetchStub(url, opts);
+}
+
+const scripts =[...html.matchAll(/<script(?:\s+src="([^"]+)")?>([\s\S]*?)<\/script>/g)];
 if (!scripts.length) {
   console.error("no <script> in " + htmlPath);
   process.exit(2);
@@ -117,7 +131,7 @@ if (!scripts.length) {
 // own; only the browser globals the pages use are supplied.
 const sandbox = {
   document,
-  fetch: fetchStub,
+  fetch: pageFetch,
   location: { search, pathname: "/" + path.basename(htmlPath), origin: "https://example.test", href: "https://example.test/" + path.basename(htmlPath) + search },
   history: { replaceState(_s, _t, url) { sandbox.location.href = url; } },
   URLSearchParams,

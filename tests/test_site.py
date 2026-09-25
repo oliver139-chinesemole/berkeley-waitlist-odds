@@ -688,6 +688,111 @@ def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Pa
         (full_site / "data" / "backtest.json").unlink()
 
 
+# ------------------------------------------------ live data status (B2)
+# BWO.liveStatus appends one sentence read from the data branch's status.json
+# (served by the harness from HARNESS_STATUS_FILE; unset, the URL 404s).
+STATUS_FIXTURE = ROOT / "tests" / "fixtures" / "status_sample.json"
+STATUS_PAGES = {  # page -> (query, id of the element that carries the status line)
+    "index.html": ("", "status"),
+    "courses.html": ("", "status"),
+    "course.html": ("?c=cs0&position=3", "status"),
+    "insights.html": ("", "status"),
+    "accuracy.html": ("", "status"),
+    "about.html": ("", "data-status"),
+    "methodology.html": ("", "data-status"),
+}
+
+
+def status_file(tmp_path: Path, minutes_ago: float, **changes: object) -> Path:
+    """The fixture with last_run_at moved to ``minutes_ago`` before now (the page measures against the real clock)."""
+    from datetime import datetime, timedelta, timezone
+
+    status = json.loads(STATUS_FIXTURE.read_text())
+    status["last_run_at"] = (datetime.now(timezone.utc) - timedelta(minutes=minutes_ago)).isoformat()
+    status.update(changes)
+    path = tmp_path / f"status_{minutes_ago}.json"
+    path.write_text(json.dumps(status))
+    return path
+
+
+def status_line(site_root: Path, page: str, status: Path | None) -> str:
+    query, el = STATUS_PAGES[page]
+    out = render(site_root, page=page, search=query, env={"HARNESS_STATUS_FILE": str(status)} if status else None)
+    return out["elements"][el]["html"]
+
+
+def test_status_fixture_has_the_fields_the_scraper_writes() -> None:
+    assert sorted(json.loads(STATUS_FIXTURE.read_text())) == [
+        "complete", "kind", "last_run_at", "missing_share", "n_missing", "n_observed", "n_written",
+        "scope", "shard", "snapshot", "source", "sweep_seconds", "term_id", "version",
+    ]
+
+
+@pytest.mark.parametrize("page", sorted(STATUS_PAGES))
+def test_live_status_sentence_follows_the_status_line(full_site: Path, tmp_path: Path, page: str) -> None:
+    import re
+
+    fixture = json.loads(STATUS_FIXTURE.read_text())
+    before = status_line(full_site, page, None)
+    after = status_line(full_site, page, status_file(tmp_path, 12))
+    assert after.startswith(before) and after != before
+    added = after[len(before):]
+    sentence = f"This project's last Fall 2026 snapshot ran about 12 min ago: {fixture['n_observed']:,} sections read, {fixture['n_missing']:,} not reached."
+    assert sentence == "This project's last Fall 2026 snapshot ran about 12 min ago: 1,425 sections read, 1 not reached."
+    escaped = sentence.replace("'", "&#39;")  # the page escapes the sentence like every other text it prints
+    assert re.search(r"This project&#39;s last Fall 2026 snapshot ran about \d+ min ago: ", added) and escaped in added
+    # A <p> status line gets an inline span; a status region gets its own paragraph.
+    assert added == (f' <span class="live-status">{escaped}</span>' if STATUS_PAGES[page][1] == "data-status" else f'<p class="muted small live-status">{escaped}</p>')
+
+
+def test_live_status_older_than_90_minutes_is_in_hours(full_site: Path, tmp_path: Path) -> None:
+    html = status_line(full_site, "index.html", status_file(tmp_path, 185, n_observed=1, n_missing=0))
+    assert "This project&#39;s last Fall 2026 snapshot ran about 3 hours ago: 1 section read, 0 not reached." in html
+    html = status_line(full_site, "about.html", status_file(tmp_path, 89))
+    assert "This project&#39;s last Fall 2026 snapshot ran about 89 min ago: 1,425 sections read, 1 not reached." in html
+
+
+@pytest.mark.parametrize(
+    ("status", "now", "expected"),
+    [
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 12345, "n_missing": 2}, "2026-09-25T18:00:20Z", "This project's last snapshot ran about 1 min ago: 12,345 sections read, 2 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 1, "n_missing": 1}, "2026-09-25T19:30:00Z", "This project's last snapshot ran about 90 min ago: 1 section read, 1 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 0, "n_missing": 0}, "2026-09-25T19:31:00Z", "This project's last snapshot ran about 2 hours ago: 0 sections read, 0 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 5, "n_missing": 0}, "2026-09-25T17:58:00Z", "This project's last snapshot ran about 1 min ago: 5 sections read, 0 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 5, "n_missing": 0, "term_id": "2272"}, "2026-09-25T18:05:00Z", "This project's last Spring 2027 snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 5, "n_missing": 0, "term_id": "2265"}, "2026-09-25T18:05:00Z", "This project's last Summer 2026 snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_observed": 5, "n_missing": 0, "term_id": "9999"}, "2026-09-25T18:05:00Z", "This project's last snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+        ({"n_observed": 5, "n_missing": 0}, "2026-09-25T18:00:00Z", None),
+        ({"last_run_at": "not a date", "n_observed": 5, "n_missing": 0}, "2026-09-25T18:00:00Z", None),
+        ({"last_run_at": "2026-09-25T18:00:00+00:00", "n_missing": 0}, "2026-09-25T18:10:00Z", None),
+        (None, "2026-09-25T18:00:00Z", None),
+    ],
+)
+def test_live_status_text(full_site: Path, status: dict | None, now: str, expected: str | None) -> None:
+    out = render(full_site, page="about.html", today=None, expression=f"BWO.liveStatusText({json.dumps(status)}, Date.parse({json.dumps(now)}))")
+    assert "eval_error" not in out, out.get("eval_error")
+    assert out.get("eval") == expected
+
+
+@pytest.mark.parametrize("page", sorted(STATUS_PAGES))
+def test_live_status_failure_leaves_the_page_as_it_was(full_site: Path, tmp_path: Path, page: str) -> None:
+    before = status_line(full_site, page, None)
+    assert "last snapshot" not in before and "live-status" not in before
+    if page == "index.html":  # byte for byte what the page printed before the live line existed
+        out = render(full_site, expression="BWO.sourceHtml(BWO.loaded.meta)")
+        assert out["status"] == before == out["eval"]
+    truncated = tmp_path / "truncated.json"
+    truncated.write_text(STATUS_FIXTURE.read_text()[:60])
+    assert status_line(full_site, page, truncated) == before  # render() asserts the harness exited 0: nothing threw
+    no_time = tmp_path / "no_time.json"
+    no_time.write_text(json.dumps({k: v for k, v in json.loads(STATUS_FIXTURE.read_text()).items() if k != "last_run_at"}))
+    assert status_line(full_site, page, no_time) == before
+    # The fetch itself rejects (a dropped connection), with a good file behind it: still the line as it was.
+    query, el = STATUS_PAGES[page]
+    out = render(full_site, page=page, search=query, env={"HARNESS_STATUS_FILE": str(status_file(tmp_path, 12)), "HARNESS_STATUS_REJECT": "1"})
+    assert out["elements"][el]["html"] == before
+
+
 def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
     out = render(full_site, page="about.html")
     assert "Simulated term" in out["elements"]["data-status"]["html"] and "this project's own snapshots" in out["elements"]["data-status"]["html"]
