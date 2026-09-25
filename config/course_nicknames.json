@@ -1,0 +1,10 @@
+{
+  "_note": "Hand-written course nicknames for the site's search (docs/DESIGN_A6.md, Lookup). scripts/subject_names.py only reads this file, never writes it, so regenerating config/subject_names.json can never clobber these. A value with a space is a course key and matches the whole query; a bare code is an extra subject alias.",
+  "nicknames": {
+    "E7": "ENGIN 7",
+    "DATA 8": "DATA C8",
+    "BIO 1A": "BIOLOGY 1A",
+    "HAAS": "UGBA",
+    "R&C": "COLWRIT R1A"
+  }
+}
