@@ -4,7 +4,7 @@
   "term_name": "Spring 2027",
   "only_active": false,
   "selection": "courses_with_a_full_or_waitlisted_section",
-  "n_sections": 12,
+  "n_sections": 14,
   "columns": ["section_id", "course_key", "subject", "catalog_number", "component", "section_number", "enrolled", "capacity", "waitlist", "waitlist_capacity", "reserved_count", "open_reserved", "status", "observed_at"],
   "rows": [
     ["30174", "COMPSCI 61A", "COMPSCI", "61A", "LEC", "001", 20, 30, 0, 10, 0, 0, "O", "2027-01-10T11:48:00+00:00"],
@@ -18,6 +18,8 @@
     ["30182", "COMPSCI 61A", "COMPSCI", "61A", "DIS", "108", 25, 30, null, 10, 0, 0, "O", "2027-01-10T11:52:00+00:00"],
     ["30183", "COMPSCI 61A", "COMPSCI", "61A", "DIS", "109", null, null, null, 10, 0, 0, "O", "2027-01-10T11:54:00+00:00"],
     ["31180", "MATH 1A", "MATH", "1A", "LEC", "001", 180, 200, 0, 20, 0, 0, "O", "2027-01-10T11:50:00+00:00"],
-    ["31181", "MATH 1A", "MATH", "1A", "DIS", "101", 25, 25, 3, 10, 0, 0, "W", "2027-01-10T11:52:00+00:00"]
+    ["31181", "MATH 1A", "MATH", "1A", "DIS", "101", 25, 25, 3, 10, 0, 0, "W", "2027-01-10T11:52:00+00:00"],
+    ["20817", "DATA C8", "DATA", "C8", "LEC", "001", 400, 400, 25, 50, 0, 0, "W", "2027-01-10T11:58:00+00:00"],
+    ["20818", "STAT C8", "STAT", "C8", "LEC", "001", 380, 400, 12, 50, 0, 0, "W", "2027-01-10T11:49:00+00:00"]
   ]
 }
