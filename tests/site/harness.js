@@ -85,8 +85,7 @@ const document = {
 // from HARNESS_LIVE_FILE, and 404s when that variable is unset, as it does in a
 // checkout with no data branch.
 async function fetchStub(url) {
-  const absolute = /^https?:\/\//.test(url);
-  const file = absolute ? process.env.HARNESS_LIVE_FILE || "" : path.join(root, url.split("?")[0]);
+  const file = /^https?:\/\//.test(url) ? process.env.HARNESS_LIVE_FILE || "" : path.join(root, url.split("?")[0]);
   if (!file || !fs.existsSync(file)) return { ok: false, status: 404, json: async () => { throw new Error("404"); } };
   if (process.env.HARNESS_FAIL_FETCH) throw new TypeError("Failed to fetch");
   const text = fs.readFileSync(file, "utf8");

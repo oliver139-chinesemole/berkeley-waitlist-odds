@@ -26,7 +26,7 @@ pytestmark = pytest.mark.skipif(NODE is None, reason="node is not installed")
 
 ROOT = Path(__file__).resolve().parent.parent
 FIXTURE = ROOT / "tests" / "fixtures" / "latest_sample.json"
-NOW = "2027-01-10T12:00:00+00:00"  # the fixture's generated_at, and tests.test_site.TODAY
+NOW = "2027-01-10T12:00:00+00:00"  # the fixture's generated_at; its date is tests.test_site.TODAY
 LIVE_ENV = {"HARNESS_LIVE_FILE": str(FIXTURE), "HARNESS_NOW": NOW}
 SEARCH = "?c=COMPSCI+61A&position=3"
 # The course's own sections in the fixture, with the ratios the page prints from them.
@@ -68,7 +68,7 @@ def test_the_block_renders_only_this_courses_sections(live_site: Path) -> None:
     for label, enrolled, waitlist in SECTIONS:
         row = row_of(body, label)
         assert enrolled in row and waitlist in row, label
-    assert "as of 3 min ago" in html  # the newest row, against the pinned clock
+    assert "3 min ago" in html  # the newest row's age, against the pinned clock
     without = render(live_site, page="course.html", search=SEARCH)
     assert board(without) == ""  # no live file, no block, no error
 
