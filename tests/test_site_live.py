@@ -29,7 +29,7 @@ NOW = "2027-01-10T12:00:00+00:00"  # the fixture's generated_at; its date is tes
 LIVE_ENV = {"HARNESS_LIVE_FILE": str(FIXTURE), "HARNESS_NOW": NOW}
 SEARCH = "?c=COMPSCI+61A&position=3"
 # The course's own sections in the fixture, with the ratios the page prints from them.
-SECTIONS = (("LEC 001", "20 / 30", "0 / 10"), ("DIS 101", "30 / 30", "5 / 10"), ("DIS 102", "30 / 30", "0 / 0"), ("DIS 103", "26 / 30", "0 / 10"), ("DIS 104", "28 / 30", "0 / 10"))
+SECTIONS = (("LEC 001", "20 / 30", "0 / 10"), ("DIS 101", "30 / 30", "5 / 10"), ("DIS 102", "30 / 30", "0 / 0"), ("DIS 103", "26 / 30", "0 / 10"), ("DIS 104", "28 / 30", "0 / 10"), ("DIS 105", "26 / 30", "0 / 10"))
 
 
 @pytest.fixture(scope="module")
@@ -90,6 +90,9 @@ def test_the_board_states_of_a3(live_site: Path) -> None:
 
     reserved_row = row_of(html, "DIS 103")  # 26 of 30, all four open seats reserved
     assert "4 seats open, all reserved" in reserved_row and "read 5 min ago" in reserved_row and "status-reserved" in reserved_row
+
+    partly_reserved_row = row_of(html, "DIS 105")  # 26 of 30, two of the four open seats reserved
+    assert "4 seats open, 2 of them reserved" in partly_reserved_row and "read 4 min ago" in partly_reserved_row and "status-open" in partly_reserved_row
 
     stale_row = row_of(html, "DIS 104")  # 28 of 30, read seven hours before the pinned now
     assert "2 seats open, anyone can take them" in stale_row and "status-open" in stale_row
