@@ -1,13 +1,15 @@
-"""The site's JSON (docs/DESIGN_A5.md section 4): index, per-subject curves, pools, insights, meta."""
+"""The site's JSON (docs/DESIGN_A5.md section 4): index, per-subject curves, pools, insights, meta, titles."""
 from __future__ import annotations
 
 import json
+import re
 from datetime import date
 from pathlib import Path
 
 import pandas as pd
 import pytest
 
+import analysis.export as export
 from analysis.calendar import FALL_2026, SPRING_2027, TermCalendar
 from analysis.export import HORIZONS, course_tables, export_site_tables, index_rows, insights_tables, joins_by_course, main, pool_tables, read_curve, resolve_pool
 from tests.test_survival import synthetic_cohort
@@ -163,6 +165,133 @@ def test_cli_rebuilds_site_data_from_a_saved_cohort(cohort: pd.DataFrame, tmp_pa
     assert meta["backfill"] == {"sections": 296} and meta["flows"] == {"admits": 1} and "unrelated" not in meta
     assert meta["prereg_commit"] == "abc123" and meta["prereg_date"] == "2026-09-21" and meta["forecast_term_name"] == "Spring 2027"
 
+
+# --- titles.json: course titles and instructors from the classes_site catalog (Q4) ---
+
+TITLE_CATALOG = {
+    "term_id": "2268",
+    "term_name": "Fall 2026",
+    "sections": [
+        # two sections, two spellings of the title (one each: the tie goes to the LEC's); instructors as lists
+        {"course_key": "COMPSCI 0", "component": "DIS", "section_id": "101", "title": "The Structure and Interpretation of Computer Programs", "instructors": ["Pamela Fox", " Zoe Tan "]},
+        {"course_key": "COMPSCI 0", "component": "LEC", "section_id": "100", "title": "Structure and Interpretation of Computer Programs", "instructors": ["Rebecca Sofia Lie", "Pamela Fox", ""]},
+        # instructors as the scraper writes them: one comma-separated string
+        {"course_key": "MATH 1", "component": "LEC", "section_id": "200", "title": "Calculus", "instructors": "Zed Zhang,  Amy Adams , Zed Zhang"},
+        # absent from the index: never written
+        {"course_key": "HISTORY 7", "component": "LEC", "section_id": "300", "title": "Introduction to the History of the United States", "instructors": "Brian DeLay"},
+    ],
+}
+
+
+def _write_catalog(tmp_path: Path) -> Path:
+    path = tmp_path / "catalog" / "2268" / "catalog.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(TITLE_CATALOG), encoding="utf-8")
+    return path
+
+
+def _without_generated_at(text: str) -> str:
+    return re.sub(r'"generated_at": "[^"]*"', '"generated_at": ""', text)
+
+
+def test_titles_table_title_rule_and_instructor_union() -> None:
+    entries = [
+        # the most common title wins, even against the lecture's
+        {"course_key": "A 1", "component": "DIS", "title": "Common", "instructors": ""},
+        {"course_key": "A 1", "component": "DIS", "title": "Common", "instructors": ""},
+        {"course_key": "A 1", "component": "LEC", "title": "Rare", "instructors": "X Y"},
+        # a tie with no lecture among the tied titles goes alphabetical; an empty title never counts
+        {"course_key": "B 2", "component": "SEM", "title": "Zeta", "instructors": []},
+        {"course_key": "B 2", "component": "DIS", "title": "Alpha", "instructors": []},
+        {"course_key": "B 2", "component": "LAB", "title": "", "instructors": ""},
+        {"course_key": "B 2", "component": "LAB", "title": "", "instructors": ""},
+        # a tie: the title a LEC carries comes first, whatever the alphabet says
+        {"course_key": "C 3", "component": "DIS", "title": "Aardvark", "instructors": ""},
+        {"course_key": "C 3", "component": "LEC", "title": "Zebra", "instructors": ""},
+        # no title, only instructors: kept, with an empty title
+        {"course_key": "D 4", "component": "LEC", "title": "", "instructors": "Only Instructor"},
+        # nothing at all: left out
+        {"course_key": "E 5", "component": "LEC", "title": "", "instructors": ""},
+        {"course_key": "E 5", "component": "LEC", "title": " ", "instructors": [" ", ""]},
+        # not in the index: left out
+        {"course_key": "Z 9", "component": "LEC", "title": "Elsewhere", "instructors": "Some One"},
+    ]
+    table = export.titles_table(["A 1", "B 2", "C 3", "D 4", "E 5", "F 6"], entries)
+    assert table == {
+        "A 1": {"title": "Common", "instructors": ["X Y"]},
+        "B 2": {"title": "Alpha", "instructors": []},
+        "C 3": {"title": "Zebra", "instructors": []},
+        "D 4": {"title": "", "instructors": ["Only Instructor"]},
+    }
+    assert list(table) == sorted(table)
+
+
+def test_export_writes_titles_from_the_catalog(cohort: pd.DataFrame, tmp_path: Path) -> None:
+    catalog = _write_catalog(tmp_path)
+    out = tmp_path / "site_data"
+    index_path, meta_path = export_site_tables(cohort, CAL, out, n_boot=5, catalog=catalog)
+    assert json.loads(meta_path.read_text())["titles_file"] == "titles.json"
+    titles = json.loads((out / "titles.json").read_text())
+    assert set(titles) == {"generated_at", "source", "catalog_term_id", "courses"}
+    assert titles["source"] == "classes_site catalog" and titles["catalog_term_id"] == "2268"
+    assert re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\+00:00", titles["generated_at"])
+    index_keys = {r["key"] for r in json.loads(index_path.read_text())["courses"]}
+    assert set(titles["courses"]) <= index_keys and "HISTORY 7" not in titles["courses"]
+    assert titles["courses"] == {
+        "COMPSCI 0": {"title": "Structure and Interpretation of Computer Programs", "instructors": ["Pamela Fox", "Rebecca Sofia Lie", "Zoe Tan"]},
+        "MATH 1": {"title": "Calculus", "instructors": ["Amy Adams", "Zed Zhang"]},
+    }
+    first = (out / "titles.json").read_text()
+    assert first.index('"COMPSCI 0"') < first.index('"MATH 1"')
+    export_site_tables(cohort, CAL, out, n_boot=5, catalog=catalog)
+    assert _without_generated_at((out / "titles.json").read_text()) == _without_generated_at(first)
+
+
+def test_catalog_term_id_falls_back_to_the_catalog_path(tmp_path: Path) -> None:
+    path = tmp_path / "catalog" / "2272" / "catalog.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps({"sections": TITLE_CATALOG["sections"]}), encoding="utf-8")
+    export.write_titles(tmp_path, ["MATH 1"], path)
+    titles = json.loads((tmp_path / "titles.json").read_text())
+    assert titles["catalog_term_id"] == "2272" and list(titles["courses"]) == ["MATH 1"]
+
+
+def test_export_without_a_catalog_writes_no_titles(cohort: pd.DataFrame, tmp_path: Path) -> None:
+    (tmp_path / "titles.json").write_text("{}")  # left over from an export that had a catalog
+    _, meta_path = export_site_tables(cohort, CAL, tmp_path, n_boot=5)
+    assert not (tmp_path / "titles.json").exists() and "titles_file" not in json.loads(meta_path.read_text())
+
+
+def test_cli_catalog_and_titles_only(cohort: pd.DataFrame, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    catalog = _write_catalog(tmp_path)
+    cohort_path = tmp_path / "cohort.parquet"
+    cohort.to_parquet(cohort_path, index=False)
+    full, bare = tmp_path / "full", tmp_path / "bare"
+    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--out", str(full), "--n-boot", "5", "--catalog", str(catalog)]) == 0
+    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--out", str(bare), "--n-boot", "5"]) == 0
+    assert (full / "titles.json").exists() and json.loads((full / "meta.json").read_text())["titles_file"] == "titles.json"
+    assert not (bare / "titles.json").exists() and "titles_file" not in json.loads((bare / "meta.json").read_text())
+    capsys.readouterr()
+    before = json.loads((bare / "meta.json").read_text())
+    untouched = {p.name: p.read_bytes() for p in bare.iterdir() if p.is_file() and p.name != "meta.json"}
+    # --titles-only: no cohort, no refit; titles.json from the index already there, meta.json patched
+    assert main(["--titles-only", "--out", str(bare), "--catalog", str(catalog)]) == 0
+    printed = json.loads(capsys.readouterr().out)
+    n_index = len(json.loads((bare / "index.json").read_text())["courses"])
+    assert printed["courses"] == 2 and printed["index_keys"] == n_index and printed["index_keys_without_title"] == n_index - 2
+    assert json.loads((bare / "meta.json").read_text()) == {**before, "titles_file": "titles.json"}
+    assert {p.name: p.read_bytes() for p in bare.iterdir() if p.is_file() and p.name not in ("meta.json", "titles.json")} == untouched
+    assert _without_generated_at((bare / "titles.json").read_text()) == _without_generated_at((full / "titles.json").read_text())
+    with pytest.raises(SystemExit):
+        main(["--titles-only", "--out", str(bare)])  # needs --catalog
+    with pytest.raises(SystemExit):
+        main(["--out", str(bare), "--catalog", str(catalog)])  # a full export still needs --cohort and --term-id
+    with pytest.raises(SystemExit):
+        main(["--titles-only", "--out", str(bare), "--catalog", str(catalog), "--cohort", str(cohort_path)])  # refused, not ignored
+    capsys.readouterr()
+    with pytest.raises(SystemExit):
+        main(["--titles-only", "--out", str(tmp_path / "empty"), "--catalog", str(catalog)])  # a plain error, not a traceback
+    assert "no index.json or meta.json there" in capsys.readouterr().err
 
 def test_cli_carries_no_labels_from_another_terms_meta(cohort: pd.DataFrame, tmp_path: Path) -> None:
     """`make site-data` carries source labels from the meta.json already in site/data; when that

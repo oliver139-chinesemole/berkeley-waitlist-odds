@@ -19,7 +19,7 @@ Static site under `site/`, published by `.github/workflows/pages.yml` to GitHub 
 
 | Page | File | Data | Job |
 | --- | --- | --- | --- |
-| Lookup | `index.html` | `meta`, `index`, `pooled`, one `courses/<SUBJECT>.json` on demand | Course and position in, odds and dates out |
+| Lookup | `index.html` | `meta`, `index`, `pooled`, one `courses/<SUBJECT>.json` on demand, `titles` on demand (title and instructor queries only) | Course and position in, odds and dates out |
 | Courses | `courses.html` | `meta`, `index` | Sortable, filterable table of every course |
 | Course | `course.html?c=KEY&position=N` | `meta`, `index`, `pooled`, subject file; `live/latest.json` when present | One course, all buckets, related courses |
 | Department | `dept.html?subject=CODE` | `meta`, `index`, `pooled` | One subject: the department's pooled curve at a bucket, every course in it |
@@ -77,6 +77,10 @@ The page a search result or a subreddit sidebar links for a department. Reads `m
 ## Charts (`BWO.curveChart`)
 
 Step-drawn curves (the maths is a step function, so is the drawing), 2 px lines, band at 12% for the series that asks for one, hairline solid grid, y from 0 to 100%, x in days since joining with the calendar date under each tick when today is known, a hatched region beyond the data's reach, end markers with a surface ring, direct end labels nudged apart, gold vertical markers for the two calendar dates with staggered labels, a crosshair readout on hover, tap and arrow keys (the SVG is focusable), a legend for two or more series, and a "Show as table" details block. No animation.
+
+## Title and instructor search: `titles.json`
+
+`site/data/titles.json` (docs/DESIGN_A5.md section 4; `make site-data` with a data-branch checkout, or `python -m analysis.export --titles-only`) maps each course in `index.json` to its catalog `title` and `instructors`, so "data structures" or "hilfinger" can find a course (MASTER_PLAN Q4). From the Fall 2026 catalog of 2026-09-24 it held 1728 of the index's 2050 courses in 199535 bytes (49407 gzipped), so it is lazy-loaded: the matcher fetches it only when `meta.titles_file` names it and a query has no digit and no known subject token (a subject, or an alias from `SUBJECT_ALIASES`). A plain code query ("cs61a", "COMPSCI 61A", "data 8") never fetches it. Without `meta.titles_file`, or when the fetch fails, search quietly falls back to codes alone. Titles are labels from the catalog term (`catalog_term_id`); they carry no estimate and the pages compute nothing from them.
 
 ## Data branch: `live/latest.json`
 

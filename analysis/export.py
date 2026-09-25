@@ -18,6 +18,9 @@ Files written under ``out_dir`` (``site/data``):
 - ``insights.json``: all-course curves by bucket, the hero cut (lower-division
   courses, Phase 1 joiners), level and phase grids, and, when flows are given,
   daily admits, joins and drops and how waitlisters left the queue.
+- ``titles.json`` (only when a ``catalog.json`` is given): each index course's
+  title and instructors from the classes_site catalog, for title and
+  instructor search. Labels, not statistics.
 
 Every cell is the Kaplan-Meier clearing curve of its virtual waitlisters on a
 fixed grid of days since joining, out to the longest follow-up the cell has
@@ -34,6 +37,8 @@ import json
 import logging
 import re
 import sys
+from collections import Counter
+from collections.abc import Iterable
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -62,6 +67,8 @@ LEVELS, DEFAULT_LEVEL = ESTIMATE_LEVELS, DEFAULT_ESTIMATE_LEVEL  # the names ana
 LEVEL_ORDER = ("lower", "upper", "grad")
 PHASE_ORDER = ("before", "phase1", "between", "phase2", "adjustment", "instruction", "after")
 META_CARRY = ("data_source", "flows", "backfill", "cohort_rows_by_scenario", "prereg_commit", "prereg_date")
+TITLES_FILE = "titles.json"
+TITLES_SOURCE = "classes_site catalog"
 CALENDAR_FIELDS = ("phase1_start", "phase1_end", "phase2_start", "phase2_end", "adjustment_start", "instruction_start", "last_auto_waitlist", "add_drop_deadline")
 
 
@@ -372,6 +379,106 @@ def _dump(path: Path, obj: object) -> None:
     path.write_text(json.dumps(obj, indent=0, sort_keys=True, allow_nan=False), encoding="utf-8")
 
 
+def _names(value: object) -> list[str]:
+    """A catalog entry's instructors as stripped, non-empty names. The scraper writes
+    one comma-separated string as the page prints it ("Pamela Fox, Rebecca Sofia Lie",
+    ``SectionRef.instructors``); a list is taken name by name."""
+    if isinstance(value, str):
+        parts = value.split(",")
+    elif isinstance(value, (list, tuple)):
+        parts = [str(v) for v in value if v is not None]
+    else:
+        parts = []
+    return [p.strip() for p in parts if p.strip()]
+
+
+def titles_table(index_keys: Iterable[str], catalog_entries: Iterable[dict]) -> dict[str, dict]:
+    """``{course_key: {"title", "instructors"}}`` for the index's courses, from catalog entries.
+
+    Only keys in ``index_keys`` (so the file never names a course the site cannot
+    show). A course's title is the most common non-empty title among its entries;
+    a tie goes to a title some ``LEC`` entry carries, then alphabetical.
+    ``instructors`` is the sorted, de-duplicated union of its entries' names. A
+    course with neither is left out. Keys come back sorted."""
+    keys = set(index_keys)
+    counts: dict[str, Counter] = {}
+    on_lecture: dict[str, set[str]] = {}
+    people: dict[str, set[str]] = {}
+    for entry in catalog_entries:
+        key = str(entry.get("course_key") or "")
+        if key not in keys:
+            continue
+        title = str(entry.get("title") or "").strip()
+        if title:
+            counts.setdefault(key, Counter())[title] += 1
+            if str(entry.get("component") or "").upper() == "LEC":
+                on_lecture.setdefault(key, set()).add(title)
+        people.setdefault(key, set()).update(_names(entry.get("instructors")))
+    out: dict[str, dict] = {}
+    for key in sorted(keys):
+        c, lec = counts.get(key, Counter()), on_lecture.get(key, set())
+        title = min(c, key=lambda t: (-c[t], t not in lec, t)) if c else ""
+        names = sorted(people.get(key, ()))
+        if title or names:
+            out[key] = {"title": title, "instructors": names}
+    return out
+
+
+def load_catalog(path: Path | str) -> tuple[str | None, list[dict]]:
+    """``(term id, entries)`` of a classes_site ``catalog.json`` (``{"term_id", "sections": [...]}``).
+    The term id is the file's own, else one its entries carry, else the directory
+    name (``catalog/<term>/catalog.json``)."""
+    path = Path(path)
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    entries = list(payload["sections"])
+    term = payload.get("term_id") or next((e["term_id"] for e in entries if e.get("term_id")), None)
+    if not term and path.parent.name.isdigit():
+        term = path.parent.name
+    return (str(term) if term else None), entries
+
+
+def write_titles(out_dir: Path | str, index_keys: Iterable[str], catalog: Path | str) -> dict:
+    """Write ``titles.json`` under ``out_dir`` for ``index_keys`` from ``catalog``; returns what it wrote.
+    Re-exports of the same inputs are byte-identical apart from ``generated_at``."""
+    term, entries = load_catalog(catalog)
+    payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "source": TITLES_SOURCE,
+        "catalog_term_id": term,
+        "courses": titles_table(index_keys, entries),
+    }
+    _dump(Path(out_dir) / TITLES_FILE, payload)
+    logger.info("wrote %s (%d courses from %s)", Path(out_dir) / TITLES_FILE, len(payload["courses"]), catalog)
+    return payload
+
+
+def titles_summary(payload: dict, index_keys: list[str]) -> dict:
+    """The counts a titles export prints: courses written, how many carry only
+    instructors, and how many index courses have no title in the file."""
+    courses = payload["courses"]
+    return {
+        "catalog_term_id": payload["catalog_term_id"],
+        "courses": len(courses),
+        "courses_without_title": sum(1 for v in courses.values() if not v["title"]),
+        "index_keys": len(index_keys),
+        "index_keys_without_title": sum(1 for k in index_keys if not courses.get(k, {}).get("title")),
+    }
+
+
+def export_titles_only(out_dir: Path | str, catalog: Path | str) -> dict:
+    """Write ``titles.json`` for the ``index.json`` already in ``out_dir`` and add
+    ``titles_file`` to its ``meta.json``; nothing else is read or rewritten (no cohort,
+    no refit). Returns ``titles_summary``."""
+    out_dir = Path(out_dir)
+    keys = [row["key"] for row in json.loads((out_dir / "index.json").read_text(encoding="utf-8"))["courses"]]
+    meta_path = out_dir / "meta.json"
+    info = json.loads(meta_path.read_text(encoding="utf-8"))
+    payload = write_titles(out_dir, keys, catalog)
+    info["titles_file"] = TITLES_FILE
+    meta_path.write_text(json.dumps(info, indent=1, sort_keys=True, allow_nan=False), encoding="utf-8")
+    return {"titles": str(out_dir / TITLES_FILE), "meta": str(meta_path), **titles_summary(payload, keys)}
+
+
 def export_site_tables(
     cohort: pd.DataFrame,
     calendar: TermCalendar,
@@ -383,6 +490,7 @@ def export_site_tables(
     forecast_calendar: TermCalendar | None = None,
     flows: pd.DataFrame | None = None,
     estimate_level: str = DEFAULT_ESTIMATE_LEVEL,
+    catalog: Path | None = None,
 ) -> tuple[Path, Path]:
     """Write the site's JSON under ``out_dir``; returns ``(index.json, meta.json)``.
 
@@ -390,6 +498,9 @@ def export_site_tables(
     is the term whose dates the pages count down to, so a finished cycle can
     stand in for the coming one and be labelled as such. ``estimate_level`` is
     what a course's estimate is (``course_tables``); ``meta.json`` records it.
+    ``catalog`` (a classes_site ``catalog.json``) adds ``titles.json`` for the
+    index's courses and ``meta.titles_file``; without it neither is written and a
+    ``titles.json`` left from an earlier export is removed.
     """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -415,7 +526,12 @@ def export_site_tables(
         _dump(out_dir / rel, {"subject": subject, "term_id": calendar.term_id, "courses": entries})
 
     index_path = out_dir / "index.json"
-    _dump(index_path, {"term_id": calendar.term_id, "horizons": list(HORIZONS), "courses": index_rows(courses, pools, joins)})
+    rows = index_rows(courses, pools, joins)
+    _dump(index_path, {"term_id": calendar.term_id, "horizons": list(HORIZONS), "courses": rows})
+    if catalog is not None:
+        write_titles(out_dir, [row["key"] for row in rows], catalog)
+    elif (out_dir / TITLES_FILE).exists():
+        (out_dir / TITLES_FILE).unlink()
     _dump(out_dir / "pooled.json", {"term_id": calendar.term_id, **pools})
     _dump(out_dir / "insights.json", {"term_id": calendar.term_id, **insights_tables(cohort, pools, min_n=min_n, n_boot=n_boot, flows=flows)})
 
@@ -447,6 +563,8 @@ def export_site_tables(
         "subject_files": subject_files,
         "rank": "wl_joins" if joins else None,
     }
+    if catalog is not None:
+        info["titles_file"] = TITLES_FILE
     if meta:
         info.update(meta)
     info.setdefault("terms", [{"term_id": calendar.term_id, "term_name": calendar.name, "data_source": info.get("data_source")}])
@@ -460,8 +578,8 @@ def main(argv: list[str] | None = None) -> int:
     """Rebuild ``site/data`` from a saved cohort without re-running the whole analysis
     (the by-hand refresh in docs/RUNBOOK.md)."""
     p = argparse.ArgumentParser(description="Write the site's JSON from a cohort Parquet file.")
-    p.add_argument("--cohort", type=Path, required=True, help="e.g. analysis/out/2268/cohort_central.parquet")
-    p.add_argument("--term-id", required=True, help="the cohort's term (its enrollment calendar)")
+    p.add_argument("--cohort", type=Path, default=None, help="e.g. analysis/out/2268/cohort_central.parquet (required unless --titles-only)")
+    p.add_argument("--term-id", default=None, help="the cohort's term (its enrollment calendar; required unless --titles-only)")
     p.add_argument("--forecast-term", default=None, help="term whose dates the pages count down to (default: the cohort's)")
     p.add_argument("--out", type=Path, default=Path("site/data"))
     p.add_argument("--flows", type=Path, default=None, help="flows Parquet of the same term (joins rank, daily series)")
@@ -472,8 +590,25 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--n-boot", type=int, default=N_BOOT)
     p.add_argument("--min-n", type=int, default=MIN_N)
     p.add_argument("--estimate-level", choices=ESTIMATE_LEVELS, default=DEFAULT_ESTIMATE_LEVEL, help="course: a course with min_n rows gets its own curve, else the department's (default); dept: the department's curve stands in for every course")
+    p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json); writes titles.json (each index course's title and instructors) and meta.titles_file")
+    p.add_argument("--titles-only", action="store_true", help="with --catalog: write only titles.json for the index.json already in --out and add titles_file to its meta.json; no cohort, no refit, every other file untouched")
     args = p.parse_args(argv)
+    if args.catalog is not None and not args.catalog.is_file():
+        p.error(f"--catalog {args.catalog}: no such file")
+    if args.titles_only:
+        if args.catalog is None:
+            p.error("--titles-only needs --catalog")
+        if args.cohort is not None or args.term_id is not None:
+            p.error("--titles-only reads the index.json already in --out; drop --cohort and --term-id (or drop --titles-only for a full export)")
+        missing = [name for name in ("index.json", "meta.json") if not (args.out / name).is_file()]
+        if missing:
+            p.error(f"--titles-only needs an existing export in --out {args.out}: no {' or '.join(missing)} there (run a full export first)")
+    elif args.cohort is None or args.term_id is None:
+        p.error("--cohort and --term-id are required (except with --titles-only)")
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
+    if args.titles_only:
+        print(json.dumps(export_titles_only(args.out, args.catalog), indent=1))
+        return 0
     cohort = pd.read_parquet(args.cohort)
     flows = pd.read_parquet(args.flows) if args.flows else None
     meta: dict = {}
@@ -504,9 +639,10 @@ def main(argv: list[str] | None = None) -> int:
         forecast_calendar=calendar_for(args.forecast_term) if args.forecast_term else None,
         flows=flows,
         estimate_level=args.estimate_level,
+        catalog=args.catalog,
     )
     info = json.loads(meta_path.read_text(encoding="utf-8"))
-    print(json.dumps({"index": str(index_path), "meta": str(meta_path), "courses": info["courses"], "events": info["events"], "sections": info["sections"], "data_source": info.get("data_source"), "estimate_level": info["estimate_level"], "subject_files": len(info["subject_files"])}, indent=1))
+    print(json.dumps({"index": str(index_path), "meta": str(meta_path), "courses": info["courses"], "events": info["events"], "sections": info["sections"], "data_source": info.get("data_source"), "estimate_level": info["estimate_level"], "subject_files": len(info["subject_files"]), "titles_file": info.get("titles_file")}, indent=1))
     return 0
 
 
