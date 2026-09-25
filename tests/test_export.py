@@ -286,3 +286,9 @@ def test_cli_catalog_and_titles_only(cohort: pd.DataFrame, tmp_path: Path, capsy
         main(["--titles-only", "--out", str(bare)])  # needs --catalog
     with pytest.raises(SystemExit):
         main(["--out", str(bare), "--catalog", str(catalog)])  # a full export still needs --cohort and --term-id
+    with pytest.raises(SystemExit):
+        main(["--titles-only", "--out", str(bare), "--catalog", str(catalog), "--cohort", str(cohort_path)])  # refused, not ignored
+    capsys.readouterr()
+    with pytest.raises(SystemExit):
+        main(["--titles-only", "--out", str(tmp_path / "empty"), "--catalog", str(catalog)])  # a plain error, not a traceback
+    assert "no index.json or meta.json there" in capsys.readouterr().err

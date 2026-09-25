@@ -598,6 +598,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.titles_only:
         if args.catalog is None:
             p.error("--titles-only needs --catalog")
+        if args.cohort is not None or args.term_id is not None:
+            p.error("--titles-only reads the index.json already in --out; drop --cohort and --term-id (or drop --titles-only for a full export)")
+        missing = [name for name in ("index.json", "meta.json") if not (args.out / name).is_file()]
+        if missing:
+            p.error(f"--titles-only needs an existing export in --out {args.out}: no {' or '.join(missing)} there (run a full export first)")
     elif args.cohort is None or args.term_id is None:
         p.error("--cohort and --term-id are required (except with --titles-only)")
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
