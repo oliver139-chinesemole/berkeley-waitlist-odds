@@ -136,6 +136,7 @@
     if (r.state === "empty") { $("status").innerHTML = BWO.emptyHtml(r.meta); return; }
     meta = r.meta; ins = r.data.insights; pooled = r.data.pooled || { dept: {} }; index = r.data.index;
     $("status").innerHTML = BWO.sourceHtml(meta);
+    BWO.liveStatus($("status"));
     const today = BWO.today();
     const heroSeries = BWO.BUCKET_ORDER.filter((b) => ins.hero[b]).map((b, i) => ({ label: BWO.bucketText(b), short: b, curve: ins.hero[b].curve, cls: "s" + (BWO.BUCKET_ORDER.indexOf(b) + 1), band: false }));
     const allSeries = BWO.BUCKET_ORDER.filter((b) => ins.all_by_bucket[b]).map((b) => ({ label: BWO.bucketText(b), short: b, curve: ins.all_by_bucket[b].curve, cls: "s" + (BWO.BUCKET_ORDER.indexOf(b) + 1), band: false }));

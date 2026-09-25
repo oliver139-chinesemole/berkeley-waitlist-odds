@@ -115,6 +115,7 @@
     if (!entry) { $("status").innerHTML = `<p class="error">Could not load the curves for <strong>${esc(row.key)}</strong>. Check your connection and try again. <button type="button" class="quiet" onclick="location.reload()">Reload</button></p>`; return; }
     entry.key = row.key;
     $("status").innerHTML = BWO.sourceHtml(meta);
+    BWO.liveStatus($("status"));
     render(positionFromUrl());
   }
   main();
