@@ -1,19 +1,32 @@
 {
 "courses": {
-"NAVSCI 400C": {
+"NAVSCI 12A": {
 "buckets": {
 "1-5": {
-"n_course": 8,
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "12A",
+"subject": "NAVSCI"
+},
+"NAVSCI 400E": {
+"buckets": {
+"1-5": {
+"n_course": 19,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "400C",
+"number": "400E",
 "subject": "NAVSCI"
 }
 },
 "subject": "NAVSCI",
-"term_id": "2268"
+"term_id": "2262"
 }

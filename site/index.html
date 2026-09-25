@@ -87,7 +87,8 @@
         <dt>Median time to clear</dt><dd>${esc(BWO.medianText(cell))}</dd>
         <dt>Cases</dt><dd>${esc(BWO.casesHtml(cell, resolved.own))}</dd>
       </dl>
-      <p class="muted small">${BWO.pooledSentence(resolved.pooled, resolved.source, meta)} ${BWO.sourceLabel(meta)}. Central drop scenario; the band is a 95% interval from resampling sections. Read the <a href="methodology.html">methodology</a> before acting on this.</p>
+      ${BWO.ladderHtml(resolved, entry || { key }, bucket, meta)}
+      <p class="muted small">${BWO.sourceLabel(meta)}. Central drop scenario; the band is a 95% interval from resampling sections. Read the <a href="methodology.html">methodology</a> before acting on this.</p>
       <p class="muted small">${BWO.levelNote(meta)}</p>
       <div class="actions"><button type="button" class="quiet" id="copy-link">Copy link</button><button type="button" class="quiet" id="copy-text">Copy as text</button><span id="copied" class="muted small" aria-live="polite"></span></div>
       <p class="muted small">${esc(BWO.VERDICT_NOTE)}</p>
@@ -109,13 +110,20 @@
     renderCell(keyText, pos, bucket, fb, null, `<p class="error">${message}</p><p>Showing the estimate for ${what} at ${esc(BWO.bucketText(bucket))} instead.</p>`);
   }
 
+  let lookups = 0;  // a title query waits for titles.json; a newer lookup wins
   async function lookup(text, pos) {
     const bucket = BWO.bucketOf(pos);
-    const row = BWO.findCourse(index, text);
+    const seq = ++lookups;
+    const match = await BWO.matchCourseAsync(index, text, meta);
+    if (seq !== lookups) return;
+    const row = match.row;
     const q = BWO.parseQuery(text);
+    // Q5: say so whenever a typo in the subject was forgiven or a title matched.
+    $("status").innerHTML = BWO.sourceHtml(meta) + BWO.showingHtml(match);
     const shown = row ? row.key : (q && q.pairs && q.pairs.length ? `${q.pairs[0].subject} ${q.pairs[0].number}` : (q ? q.raw : String(text).trim().toUpperCase()));
     if (!row) {
-      renderFallback(shown, pos, bucket, q && q.pairs && q.pairs.length ? q.pairs[0].subject : null, q && q.pairs && q.pairs.length ? q.pairs[0].number : null, `No data for <strong>${esc(shown)}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.`);
+      const near = match.nearest.length ? ` Did you mean ${match.nearest.map((r) => `<a href="${BWO.withToday(`?course=${encodeURIComponent(r.key)}&position=${pos}`)}">${esc(r.key)}</a>`).join(", ")}?` : "";
+      renderFallback(shown, pos, bucket, q && q.pairs && q.pairs.length ? q.pairs[0].subject : null, q && q.pairs && q.pairs.length ? q.pairs[0].number : null, `No data for <strong>${esc(shown)}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.${near}`);
       return;
     }
     const subj = await BWO.loadSubject(meta, row.subject);
@@ -147,6 +155,7 @@
     meta = r.meta; index = r.data.index; pooled = r.data.pooled || { all: {}, dept: {}, level: {} };
     $("dates").innerHTML = BWO.keyDatesHtml(meta, today);
     $("status").innerHTML = BWO.sourceHtml(meta);
+    BWO.liveStatus($("status"));
     $("form").hidden = false;
     const examples = BWO.topCourses(index, 3, "6-15");
     if (examples.length) {

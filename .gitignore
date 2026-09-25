@@ -10,3 +10,8 @@ data-branch/
 analysis/out/
 backfill/
 reports/**/predictions.parquet
+# Claude Code session state: worktrees and per-session settings never belong in the repo;
+# .claude/agents/ (the project's subagent definitions) does.
+.claude/worktrees/
+.claude/settings.local.json
+.superpowers/

@@ -1,193 +1,133 @@
 {
 "courses": {
-"ENVECON 100": {
+"ENVECON 141": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.41,
+0.256,
 null,
 null
 ],
 [
 1.0,
-0.499,
+0.382,
 null,
 null
 ],
 [
 2.0,
-0.648,
+0.531,
 null,
 null
 ],
 [
 3.0,
-0.793,
+0.612,
 null,
 null
 ],
 [
 4.0,
-0.86,
+0.696,
 null,
 null
 ],
 [
 5.0,
-0.883,
+0.737,
 null,
 null
 ],
 [
 6.0,
-0.907,
+0.773,
 null,
 null
 ],
 [
 7.0,
-0.907,
+0.811,
 null,
 null
 ],
 [
 8.0,
-0.907,
-null,
-null
-],
-[
-9.0,
-0.907,
-null,
-null
-],
-[
-10.0,
-0.907,
-null,
-null
-],
-[
-12.0,
-0.907,
-null,
-null
-],
-[
-13.27,
-0.907,
-null,
-null
-]
-],
-"events": 55,
-"median_days": 1.1,
-"n": 72,
-"pooled": false,
-"reach_days": 13.3,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "100",
-"subject": "ENVECON"
-},
-"ENVECON 185": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.164,
-null,
-null
-],
-[
-1.0,
-0.235,
-null,
-null
-],
-[
-2.0,
-0.408,
-null,
-null
-],
-[
-3.0,
-0.55,
-null,
-null
-],
-[
-4.0,
-0.656,
-null,
-null
-],
-[
-5.0,
-0.732,
-null,
-null
-],
-[
-6.0,
-0.796,
-null,
-null
-],
-[
-7.0,
 0.855,
 null,
 null
 ],
 [
-8.0,
-0.926,
-null,
-null
-],
-[
 9.0,
-0.953,
+0.895,
 null,
 null
 ],
 [
 10.0,
-0.953,
+0.92,
 null,
 null
 ],
 [
 12.0,
-0.98,
+0.927,
 null,
 null
 ],
 [
-12.95,
-1.0,
+14.0,
+0.936,
+null,
+null
+],
+[
+16.0,
+0.936,
+null,
+null
+],
+[
+18.0,
+0.936,
+null,
+null
+],
+[
+21.0,
+0.936,
+null,
+null
+],
+[
+24.0,
+0.936,
+null,
+null
+],
+[
+28.0,
+0.936,
+null,
+null
+],
+[
+28.1,
+0.936,
 null,
 null
 ]
 ],
-"events": 254,
-"median_days": 2.85,
-"n": 306,
+"events": 292,
+"median_days": 1.81,
+"n": 380,
 "pooled": false,
-"reach_days": 12.9,
+"reach_days": 28.1,
 "sections": 1
 },
 "16-40": {
-"n_course": 3,
+"n_course": 23,
 "pooled": "OTHER",
 "sections_course": 1
 },
@@ -195,779 +135,888 @@ null
 "curve": [
 [
 0.5,
-0.065,
+0.017,
 null,
 null
 ],
 [
 1.0,
-0.126,
+0.029,
 null,
 null
 ],
 [
 2.0,
-0.161,
+0.119,
 null,
 null
 ],
 [
 3.0,
-0.19,
+0.235,
 null,
 null
 ],
 [
 4.0,
-0.258,
+0.401,
 null,
 null
 ],
 [
 5.0,
-0.304,
+0.493,
 null,
 null
 ],
 [
 6.0,
-0.411,
+0.545,
 null,
 null
 ],
 [
 7.0,
-0.512,
+0.554,
 null,
 null
 ],
 [
 8.0,
-0.64,
+0.587,
 null,
 null
 ],
 [
 9.0,
-0.697,
+0.598,
 null,
 null
 ],
 [
 10.0,
-0.754,
+0.656,
 null,
 null
 ],
 [
 12.0,
-0.905,
+0.687,
 null,
 null
 ],
 [
 14.0,
-0.972,
-null,
-null
-],
-[
-15.96,
-1.0,
-null,
-null
-]
-],
-"events": 120,
-"median_days": 6.79,
-"n": 153,
-"pooled": false,
-"reach_days": 16.0,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "185",
-"subject": "ENVECON"
-},
-"ENVECON C1": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.206,
-null,
-null
-],
-[
-1.0,
-0.27,
-null,
-null
-],
-[
-2.0,
-0.388,
-null,
-null
-],
-[
-3.0,
-0.431,
-null,
-null
-],
-[
-4.0,
-0.465,
-null,
-null
-],
-[
-5.0,
-0.509,
-null,
-null
-],
-[
-6.0,
-0.578,
-null,
-null
-],
-[
-7.0,
-0.624,
-null,
-null
-],
-[
-8.0,
-0.657,
-null,
-null
-],
-[
-9.0,
-0.761,
-null,
-null
-],
-[
-10.0,
-0.805,
-null,
-null
-],
-[
-12.0,
-0.832,
-null,
-null
-],
-[
-14.0,
-0.832,
+0.732,
 null,
 null
 ],
 [
 16.0,
+0.799,
+null,
+null
+],
+[
+17.47,
+0.933,
+null,
+null
+]
+],
+"events": 92,
+"median_days": 5.05,
+"n": 178,
+"pooled": false,
+"reach_days": 17.5,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "141",
+"subject": "ENVECON"
+},
+"ENVECON 147": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.276,
+null,
+null
+],
+[
+1.0,
+0.392,
+null,
+null
+],
+[
+2.0,
+0.518,
+null,
+null
+],
+[
+3.0,
+0.538,
+null,
+null
+],
+[
+4.0,
+0.597,
+null,
+null
+],
+[
+5.0,
+0.691,
+null,
+null
+],
+[
+6.0,
+0.725,
+null,
+null
+],
+[
+7.0,
+0.771,
+null,
+null
+],
+[
+8.0,
+0.804,
+null,
+null
+],
+[
+9.0,
 0.832,
+null,
+null
+],
+[
+10.0,
+0.839,
+null,
+null
+],
+[
+12.0,
+0.839,
+null,
+null
+],
+[
+14.0,
+0.887,
+null,
+null
+],
+[
+16.0,
+0.929,
 null,
 null
 ],
 [
 18.0,
-0.832,
+0.929,
+null,
+null
+],
+[
+20.82,
+0.929,
+null,
+null
+]
+],
+"events": 185,
+"median_days": 1.85,
+"n": 245,
+"pooled": false,
+"reach_days": 20.8,
+"sections": 1
+},
+"16-40": {
+"n_course": 23,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.036,
+null,
+null
+],
+[
+1.0,
+0.088,
+null,
+null
+],
+[
+2.0,
+0.153,
+null,
+null
+],
+[
+3.0,
+0.166,
+null,
+null
+],
+[
+4.0,
+0.166,
+null,
+null
+],
+[
+5.0,
+0.253,
+null,
+null
+],
+[
+6.0,
+0.253,
+null,
+null
+],
+[
+7.0,
+0.339,
+null,
+null
+],
+[
+8.0,
+0.339,
+null,
+null
+],
+[
+9.0,
+0.339,
+null,
+null
+],
+[
+10.0,
+0.339,
+null,
+null
+],
+[
+12.0,
+0.357,
+null,
+null
+],
+[
+14.0,
+0.5,
+null,
+null
+],
+[
+16.0,
+0.575,
+null,
+null
+],
+[
+18.0,
+0.575,
+null,
+null
+],
+[
+20.82,
+0.575,
+null,
+null
+]
+],
+"events": 39,
+"median_days": 14.74,
+"n": 86,
+"pooled": false,
+"reach_days": 20.8,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "147",
+"subject": "ENVECON"
+},
+"ENVECON 153": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.202,
+null,
+null
+],
+[
+1.0,
+0.328,
+null,
+null
+],
+[
+2.0,
+0.471,
+null,
+null
+],
+[
+3.0,
+0.585,
+null,
+null
+],
+[
+4.0,
+0.653,
+null,
+null
+],
+[
+5.0,
+0.692,
+null,
+null
+],
+[
+6.0,
+0.727,
+null,
+null
+],
+[
+7.0,
+0.78,
+null,
+null
+],
+[
+8.0,
+0.84,
+null,
+null
+],
+[
+9.0,
+0.849,
+null,
+null
+],
+[
+10.0,
+0.854,
+null,
+null
+],
+[
+12.0,
+0.864,
+null,
+null
+],
+[
+14.0,
+0.895,
+null,
+null
+],
+[
+16.0,
+0.895,
+null,
+null
+],
+[
+18.0,
+0.895,
 null,
 null
 ],
 [
 21.0,
-0.832,
+0.895,
 null,
 null
 ],
 [
 24.0,
-0.832,
+0.895,
 null,
 null
 ],
 [
 28.0,
-0.832,
+0.895,
 null,
 null
 ],
 [
-29.82,
-0.832,
+32.0,
+0.895,
+null,
+null
+],
+[
+36.0,
+0.895,
+null,
+null
+],
+[
+42.0,
+0.895,
+null,
+null
+],
+[
+49.0,
+0.895,
+null,
+null
+],
+[
+56.0,
+0.895,
+null,
+null
+],
+[
+63.0,
+0.895,
+null,
+null
+],
+[
+70.0,
+0.895,
+null,
+null
+],
+[
+77.0,
+0.895,
+null,
+null
+],
+[
+79.75,
+0.895,
 null,
 null
 ]
 ],
-"events": 131,
-"median_days": 4.28,
-"n": 207,
+"events": 282,
+"median_days": 2.35,
+"n": 358,
 "pooled": false,
-"reach_days": 29.8,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.0,
+0.036,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.075,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.095,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.196,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.236,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.301,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.38,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.41,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.444,
 null,
 null
 ],
 [
 9.0,
-0.153,
+0.518,
 null,
 null
 ],
 [
 10.0,
-0.386,
+0.518,
 null,
 null
 ],
 [
 12.0,
-0.526,
+0.789,
 null,
 null
 ],
 [
 14.0,
-0.526,
+0.789,
 null,
 null
 ],
 [
 16.0,
-0.526,
+0.789,
 null,
 null
 ],
 [
 18.0,
-0.526,
+0.789,
 null,
 null
 ],
 [
-18.21,
-0.526,
+18.16,
+0.789,
 null,
 null
 ]
 ],
-"events": 9,
-"median_days": 11.98,
-"n": 54,
+"events": 26,
+"median_days": 8.79,
+"n": 55,
 "pooled": false,
 "reach_days": 18.2,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
-"level": "lower",
-"number": "C1",
+"level": "upper",
+"number": "153",
 "subject": "ENVECON"
 },
-"ENVECON C101": {
+"ENVECON 170": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.278,
+0.078,
 null,
 null
 ],
 [
 1.0,
-0.366,
+0.123,
 null,
 null
 ],
 [
 2.0,
-0.511,
+0.169,
 null,
 null
 ],
 [
 3.0,
-0.59,
+0.196,
 null,
 null
 ],
 [
 4.0,
-0.625,
+0.224,
 null,
 null
 ],
 [
 5.0,
-0.641,
+0.307,
 null,
 null
 ],
 [
 6.0,
-0.653,
+0.33,
 null,
 null
 ],
 [
 7.0,
-0.661,
+0.449,
 null,
 null
 ],
 [
 8.0,
-0.665,
+0.488,
 null,
 null
 ],
 [
 9.0,
-0.67,
+0.512,
 null,
 null
 ],
 [
 10.0,
-0.684,
+0.52,
 null,
 null
 ],
 [
 12.0,
-0.699,
+0.56,
 null,
 null
 ],
 [
 14.0,
-0.699,
+0.665,
 null,
 null
 ],
 [
 16.0,
-0.699,
+0.718,
 null,
 null
 ],
 [
 18.0,
-0.699,
+0.759,
 null,
 null
 ],
 [
 21.0,
-0.712,
+0.807,
 null,
 null
 ],
 [
 24.0,
-0.729,
+0.807,
 null,
 null
 ],
 [
-28.0,
-0.776,
-null,
-null
-],
-[
-30.81,
-0.815,
+25.37,
+0.807,
 null,
 null
 ]
 ],
-"events": 245,
-"median_days": 1.89,
-"n": 374,
+"events": 92,
+"median_days": 8.03,
+"n": 174,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 25.4,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.006,
+0.0,
 null,
 null
 ],
 [
 1.0,
-0.025,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.093,
+0.0,
 null,
 null
 ],
 [
 3.0,
-0.219,
+0.0,
 null,
 null
 ],
 [
 4.0,
-0.34,
+0.0,
 null,
 null
 ],
 [
 5.0,
-0.374,
+0.0,
 null,
 null
 ],
 [
 6.0,
-0.383,
+0.018,
 null,
 null
 ],
 [
 7.0,
-0.383,
+0.073,
 null,
 null
 ],
 [
 8.0,
-0.392,
+0.129,
 null,
 null
 ],
 [
 9.0,
-0.402,
+0.168,
 null,
 null
 ],
 [
 10.0,
-0.402,
+0.168,
 null,
 null
 ],
 [
 12.0,
-0.413,
+0.192,
 null,
 null
 ],
 [
 14.0,
-0.413,
+0.46,
 null,
 null
 ],
 [
 16.0,
-0.413,
+0.615,
 null,
 null
 ],
 [
 18.0,
-0.413,
+0.743,
 null,
 null
 ],
 [
 21.0,
-0.413,
+0.872,
 null,
 null
 ],
 [
 24.0,
-0.413,
+0.872,
 null,
 null
 ],
 [
-28.0,
-0.413,
-null,
-null
-],
-[
-30.81,
-0.464,
+25.37,
+0.872,
 null,
 null
 ]
 ],
-"events": 56,
-"median_days": null,
-"n": 165,
+"events": 27,
+"median_days": 14.3,
+"n": 78,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 25.4,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "C101",
+"number": "170",
 "subject": "ENVECON"
 },
-"ENVECON C118": {
+"ENVECON 7": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.305,
+0.138,
 null,
 null
 ],
 [
 1.0,
-0.412,
+0.223,
 null,
 null
 ],
 [
 2.0,
-0.541,
+0.386,
 null,
 null
 ],
 [
 3.0,
-0.622,
-null,
-null
-],
-[
-4.0,
-0.649,
-null,
-null
-],
-[
-5.0,
-0.669,
-null,
-null
-],
-[
-6.0,
-0.669,
-null,
-null
-],
-[
-7.0,
-0.679,
-null,
-null
-],
-[
-8.0,
-0.701,
-null,
-null
-],
-[
-9.0,
-0.701,
-null,
-null
-],
-[
-10.0,
-0.701,
-null,
-null
-],
-[
-12.0,
-0.724,
-null,
-null
-],
-[
-14.0,
-0.724,
-null,
-null
-],
-[
-16.0,
-0.724,
-null,
-null
-],
-[
-18.0,
-0.724,
-null,
-null
-],
-[
-21.0,
-0.724,
-null,
-null
-],
-[
-24.0,
-0.737,
-null,
-null
-],
-[
-28.0,
-0.737,
-null,
-null
-],
-[
-30.81,
-0.825,
-null,
-null
-]
-],
-"events": 107,
-"median_days": 1.77,
-"n": 159,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C118",
-"subject": "ENVECON"
-},
-"ENVECON C132": {
-"buckets": {
-"1-5": {
-"n_course": 23,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C132",
-"subject": "ENVECON"
-},
-"ENVECON C175": {
-"buckets": {
-"1-5": {
-"n_course": 23,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C175",
-"subject": "ENVECON"
-},
-"ENVECON C176": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.239,
-null,
-null
-],
-[
-1.0,
-0.334,
-null,
-null
-],
-[
-2.0,
-0.466,
-null,
-null
-],
-[
-3.0,
-0.539,
+0.521,
 null,
 null
 ],
@@ -979,330 +1028,687 @@ null
 ],
 [
 5.0,
-0.644,
+0.605,
 null,
 null
 ],
 [
 6.0,
-0.67,
+0.655,
 null,
 null
 ],
 [
 7.0,
-0.708,
+0.694,
 null,
 null
 ],
 [
 8.0,
-0.737,
+0.705,
 null,
 null
 ],
 [
 9.0,
-0.764,
+0.705,
 null,
 null
 ],
 [
 10.0,
-0.774,
+0.705,
 null,
 null
 ],
 [
 12.0,
-0.83,
+0.705,
 null,
 null
 ],
 [
 14.0,
-0.868,
+0.705,
 null,
 null
 ],
 [
 16.0,
-0.868,
+0.705,
 null,
 null
 ],
 [
 18.0,
-0.876,
+0.705,
 null,
 null
 ],
 [
 21.0,
-0.907,
+0.705,
 null,
 null
 ],
 [
 24.0,
-0.907,
+0.705,
 null,
 null
 ],
 [
-28.0,
-0.907,
-null,
-null
-],
-[
-30.81,
-0.907,
+26.26,
+0.705,
 null,
 null
 ]
 ],
-"events": 323,
-"median_days": 2.22,
-"n": 459,
+"events": 151,
+"median_days": 2.82,
+"n": 233,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 26.3,
 "sections": 1
 },
-"16-40": {
+"6-15": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "7",
+"subject": "ENVECON"
+},
+"ENVECON C102": {
+"buckets": {
+"1-5": {
 "curve": [
 [
 0.5,
-0.0,
+0.212,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.304,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.38,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.476,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.553,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.57,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.649,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.749,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.812,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.841,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.873,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.927,
 null,
 null
 ],
 [
 14.0,
-0.0,
+0.939,
 null,
 null
 ],
 [
 16.0,
-0.0,
+0.939,
 null,
 null
 ],
 [
 18.0,
-0.0,
+0.951,
 null,
 null
 ],
 [
-18.21,
-0.0,
+21.0,
+0.951,
+null,
+null
+],
+[
+24.0,
+0.951,
+null,
+null
+],
+[
+28.0,
+0.951,
+null,
+null
+],
+[
+32.0,
+0.951,
+null,
+null
+],
+[
+36.0,
+0.951,
+null,
+null
+],
+[
+36.35,
+0.951,
 null,
 null
 ]
 ],
-"events": 0,
-"median_days": null,
-"n": 34,
+"events": 182,
+"median_days": 3.2,
+"n": 241,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 36.4,
+"sections": 1
+},
+"16-40": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.036,
+null,
+null
+],
+[
+1.0,
+0.073,
+null,
+null
+],
+[
+2.0,
+0.073,
+null,
+null
+],
+[
+3.0,
+0.073,
+null,
+null
+],
+[
+4.0,
+0.073,
+null,
+null
+],
+[
+5.0,
+0.073,
+null,
+null
+],
+[
+6.0,
+0.159,
+null,
+null
+],
+[
+7.0,
+0.159,
+null,
+null
+],
+[
+8.0,
+0.21,
+null,
+null
+],
+[
+9.0,
+0.264,
+null,
+null
+],
+[
+10.0,
+0.321,
+null,
+null
+],
+[
+12.0,
+0.507,
+null,
+null
+],
+[
+14.0,
+0.789,
+null,
+null
+],
+[
+16.0,
+0.894,
+null,
+null
+],
+[
+17.27,
+0.965,
+null,
+null
+]
+],
+"events": 34,
+"median_days": 11.23,
+"n": 55,
+"pooled": false,
+"reach_days": 17.3,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C102",
+"subject": "ENVECON"
+},
+"ENVECON C118": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.287,
+null,
+null
+],
+[
+1.0,
+0.381,
+null,
+null
+],
+[
+2.0,
+0.508,
+null,
+null
+],
+[
+3.0,
+0.532,
+null,
+null
+],
+[
+4.0,
+0.576,
+null,
+null
+],
+[
+5.0,
+0.691,
+null,
+null
+],
+[
+6.0,
+0.782,
+null,
+null
+],
+[
+7.0,
+0.827,
+null,
+null
+],
+[
+8.0,
+0.846,
+null,
+null
+],
+[
+9.0,
+0.916,
+null,
+null
+],
+[
+10.0,
+0.926,
+null,
+null
+],
+[
+11.74,
+1.0,
+null,
+null
+]
+],
+"events": 118,
+"median_days": 1.85,
+"n": 133,
+"pooled": false,
+"reach_days": 11.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C118",
+"subject": "ENVECON"
+},
+"ENVECON C132": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.266,
+null,
+null
+],
+[
+1.0,
+0.366,
+null,
+null
+],
+[
+2.0,
+0.523,
+null,
+null
+],
+[
+3.0,
+0.605,
+null,
+null
+],
+[
+4.0,
+0.662,
+null,
+null
+],
+[
+5.0,
+0.685,
+null,
+null
+],
+[
+6.0,
+0.727,
+null,
+null
+],
+[
+7.0,
+0.765,
+null,
+null
+],
+[
+8.0,
+0.831,
+null,
+null
+],
+[
+9.0,
+0.89,
+null,
+null
+],
+[
+10.0,
+0.89,
+null,
+null
+],
+[
+12.0,
+0.931,
+null,
+null
+],
+[
+14.0,
+0.951,
+null,
+null
+],
+[
+16.0,
+0.951,
+null,
+null
+],
+[
+18.0,
+0.951,
+null,
+null
+],
+[
+21.0,
+0.967,
+null,
+null
+],
+[
+24.0,
+0.967,
+null,
+null
+],
+[
+25.37,
+0.984,
+null,
+null
+]
+],
+"events": 199,
+"median_days": 1.94,
+"n": 254,
+"pooled": false,
+"reach_days": 25.4,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.0,
+0.018,
 null,
 null
 ],
 [
 1.0,
-0.034,
+0.018,
 null,
 null
 ],
 [
 2.0,
-0.045,
+0.056,
 null,
 null
 ],
 [
 3.0,
-0.062,
+0.155,
 null,
 null
 ],
 [
 4.0,
-0.081,
+0.281,
 null,
 null
 ],
 [
 5.0,
-0.102,
+0.281,
 null,
 null
 ],
 [
 6.0,
-0.102,
+0.305,
 null,
 null
 ],
 [
 7.0,
-0.117,
+0.305,
 null,
 null
 ],
 [
 8.0,
-0.126,
+0.337,
 null,
 null
 ],
 [
 9.0,
-0.157,
+0.337,
 null,
 null
 ],
 [
 10.0,
-0.157,
+0.337,
 null,
 null
 ],
 [
 12.0,
-0.157,
+0.374,
 null,
 null
 ],
 [
 14.0,
-0.199,
+0.568,
 null,
 null
 ],
 [
 16.0,
-0.221,
+0.697,
 null,
 null
 ],
 [
 18.0,
-0.221,
+0.697,
 null,
 null
 ],
 [
 21.0,
-0.299,
+0.697,
 null,
 null
 ],
 [
 24.0,
-0.498,
+0.697,
 null,
 null
 ],
 [
-28.0,
-0.57,
-null,
-null
-],
-[
-30.81,
-0.57,
+25.37,
+0.697,
 null,
 null
 ]
 ],
-"events": 33,
-"median_days": 25.08,
-"n": 218,
+"events": 23,
+"median_days": 13.64,
+"n": 57,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 25.4,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "C176",
+"number": "C132",
 "subject": "ENVECON"
 },
 "ENVECON C181": {
@@ -1311,91 +1717,91 @@ null
 "curve": [
 [
 0.5,
-0.246,
+0.293,
 null,
 null
 ],
 [
 1.0,
-0.334,
+0.341,
 null,
 null
 ],
 [
 2.0,
-0.431,
+0.389,
 null,
 null
 ],
 [
 3.0,
-0.463,
+0.509,
 null,
 null
 ],
 [
 4.0,
-0.52,
+0.545,
 null,
 null
 ],
 [
 5.0,
-0.535,
+0.564,
 null,
 null
 ],
 [
 6.0,
-0.568,
+0.618,
 null,
 null
 ],
 [
 7.0,
-0.639,
+0.636,
 null,
 null
 ],
 [
 8.0,
-0.685,
+0.676,
 null,
 null
 ],
 [
 9.0,
-0.703,
+0.676,
 null,
 null
 ],
 [
 10.0,
-0.743,
+0.698,
 null,
 null
 ],
 [
 12.0,
-0.803,
+0.731,
 null,
 null
 ],
 [
 14.0,
-0.84,
+0.765,
 null,
 null
 ],
 [
 16.0,
-0.865,
+0.765,
 null,
 null
 ],
 [
 18.0,
-0.882,
+0.824,
 null,
 null
 ],
@@ -1418,23 +1824,18 @@ null,
 null
 ],
 [
-30.81,
+31.98,
 0.882,
 null,
 null
 ]
 ],
-"events": 133,
-"median_days": 3.78,
-"n": 204,
+"events": 48,
+"median_days": 2.97,
+"n": 72,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 32.0,
 "sections": 1
-},
-"6-15": {
-"n_course": 9,
-"pooled": "OTHER",
-"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -1444,5 +1845,5 @@ null
 }
 },
 "subject": "ENVECON",
-"term_id": "2268"
+"term_id": "2262"
 }

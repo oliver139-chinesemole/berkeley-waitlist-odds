@@ -1,0 +1,20 @@
+{
+ "generated_at": "2026-09-25T00:00:00+00:00",
+ "source": "hand-written test sample in the shape of the classes_site catalog export",
+ "catalog_term_id": "2268",
+ "courses": {
+  "ASTRON 11": {"title": "Introduction to Astrophysics", "instructors": ["Maya Okafor"]},
+  "CHEM 1A": {"title": "General Chemistry", "instructors": ["Daniel Reyes", "Priya Natarajan"]},
+  "COMPSCI 61A": {"title": "The Structure and Interpretation of Computer Programs", "instructors": ["John DeNero"]},
+  "COMPSCI 61B": {"title": "Data Structures", "instructors": ["Justin Yokota", "Paul Hilfinger"]},
+  "COMPSCI 70": {"title": "Discrete Mathematics and Probability Theory", "instructors": ["Elena Varga"]},
+  "DATA C8": {"title": "Foundations of Data Science", "instructors": ["John DeNero", "Samira Haddad"]},
+  "ECON 1": {"title": "Introduction to Economics", "instructors": ["Thomas Lindqvist"]},
+  "INDENG 172": {"title": "Probability and Risk Analysis for Engineers", "instructors": ["Grace Whitfield"]},
+  "MATH 53": {"title": "Multivariable Calculus", "instructors": ["Henry Castellano"]},
+  "MATH 54": {"title": "Linear Algebra and Differential Equations", "instructors": ["Ana Moreau"]},
+  "MCELLBI 104": {"title": "Genetics, Genomics, and Cell Biology", "instructors": ["Rachel Osei"]},
+  "STAT 20": {"title": "Introduction to Probability and Statistics", "instructors": ["Kevin Albright"]},
+  "UGBA 100": {"title": "Business Communication", "instructors": []}
+ }
+}

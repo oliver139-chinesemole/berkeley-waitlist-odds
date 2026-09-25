@@ -1,130 +1,174 @@
 {
 "courses": {
-"LS 198": {
+"LS 1": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "1",
+"subject": "LS"
+},
+"LS 110": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.096,
-0.078,
-0.113
+0.517,
+null,
+null
 ],
 [
 1.0,
-0.119,
-0.089,
-0.146
+0.758,
+null,
+null
 ],
 [
 2.0,
-0.171,
-0.135,
-0.206
+0.875,
+null,
+null
 ],
 [
 3.0,
-0.217,
-0.167,
-0.269
+0.906,
+null,
+null
 ],
 [
 4.0,
-0.245,
-0.182,
-0.305
+0.953,
+null,
+null
 ],
 [
 5.0,
-0.27,
-0.199,
-0.345
+0.953,
+null,
+null
 ],
 [
 6.0,
-0.29,
-0.209,
-0.377
+0.953,
+null,
+null
 ],
 [
 7.0,
-0.311,
-0.23,
-0.399
+0.953,
+null,
+null
 ],
 [
 8.0,
-0.33,
-0.242,
-0.427
+0.953,
+null,
+null
 ],
 [
 9.0,
-0.344,
-0.253,
-0.443
+0.953,
+null,
+null
 ],
 [
 10.0,
-0.376,
-0.281,
-0.482
+0.953,
+null,
+null
 ],
 [
 12.0,
-0.395,
-0.298,
-0.497
+0.953,
+null,
+null
 ],
 [
 14.0,
-0.423,
-0.327,
-0.537
+0.953,
+null,
+null
 ],
 [
 16.0,
-0.438,
-0.33,
-0.569
+0.953,
+null,
+null
 ],
 [
 18.0,
-0.442,
-0.338,
-0.574
+0.953,
+null,
+null
 ],
 [
 21.0,
-0.442,
-0.338,
-0.574
+0.953,
+null,
+null
 ],
 [
 24.0,
-0.442,
-0.338,
-0.574
+0.953,
+null,
+null
 ],
 [
 28.0,
-0.442,
-0.338,
-0.574
+0.953,
+null,
+null
 ],
 [
-30.81,
-0.442,
-0.338,
-0.574
+31.82,
+0.953,
+null,
+null
 ]
 ],
-"events": 392,
-"median_days": null,
-"n": 1290,
+"events": 124,
+"median_days": 0.47,
+"n": 133,
 "pooled": false,
-"reach_days": 30.8,
-"sections": 18
+"reach_days": 31.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "110",
+"subject": "LS"
+},
+"LS 133": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "133",
+"subject": "LS"
+},
+"LS 198": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
@@ -132,10 +176,337 @@
 "number": "198",
 "subject": "LS"
 },
+"LS 22": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.364,
+null,
+null
+],
+[
+1.0,
+0.515,
+null,
+null
+],
+[
+2.0,
+0.696,
+null,
+null
+],
+[
+3.0,
+0.796,
+null,
+null
+],
+[
+4.0,
+0.85,
+null,
+null
+],
+[
+5.0,
+0.871,
+null,
+null
+],
+[
+6.0,
+0.874,
+null,
+null
+],
+[
+7.0,
+0.88,
+null,
+null
+],
+[
+8.0,
+0.88,
+null,
+null
+],
+[
+9.0,
+0.88,
+null,
+null
+],
+[
+10.0,
+0.883,
+null,
+null
+],
+[
+12.0,
+0.909,
+null,
+null
+],
+[
+14.0,
+0.929,
+null,
+null
+],
+[
+16.0,
+0.935,
+null,
+null
+],
+[
+18.0,
+0.935,
+null,
+null
+],
+[
+18.62,
+0.935,
+null,
+null
+]
+],
+"events": 516,
+"median_days": 0.96,
+"n": 616,
+"pooled": false,
+"reach_days": 18.6,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.066,
+null,
+null
+],
+[
+4.0,
+0.146,
+null,
+null
+],
+[
+5.0,
+0.267,
+null,
+null
+],
+[
+6.0,
+0.398,
+null,
+null
+],
+[
+7.0,
+0.474,
+null,
+null
+],
+[
+8.0,
+0.707,
+null,
+null
+],
+[
+9.0,
+0.743,
+null,
+null
+],
+[
+10.0,
+0.743,
+null,
+null
+],
+[
+12.0,
+0.743,
+null,
+null
+],
+[
+14.0,
+0.743,
+null,
+null
+],
+[
+15.7,
+0.743,
+null,
+null
+]
+],
+"events": 39,
+"median_days": 7.0,
+"n": 110,
+"pooled": false,
+"reach_days": 15.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.021,
+null,
+null
+],
+[
+1.0,
+0.038,
+null,
+null
+],
+[
+2.0,
+0.12,
+null,
+null
+],
+[
+3.0,
+0.232,
+null,
+null
+],
+[
+4.0,
+0.375,
+null,
+null
+],
+[
+5.0,
+0.516,
+null,
+null
+],
+[
+6.0,
+0.615,
+null,
+null
+],
+[
+7.0,
+0.712,
+null,
+null
+],
+[
+8.0,
+0.734,
+null,
+null
+],
+[
+9.0,
+0.753,
+null,
+null
+],
+[
+10.0,
+0.753,
+null,
+null
+],
+[
+12.0,
+0.753,
+null,
+null
+],
+[
+14.0,
+0.753,
+null,
+null
+],
+[
+16.0,
+0.803,
+null,
+null
+],
+[
+18.0,
+0.803,
+null,
+null
+],
+[
+19.39,
+0.803,
+null,
+null
+]
+],
+"events": 150,
+"median_days": 4.73,
+"n": 294,
+"pooled": false,
+"reach_days": 19.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "22",
+"subject": "LS"
+},
+"LS 98": {
+"buckets": {
+"1-5": {
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "98",
+"subject": "LS"
+},
 "LS C12": {
 "buckets": {
 "1-5": {
-"n_course": 28,
+"n_course": 21,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -148,7 +519,7 @@
 "LS C120T": {
 "buckets": {
 "1-5": {
-"n_course": 28,
+"n_course": 13,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -158,10 +529,23 @@
 "number": "C120T",
 "subject": "LS"
 },
+"LS C160V": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "C160V",
+"subject": "LS"
+},
 "LS C180Y": {
 "buckets": {
 "1-5": {
-"n_course": 28,
+"n_course": 13,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -171,23 +555,75 @@
 "number": "C180Y",
 "subject": "LS"
 },
-"LS C196C": {
+"LS C30V": {
 "buckets": {
 "1-5": {
-"n_course": 28,
+"n_course": 21,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
-"level": "upper",
-"number": "C196C",
+"level": "lower",
+"number": "C30V",
+"subject": "LS"
+},
+"LS C46": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C46",
+"subject": "LS"
+},
+"LS C60U": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C60U",
+"subject": "LS"
+},
+"LS C60V": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C60V",
+"subject": "LS"
+},
+"LS C70T": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C70T",
 "subject": "LS"
 },
 "LS C70U": {
 "buckets": {
 "1-5": {
-"n_course": 28,
+"n_course": 13,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -200,7 +636,7 @@
 "LS C70V": {
 "buckets": {
 "1-5": {
-"n_course": 28,
+"n_course": 20,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -210,10 +646,23 @@
 "number": "C70V",
 "subject": "LS"
 },
+"LS C70W": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "lower",
+"number": "C70W",
+"subject": "LS"
+},
 "LS C70Y": {
 "buckets": {
 "1-5": {
-"n_course": 28,
+"n_course": 12,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -225,5 +674,5 @@
 }
 },
 "subject": "LS",
-"term_id": "2268"
+"term_id": "2262"
 }

@@ -1,99 +1,177 @@
 {
 "courses": {
-"BIOENG 10": {
+"BIOENG 100": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.282,
+0.254,
 null,
 null
 ],
 [
 1.0,
-0.355,
+0.362,
 null,
 null
 ],
 [
 2.0,
-0.451,
+0.478,
 null,
 null
 ],
 [
 3.0,
-0.582,
+0.541,
 null,
 null
 ],
 [
 4.0,
-0.67,
+0.581,
 null,
 null
 ],
 [
 5.0,
-0.738,
+0.594,
 null,
 null
 ],
 [
 6.0,
-0.795,
+0.603,
 null,
 null
 ],
 [
 7.0,
-0.847,
+0.611,
 null,
 null
 ],
 [
 8.0,
-0.882,
+0.618,
 null,
 null
 ],
 [
 9.0,
-0.903,
+0.634,
 null,
 null
 ],
 [
 10.0,
-0.94,
+0.648,
 null,
 null
 ],
 [
 12.0,
-0.963,
+0.683,
 null,
 null
 ],
 [
 14.0,
-0.991,
+0.708,
 null,
 null
 ],
 [
-14.56,
-0.991,
+16.0,
+0.716,
+null,
+null
+],
+[
+18.0,
+0.736,
+null,
+null
+],
+[
+21.0,
+0.78,
+null,
+null
+],
+[
+24.0,
+0.818,
+null,
+null
+],
+[
+28.0,
+0.853,
+null,
+null
+],
+[
+32.0,
+0.908,
+null,
+null
+],
+[
+36.0,
+0.913,
+null,
+null
+],
+[
+42.0,
+0.953,
+null,
+null
+],
+[
+49.0,
+0.953,
+null,
+null
+],
+[
+56.0,
+0.953,
+null,
+null
+],
+[
+63.0,
+0.953,
+null,
+null
+],
+[
+70.0,
+0.953,
+null,
+null
+],
+[
+77.0,
+0.953,
+null,
+null
+],
+[
+79.75,
+0.953,
 null,
 null
 ]
 ],
-"events": 304,
-"median_days": 2.44,
-"n": 348,
+"events": 394,
+"median_days": 2.34,
+"n": 486,
 "pooled": false,
-"reach_days": 14.6,
+"reach_days": 79.7,
 "sections": 1
 },
 "16-40": {
@@ -112,2486 +190,179 @@ null
 ],
 [
 2.0,
-0.055,
+0.073,
 null,
 null
 ],
 [
 3.0,
-0.171,
+0.073,
 null,
 null
 ],
 [
 4.0,
-0.252,
+0.092,
 null,
 null
 ],
 [
 5.0,
-0.296,
+0.092,
 null,
 null
 ],
 [
 6.0,
-0.364,
+0.092,
 null,
 null
 ],
 [
 7.0,
-0.409,
+0.092,
 null,
 null
 ],
 [
 8.0,
-0.459,
+0.092,
 null,
 null
 ],
 [
 9.0,
-0.519,
+0.092,
 null,
 null
 ],
 [
 10.0,
-0.639,
+0.092,
 null,
 null
 ],
 [
 12.0,
-0.759,
+0.092,
 null,
 null
 ],
 [
 14.0,
-0.94,
-null,
-null
-],
-[
-14.56,
-0.94,
-null,
-null
-]
-],
-"events": 40,
-"median_days": 8.78,
-"n": 56,
-"pooled": false,
-"reach_days": 14.6,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.041,
-null,
-null
-],
-[
-1.0,
-0.084,
-null,
-null
-],
-[
-2.0,
-0.111,
-null,
-null
-],
-[
-3.0,
-0.187,
-null,
-null
-],
-[
-4.0,
-0.234,
-null,
-null
-],
-[
-5.0,
-0.276,
-null,
-null
-],
-[
-6.0,
-0.351,
-null,
-null
-],
-[
-7.0,
-0.435,
-null,
-null
-],
-[
-8.0,
-0.529,
-null,
-null
-],
-[
-9.0,
-0.602,
-null,
-null
-],
-[
-10.0,
-0.658,
-null,
-null
-],
-[
-12.0,
-0.734,
-null,
-null
-],
-[
-14.0,
-0.88,
-null,
-null
-],
-[
-16.0,
-0.92,
-null,
-null
-],
-[
-18.0,
-0.92,
-null,
-null
-]
-],
-"events": 127,
-"median_days": 7.74,
-"n": 194,
-"pooled": false,
-"reach_days": 18.0,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "10",
-"subject": "BIOENG"
-},
-"BIOENG 100": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.241,
-null,
-null
-],
-[
-1.0,
-0.347,
-null,
-null
-],
-[
-2.0,
-0.456,
-null,
-null
-],
-[
-3.0,
-0.487,
-null,
-null
-],
-[
-4.0,
-0.523,
-null,
-null
-],
-[
-5.0,
-0.552,
-null,
-null
-],
-[
-6.0,
-0.578,
-null,
-null
-],
-[
-7.0,
-0.619,
-null,
-null
-],
-[
-8.0,
-0.656,
-null,
-null
-],
-[
-9.0,
-0.674,
-null,
-null
-],
-[
-10.0,
-0.688,
-null,
-null
-],
-[
-12.0,
-0.725,
-null,
-null
-],
-[
-14.0,
-0.753,
-null,
-null
-],
-[
-16.0,
-0.766,
-null,
-null
-],
-[
-18.0,
-0.775,
-null,
-null
-],
-[
-21.0,
-0.775,
-null,
-null
-],
-[
-24.0,
-0.775,
-null,
-null
-],
-[
-28.0,
-0.775,
-null,
-null
-],
-[
-32.0,
-0.775,
-null,
-null
-],
-[
-34.14,
-0.775,
-null,
-null
-]
-],
-"events": 272,
-"median_days": 3.66,
-"n": 414,
-"pooled": false,
-"reach_days": 34.1,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.004,
-null,
-null
-],
-[
-1.0,
-0.004,
-null,
-null
-],
-[
-2.0,
-0.021,
-null,
-null
-],
-[
-3.0,
-0.057,
-null,
-null
-],
-[
-4.0,
-0.08,
-null,
-null
-],
-[
-5.0,
-0.09,
-null,
-null
-],
-[
-6.0,
-0.105,
-null,
-null
-],
-[
-7.0,
-0.12,
-null,
-null
-],
-[
-8.0,
-0.165,
-null,
-null
-],
-[
-9.0,
-0.212,
-null,
-null
-],
-[
-10.0,
-0.267,
-null,
-null
-],
-[
-12.0,
-0.323,
-null,
-null
-],
-[
-14.0,
-0.352,
-null,
-null
-],
-[
-16.0,
-0.352,
-null,
-null
-],
-[
-18.0,
-0.368,
-null,
-null
-],
-[
-21.0,
-0.377,
-null,
-null
-],
-[
-24.0,
-0.377,
-null,
-null
-],
-[
-28.0,
-0.377,
-null,
-null
-],
-[
-32.0,
-0.377,
-null,
-null
-],
-[
-36.0,
-0.377,
-null,
-null
-],
-[
-36.98,
-0.377,
-null,
-null
-]
-],
-"events": 70,
-"median_days": null,
-"n": 275,
-"pooled": false,
-"reach_days": 37.0,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.053,
-null,
-null
-],
-[
-1.0,
-0.083,
-null,
-null
-],
-[
-2.0,
-0.196,
-null,
-null
-],
-[
-3.0,
-0.255,
-null,
-null
-],
-[
-4.0,
-0.3,
-null,
-null
-],
-[
-5.0,
-0.318,
-null,
-null
-],
-[
-6.0,
-0.347,
-null,
-null
-],
-[
-7.0,
-0.371,
-null,
-null
-],
-[
-8.0,
-0.429,
-null,
-null
-],
-[
-9.0,
-0.47,
-null,
-null
-],
-[
-10.0,
-0.486,
-null,
-null
-],
-[
-12.0,
-0.54,
-null,
-null
-],
-[
-14.0,
-0.578,
-null,
-null
-],
-[
-16.0,
-0.578,
-null,
-null
-],
-[
-18.0,
-0.606,
-null,
-null
-],
-[
-21.0,
-0.606,
-null,
-null
-],
-[
-24.0,
-0.606,
-null,
-null
-],
-[
-28.0,
-0.606,
-null,
-null
-],
-[
-32.0,
-0.606,
-null,
-null
-],
-[
-34.99,
-0.606,
-null,
-null
-]
-],
-"events": 132,
-"median_days": 10.46,
-"n": 291,
-"pooled": false,
-"reach_days": 35.0,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "100",
-"subject": "BIOENG"
-},
-"BIOENG 103": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.272,
-null,
-null
-],
-[
-1.0,
-0.382,
-null,
-null
-],
-[
-2.0,
-0.492,
-null,
-null
-],
-[
-3.0,
-0.564,
-null,
-null
-],
-[
-4.0,
-0.685,
-null,
-null
-],
-[
-5.0,
-0.715,
-null,
-null
-],
-[
-6.0,
-0.815,
-null,
-null
-],
-[
-7.0,
-0.849,
-null,
-null
-],
-[
-8.0,
-0.902,
-null,
-null
-],
-[
-9.0,
-0.902,
-null,
-null
-],
-[
-10.0,
-0.927,
-null,
-null
-],
-[
-12.0,
-0.976,
-null,
-null
-],
-[
-13.08,
-0.976,
-null,
-null
-]
-],
-"events": 66,
-"median_days": 2.03,
-"n": 74,
-"pooled": false,
-"reach_days": 13.1,
-"sections": 1
-},
-"6-15": {
-"n_course": 1,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "103",
-"subject": "BIOENG"
-},
-"BIOENG 110": {
-"buckets": {
-"1-5": {
-"n_course": 12,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "110",
-"subject": "BIOENG"
-},
-"BIOENG 114": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.46,
-null,
-null
-],
-[
-1.0,
-0.52,
-null,
-null
-],
-[
-2.0,
-0.588,
-null,
-null
-],
-[
-3.0,
-0.733,
-null,
-null
-],
-[
-4.0,
-0.733,
-null,
-null
-],
-[
-5.0,
-0.806,
-null,
-null
-],
-[
-6.0,
-0.806,
-null,
-null
-],
-[
-7.0,
-0.879,
-null,
-null
-],
-[
-8.0,
-0.951,
-null,
-null
-],
-[
-9.0,
-0.951,
-null,
-null
-],
-[
-10.0,
-0.976,
-null,
-null
-],
-[
-12.0,
-0.976,
-null,
-null
-],
-[
-14.0,
-0.976,
-null,
-null
-],
-[
-16.0,
-0.976,
-null,
-null
-],
-[
-16.05,
-0.976,
-null,
-null
-]
-],
-"events": 45,
-"median_days": 0.78,
-"n": 50,
-"pooled": false,
-"reach_days": 16.1,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "114",
-"subject": "BIOENG"
-},
-"BIOENG 124": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.209,
-null,
-null
-],
-[
-1.0,
-0.264,
-null,
-null
-],
-[
-2.0,
-0.316,
-null,
-null
-],
-[
-3.0,
-0.354,
-null,
-null
-],
-[
-4.0,
-0.387,
-null,
-null
-],
-[
-5.0,
-0.444,
-null,
-null
-],
-[
-6.0,
-0.46,
-null,
-null
-],
-[
-7.0,
-0.494,
-null,
-null
-],
-[
-8.0,
-0.532,
-null,
-null
-],
-[
-9.0,
-0.532,
-null,
-null
-],
-[
-10.0,
-0.532,
-null,
-null
-],
-[
-12.0,
-0.532,
-null,
-null
-],
-[
-14.0,
-0.568,
-null,
-null
-],
-[
-16.0,
-0.568,
-null,
-null
-],
-[
-18.0,
-0.568,
-null,
-null
-],
-[
-21.0,
-0.644,
-null,
-null
-],
-[
-24.0,
-0.676,
-null,
-null
-],
-[
-28.0,
-0.741,
-null,
-null
-],
-[
-31.05,
-0.784,
-null,
-null
-]
-],
-"events": 101,
-"median_days": 7.11,
-"n": 214,
-"pooled": false,
-"reach_days": 31.1,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-18.35,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 52,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "124",
-"subject": "BIOENG"
-},
-"BIOENG 140L": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.172,
-null,
-null
-],
-[
-1.0,
-0.232,
-null,
-null
-],
-[
-2.0,
-0.281,
-null,
-null
-],
-[
-3.0,
-0.358,
-null,
-null
-],
-[
-4.0,
-0.426,
-null,
-null
-],
-[
-5.0,
-0.44,
-null,
-null
-],
-[
-6.0,
-0.486,
-null,
-null
-],
-[
-7.0,
-0.525,
-null,
-null
-],
-[
-8.0,
-0.525,
-null,
-null
-],
-[
-9.0,
-0.525,
-null,
-null
-],
-[
-10.0,
-0.525,
-null,
-null
-],
-[
-12.0,
-0.525,
-null,
-null
-],
-[
-14.0,
-0.525,
-null,
-null
-],
-[
-16.0,
-0.543,
-null,
-null
-],
-[
-18.0,
-0.543,
-null,
-null
-],
-[
-21.0,
-0.645,
-null,
-null
-],
-[
-24.0,
-0.645,
-null,
-null
-],
-[
-28.0,
-0.645,
-null,
-null
-],
-[
-30.81,
-0.645,
-null,
-null
-]
-],
-"events": 94,
-"median_days": 6.06,
-"n": 193,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 26,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "140L",
-"subject": "BIOENG"
-},
-"BIOENG 147": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-30.81,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 38,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "147",
-"subject": "BIOENG"
-},
-"BIOENG 163": {
-"buckets": {
-"1-5": {
-"n_course": 3,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "163",
-"subject": "BIOENG"
-},
-"BIOENG 168L": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.083,
-null,
-null
-],
-[
-1.0,
-0.105,
-null,
-null
-],
-[
-2.0,
-0.144,
-null,
-null
-],
-[
-3.0,
-0.162,
-null,
-null
-],
-[
-4.0,
-0.187,
-null,
-null
-],
-[
-5.0,
-0.194,
-null,
-null
-],
-[
-6.0,
-0.241,
-null,
-null
-],
-[
-7.0,
-0.31,
-null,
-null
-],
-[
-8.0,
-0.385,
-null,
-null
-],
-[
-9.0,
-0.414,
-null,
-null
-],
-[
-10.0,
-0.429,
-null,
-null
-],
-[
-12.0,
-0.437,
-null,
-null
-],
-[
-14.0,
-0.437,
-null,
-null
-],
-[
-16.0,
-0.437,
-null,
-null
-],
-[
-18.0,
-0.437,
-null,
-null
-],
-[
-21.0,
-0.437,
-null,
-null
-],
-[
-24.0,
-0.437,
-null,
-null
-],
-[
-28.0,
-0.437,
-null,
-null
-],
-[
-32.0,
-0.437,
-null,
-null
-],
-[
-36.0,
-0.437,
-null,
-null
-],
-[
-36.86,
-0.437,
-null,
-null
-]
-],
-"events": 70,
-"median_days": null,
-"n": 197,
-"pooled": false,
-"reach_days": 36.9,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.038,
-null,
-null
-],
-[
-14.0,
-0.14,
-null,
-null
-],
-[
-16.0,
-0.247,
-null,
-null
-],
-[
-18.0,
-0.247,
-null,
-null
-],
-[
-21.0,
-0.247,
-null,
-null
-],
-[
-24.0,
-0.247,
-null,
-null
-],
-[
-28.0,
-0.247,
-null,
-null
-],
-[
-32.0,
-0.247,
-null,
-null
-],
-[
-36.0,
-0.247,
-null,
-null
-],
-[
-36.17,
-0.247,
-null,
-null
-]
-],
-"events": 5,
-"median_days": null,
-"n": 52,
-"pooled": false,
-"reach_days": 36.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "168L",
-"subject": "BIOENG"
-},
-"BIOENG 192": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.023,
-null,
-null
-],
-[
-1.0,
-0.023,
-null,
-null
-],
-[
-2.0,
-0.023,
-null,
-null
-],
-[
-3.0,
-0.023,
-null,
-null
-],
-[
-4.0,
-0.023,
-null,
-null
-],
-[
-5.0,
-0.023,
-null,
-null
-],
-[
-6.0,
-0.023,
-null,
-null
-],
-[
-7.0,
-0.023,
-null,
-null
-],
-[
-8.0,
-0.023,
-null,
-null
-],
-[
-9.0,
-0.023,
-null,
-null
-],
-[
-10.0,
-0.023,
-null,
-null
-],
-[
-12.0,
-0.023,
-null,
-null
-],
-[
-14.0,
-0.023,
-null,
-null
-],
-[
-16.0,
-0.023,
-null,
-null
-],
-[
-18.0,
-0.023,
-null,
-null
-],
-[
-21.0,
-0.023,
-null,
-null
-],
-[
-24.0,
-0.023,
-null,
-null
-],
-[
-28.0,
-0.023,
-null,
-null
-],
-[
-32.0,
-0.023,
-null,
-null
-],
-[
-36.0,
-0.023,
-null,
-null
-],
-[
-42.0,
-0.023,
-null,
-null
-],
-[
-48.2,
-0.023,
-null,
-null
-]
-],
-"events": 1,
-"median_days": null,
-"n": 43,
-"pooled": false,
-"reach_days": 48.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "192",
-"subject": "BIOENG"
-},
-"BIOENG 202": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.129,
-null,
-null
-],
-[
-1.0,
-0.129,
-null,
-null
-],
-[
-2.0,
-0.199,
-null,
-null
-],
-[
-3.0,
-0.199,
-null,
-null
-],
-[
-4.0,
-0.249,
-null,
-null
-],
-[
-5.0,
-0.299,
-null,
-null
-],
-[
-6.0,
-0.299,
-null,
-null
-],
-[
-7.0,
-0.299,
-null,
-null
-],
-[
-8.0,
-0.299,
-null,
-null
-],
-[
-9.0,
-0.299,
-null,
-null
-],
-[
-10.0,
-0.299,
-null,
-null
-],
-[
-12.0,
-0.299,
-null,
-null
-],
-[
-14.0,
-0.399,
-null,
-null
-],
-[
-16.0,
-0.399,
-null,
-null
-],
-[
-18.0,
-0.399,
-null,
-null
-],
-[
-18.37,
-0.399,
-null,
-null
-]
-],
-"events": 9,
-"median_days": null,
-"n": 31,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "202",
-"subject": "BIOENG"
-},
-"BIOENG 221": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.419,
-null,
-null
-],
-[
-1.0,
-0.535,
-null,
-null
-],
-[
-2.0,
-0.623,
-null,
-null
-],
-[
-3.0,
-0.657,
-null,
-null
-],
-[
-4.0,
-0.725,
-null,
-null
-],
-[
-5.0,
-0.76,
-null,
-null
-],
-[
-6.0,
-0.76,
-null,
-null
-],
-[
-7.0,
-0.8,
-null,
-null
-],
-[
-8.0,
-0.88,
-null,
-null
-],
-[
-9.0,
-0.88,
-null,
-null
-],
-[
-10.0,
-0.88,
-null,
-null
-],
-[
-12.0,
-0.88,
-null,
-null
-],
-[
-14.0,
-0.88,
-null,
-null
-],
-[
-15.11,
-0.88,
-null,
-null
-]
-],
-"events": 29,
-"median_days": 0.79,
-"n": 38,
-"pooled": false,
-"reach_days": 15.1,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "221",
-"subject": "BIOENG"
-},
-"BIOENG 224": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.139,
-null,
-null
-],
-[
-1.0,
-0.184,
-null,
-null
-],
-[
-2.0,
-0.208,
-null,
-null
-],
-[
-3.0,
-0.321,
-null,
-null
-],
-[
-4.0,
-0.321,
-null,
-null
-],
-[
-5.0,
-0.41,
-null,
-null
-],
-[
-6.0,
-0.41,
-null,
-null
-],
-[
-7.0,
-0.472,
-null,
-null
-],
-[
-8.0,
-0.503,
-null,
-null
-],
-[
-9.0,
-0.636,
-null,
-null
-],
-[
-10.0,
-0.669,
-null,
-null
-],
-[
-12.0,
-0.669,
-null,
-null
-],
-[
-14.0,
-0.669,
-null,
-null
-],
-[
-16.0,
-0.669,
-null,
-null
-],
-[
-18.0,
-0.669,
-null,
-null
-],
-[
-18.21,
-0.669,
-null,
-null
-]
-],
-"events": 25,
-"median_days": 7.21,
-"n": 52,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-},
-"6-15": {
-"n_course": 9,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "224",
-"subject": "BIOENG"
-},
-"BIOENG 247": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.059,
-null,
-null
-],
-[
-1.0,
-0.059,
-null,
-null
-],
-[
-2.0,
-0.088,
-null,
-null
-],
-[
-3.0,
-0.088,
-null,
-null
-],
-[
-4.0,
-0.088,
-null,
-null
-],
-[
-5.0,
-0.088,
-null,
-null
-],
-[
-6.0,
-0.145,
-null,
-null
-],
-[
-7.0,
-0.145,
-null,
-null
-],
-[
-8.0,
-0.145,
-null,
-null
-],
-[
-9.0,
-0.145,
-null,
-null
-],
-[
-10.0,
-0.145,
-null,
-null
-],
-[
-12.0,
-0.145,
-null,
-null
-],
-[
-14.0,
-0.145,
-null,
-null
-],
-[
-16.0,
-0.145,
-null,
-null
-],
-[
-18.0,
-0.145,
-null,
-null
-],
-[
-18.21,
-0.145,
-null,
-null
-]
-],
-"events": 4,
-"median_days": null,
-"n": 35,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "247",
-"subject": "BIOENG"
-},
-"BIOENG 252": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.146,
-null,
-null
-],
-[
-1.0,
-0.223,
-null,
-null
-],
-[
-2.0,
-0.336,
-null,
-null
-],
-[
-3.0,
-0.449,
-null,
-null
-],
-[
-4.0,
-0.561,
-null,
-null
-],
-[
-5.0,
-0.606,
-null,
-null
-],
-[
-6.0,
-0.703,
-null,
-null
-],
-[
-7.0,
-0.806,
-null,
-null
-],
-[
-8.0,
-0.834,
-null,
-null
-],
-[
-9.0,
-0.917,
-null,
-null
-],
-[
-10.0,
-0.934,
-null,
-null
-],
-[
-12.0,
-0.95,
-null,
-null
-],
-[
-14.0,
-0.95,
-null,
-null
-],
-[
-16.0,
-0.95,
-null,
-null
-],
-[
-18.0,
-0.95,
-null,
-null
-],
-[
-18.41,
-0.95,
-null,
-null
-]
-],
-"events": 80,
-"median_days": 3.24,
-"n": 97,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-},
-"6-15": {
-"n_course": 3,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "252",
-"subject": "BIOENG"
-},
-"BIOENG 263": {
-"buckets": {
-"1-5": {
-"n_course": 16,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "263",
-"subject": "BIOENG"
-},
-"BIOENG 291": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.126,
-null,
-null
-],
-[
-1.0,
-0.161,
-null,
-null
-],
-[
-2.0,
-0.386,
-null,
-null
-],
-[
-3.0,
-0.462,
-null,
-null
-],
-[
-4.0,
-0.462,
-null,
-null
-],
-[
-5.0,
-0.462,
-null,
-null
-],
-[
-6.0,
-0.462,
-null,
-null
-],
-[
-7.0,
-0.507,
-null,
-null
-],
-[
-8.0,
-0.507,
-null,
-null
-],
-[
-9.0,
-0.557,
-null,
-null
-],
-[
-10.0,
-0.557,
-null,
-null
-],
-[
-12.0,
-0.645,
-null,
-null
-],
-[
-12.14,
-0.645,
-null,
-null
-]
-],
-"events": 16,
-"median_days": 6.23,
-"n": 32,
-"pooled": false,
-"reach_days": 12.1,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "grad",
-"number": "291",
-"subject": "BIOENG"
-},
-"BIOENG C118": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.08,
-null,
-null
-],
-[
-1.0,
-0.08,
-null,
-null
-],
-[
-2.0,
-0.117,
-null,
-null
-],
-[
-3.0,
 0.135,
 null,
 null
 ],
 [
+16.0,
+0.178,
+null,
+null
+],
+[
+18.0,
+0.178,
+null,
+null
+],
+[
+21.0,
+0.226,
+null,
+null
+],
+[
+24.0,
+0.226,
+null,
+null
+],
+[
+28.0,
+0.226,
+null,
+null
+],
+[
+32.0,
+0.226,
+null,
+null
+],
+[
+36.0,
+0.236,
+null,
+null
+],
+[
+42.0,
+0.236,
+null,
+null
+],
+[
+49.0,
+0.236,
+null,
+null
+],
+[
+53.98,
+0.236,
+null,
+null
+]
+],
+"events": 34,
+"median_days": null,
+"n": 165,
+"pooled": false,
+"reach_days": 54.0,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.045,
+null,
+null
+],
+[
+1.0,
+0.118,
+null,
+null
+],
+[
+2.0,
+0.226,
+null,
+null
+],
+[
+3.0,
+0.247,
+null,
+null
+],
+[
 4.0,
-0.231,
+0.288,
 null,
 null
 ],
 [
 5.0,
-0.272,
+0.33,
 null,
 null
 ],
 [
 6.0,
-0.353,
+0.376,
 null,
 null
 ],
@@ -2603,503 +374,3086 @@ null
 ],
 [
 8.0,
-0.514,
+0.393,
 null,
 null
 ],
 [
 9.0,
-0.535,
+0.393,
 null,
 null
 ],
 [
 10.0,
-0.535,
+0.393,
 null,
 null
 ],
 [
 12.0,
-0.535,
+0.393,
 null,
 null
 ],
 [
 14.0,
-0.535,
+0.436,
 null,
 null
 ],
 [
 16.0,
-0.535,
+0.465,
 null,
 null
 ],
 [
 18.0,
-0.535,
+0.465,
 null,
 null
 ],
 [
 21.0,
-0.535,
+0.497,
 null,
 null
 ],
 [
 24.0,
-0.535,
+0.497,
 null,
 null
 ],
 [
 28.0,
-0.535,
+0.503,
 null,
 null
 ],
 [
 32.0,
-0.535,
+0.503,
+null,
+null
+],
+[
+36.0,
+0.51,
+null,
+null
+],
+[
+42.0,
+0.51,
+null,
+null
+],
+[
+49.0,
+0.529,
+null,
+null
+],
+[
+53.34,
+0.529,
+null,
+null
+]
+],
+"events": 120,
+"median_days": 25.28,
+"n": 246,
+"pooled": false,
+"reach_days": 53.3,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "100",
+"subject": "BIOENG"
+},
+"BIOENG 101": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.123,
+null,
+null
+],
+[
+1.0,
+0.17,
+null,
+null
+],
+[
+2.0,
+0.258,
+null,
+null
+],
+[
+3.0,
+0.294,
+null,
+null
+],
+[
+4.0,
+0.342,
+null,
+null
+],
+[
+5.0,
+0.409,
+null,
+null
+],
+[
+6.0,
+0.451,
+null,
+null
+],
+[
+7.0,
+0.513,
+null,
+null
+],
+[
+8.0,
+0.551,
+null,
+null
+],
+[
+9.0,
+0.571,
+null,
+null
+],
+[
+10.0,
+0.603,
+null,
+null
+],
+[
+12.0,
+0.694,
+null,
+null
+],
+[
+14.0,
+0.753,
+null,
+null
+],
+[
+16.0,
+0.814,
+null,
+null
+],
+[
+18.0,
+0.842,
+null,
+null
+],
+[
+21.0,
+0.87,
+null,
+null
+],
+[
+24.0,
+0.92,
+null,
+null
+],
+[
+28.0,
+0.957,
+null,
+null
+],
+[
+32.0,
+0.978,
+null,
+null
+],
+[
+36.0,
+0.978,
+null,
+null
+],
+[
+42.0,
+0.978,
+null,
+null
+],
+[
+49.0,
+0.978,
+null,
+null
+],
+[
+56.0,
+0.978,
+null,
+null
+],
+[
+63.0,
+0.978,
+null,
+null
+],
+[
+70.0,
+0.978,
+null,
+null
+],
+[
+77.0,
+0.978,
+null,
+null
+],
+[
+79.75,
+0.978,
+null,
+null
+]
+],
+"events": 155,
+"median_days": 6.78,
+"n": 171,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"n_course": 19,
+"pooled": "BIOENG",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.047,
+null,
+null
+],
+[
+1.0,
+0.047,
+null,
+null
+],
+[
+2.0,
+0.047,
+null,
+null
+],
+[
+3.0,
+0.094,
+null,
+null
+],
+[
+4.0,
+0.141,
+null,
+null
+],
+[
+5.0,
+0.141,
+null,
+null
+],
+[
+6.0,
+0.141,
+null,
+null
+],
+[
+7.0,
+0.141,
+null,
+null
+],
+[
+8.0,
+0.141,
+null,
+null
+],
+[
+9.0,
+0.141,
+null,
+null
+],
+[
+10.0,
+0.188,
+null,
+null
+],
+[
+12.0,
+0.234,
+null,
+null
+],
+[
+14.0,
+0.234,
+null,
+null
+],
+[
+16.0,
+0.375,
+null,
+null
+],
+[
+18.0,
+0.422,
+null,
+null
+],
+[
+21.0,
+0.469,
+null,
+null
+],
+[
+24.0,
+0.516,
+null,
+null
+],
+[
+28.0,
+0.516,
+null,
+null
+],
+[
+32.0,
+0.656,
+null,
+null
+],
+[
+36.0,
+0.75,
+null,
+null
+],
+[
+42.0,
+0.906,
+null,
+null
+],
+[
+43.87,
+0.969,
+null,
+null
+]
+],
+"events": 64,
+"median_days": 21.71,
+"n": 64,
+"pooled": false,
+"reach_days": 43.9,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "101",
+"subject": "BIOENG"
+},
+"BIOENG 104": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.32,
+null,
+null
+],
+[
+1.0,
+0.41,
+null,
+null
+],
+[
+2.0,
+0.493,
+null,
+null
+],
+[
+3.0,
+0.568,
+null,
+null
+],
+[
+4.0,
+0.593,
+null,
+null
+],
+[
+5.0,
+0.609,
+null,
+null
+],
+[
+6.0,
+0.634,
+null,
+null
+],
+[
+7.0,
+0.701,
+null,
+null
+],
+[
+8.0,
+0.726,
+null,
+null
+],
+[
+9.0,
+0.734,
+null,
+null
+],
+[
+10.0,
+0.742,
+null,
+null
+],
+[
+12.0,
+0.753,
+null,
+null
+],
+[
+14.0,
+0.831,
+null,
+null
+],
+[
+16.0,
+0.831,
+null,
+null
+],
+[
+18.0,
+0.848,
+null,
+null
+],
+[
+21.0,
+0.905,
+null,
+null
+],
+[
+24.0,
+0.905,
+null,
+null
+],
+[
+28.0,
+0.905,
+null,
+null
+],
+[
+32.0,
+0.905,
 null,
 null
 ],
 [
 32.04,
-0.535,
+0.905,
 null,
 null
 ]
 ],
-"events": 28,
-"median_days": 7.98,
-"n": 63,
+"events": 102,
+"median_days": 2.01,
+"n": 122,
 "pooled": false,
 "reach_days": 32.0,
 "sections": 1
+},
+"6-15": {
+"n_course": 22,
+"pooled": "BIOENG",
+"sections_course": 1
 }
 },
-"dept_group": "OTHER",
+"dept_group": "BIOENG",
 "level": "upper",
-"number": "C118",
+"number": "104",
 "subject": "BIOENG"
 },
-"BIOENG C131": {
+"BIOENG 115": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.242,
+0.164,
 null,
 null
 ],
 [
 1.0,
-0.307,
+0.195,
 null,
 null
 ],
 [
 2.0,
-0.405,
+0.234,
 null,
 null
 ],
 [
 3.0,
-0.449,
+0.266,
 null,
 null
 ],
 [
 4.0,
-0.519,
+0.316,
 null,
 null
 ],
 [
 5.0,
-0.623,
+0.358,
 null,
 null
 ],
 [
 6.0,
-0.666,
+0.427,
 null,
 null
 ],
 [
 7.0,
+0.473,
+null,
+null
+],
+[
+8.0,
+0.482,
+null,
+null
+],
+[
+9.0,
+0.528,
+null,
+null
+],
+[
+10.0,
+0.537,
+null,
+null
+],
+[
+12.0,
+0.65,
+null,
+null
+],
+[
+14.0,
 0.7,
 null,
 null
 ],
 [
-8.0,
-0.718,
-null,
-null
-],
-[
-9.0,
-0.718,
-null,
-null
-],
-[
-10.0,
-0.746,
-null,
-null
-],
-[
-12.0,
-0.783,
-null,
-null
-],
-[
-14.0,
-0.891,
-null,
-null
-],
-[
 16.0,
-0.891,
+0.71,
 null,
 null
 ],
 [
 18.0,
-0.946,
+0.741,
 null,
 null
 ],
 [
 21.0,
-0.946,
+0.762,
 null,
 null
 ],
 [
 24.0,
-0.946,
+0.773,
 null,
 null
 ],
 [
 28.0,
-0.946,
-null,
-null
-],
-[
-28.84,
-0.946,
-null,
-null
-]
-],
-"events": 82,
-"median_days": 3.61,
-"n": 125,
-"pooled": false,
-"reach_days": 28.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 14,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C131",
-"subject": "BIOENG"
-},
-"BIOENG C149": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.138,
-null,
-null
-],
-[
-1.0,
-0.192,
-null,
-null
-],
-[
-2.0,
-0.236,
-null,
-null
-],
-[
-3.0,
-0.281,
-null,
-null
-],
-[
-4.0,
-0.327,
-null,
-null
-],
-[
-5.0,
-0.368,
-null,
-null
-],
-[
-6.0,
-0.378,
-null,
-null
-],
-[
-7.0,
-0.426,
-null,
-null
-],
-[
-8.0,
-0.439,
-null,
-null
-],
-[
-9.0,
-0.439,
-null,
-null
-],
-[
-10.0,
-0.439,
-null,
-null
-],
-[
-12.0,
-0.484,
-null,
-null
-],
-[
-14.0,
-0.484,
-null,
-null
-],
-[
-16.0,
-0.484,
-null,
-null
-],
-[
-18.0,
-0.484,
-null,
-null
-],
-[
-21.0,
-0.656,
-null,
-null
-],
-[
-24.0,
-0.656,
-null,
-null
-],
-[
-28.0,
-0.656,
-null,
-null
-],
-[
-30.81,
-0.656,
-null,
-null
-]
-],
-"events": 51,
-"median_days": 18.34,
-"n": 117,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 16,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "C149",
-"subject": "BIOENG"
-},
-"BIOENG C165": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.269,
-null,
-null
-],
-[
-1.0,
-0.376,
-null,
-null
-],
-[
-2.0,
-0.487,
-null,
-null
-],
-[
-3.0,
-0.569,
-null,
-null
-],
-[
-4.0,
-0.774,
-null,
-null
-],
-[
-5.0,
-0.799,
-null,
-null
-],
-[
-6.0,
-0.824,
-null,
-null
-],
-[
-7.0,
-0.854,
-null,
-null
-],
-[
-8.0,
-0.854,
-null,
-null
-],
-[
-9.0,
-0.854,
-null,
-null
-],
-[
-10.0,
-0.854,
-null,
-null
-],
-[
-12.0,
-0.854,
-null,
-null
-],
-[
-14.0,
-0.854,
-null,
-null
-],
-[
-16.0,
-0.854,
-null,
-null
-],
-[
-18.0,
-0.854,
-null,
-null
-],
-[
-21.0,
-0.854,
-null,
-null
-],
-[
-24.0,
-0.854,
-null,
-null
-],
-[
-28.0,
-0.854,
+0.796,
 null,
 null
 ],
 [
 32.0,
-0.854,
+0.796,
 null,
 null
 ],
 [
-35.77,
-0.854,
+36.0,
+0.796,
+null,
+null
+],
+[
+42.0,
+0.796,
+null,
+null
+],
+[
+49.0,
+0.796,
+null,
+null
+],
+[
+56.0,
+0.796,
+null,
+null
+],
+[
+63.0,
+0.796,
+null,
+null
+],
+[
+70.0,
+0.796,
+null,
+null
+],
+[
+77.0,
+0.796,
+null,
+null
+],
+[
+80.05,
+0.796,
 null,
 null
 ]
 ],
-"events": 45,
-"median_days": 2.15,
-"n": 60,
+"events": 92,
+"median_days": 8.17,
+"n": 134,
 "pooled": false,
-"reach_days": 35.8,
+"reach_days": 80.0,
+"sections": 1
+},
+"6-15": {
+"n_course": 10,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "115",
+"subject": "BIOENG"
+},
+"BIOENG 121L": {
+"buckets": {
+"1-5": {
+"n_course": 29,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "121L",
+"subject": "BIOENG"
+},
+"BIOENG 134": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.084,
+null,
+null
+],
+[
+1.0,
+0.112,
+null,
+null
+],
+[
+2.0,
+0.112,
+null,
+null
+],
+[
+3.0,
+0.181,
+null,
+null
+],
+[
+4.0,
+0.202,
+null,
+null
+],
+[
+5.0,
+0.242,
+null,
+null
+],
+[
+6.0,
+0.303,
+null,
+null
+],
+[
+7.0,
+0.333,
+null,
+null
+],
+[
+8.0,
+0.354,
+null,
+null
+],
+[
+9.0,
+0.354,
+null,
+null
+],
+[
+10.0,
+0.354,
+null,
+null
+],
+[
+12.0,
+0.395,
+null,
+null
+],
+[
+14.0,
+0.407,
+null,
+null
+],
+[
+16.0,
+0.469,
+null,
+null
+],
+[
+18.0,
+0.469,
+null,
+null
+],
+[
+21.0,
+0.548,
+null,
+null
+],
+[
+24.0,
+0.637,
+null,
+null
+],
+[
+28.0,
+0.689,
+null,
+null
+],
+[
+32.0,
+0.814,
+null,
+null
+],
+[
+36.0,
+0.814,
+null,
+null
+],
+[
+42.0,
+0.814,
+null,
+null
+],
+[
+49.0,
+0.814,
+null,
+null
+],
+[
+56.0,
+0.814,
+null,
+null
+],
+[
+63.0,
+0.814,
+null,
+null
+],
+[
+70.0,
+0.814,
+null,
+null
+],
+[
+77.0,
+0.814,
+null,
+null
+],
+[
+79.75,
+0.814,
+null,
+null
+]
+],
+"events": 61,
+"median_days": 19.68,
+"n": 107,
+"pooled": false,
+"reach_days": 79.7,
 "sections": 1
 }
 },
-"dept_group": "OTHER",
+"dept_group": "BIOENG",
 "level": "upper",
-"number": "C165",
+"number": "134",
 "subject": "BIOENG"
 },
-"BIOENG C208": {
+"BIOENG 135": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "135",
+"subject": "BIOENG"
+},
+"BIOENG 145": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.075,
+null,
+null
+],
+[
+1.0,
+0.114,
+null,
+null
+],
+[
+2.0,
+0.124,
+null,
+null
+],
+[
+3.0,
+0.157,
+null,
+null
+],
+[
+4.0,
+0.19,
+null,
+null
+],
+[
+5.0,
+0.234,
+null,
+null
+],
+[
+6.0,
+0.305,
+null,
+null
+],
+[
+7.0,
+0.335,
+null,
+null
+],
+[
+8.0,
+0.377,
+null,
+null
+],
+[
+9.0,
+0.381,
+null,
+null
+],
+[
+10.0,
+0.414,
+null,
+null
+],
+[
+12.0,
+0.491,
+null,
+null
+],
+[
+14.0,
+0.567,
+null,
+null
+],
+[
+16.0,
+0.589,
+null,
+null
+],
+[
+18.0,
+0.61,
+null,
+null
+],
+[
+21.0,
+0.679,
+null,
+null
+],
+[
+24.0,
+0.703,
+null,
+null
+],
+[
+28.0,
+0.785,
+null,
+null
+],
+[
+32.0,
+0.815,
+null,
+null
+],
+[
+36.0,
+0.835,
+null,
+null
+],
+[
+42.0,
+0.871,
+null,
+null
+],
+[
+49.0,
+0.889,
+null,
+null
+],
+[
+56.0,
+0.889,
+null,
+null
+],
+[
+63.0,
+0.889,
+null,
+null
+],
+[
+70.0,
+0.889,
+null,
+null
+],
+[
+77.0,
+0.889,
+null,
+null
+],
+[
+79.75,
+0.889,
+null,
+null
+]
+],
+"events": 190,
+"median_days": 12.2,
+"n": 292,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"n_course": 24,
+"pooled": "BIOENG",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.005,
+null,
+null
+],
+[
+1.0,
+0.011,
+null,
+null
+],
+[
+2.0,
+0.011,
+null,
+null
+],
+[
+3.0,
+0.022,
+null,
+null
+],
+[
+4.0,
+0.033,
+null,
+null
+],
+[
+5.0,
+0.08,
+null,
+null
+],
+[
+6.0,
+0.098,
+null,
+null
+],
+[
+7.0,
+0.104,
+null,
+null
+],
+[
+8.0,
+0.135,
+null,
+null
+],
+[
+9.0,
+0.16,
+null,
+null
+],
+[
+10.0,
+0.214,
+null,
+null
+],
+[
+12.0,
+0.298,
+null,
+null
+],
+[
+14.0,
+0.363,
+null,
+null
+],
+[
+16.0,
+0.386,
+null,
+null
+],
+[
+18.0,
+0.438,
+null,
+null
+],
+[
+21.0,
+0.438,
+null,
+null
+],
+[
+24.0,
+0.454,
+null,
+null
+],
+[
+28.0,
+0.454,
+null,
+null
+],
+[
+32.0,
+0.454,
+null,
+null
+],
+[
+36.0,
+0.454,
+null,
+null
+],
+[
+42.0,
+0.454,
+null,
+null
+],
+[
+49.0,
+0.454,
+null,
+null
+],
+[
+50.13,
+0.454,
+null,
+null
+]
+],
+"events": 66,
+"median_days": null,
+"n": 189,
+"pooled": false,
+"reach_days": 50.1,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "145",
+"subject": "BIOENG"
+},
+"BIOENG 153": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.129,
+null,
+null
+],
+[
+1.0,
+0.178,
+null,
+null
+],
+[
+2.0,
+0.269,
+null,
+null
+],
+[
+3.0,
+0.334,
+null,
+null
+],
+[
+4.0,
+0.412,
+null,
+null
+],
+[
+5.0,
+0.469,
+null,
+null
+],
+[
+6.0,
+0.516,
+null,
+null
+],
+[
+7.0,
+0.556,
+null,
+null
+],
+[
+8.0,
+0.578,
+null,
+null
+],
+[
+9.0,
+0.603,
+null,
+null
+],
+[
+10.0,
+0.619,
+null,
+null
+],
+[
+12.0,
+0.641,
+null,
+null
+],
+[
+14.0,
+0.647,
+null,
+null
+],
+[
+16.0,
+0.687,
+null,
+null
+],
+[
+18.0,
+0.715,
+null,
+null
+],
+[
+21.0,
+0.752,
+null,
+null
+],
+[
+24.0,
+0.803,
+null,
+null
+],
+[
+28.0,
+0.869,
+null,
+null
+],
+[
+32.0,
+0.956,
+null,
+null
+],
+[
+36.0,
+0.978,
+null,
+null
+],
+[
+42.0,
+0.978,
+null,
+null
+],
+[
+49.0,
+0.978,
+null,
+null
+],
+[
+56.0,
+0.978,
+null,
+null
+],
+[
+63.0,
+0.978,
+null,
+null
+],
+[
+70.0,
+0.978,
+null,
+null
+],
+[
+77.0,
+0.978,
+null,
+null
+],
+[
+79.75,
+0.978,
+null,
+null
+]
+],
+"events": 225,
+"median_days": 5.65,
+"n": 303,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"n_course": 13,
+"pooled": "BIOENG",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.006,
+null,
+null
+],
+[
+5.0,
+0.024,
+null,
+null
+],
+[
+6.0,
+0.038,
+null,
+null
+],
+[
+7.0,
+0.1,
+null,
+null
+],
+[
+8.0,
+0.159,
+null,
+null
+],
+[
+9.0,
+0.207,
+null,
+null
+],
+[
+10.0,
+0.257,
+null,
+null
+],
+[
+12.0,
+0.346,
+null,
+null
+],
+[
+14.0,
+0.447,
+null,
+null
+],
+[
+16.0,
+0.517,
+null,
+null
+],
+[
+18.0,
+0.566,
+null,
+null
+],
+[
+21.0,
+0.619,
+null,
+null
+],
+[
+24.0,
+0.635,
+null,
+null
+],
+[
+28.0,
+0.668,
+null,
+null
+],
+[
+32.0,
+0.774,
+null,
+null
+],
+[
+36.0,
+0.774,
+null,
+null
+],
+[
+40.16,
+0.774,
+null,
+null
+]
+],
+"events": 76,
+"median_days": 15.26,
+"n": 174,
+"pooled": false,
+"reach_days": 40.2,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "153",
+"subject": "BIOENG"
+},
+"BIOENG 163L": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.071,
+null,
+null
+],
+[
+1.0,
+0.071,
+null,
+null
+],
+[
+2.0,
+0.091,
+null,
+null
+],
+[
+3.0,
+0.091,
+null,
+null
+],
+[
+4.0,
+0.091,
+null,
+null
+],
+[
+5.0,
+0.091,
+null,
+null
+],
+[
+6.0,
+0.091,
+null,
+null
+],
+[
+7.0,
+0.132,
+null,
+null
+],
+[
+8.0,
+0.132,
+null,
+null
+],
+[
+9.0,
+0.132,
+null,
+null
+],
+[
+10.0,
+0.156,
+null,
+null
+],
+[
+12.0,
+0.18,
+null,
+null
+],
+[
+14.0,
+0.207,
+null,
+null
+],
+[
+16.0,
+0.24,
+null,
+null
+],
+[
+18.0,
+0.24,
+null,
+null
+],
+[
+21.0,
+0.24,
+null,
+null
+],
+[
+24.0,
+0.274,
+null,
+null
+],
+[
+28.0,
+0.313,
+null,
+null
+],
+[
+32.0,
+0.418,
+null,
+null
+],
+[
+36.0,
+0.418,
+null,
+null
+],
+[
+42.0,
+0.418,
+null,
+null
+],
+[
+49.0,
+0.418,
+null,
+null
+],
+[
+56.0,
+0.418,
+null,
+null
+],
+[
+63.0,
+0.418,
+null,
+null
+],
+[
+70.0,
+0.418,
+null,
+null
+],
+[
+77.0,
+0.418,
+null,
+null
+],
+[
+79.75,
+0.418,
+null,
+null
+]
+],
+"events": 15,
+"median_days": null,
+"n": 56,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "163L",
+"subject": "BIOENG"
+},
+"BIOENG 166": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.219,
+null,
+null
+],
+[
+1.0,
+0.319,
+null,
+null
+],
+[
+2.0,
+0.319,
+null,
+null
+],
+[
+3.0,
+0.387,
+null,
+null
+],
+[
+4.0,
+0.387,
+null,
+null
+],
+[
+5.0,
+0.387,
+null,
+null
+],
+[
+6.0,
+0.406,
+null,
+null
+],
+[
+7.0,
+0.425,
+null,
+null
+],
+[
+8.0,
+0.425,
+null,
+null
+],
+[
+9.0,
+0.445,
+null,
+null
+],
+[
+10.0,
+0.445,
+null,
+null
+],
+[
+12.0,
+0.466,
+null,
+null
+],
+[
+14.0,
+0.466,
+null,
+null
+],
+[
+16.0,
+0.546,
+null,
+null
+],
+[
+18.0,
+0.546,
+null,
+null
+],
+[
+21.0,
+0.546,
+null,
+null
+],
+[
+24.0,
+0.546,
+null,
+null
+],
+[
+28.0,
+0.546,
+null,
+null
+],
+[
+32.0,
+0.546,
+null,
+null
+],
+[
+36.0,
+0.546,
+null,
+null
+],
+[
+42.0,
+0.546,
+null,
+null
+],
+[
+49.0,
+0.546,
+null,
+null
+],
+[
+56.0,
+0.546,
+null,
+null
+],
+[
+63.0,
+0.546,
+null,
+null
+],
+[
+70.0,
+0.546,
+null,
+null
+],
+[
+77.0,
+0.546,
+null,
+null
+],
+[
+79.75,
+0.546,
+null,
+null
+]
+],
+"events": 31,
+"median_days": 14.54,
+"n": 65,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "166",
+"subject": "BIOENG"
+},
+"BIOENG 190": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.166,
+0.114,
+0.282
+],
+[
+1.0,
+0.196,
+0.114,
+0.462
+],
+[
+2.0,
+0.303,
+0.156,
+0.769
+],
+[
+3.0,
+0.353,
+0.199,
+0.923
+],
+[
+4.0,
+0.382,
+0.243,
+0.949
+],
+[
+5.0,
+0.391,
+0.252,
+0.949
+],
+[
+6.0,
+0.424,
+0.282,
+0.949
+],
+[
+7.0,
+0.473,
+0.342,
+0.974
+],
+[
+8.0,
+0.49,
+0.374,
+0.974
+],
+[
+9.0,
+0.509,
+0.374,
+0.974
+],
+[
+10.0,
+0.528,
+0.408,
+0.974
+],
+[
+12.0,
+0.548,
+0.443,
+0.974
+],
+[
+14.0,
+0.592,
+0.496,
+0.974
+],
+[
+16.0,
+0.616,
+0.534,
+0.974
+],
+[
+18.0,
+0.633,
+0.54,
+0.974
+],
+[
+21.0,
+0.642,
+0.54,
+0.974
+],
+[
+24.0,
+0.671,
+0.591,
+0.974
+],
+[
+28.0,
+0.766,
+0.702,
+0.974
+],
+[
+32.0,
+0.889,
+0.864,
+0.974
+],
+[
+36.0,
+0.889,
+0.864,
+0.974
+],
+[
+42.0,
+0.889,
+0.864,
+0.974
+],
+[
+49.0,
+0.889,
+0.864,
+0.974
+],
+[
+56.0,
+0.889,
+0.864,
+0.974
+],
+[
+63.0,
+0.889,
+0.864,
+0.974
+],
+[
+70.0,
+0.889,
+0.864,
+0.974
+],
+[
+77.0,
+0.889,
+0.864,
+0.974
+],
+[
+79.75,
+0.889,
+0.864,
+0.974
+]
+],
+"events": 150,
+"median_days": 8.85,
+"n": 236,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 3
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "190",
+"subject": "BIOENG"
+},
+"BIOENG 192": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.087,
+null,
+null
+],
+[
+1.0,
+0.087,
+null,
+null
+],
+[
+2.0,
+0.132,
+null,
+null
+],
+[
+3.0,
+0.183,
+null,
+null
+],
+[
+4.0,
+0.183,
+null,
+null
+],
+[
+5.0,
+0.292,
+null,
+null
+],
+[
+6.0,
+0.292,
+null,
+null
+],
+[
+7.0,
+0.292,
+null,
+null
+],
+[
+8.0,
+0.292,
+null,
+null
+],
+[
+9.0,
+0.292,
+null,
+null
+],
+[
+10.0,
+0.292,
+null,
+null
+],
+[
+12.0,
+0.292,
+null,
+null
+],
+[
+14.0,
+0.292,
+null,
+null
+],
+[
+16.0,
+0.292,
+null,
+null
+],
+[
+18.0,
+0.331,
+null,
+null
+],
+[
+21.0,
+0.371,
+null,
+null
+],
+[
+24.0,
+0.371,
+null,
+null
+],
+[
+28.0,
+0.423,
+null,
+null
+],
+[
+32.0,
+0.423,
+null,
+null
+],
+[
+36.0,
+0.495,
+null,
+null
+],
+[
+42.0,
+0.495,
+null,
+null
+],
+[
+49.0,
+0.495,
+null,
+null
+],
+[
+56.0,
+0.495,
+null,
+null
+],
+[
+63.0,
+0.495,
+null,
+null
+],
+[
+70.0,
+0.495,
+null,
+null
+],
+[
+77.0,
+0.495,
+null,
+null
+],
+[
+79.75,
+0.495,
+null,
+null
+]
+],
+"events": 16,
+"median_days": null,
+"n": 46,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "192",
+"subject": "BIOENG"
+},
+"BIOENG 201": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.121,
+null,
+null
+],
+[
+1.0,
+0.209,
+null,
+null
+],
+[
+2.0,
+0.384,
+null,
+null
+],
+[
+3.0,
+0.437,
+null,
+null
+],
+[
+4.0,
+0.475,
+null,
+null
+],
+[
+5.0,
+0.494,
+null,
+null
+],
+[
+6.0,
+0.494,
+null,
+null
+],
+[
+7.0,
+0.494,
+null,
+null
+],
+[
+8.0,
+0.536,
+null,
+null
+],
+[
+9.0,
+0.599,
+null,
+null
+],
+[
+10.0,
+0.641,
+null,
+null
+],
+[
+12.0,
+0.641,
+null,
+null
+],
+[
+14.0,
+0.664,
+null,
+null
+],
+[
+16.0,
+0.712,
+null,
+null
+],
+[
+18.0,
+0.764,
+null,
+null
+],
+[
+21.0,
+0.86,
+null,
+null
+],
+[
+24.0,
+0.907,
+null,
+null
+],
+[
+28.0,
+0.953,
+null,
+null
+],
+[
+31.81,
+0.953,
+null,
+null
+]
+],
+"events": 46,
+"median_days": 7.08,
+"n": 58,
+"pooled": false,
+"reach_days": 31.8,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "201",
+"subject": "BIOENG"
+},
+"BIOENG 221L": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.119,
+null,
+null
+],
+[
+1.0,
+0.143,
+null,
+null
+],
+[
+2.0,
+0.143,
+null,
+null
+],
+[
+3.0,
+0.143,
+null,
+null
+],
+[
+4.0,
+0.143,
+null,
+null
+],
+[
+5.0,
+0.143,
+null,
+null
+],
+[
+6.0,
+0.143,
+null,
+null
+],
+[
+7.0,
+0.143,
+null,
+null
+],
+[
+8.0,
+0.143,
+null,
+null
+],
+[
+9.0,
+0.143,
+null,
+null
+],
+[
+10.0,
+0.143,
+null,
+null
+],
+[
+12.0,
+0.143,
+null,
+null
+],
+[
+14.0,
+0.143,
+null,
+null
+],
+[
+16.0,
+0.286,
+null,
+null
+],
+[
+18.0,
+0.325,
+null,
+null
+],
+[
+21.0,
+0.481,
+null,
+null
+],
+[
+24.0,
+0.481,
+null,
+null
+],
+[
+28.0,
+0.629,
+null,
+null
+],
+[
+32.0,
+0.629,
+null,
+null
+],
+[
+36.0,
+0.629,
+null,
+null
+],
+[
+42.0,
+0.629,
+null,
+null
+],
+[
+45.67,
+0.629,
+null,
+null
+]
+],
+"events": 16,
+"median_days": 26.49,
+"n": 42,
+"pooled": false,
+"reach_days": 45.7,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "221L",
+"subject": "BIOENG"
+},
+"BIOENG 234": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.128,
+null,
+null
+],
+[
+1.0,
+0.142,
+null,
+null
+],
+[
+2.0,
+0.168,
+null,
+null
+],
+[
+3.0,
+0.236,
+null,
+null
+],
+[
+4.0,
+0.316,
+null,
+null
+],
+[
+5.0,
+0.37,
+null,
+null
+],
+[
+6.0,
+0.49,
+null,
+null
+],
+[
+7.0,
+0.505,
+null,
+null
+],
+[
+8.0,
+0.534,
+null,
+null
+],
+[
+9.0,
+0.563,
+null,
+null
+],
+[
+10.0,
+0.618,
+null,
+null
+],
+[
+12.0,
+0.654,
+null,
+null
+],
+[
+14.0,
+0.706,
+null,
+null
+],
+[
+16.0,
+0.755,
+null,
+null
+],
+[
+18.0,
+0.755,
+null,
+null
+],
+[
+20.91,
+0.836,
+null,
+null
+]
+],
+"events": 51,
+"median_days": 6.11,
+"n": 78,
+"pooled": false,
+"reach_days": 20.9,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "234",
+"subject": "BIOENG"
+},
+"BIOENG 235": {
+"buckets": {
+"1-5": {
+"n_course": 5,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "235",
+"subject": "BIOENG"
+},
+"BIOENG 245": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.121,
+null,
+null
+],
+[
+1.0,
+0.161,
+null,
+null
+],
+[
+2.0,
+0.232,
+null,
+null
+],
+[
+3.0,
+0.304,
+null,
+null
+],
+[
+4.0,
+0.364,
+null,
+null
+],
+[
+5.0,
+0.391,
+null,
+null
+],
+[
+6.0,
+0.424,
+null,
+null
+],
+[
+7.0,
+0.462,
+null,
+null
+],
+[
+8.0,
+0.509,
+null,
+null
+],
+[
+9.0,
+0.533,
+null,
+null
+],
+[
+10.0,
+0.564,
+null,
+null
+],
+[
+12.0,
+0.617,
+null,
+null
+],
+[
+14.0,
+0.644,
+null,
+null
+],
+[
+16.0,
+0.688,
+null,
+null
+],
+[
+18.0,
+0.707,
+null,
+null
+],
+[
+21.0,
+0.707,
+null,
+null
+],
+[
+24.0,
+0.707,
+null,
+null
+],
+[
+28.0,
+0.707,
+null,
+null
+],
+[
+32.0,
+0.707,
+null,
+null
+],
+[
+36.0,
+0.707,
+null,
+null
+],
+[
+42.0,
+0.707,
+null,
+null
+],
+[
+49.0,
+0.707,
+null,
+null
+],
+[
+56.0,
+0.707,
+null,
+null
+],
+[
+63.0,
+0.707,
+null,
+null
+],
+[
+70.0,
+0.707,
+null,
+null
+],
+[
+77.0,
+0.707,
+null,
+null
+],
+[
+79.75,
+0.707,
+null,
+null
+]
+],
+"events": 149,
+"median_days": 7.85,
+"n": 224,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"n_course": 10,
+"pooled": "BIOENG",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.019,
+null,
+null
+],
+[
+9.0,
+0.028,
+null,
+null
+],
+[
+10.0,
+0.068,
+null,
+null
+],
+[
+12.0,
+0.131,
+null,
+null
+],
+[
+14.0,
+0.186,
+null,
+null
+],
+[
+16.0,
+0.297,
+null,
+null
+],
+[
+18.0,
+0.396,
+null,
+null
+],
+[
+21.0,
+0.482,
+null,
+null
+],
+[
+24.0,
+0.595,
+null,
+null
+],
+[
+28.0,
+0.692,
+null,
+null
+],
+[
+32.0,
+0.692,
+null,
+null
+],
+[
+36.0,
+0.692,
+null,
+null
+],
+[
+42.0,
+0.692,
+null,
+null
+],
+[
+49.0,
+0.692,
+null,
+null
+],
+[
+49.11,
+0.692,
+null,
+null
+]
+],
+"events": 55,
+"median_days": 21.4,
+"n": 113,
+"pooled": false,
+"reach_days": 49.1,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "245",
+"subject": "BIOENG"
+},
+"BIOENG 253": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -3111,314 +3465,2132 @@ null
 ],
 [
 1.0,
-0.187,
+0.13,
 null,
 null
 ],
 [
 2.0,
-0.187,
+0.143,
 null,
 null
 ],
 [
 3.0,
-0.309,
+0.242,
 null,
 null
 ],
 [
 4.0,
-0.482,
+0.299,
 null,
 null
 ],
 [
 5.0,
-0.482,
+0.343,
 null,
 null
 ],
 [
 6.0,
-0.482,
+0.369,
 null,
 null
 ],
 [
 7.0,
-0.482,
+0.389,
 null,
 null
 ],
 [
 8.0,
-0.482,
+0.403,
 null,
 null
 ],
 [
 9.0,
-0.482,
+0.445,
 null,
 null
 ],
 [
 10.0,
-0.482,
+0.445,
 null,
 null
 ],
 [
 12.0,
-0.482,
+0.461,
 null,
 null
 ],
 [
 14.0,
-0.482,
+0.461,
 null,
 null
 ],
 [
 16.0,
-0.482,
+0.522,
 null,
 null
 ],
 [
 18.0,
-1.0,
+0.578,
+null,
+null
+],
+[
+21.0,
+0.591,
+null,
+null
+],
+[
+24.0,
+0.591,
+null,
+null
+],
+[
+28.0,
+0.682,
+null,
+null
+],
+[
+32.0,
+0.955,
+null,
+null
+],
+[
+36.0,
+0.955,
+null,
+null
+],
+[
+38.8,
+0.977,
 null,
 null
 ]
 ],
-"events": 16,
-"median_days": 17.56,
-"n": 30,
+"events": 104,
+"median_days": 15.26,
+"n": 161,
 "pooled": false,
-"reach_days": 18.0,
+"reach_days": 38.8,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.036,
+null,
+null
+],
+[
+1.0,
+0.036,
+null,
+null
+],
+[
+2.0,
+0.036,
+null,
+null
+],
+[
+3.0,
+0.036,
+null,
+null
+],
+[
+4.0,
+0.036,
+null,
+null
+],
+[
+5.0,
+0.089,
+null,
+null
+],
+[
+6.0,
+0.126,
+null,
+null
+],
+[
+7.0,
+0.164,
+null,
+null
+],
+[
+8.0,
+0.201,
+null,
+null
+],
+[
+9.0,
+0.201,
+null,
+null
+],
+[
+10.0,
+0.28,
+null,
+null
+],
+[
+12.0,
+0.323,
+null,
+null
+],
+[
+14.0,
+0.323,
+null,
+null
+],
+[
+16.0,
+0.388,
+null,
+null
+],
+[
+18.0,
+0.437,
+null,
+null
+],
+[
+21.0,
+0.437,
+null,
+null
+],
+[
+24.0,
+0.437,
+null,
+null
+],
+[
+28.0,
+0.518,
+null,
+null
+],
+[
+32.0,
+0.793,
+null,
+null
+],
+[
+36.0,
+0.793,
+null,
+null
+],
+[
+42.0,
+0.793,
+null,
+null
+],
+[
+45.67,
+0.793,
+null,
+null
+]
+],
+"events": 28,
+"median_days": 26.45,
+"n": 56,
+"pooled": false,
+"reach_days": 45.7,
 "sections": 1
 }
 },
-"dept_group": "OTHER",
+"dept_group": "BIOENG",
 "level": "grad",
-"number": "C208",
+"number": "253",
 "subject": "BIOENG"
 },
-"BIOENG C231": {
+"BIOENG 263L": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.217,
+0.029,
 null,
 null
+],
+[
+1.0,
+0.029,
+null,
+null
+],
+[
+2.0,
+0.029,
+null,
+null
+],
+[
+3.0,
+0.029,
+null,
+null
+],
+[
+4.0,
+0.029,
+null,
+null
+],
+[
+5.0,
+0.029,
+null,
+null
+],
+[
+6.0,
+0.029,
+null,
+null
+],
+[
+7.0,
+0.029,
+null,
+null
+],
+[
+8.0,
+0.029,
+null,
+null
+],
+[
+9.0,
+0.029,
+null,
+null
+],
+[
+10.0,
+0.062,
+null,
+null
+],
+[
+12.0,
+0.062,
+null,
+null
+],
+[
+14.0,
+0.062,
+null,
+null
+],
+[
+16.0,
+0.097,
+null,
+null
+],
+[
+18.0,
+0.097,
+null,
+null
+],
+[
+21.0,
+0.097,
+null,
+null
+],
+[
+24.0,
+0.097,
+null,
+null
+],
+[
+28.0,
+0.097,
+null,
+null
+],
+[
+32.0,
+0.097,
+null,
+null
+],
+[
+36.0,
+0.097,
+null,
+null
+],
+[
+42.0,
+0.097,
+null,
+null
+],
+[
+49.0,
+0.097,
+null,
+null
+],
+[
+56.0,
+0.097,
+null,
+null
+],
+[
+63.0,
+0.097,
+null,
+null
+],
+[
+70.0,
+0.097,
+null,
+null
+],
+[
+77.0,
+0.097,
+null,
+null
+],
+[
+79.75,
+0.097,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 35,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "263L",
+"subject": "BIOENG"
+},
+"BIOENG 266": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "266",
+"subject": "BIOENG"
+},
+"BIOENG 271": {
+"buckets": {
+"1-5": {
+"n_course": 28,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "271",
+"subject": "BIOENG"
+},
+"BIOENG 280": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 42,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "280",
+"subject": "BIOENG"
+},
+"BIOENG 282": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.302,
+null,
+null
+],
+[
+1.0,
+0.395,
+null,
+null
+],
+[
+2.0,
+0.674,
+null,
+null
+],
+[
+3.0,
+0.791,
+null,
+null
+],
+[
+4.0,
+0.86,
+null,
+null
+],
+[
+5.0,
+0.953,
+null,
+null
+],
+[
+5.16,
+1.0,
+null,
+null
+]
+],
+"events": 43,
+"median_days": 1.18,
+"n": 43,
+"pooled": false,
+"reach_days": 5.2,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "282",
+"subject": "BIOENG"
+},
+"BIOENG 290": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.203,
+0.144,
+0.233
 ],
 [
 1.0,
 0.265,
-null,
-null
+0.197,
+0.306
 ],
 [
 2.0,
-0.416,
-null,
-null
+0.308,
+0.221,
+0.361
 ],
 [
 3.0,
-0.574,
-null,
-null
+0.359,
+0.242,
+0.426
 ],
 [
 4.0,
-0.7,
-null,
-null
+0.369,
+0.26,
+0.431
 ],
 [
 5.0,
-0.813,
-null,
-null
+0.407,
+0.273,
+0.487
 ],
 [
 6.0,
-0.869,
-null,
-null
+0.449,
+0.323,
+0.514
 ],
 [
 7.0,
-0.906,
-null,
-null
+0.496,
+0.352,
+0.554
 ],
 [
 8.0,
-0.925,
-null,
-null
+0.518,
+0.361,
+0.62
 ],
 [
 9.0,
-0.963,
-null,
-null
+0.529,
+0.393,
+0.62
 ],
 [
 10.0,
-0.981,
-null,
-null
+0.549,
+0.44,
+0.677
 ],
 [
-11.33,
-0.981,
-null,
-null
+12.0,
+0.569,
+0.473,
+0.734
+],
+[
+14.0,
+0.573,
+0.473,
+0.734
+],
+[
+16.0,
+0.603,
+0.514,
+0.753
+],
+[
+18.0,
+0.625,
+0.52,
+0.772
+],
+[
+21.0,
+0.663,
+0.58,
+0.772
+],
+[
+24.0,
+0.686,
+0.615,
+0.823
+],
+[
+28.0,
+0.715,
+0.645,
+0.873
+],
+[
+32.0,
+0.715,
+0.645,
+0.873
+],
+[
+36.0,
+0.715,
+0.645,
+0.873
+],
+[
+42.0,
+0.715,
+0.645,
+0.873
+],
+[
+49.0,
+0.715,
+0.645,
+0.873
+],
+[
+56.0,
+0.715,
+0.645,
+0.873
+],
+[
+63.0,
+0.715,
+0.645,
+0.873
+],
+[
+70.0,
+0.715,
+0.645,
+0.873
+],
+[
+77.0,
+0.715,
+0.645,
+0.873
+],
+[
+79.75,
+0.715,
+0.645,
+0.873
 ]
 ],
-"events": 58,
-"median_days": 2.47,
-"n": 65,
+"events": 197,
+"median_days": 7.15,
+"n": 306,
 "pooled": false,
-"reach_days": 11.3,
-"sections": 1
-}
+"reach_days": 79.7,
+"sections": 4
 },
-"dept_group": "OTHER",
-"level": "grad",
-"number": "C231",
-"subject": "BIOENG"
-},
-"BIOENG C249": {
-"buckets": {
-"1-5": {
+"6-15": {
 "curve": [
 [
 0.5,
-0.132,
+0.0,
 null,
 null
 ],
 [
 1.0,
-0.169,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.248,
+0.0,
 null,
 null
 ],
 [
 3.0,
-0.314,
+0.019,
 null,
 null
 ],
 [
 4.0,
-0.429,
+0.038,
 null,
 null
 ],
 [
 5.0,
-0.48,
+0.038,
 null,
 null
 ],
 [
 6.0,
-0.595,
+0.058,
 null,
 null
 ],
 [
 7.0,
-0.595,
+0.058,
 null,
 null
 ],
 [
 8.0,
-0.595,
+0.078,
 null,
 null
 ],
 [
 9.0,
-0.662,
+0.078,
 null,
 null
 ],
 [
 10.0,
-0.696,
+0.078,
 null,
 null
 ],
 [
 12.0,
-0.696,
+0.078,
 null,
 null
 ],
 [
 14.0,
-0.747,
+0.102,
 null,
 null
 ],
 [
 16.0,
-0.899,
+0.102,
 null,
 null
 ],
 [
 18.0,
-1.0,
+0.16,
+null,
+null
+],
+[
+21.0,
+0.225,
+null,
+null
+],
+[
+24.0,
+0.296,
+null,
+null
+],
+[
+28.0,
+0.366,
+null,
+null
+],
+[
+32.0,
+0.401,
+null,
+null
+],
+[
+36.0,
+0.401,
+null,
+null
+],
+[
+39.73,
+0.401,
 null,
 null
 ]
 ],
-"events": 37,
-"median_days": 5.03,
-"n": 62,
+"events": 14,
+"median_days": null,
+"n": 54,
 "pooled": false,
-"reach_days": 18.0,
+"reach_days": 39.7,
 "sections": 1
 }
 },
-"dept_group": "OTHER",
+"dept_group": "BIOENG",
 "level": "grad",
-"number": "C249",
+"number": "290",
 "subject": "BIOENG"
 },
-"BIOENG C261": {
+"BIOENG C106B": {
 "buckets": {
 "1-5": {
-"n_course": 28,
-"pooled": "OTHER",
+"n_course": 11,
+"pooled": "BIOENG",
 "sections_course": 1
 }
 },
-"dept_group": "OTHER",
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "C106B",
+"subject": "BIOENG"
+},
+"BIOENG C142": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.054,
+null,
+null
+],
+[
+1.0,
+0.079,
+null,
+null
+],
+[
+2.0,
+0.131,
+null,
+null
+],
+[
+3.0,
+0.142,
+null,
+null
+],
+[
+4.0,
+0.153,
+null,
+null
+],
+[
+5.0,
+0.153,
+null,
+null
+],
+[
+6.0,
+0.21,
+null,
+null
+],
+[
+7.0,
+0.226,
+null,
+null
+],
+[
+8.0,
+0.319,
+null,
+null
+],
+[
+9.0,
+0.391,
+null,
+null
+],
+[
+10.0,
+0.415,
+null,
+null
+],
+[
+12.0,
+0.47,
+null,
+null
+],
+[
+14.0,
+0.582,
+null,
+null
+],
+[
+16.0,
+0.62,
+null,
+null
+],
+[
+18.0,
+0.647,
+null,
+null
+],
+[
+21.0,
+0.668,
+null,
+null
+],
+[
+24.0,
+0.703,
+null,
+null
+],
+[
+28.0,
+0.805,
+null,
+null
+],
+[
+32.0,
+0.854,
+null,
+null
+],
+[
+36.0,
+0.854,
+null,
+null
+],
+[
+42.0,
+0.854,
+null,
+null
+],
+[
+49.0,
+0.854,
+null,
+null
+],
+[
+56.0,
+0.854,
+null,
+null
+],
+[
+63.0,
+0.854,
+null,
+null
+],
+[
+70.0,
+0.854,
+null,
+null
+],
+[
+77.0,
+0.854,
+null,
+null
+],
+[
+79.75,
+0.854,
+null,
+null
+]
+],
+"events": 133,
+"median_days": 12.91,
+"n": 204,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.02,
+null,
+null
+],
+[
+7.0,
+0.02,
+null,
+null
+],
+[
+8.0,
+0.082,
+null,
+null
+],
+[
+9.0,
+0.125,
+null,
+null
+],
+[
+10.0,
+0.125,
+null,
+null
+],
+[
+12.0,
+0.125,
+null,
+null
+],
+[
+14.0,
+0.215,
+null,
+null
+],
+[
+16.0,
+0.349,
+null,
+null
+],
+[
+18.0,
+0.372,
+null,
+null
+],
+[
+21.0,
+0.398,
+null,
+null
+],
+[
+24.0,
+0.398,
+null,
+null
+],
+[
+28.0,
+0.398,
+null,
+null
+],
+[
+32.0,
+0.398,
+null,
+null
+],
+[
+36.0,
+0.398,
+null,
+null
+],
+[
+42.0,
+0.398,
+null,
+null
+],
+[
+49.0,
+0.398,
+null,
+null
+],
+[
+50.07,
+0.398,
+null,
+null
+]
+],
+"events": 18,
+"median_days": null,
+"n": 56,
+"pooled": false,
+"reach_days": 50.1,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "C142",
+"subject": "BIOENG"
+},
+"BIOENG C146": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.046,
+null,
+null
+],
+[
+1.0,
+0.046,
+null,
+null
+],
+[
+2.0,
+0.071,
+null,
+null
+],
+[
+3.0,
+0.084,
+null,
+null
+],
+[
+4.0,
+0.097,
+null,
+null
+],
+[
+5.0,
+0.152,
+null,
+null
+],
+[
+6.0,
+0.211,
+null,
+null
+],
+[
+7.0,
+0.271,
+null,
+null
+],
+[
+8.0,
+0.271,
+null,
+null
+],
+[
+9.0,
+0.301,
+null,
+null
+],
+[
+10.0,
+0.316,
+null,
+null
+],
+[
+12.0,
+0.362,
+null,
+null
+],
+[
+14.0,
+0.362,
+null,
+null
+],
+[
+16.0,
+0.377,
+null,
+null
+],
+[
+18.0,
+0.377,
+null,
+null
+],
+[
+21.0,
+0.377,
+null,
+null
+],
+[
+24.0,
+0.377,
+null,
+null
+],
+[
+28.0,
+0.377,
+null,
+null
+],
+[
+32.0,
+0.377,
+null,
+null
+],
+[
+36.0,
+0.377,
+null,
+null
+],
+[
+42.0,
+0.377,
+null,
+null
+],
+[
+49.0,
+0.377,
+null,
+null
+],
+[
+56.0,
+0.377,
+null,
+null
+],
+[
+63.0,
+0.377,
+null,
+null
+],
+[
+70.0,
+0.377,
+null,
+null
+],
+[
+77.0,
+0.377,
+null,
+null
+],
+[
+79.75,
+0.377,
+null,
+null
+]
+],
+"events": 27,
+"median_days": null,
+"n": 87,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "C146",
+"subject": "BIOENG"
+},
+"BIOENG C171": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.114,
+null,
+null
+],
+[
+1.0,
+0.123,
+null,
+null
+],
+[
+2.0,
+0.205,
+null,
+null
+],
+[
+3.0,
+0.215,
+null,
+null
+],
+[
+4.0,
+0.224,
+null,
+null
+],
+[
+5.0,
+0.253,
+null,
+null
+],
+[
+6.0,
+0.318,
+null,
+null
+],
+[
+7.0,
+0.318,
+null,
+null
+],
+[
+8.0,
+0.354,
+null,
+null
+],
+[
+9.0,
+0.379,
+null,
+null
+],
+[
+10.0,
+0.407,
+null,
+null
+],
+[
+12.0,
+0.421,
+null,
+null
+],
+[
+14.0,
+0.441,
+null,
+null
+],
+[
+16.0,
+0.461,
+null,
+null
+],
+[
+18.0,
+0.507,
+null,
+null
+],
+[
+21.0,
+0.552,
+null,
+null
+],
+[
+24.0,
+0.552,
+null,
+null
+],
+[
+28.0,
+0.664,
+null,
+null
+],
+[
+32.0,
+0.664,
+null,
+null
+],
+[
+36.0,
+0.664,
+null,
+null
+],
+[
+42.0,
+0.664,
+null,
+null
+],
+[
+49.0,
+0.664,
+null,
+null
+],
+[
+56.0,
+0.664,
+null,
+null
+],
+[
+63.0,
+0.664,
+null,
+null
+],
+[
+70.0,
+0.664,
+null,
+null
+],
+[
+77.0,
+0.664,
+null,
+null
+],
+[
+79.75,
+0.664,
+null,
+null
+]
+],
+"events": 49,
+"median_days": 17.91,
+"n": 114,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 27,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "upper",
+"number": "C171",
+"subject": "BIOENG"
+},
+"BIOENG C216": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.074,
+null,
+null
+],
+[
+1.0,
+0.117,
+null,
+null
+],
+[
+2.0,
+0.139,
+null,
+null
+],
+[
+3.0,
+0.15,
+null,
+null
+],
+[
+4.0,
+0.173,
+null,
+null
+],
+[
+5.0,
+0.197,
+null,
+null
+],
+[
+6.0,
+0.255,
+null,
+null
+],
+[
+7.0,
+0.266,
+null,
+null
+],
+[
+8.0,
+0.266,
+null,
+null
+],
+[
+9.0,
+0.266,
+null,
+null
+],
+[
+10.0,
+0.281,
+null,
+null
+],
+[
+12.0,
+0.412,
+null,
+null
+],
+[
+14.0,
+0.5,
+null,
+null
+],
+[
+16.0,
+0.546,
+null,
+null
+],
+[
+18.0,
+0.615,
+null,
+null
+],
+[
+21.0,
+0.643,
+null,
+null
+],
+[
+24.0,
+0.643,
+null,
+null
+],
+[
+28.0,
+0.74,
+null,
+null
+],
+[
+32.0,
+0.805,
+null,
+null
+],
+[
+36.0,
+0.805,
+null,
+null
+],
+[
+42.0,
+0.805,
+null,
+null
+],
+[
+49.0,
+0.805,
+null,
+null
+],
+[
+56.0,
+0.805,
+null,
+null
+],
+[
+63.0,
+0.805,
+null,
+null
+],
+[
+70.0,
+0.805,
+null,
+null
+],
+[
+77.0,
+0.805,
+null,
+null
+],
+[
+79.75,
+0.805,
+null,
+null
+]
+],
+"events": 51,
+"median_days": 14.07,
+"n": 95,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 9,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
 "level": "grad",
-"number": "C261",
+"number": "C216",
+"subject": "BIOENG"
+},
+"BIOENG C242": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.049,
+null,
+null
+],
+[
+1.0,
+0.049,
+null,
+null
+],
+[
+2.0,
+0.049,
+null,
+null
+],
+[
+3.0,
+0.083,
+null,
+null
+],
+[
+4.0,
+0.099,
+null,
+null
+],
+[
+5.0,
+0.152,
+null,
+null
+],
+[
+6.0,
+0.187,
+null,
+null
+],
+[
+7.0,
+0.204,
+null,
+null
+],
+[
+8.0,
+0.241,
+null,
+null
+],
+[
+9.0,
+0.241,
+null,
+null
+],
+[
+10.0,
+0.241,
+null,
+null
+],
+[
+12.0,
+0.261,
+null,
+null
+],
+[
+14.0,
+0.3,
+null,
+null
+],
+[
+16.0,
+0.3,
+null,
+null
+],
+[
+18.0,
+0.3,
+null,
+null
+],
+[
+21.0,
+0.3,
+null,
+null
+],
+[
+24.0,
+0.3,
+null,
+null
+],
+[
+28.0,
+0.3,
+null,
+null
+],
+[
+32.0,
+0.3,
+null,
+null
+],
+[
+36.0,
+0.3,
+null,
+null
+],
+[
+42.0,
+0.3,
+null,
+null
+],
+[
+49.0,
+0.3,
+null,
+null
+],
+[
+56.0,
+0.3,
+null,
+null
+],
+[
+63.0,
+0.3,
+null,
+null
+],
+[
+70.0,
+0.3,
+null,
+null
+],
+[
+77.0,
+0.3,
+null,
+null
+],
+[
+79.75,
+0.3,
+null,
+null
+]
+],
+"events": 34,
+"median_days": null,
+"n": 122,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 29,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "C242",
+"subject": "BIOENG"
+},
+"BIOENG C265": {
+"buckets": {
+"1-5": {
+"n_course": 22,
+"pooled": "BIOENG",
+"sections_course": 1
+}
+},
+"dept_group": "BIOENG",
+"level": "grad",
+"number": "C265",
 "subject": "BIOENG"
 }
 },
 "subject": "BIOENG",
-"term_id": "2268"
+"term_id": "2262"
 }

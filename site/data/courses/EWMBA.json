@@ -1,19 +1,19 @@
 {
 "courses": {
-"CRITTH 290": {
+"EWMBA 246A": {
 "buckets": {
 "1-5": {
-"n_course": 1,
+"n_course": 19,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "290",
-"subject": "CRITTH"
+"number": "246A",
+"subject": "EWMBA"
 }
 },
-"subject": "CRITTH",
-"term_id": "2268"
+"subject": "EWMBA",
+"term_id": "2262"
 }

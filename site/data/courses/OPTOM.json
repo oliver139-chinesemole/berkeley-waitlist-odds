@@ -1,45 +1,136 @@
 {
 "courses": {
-"OPTOM 200AL": {
+"OPTOM 200B": {
 "buckets": {
 "1-5": {
-"n_course": 10,
+"n_course": 24,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "200AL",
+"number": "200B",
 "subject": "OPTOM"
 },
-"OPTOM 200CL": {
+"OPTOM 200BL": {
 "buckets": {
 "1-5": {
-"n_course": 8,
+"n_course": 24,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "200CL",
+"number": "200BL",
 "subject": "OPTOM"
 },
-"OPTOM 430B": {
+"OPTOM 200DL": {
 "buckets": {
 "1-5": {
-"n_course": 9,
+"n_course": 21,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "grad",
-"number": "430B",
+"number": "200DL",
+"subject": "OPTOM"
+},
+"OPTOM 200F": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200F",
+"subject": "OPTOM"
+},
+"OPTOM 203B": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "203B",
+"subject": "OPTOM"
+},
+"OPTOM 206B": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "206B",
+"subject": "OPTOM"
+},
+"OPTOM 217": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "217",
+"subject": "OPTOM"
+},
+"OPTOM 219": {
+"buckets": {
+"1-5": {
+"n_course": 7,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "219",
+"subject": "OPTOM"
+},
+"OPTOM 222A": {
+"buckets": {
+"1-5": {
+"n_course": 24,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "222A",
+"subject": "OPTOM"
+},
+"OPTOM 271B": {
+"buckets": {
+"1-5": {
+"n_course": 25,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "271B",
 "subject": "OPTOM"
 }
 },
 "subject": "OPTOM",
-"term_id": "2268"
+"term_id": "2262"
 }

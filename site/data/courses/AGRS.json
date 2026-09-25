@@ -1,952 +1,827 @@
 {
 "courses": {
-"AGRS 10A": {
+"AGRS 10B": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.206,
+0.45,
 null,
 null
 ],
 [
 1.0,
-0.238,
+0.608,
 null,
 null
 ],
 [
 2.0,
-0.305,
+0.676,
 null,
 null
 ],
 [
 3.0,
-0.374,
-null,
-null
-],
-[
-4.0,
-0.426,
-null,
-null
-],
-[
-5.0,
-0.507,
-null,
-null
-],
-[
-6.0,
-0.542,
-null,
-null
-],
-[
-7.0,
-0.573,
-null,
-null
-],
-[
-8.0,
-0.622,
-null,
-null
-],
-[
-9.0,
-0.644,
-null,
-null
-],
-[
-10.0,
 0.721,
 null,
 null
 ],
 [
+4.0,
+0.757,
+null,
+null
+],
+[
+5.0,
+0.77,
+null,
+null
+],
+[
+6.0,
+0.807,
+null,
+null
+],
+[
+7.0,
+0.828,
+null,
+null
+],
+[
+8.0,
+0.84,
+null,
+null
+],
+[
+9.0,
+0.854,
+null,
+null
+],
+[
+10.0,
+0.874,
+null,
+null
+],
+[
 12.0,
-0.779,
+0.894,
 null,
 null
 ],
 [
 14.0,
-0.803,
+0.93,
 null,
 null
 ],
 [
 16.0,
-0.803,
+0.944,
 null,
 null
 ],
 [
 18.0,
-0.825,
+0.949,
 null,
 null
 ],
 [
 21.0,
-0.825,
+0.953,
 null,
 null
 ],
 [
 24.0,
-0.883,
+0.953,
 null,
 null
 ],
 [
-28.0,
-0.942,
-null,
-null
-],
-[
-30.54,
-0.942,
+25.11,
+0.953,
 null,
 null
 ]
 ],
-"events": 182,
-"median_days": 4.63,
-"n": 285,
+"events": 342,
+"median_days": 0.64,
+"n": 391,
 "pooled": false,
-"reach_days": 30.5,
+"reach_days": 25.1,
 "sections": 1
+},
+"16-40": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.0,
+0.036,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.08,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.161,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.209,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.278,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.358,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.376,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.405,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.424,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.434,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.476,
 null,
 null
 ],
 [
 12.0,
-0.092,
-null,
-null
-],
-[
-14.0,
-0.243,
-null,
-null
-],
-[
-16.0,
-0.319,
-null,
-null
-],
-[
-18.0,
-0.416,
-null,
-null
-],
-[
-18.41,
-0.416,
-null,
-null
-]
-],
-"events": 8,
-"median_days": null,
-"n": 107,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "10A",
-"subject": "AGRS"
-},
-"AGRS 130E": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.02,
-null,
-null
-],
-[
-1.0,
-0.02,
-null,
-null
-],
-[
-2.0,
-0.02,
-null,
-null
-],
-[
-3.0,
-0.02,
-null,
-null
-],
-[
-4.0,
-0.02,
-null,
-null
-],
-[
-5.0,
-0.02,
-null,
-null
-],
-[
-6.0,
-0.02,
-null,
-null
-],
-[
-7.0,
-0.02,
-null,
-null
-],
-[
-8.0,
-0.02,
-null,
-null
-],
-[
-9.0,
-0.02,
-null,
-null
-],
-[
-10.0,
-0.02,
-null,
-null
-],
-[
-12.0,
-0.02,
-null,
-null
-],
-[
-14.0,
-0.02,
-null,
-null
-],
-[
-16.0,
-0.02,
-null,
-null
-],
-[
-18.0,
-0.02,
-null,
-null
-],
-[
-18.21,
-0.02,
-null,
-null
-]
-],
-"events": 1,
-"median_days": null,
-"n": 50,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "130E",
-"subject": "AGRS"
-},
-"AGRS 130F": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.052,
-null,
-null
-],
-[
-1.0,
-0.091,
-null,
-null
-],
-[
-2.0,
-0.131,
-null,
-null
-],
-[
-3.0,
-0.202,
-null,
-null
-],
-[
-4.0,
-0.258,
-null,
-null
-],
-[
-5.0,
-0.29,
-null,
-null
-],
-[
-6.0,
-0.337,
-null,
-null
-],
-[
-7.0,
-0.337,
-null,
-null
-],
-[
-8.0,
-0.337,
-null,
-null
-],
-[
-9.0,
-0.337,
-null,
-null
-],
-[
-10.0,
-0.337,
-null,
-null
-],
-[
-12.0,
-0.372,
-null,
-null
-],
-[
-14.0,
-0.409,
-null,
-null
-],
-[
-16.0,
-0.409,
-null,
-null
-],
-[
-18.0,
-0.455,
-null,
-null
-],
-[
-21.0,
 0.515,
 null,
 null
 ],
 [
-24.0,
-0.596,
-null,
-null
-],
-[
-28.0,
-0.731,
-null,
-null
-],
-[
-30.81,
-0.731,
-null,
-null
-]
-],
-"events": 35,
-"median_days": 19.07,
-"n": 117,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 4,
-"pooled": "OTHER",
-"sections_course": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "130F",
-"subject": "AGRS"
-},
-"AGRS 130S": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.133,
-null,
-null
-],
-[
-1.0,
-0.146,
-null,
-null
-],
-[
-2.0,
-0.21,
-null,
-null
-],
-[
-3.0,
-0.283,
-null,
-null
-],
-[
-4.0,
-0.314,
-null,
-null
-],
-[
-5.0,
-0.485,
-null,
-null
-],
-[
-6.0,
-0.527,
-null,
-null
-],
-[
-7.0,
-0.617,
-null,
-null
-],
-[
-8.0,
-0.617,
-null,
-null
-],
-[
-9.0,
-0.643,
-null,
-null
-],
-[
-10.0,
-0.643,
-null,
-null
-],
-[
-12.0,
-0.708,
-null,
-null
-],
-[
 14.0,
-0.744,
+0.637,
 null,
 null
 ],
 [
 16.0,
-0.817,
+0.79,
 null,
 null
 ],
 [
 18.0,
-0.927,
+0.86,
 null,
 null
 ],
 [
-18.5,
-0.927,
+21.0,
+0.93,
+null,
+null
+],
+[
+24.0,
+0.965,
+null,
+null
+],
+[
+24.07,
+0.965,
 null,
 null
 ]
 ],
-"events": 47,
-"median_days": 5.08,
-"n": 83,
+"events": 79,
+"median_days": 11.86,
+"n": 141,
 "pooled": false,
-"reach_days": 18.5,
+"reach_days": 24.1,
 "sections": 1
-},
-"6-15": {
-"n_course": 4,
-"pooled": "OTHER",
-"sections_course": 1
 }
 },
 "dept_group": "OTHER",
-"level": "upper",
-"number": "130S",
+"level": "lower",
+"number": "10B",
 "subject": "AGRS"
 },
-"AGRS 17A": {
+"AGRS 130C": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.166,
+0.13,
 null,
 null
 ],
 [
 1.0,
-0.273,
+0.195,
 null,
 null
 ],
 [
 2.0,
-0.367,
+0.311,
 null,
 null
 ],
 [
 3.0,
+0.345,
+null,
+null
+],
+[
+4.0,
+0.38,
+null,
+null
+],
+[
+5.0,
+0.408,
+null,
+null
+],
+[
+6.0,
 0.436,
 null,
 null
 ],
 [
-4.0,
-0.493,
-null,
-null
-],
-[
-5.0,
-0.534,
-null,
-null
-],
-[
-6.0,
-0.615,
-null,
-null
-],
-[
 7.0,
-0.635,
+0.474,
 null,
 null
 ],
 [
 8.0,
-0.696,
+0.511,
 null,
 null
 ],
 [
 9.0,
-0.766,
+0.521,
 null,
 null
 ],
 [
 10.0,
-0.813,
+0.531,
 null,
 null
 ],
 [
 12.0,
-0.813,
+0.562,
 null,
 null
 ],
 [
 14.0,
-0.813,
+0.596,
 null,
 null
 ],
 [
 16.0,
-0.813,
+0.619,
 null,
 null
 ],
 [
 18.0,
-0.813,
+0.703,
 null,
 null
 ],
 [
-18.21,
-0.813,
+21.0,
+0.739,
+null,
+null
+],
+[
+24.0,
+0.765,
+null,
+null
+],
+[
+28.0,
+0.794,
+null,
+null
+],
+[
+30.26,
+0.794,
 null,
 null
 ]
 ],
-"events": 50,
-"median_days": 4.71,
-"n": 85,
+"events": 80,
+"median_days": 7.21,
+"n": 123,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 30.3,
 "sections": 1
 },
 "6-15": {
-"n_course": 2,
+"n_course": 3,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
-"level": "lower",
-"number": "17A",
+"level": "upper",
+"number": "130C",
 "subject": "AGRS"
 },
-"AGRS 24": {
+"AGRS 130L": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.172,
+0.19,
 null,
 null
 ],
 [
 1.0,
-0.172,
+0.279,
 null,
 null
 ],
 [
 2.0,
-0.195,
+0.374,
 null,
 null
 ],
 [
 3.0,
-0.195,
+0.469,
 null,
 null
 ],
 [
 4.0,
-0.195,
+0.49,
 null,
 null
 ],
 [
 5.0,
-0.195,
+0.497,
 null,
 null
 ],
 [
 6.0,
-0.195,
+0.511,
 null,
 null
 ],
 [
 7.0,
-0.195,
+0.519,
 null,
 null
 ],
 [
 8.0,
-0.222,
+0.519,
 null,
 null
 ],
 [
 9.0,
-0.222,
+0.519,
 null,
 null
 ],
 [
 10.0,
-0.222,
+0.527,
 null,
 null
 ],
 [
 12.0,
-0.222,
+0.527,
 null,
 null
 ],
 [
 14.0,
-0.222,
+0.527,
 null,
 null
 ],
 [
 16.0,
-0.222,
+0.527,
 null,
 null
 ],
 [
 18.0,
-0.222,
+0.527,
 null,
 null
 ],
 [
-19.97,
-0.222,
+21.0,
+0.527,
+null,
+null
+],
+[
+24.0,
+0.527,
+null,
+null
+],
+[
+28.0,
+0.538,
+null,
+null
+],
+[
+32.0,
+0.572,
+null,
+null
+],
+[
+36.0,
+0.572,
+null,
+null
+],
+[
+42.0,
+0.603,
+null,
+null
+],
+[
+49.0,
+0.718,
+null,
+null
+],
+[
+55.15,
+0.718,
 null,
 null
 ]
 ],
-"events": 11,
-"median_days": null,
-"n": 54,
+"events": 89,
+"median_days": 5.5,
+"n": 147,
 "pooled": false,
-"reach_days": 20.0,
+"reach_days": 55.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "130L",
+"subject": "AGRS"
+},
+"AGRS 161": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.145,
+null,
+null
+],
+[
+1.0,
+0.171,
+null,
+null
+],
+[
+2.0,
+0.197,
+null,
+null
+],
+[
+3.0,
+0.292,
+null,
+null
+],
+[
+4.0,
+0.319,
+null,
+null
+],
+[
+5.0,
+0.361,
+null,
+null
+],
+[
+6.0,
+0.402,
+null,
+null
+],
+[
+7.0,
+0.458,
+null,
+null
+],
+[
+8.0,
+0.472,
+null,
+null
+],
+[
+9.0,
+0.472,
+null,
+null
+],
+[
+10.0,
+0.514,
+null,
+null
+],
+[
+12.0,
+0.529,
+null,
+null
+],
+[
+14.0,
+0.529,
+null,
+null
+],
+[
+16.0,
+0.594,
+null,
+null
+],
+[
+18.0,
+0.686,
+null,
+null
+],
+[
+21.0,
+0.686,
+null,
+null
+],
+[
+24.0,
+0.705,
+null,
+null
+],
+[
+28.0,
+0.723,
+null,
+null
+],
+[
+32.0,
+0.776,
+null,
+null
+],
+[
+36.0,
+0.808,
+null,
+null
+],
+[
+41.01,
+0.808,
+null,
+null
+]
+],
+"events": 53,
+"median_days": 9.7,
+"n": 76,
+"pooled": false,
+"reach_days": 41.0,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
-"level": "lower",
-"number": "24",
+"level": "upper",
+"number": "161",
 "subject": "AGRS"
 },
-"AGRS R44": {
+"AGRS 175C": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "175C",
+"subject": "AGRS"
+},
+"AGRS 36": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.108,
+0.296,
 null,
 null
 ],
 [
 1.0,
-0.122,
+0.436,
 null,
 null
 ],
 [
 2.0,
-0.137,
+0.58,
 null,
 null
 ],
 [
 3.0,
-0.253,
+0.666,
 null,
 null
 ],
 [
 4.0,
-0.332,
+0.737,
 null,
 null
 ],
 [
 5.0,
-0.415,
+0.781,
 null,
 null
 ],
 [
 6.0,
-0.438,
+0.803,
 null,
 null
 ],
 [
 7.0,
-0.483,
+0.822,
 null,
 null
 ],
 [
 8.0,
-0.505,
+0.843,
 null,
 null
 ],
 [
 9.0,
-0.53,
+0.851,
 null,
 null
 ],
 [
 10.0,
-0.53,
+0.864,
 null,
 null
 ],
 [
 12.0,
-0.53,
+0.879,
 null,
 null
 ],
 [
 14.0,
-0.53,
+0.884,
 null,
 null
 ],
 [
 16.0,
-0.53,
+0.892,
 null,
 null
 ],
 [
 18.0,
-0.53,
+0.9,
 null,
 null
 ],
 [
-18.21,
-0.53,
+21.0,
+0.91,
+null,
+null
+],
+[
+24.0,
+0.91,
+null,
+null
+],
+[
+27.0,
+0.91,
 null,
 null
 ]
 ],
-"events": 31,
-"median_days": 7.11,
-"n": 84,
+"events": 262,
+"median_days": 1.23,
+"n": 307,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 27.0,
 "sections": 1
 },
 "6-15": {
@@ -959,109 +834,109 @@ null
 ],
 [
 1.0,
-0.0,
+0.075,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.209,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.265,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.334,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.395,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.419,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.471,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.54,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.57,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.616,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.633,
 null,
 null
 ],
 [
 14.0,
-0.0,
+0.679,
 null,
 null
 ],
 [
 16.0,
-0.0,
+0.891,
 null,
 null
 ],
 [
 18.0,
-0.0,
+0.891,
 null,
 null
 ],
 [
-18.21,
-0.0,
+19.83,
+0.891,
 null,
 null
 ]
 ],
-"events": 0,
-"median_days": null,
-"n": 39,
+"events": 59,
+"median_days": 7.75,
+"n": 93,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 19.8,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "R44",
+"number": "36",
 "subject": "AGRS"
 }
 },
 "subject": "AGRS",
-"term_id": "2268"
+"term_id": "2262"
 }

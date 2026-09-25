@@ -6,124 +6,118 @@
 "curve": [
 [
 0.5,
-0.146,
+0.166,
 null,
 null
 ],
 [
 1.0,
-0.197,
+0.26,
 null,
 null
 ],
 [
 2.0,
-0.273,
+0.396,
 null,
 null
 ],
 [
 3.0,
-0.327,
+0.5,
 null,
 null
 ],
 [
 4.0,
-0.366,
+0.567,
 null,
 null
 ],
 [
 5.0,
-0.399,
+0.61,
 null,
 null
 ],
 [
 6.0,
-0.451,
+0.637,
 null,
 null
 ],
 [
 7.0,
-0.509,
+0.668,
 null,
 null
 ],
 [
 8.0,
-0.544,
+0.696,
 null,
 null
 ],
 [
 9.0,
-0.566,
+0.696,
 null,
 null
 ],
 [
 10.0,
-0.575,
+0.699,
 null,
 null
 ],
 [
 12.0,
-0.618,
+0.71,
 null,
 null
 ],
 [
 14.0,
-0.706,
+0.722,
 null,
 null
 ],
 [
 16.0,
-0.754,
+0.735,
 null,
 null
 ],
 [
 18.0,
-0.802,
+0.746,
 null,
 null
 ],
 [
 21.0,
-0.866,
+0.746,
 null,
 null
 ],
 [
 24.0,
-0.911,
+0.746,
 null,
 null
 ],
 [
-28.0,
-0.933,
-null,
-null
-],
-[
-30.81,
-0.933,
+25.08,
+0.746,
 null,
 null
 ]
 ],
-"events": 367,
-"median_days": 6.91,
-"n": 614,
+"events": 364,
+"median_days": 3.0,
+"n": 540,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 25.1,
 "sections": 1
 },
 "16-40": {
@@ -148,384 +142,242 @@ null
 ],
 [
 3.0,
-0.006,
+0.003,
 null,
 null
 ],
 [
 4.0,
-0.009,
+0.003,
 null,
 null
 ],
 [
 5.0,
-0.015,
+0.003,
 null,
 null
 ],
 [
 6.0,
-0.015,
+0.008,
 null,
 null
 ],
 [
 7.0,
-0.019,
+0.008,
 null,
 null
 ],
 [
 8.0,
-0.023,
+0.008,
 null,
 null
 ],
 [
 9.0,
-0.023,
+0.008,
 null,
 null
 ],
 [
 10.0,
-0.023,
+0.026,
 null,
 null
 ],
 [
 12.0,
-0.023,
+0.086,
 null,
 null
 ],
 [
 14.0,
-0.023,
+0.117,
 null,
 null
 ],
 [
 16.0,
-0.023,
+0.167,
 null,
 null
 ],
 [
 18.0,
-0.023,
+0.195,
 null,
 null
 ],
 [
 21.0,
-0.023,
+0.195,
 null,
 null
 ],
 [
 24.0,
-0.023,
+0.195,
 null,
 null
 ],
 [
 28.0,
-0.023,
+0.195,
 null,
 null
 ],
 [
 32.0,
-0.023,
+0.195,
 null,
 null
 ],
 [
 36.0,
-0.023,
+0.195,
 null,
 null
 ],
 [
-36.06,
-0.023,
+39.73,
+0.195,
 null,
 null
 ]
 ],
-"events": 7,
+"events": 39,
 "median_days": null,
-"n": 410,
+"n": 323,
 "pooled": false,
-"reach_days": 36.1,
-"sections": 1
-},
-"41+": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-34.14,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 106,
-"pooled": false,
-"reach_days": 34.1,
+"reach_days": 39.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.011,
+0.013,
 null,
 null
 ],
 [
 1.0,
-0.023,
+0.015,
 null,
 null
 ],
 [
 2.0,
-0.052,
+0.036,
 null,
 null
 ],
 [
 3.0,
-0.057,
+0.058,
 null,
 null
 ],
 [
 4.0,
-0.06,
+0.086,
 null,
 null
 ],
 [
 5.0,
-0.06,
+0.148,
 null,
 null
 ],
 [
 6.0,
-0.063,
+0.201,
 null,
 null
 ],
 [
 7.0,
-0.073,
+0.243,
 null,
 null
 ],
 [
 8.0,
-0.073,
+0.28,
 null,
 null
 ],
 [
 9.0,
-0.077,
+0.349,
 null,
 null
 ],
 [
 10.0,
-0.077,
+0.377,
 null,
 null
 ],
 [
 12.0,
-0.082,
+0.418,
 null,
 null
 ],
 [
 14.0,
-0.082,
+0.449,
 null,
 null
 ],
 [
 16.0,
-0.088,
+0.469,
 null,
 null
 ],
 [
 18.0,
-0.088,
+0.469,
 null,
 null
 ],
 [
 21.0,
-0.088,
+0.469,
 null,
 null
 ],
 [
 24.0,
-0.121,
+0.469,
 null,
 null
 ],
 [
 28.0,
-0.192,
+0.469,
 null,
 null
 ],
 [
-32.0,
-0.34,
-null,
-null
-],
-[
-36.0,
-0.563,
-null,
-null
-],
-[
-36.23,
-0.563,
+28.99,
+0.469,
 null,
 null
 ]
 ],
-"events": 58,
-"median_days": 34.15,
-"n": 450,
+"events": 145,
+"median_days": null,
+"n": 398,
 "pooled": false,
-"reach_days": 36.2,
+"reach_days": 29.0,
 "sections": 1
 }
 },
@@ -534,188 +386,652 @@ null
 "number": "101",
 "subject": "PBHLTH"
 },
-"PBHLTH 116": {
+"PBHLTH 110A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.315,
+0.108,
 null,
 null
 ],
 [
 1.0,
-0.472,
+0.153,
 null,
 null
 ],
 [
 2.0,
-0.659,
+0.204,
 null,
 null
 ],
 [
 3.0,
-0.752,
+0.239,
 null,
 null
 ],
 [
 4.0,
-0.796,
+0.261,
 null,
 null
 ],
 [
 5.0,
-0.824,
+0.272,
 null,
 null
 ],
 [
 6.0,
-0.856,
+0.372,
 null,
 null
 ],
 [
 7.0,
-0.888,
+0.385,
 null,
 null
 ],
 [
 8.0,
-0.903,
+0.406,
 null,
 null
 ],
 [
 9.0,
-0.928,
+0.406,
 null,
 null
 ],
 [
-9.26,
-0.952,
+10.0,
+0.406,
+null,
+null
+],
+[
+12.0,
+0.413,
+null,
+null
+],
+[
+14.0,
+0.439,
+null,
+null
+],
+[
+16.0,
+0.439,
+null,
+null
+],
+[
+18.0,
+0.439,
+null,
+null
+],
+[
+21.0,
+0.439,
+null,
+null
+],
+[
+24.0,
+0.439,
+null,
+null
+],
+[
+28.0,
+0.439,
+null,
+null
+],
+[
+32.0,
+0.439,
+null,
+null
+],
+[
+36.0,
+0.439,
+null,
+null
+],
+[
+42.0,
+0.439,
+null,
+null
+],
+[
+49.0,
+0.439,
+null,
+null
+],
+[
+56.0,
+0.439,
+null,
+null
+],
+[
+63.0,
+0.439,
+null,
+null
+],
+[
+70.0,
+0.439,
+null,
+null
+],
+[
+77.0,
+0.439,
+null,
+null
+],
+[
+79.75,
+0.439,
 null,
 null
 ]
 ],
-"events": 470,
-"median_days": 1.1,
-"n": 594,
+"events": 84,
+"median_days": null,
+"n": 233,
 "pooled": false,
-"reach_days": 9.3,
+"reach_days": 79.7,
 "sections": 1
 },
 "16-40": {
 "curve": [
 [
 0.5,
-0.011,
+0.0,
 null,
 null
 ],
 [
 1.0,
-0.023,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.029,
+0.0,
 null,
 null
 ],
 [
 3.0,
-0.042,
+0.0,
 null,
 null
 ],
 [
 4.0,
-0.076,
+0.0,
 null,
 null
 ],
 [
 5.0,
-0.087,
+0.0,
 null,
 null
 ],
 [
 6.0,
-0.103,
+0.0,
 null,
 null
 ],
 [
 7.0,
-0.123,
+0.0,
 null,
 null
 ],
 [
 8.0,
-0.2,
+0.0,
 null,
 null
 ],
 [
 9.0,
-0.277,
+0.0,
 null,
 null
 ],
 [
 10.0,
-0.346,
+0.0,
 null,
 null
 ],
 [
 12.0,
-0.399,
+0.0,
 null,
 null
 ],
 [
 14.0,
-0.583,
+0.0,
 null,
 null
 ],
 [
 16.0,
-0.677,
+0.125,
 null,
 null
 ],
 [
 18.0,
-0.677,
+0.25,
 null,
 null
 ],
 [
-18.41,
-0.677,
+21.0,
+0.625,
+null,
+null
+],
+[
+24.0,
+0.625,
+null,
+null
+],
+[
+25.37,
+0.625,
 null,
 null
 ]
 ],
-"events": 121,
-"median_days": 13.01,
-"n": 368,
+"events": 3,
+"median_days": 19.5,
+"n": 41,
 "pooled": false,
-"reach_days": 18.4,
+"reach_days": 25.4,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.007,
+null,
+null
+],
+[
+3.0,
+0.015,
+null,
+null
+],
+[
+4.0,
+0.015,
+null,
+null
+],
+[
+5.0,
+0.015,
+null,
+null
+],
+[
+6.0,
+0.026,
+null,
+null
+],
+[
+7.0,
+0.026,
+null,
+null
+],
+[
+8.0,
+0.05,
+null,
+null
+],
+[
+9.0,
+0.05,
+null,
+null
+],
+[
+10.0,
+0.05,
+null,
+null
+],
+[
+12.0,
+0.05,
+null,
+null
+],
+[
+14.0,
+0.142,
+null,
+null
+],
+[
+16.0,
+0.203,
+null,
+null
+],
+[
+18.0,
+0.227,
+null,
+null
+],
+[
+21.0,
+0.227,
+null,
+null
+],
+[
+24.0,
+0.227,
+null,
+null
+],
+[
+28.0,
+0.227,
+null,
+null
+],
+[
+32.0,
+0.227,
+null,
+null
+],
+[
+36.0,
+0.227,
+null,
+null
+],
+[
+39.73,
+0.227,
+null,
+null
+]
+],
+"events": 14,
+"median_days": null,
+"n": 147,
+"pooled": false,
+"reach_days": 39.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "110A",
+"subject": "PBHLTH"
+},
+"PBHLTH 116": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.318,
+null,
+null
+],
+[
+1.0,
+0.484,
+null,
+null
+],
+[
+2.0,
+0.66,
+null,
+null
+],
+[
+3.0,
+0.762,
+null,
+null
+],
+[
+4.0,
+0.826,
+null,
+null
+],
+[
+5.0,
+0.87,
+null,
+null
+],
+[
+6.0,
+0.902,
+null,
+null
+],
+[
+7.0,
+0.937,
+null,
+null
+],
+[
+8.0,
+0.964,
+null,
+null
+],
+[
+9.0,
+0.978,
+null,
+null
+],
+[
+10.0,
+0.978,
+null,
+null
+],
+[
+12.0,
+0.978,
+null,
+null
+],
+[
+14.0,
+0.978,
+null,
+null
+],
+[
+15.02,
+0.978,
+null,
+null
+]
+],
+"events": 872,
+"median_days": 1.04,
+"n": 1005,
+"pooled": false,
+"reach_days": 15.0,
+"sections": 1
+},
+"16-40": {
+"curve": [
+[
+0.5,
+0.009,
+null,
+null
+],
+[
+1.0,
+0.015,
+null,
+null
+],
+[
+2.0,
+0.045,
+null,
+null
+],
+[
+3.0,
+0.092,
+null,
+null
+],
+[
+4.0,
+0.181,
+null,
+null
+],
+[
+5.0,
+0.269,
+null,
+null
+],
+[
+6.0,
+0.339,
+null,
+null
+],
+[
+7.0,
+0.41,
+null,
+null
+],
+[
+8.0,
+0.466,
+null,
+null
+],
+[
+9.0,
+0.539,
+null,
+null
+],
+[
+10.0,
+0.589,
+null,
+null
+],
+[
+12.0,
+0.665,
+null,
+null
+],
+[
+14.0,
+0.709,
+null,
+null
+],
+[
+16.0,
+0.753,
+null,
+null
+],
+[
+18.0,
+0.804,
+null,
+null
+],
+[
+21.0,
+0.804,
+null,
+null
+],
+[
+24.0,
+0.804,
+null,
+null
+],
+[
+27.11,
+0.804,
+null,
+null
+]
+],
+"events": 259,
+"median_days": 8.4,
+"n": 537,
+"pooled": false,
+"reach_days": 27.1,
 "sections": 1
 },
 "41+": {
@@ -764,158 +1080,164 @@ null
 ],
 [
 7.0,
-0.0,
+0.132,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.334,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.39,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.461,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.51,
 null,
 null
 ],
 [
 14.0,
-0.0,
+0.51,
 null,
 null
 ],
 [
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.312,
-null,
-null
-],
-[
-18.41,
-0.312,
+15.7,
+0.51,
 null,
 null
 ]
 ],
-"events": 3,
-"median_days": null,
-"n": 133,
+"events": 29,
+"median_days": 11.49,
+"n": 142,
 "pooled": false,
-"reach_days": 18.4,
+"reach_days": 15.7,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.023,
+0.038,
 null,
 null
 ],
 [
 1.0,
-0.048,
+0.064,
 null,
 null
 ],
 [
 2.0,
-0.093,
+0.197,
 null,
 null
 ],
 [
 3.0,
-0.188,
+0.326,
 null,
 null
 ],
 [
 4.0,
-0.3,
+0.446,
 null,
 null
 ],
 [
 5.0,
-0.373,
+0.542,
 null,
 null
 ],
 [
 6.0,
-0.449,
+0.61,
 null,
 null
 ],
 [
 7.0,
-0.522,
+0.677,
 null,
 null
 ],
 [
 8.0,
-0.58,
+0.719,
 null,
 null
 ],
 [
 9.0,
-0.635,
+0.756,
 null,
 null
 ],
 [
 10.0,
-0.694,
+0.804,
 null,
 null
 ],
 [
 12.0,
-0.814,
+0.847,
 null,
 null
 ],
 [
 14.0,
-0.935,
+0.86,
 null,
 null
 ],
 [
-15.0,
-0.984,
+16.0,
+0.86,
+null,
+null
+],
+[
+18.0,
+0.86,
+null,
+null
+],
+[
+21.0,
+0.86,
+null,
+null
+],
+[
+21.17,
+0.86,
 null,
 null
 ]
 ],
-"events": 222,
-"median_days": 6.67,
-"n": 393,
+"events": 443,
+"median_days": 4.57,
+"n": 685,
 "pooled": false,
-"reach_days": 15.0,
+"reach_days": 21.2,
 "sections": 1
 }
 },
@@ -924,520 +1246,764 @@ null
 "number": "116",
 "subject": "PBHLTH"
 },
+"PBHLTH 124": {
+"buckets": {
+"1-5": {
+"n_course": 19,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "124",
+"subject": "PBHLTH"
+},
+"PBHLTH 130": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.145,
+null,
+null
+],
+[
+1.0,
+0.246,
+null,
+null
+],
+[
+2.0,
+0.366,
+null,
+null
+],
+[
+3.0,
+0.429,
+null,
+null
+],
+[
+4.0,
+0.489,
+null,
+null
+],
+[
+5.0,
+0.527,
+null,
+null
+],
+[
+6.0,
+0.571,
+null,
+null
+],
+[
+7.0,
+0.596,
+null,
+null
+],
+[
+8.0,
+0.643,
+null,
+null
+],
+[
+9.0,
+0.662,
+null,
+null
+],
+[
+10.0,
+0.673,
+null,
+null
+],
+[
+12.0,
+0.679,
+null,
+null
+],
+[
+14.0,
+0.686,
+null,
+null
+],
+[
+16.0,
+0.698,
+null,
+null
+],
+[
+18.0,
+0.698,
+null,
+null
+],
+[
+21.0,
+0.698,
+null,
+null
+],
+[
+24.0,
+0.698,
+null,
+null
+],
+[
+28.0,
+0.698,
+null,
+null
+],
+[
+32.0,
+0.698,
+null,
+null
+],
+[
+36.0,
+0.698,
+null,
+null
+],
+[
+42.0,
+0.698,
+null,
+null
+],
+[
+49.0,
+0.698,
+null,
+null
+],
+[
+56.0,
+0.698,
+null,
+null
+],
+[
+63.0,
+0.698,
+null,
+null
+],
+[
+70.0,
+0.698,
+null,
+null
+],
+[
+77.0,
+0.698,
+null,
+null
+],
+[
+79.75,
+0.698,
+null,
+null
+]
+],
+"events": 211,
+"median_days": 4.24,
+"n": 359,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"n_course": 3,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.014,
+null,
+null
+],
+[
+1.0,
+0.043,
+null,
+null
+],
+[
+2.0,
+0.095,
+null,
+null
+],
+[
+3.0,
+0.109,
+null,
+null
+],
+[
+4.0,
+0.117,
+null,
+null
+],
+[
+5.0,
+0.174,
+null,
+null
+],
+[
+6.0,
+0.208,
+null,
+null
+],
+[
+7.0,
+0.237,
+null,
+null
+],
+[
+8.0,
+0.258,
+null,
+null
+],
+[
+9.0,
+0.28,
+null,
+null
+],
+[
+10.0,
+0.304,
+null,
+null
+],
+[
+12.0,
+0.389,
+null,
+null
+],
+[
+14.0,
+0.474,
+null,
+null
+],
+[
+16.0,
+0.496,
+null,
+null
+],
+[
+18.0,
+0.546,
+null,
+null
+],
+[
+20.08,
+0.66,
+null,
+null
+]
+],
+"events": 50,
+"median_days": 16.5,
+"n": 148,
+"pooled": false,
+"reach_days": 20.1,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "130",
+"subject": "PBHLTH"
+},
 "PBHLTH 142": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.284,
+0.285,
 null,
 null
 ],
 [
 1.0,
-0.389,
+0.407,
 null,
 null
 ],
 [
 2.0,
-0.543,
+0.535,
 null,
 null
 ],
 [
 3.0,
-0.657,
+0.605,
 null,
 null
 ],
 [
 4.0,
-0.717,
+0.642,
 null,
 null
 ],
 [
 5.0,
-0.758,
+0.669,
 null,
 null
 ],
 [
 6.0,
-0.783,
+0.706,
 null,
 null
 ],
 [
 7.0,
-0.794,
+0.749,
 null,
 null
 ],
 [
 8.0,
-0.806,
+0.778,
 null,
 null
 ],
 [
 9.0,
-0.815,
+0.793,
 null,
 null
 ],
 [
 10.0,
-0.828,
+0.799,
 null,
 null
 ],
 [
 12.0,
-0.833,
+0.812,
 null,
 null
 ],
 [
 14.0,
-0.859,
+0.828,
 null,
 null
 ],
 [
 16.0,
-0.859,
+0.828,
 null,
 null
 ],
 [
 18.0,
-0.869,
+0.828,
 null,
 null
 ],
 [
-21.0,
-0.912,
-null,
-null
-],
-[
-24.0,
-0.939,
-null,
-null
-],
-[
-28.0,
-0.939,
-null,
-null
-],
-[
-29.63,
-0.977,
+19.19,
+0.828,
 null,
 null
 ]
 ],
-"events": 549,
-"median_days": 1.65,
-"n": 677,
+"events": 579,
+"median_days": 1.66,
+"n": 814,
 "pooled": false,
-"reach_days": 29.6,
+"reach_days": 19.2,
 "sections": 1
 },
 "16-40": {
 "curve": [
 [
 0.5,
-0.025,
+0.026,
 null,
 null
 ],
 [
 1.0,
-0.037,
+0.046,
 null,
 null
 ],
 [
 2.0,
-0.062,
+0.106,
 null,
 null
 ],
 [
 3.0,
-0.113,
+0.157,
 null,
 null
 ],
 [
 4.0,
-0.14,
+0.213,
 null,
 null
 ],
 [
 5.0,
-0.158,
+0.268,
 null,
 null
 ],
 [
 6.0,
-0.181,
+0.323,
 null,
 null
 ],
 [
 7.0,
-0.201,
+0.344,
 null,
 null
 ],
 [
 8.0,
-0.222,
+0.353,
 null,
 null
 ],
 [
 9.0,
-0.263,
+0.369,
 null,
 null
 ],
 [
 10.0,
-0.293,
+0.381,
 null,
 null
 ],
 [
 12.0,
-0.331,
+0.381,
 null,
 null
 ],
 [
 14.0,
-0.338,
+0.381,
 null,
 null
 ],
 [
 16.0,
-0.338,
+0.405,
 null,
 null
 ],
 [
 18.0,
-0.338,
+0.471,
 null,
 null
 ],
 [
 21.0,
-0.338,
+0.471,
 null,
 null
 ],
 [
 24.0,
-0.338,
+0.736,
 null,
 null
 ],
 [
-28.0,
-0.338,
-null,
-null
-],
-[
-32.0,
-0.338,
-null,
-null
-],
-[
-35.13,
-0.338,
+25.37,
+0.736,
 null,
 null
 ]
 ],
-"events": 89,
-"median_days": null,
-"n": 358,
+"events": 125,
+"median_days": 21.4,
+"n": 428,
 "pooled": false,
-"reach_days": 35.1,
+"reach_days": 25.4,
 "sections": 1
 },
 "41+": {
 "curve": [
 [
 0.5,
-0.014,
+0.012,
 null,
 null
 ],
 [
 1.0,
-0.014,
+0.016,
 null,
 null
 ],
 [
 2.0,
-0.014,
+0.016,
 null,
 null
 ],
 [
 3.0,
-0.031,
+0.027,
 null,
 null
 ],
 [
 4.0,
-0.041,
+0.043,
 null,
 null
 ],
 [
 5.0,
-0.041,
+0.055,
 null,
 null
 ],
 [
 6.0,
-0.052,
+0.061,
 null,
 null
 ],
 [
 7.0,
-0.063,
+0.061,
 null,
 null
 ],
 [
 8.0,
-0.088,
+0.061,
 null,
 null
 ],
 [
 9.0,
-0.102,
+0.061,
 null,
 null
 ],
 [
 10.0,
-0.12,
+0.061,
 null,
 null
 ],
 [
 12.0,
-0.14,
+0.061,
 null,
 null
 ],
 [
 14.0,
-0.14,
+0.061,
 null,
 null
 ],
 [
 16.0,
-0.14,
+0.061,
 null,
 null
 ],
 [
 18.0,
-0.14,
+0.061,
 null,
 null
 ],
 [
 21.0,
-0.14,
+0.061,
 null,
 null
 ],
 [
 24.0,
-0.14,
+0.061,
 null,
 null
 ],
 [
-28.0,
-0.14,
-null,
-null
-],
-[
-32.0,
-0.14,
-null,
-null
-],
-[
-34.14,
-0.14,
+25.37,
+0.061,
 null,
 null
 ]
 ],
 "events": 12,
 "median_days": null,
-"n": 141,
+"n": 251,
 "pooled": false,
-"reach_days": 34.1,
+"reach_days": 25.4,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.058,
+0.066,
 null,
 null
 ],
 [
 1.0,
-0.104,
+0.148,
 null,
 null
 ],
 [
 2.0,
-0.149,
+0.239,
 null,
 null
 ],
 [
 3.0,
-0.214,
+0.359,
 null,
 null
 ],
 [
 4.0,
-0.296,
+0.443,
 null,
 null
 ],
 [
 5.0,
-0.377,
+0.525,
 null,
 null
 ],
 [
 6.0,
-0.478,
+0.581,
 null,
 null
 ],
 [
 7.0,
-0.565,
+0.623,
 null,
 null
 ],
 [
 8.0,
-0.608,
+0.663,
 null,
 null
 ],
 [
 9.0,
-0.621,
+0.726,
 null,
 null
 ],
 [
 10.0,
-0.627,
+0.757,
 null,
 null
 ],
 [
 12.0,
-0.641,
+0.757,
 null,
 null
 ],
 [
 14.0,
-0.667,
+0.771,
 null,
 null
 ],
 [
 16.0,
-0.667,
+0.857,
 null,
 null
 ],
 [
 18.0,
-0.667,
+0.857,
 null,
 null
 ],
 [
 21.0,
-0.694,
+0.857,
 null,
 null
 ],
 [
-24.0,
-0.709,
-null,
-null
-],
-[
-28.0,
-0.709,
-null,
-null
-],
-[
-32.0,
-0.74,
-null,
-null
-],
-[
-35.13,
-0.74,
+21.1,
+0.857,
 null,
 null
 ]
 ],
-"events": 250,
-"median_days": 6.14,
-"n": 440,
+"events": 339,
+"median_days": 4.81,
+"n": 555,
 "pooled": false,
-"reach_days": 35.1,
+"reach_days": 21.1,
 "sections": 1
 }
 },
@@ -1589,7 +2155,25 @@ null,
 null
 ],
 [
-60.47,
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -1597,9 +2181,9 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 69,
+"n": 53,
 "pooled": false,
-"reach_days": 60.5,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -1608,1381 +2192,245 @@ null
 "number": "142W",
 "subject": "PBHLTH"
 },
-"PBHLTH 150B": {
+"PBHLTH 150A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.25,
+0.327,
 null,
 null
 ],
 [
 1.0,
-0.377,
-null,
-null
-],
-[
-2.0,
-0.492,
-null,
-null
-],
-[
-3.0,
-0.528,
-null,
-null
-],
-[
-4.0,
-0.577,
-null,
-null
-],
-[
-5.0,
-0.607,
-null,
-null
-],
-[
-6.0,
-0.633,
-null,
-null
-],
-[
-7.0,
-0.646,
-null,
-null
-],
-[
-8.0,
-0.654,
-null,
-null
-],
-[
-9.0,
-0.673,
-null,
-null
-],
-[
-10.0,
-0.676,
-null,
-null
-],
-[
-12.0,
-0.691,
-null,
-null
-],
-[
-14.0,
-0.722,
-null,
-null
-],
-[
-16.0,
-0.738,
-null,
-null
-],
-[
-18.0,
-0.758,
-null,
-null
-],
-[
-21.0,
-0.794,
-null,
-null
-],
-[
-24.0,
-0.863,
-null,
-null
-],
-[
-28.0,
-0.876,
-null,
-null
-],
-[
-32.0,
-0.876,
-null,
-null
-],
-[
-34.14,
-0.876,
-null,
-null
-]
-],
-"events": 474,
-"median_days": 2.13,
-"n": 683,
-"pooled": false,
-"reach_days": 34.1,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.016,
-null,
-null
-],
-[
-1.0,
-0.022,
-null,
-null
-],
-[
-2.0,
-0.057,
-null,
-null
-],
-[
-3.0,
-0.073,
-null,
-null
-],
-[
-4.0,
-0.118,
-null,
-null
-],
-[
-5.0,
-0.148,
-null,
-null
-],
-[
-6.0,
-0.174,
-null,
-null
-],
-[
-7.0,
-0.189,
-null,
-null
-],
-[
-8.0,
-0.205,
-null,
-null
-],
-[
-9.0,
-0.218,
-null,
-null
-],
-[
-10.0,
-0.242,
-null,
-null
-],
-[
-12.0,
-0.278,
-null,
-null
-],
-[
-14.0,
-0.278,
-null,
-null
-],
-[
-16.0,
-0.278,
-null,
-null
-],
-[
-18.0,
-0.278,
-null,
-null
-],
-[
-21.0,
-0.278,
-null,
-null
-],
-[
-24.0,
-0.278,
-null,
-null
-],
-[
-28.0,
-0.287,
-null,
-null
-],
-[
-32.0,
-0.287,
-null,
-null
-],
-[
-36.0,
-0.287,
-null,
-null
-],
-[
-36.8,
-0.287,
-null,
-null
-]
-],
-"events": 77,
-"median_days": null,
-"n": 380,
-"pooled": false,
-"reach_days": 36.8,
-"sections": 1
-},
-"41+": {
-"curve": [
-[
-0.5,
-0.023,
-null,
-null
-],
-[
-1.0,
-0.023,
-null,
-null
-],
-[
-2.0,
-0.048,
-null,
-null
-],
-[
-3.0,
-0.048,
-null,
-null
-],
-[
-4.0,
-0.079,
-null,
-null
-],
-[
-5.0,
-0.096,
-null,
-null
-],
-[
-6.0,
-0.113,
-null,
-null
-],
-[
-7.0,
-0.113,
-null,
-null
-],
-[
-8.0,
-0.113,
-null,
-null
-],
-[
-9.0,
-0.113,
-null,
-null
-],
-[
-10.0,
-0.113,
-null,
-null
-],
-[
-12.0,
-0.113,
-null,
-null
-],
-[
-14.0,
-0.113,
-null,
-null
-],
-[
-16.0,
-0.113,
-null,
-null
-],
-[
-18.0,
-0.113,
-null,
-null
-],
-[
-21.0,
-0.113,
-null,
-null
-],
-[
-24.0,
-0.113,
-null,
-null
-],
-[
-28.0,
-0.113,
-null,
-null
-],
-[
-32.0,
-0.113,
-null,
-null
-],
-[
-35.13,
-0.113,
-null,
-null
-]
-],
-"events": 16,
-"median_days": null,
-"n": 179,
-"pooled": false,
-"reach_days": 35.1,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.047,
-null,
-null
-],
-[
-1.0,
-0.092,
-null,
-null
-],
-[
-2.0,
-0.185,
-null,
-null
-],
-[
-3.0,
-0.252,
-null,
-null
-],
-[
-4.0,
-0.331,
-null,
-null
-],
-[
-5.0,
-0.378,
-null,
-null
-],
-[
-6.0,
-0.401,
-null,
-null
-],
-[
-7.0,
-0.44,
-null,
-null
-],
-[
-8.0,
-0.458,
-null,
-null
-],
-[
-9.0,
-0.468,
-null,
-null
-],
-[
-10.0,
-0.468,
-null,
-null
-],
-[
-12.0,
-0.472,
-null,
-null
-],
-[
-14.0,
-0.49,
-null,
-null
-],
-[
-16.0,
-0.505,
-null,
-null
-],
-[
-18.0,
-0.505,
-null,
-null
-],
-[
-21.0,
-0.505,
-null,
-null
-],
-[
-24.0,
-0.524,
-null,
-null
-],
-[
-28.0,
-0.556,
-null,
-null
-],
-[
-32.0,
-0.556,
-null,
-null
-],
-[
-35.13,
-0.556,
-null,
-null
-]
-],
-"events": 205,
-"median_days": 14.87,
-"n": 495,
-"pooled": false,
-"reach_days": 35.1,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "upper",
-"number": "150B",
-"subject": "PBHLTH"
-},
-"PBHLTH 150D": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.343,
-null,
-null
-],
-[
-1.0,
-0.469,
-null,
-null
-],
-[
-2.0,
-0.546,
-null,
-null
-],
-[
-3.0,
-0.617,
-null,
-null
-],
-[
-4.0,
-0.695,
-null,
-null
-],
-[
-5.0,
-0.733,
-null,
-null
-],
-[
-6.0,
-0.788,
-null,
-null
-],
-[
-7.0,
-0.825,
-null,
-null
-],
-[
-8.0,
-0.843,
-null,
-null
-],
-[
-9.0,
-0.862,
-null,
-null
-],
-[
-10.0,
-0.878,
-null,
-null
-],
-[
-12.0,
-0.885,
-null,
-null
-],
-[
-14.0,
-0.933,
-null,
-null
-],
-[
-16.0,
-0.95,
-null,
-null
-],
-[
-18.0,
-0.962,
-null,
-null
-],
-[
-21.0,
-0.969,
-null,
-null
-],
-[
-22.23,
-0.994,
-null,
-null
-]
-],
-"events": 423,
-"median_days": 1.36,
-"n": 521,
-"pooled": false,
-"reach_days": 22.2,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.008,
-null,
-null
-],
-[
-1.0,
-0.012,
-null,
-null
-],
-[
-2.0,
-0.03,
-null,
-null
-],
-[
-3.0,
-0.072,
-null,
-null
-],
-[
-4.0,
-0.108,
-null,
-null
-],
-[
-5.0,
-0.114,
-null,
-null
-],
-[
-6.0,
-0.148,
-null,
-null
-],
-[
-7.0,
-0.176,
-null,
-null
-],
-[
-8.0,
-0.231,
-null,
-null
-],
-[
-9.0,
-0.278,
-null,
-null
-],
-[
-10.0,
-0.315,
-null,
-null
-],
-[
-12.0,
-0.363,
-null,
-null
-],
-[
-14.0,
-0.418,
-null,
-null
-],
-[
-16.0,
-0.447,
-null,
-null
-],
-[
-18.0,
-0.489,
-null,
-null
-],
-[
-21.0,
-0.511,
-null,
-null
-],
-[
-24.0,
-0.539,
-null,
-null
-],
-[
-28.0,
-0.539,
-null,
-null
-],
-[
-32.0,
-0.539,
-null,
-null
-],
-[
-34.96,
-0.539,
-null,
-null
-]
-],
-"events": 79,
-"median_days": 18.85,
-"n": 254,
-"pooled": false,
-"reach_days": 35.0,
-"sections": 1
-},
-"41+": {
-"n_course": 15,
-"pooled": "PBHLTH",
-"sections_course": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.077,
-null,
-null
-],
-[
-1.0,
-0.137,
-null,
-null
-],
-[
-2.0,
-0.282,
-null,
-null
-],
-[
-3.0,
-0.367,
-null,
-null
-],
-[
-4.0,
-0.457,
-null,
-null
-],
-[
-5.0,
-0.51,
-null,
-null
-],
-[
-6.0,
-0.565,
-null,
-null
-],
-[
-7.0,
-0.632,
-null,
-null
-],
-[
-8.0,
-0.663,
-null,
-null
-],
-[
-9.0,
-0.663,
-null,
-null
-],
-[
-10.0,
-0.677,
-null,
-null
-],
-[
-12.0,
-0.738,
-null,
-null
-],
-[
-14.0,
-0.853,
-null,
-null
-],
-[
-16.0,
-0.916,
-null,
-null
-],
-[
-18.0,
-0.953,
-null,
-null
-],
-[
-21.0,
-0.953,
-null,
-null
-],
-[
-24.0,
-0.963,
-null,
-null
-],
-[
-28.0,
-0.963,
-null,
-null
-],
-[
-30.81,
-0.963,
-null,
-null
-]
-],
-"events": 231,
-"median_days": 4.81,
-"n": 331,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "upper",
-"number": "150D",
-"subject": "PBHLTH"
-},
-"PBHLTH 155A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.107,
-null,
-null
-],
-[
-1.0,
-0.202,
-null,
-null
-],
-[
-2.0,
-0.251,
-null,
-null
-],
-[
-3.0,
-0.302,
-null,
-null
-],
-[
-4.0,
-0.302,
-null,
-null
-],
-[
-5.0,
-0.376,
-null,
-null
-],
-[
-6.0,
-0.403,
-null,
-null
-],
-[
-7.0,
-0.413,
-null,
-null
-],
-[
-8.0,
-0.451,
-null,
-null
-],
-[
-9.0,
-0.462,
-null,
-null
-],
-[
-10.0,
-0.462,
-null,
-null
-],
-[
-12.0,
-0.472,
-null,
-null
-],
-[
-14.0,
-0.519,
-null,
-null
-],
-[
-16.0,
-0.519,
-null,
-null
-],
-[
-18.0,
-0.55,
-null,
-null
-],
-[
-21.0,
-0.596,
-null,
-null
-],
-[
-24.0,
-0.619,
-null,
-null
-],
-[
-28.0,
-0.619,
-null,
-null
-],
-[
-32.0,
-0.619,
-null,
-null
-],
-[
-32.42,
-0.619,
-null,
-null
-]
-],
-"events": 67,
-"median_days": 13.02,
-"n": 142,
-"pooled": false,
-"reach_days": 32.4,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "upper",
-"number": "155A",
-"subject": "PBHLTH"
-},
-"PBHLTH 155D": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.187,
-null,
-null
-],
-[
-1.0,
-0.245,
-null,
-null
-],
-[
-2.0,
-0.318,
-null,
-null
-],
-[
-3.0,
-0.379,
-null,
-null
-],
-[
-4.0,
-0.407,
-null,
-null
-],
-[
-5.0,
 0.466,
 null,
 null
 ],
 [
-6.0,
-0.528,
-null,
-null
-],
-[
-7.0,
+2.0,
 0.566,
 null,
 null
 ],
 [
-8.0,
-0.582,
-null,
-null
-],
-[
-9.0,
-0.616,
-null,
-null
-],
-[
-10.0,
-0.621,
-null,
-null
-],
-[
-12.0,
-0.674,
-null,
-null
-],
-[
-14.0,
-0.783,
-null,
-null
-],
-[
-16.0,
-0.799,
-null,
-null
-],
-[
-18.0,
-0.834,
-null,
-null
-],
-[
-21.0,
-0.86,
-null,
-null
-],
-[
-24.0,
-0.903,
-null,
-null
-],
-[
-28.0,
-0.903,
-null,
-null
-],
-[
-30.81,
-0.903,
-null,
-null
-]
-],
-"events": 175,
-"median_days": 5.77,
-"n": 259,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 23,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "upper",
-"number": "155D",
-"subject": "PBHLTH"
-},
-"PBHLTH 162A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.658,
-null,
-null
-],
-[
-1.0,
-0.763,
-null,
-null
-],
-[
-2.0,
-0.816,
-null,
-null
-],
-[
 3.0,
-0.816,
+0.603,
 null,
 null
 ],
 [
 4.0,
-0.816,
+0.65,
 null,
 null
 ],
 [
 5.0,
-0.816,
-null,
-null
-],
-[
-5.91,
-0.816,
-null,
-null
-]
-],
-"events": 31,
-"median_days": 0.24,
-"n": 38,
-"pooled": false,
-"reach_days": 5.9,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "upper",
-"number": "162A",
-"subject": "PBHLTH"
-},
-"PBHLTH 181": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.25,
-null,
-null
-],
-[
-1.0,
-0.336,
-null,
-null
-],
-[
-2.0,
-0.424,
-null,
-null
-],
-[
-3.0,
-0.461,
-null,
-null
-],
-[
-4.0,
-0.502,
-null,
-null
-],
-[
-5.0,
-0.542,
+0.683,
 null,
 null
 ],
 [
 6.0,
-0.577,
+0.692,
 null,
 null
 ],
 [
 7.0,
-0.577,
+0.702,
 null,
 null
 ],
 [
 8.0,
-0.592,
+0.711,
 null,
 null
 ],
 [
 9.0,
-0.628,
+0.739,
 null,
 null
 ],
 [
 10.0,
-0.695,
+0.751,
 null,
 null
 ],
 [
 12.0,
-0.695,
+0.751,
 null,
 null
 ],
 [
 14.0,
-0.746,
+0.831,
 null,
 null
 ],
 [
 16.0,
-0.746,
+0.831,
 null,
 null
 ],
 [
 18.0,
-0.746,
+0.831,
 null,
 null
 ],
 [
 21.0,
-0.746,
+0.831,
 null,
 null
 ],
 [
 24.0,
-0.746,
+0.831,
 null,
 null
 ],
 [
-28.0,
-0.746,
-null,
-null
-],
-[
-30.81,
-0.746,
+24.78,
+0.831,
 null,
 null
 ]
 ],
-"events": 132,
-"median_days": 3.5,
-"n": 242,
+"events": 322,
+"median_days": 1.23,
+"n": 449,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 24.8,
 "sections": 1
 },
-"6-15": {
+"16-40": {
+"curve": [
+[
+0.5,
+0.012,
+null,
+null
+],
+[
+1.0,
+0.051,
+null,
+null
+],
+[
+2.0,
+0.104,
+null,
+null
+],
+[
+3.0,
+0.142,
+null,
+null
+],
+[
+4.0,
+0.201,
+null,
+null
+],
+[
+5.0,
+0.247,
+null,
+null
+],
+[
+6.0,
+0.269,
+null,
+null
+],
+[
+7.0,
+0.269,
+null,
+null
+],
+[
+8.0,
+0.269,
+null,
+null
+],
+[
+9.0,
+0.275,
+null,
+null
+],
+[
+10.0,
+0.282,
+null,
+null
+],
+[
+12.0,
+0.318,
+null,
+null
+],
+[
+14.0,
+0.33,
+null,
+null
+],
+[
+16.0,
+0.4,
+null,
+null
+],
+[
+18.0,
+0.4,
+null,
+null
+],
+[
+21.0,
+0.4,
+null,
+null
+],
+[
+24.0,
+0.4,
+null,
+null
+],
+[
+25.37,
+0.4,
+null,
+null
+]
+],
+"events": 70,
+"median_days": null,
+"n": 246,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+},
+"41+": {
 "curve": [
 [
 0.5,
@@ -2992,202 +2440,1175 @@ null
 ],
 [
 1.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 3.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 4.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 5.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 6.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 7.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 8.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 9.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 10.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 12.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 14.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 16.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
 18.0,
-0.015,
+0.0,
 null,
 null
 ],
 [
-18.21,
-0.015,
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+25.37,
+0.0,
 null,
 null
 ]
 ],
-"events": 1,
+"events": 0,
 "median_days": null,
-"n": 69,
+"n": 63,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 25.4,
 "sections": 1
-}
 },
-"dept_group": "PBHLTH",
-"level": "upper",
-"number": "181",
-"subject": "PBHLTH"
-},
-"PBHLTH 182": {
-"buckets": {
-"1-5": {
+"6-15": {
 "curve": [
 [
 0.5,
-0.299,
+0.102,
 null,
 null
 ],
 [
 1.0,
-0.44,
+0.218,
 null,
 null
 ],
 [
 2.0,
-0.608,
+0.344,
 null,
 null
 ],
 [
 3.0,
-0.657,
+0.385,
 null,
 null
 ],
 [
 4.0,
-0.681,
+0.416,
 null,
 null
 ],
 [
 5.0,
-0.749,
+0.423,
 null,
 null
 ],
 [
 6.0,
-0.816,
+0.445,
 null,
 null
 ],
 [
 7.0,
-0.89,
+0.454,
 null,
 null
 ],
 [
 8.0,
-0.89,
+0.463,
 null,
 null
 ],
 [
-8.39,
-0.89,
+9.0,
+0.481,
+null,
+null
+],
+[
+10.0,
+0.506,
+null,
+null
+],
+[
+12.0,
+0.547,
+null,
+null
+],
+[
+14.0,
+0.577,
+null,
+null
+],
+[
+16.0,
+0.656,
+null,
+null
+],
+[
+18.0,
+0.656,
+null,
+null
+],
+[
+21.0,
+0.656,
+null,
+null
+],
+[
+24.0,
+0.656,
+null,
+null
+],
+[
+25.37,
+0.656,
 null,
 null
 ]
 ],
-"events": 96,
-"median_days": 1.26,
-"n": 137,
+"events": 155,
+"median_days": 9.9,
+"n": 298,
 "pooled": false,
-"reach_days": 8.4,
+"reach_days": 25.4,
 "sections": 1
-},
-"6-15": {
-"n_course": 23,
-"pooled": "PBHLTH",
-"sections_course": 1
 }
 },
 "dept_group": "PBHLTH",
 "level": "upper",
-"number": "182",
+"number": "150A",
+"subject": "PBHLTH"
+},
+"PBHLTH 171K": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.341,
+null,
+null
+],
+[
+1.0,
+0.585,
+null,
+null
+],
+[
+2.0,
+0.78,
+null,
+null
+],
+[
+3.0,
+0.854,
+null,
+null
+],
+[
+4.0,
+0.878,
+null,
+null
+],
+[
+5.0,
+0.902,
+null,
+null
+],
+[
+6.0,
+0.927,
+null,
+null
+],
+[
+7.0,
+0.927,
+null,
+null
+],
+[
+8.0,
+0.927,
+null,
+null
+],
+[
+9.0,
+0.927,
+null,
+null
+],
+[
+10.0,
+0.927,
+null,
+null
+],
+[
+12.0,
+0.927,
+null,
+null
+],
+[
+14.0,
+0.927,
+null,
+null
+],
+[
+16.0,
+0.927,
+null,
+null
+],
+[
+18.0,
+0.927,
+null,
+null
+],
+[
+21.0,
+0.927,
+null,
+null
+],
+[
+24.0,
+0.927,
+null,
+null
+],
+[
+27.54,
+0.927,
+null,
+null
+]
+],
+"events": 38,
+"median_days": 0.94,
+"n": 41,
+"pooled": false,
+"reach_days": 27.5,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "171K",
+"subject": "PBHLTH"
+},
+"PBHLTH 177A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.095,
+null,
+null
+],
+[
+1.0,
+0.167,
+null,
+null
+],
+[
+2.0,
+0.167,
+null,
+null
+],
+[
+3.0,
+0.167,
+null,
+null
+],
+[
+4.0,
+0.167,
+null,
+null
+],
+[
+5.0,
+0.216,
+null,
+null
+],
+[
+6.0,
+0.226,
+null,
+null
+],
+[
+7.0,
+0.226,
+null,
+null
+],
+[
+8.0,
+0.226,
+null,
+null
+],
+[
+9.0,
+0.272,
+null,
+null
+],
+[
+10.0,
+0.272,
+null,
+null
+],
+[
+12.0,
+0.318,
+null,
+null
+],
+[
+14.0,
+0.366,
+null,
+null
+],
+[
+16.0,
+0.366,
+null,
+null
+],
+[
+18.0,
+0.366,
+null,
+null
+],
+[
+21.0,
+0.397,
+null,
+null
+],
+[
+24.0,
+0.397,
+null,
+null
+],
+[
+28.0,
+0.421,
+null,
+null
+],
+[
+32.0,
+0.421,
+null,
+null
+],
+[
+36.0,
+0.421,
+null,
+null
+],
+[
+42.0,
+0.421,
+null,
+null
+],
+[
+49.0,
+0.421,
+null,
+null
+],
+[
+56.0,
+0.421,
+null,
+null
+],
+[
+63.0,
+0.421,
+null,
+null
+],
+[
+70.0,
+0.421,
+null,
+null
+],
+[
+77.0,
+0.421,
+null,
+null
+],
+[
+79.75,
+0.421,
+null,
+null
+]
+],
+"events": 41,
+"median_days": null,
+"n": 127,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"n_course": 18,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.072,
+null,
+null
+],
+[
+1.0,
+0.162,
+null,
+null
+],
+[
+2.0,
+0.162,
+null,
+null
+],
+[
+3.0,
+0.162,
+null,
+null
+],
+[
+4.0,
+0.162,
+null,
+null
+],
+[
+5.0,
+0.203,
+null,
+null
+],
+[
+6.0,
+0.203,
+null,
+null
+],
+[
+7.0,
+0.203,
+null,
+null
+],
+[
+8.0,
+0.203,
+null,
+null
+],
+[
+9.0,
+0.282,
+null,
+null
+],
+[
+10.0,
+0.282,
+null,
+null
+],
+[
+12.0,
+0.362,
+null,
+null
+],
+[
+14.0,
+0.442,
+null,
+null
+],
+[
+16.0,
+0.442,
+null,
+null
+],
+[
+18.0,
+0.442,
+null,
+null
+],
+[
+21.0,
+0.442,
+null,
+null
+],
+[
+24.0,
+0.442,
+null,
+null
+],
+[
+28.0,
+0.442,
+null,
+null
+],
+[
+32.0,
+0.442,
+null,
+null
+],
+[
+36.0,
+0.442,
+null,
+null
+],
+[
+39.73,
+0.442,
+null,
+null
+]
+],
+"events": 21,
+"median_days": null,
+"n": 69,
+"pooled": false,
+"reach_days": 39.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "177A",
 "subject": "PBHLTH"
 },
 "PBHLTH 196": {
 "buckets": {
 "1-5": {
-"n_course": 2,
-"pooled": "PBHLTH",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+0.0,
+0.0
+],
+[
+1.0,
+0.0,
+0.0,
+0.0
+],
+[
+2.0,
+0.0,
+0.0,
+0.0
+],
+[
+3.0,
+0.0,
+0.0,
+0.0
+],
+[
+4.0,
+0.0,
+0.0,
+0.0
+],
+[
+5.0,
+0.0,
+0.0,
+0.0
+],
+[
+6.0,
+0.0,
+0.0,
+0.0
+],
+[
+7.0,
+0.0,
+0.0,
+0.0
+],
+[
+8.0,
+0.0,
+0.0,
+0.0
+],
+[
+9.0,
+0.0,
+0.0,
+0.0
+],
+[
+10.0,
+0.0,
+0.0,
+0.0
+],
+[
+12.0,
+0.0,
+0.0,
+0.0
+],
+[
+14.0,
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+0.0,
+0.0,
+0.0
+],
+[
+18.0,
+0.0,
+0.0,
+0.0
+],
+[
+21.0,
+0.0,
+0.0,
+0.0
+],
+[
+24.0,
+0.0,
+0.0,
+0.0
+],
+[
+28.0,
+0.0,
+0.0,
+0.0
+],
+[
+32.0,
+0.0,
+0.0,
+0.0
+],
+[
+36.0,
+0.0,
+0.0,
+0.0
+],
+[
+42.0,
+0.0,
+0.0,
+0.0
+],
+[
+49.0,
+0.0,
+0.0,
+0.0
+],
+[
+56.0,
+0.0,
+0.0,
+0.0
+],
+[
+63.0,
+0.0,
+0.0,
+0.0
+],
+[
+70.0,
+0.0,
+0.0,
+0.0
+],
+[
+77.0,
+0.0,
+0.0,
+0.0
+],
+[
+79.75,
+0.0,
+0.0,
+0.0
+]
+],
+"events": 0,
+"median_days": null,
+"n": 48,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 3
 }
 },
 "dept_group": "PBHLTH",
 "level": "upper",
 "number": "196",
+"subject": "PBHLTH"
+},
+"PBHLTH 196A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.174,
+0.125,
+0.187
+],
+[
+1.0,
+0.226,
+0.209,
+0.292
+],
+[
+2.0,
+0.325,
+0.299,
+0.424
+],
+[
+3.0,
+0.401,
+0.394,
+0.424
+],
+[
+4.0,
+0.41,
+0.394,
+0.472
+],
+[
+5.0,
+0.46,
+0.455,
+0.472
+],
+[
+6.0,
+0.559,
+0.545,
+0.615
+],
+[
+7.0,
+0.559,
+0.545,
+0.615
+],
+[
+8.0,
+0.614,
+0.61,
+0.615
+],
+[
+9.0,
+0.628,
+0.615,
+0.628
+],
+[
+10.0,
+0.642,
+0.615,
+0.643
+],
+[
+12.0,
+0.642,
+0.615,
+0.643
+],
+[
+14.0,
+0.642,
+0.615,
+0.643
+],
+[
+16.0,
+0.698,
+0.615,
+0.706
+],
+[
+18.0,
+0.698,
+0.615,
+0.706
+],
+[
+21.0,
+0.698,
+0.615,
+0.706
+],
+[
+24.0,
+0.718,
+0.615,
+0.727
+],
+[
+28.0,
+0.718,
+0.615,
+0.727
+],
+[
+30.19,
+0.718,
+0.615,
+0.727
+]
+],
+"events": 70,
+"median_days": 5.65,
+"n": 123,
+"pooled": false,
+"reach_days": 30.2,
+"sections": 2
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "196A",
+"subject": "PBHLTH"
+},
+"PBHLTH 200B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.154,
+null,
+null
+],
+[
+1.0,
+0.17,
+null,
+null
+],
+[
+2.0,
+0.252,
+null,
+null
+],
+[
+3.0,
+0.285,
+null,
+null
+],
+[
+4.0,
+0.319,
+null,
+null
+],
+[
+5.0,
+0.336,
+null,
+null
+],
+[
+6.0,
+0.336,
+null,
+null
+],
+[
+7.0,
+0.358,
+null,
+null
+],
+[
+8.0,
+0.405,
+null,
+null
+],
+[
+9.0,
+0.405,
+null,
+null
+],
+[
+10.0,
+0.429,
+null,
+null
+],
+[
+12.0,
+0.485,
+null,
+null
+],
+[
+14.0,
+0.549,
+null,
+null
+],
+[
+16.0,
+0.581,
+null,
+null
+],
+[
+18.0,
+0.581,
+null,
+null
+],
+[
+21.0,
+0.581,
+null,
+null
+],
+[
+24.0,
+0.581,
+null,
+null
+],
+[
+28.0,
+0.581,
+null,
+null
+],
+[
+32.0,
+0.581,
+null,
+null
+],
+[
+36.0,
+0.581,
+null,
+null
+],
+[
+42.0,
+0.581,
+null,
+null
+],
+[
+49.0,
+0.581,
+null,
+null
+],
+[
+56.0,
+0.581,
+null,
+null
+],
+[
+63.0,
+0.581,
+null,
+null
+],
+[
+70.0,
+0.581,
+null,
+null
+],
+[
+77.0,
+0.581,
+null,
+null
+],
+[
+79.75,
+0.581,
+null,
+null
+]
+],
+"events": 30,
+"median_days": 12.12,
+"n": 65,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "200B",
 "subject": "PBHLTH"
 },
 "PBHLTH 200FW": {
@@ -3333,7 +3754,25 @@ null,
 null
 ],
 [
-60.47,
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -3341,9 +3780,9 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 72,
+"n": 56,
 "pooled": false,
-"reach_days": 60.5,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -3495,7 +3934,25 @@ null,
 null
 ],
 [
-60.47,
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -3503,9 +3960,9 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 53,
+"n": 64,
 "pooled": false,
-"reach_days": 60.5,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -3514,3082 +3971,169 @@ null
 "number": "200GW",
 "subject": "PBHLTH"
 },
-"PBHLTH 200J": {
-"buckets": {
-"1-5": {
-"n_course": 12,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "200J",
-"subject": "PBHLTH"
-},
-"PBHLTH 200L": {
+"PBHLTH 200K": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.394,
+0.283,
 null,
 null
 ],
 [
 1.0,
-0.456,
+0.372,
 null,
 null
 ],
 [
 2.0,
-0.65,
+0.473,
 null,
 null
 ],
 [
 3.0,
-0.754,
+0.565,
 null,
 null
 ],
 [
 4.0,
-0.803,
+0.637,
 null,
 null
 ],
 [
 5.0,
-0.875,
+0.672,
 null,
 null
 ],
 [
 6.0,
-0.91,
+0.702,
 null,
 null
 ],
 [
 7.0,
-0.946,
+0.735,
 null,
 null
 ],
 [
 8.0,
-0.982,
+0.76,
 null,
 null
 ],
 [
 9.0,
-0.982,
-null,
-null
-],
-[
-9.5,
-0.982,
-null,
-null
-]
-],
-"events": 85,
-"median_days": 1.16,
-"n": 103,
-"pooled": false,
-"reach_days": 9.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "200L",
-"subject": "PBHLTH"
-},
-"PBHLTH 202L": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.065,
-null,
-null
-],
-[
-1.0,
-0.065,
-null,
-null
-],
-[
-2.0,
-0.102,
-null,
-null
-],
-[
-3.0,
-0.102,
-null,
-null
-],
-[
-4.0,
-0.155,
-null,
-null
-],
-[
-5.0,
-0.208,
-null,
-null
-],
-[
-6.0,
-0.208,
-null,
-null
-],
-[
-7.0,
-0.208,
-null,
-null
-],
-[
-8.0,
-0.269,
-null,
-null
-],
-[
-9.0,
-0.269,
+0.776,
 null,
 null
 ],
 [
 10.0,
-0.269,
+0.808,
 null,
 null
 ],
 [
 12.0,
-0.269,
+0.808,
 null,
 null
 ],
 [
 14.0,
-0.269,
+0.851,
 null,
 null
 ],
 [
 16.0,
-0.269,
+0.872,
 null,
 null
 ],
 [
 18.0,
-0.269,
-null,
-null
-],
-[
-18.38,
-0.269,
-null,
-null
-]
-],
-"events": 6,
-"median_days": null,
-"n": 31,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "202L",
-"subject": "PBHLTH"
-},
-"PBHLTH 203A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.092,
-null,
-null
-],
-[
-1.0,
-0.116,
-null,
-null
-],
-[
-2.0,
-0.116,
-null,
-null
-],
-[
-3.0,
-0.116,
-null,
-null
-],
-[
-4.0,
-0.157,
-null,
-null
-],
-[
-5.0,
-0.157,
-null,
-null
-],
-[
-6.0,
-0.157,
-null,
-null
-],
-[
-7.0,
-0.157,
-null,
-null
-],
-[
-8.0,
-0.206,
-null,
-null
-],
-[
-9.0,
-0.206,
-null,
-null
-],
-[
-10.0,
-0.225,
-null,
-null
-],
-[
-12.0,
-0.225,
-null,
-null
-],
-[
-14.0,
-0.252,
-null,
-null
-],
-[
-16.0,
-0.252,
-null,
-null
-],
-[
-18.0,
-0.286,
+0.872,
 null,
 null
 ],
 [
 21.0,
-0.286,
+0.872,
 null,
 null
 ],
 [
 24.0,
-0.286,
+0.872,
 null,
 null
 ],
 [
-28.0,
-0.286,
-null,
-null
-],
-[
-30.81,
-0.286,
+27.54,
+0.872,
 null,
 null
 ]
 ],
-"events": 19,
-"median_days": null,
-"n": 87,
+"events": 110,
+"median_days": 2.24,
+"n": 157,
 "pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 5,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "203A",
-"subject": "PBHLTH"
-},
-"PBHLTH 204A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.051,
-null,
-null
-],
-[
-1.0,
-0.07,
-null,
-null
-],
-[
-2.0,
-0.075,
-null,
-null
-],
-[
-3.0,
-0.097,
-null,
-null
-],
-[
-4.0,
-0.119,
-null,
-null
-],
-[
-5.0,
-0.125,
-null,
-null
-],
-[
-6.0,
-0.132,
-null,
-null
-],
-[
-7.0,
-0.132,
-null,
-null
-],
-[
-8.0,
-0.132,
-null,
-null
-],
-[
-9.0,
-0.132,
-null,
-null
-],
-[
-10.0,
-0.132,
-null,
-null
-],
-[
-12.0,
-0.14,
-null,
-null
-],
-[
-14.0,
-0.14,
-null,
-null
-],
-[
-16.0,
-0.14,
-null,
-null
-],
-[
-18.0,
-0.14,
-null,
-null
-],
-[
-21.0,
-0.14,
-null,
-null
-],
-[
-24.0,
-0.14,
-null,
-null
-],
-[
-28.0,
-0.14,
-null,
-null
-],
-[
-32.0,
-0.14,
-null,
-null
-],
-[
-36.0,
-0.14,
-null,
-null
-],
-[
-42.0,
-0.14,
-null,
-null
-],
-[
-49.0,
-0.14,
-null,
-null
-],
-[
-56.0,
-0.14,
-null,
-null
-],
-[
-60.47,
-0.14,
-null,
-null
-]
-],
-"events": 27,
-"median_days": null,
-"n": 218,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.038,
-null,
-null
-],
-[
-5.0,
-0.038,
-null,
-null
-],
-[
-6.0,
-0.06,
-null,
-null
-],
-[
-7.0,
-0.06,
-null,
-null
-],
-[
-8.0,
-0.06,
-null,
-null
-],
-[
-9.0,
-0.06,
-null,
-null
-],
-[
-10.0,
-0.06,
-null,
-null
-],
-[
-12.0,
-0.091,
-null,
-null
-],
-[
-14.0,
-0.091,
-null,
-null
-],
-[
-16.0,
-0.091,
-null,
-null
-],
-[
-18.0,
-0.091,
-null,
-null
-],
-[
-21.0,
-0.091,
-null,
-null
-],
-[
-24.0,
-0.091,
-null,
-null
-],
-[
-28.0,
-0.091,
-null,
-null
-],
-[
-30.81,
-0.091,
-null,
-null
-]
-],
-"events": 4,
-"median_days": null,
-"n": 66,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.023,
-null,
-null
-],
-[
-1.0,
-0.047,
-null,
-null
-],
-[
-2.0,
-0.047,
-null,
-null
-],
-[
-3.0,
-0.065,
-null,
-null
-],
-[
-4.0,
-0.103,
-null,
-null
-],
-[
-5.0,
-0.103,
-null,
-null
-],
-[
-6.0,
-0.103,
-null,
-null
-],
-[
-7.0,
-0.103,
-null,
-null
-],
-[
-8.0,
-0.103,
-null,
-null
-],
-[
-9.0,
-0.103,
-null,
-null
-],
-[
-10.0,
-0.103,
-null,
-null
-],
-[
-12.0,
-0.103,
-null,
-null
-],
-[
-14.0,
-0.103,
-null,
-null
-],
-[
-16.0,
-0.103,
-null,
-null
-],
-[
-18.0,
-0.103,
-null,
-null
-],
-[
-21.0,
-0.103,
-null,
-null
-],
-[
-24.0,
-0.103,
-null,
-null
-],
-[
-28.0,
-0.103,
-null,
-null
-],
-[
-31.14,
-0.103,
-null,
-null
-]
-],
-"events": 12,
-"median_days": null,
-"n": 132,
-"pooled": false,
-"reach_days": 31.1,
+"reach_days": 27.5,
 "sections": 1
 }
 },
 "dept_group": "PBHLTH",
 "level": "grad",
-"number": "204A",
+"number": "200K",
 "subject": "PBHLTH"
 },
-"PBHLTH 206": {
-"buckets": {
-"1-5": {
-"n_course": 28,
-"pooled": "PBHLTH",
-"sections_course": 1
-},
-"6-15": {
-"n_course": 2,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "206",
-"subject": "PBHLTH"
-},
-"PBHLTH 206BW": {
+"PBHLTH 205": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.0,
+0.23,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.246,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.279,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.279,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.391,
 null,
 null
 ],
 [
 5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 51,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "206BW",
-"subject": "PBHLTH"
-},
-"PBHLTH 207": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.121,
-null,
-null
-],
-[
-1.0,
-0.121,
-null,
-null
-],
-[
-2.0,
-0.196,
-null,
-null
-],
-[
-3.0,
-0.252,
-null,
-null
-],
-[
-4.0,
-0.285,
-null,
-null
-],
-[
-5.0,
-0.347,
-null,
-null
-],
-[
-6.0,
-0.377,
-null,
-null
-],
-[
-7.0,
-0.407,
-null,
-null
-],
-[
-8.0,
-0.438,
-null,
-null
-],
-[
-9.0,
-0.504,
-null,
-null
-],
-[
-10.0,
-0.535,
-null,
-null
-],
-[
-12.0,
-0.566,
-null,
-null
-],
-[
-14.0,
-0.783,
-null,
-null
-],
-[
-16.0,
-0.783,
-null,
-null
-],
-[
-16.56,
-0.783,
-null,
-null
-]
-],
-"events": 46,
-"median_days": 8.92,
-"n": 99,
-"pooled": false,
-"reach_days": 16.6,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-18.21,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 35,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "207",
-"subject": "PBHLTH"
-},
-"PBHLTH 207A": {
-"buckets": {
-"1-5": {
-"n_course": 27,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "207A",
-"subject": "PBHLTH"
-},
-"PBHLTH 207AW": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 56,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "207AW",
-"subject": "PBHLTH"
-},
-"PBHLTH 210": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.084,
-null,
-null
-],
-[
-1.0,
-0.099,
-null,
-null
-],
-[
-2.0,
-0.099,
-null,
-null
-],
-[
-3.0,
-0.159,
-null,
-null
-],
-[
-4.0,
-0.159,
-null,
-null
-],
-[
-5.0,
-0.159,
-null,
-null
-],
-[
-6.0,
-0.159,
-null,
-null
-],
-[
-7.0,
-0.159,
-null,
-null
-],
-[
-8.0,
-0.159,
-null,
-null
-],
-[
-9.0,
-0.159,
-null,
-null
-],
-[
-10.0,
-0.159,
-null,
-null
-],
-[
-12.0,
-0.159,
-null,
-null
-],
-[
-14.0,
-0.159,
-null,
-null
-],
-[
-16.0,
-0.159,
-null,
-null
-],
-[
-18.0,
-0.159,
-null,
-null
-],
-[
-21.0,
-0.159,
-null,
-null
-],
-[
-24.0,
-0.159,
-null,
-null
-],
-[
-28.0,
-0.159,
-null,
-null
-],
-[
-32.0,
-0.159,
-null,
-null
-],
-[
-36.0,
-0.159,
-null,
-null
-],
-[
-42.0,
-0.159,
-null,
-null
-],
-[
-49.0,
-0.159,
-null,
-null
-],
-[
-56.0,
-0.159,
-null,
-null
-],
-[
-60.47,
-0.159,
-null,
-null
-]
-],
-"events": 12,
-"median_days": null,
-"n": 83,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-},
-"6-15": {
-"n_course": 22,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "210",
-"subject": "PBHLTH"
-},
-"PBHLTH 210W": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-30.81,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 32,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "210W",
-"subject": "PBHLTH"
-},
-"PBHLTH 212W": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 61,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "212W",
-"subject": "PBHLTH"
-},
-"PBHLTH 213W": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 54,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "213W",
-"subject": "PBHLTH"
-},
-"PBHLTH 218B": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.028,
-null,
-null
-],
-[
-1.0,
-0.037,
-null,
-null
-],
-[
-2.0,
-0.045,
-null,
-null
-],
-[
-3.0,
-0.053,
-null,
-null
-],
-[
-4.0,
-0.1,
-null,
-null
-],
-[
-5.0,
-0.11,
-null,
-null
-],
-[
-6.0,
-0.12,
-null,
-null
-],
-[
-7.0,
-0.175,
-null,
-null
-],
-[
-8.0,
-0.209,
-null,
-null
-],
-[
-9.0,
-0.234,
-null,
-null
-],
-[
-10.0,
-0.234,
-null,
-null
-],
-[
-12.0,
-0.25,
-null,
-null
-],
-[
-14.0,
-0.25,
-null,
-null
-],
-[
-16.0,
-0.25,
-null,
-null
-],
-[
-18.0,
-0.25,
-null,
-null
-],
-[
-21.0,
-0.25,
-null,
-null
-],
-[
-24.0,
-0.25,
-null,
-null
-],
-[
-28.0,
-0.25,
-null,
-null
-],
-[
-30.81,
-0.25,
-null,
-null
-]
-],
-"events": 25,
-"median_days": null,
-"n": 141,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 23,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "218B",
-"subject": "PBHLTH"
-},
-"PBHLTH 220DW": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 57,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "220DW",
-"subject": "PBHLTH"
-},
-"PBHLTH 223D": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.09,
-null,
-null
-],
-[
-1.0,
-0.09,
-null,
-null
-],
-[
-2.0,
-0.09,
-null,
-null
-],
-[
-3.0,
-0.113,
-null,
-null
-],
-[
-4.0,
-0.113,
-null,
-null
-],
-[
-5.0,
-0.126,
-null,
-null
-],
-[
-6.0,
-0.14,
-null,
-null
-],
-[
-7.0,
-0.154,
-null,
-null
-],
-[
-8.0,
-0.181,
-null,
-null
-],
-[
-9.0,
-0.181,
-null,
-null
-],
-[
-10.0,
-0.181,
-null,
-null
-],
-[
-12.0,
-0.181,
-null,
-null
-],
-[
-14.0,
-0.181,
-null,
-null
-],
-[
-16.0,
-0.181,
-null,
-null
-],
-[
-18.0,
-0.181,
-null,
-null
-],
-[
-21.0,
-0.181,
-null,
-null
-],
-[
-24.0,
-0.181,
-null,
-null
-],
-[
-28.0,
-0.181,
-null,
-null
-],
-[
-32.0,
-0.181,
-null,
-null
-],
-[
-36.0,
-0.181,
-null,
-null
-],
-[
-42.0,
-0.181,
-null,
-null
-],
-[
-49.0,
-0.181,
-null,
-null
-],
-[
-56.0,
-0.181,
-null,
-null
-],
-[
-60.47,
-0.181,
-null,
-null
-]
-],
-"events": 16,
-"median_days": null,
-"n": 101,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "223D",
-"subject": "PBHLTH"
-},
-"PBHLTH 224W": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 87,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "224W",
-"subject": "PBHLTH"
-},
-"PBHLTH 226A": {
-"buckets": {
-"1-5": {
-"n_course": 4,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "226A",
-"subject": "PBHLTH"
-},
-"PBHLTH 226AW": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 60,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "226AW",
-"subject": "PBHLTH"
-},
-"PBHLTH 24": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.095,
-null,
-null
-],
-[
-1.0,
-0.095,
-null,
-null
-],
-[
-2.0,
-0.147,
-null,
-null
-],
-[
-3.0,
-0.166,
-null,
-null
-],
-[
-4.0,
-0.166,
-null,
-null
-],
-[
-5.0,
-0.187,
-null,
-null
-],
-[
-6.0,
-0.187,
-null,
-null
-],
-[
-7.0,
-0.187,
-null,
-null
-],
-[
-8.0,
-0.187,
-null,
-null
-],
-[
-9.0,
-0.187,
-null,
-null
-],
-[
-10.0,
-0.187,
-null,
-null
-],
-[
-12.0,
-0.187,
-null,
-null
-],
-[
-14.0,
-0.187,
-null,
-null
-],
-[
-16.0,
-0.187,
-null,
-null
-],
-[
-18.0,
-0.226,
-null,
-null
-],
-[
-21.0,
-0.226,
-null,
-null
-],
-[
-24.0,
-0.226,
-null,
-null
-],
-[
-28.0,
-0.226,
-null,
-null
-],
-[
-32.0,
-0.226,
-null,
-null
-],
-[
-36.0,
-0.226,
-null,
-null
-],
-[
-42.0,
-0.226,
-null,
-null
-],
-[
-49.0,
-0.226,
-null,
-null
-],
-[
-56.0,
-0.226,
-null,
-null
-],
-[
-60.47,
-0.226,
-null,
-null
-]
-],
-"events": 12,
-"median_days": null,
-"n": 68,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-},
-"6-15": {
-"n_course": 16,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "lower",
-"number": "24",
-"subject": "PBHLTH"
-},
-"PBHLTH 245": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.214,
-null,
-null
-],
-[
-1.0,
-0.294,
-null,
-null
-],
-[
-2.0,
-0.355,
-null,
-null
-],
-[
-3.0,
-0.401,
-null,
-null
-],
-[
-4.0,
-0.48,
-null,
-null
-],
-[
-5.0,
-0.545,
-null,
-null
-],
-[
-6.0,
-0.578,
-null,
-null
-],
-[
-7.0,
-0.623,
-null,
-null
-],
-[
-8.0,
-0.651,
-null,
-null
-],
-[
-9.0,
-0.657,
-null,
-null
-],
-[
-10.0,
-0.657,
-null,
-null
-],
-[
-12.0,
-0.675,
-null,
-null
-],
-[
-14.0,
-0.72,
-null,
-null
-],
-[
-16.0,
-0.743,
-null,
-null
-],
-[
-18.0,
-0.797,
-null,
-null
-],
-[
-21.0,
-0.816,
-null,
-null
-],
-[
-24.0,
-0.83,
-null,
-null
-],
-[
-28.0,
-0.86,
-null,
-null
-],
-[
-30.81,
-0.895,
-null,
-null
-]
-],
-"events": 154,
-"median_days": 4.03,
-"n": 212,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.085,
-null,
-null
-],
-[
-1.0,
-0.131,
-null,
-null
-],
-[
-2.0,
-0.131,
-null,
-null
-],
-[
-3.0,
-0.131,
-null,
-null
-],
-[
-4.0,
-0.182,
-null,
-null
-],
-[
-5.0,
-0.288,
+0.43,
 null,
 null
 ],
@@ -6601,341 +4145,91 @@ null
 ],
 [
 7.0,
-0.487,
+0.589,
 null,
 null
 ],
 [
 8.0,
-0.687,
+0.635,
 null,
 null
 ],
 [
 9.0,
-0.749,
+0.718,
 null,
 null
 ],
 [
 10.0,
-0.812,
+0.718,
 null,
 null
 ],
 [
 12.0,
-0.875,
+0.718,
 null,
 null
 ],
 [
 14.0,
-0.906,
+0.718,
 null,
 null
 ],
 [
 16.0,
-0.937,
-null,
-null
-],
-[
-16.8,
-0.969,
-null,
-null
-]
-],
-"events": 36,
-"median_days": 7.23,
-"n": 48,
-"pooled": false,
-"reach_days": 16.8,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "245",
-"subject": "PBHLTH"
-},
-"PBHLTH 249": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.121,
-null,
-null
-],
-[
-1.0,
-0.121,
-null,
-null
-],
-[
-2.0,
-0.157,
-null,
-null
-],
-[
-3.0,
-0.157,
-null,
-null
-],
-[
-4.0,
-0.157,
-null,
-null
-],
-[
-5.0,
-0.157,
-null,
-null
-],
-[
-6.0,
-0.177,
-null,
-null
-],
-[
-7.0,
-0.177,
-null,
-null
-],
-[
-8.0,
-0.269,
-null,
-null
-],
-[
-9.0,
-0.269,
-null,
-null
-],
-[
-10.0,
-0.269,
-null,
-null
-],
-[
-12.0,
-0.322,
-null,
-null
-],
-[
-14.0,
-0.458,
-null,
-null
-],
-[
-16.0,
-0.458,
+0.718,
 null,
 null
 ],
 [
 18.0,
-0.458,
+0.718,
 null,
 null
 ],
 [
 21.0,
-0.458,
+0.718,
 null,
 null
 ],
 [
 24.0,
-0.458,
+0.718,
 null,
 null
 ],
 [
 28.0,
-0.458,
+0.718,
 null,
 null
 ],
 [
-30.81,
-0.458,
+29.29,
+0.718,
 null,
 null
 ]
 ],
-"events": 20,
-"median_days": null,
-"n": 67,
+"events": 37,
+"median_days": 6.63,
+"n": 61,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 29.3,
 "sections": 1
-},
-"6-15": {
-"n_course": 3,
-"pooled": "PBHLTH",
-"sections_course": 1
 }
 },
 "dept_group": "PBHLTH",
 "level": "grad",
-"number": "249",
+"number": "205",
 "subject": "PBHLTH"
 },
-"PBHLTH 250A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.253,
-null,
-null
-],
-[
-1.0,
-0.34,
-null,
-null
-],
-[
-2.0,
-0.463,
-null,
-null
-],
-[
-3.0,
-0.543,
-null,
-null
-],
-[
-4.0,
-0.6,
-null,
-null
-],
-[
-5.0,
-0.625,
-null,
-null
-],
-[
-6.0,
-0.656,
-null,
-null
-],
-[
-7.0,
-0.683,
-null,
-null
-],
-[
-8.0,
-0.727,
-null,
-null
-],
-[
-9.0,
-0.738,
-null,
-null
-],
-[
-10.0,
-0.744,
-null,
-null
-],
-[
-12.0,
-0.768,
-null,
-null
-],
-[
-14.0,
-0.788,
-null,
-null
-],
-[
-16.0,
-0.811,
-null,
-null
-],
-[
-18.0,
-0.836,
-null,
-null
-],
-[
-21.0,
-0.854,
-null,
-null
-],
-[
-24.0,
-0.885,
-null,
-null
-],
-[
-28.0,
-0.918,
-null,
-null
-],
-[
-30.81,
-0.934,
-null,
-null
-]
-],
-"events": 190,
-"median_days": 2.37,
-"n": 251,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 28,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "250A",
-"subject": "PBHLTH"
-},
-"PBHLTH 250BW": {
+"PBHLTH 206AW": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -7078,7 +4372,25 @@ null,
 null
 ],
 [
-60.47,
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -7086,15 +4398,4390 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 56,
+"n": 62,
 "pooled": false,
-"reach_days": 60.5,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "PBHLTH",
 "level": "grad",
-"number": "250BW",
+"number": "206AW",
+"subject": "PBHLTH"
+},
+"PBHLTH 206EW": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 42,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "206EW",
+"subject": "PBHLTH"
+},
+"PBHLTH 207A": {
+"buckets": {
+"1-5": {
+"n_course": 18,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "207A",
+"subject": "PBHLTH"
+},
+"PBHLTH 209W": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 53,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "209W",
+"subject": "PBHLTH"
+},
+"PBHLTH 210B": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "210B",
+"subject": "PBHLTH"
+},
+"PBHLTH 210D": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.095,
+null,
+null
+],
+[
+1.0,
+0.133,
+null,
+null
+],
+[
+2.0,
+0.181,
+null,
+null
+],
+[
+3.0,
+0.181,
+null,
+null
+],
+[
+4.0,
+0.202,
+null,
+null
+],
+[
+5.0,
+0.202,
+null,
+null
+],
+[
+6.0,
+0.238,
+null,
+null
+],
+[
+7.0,
+0.279,
+null,
+null
+],
+[
+8.0,
+0.279,
+null,
+null
+],
+[
+9.0,
+0.309,
+null,
+null
+],
+[
+10.0,
+0.309,
+null,
+null
+],
+[
+12.0,
+0.368,
+null,
+null
+],
+[
+14.0,
+0.462,
+null,
+null
+],
+[
+16.0,
+0.641,
+null,
+null
+],
+[
+18.0,
+0.641,
+null,
+null
+],
+[
+21.0,
+0.641,
+null,
+null
+],
+[
+24.0,
+0.641,
+null,
+null
+],
+[
+28.0,
+0.641,
+null,
+null
+],
+[
+32.0,
+0.641,
+null,
+null
+],
+[
+36.0,
+0.641,
+null,
+null
+],
+[
+42.0,
+0.641,
+null,
+null
+],
+[
+49.0,
+0.641,
+null,
+null
+],
+[
+56.0,
+0.641,
+null,
+null
+],
+[
+63.0,
+0.641,
+null,
+null
+],
+[
+70.0,
+0.641,
+null,
+null
+],
+[
+77.0,
+0.641,
+null,
+null
+],
+[
+79.75,
+0.641,
+null,
+null
+]
+],
+"events": 44,
+"median_days": 14.34,
+"n": 117,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 13,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "210D",
+"subject": "PBHLTH"
+},
+"PBHLTH 218W": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 54,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "218W",
+"subject": "PBHLTH"
+},
+"PBHLTH 219C": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.177,
+null,
+null
+],
+[
+1.0,
+0.246,
+null,
+null
+],
+[
+2.0,
+0.292,
+null,
+null
+],
+[
+3.0,
+0.305,
+null,
+null
+],
+[
+4.0,
+0.345,
+null,
+null
+],
+[
+5.0,
+0.358,
+null,
+null
+],
+[
+6.0,
+0.374,
+null,
+null
+],
+[
+7.0,
+0.469,
+null,
+null
+],
+[
+8.0,
+0.469,
+null,
+null
+],
+[
+9.0,
+0.469,
+null,
+null
+],
+[
+10.0,
+0.469,
+null,
+null
+],
+[
+12.0,
+0.575,
+null,
+null
+],
+[
+14.0,
+0.575,
+null,
+null
+],
+[
+16.0,
+0.575,
+null,
+null
+],
+[
+18.0,
+0.575,
+null,
+null
+],
+[
+21.0,
+0.575,
+null,
+null
+],
+[
+24.0,
+0.575,
+null,
+null
+],
+[
+28.0,
+0.575,
+null,
+null
+],
+[
+28.79,
+0.575,
+null,
+null
+]
+],
+"events": 44,
+"median_days": 11.77,
+"n": 103,
+"pooled": false,
+"reach_days": 28.8,
+"sections": 1
+},
+"6-15": {
+"n_course": 29,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "219C",
+"subject": "PBHLTH"
+},
+"PBHLTH 219E": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.101,
+null,
+null
+],
+[
+1.0,
+0.143,
+null,
+null
+],
+[
+2.0,
+0.158,
+null,
+null
+],
+[
+3.0,
+0.219,
+null,
+null
+],
+[
+4.0,
+0.279,
+null,
+null
+],
+[
+5.0,
+0.317,
+null,
+null
+],
+[
+6.0,
+0.351,
+null,
+null
+],
+[
+7.0,
+0.421,
+null,
+null
+],
+[
+8.0,
+0.467,
+null,
+null
+],
+[
+9.0,
+0.467,
+null,
+null
+],
+[
+10.0,
+0.479,
+null,
+null
+],
+[
+12.0,
+0.523,
+null,
+null
+],
+[
+14.0,
+0.523,
+null,
+null
+],
+[
+16.0,
+0.568,
+null,
+null
+],
+[
+18.0,
+0.568,
+null,
+null
+],
+[
+21.0,
+0.568,
+null,
+null
+],
+[
+24.0,
+0.568,
+null,
+null
+],
+[
+28.0,
+0.568,
+null,
+null
+],
+[
+32.0,
+0.568,
+null,
+null
+],
+[
+36.0,
+0.568,
+null,
+null
+],
+[
+42.0,
+0.568,
+null,
+null
+],
+[
+49.0,
+0.568,
+null,
+null
+],
+[
+56.0,
+0.568,
+null,
+null
+],
+[
+63.0,
+0.568,
+null,
+null
+],
+[
+70.0,
+0.568,
+null,
+null
+],
+[
+77.0,
+0.568,
+null,
+null
+],
+[
+79.75,
+0.568,
+null,
+null
+]
+],
+"events": 67,
+"median_days": 10.64,
+"n": 150,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.038,
+null,
+null
+],
+[
+5.0,
+0.038,
+null,
+null
+],
+[
+6.0,
+0.079,
+null,
+null
+],
+[
+7.0,
+0.21,
+null,
+null
+],
+[
+8.0,
+0.254,
+null,
+null
+],
+[
+9.0,
+0.254,
+null,
+null
+],
+[
+10.0,
+0.354,
+null,
+null
+],
+[
+12.0,
+0.354,
+null,
+null
+],
+[
+14.0,
+0.641,
+null,
+null
+],
+[
+16.0,
+0.713,
+null,
+null
+],
+[
+18.0,
+0.808,
+null,
+null
+],
+[
+21.0,
+0.808,
+null,
+null
+],
+[
+24.0,
+0.808,
+null,
+null
+],
+[
+25.37,
+0.808,
+null,
+null
+]
+],
+"events": 14,
+"median_days": 13.47,
+"n": 31,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "219E",
+"subject": "PBHLTH"
+},
+"PBHLTH 219W": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "219W",
+"subject": "PBHLTH"
+},
+"PBHLTH 220": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "220",
+"subject": "PBHLTH"
+},
+"PBHLTH 222A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.19,
+null,
+null
+],
+[
+1.0,
+0.223,
+null,
+null
+],
+[
+2.0,
+0.344,
+null,
+null
+],
+[
+3.0,
+0.441,
+null,
+null
+],
+[
+4.0,
+0.486,
+null,
+null
+],
+[
+5.0,
+0.502,
+null,
+null
+],
+[
+6.0,
+0.546,
+null,
+null
+],
+[
+7.0,
+0.556,
+null,
+null
+],
+[
+8.0,
+0.566,
+null,
+null
+],
+[
+9.0,
+0.604,
+null,
+null
+],
+[
+10.0,
+0.604,
+null,
+null
+],
+[
+12.0,
+0.616,
+null,
+null
+],
+[
+14.0,
+0.616,
+null,
+null
+],
+[
+16.0,
+0.664,
+null,
+null
+],
+[
+18.0,
+0.664,
+null,
+null
+],
+[
+21.0,
+0.664,
+null,
+null
+],
+[
+24.0,
+0.664,
+null,
+null
+],
+[
+28.0,
+0.664,
+null,
+null
+],
+[
+31.09,
+0.664,
+null,
+null
+]
+],
+"events": 85,
+"median_days": 4.9,
+"n": 161,
+"pooled": false,
+"reach_days": 31.1,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.026,
+null,
+null
+],
+[
+1.0,
+0.026,
+null,
+null
+],
+[
+2.0,
+0.026,
+null,
+null
+],
+[
+3.0,
+0.09,
+null,
+null
+],
+[
+4.0,
+0.155,
+null,
+null
+],
+[
+5.0,
+0.189,
+null,
+null
+],
+[
+6.0,
+0.189,
+null,
+null
+],
+[
+7.0,
+0.189,
+null,
+null
+],
+[
+8.0,
+0.189,
+null,
+null
+],
+[
+9.0,
+0.305,
+null,
+null
+],
+[
+10.0,
+0.305,
+null,
+null
+],
+[
+12.0,
+0.305,
+null,
+null
+],
+[
+14.0,
+0.305,
+null,
+null
+],
+[
+16.0,
+0.305,
+null,
+null
+],
+[
+18.0,
+0.305,
+null,
+null
+],
+[
+21.0,
+0.305,
+null,
+null
+],
+[
+24.0,
+0.305,
+null,
+null
+],
+[
+25.37,
+0.305,
+null,
+null
+]
+],
+"events": 8,
+"median_days": null,
+"n": 38,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "222A",
+"subject": "PBHLTH"
+},
+"PBHLTH 222AW": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 55,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "222AW",
+"subject": "PBHLTH"
+},
+"PBHLTH 223B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 39,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "223B",
+"subject": "PBHLTH"
+},
+"PBHLTH 223C": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.223,
+null,
+null
+],
+[
+1.0,
+0.265,
+null,
+null
+],
+[
+2.0,
+0.37,
+null,
+null
+],
+[
+3.0,
+0.454,
+null,
+null
+],
+[
+4.0,
+0.5,
+null,
+null
+],
+[
+5.0,
+0.572,
+null,
+null
+],
+[
+6.0,
+0.729,
+null,
+null
+],
+[
+7.0,
+0.783,
+null,
+null
+],
+[
+8.0,
+0.81,
+null,
+null
+],
+[
+9.0,
+0.842,
+null,
+null
+],
+[
+10.0,
+0.873,
+null,
+null
+],
+[
+12.0,
+0.873,
+null,
+null
+],
+[
+14.0,
+0.873,
+null,
+null
+],
+[
+16.0,
+0.873,
+null,
+null
+],
+[
+18.0,
+0.873,
+null,
+null
+],
+[
+21.0,
+0.873,
+null,
+null
+],
+[
+24.0,
+0.873,
+null,
+null
+],
+[
+28.0,
+0.873,
+null,
+null
+],
+[
+28.14,
+0.873,
+null,
+null
+]
+],
+"events": 39,
+"median_days": 3.77,
+"n": 55,
+"pooled": false,
+"reach_days": 28.1,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "223C",
+"subject": "PBHLTH"
+},
+"PBHLTH 223K": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.188,
+null,
+null
+],
+[
+1.0,
+0.238,
+null,
+null
+],
+[
+2.0,
+0.272,
+null,
+null
+],
+[
+3.0,
+0.272,
+null,
+null
+],
+[
+4.0,
+0.29,
+null,
+null
+],
+[
+5.0,
+0.309,
+null,
+null
+],
+[
+6.0,
+0.348,
+null,
+null
+],
+[
+7.0,
+0.368,
+null,
+null
+],
+[
+8.0,
+0.368,
+null,
+null
+],
+[
+9.0,
+0.409,
+null,
+null
+],
+[
+10.0,
+0.429,
+null,
+null
+],
+[
+12.0,
+0.429,
+null,
+null
+],
+[
+14.0,
+0.429,
+null,
+null
+],
+[
+16.0,
+0.495,
+null,
+null
+],
+[
+18.0,
+0.495,
+null,
+null
+],
+[
+21.0,
+0.495,
+null,
+null
+],
+[
+24.0,
+0.523,
+null,
+null
+],
+[
+28.0,
+0.523,
+null,
+null
+],
+[
+32.0,
+0.523,
+null,
+null
+],
+[
+36.0,
+0.523,
+null,
+null
+],
+[
+42.0,
+0.523,
+null,
+null
+],
+[
+49.0,
+0.523,
+null,
+null
+],
+[
+56.0,
+0.523,
+null,
+null
+],
+[
+63.0,
+0.523,
+null,
+null
+],
+[
+70.0,
+0.523,
+null,
+null
+],
+[
+77.0,
+0.523,
+null,
+null
+],
+[
+79.75,
+0.523,
+null,
+null
+]
+],
+"events": 29,
+"median_days": 23.22,
+"n": 64,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "223K",
+"subject": "PBHLTH"
+},
+"PBHLTH 225AW": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 53,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "225AW",
+"subject": "PBHLTH"
+},
+"PBHLTH 225BW": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 47,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "225BW",
+"subject": "PBHLTH"
+},
+"PBHLTH 226C": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.205,
+null,
+null
+],
+[
+1.0,
+0.231,
+null,
+null
+],
+[
+2.0,
+0.359,
+null,
+null
+],
+[
+3.0,
+0.385,
+null,
+null
+],
+[
+4.0,
+0.436,
+null,
+null
+],
+[
+5.0,
+0.487,
+null,
+null
+],
+[
+6.0,
+0.615,
+null,
+null
+],
+[
+7.0,
+0.718,
+null,
+null
+],
+[
+8.0,
+0.769,
+null,
+null
+],
+[
+9.0,
+0.795,
+null,
+null
+],
+[
+10.0,
+0.821,
+null,
+null
+],
+[
+12.0,
+0.821,
+null,
+null
+],
+[
+14.0,
+0.821,
+null,
+null
+],
+[
+16.0,
+0.821,
+null,
+null
+],
+[
+18.0,
+0.821,
+null,
+null
+],
+[
+21.0,
+0.821,
+null,
+null
+],
+[
+24.0,
+0.821,
+null,
+null
+],
+[
+27.54,
+0.821,
+null,
+null
+]
+],
+"events": 32,
+"median_days": 5.02,
+"n": 39,
+"pooled": false,
+"reach_days": 27.5,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "226C",
+"subject": "PBHLTH"
+},
+"PBHLTH 226CW": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 51,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "226CW",
+"subject": "PBHLTH"
+},
+"PBHLTH 226FW": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 61,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "226FW",
+"subject": "PBHLTH"
+},
+"PBHLTH 227AW": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 70,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "227AW",
+"subject": "PBHLTH"
+},
+"PBHLTH 236": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.188,
+null,
+null
+],
+[
+1.0,
+0.271,
+null,
+null
+],
+[
+2.0,
+0.562,
+null,
+null
+],
+[
+3.0,
+0.562,
+null,
+null
+],
+[
+4.0,
+0.562,
+null,
+null
+],
+[
+5.0,
+0.562,
+null,
+null
+],
+[
+6.0,
+0.562,
+null,
+null
+],
+[
+7.0,
+0.562,
+null,
+null
+],
+[
+8.0,
+0.562,
+null,
+null
+],
+[
+9.0,
+0.727,
+null,
+null
+],
+[
+10.0,
+0.727,
+null,
+null
+],
+[
+12.0,
+0.727,
+null,
+null
+],
+[
+14.0,
+0.727,
+null,
+null
+],
+[
+16.0,
+0.727,
+null,
+null
+],
+[
+18.0,
+0.727,
+null,
+null
+],
+[
+21.0,
+0.727,
+null,
+null
+],
+[
+24.0,
+0.727,
+null,
+null
+],
+[
+28.0,
+0.727,
+null,
+null
+],
+[
+32.0,
+0.727,
+null,
+null
+],
+[
+34.09,
+0.727,
+null,
+null
+]
+],
+"events": 30,
+"median_days": 1.93,
+"n": 48,
+"pooled": false,
+"reach_days": 34.1,
+"sections": 1
+},
+"6-15": {
+"n_course": 7,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "236",
+"subject": "PBHLTH"
+},
+"PBHLTH 24": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.178,
+null,
+null
+],
+[
+1.0,
+0.178,
+null,
+null
+],
+[
+2.0,
+0.227,
+null,
+null
+],
+[
+3.0,
+0.248,
+null,
+null
+],
+[
+4.0,
+0.271,
+null,
+null
+],
+[
+5.0,
+0.282,
+null,
+null
+],
+[
+6.0,
+0.319,
+null,
+null
+],
+[
+7.0,
+0.371,
+null,
+null
+],
+[
+8.0,
+0.466,
+null,
+null
+],
+[
+9.0,
+0.516,
+null,
+null
+],
+[
+10.0,
+0.516,
+null,
+null
+],
+[
+12.0,
+0.55,
+null,
+null
+],
+[
+14.0,
+0.608,
+null,
+null
+],
+[
+16.0,
+0.628,
+null,
+null
+],
+[
+18.0,
+0.628,
+null,
+null
+],
+[
+21.0,
+0.653,
+null,
+null
+],
+[
+24.0,
+0.653,
+null,
+null
+],
+[
+28.0,
+0.653,
+null,
+null
+],
+[
+32.0,
+0.653,
+null,
+null
+],
+[
+36.0,
+0.653,
+null,
+null
+],
+[
+42.0,
+0.653,
+null,
+null
+],
+[
+49.0,
+0.653,
+null,
+null
+],
+[
+56.0,
+0.653,
+null,
+null
+],
+[
+63.0,
+0.653,
+null,
+null
+],
+[
+70.0,
+0.653,
+null,
+null
+],
+[
+77.0,
+0.653,
+null,
+null
+],
+[
+79.75,
+0.653,
+null,
+null
+]
+],
+"events": 52,
+"median_days": 8.23,
+"n": 108,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "lower",
+"number": "24",
+"subject": "PBHLTH"
+},
+"PBHLTH 241": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.238,
+null,
+null
+],
+[
+1.0,
+0.36,
+null,
+null
+],
+[
+2.0,
+0.525,
+null,
+null
+],
+[
+3.0,
+0.642,
+null,
+null
+],
+[
+4.0,
+0.771,
+null,
+null
+],
+[
+5.0,
+0.847,
+null,
+null
+],
+[
+6.0,
+0.877,
+null,
+null
+],
+[
+7.0,
+0.889,
+null,
+null
+],
+[
+8.0,
+0.902,
+null,
+null
+],
+[
+9.0,
+0.902,
+null,
+null
+],
+[
+10.0,
+0.909,
+null,
+null
+],
+[
+12.0,
+0.909,
+null,
+null
+],
+[
+14.0,
+0.917,
+null,
+null
+],
+[
+16.0,
+0.917,
+null,
+null
+],
+[
+18.0,
+0.917,
+null,
+null
+],
+[
+21.0,
+0.917,
+null,
+null
+],
+[
+24.0,
+0.917,
+null,
+null
+],
+[
+28.0,
+0.917,
+null,
+null
+],
+[
+32.0,
+0.917,
+null,
+null
+],
+[
+36.0,
+0.917,
+null,
+null
+],
+[
+42.0,
+0.917,
+null,
+null
+],
+[
+49.0,
+0.917,
+null,
+null
+],
+[
+56.0,
+0.917,
+null,
+null
+],
+[
+63.0,
+0.917,
+null,
+null
+],
+[
+70.0,
+0.917,
+null,
+null
+],
+[
+77.0,
+0.917,
+null,
+null
+],
+[
+79.75,
+0.917,
+null,
+null
+]
+],
+"events": 164,
+"median_days": 1.92,
+"n": 189,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 27,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "241",
+"subject": "PBHLTH"
+},
+"PBHLTH 241W": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 49,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "241W",
+"subject": "PBHLTH"
+},
+"PBHLTH 250B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.19,
+null,
+null
+],
+[
+1.0,
+0.253,
+null,
+null
+],
+[
+2.0,
+0.34,
+null,
+null
+],
+[
+3.0,
+0.394,
+null,
+null
+],
+[
+4.0,
+0.465,
+null,
+null
+],
+[
+5.0,
+0.512,
+null,
+null
+],
+[
+6.0,
+0.551,
+null,
+null
+],
+[
+7.0,
+0.608,
+null,
+null
+],
+[
+8.0,
+0.656,
+null,
+null
+],
+[
+9.0,
+0.681,
+null,
+null
+],
+[
+10.0,
+0.706,
+null,
+null
+],
+[
+12.0,
+0.733,
+null,
+null
+],
+[
+14.0,
+0.789,
+null,
+null
+],
+[
+16.0,
+0.789,
+null,
+null
+],
+[
+18.0,
+0.789,
+null,
+null
+],
+[
+21.0,
+0.789,
+null,
+null
+],
+[
+24.0,
+0.789,
+null,
+null
+],
+[
+28.0,
+0.789,
+null,
+null
+],
+[
+32.0,
+0.789,
+null,
+null
+],
+[
+36.0,
+0.789,
+null,
+null
+],
+[
+42.0,
+0.789,
+null,
+null
+],
+[
+49.0,
+0.789,
+null,
+null
+],
+[
+56.0,
+0.789,
+null,
+null
+],
+[
+63.0,
+0.789,
+null,
+null
+],
+[
+70.0,
+0.789,
+null,
+null
+],
+[
+77.0,
+0.789,
+null,
+null
+],
+[
+79.75,
+0.789,
+null,
+null
+]
+],
+"events": 94,
+"median_days": 4.42,
+"n": 148,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "250B",
+"subject": "PBHLTH"
+},
+"PBHLTH 250C": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.289,
+null,
+null
+],
+[
+1.0,
+0.342,
+null,
+null
+],
+[
+2.0,
+0.383,
+null,
+null
+],
+[
+3.0,
+0.409,
+null,
+null
+],
+[
+4.0,
+0.425,
+null,
+null
+],
+[
+5.0,
+0.487,
+null,
+null
+],
+[
+6.0,
+0.52,
+null,
+null
+],
+[
+7.0,
+0.52,
+null,
+null
+],
+[
+8.0,
+0.538,
+null,
+null
+],
+[
+9.0,
+0.538,
+null,
+null
+],
+[
+10.0,
+0.538,
+null,
+null
+],
+[
+12.0,
+0.538,
+null,
+null
+],
+[
+14.0,
+0.557,
+null,
+null
+],
+[
+16.0,
+0.596,
+null,
+null
+],
+[
+18.0,
+0.596,
+null,
+null
+],
+[
+21.0,
+0.596,
+null,
+null
+],
+[
+24.0,
+0.596,
+null,
+null
+],
+[
+28.0,
+0.596,
+null,
+null
+],
+[
+32.0,
+0.596,
+null,
+null
+],
+[
+36.0,
+0.596,
+null,
+null
+],
+[
+42.0,
+0.596,
+null,
+null
+],
+[
+49.0,
+0.596,
+null,
+null
+],
+[
+56.0,
+0.596,
+null,
+null
+],
+[
+63.0,
+0.596,
+null,
+null
+],
+[
+70.0,
+0.596,
+null,
+null
+],
+[
+77.0,
+0.596,
+null,
+null
+],
+[
+80.05,
+0.596,
+null,
+null
+]
+],
+"events": 44,
+"median_days": 5.64,
+"n": 84,
+"pooled": false,
+"reach_days": 80.0,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "250C",
 "subject": "PBHLTH"
 },
 "PBHLTH 250W": {
@@ -7240,7 +8927,25 @@ null,
 null
 ],
 [
-60.47,
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -7248,9 +8953,9 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 49,
+"n": 80,
 "pooled": false,
-"reach_days": 60.5,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -7259,7 +8964,7 @@ null
 "number": "250W",
 "subject": "PBHLTH"
 },
-"PBHLTH 251BW": {
+"PBHLTH 252AW": {
 "buckets": {
 "1-5": {
 "curve": [
@@ -7402,7 +9107,25 @@ null,
 null
 ],
 [
-60.47,
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
 0.0,
 null,
 null
@@ -7410,2005 +9133,96 @@ null
 ],
 "events": 0,
 "median_days": null,
-"n": 52,
+"n": 45,
 "pooled": false,
-"reach_days": 60.5,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "PBHLTH",
 "level": "grad",
-"number": "251BW",
+"number": "252AW",
 "subject": "PBHLTH"
 },
-"PBHLTH 251W": {
+"PBHLTH 253B": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.0,
+0.304,
 null,
 null
 ],
 [
 1.0,
-0.0,
+0.346,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.378,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.4,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.4,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.478,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.523,
 null,
 null
 ],
 [
 7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 56,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "251W",
-"subject": "PBHLTH"
-},
-"PBHLTH 252": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.195,
-null,
-null
-],
-[
-1.0,
-0.209,
-null,
-null
-],
-[
-2.0,
-0.244,
-null,
-null
-],
-[
-3.0,
-0.307,
-null,
-null
-],
-[
-4.0,
-0.365,
-null,
-null
-],
-[
-5.0,
-0.396,
-null,
-null
-],
-[
-6.0,
-0.419,
-null,
-null
-],
-[
-7.0,
-0.419,
-null,
-null
-],
-[
-8.0,
-0.454,
-null,
-null
-],
-[
-9.0,
-0.462,
-null,
-null
-],
-[
-10.0,
-0.481,
-null,
-null
-],
-[
-12.0,
-0.481,
-null,
-null
-],
-[
-14.0,
-0.492,
-null,
-null
-],
-[
-16.0,
-0.492,
-null,
-null
-],
-[
-18.0,
-0.492,
-null,
-null
-],
-[
-21.0,
-0.521,
-null,
-null
-],
-[
-24.0,
-0.54,
-null,
-null
-],
-[
-28.0,
-0.569,
-null,
-null
-],
-[
-31.11,
-0.569,
-null,
-null
-]
-],
-"events": 73,
-"median_days": 19.95,
-"n": 154,
-"pooled": false,
-"reach_days": 31.1,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.026,
-null,
-null
-],
-[
-1.0,
-0.026,
-null,
-null
-],
-[
-2.0,
-0.026,
-null,
-null
-],
-[
-3.0,
-0.026,
-null,
-null
-],
-[
-4.0,
-0.094,
-null,
-null
-],
-[
-5.0,
-0.094,
-null,
-null
-],
-[
-6.0,
-0.132,
-null,
-null
-],
-[
-7.0,
-0.132,
-null,
-null
-],
-[
-8.0,
-0.215,
-null,
-null
-],
-[
-9.0,
-0.215,
-null,
-null
-],
-[
-10.0,
-0.215,
-null,
-null
-],
-[
-12.0,
-0.215,
-null,
-null
-],
-[
-14.0,
-0.215,
-null,
-null
-],
-[
-16.0,
-0.215,
-null,
-null
-],
-[
-18.0,
-0.215,
-null,
-null
-],
-[
-21.0,
-0.215,
-null,
-null
-],
-[
-24.0,
-0.215,
-null,
-null
-],
-[
-28.0,
-0.215,
-null,
-null
-],
-[
-30.81,
-0.215,
-null,
-null
-]
-],
-"events": 6,
-"median_days": null,
-"n": 39,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "252",
-"subject": "PBHLTH"
-},
-"PBHLTH 252B": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.037,
-null,
-null
-],
-[
-1.0,
-0.037,
-null,
-null
-],
-[
-2.0,
-0.056,
-null,
-null
-],
-[
-3.0,
-0.076,
-null,
-null
-],
-[
-4.0,
-0.087,
-null,
-null
-],
-[
-5.0,
-0.11,
-null,
-null
-],
-[
-6.0,
-0.11,
-null,
-null
-],
-[
-7.0,
-0.11,
-null,
-null
-],
-[
-8.0,
-0.11,
-null,
-null
-],
-[
-9.0,
-0.11,
-null,
-null
-],
-[
-10.0,
-0.11,
-null,
-null
-],
-[
-12.0,
-0.11,
-null,
-null
-],
-[
-14.0,
-0.162,
-null,
-null
-],
-[
-16.0,
-0.307,
-null,
-null
-],
-[
-18.0,
-0.338,
-null,
-null
-],
-[
-21.0,
-0.338,
-null,
-null
-],
-[
-24.0,
-0.338,
-null,
-null
-],
-[
-28.0,
-0.338,
-null,
-null
-],
-[
-30.81,
-0.338,
-null,
-null
-]
-],
-"events": 19,
-"median_days": null,
-"n": 111,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 4,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "252B",
-"subject": "PBHLTH"
-},
-"PBHLTH 252D": {
-"buckets": {
-"1-5": {
-"n_course": 16,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "252D",
-"subject": "PBHLTH"
-},
-"PBHLTH 252W": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 41,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "252W",
-"subject": "PBHLTH"
-},
-"PBHLTH 253W": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 55,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "253W",
-"subject": "PBHLTH"
-},
-"PBHLTH 255D": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.11,
-null,
-null
-],
-[
-1.0,
-0.122,
-null,
-null
-],
-[
-2.0,
-0.133,
-null,
-null
-],
-[
-3.0,
-0.214,
-null,
-null
-],
-[
-4.0,
-0.244,
-null,
-null
-],
-[
-5.0,
-0.244,
-null,
-null
-],
-[
-6.0,
-0.244,
-null,
-null
-],
-[
-7.0,
-0.244,
-null,
-null
-],
-[
-8.0,
-0.264,
-null,
-null
-],
-[
-9.0,
-0.264,
-null,
-null
-],
-[
-10.0,
-0.264,
-null,
-null
-],
-[
-12.0,
-0.307,
-null,
-null
-],
-[
-14.0,
-0.367,
-null,
-null
-],
-[
-16.0,
-0.416,
-null,
-null
-],
-[
-18.0,
-0.489,
-null,
-null
-],
-[
-21.0,
-0.489,
-null,
-null
-],
-[
-24.0,
-0.489,
-null,
-null
-],
-[
-28.0,
-0.489,
-null,
-null
-],
-[
-30.81,
-0.489,
-null,
-null
-]
-],
-"events": 28,
-"median_days": null,
-"n": 102,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 17,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "255D",
-"subject": "PBHLTH"
-},
-"PBHLTH 257W": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-42.0,
-0.0,
-null,
-null
-],
-[
-49.0,
-0.0,
-null,
-null
-],
-[
-56.0,
-0.0,
-null,
-null
-],
-[
-60.47,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 54,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "257W",
-"subject": "PBHLTH"
-},
-"PBHLTH 264": {
-"buckets": {
-"1-5": {
-"n_course": 3,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "264",
-"subject": "PBHLTH"
-},
-"PBHLTH 269D": {
-"buckets": {
-"1-5": {
-"n_course": 1,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "269D",
-"subject": "PBHLTH"
-},
-"PBHLTH 269E": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.112,
-null,
-null
-],
-[
-1.0,
-0.161,
-null,
-null
-],
-[
-2.0,
-0.222,
-null,
-null
-],
-[
-3.0,
-0.222,
-null,
-null
-],
-[
-4.0,
-0.247,
-null,
-null
-],
-[
-5.0,
-0.274,
-null,
-null
-],
-[
-6.0,
-0.38,
-null,
-null
-],
-[
-7.0,
-0.448,
-null,
-null
-],
-[
-8.0,
-0.448,
-null,
-null
-],
-[
-9.0,
-0.448,
-null,
-null
-],
-[
-10.0,
-0.529,
-null,
-null
-],
-[
-12.0,
-0.529,
-null,
-null
-],
-[
-14.0,
-0.543,
-null,
-null
-],
-[
-16.0,
-0.543,
-null,
-null
-],
-[
-18.0,
-0.562,
-null,
-null
-],
-[
-21.0,
-0.562,
-null,
-null
-],
-[
-24.0,
-0.596,
-null,
-null
-],
-[
-28.0,
-0.677,
-null,
-null
-],
-[
-30.81,
-0.757,
-null,
-null
-]
-],
-"events": 49,
-"median_days": 9.5,
-"n": 99,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"n_course": 5,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "269E",
-"subject": "PBHLTH"
-},
-"PBHLTH 270": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.208,
-null,
-null
-],
-[
-1.0,
-0.293,
-null,
-null
-],
-[
-2.0,
-0.337,
-null,
-null
-],
-[
-3.0,
-0.384,
-null,
-null
-],
-[
-4.0,
-0.514,
-null,
-null
-],
-[
-5.0,
-0.53,
-null,
-null
-],
-[
-6.0,
-0.564,
-null,
-null
-],
-[
-7.0,
-0.564,
-null,
-null
-],
-[
-8.0,
-0.564,
-null,
-null
-],
-[
-9.0,
-0.564,
-null,
-null
-],
-[
-10.0,
-0.564,
-null,
-null
-],
-[
-12.0,
-0.564,
-null,
-null
-],
-[
-14.0,
-0.564,
-null,
-null
-],
-[
-16.0,
-0.564,
-null,
-null
-],
-[
-18.0,
-0.584,
-null,
-null
-],
-[
-21.0,
-0.584,
-null,
-null
-],
-[
-24.0,
-0.584,
-null,
-null
-],
-[
-28.0,
-0.584,
-null,
-null
-],
-[
-32.0,
-0.584,
-null,
-null
-],
-[
-36.0,
-0.584,
-null,
-null
-],
-[
-42.0,
-0.584,
-null,
-null
-],
-[
-49.0,
-0.584,
-null,
-null
-],
-[
-56.0,
-0.584,
-null,
-null
-],
-[
-60.47,
-0.584,
-null,
-null
-]
-],
-"events": 39,
-"median_days": 3.99,
-"n": 72,
-"pooled": false,
-"reach_days": 60.5,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "270",
-"subject": "PBHLTH"
-},
-"PBHLTH 270A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.168,
-null,
-null
-],
-[
-1.0,
-0.186,
-null,
-null
-],
-[
-2.0,
-0.203,
-null,
-null
-],
-[
-3.0,
-0.212,
-null,
-null
-],
-[
-4.0,
-0.288,
-null,
-null
-],
-[
-5.0,
-0.309,
-null,
-null
-],
-[
-6.0,
-0.309,
-null,
-null
-],
-[
-7.0,
-0.333,
-null,
-null
-],
-[
-8.0,
-0.382,
-null,
-null
-],
-[
-9.0,
-0.382,
-null,
-null
-],
-[
-10.0,
-0.382,
-null,
-null
-],
-[
-12.0,
-0.413,
-null,
-null
-],
-[
-14.0,
-0.413,
-null,
-null
-],
-[
-16.0,
-0.413,
-null,
-null
-],
-[
-18.0,
-0.413,
-null,
-null
-],
-[
-21.0,
-0.413,
-null,
-null
-],
-[
-24.0,
-0.413,
-null,
-null
-],
-[
-28.0,
-0.413,
-null,
-null
-],
-[
-30.87,
-0.413,
-null,
-null
-]
-],
-"events": 43,
-"median_days": null,
-"n": 119,
-"pooled": false,
-"reach_days": 30.9,
-"sections": 1
-},
-"6-15": {
-"n_course": 24,
-"pooled": "PBHLTH",
-"sections_course": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "270A",
-"subject": "PBHLTH"
-},
-"PBHLTH 270B": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.2,
-null,
-null
-],
-[
-1.0,
-0.247,
-null,
-null
-],
-[
-2.0,
-0.319,
-null,
-null
-],
-[
-3.0,
-0.344,
-null,
-null
-],
-[
-4.0,
-0.401,
-null,
-null
-],
-[
-5.0,
-0.435,
-null,
-null
-],
-[
-6.0,
-0.456,
-null,
-null
-],
-[
-7.0,
-0.499,
-null,
-null
-],
-[
-8.0,
-0.522,
-null,
-null
-],
-[
-9.0,
-0.522,
-null,
-null
-],
-[
-10.0,
-0.522,
-null,
-null
-],
-[
-12.0,
-0.549,
-null,
-null
-],
-[
-14.0,
-0.568,
-null,
-null
-],
-[
-16.0,
-0.568,
-null,
-null
-],
-[
-18.0,
-0.591,
-null,
-null
-],
-[
-21.0,
-0.631,
-null,
-null
-],
-[
-24.0,
-0.69,
-null,
-null
-],
-[
-28.0,
-0.724,
-null,
-null
-],
-[
-30.81,
-0.77,
-null,
-null
-]
-],
-"events": 102,
-"median_days": 7.03,
-"n": 175,
-"pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.015,
-null,
-null
-],
-[
-4.0,
-0.015,
-null,
-null
-],
-[
-5.0,
-0.015,
-null,
-null
-],
-[
-6.0,
-0.052,
-null,
-null
-],
-[
-7.0,
-0.052,
-null,
-null
-],
-[
-8.0,
-0.072,
-null,
-null
-],
-[
-9.0,
-0.115,
-null,
-null
-],
-[
-10.0,
-0.201,
-null,
-null
-],
-[
-12.0,
-0.201,
-null,
-null
-],
-[
-14.0,
-0.201,
-null,
-null
-],
-[
-16.0,
-0.201,
-null,
-null
-],
-[
-18.0,
-0.201,
-null,
-null
-],
-[
-21.0,
-0.201,
-null,
-null
-],
-[
-24.0,
-0.201,
-null,
-null
-],
-[
-28.0,
-0.201,
-null,
-null
-],
-[
-30.99,
-0.201,
-null,
-null
-]
-],
-"events": 10,
-"median_days": null,
-"n": 74,
-"pooled": false,
-"reach_days": 31.0,
-"sections": 1
-}
-},
-"dept_group": "PBHLTH",
-"level": "grad",
-"number": "270B",
-"subject": "PBHLTH"
-},
-"PBHLTH 271J": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.192,
-null,
-null
-],
-[
-1.0,
-0.213,
-null,
-null
-],
-[
-2.0,
-0.275,
-null,
-null
-],
-[
-3.0,
-0.307,
-null,
-null
-],
-[
-4.0,
-0.395,
-null,
-null
-],
-[
-5.0,
-0.407,
-null,
-null
-],
-[
-6.0,
-0.453,
-null,
-null
-],
-[
-7.0,
-0.5,
-null,
-null
-],
-[
-8.0,
 0.535,
 null,
 null
 ],
 [
+8.0,
+0.588,
+null,
+null
+],
+[
 9.0,
-0.558,
+0.605,
 null,
 null
 ],
 [
 10.0,
-0.569,
+0.605,
 null,
 null
 ],
 [
 12.0,
-0.622,
+0.623,
 null,
 null
 ],
 [
 14.0,
-0.666,
+0.68,
 null,
 null
 ],
@@ -9420,177 +9234,1512 @@ null
 ],
 [
 18.0,
-0.718,
+0.68,
 null,
 null
 ],
 [
 21.0,
-0.718,
+0.68,
 null,
 null
 ],
 [
 24.0,
-0.718,
+0.68,
 null,
 null
 ],
 [
 28.0,
-0.718,
+0.68,
 null,
 null
 ],
 [
-30.81,
-0.718,
+32.0,
+0.68,
+null,
+null
+],
+[
+36.0,
+0.68,
+null,
+null
+],
+[
+42.0,
+0.68,
+null,
+null
+],
+[
+49.0,
+0.68,
+null,
+null
+],
+[
+56.0,
+0.68,
+null,
+null
+],
+[
+63.0,
+0.68,
+null,
+null
+],
+[
+70.0,
+0.68,
+null,
+null
+],
+[
+77.0,
+0.68,
+null,
+null
+],
+[
+79.75,
+0.68,
 null,
 null
 ]
 ],
-"events": 64,
-"median_days": 7.51,
-"n": 104,
+"events": 61,
+"median_days": 5.22,
+"n": 102,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "253B",
+"subject": "PBHLTH"
+},
+"PBHLTH 255A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.115,
+null,
+null
+],
+[
+1.0,
+0.115,
+null,
+null
+],
+[
+2.0,
+0.178,
+null,
+null
+],
+[
+3.0,
+0.201,
+null,
+null
+],
+[
+4.0,
+0.201,
+null,
+null
+],
+[
+5.0,
+0.201,
+null,
+null
+],
+[
+6.0,
+0.26,
+null,
+null
+],
+[
+7.0,
+0.297,
+null,
+null
+],
+[
+8.0,
+0.334,
+null,
+null
+],
+[
+9.0,
+0.334,
+null,
+null
+],
+[
+10.0,
+0.334,
+null,
+null
+],
+[
+12.0,
+0.371,
+null,
+null
+],
+[
+14.0,
+0.371,
+null,
+null
+],
+[
+16.0,
+0.468,
+null,
+null
+],
+[
+18.0,
+0.468,
+null,
+null
+],
+[
+21.0,
+0.544,
+null,
+null
+],
+[
+24.0,
+0.544,
+null,
+null
+],
+[
+28.0,
+0.544,
+null,
+null
+],
+[
+32.0,
+0.544,
+null,
+null
+],
+[
+32.09,
+0.544,
+null,
+null
+]
+],
+"events": 18,
+"median_days": 20.25,
+"n": 54,
+"pooled": false,
+"reach_days": 32.1,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "255A",
+"subject": "PBHLTH"
+},
+"PBHLTH 257": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.079,
+null,
+null
+],
+[
+1.0,
+0.079,
+null,
+null
+],
+[
+2.0,
+0.139,
+null,
+null
+],
+[
+3.0,
+0.139,
+null,
+null
+],
+[
+4.0,
+0.175,
+null,
+null
+],
+[
+5.0,
+0.175,
+null,
+null
+],
+[
+6.0,
+0.175,
+null,
+null
+],
+[
+7.0,
+0.175,
+null,
+null
+],
+[
+8.0,
+0.175,
+null,
+null
+],
+[
+9.0,
+0.175,
+null,
+null
+],
+[
+10.0,
+0.175,
+null,
+null
+],
+[
+12.0,
+0.175,
+null,
+null
+],
+[
+14.0,
+0.224,
+null,
+null
+],
+[
+16.0,
+0.279,
+null,
+null
+],
+[
+18.0,
+0.279,
+null,
+null
+],
+[
+21.0,
+0.279,
+null,
+null
+],
+[
+24.0,
+0.279,
+null,
+null
+],
+[
+28.0,
+0.279,
+null,
+null
+],
+[
+32.0,
+0.279,
+null,
+null
+],
+[
+36.0,
+0.279,
+null,
+null
+],
+[
+42.0,
+0.279,
+null,
+null
+],
+[
+49.0,
+0.279,
+null,
+null
+],
+[
+56.0,
+0.279,
+null,
+null
+],
+[
+63.0,
+0.279,
+null,
+null
+],
+[
+70.0,
+0.279,
+null,
+null
+],
+[
+77.0,
+0.279,
+null,
+null
+],
+[
+79.75,
+0.279,
+null,
+null
+]
+],
+"events": 8,
+"median_days": null,
+"n": 38,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "257",
+"subject": "PBHLTH"
+},
+"PBHLTH 267W": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 67,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "267W",
+"subject": "PBHLTH"
+},
+"PBHLTH 268W": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 55,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "268W",
+"subject": "PBHLTH"
+},
+"PBHLTH 271E": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.141,
+null,
+null
+],
+[
+1.0,
+0.165,
+null,
+null
+],
+[
+2.0,
+0.221,
+null,
+null
+],
+[
+3.0,
+0.347,
+null,
+null
+],
+[
+4.0,
+0.374,
+null,
+null
+],
+[
+5.0,
+0.395,
+null,
+null
+],
+[
+6.0,
+0.438,
+null,
+null
+],
+[
+7.0,
+0.473,
+null,
+null
+],
+[
+8.0,
+0.497,
+null,
+null
+],
+[
+9.0,
+0.509,
+null,
+null
+],
+[
+10.0,
+0.509,
+null,
+null
+],
+[
+12.0,
+0.509,
+null,
+null
+],
+[
+14.0,
+0.533,
+null,
+null
+],
+[
+16.0,
+0.533,
+null,
+null
+],
+[
+18.0,
+0.533,
+null,
+null
+],
+[
+21.0,
+0.533,
+null,
+null
+],
+[
+24.0,
+0.533,
+null,
+null
+],
+[
+28.0,
+0.533,
+null,
+null
+],
+[
+32.0,
+0.533,
+null,
+null
+],
+[
+36.0,
+0.533,
+null,
+null
+],
+[
+42.0,
+0.533,
+null,
+null
+],
+[
+49.0,
+0.533,
+null,
+null
+],
+[
+56.0,
+0.533,
+null,
+null
+],
+[
+63.0,
+0.533,
+null,
+null
+],
+[
+70.0,
+0.533,
+null,
+null
+],
+[
+77.0,
+0.533,
+null,
+null
+],
+[
+79.75,
+0.533,
+null,
+null
+]
+],
+"events": 60,
+"median_days": 8.52,
+"n": 138,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"16-40": {
+"n_course": 10,
+"pooled": "PBHLTH",
+"sections_course": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.054,
+null,
+null
+],
+[
+1.0,
+0.054,
+null,
+null
+],
+[
+2.0,
+0.054,
+null,
+null
+],
+[
+3.0,
+0.054,
+null,
+null
+],
+[
+4.0,
+0.054,
+null,
+null
+],
+[
+5.0,
+0.054,
+null,
+null
+],
+[
+6.0,
+0.054,
+null,
+null
+],
+[
+7.0,
+0.054,
+null,
+null
+],
+[
+8.0,
+0.054,
+null,
+null
+],
+[
+9.0,
+0.054,
+null,
+null
+],
+[
+10.0,
+0.054,
+null,
+null
+],
+[
+12.0,
+0.054,
+null,
+null
+],
+[
+14.0,
+0.054,
+null,
+null
+],
+[
+16.0,
+0.054,
+null,
+null
+],
+[
+18.0,
+0.054,
+null,
+null
+],
+[
+21.0,
+0.054,
+null,
+null
+],
+[
+24.0,
+0.054,
+null,
+null
+],
+[
+25.37,
+0.054,
+null,
+null
+]
+],
+"events": 3,
+"median_days": null,
+"n": 56,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "271E",
+"subject": "PBHLTH"
+},
+"PBHLTH 271G": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.149,
+null,
+null
+],
+[
+1.0,
+0.216,
+null,
+null
+],
+[
+2.0,
+0.365,
+null,
+null
+],
+[
+3.0,
+0.541,
+null,
+null
+],
+[
+4.0,
+0.72,
+null,
+null
+],
+[
+5.0,
+0.762,
+null,
+null
+],
+[
+6.0,
+0.792,
+null,
+null
+],
+[
+7.0,
+0.792,
+null,
+null
+],
+[
+8.0,
+0.792,
+null,
+null
+],
+[
+9.0,
+0.792,
+null,
+null
+],
+[
+10.0,
+0.792,
+null,
+null
+],
+[
+12.0,
+0.792,
+null,
+null
+],
+[
+14.0,
+0.792,
+null,
+null
+],
+[
+16.0,
+0.792,
+null,
+null
+],
+[
+18.0,
+0.792,
+null,
+null
+],
+[
+21.0,
+0.792,
+null,
+null
+],
+[
+24.0,
+0.792,
+null,
+null
+],
+[
+28.0,
+0.792,
+null,
+null
+],
+[
+31.97,
+0.792,
+null,
+null
+]
+],
+"events": 58,
+"median_days": 2.7,
+"n": 74,
+"pooled": false,
+"reach_days": 32.0,
 "sections": 1
 },
 "6-15": {
-"n_course": 9,
+"n_course": 5,
 "pooled": "PBHLTH",
 "sections_course": 1
 }
 },
 "dept_group": "PBHLTH",
 "level": "grad",
-"number": "271J",
+"number": "271G",
 "subject": "PBHLTH"
 },
-"PBHLTH 275": {
+"PBHLTH 272AW": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.274,
+0.0,
 null,
 null
 ],
 [
 1.0,
-0.365,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.444,
+0.0,
 null,
 null
 ],
 [
 3.0,
-0.499,
+0.0,
 null,
 null
 ],
 [
 4.0,
-0.557,
+0.0,
 null,
 null
 ],
 [
 5.0,
-0.578,
+0.0,
 null,
 null
 ],
 [
 6.0,
-0.599,
+0.0,
 null,
 null
 ],
 [
 7.0,
-0.621,
+0.0,
 null,
 null
 ],
 [
 8.0,
-0.643,
+0.0,
 null,
 null
 ],
 [
 9.0,
-0.666,
+0.0,
 null,
 null
 ],
 [
 10.0,
-0.699,
+0.0,
 null,
 null
 ],
 [
 12.0,
-0.699,
+0.0,
 null,
 null
 ],
 [
 14.0,
-0.712,
+0.0,
 null,
 null
 ],
 [
 16.0,
-0.738,
+0.0,
 null,
 null
 ],
 [
 18.0,
-0.781,
+0.0,
 null,
 null
 ],
 [
 21.0,
-0.795,
+0.0,
 null,
 null
 ],
 [
 24.0,
-0.81,
+0.0,
 null,
 null
 ],
 [
 28.0,
-0.915,
+0.0,
 null,
 null
 ],
 [
-31.48,
-1.0,
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+63.0,
+0.0,
+null,
+null
+],
+[
+70.0,
+0.0,
+null,
+null
+],
+[
+77.0,
+0.0,
+null,
+null
+],
+[
+79.75,
+0.0,
 null,
 null
 ]
 ],
-"events": 95,
-"median_days": 3.05,
-"n": 131,
+"events": 0,
+"median_days": null,
+"n": 53,
 "pooled": false,
-"reach_days": 31.5,
+"reach_days": 79.7,
+"sections": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "272AW",
+"subject": "PBHLTH"
+},
+"PBHLTH 277A": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.278,
+null,
+null
+],
+[
+1.0,
+0.364,
+null,
+null
+],
+[
+2.0,
+0.576,
+null,
+null
+],
+[
+3.0,
+0.701,
+null,
+null
+],
+[
+4.0,
+0.855,
+null,
+null
+],
+[
+5.0,
+0.908,
+null,
+null
+],
+[
+6.0,
+0.908,
+null,
+null
+],
+[
+7.0,
+0.908,
+null,
+null
+],
+[
+8.0,
+0.908,
+null,
+null
+],
+[
+9.0,
+0.908,
+null,
+null
+],
+[
+10.0,
+0.908,
+null,
+null
+],
+[
+12.0,
+0.908,
+null,
+null
+],
+[
+14.0,
+0.923,
+null,
+null
+],
+[
+16.0,
+0.923,
+null,
+null
+],
+[
+18.0,
+0.923,
+null,
+null
+],
+[
+21.0,
+0.923,
+null,
+null
+],
+[
+24.0,
+0.923,
+null,
+null
+],
+[
+25.1,
+0.923,
+null,
+null
+]
+],
+"events": 74,
+"median_days": 1.5,
+"n": 83,
+"pooled": false,
+"reach_days": 25.1,
 "sections": 1
 },
 "6-15": {
@@ -9601,7 +10750,20 @@ null
 },
 "dept_group": "PBHLTH",
 "level": "grad",
-"number": "275",
+"number": "277A",
+"subject": "PBHLTH"
+},
+"PBHLTH 288C": {
+"buckets": {
+"1-5": {
+"n_course": 10,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "grad",
+"number": "288C",
 "subject": "PBHLTH"
 },
 "PBHLTH 290": {
@@ -9610,112 +10772,303 @@ null
 "curve": [
 [
 0.5,
-0.07,
+0.144,
 0.0,
-0.333
+0.146
 ],
 [
 1.0,
-0.07,
+0.176,
 0.0,
-0.333
+0.178
 ],
 [
 2.0,
-0.165,
+0.207,
 0.0,
-0.333
+0.211
 ],
 [
 3.0,
-0.279,
+0.207,
 0.0,
-0.333
+0.211
 ],
 [
 4.0,
-0.297,
+0.207,
 0.0,
-0.333
+0.211
 ],
 [
 5.0,
-0.317,
+0.26,
 0.0,
-0.333
+0.264
 ],
 [
 6.0,
-0.317,
+0.26,
 0.0,
-0.333
+0.264
 ],
 [
 7.0,
-0.317,
+0.26,
 0.0,
-0.333
+0.264
 ],
 [
 8.0,
-0.379,
+0.298,
 0.0,
-0.398
+0.303
 ],
 [
 9.0,
-0.379,
+0.298,
 0.0,
-0.398
+0.303
 ],
 [
 10.0,
-0.379,
+0.298,
 0.0,
-0.398
+0.303
 ],
 [
 12.0,
 0.379,
 0.0,
-0.398
+0.386
 ],
 [
 14.0,
-0.441,
+0.434,
 0.0,
-0.473
+0.443
 ],
 [
 16.0,
-0.441,
+0.434,
 0.0,
-0.473
+0.443
 ],
 [
 18.0,
-0.441,
+0.434,
 0.0,
-0.473
+0.443
 ],
 [
-18.46,
-0.441,
+21.0,
+0.434,
 0.0,
-0.473
+0.443
+],
+[
+24.0,
+0.434,
+0.0,
+0.443
+],
+[
+28.0,
+0.434,
+0.0,
+0.443
+],
+[
+32.0,
+0.434,
+0.0,
+0.443
+],
+[
+36.0,
+0.434,
+0.0,
+0.443
+],
+[
+42.0,
+0.434,
+0.0,
+0.443
+],
+[
+49.0,
+0.434,
+0.0,
+0.443
+],
+[
+56.0,
+0.434,
+0.0,
+0.443
+],
+[
+63.0,
+0.434,
+0.0,
+0.443
+],
+[
+70.0,
+0.434,
+0.0,
+0.443
+],
+[
+77.0,
+0.434,
+0.0,
+0.443
+],
+[
+79.75,
+0.434,
+0.0,
+0.443
 ]
 ],
-"events": 23,
+"events": 49,
 "median_days": null,
-"n": 71,
+"n": 135,
 "pooled": false,
-"reach_days": 18.5,
-"sections": 3
+"reach_days": 79.7,
+"sections": 2
 },
 "6-15": {
-"n_course": 7,
-"pooled": "PBHLTH",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.087,
+null,
+null
+],
+[
+6.0,
+0.087,
+null,
+null
+],
+[
+7.0,
+0.087,
+null,
+null
+],
+[
+8.0,
+0.087,
+null,
+null
+],
+[
+9.0,
+0.087,
+null,
+null
+],
+[
+10.0,
+0.087,
+null,
+null
+],
+[
+12.0,
+0.087,
+null,
+null
+],
+[
+14.0,
+0.087,
+null,
+null
+],
+[
+16.0,
+0.087,
+null,
+null
+],
+[
+18.0,
+0.087,
+null,
+null
+],
+[
+21.0,
+0.087,
+null,
+null
+],
+[
+24.0,
+0.087,
+null,
+null
+],
+[
+28.0,
+0.087,
+null,
+null
+],
+[
+32.0,
+0.087,
+null,
+null
+],
+[
+35.18,
+0.087,
+null,
+null
+]
+],
+"events": 2,
+"median_days": null,
+"n": 37,
+"pooled": false,
+"reach_days": 35.2,
+"sections": 1
 }
 },
 "dept_group": "PBHLTH",
@@ -9729,100 +11082,291 @@ null
 "curve": [
 [
 0.5,
-0.217,
+0.124,
 null,
 null
 ],
 [
 1.0,
-0.281,
+0.167,
 null,
 null
 ],
 [
 2.0,
-0.421,
+0.215,
 null,
 null
 ],
 [
 3.0,
-0.544,
+0.318,
 null,
 null
 ],
 [
 4.0,
-0.614,
+0.34,
 null,
 null
 ],
 [
 5.0,
-0.684,
+0.417,
 null,
 null
 ],
 [
 6.0,
-0.722,
+0.417,
 null,
 null
 ],
 [
 7.0,
-0.764,
+0.417,
 null,
 null
 ],
 [
 8.0,
-0.781,
+0.441,
 null,
 null
 ],
 [
 9.0,
-0.781,
+0.441,
 null,
 null
 ],
 [
 10.0,
-0.781,
+0.491,
 null,
 null
 ],
 [
 12.0,
-0.781,
+0.491,
 null,
 null
 ],
 [
 14.0,
-0.781,
+0.491,
 null,
 null
 ],
 [
-15.98,
-0.781,
+16.0,
+0.491,
+null,
+null
+],
+[
+18.0,
+0.491,
+null,
+null
+],
+[
+21.0,
+0.555,
+null,
+null
+],
+[
+24.0,
+0.555,
+null,
+null
+],
+[
+28.0,
+0.555,
+null,
+null
+],
+[
+32.0,
+0.555,
+null,
+null
+],
+[
+36.0,
+0.555,
+null,
+null
+],
+[
+42.0,
+0.555,
+null,
+null
+],
+[
+49.0,
+0.555,
+null,
+null
+],
+[
+56.0,
+0.555,
+null,
+null
+],
+[
+63.0,
+0.555,
+null,
+null
+],
+[
+70.0,
+0.555,
+null,
+null
+],
+[
+77.0,
+0.555,
+null,
+null
+],
+[
+79.75,
+0.555,
 null,
 null
 ]
 ],
-"events": 71,
-"median_days": 2.65,
-"n": 103,
+"events": 53,
+"median_days": 18.9,
+"n": 130,
 "pooled": false,
-"reach_days": 16.0,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"n_course": 12,
-"pooled": "PBHLTH",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.041,
+null,
+null
+],
+[
+1.0,
+0.041,
+null,
+null
+],
+[
+2.0,
+0.041,
+null,
+null
+],
+[
+3.0,
+0.101,
+null,
+null
+],
+[
+4.0,
+0.133,
+null,
+null
+],
+[
+5.0,
+0.197,
+null,
+null
+],
+[
+6.0,
+0.234,
+null,
+null
+],
+[
+7.0,
+0.234,
+null,
+null
+],
+[
+8.0,
+0.276,
+null,
+null
+],
+[
+9.0,
+0.276,
+null,
+null
+],
+[
+10.0,
+0.361,
+null,
+null
+],
+[
+12.0,
+0.361,
+null,
+null
+],
+[
+14.0,
+0.432,
+null,
+null
+],
+[
+16.0,
+0.432,
+null,
+null
+],
+[
+18.0,
+0.432,
+null,
+null
+],
+[
+21.0,
+0.432,
+null,
+null
+],
+[
+24.0,
+0.432,
+null,
+null
+],
+[
+25.37,
+0.432,
+null,
+null
+]
+],
+"events": 12,
+"median_days": null,
+"n": 49,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
 }
 },
 "dept_group": "PBHLTH",
@@ -9833,113 +11377,7 @@ null
 "PBHLTH 292": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.153,
-0.111,
-0.214
-],
-[
-1.0,
-0.22,
-0.111,
-0.25
-],
-[
-2.0,
-0.324,
-0.111,
-0.362
-],
-[
-3.0,
-0.345,
-0.111,
-0.449
-],
-[
-4.0,
-0.366,
-0.259,
-0.449
-],
-[
-5.0,
-0.366,
-0.259,
-0.449
-],
-[
-6.0,
-0.366,
-0.259,
-0.449
-],
-[
-7.0,
-0.429,
-0.424,
-0.449
-],
-[
-8.0,
-0.429,
-0.424,
-0.449
-],
-[
-9.0,
-0.429,
-0.424,
-0.449
-],
-[
-10.0,
-0.429,
-0.424,
-0.449
-],
-[
-12.0,
-0.556,
-0.449,
-0.63
-],
-[
-14.0,
-0.556,
-0.449,
-0.63
-],
-[
-16.0,
-0.556,
-0.449,
-0.63
-],
-[
-18.0,
-0.689,
-0.449,
-0.847
-],
-[
-18.52,
-0.689,
-0.449,
-0.847
-]
-],
-"events": 30,
-"median_days": 11.82,
-"n": 59,
-"pooled": false,
-"reach_days": 18.5,
-"sections": 3
-},
-"6-15": {
-"n_course": 7,
+"n_course": 1,
 "pooled": "PBHLTH",
 "sections_course": 1
 }
@@ -9949,157 +11387,308 @@ null
 "number": "292",
 "subject": "PBHLTH"
 },
-"PBHLTH C233": {
+"PBHLTH C160": {
+"buckets": {
+"1-5": {
+"n_course": 21,
+"pooled": "PBHLTH",
+"sections_course": 1
+}
+},
+"dept_group": "PBHLTH",
+"level": "upper",
+"number": "C160",
+"subject": "PBHLTH"
+},
+"PBHLTH C240A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.013,
+0.065,
 null,
 null
 ],
 [
 1.0,
-0.013,
+0.065,
 null,
 null
 ],
 [
 2.0,
-0.028,
+0.1,
 null,
 null
 ],
 [
 3.0,
-0.044,
+0.1,
 null,
 null
 ],
 [
 4.0,
-0.044,
+0.138,
 null,
 null
 ],
 [
 5.0,
-0.067,
+0.138,
 null,
 null
 ],
 [
 6.0,
-0.067,
+0.138,
 null,
 null
 ],
 [
 7.0,
-0.067,
+0.181,
 null,
 null
 ],
 [
 8.0,
-0.067,
+0.181,
 null,
 null
 ],
 [
 9.0,
-0.067,
+0.181,
 null,
 null
 ],
 [
 10.0,
-0.067,
+0.181,
 null,
 null
 ],
 [
 12.0,
-0.067,
+0.224,
 null,
 null
 ],
 [
 14.0,
-0.067,
+0.224,
 null,
 null
 ],
 [
 16.0,
-0.067,
+0.224,
 null,
 null
 ],
 [
 18.0,
-0.067,
+0.224,
 null,
 null
 ],
 [
 21.0,
-0.067,
+0.224,
 null,
 null
 ],
 [
 24.0,
-0.067,
+0.224,
 null,
 null
 ],
 [
 28.0,
-0.067,
+0.224,
 null,
 null
 ],
 [
-30.81,
-0.067,
+32.0,
+0.224,
+null,
+null
+],
+[
+36.0,
+0.224,
+null,
+null
+],
+[
+39.73,
+0.224,
 null,
 null
 ]
 ],
-"events": 4,
+"events": 6,
 "median_days": null,
-"n": 75,
+"n": 31,
 "pooled": false,
-"reach_days": 30.8,
+"reach_days": 39.7,
 "sections": 1
-},
-"6-15": {
-"n_course": 15,
-"pooled": "PBHLTH",
-"sections_course": 1
 }
 },
 "dept_group": "PBHLTH",
 "level": "grad",
-"number": "C233",
+"number": "C240A",
 "subject": "PBHLTH"
 },
-"PBHLTH C240B": {
+"PBHLTH C242C": {
 "buckets": {
 "1-5": {
-"n_course": 4,
-"pooled": "PBHLTH",
-"sections_course": 1
+"curve": [
+[
+0.5,
+0.138,
+null,
+null
+],
+[
+1.0,
+0.138,
+null,
+null
+],
+[
+2.0,
+0.193,
+null,
+null
+],
+[
+3.0,
+0.193,
+null,
+null
+],
+[
+4.0,
+0.253,
+null,
+null
+],
+[
+5.0,
+0.328,
+null,
+null
+],
+[
+6.0,
+0.37,
+null,
+null
+],
+[
+7.0,
+0.37,
+null,
+null
+],
+[
+8.0,
+0.37,
+null,
+null
+],
+[
+9.0,
+0.37,
+null,
+null
+],
+[
+10.0,
+0.37,
+null,
+null
+],
+[
+12.0,
+0.418,
+null,
+null
+],
+[
+14.0,
+0.418,
+null,
+null
+],
+[
+16.0,
+0.418,
+null,
+null
+],
+[
+18.0,
+0.418,
+null,
+null
+],
+[
+21.0,
+0.418,
+null,
+null
+],
+[
+24.0,
+0.418,
+null,
+null
+],
+[
+28.0,
+0.418,
+null,
+null
+],
+[
+32.0,
+0.418,
+null,
+null
+],
+[
+36.0,
+0.418,
+null,
+null
+],
+[
+39.73,
+0.418,
+null,
+null
+]
+],
+"events": 13,
+"median_days": null,
+"n": 37,
+"pooled": false,
+"reach_days": 39.7,
+"sections": 1
 }
 },
 "dept_group": "PBHLTH",
 "level": "grad",
-"number": "C240B",
+"number": "C242C",
 "subject": "PBHLTH"
 }
 },
 "subject": "PBHLTH",
-"term_id": "2268"
+"term_id": "2262"
 }

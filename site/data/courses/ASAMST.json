@@ -1,231 +1,370 @@
 {
 "courses": {
-"ASAMST 124": {
+"ASAMST 125": {
+"buckets": {
+"1-5": {
+"n_course": 12,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "125",
+"subject": "ASAMST"
+},
+"ASAMST 131": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.126,
+0.092,
 null,
 null
 ],
 [
 1.0,
-0.167,
+0.11,
 null,
 null
 ],
 [
 2.0,
-0.208,
+0.156,
 null,
 null
 ],
 [
 3.0,
-0.237,
+0.174,
 null,
 null
 ],
 [
 4.0,
-0.254,
+0.211,
 null,
 null
 ],
 [
 5.0,
-0.329,
+0.248,
 null,
 null
 ],
 [
 6.0,
-0.406,
+0.257,
 null,
 null
 ],
 [
 7.0,
-0.425,
+0.284,
 null,
 null
 ],
 [
 8.0,
-0.425,
+0.294,
 null,
 null
 ],
 [
 9.0,
-0.425,
+0.322,
 null,
 null
 ],
 [
 10.0,
-0.425,
+0.351,
 null,
 null
 ],
 [
 12.0,
-0.425,
+0.393,
 null,
 null
 ],
 [
 14.0,
-0.425,
+0.478,
 null,
 null
 ],
 [
 16.0,
-0.425,
+0.525,
 null,
 null
 ],
 [
 18.0,
-0.425,
+0.564,
 null,
 null
 ],
 [
 21.0,
-0.425,
+0.591,
 null,
 null
 ],
 [
 24.0,
-0.425,
+0.626,
 null,
 null
 ],
 [
 28.0,
-0.425,
+0.626,
 null,
 null
 ],
 [
 32.0,
-0.425,
+0.626,
 null,
 null
 ],
 [
 36.0,
-0.425,
+0.626,
 null,
 null
 ],
 [
-37.33,
-0.425,
+42.0,
+0.626,
+null,
+null
+],
+[
+49.0,
+0.626,
+null,
+null
+],
+[
+56.0,
+0.626,
+null,
+null
+],
+[
+63.0,
+0.626,
+null,
+null
+],
+[
+70.0,
+0.626,
+null,
+null
+],
+[
+77.0,
+0.626,
+null,
+null
+],
+[
+79.75,
+0.626,
 null,
 null
 ]
 ],
-"events": 28,
-"median_days": null,
-"n": 81,
+"events": 61,
+"median_days": 14.54,
+"n": 109,
 "pooled": false,
-"reach_days": 37.3,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "124",
+"number": "131",
 "subject": "ASAMST"
 },
-"ASAMST 128AC": {
+"ASAMST 132AC": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.194,
+0.184,
 null,
 null
 ],
 [
 1.0,
-0.278,
+0.282,
 null,
 null
 ],
 [
 2.0,
-0.413,
+0.39,
 null,
 null
 ],
 [
 3.0,
-0.5,
+0.471,
 null,
 null
 ],
 [
 4.0,
-0.594,
+0.552,
 null,
 null
 ],
 [
 5.0,
-0.658,
+0.631,
 null,
 null
 ],
 [
 6.0,
-0.779,
+0.679,
 null,
 null
 ],
 [
 7.0,
-0.851,
+0.718,
 null,
 null
 ],
 [
 8.0,
-0.887,
+0.738,
 null,
 null
 ],
 [
 9.0,
-0.936,
+0.766,
 null,
 null
 ],
 [
 10.0,
-0.968,
+0.782,
 null,
 null
 ],
 [
-11.01,
-0.968,
+12.0,
+0.818,
+null,
+null
+],
+[
+14.0,
+0.835,
+null,
+null
+],
+[
+16.0,
+0.86,
+null,
+null
+],
+[
+18.0,
+0.869,
+null,
+null
+],
+[
+21.0,
+0.892,
+null,
+null
+],
+[
+24.0,
+0.911,
+null,
+null
+],
+[
+28.0,
+0.949,
+null,
+null
+],
+[
+32.0,
+0.956,
+null,
+null
+],
+[
+36.0,
+0.956,
+null,
+null
+],
+[
+42.0,
+0.956,
+null,
+null
+],
+[
+49.0,
+0.956,
+null,
+null
+],
+[
+56.0,
+0.956,
+null,
+null
+],
+[
+63.0,
+0.956,
+null,
+null
+],
+[
+70.0,
+0.956,
+null,
+null
+],
+[
+77.0,
+0.956,
+null,
+null
+],
+[
+79.75,
+0.956,
 null,
 null
 ]
 ],
-"events": 261,
-"median_days": 2.93,
-"n": 329,
+"events": 345,
+"median_days": 3.27,
+"n": 412,
 "pooled": false,
-"reach_days": 11.0,
+"reach_days": 79.7,
 "sections": 1
 },
 "16-40": {
@@ -262,76 +401,106 @@ null
 ],
 [
 5.0,
-0.0,
+0.032,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.136,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.136,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.136,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.205,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.313,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.458,
 null,
 null
 ],
 [
 14.0,
-0.0,
+0.458,
 null,
 null
 ],
 [
 16.0,
-0.0,
+0.458,
 null,
 null
 ],
 [
 18.0,
-0.0,
+0.458,
 null,
 null
 ],
 [
-18.21,
-0.0,
+21.0,
+0.458,
+null,
+null
+],
+[
+24.0,
+0.458,
+null,
+null
+],
+[
+28.0,
+0.458,
+null,
+null
+],
+[
+32.0,
+0.458,
+null,
+null
+],
+[
+36.0,
+0.458,
+null,
+null
+],
+[
+38.96,
+0.458,
 null,
 null
 ]
 ],
-"events": 0,
+"events": 13,
 "median_days": null,
-"n": 83,
+"n": 31,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 39.0,
 "sections": 1
 },
 "6-15": {
@@ -344,800 +513,513 @@ null
 ],
 [
 1.0,
-0.007,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.007,
+0.044,
 null,
 null
 ],
 [
 3.0,
-0.007,
+0.072,
 null,
 null
 ],
 [
 4.0,
-0.007,
+0.101,
 null,
 null
 ],
 [
 5.0,
-0.007,
+0.132,
 null,
 null
 ],
 [
 6.0,
-0.017,
+0.189,
 null,
 null
 ],
 [
 7.0,
-0.017,
+0.259,
 null,
 null
 ],
 [
 8.0,
-0.027,
+0.299,
 null,
 null
 ],
 [
 9.0,
-0.079,
+0.346,
 null,
 null
 ],
 [
 10.0,
+0.384,
+null,
+null
+],
+[
+12.0,
+0.464,
+null,
+null
+],
+[
+14.0,
+0.484,
+null,
+null
+],
+[
+16.0,
+0.49,
+null,
+null
+],
+[
+18.0,
+0.509,
+null,
+null
+],
+[
+21.0,
+0.515,
+null,
+null
+],
+[
+24.0,
+0.532,
+null,
+null
+],
+[
+28.0,
+0.54,
+null,
+null
+],
+[
+32.0,
+0.597,
+null,
+null
+],
+[
+36.0,
+0.639,
+null,
+null
+],
+[
+42.0,
+0.639,
+null,
+null
+],
+[
+49.0,
+0.639,
+null,
+null
+],
+[
+49.41,
+0.639,
+null,
+null
+]
+],
+"events": 126,
+"median_days": 16.76,
+"n": 254,
+"pooled": false,
+"reach_days": 49.4,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "132AC",
+"subject": "ASAMST"
+},
+"ASAMST 143B": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
 0.184,
 null,
 null
 ],
 [
-12.0,
-0.304,
-null,
-null
-],
-[
-14.0,
-0.351,
-null,
-null
-],
-[
-16.0,
-0.499,
-null,
-null
-],
-[
-18.0,
-0.499,
-null,
-null
-],
-[
-18.21,
-0.499,
-null,
-null
-]
-],
-"events": 22,
-"median_days": null,
-"n": 151,
-"pooled": false,
-"reach_days": 18.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "128AC",
-"subject": "ASAMST"
-},
-"ASAMST 131": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
 1.0,
-0.0,
+0.224,
 null,
 null
 ],
 [
 2.0,
-0.0,
+0.303,
 null,
 null
 ],
 [
 3.0,
-0.0,
+0.454,
 null,
 null
 ],
 [
 4.0,
-0.0,
+0.528,
 null,
 null
 ],
 [
 5.0,
-0.0,
+0.622,
 null,
 null
 ],
 [
 6.0,
-0.0,
+0.685,
 null,
 null
 ],
 [
 7.0,
-0.0,
+0.732,
 null,
 null
 ],
 [
 8.0,
-0.0,
+0.749,
 null,
 null
 ],
 [
 9.0,
-0.0,
+0.782,
 null,
 null
 ],
 [
 10.0,
-0.0,
+0.799,
 null,
 null
 ],
 [
 12.0,
-0.0,
+0.832,
 null,
 null
 ],
 [
 14.0,
-0.0,
+0.849,
 null,
 null
 ],
 [
 16.0,
-0.0,
+0.849,
 null,
 null
 ],
 [
 18.0,
-0.0,
+0.849,
 null,
 null
 ],
 [
 21.0,
-0.0,
+0.849,
 null,
 null
 ],
 [
 24.0,
-0.0,
+0.849,
 null,
 null
 ],
 [
 28.0,
-0.0,
+0.849,
 null,
 null
 ],
 [
 32.0,
-0.0,
+0.849,
 null,
 null
 ],
 [
 36.0,
-0.0,
+0.849,
 null,
 null
 ],
 [
-37.18,
-0.0,
+42.0,
+0.849,
+null,
+null
+],
+[
+49.0,
+0.849,
+null,
+null
+],
+[
+56.0,
+0.849,
+null,
+null
+],
+[
+63.0,
+0.849,
+null,
+null
+],
+[
+70.0,
+0.849,
+null,
+null
+],
+[
+77.0,
+0.849,
+null,
+null
+],
+[
+79.75,
+0.849,
 null,
 null
 ]
 ],
-"events": 0,
-"median_days": null,
-"n": 44,
+"events": 59,
+"median_days": 3.9,
+"n": 76,
 "pooled": false,
-"reach_days": 37.2,
+"reach_days": 79.7,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "131",
+"number": "143B",
 "subject": "ASAMST"
 },
-"ASAMST 138": {
+"ASAMST 145AC": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.018,
+0.191,
 null,
 null
 ],
 [
 1.0,
-0.018,
+0.239,
 null,
 null
 ],
 [
 2.0,
-0.018,
+0.364,
 null,
 null
 ],
 [
 3.0,
-0.018,
+0.447,
 null,
 null
 ],
 [
 4.0,
-0.018,
+0.513,
 null,
 null
 ],
 [
 5.0,
-0.018,
+0.54,
 null,
 null
 ],
 [
 6.0,
-0.018,
+0.586,
 null,
 null
 ],
 [
 7.0,
-0.018,
+0.595,
 null,
 null
 ],
 [
 8.0,
-0.018,
+0.63,
 null,
 null
 ],
 [
 9.0,
-0.018,
+0.668,
 null,
 null
 ],
 [
 10.0,
-0.018,
+0.684,
 null,
 null
 ],
 [
 12.0,
-0.018,
+0.722,
 null,
 null
 ],
 [
 14.0,
-0.018,
+0.752,
 null,
 null
 ],
 [
 16.0,
-0.018,
+0.788,
 null,
 null
 ],
 [
 18.0,
-0.018,
+0.81,
 null,
 null
 ],
 [
 21.0,
-0.018,
+0.832,
 null,
 null
 ],
 [
 24.0,
-0.018,
+0.855,
 null,
 null
 ],
 [
 28.0,
-0.018,
+0.924,
 null,
 null
 ],
 [
 32.0,
-0.018,
+0.954,
 null,
 null
 ],
 [
 36.0,
-0.018,
+0.977,
 null,
 null
 ],
 [
-38.29,
-0.018,
+42.0,
+0.977,
+null,
+null
+],
+[
+49.0,
+0.977,
+null,
+null
+],
+[
+56.0,
+0.977,
+null,
+null
+],
+[
+63.0,
+0.977,
+null,
+null
+],
+[
+70.0,
+0.977,
+null,
+null
+],
+[
+77.0,
+0.977,
+null,
+null
+],
+[
+79.75,
+0.977,
 null,
 null
 ]
 ],
-"events": 1,
-"median_days": null,
-"n": 57,
+"events": 196,
+"median_days": 3.85,
+"n": 235,
 "pooled": false,
-"reach_days": 38.3,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "138",
-"subject": "ASAMST"
-},
-"ASAMST 141": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.0,
-null,
-null
-],
-[
-7.0,
-0.0,
-null,
-null
-],
-[
-8.0,
-0.0,
-null,
-null
-],
-[
-9.0,
-0.0,
-null,
-null
-],
-[
-10.0,
-0.0,
-null,
-null
-],
-[
-12.0,
-0.0,
-null,
-null
-],
-[
-14.0,
-0.0,
-null,
-null
-],
-[
-16.0,
-0.0,
-null,
-null
-],
-[
-18.0,
-0.0,
-null,
-null
-],
-[
-21.0,
-0.0,
-null,
-null
-],
-[
-24.0,
-0.0,
-null,
-null
-],
-[
-28.0,
-0.0,
-null,
-null
-],
-[
-32.0,
-0.0,
-null,
-null
-],
-[
-36.0,
-0.0,
-null,
-null
-],
-[
-38.06,
-0.0,
-null,
-null
-]
-],
-"events": 0,
-"median_days": null,
-"n": 59,
-"pooled": false,
-"reach_days": 38.1,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "upper",
-"number": "141",
-"subject": "ASAMST"
-},
-"ASAMST 143AC": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.083,
-null,
-null
-],
-[
-1.0,
-0.129,
-null,
-null
-],
-[
-2.0,
-0.207,
-null,
-null
-],
-[
-3.0,
-0.24,
-null,
-null
-],
-[
-4.0,
-0.24,
-null,
-null
-],
-[
-5.0,
-0.24,
-null,
-null
-],
-[
-6.0,
-0.24,
-null,
-null
-],
-[
-7.0,
-0.24,
-null,
-null
-],
-[
-8.0,
-0.24,
-null,
-null
-],
-[
-9.0,
-0.274,
-null,
-null
-],
-[
-10.0,
-0.274,
-null,
-null
-],
-[
-12.0,
-0.301,
-null,
-null
-],
-[
-14.0,
-0.301,
-null,
-null
-],
-[
-16.0,
-0.301,
-null,
-null
-],
-[
-18.0,
-0.301,
-null,
-null
-],
-[
-21.0,
-0.301,
-null,
-null
-],
-[
-24.0,
-0.301,
-null,
-null
-],
-[
-28.0,
-0.301,
-null,
-null
-],
-[
-31.9,
-0.301,
-null,
-null
-]
-],
-"events": 37,
-"median_days": null,
-"n": 148,
-"pooled": false,
-"reach_days": 31.9,
+"reach_days": 79.7,
 "sections": 1
 },
 "6-15": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.049,
-null,
-null
-],
-[
-5.0,
-0.074,
-null,
-null
-],
-[
-6.0,
-0.074,
-null,
-null
-],
-[
-7.0,
-0.074,
-null,
-null
-],
-[
-8.0,
-0.074,
-null,
-null
-],
-[
-9.0,
-0.074,
-null,
-null
-],
-[
-10.0,
-0.074,
-null,
-null
-],
-[
-12.0,
-0.109,
-null,
-null
-],
-[
-14.0,
-0.109,
-null,
-null
-],
-[
-16.0,
-0.109,
-null,
-null
-],
-[
-18.0,
-0.109,
-null,
-null
-],
-[
-21.0,
-0.109,
-null,
-null
-],
-[
-24.0,
-0.109,
-null,
-null
-],
-[
-28.0,
-0.109,
-null,
-null
-],
-[
-32.0,
-0.109,
-null,
-null
-],
-[
-33.91,
-0.109,
-null,
-null
-]
-],
-"events": 4,
-"median_days": null,
-"n": 59,
-"pooled": false,
-"reach_days": 33.9,
-"sections": 1
+"n_course": 4,
+"pooled": "OTHER",
+"sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "upper",
-"number": "143AC",
+"number": "145AC",
 "subject": "ASAMST"
 },
 "ASAMST 146": {
@@ -1146,136 +1028,172 @@ null
 "curve": [
 [
 0.5,
-0.021,
+0.1,
 null,
 null
 ],
 [
 1.0,
-0.045,
+0.143,
 null,
 null
 ],
 [
 2.0,
-0.045,
+0.171,
 null,
 null
 ],
 [
 3.0,
-0.045,
+0.214,
 null,
 null
 ],
 [
 4.0,
-0.045,
+0.214,
 null,
 null
 ],
 [
 5.0,
-0.045,
+0.229,
 null,
 null
 ],
 [
 6.0,
-0.079,
+0.261,
 null,
 null
 ],
 [
 7.0,
-0.079,
+0.261,
 null,
 null
 ],
 [
 8.0,
-0.079,
+0.277,
 null,
 null
 ],
 [
 9.0,
-0.079,
+0.277,
 null,
 null
 ],
 [
 10.0,
-0.13,
+0.277,
 null,
 null
 ],
 [
 12.0,
-0.184,
+0.277,
 null,
 null
 ],
 [
 14.0,
-0.184,
+0.277,
 null,
 null
 ],
 [
 16.0,
-0.184,
+0.277,
 null,
 null
 ],
 [
 18.0,
-0.184,
+0.277,
 null,
 null
 ],
 [
 21.0,
-0.184,
+0.277,
 null,
 null
 ],
 [
 24.0,
-0.184,
+0.277,
 null,
 null
 ],
 [
 28.0,
-0.184,
+0.277,
 null,
 null
 ],
 [
 32.0,
-0.184,
+0.277,
 null,
 null
 ],
 [
 36.0,
-0.184,
+0.277,
 null,
 null
 ],
 [
-38.06,
-0.184,
+42.0,
+0.277,
+null,
+null
+],
+[
+49.0,
+0.277,
+null,
+null
+],
+[
+56.0,
+0.277,
+null,
+null
+],
+[
+63.0,
+0.277,
+null,
+null
+],
+[
+70.0,
+0.277,
+null,
+null
+],
+[
+77.0,
+0.277,
+null,
+null
+],
+[
+79.75,
+0.277,
 null,
 null
 ]
 ],
-"events": 5,
+"events": 19,
 "median_days": null,
-"n": 47,
+"n": 70,
 "pooled": false,
-"reach_days": 38.1,
+"reach_days": 79.7,
 "sections": 1
 }
 },
@@ -1287,7 +1205,179 @@ null
 "ASAMST 171": {
 "buckets": {
 "1-5": {
-"n_course": 22,
+"curve": [
+[
+0.5,
+0.189,
+null,
+null
+],
+[
+1.0,
+0.245,
+null,
+null
+],
+[
+2.0,
+0.31,
+null,
+null
+],
+[
+3.0,
+0.368,
+null,
+null
+],
+[
+4.0,
+0.426,
+null,
+null
+],
+[
+5.0,
+0.487,
+null,
+null
+],
+[
+6.0,
+0.522,
+null,
+null
+],
+[
+7.0,
+0.579,
+null,
+null
+],
+[
+8.0,
+0.601,
+null,
+null
+],
+[
+9.0,
+0.609,
+null,
+null
+],
+[
+10.0,
+0.609,
+null,
+null
+],
+[
+12.0,
+0.653,
+null,
+null
+],
+[
+14.0,
+0.675,
+null,
+null
+],
+[
+16.0,
+0.73,
+null,
+null
+],
+[
+18.0,
+0.747,
+null,
+null
+],
+[
+21.0,
+0.791,
+null,
+null
+],
+[
+24.0,
+0.801,
+null,
+null
+],
+[
+28.0,
+0.843,
+null,
+null
+],
+[
+32.0,
+0.887,
+null,
+null
+],
+[
+36.0,
+0.926,
+null,
+null
+],
+[
+42.0,
+0.94,
+null,
+null
+],
+[
+49.0,
+0.955,
+null,
+null
+],
+[
+56.0,
+0.955,
+null,
+null
+],
+[
+63.0,
+0.955,
+null,
+null
+],
+[
+70.0,
+0.955,
+null,
+null
+],
+[
+77.0,
+0.955,
+null,
+null
+],
+[
+79.75,
+0.955,
+null,
+null
+]
+],
+"events": 130,
+"median_days": 5.26,
+"n": 159,
+"pooled": false,
+"reach_days": 79.7,
+"sections": 1
+},
+"6-15": {
+"n_course": 28,
 "pooled": "OTHER",
 "sections_course": 1
 }
@@ -1303,136 +1393,154 @@ null
 "curve": [
 [
 0.5,
-0.094,
+0.0,
 null,
 null
 ],
 [
 1.0,
-0.162,
+0.0,
 null,
 null
 ],
 [
 2.0,
-0.219,
+0.0,
 null,
 null
 ],
 [
 3.0,
-0.26,
+0.0,
 null,
 null
 ],
 [
 4.0,
-0.26,
+0.0,
 null,
 null
 ],
 [
 5.0,
-0.284,
+0.0,
 null,
 null
 ],
 [
 6.0,
-0.332,
+0.0,
 null,
 null
 ],
 [
 7.0,
-0.407,
+0.0,
 null,
 null
 ],
 [
 8.0,
-0.505,
+0.0,
 null,
 null
 ],
 [
 9.0,
-0.505,
+0.0,
 null,
 null
 ],
 [
 10.0,
-0.56,
+0.0,
 null,
 null
 ],
 [
 12.0,
-0.59,
+0.0,
 null,
 null
 ],
 [
 14.0,
-0.627,
+0.0,
 null,
 null
 ],
 [
 16.0,
-0.627,
+0.0,
 null,
 null
 ],
 [
 18.0,
-0.627,
+0.0,
 null,
 null
 ],
 [
 21.0,
-0.627,
+0.0,
 null,
 null
 ],
 [
 24.0,
-0.627,
+0.0,
 null,
 null
 ],
 [
 28.0,
-0.627,
+0.0,
 null,
 null
 ],
 [
 32.0,
-0.627,
+0.0,
 null,
 null
 ],
 [
 36.0,
-0.627,
+0.0,
 null,
 null
 ],
 [
-38.06,
-0.627,
+42.0,
+0.0,
+null,
+null
+],
+[
+49.0,
+0.0,
+null,
+null
+],
+[
+56.0,
+0.0,
+null,
+null
+],
+[
+57.16,
+0.0,
 null,
 null
 ]
 ],
-"events": 29,
-"median_days": 7.95,
-"n": 64,
+"events": 0,
+"median_days": null,
+"n": 44,
 "pooled": false,
-"reach_days": 38.1,
+"reach_days": 57.2,
 "sections": 1
 }
 },
@@ -1441,143 +1549,192 @@ null
 "number": "176",
 "subject": "ASAMST"
 },
+"ASAMST 178": {
+"buckets": {
+"1-5": {
+"n_course": 11,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "upper",
+"number": "178",
+"subject": "ASAMST"
+},
 "ASAMST 190": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.054,
-null,
-null
+0.157,
+0.129,
+0.171
 ],
 [
 1.0,
-0.054,
-null,
-null
+0.224,
+0.129,
+0.268
 ],
 [
 2.0,
-0.054,
-null,
-null
+0.343,
+0.183,
+0.416
 ],
 [
 3.0,
-0.09,
-null,
-null
+0.428,
+0.238,
+0.515
 ],
 [
 4.0,
-0.13,
-null,
-null
+0.472,
+0.267,
+0.565
 ],
 [
 5.0,
-0.13,
-null,
-null
+0.543,
+0.296,
+0.652
 ],
 [
 6.0,
-0.13,
-null,
-null
+0.596,
+0.355,
+0.702
 ],
 [
 7.0,
-0.13,
-null,
-null
+0.613,
+0.384,
+0.714
 ],
 [
 8.0,
-0.13,
-null,
-null
+0.622,
+0.415,
+0.714
 ],
 [
 9.0,
-0.13,
-null,
-null
+0.632,
+0.415,
+0.728
 ],
 [
 10.0,
-0.13,
-null,
-null
+0.66,
+0.446,
+0.755
 ],
 [
 12.0,
-0.13,
-null,
-null
+0.679,
+0.508,
+0.755
 ],
 [
 14.0,
-0.197,
-null,
-null
+0.708,
+0.6,
+0.755
 ],
 [
 16.0,
-0.197,
-null,
-null
+0.729,
+0.631,
+0.771
 ],
 [
 18.0,
-0.197,
-null,
-null
+0.74,
+0.664,
+0.771
 ],
 [
 21.0,
-0.197,
-null,
-null
+0.751,
+0.664,
+0.788
 ],
 [
 24.0,
-0.197,
-null,
-null
+0.751,
+0.664,
+0.788
 ],
 [
 28.0,
-0.197,
-null,
-null
+0.751,
+0.664,
+0.788
 ],
 [
 32.0,
-0.197,
-null,
-null
+0.751,
+0.664,
+0.788
 ],
 [
 36.0,
-0.197,
-null,
-null
+0.751,
+0.664,
+0.788
 ],
 [
-38.06,
-0.197,
-null,
-null
+42.0,
+0.751,
+0.664,
+0.788
+],
+[
+49.0,
+0.751,
+0.664,
+0.788
+],
+[
+56.0,
+0.751,
+0.664,
+0.788
+],
+[
+63.0,
+0.751,
+0.664,
+0.788
+],
+[
+70.0,
+0.751,
+0.664,
+0.788
+],
+[
+77.0,
+0.751,
+0.664,
+0.788
+],
+[
+79.75,
+0.751,
+0.664,
+0.788
 ]
 ],
-"events": 5,
-"median_days": null,
-"n": 37,
+"events": 86,
+"median_days": 4.27,
+"n": 121,
 "pooled": false,
-"reach_days": 38.1,
-"sections": 1
+"reach_days": 79.7,
+"sections": 2
 }
 },
 "dept_group": "OTHER",
@@ -1585,614 +1742,168 @@ null
 "number": "190",
 "subject": "ASAMST"
 },
-"ASAMST 20AC": {
+"ASAMST 20A": {
 "buckets": {
 "1-5": {
 "curve": [
 [
 0.5,
-0.147,
+0.319,
 null,
 null
 ],
 [
 1.0,
-0.241,
+0.499,
 null,
 null
 ],
 [
 2.0,
-0.366,
+0.727,
 null,
 null
 ],
 [
 3.0,
-0.459,
+0.85,
 null,
 null
 ],
 [
 4.0,
-0.573,
+0.909,
 null,
 null
 ],
 [
 5.0,
-0.638,
+0.947,
 null,
 null
 ],
 [
 6.0,
-0.674,
+0.967,
 null,
 null
 ],
 [
 7.0,
-0.746,
+0.975,
 null,
 null
 ],
 [
 8.0,
-0.746,
+0.983,
 null,
 null
 ],
 [
 9.0,
-0.77,
+0.994,
 null,
 null
 ],
 [
 10.0,
-0.783,
+0.997,
 null,
 null
 ],
 [
 12.0,
-0.829,
+0.997,
 null,
 null
 ],
 [
 14.0,
-0.829,
+0.997,
 null,
 null
 ],
 [
-16.0,
-0.829,
-null,
-null
-],
-[
-18.0,
-0.829,
-null,
-null
-],
-[
-21.0,
-0.829,
-null,
-null
-],
-[
-24.0,
-0.829,
-null,
-null
-],
-[
-28.0,
-0.829,
-null,
-null
-],
-[
-30.81,
-0.829,
+15.36,
+0.997,
 null,
 null
 ]
 ],
-"events": 183,
-"median_days": 3.25,
-"n": 300,
+"events": 382,
+"median_days": 1.01,
+"n": 401,
 "pooled": false,
-"reach_days": 30.8,
-"sections": 1
-},
-"16-40": {
-"curve": [
-[
-0.5,
-0.0,
-null,
-null
-],
-[
-1.0,
-0.0,
-null,
-null
-],
-[
-2.0,
-0.0,
-null,
-null
-],
-[
-3.0,
-0.0,
-null,
-null
-],
-[
-4.0,
-0.0,
-null,
-null
-],
-[
-5.0,
-0.0,
-null,
-null
-],
-[
-6.0,
-0.026,
-null,
-null
-],
-[
-7.0,
-0.057,
-null,
-null
-],
-[
-8.0,
-0.11,
-null,
-null
-],
-[
-9.0,
-0.13,
-null,
-null
-],
-[
-10.0,
-0.13,
-null,
-null
-],
-[
-12.0,
-0.13,
-null,
-null
-],
-[
-14.0,
-0.437,
-null,
-null
-],
-[
-16.0,
-0.437,
-null,
-null
-],
-[
-18.0,
-0.437,
-null,
-null
-],
-[
-18.21,
-0.437,
-null,
-null
-]
-],
-"events": 14,
-"median_days": null,
-"n": 112,
-"pooled": false,
-"reach_days": 18.2,
+"reach_days": 15.4,
 "sections": 1
 },
 "6-15": {
 "curve": [
 [
 0.5,
-0.011,
+0.016,
 null,
 null
 ],
 [
 1.0,
-0.028,
+0.083,
 null,
 null
 ],
 [
 2.0,
-0.063,
+0.236,
 null,
 null
 ],
 [
 3.0,
-0.094,
+0.627,
 null,
 null
 ],
 [
 4.0,
-0.119,
+0.84,
 null,
 null
 ],
 [
-5.0,
-0.156,
-null,
-null
-],
-[
-6.0,
-0.188,
-null,
-null
-],
-[
-7.0,
-0.223,
-null,
-null
-],
-[
-8.0,
-0.291,
-null,
-null
-],
-[
-9.0,
-0.35,
-null,
-null
-],
-[
-10.0,
-0.365,
-null,
-null
-],
-[
-12.0,
-0.394,
-null,
-null
-],
-[
-14.0,
-0.394,
-null,
-null
-],
-[
-16.0,
-0.394,
-null,
-null
-],
-[
-18.0,
-0.394,
-null,
-null
-],
-[
-18.21,
-0.394,
+4.91,
+1.0,
 null,
 null
 ]
 ],
-"events": 47,
-"median_days": null,
-"n": 186,
+"events": 57,
+"median_days": 2.75,
+"n": 62,
 "pooled": false,
-"reach_days": 18.2,
+"reach_days": 4.9,
 "sections": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "20AC",
+"number": "20A",
 "subject": "ASAMST"
 },
-"ASAMST 20C": {
+"ASAMST R2B": {
 "buckets": {
 "1-5": {
-"curve": [
-[
-0.5,
-0.116,
-null,
-null
-],
-[
-1.0,
-0.185,
-null,
-null
-],
-[
-2.0,
-0.25,
-null,
-null
-],
-[
-3.0,
-0.25,
-null,
-null
-],
-[
-4.0,
-0.25,
-null,
-null
-],
-[
-5.0,
-0.25,
-null,
-null
-],
-[
-6.0,
-0.272,
-null,
-null
-],
-[
-7.0,
-0.294,
-null,
-null
-],
-[
-8.0,
-0.316,
-null,
-null
-],
-[
-9.0,
-0.365,
-null,
-null
-],
-[
-10.0,
-0.414,
-null,
-null
-],
-[
-12.0,
-0.479,
-null,
-null
-],
-[
-14.0,
-0.566,
-null,
-null
-],
-[
-16.0,
-0.566,
-null,
-null
-],
-[
-18.0,
-0.662,
-null,
-null
-],
-[
-18.39,
-0.662,
-null,
-null
-]
-],
-"events": 31,
-"median_days": 12.24,
-"n": 79,
-"pooled": false,
-"reach_days": 18.4,
-"sections": 1
-},
-"6-15": {
-"n_course": 8,
+"n_course": 27,
 "pooled": "OTHER",
 "sections_course": 1
 }
 },
 "dept_group": "OTHER",
 "level": "lower",
-"number": "20C",
-"subject": "ASAMST"
-},
-"ASAMST R2A": {
-"buckets": {
-"1-5": {
-"curve": [
-[
-0.5,
-0.081,
-null,
-null
-],
-[
-1.0,
-0.081,
-null,
-null
-],
-[
-2.0,
-0.081,
-null,
-null
-],
-[
-3.0,
-0.081,
-null,
-null
-],
-[
-4.0,
-0.081,
-null,
-null
-],
-[
-5.0,
-0.081,
-null,
-null
-],
-[
-6.0,
-0.081,
-null,
-null
-],
-[
-7.0,
-0.081,
-null,
-null
-],
-[
-8.0,
-0.137,
-null,
-null
-],
-[
-9.0,
-0.137,
-null,
-null
-],
-[
-10.0,
-0.137,
-null,
-null
-],
-[
-12.0,
-0.176,
-null,
-null
-],
-[
-14.0,
-0.176,
-null,
-null
-],
-[
-16.0,
-0.176,
-null,
-null
-],
-[
-18.0,
-0.176,
-null,
-null
-],
-[
-21.0,
-0.176,
-null,
-null
-],
-[
-24.0,
-0.176,
-null,
-null
-],
-[
-28.0,
-0.176,
-null,
-null
-],
-[
-32.0,
-0.176,
-null,
-null
-],
-[
-36.0,
-0.176,
-null,
-null
-],
-[
-36.17,
-0.176,
-null,
-null
-]
-],
-"events": 8,
-"median_days": null,
-"n": 62,
-"pooled": false,
-"reach_days": 36.2,
-"sections": 1
-}
-},
-"dept_group": "OTHER",
-"level": "lower",
-"number": "R2A",
+"number": "R2B",
 "subject": "ASAMST"
 }
 },
 "subject": "ASAMST",
-"term_id": "2268"
+"term_id": "2262"
 }

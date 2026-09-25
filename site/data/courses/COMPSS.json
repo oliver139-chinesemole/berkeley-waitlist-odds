@@ -1,0 +1,84 @@
+{
+"courses": {
+"COMPSS 221": {
+"buckets": {
+"1-5": {
+"n_course": 13,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "221",
+"subject": "COMPSS"
+},
+"COMPSS 222": {
+"buckets": {
+"1-5": {
+"n_course": 17,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "222",
+"subject": "COMPSS"
+},
+"COMPSS 223": {
+"buckets": {
+"1-5": {
+"n_course": 6,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "223",
+"subject": "COMPSS"
+},
+"COMPSS 224A": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "224A",
+"subject": "COMPSS"
+},
+"COMPSS 224B": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "224B",
+"subject": "COMPSS"
+},
+"COMPSS 225": {
+"buckets": {
+"1-5": {
+"n_course": 14,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "225",
+"subject": "COMPSS"
+}
+},
+"subject": "COMPSS",
+"term_id": "2262"
+}

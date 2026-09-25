@@ -1,0 +1,420 @@
+{
+"courses": {
+"NWMEDIA 200": {
+"buckets": {
+"1-5": {
+"n_course": 8,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "200",
+"subject": "NWMEDIA"
+},
+"NWMEDIA 290": {
+"buckets": {
+"1-5": {
+"n_course": 2,
+"pooled": "OTHER",
+"sections_course": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "290",
+"subject": "NWMEDIA"
+},
+"NWMEDIA C203": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.0,
+null,
+null
+],
+[
+10.0,
+0.0,
+null,
+null
+],
+[
+12.0,
+0.0,
+null,
+null
+],
+[
+14.0,
+0.0,
+null,
+null
+],
+[
+16.0,
+0.0,
+null,
+null
+],
+[
+18.0,
+0.0,
+null,
+null
+],
+[
+21.0,
+0.0,
+null,
+null
+],
+[
+24.0,
+0.0,
+null,
+null
+],
+[
+28.0,
+0.0,
+null,
+null
+],
+[
+32.0,
+0.0,
+null,
+null
+],
+[
+36.0,
+0.0,
+null,
+null
+],
+[
+39.73,
+0.0,
+null,
+null
+]
+],
+"events": 0,
+"median_days": null,
+"n": 53,
+"pooled": false,
+"reach_days": 39.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C203",
+"subject": "NWMEDIA"
+},
+"NWMEDIA C265": {
+"buckets": {
+"1-5": {
+"curve": [
+[
+0.5,
+0.192,
+null,
+null
+],
+[
+1.0,
+0.212,
+null,
+null
+],
+[
+2.0,
+0.279,
+null,
+null
+],
+[
+3.0,
+0.314,
+null,
+null
+],
+[
+4.0,
+0.359,
+null,
+null
+],
+[
+5.0,
+0.414,
+null,
+null
+],
+[
+6.0,
+0.481,
+null,
+null
+],
+[
+7.0,
+0.565,
+null,
+null
+],
+[
+8.0,
+0.662,
+null,
+null
+],
+[
+9.0,
+0.73,
+null,
+null
+],
+[
+10.0,
+0.73,
+null,
+null
+],
+[
+12.0,
+0.768,
+null,
+null
+],
+[
+14.0,
+0.845,
+null,
+null
+],
+[
+16.0,
+0.845,
+null,
+null
+],
+[
+18.0,
+0.845,
+null,
+null
+],
+[
+21.0,
+0.868,
+null,
+null
+],
+[
+24.0,
+0.901,
+null,
+null
+],
+[
+25.37,
+0.901,
+null,
+null
+]
+],
+"events": 111,
+"median_days": 6.21,
+"n": 162,
+"pooled": false,
+"reach_days": 25.4,
+"sections": 1
+},
+"6-15": {
+"curve": [
+[
+0.5,
+0.0,
+null,
+null
+],
+[
+1.0,
+0.0,
+null,
+null
+],
+[
+2.0,
+0.0,
+null,
+null
+],
+[
+3.0,
+0.0,
+null,
+null
+],
+[
+4.0,
+0.0,
+null,
+null
+],
+[
+5.0,
+0.0,
+null,
+null
+],
+[
+6.0,
+0.0,
+null,
+null
+],
+[
+7.0,
+0.0,
+null,
+null
+],
+[
+8.0,
+0.0,
+null,
+null
+],
+[
+9.0,
+0.032,
+null,
+null
+],
+[
+10.0,
+0.032,
+null,
+null
+],
+[
+12.0,
+0.129,
+null,
+null
+],
+[
+14.0,
+0.355,
+null,
+null
+],
+[
+16.0,
+0.624,
+null,
+null
+],
+[
+18.0,
+0.708,
+null,
+null
+],
+[
+21.0,
+0.917,
+null,
+null
+],
+[
+24.0,
+0.917,
+null,
+null
+],
+[
+25.66,
+0.917,
+null,
+null
+]
+],
+"events": 27,
+"median_days": 15.04,
+"n": 42,
+"pooled": false,
+"reach_days": 25.7,
+"sections": 1
+}
+},
+"dept_group": "OTHER",
+"level": "grad",
+"number": "C265",
+"subject": "NWMEDIA"
+}
+},
+"subject": "NWMEDIA",
+"term_id": "2262"
+}
