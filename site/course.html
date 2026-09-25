@@ -114,11 +114,15 @@
   // so the ratio never reads a null as a zero.
   function ratio(count, capacity) { return `${count == null ? "—" : num(count)} / ${capacity == null ? "—" : num(capacity)}`; }
 
-  // The blue ramp, lightest to darkest; never a traffic light. A section whose
-  // waitlist and capacity are both unknown gets no word and no class: unknown is
-  // not the same as none waiting.
+  // A section with any of enrolled, capacity and waitlist missing is not read:
+  // its status and seats are em dashes, since a partial row could otherwise read
+  // as open, and unknown is not the same as none waiting.
+  function unread(s) { return s.enrolled == null || s.capacity == null || s.waitlist == null; }
+
+  // The blue ramp, lightest to darkest; never a traffic light. An unread section
+  // gets no word and no class.
   function statusOf(s, seats) {
-    if (s.waitlist == null && s.capacity == null) return { cls: "", word: "—" };
+    if (unread(s)) return { cls: "", word: "—", label: "not read" };
     if (Number(s.waitlist) > 0) return { cls: "status-waitlist", word: "waitlist" };
     if (seats === 0) return { cls: "status-full", word: "full" };
     if (seats > 0 && Number(s.open_reserved) >= seats) return { cls: "status-reserved", word: "full and reserved" };
@@ -132,9 +136,9 @@
   }
 
   function boardRow(s) {
-    const seats = seatsOpen(s), st = statusOf(s, seats), mins = minutesSince(s.observed_at);
+    const seats = unread(s) ? null : seatsOpen(s), st = statusOf(s, seats), mins = minutesSince(s.observed_at);
     const stale = mins != null && mins >= STALE_MINUTES;
-    return `<tr><td>${esc(s.component || "")} ${esc(s.section_number || "")}</td><td class="num">${ratio(s.enrolled, s.capacity)}</td><td class="num">${ratio(s.waitlist, s.waitlist_capacity)}</td><td>${esc(seatsText(seats, s.open_reserved))}</td><td${st.cls ? ` class="${st.cls}"` : ""}>${esc(st.word)}</td><td>${esc(readText(mins))}${stale ? `<span class="stale">${esc(STALE_NOTE)}</span>` : ""}</td></tr>`;
+    return `<tr><td>${esc(s.component || "")} ${esc(s.section_number || "")}</td><td class="num">${ratio(s.enrolled, s.capacity)}</td><td class="num">${ratio(s.waitlist, s.waitlist_capacity)}</td><td>${esc(seatsText(seats, s.open_reserved))}</td><td${st.cls ? ` class="${st.cls}"` : ""}${st.label ? ` aria-label="${esc(st.label)}"` : ""}>${esc(st.word)}</td><td>${esc(readText(mins))}${stale ? `<span class="stale">${esc(STALE_NOTE)}</span>` : ""}</td></tr>`;
   }
 
   // Live section counts from the data branch (own snapshots only); the block stays hidden when the file is absent.
@@ -147,7 +151,7 @@
     const newest = mine.map((s) => new Date(s.observed_at).getTime()).filter((v) => !isNaN(v));
     const age = newest.length ? Math.round((Date.now() - Math.max(...newest)) / 60000) : null;
     $("live").innerHTML = `<h2>Sections now</h2><p class="muted small">This project's own snapshots of classes.berkeley.edu${age != null ? `, as of ${age} min ago` : ""}${r.data.term_name ? ` (${esc(r.data.term_name)})` : ""}.</p>
-      <div class="scroll" tabindex="0"><table aria-label="Sections now"><thead><tr><th scope="col">Section</th><th scope="col" class="num">Enrolled</th><th scope="col" class="num">Waitlist</th><th scope="col">Seats</th><th scope="col">Status</th><th scope="col">Read</th></tr></thead><tbody>${mine.map(boardRow).join("")}</tbody></table></div>`;
+      <div class="scroll" tabindex="0"><table class="board" aria-label="Sections now"><thead><tr><th scope="col">Section</th><th scope="col" class="num">Enrolled</th><th scope="col" class="num">Waitlist</th><th scope="col">Seats</th><th scope="col">Status</th><th scope="col">Read</th></tr></thead><tbody>${mine.map(boardRow).join("")}</tbody></table></div>`;
   }
 
   async function main() {

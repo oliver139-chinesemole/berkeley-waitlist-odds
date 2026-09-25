@@ -29,7 +29,13 @@ NOW = "2027-01-10T12:00:00+00:00"  # the fixture's generated_at; its date is tes
 LIVE_ENV = {"HARNESS_LIVE_FILE": str(FIXTURE), "HARNESS_NOW": NOW}
 SEARCH = "?c=COMPSCI+61A&position=3"
 # The course's own sections in the fixture, with the ratios the page prints from them.
-SECTIONS = (("LEC 001", "20 / 30", "0 / 10"), ("DIS 101", "30 / 30", "5 / 10"), ("DIS 102", "30 / 30", "0 / 0"), ("DIS 103", "26 / 30", "0 / 10"), ("DIS 104", "28 / 30", "0 / 10"), ("DIS 105", "26 / 30", "0 / 10"))
+SECTIONS = (("LEC 001", "20 / 30", "0 / 10"), ("DIS 101", "30 / 30", "5 / 10"), ("DIS 102", "30 / 30", "0 / 0"), ("DIS 103", "26 / 30", "0 / 10"), ("DIS 104", "28 / 30", "0 / 10"), ("DIS 105", "26 / 30", "0 / 10"),
+            ("DIS 106", "— / 30", "0 / 10"), ("DIS 107", "25 / —", "0 / 10"), ("DIS 108", "25 / 30", "— / 10"), ("DIS 109", "— / —", "— / 10"))
+# The sections with a missing count: one of enrolled, capacity and waitlist null in
+# each of the first three (the published names of the snapshot's enrolled_count,
+# enroll_capacity and waitlist_count), all three null in the last, with their ages.
+UNREAD = (("DIS 106", "read 10 min ago"), ("DIS 107", "read 9 min ago"), ("DIS 108", "read 8 min ago"), ("DIS 109", "read 6 min ago"))
+STATUS_CLASSES = ("status-open", "status-waitlist", "status-full", "status-reserved")
 
 
 @pytest.fixture(scope="module")
@@ -43,6 +49,11 @@ def live_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     cohort["catalog_number"] = [k.split(" ", 1)[1] for k in keys]
     export_site_tables(cohort, CAL, root / "data", n_boot=20)
     return root
+
+
+def cells(row: str) -> list[str]:
+    """A row's cells, each as its opening tag's attributes and its content, e.g. ' class="num">20 / 30'."""
+    return [chunk.split("</td>")[0] for chunk in row.split("<td")[1:]]
 
 
 def board(out: dict) -> str:
@@ -102,3 +113,34 @@ def test_the_board_states_of_a3(live_site: Path) -> None:
     assert not re.search(r"\b(red|green)\b", html, re.I)  # the ramp is blue, never a traffic light
     for claim in ("your position", "you are", "your spot"):
         assert claim not in html.lower()  # the block never claims to know a student's own position
+
+
+def test_a_row_with_a_missing_count_is_not_read(live_site: Path) -> None:
+    """Any null among enrolled, capacity and waitlist: the status is an em dash with no ramp class, never "open"."""
+    out = render(live_site, page="course.html", search=SEARCH, env=LIVE_ENV)
+    html = board(out)
+    for label, read in UNREAD:
+        row = row_of(html, label)
+        section, enrolled, waitlist, seats, status, age = cells(row)
+        assert status == ' aria-label="not read">—', f"{label}: {status}"
+        assert not any(cls in row for cls in STATUS_CLASSES), label
+        assert seats == ">—", f"{label}: {seats}"  # the seats cell, not a zero and not a count
+        assert read in age, label  # every row still says how long ago it was read
+    for label, _, _ in SECTIONS:
+        if label not in dict(UNREAD):
+            assert "not read" not in row_of(html, label), label  # the rows with every count keep their word
+
+
+def test_the_board_table_carries_the_phone_rows_class(live_site: Path) -> None:
+    """Below 38 rem the board's rows break into two lines; the rule targets the board's own table class."""
+    out = render(live_site, page="course.html", search=SEARCH, env=LIVE_ENV)
+    html = board(out)
+    assert re.search(r'<table class="board"[^>]*aria-label="Sections now"', html)
+    css = (ROOT / "site" / "assets" / "site.css").read_text()
+    rule = re.search(r"@media \(width < 38rem\) \{(.*?)\n\}", css, re.S)
+    assert rule, "no phone-row rule for the board"
+    body = rule.group(1)
+    selectors = re.findall(r"^\s*([^{}]+?)\s*\{", body, re.M)
+    assert selectors and all(s.startswith("table.board") for part in selectors for s in (x.strip() for x in part.split(","))), selectors
+    assert "tabular-nums lining-nums" in body  # figures stay aligned on the second line
+    assert not re.search(r"(?<!-)color\s*:|background", body)  # no colour change

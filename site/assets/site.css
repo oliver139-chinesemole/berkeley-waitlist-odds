@@ -197,6 +197,20 @@ tr.course td .sub { color: var(--muted); font-size: var(--fs-1); display: block;
 .status-full { --ramp: var(--s3); }
 .status-reserved { --ramp: var(--s4); }
 .stale { color: var(--muted); }
+/* the board on a phone: two-line rows, section and status first; counts, seats and read-time second.
+   The header stays in the table for screen readers; the count labels are visual only (empty alt text). */
+@media (width < 38rem) {
+  table.board thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  table.board tbody tr { display: grid; grid-template-columns: auto auto minmax(0, 1fr) minmax(0, 1fr); gap: .1rem .75rem; align-items: start; padding: .5rem 0; border-bottom: 1px solid var(--line); }
+  table.board td { border-bottom: 0; padding: .1rem 0; }
+  table.board td:nth-child(1) { grid-area: 1 / 1 / 2 / 3; align-self: center; font-weight: 600; }
+  table.board td:nth-child(5) { grid-area: 1 / 3 / 2 / 5; justify-self: end; align-self: center; white-space: nowrap; }
+  table.board td:nth-child(n+2):not(:nth-child(5)) { grid-row: 2; font-size: .85rem; }
+  table.board td.num { font-variant-numeric: tabular-nums lining-nums; text-align: left; white-space: nowrap; }
+  table.board td:nth-child(2)::before { content: "Enrolled" / ""; display: block; font-size: .75rem; }
+  table.board td:nth-child(3)::before { content: "Waitlist" / ""; display: block; font-size: .75rem; }
+  table.board td:nth-child(4), table.board td:nth-child(6) { padding-top: 1.225rem; } /* first line level with the figures, under the labels' line */
+}
 
 /* charts */
 .chart { margin: 1rem 0 .25rem; }
