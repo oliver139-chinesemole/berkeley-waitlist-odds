@@ -1,15 +1,14 @@
 """The "Sections now" block on course.html, and the contract the A3 board must meet.
 
-``tests/fixtures/latest_sample.json`` is ``live/latest.json`` as it will look once
-A3 adds ``reserved_count`` and ``open_reserved`` to ``scraper.live.COLUMNS`` and
-widens the selection to every section of a course that has a full or waitlisted
-one. The harness serves it as the page's absolute ``LIVE_URL``
+``tests/fixtures/latest_sample.json`` is ``live/latest.json`` as it looks now that
+A3 has added ``reserved_count`` and ``open_reserved`` to ``scraper.live.COLUMNS``
+and widened the selection to every section of a course that has a full or
+waitlisted one. The harness serves it as the page's absolute ``LIVE_URL``
 (``HARNESS_LIVE_FILE``) and pins ``Date.now()`` (``HARNESS_NOW``), so the per-row
 ages are fixed numbers.
 
-The first test pins what the page renders today. The second pins A3 (S1 to S3)
-and is a strict xfail until A3 is built: it errors the moment it starts passing,
-which is the signal to drop the marker.
+The first test pins what the page renders today. The second pins A3 (S1 to S3):
+it was a strict xfail until A3 was built, and the marker came off with the board.
 """
 from __future__ import annotations
 
@@ -75,7 +74,6 @@ def test_the_block_renders_only_this_courses_sections(live_site: Path) -> None:
     assert board(without) == ""  # no live file, no block, no error
 
 
-@pytest.mark.xfail(strict=True, reason="A3 (S1 to S3) not built yet: reserved line, blue ramp, per-row age, six-hour warning")
 def test_the_board_states_of_a3(live_site: Path) -> None:
     """S1 seats open per row, S2 the reserved line in the registrar's wording, S3 the stale warning."""
     out = render(live_site, page="course.html", search=SEARCH, env=LIVE_ENV)
