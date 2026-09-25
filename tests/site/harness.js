@@ -90,9 +90,11 @@ async function fetchStub(url) {
 
 // The data branch's status.json (BWO.liveStatus) is served from
 // HARNESS_STATUS_FILE when that variable names a file; unset, the URL goes to
-// fetchStub and 404s like every other absolute URL.
+// fetchStub and 404s like every other absolute URL. HARNESS_STATUS_REJECT makes
+// that one fetch reject, as a dropped connection does in a browser.
 const STATUS_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/status.json";
 async function pageFetch(url, opts) {
+  if (url === STATUS_URL && process.env.HARNESS_STATUS_REJECT) throw new TypeError("Failed to fetch");
   if (url === STATUS_URL && process.env.HARNESS_STATUS_FILE) {
     const text = fs.readFileSync(process.env.HARNESS_STATUS_FILE, "utf8");
     return { ok: true, status: 200, json: async () => JSON.parse(text) };

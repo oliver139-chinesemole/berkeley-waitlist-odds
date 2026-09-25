@@ -529,6 +529,10 @@ def test_live_status_failure_leaves_the_page_as_it_was(full_site: Path, tmp_path
     no_time = tmp_path / "no_time.json"
     no_time.write_text(json.dumps({k: v for k, v in json.loads(STATUS_FIXTURE.read_text()).items() if k != "last_run_at"}))
     assert status_line(full_site, page, no_time) == before
+    # The fetch itself rejects (a dropped connection), with a good file behind it: still the line as it was.
+    query, el = STATUS_PAGES[page]
+    out = render(full_site, page=page, search=query, env={"HARNESS_STATUS_FILE": str(status_file(tmp_path, 12)), "HARNESS_STATUS_REJECT": "1"})
+    assert out["elements"][el]["html"] == before
 
 
 def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
