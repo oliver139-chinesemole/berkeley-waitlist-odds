@@ -412,6 +412,7 @@ const BWO = (function () {
     out.sort((a, b) => a.d - b.d || b.joins - a.joins || a.subject.localeCompare(b.subject));
     return out;
   }
+  // The one ranking the matcher, the suggestions and the course lists share: joins descending, then key.
   const byJoins = (a, b) => (b.joins || 0) - (a.joins || 0) || a.key.localeCompare(b.key);
   // A bare catalog number ("61a"): every course with it, most-joined first.
   function bareNumber(index, number) {
@@ -518,6 +519,7 @@ const BWO = (function () {
   // Ranked suggestions for the combobox: prefix matches on the subject (aliases
   // expanded) and the number, most-joined first.
   function searchCourses(index, text, limit) {
+    if (!index || !index.courses) return [];  // not loaded yet: matchCourse's guard
     const q = parseQuery(text);
     if (!q) return [];
     const exact = findCourse(index, text);
@@ -559,7 +561,7 @@ const BWO = (function () {
   function relatedCourses(index, row, bucket, n) {
     const b = bucket || "6-15";
     const same = index.courses.filter((r) => r.key !== row.key && r.subject === row.subject && r.buckets[b] && r.buckets[b].pooled !== "all");
-    same.sort((x, y) => (y.joins || 0) - (x.joins || 0) || x.key.localeCompare(y.key));
+    same.sort(byJoins);
     return same.slice(0, n || 5);
   }
 
