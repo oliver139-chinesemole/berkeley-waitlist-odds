@@ -105,7 +105,7 @@
     $("dates").innerHTML = BWO.keyDatesHtml(meta, today);
     BWO.setStamp(meta, today);
     const c = BWO.params().get("c") || "";
-    const match = BWO.matchCourse(index, c);
+    const match = await BWO.matchCourseAsync(index, c, meta);
     row = match.row;
     if (!row) {
       $("status").innerHTML = `<p class="error">No data for <strong>${esc(c || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which falls back to the department, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
@@ -115,7 +115,7 @@
     entry = subj && subj.courses ? subj.courses[row.key] : null;
     if (!entry) { $("status").innerHTML = `<p class="error">Could not load the curves for <strong>${esc(row.key)}</strong>. Check your connection and try again. <button type="button" class="quiet" onclick="location.reload()">Reload</button></p>`; return; }
     entry.key = row.key;
-    $("status").innerHTML = BWO.sourceHtml(meta) + BWO.showingHtml(match, ["fuzzy", "name", "nickname"]);
+    $("status").innerHTML = BWO.sourceHtml(meta) + BWO.showingHtml(match, ["fuzzy", "name", "nickname", "title"]);
     render(positionFromUrl());
   }
   main();

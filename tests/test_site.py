@@ -475,6 +475,76 @@ def test_a_fuzzy_match_says_what_it_showed(full_site: Path) -> None:
     assert "Showing" not in out["status"]
 
 
+TITLES = ROOT / "tests" / "fixtures" / "titles_sample.json"
+WITH_TITLES = {"HARNESS_TITLES_FILE": str(TITLES)}
+
+
+def title_fetches(out: dict) -> int:
+    return sum(1 for url in out["fetches"] if url == "data/titles.json")
+
+
+def test_titles_load_only_for_a_title_query_and_only_once() -> None:
+    """Q4: a code query, a digit, a bare subject and the combobox never fetch titles.json; the first title query fetches it once."""
+    out = render(SITE, env=WITH_TITLES, expression="""(async () => {
+        const i = BWO.loaded.index, n = () => __fetches.filter((u) => u === 'data/titles.json').length, seen = [];
+        for (const q of ['cs61a', 'compsi 61a', 'data structures 2', 'data', 'computer science', 'lecture', 'cs 61x']) { await BWO.matchCourseAsync(i, q); }
+        seen.push(n());
+        BWO.searchCourses(i, 'data structures', 8); BWO.searchCourses(i, 'hilfinger', 8); BWO.matchCourse(i, 'data structures');
+        seen.push(n());
+        const m = await BWO.matchCourseAsync(i, 'data structures');
+        seen.push(m.key, m.layer, n());
+        await BWO.matchCourseAsync(i, 'hilfinger'); await BWO.matchCourseAsync(i, 'quantum basketweaving');
+        seen.push(n());
+        return seen; })()""")
+    assert "eval_error" not in out, out.get("eval_error")
+    assert out["eval"] == [0, 0, "COMPSCI 61B", "title", 1, 1]
+    # the page's own load fetches nothing of it either, and neither does a code lookup
+    out = render(SITE, env=WITH_TITLES, course="cs61a", position="10")
+    assert "COMPSCI 61A" in out["result"] and title_fetches(out) == 0
+
+
+def test_title_hits_are_whole_tokens_ranked_by_joins() -> None:
+    """Every query word a whole word of the title, or of one instructor's name including the surname; ties by joins."""
+    rows = ", ".join(
+        f"{{key: '{k}', subject: '{k.split()[0]}', number: '{k.split()[1]}', joins: {j}, buckets: {{}}}}"
+        for k, j in (("COMPSCI 61A", 5), ("DATA C8", 9), ("STAT 20", 1), ("ECON 1", 7), ("ASTRON 11", 3), ("COMPSCI 61B", 2))
+    )
+    queries = ["denero", "john denero", "introduction", "Data Structures", "berkeley data structures", "structure", "john", "intro", "yokota hilfinger", "business communication"]
+    out = render(SITE, env=WITH_TITLES, expression=f"""(async () => {{ const i = {{courses: [{rows}]}}; const out = [];
+        for (const q of {json.dumps(queries)}) {{ const m = await BWO.matchCourseAsync(i, q); out.push([m.layer, m.ranked.map((r) => r.key)]); }}
+        return out; }})()""")
+    assert "eval_error" not in out, out.get("eval_error")
+    got = dict(zip(queries, out["eval"], strict=True))
+    assert got["denero"] == ["title", ["DATA C8", "COMPSCI 61A"]]  # one instructor, two courses: most-joined first
+    assert got["john denero"] == got["denero"]
+    assert got["introduction"] == ["title", ["ECON 1", "ASTRON 11", "STAT 20"]]
+    assert got["Data Structures"] == ["title", ["COMPSCI 61B"]] and got["berkeley data structures"] == ["title", ["COMPSCI 61B"]]
+    assert got["structure"] == ["title", ["COMPSCI 61A"]]  # "Structures" is another word: whole tokens only
+    for query in ("john", "intro", "yokota hilfinger", "business communication"):  # a first name, a prefix, two people, a course not in this index
+        assert got[query] == ["miss", []], query
+
+
+def test_a_title_query_works_end_to_end_and_says_what_it_showed() -> None:
+    """The lookup form and the course page's ?c= take the async path; both print the Showing line for a title hit."""
+    out = render(SITE, env=WITH_TITLES, course="data structures", position="10")
+    assert "Showing <strong>COMPSCI 61B</strong> for <em>data structures</em>." in out["status"]
+    assert "COMPSCI 61B · position 10" in out["result"] and title_fetches(out) == 1
+    out = render(SITE, page="course.html", search="?c=hilfinger", env=WITH_TITLES)
+    assert "Showing <strong>COMPSCI 61B</strong> for <em>hilfinger</em>." in out["status"] and out["title"].startswith("COMPSCI 61B")
+
+
+def test_the_title_layer_is_skipped_silently_without_titles(tmp_path: Path) -> None:
+    """No titles_file in meta, a missing file or a broken one: a title query is an ordinary miss, fetched at most once."""
+    broken = tmp_path / "broken.json"
+    broken.write_text("{not json")
+    expression = "(async () => { const i = BWO.loaded.index; const a = await BWO.matchCourseAsync(i, 'data structures'); const b = await BWO.matchCourseAsync(i, 'hilfinger'); return [a.layer, b.layer, a.nearest.length > 0]; })()"
+    for env, fetched in (({}, 0), ({"HARNESS_TITLES_FILE": str(tmp_path / "absent.json")}, 1), ({"HARNESS_TITLES_FILE": str(broken)}, 1)):
+        out = render(SITE, env=env, expression=expression)
+        assert "eval_error" not in out, (env, out.get("eval_error"))
+        assert out["eval"] == ["miss", "miss", True], env
+        assert title_fetches(out) == fetched, (env, out["fetches"])
+
+
 def test_every_subject_has_a_display_name() -> None:
     """Q1: config/subject_names.json names every subject in index.json.
 

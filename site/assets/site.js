@@ -264,7 +264,7 @@ const BWO = (function () {
   // ----------------------------------------------------------------- search
   // How a query reached its course, least to most forgiving; a match reports the
   // most forgiving step it needed (docs/DESIGN_A6.md, "Course search").
-  const LAYERS = ["exact", "alias", "name", "nickname", "filler", "split", "bare", "fuzzy", "miss"];
+  const LAYERS = ["exact", "alias", "name", "nickname", "filler", "split", "bare", "fuzzy", "title", "miss"];
   // Words a reader types around a course that never name one.
   const FILLER = /^(BERKELEY|UC|CLASS|COURSE|LEC|LECTURE|DIS|DISCUSSION|LAB|SPRING|FALL|SUMMER|\d{4})$/;
 
@@ -509,11 +509,80 @@ const BWO = (function () {
     return miss();
   }
   function findCourse(index, text) { return matchCourse(index, text).row; }
+
+  // The title layer, last of all: "data structures" or "hilfinger". Titles and
+  // instructors live in data/titles.json (meta.titles_file), fetched on the first
+  // query that needs them and never again in the page load; a page with no titles
+  // file, or whose fetch failed, skips the layer silently.
+  let titlesLoad = null;
+  function loadTitles(meta) {
+    const file = meta && meta.titles_file;
+    if (!file) return Promise.resolve(null);
+    if (!titlesLoad) {
+      titlesLoad = fetchJson("data/" + file).then((r) => {
+        const courses = r.ok && r.data && r.data.courses;
+        if (!courses) return null;
+        const words = (s) => normalise(s).split(" ").filter(Boolean);
+        return Object.keys(courses).map((key) => ({
+          key, title: new Set(words((courses[key] || {}).title)), names: ((courses[key] || {}).instructors || []).map(words).filter((n) => n.length),
+        }));
+      });
+    }
+    return titlesLoad;
+  }
+  // The readings of a query worth a title search (as typed, then without filler), or
+  // null when it is not title-shaped: a digit, all filler, under three characters, or
+  // a subject on its own ("data", "cs", "computer science").
+  function titleQueries(index, text) {
+    if (/\d/.test(String(text == null ? "" : text))) return null;
+    const t = normalise(text);
+    const stripped = stripFiller(t);
+    if (t.length < 3 || !stripped) return null;
+    const known = subjectJoins(index);
+    const out = [];
+    for (const v of [t, stripped]) {
+      if (subjectCandidates(v).some((c) => c.subject in known || c.subject in SUBJECT_NAMES)) return null;
+      if (!out.includes(v)) out.push(v);
+    }
+    return out;
+  }
+  // Whole tokens only: every query word is a word of the title, or every query word
+  // is a word of one instructor's name and one of them is the surname. Title hits
+  // first, then instructor hits, each most-joined first; only courses in the index.
+  function titleHits(index, rows, t) {
+    const q = t.split(" ");
+    const map = indexMap(index);
+    const byTitle = [], byName = [];
+    for (const r of rows) {
+      const row = map[r.key];
+      if (!row) continue;
+      if (q.every((w) => r.title.has(w))) byTitle.push(row);
+      else if (r.names.some((n) => q.includes(n[n.length - 1]) && q.every((w) => n.includes(w)))) byName.push(row);
+    }
+    return byTitle.sort(byJoins).concat(byName.sort(byJoins));
+  }
+  // matchCourse, then the title layer when every code route and the fuzzy pass
+  // missed. The pages' lookups use this; matchCourse stays synchronous for the
+  // combobox, which runs on every keystroke and never fetches titles.
+  async function matchCourseAsync(index, text, meta) {
+    const m = matchCourse(index, text);
+    if (m.layer !== "miss" || !index || !index.courses) return m;
+    const variants = titleQueries(index, text);
+    if (!variants) return m;
+    const rows = await loadTitles(meta || loaded.meta);
+    if (!rows) return m;
+    for (const t of variants) {
+      const ranked = titleHits(index, rows, t);
+      if (ranked.length) return { query: m.query, key: ranked[0].key, row: ranked[0], layer: "title", ranked, nearest: [] };
+    }
+    return m;
+  }
   // "Showing COMPSCI 61A for compsi 61a", printed when the match needed one of the
-  // given layers: the lookup names a forgiven typo; the course page, whose ?c= can
-  // hold anything a link carried, also names a full-name or nickname match.
+  // given layers: the lookup names a forgiven typo or a title match; the course
+  // page, whose ?c= can hold anything a link carried, also names a full-name or
+  // nickname match.
   function showingHtml(m, layers) {
-    if (!m || !m.key || !(layers || ["fuzzy"]).includes(m.layer)) return "";
+    if (!m || !m.key || !(layers || ["fuzzy", "title"]).includes(m.layer)) return "";
     return `<p class="note">Showing <strong>${esc(m.key)}</strong> for <em>${esc(String(m.query).trim())}</em>.</p>`;
   }
   // Ranked suggestions for the combobox: prefix matches on the subject (aliases
@@ -795,7 +864,7 @@ const BWO = (function () {
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, sourceHtml, sourceLabel, stamp, setStamp,
     horizons, keyDates, keyDatesHtml, readCurve, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, levelNote, levelOf,
-    parseQuery, findCourse, matchCourse, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
+    parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
