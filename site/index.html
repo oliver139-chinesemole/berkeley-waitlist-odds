@@ -87,7 +87,8 @@
         <dt>Median time to clear</dt><dd>${esc(BWO.medianText(cell))}</dd>
         <dt>Cases</dt><dd>${esc(BWO.casesHtml(cell, resolved.own))}</dd>
       </dl>
-      <p class="muted small">${BWO.pooledSentence(resolved.pooled, resolved.source, meta)} ${BWO.sourceLabel(meta)}. Central drop scenario; the band is a 95% interval from resampling sections. Read the <a href="methodology.html">methodology</a> before acting on this.</p>
+      ${BWO.ladderHtml(resolved, entry || { key }, bucket, meta)}
+      <p class="muted small">${BWO.sourceLabel(meta)}. Central drop scenario; the band is a 95% interval from resampling sections. Read the <a href="methodology.html">methodology</a> before acting on this.</p>
       <p class="muted small">${BWO.levelNote(meta)}</p>
       <div class="actions"><button type="button" class="quiet" id="copy-link">Copy link</button><button type="button" class="quiet" id="copy-text">Copy as text</button><span id="copied" class="muted small" aria-live="polite"></span></div>
       <p class="muted small">${esc(BWO.VERDICT_NOTE)}</p>
