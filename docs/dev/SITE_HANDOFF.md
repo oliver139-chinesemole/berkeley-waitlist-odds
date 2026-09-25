@@ -15,9 +15,9 @@ Two data regimes exist. Until this project's own Spring 2027 snapshots have clea
 | v2, two pages (`site/index.html`, `site/methodology.html`), data in `site/data/courses.json` + `meta.json` | `main` | **Live.** Serves Fall 2026 (Berkeleytime history), course-level curves, Spring 2027 horizons. |
 | v3, eight pages on shared assets, split data files, course matcher, accuracy page, live-count writer | branch `site-v3`, PR #4 (open, not draft, checks green, untouched since 2026-09-21) | Built and reviewed by a session; waiting for Oliver's browser pass and merge. |
 | P4: v3 data re-exported from the **Spring 2026** cycle with the Spring 2027 calendar; pages name the term from `meta.json` | branch `p4-spring-source`, PR #11 (draft, stacked on `site-v3`) | Reviewed ("with fixes", fixed). Merge after #4, then run `pages.yml`. |
-| Session 7 (2026-09-24): course search Q1 to Q3 and Q8; palette U3 and type U4 | branches `q1-q3-search` (PR #17) and `u3-u4-design` (PR #16), drafts stacked on `site-v3` | Each reviewed by a subagent with one fix round; rebase onto `main` after #4. #16 opens with three decisions for Oliver (the substituted interface face, the gold focus ring, `--rust` on error text and the pooled tag). |
+| Session 7 (2026-09-24): course search Q1 to Q3 and Q8; palette U3 and type U4; the section-board fixture and contract for A3 | branches `q1-q3-search` (PR #17), `u3-u4-design` (PR #16) and `s1-s3-fixture` (PR #19), drafts stacked on `site-v3` | Each reviewed by a subagent with one fix round; rebase onto `main` after #4. #16 opens with three decisions for Oliver (the substituted interface face, the gold focus ring, `--rust` on error text and the pooled tag). |
 
-Merge order for the site: #15 (session 7 docs, any time), #4, then #11, then `gh workflow run pages.yml`, then #17 and #16 rebased onto `main`, then `curl -s https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/data/meta.json | python -m json.tool | head` must show `term_name` Spring 2026, `forecast_term_name` Spring 2027, `estimate_level` course, `data_source` berkeleytime_history.
+Merge order for the site: #15 (session 7 docs, any time), #4, then #11, then `gh workflow run pages.yml`, then #17, #16 and #19 rebased onto `main`, then `curl -s https://oliver139-chinesemole.github.io/berkeley-waitlist-odds/data/meta.json | python -m json.tool | head` must show `term_name` Spring 2026, `forecast_term_name` Spring 2027, `estimate_level` course, `data_source` berkeleytime_history.
 
 ## 3. The v3 site (branch `site-v3`)
 
@@ -73,13 +73,13 @@ From `docs/dev/SITE_V3_PLAN.md` section 13 and MASTER_PLAN section 2: shared ass
 
 Nothing site-side should start before #4 merges (P1): stacking on an unmerged branch produces conflicts, not speed. After #4 and #11:
 
-Session 7 (2026-09-24) worked Track B of `docs/dev/NEXT_2026-09-24.md` while #4 waited: B1 (the methodology sentence, on `site-v3`), B2 (PR #17) and B3 (PR #16) stacked on `site-v3`; B4 was not started because the scraper's stop rule fired (see `docs/dev/HANDOFF.md` session 7).
+Session 7 (2026-09-24) worked Track B of `docs/dev/NEXT_2026-09-24.md` while #4 waited: B1 (the methodology sentence, on `site-v3`), B2 (PR #17) and B3 (PR #16) stacked on `site-v3`; B4 (PR #19: the section-board fixture, the harness hooks and the strict-xfail contract for A3) followed after Oliver's go-ahead; PR #18 adds the `.claude/agents/` definitions (see `docs/dev/HANDOFF.md` session 7).
 
 | ID | Item | Status | Notes |
 | --- | --- | --- | --- |
 | P3 | `live/latest.json` starts being written | lands with #4 | verify the file on the `data` branch after the first run |
 | P6 | GoatCounter on every page | Oliver | needs his site code; visits cannot be backfilled, so before any link is shared |
-| S1 | Live section board: one row per section, enrolled/capacity, waitlist/capacity, seats open, seats open but reserved, "read N minutes ago" | open | wiring over `live/latest.json`; every row says how long ago it was read; never claims to know a student's own position. Session 7 left a ready brief for the fixture and the xfail test (B4 in `docs/dev/NEXT_2026-09-24.md`; the brief text is in `docs/dev/HANDOFF.md` session 7) |
+| S1 | Live section board: one row per section, enrolled/capacity, waitlist/capacity, seats open, seats open but reserved, "read N minutes ago" | open | wiring over `live/latest.json`; every row says how long ago it was read; never claims to know a student's own position. PR #19 (draft, stacked on `site-v3`) carries `tests/fixtures/latest_sample.json` with the four board states, `HARNESS_LIVE_FILE` and `HARNESS_NOW` hooks in the harness, and `tests/test_site_live.py` with a strict-xfail test that pins the board's wording and classes; its body is the A3 implementer's contract |
 | S2 | Reserved-seat line per row from `open_reserved` ("4 seats open, all reserved") | open | registrar's wording. `scraper/live.py` on `site-v3` does **not** emit `reserved_count` or `open_reserved` (its `COLUMNS` stop at `observed_at`; `scraper/schema.py` has both), so A3's data-side change is those two columns plus the selection rule |
 | S3 | Staleness warning when a section is off the priority list and its number is six hours old | open | the priority list is generated (PR #9); `meta`/live file carry the read time |
 | S4 | Section history export: daily waitlist series, admits per week, deepest position that cleared | open | needs own data (after Oct 26) |
