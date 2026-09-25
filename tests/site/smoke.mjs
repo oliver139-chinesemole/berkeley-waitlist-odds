@@ -29,6 +29,7 @@ const PAGES = [
   ["lookup", `index.html?today=${today}&course=${course}&position=3`],
   ["courses", `courses.html?today=${today}`],
   ["course", `course.html?today=${today}&c=${course}&position=3`],
+  ["dept", `dept.html?today=${today}&subject=${encodeURIComponent(courseKey.split(" ")[0])}`],
   ["insights", `insights.html?today=${today}`],
   ["accuracy", `accuracy.html?today=${today}`],
   ["methodology", "methodology.html"],
