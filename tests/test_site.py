@@ -497,6 +497,11 @@ def test_site_js_carries_the_generated_names() -> None:
     compsci, mcellbi, named, nicknames = out["eval"]
     assert compsci == names["names"]["COMPSCI"] and mcellbi == names["names"]["MCELLBI"]
     assert named == len([n for n in names["names"].values() if n]) and nicknames == 5
+    # the Guide's "X, Y" names are stored in reading order, and their Guide spelling travels too
+    assert names["names"]["HISTART"] == "History of Art" and names["aliases"]["HISTART"] == "Art, History of"
+    assert names["names"]["THEATER"] == "Theater, Dance, and Performance Studies" and "THEATER" not in names["aliases"]
+    aliases = render(SITE, expression="BWO.SUBJECT_NAME_ALIASES")["eval"]
+    assert aliases == names["aliases"]
 
 
 def test_verdict_thresholds() -> None:

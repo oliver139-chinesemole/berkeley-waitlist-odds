@@ -37,35 +37,41 @@ const BWO = (function () {
   "CIVENG": "Civil and Environmental Engineering", "CMPBIO": "Computational Biology", "COGSCI": "Cognitive Science",
   "COLWRIT": "College Writing Programs", "COMLIT": "Comparative Literature", "COMPSCI": "Computer Science", "COMPSS": "Computational Social Sciences",
   "CPH": "Computational Precision Health", "CRITTH": "Critical Theory Graduate Group", "CYBER": "Cybersecurity",
-  "CYPLAN": "City and Regional Planning", "DANISH": "Danish", "DATA": "Data Science, Undergraduate", "DATASCI": "Data Science", "DEMOG": "Demography",
+  "CYPLAN": "City and Regional Planning", "DANISH": "Danish", "DATA": "Undergraduate Data Science", "DATASCI": "Data Science", "DEMOG": "Demography",
   "DESINV": "Design Innovation", "DEVENG": "Development Engineering", "DEVP": "Development Practice", "DUTCH": "Dutch",
   "EALANG": "East Asian Languages and Cultures", "ECON": "Economics", "EDSTEM": "CalTeach", "EDUC": "Education",
   "EECS": "Electrical Engineering and Computer Sciences", "EGYPT": "Egyptian", "ELENG": "Electrical Engineering",
   "ENERES": "Energy and Resources Group", "ENGIN": "Engineering", "ENGLISH": "English", "ENVDES": "Environmental Design",
   "ENVECON": "Environmental Economics and Policy", "EPS": "Earth and Planetary Science", "ESPM": "Environmental Science, Policy, and Management",
-  "ETHSTD": "Ethnic Studies", "EWMBA": "Business Administration, Evening/Weekend Masters", "FILIPN": "Filipino", "FILM": "Film and Media",
+  "ETHSTD": "Ethnic Studies", "EWMBA": "Evening/Weekend Masters Business Administration", "FILIPN": "Filipino", "FILM": "Film and Media",
   "FOLKLOR": "Folklore", "FRENCH": "French", "GEOG": "Geography", "GERMAN": "German", "GLOBAL": "Global Studies",
   "GMS": "Global Metropolitan Studies", "GPP": "Global Poverty and Practice", "GREEK": "Greek",
-  "GSPDP": "Graduate Student Professional Development Program", "GWS": "Gender and Women's Studies", "HISTART": "Art, History of",
+  "GSPDP": "Graduate Student Professional Development Program", "GWS": "Gender and Women's Studies", "HISTART": "History of Art",
   "HISTORY": "History", "HMEDSCI": "Health and Medical Sciences", "HUM": "Arts and Humanities", "IAS": "International and Area Studies",
   "INDENG": "Industrial Engineering and Operations Research", "INDONES": "Indonesian", "INFO": "Information", "INTEGBI": "Integrative Biology",
   "ISF": "Interdisciplinary Studies Field Major", "ITALIAN": "Italian Studies", "JAPAN": "Japanese", "JEWISH": "Jewish Studies",
   "JOURN": "Journalism", "KOREAN": "Korean", "LANPRO": "Language Proficiency Program", "LATIN": "Latin", "LAW": "Law",
   "LDARCH": "Landscape Architecture", "LEGALST": "Legal Studies", "LGBT": "Lesbian Gay Bisexual Transgender Studies", "LINGUIS": "Linguistics",
-  "LS": "Letters and Science", "MATH": "Mathematics", "MATSCI": "Materials Science and Engineering", "MBA": "Business Administration, Master",
+  "LS": "Letters and Science", "MATH": "Mathematics", "MATSCI": "Materials Science and Engineering", "MBA": "Master Business Administration",
   "MCELLBI": "Molecular and Cell Biology", "MECENG": "Mechanical Engineering", "MEDIAST": "Media Studies",
   "MELC": "Middle Eastern Languages and Cultures", "MFE": "Financial Engineering", "MILSCI": "Military Science",
   "MPS": "Mathematics and Physical Sciences", "MUSIC": "Music", "NATAMST": "Native American Studies", "NATRES": "Natural Resources",
   "NAVSCI": "Naval Science", "NEU": "Neuroscience", "NUCENG": "Nuclear Engineering", "NUSCTX": "Nutritional Sciences and Toxicology",
-  "NWMEDIA": "New Media", "OPTOM": "Optometry", "PBHLTH": "Public Health", "PERSIAN": "Persian", "PHDBA": "Business Administration, PhD",
+  "NWMEDIA": "New Media", "OPTOM": "Optometry", "PBHLTH": "Public Health", "PERSIAN": "Persian", "PHDBA": "PhD Business Administration",
   "PHILOS": "Philosophy", "PHYSED": "Physical Education", "PHYSICS": "Physics", "PLANTBI": "Plant and Microbial Biology",
   "POLECON": "Political Economy", "POLSCI": "Political Science", "PORTUG": "Portuguese", "PSYCH": "Psychology", "PUBAFF": "Public Affairs",
   "PUBPOL": "Public Policy", "PUNJABI": "Punjabi", "RDEV": "Real Estate Development and Design", "RHETOR": "Rhetoric", "RUSSIAN": "Russian",
   "SASIAN": "South Asian Studies", "SCANDIN": "Scandinavian", "SEASIAN": "Southeast Asian Studies", "SLAVIC": "Slavic Languages and Literatures",
   "SOCIOL": "Sociology", "SOCWEL": "Social Welfare", "SPANISH": "Spanish", "SSEASN": "South and Southeast Asian Studies", "STAT": "Statistics",
-  "STS": "Science and Technology Studies", "THEATER": "Theater, Dance, and Performance Studies", "UGBA": "Business Administration, Undergraduate",
+  "STS": "Science and Technology Studies", "THEATER": "Theater, Dance, and Performance Studies", "UGBA": "Undergraduate Business Administration",
   "UGIS": "Undergraduate Interdisciplinary Studies", "UKRAINI": "Ukrainian", "VIETNMS": "Vietnamese", "VISSCI": "Vision Science",
-  "XMBA": "Business Administration, Executive Master", "YIDDISH": "Yiddish",
+  "XMBA": "Executive Master Business Administration", "YIDDISH": "Yiddish",
+  };
+  // The Guide's own spelling of the names stored in reading order above ("Art, History of").
+  const SUBJECT_NAME_ALIASES = {
+  "DATA": "Data Science, Undergraduate", "EWMBA": "Business Administration, Evening/Weekend Masters", "HISTART": "Art, History of",
+  "MBA": "Business Administration, Master", "PHDBA": "Business Administration, PhD", "UGBA": "Business Administration, Undergraduate",
+  "XMBA": "Business Administration, Executive Master",
   };
   // Hand-written nicknames, from config/course_nicknames.json.
   const COURSE_NICKNAMES = {
@@ -281,11 +287,14 @@ const BWO = (function () {
   function nameIndex() {
     if (!NAME_INDEX) {
       NAME_INDEX = {};
-      for (const code of Object.keys(SUBJECT_NAMES)) {
-        const spaced = normalise(SUBJECT_NAMES[code]);
-        if (spaced && !(spaced in NAME_INDEX)) NAME_INDEX[spaced] = code;
-        const tight = squash(spaced);
-        if (tight && !(tight in NAME_INDEX)) NAME_INDEX[tight] = code;
+      // The reading-order name first, then the Guide's "X, Y" spelling of it.
+      for (const names of [SUBJECT_NAMES, SUBJECT_NAME_ALIASES]) {
+        for (const code of Object.keys(names)) {
+          const spaced = normalise(names[code]);
+          if (spaced && !(spaced in NAME_INDEX)) NAME_INDEX[spaced] = code;
+          const tight = squash(spaced);
+          if (tight && !(tight in NAME_INDEX)) NAME_INDEX[tight] = code;
+        }
       }
     }
     return NAME_INDEX;
@@ -366,6 +375,7 @@ const BWO = (function () {
       for (const subject of Object.keys(known)) {
         add(subject, subject);
         if (SUBJECT_NAMES[subject]) add(squash(normalise(SUBJECT_NAMES[subject])), subject);
+        if (SUBJECT_NAME_ALIASES[subject]) add(squash(normalise(SUBJECT_NAME_ALIASES[subject])), subject);
       }
       for (const key of Object.keys(SUBJECT_ALIASES)) if (SUBJECT_ALIASES[key] in known) add(squash(key), SUBJECT_ALIASES[key]);
       for (const key of Object.keys(nicks().subjects)) if (nicks().subjects[key] in known) add(squash(key), nicks().subjects[key]);
@@ -782,7 +792,7 @@ const BWO = (function () {
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, sourceHtml, sourceLabel, stamp, setStamp,
     horizons, keyDates, keyDatesHtml, readCurve, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, levelNote, levelOf,
     parseQuery, findCourse, matchCourse, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
-    SUBJECT_NAMES, COURSE_NICKNAMES, LAYERS,
+    SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
   };

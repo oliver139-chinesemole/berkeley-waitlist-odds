@@ -17,6 +17,13 @@ which is a JavaScript application with no subject list in its HTML, so the
 script falls back to the last Academic Guide snapshot in the public Internet
 Archive and records *that* URL as the source.
 
+The Guide writes some names back to front, "Business Administration,
+Undergraduate" and "Art, History of"; a name with exactly one comma is stored in
+reading order ("Undergraduate Business Administration", "History of Art") and
+its Guide spelling is kept under "aliases", so both reach the name route.  A
+name with two or more commas is a list ("Theater, Dance, and Performance
+Studies") and is left alone.
+
 The same run rewrites the generated block in ``site/assets/site.js`` (the site
 is static and ships only ``site/``, so the names have to travel in the script)
 and embeds ``config/course_nicknames.json``, which it only ever reads.
@@ -24,7 +31,8 @@ and embeds ``config/course_nicknames.json``, which it only ever reads.
     python scripts/subject_names.py [--index PATH] [--check]
 
 ``--check`` fetches nothing: it only verifies that the committed JSON and the
-block in site.js agree, which is what tests/test_site.py asserts.
+block in site.js agree and that every name is in reading order, which is what
+tests/test_site.py asserts.
 """
 from __future__ import annotations
 
@@ -92,6 +100,15 @@ def parse(page: str) -> dict[str, str]:
     return found
 
 
+def reading_order(name: str) -> str:
+    """ "Art, History of" -> "History of Art"; a name without exactly one comma is returned as it is."""
+    head, sep, tail = name.partition(",")
+    tail = tail.strip()
+    if not sep or "," in tail or not tail or tail.lower().startswith("and "):
+        return name
+    return f"{tail} {head.strip()}"
+
+
 def subjects_in_catalog(index_file: Path = INDEX_FILE) -> list[str]:
     """The subjects of the index being run over, plus every code the committed file already names."""
     index = json.loads(index_file.read_text())
@@ -103,7 +120,7 @@ def nicknames() -> dict[str, str]:
     return json.loads(NICKNAMES_FILE.read_text())["nicknames"]
 
 
-def js_block(names: dict[str, str], nicks: dict[str, str]) -> str:
+def js_block(names: dict[str, str], aliases: dict[str, str], nicks: dict[str, str]) -> str:
     """The lines site.js carries between the generated markers."""
     def literal(mapping: dict[str, str]) -> str:
         """``{ "CODE": "Name", ... }``, wrapped so no line runs past about 150 characters."""
@@ -124,6 +141,8 @@ def js_block(names: dict[str, str], nicks: dict[str, str]) -> str:
         BEGIN,
         "  // Display names for every subject in site/data/index.json, from config/subject_names.json.",
         f"  const SUBJECT_NAMES = {literal(named)};",
+        "  // The Guide's own spelling of the names stored in reading order above (\"Art, History of\").",
+        f"  const SUBJECT_NAME_ALIASES = {literal(aliases)};",
         "  // Hand-written nicknames, from config/course_nicknames.json.",
         f"  const COURSE_NICKNAMES = {literal(nicks)};",
         END,
@@ -131,21 +150,29 @@ def js_block(names: dict[str, str], nicks: dict[str, str]) -> str:
     return "\n".join(lines)
 
 
-def write_js(names: dict[str, str], nicks: dict[str, str]) -> None:
+def write_js(names: dict[str, str], aliases: dict[str, str], nicks: dict[str, str]) -> None:
     source = SITE_JS.read_text()
     start, end = source.find(BEGIN), source.find(END)
     if start < 0 or end < 0:
         raise SystemExit(f"generated markers not found in {SITE_JS}")
-    SITE_JS.write_text(source[:start] + js_block(names, nicks) + source[end + len(END):])
+    SITE_JS.write_text(source[:start] + js_block(names, aliases, nicks) + source[end + len(END):])
 
 
 def check() -> int:
     stored = json.loads(NAMES_FILE.read_text())
-    block = js_block(stored["names"], nicknames())
+    aliases = stored.get("aliases", {})
+    backwards = sorted(code for code, name in stored["names"].items() if reading_order(name) != name)
+    if backwards:
+        print(f"{NAMES_FILE} has names not in reading order: {', '.join(backwards)}; run python scripts/subject_names.py", file=sys.stderr)
+        return 1
+    if any(reading_order(guide) != stored["names"].get(code) for code, guide in aliases.items()):
+        print(f"{NAMES_FILE} has an alias that does not read back to its name; run python scripts/subject_names.py", file=sys.stderr)
+        return 1
+    block = js_block(stored["names"], aliases, nicknames())
     if block not in SITE_JS.read_text():
         print(f"{SITE_JS} is out of date; run python scripts/subject_names.py", file=sys.stderr)
         return 1
-    print(f"{NAMES_FILE.name} and {SITE_JS.name} agree ({len(stored['names'])} subjects)")
+    print(f"{NAMES_FILE.name} and {SITE_JS.name} agree ({len(stored['names'])} subjects, {len(aliases)} in reading order)")
     return 0
 
 
@@ -165,7 +192,9 @@ def main() -> int:
     if not found:
         raise SystemExit("no subjects parsed; the Guide's index has moved again")
 
-    names = {code: found.get(code, MANUAL.get(code, "")) for code in subjects_in_catalog(args.index)}
+    guide = {code: found.get(code, MANUAL.get(code, "")) for code in subjects_in_catalog(args.index)}
+    names = {code: reading_order(name) for code, name in guide.items()}
+    aliases = {code: name for code, name in guide.items() if names[code] != name}
     todo = sorted(code for code, name in names.items() if not name)
     payload = {
         "_source": url,
@@ -173,14 +202,16 @@ def main() -> int:
         "_note": (
             "Generated by scripts/subject_names.py from the Berkeley Academic Guide's subject index "
             "('Name (CODE)'); one code per subject in every course index it has been run over (site/data/index.json "
-            "for Fall 2026 and for Spring 2026), since a code once written is kept. Codes under '_todo' are not "
+            "for Fall 2026 and for Spring 2026), since a code once written is kept. A name the Guide writes 'X, Y' is stored as 'Y X' and its Guide spelling is kept under 'aliases'. "
+            "Codes under '_todo' are not "
             "in the Guide's index and have no name yet. Hand-written nicknames live in course_nicknames.json."
         ),
         "_todo": todo,
         "names": names,
+        "aliases": aliases,
     }
     NAMES_FILE.write_text(json.dumps(payload, indent=2, sort_keys=False) + "\n")
-    write_js(names, nicknames())
+    write_js(names, aliases, nicknames())
     print(f"{len(names) - len(todo)} of {len(names)} subjects named from {url}; {len(todo)} to do: {', '.join(todo) or 'none'}")
     return 0
 
