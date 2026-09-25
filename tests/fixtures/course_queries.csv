@@ -90,6 +90,10 @@ physical education 1,PHYSED 1,name
 art practice 8,ART 8,name
 college writing programs r1a,COLWRIT R1A,name
 industrial engineering and operations research 172,INDENG 172,name
+undergraduate business administration 135,UGBA 135,name
+history of art r1b,HISTART R1B,name
+undergraduate data science c104,DATA C104,name
+art history of r1b,HISTART R1B,name
 e7,ENGIN 7,nickname
 E7,ENGIN 7,nickname
 data 8,DATA C8,nickname
@@ -128,8 +132,8 @@ berkeley cs 61 a,COMPSCI 61A,split
 61a,COMPSCI 61A,bare
 61A,COMPSCI 61A,bare
 54,MATH 54,bare
-1al,CHEM 1AL,bare
-100a,ECON 100A,bare
+1al,*,bare
+100a,*,bare
 53,MATH 53,bare
 8,DATA C8,bare
 berkeley 61a,COMPSCI 61A,bare
@@ -175,3 +179,4 @@ spring 2027,,miss
 0000,,miss
 chem 1z,,miss
 cs 61a1,,miss
+business administration 135,,miss

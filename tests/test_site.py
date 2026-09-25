@@ -15,6 +15,7 @@ import subprocess
 import sys
 from datetime import date
 from pathlib import Path
+from urllib.parse import unquote
 
 import pytest
 
@@ -340,6 +341,22 @@ def test_search_is_forgiving(full_site: Path) -> None:
     assert out["eval"][0] == "MATH 1" and all(k.startswith("MATH 1") for k in out["eval"])
 
 
+def test_search_and_related_before_and_after_the_index_loads() -> None:
+    """searchCourses has matchCourse's guard (nothing loaded yet: no suggestions, no error); relatedCourses ranks the matcher's way."""
+    out = render(Path("/nonexistent"), expression="[null, undefined, {}].map((i) => { try { return BWO.searchCourses(i, 'cs61a', 8); } catch (e) { return String(e); } })")
+    assert out["eval"] == [[], [], []]
+    rows = (
+        "{key: 'MATH 9', subject: 'MATH', joins: 5, buckets: {'6-15': {pooled: false}}},"
+        "{key: 'MATH 2', subject: 'MATH', joins: 5, buckets: {'6-15': {pooled: false}}},"
+        "{key: 'MATH 3', subject: 'MATH', joins: 7, buckets: {'6-15': {pooled: 'MATH'}}},"
+        "{key: 'MATH 4', subject: 'MATH', buckets: {'6-15': {pooled: false}}},"
+        "{key: 'MATH 5', subject: 'MATH', joins: 9, buckets: {'6-15': {pooled: 'all'}}},"
+        "{key: 'MATH 1', subject: 'MATH', joins: 1, buckets: {'6-15': {pooled: false}}}"
+    )
+    out = render(Path("/nonexistent"), expression=f"(function(){{ const i = {{courses: [{rows}]}}; return BWO.relatedCourses(i, i.courses[5], '6-15', 5).map((r) => r.key); }})()")
+    assert out["eval"] == ["MATH 3", "MATH 2", "MATH 9", "MATH 4"]  # joins descending, then key; a missing count is 0
+
+
 def test_cross_listed_number_resolves_with_or_without_the_c(full_site: Path) -> None:
     out = render(full_site, expression="(function(){ const i = {courses: [{key: 'DATA C8', subject: 'DATA', number: 'C8', joins: 5, buckets: {}}, {key: 'DATA 100', subject: 'DATA', number: '100', joins: 1, buckets: {}}]}; return ['data 8', 'DATA C8', 'datac8', 'ds 8', 'ds c8'].map((t) => (BWO.findCourse(i, t) || {}).key); })()")
     assert out["eval"] == ["DATA C8"] * 5
@@ -380,9 +397,8 @@ def test_course_query_fixture_covers_the_table_and_the_misses() -> None:
     assert all(r["expected_key"] == "" for r in misses)
     assert all(r["expected_key"] for r in rows if r["expected_layer"] != "miss")
     layers = {r["expected_layer"] for r in rows}
-    assert layers == {"exact", "alias", "name", "nickname", "filler", "split", "bare", "fuzzy", "miss"}, sorted(layers)
     out = render(SITE, expression="BWO.LAYERS")  # the fixture's vocabulary is the matcher's, not a copy of it
-    assert layers == set(out["eval"]), (sorted(layers), out["eval"])
+    assert out["eval"] and layers == set(out["eval"]), (sorted(layers), out["eval"])
 
 
 def test_course_query_fixture_passes_in_the_node_runner_and_here() -> None:
@@ -497,6 +513,11 @@ def test_site_js_carries_the_generated_names() -> None:
     compsci, mcellbi, named, nicknames = out["eval"]
     assert compsci == names["names"]["COMPSCI"] and mcellbi == names["names"]["MCELLBI"]
     assert named == len([n for n in names["names"].values() if n]) and nicknames == 5
+    # the Guide's "X, Y" names are stored in reading order, and their Guide spelling travels too
+    assert names["names"]["HISTART"] == "History of Art" and names["aliases"]["HISTART"] == "Art, History of"
+    assert names["names"]["THEATER"] == "Theater, Dance, and Performance Studies" and "THEATER" not in names["aliases"]
+    aliases = render(SITE, expression="BWO.SUBJECT_NAME_ALIASES")["eval"]
+    assert aliases == names["aliases"]
 
 
 def test_verdict_thresholds() -> None:
@@ -543,6 +564,17 @@ def test_course_page_shows_every_bucket_and_the_same_headline(course_site: Path)
     assert "Every position" in html and '<th scope="row">positions 1 to 5 <span class="tag">you</span>' in html and "Other COMPSCI courses" in html
     assert "index.html?course=COMPSCI%200&position=3" in html
     assert out["elements"].get("live", {"html": ""})["html"] == ""  # no live file: the block stays hidden, no error
+
+
+def test_course_page_says_which_course_a_forgiven_query_showed() -> None:
+    """Q5 on the course page: a fuzzy, name or nickname match prints the lookup's "Showing X for query" line; an exact key does not."""
+    for query, key in (("compsi%2061a", "COMPSCI 61A"), ("computer%20science%2061a", "COMPSCI 61A"), ("e7", "ENGIN 7")):
+        out = render(SITE, page="course.html", search=f"?c={query}")
+        assert f'Showing <strong>{key}</strong> for <em>{unquote(query)}</em>.' in out["status"], (query, out["status"])
+        assert out["title"].startswith(key)
+    for query in ("COMPSCI%2061A", "cs61a"):  # exact, and an alias: nothing was forgiven
+        out = render(SITE, page="course.html", search=f"?c={query}")
+        assert "Showing" not in out["status"] and out["title"].startswith("COMPSCI 61A"), (query, out["status"])
 
 
 def test_course_page_without_a_course(full_site: Path) -> None:
