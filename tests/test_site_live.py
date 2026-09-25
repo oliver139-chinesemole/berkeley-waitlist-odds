@@ -69,6 +69,8 @@ def test_the_block_renders_only_this_courses_sections(live_site: Path) -> None:
         row = row_of(body, label)
         assert enrolled in row and waitlist in row, label
     assert "3 min ago" in html  # the newest row's age, against the pinned clock
+    # render passes the shell's environment through, so this one fails if you export
+    # HARNESS_LIVE_FILE yourself; unset it rather than weakening the assertion.
     without = render(live_site, page="course.html", search=SEARCH)
     assert board(without) == ""  # no live file, no block, no error
 
