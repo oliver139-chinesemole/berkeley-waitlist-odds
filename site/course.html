@@ -68,7 +68,8 @@
         <p class="muted">${esc(row.key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${resolved ? BWO.pooledTag(resolved.pooled, resolved.source, meta) : ""}</p>
         ${head.html}
         ${resolved && resolved.cell ? `<dl class="kv"><dt>Median time to clear</dt><dd>${esc(BWO.medianText(resolved.cell))}</dd><dt>Cases</dt><dd>${esc(BWO.casesHtml(resolved.cell, resolved.own))}</dd></dl>` : ""}
-        <p class="muted small">${resolved ? BWO.pooledSentence(resolved.pooled, resolved.source, meta) : ""} ${BWO.sourceLabel(meta)}. <a href="${BWO.withToday(`index.html?course=${encodeURIComponent(row.key)}&position=${pos}`)}">Open in the lookup</a> for the by-when table and a shareable card.</p>
+        ${BWO.ladderHtml(resolved, entry, bucket, meta)}
+        <p class="muted small">${BWO.sourceLabel(meta)}. <a href="${BWO.withToday(`index.html?course=${encodeURIComponent(row.key)}&position=${pos}`)}">Open in the lookup</a> for the by-when table and a shareable card.</p>
         <p class="muted small">${BWO.levelNote(meta)}</p>
       </section>
       <h2>Every position</h2>

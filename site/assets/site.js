@@ -247,12 +247,38 @@ const BWO = (function () {
     const what = source === "all" ? "all courses" : source === "level" ? `all ${esc(pooled)}-division courses` : `the whole ${esc(pooled)} department`;
     return `<span class="tag pooled" title="Too few cases for this course alone; estimate uses ${what}">pooled</span>`;
   }
-  function pooledSentence(pooled, source, meta) {
-    if (pooled === false || pooled == null) return "";
-    if (source === "all") return "Pooled over all courses at these positions.";
-    if (source === "level") return `Pooled over all ${esc(pooled)}-division courses at these positions.`;
-    if (estimateLevel(meta) === "dept") return `Department estimate: the whole ${esc(pooled)} department at these positions.`;
-    return `Pooled over the whole ${esc(pooled)} department at these positions.`;
+  // The fallback ladder (S5): which curve is shown and why the rung above it was
+  // passed over, from the counts in the data files (cell.n, own.n_course, meta.min_n);
+  // then the section rung, which has no curves yet.
+  const SECTION_RUNG = "Section curves need this project's own Spring 2027 snapshots; none exist before Oct 26, 2026.";
+  function deptText(d) { return d === "OTHER" ? "the other departments" : `the ${esc(d)} department`; }
+  // The ladder's first sentence. `resolved` is BWO.resolveCell's or BWO.fallbackCell's result;
+  // `entry` carries the course key and dept_group (a stub for a course with no data).
+  function pooledSentence(resolved, entry, bucket, meta) {
+    if (!resolved || !resolved.cell) return "";
+    const key = esc(entry && entry.key ? entry.key : "This course");
+    const where = bucketText(bucket);
+    const n = num(resolved.cell.n);
+    if (resolved.source === "course") return `This curve: ${key}, ${where}, n&nbsp;=&nbsp;${n}.`;
+    const minN = num(meta && meta.min_n ? meta.min_n : 30);
+    const own = resolved.own;
+    const course = own ? `${key} had ${plural(own.n_course, "case")}` : `${key} had no cases`;
+    let what, why;
+    if (resolved.source === "dept") {
+      what = deptText(resolved.pooled);
+      why = !own ? course : estimateLevel(meta) === "dept" ? `estimates are by department; ${course}` : `${course}, fewer than ${minN}`;
+    } else {
+      what = resolved.source === "level" ? `all ${esc(resolved.pooled)}-division courses` : "all courses";
+      why = own ? `${course}, fewer than ${minN}` : course;
+      // An "all" cell exists only because the department's pool for the bucket did not: it had fewer than min_n.
+      const dept = entry && entry.dept_group;
+      if (resolved.source === "all" && own && dept) why += `; ${deptText(dept)} also had fewer than ${minN}`;
+    }
+    return `This curve: ${what}, ${where} (${why}), n&nbsp;=&nbsp;${n}.`;
+  }
+  function ladderHtml(resolved, entry, bucket, meta) {
+    if (!resolved || !resolved.cell) return "";
+    return `<p class="muted small ladder">${pooledSentence(resolved, entry, bucket, meta)} ${SECTION_RUNG}</p>`;
   }
   // One sentence on the rule, for the pages' small print.
   function levelNote(meta) {
@@ -867,7 +893,7 @@ const BWO = (function () {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, sourceHtml, sourceLabel, stamp, setStamp,
-    horizons, keyDates, keyDatesHtml, readCurve, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, levelNote, levelOf,
+    horizons, keyDates, keyDatesHtml, readCurve, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf,
     parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
