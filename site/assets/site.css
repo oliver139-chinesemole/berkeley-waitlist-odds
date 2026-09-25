@@ -143,6 +143,13 @@ tr.course td .sub { color: var(--muted); font-size: .85rem; display: block; }
   table.twoline td.rest { grid-column: 1 / -1; color: var(--muted); font-size: .85rem; }
   table.twoline td.num { text-align: right; }
 }
+/* live section board: the position ramp as a status cue, light to dark, never a traffic light */
+.status-open, .status-waitlist, .status-full, .status-reserved { border-left: 4px solid var(--ramp); padding-left: .6rem; font-weight: 600; }
+.status-open { --ramp: var(--s1); }
+.status-waitlist { --ramp: var(--s2); }
+.status-full { --ramp: var(--s3); }
+.status-reserved { --ramp: var(--s4); }
+.stale { color: var(--muted); }
 
 /* charts */
 .chart { margin: 1rem 0 .25rem; }
