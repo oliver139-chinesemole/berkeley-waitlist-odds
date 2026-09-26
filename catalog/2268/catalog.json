@@ -47255,10 +47255,10 @@
 "class_number": "001",
 "component": "LAB",
 "course_key": "PHYSICS 111B",
-"instructors": "Yury Kolomensky, Heather M Gray",
+"instructors": "Yury Kolomensky, Heather M Gray, Jordan Reilly Werner, Mira Sydney Littmann, Isabel Martine Sacksteder, Aditi Babitha Anand",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T09:51:10.834542+00:00",
+"probed_at": "2026-09-26T05:28:14.075114+00:00",
 "section_id": "23069",
 "section_number": "001",
 "subject": "PHYSICS",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-26T04:56:22.055690+00:00",
+"updated_at": "2026-09-26T05:28:30.266969+00:00",
 "version": 3
 }
