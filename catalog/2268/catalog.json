@@ -39848,7 +39848,7 @@
 "instructors": "",
 "last_status": 404,
 "node_id": 532204,
-"probed_at": "2026-09-21T17:59:38.949727+00:00",
+"probed_at": "2026-09-28T18:20:19.279054+00:00",
 "section_id": "34949",
 "section_number": "001",
 "subject": "MELC",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-28T17:20:00.426451+00:00",
+"updated_at": "2026-09-28T18:20:20.437775+00:00",
 "version": 3
 }
