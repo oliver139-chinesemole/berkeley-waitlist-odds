@@ -42590,10 +42590,10 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "NORWEGN 1A",
-"instructors": "Lotta Linnea Weckstrom",
+"instructors": "Lotta Linnea Weckstrom, Andrea Guttormsen Wetzler",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T09:50:59.557046+00:00",
+"probed_at": "2026-09-28T21:49:40.851297+00:00",
 "section_id": "22691",
 "section_number": "001",
 "subject": "NORWEGN",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-28T21:21:07.500766+00:00",
+"updated_at": "2026-09-28T21:50:14.424620+00:00",
 "version": 3
 }
