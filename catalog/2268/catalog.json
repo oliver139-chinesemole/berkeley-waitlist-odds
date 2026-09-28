@@ -34940,10 +34940,10 @@
 "class_number": "117",
 "component": "DIS",
 "course_key": "MATH 52",
-"instructors": "",
+"instructors": "Jenna Caroline Plute",
 "last_status": 200,
 "node_id": 531808,
-"probed_at": "2026-09-24T09:38:28.018596+00:00",
+"probed_at": "2026-09-28T18:38:41.995326+00:00",
 "section_id": "27503",
 "section_number": "117",
 "subject": "MATH",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-28T18:20:20.437775+00:00",
+"updated_at": "2026-09-28T18:53:35.550853+00:00",
 "version": 3
 }
