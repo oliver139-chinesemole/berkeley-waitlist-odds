@@ -4265,10 +4265,10 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "BUDDSTD C220",
-"instructors": "",
+"instructors": "Bhikkhuni Dhammadinna",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T15:24:57.499505+00:00",
+"probed_at": "2026-09-28T21:18:56.516193+00:00",
 "section_id": "32278",
 "section_number": "001",
 "subject": "BUDDSTD",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-28T20:51:44.844273+00:00",
+"updated_at": "2026-09-28T21:21:07.500766+00:00",
 "version": 3
 }
