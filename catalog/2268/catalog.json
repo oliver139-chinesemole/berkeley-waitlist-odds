@@ -38420,10 +38420,10 @@
 "class_number": "G01",
 "component": "SEM",
 "course_key": "MCELLBI 293A",
-"instructors": "",
+"instructors": "Sarah A Stanley",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T13:24:30.138596+00:00",
+"probed_at": "2026-09-28T19:20:29.723446+00:00",
 "section_id": "22556",
 "section_number": "G01",
 "subject": "MCELLBI",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-28T18:53:35.550853+00:00",
+"updated_at": "2026-09-28T19:21:12.826249+00:00",
 "version": 3
 }
