@@ -55325,10 +55325,10 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "SSEASN C220",
-"instructors": "",
+"instructors": "Bhikkhuni Dhammadinna",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T10:52:45.999814+00:00",
+"probed_at": "2026-09-29T04:51:20.476563+00:00",
 "section_id": "27206",
 "section_number": "001",
 "subject": "SSEASN",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-29T04:20:13.859752+00:00",
+"updated_at": "2026-09-29T04:51:25.572319+00:00",
 "version": 3
 }
