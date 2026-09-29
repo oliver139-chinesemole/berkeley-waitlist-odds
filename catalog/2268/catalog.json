@@ -51170,10 +51170,10 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "PSYCH 237S",
-"instructors": "",
+"instructors": "Nancy H Liu",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T10:25:29.004387+00:00",
+"probed_at": "2026-09-29T04:19:56.500558+00:00",
 "section_id": "24794",
 "section_number": "001",
 "subject": "PSYCH",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-29T02:51:20.330232+00:00",
+"updated_at": "2026-09-29T04:20:13.859752+00:00",
 "version": 3
 }
