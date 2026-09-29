@@ -2510,10 +2510,10 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "ARESEC 201",
-"instructors": "",
+"instructors": "Thibault Fally",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T11:50:58.120976+00:00",
+"probed_at": "2026-09-29T23:48:28.244057+00:00",
 "section_id": "28625",
 "section_number": "001",
 "subject": "ARESEC",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-29T18:51:19.456234+00:00",
+"updated_at": "2026-09-29T23:50:36.290852+00:00",
 "version": 3
 }
