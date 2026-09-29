@@ -28835,10 +28835,10 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "HMEDSCI 261PA",
-"instructors": "Leanna W Lewis, Jenny Espinoza",
+"instructors": "Leanna W Lewis",
 "last_status": 200,
 "node_id": 531559,
-"probed_at": "2026-09-24T12:52:20.427764+00:00",
+"probed_at": "2026-09-29T18:49:53.125626+00:00",
 "section_id": "34600",
 "section_number": "001",
 "subject": "HMEDSCI",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-29T04:51:25.572319+00:00",
+"updated_at": "2026-09-29T18:51:19.456234+00:00",
 "version": 3
 }
