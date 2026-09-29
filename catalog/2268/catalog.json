@@ -16190,10 +16190,10 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "EALANG C220",
-"instructors": "",
+"instructors": "Bhikkhuni Dhammadinna",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T14:51:56.532071+00:00",
+"probed_at": "2026-09-29T02:49:26.094663+00:00",
 "section_id": "32283",
 "section_number": "001",
 "subject": "EALANG",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-28T21:50:14.424620+00:00",
+"updated_at": "2026-09-29T02:51:20.330232+00:00",
 "version": 3
 }
