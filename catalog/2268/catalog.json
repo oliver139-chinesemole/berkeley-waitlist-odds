@@ -2000,10 +2000,10 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "ARCH 203",
-"instructors": "David Jaehning",
+"instructors": "David Jaehning, Ramon Weber",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T12:51:24.708860+00:00",
+"probed_at": "2026-09-30T01:18:48.897197+00:00",
 "section_id": "33545",
 "section_number": "001",
 "subject": "ARCH",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-29T23:50:36.290852+00:00",
+"updated_at": "2026-09-30T01:20:50.180339+00:00",
 "version": 3
 }
