@@ -22700,10 +22700,10 @@
 "class_number": "105",
 "component": "LAB",
 "course_key": "EPS 109",
-"instructors": "",
+"instructors": "Cora Anna Constantinescu",
 "last_status": 200,
 "node_id": 531404,
-"probed_at": "2026-09-24T12:52:05.416840+00:00",
+"probed_at": "2026-10-01T07:00:16.575500+00:00",
 "section_id": "25528",
 "section_number": "105",
 "subject": "EPS",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-09-30T13:59:18.580932+00:00",
+"updated_at": "2026-10-01T07:00:58.449424+00:00",
 "version": 3
 }
