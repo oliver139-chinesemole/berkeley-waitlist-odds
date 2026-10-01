@@ -49340,10 +49340,10 @@
 "class_number": "050",
 "component": "SEM",
 "course_key": "PLANTBI 292",
-"instructors": "Norma Cecilia Martinez Gomez",
+"instructors": "Cecilia Cecilia Martinez Gomez",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T15:26:41.280994+00:00",
+"probed_at": "2026-10-01T21:29:19.650029+00:00",
 "section_id": "13484",
 "section_number": "050",
 "subject": "PLANTBI",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-01T07:00:58.449424+00:00",
+"updated_at": "2026-10-01T21:29:43.969239+00:00",
 "version": 3
 }
