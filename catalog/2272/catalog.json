@@ -19442,6 +19442,21 @@
 },
 {
 "catalog_number": "R1A",
+"class_number": "016",
+"component": "SEM",
+"course_key": "COLWRIT R1A",
+"instructors": "Tory Adkisson",
+"last_status": null,
+"node_id": 541909,
+"probed_at": null,
+"section_id": "",
+"section_number": "016",
+"subject": "COLWRIT",
+"title": "Accelerated Reading and Composition",
+"url_path": "/content/2027-spring-colwrit-r1a-016-sem-016"
+},
+{
+"catalog_number": "R1A",
 "class_number": "017",
 "component": "SEM",
 "course_key": "COLWRIT R1A",
@@ -107029,6 +107044,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-04T07:31:06.144189+00:00",
+"updated_at": "2026-10-04T22:30:39.950916+00:00",
 "version": 3
 }
