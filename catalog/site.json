@@ -1,6 +1,10 @@
 {
-"max_node_probed": 538279,
+"max_node_probed": 538674,
 "max_node_seen": 541829,
-"retry_ids": [],
-"updated_at": "2026-10-04T01:00:48.782111+00:00"
+"retry_ids": [
+538291,
+538292,
+538515
+],
+"updated_at": "2026-10-04T01:31:12.448396+00:00"
 }
