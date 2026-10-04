@@ -52681,6 +52681,21 @@
 "url_path": "/content/2027-spring-indeng-221-01-lec-01"
 },
 {
+"catalog_number": "221",
+"class_number": "101",
+"component": "DIS",
+"course_key": "INDENG 221",
+"instructors": "",
+"last_status": null,
+"node_id": 541912,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "INDENG",
+"title": "Introduction to Financial Engineering",
+"url_path": "/content/2027-spring-indeng-221-101-dis-101"
+},
+{
 "catalog_number": "222",
 "class_number": "001",
 "component": "LEC",
@@ -74056,6 +74071,36 @@
 "url_path": "/content/2027-spring-music-42-001-lab-001"
 },
 {
+"catalog_number": "44",
+"class_number": "001",
+"component": "STD",
+"course_key": "MUSIC 44",
+"instructors": "Nikolas S P Nackley",
+"last_status": null,
+"node_id": 541917,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MUSIC",
+"title": "Voice Class",
+"url_path": "/content/2027-spring-music-44-001-std-001"
+},
+{
+"catalog_number": "44",
+"class_number": "002",
+"component": "STD",
+"course_key": "MUSIC 44",
+"instructors": "Nikolas S P Nackley",
+"last_status": null,
+"node_id": 541918,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "MUSIC",
+"title": "Voice Class",
+"url_path": "/content/2027-spring-music-44-002-std-002"
+},
+{
 "catalog_number": "45M",
 "class_number": "001",
 "component": "STD",
@@ -74069,6 +74114,21 @@
 "subject": "MUSIC",
 "title": "Elementary Piano",
 "url_path": "/content/2027-spring-music-45m-001-std-001"
+},
+{
+"catalog_number": "48",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MUSIC 48",
+"instructors": "Melanie M Acosta",
+"last_status": null,
+"node_id": 541919,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MUSIC",
+"title": "Introduction to Music Therapy",
+"url_path": "/content/2027-spring-music-48-001-lec-001"
 },
 {
 "catalog_number": "57",
@@ -74192,6 +74252,36 @@
 },
 {
 "catalog_number": "R1B",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MUSIC R1B",
+"instructors": "Ian Mahanpour",
+"last_status": null,
+"node_id": 541913,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MUSIC",
+"title": "Reading and Writing about Music",
+"url_path": "/content/2027-spring-music-r1b-001-lec-001"
+},
+{
+"catalog_number": "R1B",
+"class_number": "002",
+"component": "LEC",
+"course_key": "MUSIC R1B",
+"instructors": "Kristine L Barrett",
+"last_status": null,
+"node_id": 541914,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "MUSIC",
+"title": "Reading and Writing about Music",
+"url_path": "/content/2027-spring-music-r1b-002-lec-002"
+},
+{
+"catalog_number": "R1B",
 "class_number": "003",
 "component": "LEC",
 "course_key": "MUSIC R1B",
@@ -74204,6 +74294,36 @@
 "subject": "MUSIC",
 "title": "Reading and Writing about Music",
 "url_path": "/content/2027-spring-music-r1b-003-lec-003"
+},
+{
+"catalog_number": "R1B",
+"class_number": "004",
+"component": "LEC",
+"course_key": "MUSIC R1B",
+"instructors": "Soren Edward Nyhus",
+"last_status": null,
+"node_id": 541915,
+"probed_at": null,
+"section_id": "",
+"section_number": "004",
+"subject": "MUSIC",
+"title": "Reading and Writing about Music",
+"url_path": "/content/2027-spring-music-r1b-004-lec-004"
+},
+{
+"catalog_number": "R1B",
+"class_number": "005",
+"component": "LEC",
+"course_key": "MUSIC R1B",
+"instructors": "Emily Louise Jones, Mary Ann Smart",
+"last_status": null,
+"node_id": 541916,
+"probed_at": null,
+"section_id": "",
+"section_number": "005",
+"subject": "MUSIC",
+"title": "Reading and Writing about Music",
+"url_path": "/content/2027-spring-music-r1b-005-lec-005"
 },
 {
 "catalog_number": "100",
@@ -107044,6 +107164,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-04T22:30:39.950916+00:00",
+"updated_at": "2026-10-04T23:32:50.863174+00:00",
 "version": 3
 }
