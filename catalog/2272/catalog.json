@@ -90991,6 +90991,21 @@
 "url_path": "/content/2027-spring-polsci-143c-102-dis-102"
 },
 {
+"catalog_number": "146A",
+"class_number": "001",
+"component": "LEC",
+"course_key": "POLSCI 146A",
+"instructors": "Martha A Wilfahrt",
+"last_status": null,
+"node_id": 541920,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "POLSCI",
+"title": "African Politics",
+"url_path": "/content/2027-spring-polsci-146a-001-lec-001"
+},
+{
 "catalog_number": "147G",
 "class_number": "001",
 "component": "LEC",
@@ -99376,6 +99391,21 @@
 "url_path": "/content/2027-spring-sociol-r1b-001-sem-001"
 },
 {
+"catalog_number": "R1B",
+"class_number": "002",
+"component": "SEM",
+"course_key": "SOCIOL R1B",
+"instructors": "Lorraine Cruz Del Rio",
+"last_status": null,
+"node_id": 541921,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "SOCIOL",
+"title": "Sociological Reading & Composition",
+"url_path": "/content/2027-spring-sociol-r1b-002-sem-002"
+},
+{
 "catalog_number": "110",
 "class_number": "001",
 "component": "LEC",
@@ -107164,6 +107194,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-04T23:32:50.863174+00:00",
+"updated_at": "2026-10-05T01:00:37.473018+00:00",
 "version": 3
 }
