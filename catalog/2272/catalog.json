@@ -95761,6 +95761,21 @@
 "url_path": "/content/2027-spring-pubpol-210b-002-lec-002"
 },
 {
+"catalog_number": "220",
+"class_number": "001",
+"component": "LEC",
+"course_key": "PUBPOL 220",
+"instructors": "Nancy A Beninati",
+"last_status": null,
+"node_id": 541922,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "PUBPOL",
+"title": "Law and Public Policy",
+"url_path": "/content/2027-spring-pubpol-220-001-lec-001"
+},
+{
 "catalog_number": "240B",
 "class_number": "001",
 "component": "LEC",
@@ -107194,6 +107209,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-05T01:00:37.473018+00:00",
+"updated_at": "2026-10-05T22:30:55.810252+00:00",
 "version": 3
 }
