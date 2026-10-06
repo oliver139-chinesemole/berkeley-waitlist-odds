@@ -56476,6 +56476,21 @@
 "url_path": "/content/2027-spring-japan-c115-102-dis-102"
 },
 {
+"catalog_number": "100",
+"class_number": "001",
+"component": "LEC",
+"course_key": "JEWISH 100",
+"instructors": "Ori J Ganor",
+"last_status": null,
+"node_id": 541953,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "JEWISH",
+"title": "Introduction to Jewish Religion, Culture, and People",
+"url_path": "/content/2027-spring-jewish-100-001-lec-001"
+},
+{
 "catalog_number": "102",
 "class_number": "001",
 "component": "LEC",
@@ -56521,6 +56536,21 @@
 "url_path": "/content/2027-spring-jewish-110-001-lec-001"
 },
 {
+"catalog_number": "117",
+"class_number": "001",
+"component": "LEC",
+"course_key": "JEWISH 117",
+"instructors": "",
+"last_status": null,
+"node_id": 541954,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "JEWISH",
+"title": "Special Topics in Antisemitism",
+"url_path": "/content/2027-spring-jewish-117-001-lec-001"
+},
+{
 "catalog_number": "120",
 "class_number": "001",
 "component": "LEC",
@@ -56534,6 +56564,21 @@
 "subject": "JEWISH",
 "title": "Special Topics in Jewish Studies",
 "url_path": "/content/2027-spring-jewish-120-001-lec-001"
+},
+{
+"catalog_number": "120A",
+"class_number": "001",
+"component": "LEC",
+"course_key": "JEWISH 120A",
+"instructors": "",
+"last_status": null,
+"node_id": 541955,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "JEWISH",
+"title": "Special Topics in Jewish Languages and Literature",
+"url_path": "/content/2027-spring-jewish-120a-001-lec-001"
 },
 {
 "catalog_number": "120A",
@@ -56639,6 +56684,21 @@
 "subject": "JEWISH",
 "title": "History of Modern Israel: From the Emergence of Zionism to Our Time",
 "url_path": "/content/2027-spring-jewish-175e-001-lec-001"
+},
+{
+"catalog_number": "200",
+"class_number": "001",
+"component": "SEM",
+"course_key": "JEWISH 200",
+"instructors": "Ethan Benjamin Katz",
+"last_status": null,
+"node_id": 541956,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "JEWISH",
+"title": "Advanced Topics in Jewish Studies",
+"url_path": "/content/2027-spring-jewish-200-001-sem-001"
 },
 {
 "catalog_number": "290",
@@ -107584,6 +107644,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-06T18:30:41.557328+00:00",
+"updated_at": "2026-10-06T19:00:50.917457+00:00",
 "version": 3
 }
