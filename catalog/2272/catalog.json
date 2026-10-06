@@ -19862,6 +19862,36 @@
 },
 {
 "catalog_number": "R4A",
+"class_number": "005",
+"component": "SEM",
+"course_key": "COLWRIT R4A",
+"instructors": "Donnett M Flash",
+"last_status": null,
+"node_id": 541927,
+"probed_at": null,
+"section_id": "",
+"section_number": "005",
+"subject": "COLWRIT",
+"title": "Reading and Composition",
+"url_path": "/content/2027-spring-colwrit-r4a-005-sem-005"
+},
+{
+"catalog_number": "R4A",
+"class_number": "007",
+"component": "SEM",
+"course_key": "COLWRIT R4A",
+"instructors": "Ryan R Sloan",
+"last_status": null,
+"node_id": 541928,
+"probed_at": null,
+"section_id": "",
+"section_number": "007",
+"subject": "COLWRIT",
+"title": "Reading and Composition",
+"url_path": "/content/2027-spring-colwrit-r4a-007-sem-007"
+},
+{
+"catalog_number": "R4A",
 "class_number": "008",
 "component": "SEM",
 "course_key": "COLWRIT R4A",
@@ -19904,6 +19934,21 @@
 "subject": "COLWRIT",
 "title": "Reading and Composition",
 "url_path": "/content/2027-spring-colwrit-r4a-010-sem-010"
+},
+{
+"catalog_number": "R4A",
+"class_number": "011",
+"component": "SEM",
+"course_key": "COLWRIT R4A",
+"instructors": "Kaya Oakes",
+"last_status": null,
+"node_id": 541929,
+"probed_at": null,
+"section_id": "",
+"section_number": "011",
+"subject": "COLWRIT",
+"title": "Reading and Composition",
+"url_path": "/content/2027-spring-colwrit-r4a-011-sem-011"
 },
 {
 "catalog_number": "R4A",
@@ -20114,6 +20159,21 @@
 "subject": "COLWRIT",
 "title": "Reading, Composition, and Research",
 "url_path": "/content/2027-spring-colwrit-r4b-013-sem-013"
+},
+{
+"catalog_number": "R4B",
+"class_number": "015",
+"component": "SEM",
+"course_key": "COLWRIT R4B",
+"instructors": "Jordan A Ruyle",
+"last_status": null,
+"node_id": 541930,
+"probed_at": null,
+"section_id": "",
+"section_number": "015",
+"subject": "COLWRIT",
+"title": "Reading, Composition, and Research",
+"url_path": "/content/2027-spring-colwrit-r4b-015-sem-015"
 },
 {
 "catalog_number": "R4B",
@@ -107254,6 +107314,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-06T16:29:10.116628+00:00",
+"updated_at": "2026-10-06T17:00:35.336024+00:00",
 "version": 3
 }
