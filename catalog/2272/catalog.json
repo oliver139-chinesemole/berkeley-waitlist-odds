@@ -96346,6 +96346,21 @@
 "url_path": "/content/2027-spring-pubpol-205-006-sem-006"
 },
 {
+"catalog_number": "205",
+"class_number": "007",
+"component": "SEM",
+"course_key": "PUBPOL 205",
+"instructors": "Peter Douglas Linquiti",
+"last_status": null,
+"node_id": 541969,
+"probed_at": null,
+"section_id": "",
+"section_number": "007",
+"subject": "PUBPOL",
+"title": "Advanced Policy Analysis",
+"url_path": "/content/2027-spring-pubpol-205-007-sem-007"
+},
+{
 "catalog_number": "210B",
 "class_number": "001",
 "component": "LEC",
@@ -99134,6 +99149,21 @@
 "subject": "SOCIOL",
 "title": "Social Policy",
 "url_path": "/content/2027-spring-sociol-148-001-lec-001"
+},
+{
+"catalog_number": "149",
+"class_number": "001",
+"component": "LEC",
+"course_key": "SOCIOL 149",
+"instructors": "Reuben Jonathan Miller",
+"last_status": null,
+"node_id": 541970,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "SOCIOL",
+"title": "Selected Topics in Sociology of Politics and Social Change",
+"url_path": "/content/2027-spring-sociol-149-001-lec-001"
 },
 {
 "catalog_number": "150",
@@ -107824,6 +107854,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-06T20:00:54.193967+00:00",
+"updated_at": "2026-10-06T20:30:36.893290+00:00",
 "version": 3
 }
