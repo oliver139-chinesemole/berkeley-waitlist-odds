@@ -104806,6 +104806,21 @@
 "url_path": "/content/2027-spring-theater-r1a-001-lec-001"
 },
 {
+"catalog_number": "R1A",
+"class_number": "003",
+"component": "LEC",
+"course_key": "THEATER R1A",
+"instructors": "Fernando Antonio Martinez",
+"last_status": null,
+"node_id": 541971,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "THEATER",
+"title": "Performance: Writing and Research",
+"url_path": "/content/2027-spring-theater-r1a-003-lec-003"
+},
+{
 "catalog_number": "R1B",
 "class_number": "001",
 "component": "LEC",
@@ -107854,6 +107869,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-06T20:30:36.893290+00:00",
+"updated_at": "2026-10-06T21:00:43.044548+00:00",
 "version": 3
 }
