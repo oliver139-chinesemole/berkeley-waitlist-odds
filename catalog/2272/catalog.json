@@ -50566,6 +50566,36 @@
 "url_path": "/content/2027-spring-history-126b-001-lec-001"
 },
 {
+"catalog_number": "126B",
+"class_number": "101",
+"component": "DIS",
+"course_key": "HISTORY 126B",
+"instructors": "",
+"last_status": null,
+"node_id": 541948,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "HISTORY",
+"title": "Mexican American Histories",
+"url_path": "/content/2027-spring-history-126b-101-dis-101"
+},
+{
+"catalog_number": "126B",
+"class_number": "102",
+"component": "DIS",
+"course_key": "HISTORY 126B",
+"instructors": "",
+"last_status": null,
+"node_id": 541949,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "HISTORY",
+"title": "Mexican American Histories",
+"url_path": "/content/2027-spring-history-126b-102-dis-102"
+},
+{
 "catalog_number": "133A",
 "class_number": "001",
 "component": "LEC",
@@ -50954,6 +50984,21 @@
 "subject": "HISTORY",
 "title": "Immigrants and Immigration as U.S. History",
 "url_path": "/content/2027-spring-history-137ac-108-dis-108"
+},
+{
+"catalog_number": "150B",
+"class_number": "001",
+"component": "LEC",
+"course_key": "HISTORY 150B",
+"instructors": "Robert John Iafolla",
+"last_status": null,
+"node_id": 541950,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "HISTORY",
+"title": "Medieval England: from the Conquest to 1485",
+"url_path": "/content/2027-spring-history-150b-001-lec-001"
 },
 {
 "catalog_number": "152A",
@@ -53581,6 +53626,21 @@
 "url_path": "/content/2027-spring-info-217a-001-lec-001"
 },
 {
+"catalog_number": "230",
+"class_number": "001",
+"component": "LEC",
+"course_key": "INFO 230",
+"instructors": "Tim Tangherlini",
+"last_status": null,
+"node_id": 541951,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "INFO",
+"title": "Cultural Analytics: Theories and Methods",
+"url_path": "/content/2027-spring-info-230-001-lec-001"
+},
+{
 "catalog_number": "251",
 "class_number": "001",
 "component": "LEC",
@@ -53594,6 +53654,21 @@
 "subject": "INFO",
 "title": "Applied Machine Learning",
 "url_path": "/content/2027-spring-info-251-001-lec-001"
+},
+{
+"catalog_number": "251",
+"class_number": "101",
+"component": "DIS",
+"course_key": "INFO 251",
+"instructors": "Joshua Evan Blumenstock",
+"last_status": null,
+"node_id": 541952,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "INFO",
+"title": "Applied Machine Learning",
+"url_path": "/content/2027-spring-info-251-101-dis-101"
 },
 {
 "catalog_number": "253B",
@@ -107509,6 +107584,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-06T18:00:58.837163+00:00",
+"updated_at": "2026-10-06T18:30:41.557328+00:00",
 "version": 3
 }
