@@ -40336,6 +40336,36 @@
 "url_path": "/content/2027-spring-english-r45c-104-dis-104"
 },
 {
+"catalog_number": "R45C",
+"class_number": "105",
+"component": "DIS",
+"course_key": "ENGLISH R45C",
+"instructors": "",
+"last_status": null,
+"node_id": 541941,
+"probed_at": null,
+"section_id": "",
+"section_number": "105",
+"subject": "ENGLISH",
+"title": "Literature in English: The Mid-19th through the Mid-20th Century",
+"url_path": "/content/2027-spring-english-r45c-105-dis-105"
+},
+{
+"catalog_number": "R45C",
+"class_number": "106",
+"component": "DIS",
+"course_key": "ENGLISH R45C",
+"instructors": "",
+"last_status": null,
+"node_id": 541942,
+"probed_at": null,
+"section_id": "",
+"section_number": "106",
+"subject": "ENGLISH",
+"title": "Literature in English: The Mid-19th through the Mid-20th Century",
+"url_path": "/content/2027-spring-english-r45c-106-dis-106"
+},
+{
 "catalog_number": "104",
 "class_number": "001",
 "component": "SEM",
@@ -43141,6 +43171,21 @@
 "url_path": "/content/2027-spring-espm-201a-001-sem-001"
 },
 {
+"catalog_number": "226",
+"class_number": "001",
+"component": "SEM",
+"course_key": "ESPM 226",
+"instructors": "Timothy M Bowles",
+"last_status": null,
+"node_id": 541943,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ESPM",
+"title": "Interdisciplinary Food and Agriculture Studies",
+"url_path": "/content/2027-spring-espm-226-001-sem-001"
+},
+{
 "catalog_number": "227",
 "class_number": "001",
 "component": "LEC",
@@ -45333,6 +45378,21 @@
 {
 "catalog_number": "125",
 "class_number": "411",
+"component": "LAB",
+"course_key": "FILM 125",
+"instructors": "Daniel Cuong O'Neill",
+"last_status": null,
+"node_id": 541944,
+"probed_at": null,
+"section_id": "",
+"section_number": "411",
+"subject": "FILM",
+"title": "Documentary Forms",
+"url_path": "/content/2027-spring-film-125-411-lab-411"
+},
+{
+"catalog_number": "125",
+"class_number": "411",
 "component": "LEC",
 "course_key": "FILM 125",
 "instructors": "Daniel Cuong O'Neill",
@@ -46441,6 +46501,36 @@
 "url_path": "/content/2027-spring-french-140d-001-lec-001"
 },
 {
+"catalog_number": "140D",
+"class_number": "002",
+"component": "LEC",
+"course_key": "FRENCH 140D",
+"instructors": "Damon R Young, Maya J Sidhu",
+"last_status": null,
+"node_id": 541945,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "FRENCH",
+"title": "French Literature in English Translation",
+"url_path": "/content/2027-spring-french-140d-002-lec-002"
+},
+{
+"catalog_number": "140D",
+"class_number": "003",
+"component": "LAB",
+"course_key": "FRENCH 140D",
+"instructors": "Damon R Young, Maya J Sidhu",
+"last_status": null,
+"node_id": 541946,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "FRENCH",
+"title": "French Literature in English Translation",
+"url_path": "/content/2027-spring-french-140d-003-lab-003"
+},
+{
 "catalog_number": "143B",
 "class_number": "001",
 "component": "LEC",
@@ -46799,6 +46889,21 @@
 "subject": "FRENCH",
 "title": "Linguistic History of the Romance Language",
 "url_path": "/content/2027-spring-french-c202-001-lec-001"
+},
+{
+"catalog_number": "C203",
+"class_number": "001",
+"component": "SEM",
+"course_key": "FRENCH C203",
+"instructors": "Deborah A Blocker",
+"last_status": null,
+"node_id": 541947,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "FRENCH",
+"title": "Comparative Studies in Romance Literatures and Cultures",
+"url_path": "/content/2027-spring-french-c203-001-sem-001"
 },
 {
 "catalog_number": "R1B",
@@ -107404,6 +107509,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-06T17:30:45.684064+00:00",
+"updated_at": "2026-10-06T18:00:58.837163+00:00",
 "version": 3
 }
