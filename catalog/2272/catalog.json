@@ -6631,6 +6631,36 @@
 "url_path": "/content/2027-spring-bioeng-115-001-lec-001"
 },
 {
+"catalog_number": "115",
+"class_number": "101",
+"component": "LAB",
+"course_key": "BIOENG 115",
+"instructors": "",
+"last_status": null,
+"node_id": 541924,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "BIOENG",
+"title": "Tissue Engineering Lab",
+"url_path": "/content/2027-spring-bioeng-115-101-lab-101"
+},
+{
+"catalog_number": "115",
+"class_number": "102",
+"component": "LAB",
+"course_key": "BIOENG 115",
+"instructors": "",
+"last_status": null,
+"node_id": 541925,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "BIOENG",
+"title": "Tissue Engineering Lab",
+"url_path": "/content/2027-spring-bioeng-115-102-lab-102"
+},
+{
 "catalog_number": "121L",
 "class_number": "001",
 "component": "LAB",
@@ -15404,6 +15434,21 @@
 "subject": "CHICANO",
 "title": "Blackness in Latin America and the Caribbean",
 "url_path": "/content/2027-spring-chicano-c166-103-dis-103"
+},
+{
+"catalog_number": "C166",
+"class_number": "104",
+"component": "DIS",
+"course_key": "CHICANO C166",
+"instructors": "",
+"last_status": null,
+"node_id": 541926,
+"probed_at": null,
+"section_id": "",
+"section_number": "104",
+"subject": "CHICANO",
+"title": "Blackness in Latin America and the Caribbean",
+"url_path": "/content/2027-spring-chicano-c166-104-dis-104"
 },
 {
 "catalog_number": "C166",
@@ -107209,6 +107254,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-05T22:30:55.810252+00:00",
+"updated_at": "2026-10-06T16:29:10.116628+00:00",
 "version": 3
 }
