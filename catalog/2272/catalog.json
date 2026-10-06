@@ -91396,6 +91396,21 @@
 "url_path": "/content/2027-spring-polsci-124d-001-lec-001"
 },
 {
+"catalog_number": "124W",
+"class_number": "001",
+"component": "LEC",
+"course_key": "POLSCI 124W",
+"instructors": "Di Wang",
+"last_status": null,
+"node_id": 541967,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "POLSCI",
+"title": "Globalization and Me",
+"url_path": "/content/2027-spring-polsci-124w-001-lec-001"
+},
+{
 "catalog_number": "126A",
 "class_number": "001",
 "component": "LEC",
@@ -92234,6 +92249,21 @@
 "subject": "POLSCI",
 "title": "Research Workshop in Theory",
 "url_path": "/content/2027-spring-polsci-291t-001-sem-001"
+},
+{
+"catalog_number": "3",
+"class_number": "001",
+"component": "LEC",
+"course_key": "POLSCI 3",
+"instructors": "Erin K Hartman",
+"last_status": null,
+"node_id": 541968,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "POLSCI",
+"title": "Introduction to Empirical Analysis and Quantitative Methods",
+"url_path": "/content/2027-spring-polsci-3-001-lec-001"
 },
 {
 "catalog_number": "3",
@@ -107794,6 +107824,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-06T19:30:50.352488+00:00",
+"updated_at": "2026-10-06T20:00:54.193967+00:00",
 "version": 3
 }
