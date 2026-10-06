@@ -28921,6 +28921,21 @@
 "url_path": "/content/2027-spring-desinv-10-1-lec-1"
 },
 {
+"catalog_number": "15",
+"class_number": "001",
+"component": "LEC",
+"course_key": "DESINV 15",
+"instructors": "Thomas McLeish",
+"last_status": null,
+"node_id": 541931,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "DESINV",
+"title": "Design Methodology",
+"url_path": "/content/2027-spring-desinv-15-001-lec-001"
+},
+{
 "catalog_number": "190",
 "class_number": "20",
 "component": "LEC",
@@ -29011,6 +29026,36 @@
 "url_path": "/content/2027-spring-desinv-201-103-col-103"
 },
 {
+"catalog_number": "21",
+"class_number": "1",
+"component": "LEC",
+"course_key": "DESINV 21",
+"instructors": "Purin Phanichphant",
+"last_status": null,
+"node_id": 541932,
+"probed_at": null,
+"section_id": "",
+"section_number": "1",
+"subject": "DESINV",
+"title": "Visual Communication & Sketching",
+"url_path": "/content/2027-spring-desinv-21-1-lec-1"
+},
+{
+"catalog_number": "211",
+"class_number": "001",
+"component": "LEC",
+"course_key": "DESINV 211",
+"instructors": "Brian David Hinch",
+"last_status": null,
+"node_id": 541933,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "DESINV",
+"title": "Designing Emerging Technologies I",
+"url_path": "/content/2027-spring-desinv-211-001-lec-001"
+},
+{
 "catalog_number": "211",
 "class_number": "002",
 "component": "LEC",
@@ -29054,6 +29099,51 @@
 "subject": "DESINV",
 "title": "Designing Emerging Technologies I",
 "url_path": "/content/2027-spring-desinv-211-201-lab-201"
+},
+{
+"catalog_number": "219",
+"class_number": "001",
+"component": "SEM",
+"course_key": "DESINV 219",
+"instructors": "Yoonnyong Bahk",
+"last_status": null,
+"node_id": 541934,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "DESINV",
+"title": "Capstone Portfolio",
+"url_path": "/content/2027-spring-desinv-219-001-sem-001"
+},
+{
+"catalog_number": "22",
+"class_number": "1",
+"component": "LEC",
+"course_key": "DESINV 22",
+"instructors": "Christopher Myers",
+"last_status": null,
+"node_id": 541935,
+"probed_at": null,
+"section_id": "",
+"section_number": "1",
+"subject": "DESINV",
+"title": "Prototyping & Fabrication",
+"url_path": "/content/2027-spring-desinv-22-1-lec-1"
+},
+{
+"catalog_number": "23",
+"class_number": "1",
+"component": "LEC",
+"course_key": "DESINV 23",
+"instructors": "Sudhu Tewari",
+"last_status": null,
+"node_id": 541936,
+"probed_at": null,
+"section_id": "",
+"section_number": "1",
+"subject": "DESINV",
+"title": "Creative Programming and Electronics",
+"url_path": "/content/2027-spring-desinv-23-1-lec-1"
 },
 {
 "catalog_number": "95",
@@ -107314,6 +107404,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-06T17:00:35.336024+00:00",
+"updated_at": "2026-10-06T17:30:45.684064+00:00",
 "version": 3
 }
