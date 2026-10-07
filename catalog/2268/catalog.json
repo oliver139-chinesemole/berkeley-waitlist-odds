@@ -16955,10 +16955,10 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "ECON 242",
-"instructors": "Demian Gaston Pouzo",
+"instructors": "Federico Crippa",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T14:25:13.346347+00:00",
+"probed_at": "2026-10-07T02:30:02.995924+00:00",
 "section_id": "21939",
 "section_number": "001",
 "subject": "ECON",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-07T00:30:45.223908+00:00",
+"updated_at": "2026-10-07T02:30:46.462721+00:00",
 "version": 3
 }
