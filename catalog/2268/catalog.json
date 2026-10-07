@@ -31715,10 +31715,10 @@
 "class_number": "101",
 "component": "LAB",
 "course_key": "JOURN 282",
-"instructors": "",
+"instructors": "Jason Spingarn-Koff",
 "last_status": 200,
 "node_id": 531311,
-"probed_at": "2026-09-24T12:22:34.773392+00:00",
+"probed_at": "2026-10-07T00:29:40.852062+00:00",
 "section_id": "34542",
 "section_number": "101",
 "subject": "JOURN",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-06T10:00:34.083726+00:00",
+"updated_at": "2026-10-07T00:30:45.223908+00:00",
 "version": 3
 }
