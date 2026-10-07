@@ -4432,8 +4432,8 @@
 "course_key": "CELTIC 138",
 "instructors": "Matthew Shelton",
 "last_status": 200,
-"node_id": null,
-"probed_at": "2026-09-24T09:49:42.189729+00:00",
+"node_id": 541977,
+"probed_at": "2026-10-07T08:38:21.360833+00:00",
 "section_id": "31740",
 "section_number": "001",
 "subject": "CELTIC",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-07T02:30:46.462721+00:00",
+"updated_at": "2026-10-07T08:53:27.606042+00:00",
 "version": 3
 }
