@@ -19325,7 +19325,7 @@
 "class_number": "005",
 "component": "SEM",
 "course_key": "COLWRIT R1A",
-"instructors": "Miriam Bird Greenberg",
+"instructors": "Brice Particelli",
 "last_status": null,
 "node_id": 533942,
 "probed_at": null,
@@ -19592,6 +19592,21 @@
 },
 {
 "catalog_number": "R1A",
+"class_number": "023",
+"component": "SEM",
+"course_key": "COLWRIT R1A",
+"instructors": "John Fielding",
+"last_status": null,
+"node_id": 541979,
+"probed_at": null,
+"section_id": "",
+"section_number": "023",
+"subject": "COLWRIT",
+"title": "Accelerated Reading and Composition",
+"url_path": "/content/2027-spring-colwrit-r1a-023-sem-023"
+},
+{
+"catalog_number": "R1A",
 "class_number": "024",
 "component": "SEM",
 "course_key": "COLWRIT R1A",
@@ -19769,6 +19784,36 @@
 "subject": "COLWRIT",
 "title": "Accelerated Reading and Composition",
 "url_path": "/content/2027-spring-colwrit-r1a-035-sem-035"
+},
+{
+"catalog_number": "R1A",
+"class_number": "036",
+"component": "SEM",
+"course_key": "COLWRIT R1A",
+"instructors": "Brice Particelli",
+"last_status": null,
+"node_id": 541980,
+"probed_at": null,
+"section_id": "",
+"section_number": "036",
+"subject": "COLWRIT",
+"title": "Accelerated Reading and Composition",
+"url_path": "/content/2027-spring-colwrit-r1a-036-sem-036"
+},
+{
+"catalog_number": "R1A",
+"class_number": "038",
+"component": "SEM",
+"course_key": "COLWRIT R1A",
+"instructors": "Andrew Yim",
+"last_status": null,
+"node_id": 541981,
+"probed_at": null,
+"section_id": "",
+"section_number": "038",
+"subject": "COLWRIT",
+"title": "Accelerated Reading and Composition",
+"url_path": "/content/2027-spring-colwrit-r1a-038-sem-038"
 },
 {
 "catalog_number": "R1A",
@@ -27944,6 +27989,21 @@
 "subject": "CYPLAN",
 "title": "Advanced Topics in Urban Studies",
 "url_path": "/content/2027-spring-cyplan-190-003-lec-003"
+},
+{
+"catalog_number": "190",
+"class_number": "004",
+"component": "LEC",
+"course_key": "CYPLAN 190",
+"instructors": "Zoe Hamstead",
+"last_status": null,
+"node_id": 541982,
+"probed_at": null,
+"section_id": "",
+"section_number": "004",
+"subject": "CYPLAN",
+"title": "Advanced Topics in Urban Studies",
+"url_path": "/content/2027-spring-cyplan-190-004-lec-004"
 },
 {
 "catalog_number": "204C",
@@ -107869,6 +107929,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-06T21:00:43.044548+00:00",
+"updated_at": "2026-10-07T14:30:31.818656+00:00",
 "version": 3
 }
