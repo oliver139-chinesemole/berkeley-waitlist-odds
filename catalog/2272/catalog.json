@@ -34096,6 +34096,21 @@
 "url_path": "/content/2027-spring-educ-290a-002-sem-002"
 },
 {
+"catalog_number": "290A",
+"class_number": "003",
+"component": "SEM",
+"course_key": "EDUC 290A",
+"instructors": "Tina Trujillo",
+"last_status": null,
+"node_id": 541983,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "EDUC",
+"title": "Special Topics Seminars: Policy, Organization, Measurement, and Evaluation",
+"url_path": "/content/2027-spring-educ-290a-003-sem-003"
+},
+{
 "catalog_number": "294B",
 "class_number": "001",
 "component": "SEM",
@@ -34859,6 +34874,21 @@
 "subject": "EECS",
 "title": "Optimization Models in Engineering",
 "url_path": "/content/2027-spring-eecs-227at-107d-dis-107d"
+},
+{
+"catalog_number": "227AT",
+"class_number": "108D",
+"component": "DIS",
+"course_key": "EECS 227AT",
+"instructors": "",
+"last_status": null,
+"node_id": 541984,
+"probed_at": null,
+"section_id": "",
+"section_number": "108D",
+"subject": "EECS",
+"title": "Optimization Models in Engineering",
+"url_path": "/content/2027-spring-eecs-227at-108d-dis-108d"
 },
 {
 "catalog_number": "227AT",
@@ -37546,6 +37576,21 @@
 "url_path": "/content/2027-spring-eneres-c160-102-dis-102"
 },
 {
+"catalog_number": "1",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ENGIN 1",
+"instructors": "Lisa Pruitt",
+"last_status": null,
+"node_id": 541985,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ENGIN",
+"title": "Engineering Your Life: Skills for Leadership, Discovery and Service",
+"url_path": "/content/2027-spring-engin-1-001-lec-001"
+},
+{
 "catalog_number": "11",
 "class_number": "001",
 "component": "LEC",
@@ -38339,6 +38384,21 @@
 "subject": "ENGIN",
 "title": "Manufacturing and Design Communication",
 "url_path": "/content/2027-spring-engin-29-105-lab-105"
+},
+{
+"catalog_number": "297",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ENGIN 297",
+"instructors": "Lisa Pruitt",
+"last_status": null,
+"node_id": 541986,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ENGIN",
+"title": "Introspective Leadership",
+"url_path": "/content/2027-spring-engin-297-001-lec-001"
 },
 {
 "catalog_number": "7",
@@ -41206,6 +41266,36 @@
 "url_path": "/content/2027-spring-eps-122-001-lec-001"
 },
 {
+"catalog_number": "124",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EPS 124",
+"instructors": "",
+"last_status": null,
+"node_id": 541988,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EPS",
+"title": "Isotopic Geochemistry",
+"url_path": "/content/2027-spring-eps-124-001-lec-001"
+},
+{
+"catalog_number": "124",
+"class_number": "101",
+"component": "DIS",
+"course_key": "EPS 124",
+"instructors": "",
+"last_status": null,
+"node_id": 541989,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "EPS",
+"title": "Isotopic Geochemistry",
+"url_path": "/content/2027-spring-eps-124-101-dis-101"
+},
+{
 "catalog_number": "125",
 "class_number": "001",
 "component": "LEC",
@@ -41309,6 +41399,36 @@
 "subject": "EPS",
 "title": "Igneous Petrology",
 "url_path": "/content/2027-spring-eps-214-101-lab-101"
+},
+{
+"catalog_number": "224",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EPS 224",
+"instructors": "",
+"last_status": null,
+"node_id": 541990,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EPS",
+"title": "Isotopic Geochemistry",
+"url_path": "/content/2027-spring-eps-224-001-lec-001"
+},
+{
+"catalog_number": "224",
+"class_number": "101",
+"component": "DIS",
+"course_key": "EPS 224",
+"instructors": "",
+"last_status": null,
+"node_id": 541991,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "EPS",
+"title": "Isotopic Geochemistry",
+"url_path": "/content/2027-spring-eps-224-101-dis-101"
 },
 {
 "catalog_number": "24",
@@ -41806,6 +41926,21 @@
 "url_path": "/content/2027-spring-eps-50-104-lab-104"
 },
 {
+"catalog_number": "80",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EPS 80",
+"instructors": "Matthew Gleeson",
+"last_status": null,
+"node_id": 541993,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EPS",
+"title": "Environmental Earth Sciences",
+"url_path": "/content/2027-spring-eps-80-001-lec-001"
+},
+{
 "catalog_number": "81",
 "class_number": "001",
 "component": "LEC",
@@ -42149,6 +42284,21 @@
 "subject": "EPS",
 "title": "Glaciology",
 "url_path": "/content/2027-spring-eps-c242-001-lec-001"
+},
+{
+"catalog_number": "C292",
+"class_number": "001",
+"component": "SEM",
+"course_key": "EPS C292",
+"instructors": "Burkhard Militzer",
+"last_status": null,
+"node_id": 541992,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EPS",
+"title": "Planetary Science Seminar",
+"url_path": "/content/2027-spring-eps-c292-001-sem-001"
 },
 {
 "catalog_number": "10",
@@ -44774,6 +44924,21 @@
 "subject": "ETHSTD",
 "title": "Ethnicity and Race in Contemporary American Films",
 "url_path": "/content/2027-spring-ethstd-122ac-001-lec-001"
+},
+{
+"catalog_number": "174",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ETHSTD 174",
+"instructors": "Gregory P Choy",
+"last_status": null,
+"node_id": 541994,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ETHSTD",
+"title": "Existential Panic in American Ethnic Literature",
+"url_path": "/content/2027-spring-ethstd-174-001-lec-001"
 },
 {
 "catalog_number": "176",
@@ -55981,6 +56146,21 @@
 "url_path": "/content/2027-spring-italian-c201-001-lec-001"
 },
 {
+"catalog_number": "C203",
+"class_number": "001",
+"component": "SEM",
+"course_key": "ITALIAN C203",
+"instructors": "Deborah A Blocker",
+"last_status": null,
+"node_id": 541995,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ITALIAN",
+"title": "Comparative Studies in Romance Literatures and Cultures",
+"url_path": "/content/2027-spring-italian-c203-001-sem-001"
+},
+{
 "catalog_number": "R5A",
 "class_number": "001",
 "component": "LEC",
@@ -57494,6 +57674,21 @@
 "subject": "JOURN",
 "title": "Group Study - Special Topics",
 "url_path": "/content/2027-spring-journ-298-019-sem-019"
+},
+{
+"catalog_number": "39",
+"class_number": "001",
+"component": "SEM",
+"course_key": "JOURN 39",
+"instructors": "William J Drummond",
+"last_status": null,
+"node_id": 541996,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "JOURN",
+"title": "Freshman/Sophomore Seminar",
+"url_path": "/content/2027-spring-journ-39-001-sem-001"
 },
 {
 "catalog_number": "100B",
@@ -73580,7 +73775,7 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "MUSIC 128",
-"instructors": "",
+"instructors": "Edmund Mendelssohn",
 "last_status": null,
 "node_id": 538521,
 "probed_at": null,
@@ -74405,7 +74600,7 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "MUSIC 202",
-"instructors": "",
+"instructors": "Matthew Taylor",
 "last_status": null,
 "node_id": 538583,
 "probed_at": null,
@@ -74420,7 +74615,7 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "MUSIC 203",
-"instructors": "",
+"instructors": "Ken Ueno",
 "last_status": null,
 "node_id": 538584,
 "probed_at": null,
@@ -74435,7 +74630,7 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "MUSIC 205",
-"instructors": "",
+"instructors": "Ken Ueno",
 "last_status": null,
 "node_id": 538585,
 "probed_at": null,
@@ -74450,7 +74645,7 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "MUSIC 220",
-"instructors": "",
+"instructors": "Mary Ann Smart",
 "last_status": null,
 "node_id": 538586,
 "probed_at": null,
@@ -74459,6 +74654,21 @@
 "subject": "MUSIC",
 "title": "Topics in Music History and Criticism",
 "url_path": "/content/2027-spring-music-220-001-sem-001"
+},
+{
+"catalog_number": "220",
+"class_number": "002",
+"component": "SEM",
+"course_key": "MUSIC 220",
+"instructors": "Andrei Pohorelsky",
+"last_status": null,
+"node_id": 542003,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "MUSIC",
+"title": "Topics in Music History and Criticism",
+"url_path": "/content/2027-spring-music-220-002-sem-002"
 },
 {
 "catalog_number": "244A",
@@ -74495,7 +74705,7 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "MUSIC 247",
-"instructors": "",
+"instructors": "Mari\u00e9 Abe",
 "last_status": null,
 "node_id": 538589,
 "probed_at": null,
@@ -96602,6 +96812,51 @@
 },
 {
 "catalog_number": "290",
+"class_number": "014",
+"component": "LEC",
+"course_key": "PUBPOL 290",
+"instructors": "Laurel E Fletcher",
+"last_status": null,
+"node_id": 542011,
+"probed_at": null,
+"section_id": "",
+"section_number": "014",
+"subject": "PUBPOL",
+"title": "Special Topics in Public Policy",
+"url_path": "/content/2027-spring-pubpol-290-014-lec-014"
+},
+{
+"catalog_number": "290",
+"class_number": "016",
+"component": "LEC",
+"course_key": "PUBPOL 290",
+"instructors": "Valentina Rozo Angel",
+"last_status": null,
+"node_id": 542012,
+"probed_at": null,
+"section_id": "",
+"section_number": "016",
+"subject": "PUBPOL",
+"title": "Special Topics in Public Policy",
+"url_path": "/content/2027-spring-pubpol-290-016-lec-016"
+},
+{
+"catalog_number": "290",
+"class_number": "017",
+"component": "LEC",
+"course_key": "PUBPOL 290",
+"instructors": "",
+"last_status": null,
+"node_id": 542013,
+"probed_at": null,
+"section_id": "",
+"section_number": "017",
+"subject": "PUBPOL",
+"title": "Special Topics in Public Policy",
+"url_path": "/content/2027-spring-pubpol-290-017-lec-017"
+},
+{
+"catalog_number": "290",
 "class_number": "019",
 "component": "LEC",
 "course_key": "PUBPOL 290",
@@ -97109,6 +97364,21 @@
 "subject": "RHETOR",
 "title": "Rhetorics of Sexual Exchange and Sexual Difference",
 "url_path": "/content/2027-spring-rhetor-182-001-lec-001"
+},
+{
+"catalog_number": "189",
+"class_number": "001",
+"component": "LEC",
+"course_key": "RHETOR 189",
+"instructors": "Samiha Khalil",
+"last_status": null,
+"node_id": 542014,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "RHETOR",
+"title": "Special Topics",
+"url_path": "/content/2027-spring-rhetor-189-001-lec-001"
 },
 {
 "catalog_number": "20",
@@ -100996,6 +101266,21 @@
 "url_path": "/content/2027-spring-spanish-31-001-lec-001"
 },
 {
+"catalog_number": "C203",
+"class_number": "001",
+"component": "SEM",
+"course_key": "SPANISH C203",
+"instructors": "Deborah A Blocker",
+"last_status": null,
+"node_id": 542015,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "SPANISH",
+"title": "Comparative Studies in Romance Literatures and Cultures",
+"url_path": "/content/2027-spring-spanish-c203-001-sem-001"
+},
+{
 "catalog_number": "R1B",
 "class_number": "001",
 "component": "LEC",
@@ -102599,6 +102884,21 @@
 "subject": "STAT",
 "title": "Bayesian Statistics",
 "url_path": "/content/2027-spring-stat-238-101-lab-101"
+},
+{
+"catalog_number": "238",
+"class_number": "102",
+"component": "LAB",
+"course_key": "STAT 238",
+"instructors": "",
+"last_status": null,
+"node_id": 542016,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "STAT",
+"title": "Bayesian Statistics",
+"url_path": "/content/2027-spring-stat-238-102-lab-102"
 },
 {
 "catalog_number": "248",
@@ -104446,6 +104746,21 @@
 "url_path": "/content/2027-spring-theater-167-002-lab-002"
 },
 {
+"catalog_number": "167",
+"class_number": "003",
+"component": "LAB",
+"course_key": "THEATER 167",
+"instructors": "Jamila R Cobham",
+"last_status": null,
+"node_id": 542017,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "THEATER",
+"title": "Technical Theater: Performance Practice",
+"url_path": "/content/2027-spring-theater-167-003-lab-003"
+},
+{
 "catalog_number": "168",
 "class_number": "001",
 "component": "LAB",
@@ -105287,6 +105602,21 @@
 },
 {
 "catalog_number": "101A",
+"class_number": "102",
+"component": "DIS",
+"course_key": "UGBA 101A",
+"instructors": "",
+"last_status": null,
+"node_id": 542018,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "UGBA",
+"title": "Microeconomic Analysis for Business Decisions",
+"url_path": "/content/2027-spring-ugba-101a-102-dis-102"
+},
+{
+"catalog_number": "101A",
 "class_number": "201",
 "component": "DIS",
 "course_key": "UGBA 101A",
@@ -105299,6 +105629,21 @@
 "subject": "UGBA",
 "title": "Microeconomic Analysis for Business Decisions",
 "url_path": "/content/2027-spring-ugba-101a-201-dis-201"
+},
+{
+"catalog_number": "101A",
+"class_number": "202",
+"component": "DIS",
+"course_key": "UGBA 101A",
+"instructors": "",
+"last_status": null,
+"node_id": 542019,
+"probed_at": null,
+"section_id": "",
+"section_number": "202",
+"subject": "UGBA",
+"title": "Microeconomic Analysis for Business Decisions",
+"url_path": "/content/2027-spring-ugba-101a-202-dis-202"
 },
 {
 "catalog_number": "101B",
@@ -107929,6 +108274,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-07T14:30:31.818656+00:00",
+"updated_at": "2026-10-07T20:24:57.731392+00:00",
 "version": 3
 }
