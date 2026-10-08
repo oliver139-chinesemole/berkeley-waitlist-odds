@@ -47011,6 +47011,21 @@
 "url_path": "/content/2027-spring-french-140d-003-lab-003"
 },
 {
+"catalog_number": "140D",
+"class_number": "102",
+"component": "LAB",
+"course_key": "FRENCH 140D",
+"instructors": "Damon R Young, Maya J Sidhu",
+"last_status": null,
+"node_id": 542146,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "FRENCH",
+"title": "French Literature in English Translation",
+"url_path": "/content/2027-spring-french-140d-102-lab-102"
+},
+{
 "catalog_number": "143B",
 "class_number": "001",
 "component": "LEC",
@@ -48299,6 +48314,36 @@
 "subject": "GERMAN",
 "title": "Advanced Language Practice: German Performance",
 "url_path": "/content/2027-spring-german-102a-001-lec-001"
+},
+{
+"catalog_number": "108",
+"class_number": "001",
+"component": "LEC",
+"course_key": "GERMAN 108",
+"instructors": "Lilla Balint",
+"last_status": null,
+"node_id": 542147,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GERMAN",
+"title": "Literary Translation",
+"url_path": "/content/2027-spring-german-108-001-lec-001"
+},
+{
+"catalog_number": "109",
+"class_number": "001",
+"component": "SEM",
+"course_key": "GERMAN 109",
+"instructors": "Jeroen Dewulf",
+"last_status": null,
+"node_id": 542148,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GERMAN",
+"title": "Compact Seminar in Austrian Studies",
+"url_path": "/content/2027-spring-german-109-001-sem-001"
 },
 {
 "catalog_number": "157C",
@@ -108859,6 +108904,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-08T23:00:42.489844+00:00",
+"updated_at": "2026-10-08T23:28:27.218218+00:00",
 "version": 3
 }
