@@ -481,6 +481,21 @@
 "url_path": "/content/2027-spring-africam-159-002-lec-002"
 },
 {
+"catalog_number": "159",
+"class_number": "003",
+"component": "LEC",
+"course_key": "AFRICAM 159",
+"instructors": "Henry Washington Jr",
+"last_status": null,
+"node_id": 542120,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "AFRICAM",
+"title": "Special Topics in African American Literature",
+"url_path": "/content/2027-spring-africam-159-003-lec-003"
+},
+{
 "catalog_number": "164",
 "class_number": "001",
 "component": "LEC",
@@ -554,6 +569,21 @@
 "subject": "AFRICAM",
 "title": "Special Topics in Cultural Studies of the Diaspora",
 "url_path": "/content/2027-spring-africam-240-002-lec-002"
+},
+{
+"catalog_number": "241",
+"class_number": "001",
+"component": "LEC",
+"course_key": "AFRICAM 241",
+"instructors": "Micah Khater",
+"last_status": null,
+"node_id": 542121,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "AFRICAM",
+"title": "Special Topics in Development Studies of the Diaspora",
+"url_path": "/content/2027-spring-africam-241-001-lec-001"
 },
 {
 "catalog_number": "250",
@@ -1394,6 +1424,21 @@
 "subject": "AMERSTD",
 "title": "Examining U.S. Cultures in Place",
 "url_path": "/content/2027-spring-amerstd-102-002-lec-002"
+},
+{
+"catalog_number": "102",
+"class_number": "003",
+"component": "LEC",
+"course_key": "AMERSTD 102",
+"instructors": "Andy Shanken",
+"last_status": null,
+"node_id": 542122,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "AMERSTD",
+"title": "Examining U.S. Cultures in Place",
+"url_path": "/content/2027-spring-amerstd-102-003-lec-003"
 },
 {
 "catalog_number": "102AC",
@@ -108604,6 +108649,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-08T14:58:06.907769+00:00",
+"updated_at": "2026-10-08T21:00:47.931239+00:00",
 "version": 3
 }
