@@ -58756,6 +58756,36 @@
 "url_path": "/content/2027-spring-ldarch-287-101-lab-101"
 },
 {
+"catalog_number": "C289",
+"class_number": "001",
+"component": "LEC",
+"course_key": "LDARCH C289",
+"instructors": "Lu Liang, Yuye Zhou",
+"last_status": null,
+"node_id": 542090,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "LDARCH",
+"title": "Applied Remote Sensing",
+"url_path": "/content/2027-spring-ldarch-c289-001-lec-001"
+},
+{
+"catalog_number": "C289",
+"class_number": "101",
+"component": "LAB",
+"course_key": "LDARCH C289",
+"instructors": "Lu Liang, Yuye Zhou",
+"last_status": null,
+"node_id": 542091,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "LDARCH",
+"title": "Applied Remote Sensing",
+"url_path": "/content/2027-spring-ldarch-c289-101-lab-101"
+},
+{
 "catalog_number": "100",
 "class_number": "001",
 "component": "LEC",
@@ -108274,6 +108304,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-07T20:24:57.731392+00:00",
+"updated_at": "2026-10-08T13:00:47.143903+00:00",
 "version": 3
 }
