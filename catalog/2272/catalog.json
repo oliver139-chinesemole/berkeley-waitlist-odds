@@ -42526,6 +42526,21 @@
 "url_path": "/content/2027-spring-eps-c242-001-lec-001"
 },
 {
+"catalog_number": "C249",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EPS C249",
+"instructors": "Michael Bottom",
+"last_status": null,
+"node_id": 542145,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EPS",
+"title": "Solar System Astrophysics",
+"url_path": "/content/2027-spring-eps-c249-001-lec-001"
+},
+{
 "catalog_number": "C292",
 "class_number": "001",
 "component": "SEM",
@@ -108844,6 +108859,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-08T22:30:43.943144+00:00",
+"updated_at": "2026-10-08T23:00:42.489844+00:00",
 "version": 3
 }
