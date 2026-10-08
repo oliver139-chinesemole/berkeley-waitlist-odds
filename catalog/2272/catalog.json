@@ -18211,6 +18211,21 @@
 "url_path": "/content/2027-spring-cmpbio-156-001-lec-001"
 },
 {
+"catalog_number": "156",
+"class_number": "101",
+"component": "LAB",
+"course_key": "CMPBIO 156",
+"instructors": "",
+"last_status": null,
+"node_id": 542126,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "CMPBIO",
+"title": "Human Genome, Environment and Public Health",
+"url_path": "/content/2027-spring-cmpbio-156-101-lab-101"
+},
+{
 "catalog_number": "198BC",
 "class_number": "001",
 "component": "DIS",
@@ -18389,6 +18404,21 @@
 "subject": "CMPBIO",
 "title": "Human Genome, Environment and Public Health",
 "url_path": "/content/2027-spring-cmpbio-c256-001-lec-001"
+},
+{
+"catalog_number": "C256",
+"class_number": "101",
+"component": "LAB",
+"course_key": "CMPBIO C256",
+"instructors": "",
+"last_status": null,
+"node_id": 542127,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "CMPBIO",
+"title": "Human Genome, Environment and Public Health",
+"url_path": "/content/2027-spring-cmpbio-c256-101-lab-101"
 },
 {
 "catalog_number": "1",
@@ -108679,6 +108709,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-08T21:30:42.053569+00:00",
+"updated_at": "2026-10-08T22:00:54.418858+00:00",
 "version": 3
 }
