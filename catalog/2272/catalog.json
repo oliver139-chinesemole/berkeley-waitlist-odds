@@ -105500,7 +105500,7 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "THEATER R1A",
-"instructors": "",
+"instructors": "Max Abner",
 "last_status": null,
 "node_id": 541182,
 "probed_at": null,
@@ -108604,6 +108604,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-08T14:26:58.767891+00:00",
+"updated_at": "2026-10-08T14:58:06.907769+00:00",
 "version": 3
 }
