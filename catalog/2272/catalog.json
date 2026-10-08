@@ -4981,6 +4981,21 @@
 "url_path": "/content/2027-spring-art-294-001-sem-001"
 },
 {
+"catalog_number": "375",
+"class_number": "001",
+"component": "SEM",
+"course_key": "ART 375",
+"instructors": "Asma Kazmi",
+"last_status": null,
+"node_id": 542123,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ART",
+"title": "The Teaching of Art: Practice",
+"url_path": "/content/2027-spring-art-375-001-sem-001"
+},
+{
 "catalog_number": "8",
 "class_number": "001",
 "component": "LEC",
@@ -6350,7 +6365,7 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "ASTRON C207",
-"instructors": "",
+"instructors": "Wenbin Lu",
 "last_status": null,
 "node_id": 532856,
 "probed_at": null,
@@ -6359,6 +6374,21 @@
 "subject": "ASTRON",
 "title": "Radiation Processes in Astronomy",
 "url_path": "/content/2027-spring-astron-c207-001-lec-001"
+},
+{
+"catalog_number": "C249",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ASTRON C249",
+"instructors": "Michael Bottom",
+"last_status": null,
+"node_id": 542125,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ASTRON",
+"title": "Solar System Astrophysics",
+"url_path": "/content/2027-spring-astron-c249-001-lec-001"
 },
 {
 "catalog_number": "C285",
@@ -108649,6 +108679,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-08T21:00:47.931239+00:00",
+"updated_at": "2026-10-08T21:30:42.053569+00:00",
 "version": 3
 }
