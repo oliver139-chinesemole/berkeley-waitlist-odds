@@ -83311,6 +83311,51 @@
 "url_path": "/content/2027-spring-philos-2-109-dis-109"
 },
 {
+"catalog_number": "2",
+"class_number": "110",
+"component": "DIS",
+"course_key": "PHILOS 2",
+"instructors": "",
+"last_status": null,
+"node_id": 542115,
+"probed_at": null,
+"section_id": "",
+"section_number": "110",
+"subject": "PHILOS",
+"title": "Individual Morality and Social Justice",
+"url_path": "/content/2027-spring-philos-2-110-dis-110"
+},
+{
+"catalog_number": "2",
+"class_number": "111",
+"component": "DIS",
+"course_key": "PHILOS 2",
+"instructors": "",
+"last_status": null,
+"node_id": 542116,
+"probed_at": null,
+"section_id": "",
+"section_number": "111",
+"subject": "PHILOS",
+"title": "Individual Morality and Social Justice",
+"url_path": "/content/2027-spring-philos-2-111-dis-111"
+},
+{
+"catalog_number": "2",
+"class_number": "112",
+"component": "DIS",
+"course_key": "PHILOS 2",
+"instructors": "",
+"last_status": null,
+"node_id": 542117,
+"probed_at": null,
+"section_id": "",
+"section_number": "112",
+"subject": "PHILOS",
+"title": "Individual Morality and Social Justice",
+"url_path": "/content/2027-spring-philos-2-112-dis-112"
+},
+{
 "catalog_number": "25B",
 "class_number": "001",
 "component": "LEC",
@@ -83609,6 +83654,21 @@
 "subject": "PHILOS",
 "title": "Dissertation Seminar",
 "url_path": "/content/2027-spring-philos-295-001-sem-001"
+},
+{
+"catalog_number": "C158",
+"class_number": "001",
+"component": "LEC",
+"course_key": "PHILOS C158",
+"instructors": "",
+"last_status": null,
+"node_id": 542114,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "PHILOS",
+"title": "Introduction to Buddhist Philosophy",
+"url_path": "/content/2027-spring-philos-c158-001-lec-001"
 },
 {
 "catalog_number": "H196",
@@ -108529,6 +108589,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-08T13:29:18.988468+00:00",
+"updated_at": "2026-10-08T13:57:41.925872+00:00",
 "version": 3
 }
