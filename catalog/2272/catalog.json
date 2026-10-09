@@ -33901,6 +33901,21 @@
 "url_path": "/content/2027-spring-educ-144-301-dis-301"
 },
 {
+"catalog_number": "163",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EDUC 163",
+"instructors": "Tina Trujillo",
+"last_status": null,
+"node_id": 542159,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EDUC",
+"title": "Contemporary Issues in U.S. Education",
+"url_path": "/content/2027-spring-educ-163-001-lec-001"
+},
+{
 "catalog_number": "165",
 "class_number": "001",
 "component": "LEC",
@@ -109039,6 +109054,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-09T18:58:44.746696+00:00",
+"updated_at": "2026-10-09T19:50:54.720101+00:00",
 "version": 3
 }
