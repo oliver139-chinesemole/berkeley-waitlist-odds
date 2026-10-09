@@ -48275,10 +48275,10 @@
 "class_number": "210B",
 "component": "DIS",
 "course_key": "PHYSICS 8A",
-"instructors": "Makai Baker",
+"instructors": "Athira Arayath",
 "last_status": 200,
 "node_id": 531820,
-"probed_at": "2026-10-08T08:39:26.821396+00:00",
+"probed_at": "2026-10-09T06:09:33.836097+00:00",
 "section_id": "22888",
 "section_number": "210B",
 "subject": "PHYSICS",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-09T04:25:05.843561+00:00",
+"updated_at": "2026-10-09T06:20:54.331261+00:00",
 "version": 3
 }
