@@ -7636,6 +7636,81 @@
 "url_path": "/content/2027-spring-bioeng-c265-201-dis-201"
 },
 {
+"catalog_number": "15",
+"class_number": "001",
+"component": "LEC",
+"course_key": "BIOLOGY 15",
+"instructors": "Adonis Tomas Rivie Guardado",
+"last_status": null,
+"node_id": 542152,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "BIOLOGY",
+"title": "Current Topics in the Biological Sciences",
+"url_path": "/content/2027-spring-biology-15-001-lec-001"
+},
+{
+"catalog_number": "15",
+"class_number": "101",
+"component": "DIS",
+"course_key": "BIOLOGY 15",
+"instructors": "",
+"last_status": null,
+"node_id": 542154,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "BIOLOGY",
+"title": "Current Topics in the Biological Sciences",
+"url_path": "/content/2027-spring-biology-15-101-dis-101"
+},
+{
+"catalog_number": "15",
+"class_number": "102",
+"component": "DIS",
+"course_key": "BIOLOGY 15",
+"instructors": "",
+"last_status": null,
+"node_id": 542153,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "BIOLOGY",
+"title": "Current Topics in the Biological Sciences",
+"url_path": "/content/2027-spring-biology-15-102-dis-102"
+},
+{
+"catalog_number": "15",
+"class_number": "103",
+"component": "DIS",
+"course_key": "BIOLOGY 15",
+"instructors": "",
+"last_status": null,
+"node_id": 542155,
+"probed_at": null,
+"section_id": "",
+"section_number": "103",
+"subject": "BIOLOGY",
+"title": "Current Topics in the Biological Sciences",
+"url_path": "/content/2027-spring-biology-15-103-dis-103"
+},
+{
+"catalog_number": "15",
+"class_number": "104",
+"component": "DIS",
+"course_key": "BIOLOGY 15",
+"instructors": "",
+"last_status": null,
+"node_id": 542156,
+"probed_at": null,
+"section_id": "",
+"section_number": "104",
+"subject": "BIOLOGY",
+"title": "Current Topics in the Biological Sciences",
+"url_path": "/content/2027-spring-biology-15-104-dis-104"
+},
+{
 "catalog_number": "1A",
 "class_number": "001",
 "component": "LEC",
@@ -10649,6 +10724,21 @@
 "subject": "CHEM",
 "title": "General Chemistry",
 "url_path": "/content/2027-spring-chem-1b-411-lab-411"
+},
+{
+"catalog_number": "1B",
+"class_number": "501",
+"component": "LAB",
+"course_key": "CHEM 1B",
+"instructors": "",
+"last_status": null,
+"node_id": 542157,
+"probed_at": null,
+"section_id": "",
+"section_number": "501",
+"subject": "CHEM",
+"title": "General Chemistry",
+"url_path": "/content/2027-spring-chem-1b-501-lab-501"
 },
 {
 "catalog_number": "208",
@@ -15749,6 +15839,21 @@
 "subject": "CHINESE",
 "title": "Introduction to Literary Chinese",
 "url_path": "/content/2027-spring-chinese-110b-001-lec-001"
+},
+{
+"catalog_number": "134",
+"class_number": "001",
+"component": "LEC",
+"course_key": "CHINESE 134",
+"instructors": "Paula M Varsano",
+"last_status": null,
+"node_id": 542158,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "CHINESE",
+"title": "Readings in Classical Chinese Poetry",
+"url_path": "/content/2027-spring-chinese-134-001-lec-001"
 },
 {
 "catalog_number": "155",
@@ -108934,6 +109039,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-09T18:20:59.516444+00:00",
+"updated_at": "2026-10-09T18:58:44.746696+00:00",
 "version": 3
 }
