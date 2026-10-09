@@ -6691,6 +6691,21 @@
 "url_path": "/content/2027-spring-bioeng-11-001-lec-001"
 },
 {
+"catalog_number": "111",
+"class_number": "001",
+"component": "LEC",
+"course_key": "BIOENG 111",
+"instructors": "Seung-Wuk Lee",
+"last_status": null,
+"node_id": 542150,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "BIOENG",
+"title": "Functional Biomaterials Development and Characterization",
+"url_path": "/content/2027-spring-bioeng-111-001-lec-001"
+},
+{
 "catalog_number": "115",
 "class_number": "001",
 "component": "LEC",
@@ -7499,6 +7514,21 @@
 "subject": "BIOENG",
 "title": "Interface Between Neuroethology & Neural Engineering",
 "url_path": "/content/2027-spring-bioeng-c171-001-lec-001"
+},
+{
+"catalog_number": "C213",
+"class_number": "001",
+"component": "LEC",
+"course_key": "BIOENG C213",
+"instructors": "Shawn C Shadden",
+"last_status": null,
+"node_id": 542151,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "BIOENG",
+"title": "Fluid Mechanics of Biological Systems",
+"url_path": "/content/2027-spring-bioeng-c213-001-lec-001"
 },
 {
 "catalog_number": "C216",
@@ -108904,6 +108934,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-08T23:28:27.218218+00:00",
+"updated_at": "2026-10-09T18:20:59.516444+00:00",
 "version": 3
 }
