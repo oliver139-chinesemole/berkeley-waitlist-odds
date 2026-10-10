@@ -99826,6 +99826,36 @@
 "url_path": "/content/2027-spring-scandin-60-001-lec-001"
 },
 {
+"catalog_number": "R5A",
+"class_number": "001",
+"component": "LEC",
+"course_key": "SCANDIN R5A",
+"instructors": "John S Prusynski",
+"last_status": null,
+"node_id": 542220,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "SCANDIN",
+"title": "Reading and Composition",
+"url_path": "/content/2027-spring-scandin-r5a-001-lec-001"
+},
+{
+"catalog_number": "R5B",
+"class_number": "001",
+"component": "LEC",
+"course_key": "SCANDIN R5B",
+"instructors": "John S Prusynski",
+"last_status": null,
+"node_id": 542221,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "SCANDIN",
+"title": "Reading and Composition",
+"url_path": "/content/2027-spring-scandin-r5b-001-lec-001"
+},
+{
 "catalog_number": "R5B",
 "class_number": "002",
 "component": "LEC",
@@ -109819,6 +109849,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-10T17:50:24.252463+00:00",
+"updated_at": "2026-10-10T18:20:21.880082+00:00",
 "version": 3
 }
