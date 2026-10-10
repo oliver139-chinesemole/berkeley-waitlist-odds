@@ -24962,6 +24962,21 @@
 },
 {
 "catalog_number": "294",
+"class_number": "277",
+"component": "LEC",
+"course_key": "COMPSCI 294",
+"instructors": "Jitendra Malik",
+"last_status": null,
+"node_id": 542184,
+"probed_at": null,
+"section_id": "",
+"section_number": "277",
+"subject": "COMPSCI",
+"title": "Special Topics",
+"url_path": "/content/2027-spring-compsci-294-277-lec-277"
+},
+{
+"catalog_number": "294",
 "class_number": "279",
 "component": "LEC",
 "course_key": "COMPSCI 294",
@@ -29249,6 +29264,21 @@
 "subject": "DEMOG",
 "title": "Special Topics in Demography Seminar",
 "url_path": "/content/2027-spring-demog-260-001-sem-001"
+},
+{
+"catalog_number": "260",
+"class_number": "002",
+"component": "SEM",
+"course_key": "DEMOG 260",
+"instructors": "Joshua R Goldstein",
+"last_status": null,
+"node_id": 542185,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "DEMOG",
+"title": "Special Topics in Demography Seminar",
+"url_path": "/content/2027-spring-demog-260-002-sem-002"
 },
 {
 "catalog_number": "C175",
@@ -33961,6 +33991,21 @@
 "url_path": "/content/2027-spring-educ-144-301-dis-301"
 },
 {
+"catalog_number": "150",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EDUC 150",
+"instructors": "",
+"last_status": null,
+"node_id": 542190,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EDUC",
+"title": "Advanced Studies in Education",
+"url_path": "/content/2027-spring-educ-150-001-lec-001"
+},
+{
 "catalog_number": "163",
 "class_number": "001",
 "component": "LEC",
@@ -34349,6 +34394,36 @@
 "subject": "EDUC",
 "title": "BEAR Center Seminar",
 "url_path": "/content/2027-spring-educ-270b-101-dis-101"
+},
+{
+"catalog_number": "271B",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EDUC 271B",
+"instructors": "Erin Murphy-Graham",
+"last_status": null,
+"node_id": 542191,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EDUC",
+"title": "Introduction to Qualitative Research Methods",
+"url_path": "/content/2027-spring-educ-271b-001-lec-001"
+},
+{
+"catalog_number": "271B",
+"class_number": "101",
+"component": "DIS",
+"course_key": "EDUC 271B",
+"instructors": "Erin Murphy-Graham",
+"last_status": null,
+"node_id": 542192,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "EDUC",
+"title": "Introduction to Qualitative Research Methods",
+"url_path": "/content/2027-spring-educ-271b-101-dis-101"
 },
 {
 "catalog_number": "274B",
@@ -109369,6 +109444,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-10T14:50:29.972877+00:00",
+"updated_at": "2026-10-10T15:20:04.178034+00:00",
 "version": 3
 }
