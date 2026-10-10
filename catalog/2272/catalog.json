@@ -16292,6 +16292,21 @@
 },
 {
 "catalog_number": "150A",
+"class_number": "103",
+"component": "DIS",
+"course_key": "CHMENG 150A",
+"instructors": "",
+"last_status": null,
+"node_id": 542181,
+"probed_at": null,
+"section_id": "",
+"section_number": "103",
+"subject": "CHMENG",
+"title": "Transport Processes",
+"url_path": "/content/2027-spring-chmeng-150a-103-dis-103"
+},
+{
+"catalog_number": "150A",
 "class_number": "104",
 "component": "DIS",
 "course_key": "CHMENG 150A",
@@ -17924,6 +17939,36 @@
 "subject": "CIVENG",
 "title": "Engineering Data Analysis",
 "url_path": "/content/2027-spring-civeng-93-001-lec-001"
+},
+{
+"catalog_number": "93",
+"class_number": "101",
+"component": "LAB",
+"course_key": "CIVENG 93",
+"instructors": "",
+"last_status": null,
+"node_id": 542182,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "CIVENG",
+"title": "Engineering Data Analysis",
+"url_path": "/content/2027-spring-civeng-93-101-lab-101"
+},
+{
+"catalog_number": "93",
+"class_number": "102",
+"component": "LAB",
+"course_key": "CIVENG 93",
+"instructors": "",
+"last_status": null,
+"node_id": 542183,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "CIVENG",
+"title": "Engineering Data Analysis",
+"url_path": "/content/2027-spring-civeng-93-102-lab-102"
 },
 {
 "catalog_number": "C103N",
@@ -109324,6 +109369,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-10T13:53:00.039134+00:00",
+"updated_at": "2026-10-10T14:50:29.972877+00:00",
 "version": 3
 }
