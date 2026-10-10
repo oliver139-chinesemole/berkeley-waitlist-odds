@@ -57706,6 +57706,21 @@
 "url_path": "/content/2027-spring-journ-100-001-lec-001"
 },
 {
+"catalog_number": "100",
+"class_number": "002",
+"component": "LEC",
+"course_key": "JOURN 100",
+"instructors": "Edward Wasserman",
+"last_status": null,
+"node_id": 542202,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "JOURN",
+"title": "Introduction to News Reporting",
+"url_path": "/content/2027-spring-journ-100-002-lec-002"
+},
+{
 "catalog_number": "136",
 "class_number": "001",
 "component": "SEM",
@@ -62656,6 +62671,21 @@
 "url_path": "/content/2027-spring-math-114-001-lec-001"
 },
 {
+"catalog_number": "115",
+"class_number": "002",
+"component": "LEC",
+"course_key": "MATH 115",
+"instructors": "Yunqing Tang",
+"last_status": null,
+"node_id": 542204,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "MATH",
+"title": "Introduction to Number Theory",
+"url_path": "/content/2027-spring-math-115-002-lec-002"
+},
+{
 "catalog_number": "121B",
 "class_number": "001",
 "component": "LEC",
@@ -63659,6 +63689,21 @@
 "subject": "MATH",
 "title": "Homological Algebra",
 "url_path": "/content/2027-spring-math-253-001-lec-001"
+},
+{
+"catalog_number": "254B",
+"class_number": "002",
+"component": "LEC",
+"course_key": "MATH 254B",
+"instructors": "Sug Woo Shin",
+"last_status": null,
+"node_id": 542205,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "MATH",
+"title": "Number Theory",
+"url_path": "/content/2027-spring-math-254b-002-lec-002"
 },
 {
 "catalog_number": "256B",
@@ -73094,6 +73139,21 @@
 "subject": "MECENG",
 "title": "Flight Vehicle Structures and Aeroelasticity",
 "url_path": "/content/2027-spring-meceng-c184-102-lab-102"
+},
+{
+"catalog_number": "C201",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MECENG C201",
+"instructors": "Tarek I Zohdi",
+"last_status": null,
+"node_id": 542206,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MECENG",
+"title": "Modeling and Simulation of Advanced Manufacturing Processes",
+"url_path": "/content/2027-spring-meceng-c201-001-lec-001"
 },
 {
 "catalog_number": "C201",
@@ -109564,6 +109624,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-10T15:50:09.658149+00:00",
+"updated_at": "2026-10-10T16:50:09.912414+00:00",
 "version": 3
 }
