@@ -467,6 +467,21 @@
 },
 {
 "catalog_number": "159",
+"class_number": "001",
+"component": "LEC",
+"course_key": "AFRICAM 159",
+"instructors": "Darlene Dubuisson",
+"last_status": null,
+"node_id": 542180,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "AFRICAM",
+"title": "Special Topics in African American Literature",
+"url_path": "/content/2027-spring-africam-159-001-lec-001"
+},
+{
+"catalog_number": "159",
 "class_number": "002",
 "component": "LEC",
 "course_key": "AFRICAM 159",
@@ -109309,6 +109324,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-09T21:56:45.157181+00:00",
+"updated_at": "2026-10-10T13:53:00.039134+00:00",
 "version": 3
 }
