@@ -75286,6 +75286,21 @@
 "url_path": "/content/2027-spring-music-157c-001-std-001"
 },
 {
+"catalog_number": "158A",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MUSIC 158A",
+"instructors": "Pablo M. Teutli",
+"last_status": null,
+"node_id": 542237,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MUSIC",
+"title": "Sound and Music Computing with CNMAT Technologies",
+"url_path": "/content/2027-spring-music-158a-001-lec-001"
+},
+{
 "catalog_number": "165",
 "class_number": "001",
 "component": "STD",
@@ -110014,6 +110029,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-13T16:56:40.895367+00:00",
+"updated_at": "2026-10-13T18:00:42.826420+00:00",
 "version": 3
 }
