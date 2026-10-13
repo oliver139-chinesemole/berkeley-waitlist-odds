@@ -54215,7 +54215,7 @@
 "class_number": "01",
 "component": "LEC",
 "course_key": "INDENG 231",
-"instructors": "",
+"instructors": "Zeyu Zheng",
 "last_status": null,
 "node_id": 536756,
 "probed_at": null,
@@ -54509,6 +54509,21 @@
 "subject": "INDENG",
 "title": "Special Topics in Industrial Engineering and Operation Research",
 "url_path": "/content/2027-spring-indeng-290-005-lec-005"
+},
+{
+"catalog_number": "290",
+"class_number": "01",
+"component": "LEC",
+"course_key": "INDENG 290",
+"instructors": "",
+"last_status": null,
+"node_id": 542236,
+"probed_at": null,
+"section_id": "",
+"section_number": "01",
+"subject": "INDENG",
+"title": "Special Topics in Industrial Engineering and Operation Research",
+"url_path": "/content/2027-spring-indeng-290-01-lec-01"
 },
 {
 "catalog_number": "298",
@@ -109999,6 +110014,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-13T16:26:00.403871+00:00",
+"updated_at": "2026-10-13T16:56:40.895367+00:00",
 "version": 3
 }
