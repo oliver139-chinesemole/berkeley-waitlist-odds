@@ -9196,6 +9196,21 @@
 "url_path": "/content/2027-spring-buddstd-c115-102-dis-102"
 },
 {
+"catalog_number": "C116",
+"class_number": "001",
+"component": "LEC",
+"course_key": "BUDDSTD C116",
+"instructors": "",
+"last_status": null,
+"node_id": 542222,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "BUDDSTD",
+"title": "Buddhism in China",
+"url_path": "/content/2027-spring-buddstd-c116-001-lec-001"
+},
+{
 "catalog_number": "C128",
 "class_number": "001",
 "component": "LEC",
@@ -16169,6 +16184,21 @@
 "subject": "CHINESE",
 "title": "Introduction to Modern Chinese Literature and Culture",
 "url_path": "/content/2027-spring-chinese-7b-001-lec-001"
+},
+{
+"catalog_number": "C116",
+"class_number": "001",
+"component": "LEC",
+"course_key": "CHINESE C116",
+"instructors": "",
+"last_status": null,
+"node_id": 542223,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "CHINESE",
+"title": "Buddhism in China",
+"url_path": "/content/2027-spring-chinese-c116-001-lec-001"
 },
 {
 "catalog_number": "C140",
@@ -24932,6 +24962,21 @@
 },
 {
 "catalog_number": "294",
+"class_number": "137",
+"component": "LEC",
+"course_key": "COMPSCI 294",
+"instructors": "Allen Y Yang",
+"last_status": null,
+"node_id": 542224,
+"probed_at": null,
+"section_id": "",
+"section_number": "137",
+"subject": "COMPSCI",
+"title": "Special Topics",
+"url_path": "/content/2027-spring-compsci-294-137-lec-137"
+},
+{
+"catalog_number": "294",
 "class_number": "244",
 "component": "LEC",
 "course_key": "COMPSCI 294",
@@ -28997,6 +29042,21 @@
 },
 {
 "catalog_number": "C140",
+"class_number": "105",
+"component": "DIS",
+"course_key": "DATA C140",
+"instructors": "",
+"last_status": null,
+"node_id": 542225,
+"probed_at": null,
+"section_id": "",
+"section_number": "105",
+"subject": "DATA",
+"title": "Probability for Data Science",
+"url_path": "/content/2027-spring-data-c140-105-dis-105"
+},
+{
+"catalog_number": "C140",
 "class_number": "106",
 "component": "DIS",
 "course_key": "DATA C140",
@@ -29009,6 +29069,21 @@
 "subject": "DATA",
 "title": "Probability for Data Science",
 "url_path": "/content/2027-spring-data-c140-106-dis-106"
+},
+{
+"catalog_number": "C140",
+"class_number": "107",
+"component": "DIS",
+"course_key": "DATA C140",
+"instructors": "",
+"last_status": null,
+"node_id": 542226,
+"probed_at": null,
+"section_id": "",
+"section_number": "107",
+"subject": "DATA",
+"title": "Probability for Data Science",
+"url_path": "/content/2027-spring-data-c140-107-dis-107"
 },
 {
 "catalog_number": "C140",
@@ -29864,6 +29939,21 @@
 "subject": "DUTCH",
 "title": "Intermediate Dutch",
 "url_path": "/content/2027-spring-dutch-2-001-lec-001"
+},
+{
+"catalog_number": "150",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EALANG 150",
+"instructors": "",
+"last_status": null,
+"node_id": 542227,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EALANG",
+"title": "East Asian Masculinities",
+"url_path": "/content/2027-spring-ealang-150-001-lec-001"
 },
 {
 "catalog_number": "160",
@@ -40910,7 +41000,7 @@
 "class_number": "009",
 "component": "LEC",
 "course_key": "ENGLISH R1B",
-"instructors": "",
+"instructors": "Ricardo Isaac Gomez",
 "last_status": null,
 "node_id": 535539,
 "probed_at": null,
@@ -43576,6 +43666,21 @@
 "url_path": "/content/2027-spring-espm-131-001-lec-001"
 },
 {
+"catalog_number": "134",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ESPM 134",
+"instructors": "Kipling W Will, Rainbow Desilva",
+"last_status": null,
+"node_id": 542230,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ESPM",
+"title": "Fire, Insects, and Diseases in Forest Ecosystems",
+"url_path": "/content/2027-spring-espm-134-001-lec-001"
+},
+{
 "catalog_number": "150",
 "class_number": "003",
 "component": "LEC",
@@ -44069,6 +44174,21 @@
 "subject": "ESPM",
 "title": "Science Communication",
 "url_path": "/content/2027-spring-espm-227-001-lec-001"
+},
+{
+"catalog_number": "24",
+"class_number": "001",
+"component": "SEM",
+"course_key": "ESPM 24",
+"instructors": "Rodrigo P P Almeida",
+"last_status": null,
+"node_id": 542231,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ESPM",
+"title": "Freshman Seminar",
+"url_path": "/content/2027-spring-espm-24-001-sem-001"
 },
 {
 "catalog_number": "257",
@@ -48946,6 +49066,21 @@
 "url_path": "/content/2027-spring-german-275-001-sem-001"
 },
 {
+"catalog_number": "375B",
+"class_number": "001",
+"component": "SEM",
+"course_key": "GERMAN 375B",
+"instructors": "Nikolaus Euba",
+"last_status": null,
+"node_id": 542232,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GERMAN",
+"title": "Seminar in Foreign Language Pedagogy: Teaching College German II",
+"url_path": "/content/2027-spring-german-375b-001-sem-001"
+},
+{
 "catalog_number": "39Q",
 "class_number": "001",
 "component": "LEC",
@@ -49874,6 +50009,21 @@
 "subject": "GREEK",
 "title": "Elementary Greek",
 "url_path": "/content/2027-spring-greek-2-001-lec-001"
+},
+{
+"catalog_number": "301",
+"class_number": "001",
+"component": "SEM",
+"course_key": "GSPDP 301",
+"instructors": "Linda M Von Hoene, Sabrina Z Soracco",
+"last_status": null,
+"node_id": 542233,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GSPDP",
+"title": "Mentoring in Higher Education",
+"url_path": "/content/2027-spring-gspdp-301-001-sem-001"
 },
 {
 "catalog_number": "301S",
@@ -109849,6 +109999,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-10T18:20:21.880082+00:00",
+"updated_at": "2026-10-13T16:26:00.403871+00:00",
 "version": 3
 }
