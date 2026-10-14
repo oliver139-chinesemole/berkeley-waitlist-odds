@@ -74461,6 +74461,21 @@
 "url_path": "/content/2027-spring-melc-132-001-lec-001"
 },
 {
+"catalog_number": "133",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MELC 133",
+"instructors": "Rafael Neis",
+"last_status": null,
+"node_id": 542286,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MELC",
+"title": "Judaism in Late Antiquity",
+"url_path": "/content/2027-spring-melc-133-001-lec-001"
+},
+{
 "catalog_number": "134",
 "class_number": "001",
 "component": "LEC",
@@ -110464,6 +110479,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-14T12:51:37.767737+00:00",
+"updated_at": "2026-10-14T13:53:01.495732+00:00",
 "version": 3
 }
