@@ -5551,6 +5551,51 @@
 "url_path": "/content/2027-spring-astron-128-001-lab-001"
 },
 {
+"catalog_number": "133",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ASTRON 133",
+"instructors": "Raffaella Margutti",
+"last_status": null,
+"node_id": 542288,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ASTRON",
+"title": "Research Methods in Astrophysics",
+"url_path": "/content/2027-spring-astron-133-001-lec-001"
+},
+{
+"catalog_number": "133",
+"class_number": "101",
+"component": "DIS",
+"course_key": "ASTRON 133",
+"instructors": "",
+"last_status": null,
+"node_id": 542289,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "ASTRON",
+"title": "Research Methods in Astrophysics",
+"url_path": "/content/2027-spring-astron-133-101-dis-101"
+},
+{
+"catalog_number": "133",
+"class_number": "102",
+"component": "DIS",
+"course_key": "ASTRON 133",
+"instructors": "",
+"last_status": null,
+"node_id": 542290,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "ASTRON",
+"title": "Research Methods in Astrophysics",
+"url_path": "/content/2027-spring-astron-133-102-dis-102"
+},
+{
 "catalog_number": "292",
 "class_number": "001",
 "component": "SEM",
@@ -6479,6 +6524,21 @@
 "subject": "BANGLA",
 "title": "Introductory Bengali",
 "url_path": "/content/2027-spring-bangla-1a-101-lab-101"
+},
+{
+"catalog_number": "1B",
+"class_number": "001",
+"component": "LEC",
+"course_key": "BANGLA 1B",
+"instructors": "Rebecca Diane Whittington",
+"last_status": null,
+"node_id": 542292,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "BANGLA",
+"title": "Introductory Bengali",
+"url_path": "/content/2027-spring-bangla-1b-001-lec-001"
 },
 {
 "catalog_number": "100",
@@ -19471,6 +19531,21 @@
 "url_path": "/content/2027-spring-colwrit-107-001-lec-001"
 },
 {
+"catalog_number": "10A",
+"class_number": "001",
+"component": "LEC",
+"course_key": "COLWRIT 10A",
+"instructors": "John Levine",
+"last_status": null,
+"node_id": 542293,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "COLWRIT",
+"title": "Introduction to Public Speaking",
+"url_path": "/content/2027-spring-colwrit-10a-001-lec-001"
+},
+{
 "catalog_number": "10B",
 "class_number": "001",
 "component": "LEC",
@@ -20777,6 +20852,21 @@
 },
 {
 "catalog_number": "100",
+"class_number": "001",
+"component": "LEC",
+"course_key": "COMLIT 100",
+"instructors": "Belen Bistue",
+"last_status": null,
+"node_id": 542295,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "COMLIT",
+"title": "Introduction to Comparative Literature",
+"url_path": "/content/2027-spring-comlit-100-001-lec-001"
+},
+{
+"catalog_number": "100",
 "class_number": "002",
 "component": "LEC",
 "course_key": "COMLIT 100",
@@ -21314,6 +21404,21 @@
 "subject": "COMLIT",
 "title": "English Composition in Connection with the Reading of World Literature",
 "url_path": "/content/2027-spring-comlit-r1b-010-lec-010"
+},
+{
+"catalog_number": "R1B",
+"class_number": "012",
+"component": "LEC",
+"course_key": "COMLIT R1B",
+"instructors": "Belen Bistue",
+"last_status": null,
+"node_id": 542294,
+"probed_at": null,
+"section_id": "",
+"section_number": "012",
+"subject": "COMLIT",
+"title": "English Composition in Connection with the Reading of World Literature",
+"url_path": "/content/2027-spring-comlit-r1b-012-lec-012"
 },
 {
 "catalog_number": "R3B",
@@ -110479,6 +110584,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-14T13:53:01.495732+00:00",
+"updated_at": "2026-10-14T21:23:01.347653+00:00",
 "version": 3
 }
