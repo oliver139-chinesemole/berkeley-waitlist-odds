@@ -25550,10 +25550,10 @@
 "class_number": "003",
 "component": "LEC",
 "course_key": "FRENCH R1B",
-"instructors": "",
+"instructors": "Andrew Blough",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T14:52:15.923619+00:00",
+"probed_at": "2026-10-15T08:51:33.617586+00:00",
 "section_id": "32193",
 "section_number": "003",
 "subject": "FRENCH",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-15T05:26:17.039915+00:00",
+"updated_at": "2026-10-15T08:53:15.249937+00:00",
 "version": 3
 }
