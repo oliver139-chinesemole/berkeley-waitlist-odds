@@ -77867,6 +77867,21 @@
 },
 {
 "catalog_number": "110",
+"class_number": "003",
+"component": "LEC",
+"course_key": "NEU 110",
+"instructors": "",
+"last_status": null,
+"node_id": 542341,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "NEU",
+"title": "Scientific Logic and Communication",
+"url_path": "/content/2027-spring-neu-110-003-lec-003"
+},
+{
+"catalog_number": "110",
 "class_number": "101",
 "component": "DIS",
 "course_key": "NEU 110",
@@ -77924,6 +77939,36 @@
 "subject": "NEU",
 "title": "Scientific Logic and Communication",
 "url_path": "/content/2027-spring-neu-110-202-dis-202"
+},
+{
+"catalog_number": "110",
+"class_number": "301",
+"component": "DIS",
+"course_key": "NEU 110",
+"instructors": "",
+"last_status": null,
+"node_id": 542342,
+"probed_at": null,
+"section_id": "",
+"section_number": "301",
+"subject": "NEU",
+"title": "Scientific Logic and Communication",
+"url_path": "/content/2027-spring-neu-110-301-dis-301"
+},
+{
+"catalog_number": "110",
+"class_number": "302",
+"component": "DIS",
+"course_key": "NEU 110",
+"instructors": "",
+"last_status": null,
+"node_id": 542343,
+"probed_at": null,
+"section_id": "",
+"section_number": "302",
+"subject": "NEU",
+"title": "Scientific Logic and Communication",
+"url_path": "/content/2027-spring-neu-110-302-dis-302"
 },
 {
 "catalog_number": "152",
@@ -111109,6 +111154,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-15T20:29:08.503146+00:00",
+"updated_at": "2026-10-15T21:00:44.028223+00:00",
 "version": 3
 }
