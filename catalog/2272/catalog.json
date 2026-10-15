@@ -53746,6 +53746,66 @@
 "url_path": "/content/2027-spring-history-c184d-001-lec-001"
 },
 {
+"catalog_number": "R1B",
+"class_number": "001",
+"component": "SEM",
+"course_key": "HISTORY R1B",
+"instructors": "Carla Hesse",
+"last_status": null,
+"node_id": 542333,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "HISTORY",
+"title": "Reading and Composition in History",
+"url_path": "/content/2027-spring-history-r1b-001-sem-001"
+},
+{
+"catalog_number": "R1B",
+"class_number": "003",
+"component": "SEM",
+"course_key": "HISTORY R1B",
+"instructors": "Alexandra Coakley, Carla Hesse",
+"last_status": null,
+"node_id": 542335,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "HISTORY",
+"title": "Reading and Composition in History",
+"url_path": "/content/2027-spring-history-r1b-003-sem-003"
+},
+{
+"catalog_number": "R1B",
+"class_number": "004",
+"component": "SEM",
+"course_key": "HISTORY R1B",
+"instructors": "Dimitri Diagne, Carla Hesse",
+"last_status": null,
+"node_id": 542334,
+"probed_at": null,
+"section_id": "",
+"section_number": "004",
+"subject": "HISTORY",
+"title": "Reading and Composition in History",
+"url_path": "/content/2027-spring-history-r1b-004-sem-004"
+},
+{
+"catalog_number": "R1B",
+"class_number": "005",
+"component": "SEM",
+"course_key": "HISTORY R1B",
+"instructors": "Leo Franks, Carla Hesse",
+"last_status": null,
+"node_id": 542336,
+"probed_at": null,
+"section_id": "",
+"section_number": "005",
+"subject": "HISTORY",
+"title": "Reading and Composition in History",
+"url_path": "/content/2027-spring-history-r1b-005-sem-005"
+},
+{
 "catalog_number": "205B",
 "class_number": "001",
 "component": "SEM",
@@ -55291,6 +55351,21 @@
 "url_path": "/content/2027-spring-info-153b-101-lab-101"
 },
 {
+"catalog_number": "201",
+"class_number": "001",
+"component": "LEC",
+"course_key": "INFO 201",
+"instructors": "Michael Rivera",
+"last_status": null,
+"node_id": 542337,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "INFO",
+"title": "Research Design and Applications for Data and Analysis",
+"url_path": "/content/2027-spring-info-201-001-lec-001"
+},
+{
 "catalog_number": "203",
 "class_number": "001",
 "component": "LEC",
@@ -55529,6 +55604,21 @@
 "subject": "INFO",
 "title": "Special Topics in Information",
 "url_path": "/content/2027-spring-info-290-006-lec-006"
+},
+{
+"catalog_number": "290",
+"class_number": "007",
+"component": "LEC",
+"course_key": "INFO 290",
+"instructors": "Judd Antin",
+"last_status": null,
+"node_id": 542338,
+"probed_at": null,
+"section_id": "",
+"section_number": "007",
+"subject": "INFO",
+"title": "Special Topics in Information",
+"url_path": "/content/2027-spring-info-290-007-lec-007"
 },
 {
 "catalog_number": "290T",
@@ -110989,6 +111079,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-15T19:30:36.883879+00:00",
+"updated_at": "2026-10-15T20:00:59.226603+00:00",
 "version": 3
 }
