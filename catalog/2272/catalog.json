@@ -67156,6 +67156,21 @@
 "url_path": "/content/2027-spring-matsci-228-001-lec-001"
 },
 {
+"catalog_number": "24",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MATSCI 24",
+"instructors": "John W Morris",
+"last_status": null,
+"node_id": 542339,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MATSCI",
+"title": "Freshman Seminar",
+"url_path": "/content/2027-spring-matsci-24-001-lec-001"
+},
+{
 "catalog_number": "241B",
 "class_number": "001",
 "component": "LEC",
@@ -73289,6 +73304,21 @@
 "subject": "MECENG",
 "title": "Wildland Fires: Science and Applications",
 "url_path": "/content/2027-spring-meceng-172-001-lec-001"
+},
+{
+"catalog_number": "193A",
+"class_number": "01",
+"component": "LEC",
+"course_key": "MECENG 193A",
+"instructors": "",
+"last_status": null,
+"node_id": 542340,
+"probed_at": null,
+"section_id": "",
+"section_number": "01",
+"subject": "MECENG",
+"title": "Special Topics in Biomechanical Engineering",
+"url_path": "/content/2027-spring-meceng-193a-01-lec-01"
 },
 {
 "catalog_number": "193B",
@@ -111079,6 +111109,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-15T20:00:59.226603+00:00",
+"updated_at": "2026-10-15T20:29:08.503146+00:00",
 "version": 3
 }
