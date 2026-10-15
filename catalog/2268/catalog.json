@@ -34910,10 +34910,10 @@
 "class_number": "111",
 "component": "DIS",
 "course_key": "MATH 52",
-"instructors": "Songyu Ye",
+"instructors": "Benjamin Braiman",
 "last_status": 200,
 "node_id": 531125,
-"probed_at": "2026-09-24T09:38:27.824744+00:00",
+"probed_at": "2026-10-15T05:08:35.177553+00:00",
 "section_id": "27497",
 "section_number": "111",
 "subject": "MATH",
@@ -58429,6 +58429,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-13T21:57:00.627828+00:00",
+"updated_at": "2026-10-15T05:26:17.039915+00:00",
 "version": 3
 }
