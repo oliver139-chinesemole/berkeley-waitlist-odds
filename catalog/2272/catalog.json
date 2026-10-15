@@ -6781,6 +6781,21 @@
 "url_path": "/content/2027-spring-bioeng-111-001-lec-001"
 },
 {
+"catalog_number": "111",
+"class_number": "101",
+"component": "DIS",
+"course_key": "BIOENG 111",
+"instructors": "",
+"last_status": null,
+"node_id": 542315,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "BIOENG",
+"title": "Functional Biomaterials Development and Characterization",
+"url_path": "/content/2027-spring-bioeng-111-101-dis-101"
+},
+{
 "catalog_number": "115",
 "class_number": "001",
 "component": "LEC",
@@ -7154,6 +7169,21 @@
 "subject": "BIOENG",
 "title": "BioMEMS and BioNanotechnology Laboratory",
 "url_path": "/content/2027-spring-bioeng-221l-101-lec-101"
+},
+{
+"catalog_number": "225",
+"class_number": "001",
+"component": "LEC",
+"course_key": "BIOENG 225",
+"instructors": "Paul David Adams",
+"last_status": null,
+"node_id": 542316,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "BIOENG",
+"title": "Biomolecular Structure Determination",
+"url_path": "/content/2027-spring-bioeng-225-001-lec-001"
 },
 {
 "catalog_number": "234",
@@ -39134,6 +39164,21 @@
 "subject": "ENGIN",
 "title": "Manufacturing and Design Communication",
 "url_path": "/content/2027-spring-engin-29-105-lab-105"
+},
+{
+"catalog_number": "295",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ENGIN 295",
+"instructors": "Thomas Fitzpatrick, Suzanne Houlihan",
+"last_status": null,
+"node_id": 542317,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ENGIN",
+"title": "Communications for Engineering Leaders",
+"url_path": "/content/2027-spring-engin-295-001-lec-001"
 },
 {
 "catalog_number": "297",
@@ -110719,6 +110764,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-14T22:26:12.362771+00:00",
+"updated_at": "2026-10-15T18:00:42.284829+00:00",
 "version": 3
 }
