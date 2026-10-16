@@ -34111,6 +34111,21 @@
 "url_path": "/content/2027-spring-edstem-c130-001-lec-001"
 },
 {
+"catalog_number": "125AC",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EDUC 125AC",
+"instructors": "Tina Trujillo",
+"last_status": null,
+"node_id": 542367,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EDUC",
+"title": "Psychedelics Education and the Persistent Taboo on Alternative Ways of Knowing",
+"url_path": "/content/2027-spring-educ-125ac-001-lec-001"
+},
+{
 "catalog_number": "132",
 "class_number": "001",
 "component": "LEC",
@@ -34232,6 +34247,36 @@
 },
 {
 "catalog_number": "144",
+"class_number": "004",
+"component": "LEC",
+"course_key": "EDUC 144",
+"instructors": "Erin Murphy-Graham",
+"last_status": null,
+"node_id": 542368,
+"probed_at": null,
+"section_id": "",
+"section_number": "004",
+"subject": "EDUC",
+"title": "Practicum in Education",
+"url_path": "/content/2027-spring-educ-144-004-lec-004"
+},
+{
+"catalog_number": "144",
+"class_number": "005",
+"component": "LEC",
+"course_key": "EDUC 144",
+"instructors": "Erin Murphy-Graham",
+"last_status": null,
+"node_id": 542371,
+"probed_at": null,
+"section_id": "",
+"section_number": "005",
+"subject": "EDUC",
+"title": "Practicum in Education",
+"url_path": "/content/2027-spring-educ-144-005-lec-005"
+},
+{
+"catalog_number": "144",
 "class_number": "101",
 "component": "DIS",
 "course_key": "EDUC 144",
@@ -34274,6 +34319,36 @@
 "subject": "EDUC",
 "title": "Practicum in Education",
 "url_path": "/content/2027-spring-educ-144-301-dis-301"
+},
+{
+"catalog_number": "144",
+"class_number": "401",
+"component": "DIS",
+"course_key": "EDUC 144",
+"instructors": "Erin Murphy-Graham",
+"last_status": null,
+"node_id": 542369,
+"probed_at": null,
+"section_id": "",
+"section_number": "401",
+"subject": "EDUC",
+"title": "Practicum in Education",
+"url_path": "/content/2027-spring-educ-144-401-dis-401"
+},
+{
+"catalog_number": "144",
+"class_number": "501",
+"component": "DIS",
+"course_key": "EDUC 144",
+"instructors": "Erin Murphy-Graham",
+"last_status": null,
+"node_id": 542372,
+"probed_at": null,
+"section_id": "",
+"section_number": "501",
+"subject": "EDUC",
+"title": "Practicum in Education",
+"url_path": "/content/2027-spring-educ-144-501-dis-501"
 },
 {
 "catalog_number": "150",
@@ -38926,6 +39001,21 @@
 "url_path": "/content/2027-spring-engin-183-003-sem-003"
 },
 {
+"catalog_number": "183",
+"class_number": "004",
+"component": "SEM",
+"course_key": "ENGIN 183",
+"instructors": "",
+"last_status": null,
+"node_id": 542374,
+"probed_at": null,
+"section_id": "",
+"section_number": "004",
+"subject": "ENGIN",
+"title": "Special Topics in Technology Innovation and Entrepreneurship",
+"url_path": "/content/2027-spring-engin-183-004-sem-004"
+},
+{
 "catalog_number": "183A",
 "class_number": "001",
 "component": "COL",
@@ -39209,6 +39299,21 @@
 "subject": "ENGIN",
 "title": "Special Topics in Technology Innovation and Entrepreneurship",
 "url_path": "/content/2027-spring-engin-283-003-sem-003"
+},
+{
+"catalog_number": "283",
+"class_number": "004",
+"component": "SEM",
+"course_key": "ENGIN 283",
+"instructors": "",
+"last_status": null,
+"node_id": 542375,
+"probed_at": null,
+"section_id": "",
+"section_number": "004",
+"subject": "ENGIN",
+"title": "Special Topics in Technology Innovation and Entrepreneurship",
+"url_path": "/content/2027-spring-engin-283-004-sem-004"
 },
 {
 "catalog_number": "283A",
@@ -45359,6 +45464,21 @@
 "subject": "ESPM",
 "title": "Introduction to Geographic Information Systems",
 "url_path": "/content/2027-spring-espm-72-102-lab-102"
+},
+{
+"catalog_number": "84",
+"class_number": "001",
+"component": "SEM",
+"course_key": "ESPM 84",
+"instructors": "",
+"last_status": null,
+"node_id": 542376,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ESPM",
+"title": "Sophomore Seminar",
+"url_path": "/content/2027-spring-espm-84-001-sem-001"
 },
 {
 "catalog_number": "90",
@@ -111244,6 +111364,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-16T15:30:46.483613+00:00",
+"updated_at": "2026-10-16T16:00:46.409576+00:00",
 "version": 3
 }
