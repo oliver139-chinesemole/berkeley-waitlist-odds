@@ -25067,6 +25067,36 @@
 },
 {
 "catalog_number": "289A",
+"class_number": "121",
+"component": "DIS",
+"course_key": "COMPSCI 289A",
+"instructors": "",
+"last_status": null,
+"node_id": 542365,
+"probed_at": null,
+"section_id": "",
+"section_number": "121",
+"subject": "COMPSCI",
+"title": "Introduction to Machine Learning",
+"url_path": "/content/2027-spring-compsci-289a-121-dis-121"
+},
+{
+"catalog_number": "289A",
+"class_number": "122",
+"component": "DIS",
+"course_key": "COMPSCI 289A",
+"instructors": "",
+"last_status": null,
+"node_id": 542366,
+"probed_at": null,
+"section_id": "",
+"section_number": "122",
+"subject": "COMPSCI",
+"title": "Introduction to Machine Learning",
+"url_path": "/content/2027-spring-compsci-289a-122-dis-122"
+},
+{
+"catalog_number": "289A",
 "class_number": "999",
 "component": "DIS",
 "course_key": "COMPSCI 289A",
@@ -111214,6 +111244,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-15T22:30:48.551771+00:00",
+"updated_at": "2026-10-16T15:30:46.483613+00:00",
 "version": 3
 }
