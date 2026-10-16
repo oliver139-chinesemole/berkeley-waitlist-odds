@@ -73501,6 +73501,21 @@
 "url_path": "/content/2027-spring-meceng-193f-001-lec-001"
 },
 {
+"catalog_number": "208",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MECENG 208",
+"instructors": "Kosa Kendall Goucher-Lambert",
+"last_status": null,
+"node_id": 542377,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MECENG",
+"title": "Human-AI Design Methods",
+"url_path": "/content/2027-spring-meceng-208-001-lec-001"
+},
+{
 "catalog_number": "218N",
 "class_number": "001",
 "component": "LEC",
@@ -73634,6 +73649,21 @@
 "subject": "MECENG",
 "title": "Mechanical Behavior of Composite Materials",
 "url_path": "/content/2027-spring-meceng-227-01-lec-01"
+},
+{
+"catalog_number": "231",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MECENG 231",
+"instructors": "Hannah Stuart",
+"last_status": null,
+"node_id": 542378,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MECENG",
+"title": "Advanced Computational Design of Planar Machinery",
+"url_path": "/content/2027-spring-meceng-231-001-lec-001"
 },
 {
 "catalog_number": "233",
@@ -73964,6 +73994,21 @@
 "subject": "MECENG",
 "title": "Advanced Special Topics in Bioengineering",
 "url_path": "/content/2027-spring-meceng-292a-001-lec-001"
+},
+{
+"catalog_number": "292A",
+"class_number": "002",
+"component": "LEC",
+"course_key": "MECENG 292A",
+"instructors": "",
+"last_status": null,
+"node_id": 542379,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "MECENG",
+"title": "Advanced Special Topics in Bioengineering",
+"url_path": "/content/2027-spring-meceng-292a-002-lec-002"
 },
 {
 "catalog_number": "292B",
@@ -111364,6 +111409,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-16T16:00:46.409576+00:00",
+"updated_at": "2026-10-16T17:30:46.578247+00:00",
 "version": 3
 }
