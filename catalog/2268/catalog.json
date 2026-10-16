@@ -52265,10 +52265,10 @@
 "class_number": "006",
 "component": "LEC",
 "course_key": "PUBPOL 297",
-"instructors": "Peter Douglas Linquiti, Josh Wink",
+"instructors": "Peter Douglas Linquiti, Josh Wink, Shreya Patil",
 "last_status": 200,
 "node_id": 532206,
-"probed_at": "2026-09-24T12:23:27.200598+00:00",
+"probed_at": "2026-10-16T06:24:07.457270+00:00",
 "section_id": "16657",
 "section_number": "006",
 "subject": "PUBPOL",
@@ -58504,6 +58504,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-15T15:55:38.756471+00:00",
+"updated_at": "2026-10-16T06:24:24.039561+00:00",
 "version": 3
 }
