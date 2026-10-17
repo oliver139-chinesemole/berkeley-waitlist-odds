@@ -3121,6 +3121,21 @@
 "url_path": "/content/2027-spring-anthro-r5b-004-lec-004"
 },
 {
+"catalog_number": "R5B",
+"class_number": "005",
+"component": "LEC",
+"course_key": "ANTHRO R5B",
+"instructors": "Alexa L Kurmanov",
+"last_status": null,
+"node_id": 542400,
+"probed_at": null,
+"section_id": "",
+"section_number": "005",
+"subject": "ANTHRO",
+"title": "Reading and Composition in Anthropology",
+"url_path": "/content/2027-spring-anthro-r5b-005-lec-005"
+},
+{
 "catalog_number": "115A",
 "class_number": "001",
 "component": "LEC",
@@ -111634,6 +111649,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-17T14:50:46.957958+00:00",
+"updated_at": "2026-10-17T20:21:18.369387+00:00",
 "version": 3
 }
