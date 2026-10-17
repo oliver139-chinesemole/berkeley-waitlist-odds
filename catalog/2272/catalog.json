@@ -101866,6 +101866,21 @@
 "url_path": "/content/2027-spring-slavic-r5a-002-lec-002"
 },
 {
+"catalog_number": "R5A",
+"class_number": "003",
+"component": "LEC",
+"course_key": "SLAVIC R5A",
+"instructors": "Robyn M Jensen",
+"last_status": null,
+"node_id": 542397,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "SLAVIC",
+"title": "Reading and Composition",
+"url_path": "/content/2027-spring-slavic-r5a-003-lec-003"
+},
+{
 "catalog_number": "R5B",
 "class_number": "001",
 "component": "LEC",
@@ -111619,6 +111634,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-17T14:21:09.783420+00:00",
+"updated_at": "2026-10-17T14:50:46.957958+00:00",
 "version": 3
 }
