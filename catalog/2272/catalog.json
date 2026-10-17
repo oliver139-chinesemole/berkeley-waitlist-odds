@@ -83041,6 +83041,21 @@
 "url_path": "/content/2027-spring-pbhlth-255c-001-sem-001"
 },
 {
+"catalog_number": "257",
+"class_number": "001",
+"component": "LEC",
+"course_key": "PBHLTH 257",
+"instructors": "Arthur Lawrence Reingold",
+"last_status": null,
+"node_id": 542383,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "PBHLTH",
+"title": "Outbreak Investigation",
+"url_path": "/content/2027-spring-pbhlth-257-001-lec-001"
+},
+{
 "catalog_number": "260E",
 "class_number": "001",
 "component": "LEC",
@@ -111409,6 +111424,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-16T17:30:46.578247+00:00",
+"updated_at": "2026-10-17T13:52:27.837433+00:00",
 "version": 3
 }
