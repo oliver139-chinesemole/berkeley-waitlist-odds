@@ -17311,6 +17311,21 @@
 "url_path": "/content/2027-spring-civeng-188-001-lec-001"
 },
 {
+"catalog_number": "190",
+"class_number": "001",
+"component": "LEC",
+"course_key": "CIVENG 190",
+"instructors": "",
+"last_status": null,
+"node_id": 542401,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "CIVENG",
+"title": "Special Topics in Civil and Environmental Engineering",
+"url_path": "/content/2027-spring-civeng-190-001-lec-001"
+},
+{
 "catalog_number": "191",
 "class_number": "001",
 "component": "LEC",
@@ -111649,6 +111664,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-17T20:21:18.369387+00:00",
+"updated_at": "2026-10-17T21:20:15.197543+00:00",
 "version": 3
 }
