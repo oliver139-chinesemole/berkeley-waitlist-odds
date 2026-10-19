@@ -26810,10 +26810,10 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "GWS 195",
-"instructors": "Patrice Dianna Douglass",
+"instructors": "Patrice D Douglass",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-10-13T21:55:30.748710+00:00",
+"probed_at": "2026-10-19T20:51:25.619630+00:00",
 "section_id": "19330",
 "section_number": "001",
 "subject": "GWS",
@@ -58504,6 +58504,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-16T06:24:24.039561+00:00",
+"updated_at": "2026-10-19T20:53:27.637275+00:00",
 "version": 3
 }
