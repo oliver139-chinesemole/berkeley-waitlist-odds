@@ -59791,6 +59791,36 @@
 "url_path": "/content/2027-spring-journ-298-019-sem-019"
 },
 {
+"catalog_number": "298",
+"class_number": "020",
+"component": "SEM",
+"course_key": "JOURN 298",
+"instructors": "Mark Jeffrey Schapiro",
+"last_status": null,
+"node_id": 542419,
+"probed_at": null,
+"section_id": "",
+"section_number": "020",
+"subject": "JOURN",
+"title": "Group Study - Special Topics",
+"url_path": "/content/2027-spring-journ-298-020-sem-020"
+},
+{
+"catalog_number": "298",
+"class_number": "021",
+"component": "SEM",
+"course_key": "JOURN 298",
+"instructors": "William J Drummond",
+"last_status": null,
+"node_id": 542420,
+"probed_at": null,
+"section_id": "",
+"section_number": "021",
+"subject": "JOURN",
+"title": "Group Study - Special Topics",
+"url_path": "/content/2027-spring-journ-298-021-sem-021"
+},
+{
 "catalog_number": "39",
 "class_number": "001",
 "component": "SEM",
@@ -111889,6 +111919,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-17T22:50:54.082252+00:00",
+"updated_at": "2026-10-19T15:55:38.779755+00:00",
 "version": 3
 }
