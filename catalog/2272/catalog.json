@@ -45001,6 +45001,21 @@
 "url_path": "/content/2027-spring-espm-24-001-sem-001"
 },
 {
+"catalog_number": "242",
+"class_number": "001",
+"component": "SEM",
+"course_key": "ESPM 242",
+"instructors": "Neil Tsutsui",
+"last_status": null,
+"node_id": 542450,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ESPM",
+"title": "Current Topics in Insect Biology",
+"url_path": "/content/2027-spring-espm-242-001-sem-001"
+},
+{
 "catalog_number": "257",
 "class_number": "001",
 "component": "SEM",
@@ -49334,6 +49349,21 @@
 "subject": "GEOG",
 "title": "Decolonial Border Geographies",
 "url_path": "/content/2027-spring-geog-167ac-108-dis-108"
+},
+{
+"catalog_number": "170",
+"class_number": "001",
+"component": "LEC",
+"course_key": "GEOG 170",
+"instructors": "Jake Kosek",
+"last_status": null,
+"node_id": 542451,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GEOG",
+"title": "Special Topics in Geography",
+"url_path": "/content/2027-spring-geog-170-001-lec-001"
 },
 {
 "catalog_number": "170",
@@ -112279,6 +112309,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-20T20:53:41.432201+00:00",
+"updated_at": "2026-10-20T21:20:34.317954+00:00",
 "version": 3
 }
