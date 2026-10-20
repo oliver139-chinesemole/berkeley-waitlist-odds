@@ -60046,6 +60046,21 @@
 "url_path": "/content/2027-spring-journ-298-021-sem-021"
 },
 {
+"catalog_number": "298",
+"class_number": "022",
+"component": "SEM",
+"course_key": "JOURN 298",
+"instructors": "Jason Spingarn-Koff",
+"last_status": null,
+"node_id": 542452,
+"probed_at": null,
+"section_id": "",
+"section_number": "022",
+"subject": "JOURN",
+"title": "Group Study - Special Topics",
+"url_path": "/content/2027-spring-journ-298-022-sem-022"
+},
+{
 "catalog_number": "39",
 "class_number": "001",
 "component": "SEM",
@@ -112309,6 +112324,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-20T21:20:34.317954+00:00",
+"updated_at": "2026-10-20T22:00:29.995337+00:00",
 "version": 3
 }
