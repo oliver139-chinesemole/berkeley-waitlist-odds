@@ -94726,6 +94726,21 @@
 "url_path": "/content/2027-spring-polsci-116d-104-dis-104"
 },
 {
+"catalog_number": "116D",
+"class_number": "105",
+"component": "DIS",
+"course_key": "POLSCI 116D",
+"instructors": "",
+"last_status": null,
+"node_id": 542426,
+"probed_at": null,
+"section_id": "",
+"section_number": "105",
+"subject": "POLSCI",
+"title": "Special Topics in Political Theory",
+"url_path": "/content/2027-spring-polsci-116d-105-dis-105"
+},
+{
 "catalog_number": "123M",
 "class_number": "001",
 "component": "LEC",
@@ -94739,6 +94754,36 @@
 "subject": "POLSCI",
 "title": "Conflict Management",
 "url_path": "/content/2027-spring-polsci-123m-001-lec-001"
+},
+{
+"catalog_number": "123M",
+"class_number": "101",
+"component": "DIS",
+"course_key": "POLSCI 123M",
+"instructors": "",
+"last_status": null,
+"node_id": 542427,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "POLSCI",
+"title": "Conflict Management",
+"url_path": "/content/2027-spring-polsci-123m-101-dis-101"
+},
+{
+"catalog_number": "123M",
+"class_number": "102",
+"component": "DIS",
+"course_key": "POLSCI 123M",
+"instructors": "",
+"last_status": null,
+"node_id": 542428,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "POLSCI",
+"title": "Conflict Management",
+"url_path": "/content/2027-spring-polsci-123m-102-dis-102"
 },
 {
 "catalog_number": "124D",
@@ -94889,6 +94934,66 @@
 "subject": "POLSCI",
 "title": "Globalization and Me",
 "url_path": "/content/2027-spring-polsci-124w-001-lec-001"
+},
+{
+"catalog_number": "124W",
+"class_number": "101",
+"component": "DIS",
+"course_key": "POLSCI 124W",
+"instructors": "",
+"last_status": null,
+"node_id": 542429,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "POLSCI",
+"title": "Globalization and Me",
+"url_path": "/content/2027-spring-polsci-124w-101-dis-101"
+},
+{
+"catalog_number": "124W",
+"class_number": "102",
+"component": "DIS",
+"course_key": "POLSCI 124W",
+"instructors": "",
+"last_status": null,
+"node_id": 542430,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "POLSCI",
+"title": "Globalization and Me",
+"url_path": "/content/2027-spring-polsci-124w-102-dis-102"
+},
+{
+"catalog_number": "124W",
+"class_number": "103",
+"component": "DIS",
+"course_key": "POLSCI 124W",
+"instructors": "",
+"last_status": null,
+"node_id": 542431,
+"probed_at": null,
+"section_id": "",
+"section_number": "103",
+"subject": "POLSCI",
+"title": "Globalization and Me",
+"url_path": "/content/2027-spring-polsci-124w-103-dis-103"
+},
+{
+"catalog_number": "124W",
+"class_number": "104",
+"component": "DIS",
+"course_key": "POLSCI 124W",
+"instructors": "",
+"last_status": null,
+"node_id": 542432,
+"probed_at": null,
+"section_id": "",
+"section_number": "104",
+"subject": "POLSCI",
+"title": "Globalization and Me",
+"url_path": "/content/2027-spring-polsci-124w-104-dis-104"
 },
 {
 "catalog_number": "126A",
@@ -95144,6 +95249,36 @@
 "subject": "POLSCI",
 "title": "Selected Topics in Comparative Politics",
 "url_path": "/content/2027-spring-polsci-140z-001-lec-001"
+},
+{
+"catalog_number": "140Z",
+"class_number": "101",
+"component": "DIS",
+"course_key": "POLSCI 140Z",
+"instructors": "",
+"last_status": null,
+"node_id": 542433,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "POLSCI",
+"title": "Selected Topics in Comparative Politics",
+"url_path": "/content/2027-spring-polsci-140z-101-dis-101"
+},
+{
+"catalog_number": "140Z",
+"class_number": "102",
+"component": "DIS",
+"course_key": "POLSCI 140Z",
+"instructors": "",
+"last_status": null,
+"node_id": 542434,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "POLSCI",
+"title": "Selected Topics in Comparative Politics",
+"url_path": "/content/2027-spring-polsci-140z-102-dis-102"
 },
 {
 "catalog_number": "143C",
@@ -95639,6 +95774,21 @@
 "subject": "POLSCI",
 "title": "Selected Topics in Comparative Politics",
 "url_path": "/content/2027-spring-polsci-210-002-sem-002"
+},
+{
+"catalog_number": "211",
+"class_number": "006",
+"component": "SEM",
+"course_key": "POLSCI 211",
+"instructors": "Anna Stilz",
+"last_status": null,
+"node_id": 542435,
+"probed_at": null,
+"section_id": "",
+"section_number": "006",
+"subject": "POLSCI",
+"title": "Special Topics in Political Theory",
+"url_path": "/content/2027-spring-polsci-211-006-sem-006"
 },
 {
 "catalog_number": "221",
@@ -100814,6 +100964,21 @@
 "subject": "RHETOR",
 "title": "Rhetoric of Ethics",
 "url_path": "/content/2027-spring-rhetor-113-001-lec-001"
+},
+{
+"catalog_number": "118",
+"class_number": "001",
+"component": "LEC",
+"course_key": "RHETOR 118",
+"instructors": "Samiha Khalil",
+"last_status": null,
+"node_id": 542436,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "RHETOR",
+"title": "Undergraduate Seminar on the Theory and Practice of Reading and Interpretation",
+"url_path": "/content/2027-spring-rhetor-118-001-lec-001"
 },
 {
 "catalog_number": "121",
@@ -111919,6 +112084,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-19T15:55:38.779755+00:00",
+"updated_at": "2026-10-20T13:21:08.612493+00:00",
 "version": 3
 }
