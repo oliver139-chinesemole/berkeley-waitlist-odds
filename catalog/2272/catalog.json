@@ -83656,6 +83656,36 @@
 "url_path": "/content/2027-spring-pbhlth-268w-001-lec-001"
 },
 {
+"catalog_number": "269C",
+"class_number": "001",
+"component": "LEC",
+"course_key": "PBHLTH 269C",
+"instructors": "",
+"last_status": null,
+"node_id": 542453,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "PBHLTH",
+"title": "Occupational Biomechanics",
+"url_path": "/content/2027-spring-pbhlth-269c-001-lec-001"
+},
+{
+"catalog_number": "269C",
+"class_number": "101",
+"component": "DIS",
+"course_key": "PBHLTH 269C",
+"instructors": "",
+"last_status": null,
+"node_id": 542454,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "PBHLTH",
+"title": "Occupational Biomechanics",
+"url_path": "/content/2027-spring-pbhlth-269c-101-dis-101"
+},
+{
 "catalog_number": "271E",
 "class_number": "001",
 "component": "LEC",
@@ -84059,6 +84089,21 @@
 "subject": "PBHLTH",
 "title": "Seminars for M.P.H. Students",
 "url_path": "/content/2027-spring-pbhlth-292-004-sem-004"
+},
+{
+"catalog_number": "292",
+"class_number": "005",
+"component": "SEM",
+"course_key": "PBHLTH 292",
+"instructors": "Anke Hemmerling",
+"last_status": null,
+"node_id": 542455,
+"probed_at": null,
+"section_id": "",
+"section_number": "005",
+"subject": "PBHLTH",
+"title": "Seminars for M.P.H. Students",
+"url_path": "/content/2027-spring-pbhlth-292-005-sem-005"
 },
 {
 "catalog_number": "292",
@@ -112324,6 +112369,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-20T22:00:29.995337+00:00",
+"updated_at": "2026-10-20T22:50:52.998870+00:00",
 "version": 3
 }
