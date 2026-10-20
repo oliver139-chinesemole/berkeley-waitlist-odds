@@ -20822,6 +20822,21 @@
 },
 {
 "catalog_number": "R4B",
+"class_number": "026",
+"component": "SEM",
+"course_key": "COLWRIT R4B",
+"instructors": "Peter B Vahle",
+"last_status": null,
+"node_id": 542437,
+"probed_at": null,
+"section_id": "",
+"section_number": "026",
+"subject": "COLWRIT",
+"title": "Reading, Composition, and Research",
+"url_path": "/content/2027-spring-colwrit-r4b-026-sem-026"
+},
+{
+"catalog_number": "R4B",
 "class_number": "027",
 "component": "SEM",
 "course_key": "COLWRIT R4B",
@@ -112084,6 +112099,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-20T13:21:08.612493+00:00",
+"updated_at": "2026-10-20T20:20:27.742335+00:00",
 "version": 3
 }
