@@ -40415,10 +40415,10 @@
 "class_number": "001",
 "component": "STD",
 "course_key": "MUSIC 148",
-"instructors": "Cornelius K Ladzekpo",
+"instructors": "Cornelius K Ladzekpo, Kwaku Manu",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T14:52:55.167924+00:00",
+"probed_at": "2026-10-20T20:51:46.442078+00:00",
 "section_id": "22681",
 "section_number": "001",
 "subject": "MUSIC",
@@ -58504,6 +58504,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-20T16:51:06.953128+00:00",
+"updated_at": "2026-10-20T20:53:41.378693+00:00",
 "version": 3
 }
