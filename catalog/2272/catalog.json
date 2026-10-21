@@ -45932,6 +45932,21 @@
 },
 {
 "catalog_number": "C130",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ESPM C130",
+"instructors": "Paolo D'Odorico",
+"last_status": null,
+"node_id": 542475,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ESPM",
+"title": "Terrestrial Hydrology",
+"url_path": "/content/2027-spring-espm-c130-001-lec-001"
+},
+{
+"catalog_number": "C130",
 "class_number": "101",
 "component": "DIS",
 "course_key": "ESPM C130",
@@ -112399,6 +112414,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-21T15:50:19.500355+00:00",
+"updated_at": "2026-10-21T16:20:34.092345+00:00",
 "version": 3
 }
