@@ -16427,6 +16427,21 @@
 },
 {
 "catalog_number": "150A",
+"class_number": "102",
+"component": "DIS",
+"course_key": "CHMENG 150A",
+"instructors": "",
+"last_status": null,
+"node_id": 542462,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "CHMENG",
+"title": "Transport Processes",
+"url_path": "/content/2027-spring-chmeng-150a-102-dis-102"
+},
+{
+"catalog_number": "150A",
 "class_number": "103",
 "component": "DIS",
 "course_key": "CHMENG 150A",
@@ -112369,6 +112384,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-20T22:50:52.998870+00:00",
+"updated_at": "2026-10-21T15:20:33.959308+00:00",
 "version": 3
 }
