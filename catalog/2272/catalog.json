@@ -51602,6 +51602,21 @@
 },
 {
 "catalog_number": "80",
+"class_number": "001",
+"component": "LEC",
+"course_key": "GWS 80",
+"instructors": "Brooke Lober",
+"last_status": null,
+"node_id": 542476,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GWS",
+"title": "Gender, Sex and Power",
+"url_path": "/content/2027-spring-gws-80-001-lec-001"
+},
+{
+"catalog_number": "80",
 "class_number": "101",
 "component": "DIS",
 "course_key": "GWS 80",
@@ -52619,6 +52634,21 @@
 "subject": "HISTORY",
 "title": "Seminar in Historical Research and Writing for History Majors",
 "url_path": "/content/2027-spring-history-102-008-sem-008"
+},
+{
+"catalog_number": "103A",
+"class_number": "001",
+"component": "SEM",
+"course_key": "HISTORY 103A",
+"instructors": "Diliana Angelova",
+"last_status": null,
+"node_id": 542478,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "HISTORY",
+"title": "Proseminar: Problems in Interpretation in the Several Fields of History: Ancient",
+"url_path": "/content/2027-spring-history-103a-001-sem-001"
 },
 {
 "catalog_number": "103B",
@@ -53684,6 +53714,21 @@
 "subject": "HISTORY",
 "title": "Historical Colloquium",
 "url_path": "/content/2027-spring-history-290-001-col-001"
+},
+{
+"catalog_number": "375",
+"class_number": "001",
+"component": "SEM",
+"course_key": "HISTORY 375",
+"instructors": "Ronit Stahl",
+"last_status": null,
+"node_id": 542479,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "HISTORY",
+"title": "Teaching History at the University",
+"url_path": "/content/2027-spring-history-375-001-sem-001"
 },
 {
 "catalog_number": "4B",
@@ -56774,6 +56819,21 @@
 "subject": "INTEGBI",
 "title": "Human Physiology Laboratory",
 "url_path": "/content/2027-spring-integbi-132l-104-lab-104"
+},
+{
+"catalog_number": "132L",
+"class_number": "105",
+"component": "LAB",
+"course_key": "INTEGBI 132L",
+"instructors": "",
+"last_status": null,
+"node_id": 542480,
+"probed_at": null,
+"section_id": "",
+"section_number": "105",
+"subject": "INTEGBI",
+"title": "Human Physiology Laboratory",
+"url_path": "/content/2027-spring-integbi-132l-105-lab-105"
 },
 {
 "catalog_number": "132L",
@@ -112414,6 +112474,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-21T16:20:34.092345+00:00",
+"updated_at": "2026-10-21T16:50:22.885717+00:00",
 "version": 3
 }
