@@ -4280,10 +4280,10 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "BUDDSTD C223",
-"instructors": "Robert H Sharf",
+"instructors": "Robert H Sharf, Alexander Von Rospatt",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T15:24:58.626072+00:00",
+"probed_at": "2026-10-21T21:18:36.438668+00:00",
 "section_id": "34174",
 "section_number": "001",
 "subject": "BUDDSTD",
@@ -58504,6 +58504,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-20T20:53:41.378693+00:00",
+"updated_at": "2026-10-21T21:20:38.956986+00:00",
 "version": 3
 }
