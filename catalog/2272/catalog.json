@@ -84136,6 +84136,21 @@
 "url_path": "/content/2027-spring-pbhlth-290c-003-lec-003"
 },
 {
+"catalog_number": "290C",
+"class_number": "005",
+"component": "LEC",
+"course_key": "PBHLTH 290C",
+"instructors": "",
+"last_status": null,
+"node_id": 542487,
+"probed_at": null,
+"section_id": "",
+"section_number": "005",
+"subject": "PBHLTH",
+"title": "Changemaker Microcourse",
+"url_path": "/content/2027-spring-pbhlth-290c-005-lec-005"
+},
+{
 "catalog_number": "291",
 "class_number": "001",
 "component": "LEC",
@@ -95011,6 +95026,36 @@
 "url_path": "/content/2027-spring-polsci-109z-001-lec-001"
 },
 {
+"catalog_number": "109Z",
+"class_number": "101",
+"component": "DIS",
+"course_key": "POLSCI 109Z",
+"instructors": "",
+"last_status": null,
+"node_id": 542488,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "POLSCI",
+"title": "Special Topics in American Politics",
+"url_path": "/content/2027-spring-polsci-109z-101-dis-101"
+},
+{
+"catalog_number": "109Z",
+"class_number": "102",
+"component": "DIS",
+"course_key": "POLSCI 109Z",
+"instructors": "",
+"last_status": null,
+"node_id": 542489,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "POLSCI",
+"title": "Special Topics in American Politics",
+"url_path": "/content/2027-spring-polsci-109z-102-dis-102"
+},
+{
 "catalog_number": "116A",
 "class_number": "001",
 "component": "LEC",
@@ -95504,6 +95549,51 @@
 "subject": "POLSCI",
 "title": "Democracy",
 "url_path": "/content/2027-spring-polsci-137l-001-lec-001"
+},
+{
+"catalog_number": "137R",
+"class_number": "001",
+"component": "LEC",
+"course_key": "POLSCI 137R",
+"instructors": "Robert Braun",
+"last_status": null,
+"node_id": 542490,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "POLSCI",
+"title": "Social Movements & Revolution",
+"url_path": "/content/2027-spring-polsci-137r-001-lec-001"
+},
+{
+"catalog_number": "137R",
+"class_number": "101",
+"component": "DIS",
+"course_key": "POLSCI 137R",
+"instructors": "",
+"last_status": null,
+"node_id": 542491,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "POLSCI",
+"title": "Social Movements & Revolution",
+"url_path": "/content/2027-spring-polsci-137r-101-dis-101"
+},
+{
+"catalog_number": "137R",
+"class_number": "102",
+"component": "DIS",
+"course_key": "POLSCI 137R",
+"instructors": "",
+"last_status": null,
+"node_id": 542492,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "POLSCI",
+"title": "Social Movements & Revolution",
+"url_path": "/content/2027-spring-polsci-137r-102-dis-102"
 },
 {
 "catalog_number": "138C",
@@ -112489,6 +112579,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-21T17:20:28.361403+00:00",
+"updated_at": "2026-10-21T18:20:40.755678+00:00",
 "version": 3
 }
