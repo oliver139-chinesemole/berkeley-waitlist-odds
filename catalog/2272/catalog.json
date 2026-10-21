@@ -68761,6 +68761,21 @@
 "url_path": "/content/2027-spring-mba-209p-003-lec-003"
 },
 {
+"catalog_number": "296",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MBA 296",
+"instructors": "Yaniv Konchitchki",
+"last_status": null,
+"node_id": 542484,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MBA",
+"title": "Special Topics in Business Administration",
+"url_path": "/content/2027-spring-mba-296-001-lec-001"
+},
+{
 "catalog_number": "375",
 "class_number": "001",
 "component": "LEC",
@@ -112474,6 +112489,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-21T16:50:22.885717+00:00",
+"updated_at": "2026-10-21T17:20:28.361403+00:00",
 "version": 3
 }
