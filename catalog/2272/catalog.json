@@ -105496,6 +105496,21 @@
 "url_path": "/content/2027-spring-spanish-31-001-lec-001"
 },
 {
+"catalog_number": "C202",
+"class_number": "001",
+"component": "LEC",
+"course_key": "SPANISH C202",
+"instructors": "Mairi-Louise McLaughlin",
+"last_status": null,
+"node_id": 542493,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "SPANISH",
+"title": "Linguistic History of the Romance Language",
+"url_path": "/content/2027-spring-spanish-c202-001-lec-001"
+},
+{
 "catalog_number": "C203",
 "class_number": "001",
 "component": "SEM",
@@ -112579,6 +112594,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-21T18:20:40.755678+00:00",
+"updated_at": "2026-10-21T18:50:24.760889+00:00",
 "version": 3
 }
