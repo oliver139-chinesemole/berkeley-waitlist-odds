@@ -8465,10 +8465,10 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "CHINESE C223",
-"instructors": "Robert H Sharf",
+"instructors": "Robert H Sharf, Alexander Von Rospatt",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T10:50:53.832159+00:00",
+"probed_at": "2026-10-21T22:48:46.556578+00:00",
 "section_id": "34175",
 "section_number": "001",
 "subject": "CHINESE",
@@ -58504,6 +58504,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-21T21:20:38.956986+00:00",
+"updated_at": "2026-10-21T22:50:47.244249+00:00",
 "version": 3
 }
