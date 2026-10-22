@@ -48017,6 +48017,21 @@
 },
 {
 "catalog_number": "171",
+"class_number": "003",
+"component": "LEC",
+"course_key": "FILM 171",
+"instructors": "Daniel Cuong O'Neill",
+"last_status": null,
+"node_id": 542740,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "FILM",
+"title": "Special Topics in Film Genre",
+"url_path": "/content/2027-spring-film-171-003-lec-003"
+},
+{
+"catalog_number": "171",
 "class_number": "111",
 "component": "LAB",
 "course_key": "FILM 171",
@@ -48044,6 +48059,21 @@
 "subject": "FILM",
 "title": "Special Topics in Film Genre",
 "url_path": "/content/2027-spring-film-171-211-lab-211"
+},
+{
+"catalog_number": "171",
+"class_number": "311",
+"component": "LAB",
+"course_key": "FILM 171",
+"instructors": "Daniel Cuong O'Neill",
+"last_status": null,
+"node_id": 542741,
+"probed_at": null,
+"section_id": "",
+"section_number": "311",
+"subject": "FILM",
+"title": "Special Topics in Film Genre",
+"url_path": "/content/2027-spring-film-171-311-lab-311"
 },
 {
 "catalog_number": "172",
@@ -49904,6 +49934,21 @@
 "subject": "GEOG",
 "title": "Global Development: Theory, History, Geography",
 "url_path": "/content/2027-spring-geog-c112-001-lec-001"
+},
+{
+"catalog_number": "C136",
+"class_number": "001",
+"component": "LEC",
+"course_key": "GEOG C136",
+"instructors": "Paolo D'Odorico",
+"last_status": null,
+"node_id": 542742,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GEOG",
+"title": "Terrestrial Hydrology",
+"url_path": "/content/2027-spring-geog-c136-001-lec-001"
 },
 {
 "catalog_number": "C136",
@@ -113044,6 +113089,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-22T21:52:48.992848+00:00",
+"updated_at": "2026-10-22T22:20:58.833870+00:00",
 "version": 3
 }
