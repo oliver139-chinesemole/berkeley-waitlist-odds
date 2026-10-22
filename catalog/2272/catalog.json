@@ -19741,6 +19741,21 @@
 "url_path": "/content/2027-spring-colwrit-143a-001-lec-001"
 },
 {
+"catalog_number": "143A",
+"class_number": "002",
+"component": "LEC",
+"course_key": "COLWRIT 143A",
+"instructors": "Peter B Vahle",
+"last_status": null,
+"node_id": 542718,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "COLWRIT",
+"title": "Academic Writing for Multilingual Students",
+"url_path": "/content/2027-spring-colwrit-143a-002-lec-002"
+},
+{
 "catalog_number": "161",
 "class_number": "001",
 "component": "LEC",
@@ -28874,6 +28889,21 @@
 "subject": "CYPLAN",
 "title": "Doctoral Seminars: Doctoral Colloquium",
 "url_path": "/content/2027-spring-cyplan-280c-001-sem-001"
+},
+{
+"catalog_number": "281",
+"class_number": "001",
+"component": "SEM",
+"course_key": "CYPLAN 281",
+"instructors": "",
+"last_status": null,
+"node_id": 542719,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "CYPLAN",
+"title": "Planning Theory",
+"url_path": "/content/2027-spring-cyplan-281-001-sem-001"
 },
 {
 "catalog_number": "290",
@@ -112819,6 +112849,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-22T20:25:33.888033+00:00",
+"updated_at": "2026-10-22T21:22:36.480142+00:00",
 "version": 3
 }
