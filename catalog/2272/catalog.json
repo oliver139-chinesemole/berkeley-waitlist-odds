@@ -74221,6 +74221,21 @@
 "url_path": "/content/2027-spring-meceng-137-001-lec-001"
 },
 {
+"catalog_number": "137",
+"class_number": "101",
+"component": "LAB",
+"course_key": "MECENG 137",
+"instructors": "",
+"last_status": null,
+"node_id": 542511,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "MECENG",
+"title": "Next-Generation Energy Management Systems",
+"url_path": "/content/2027-spring-meceng-137-101-lab-101"
+},
+{
 "catalog_number": "160",
 "class_number": "001",
 "component": "SEM",
@@ -112744,6 +112759,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-22T12:50:43.996067+00:00",
+"updated_at": "2026-10-22T13:21:25.405553+00:00",
 "version": 3
 }
