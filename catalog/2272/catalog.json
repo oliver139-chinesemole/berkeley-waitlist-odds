@@ -86101,6 +86101,21 @@
 "url_path": "/content/2027-spring-philos-187-103-dis-103"
 },
 {
+"catalog_number": "190",
+"class_number": "001",
+"component": "LEC",
+"course_key": "PHILOS 190",
+"instructors": "Hans Sluga",
+"last_status": null,
+"node_id": 542524,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "PHILOS",
+"title": "Proseminar",
+"url_path": "/content/2027-spring-philos-190-001-lec-001"
+},
+{
 "catalog_number": "198BC",
 "class_number": "1",
 "component": "DIS",
@@ -112759,6 +112774,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-22T13:21:25.405553+00:00",
+"updated_at": "2026-10-22T13:51:37.217285+00:00",
 "version": 3
 }
