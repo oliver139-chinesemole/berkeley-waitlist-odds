@@ -2251,6 +2251,51 @@
 "url_path": "/content/2027-spring-anthro-169b-102-dis-102"
 },
 {
+"catalog_number": "169C",
+"class_number": "1",
+"component": "LEC",
+"course_key": "ANTHRO 169C",
+"instructors": "William F Hanks",
+"last_status": null,
+"node_id": 542715,
+"probed_at": null,
+"section_id": "",
+"section_number": "1",
+"subject": "ANTHRO",
+"title": "Research Theory and Methods in Linguistic Anthropology",
+"url_path": "/content/2027-spring-anthro-169c-1-lec-1"
+},
+{
+"catalog_number": "169C",
+"class_number": "101",
+"component": "DIS",
+"course_key": "ANTHRO 169C",
+"instructors": "",
+"last_status": null,
+"node_id": 542716,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "ANTHRO",
+"title": "Research Theory and Methods in Linguistic Anthropology",
+"url_path": "/content/2027-spring-anthro-169c-101-dis-101"
+},
+{
+"catalog_number": "169C",
+"class_number": "102",
+"component": "DIS",
+"course_key": "ANTHRO 169C",
+"instructors": "",
+"last_status": null,
+"node_id": 542717,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "ANTHRO",
+"title": "Research Theory and Methods in Linguistic Anthropology",
+"url_path": "/content/2027-spring-anthro-169c-102-dis-102"
+},
+{
 "catalog_number": "171",
 "class_number": "001",
 "component": "LEC",
@@ -112774,6 +112819,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-22T13:51:37.217285+00:00",
+"updated_at": "2026-10-22T20:25:33.888033+00:00",
 "version": 3
 }
