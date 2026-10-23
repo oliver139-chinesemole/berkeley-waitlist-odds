@@ -96226,6 +96226,36 @@
 "url_path": "/content/2027-spring-polsci-137l-001-lec-001"
 },
 {
+"catalog_number": "137L",
+"class_number": "101",
+"component": "DIS",
+"course_key": "POLSCI 137L",
+"instructors": "",
+"last_status": null,
+"node_id": 543002,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "POLSCI",
+"title": "Democracy",
+"url_path": "/content/2027-spring-polsci-137l-101-dis-101"
+},
+{
+"catalog_number": "137L",
+"class_number": "102",
+"component": "DIS",
+"course_key": "POLSCI 137L",
+"instructors": "",
+"last_status": null,
+"node_id": 543003,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "POLSCI",
+"title": "Democracy",
+"url_path": "/content/2027-spring-polsci-137l-102-dis-102"
+},
+{
 "catalog_number": "137R",
 "class_number": "001",
 "component": "LEC",
@@ -96959,6 +96989,36 @@
 "subject": "POLSCI",
 "title": "Special Topics in Political Theory",
 "url_path": "/content/2027-spring-polsci-211-006-sem-006"
+},
+{
+"catalog_number": "211",
+"class_number": "007",
+"component": "SEM",
+"course_key": "POLSCI 211",
+"instructors": "",
+"last_status": null,
+"node_id": 543004,
+"probed_at": null,
+"section_id": "",
+"section_number": "007",
+"subject": "POLSCI",
+"title": "Special Topics in Political Theory",
+"url_path": "/content/2027-spring-polsci-211-007-sem-007"
+},
+{
+"catalog_number": "211",
+"class_number": "008",
+"component": "SEM",
+"course_key": "POLSCI 211",
+"instructors": "",
+"last_status": null,
+"node_id": 543005,
+"probed_at": null,
+"section_id": "",
+"section_number": "008",
+"subject": "POLSCI",
+"title": "Special Topics in Political Theory",
+"url_path": "/content/2027-spring-polsci-211-008-sem-008"
 },
 {
 "catalog_number": "221",
@@ -113269,6 +113329,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-23T22:21:17.109191+00:00",
+"updated_at": "2026-10-23T23:20:55.163626+00:00",
 "version": 3
 }
