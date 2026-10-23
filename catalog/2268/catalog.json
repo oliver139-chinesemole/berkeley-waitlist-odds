@@ -3605,10 +3605,10 @@
 "class_number": "101",
 "component": "DIS",
 "course_key": "BIOENG 114",
-"instructors": "",
+"instructors": "Annie Lin",
 "last_status": 200,
 "node_id": 531224,
-"probed_at": "2026-09-24T14:24:49.171349+00:00",
+"probed_at": "2026-10-23T02:24:48.054042+00:00",
 "section_id": "34122",
 "section_number": "101",
 "subject": "BIOENG",
@@ -58504,6 +58504,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-21T23:26:36.679067+00:00",
+"updated_at": "2026-10-23T02:27:29.008935+00:00",
 "version": 3
 }
