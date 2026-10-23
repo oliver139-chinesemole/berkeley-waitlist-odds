@@ -46,7 +46,7 @@ Status key (every status re-read from the code on `main` 926645e on 2026-10-23, 
 | P2 | Scraper throughput: `--min-interval-s 0.5 --max-concurrency 4` in `scrape.yml` (request starts at most 2 per second, 4 pages in flight). `scraper/http.py` already has the worker pool and the global start limiter, so there is no job matrix and still one writer on `data`. Cause and numbers: `docs/DATA_LOG.md` rows dated 2026-09-21, 22 and 23; contract note in `docs/DESIGN_A2.md` section 16 | done: PR #8 merged 2026-09-24 (7294879) | done |
 | P3 | Merge the `scraper/live.py` step so `data/live/latest.json` starts being written (a 404 until #4) | done: `live/latest.json` written every run since #4 merged (2026-10-23: 1,443 rows, still term 2268 until the switch) | done |
 | P4 | Decide Spring 2026 vs Fall 2026 curves — it changes every number on the site. **Decided 2026-09-24: Spring 2026** (draft PR #11 on `site-v3`; numbers in the data-log decision row and HANDOFF session 6) | done: PR #11 merged 2026-09-25 (cdbf2e7); the site serves Spring 2026 for Spring 2027 | done |
-| P5 | Rebuild `config/priority_courses.txt` from both cycles' flows. Done with `analysis/priority_from_flows.py --top-sections 1500 --min-course-joins 100 --catalog …`: the courses of the 1,500 most-joined sections plus every course with at least 100 joins (1,013 exact course patterns; 1,213 live sections in 661 courses per run against the hand list's 1,047 in 429; 89.2% of both cycles' joins against 47.7%; 51.0% of section-terms that carried a queue, so "cover every section that carried a waitlist" is not met and would cost about 4,000 pages a run). Numbers and `priority_sha` in the data-log row; the tool's `--catalog` report reproduces the live counts | done: PR #9 merged 2026-09-24 (71882a7). For Spring 2027 the selection must also be primary-only, or it is 2.7× over budget (NEXT_2026-10-23 1.1; branch `scrape-spring-selection`) | **before Oct 26** |
+| P5 | Rebuild `config/priority_courses.txt` from both cycles' flows. Done with `analysis/priority_from_flows.py --top-sections 1500 --min-course-joins 100 --catalog …`: the courses of the 1,500 most-joined sections plus every course with at least 100 joins (1,013 exact course patterns; 1,213 live sections in 661 courses per run against the hand list's 1,047 in 429; 89.2% of both cycles' joins against 47.7%; 51.0% of section-terms that carried a queue, so "cover every section that carried a waitlist" is not met and would cost about 4,000 pages a run). Numbers and `priority_sha` in the data-log row; the tool's `--catalog` report reproduces the live counts | done: PR #9 merged 2026-09-24 (71882a7). For Spring 2027 the selection must also be primary-like, or it is 3,878 to 3,933 pages a run against about 2,468 the budget holds (NEXT_2026-10-23 1.1; PR #43, reviewed, not merged) | **before Oct 26** |
 | P6 | GoatCounter on every page before any link is shared | Oliver | before sharing |
 
 ### 3.2 Sections — the feature you asked for
@@ -117,9 +117,9 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 
 | Item | Due |
 | --- | --- |
-| Merge `scrape-spring-selection`, then the term switch (RUNBOOK step 7; NEXT_2026-10-23 1.3) | **Oct 24 to 25** |
+| Merge PR #43 (`scrape-spring-selection`), then the term switch (RUNBOOK step 7; NEXT_2026-10-23 1.3) | **Oct 24 to 25** |
 | Decide the automatic `site/data` swap (NEXT_2026-10-23 section 3; recommended: none for the whole cycle) and `--max-concurrency` 4 to 6 | before Nov 1 / first week of Phase 1 |
-| Browser pass on a phone after `site-term-guards` lands, light and dark, including `?today=2026-09-15` | after the switch |
+| Browser pass on a phone after PR #42 (`site-term-guards`) lands, light and dark, including `?today=2026-09-15` | after the switch |
 | Spring 2026 vs Fall 2026 decision (P4) | decided 2026-09-24: Spring 2026 (PR #11) |
 | GoatCounter account and script (P6) | before sharing |
 | Fix the resume line to "Spring 2027 enrollment cycle", then delete the two paragraphs that mention it (`CLAIMS.md` status paragraph, `FINISH_PLAN_WAITLIST.md` section 3, line 119) — both still present | open since Sep 23 |

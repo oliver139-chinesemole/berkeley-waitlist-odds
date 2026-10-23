@@ -72,7 +72,7 @@ From `docs/dev/SITE_V3_PLAN.md` section 13 and MASTER_PLAN section 2: shared ass
 
 ## 6. Left to build (IDs from `docs/dev/MASTER_PLAN.md` section 3; order from its section 5)
 
-**Update 2026-10-23 (session 11).** Every PR named in this table merged into `main` on 2026-09-25 (HANDOFF session 10); the per-item state verified from `main` on 2026-10-23 is the table in `docs/dev/NEXT_2026-10-23.md` section 4.3 and MASTER_PLAN section 3. Two things to know beyond the table: Q4 is merged but not live (`site/data/titles.json` was never exported and `meta.titles_file` is absent; plan 4.1), and the hardcoded Oct 26 copy (`site.js` `sourceHtml`, `emptyHtml`, `SECTION_RUNG`) plus the course page's board, which showed Fall 2026 rows under Spring 2027 dates because `live()` never compared the file's term with `meta.forecast_term_id`, are session 11's `site-term-guards` branch (plan 1.4, 1.5; PR and review state in HANDOFF session 11).
+**Update 2026-10-23 (session 11).** Every PR named in this table merged into `main` on 2026-09-25 (HANDOFF session 10); the per-item state verified from `main` on 2026-10-23 is the table in `docs/dev/NEXT_2026-10-23.md` section 4.3 and MASTER_PLAN section 3. Two things to know beyond the table: Q4 is merged but not live (`site/data/titles.json` was never exported and `meta.titles_file` is absent; plan 4.1), and the hardcoded Oct 26 copy (`site.js` `sourceHtml`, `emptyHtml`, `SECTION_RUNG`) plus the course page's board, which showed Fall 2026 rows under Spring 2027 dates because `live()` never compared the file's term with `meta.forecast_term_id`, are fixed in PR #42 (`site-term-guards`, reviewed and approved, not merged; plan 1.4, 1.5). A fourth dated string on the Methods page is in the same PR. Known after review: a search on the Lookup page re-renders the source sentence, so "has started" reverts to the dated form (and the status line goes, which is pre-existing) until the next load.
 
 Nothing site-side should start before #4 merges (P1): stacking on an unmerged branch produces conflicts, not speed. After #4 and #11:
 
@@ -110,7 +110,7 @@ Session 7 (2026-09-24) worked Track B of `docs/dev/NEXT_2026-09-24.md` while #4 
 | L15 | Outcome form: course, position, date joined, outcome | open | the only individual-level ground truth |
 | C5, C6 | Row sparklines; CSV download of the current view | open | |
 | I5 to I8 | Admits per day against the calendar with the Aug 19 to Sep 1 outage shaded; exit composition; Cox forest plot; hardest and easiest courses | open | I7 not started |
-| B2 | Data-status line read from the data branch's `status.json` | done: PR #27 merged 2026-09-25 (b7fc82c) | `BWO.liveStatus` reads `status.json` live and names the term from the file's `term_id`; it does not compare that with `meta.forecast_term_id` (NEXT_2026-10-23 1.4 says it does; wrong). The guard arrives with `site-term-guards` |
+| B2 | Data-status line read from the data branch's `status.json` | done: PR #27 merged 2026-09-25 (b7fc82c) | `BWO.liveStatus` reads `status.json` live and names the term from the file's `term_id`; it does not compare that with `meta.forecast_term_id` (NEXT_2026-10-23 1.4 says it does; wrong). The guard (`BWO.isForecastTerm`) arrives with PR #42 |
 | — | Department pages (`dept.html?subject=CODE`) | done: PR #30 (merged 9bae5db) | keyed by subject |
 | X8 | Custom domain | Oliver, optional | before the r/berkeley post |
 | — | Off-season home page | moot | v3 counts down to Spring 2027 and the key-dates strip carries Oct 26; revisit only if the browser pass says otherwise |
