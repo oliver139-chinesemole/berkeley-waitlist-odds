@@ -3800,10 +3800,10 @@
 "class_number": "102",
 "component": "DIS",
 "course_key": "BIOENG 202",
-"instructors": "",
+"instructors": "Annie Lin",
 "last_status": 200,
 "node_id": 531228,
-"probed_at": "2026-09-24T11:20:05.953492+00:00",
+"probed_at": "2026-10-23T05:20:10.209181+00:00",
 "section_id": "29722",
 "section_number": "102",
 "subject": "BIOENG",
@@ -58504,6 +58504,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-23T02:55:19.172183+00:00",
+"updated_at": "2026-10-23T05:22:28.006404+00:00",
 "version": 3
 }
