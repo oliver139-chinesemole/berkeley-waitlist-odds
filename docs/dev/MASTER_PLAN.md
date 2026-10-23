@@ -44,7 +44,7 @@ Status key (every status re-read from the code on `main` 926645e on 2026-10-23, 
 | --- | --- | --- | --- |
 | P1 | Merge PR #4 (site v3), run `pages.yml`, curl every page | done: #4 merged 2026-09-25 (d397833), `pages.yml` deployed, every page 200 (HANDOFF session 10) | done |
 | P2 | Scraper throughput: `--min-interval-s 0.5 --max-concurrency 4` in `scrape.yml` (request starts at most 2 per second, 4 pages in flight). `scraper/http.py` already has the worker pool and the global start limiter, so there is no job matrix and still one writer on `data`. Cause and numbers: `docs/DATA_LOG.md` rows dated 2026-09-21, 22 and 23; contract note in `docs/DESIGN_A2.md` section 16 | done: PR #8 merged 2026-09-24 (7294879) | done |
-| P3 | Merge the `scraper/live.py` step so `data/live/latest.json` starts being written (404 today) | done: `live/latest.json` written every run since #4 merged (2026-10-23: 1,443 rows, still term 2268 until the switch) | done |
+| P3 | Merge the `scraper/live.py` step so `data/live/latest.json` starts being written (a 404 until #4) | done: `live/latest.json` written every run since #4 merged (2026-10-23: 1,443 rows, still term 2268 until the switch) | done |
 | P4 | Decide Spring 2026 vs Fall 2026 curves — it changes every number on the site. **Decided 2026-09-24: Spring 2026** (draft PR #11 on `site-v3`; numbers in the data-log decision row and HANDOFF session 6) | done: PR #11 merged 2026-09-25 (cdbf2e7); the site serves Spring 2026 for Spring 2027 | done |
 | P5 | Rebuild `config/priority_courses.txt` from both cycles' flows. Done with `analysis/priority_from_flows.py --top-sections 1500 --min-course-joins 100 --catalog …`: the courses of the 1,500 most-joined sections plus every course with at least 100 joins (1,013 exact course patterns; 1,213 live sections in 661 courses per run against the hand list's 1,047 in 429; 89.2% of both cycles' joins against 47.7%; 51.0% of section-terms that carried a queue, so "cover every section that carried a waitlist" is not met and would cost about 4,000 pages a run). Numbers and `priority_sha` in the data-log row; the tool's `--catalog` report reproduces the live counts | done: PR #9 merged 2026-09-24 (71882a7). For Spring 2027 the selection must also be primary-only, or it is 2.7× over budget (NEXT_2026-10-23 1.1; branch `scrape-spring-selection`) | **before Oct 26** |
 | P6 | GoatCounter on every page before any link is shared | Oliver | before sharing |
@@ -75,10 +75,10 @@ The v3 matcher already handles `cs61a`, `CS 61A`, `comp sci 61a`, `data 8` → `
 | Q2 | Filler stripping (`berkeley cs61a`, `cs61a discussion`), split suffix (`cs 61 a`), bare number (`61a`) | done: PR #17 |
 | Q3 | Fuzzy subject only: Damerau-Levenshtein ≤1 up to five characters, ≤2 above. **Numbers are never fuzzed** | done: PR #17 |
 | Q4 | Title and instructor search (`data structures`, `linear algebra`, `hilfinger`). Needs `titles.json`, lazy-loaded so a plain code query never fetches it | merged (#28 exporter, #29 matcher) but **not live**: `site/data/titles.json` was never exported and `meta.titles_file` is absent (NEXT_2026-10-23 4.1) |
-| Q5 | "Showing COMPSCI 61A for *compsi 61a*" whenever a fuzzy or title match fires | done: PR #24 (merged d6e73e8) |
-| Q6 | Miss handling: three nearest candidates, browse-by-department path, and a logged miss event | candidates and the department browse path done (PRs #24, #30); the logged miss event open (no analytics) |
+| Q5 | "Showing COMPSCI 61A for *compsi 61a*" whenever a fuzzy or title match fires | done: PR #17 (merged 3c2057c); the course page's line in #24 |
+| Q6 | Miss handling: three nearest candidates, browse-by-department path, and a logged miss event | candidates done (PR #17), the department browse path done (PR #30); the logged miss event open (no analytics) |
 | Q7 | Parse course title and instructor from section pages into the catalog — zero extra requests. Done: `SectionRef.title` / `.instructors` from the page's `sf--course-title` and `sf--instructors` elements, written on discovery and on every fetch when they change, last-known kept when a page lacks the element (DESIGN_A2 section 18) | done: PR #10 merged 2026-09-24 (45f2e07) |
-| Q8 | `tests/fixtures/course_queries.csv`, about 150 rows, run in pytest and in the node harness | done: PR #17 (176 rows, run by pytest and `node tests/site/queries.mjs`) |
+| Q8 | `tests/fixtures/course_queries.csv`, about 150 rows, run in pytest and in the node harness | done: PR #17 (176 rows then; 190 on `main`), run by pytest and `node tests/site/queries.mjs` |
 
 Titles and instructors land in `catalog/<term_id>/catalog.json` on the data branch with Q7 (PR #10), filling in as pages are read; Berkeleytime's `GetCatalog` has titles for the two backfilled cycles if the site needs them before Spring 2027's pages exist.
 
@@ -106,7 +106,7 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 | L15 | Outcome form: course, position, date joined, outcome. The only individual-level ground truth available | open |
 | C5, C6 | Row sparklines; CSV download of the current view | open |
 | D4 | Sections table with live counts (= S1) | done (= S1, PR #20) |
-| I5 to I8 | Admits per day against the calendar with the Aug 19 to Sep 1 outage shaded; exit composition; Cox forest plot; hardest and easiest courses | open |
+| I5 to I8 | Admits per day against the calendar with the Aug 19 to Sep 1 outage shaded; exit composition; Cox forest plot; hardest and easiest courses | I5, I6 and I8 done in v3 (#4; the insights page); I7, the Cox forest plot, open |
 | B2 | Data-status line read from the data branch's `status.json` | done: PR #27 (merged b7fc82c); `BWO.liveStatus` reads `status.json` live |
 | X7 | Playwright screenshots in CI — the only way a Claude Code session can see the page | done on `main` since #4 (`site-smoke.yml` uploads light and dark screenshots as an artifact) |
 | X8 | Custom domain, before the r/berkeley post | Oliver, optional |
@@ -122,7 +122,7 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 | Browser pass on a phone after `site-term-guards` lands, light and dark, including `?today=2026-09-15` | after the switch |
 | Spring 2026 vs Fall 2026 decision (P4) | decided 2026-09-24: Spring 2026 (PR #11) |
 | GoatCounter account and script (P6) | before sharing |
-| Fix the resume line to "Spring 2027 enrollment cycle", then delete the two paragraphs that mention it (`CLAIMS.md` status paragraph, `FINISH_PLAN_WAITLIST.md` section 3, line 119) — both still present | this week |
+| Fix the resume line to "Spring 2027 enrollment cycle", then delete the two paragraphs that mention it (`CLAIMS.md` status paragraph, `FINISH_PLAN_WAITLIST.md` section 3, line 119) — both still present | open since Sep 23 |
 | Sunday two-minute check through Feb 14 | weekly |
 | A7 ship: r/berkeley post, resume bullets from `CLAIMS.md`, pin the repo, LinkedIn, the private interview page | Nov onward |
 
@@ -130,7 +130,7 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 
 | Date | What |
 | --- | --- |
-| Oct 4 | Spring 2027 publishes. Term switch: `gh variable set SCRAPE_TERM --body "Spring 2027"`, forced baseline, confirm `data-term` 2272, `term_switch` row. **P2 and Q7 must land before this.** |
+| Oct 4 | Spring 2027 publishes. Term switch: `gh variable set SCRAPE_TERM --body "Spring 2027"`, forced baseline, confirm `data-term` 2272, `term_switch` row. **P2 and Q7 must land before this** (both merged Sep 24). The switch did not happen on Oct 4; `docs/dev/NEXT_2026-10-23.md` 1.3 is the switch now, Oct 24 to 25. |
 | Oct 12 | Drop-dead for Spring 2027 collection to be running |
 | Oct 26 | Phase 1 opens. **P5 must be installed before this.** |
 | Nov 9 to 22 | First own-data analysis; soft launch if the numbers hold |
@@ -145,7 +145,7 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 
 **Oct 4 to Oct 26** — P5 (priority list), S4 to S7 (section history and the ladder), Q4 to Q6, Q8, department pages, L13, B2, U5 to U8.
 
-**Oct 26 onward** — S8, S9, L11, L15, C5, C6, I5 to I8, soft launch before Nov 23.
+**Oct 26 onward** — S8, S9, L11, L15, C5, C6, I7 (I5, I6 and I8 shipped in v3), soft launch before Nov 23.
 
 **Jan to Feb** — refit after Phase 2, the pre-registered cross-term test, final numbers after Feb 10, A6 and A7.
 
