@@ -68656,6 +68656,21 @@
 "url_path": "/content/2027-spring-matsci-241b-106-lab-106"
 },
 {
+"catalog_number": "290A",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MATSCI 290A",
+"instructors": "Steven Ross Murray",
+"last_status": null,
+"node_id": 542999,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MATSCI",
+"title": "Special Topics in Materials Science",
+"url_path": "/content/2027-spring-matsci-290a-001-lec-001"
+},
+{
 "catalog_number": "298",
 "class_number": "001",
 "component": "SEM",
@@ -69374,6 +69389,21 @@
 "subject": "MBA",
 "title": "Personal Financial Management",
 "url_path": "/content/2027-spring-mba-209p-003-lec-003"
+},
+{
+"catalog_number": "222",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MBA 222",
+"instructors": "Veselina Dinova",
+"last_status": null,
+"node_id": 543000,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MBA",
+"title": "Financial Data Analysis and Valuation",
+"url_path": "/content/2027-spring-mba-222-001-lec-001"
 },
 {
 "catalog_number": "296",
@@ -113239,6 +113269,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-23T21:51:31.792767+00:00",
+"updated_at": "2026-10-23T22:21:17.109191+00:00",
 "version": 3
 }
