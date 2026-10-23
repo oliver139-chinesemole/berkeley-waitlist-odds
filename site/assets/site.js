@@ -149,16 +149,20 @@ const BWO = (function () {
   // ----------------------------------------------------------- state markup
   function emptyHtml(meta) {
     const counts = meta ? ` Snapshots so far: ${esc(meta.sections)} sections, ${esc(meta.cohort_rows)} hypothetical joiners, ${esc(meta.events)} clearings.` : "";
-    return `<p><strong>No estimates yet.</strong> Snapshots for Spring 2027 enrollment start with Phase 1 on Oct 26, 2026; the first curves appear once enough waitlists have cleared (planned for mid-November).${counts}</p>`;
+    return `<p><strong>No estimates yet.</strong> The curves appear once this project's own Spring 2027 snapshots have seen enough waitlists clear.${counts}</p>`;
   }
   function failedHtml() {
     return `<p class="error"><strong>Could not load the estimates.</strong> The data files did not download; check your connection and try again. <button type="button" class="quiet" onclick="location.reload()">Reload</button></p>`;
   }
   function skeletonHtml() { return `<p class="muted">Loading data…</p><div class="skeleton" style="width:70%"></div><div class="skeleton" style="width:45%"></div>`; }
+  // The collection clause of the source sentence: dated until status.json shows a
+  // snapshot of the forecast term, then BWO.liveStatus swaps in the second form.
+  const COLLECTION_TO_COME = "Live Spring 2027 collection by this project starts Oct 26, 2026";
+  const COLLECTION_STARTED = "Live Spring 2027 collection by this project has started";
   function sourceHtml(meta) {
     const counts = `${esc(num(meta.courses))} courses with estimates from ${esc(num(meta.sections))} sections and ${esc(num(meta.cohort_rows))} hypothetical joiners, ${esc(num(meta.events))} of whom cleared`;
     if (meta.data_source === "berkeleytime_history") {
-      return `<p><strong>${esc(meta.term_name)}</strong>, from Berkeleytime's public 15-minute enrollment history: ${counts}. Live Spring 2027 collection by this project starts Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>`;
+      return `<p><strong>${esc(meta.term_name)}</strong>, from Berkeleytime's public 15-minute enrollment history: ${counts}. ${COLLECTION_TO_COME}; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>`;
     }
     return `<p><strong>${esc(meta.term_name)}</strong>: ${counts}.</p>`;
   }
@@ -170,6 +174,9 @@ const BWO = (function () {
   // about five minutes, so the age is never given in seconds. Any failure
   // (network, non-200, bad JSON, no last_run_at) leaves the page as it was.
   const STATUS_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/status.json";
+  // True when a data-branch file (status.json, live/latest.json) is for the term
+  // the pages count down to: the scraper reads its test term until it switches.
+  function isForecastTerm(termId, meta) { return !!meta && meta.forecast_term_id != null && String(termId) === String(meta.forecast_term_id); }
   function liveStatusText(s, now) {
     if (!s || typeof s !== "object" || !s.last_run_at) return null;
     // Python writes microseconds; keep three digits, the precision every browser parses.
@@ -184,16 +191,19 @@ const BWO = (function () {
     return `This project's last ${term}snapshot ran ${ago}: ${plural(s.n_observed, "section")} read, ${num(s.n_missing)} not reached.`;
   }
   // Called after the page has set its status line; never awaited, so it cannot
-  // hold up first paint or the data loads.
+  // hold up first paint or the data loads. A snapshot of the forecast term (the
+  // page's meta from BWO.load) also takes the date out of the source sentence.
   function liveStatus(el) {
     if (!el) return;
     const run = async () => {
       try {
         const r = await fetch(STATUS_URL, { cache: "default" });
         if (!r.ok) return;
-        const text = liveStatusText(await r.json(), Date.now());
+        const s = await r.json();
+        const text = liveStatusText(s, Date.now());
         if (!text) return;
-        el.innerHTML += el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`;
+        const html = isForecastTerm(s.term_id, loaded.meta) ? el.innerHTML.replace(COLLECTION_TO_COME, COLLECTION_STARTED) : el.innerHTML;
+        el.innerHTML = html + (el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`);
       } catch (e) { /* the page stays as it was */ }
     };
     if (typeof document !== "undefined" && document.readyState === "loading") document.addEventListener("DOMContentLoaded", run, { once: true });
@@ -287,7 +297,7 @@ const BWO = (function () {
   // The fallback ladder (S5): which curve is shown and why the rung above it was
   // passed over, from the counts in the data files (cell.n, own.n_course, meta.min_n);
   // then the section rung, which has no curves yet.
-  const SECTION_RUNG = "Section curves need this project's own Spring 2027 snapshots; none exist before Oct 26, 2026.";
+  const SECTION_RUNG = "Section curves need this project's own Spring 2027 snapshots and are not published yet.";
   function deptText(d) { return d === "OTHER" ? "the other departments" : `the ${esc(d)} department`; }
   // The ladder's first sentence. `resolved` is BWO.resolveCell's or BWO.fallbackCell's result;
   // `entry` carries the course key and dept_group (a stub for a course with no data).
@@ -935,7 +945,7 @@ const BWO = (function () {
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
-    liveStatus, liveStatusText,
+    liveStatus, liveStatusText, isForecastTerm,
   };
 })();
 if (typeof window !== "undefined") window.BWO = BWO;

@@ -5,20 +5,31 @@ A3 has added ``reserved_count`` and ``open_reserved`` to ``scraper.live.COLUMNS`
 and widened the selection to every section of a course that has a full or
 waitlisted one. The harness serves it as the page's absolute ``LIVE_URL``
 (``HARNESS_LIVE_FILE``) and pins ``Date.now()`` (``HARNESS_NOW``), so the per-row
-ages are fixed numbers.
+ages are fixed numbers. Its ``term_id`` (2272, Spring 2027) is the forecast term
+the test export counts down to, as on the real site once the scraper reads
+Spring 2027; the page shows the board only for that term.
 
-The first test pins what the page renders today. The second pins A3 (S1 to S3):
+The first test pins what the page renders today, and the next one that a file for
+another term renders no board. ``test_the_board_states_of_a3`` pins A3 (S1 to S3):
 it was a strict xfail until A3 was built, and the marker came off with the board.
-The last pins S6: cross-listed partners (DATA C8 and STAT C8, SIS ids 20817 and
-20818 in the Fall 2026 catalog) are separate rows, and each page shows only its own.
+``test_cross_listed_sections_are_separate_rows`` pins S6: cross-listed partners
+(DATA C8 and STAT C8, SIS ids 20817 and 20818 in the Fall 2026 catalog) are
+separate rows, and each page shows only its own.
+
+The source sentence's collection clause follows the data branch's ``status.json``
+the same way (``HARNESS_STATUS_FILE``): dated while the scraper reads its test term,
+"has started" once it reads the forecast term.
 """
 from __future__ import annotations
 
+import json
 import re
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pytest
 
+from analysis.calendar import SPRING_2027
 from analysis.export import export_site_tables
 from tests.test_site import CAL, NODE, render
 from tests.test_survival import synthetic_cohort
@@ -46,6 +57,9 @@ def live_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
 
     DATA C8 and STAT C8 are a cross-listed pair; the subject is taken from the new key
     too, so DATA C8 (renamed from COMPSCI 4) sits under DATA as it does in the catalog.
+    The pages count down to Spring 2027 (``forecast_term_id`` 2272, the fixture's term)
+    from Berkeleytime history, as ``make site-data`` exports them today
+    (``--forecast-term 2272``, ``data_source`` carried by ``--meta-from``).
     """
     root = tmp_path_factory.mktemp("site_live")
     cohort = synthetic_cohort().copy()
@@ -54,7 +68,7 @@ def live_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     cohort["course_key"] = keys
     cohort["subject"] = [k.split(" ", 1)[0] for k in keys]
     cohort["catalog_number"] = [k.split(" ", 1)[1] for k in keys]
-    export_site_tables(cohort, CAL, root / "data", n_boot=20)
+    export_site_tables(cohort, CAL, root / "data", n_boot=20, forecast_calendar=SPRING_2027, meta={"data_source": "berkeleytime_history"})
     return root
 
 
@@ -90,6 +104,31 @@ def test_the_block_renders_only_this_courses_sections(live_site: Path) -> None:
     # HARNESS_LIVE_FILE yourself; unset it rather than weakening the assertion.
     without = render(live_site, page="course.html", search=SEARCH)
     assert board(without) == ""  # no live file, no block, no error
+
+
+def test_a_live_file_for_another_term_shows_no_board(live_site: Path, tmp_path: Path) -> None:
+    """Until the scraper switches, live/latest.json holds the test term (Fall 2026, 2268): no board under Spring 2027 curves."""
+    meta = json.loads((live_site / "data" / "meta.json").read_text())
+    live = json.loads(FIXTURE.read_text())
+    assert live["term_id"] == meta["forecast_term_id"] == "2272"  # the fixture is the term the pages count down to
+    live.update(term_id="2268", term_name="Fall 2026")
+    fall = tmp_path / "latest_2268.json"
+    fall.write_text(json.dumps(live))
+    out = render(live_site, page="course.html", search=SEARCH, env={**LIVE_ENV, "HARNESS_LIVE_FILE": str(fall)})
+    assert board(out) == ""  # no block, no heading, no rows
+    page = " ".join(el["html"] for el in out["elements"].values())
+    assert "Sections now" not in page and "Fall 2026" not in page and "min ago" not in page
+    assert "COMPSCI 61A" in out["elements"]["course"]["html"]  # the rest of the page rendered as usual
+
+
+def test_is_forecast_term(live_site: Path) -> None:
+    """The rule both data-branch readers use: the file's term_id is meta.forecast_term_id, compared as text."""
+    cases = [["2272", {"forecast_term_id": "2272"}, True], [2272, {"forecast_term_id": "2272"}, True], ["2268", {"forecast_term_id": "2272"}, False],
+             [None, {"forecast_term_id": "2272"}, False], ["2272", {}, False], [None, {}, False], ["2272", None, False]]
+    expression = "[" + ", ".join(f"BWO.isForecastTerm({json.dumps(t)}, {json.dumps(m)})" for t, m, _ in cases) + "]"
+    out = render(live_site, page="course.html", search=SEARCH, expression=expression)
+    assert "eval_error" not in out, out.get("eval_error")
+    assert out["eval"] == [want for _, _, want in cases]
 
 
 def test_the_board_states_of_a3(live_site: Path) -> None:
@@ -183,3 +222,48 @@ def test_cross_listed_sections_are_separate_rows(live_site: Path, key: str) -> N
         assert text not in page, f"{key}: a merged count {text!r} on the page"
     for text in MERGED[2:]:
         assert not re.search(rf"(?<![\d.]){text}(?![\d.])", html), f"{key}: a merged count {text!r} in the board"
+
+
+# 1.4: the source sentence (Berkeleytime history) says when this project's own
+# collection starts, right above B2's status line from status.json. Once that file
+# names the forecast term the date would contradict it, so the clause loses it.
+STATUS_FIXTURE = ROOT / "tests" / "fixtures" / "status_sample.json"
+SOURCE_PAGES = {"index.html": "", "courses.html": "", "course.html": SEARCH, "dept.html": "?subject=COMPSCI", "insights.html": ""}
+STILL_TO_COME = "Live Spring 2027 collection by this project starts Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing."
+STARTED = "Live Spring 2027 collection by this project has started; the estimates switch to its own snapshots once Spring waitlists start clearing."
+
+
+def status_for(tmp_path: Path, **changes: object) -> Path:
+    """The status fixture with the last run 12 minutes before the pinned now, and ``changes`` applied."""
+    status = json.loads(STATUS_FIXTURE.read_text())
+    status["last_run_at"] = (datetime.fromisoformat(NOW) - timedelta(minutes=12)).isoformat()
+    status.update(changes)
+    path = tmp_path / "status.json"
+    path.write_text(json.dumps(status))
+    return path
+
+
+@pytest.mark.parametrize(
+    ("term_id", "term_name", "clause"),
+    [("2268", "Fall 2026", STILL_TO_COME), ("2272", "Spring 2027", STARTED)],
+    ids=["before_the_switch", "after_the_switch"],
+)
+@pytest.mark.parametrize("page", sorted(SOURCE_PAGES))
+def test_the_source_sentence_follows_the_status_term(live_site: Path, tmp_path: Path, page: str, term_id: str, term_name: str, clause: str) -> None:
+    out = render(live_site, page=page, search=SOURCE_PAGES[page], env={"HARNESS_STATUS_FILE": str(status_for(tmp_path, term_id=term_id)), "HARNESS_NOW": NOW})
+    status = out["elements"]["status"]["html"]
+    assert clause in status, status
+    assert status.count("Live Spring 2027 collection") == 1
+    assert f"This project&#39;s last {term_name} snapshot ran about 12 min ago: 1,425 sections read, 1 not reached." in status
+    if term_id == "2272":
+        assert "Oct 26" not in status and "starts" not in status  # nothing dated next to a Spring 2027 snapshot
+
+
+def test_a_status_file_that_is_not_read_keeps_the_dated_clause(live_site: Path, tmp_path: Path) -> None:
+    """A Spring 2027 status.json with no last_run_at adds no status line, so the clause stays as the page printed it."""
+    before = render(live_site, page="course.html", search=SEARCH)["elements"]["status"]["html"]
+    assert STILL_TO_COME in before
+    status = status_for(tmp_path, term_id="2272")
+    status.write_text(json.dumps({k: v for k, v in json.loads(status.read_text()).items() if k != "last_run_at"}))
+    out = render(live_site, page="course.html", search=SEARCH, env={"HARNESS_STATUS_FILE": str(status), "HARNESS_NOW": NOW})
+    assert out["elements"]["status"]["html"] == before
