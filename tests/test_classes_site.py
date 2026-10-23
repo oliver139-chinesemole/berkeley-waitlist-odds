@@ -21,12 +21,14 @@ from scraper.sources.classes_site import (
     SELF_STUDY_COMPONENTS,
     ClassesSiteSource,
     SectionRef,
+    _class_number_order,
     merge_catalog,
     parse_node_title,
     parse_rss,
     parse_section_page,
     parse_section_meta,
     parse_section_ref,
+    primary_like,
     ref_from_feed_item,
 )
 
@@ -556,6 +558,33 @@ def test_selection_keeps_primary_like_sections_only(tmp_path: Path) -> None:
     # the catalog is the discovery record: the secondaries stay in it
     paths = {s["url_path"] for s in read_catalog(tmp_path, "2272")["sections"]}
     assert {r.url_path for r in SECONDARY} <= paths
+
+
+def test_primary_like_keeps_every_component_tied_at_the_lowest_number() -> None:
+    # INTEGBI 132L in the Spring 2027 catalog: LAB 001 and LEC 001 share the lowest number, so
+    # every LAB and LEC is primary-like, LAB 101 and LEC 105 included; a DIS 201 is not
+    refs = [spring_ref("INTEGBI", "132L", n, c) for n, c in (("001", "LAB"), ("001", "LEC"), ("101", "LAB"), ("105", "LEC"), ("201", "DIS"))]
+    assert primary_like(refs) == refs[:4]
+
+
+def test_primary_like_counts_absent_entries_toward_the_lowest_number() -> None:
+    # an absent LEC 001 still makes LEC the course's primary component: its discussions stay out
+    lec = spring_ref("ANTHRO", "3AC", "001", "LEC", last_status=404, probed_at="2026-10-20T00:00:00+00:00")
+    dis = [spring_ref("ANTHRO", "3AC", "101", "DIS"), spring_ref("ANTHRO", "3AC", "102", "DIS")]
+    assert primary_like([*dis, lec]) == [lec]
+
+
+def test_primary_like_sorts_numeric_class_numbers_before_letters() -> None:
+    # DIS 101 is the course's lowest class number (numeric before non-numeric), so the DIS is
+    # selected and the SEM A01 is not
+    sem, dis = spring_ref("MCELLBI", "293C", "A01", "SEM"), spring_ref("MCELLBI", "293C", "101", "DIS")
+    assert primary_like([sem, dis]) == [dis]
+
+
+def test_class_number_order_reads_leading_digits() -> None:
+    assert _class_number_order("061A") == (False, 61)
+    assert _class_number_order("001") == (False, 1)
+    assert _class_number_order("A01") == (True, 0)
 
 
 def test_full_scope_universe_follows_the_selection_rule(tmp_path: Path) -> None:
