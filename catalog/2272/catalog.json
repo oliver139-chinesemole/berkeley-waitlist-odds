@@ -50326,6 +50326,21 @@
 "url_path": "/content/2027-spring-german-160a-001-lec-001"
 },
 {
+"catalog_number": "160B",
+"class_number": "001",
+"component": "LEC",
+"course_key": "GERMAN 160B",
+"instructors": "Stefan Laffin",
+"last_status": null,
+"node_id": 542980,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GERMAN",
+"title": "Politics and Culture in 20th-Century Germany: Fascism and Propaganda",
+"url_path": "/content/2027-spring-german-160b-001-lec-001"
+},
+{
 "catalog_number": "179",
 "class_number": "003",
 "component": "LEC",
@@ -50519,6 +50534,21 @@
 "subject": "GERMAN",
 "title": "Intermediate German II",
 "url_path": "/content/2027-spring-german-4-001-lec-001"
+},
+{
+"catalog_number": "R5A",
+"class_number": "001",
+"component": "LEC",
+"course_key": "GERMAN R5A",
+"instructors": "Linus Mao",
+"last_status": null,
+"node_id": 542981,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "GERMAN",
+"title": "Reading and Composition",
+"url_path": "/content/2027-spring-german-r5a-001-lec-001"
 },
 {
 "catalog_number": "R5B",
@@ -52790,7 +52820,7 @@
 "class_number": "002",
 "component": "LEC",
 "course_key": "HISTORY 100B",
-"instructors": "Robert John Iafolla",
+"instructors": "Monica Libell",
 "last_status": null,
 "node_id": 536525,
 "probed_at": null,
@@ -54887,6 +54917,21 @@
 },
 {
 "catalog_number": "R1B",
+"class_number": "002",
+"component": "SEM",
+"course_key": "HISTORY R1B",
+"instructors": "Tara Madhav, Carla Hesse",
+"last_status": null,
+"node_id": 542994,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "HISTORY",
+"title": "Reading and Composition in History",
+"url_path": "/content/2027-spring-history-r1b-002-sem-002"
+},
+{
+"catalog_number": "R1B",
 "class_number": "003",
 "component": "SEM",
 "course_key": "HISTORY R1B",
@@ -56240,7 +56285,7 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "INDENG 263B",
-"instructors": "",
+"instructors": "Xin Guo",
 "last_status": null,
 "node_id": 536772,
 "probed_at": null,
@@ -57944,6 +57989,21 @@
 "subject": "INTEGBI",
 "title": "Freshman Seminars",
 "url_path": "/content/2027-spring-integbi-24-002-sem-002"
+},
+{
+"catalog_number": "24",
+"class_number": "003",
+"component": "SEM",
+"course_key": "INTEGBI 24",
+"instructors": "Brent D Mishler",
+"last_status": null,
+"node_id": 542998,
+"probed_at": null,
+"section_id": "",
+"section_number": "003",
+"subject": "INTEGBI",
+"title": "Freshman Seminars",
+"url_path": "/content/2027-spring-integbi-24-003-sem-003"
 },
 {
 "catalog_number": "264",
@@ -113179,6 +113239,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-23T21:20:45.240477+00:00",
+"updated_at": "2026-10-23T21:51:31.792767+00:00",
 "version": 3
 }
