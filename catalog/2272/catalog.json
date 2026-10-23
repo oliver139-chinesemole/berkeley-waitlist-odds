@@ -15542,6 +15542,21 @@
 },
 {
 "catalog_number": "180",
+"class_number": "002",
+"component": "LEC",
+"course_key": "CHICANO 180",
+"instructors": "Nicholas Vargas",
+"last_status": null,
+"node_id": 542965,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "CHICANO",
+"title": "Topics in Chicanx Latinx Studies",
+"url_path": "/content/2027-spring-chicano-180-002-lec-002"
+},
+{
+"catalog_number": "180",
 "class_number": "003",
 "component": "LEC",
 "course_key": "CHICANO 180",
@@ -25400,7 +25415,7 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "COMPSCI 365",
-"instructors": "Christopher Todd Hunn",
+"instructors": "Armando Fox",
 "last_status": null,
 "node_id": 534321,
 "probed_at": null,
@@ -113089,6 +113104,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-22T22:20:58.833870+00:00",
+"updated_at": "2026-10-23T20:25:58.703815+00:00",
 "version": 3
 }
