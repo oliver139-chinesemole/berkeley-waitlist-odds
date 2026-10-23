@@ -16,8 +16,10 @@ it was a strict xfail until A3 was built, and the marker came off with the board
 (DATA C8 and STAT C8, SIS ids 20817 and 20818 in the Fall 2026 catalog) are
 separate rows, and each page shows only its own.
 
-The source sentence's collection clause follows the data branch's ``status.json``
-the same way (``HARNESS_STATUS_FILE``): dated while the scraper reads its test term,
+The source sentence's collection clause, and the Methods page's collection
+sentence, follow the data branch's ``status.json`` the same way
+(``HARNESS_STATUS_FILE``): "begins with Phase 1 on Oct 26, 2026" (true before and
+after that day) while the scraper reads its test term or the file is not read,
 "has started" once it reads the forecast term.
 """
 from __future__ import annotations
@@ -225,12 +227,16 @@ def test_cross_listed_sections_are_separate_rows(live_site: Path, key: str) -> N
 
 
 # 1.4: the source sentence (Berkeleytime history) says when this project's own
-# collection starts, right above B2's status line from status.json. Once that file
-# names the forecast term the date would contradict it, so the clause loses it.
+# collection begins, right above B2's status line from status.json, and the Methods
+# page's Data section says it once more. Once that file names the forecast term
+# the date would sit next to a Spring 2027 snapshot, so both lose it. The dated
+# form is the fallback, so it is worded to stay true after Oct 26.
 STATUS_FIXTURE = ROOT / "tests" / "fixtures" / "status_sample.json"
 SOURCE_PAGES = {"index.html": "", "courses.html": "", "course.html": SEARCH, "dept.html": "?subject=COMPSCI", "insights.html": ""}
-STILL_TO_COME = "Live Spring 2027 collection by this project starts Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing."
+DATED = "Live Spring 2027 collection by this project begins with Phase 1 on Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing."
 STARTED = "Live Spring 2027 collection by this project has started; the estimates switch to its own snapshots once Spring waitlists start clearing."
+METHODS_DATED = "Collection for Spring 2027 begins with Phase 1 on Oct 26, 2026."
+METHODS_STARTED = "Collection for Spring 2027 has started."
 
 
 def status_for(tmp_path: Path, **changes: object) -> Path:
@@ -245,7 +251,7 @@ def status_for(tmp_path: Path, **changes: object) -> Path:
 
 @pytest.mark.parametrize(
     ("term_id", "term_name", "clause"),
-    [("2268", "Fall 2026", STILL_TO_COME), ("2272", "Spring 2027", STARTED)],
+    [("2268", "Fall 2026", DATED), ("2272", "Spring 2027", STARTED)],
     ids=["before_the_switch", "after_the_switch"],
 )
 @pytest.mark.parametrize("page", sorted(SOURCE_PAGES))
@@ -255,15 +261,32 @@ def test_the_source_sentence_follows_the_status_term(live_site: Path, tmp_path: 
     assert clause in status, status
     assert status.count("Live Spring 2027 collection") == 1
     assert f"This project&#39;s last {term_name} snapshot ran about 12 min ago: 1,425 sections read, 1 not reached." in status
+    assert "starts" not in status  # the old "starts Oct 26, 2026" is gone in both forms
     if term_id == "2272":
-        assert "Oct 26" not in status and "starts" not in status  # nothing dated next to a Spring 2027 snapshot
+        assert "Oct 26" not in status  # nothing dated next to a Spring 2027 snapshot
 
 
-def test_a_status_file_that_is_not_read_keeps_the_dated_clause(live_site: Path, tmp_path: Path) -> None:
-    """A Spring 2027 status.json with no last_run_at adds no status line, so the clause stays as the page printed it."""
-    before = render(live_site, page="course.html", search=SEARCH)["elements"]["status"]["html"]
-    assert STILL_TO_COME in before
+@pytest.mark.parametrize(
+    ("term_id", "term_name", "sentence"),
+    [("2268", "Fall 2026", METHODS_DATED), ("2272", "Spring 2027", METHODS_STARTED)],
+    ids=["before_the_switch", "after_the_switch"],
+)
+def test_the_methods_collection_sentence_follows_the_status_term(live_site: Path, tmp_path: Path, term_id: str, term_name: str, sentence: str) -> None:
+    """The Data section's static sentence (``#collection``) under the Methods page's own status line."""
+    out = render(live_site, page="methodology.html", env={"HARNESS_STATUS_FILE": str(status_for(tmp_path, term_id=term_id)), "HARNESS_NOW": NOW})
+    assert out["elements"]["collection"]["html"] == sentence
+    assert f"This project&#39;s last {term_name} snapshot ran about 12 min ago: 1,425 sections read, 1 not reached." in out["elements"]["data-status"]["html"]
+    markup = (ROOT / "site" / "methodology.html").read_text()
+    assert f'<span id="collection">{METHODS_DATED}</span>' in markup  # the dated form is what the page ships, for every reader
+    assert "starts when Phase 1 opens" not in markup
+
+
+@pytest.mark.parametrize(("page", "search", "el", "dated"), [("course.html", SEARCH, "status", DATED), ("methodology.html", "", "collection", METHODS_DATED)], ids=["source", "methods"])
+def test_a_status_file_that_is_not_read_keeps_the_dated_form(live_site: Path, tmp_path: Path, page: str, search: str, el: str, dated: str) -> None:
+    """No status file, or a Spring 2027 one with no last_run_at (no status line): the dated form stays as the page printed it."""
+    before = render(live_site, page=page, search=search)["elements"][el]["html"]
+    assert dated in before
     status = status_for(tmp_path, term_id="2272")
     status.write_text(json.dumps({k: v for k, v in json.loads(status.read_text()).items() if k != "last_run_at"}))
-    out = render(live_site, page="course.html", search=SEARCH, env={"HARNESS_STATUS_FILE": str(status), "HARNESS_NOW": NOW})
-    assert out["elements"]["status"]["html"] == before
+    out = render(live_site, page=page, search=search, env={"HARNESS_STATUS_FILE": str(status), "HARNESS_NOW": NOW})
+    assert out["elements"][el]["html"] == before

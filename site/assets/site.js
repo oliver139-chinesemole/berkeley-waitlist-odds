@@ -155,14 +155,16 @@ const BWO = (function () {
     return `<p class="error"><strong>Could not load the estimates.</strong> The data files did not download; check your connection and try again. <button type="button" class="quiet" onclick="location.reload()">Reload</button></p>`;
   }
   function skeletonHtml() { return `<p class="muted">Loading data…</p><div class="skeleton" style="width:70%"></div><div class="skeleton" style="width:45%"></div>`; }
-  // The collection clause of the source sentence: dated until status.json shows a
-  // snapshot of the forecast term, then BWO.liveStatus swaps in the second form.
-  const COLLECTION_TO_COME = "Live Spring 2027 collection by this project starts Oct 26, 2026";
-  const COLLECTION_STARTED = "Live Spring 2027 collection by this project has started";
+  // When this project's own collection begins, as the source sentence and the Methods
+  // page say it: dated (worded to stay true after that day, since it is also what a
+  // reader sees when status.json is not read) until status.json shows a snapshot of
+  // the forecast term, then BWO.liveStatus swaps in "has started".
+  const COLLECTION_DATED = "begins with Phase 1 on Oct 26, 2026";
+  const COLLECTION_STARTED = "has started";
   function sourceHtml(meta) {
     const counts = `${esc(num(meta.courses))} courses with estimates from ${esc(num(meta.sections))} sections and ${esc(num(meta.cohort_rows))} hypothetical joiners, ${esc(num(meta.events))} of whom cleared`;
     if (meta.data_source === "berkeleytime_history") {
-      return `<p><strong>${esc(meta.term_name)}</strong>, from Berkeleytime's public 15-minute enrollment history: ${counts}. ${COLLECTION_TO_COME}; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>`;
+      return `<p><strong>${esc(meta.term_name)}</strong>, from Berkeleytime's public 15-minute enrollment history: ${counts}. Live Spring 2027 collection by this project ${COLLECTION_DATED}; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>`;
     }
     return `<p><strong>${esc(meta.term_name)}</strong>: ${counts}.</p>`;
   }
@@ -192,8 +194,9 @@ const BWO = (function () {
   }
   // Called after the page has set its status line; never awaited, so it cannot
   // hold up first paint or the data loads. A snapshot of the forecast term (the
-  // page's meta from BWO.load) also takes the date out of the source sentence.
-  function liveStatus(el) {
+  // page's meta from BWO.load) also takes the date out of the collection clause, in
+  // `el` and in `also` (the Methods page's Data section).
+  function liveStatus(el, also) {
     if (!el) return;
     const run = async () => {
       try {
@@ -202,8 +205,8 @@ const BWO = (function () {
         const s = await r.json();
         const text = liveStatusText(s, Date.now());
         if (!text) return;
-        const html = isForecastTerm(s.term_id, loaded.meta) ? el.innerHTML.replace(COLLECTION_TO_COME, COLLECTION_STARTED) : el.innerHTML;
-        el.innerHTML = html + (el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`);
+        if (isForecastTerm(s.term_id, loaded.meta)) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, COLLECTION_STARTED);
+        el.innerHTML += el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`;
       } catch (e) { /* the page stays as it was */ }
     };
     if (typeof document !== "undefined" && document.readyState === "loading") document.addEventListener("DOMContentLoaded", run, { once: true });
