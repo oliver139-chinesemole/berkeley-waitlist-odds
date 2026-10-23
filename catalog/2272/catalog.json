@@ -43891,6 +43891,36 @@
 "url_path": "/content/2027-spring-eps-c162-001-lec-001"
 },
 {
+"catalog_number": "C162",
+"class_number": "101",
+"component": "DIS",
+"course_key": "EPS C162",
+"instructors": "",
+"last_status": null,
+"node_id": 542969,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "EPS",
+"title": "Planetary Astrophysics",
+"url_path": "/content/2027-spring-eps-c162-101-dis-101"
+},
+{
+"catalog_number": "C162",
+"class_number": "102",
+"component": "DIS",
+"course_key": "EPS C162",
+"instructors": "",
+"last_status": null,
+"node_id": 542970,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "EPS",
+"title": "Planetary Astrophysics",
+"url_path": "/content/2027-spring-eps-c162-102-dis-102"
+},
+{
 "catalog_number": "C180",
 "class_number": "001",
 "component": "LEC",
@@ -46544,6 +46574,51 @@
 "subject": "ESPM",
 "title": "CLIMATE JUSTICE",
 "url_path": "/content/2027-spring-espm-c176-102-dis-102"
+},
+{
+"catalog_number": "C180",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ESPM C180",
+"instructors": "Robert Harley",
+"last_status": null,
+"node_id": 542971,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ESPM",
+"title": "Air Pollution",
+"url_path": "/content/2027-spring-espm-c180-001-lec-001"
+},
+{
+"catalog_number": "C180",
+"class_number": "101",
+"component": "DIS",
+"course_key": "ESPM C180",
+"instructors": "",
+"last_status": null,
+"node_id": 542972,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "ESPM",
+"title": "Air Pollution",
+"url_path": "/content/2027-spring-espm-c180-101-dis-101"
+},
+{
+"catalog_number": "C180",
+"class_number": "102",
+"component": "DIS",
+"course_key": "ESPM C180",
+"instructors": "",
+"last_status": null,
+"node_id": 542973,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "ESPM",
+"title": "Air Pollution",
+"url_path": "/content/2027-spring-espm-c180-102-dis-102"
 },
 {
 "catalog_number": "C204",
@@ -113104,6 +113179,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-23T20:54:04.039536+00:00",
+"updated_at": "2026-10-23T21:20:45.240477+00:00",
 "version": 3
 }
