@@ -282,6 +282,7 @@ def carried_meta(meta_from: Path, term_id: str, data_source: str) -> dict:
     or Fall 2026's backfill (a7240f4) onto Fall 2026's own snapshots, would be false.
     """
     if not meta_from.exists():
+        logger.info("--meta-from %s not found: carrying nothing", meta_from)
         return {}
     old = json.loads(meta_from.read_text(encoding="utf-8"))
     if str(old.get("term_id")) != str(term_id) or old.get("data_source") != data_source:

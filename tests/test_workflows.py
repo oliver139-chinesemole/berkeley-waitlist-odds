@@ -67,8 +67,9 @@ def test_analysis_workflow_replaces_site_data_only_on_a_publish_own_dispatch_for
 
 
 def test_weekly_analysis_run_censors_long_gaps_and_writes_only_the_candidate() -> None:
-    """The backfill censors gaps over 180 min; the weekly own-data run must too, or a shard
-    section seen about once a day nets a day of admits and drops into one interval. The run
+    """The backfill censors intervals over 180 min; the weekly own-data run must too: a shard
+    section is seen about every six hours (one of 12 shards per 30-min run), and without the
+    flag the position walk reads such an interval's net change as ordinary flow. The run
     writes the candidate, never site/data, and keeps the published pre-registration labels
     when they describe the same term and source (analysis.run.carried_meta)."""
     text = (WORKFLOWS / "analysis.yml").read_text(encoding="utf-8")
@@ -121,16 +122,18 @@ def _tree(root: Path) -> dict[str, bytes]:
     return {str(f.relative_to(root)): f.read_bytes() for f in sorted(root.rglob("*")) if f.is_file()}
 
 
-def _job_dir(tmp_path: Path, candidate_meta: dict, candidate_titles: bool = False) -> Path:
+def _job_dir(tmp_path: Path, candidate_meta: dict, candidate_titles: bool = False, published_titles: bool = True) -> Path:
     """A job checkout as the swap step finds it: the published site/data (Spring 2026, with
-    backtest.json, titles.json and the pre-registration) and the run's own-data candidate."""
+    backtest.json, the pre-registration and, unless ``published_titles`` is false, titles.json)
+    and the run's own-data candidate."""
     job = tmp_path / "job"
     site = job / "site" / "data"
-    _write(site / "meta.json", PUBLISHED_META)
+    _write(site / "meta.json", PUBLISHED_META if published_titles else {k: v for k, v in PUBLISHED_META.items() if k != "titles_file"})
     _write(site / "index.json", {"term_id": "2262", "courses": [{"key": "COMPSCI 61A"}]})
     _write(site / "courses" / "COMPSCI.json", {"subject": "COMPSCI", "courses": {}})
     _write(site / "backtest.json", {"term_id": "2268", "term_name": "Fall 2026", "runs": []})
-    _write(site / "titles.json", {"catalog_term_id": "2272", "courses": {"COMPSCI 61A": {"title": "Structure and Interpretation of Computer Programs", "instructors": []}}})
+    if published_titles:
+        _write(site / "titles.json", {"catalog_term_id": "2272", "courses": {"COMPSCI 61A": {"title": "Structure and Interpretation of Computer Programs", "instructors": []}}})
     cand = job / "analysis" / "out" / "site_candidate"
     _write(cand / "meta.json", candidate_meta)
     _write(cand / "index.json", {"term_id": "2272", "courses": [{"key": "MATH 1A"}]})
@@ -186,6 +189,19 @@ def test_swap_step_on_purpose_publishes_the_candidate_and_keeps_backtest_and_tit
     assert after["backtest.json"] == published["backtest.json"] and after["titles.json"] == published["titles.json"]
     assert json.loads(after["meta.json"]) == {**CANDIDATE_META, "titles_file": "titles.json"}
     assert "site/data replaced with the own-data estimates" in proc.stdout and "backtest.json titles.json" in proc.stdout, proc.stdout
+
+
+def test_swap_step_without_a_published_titles_file_keeps_only_the_backtest(tmp_path: Path) -> None:
+    """main's state until the titles PR lands: no titles.json in site/data, none in the candidate."""
+    job = _job_dir(tmp_path, CANDIDATE_META, published_titles=False)
+    published = _tree(job / "site" / "data")
+    proc = _run_swap(job, term_id="2272", publish_own="true")
+    assert proc.returncode == 0, (proc.stdout, proc.stderr)
+    after = _tree(job / "site" / "data")
+    assert "titles.json" not in after and after["backtest.json"] == published["backtest.json"]
+    assert json.loads(after["meta.json"]) == CANDIDATE_META  # no titles_file
+    replaced = [l for l in proc.stdout.splitlines() if l.startswith("site/data replaced")]
+    assert len(replaced) == 1 and replaced[0].endswith("kept from the published site/data: backtest.json"), proc.stdout
 
 
 def test_swap_step_prefers_the_candidates_own_titles(tmp_path: Path) -> None:

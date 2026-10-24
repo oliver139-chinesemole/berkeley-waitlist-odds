@@ -51,8 +51,9 @@ jobs:
           TERM_ID=$(python -c "from scraper.sources.base import TermSpec; print(TermSpec.from_name('$TERM_NAME').sis_term_id)")
           echo "term_id=$TERM_ID" >> "$GITHUB_OUTPUT"
           echo "term $TERM_NAME -> $TERM_ID"
-      # --max-interval-min 180 censors gaps over 180 min, as the backfill does: a shard section seen about
-      # once a day would otherwise net a day of admits and drops into one interval and undercount admits.
+      # --max-interval-min 180 marks intervals over 180 min censored, as the backfill does. A shard section is seen about
+      # every six hours (one of 12 shards per 30-min run); the position walk and follow-up stop at such an interval rather
+      # than read its net change as ordinary flow, which undercounts admits. Flow totals still count the interval.
       # --meta-from keeps the published pre-registration fields only when they describe the same term and source.
       - name: Run the analysis
         shell: bash

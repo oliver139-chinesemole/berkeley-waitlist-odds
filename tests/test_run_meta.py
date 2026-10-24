@@ -39,7 +39,12 @@ def test_carries_nothing_from_the_published_spring_2026_site_onto_own_spring_202
 def test_carries_nothing_from_a_backfill_of_the_same_term(tmp_path: Path) -> None:
     fall_backfill = {**SPRING_2026_SITE, "term_id": "2268", "prereg_commit": "a7240f4", "prereg_date": "2026-09-20"}
     assert run.carried_meta(_meta(tmp_path, fall_backfill), "2268", "own_snapshots") == {}
+
+
+def test_a_missing_meta_from_carries_nothing_and_says_so(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    caplog.set_level("INFO", logger="analysis.run")
     assert run.carried_meta(tmp_path / "missing.json", "2272", "own_snapshots") == {}
+    assert "not found" in caplog.text and "carrying nothing" in caplog.text
 
 
 def _main_with_sim(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, extra: list[str]) -> dict:
