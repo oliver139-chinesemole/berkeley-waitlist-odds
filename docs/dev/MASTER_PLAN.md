@@ -36,31 +36,31 @@ Verified by fetching raw file contents on `main`, `site-v3`, `backfill-full` and
 
 ## 3. Outstanding, audited
 
-Status key: **branch** = written on `site-v3`, not on `main`; **open** = not written; **Oliver** = only he can do it.
+Status key (every status re-read from the code on `main` 926645e on 2026-10-23, session 11; the dated detail is `docs/dev/NEXT_2026-10-23.md` section 4.3): **done** = merged to `main`; **open** = not written; **Oliver** = only he can do it.
 
 ### 3.1 Blocking
 
 | ID | Item | Status | Due |
 | --- | --- | --- | --- |
-| P1 | Merge PR #4 (site v3), run `pages.yml`, curl every page | branch | this week |
-| P2 | Scraper throughput: `--min-interval-s 0.5 --max-concurrency 4` in `scrape.yml` (request starts at most 2 per second, 4 pages in flight). `scraper/http.py` already has the worker pool and the global start limiter, so there is no job matrix and still one writer on `data`. Cause and numbers: `docs/DATA_LOG.md` rows dated 2026-09-21, 22 and 23; contract note in `docs/DESIGN_A2.md` section 16 | draft PR, branch `p2-throughput` | **before Oct 4**; nothing changes until it is merged to `main` |
-| P3 | Merge the `scraper/live.py` step so `data/live/latest.json` starts being written (404 today) | branch | this week |
-| P4 | Decide Spring 2026 vs Fall 2026 curves — it changes every number on the site. **Decided 2026-09-24: Spring 2026** (draft PR #11 on `site-v3`; numbers in the data-log decision row and HANDOFF session 6) | draft PR #11 | this week |
-| P5 | Rebuild `config/priority_courses.txt` from both cycles' flows. Done with `analysis/priority_from_flows.py --top-sections 1500 --min-course-joins 100 --catalog …`: the courses of the 1,500 most-joined sections plus every course with at least 100 joins (1,013 exact course patterns; 1,213 live sections in 661 courses per run against the hand list's 1,047 in 429; 89.2% of both cycles' joins against 47.7%; 51.0% of section-terms that carried a queue, so "cover every section that carried a waitlist" is not met and would cost about 4,000 pages a run). Numbers and `priority_sha` in the data-log row; the tool's `--catalog` report reproduces the live counts | draft PR #9, branch `p5-priority-list` (stacked on #8) | **before Oct 26** |
+| P1 | Merge PR #4 (site v3), run `pages.yml`, curl every page | done: #4 merged 2026-09-25 (d397833), `pages.yml` deployed, every page 200 (HANDOFF session 10) | done |
+| P2 | Scraper throughput: `--min-interval-s 0.5 --max-concurrency 4` in `scrape.yml` (request starts at most 2 per second, 4 pages in flight). `scraper/http.py` already has the worker pool and the global start limiter, so there is no job matrix and still one writer on `data`. Cause and numbers: `docs/DATA_LOG.md` rows dated 2026-09-21, 22 and 23; contract note in `docs/DESIGN_A2.md` section 16 | done: PR #8 merged 2026-09-24 (7294879) | done |
+| P3 | Merge the `scraper/live.py` step so `data/live/latest.json` starts being written (a 404 until #4) | done: `live/latest.json` written every run since #4 merged (2026-10-23: 1,443 rows, still term 2268 until the switch) | done |
+| P4 | Decide Spring 2026 vs Fall 2026 curves — it changes every number on the site. **Decided 2026-09-24: Spring 2026** (draft PR #11 on `site-v3`; numbers in the data-log decision row and HANDOFF session 6) | done: PR #11 merged 2026-09-25 (cdbf2e7); the site serves Spring 2026 for Spring 2027 | done |
+| P5 | Rebuild `config/priority_courses.txt` from both cycles' flows. Done with `analysis/priority_from_flows.py --top-sections 1500 --min-course-joins 100 --catalog …`: the courses of the 1,500 most-joined sections plus every course with at least 100 joins (1,013 exact course patterns; 1,213 live sections in 661 courses per run against the hand list's 1,047 in 429; 89.2% of both cycles' joins against 47.7%; 51.0% of section-terms that carried a queue, so "cover every section that carried a waitlist" is not met and would cost about 4,000 pages a run). Numbers and `priority_sha` in the data-log row; the tool's `--catalog` report reproduces the live counts | done: PR #9 merged 2026-09-24 (71882a7). For Spring 2027 the selection must also be primary-like, or it is 3,878 to 3,933 pages a run against about 2,468 the 1,380 s budget holds at the last Fall run's rate (NEXT_2026-10-23 1.1; PR #43, reviewed, not merged) | **before Oct 26** |
 | P6 | GoatCounter on every page before any link is shared | Oliver | before sharing |
 
 ### 3.2 Sections — the feature you asked for
 
 | ID | Item | Status |
 | --- | --- | --- |
-| S1 | Live section board: one row per section with enrolled/capacity, waitlist/capacity, seats open, seats open but reserved, "read N minutes ago" | open |
-| S2 | Reserved-seat line per row using `open_reserved` — "4 seats open, all reserved". Nothing else at Berkeley shows a student this | open |
-| S3 | Staleness warning when a section is off the priority list and the number is six hours old | open |
-| S4 | Section history export: daily waitlist series, admits per week, deepest position that cleared | open |
-| S5 | Section fallback ladder — section, course, department, bucket — printed on the page. A section-level curve only where n ≥ 30 | open |
-| S6 | Cross-listed sections shown as separate rows with their own counts, never merged | open |
+| S1 | Live section board: one row per section with enrolled/capacity, waitlist/capacity, seats open, seats open but reserved, "read N minutes ago" | done: PR #20 (merged 37e49a1); partial-null rows and phone rows in PR #23 |
+| S2 | Reserved-seat line per row using `open_reserved` — "4 seats open, all reserved". Nothing else at Berkeley shows a student this | done: PR #20 (the reserved line from `open_reserved`) |
+| S3 | Staleness warning when a section is off the priority list and the number is six hours old | done: PR #20 (stale note at six hours) |
+| S4 | Section history export: daily waitlist series, admits per week, deepest position that cleared | open; needs own Spring 2027 data (after the switch) |
+| S5 | Section fallback ladder — section, course, department, bucket — printed on the page. A section-level curve only where n ≥ 30 | done: PR #26 (merged 20c7d24), the ladder in the headline card |
+| S6 | Cross-listed sections shown as separate rows with their own counts, never merged | done: PR #25 (merged 5b6e498), contract test |
 | S7 | "Which section should I waitlist": queue depth, historical admits per week, deepest position cleared, side by side. Not a model output | open |
-| S8 | Recent openings feed from consecutive own snapshots | open (needs own data) |
+| S8 | Recent openings feed from consecutive own snapshots | open (needs own data; after the switch) |
 | S9 | Watchlist in `localStorage` + `Notification` while the tab is open. No backend, no promises | open |
 
 The plumbing is nearly free: the snapshot schema already carries `component`, `section_number`, `enrolled_count`, `enroll_capacity`, `waitlist_count`, `waitlist_capacity`, `reserved_count`, `open_reserved`, and `scraper/live.py` already emits them. S1 to S3 are wiring once P3 lands.
@@ -71,14 +71,14 @@ The v3 matcher already handles `cs61a`, `CS 61A`, `comp sci 61a`, `data 8` → `
 
 | ID | Item | Status |
 | --- | --- | --- |
-| Q1 | Full subject names (`computer science 61a`, `mechanical engineering 40`) — generate `config/subject_names.json` from the catalog, keep hand-written nicknames in a separate file | open |
-| Q2 | Filler stripping (`berkeley cs61a`, `cs61a discussion`), split suffix (`cs 61 a`), bare number (`61a`) | open |
-| Q3 | Fuzzy subject only: Damerau-Levenshtein ≤1 up to five characters, ≤2 above. **Numbers are never fuzzed** | open |
-| Q4 | Title and instructor search (`data structures`, `linear algebra`, `hilfinger`). Needs `titles.json`, lazy-loaded so a plain code query never fetches it | open |
-| Q5 | "Showing COMPSCI 61A for *compsi 61a*" whenever a fuzzy or title match fires | open |
-| Q6 | Miss handling: three nearest candidates, browse-by-department path, and a logged miss event | open |
-| Q7 | Parse course title and instructor from section pages into the catalog — zero extra requests. Done: `SectionRef.title` / `.instructors` from the page's `sf--course-title` and `sf--instructors` elements, written on discovery and on every fetch when they change, last-known kept when a page lacks the element (DESIGN_A2 section 18) | draft PR #10, branch `q7-titles` (stacked on #9); **before Oct 4** |
-| Q8 | `tests/fixtures/course_queries.csv`, about 150 rows, run in pytest and in the node harness | open |
+| Q1 | Full subject names (`computer science 61a`, `mechanical engineering 40`) — generate `config/subject_names.json` from the catalog, keep hand-written nicknames in a separate file | done: PR #17 (merged 3c2057c), `config/subject_names.json` from an Internet Archive snapshot of the Academic Guide |
+| Q2 | Filler stripping (`berkeley cs61a`, `cs61a discussion`), split suffix (`cs 61 a`), bare number (`61a`) | done: PR #17 |
+| Q3 | Fuzzy subject only: Damerau-Levenshtein ≤1 up to five characters, ≤2 above. **Numbers are never fuzzed** | done: PR #17 |
+| Q4 | Title and instructor search (`data structures`, `linear algebra`, `hilfinger`). Needs `titles.json`, lazy-loaded so a plain code query never fetches it | merged (#28 exporter, #29 matcher) but **not live**: `site/data/titles.json` was never exported and `meta.titles_file` is absent (NEXT_2026-10-23 4.1); shipped in PR #45 `titles-live` (stacked on #43), not merged |
+| Q5 | "Showing COMPSCI 61A for *compsi 61a*" whenever a fuzzy or title match fires | done: PR #17 (merged 3c2057c); the course page's line in #24 |
+| Q6 | Miss handling: three nearest candidates, browse-by-department path, and a logged miss event | candidates done (PR #17), the department browse path done (PR #30); the logged miss event open (no analytics) |
+| Q7 | Parse course title and instructor from section pages into the catalog — zero extra requests. Done: `SectionRef.title` / `.instructors` from the page's `sf--course-title` and `sf--instructors` elements, written on discovery and on every fetch when they change, last-known kept when a page lacks the element (DESIGN_A2 section 18) | done: PR #10 merged 2026-09-24 (45f2e07) |
+| Q8 | `tests/fixtures/course_queries.csv`, about 150 rows, run in pytest and in the node harness | done: PR #17 (176 rows then; 190 on `main`), run by pytest and `node tests/site/queries.mjs` |
 
 Titles and instructors land in `catalog/<term_id>/catalog.json` on the data branch with Q7 (PR #10), filling in as pages are read; Berkeleytime's `GetCatalog` has titles for the two backfilled cycles if the site needs them before Spring 2027's pages exist.
 
@@ -90,37 +90,39 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 | --- | --- | --- |
 | U1 | Term timeline across every page (Phase 1, Phase 2, adjustment, instruction, last run) with today as a gold tick; the clearing chart shares its horizontal scale so curves line up with the calendar | open |
 | U2 | Queue strip as the hero: N ticks for the real waitlist length, your position in gold, shaded through where the line historically reached by your deadline. Also the favicon and the OG image | open |
-| U3 | Palette: cool blue-cast surfaces (`--bg #F2F5F9`, `--ink #10202E`, `--line #C9D4E0`), `--blue #003262` for data, `--gold #FDB515` for *you* and *now* only, `--rust #8C4A1F` for seats held back. Dark: `--bg #0B1622`, `--paper #13202E`, `--ink #E6EDF5`, `--blue #7FB2E5` | open |
-| U4 | Type: Source Serif 4 for headlines and the big figure, Atkinson Hyperlegible for interface text, both self-hosted in `site/assets/fonts/`, subset variable woff2, 60 KB total, system fallback. Scale 12.8/16/20/25/31/39/49/61. `tabular-nums lining` on every figure | open |
+| U3 | Palette: cool blue-cast surfaces (`--bg #F2F5F9`, `--ink #10202E`, `--line #C9D4E0`), `--blue #003262` for data, `--gold #FDB515` for *you* and *now* only, `--rust #8C4A1F` for seats held back. Dark: `--bg #0B1622`, `--paper #13202E`, `--ink #E6EDF5`, `--blue #7FB2E5` | done: PR #16 (merged e8d4bdc), dark `--tint` in #22 |
+| U4 | Type: Source Serif 4 for headlines and the big figure, Atkinson Hyperlegible for interface text, both self-hosted in `site/assets/fonts/`, subset variable woff2, 60 KB total, system fallback. Scale 12.8/16/20/25/31/39/49/61. `tabular-nums lining` on every figure | done: PR #16 (Atkinson Hyperlegible Next substituted for the unavailable face; Oliver's call still open) |
 | U5 | Density splits by page: Lookup and Board dense and phone-first at 38 rem and 68 rem; Insights and Accuracy at 64 rem with air, because those two are the portfolio | open |
 | U6 | One animation: the queue strip fills left to right on a result, gold tick drops in. One signal: the freshness dot. `prefers-reduced-motion` turns both off | open |
-| U7 | Section status as a blue ramp (open, waitlist, full, full-and-reserved), never red/green | open |
-| U8 | No all-caps labels, no single accented word in a headline, no monospace face standing in for "data" — tabular figures do that job | open |
+| U7 | Section status as a blue ramp (open, waitlist, full, full-and-reserved), never red/green | done: PR #20 (the board's ramp); #22 raises `--s1` |
+| U8 | No all-caps labels, no single accented word in a headline, no monospace face standing in for "data" — tabular figures do that job | PR #31: 3 of 8 findings fixed; 5 deferred for Oliver still in (`site.js:284` and `index.html:109` "the whole OTHER department"; `course.html:67` tag inside the h1) |
 
 ### 3.5 Everything else outstanding from the v3 list
 
 | ID | Item | Status |
 | --- | --- | --- |
-| L11 | My waitlists in `localStorage` | open (no `localStorage` anywhere on the branch) |
-| L13 | "What this number cannot see" checklist in the registrar's wording | open |
+| L11 | My waitlists in `localStorage` | open |
+| L13 | "What this number cannot see" checklist in the registrar's wording | done (verified from the page on 2026-10-23) |
 | L15 | Outcome form: course, position, date joined, outcome. The only individual-level ground truth available | open |
 | C5, C6 | Row sparklines; CSV download of the current view | open |
-| D4 | Sections table with live counts (= S1) | open |
-| I5 to I8 | Admits per day against the calendar with the Aug 19 to Sep 1 outage shaded; exit composition; Cox forest plot; hardest and easiest courses | open |
-| B2 | Data-status line read from the data branch's `status.json` | open |
-| X7 | Playwright screenshots in CI — the only way a Claude Code session can see the page | done on `site-v3` (`site-smoke.yml` uploads light and dark screenshots as an artifact) |
+| D4 | Sections table with live counts (= S1) | done (= S1, PR #20) |
+| I5 to I8 | Admits per day against the calendar with the Aug 19 to Sep 1 outage shaded; exit composition; Cox forest plot; hardest and easiest courses | I5, I6 and I8 done in v3 (#4; the insights page); I7, the Cox forest plot, open |
+| B2 | Data-status line read from the data branch's `status.json` | done: PR #27 (merged b7fc82c); `BWO.liveStatus` reads `status.json` live |
+| X7 | Playwright screenshots in CI — the only way a Claude Code session can see the page | done on `main` since #4 (`site-smoke.yml` uploads light and dark screenshots as an artifact) |
 | X8 | Custom domain, before the r/berkeley post | Oliver, optional |
-| — | Department pages (`/dept/COMPSCI`), which is what search engines and subreddit sidebars link | open |
+| — | Department pages (`/dept/COMPSCI`), which is what search engines and subreddit sidebars link | done: PR #30 (merged 9bae5db), `dept.html?subject=CODE` |
 | — | Off-season home page: countdown to Oct 26 plus last cycle's summary, instead of a form that answers with history | moot: with v3's `--forecast-term 2272` the lookup counts down to Spring 2027's dates and the key-dates list carries Oct 26; revisit only if the browser pass says otherwise |
 
 ### 3.6 Oliver only
 
 | Item | Due |
 | --- | --- |
-| Browser pass: phone and laptop, light and dark, including `?today=2026-09-15` | after P1 |
-| Spring 2026 vs Fall 2026 decision (P4) | this week |
+| Merge PR #43 (`scrape-spring-selection`), then the term switch (RUNBOOK step 7; NEXT_2026-10-23 1.3) | **Oct 24 to 25** |
+| Decide the automatic `site/data` swap (NEXT_2026-10-23 section 3; recommended: none for the whole cycle) and `--max-concurrency` 4 to 6 | before Nov 1 / first week of Phase 1 |
+| Browser pass on a phone after PR #42 (`site-term-guards`) lands, light and dark, including `?today=2026-09-15` | after the switch |
+| Spring 2026 vs Fall 2026 decision (P4) | decided 2026-09-24: Spring 2026 (PR #11) |
 | GoatCounter account and script (P6) | before sharing |
-| Fix the resume line to "Spring 2027 enrollment cycle", then delete the two paragraphs that mention it (`CLAIMS.md` status paragraph, `FINISH_PLAN_WAITLIST.md` section 3, line 119) — both still present | this week |
+| Fix the resume line to "Spring 2027 enrollment cycle", then delete the two paragraphs that mention it (`CLAIMS.md` status paragraph, `FINISH_PLAN_WAITLIST.md` section 3, line 119) — both still present | open since Sep 23 |
 | Sunday two-minute check through Feb 14 | weekly |
 | A7 ship: r/berkeley post, resume bullets from `CLAIMS.md`, pin the repo, LinkedIn, the private interview page | Nov onward |
 
@@ -128,7 +130,7 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 
 | Date | What |
 | --- | --- |
-| Oct 4 | Spring 2027 publishes. Term switch: `gh variable set SCRAPE_TERM --body "Spring 2027"`, forced baseline, confirm `data-term` 2272, `term_switch` row. **P2 and Q7 must land before this.** |
+| Oct 4 | Spring 2027 publishes. Term switch: `gh variable set SCRAPE_TERM --body "Spring 2027"`, forced baseline, confirm `data-term` 2272, `term_switch` row. **P2 and Q7 must land before this** (both merged Sep 24). The switch did not happen on Oct 4; `docs/dev/NEXT_2026-10-23.md` 1.3 is the switch now, Oct 24 to 25. |
 | Oct 12 | Drop-dead for Spring 2027 collection to be running |
 | Oct 26 | Phase 1 opens. **P5 must be installed before this.** |
 | Nov 9 to 22 | First own-data analysis; soft launch if the numbers hold |
@@ -143,7 +145,7 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 
 **Oct 4 to Oct 26** — P5 (priority list), S4 to S7 (section history and the ladder), Q4 to Q6, Q8, department pages, L13, B2, U5 to U8.
 
-**Oct 26 onward** — S8, S9, L11, L15, C5, C6, I5 to I8, soft launch before Nov 23.
+**Oct 26 onward** — S8, S9, L11, L15, C5, C6, I7 (I5, I6 and I8 shipped in v3), soft launch before Nov 23.
 
 **Jan to Feb** — refit after Phase 2, the pre-registered cross-term test, final numbers after Feb 10, A6 and A7.
 
