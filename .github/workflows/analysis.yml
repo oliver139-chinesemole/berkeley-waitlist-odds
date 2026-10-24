@@ -11,6 +11,11 @@ on:
         description: 'Term name (default: SCRAPE_TERM repo variable)'
         required: false
         type: string
+      publish_own:
+        description: 'Replace site/data with this run''s own-data estimates (only for term 2272 with 10 or more clearings)'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -50,21 +55,22 @@ jobs:
         shell: bash
         run: |
           python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir analysis/out/site_candidate 2>&1 | tee analysis.log
-      # site/data may hold the Fall 2026 backfill (data_source berkeleytime_history) until this
-      # project's own Spring 2027 snapshots have clearings; an own-data run with no clearings
-      # must not replace it with an empty cohort. Only the Spring 2027 term (2272) may replace it:
-      # the Fall 2026 test term was collected after its last automatic waitlist run (Sep 11), and by
-      # 2026-09-23 its own-data cohort showed 209 post-deadline clearings (docs/DATA_LOG.md).
-      - name: Publish site data only when the own snapshots have clearings
+      # site/data holds Spring 2026 curves from Berkeleytime's history (data_source berkeleytime_history),
+      # kept for the whole Spring 2027 cycle unless own data is published on purpose: only a dispatch with
+      # publish_own=true replaces it (a schedule renders inputs.publish_own as "", a dispatch without the
+      # input as "false"), and only for term 2272 with 10 or more clearings. Never Fall 2026: it was collected
+      # after its last automatic waitlist run (Sep 11), so its 209 clearings on 2026-09-23 were post-deadline
+      # (docs/DATA_LOG.md).
+      - name: Publish own-data site files only on a publish_own dispatch
         shell: bash
         run: |
           EVENTS=$(python -c "import json; print(json.load(open('analysis/out/site_candidate/meta.json'))['events'])")
           echo "own-data cohort clearings: $EVENTS"
-          if [ "$EVENTS" -ge 10 ] && [ "${{ steps.term.outputs.term_id }}" = "2272" ]; then
+          if [ "$EVENTS" -ge 10 ] && [ "${{ steps.term.outputs.term_id }}" = "2272" ] && [ "${{ inputs.publish_own }}" = "true" ]; then
             rm -rf site/data && cp -r analysis/out/site_candidate site/data
             echo "site/data replaced with the own-data estimates"
           else
-            echo "keeping the published site/data (own-data estimates replace it only for term 2272 with 10 or more clearings; published: $(python -c "import json; m=json.load(open('site/data/meta.json')); print(m.get('data_source'), m.get('term_name'), m.get('events'), 'clearings')" 2>/dev/null || echo 'none published'))"
+            echo "keeping the published site/data (own-data estimates replace it only on a dispatch with publish_own=true, for term 2272 with 10 or more clearings; published: $(python -c "import json; m=json.load(open('site/data/meta.json')); print(m.get('data_source'), m.get('term_name'), m.get('events'), 'clearings')" 2>/dev/null || echo 'none published'))"
           fi
       - name: Commit outputs
         id: commit
