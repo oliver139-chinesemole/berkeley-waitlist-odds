@@ -90,7 +90,6 @@ jobs:
             cat gap_report.txt
             echo '```'
             echo
-            echo "Before Oct 4, 2026 this is expected for Spring 2027 (term not published; runs exit 3 and write nothing)."
             echo "Log the outage in docs/DATA_LOG.md once resolved."
           } > alert_body.md
           if [ -n "$ISSUE_NUMBER" ]; then

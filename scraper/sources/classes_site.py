@@ -71,12 +71,15 @@ INITIAL_LOOKBACK_NODES = 2000  # first run ever: sweep this many ids below the n
 SELF_STUDY_COMPONENTS = frozenset(
     {"IND", "GRP", "FLD", "TUT", "INT", "SLF", "PRA", "REC", "SES", "CLN", "WOR", "REA", "WBD", "VOL", "DEM"}
 )
+# A class number whose leading digits are below this is primary-like (docs/DESIGN_A2.md section 19).
+PRIMARY_CLASS_NUMBER_LIMIT = 100
 # The section page exposes ucb.termDetails.sessionDescription ("2026 Fall")
 # but no session id; every section we scrape is in the regular session.
 DEFAULT_SESSION_ID = "1"
 
 _TITLE_RE = re.compile(r"^\s*(\d{4})\s+(Spring|Summer|Fall)\s+(\S+)\s+(\S+)\s+(\S+)\s+([A-Za-z]{2,4})\s+(\S+)\s*$")
 _SLUG_RE = re.compile(r"^/content/(\d{4})-(spring|summer|fall)-(.+)$")
+_LEADING_DIGITS_RE = re.compile(r"\d+")
 
 
 def _utcnow() -> datetime:
@@ -279,6 +282,42 @@ def merge_catalog(existing: list[SectionRef], fresh: list[SectionRef]) -> tuple[
         if changes:
             by_path[ref.url_path] = replace(current, **changes)
     return list(by_path.values()), added
+
+
+def _class_number_order(class_number: str) -> tuple[bool, int]:
+    """Sort key of a class number by its leading digits (``"001"`` -> 1, ``"061A"`` -> 61);
+    a number without leading digits (``"A01"``, ``"UC01"``) sorts after every numeric one."""
+    m = _LEADING_DIGITS_RE.match(class_number)
+    return (False, int(m.group())) if m else (True, 0)
+
+
+def primary_like(refs: list[SectionRef]) -> list[SectionRef]:
+    """The catalog entries a run may select, in their catalog order (docs/DESIGN_A2.md section 19).
+
+    An entry is kept when the leading digits of its class number are below
+    ``PRIMARY_CLASS_NUMBER_LIMIT`` (100), or when its component is one that carries its
+    course's lowest class number (taken over every entry of the course, absent ones
+    included; components tied at that number are all kept). The second clause keeps the
+    courses whose primaries are numbered 100 and up, which the first alone would empty:
+    lab-only courses (PHYSICS 5BL LAB 101), lectures numbered by topic (COMPSCI 294 LEC
+    150) and letter-numbered seminars (MCELLBI 290 SEM A01). A secondary section such as
+    DIS 101 under LEC 001 stays in the catalog and is never selected. The page itself
+    says nothing about primaries (``is_primary`` is None), so the class number decides.
+    """
+    lowest: dict[str, tuple[bool, int]] = {}
+    for ref in refs:
+        order = _class_number_order(ref.class_number)
+        if ref.course_key not in lowest or order < lowest[ref.course_key]:
+            lowest[ref.course_key] = order
+    primary_components = {
+        (ref.course_key, ref.component) for ref in refs if _class_number_order(ref.class_number) == lowest[ref.course_key]
+    }
+    return [
+        ref
+        for ref in refs
+        if _class_number_order(ref.class_number) < (False, PRIMARY_CLASS_NUMBER_LIMIT)
+        or (ref.course_key, ref.component) in primary_components
+    ]
 
 
 # -- section page parsing ----------------------------------------------------
@@ -783,7 +822,9 @@ class ClassesSiteSource:
         then shard ``k`` of ``n`` of the remainder (no shard means priority
         only; no priority means everything), then up to
         ``MAX_REPROBES_PER_RUN`` absent slugs whose last probe is older than
-        seven days. Absent slugs are otherwise skipped."""
+        seven days. Absent slugs are otherwise skipped. Only ``primary_like``
+        entries are candidates, in every scope and for the re-probes too."""
+        refs = primary_like(refs)
         live = [r for r in refs if not r.absent]
         if priority is None:
             first: list[SectionRef] = []
@@ -818,15 +859,19 @@ class ClassesSiteSource:
     ) -> FetchResult:
         """Discover, select, fetch the pages, update the catalog.
 
-        Scope is "full" (every live catalog section, ``universe_ids`` = ids of
-        the live sections whose id is known) when ``priority`` is None, else
-        "priority" (priority matches union shard members, ``universe_ids``
-        None). ``limit`` caps the selection after it is made; under ``limit``
-        the universe is unknown, so ``universe_ids`` is None. Discovery time
-        counts against ``time_budget_s``; every HTTP failure, parse failure,
-        and unattempted page of a section with a known id lands in
-        ``missing_ids``. Raises TermNotPublished when the term has no catalog
-        entries after discovery.
+        Candidates are the ``primary_like`` catalog entries. Scope is "full"
+        (every live candidate, ``universe_ids`` = ids of the live candidates
+        whose id is known) when ``priority`` is None, else "priority"
+        (priority matches union shard members, ``universe_ids`` None).
+        ``limit`` caps the selection after it is made; under ``limit`` the
+        universe is unknown, so ``universe_ids`` is None. Discovery time counts
+        against ``time_budget_s``. Every selected page that yields no row (HTTP
+        failure, parse failure, never attempted before the deadline) lands in
+        ``missing_ids``: its section id, or its page path while the id is
+        unknown; a 404 counts only when the id is known, because a 404 on a
+        never-fetched page is an answer (the catalog marks the page absent),
+        not a missing observation. Raises TermNotPublished when the term has
+        no catalog entries after discovery.
         """
         if limit is not None and limit < 1:
             raise ValueError("limit must be >= 1")
@@ -845,7 +890,7 @@ class ClassesSiteSource:
             scope = "full"
             shard_label = ""
             priority_sha = ""
-            universe_ids: set[str] | None = {r.section_id for r in refs if r.section_id and not r.absent}
+            universe_ids: set[str] | None = {r.section_id for r in primary_like(refs) if r.section_id and not r.absent}
         else:
             scope = "priority"
             shard_label = f"{shard_pair[0]}/{shard_pair[1]}" if shard_pair else ""
@@ -925,10 +970,13 @@ class ClassesSiteSource:
     ) -> tuple[list[SnapshotRow], list[str], dict[str, SectionRef]]:
         """Fetch and parse the selected pages, in selection order.
 
-        Returns rows, ``missing_ids`` (known ids that failed or were never
-        attempted), and catalog updates keyed by ``url_path``: a learned id
-        and status 200 on success, status 404 on a missing page. Transport
-        errors and budget cutoffs do not change the catalog."""
+        Returns rows, ``missing_ids`` (every page that failed or was never
+        attempted, by section id, or by page path while the id is unknown; a
+        404 only when the id is known: on a never-fetched page it is an
+        answer, not a missing observation), and catalog updates keyed by
+        ``url_path``: a learned id and status 200 on success, status 404 on a
+        missing page. Transport errors and budget cutoffs do not change the
+        catalog."""
         order = {self.section_url(ref): i for i, ref in enumerate(selected)}
         ref_by_url = {self.section_url(ref): ref for ref in selected}
         parsed: dict[int, SnapshotRow] = {}
@@ -949,18 +997,16 @@ class ClassesSiteSource:
                     return
                 level = logging.DEBUG if getattr(payload, "budget_exhausted", False) else logging.WARNING
                 logger.log(level, "section %s not fetched: %s", ref.section_id or ref.url_path, payload)
-                if ref.section_id:
-                    with lock:
-                        failed[index] = ref.section_id
+                with lock:
+                    failed[index] = ref.section_id or ref.url_path
                 return
             fetched_at = self._now()
             try:
                 row = parse_section_page(payload, ref, fetched_at, term)
             except ParseError as exc:
                 logger.warning("section %s not parsed: %s", ref.section_id or ref.url_path, exc)
-                if ref.section_id:
-                    with lock:
-                        failed[index] = ref.section_id
+                with lock:
+                    failed[index] = ref.section_id or ref.url_path
                 return
             # A second lxml parse of a page already parsed for its counts: about a
             # millisecond next to a network round trip, and it keeps SnapshotRow's
