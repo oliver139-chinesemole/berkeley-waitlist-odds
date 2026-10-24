@@ -117,9 +117,9 @@ gh issue list --search "Scraper gap alert" --state open
 
 Write the results into CLAIMS.md (snapshot count, share of intervals, sweep time rows) with the date.
 
-### Step 7. On Oct 4, confirm Spring 2027 and switch the term
+### Step 7. Confirm Spring 2027 and switch the term
 
-The registrar publishes the Spring 2027 Schedule of Classes on Sun Oct 4, 2026. On or after that day:
+The registrar's calendar put the Spring 2027 Schedule of Classes on Sun Oct 4, 2026, and this step is the switch (planned for Oct 4, 2026; the date it was done is in the DATA_LOG `term_switch` row). First confirm the term is on the site:
 
 ```
 python -m scraper.fetch --term "Spring 2027" --source classes_site --limit 5 --dry-run; echo "exit $?"
@@ -140,11 +140,9 @@ git fetch origin data && git show origin/data:status.json
 
 Pass: `status.json` shows `"term_id": "2272"` (or the confirmed id) and `"kind": "baseline"`. Add a `term_switch` row to docs/DATA_LOG.md with the `last_run_at` of that run. The Fall 2026 files stay on the `data` branch as test data; everything downstream filters by `term_id`.
 
-Then read the first Spring runs' logs against the 1,380 s budget. The signal is `selected=` against `observed=` on the `classes_site term=2272 ...` line, and the warning `time budget of ...s exhausted: N of M urls never attempted` when a run did not reach its whole selection (for the page fetch, the budget is what discovery left of the 1,380 s and M is the selection less the pages already read during discovery). Node discovery logs the same warning for its own probes, before its `discovery: feed items=...` line, with M at most 400 node ids plus retries; that one is not the signal. Read the last such warning before the `classes_site term=2272 ...` line. A run selects only primary-like sections (docs/DESIGN_A2.md section 19): 1,184 to 1,238 pages for Spring 2027 with the current list (981 priority sections plus one shard; measured on the catalog of 2026-10-23), where the last Fall run observed 1,457 pages in 814.553 s. `observed` close to `selected` with no exhausted warning is a healthy run. `missing=` now also counts the selected pages a run never reached while their ids are still unknown (by page path), so a short run is visible from the first Spring run on. The exhausted warning on several runs in a row means the budget is short: tell Claude Code (shortening the list is a `priority_list` row in docs/DATA_LOG.md).
+Then read the first Spring runs' logs against the 1,380 s budget. The signal is `selected=` against `observed=` on the `classes_site term=2272 ...` line, and the warning `time budget of ...s exhausted: N of M urls never attempted` when a run did not reach its whole selection (for the page fetch, the budget is what discovery left of the 1,380 s and M is the selection less the pages already read during discovery). Node discovery logs the same warning for its own probes, before its `discovery: feed items=...` line, with M at most 400 node ids plus retries; that one is not the signal. Read the last such warning before the `classes_site term=2272 ...` line. A run selects only primary-like sections (docs/DESIGN_A2.md section 19): 1,184 to 1,238 pages for Spring 2027 with the current list (981 priority sections plus one shard; measured on the catalog of 2026-10-23), where the Fall run of 2026-10-23T22:07Z observed 1,457 pages in 814.553 s. `observed` close to `selected` with no exhausted warning is a healthy run. `missing=` now also counts the selected pages a run never reached while their ids are still unknown (by page path), so a short run is visible from the first Spring run on. The exhausted warning on several runs in a row means the budget is short: tell Claude Code (shortening the list is a `priority_list` row in docs/DATA_LOG.md).
 
 Known on switch day: the monitor's 24 h window counts only runs of the new term, so the first daily monitor after the switch opens a `Scraper gap alert` for fewer than 40 runs. It is a false alarm. Close the issue with a comment that names the switch, or cancel that one monitor run by hand (`gh run cancel <run-id>`); do not loosen `--fail-if-runs-lt`.
-
-Deadline: Mon Oct 12, 2026. Phase 1 opens Mon Oct 26.
 
 ### Step 8. Weekly Sunday check
 
