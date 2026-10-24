@@ -552,6 +552,16 @@ def test_the_title_layer_is_skipped_silently_without_titles(tmp_path: Path) -> N
         assert title_fetches(out) == fetched, (env, out["fetches"])
 
 
+def test_the_committed_site_data_ships_title_search() -> None:
+    """The shipped state, whatever the rankings: meta.json names a titles file that exists and lists only
+    index courses. An export without --catalog deletes titles.json and the meta key, so this catches it."""
+    meta = json.loads((SITE / "data" / "meta.json").read_text())
+    assert meta.get("titles_file"), "site/data/meta.json names no titles file: title and instructor search is off"
+    titles = json.loads((SITE / "data" / meta["titles_file"]).read_text())
+    index_keys = {r["key"] for r in json.loads((SITE / "data" / "index.json").read_text())["courses"]}
+    assert titles["courses"] and set(titles["courses"]) <= index_keys
+
+
 def test_every_subject_has_a_display_name() -> None:
     """Q1: config/subject_names.json names every subject in index.json.
 
