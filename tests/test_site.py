@@ -538,12 +538,28 @@ def test_the_title_layer_is_skipped_silently_without_titles(tmp_path: Path) -> N
     """No titles_file in meta, a missing file or a broken one: a title query is an ordinary miss, fetched at most once."""
     broken = tmp_path / "broken.json"
     broken.write_text("{not json")
+    # the committed site/data with its titles file and meta key taken out
+    bare = tmp_path / "site"
+    shutil.copytree(SITE / "data", bare / "data", ignore=shutil.ignore_patterns("titles.json"))
+    meta = json.loads((bare / "data" / "meta.json").read_text())
+    meta.pop("titles_file", None)
+    (bare / "data" / "meta.json").write_text(json.dumps(meta))
     expression = "(async () => { const i = BWO.loaded.index; const a = await BWO.matchCourseAsync(i, 'data structures'); const b = await BWO.matchCourseAsync(i, 'hilfinger'); return [a.layer, b.layer, a.nearest.length > 0]; })()"
     for env, fetched in (({}, 0), ({"HARNESS_TITLES_FILE": str(tmp_path / "absent.json")}, 1), ({"HARNESS_TITLES_FILE": str(broken)}, 1)):
-        out = render(SITE, env=env, expression=expression)
+        out = render(bare, env=env, expression=expression)
         assert "eval_error" not in out, (env, out.get("eval_error"))
         assert out["eval"] == ["miss", "miss", True], env
         assert title_fetches(out) == fetched, (env, out["fetches"])
+
+
+def test_the_committed_site_data_ships_title_search() -> None:
+    """The shipped state, whatever the rankings: meta.json names a titles file that exists and lists only
+    index courses. An export without --catalog deletes titles.json and the meta key, so this catches it."""
+    meta = json.loads((SITE / "data" / "meta.json").read_text())
+    assert meta.get("titles_file"), "site/data/meta.json names no titles file: title and instructor search is off"
+    titles = json.loads((SITE / "data" / meta["titles_file"]).read_text())
+    index_keys = {r["key"] for r in json.loads((SITE / "data" / "index.json").read_text())["courses"]}
+    assert titles["courses"] and set(titles["courses"]) <= index_keys
 
 
 def test_every_subject_has_a_display_name() -> None:

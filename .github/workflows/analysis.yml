@@ -48,8 +48,12 @@ jobs:
           echo "term $TERM_NAME -> $TERM_ID"
       - name: Run the analysis
         shell: bash
+        # The term's classes_site catalog gives the site files titles.json (title and instructor search);
+        # passed only when the scraper has written it, as `make site-data` does, so a missing file never fails the run.
+        env:
+          CATALOG: data-branch/catalog/${{ steps.term.outputs.term_id }}/catalog.json
         run: |
-          python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir analysis/out/site_candidate 2>&1 | tee analysis.log
+          python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir analysis/out/site_candidate $(test -f "$CATALOG" && echo --catalog "$CATALOG") 2>&1 | tee analysis.log
       # site/data may hold the Fall 2026 backfill (data_source berkeleytime_history) until this
       # project's own Spring 2027 snapshots have clearings; an own-data run with no clearings
       # must not replace it with an empty cohort. Only the Spring 2027 term (2272) may replace it:

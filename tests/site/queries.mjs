@@ -9,9 +9,9 @@
 // offered as nearest; a one-line summary goes to stderr. Exits 1 on a failure.
 //
 // The title layer reads tests/fixtures/titles_sample.json, served as data/titles.json
-// (HARNESS_TITLES_FILE), since the committed site/data has no titles file yet; every
-// query goes through BWO.matchCourseAsync, the path the pages use, and the whole
-// fixture may request titles.json at most once.
+// (HARNESS_TITLES_FILE), so the rows do not move with the catalog behind the committed
+// site/data/titles.json; every query goes through BWO.matchCourseAsync, the path the
+// pages use, and the whole fixture may request titles.json at most once.
 //
 // An expected_key of "*" means "any course, the layer is what this row is for":
 // it is for the rows whose key is decided by the joins ranking in the committed

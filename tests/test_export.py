@@ -12,6 +12,7 @@ import pytest
 import analysis.export as export
 from analysis.calendar import FALL_2026, SPRING_2027, TermCalendar
 from analysis.export import HORIZONS, course_tables, export_site_tables, index_rows, insights_tables, joins_by_course, main, pool_tables, read_curve, resolve_pool
+from scraper.sources.classes_site import SectionRef
 from tests.test_survival import synthetic_cohort
 
 CAL = TermCalendar("9999", "Simulated term", date(2026, 10, 26), date(2026, 11, 15), date(2026, 11, 23), date(2027, 1, 10), date(2027, 1, 11), date(2027, 1, 19), date(2027, 2, 5), date(2027, 2, 10))
@@ -168,17 +169,36 @@ def test_cli_rebuilds_site_data_from_a_saved_cohort(cohort: pd.DataFrame, tmp_pa
 
 # --- titles.json: course titles and instructors from the classes_site catalog (Q4) ---
 
+
+def _entry(course_key: str, component: str, class_number: str, title: str = "", instructors: object = "") -> dict:
+    """A catalog entry as the scraper writes it (``SectionRef.to_dict``); ``instructors`` may be a list."""
+    subject, number = course_key.split()
+    ref = SectionRef(
+        section_id="",
+        url_path=f"/content/2027-spring-{subject}-{number}-{class_number}-{component}-{class_number}".lower(),
+        course_key=course_key,
+        subject=subject,
+        catalog_number=number,
+        class_number=class_number,
+        section_number=class_number,
+        component=component,
+        title=title,
+    )
+    return {**ref.to_dict(), "instructors": instructors}
+
+
 TITLE_CATALOG = {
     "term_id": "2268",
     "term_name": "Fall 2026",
     "sections": [
-        # two sections, two spellings of the title (one each: the tie goes to the LEC's); instructors as lists
-        {"course_key": "COMPSCI 0", "component": "DIS", "section_id": "101", "title": "The Structure and Interpretation of Computer Programs", "instructors": ["Pamela Fox", " Zoe Tan "]},
-        {"course_key": "COMPSCI 0", "component": "LEC", "section_id": "100", "title": "Structure and Interpretation of Computer Programs", "instructors": ["Rebecca Sofia Lie", "Pamela Fox", ""]},
+        # a lecture and its discussion: the course's title and instructors (a list here) are the lecture's; the
+        # discussion is a secondary, so its spelling of the title and its GSI (Zoe Tan) never count
+        _entry("COMPSCI 0", "DIS", "101", "The Structure and Interpretation of Computer Programs", ["Pamela Fox", " Zoe Tan "]),
+        _entry("COMPSCI 0", "LEC", "001", "Structure and Interpretation of Computer Programs", ["Rebecca Sofia Lie", "Pamela Fox", ""]),
         # instructors as the scraper writes them: one comma-separated string
-        {"course_key": "MATH 1", "component": "LEC", "section_id": "200", "title": "Calculus", "instructors": "Zed Zhang,  Amy Adams , Zed Zhang"},
+        _entry("MATH 1", "LEC", "001", "Calculus", "Zed Zhang,  Amy Adams , Zed Zhang"),
         # absent from the index: never written
-        {"course_key": "HISTORY 7", "component": "LEC", "section_id": "300", "title": "Introduction to the History of the United States", "instructors": "Brian DeLay"},
+        _entry("HISTORY 7", "LEC", "001", "Introduction to the History of the United States", "Brian DeLay"),
     ],
 }
 
@@ -195,26 +215,27 @@ def _without_generated_at(text: str) -> str:
 
 
 def test_titles_table_title_rule_and_instructor_union() -> None:
+    # every entry here is primary-like (class number below 100); the next test covers secondaries
     entries = [
         # the most common title wins, even against the lecture's
-        {"course_key": "A 1", "component": "DIS", "title": "Common", "instructors": ""},
-        {"course_key": "A 1", "component": "DIS", "title": "Common", "instructors": ""},
-        {"course_key": "A 1", "component": "LEC", "title": "Rare", "instructors": "X Y"},
+        _entry("A 1", "DIS", "001", "Common"),
+        _entry("A 1", "DIS", "002", "Common"),
+        _entry("A 1", "LEC", "003", "Rare", "X Y"),
         # a tie with no lecture among the tied titles goes alphabetical; an empty title never counts
-        {"course_key": "B 2", "component": "SEM", "title": "Zeta", "instructors": []},
-        {"course_key": "B 2", "component": "DIS", "title": "Alpha", "instructors": []},
-        {"course_key": "B 2", "component": "LAB", "title": "", "instructors": ""},
-        {"course_key": "B 2", "component": "LAB", "title": "", "instructors": ""},
+        _entry("B 2", "SEM", "001", "Zeta", []),
+        _entry("B 2", "DIS", "002", "Alpha", []),
+        _entry("B 2", "LAB", "003"),
+        _entry("B 2", "LAB", "004"),
         # a tie: the title a LEC carries comes first, whatever the alphabet says
-        {"course_key": "C 3", "component": "DIS", "title": "Aardvark", "instructors": ""},
-        {"course_key": "C 3", "component": "LEC", "title": "Zebra", "instructors": ""},
+        _entry("C 3", "DIS", "001", "Aardvark"),
+        _entry("C 3", "LEC", "002", "Zebra"),
         # no title, only instructors: kept, with an empty title
-        {"course_key": "D 4", "component": "LEC", "title": "", "instructors": "Only Instructor"},
+        _entry("D 4", "LEC", "001", "", "Only Instructor"),
         # nothing at all: left out
-        {"course_key": "E 5", "component": "LEC", "title": "", "instructors": ""},
-        {"course_key": "E 5", "component": "LEC", "title": " ", "instructors": [" ", ""]},
+        _entry("E 5", "LEC", "001"),
+        _entry("E 5", "LEC", "002", " ", [" ", ""]),
         # not in the index: left out
-        {"course_key": "Z 9", "component": "LEC", "title": "Elsewhere", "instructors": "Some One"},
+        _entry("Z 9", "LEC", "001", "Elsewhere", "Some One"),
     ]
     table = export.titles_table(["A 1", "B 2", "C 3", "D 4", "E 5", "F 6"], entries)
     assert table == {
@@ -224,6 +245,24 @@ def test_titles_table_title_rule_and_instructor_union() -> None:
         "D 4": {"title": "", "instructors": ["Only Instructor"]},
     }
     assert list(table) == sorted(table)
+
+
+def test_titles_come_from_primary_like_entries_only() -> None:
+    """A secondary's instructor field names its GSI or lab lead, not the course's instructor, so only the
+    entries ``primary_like`` keeps (docs/DESIGN_A2.md section 19) give a course its title and instructors."""
+    entries = [
+        # a lecture and its discussions: the GSIs are not instructors, and the discussions' spelling does not outvote the lecture's
+        _entry("P 1", "LEC", "001", "Right Title", "Prof A"),
+        _entry("P 1", "DIS", "101", "Other Title", "GSI B"),
+        _entry("P 1", "DIS", "102", "Other Title", "GSI C"),
+        # a lab-only course: its labs are its primaries (the course's lowest class number), so their names stay
+        _entry("L 2", "LAB", "101", "Lab Course", "Lab Lead"),
+        _entry("L 2", "LAB", "102", "Lab Course", "Other Lead"),
+    ]
+    assert export.titles_table(["P 1", "L 2"], entries) == {
+        "L 2": {"title": "Lab Course", "instructors": ["Lab Lead", "Other Lead"]},
+        "P 1": {"title": "Right Title", "instructors": ["Prof A"]},
+    }
 
 
 def test_export_writes_titles_from_the_catalog(cohort: pd.DataFrame, tmp_path: Path) -> None:
@@ -238,7 +277,7 @@ def test_export_writes_titles_from_the_catalog(cohort: pd.DataFrame, tmp_path: P
     index_keys = {r["key"] for r in json.loads(index_path.read_text())["courses"]}
     assert set(titles["courses"]) <= index_keys and "HISTORY 7" not in titles["courses"]
     assert titles["courses"] == {
-        "COMPSCI 0": {"title": "Structure and Interpretation of Computer Programs", "instructors": ["Pamela Fox", "Rebecca Sofia Lie", "Zoe Tan"]},
+        "COMPSCI 0": {"title": "Structure and Interpretation of Computer Programs", "instructors": ["Pamela Fox", "Rebecca Sofia Lie"]},
         "MATH 1": {"title": "Calculus", "instructors": ["Amy Adams", "Zed Zhang"]},
     }
     first = (out / "titles.json").read_text()
