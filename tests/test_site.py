@@ -538,9 +538,15 @@ def test_the_title_layer_is_skipped_silently_without_titles(tmp_path: Path) -> N
     """No titles_file in meta, a missing file or a broken one: a title query is an ordinary miss, fetched at most once."""
     broken = tmp_path / "broken.json"
     broken.write_text("{not json")
+    # the committed site/data with its titles file and meta key taken out
+    bare = tmp_path / "site"
+    shutil.copytree(SITE / "data", bare / "data", ignore=shutil.ignore_patterns("titles.json"))
+    meta = json.loads((bare / "data" / "meta.json").read_text())
+    meta.pop("titles_file", None)
+    (bare / "data" / "meta.json").write_text(json.dumps(meta))
     expression = "(async () => { const i = BWO.loaded.index; const a = await BWO.matchCourseAsync(i, 'data structures'); const b = await BWO.matchCourseAsync(i, 'hilfinger'); return [a.layer, b.layer, a.nearest.length > 0]; })()"
     for env, fetched in (({}, 0), ({"HARNESS_TITLES_FILE": str(tmp_path / "absent.json")}, 1), ({"HARNESS_TITLES_FILE": str(broken)}, 1)):
-        out = render(SITE, env=env, expression=expression)
+        out = render(bare, env=env, expression=expression)
         assert "eval_error" not in out, (env, out.get("eval_error"))
         assert out["eval"] == ["miss", "miss", True], env
         assert title_fetches(out) == fetched, (env, out["fetches"])

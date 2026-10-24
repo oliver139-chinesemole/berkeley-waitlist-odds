@@ -1,0 +1,8486 @@
+{
+"catalog_term_id": "2272",
+"courses": {
+"AEROENG 100": {
+"instructors": [],
+"title": "Aerospace Capstone"
+},
+"AEROENG 120": {
+"instructors": [
+"John W Bonnell"
+],
+"title": "Introduction to Space Engineering"
+},
+"AEROENG 193": {
+"instructors": [
+"Abhijeet Kumar",
+"Behcet Acikmese",
+"Derek Lang"
+],
+"title": "Special Topics in Aerospace Engineering"
+},
+"AEROENG 2": {
+"instructors": [
+"Panayiotis Papadopoulos"
+],
+"title": "Aerospace Engineering 2 Seminar"
+},
+"AEROENG C184": {
+"instructors": [],
+"title": "Flight Vehicle Structures and Aeroelasticity"
+},
+"AFRICAM 115": {
+"instructors": [
+"David Kyeu"
+],
+"title": "Language and Social Issues in Africa"
+},
+"AFRICAM 240": {
+"instructors": [
+"Henry Washington Jr"
+],
+"title": "Special Topics in Cultural Studies of the Diaspora"
+},
+"AFRICAM 28AC": {
+"instructors": [
+"Frederick L Vincent"
+],
+"title": "Globalization and Minority American Communities"
+},
+"AFRICAM 4A": {
+"instructors": [
+"G Ugo Nwokeji"
+],
+"title": "Africa: History and Culture"
+},
+"AFRICAM 5B": {
+"instructors": [
+"Nikki Jones"
+],
+"title": "African American Life and Culture in the United States"
+},
+"AFRICAM C166": {
+"instructors": [
+"Tianna S Paschel"
+],
+"title": "Blackness in Latin America and the Caribbean"
+},
+"AFRICAM R1B": {
+"instructors": [
+"Ameer Hasan Loggins"
+],
+"title": "Freshman Composition"
+},
+"AGRS 10B": {
+"instructors": [],
+"title": "Introduction Ancient Rome"
+},
+"AGRS 130L": {
+"instructors": [],
+"title": "Introduction to Greco-Roman Magic"
+},
+"AGRS 36": {
+"instructors": [],
+"title": "Greek Philosophy"
+},
+"AHMA R1B": {
+"instructors": [],
+"title": "Reading and Composition on Topics in Ancient History and Mediterranean Archaeology"
+},
+"AMERSTD 10": {
+"instructors": [
+"Alexander Benjamin Craghead"
+],
+"title": "Introduction to American Studies"
+},
+"AMERSTD 101": {
+"instructors": [
+"Michael M Cohen"
+],
+"title": "Examining U.S. Cultures in Time"
+},
+"AMERSTD 102": {
+"instructors": [
+"Andy Shanken",
+"Christine Palmer",
+"David Miller"
+],
+"title": "Examining U.S. Cultures in Place"
+},
+"AMERSTD 102AC": {
+"instructors": [],
+"title": "Examining U.S. Cultures in Place"
+},
+"AMERSTD 110": {
+"instructors": [],
+"title": "Special Topics in American Studies"
+},
+"AMERSTD 191": {
+"instructors": [
+"Sarah Erina Gold McBride"
+],
+"title": "Senior Thesis Seminar"
+},
+"AMERSTD C111E": {
+"instructors": [
+"Bryan Wagner",
+"Christine Palmer"
+],
+"title": "Topics in American Studies"
+},
+"AMERSTD H110": {
+"instructors": [
+"Alexander Benjamin Craghead"
+],
+"title": "Honors Seminar: Special Topics in American Studies"
+},
+"AMERSTD H195": {
+"instructors": [
+"Alexander Benjamin Craghead"
+],
+"title": "Senior Honors Thesis Seminar"
+},
+"ANTHRO 1": {
+"instructors": [
+"Lisa A Maher"
+],
+"title": "Introduction to Biological Anthropology"
+},
+"ANTHRO 109": {
+"instructors": [
+"Andrew Wooyoung Kim"
+],
+"title": "Psychoneuroendocrinology: Stress, Disease, and Health Inequalities"
+},
+"ANTHRO 112": {
+"instructors": [
+"Gustav Steinhardt"
+],
+"title": "Special Topics in Biological Anthropology"
+},
+"ANTHRO 113": {
+"instructors": [
+"Louise Corron"
+],
+"title": "The Palaeopathological Perspective"
+},
+"ANTHRO 114": {
+"instructors": [
+"Charles Kendal Hirschkind"
+],
+"title": "History of Anthropological Thought"
+},
+"ANTHRO 115": {
+"instructors": [],
+"title": "Introduction to Medical Anthropology"
+},
+"ANTHRO 128A": {
+"instructors": [],
+"title": "Special Topics in Archaeology/Area"
+},
+"ANTHRO 148": {
+"instructors": [
+"Sarah E Vaughn"
+],
+"title": "Anthropology of the Environment"
+},
+"ANTHRO 160AC": {
+"instructors": [
+"Carolyn A Smith"
+],
+"title": "Forms of Folklore"
+},
+"ANTHRO 169B": {
+"instructors": [
+"Mariane C Ferme"
+],
+"title": "Research Theory and Methods in Socio-Cultural Anthropology"
+},
+"ANTHRO 171": {
+"instructors": [],
+"title": "Japan"
+},
+"ANTHRO 196": {
+"instructors": [
+"Alexei Yurchak",
+"Daena Funahashi",
+"Nicholas Clinton Laluk"
+],
+"title": "Undergraduate Seminar"
+},
+"ANTHRO 229B": {
+"instructors": [
+"Jun U Sunseri"
+],
+"title": "Archaeological Research Strategies: Research Design"
+},
+"ANTHRO 240B": {
+"instructors": [
+"Aarti Sethi"
+],
+"title": "Fundamentals of Anthropological Theory"
+},
+"ANTHRO 250X": {
+"instructors": [
+"Alexei Yurchak"
+],
+"title": "Seminars in Social and Cultural Anthropology: Special Topics"
+},
+"ANTHRO 290": {
+"instructors": [],
+"title": "Survey of Anthropological Research"
+},
+"ANTHRO 291": {
+"instructors": [],
+"title": "Professional Development in Anthropological Archaeology"
+},
+"ANTHRO 2AC": {
+"instructors": [
+"Charlotte Williams"
+],
+"title": "Introduction to Archaeology"
+},
+"ANTHRO 3AC": {
+"instructors": [
+"Daniel Fisher"
+],
+"title": "Introduction to Social/Cultural Anthropology (American Cultures)"
+},
+"ANTHRO C262B": {
+"instructors": [],
+"title": "Theories of Traditionality and Modernity"
+},
+"ANTHRO R5B": {
+"instructors": [
+"Alexa L Kurmanov"
+],
+"title": "Reading and Composition in Anthropology"
+},
+"ARCH 100D": {
+"instructors": [
+"Liz Galvez"
+],
+"title": "Architectural Design IV"
+},
+"ARCH 109": {
+"instructors": [
+"Yasmin Vobis"
+],
+"title": "Special Topics in Architectural Design"
+},
+"ARCH 119": {
+"instructors": [
+"Rene C Davids"
+],
+"title": "Special Topics in the Social and Cultural Basis of Design"
+},
+"ARCH 11B": {
+"instructors": [
+"David Jacob Orkand"
+],
+"title": "Introduction to Design"
+},
+"ARCH 140": {
+"instructors": [
+"Stefano Schiavon"
+],
+"title": "Energy and Environment"
+},
+"ARCH 149": {
+"instructors": [
+"Ramon Weber"
+],
+"title": "Special Topics in Energy and Environment"
+},
+"ARCH 159": {
+"instructors": [
+"Ramon Weber",
+"Simon Schleicher"
+],
+"title": "Special Topics in Building Structures"
+},
+"ARCH 160": {
+"instructors": [
+"David Jaehning"
+],
+"title": "Introduction to Construction"
+},
+"ARCH 169": {
+"instructors": [
+"Maria Paz Gutierrez",
+"Philip Tidwell"
+],
+"title": "Special Topics in Construction Materials"
+},
+"ARCH 170B": {
+"instructors": [
+"Diana Martinez"
+],
+"title": "An Historical Survey of Architecture and Urbanism"
+},
+"ARCH 179": {
+"instructors": [
+"C Greig Crysler",
+"Diana Martinez",
+"Greg Castillo"
+],
+"title": "Special Topics in the History of Architecture"
+},
+"ARCH 200B": {
+"instructors": [
+"Rudabeh Pakravan"
+],
+"title": "Introduction to Architecture Studio 2"
+},
+"ARCH 202": {
+"instructors": [
+"Mark S T Anderson"
+],
+"title": "Graduate Option Studio"
+},
+"ARCH 204B": {
+"instructors": [
+"Maria Paz Gutierrez"
+],
+"title": "Thesis Studio"
+},
+"ARCH 209": {
+"instructors": [
+"Christopher L Calott",
+"Yasmin Vobis"
+],
+"title": "Special Topics in Architectural Design"
+},
+"ARCH 219": {
+"instructors": [
+"Rene C Davids"
+],
+"title": "Special Topics in the Social and Cultural Basis of Design"
+},
+"ARCH 220C": {
+"instructors": [
+"Matthew J Conway"
+],
+"title": "Technologies of Representation 3: Documentation & Coordination"
+},
+"ARCH 220D": {
+"instructors": [
+"Matthew J Conway"
+],
+"title": "Technologies of Representation 4: Computation & Generative Design"
+},
+"ARCH 230": {
+"instructors": [
+"Neyran Turan"
+],
+"title": "Advanced Architectural Design Theory and Criticism"
+},
+"ARCH 240": {
+"instructors": [
+"Luisa Caldas"
+],
+"title": "Advanced Study of Energy and Environment"
+},
+"ARCH 249": {
+"instructors": [
+"Ramon Weber"
+],
+"title": "Special Topics in the Physical Environment in Buildings"
+},
+"ARCH 250": {
+"instructors": [
+"Simon Schleicher"
+],
+"title": "Introduction to Structures"
+},
+"ARCH 259": {
+"instructors": [
+"Ramon Weber",
+"Simon Schleicher"
+],
+"title": "Special Topics in Building Structures"
+},
+"ARCH 269": {
+"instructors": [
+"Liz Galvez",
+"Maria Paz Gutierrez",
+"Mark S T Anderson",
+"Philip Tidwell"
+],
+"title": "Special Topics in Construction and Materials"
+},
+"ARCH 279": {
+"instructors": [
+"C Greig Crysler",
+"Diana Martinez",
+"Greg Castillo"
+],
+"title": "Special Topics in the History of Architecture"
+},
+"ARESEC 259": {
+"instructors": [
+"Jeremy R Magruder"
+],
+"title": "Rural Economic Development Workshop"
+},
+"ART 103": {
+"instructors": [
+"Fred M Dewitt"
+],
+"title": "Advanced Painting: Reconsidering the Portrait & Figure"
+},
+"ART 105": {
+"instructors": [
+"Luanne Redeye"
+],
+"title": "Advanced Painting: Materials and Surface"
+},
+"ART 117": {
+"instructors": [
+"Christopher Christion"
+],
+"title": "Advanced Drawing: Research and Methods"
+},
+"ART 118": {
+"instructors": [
+"Indira Martina Morre"
+],
+"title": "Advanced Drawing: Remixing the Figure"
+},
+"ART 119": {
+"instructors": [
+"Genevieve M Quick"
+],
+"title": "Global Perspectives in Contemporary Art"
+},
+"ART 12": {
+"instructors": [
+"Indira Martina Morre"
+],
+"title": "Drawing: Foundations"
+},
+"ART 123": {
+"instructors": [],
+"title": "Advanced Printmaking: Screen Print"
+},
+"ART 13": {
+"instructors": [
+"Indira Martina Morre"
+],
+"title": "Painting: Foundations"
+},
+"ART 137": {
+"instructors": [
+"Cathy C Lu"
+],
+"title": "Advanced Projects in Ceramic Sculpture"
+},
+"ART 14": {
+"instructors": [],
+"title": "Sculpture: Foundations"
+},
+"ART 15": {
+"instructors": [
+"Emma Logan"
+],
+"title": "Ceramics: Foundations"
+},
+"ART 160": {
+"instructors": [
+"Gaia WXYZ",
+"Greg Niemeyer",
+"Jill S Miller",
+"Luanne Redeye"
+],
+"title": "Special Topics in Visual Studies"
+},
+"ART 171": {
+"instructors": [
+"Jeremy Mores McWreath"
+],
+"title": "Video Projects"
+},
+"ART 180": {
+"instructors": [
+"Bec Imrich"
+],
+"title": "Advanced Digital Photography"
+},
+"ART 185": {
+"instructors": [
+"Cathy C Lu",
+"Stephanie Syjuco"
+],
+"title": "Senior Projects/Professional Practices"
+},
+"ART 26": {
+"instructors": [
+"Sabrina Gschwandtner"
+],
+"title": "Moving Image: Foundations"
+},
+"ART 294": {
+"instructors": [
+"Jill S Miller"
+],
+"title": "Seminar for M.F.A. Students"
+},
+"ART 8": {
+"instructors": [
+"Asma Kazmi"
+],
+"title": "Introduction to Visual Thinking"
+},
+"ART C179": {
+"instructors": [],
+"title": "Mobile City Chronicles"
+},
+"ASAMST 132AC": {
+"instructors": [
+"Hatem Albazian"
+],
+"title": "Islamophobia and Constructing Otherness"
+},
+"ASAMST 143B": {
+"instructors": [],
+"title": "Advancing Health Equity for Asian American, Native Hawaiian, and Pacific Islander Communities"
+},
+"ASAMST 145AC": {
+"instructors": [
+"Michael Chang"
+],
+"title": "Politics, Public Policy, and Asian American Communities"
+},
+"ASAMST 171": {
+"instructors": [
+"Hannah B Michell"
+],
+"title": "Asian Americans in Film and Video"
+},
+"ASAMST 20A": {
+"instructors": [
+"Catherine Ceniza Choy"
+],
+"title": "Introduction to the History of Asians in the United States"
+},
+"ASAMST R2B": {
+"instructors": [],
+"title": "Reading and Composition"
+},
+"ASTRON 11": {
+"instructors": [],
+"title": "Astrobiology"
+},
+"ASTRON 121": {
+"instructors": [
+"Aaron Parsons"
+],
+"title": "Radio Astronomy Laboratory"
+},
+"ASTRON 128": {
+"instructors": [],
+"title": "Astronomy Data Science Laboratory"
+},
+"ASTRON 7B": {
+"instructors": [
+"Ryan Chornock"
+],
+"title": "Introduction to Astrophysics"
+},
+"ASTRON C12": {
+"instructors": [],
+"title": "The Planets"
+},
+"ASTRON C161": {
+"instructors": [
+"Steven M Kahn"
+],
+"title": "Relativistic Astrophysics and Cosmology"
+},
+"ASTRON C207": {
+"instructors": [
+"Wenbin Lu"
+],
+"title": "Radiation Processes in Astronomy"
+},
+"BIOENG 100": {
+"instructors": [
+"Dorian Liepmann"
+],
+"title": "Ethics in Science and Engineering"
+},
+"BIOENG 101": {
+"instructors": [
+"Steven Conolly"
+],
+"title": "Instrumentation in Biology and Medicine"
+},
+"BIOENG 104": {
+"instructors": [
+"Aaron Streets"
+],
+"title": "Biological Transport Phenomena"
+},
+"BIOENG 115": {
+"instructors": [
+"Eva Cai"
+],
+"title": "Tissue Engineering Lab"
+},
+"BIOENG 121L": {
+"instructors": [],
+"title": "BioMems and BioNanotechnology Laboratory"
+},
+"BIOENG 134": {
+"instructors": [
+"Chris Anderson"
+],
+"title": "Biodesign Automation"
+},
+"BIOENG 135": {
+"instructors": [
+"Adam P Arkin"
+],
+"title": "Frontiers in Microbial Systems Biology"
+},
+"BIOENG 145": {
+"instructors": [
+"Liana Lareau"
+],
+"title": "Introduction to Machine Learning for Computational Biology"
+},
+"BIOENG 153": {
+"instructors": [
+"David H Kirn"
+],
+"title": "Biotechnology Entrepreneurship: Impact, History, Therapeutics R&D, Entrepreneurship & Careers"
+},
+"BIOENG 163L": {
+"instructors": [],
+"title": "Molecular and Cellular Biophotonics Laboratory"
+},
+"BIOENG 166": {
+"instructors": [
+"Moriel Vandsburger"
+],
+"title": "Biomedical Imaging Systems II: Targeted Molecular Imaging in Disease"
+},
+"BIOENG 190": {
+"instructors": [
+"Amy Elizabeth Herr",
+"Derfogail Delcassian",
+"Leah Guthrie",
+"Taner Sen"
+],
+"title": "Special Topics in Bioengineering"
+},
+"BIOENG 201": {
+"instructors": [],
+"title": "Responsible Conduct in Bioengineering Research and in Practice"
+},
+"BIOENG 221L": {
+"instructors": [],
+"title": "BioMEMS and BioNanotechnology Laboratory"
+},
+"BIOENG 234": {
+"instructors": [
+"Chris Anderson"
+],
+"title": "Biodesign Automation"
+},
+"BIOENG 235": {
+"instructors": [
+"Adam P Arkin"
+],
+"title": "Frontiers in Microbial Systems Biology"
+},
+"BIOENG 245": {
+"instructors": [
+"Liana Lareau"
+],
+"title": "Introduction to Machine Learning for Computational Biology"
+},
+"BIOENG 253": {
+"instructors": [
+"David H Kirn"
+],
+"title": "Biotechnology Entrepreneurship: Impact, History, Therapeutics R&D, Entrepreneurship & Careers"
+},
+"BIOENG 263L": {
+"instructors": [],
+"title": "Molecular and Cellular Biophotonics Laboratory"
+},
+"BIOENG 266": {
+"instructors": [
+"Moriel Vandsburger"
+],
+"title": "Biomedical Imaging Systems II: Targeted Molecular Imaging in Disease"
+},
+"BIOENG 271": {
+"instructors": [
+"Madeleine Snyder"
+],
+"title": "Interface Between Neuroethology & Neural Engineering"
+},
+"BIOENG 280": {
+"instructors": [
+"Dorian Liepmann"
+],
+"title": "Ethical and Social Issues in Translational Medicine"
+},
+"BIOENG 282": {
+"instructors": [
+"Syed Hossainy"
+],
+"title": "Model-Based Design of Clinical Therapies"
+},
+"BIOENG 290": {
+"instructors": [
+"Amy Elizabeth Herr",
+"Derfogail Delcassian",
+"Katherine Stephenson",
+"Leah Guthrie",
+"Taner Sen",
+"Verna Rodriguez"
+],
+"title": "Advanced Topics in Bioengineering"
+},
+"BIOENG C142": {
+"instructors": [],
+"title": "Machine Learning, Statistical Models, and Optimization for Molecular Problems"
+},
+"BIOENG C146": {
+"instructors": [
+"Max Staller"
+],
+"title": "Data Science for Biology"
+},
+"BIOENG C171": {
+"instructors": [
+"Madeleine Snyder"
+],
+"title": "Interface Between Neuroethology & Neural Engineering"
+},
+"BIOENG C216": {
+"instructors": [
+"Kevin E Healy"
+],
+"title": "Macromolecular Science in Biotechnology and Medicine"
+},
+"BIOENG C242": {
+"instructors": [],
+"title": "Machine Learning, Statistical Models, and Optimization for Molecular Problems"
+},
+"BIOENG C265": {
+"instructors": [],
+"title": "Principles of Magnetic Resonance Imaging"
+},
+"BIOLOGY 1A": {
+"instructors": [
+"Andrea M Gomez",
+"Karine Gibbs"
+],
+"title": "General Biology Lecture"
+},
+"BIOLOGY 1AL": {
+"instructors": [],
+"title": "General Biology Laboratory"
+},
+"BIOLOGY 1B": {
+"instructors": [
+"Benjamin K Blackman",
+"Eileen Lacey"
+],
+"title": "General Biology Lecture and Laboratory"
+},
+"BOSCRSR 117B": {
+"instructors": [
+"Andrew Dombrowski"
+],
+"title": "Continuing Bosnian/Croatian/Serbian"
+},
+"BUDDSTD C114": {
+"instructors": [
+"Jacob Dalton"
+],
+"title": "Tibetan Buddhism"
+},
+"BUDDSTD C140": {
+"instructors": [],
+"title": "Readings in Chinese Buddhist Texts"
+},
+"BUDDSTD C158": {
+"instructors": [],
+"title": "Introduction to Buddhist Philosophy"
+},
+"BUDDSTD C220": {
+"instructors": [],
+"title": "Seminar in Buddhism and Buddhist Texts"
+},
+"CDSS 60": {
+"instructors": [
+"Arpita Roy"
+],
+"title": "Anthropology of Science, Data, and Technology"
+},
+"CHEM 105": {
+"instructors": [
+"Ashok Ajoy",
+"Evan Williams"
+],
+"title": "Instrumental Methods in Analytical Chemistry"
+},
+"CHEM 108": {
+"instructors": [
+"Peidong Yang"
+],
+"title": "Inorganic Synthesis and Reactions"
+},
+"CHEM 115": {
+"instructors": [
+"Richmond Sarpong"
+],
+"title": "Organic Chemistry--Advanced Laboratory Methods"
+},
+"CHEM 125": {
+"instructors": [
+"Stephen Robert Leone"
+],
+"title": "Physical Chemistry Laboratory"
+},
+"CHEM 12B": {
+"instructors": [
+"Ziyang Zhang"
+],
+"title": "Organic Chemistry"
+},
+"CHEM 159": {
+"instructors": [
+"Brooks A Abel"
+],
+"title": "Polymer Organic Chemistry"
+},
+"CHEM 1A": {
+"instructors": [
+"Alexis Shusterman"
+],
+"title": "General Chemistry"
+},
+"CHEM 1AL": {
+"instructors": [
+"Michelle Christine Douskey"
+],
+"title": "General Chemistry Laboratory"
+},
+"CHEM 1B": {
+"instructors": [
+"Michelle Christine Douskey"
+],
+"title": "General Chemistry"
+},
+"CHEM 259": {
+"instructors": [
+"Brooks A Abel"
+],
+"title": "Polymer Organic Chemistry"
+},
+"CHEM 262": {
+"instructors": [
+"John F Hartwig"
+],
+"title": "Metals in Organic Synthesis"
+},
+"CHEM 263A": {
+"instructors": [
+"John F Hartwig"
+],
+"title": "Synthetic Design I"
+},
+"CHEM 277A": {
+"instructors": [],
+"title": "Data Science for the Molecular Sciences"
+},
+"CHEM 277B": {
+"instructors": [],
+"title": "Machine Learning Algorithms"
+},
+"CHEM 278": {
+"instructors": [],
+"title": "Ethical Topics for Professional Software Engineering"
+},
+"CHEM 279": {
+"instructors": [],
+"title": "Numerical Algorithms applied to Computational Quantum Chemistry"
+},
+"CHEM 281": {
+"instructors": [],
+"title": "Software Engineering for Scientific Computing"
+},
+"CHEM 282A": {
+"instructors": [],
+"title": "MSSE Leadership Bootcamp"
+},
+"CHEM 282B": {
+"instructors": [],
+"title": "MSSE Leadership and Project Management"
+},
+"CHEM 283": {
+"instructors": [],
+"title": "MSSE Capstone Project Course"
+},
+"CHEM 284": {
+"instructors": [],
+"title": "High Performance Computing for the Molecular Sciences"
+},
+"CHEM 295": {
+"instructors": [],
+"title": "Special Topics"
+},
+"CHEM 298": {
+"instructors": [
+"Adam P Arkin",
+"Ahmet Yildiz",
+"Alanna Schepartz",
+"Alexander Katz",
+"Alexander Pines",
+"Allen Goldstein",
+"Andrew M Minor",
+"Anne M Baranger",
+"Armand P Alivisatos",
+"Ashok Ajoy",
+"Bingqing Cheng",
+"Brooks A Abel",
+"Carlos J Bustamante",
+"Colin Alexander Gould",
+"Dan M Stamper-Kurn",
+"Daniel K Nomura",
+"Daniel Kwabena Bediako",
+"Daniel M Neumark",
+"David Schaffer",
+"David T Limmer",
+"Dean Toste",
+"Don Tilley",
+"Eran Rabani",
+"Eric William Neuscamman",
+"Evan W Miller",
+"Evan Williams",
+"Felix Raoul Fischer",
+"Feng Wang",
+"Gabor Somorjai",
+"Graham R Fleming",
+"Hartmut Haeffner",
+"Hendrik Utzat",
+"James G Analitis",
+"James H Cate",
+"Jay D Keasling",
+"Jeffrey B Neaton",
+"Jeffrey R Long",
+"Jennifer Beth Bergner",
+"Jennifer Doudna",
+"John Arnold",
+"John F Hartwig",
+"John Groves",
+"Jonathan Rittle",
+"Joseph W Orenstein",
+"Judith P Klinman",
+"K Birgitta Whaley",
+"Ke Xu",
+"Kenneth N Raymond",
+"Kevan M Shokat",
+"Kranthi Kiran Mandadapu",
+"Kristie A Boering",
+"Kristin A Persson",
+"Marcin M Majda",
+"Markita Landry",
+"Martin Head-Gordon",
+"Matthew B Francis",
+"Matthew F Traxler",
+"Michael A Marletta",
+"Michael Crommie",
+"Michael Werner Zuerch",
+"Naomi S Ginsberg",
+"Niren Murthy",
+"Omar Yaghi",
+"Patrick David Hsu",
+"Peidong Yang",
+"Polly Louise Arnold",
+"Ramamoorthy Ramesh",
+"Rebecca Julie Abergel",
+"Richard A Mathies",
+"Richard J Saykally",
+"Richmond Sarpong",
+"Robert G Bergman",
+"Robert Saxton",
+"Ronald C Cohen",
+"Sanjay Kumar",
+"Sayeef Salahuddin",
+"Shannon Boettcher",
+"Shimon Kolkowitz",
+"Stephen Robert Leone",
+"Teresa Head-Gordon",
+"Thomas Maimone",
+"Ting Xu",
+"Wenjun Zhang",
+"Zakaria Y Al Balushi",
+"Ziyang Zhang"
+],
+"title": "Seminars for Graduate Students"
+},
+"CHEM 301C": {
+"instructors": [
+"Debjani Roy"
+],
+"title": "Chemistry Teacher Scholars"
+},
+"CHEM 3A": {
+"instructors": [
+"Peter C Marsden"
+],
+"title": "Chemical Structure and Reactivity"
+},
+"CHEM 3AL": {
+"instructors": [
+"Katie Blackford"
+],
+"title": "Organic Chemistry Laboratory"
+},
+"CHEM 3B": {
+"instructors": [
+"MaryAnn Robak"
+],
+"title": "Chemical Structure and Reactivity"
+},
+"CHEM 3BL": {
+"instructors": [
+"Katie Blackford"
+],
+"title": "Organic Chemistry Laboratory"
+},
+"CHEM 4B": {
+"instructors": [
+"Jennifer Beth Bergner",
+"Ronald C Cohen"
+],
+"title": "General Chemistry and Quantitative Analysis"
+},
+"CHEM C110L": {
+"instructors": [
+"Isabelle Le Blanc"
+],
+"title": "General Biochemistry and Molecular Biology Laboratory"
+},
+"CHEM C130": {
+"instructors": [
+"Eunyong Park",
+"Ke Xu"
+],
+"title": "Biophysical Chemistry: Physical Principles and the Molecules of Life"
+},
+"CHEM C146": {
+"instructors": [
+"Rebecca Julie Abergel"
+],
+"title": "Radiochemical Methods in Nuclear Technology and Forensics"
+},
+"CHEM C182": {
+"instructors": [
+"Kristie A Boering"
+],
+"title": "Atmospheric Chemistry and Physics Laboratory"
+},
+"CHEM C191B": {
+"instructors": [
+"Aziza Suleymanzade"
+],
+"title": "Introduction to Quantum Computing II"
+},
+"CHICANO 110": {
+"instructors": [
+"Jesus V Barraza"
+],
+"title": "Latina/o Philosophy and Religious Thought"
+},
+"CHICANO 131": {
+"instructors": [
+"Jesus V Barraza"
+],
+"title": "Contemporary Xicanx/ Latinx Art Production"
+},
+"CHICANO 146": {
+"instructors": [
+"Enrique E Lima"
+],
+"title": "Central American Literature"
+},
+"CHICANO 172": {
+"instructors": [
+"Carmen Martinez-Calderon"
+],
+"title": "Chicanos and the Educational System"
+},
+"CHICANO 174": {
+"instructors": [
+"Pablo Gonzalez"
+],
+"title": "Chicanos, Law, and Criminal Justice"
+},
+"CHICANO 176": {
+"instructors": [
+"Angela Gallegos-Castillo"
+],
+"title": "Chicanos and Health Care"
+},
+"CHICANO 180": {
+"instructors": [
+"Laura E Perez",
+"Lorena Oropeza",
+"Michelle Dayai Vasquez Ruiz",
+"Nicholas Vargas",
+"Pablo Gonzalez"
+],
+"title": "Topics in Chicanx Latinx Studies"
+},
+"CHICANO 180AC": {
+"instructors": [
+"Jesus V Barraza"
+],
+"title": "Topics in Chicano Studies"
+},
+"CHICANO 190": {
+"instructors": [
+"Christian O Paiz",
+"Liliana V Rodriguez"
+],
+"title": "Advanced Seminar in Chicanx and Latinx Studies"
+},
+"CHICANO 20": {
+"instructors": [
+"Pablo Gonzalez"
+],
+"title": "Introduction to Latinx Culture"
+},
+"CHICANO 70": {
+"instructors": [],
+"title": "Latino Politics"
+},
+"CHICANO C144L": {
+"instructors": [
+"G Cristina Mora"
+],
+"title": "Latina/o/x Sociology"
+},
+"CHICANO C166": {
+"instructors": [
+"Tianna S Paschel"
+],
+"title": "Blackness in Latin America and the Caribbean"
+},
+"CHICANO R1B": {
+"instructors": [],
+"title": "Reading and Composition"
+},
+"CHINESE 10B": {
+"instructors": [],
+"title": "Intermediate Chinese"
+},
+"CHINESE 10X": {
+"instructors": [],
+"title": "Accelerated Intermediate Chinese for Heritage Speakers"
+},
+"CHINESE 1A": {
+"instructors": [],
+"title": "Elementary Chinese"
+},
+"CHINESE 1B": {
+"instructors": [],
+"title": "Elementary Chinese"
+},
+"CHINESE 1X": {
+"instructors": [],
+"title": "Accelerated Elementary Chinese for Heritage Speakers"
+},
+"CHINESE 30X": {
+"instructors": [],
+"title": "Intermediate Cantonese for Heritage Speakers"
+},
+"CHINESE 3B": {
+"instructors": [],
+"title": "Elementary Cantonese"
+},
+"CHINESE 4B": {
+"instructors": [
+"Hsin-Hung Yeh"
+],
+"title": "Elementary Taiwanese"
+},
+"CHINESE 7B": {
+"instructors": [
+"Robert Ashmore"
+],
+"title": "Introduction to Modern Chinese Literature and Culture"
+},
+"CHMENG 141": {
+"instructors": [],
+"title": "Chemical Engineering Thermodynamics"
+},
+"CHMENG 150A": {
+"instructors": [],
+"title": "Transport Processes"
+},
+"CHMENG 154": {
+"instructors": [],
+"title": "Chemical Engineering Laboratory"
+},
+"CHMENG 160": {
+"instructors": [],
+"title": "Chemical Process Design"
+},
+"CHMENG 162": {
+"instructors": [],
+"title": "Dynamics and Control of Chemical Processes"
+},
+"CHMENG 198": {
+"instructors": [],
+"title": "Directed Group Study for Undergraduates"
+},
+"CHMENG 275": {
+"instructors": [],
+"title": "Advanced Bioprocess Engineering"
+},
+"CHMENG 275L": {
+"instructors": [],
+"title": "Advanced Bioprocess Engineering Laboratory"
+},
+"CHMENG 295Q": {
+"instructors": [],
+"title": "Special Topics in Chemical Engineering: Advanced Topics in New Product Development"
+},
+"CHMENG C170L": {
+"instructors": [],
+"title": "Biochemical Engineering Laboratory"
+},
+"CIVENG 107": {
+"instructors": [
+"Joshua Apte"
+],
+"title": "Climate Change Mitigation"
+},
+"CIVENG 11": {
+"instructors": [
+"Amy Janel Pickering"
+],
+"title": "Engineered Systems and Sustainability"
+},
+"CIVENG 120": {
+"instructors": [
+"Luis Alfredo Ceferino Rojas"
+],
+"title": "Structural Engineering"
+},
+"CIVENG 153": {
+"instructors": [
+"Marta C Gonzalez"
+],
+"title": "Resilient Cities by Design"
+},
+"CIVENG 157": {
+"instructors": [
+"Jasenka M Rakas"
+],
+"title": "Sustainable Aviation and Infrastructure"
+},
+"CIVENG 166": {
+"instructors": [
+"Manar Shami"
+],
+"title": "Construction Engineering"
+},
+"CIVENG 175": {
+"instructors": [
+"Adda Athanasopoulos Zekkos"
+],
+"title": "Geotechnical and Geoenvironmental Engineering"
+},
+"CIVENG 188": {
+"instructors": [
+"James W Rector III"
+],
+"title": "Carbon Capture and Storage"
+},
+"CIVENG 190": {
+"instructors": [],
+"title": "Special Topics in Civil and Environmental Engineering"
+},
+"CIVENG 191": {
+"instructors": [
+"Raja Sengupta"
+],
+"title": "Civil and Environmental Engineering Systems Analysis"
+},
+"CIVENG 206": {
+"instructors": [
+"Roger Curtis Bales"
+],
+"title": "Water Resources Management"
+},
+"CIVENG 207": {
+"instructors": [
+"Joshua Apte"
+],
+"title": "Climate Change Mitigation"
+},
+"CIVENG 217": {
+"instructors": [
+"Baoxia Mi",
+"David L Sedlak"
+],
+"title": "Environmental Chemical Kinetics"
+},
+"CIVENG 257": {
+"instructors": [
+"Jasenka M Rakas"
+],
+"title": "Sustainable Aviation and Infrastructure"
+},
+"CIVENG 268B": {
+"instructors": [
+"Iris Denise Tommelein"
+],
+"title": "Lean Construction and Supply Chain Management"
+},
+"CIVENG 273": {
+"instructors": [
+"Adda Athanasopoulos Zekkos",
+"Michael F Riemer"
+],
+"title": "Advanced GeoEngineering Testing and Design"
+},
+"CIVENG 290": {
+"instructors": [
+"Maria Laura Delle Monache",
+"Ziqi Wang"
+],
+"title": "Advanced Special Topics in Civil and Environmental Engineering"
+},
+"CIVENG 298": {
+"instructors": [
+"Evan A Variano",
+"Jonathan D Bray"
+],
+"title": "Group Studies, Seminars, or Group Research"
+},
+"CIVENG 60": {
+"instructors": [
+"Franco Zunino"
+],
+"title": "Structure and Properties of Civil Engineering Materials"
+},
+"CIVENG 93": {
+"instructors": [
+"Mohamad Mahdi Hallal"
+],
+"title": "Engineering Data Analysis"
+},
+"CIVENG C106": {
+"instructors": [
+"Robert Harley"
+],
+"title": "Air Pollution"
+},
+"CIVENG C250N": {
+"instructors": [],
+"title": "Transportation Policy and Planning"
+},
+"CIVENG C265": {
+"instructors": [
+"Jean C Doig Godier",
+"Megan Lynn Wier"
+],
+"title": "Traffic Safety and Injury Control"
+},
+"CIVENG C30": {
+"instructors": [
+"Panayiotis Papadopoulos",
+"SHAOFAN LI"
+],
+"title": "Introduction to Solid Mechanics"
+},
+"CMPBIO 276": {
+"instructors": [
+"Allon Wagner"
+],
+"title": "Algorithms for Computational Biology"
+},
+"CMPBIO C146": {
+"instructors": [],
+"title": "Data Science for Biology"
+},
+"CMPBIO C176": {
+"instructors": [
+"Allon Wagner"
+],
+"title": "Algorithms for Computational Biology"
+},
+"COGSCI 1": {
+"instructors": [
+"Davina Chan",
+"Jose A Ramirez"
+],
+"title": "Introduction to Cognitive Science"
+},
+"COGSCI 115": {
+"instructors": [
+"Davina Chan"
+],
+"title": "Neuropsychology of Happiness"
+},
+"COGSCI 132": {
+"instructors": [
+"Jose A Ramirez"
+],
+"title": "Rhythms of the Brain: from Neuronal Communication to Function"
+},
+"COGSCI 180": {
+"instructors": [
+"Davina Chan"
+],
+"title": "Mind, Brain, and Identity"
+},
+"COGSCI C100": {
+"instructors": [
+"Mariam Aly"
+],
+"title": "Basic Issues in Cognition"
+},
+"COGSCI C126": {
+"instructors": [
+"David Whitney"
+],
+"title": "Perception"
+},
+"COGSCI C127": {
+"instructors": [
+"Richard Ivry"
+],
+"title": "Cognitive Neuroscience"
+},
+"COGSCI C131": {
+"instructors": [
+"Steven T Piantadosi"
+],
+"title": "Computational Models of Cognition"
+},
+"COGSCI C133": {
+"instructors": [
+"Terry Regier"
+],
+"title": "Introduction to computational linguistics"
+},
+"COLWRIT 107": {
+"instructors": [
+"Chisako A Cole",
+"Jordan A Ruyle"
+],
+"title": "Translation in Practice"
+},
+"COLWRIT 10A": {
+"instructors": [
+"John Levine"
+],
+"title": "Introduction to Public Speaking"
+},
+"COLWRIT 10B": {
+"instructors": [],
+"title": "Advanced Public Speaking"
+},
+"COLWRIT 11": {
+"instructors": [
+"Benjamin A Spanbock",
+"Mary Grover"
+],
+"title": "Berkeley Changemaker: Public Speaking"
+},
+"COLWRIT 130": {
+"instructors": [],
+"title": "Introduction to the Craft of Creative Writing"
+},
+"COLWRIT 161": {
+"instructors": [],
+"title": "Writing in the Biological Sciences"
+},
+"COLWRIT 25AC": {
+"instructors": [],
+"title": "Reading in and about U.S. Education Institutions"
+},
+"COLWRIT R1A": {
+"instructors": [
+"Andrew Yim",
+"Aparajita Nanda",
+"Belinda Kremer",
+"Brice Particelli",
+"Bridgette Portman",
+"David Jamieson",
+"David Skolnick",
+"Donnett M Flash",
+"Eric Longfellow",
+"Joe De Quattro",
+"John Fielding",
+"Margaret Eva Salifu",
+"Matthew J Parker",
+"Michal Reznizki",
+"Michelle Baptiste",
+"Miriam Bird Greenberg",
+"Shalle M Leeming",
+"Tehmina Khan",
+"Teri Crisp",
+"Tory Adkisson"
+],
+"title": "Accelerated Reading and Composition"
+},
+"COLWRIT R4A": {
+"instructors": [
+"Benjamin A Spanbock",
+"Donnett M Flash",
+"Kaya Oakes",
+"Lindsey Lanfersieck",
+"Mary Grover",
+"Ryan R Sloan",
+"Scott Wallin"
+],
+"title": "Reading and Composition"
+},
+"COLWRIT R4B": {
+"instructors": [
+"Angela Hume",
+"Becky Hsu",
+"Belinda Kremer",
+"Carmen M Acevedo Butcher",
+"Caroline M Cole",
+"Chisako A Cole",
+"David C Wiese",
+"David D Walter",
+"John Levine",
+"Jonathan C Lang",
+"Jordan A Ruyle",
+"Kimberly Freeman",
+"Margi Wald",
+"Michael E Larkin",
+"Peter B Vahle",
+"Sean Michael Burns",
+"Teri Crisp"
+],
+"title": "Reading, Composition, and Research"
+},
+"COMLIT 100": {
+"instructors": [
+"Belen Bistue",
+"Ellen S Oliensis",
+"Roni Masel"
+],
+"title": "Introduction to Comparative Literature"
+},
+"COMLIT 100A": {
+"instructors": [
+"Mohamed Wajdi Ben Hammed"
+],
+"title": "Introduction to Comparative Literature: Literature and Philosophy"
+},
+"COMLIT 155": {
+"instructors": [
+"Harsha Ram",
+"Yael Tova Segalovitz"
+],
+"title": "The Modern Period"
+},
+"COMLIT 171": {
+"instructors": [
+"Christopher P Scott"
+],
+"title": "Topics in Modern Greek Literature"
+},
+"COMLIT 190": {
+"instructors": [
+"Anne-Lise Francois",
+"Eric Naiman"
+],
+"title": "Senior Seminar in Comparative Literature"
+},
+"COMLIT 250": {
+"instructors": [
+"Roni Masel"
+],
+"title": "Studies in Literary Theory"
+},
+"COMLIT 256": {
+"instructors": [
+"Ramsey McGlazer"
+],
+"title": "The Craft of Critical Writing"
+},
+"COMLIT 60AC": {
+"instructors": [
+"Karina Ruth-Esther Palau"
+],
+"title": "Topics in the Literature of American Cultures"
+},
+"COMLIT R1A": {
+"instructors": [],
+"title": "English Composition in Connection with the Reading of World Literature"
+},
+"COMLIT R1B": {
+"instructors": [
+"Belen Bistue"
+],
+"title": "English Composition in Connection with the Reading of World Literature"
+},
+"COMPSCI 10": {
+"instructors": [
+"Dan Garcia"
+],
+"title": "The Beauty and Joy of Computing"
+},
+"COMPSCI 152": {
+"instructors": [],
+"title": "Computer Architecture and Engineering"
+},
+"COMPSCI 161": {
+"instructors": [
+"Raluca Ada Popa"
+],
+"title": "Computer Security"
+},
+"COMPSCI 162": {
+"instructors": [
+"Matei Zaharia"
+],
+"title": "Operating Systems and System Programming"
+},
+"COMPSCI 164": {
+"instructors": [
+"S. E. Chasins"
+],
+"title": "Programming Languages and Compilers"
+},
+"COMPSCI 168": {
+"instructors": [],
+"title": "Introduction to the Internet: Architecture and Protocols"
+},
+"COMPSCI 169L": {
+"instructors": [
+"Michael Ball"
+],
+"title": "Software Engineering Team Project"
+},
+"COMPSCI 170": {
+"instructors": [
+"Christian H Borgs",
+"shafi goldwasser"
+],
+"title": "Efficient Algorithms and Intractable Problems"
+},
+"COMPSCI 184": {
+"instructors": [
+"Ren Ng"
+],
+"title": "Foundations of Computer Graphics"
+},
+"COMPSCI 185": {
+"instructors": [
+"Sergey Levine"
+],
+"title": "Deep Reinforcement Learning, Decision Making, and Control"
+},
+"COMPSCI 186": {
+"instructors": [
+"Alvin Cheung"
+],
+"title": "Introduction to Database Systems"
+},
+"COMPSCI 188": {
+"instructors": [
+"Peyrin Kao",
+"Pieter Abbeel"
+],
+"title": "Introduction to Artificial Intelligence"
+},
+"COMPSCI 189": {
+"instructors": [
+"Jonathan Shewchuk"
+],
+"title": "Introduction to Machine Learning"
+},
+"COMPSCI 194": {
+"instructors": [
+"Armando Fox",
+"Dan Garcia",
+"Josh Grossman"
+],
+"title": "Special Topics"
+},
+"COMPSCI 252A": {
+"instructors": [],
+"title": "Graduate Computer Architecture"
+},
+"COMPSCI 261": {
+"instructors": [
+"David Wagner"
+],
+"title": "Security in Computer Systems"
+},
+"COMPSCI 263": {
+"instructors": [],
+"title": "Design of Programming Languages"
+},
+"COMPSCI 284A": {
+"instructors": [
+"Ren Ng"
+],
+"title": "Foundations of Computer Graphics"
+},
+"COMPSCI 285": {
+"instructors": [
+"Sergey Levine"
+],
+"title": "Deep Reinforcement Learning, Decision Making, and Control"
+},
+"COMPSCI 286": {
+"instructors": [
+"Aditya Parameswaran"
+],
+"title": "Implementation of Data Base Systems"
+},
+"COMPSCI 288": {
+"instructors": [
+"Sewon Min"
+],
+"title": "Advanced Natural Language Processing"
+},
+"COMPSCI 289A": {
+"instructors": [
+"Jonathan Shewchuk"
+],
+"title": "Introduction to Machine Learning"
+},
+"COMPSCI 294": {
+"instructors": [
+"Allen Y Yang",
+"Armando Fox",
+"Dan Garcia",
+"Emma Pierson",
+"Henry Corrigan-Gibbs",
+"Jitendra Malik",
+"Josh Grossman",
+"Umesh V Vazirani",
+"Venkatesan Guruswami"
+],
+"title": "Special Topics"
+},
+"COMPSCI 370": {
+"instructors": [],
+"title": "Adaptive Instruction Methods in Computer Science"
+},
+"COMPSCI 375": {
+"instructors": [
+"Armando Fox"
+],
+"title": "Teaching Techniques for Computer Science"
+},
+"COMPSCI 61A": {
+"instructors": [
+"Kay Ousterhout"
+],
+"title": "The Structure and Interpretation of Computer Programs"
+},
+"COMPSCI 61B": {
+"instructors": [
+"Manuel A Sabin"
+],
+"title": "Data Structures"
+},
+"COMPSCI 61C": {
+"instructors": [
+"Lisa Yan"
+],
+"title": "Great Ideas of Computer Architecture (Machine Structures)"
+},
+"COMPSCI 70": {
+"instructors": [
+"Avishay Tal"
+],
+"title": "Discrete Mathematics and Probability Theory"
+},
+"COMPSCI C176": {
+"instructors": [
+"Allon Wagner"
+],
+"title": "Algorithms for Computational Biology"
+},
+"COMPSCI C177": {
+"instructors": [
+"Federico Manuel Echenique"
+],
+"title": "Algorithmic Economics"
+},
+"COMPSCI C280": {
+"instructors": [
+"Alexei Efros"
+],
+"title": "Computer Vision"
+},
+"COMPSCI C281B": {
+"instructors": [],
+"title": "Advanced Topics in Learning and Decision Making"
+},
+"COMPSS 221": {
+"instructors": [],
+"title": "Advanced Computing II (Machine Learning)"
+},
+"COMPSS 222": {
+"instructors": [],
+"title": "Applied Statistics II"
+},
+"COMPSS 223": {
+"instructors": [],
+"title": "Ethics, Data, and Society"
+},
+"COMPSS 224A": {
+"instructors": [],
+"title": "Computational Social Science IIA"
+},
+"COMPSS 224B": {
+"instructors": [],
+"title": "Computational Social Science IIB"
+},
+"COMPSS 225": {
+"instructors": [],
+"title": "Mastering the Corporate Arena: Strategic Skills for Professional Success"
+},
+"CYPLAN 114": {
+"instructors": [],
+"title": "Introduction to Urban and Regional Transportation"
+},
+"CYPLAN 116": {
+"instructors": [],
+"title": "Urban Planning Process--The Undergraduate Planning Studio"
+},
+"CYPLAN 140": {
+"instructors": [
+"Zachary Lamb"
+],
+"title": "Urban Design: City-Building and Place-Making"
+},
+"CYPLAN 180B": {
+"instructors": [],
+"title": "Research Seminar in Urban Studies"
+},
+"CYPLAN 190": {
+"instructors": [
+"Deborah Mckoy",
+"Marta C Gonzalez",
+"Zoe Hamstead"
+],
+"title": "Advanced Topics in Urban Studies"
+},
+"CYPLAN 204C": {
+"instructors": [
+"Zoe Hamstead"
+],
+"title": "Analytic and Research Methods for Planners: Introduction to GIS and City Planning"
+},
+"CYPLAN 207": {
+"instructors": [
+"Maximilian Alexander Buchholz"
+],
+"title": "Land and Housing Market Economics"
+},
+"CYPLAN 208": {
+"instructors": [],
+"title": "Plan Preparation Studio"
+},
+"CYPLAN 254": {
+"instructors": [
+"Charisma S Acey"
+],
+"title": "Sustainable Communities"
+},
+"CYPLAN 255": {
+"instructors": [
+"Maryam Hosseini"
+],
+"title": "Urban Informatics and Visualization"
+},
+"CYPLAN 268": {
+"instructors": [
+"Deborah Mckoy"
+],
+"title": "Community Development Studio/Workshop"
+},
+"CYPLAN 280C": {
+"instructors": [
+"Teresa Caldeira"
+],
+"title": "Doctoral Seminars: Doctoral Colloquium"
+},
+"CYPLAN 290": {
+"instructors": [
+"Evan Schwimmer",
+"Teresa Caldeira"
+],
+"title": "Topics in City and Metropolitan Planning"
+},
+"CYPLAN 291": {
+"instructors": [],
+"title": "Special Projects Studio in Planning"
+},
+"CYPLAN C217": {
+"instructors": [],
+"title": "Transportation Policy and Planning"
+},
+"CYPLAN C251": {
+"instructors": [],
+"title": "Environmental Planning and Regulation"
+},
+"DATA 89": {
+"instructors": [
+"Alexander Strang"
+],
+"title": "Mathematical and Graphical Foundations of Probability"
+},
+"DATA C100": {
+"instructors": [
+"Josh Grossman"
+],
+"title": "Principles & Techniques of Data Science"
+},
+"DATA C104": {
+"instructors": [
+"Ari S Edmundson",
+"Cathryn Carson"
+],
+"title": "Human Contexts and Ethics of Data - DATA/History/STS"
+},
+"DATA C140": {
+"instructors": [],
+"title": "Probability for Data Science"
+},
+"DATA C200": {
+"instructors": [
+"Josh Grossman"
+],
+"title": "Principles and Techniques of Data Science"
+},
+"DATA C8": {
+"instructors": [
+"John DeNero",
+"Ramesh Sridharan"
+],
+"title": "Foundations of Data Science"
+},
+"DATA C88C": {
+"instructors": [
+"Michael Ball"
+],
+"title": "Computational Structures in Data Science"
+},
+"DESINV 10": {
+"instructors": [
+"Emily Au"
+],
+"title": "Discovering Design"
+},
+"DESINV 15": {
+"instructors": [
+"Thomas McLeish"
+],
+"title": "Design Methodology"
+},
+"DESINV 190": {
+"instructors": [
+"Kosa Kendall Goucher-Lambert"
+],
+"title": "Special Topics in Design Innovation"
+},
+"DESINV 195": {
+"instructors": [],
+"title": "Design Innovation Lecture Series"
+},
+"DESINV 201": {
+"instructors": [
+"Floor van de Velde",
+"Sarah Fathallah"
+],
+"title": "Debates in Design"
+},
+"DESINV 21": {
+"instructors": [
+"Purin Phanichphant"
+],
+"title": "Visual Communication & Sketching"
+},
+"DESINV 211": {
+"instructors": [
+"Brian David Hinch"
+],
+"title": "Designing Emerging Technologies I"
+},
+"DESINV 219": {
+"instructors": [
+"Yoonnyong Bahk"
+],
+"title": "Capstone Portfolio"
+},
+"DESINV 22": {
+"instructors": [
+"Christopher Myers"
+],
+"title": "Prototyping & Fabrication"
+},
+"DESINV 23": {
+"instructors": [
+"Sudhu Tewari"
+],
+"title": "Creative Programming and Electronics"
+},
+"DESINV 95": {
+"instructors": [],
+"title": "Design Innovation Lecture Series"
+},
+"DEVENG 202": {
+"instructors": [
+"Ross Christopher Doll"
+],
+"title": "Critical Systems of Development"
+},
+"DEVENG 290": {
+"instructors": [
+"Roger Roberts"
+],
+"title": "Advanced Special Topics in Development Engineering"
+},
+"DEVP 200": {
+"instructors": [
+"Hector E Cardenas Suarez",
+"Whitney Hischier"
+],
+"title": "The Capstone Experience"
+},
+"DEVP 229": {
+"instructors": [
+"Carlos Alfredo Schmidt Padilla"
+],
+"title": "Quantitative Methods and Impact Evaluation"
+},
+"DEVP 252": {
+"instructors": [
+"Jeanne Sorin"
+],
+"title": "International Poverty and Economic Development"
+},
+"DEVP 295": {
+"instructors": [
+"Suzanne Colleen Kelly-Lyall"
+],
+"title": "Strategic Planning, Implementation and Policy in Development Practice"
+},
+"DISSTD 110": {
+"instructors": [
+"Emily A Nusbaum"
+],
+"title": "Introduction to Disability Studies"
+},
+"DUTCH 161AC": {
+"instructors": [
+"Jeroen Dewulf"
+],
+"title": "Multiracial Americans: The History and future of racially-mixed communities in the United States"
+},
+"EALANG R1B": {
+"instructors": [],
+"title": "Reading and Composition on topics in East Asian Humanities"
+},
+"ECON 1": {
+"instructors": [
+"James D Campbell"
+],
+"title": "Introduction to Economics"
+},
+"ECON 100A": {
+"instructors": [
+"James D Campbell"
+],
+"title": "Microeconomics"
+},
+"ECON 100B": {
+"instructors": [
+"Ryan D Edwards"
+],
+"title": "Macroeconomics"
+},
+"ECON 101A": {
+"instructors": [
+"Cecile Gaubert"
+],
+"title": "Microeconomics (Quantitative)"
+},
+"ECON 101B": {
+"instructors": [
+"Yuriy Gorodnichenko"
+],
+"title": "Macroeconomics (Quantitative)"
+},
+"ECON 115": {
+"instructors": [
+"Barry J Eichengreen"
+],
+"title": "The World Economy in the Twentieth Century"
+},
+"ECON 127": {
+"instructors": [
+"Aaron S Edlin"
+],
+"title": "Antitrust Economics and Law"
+},
+"ECON 131": {
+"instructors": [
+"Emmanuel Saez"
+],
+"title": "Public Economics"
+},
+"ECON 136": {
+"instructors": [
+"Stephen W Bianchi"
+],
+"title": "Financial Economics"
+},
+"ECON 138": {
+"instructors": [
+"Chen Lian"
+],
+"title": "Financial and Behavioral Economics"
+},
+"ECON 140": {
+"instructors": [
+"Benjamin Schoefer"
+],
+"title": "Econometrics"
+},
+"ECON 141": {
+"instructors": [
+"Vira Semenova"
+],
+"title": "Econometrics (Quantitative)"
+},
+"ECON 157": {
+"instructors": [
+"Ryan D Edwards"
+],
+"title": "Health Economics"
+},
+"ECON 158": {
+"instructors": [
+"Chenzi Xu"
+],
+"title": "Corporate and Personal Finance"
+},
+"ECON 191": {
+"instructors": [
+"Benjamin Schoefer"
+],
+"title": "Topics in Economic Research"
+},
+"ECON 196": {
+"instructors": [
+"Nathan Goldstein"
+],
+"title": "Special Topics in Economics"
+},
+"ECON 2": {
+"instructors": [
+"Enrico Moretti"
+],
+"title": "Introduction to Economics--Lecture Format"
+},
+"ECON 218": {
+"instructors": [
+"Dmitry Taubinsky"
+],
+"title": "Seminar in Psychology and Economics"
+},
+"ECON 220B": {
+"instructors": [
+"Benjamin R Handel",
+"Quitze Valenzuela-Stookey"
+],
+"title": "Industrial Organization"
+},
+"ECON 221": {
+"instructors": [
+"Benjamin R Handel"
+],
+"title": "Seminar in Industrial Organization: Regulation and Public Enterprise"
+},
+"ECON 231": {
+"instructors": [
+"Mathilde Munoz"
+],
+"title": "Seminar in Public Sector Economics"
+},
+"ECON 235": {
+"instructors": [
+"Ulrike Malmendier"
+],
+"title": "Financial Economics Seminar"
+},
+"ECON 237": {
+"instructors": [
+"Andreas Schaab"
+],
+"title": "Seminar in Advanced Macroeconomics and Money"
+},
+"ECON 240B": {
+"instructors": [
+"Demian Gaston Pouzo",
+"Vira Semenova"
+],
+"title": "Econometrics"
+},
+"ECON 242": {
+"instructors": [
+"Vira Semenova"
+],
+"title": "Seminar in Econometrics"
+},
+"ECON 251": {
+"instructors": [
+"Wilbur Townsend"
+],
+"title": "Seminar in Labor Economics"
+},
+"ECON 375": {
+"instructors": [
+"James D Campbell"
+],
+"title": "GSI Pedagogy Workshop"
+},
+"ECON C110": {
+"instructors": [
+"Sean P Gailmard"
+],
+"title": "Game Theory in the Social Sciences"
+},
+"ECON C147": {
+"instructors": [
+"Federico Manuel Echenique"
+],
+"title": "Algorithmic Economics"
+},
+"ECON C181": {
+"instructors": [
+"Andres Rodriguez-clare"
+],
+"title": "International Trade"
+},
+"ECON C184": {
+"instructors": [
+"Joseph S Shapiro"
+],
+"title": "International Environmental Economics"
+},
+"EDSTEM 82": {
+"instructors": [
+"Marlo Warburton"
+],
+"title": "K-8 Teaching and Inquiry-Based Lesson Design in the Science and Mathematics Classroom"
+},
+"EDSTEM 98": {
+"instructors": [],
+"title": "Directed Group Study"
+},
+"EDUC 132": {
+"instructors": [
+"Cati de los Rios"
+],
+"title": "Language Learning in Chicanx/Latinx Communities"
+},
+"EDUC 140AC": {
+"instructors": [
+"Kristin Keane"
+],
+"title": "The Art of Making Meaning: Educational Perspectives on Literacy and Learning in a Global World"
+},
+"EDUC 163": {
+"instructors": [
+"Tina Trujillo"
+],
+"title": "Contemporary Issues in U.S. Education"
+},
+"EDUC 168": {
+"instructors": [
+"Karen Draney"
+],
+"title": "Educational Testing in the USA: Issues and Practical Experience"
+},
+"EDUC 207C": {
+"instructors": [
+"Alejandra Ojeda-Beck"
+],
+"title": "Assessment of Developmental, Learning, and Socio-emotional-behavioral Disorders in Children"
+},
+"EDUC 207L": {
+"instructors": [
+"Alejandra Ojeda-Beck"
+],
+"title": "Supervision of Assessment Practicum"
+},
+"EDUC 213D": {
+"instructors": [
+"Maggie Chan"
+],
+"title": "Educational Interventions for the School Psychologist"
+},
+"EDUC 215": {
+"instructors": [
+"Ozge Hacifazlioglu"
+],
+"title": "Socialization Processes Within the Family"
+},
+"EDUC 223B": {
+"instructors": [
+"Dana Alexandra Miller-Cotto",
+"Dor Abrahamson",
+"Marcia C Linn",
+"Michelle H Wilkerson"
+],
+"title": "Special Problems in Mathematics, Science and Technology Education"
+},
+"EDUC 280B": {
+"instructors": [
+"Patricia Baquedano Lopez"
+],
+"title": "Proseminar: Sociocultural Critique of Education"
+},
+"EDUC 290A": {
+"instructors": [
+"Kourtney Christen Kawano",
+"Tina Trujillo"
+],
+"title": "Special Topics Seminars: Policy, Organization, Measurement, and Evaluation"
+},
+"EDUC 298E": {
+"instructors": [
+"Ozge Hacifazlioglu"
+],
+"title": "Group Study and Research"
+},
+"EDUC 313D": {
+"instructors": [
+"Mercedes Zapata"
+],
+"title": "Practicum in School Psychology: Academic, Behavioral and SEL Interventions"
+},
+"EDUC 313E": {
+"instructors": [
+"Mercedes Zapata"
+],
+"title": "Practicum in School Psychology: Psychological Assessment"
+},
+"EDUC 313G": {
+"instructors": [
+"Alejandra Ojeda-Beck"
+],
+"title": "Practicum in School Psychology: Mental Health Intervention II"
+},
+"EDUC 313I": {
+"instructors": [
+"Mercedes Zapata"
+],
+"title": "Internship in School Psychology II"
+},
+"EDUC 58": {
+"instructors": [],
+"title": "Social Emotional Learning (SEL) in Education: Frameworks, Practice, and Policy"
+},
+"EDUC C122": {
+"instructors": [],
+"title": "Research Methods for Science and Mathematics K-12 Teachers"
+},
+"EDUC C142": {
+"instructors": [
+"Erin Murphy-Graham"
+],
+"title": "Education in a Global World"
+},
+"EECS 126": {
+"instructors": [
+"Benjamin Recht"
+],
+"title": "Probability and Random Processes"
+},
+"EECS 127": {
+"instructors": [
+"Gireeja Vishnu Ranade"
+],
+"title": "Optimization Models in Engineering"
+},
+"EECS 151": {
+"instructors": [
+"Christopher Fletcher"
+],
+"title": "Introduction to Digital Design and Integrated Circuits"
+},
+"EECS 151LA": {
+"instructors": [
+"Christopher Fletcher"
+],
+"title": "Application Specific Integrated Circuits Laboratory"
+},
+"EECS 151LB": {
+"instructors": [
+"Christopher Fletcher"
+],
+"title": "Field-Programmable Gate Array Laboratory"
+},
+"EECS 227AT": {
+"instructors": [
+"Gireeja Vishnu Ranade"
+],
+"title": "Optimization Models in Engineering"
+},
+"EECS 251A": {
+"instructors": [
+"Christopher Fletcher"
+],
+"title": "Introduction to Digital Design and Integrated Circuits"
+},
+"EECS 251B": {
+"instructors": [
+"Richard Dorrance"
+],
+"title": "Advanced Digital Integrated Circuits and Systems"
+},
+"EECS 251LA": {
+"instructors": [
+"Christopher Fletcher"
+],
+"title": "Introduction to Digital Design and Integrated Circuits Lab"
+},
+"EECS 251LB": {
+"instructors": [
+"Christopher Fletcher"
+],
+"title": "Introduction to Digital Design and Integrated Circuits"
+},
+"EECS C106A": {
+"instructors": [],
+"title": "Introduction to Robotics"
+},
+"EECS C106B": {
+"instructors": [
+"Giuseppe Loianno"
+],
+"title": "Introduction to Robotics, Part II"
+},
+"EECS C191B": {
+"instructors": [
+"Aziza Suleymanzade"
+],
+"title": "Introduction to Quantum Computing II"
+},
+"EECS C206A": {
+"instructors": [],
+"title": "Introduction to Robotics"
+},
+"EECS C206B": {
+"instructors": [
+"Giuseppe Loianno"
+],
+"title": "Introduction to Robotics, Part II"
+},
+"EECS C249B": {
+"instructors": [
+"Pierluigi Nuzzo"
+],
+"title": "Cyber Physical System Design Prinicples and Applications"
+},
+"ELENG 105": {
+"instructors": [
+"Jaijeet Shankar Roychowdhury"
+],
+"title": "Microelectronic Devices and Circuits"
+},
+"ELENG 108": {
+"instructors": [
+"Robert C N Pilawa-Podgurski"
+],
+"title": "Introduction to Electric Power and Renewable Energy"
+},
+"ELENG 113B": {
+"instructors": [
+"Jessica Boles"
+],
+"title": "Power Electronics Design"
+},
+"ELENG 120": {
+"instructors": [
+"Kannan Ramchandran"
+],
+"title": "Signals and Systems"
+},
+"ELENG 123": {
+"instructors": [
+"Gopala Krishna Anumanchipalli"
+],
+"title": "Digital Signal Processing"
+},
+"ELENG 140": {
+"instructors": [
+"Rikky Muller"
+],
+"title": "Linear Integrated Circuits"
+},
+"ELENG 142": {
+"instructors": [
+"Jun-Chau Chien"
+],
+"title": "Integrated Circuits for Communications"
+},
+"ELENG 143": {
+"instructors": [
+"Ali Javey"
+],
+"title": "Microfabrication Technology"
+},
+"ELENG 194": {
+"instructors": [
+"Anant Sahai",
+"Jean-Paul Tennant",
+"Jiantao Jiao",
+"Kater Murch",
+"Kristofer S J Pister",
+"Sagar Karandikar",
+"Sophia Shao",
+"Tony Yen"
+],
+"title": "Special Topics"
+},
+"ELENG 226B": {
+"instructors": [
+"Thomas A Courtade"
+],
+"title": "Applications of Stochastic Process Theory"
+},
+"ELENG 227BT": {
+"instructors": [],
+"title": "Convex Optimization"
+},
+"ELENG 230A": {
+"instructors": [
+"Asir Intisar Khan"
+],
+"title": "Integrated-Circuit Devices"
+},
+"ELENG 240A": {
+"instructors": [
+"Rikky Muller"
+],
+"title": "Analog Integrated Circuits"
+},
+"ELENG 240B": {
+"instructors": [
+"Osama K Shana'a"
+],
+"title": "Advanced Analog Integrated Circuits"
+},
+"ELENG 242A": {
+"instructors": [
+"Jun-Chau Chien"
+],
+"title": "Integrated Circuits for Communications"
+},
+"ELENG 290": {
+"instructors": [
+"Kater Murch",
+"Kristofer S J Pister",
+"Sagar Karandikar",
+"Sophia Shao",
+"Tony Yen"
+],
+"title": "Advanced Topics in Electrical Engineering"
+},
+"ELENG 375": {
+"instructors": [
+"Babak Ayazifar"
+],
+"title": "Teaching Techniques for Electrical Engineering"
+},
+"ELENG 84": {
+"instructors": [
+"Michael Werner Zuerch",
+"Miki Lustig"
+],
+"title": "Sophomore Seminar"
+},
+"ELENG C222": {
+"instructors": [
+"Claire Jennifer Tomlin",
+"Murat Arcak"
+],
+"title": "Nonlinear Systems"
+},
+"ELENG C235": {
+"instructors": [
+"Grigory Tikhomirov"
+],
+"title": "Nanoscale Fabrication"
+},
+"ENERES 102": {
+"instructors": [
+"Andrew D Jones",
+"Lara Marie Kueppers"
+],
+"title": "Quantitative Aspects of Global Environmental Problems"
+},
+"ENERES 254": {
+"instructors": [],
+"title": "Electric Power Systems"
+},
+"ENERES 293D": {
+"instructors": [],
+"title": "Master's Seminar IV: Master's Project Development for Interdisciplinary Analysis Part II"
+},
+"ENERES C124": {
+"instructors": [],
+"title": "Gender and Environment"
+},
+"ENERES C160": {
+"instructors": [],
+"title": "CLIMATE JUSTICE"
+},
+"ENGIN 1": {
+"instructors": [
+"Lisa Pruitt"
+],
+"title": "Engineering Your Life: Skills for Leadership, Discovery and Service"
+},
+"ENGIN 11": {
+"instructors": [],
+"title": "A Hands-on Introduction to Radiation Detection: Getting to know our Radioactive World"
+},
+"ENGIN 125": {
+"instructors": [
+"Karl A Van Bibber"
+],
+"title": "Ethics, Engineering, and Society"
+},
+"ENGIN 178": {
+"instructors": [
+"Lining Yao"
+],
+"title": "Statistics and Data Science for Engineers"
+},
+"ENGIN 183": {
+"instructors": [
+"Lukasz Kowalski",
+"Shomit A Ghose"
+],
+"title": "Special Topics in Technology Innovation and Entrepreneurship"
+},
+"ENGIN 183A": {
+"instructors": [
+"Victoria Howell"
+],
+"title": "A. Richard Newton Lecture Series"
+},
+"ENGIN 183B": {
+"instructors": [
+"Gigi Wang"
+],
+"title": "Berkeley Method of Entrepreneurship Bootcamp"
+},
+"ENGIN 183C": {
+"instructors": [
+"Minh Tsai",
+"Vikramaditya Thairani"
+],
+"title": "Challenge Lab"
+},
+"ENGIN 183D": {
+"instructors": [
+"Annegret Cocquyt"
+],
+"title": "Product Management"
+},
+"ENGIN 183E": {
+"instructors": [
+"Naeem Zafar"
+],
+"title": "Technology Entrepreneurship"
+},
+"ENGIN 26": {
+"instructors": [
+"Kourosh Ken Youssefi"
+],
+"title": "Three-Dimensional Modeling for Design"
+},
+"ENGIN 274": {
+"instructors": [
+"Matthew Rappaport"
+],
+"title": "Deep Tech Innovation & Entrepreneurship"
+},
+"ENGIN 283": {
+"instructors": [
+"Lukasz Kowalski",
+"Shomit A Ghose"
+],
+"title": "Special Topics in Technology Innovation and Entrepreneurship"
+},
+"ENGIN 283A": {
+"instructors": [
+"Victoria Howell"
+],
+"title": "A. Richard Newton Lecture Series"
+},
+"ENGIN 29": {
+"instructors": [
+"Claudio Hail"
+],
+"title": "Manufacturing and Design Communication"
+},
+"ENGIN 295": {
+"instructors": [
+"Suzanne Houlihan",
+"Thomas Fitzpatrick"
+],
+"title": "Communications for Engineering Leaders"
+},
+"ENGIN 7": {
+"instructors": [
+"Gabriel Gomes",
+"Hayden Taylor"
+],
+"title": "Introduction to Computer Programming and Numerical Methods"
+},
+"ENGIN C183F": {
+"instructors": [
+"Gert Christen"
+],
+"title": "Challenge Lab: Building Bridges between Democracy and Technology for a Better Society"
+},
+"ENGLISH 100": {
+"instructors": [
+"C D Blanton",
+"Catherine Flynn",
+"Cathy Hong",
+"Farah Bakaari",
+"Jasper Q Bernes",
+"Joshua Gang",
+"Kent Puckett",
+"Kristin Hanson",
+"Sukanya Banerjee"
+],
+"title": "The Seminar on Criticism"
+},
+"ENGLISH 141": {
+"instructors": [],
+"title": "Modes of Writing (Exposition, Fiction, Verse, Etc.)"
+},
+"ENGLISH 143A": {
+"instructors": [],
+"title": "Short Fiction"
+},
+"ENGLISH 143B": {
+"instructors": [
+"Solmaz Sharif"
+],
+"title": "Verse"
+},
+"ENGLISH 143N": {
+"instructors": [
+"Scott Andrew Saul"
+],
+"title": "Prose Nonfiction"
+},
+"ENGLISH 166": {
+"instructors": [
+"Robyn M Jensen"
+],
+"title": "Special Topics"
+},
+"ENGLISH 166AC": {
+"instructors": [
+"Steven Sunwoo Lee"
+],
+"title": "Special Topics in American Cultures"
+},
+"ENGLISH 190": {
+"instructors": [
+"David Landreth",
+"Donna V Jones",
+"Janet Linda Sorensen",
+"John Alba Cutler",
+"Joshua Gang",
+"Kara Elizabeth Wittman",
+"Steven Sunwoo Lee"
+],
+"title": "Research Seminar"
+},
+"ENGLISH 203": {
+"instructors": [
+"Grace Lavery"
+],
+"title": "Graduate Readings"
+},
+"ENGLISH 24": {
+"instructors": [
+"Bryan Wagner",
+"Hertha Dawn Sweet Wong"
+],
+"title": "Freshman Seminars"
+},
+"ENGLISH 250": {
+"instructors": [
+"Catherine Flynn",
+"Geoffrey O'Brien",
+"Poulomi Saha"
+],
+"title": "Research Seminars"
+},
+"ENGLISH 37": {
+"instructors": [
+"Alexandra Lossada"
+],
+"title": "Chicana/o Literature and Culture"
+},
+"ENGLISH 43A": {
+"instructors": [
+"Vikram Chandra"
+],
+"title": "Introduction to the Writing of Short Fiction"
+},
+"ENGLISH 45A": {
+"instructors": [
+"Maura Bridget Nolan"
+],
+"title": "Literature in English: Through Milton"
+},
+"ENGLISH 45B": {
+"instructors": [
+"Janet Linda Sorensen"
+],
+"title": "Literature in English: The Late-17th through the Mid-19th Century"
+},
+"ENGLISH 45C": {
+"instructors": [
+"John Alba Cutler"
+],
+"title": "Literature in English: The Mid-19th through the Mid-20th Century"
+},
+"ENGLISH 53": {
+"instructors": [
+"Andrew Way Leong"
+],
+"title": "Asian American Literatures and Cultures"
+},
+"ENGLISH 90": {
+"instructors": [
+"Anne-Lise Francois",
+"Fiona McFarlane",
+"Katherine V Snyder"
+],
+"title": "Practices of Literary Study"
+},
+"ENGLISH C136": {
+"instructors": [
+"Bryan Wagner",
+"Christine Palmer"
+],
+"title": "Topics in American Studies"
+},
+"ENGLISH H195B": {
+"instructors": [
+"Andrew Way Leong",
+"Mark A Goble"
+],
+"title": "Honors Course"
+},
+"ENGLISH R1A": {
+"instructors": [
+"Erika Rose Higbee"
+],
+"title": "Reading and Composition"
+},
+"ENGLISH R1B": {
+"instructors": [
+"Ricardo Isaac Gomez"
+],
+"title": "Reading and Composition"
+},
+"ENVDES 104": {
+"instructors": [],
+"title": "Design Frameworks"
+},
+"ENVDES 106": {
+"instructors": [],
+"title": "Sustainable Environmental Design Workshop"
+},
+"ENVDES 5": {
+"instructors": [],
+"title": "Cities and Sites"
+},
+"ENVECON 141": {
+"instructors": [
+"Aaron Smith"
+],
+"title": "Agricultural and Environmental Policy"
+},
+"ENVECON 147": {
+"instructors": [
+"Meredith Lynn Fowlie"
+],
+"title": "The Economics of the Clean Energy Transition"
+},
+"ENVECON 153": {
+"instructors": [],
+"title": "Population, Environment, and Development"
+},
+"ENVECON 170": {
+"instructors": [
+"Jiang Lin"
+],
+"title": "Energy and Climate Policy in China"
+},
+"ENVECON C118": {
+"instructors": [
+"Shifrah Aron-Dine"
+],
+"title": "Introductory Applied Econometrics"
+},
+"ENVECON C132": {
+"instructors": [
+"Joseph S Shapiro"
+],
+"title": "International Environmental Economics"
+},
+"ENVECON C181": {
+"instructors": [
+"Andres Rodriguez-clare"
+],
+"title": "International Trade"
+},
+"EPS 100B": {
+"instructors": [],
+"title": "Genesis and Interpretation of Rocks"
+},
+"EPS 103": {
+"instructors": [],
+"title": "Introduction to Aquatic and Marine Geochemistry"
+},
+"EPS 113": {
+"instructors": [],
+"title": "Biological Oceanography and Biogeochemistry"
+},
+"EPS 118": {
+"instructors": [],
+"title": "Advanced Field Course"
+},
+"EPS 122": {
+"instructors": [],
+"title": "Physics of the Earth and Planetary Interiors"
+},
+"EPS 127": {
+"instructors": [],
+"title": "Coastal Processes"
+},
+"EPS 150": {
+"instructors": [],
+"title": "Case Studies in Earth Systems"
+},
+"EPS 24": {
+"instructors": [],
+"title": "Freshman Seminar in Earth and Planetary Sciences"
+},
+"EPS 290": {
+"instructors": [
+"Barbara A Romanowicz",
+"Benjamin Gilbert",
+"Bethanie R Edwards",
+"Burkhard Militzer",
+"Daniel A Stolper",
+"David L Shuster",
+"David M Romps",
+"Donald J DePaolo",
+"Douglas S Dreger",
+"Hans R Wenk",
+"Horst Rademacher",
+"Jill F Banfield",
+"Jim Bishop",
+"Kurt M Cuffey",
+"Lindy Elkins-Tanton",
+"Mark A Richards",
+"Matthew Gleeson",
+"Michael Manga",
+"Nicholas Swanson-hysell",
+"Paul R Renne",
+"Penny Elaine Wieser",
+"Richard Allen",
+"Roland Burgmann",
+"William E Dietrich",
+"William R Boos"
+],
+"title": "Seminar"
+},
+"EPS 50": {
+"instructors": [
+"Daniel A Stolper",
+"Raymond Jeanloz"
+],
+"title": "The Planet Earth"
+},
+"EPS 81": {
+"instructors": [],
+"title": "Extreme Weather and Climate"
+},
+"EPS 88": {
+"instructors": [],
+"title": "PyEarth: A Python Introduction to Earth Science"
+},
+"EPS C12": {
+"instructors": [],
+"title": "The Planets"
+},
+"EPS C180": {
+"instructors": [
+"Robert Harley"
+],
+"title": "Air Pollution"
+},
+"EPS C182": {
+"instructors": [
+"Kristie A Boering"
+],
+"title": "Atmospheric Chemistry and Physics Laboratory"
+},
+"EPS C183": {
+"instructors": [],
+"title": "Carbon Cycle Dynamics"
+},
+"EPS C20": {
+"instructors": [],
+"title": "Earthquakes in Your Backyard"
+},
+"EPS C242": {
+"instructors": [],
+"title": "Glaciology"
+},
+"ESPM 10": {
+"instructors": [
+"Ronald G Amundson"
+],
+"title": "Environmental Issues"
+},
+"ESPM 100ES": {
+"instructors": [
+"Patina K Mendez"
+],
+"title": "Introduction to the Methods of Environmental Science"
+},
+"ESPM 102B": {
+"instructors": [
+"Rainbow Desilva"
+],
+"title": "Natural Resource Sampling"
+},
+"ESPM 102BL": {
+"instructors": [
+"Rainbow Desilva"
+],
+"title": "Laboratory in Natural Resource Sampling"
+},
+"ESPM 102C": {
+"instructors": [
+"Matthew Potts"
+],
+"title": "Resource Management"
+},
+"ESPM 102D": {
+"instructors": [
+"Jonas Meckling"
+],
+"title": "Climate and Energy Policy"
+},
+"ESPM 106": {
+"instructors": [
+"Jonas Meckling"
+],
+"title": "American Wildlife: Management and Policy in the 21st Century"
+},
+"ESPM 108B": {
+"instructors": [
+"Rainbow Desilva"
+],
+"title": "Environmental Change Genetics"
+},
+"ESPM 112": {
+"instructors": [
+"Jill F Banfield"
+],
+"title": "Microbial Ecology"
+},
+"ESPM 112L": {
+"instructors": [
+"Jill F Banfield"
+],
+"title": "Microbial Metagenomic Data Analysis Lab"
+},
+"ESPM 114": {
+"instructors": [
+"Justin S Brashares"
+],
+"title": "Wildlife Ecology"
+},
+"ESPM 115C": {
+"instructors": [
+"Stephanie Carlson"
+],
+"title": "Fish Ecology"
+},
+"ESPM 120": {
+"instructors": [
+"Celine E Pallud"
+],
+"title": "Science of Soils"
+},
+"ESPM 130": {
+"instructors": [
+"Elizabeth Hoover"
+],
+"title": "Food Justice"
+},
+"ESPM 131": {
+"instructors": [
+"Celine E Pallud",
+"Eoin L Brodie"
+],
+"title": "Soil Microbiology and Biogeochemistry"
+},
+"ESPM 150": {
+"instructors": [],
+"title": "Special Topics in Environmental Science, Policy, and Management"
+},
+"ESPM 152": {
+"instructors": [
+"Erica B Rosenblum"
+],
+"title": "Global Change Biology"
+},
+"ESPM 153A": {
+"instructors": [],
+"title": "Waste and Society"
+},
+"ESPM 161A": {
+"instructors": [
+"Sunaura C Taylor"
+],
+"title": "Thinking With Animals"
+},
+"ESPM 175B": {
+"instructors": [
+"Patina K Mendez"
+],
+"title": "Senior Research Seminar in Environmental Sciences"
+},
+"ESPM 183": {
+"instructors": [
+"John J Battles"
+],
+"title": "Forest Ecosystem Management and Planning"
+},
+"ESPM 186": {
+"instructors": [
+"Justin Luong"
+],
+"title": "Grassland and Woodland Management and Conservation"
+},
+"ESPM 189A": {
+"instructors": [
+"Christopher J Schell"
+],
+"title": "Urban Ecology and Evolution"
+},
+"ESPM 194A": {
+"instructors": [
+"Peter S Nico"
+],
+"title": "Senior Seminar in Conservation and Resource Studies"
+},
+"ESPM 197FS": {
+"instructors": [
+"Kathryn Patrice Teigen De Master"
+],
+"title": "Community Engagement in Agri-Food Systems"
+},
+"ESPM 201A": {
+"instructors": [
+"Paolo D'Odorico"
+],
+"title": "Research Approaches in Environmental Science, Policy, and Management"
+},
+"ESPM 227": {
+"instructors": [],
+"title": "Science Communication"
+},
+"ESPM 24": {
+"instructors": [
+"Rodrigo P P Almeida"
+],
+"title": "Freshman Seminar"
+},
+"ESPM 257": {
+"instructors": [],
+"title": "Creative Writing in Environmental Science"
+},
+"ESPM 262": {
+"instructors": [],
+"title": "Race, Identity, and the Environment"
+},
+"ESPM 265": {
+"instructors": [
+"Scott L Stephens"
+],
+"title": "Seminar on Fire as an Ecological Factor"
+},
+"ESPM 267": {
+"instructors": [
+"Kathryn Patrice Teigen De Master"
+],
+"title": "Rural Sociology"
+},
+"ESPM 288": {
+"instructors": [
+"Carl Boettiger"
+],
+"title": "Reproducible and Collaborative Data Science"
+},
+"ESPM 290": {
+"instructors": [
+"Erica B Rosenblum",
+"Herrick Fox",
+"Holly Doremus",
+"Ian Wang",
+"Paolo D'Odorico",
+"Robert A York"
+],
+"title": "Special Topics in Environmental Science, Policy, and Management"
+},
+"ESPM 40": {
+"instructors": [
+"Rodrigo P P Almeida"
+],
+"title": "Insects and Human Society"
+},
+"ESPM 50AC": {
+"instructors": [
+"Kurt Spreyer"
+],
+"title": "Introduction to Culture and Natural Resource Management"
+},
+"ESPM 60": {
+"instructors": [
+"Elizabeth Hoover"
+],
+"title": "Environmental Policy, Administration, and Law"
+},
+"ESPM 90": {
+"instructors": [],
+"title": "Introduction to Conservation and Resource Studies Major"
+},
+"ESPM C124": {
+"instructors": [
+"Youjin Chung"
+],
+"title": "Gender and Environment"
+},
+"ESPM C138": {
+"instructors": [
+"Britt Aspen Glaunsinger",
+"Kim Seed"
+],
+"title": "Introduction to Comparative Virology"
+},
+"ESPM C153": {
+"instructors": [
+"Benjamin H Becker",
+"Timothy M Markowitz"
+],
+"title": "Ecology"
+},
+"ESPM C167": {
+"instructors": [
+"Kurt Spreyer"
+],
+"title": "Environmental Health and Development"
+},
+"ESPM C170": {
+"instructors": [],
+"title": "Carbon Cycle Dynamics"
+},
+"ESPM C176": {
+"instructors": [],
+"title": "CLIMATE JUSTICE"
+},
+"ESPM C180": {
+"instructors": [
+"Robert Harley"
+],
+"title": "Air Pollution"
+},
+"ESPM C22AC": {
+"instructors": [
+"Peter A Nelson",
+"Scott L Stephens"
+],
+"title": "Fire: Past, Present and Future Interactions with the People and Ecosystems of California"
+},
+"ESPM C289": {
+"instructors": [
+"Lu Liang",
+"Yuye Zhou"
+],
+"title": "Applied Remote Sensing"
+},
+"ETHSTD 100": {
+"instructors": [
+"Gregory P Choy"
+],
+"title": "Comparative Ethnic Literature in America"
+},
+"ETHSTD 101A": {
+"instructors": [
+"Carolyn E Chen"
+],
+"title": "Social Science Methods in Ethnic Studies"
+},
+"ETHSTD 11AC": {
+"instructors": [],
+"title": "Introduction to Ethnic Studies"
+},
+"ETHSTD 12": {
+"instructors": [],
+"title": "Historical and Contemporary Issues in Ethnic Studies"
+},
+"ETHSTD 122AC": {
+"instructors": [
+"Raymond Telles"
+],
+"title": "Ethnicity and Race in Contemporary American Films"
+},
+"ETHSTD 176": {
+"instructors": [
+"Gregory P Choy"
+],
+"title": "Against the Grain: Ethnic American Art and Artists"
+},
+"ETHSTD 180": {
+"instructors": [
+"Enrique E Lima",
+"Lorena Oropeza"
+],
+"title": "Selected Topics in Comparative Ethnic Studies"
+},
+"ETHSTD 190": {
+"instructors": [
+"Keith P Feldman",
+"Long Le-Khac"
+],
+"title": "Advanced Seminar in Comparative Ethnic Studies"
+},
+"ETHSTD 201": {
+"instructors": [],
+"title": "History and Narrativity: Contemporary Theories and Methods"
+},
+"ETHSTD 250": {
+"instructors": [
+"Ikaika Ramones"
+],
+"title": "Research Seminar: Selected Issues and Topics"
+},
+"ETHSTD C164A": {
+"instructors": [],
+"title": "Berkeley Changemaker: Labor Research for Action and Policy (L-RAP)"
+},
+"FILIPN 1B": {
+"instructors": [],
+"title": "Introductory Filipino"
+},
+"FILIPN 1Y": {
+"instructors": [],
+"title": "Introductory Filipino for Heritage Learners"
+},
+"FILM 10": {
+"instructors": [
+"Katerina Korola"
+],
+"title": "Film History & Form I"
+},
+"FILM 125": {
+"instructors": [
+"Damon R Young",
+"Daniel Cuong O'Neill",
+"Deniz Gokturk",
+"Luis Madrigal"
+],
+"title": "Documentary Forms"
+},
+"FILM 135": {
+"instructors": [
+"Iggy Cortez"
+],
+"title": "Experimental and Alternative Media Art"
+},
+"FILM 145": {
+"instructors": [
+"Luis Madrigal",
+"Mark Allen Minch-de Leon",
+"Tim Tangherlini"
+],
+"title": "Global Media"
+},
+"FILM 155": {
+"instructors": [
+"Nicole Starosielski"
+],
+"title": "Media Technologies"
+},
+"FILM 171": {
+"instructors": [
+"Daniel Cuong O'Neill",
+"Joseph Coppola",
+"Kristen Whissel"
+],
+"title": "Special Topics in Film Genre"
+},
+"FILM 172": {
+"instructors": [
+"Matthew Hubbell"
+],
+"title": "Auteur Theory"
+},
+"FILM 181": {
+"instructors": [
+"J Mira Kopell"
+],
+"title": "Screenwriting"
+},
+"FILM 186": {
+"instructors": [
+"J Mira Kopell",
+"Tijana Petrovic"
+],
+"title": "Advanced Moving Image Production"
+},
+"FILM 20": {
+"instructors": [
+"Joseph Coppola"
+],
+"title": "Film and Media Theory"
+},
+"FILM 201": {
+"instructors": [
+"Nicole Starosielski"
+],
+"title": "Graduate Film Historiography"
+},
+"FILM 240": {
+"instructors": [
+"Damon R Young",
+"Mark Allen Minch-de Leon",
+"Natalia Brizuela",
+"Nicholas Baer"
+],
+"title": "Graduate Topics in Film"
+},
+"FILM 30": {
+"instructors": [
+"Luis Madrigal"
+],
+"title": "Film History & Form II"
+},
+"FILM R1A": {
+"instructors": [
+"Annie Golda Felix",
+"Miles Herbert Taylor"
+],
+"title": "The Craft of Writing - Film Focus"
+},
+"FILM R1B": {
+"instructors": [
+"Lucas Clay Fink",
+"Mathew Beauchemin",
+"Thomas Joseph DePaoli"
+],
+"title": "The Craft of Writing - Film Focus"
+},
+"FOLKLOR C262B": {
+"instructors": [],
+"title": "Theories of Traditionality and Modernity"
+},
+"FRENCH 1": {
+"instructors": [
+"Margot A Szarke",
+"Maya J Sidhu",
+"Rachel A Shuh"
+],
+"title": "Elementary French"
+},
+"FRENCH 102": {
+"instructors": [
+"Margot A Szarke",
+"Rachel A Shuh"
+],
+"title": "Advanced Reading and Writing Workshop"
+},
+"FRENCH 121B": {
+"instructors": [
+"Deborah A Blocker"
+],
+"title": "Literary Themes, Genres, and Structures"
+},
+"FRENCH 137": {
+"instructors": [
+"Claire Delphine Tourmen Perron"
+],
+"title": "French for Professions"
+},
+"FRENCH 14": {
+"instructors": [
+"Noe Turchi"
+],
+"title": "Advanced Conversation"
+},
+"FRENCH 140D": {
+"instructors": [
+"Damon R Young",
+"Maya J Sidhu",
+"William Burton"
+],
+"title": "French Literature in English Translation"
+},
+"FRENCH 2": {
+"instructors": [
+"Ariel Shannon Hixon",
+"Riley Lim",
+"Vesna Rodic"
+],
+"title": "Elementary French"
+},
+"FRENCH 35": {
+"instructors": [
+"Ariel Shannon Hixon"
+],
+"title": "Practical Phonetics and Listening Comprehension"
+},
+"FRENCH 4": {
+"instructors": [
+"Claire Delphine Tourmen Perron",
+"Danny Tin Pham",
+"Noe Turchi",
+"Vesna Rodic"
+],
+"title": "Advanced Intermediate French"
+},
+"FRENCH 43B": {
+"instructors": [
+"Susan A Maslan"
+],
+"title": "Aspects of French Culture"
+},
+"FRENCH R1B": {
+"instructors": [
+"Maya J Sidhu",
+"Oliver Whitmore"
+],
+"title": "English Composition in Connection with the Reading of Literature"
+},
+"GEOG 110": {
+"instructors": [
+"Desiree Fields"
+],
+"title": "Critical Economic Geographies"
+},
+"GEOG 127": {
+"instructors": [
+"Joel Wanek"
+],
+"title": "Geographic Film Production"
+},
+"GEOG 130": {
+"instructors": [
+"Nathan F Sayre"
+],
+"title": "Food and the Environment"
+},
+"GEOG 140A": {
+"instructors": [
+"Kurt M Cuffey"
+],
+"title": "Physical Landscapes: Process and Form"
+},
+"GEOG 165": {
+"instructors": [
+"Diana M Negrin"
+],
+"title": "Racial and Ethnic Geographies of Latin America"
+},
+"GEOG 167AC": {
+"instructors": [
+"Diana M Negrin"
+],
+"title": "Decolonial Border Geographies"
+},
+"GEOG 173": {
+"instructors": [
+"Chase Hobbs-Morgan"
+],
+"title": "Conducting Community Engaged Research"
+},
+"GEOG 185": {
+"instructors": [
+"Jeff Chambers"
+],
+"title": "Earth System Remote Sensing"
+},
+"GEOG 72AC": {
+"instructors": [
+"Seth Lunine"
+],
+"title": "The Bay Area"
+},
+"GEOG C112": {
+"instructors": [
+"Tiffany L Page"
+],
+"title": "Global Development: Theory, History, Geography"
+},
+"GEOG C32": {
+"instructors": [
+"Jesilyn M Faust"
+],
+"title": "Introduction to Global Studies"
+},
+"GERMAN 1": {
+"instructors": [],
+"title": "Elementary German 1"
+},
+"GERMAN 160A": {
+"instructors": [],
+"title": "Politics and Culture in 20th-Century Germany: A Century of Extremes"
+},
+"GERMAN 184": {
+"instructors": [
+"Deniz Gokturk"
+],
+"title": "Documentary Cinema"
+},
+"GERMAN 2": {
+"instructors": [],
+"title": "Elementary German 2"
+},
+"GERMAN R5B": {
+"instructors": [],
+"title": "Reading and Composition"
+},
+"GLOBAL 100P": {
+"instructors": [
+"Karenjot Bhangoo Randhawa"
+],
+"title": "Approaches to Peace and Conflict"
+},
+"GLOBAL 100S": {
+"instructors": [
+"Clare Talwalker"
+],
+"title": "Global Societies and Cultures"
+},
+"GLOBAL 102": {
+"instructors": [
+"Devin Thomas Leigh",
+"Peter A Bartu"
+],
+"title": "Critical Thinking In Global Studies"
+},
+"GLOBAL 10B": {
+"instructors": [
+"Elora Shehabuddin"
+],
+"title": "Critical Issues in Global Studies"
+},
+"GLOBAL 110K": {
+"instructors": [
+"Noam Schimmel"
+],
+"title": "Africa In Global Context"
+},
+"GLOBAL 110M": {
+"instructors": [
+"Emily R Gottreich"
+],
+"title": "Middle East In Global Context"
+},
+"GLOBAL 133": {
+"instructors": [
+"Karenjot Bhangoo Randhawa"
+],
+"title": "International Conflict"
+},
+"GLOBAL 150Q": {
+"instructors": [
+"Crystal Chang",
+"Ross Christopher Doll"
+],
+"title": "Special Topics In Asia"
+},
+"GLOBAL 178": {
+"instructors": [
+"Darren C Zook"
+],
+"title": "Political Discourse in the Twenty-first Century"
+},
+"GLOBAL 24": {
+"instructors": [
+"Darren C Zook"
+],
+"title": "Freshman Seminar In Global Studies"
+},
+"GLOBAL 45": {
+"instructors": [
+"Devin Thomas Leigh"
+],
+"title": "Survey of World History"
+},
+"GLOBAL C100D": {
+"instructors": [
+"Tiffany L Page"
+],
+"title": "Global Development: Theory, History, Geography"
+},
+"GLOBAL C10A": {
+"instructors": [
+"Jesilyn M Faust"
+],
+"title": "Introduction to Global Studies"
+},
+"GMS 200": {
+"instructors": [
+"Alison Elizabeth Post"
+],
+"title": "Global Metropolitan Studies: Introduction to Theories, Histories, and Methods"
+},
+"GMS 201": {
+"instructors": [],
+"title": "Research Seminar in Comparative Urban Studies"
+},
+"GPP 105": {
+"instructors": [
+"Clare Talwalker"
+],
+"title": "The Ethics, Methods, and Pragmatics of Global Practice"
+},
+"GPP 115": {
+"instructors": [
+"Ross Christopher Doll"
+],
+"title": "Global Poverty: Challenges and Hopes"
+},
+"GPP 150": {
+"instructors": [
+"Ross Christopher Doll"
+],
+"title": "Special Topics in Global Poverty and Practice"
+},
+"GPP 196": {
+"instructors": [
+"Khalid Kadir"
+],
+"title": "Global Poverty and Practice Capstone Course"
+},
+"GSPDP 375": {
+"instructors": [],
+"title": "Teaching and Learning in Higher Education"
+},
+"GWS 10": {
+"instructors": [
+"Dora Silva Santana"
+],
+"title": "Introduction to Gender and Women's Studies"
+},
+"GWS 101": {
+"instructors": [
+"Laura C Nelson"
+],
+"title": "Doing Feminist Research"
+},
+"GWS 104": {
+"instructors": [
+"Barbara A Barnes"
+],
+"title": "Feminist Theory"
+},
+"GWS 111": {
+"instructors": [
+"Barbara A Barnes",
+"Dora Silva Santana",
+"Laura C Nelson",
+"Minoo Moallem"
+],
+"title": "Special Topics"
+},
+"GWS 129": {
+"instructors": [
+"Mel Y Chen"
+],
+"title": "Bodies and Boundaries"
+},
+"GWS 131": {
+"instructors": [],
+"title": "Gender and Science"
+},
+"GWS 132AC": {
+"instructors": [],
+"title": "Gender, Race, and Law"
+},
+"GWS 14": {
+"instructors": [
+"Courtney Desiree Morris"
+],
+"title": "Gender, Sexuality, and Race in Global Political Issues"
+},
+"GWS 200": {
+"instructors": [
+"Courtney Desiree Morris"
+],
+"title": "Theory and Critical Research"
+},
+"GWS 210": {
+"instructors": [],
+"title": "Advanced Interdisciplinary Studies"
+},
+"GWS 220": {
+"instructors": [
+"Patrice D Douglass"
+],
+"title": "Research Seminar"
+},
+"GWS 24": {
+"instructors": [],
+"title": "Freshman Seminars"
+},
+"GWS 40": {
+"instructors": [],
+"title": "Special Topics"
+},
+"HISTART 11": {
+"instructors": [
+"Darcy Grimaldo Grigsby"
+],
+"title": "Introduction to European and American Art from the Renaissance to the Present"
+},
+"HISTART 190B": {
+"instructors": [
+"Lisa Pieraccini"
+],
+"title": "Ancient"
+},
+"HISTART 192A": {
+"instructors": [],
+"title": "Undergraduate Seminar: Problems in Research and Interpretation: Asian"
+},
+"HISTART 192B": {
+"instructors": [
+"Lisa Pieraccini"
+],
+"title": "Undergraduate Seminar: Problems in Research and Interpretation: Ancient"
+},
+"HISTART 192CU": {
+"instructors": [],
+"title": "Undergraduate Seminar: Problems in Research and Interpretation: Curatorial"
+},
+"HISTART 192F": {
+"instructors": [
+"Aglaya K Glebova"
+],
+"title": "Undergraduate Seminar: Problems in Research and Interpretation: 19th-20th Century"
+},
+"HISTART C120B": {
+"instructors": [],
+"title": "The Art of Ancient Mesopotamia: 1000-330 BCE"
+},
+"HISTART R1B": {
+"instructors": [],
+"title": "Reading and Writing about Visual Experience"
+},
+"HISTORY 100D": {
+"instructors": [
+"Bonnie Morris",
+"Daniel E Zoughbie",
+"Dmitri J Brown",
+"Jaime Sanchez",
+"Rebecca M McLennan"
+],
+"title": "Special Topics in the History of the United States"
+},
+"HISTORY 100E": {
+"instructors": [
+"Rebecca Herman"
+],
+"title": "Special Topics in Latin American History"
+},
+"HISTORY 100U": {
+"instructors": [
+"Maria Mavroudi"
+],
+"title": "Special Topics in Comparative History"
+},
+"HISTORY 102": {
+"instructors": [
+"Bernadette Jeanne Perez",
+"Bonnie Morris",
+"Bruce Stewart Hall",
+"Ethan H Shagan",
+"Jaime Sanchez",
+"Kimberly Killion",
+"Rebecca Herman",
+"Victoria Frede-Montemayor"
+],
+"title": "Seminar in Historical Research and Writing for History Majors"
+},
+"HISTORY 103B": {
+"instructors": [
+"John Connelly",
+"Thomas Dandelet"
+],
+"title": "Proseminar: Problems in Interpretation in the Several Fields of History: Europe"
+},
+"HISTORY 103D": {
+"instructors": [
+"Stephanie E Jones-Rogers"
+],
+"title": "Proseminar: Problems in Interpretation in the Several Fields of History: United States"
+},
+"HISTORY 103M": {
+"instructors": [
+"Dzovinar Derderian"
+],
+"title": "Proseminar: Problems in Interpretation in the Several Fields of History: Middle East"
+},
+"HISTORY 103U": {
+"instructors": [
+"Dmitri J Brown",
+"Maria Mavroudi",
+"Rebekah Ramsay"
+],
+"title": "Proseminar: Problems in Interpretation in the Several Fields of History: Comparative History"
+},
+"HISTORY 104": {
+"instructors": [
+"Sandra Eder",
+"Trevor W Jackson"
+],
+"title": "The Craft of History"
+},
+"HISTORY 116D": {
+"instructors": [
+"Puck Engman"
+],
+"title": "China: Twentieth-Century China"
+},
+"HISTORY 118C": {
+"instructors": [],
+"title": "The Twentieth Century in Japan"
+},
+"HISTORY 159B": {
+"instructors": [
+"Christoph Hermann"
+],
+"title": "The Power of Ideas: The History of Economic and Social Thought"
+},
+"HISTORY 198BC": {
+"instructors": [
+"Bonnie Morris"
+],
+"title": "Berkeley Connect"
+},
+"HISTORY 375": {
+"instructors": [
+"Ronit Stahl"
+],
+"title": "Teaching History at the University"
+},
+"HISTORY 4B": {
+"instructors": [
+"Maureen C Miller"
+],
+"title": "Origins of Western Civilization: Medieval Europe"
+},
+"HISTORY 6B": {
+"instructors": [
+"Puck Engman"
+],
+"title": "Introduction to Chinese History: From the Mongols to Post-Mao China"
+},
+"HISTORY 7B": {
+"instructors": [],
+"title": "Introduction to the History of the United States: The United States from Civil War to Present"
+},
+"HISTORY 8B": {
+"instructors": [
+"Craig A Johnson"
+],
+"title": "Latin American History: Modern Latin America"
+},
+"HISTORY 98BC": {
+"instructors": [
+"Bonnie Morris"
+],
+"title": "Berkeley Connect"
+},
+"HISTORY C184D": {
+"instructors": [
+"Ari S Edmundson",
+"Cathryn Carson"
+],
+"title": "Human Contexts and Ethics of Data - DATA/History/STS"
+},
+"HISTORY R1B": {
+"instructors": [
+"Alexandra Coakley",
+"Carla Hesse",
+"Dimitri Diagne",
+"Leo Franks",
+"Tara Madhav"
+],
+"title": "Reading and Composition in History"
+},
+"HMEDSCI 205B": {
+"instructors": [
+"Claudia Landau",
+"Gustavo A Valbuena",
+"Jennifer Breckler"
+],
+"title": "Foundational Medical Sciences"
+},
+"HMEDSCI 205D": {
+"instructors": [
+"Amin Azzam",
+"Camila Mateo",
+"Dipti Surendra Barot",
+"Gustavo A Valbuena",
+"Shelene K Stine"
+],
+"title": "Foundational Medical Sciences D"
+},
+"HMEDSCI 216B": {
+"instructors": [
+"Kareen Espino",
+"Neeti Doshi",
+"Odi A Ehie"
+],
+"title": "Clinical Medicine B"
+},
+"HMEDSCI 216D": {
+"instructors": [
+"Ashkon Shaahinfar",
+"Katherine Carlson Brooks",
+"Odi A Ehie"
+],
+"title": "Clinical Medicine D"
+},
+"HMEDSCI 261B": {
+"instructors": [
+"Gustavo A Valbuena",
+"Jyothi N Marbin",
+"Leanna W Lewis",
+"Meg R Schwarzman"
+],
+"title": "JMP Masters Seminar"
+},
+"HMEDSCI 271": {
+"instructors": [
+"Leanna W Lewis"
+],
+"title": "Critical Perspectives on Medicine and Public Health Praxis"
+},
+"HUM 120": {
+"instructors": [
+"Charles Huang",
+"Umair Khan"
+],
+"title": "Entrepreneurship for All: An Insiders' Guide to Startups"
+},
+"IAS 157AC": {
+"instructors": [
+"Khalid Kadir"
+],
+"title": "Engineering, The Environment, and Society"
+},
+"IAS C118": {
+"instructors": [
+"Shifrah Aron-Dine"
+],
+"title": "Introductory Applied Econometrics"
+},
+"INDENG 120": {
+"instructors": [
+"Phillip Kerger"
+],
+"title": "Principles of Engineering Economics"
+},
+"INDENG 142A": {
+"instructors": [],
+"title": "Introduction to Machine Learning and Data Analytics"
+},
+"INDENG 142B": {
+"instructors": [],
+"title": "Machine Learning and Data Analytics II"
+},
+"INDENG 151": {
+"instructors": [],
+"title": "Service Operations Design and Analysis"
+},
+"INDENG 156": {
+"instructors": [],
+"title": "Healthcare Analytics"
+},
+"INDENG 160": {
+"instructors": [],
+"title": "Nonlinear and Discrete Optimization"
+},
+"INDENG 162": {
+"instructors": [],
+"title": "Linear Programming and Network Flows"
+},
+"INDENG 164": {
+"instructors": [],
+"title": "Introduction to Optimization Modeling"
+},
+"INDENG 165": {
+"instructors": [],
+"title": "Engineering Statistics, Quality Control, and Forecasting"
+},
+"INDENG 166": {
+"instructors": [],
+"title": "Decision Analytics"
+},
+"INDENG 170": {
+"instructors": [
+"Carisa Harris"
+],
+"title": "Industrial Design and Human Factors"
+},
+"INDENG 172": {
+"instructors": [],
+"title": "Probability and Risk Analysis for Engineers"
+},
+"INDENG 173": {
+"instructors": [],
+"title": "Introduction to Stochastic Processes"
+},
+"INDENG 180": {
+"instructors": [],
+"title": "Senior Project"
+},
+"INDENG 222": {
+"instructors": [],
+"title": "Financial Engineering Systems I"
+},
+"INDENG 223": {
+"instructors": [],
+"title": "Financial Engineering Systems II"
+},
+"INDENG 230": {
+"instructors": [],
+"title": "Economics of Supply Chains"
+},
+"INDENG 231": {
+"instructors": [
+"Zeyu Zheng"
+],
+"title": "Introduction to Data Modeling, Statistics, and System Simulation"
+},
+"INDENG 242B": {
+"instructors": [],
+"title": "Machine Learning and Data Analytics II"
+},
+"INDENG 243": {
+"instructors": [],
+"title": "Analytics Lab"
+},
+"INDENG 256": {
+"instructors": [],
+"title": "Heathcare Analytics"
+},
+"INDENG 262B": {
+"instructors": [],
+"title": "Mathematical Programming II"
+},
+"INDENG 263B": {
+"instructors": [
+"Xin Guo"
+],
+"title": "Applied Stochastic Process II"
+},
+"INDENG 290": {
+"instructors": [
+"Chiwei Yan",
+"Ying Cui"
+],
+"title": "Special Topics in Industrial Engineering and Operation Research"
+},
+"INDENG 298": {
+"instructors": [
+"Rajan H Udwani",
+"Thibaut Mastrolia"
+],
+"title": "Group Studies, Seminars, or Group Research"
+},
+"INDENG C253": {
+"instructors": [],
+"title": "Supply Chain and Logistics Management"
+},
+"INFO 114": {
+"instructors": [
+"Steve Fadden"
+],
+"title": "User Experience Research"
+},
+"INFO 153B": {
+"instructors": [
+"Olukayode Segun Ashaolu"
+],
+"title": "Back-End Web Architecture"
+},
+"INFO 201": {
+"instructors": [
+"Michael Rivera"
+],
+"title": "Research Design and Applications for Data and Analysis"
+},
+"INFO 203": {
+"instructors": [
+"Kathryne Metcalf"
+],
+"title": "Social Issues of Information"
+},
+"INFO 205": {
+"instructors": [
+"Deirdre Kathleen Mulligan"
+],
+"title": "Information Law and Policy"
+},
+"INFO 214": {
+"instructors": [
+"Steve Fadden"
+],
+"title": "User Experience Research"
+},
+"INFO 230": {
+"instructors": [
+"Tim Tangherlini"
+],
+"title": "Cultural Analytics: Theories and Methods"
+},
+"INFO 251": {
+"instructors": [
+"Joshua Evan Blumenstock"
+],
+"title": "Applied Machine Learning"
+},
+"INFO 253B": {
+"instructors": [
+"Olukayode Segun Ashaolu"
+],
+"title": "Back-End Web Architecture"
+},
+"INFO 289": {
+"instructors": [
+"Elijah Baucom"
+],
+"title": "Public Interest Cybersecurity: The Cybersecurity Clinic Practicum"
+},
+"INFO 290": {
+"instructors": [
+"John Chuang",
+"Judd Antin",
+"Laurel E Fletcher",
+"Naitian Zhou",
+"Valentina Rozo Angel"
+],
+"title": "Special Topics in Information"
+},
+"INTEGBI 104LF": {
+"instructors": [
+"Alan B Shabel",
+"Jimmy A McGuire",
+"Rauri C K Bowie"
+],
+"title": "Natural History of the Vertebrates with Laboratory"
+},
+"INTEGBI 113L": {
+"instructors": [
+"Seth Finnegan"
+],
+"title": "Paleobiological Perspectives on Ecology and Evolution"
+},
+"INTEGBI 132": {
+"instructors": [
+"Annaliese Beery",
+"Lisa A Margerum",
+"Rana Khankan"
+],
+"title": "Human Physiology"
+},
+"INTEGBI 132L": {
+"instructors": [
+"Rana Khankan"
+],
+"title": "Human Physiology Laboratory"
+},
+"INTEGBI 140": {
+"instructors": [
+"Timothy M Markowitz"
+],
+"title": "Biology of Human Reproduction"
+},
+"INTEGBI 148": {
+"instructors": [
+"Caroline Margaret Williams",
+"Victor Ortega Jimenez"
+],
+"title": "Comparative Animal Physiology"
+},
+"INTEGBI 159": {
+"instructors": [
+"Ivo Duijnstee"
+],
+"title": "The Living Planet: Impact of the Biosphere on the Earth System"
+},
+"INTEGBI 169": {
+"instructors": [
+"Cara Elisabeth Brook",
+"Julien Ayroles",
+"Stephen Gaughran"
+],
+"title": "Evolutionary Medicine"
+},
+"INTEGBI 24": {
+"instructors": [
+"Brent D Mishler",
+"Britt Koskella",
+"George E Bentley"
+],
+"title": "Freshman Seminars"
+},
+"INTEGBI 35AC": {
+"instructors": [],
+"title": "Human Biological Variation"
+},
+"INTEGBI 38": {
+"instructors": [
+"Cindy Looy",
+"Juan Liu",
+"Rebecca Tarvin"
+],
+"title": "The Animal In You: Evolutionary Traces In The Human Body"
+},
+"INTEGBI 77B": {
+"instructors": [],
+"title": "Integrative Human Biology"
+},
+"INTEGBI C153": {
+"instructors": [
+"Benjamin H Becker",
+"Timothy M Markowitz"
+],
+"title": "Ecology"
+},
+"INTEGBI C171": {
+"instructors": [
+"Albert Ruhi"
+],
+"title": "Freshwater Ecology"
+},
+"ISF 100A": {
+"instructors": [
+"Rakesh Bhandari"
+],
+"title": "Introduction to Social Theory and Cultural Analysis"
+},
+"ISF 100D": {
+"instructors": [
+"Rakesh Bhandari"
+],
+"title": "Introduction to Technology, Society, and Culture"
+},
+"ISF 100I": {
+"instructors": [
+"Fang Xu"
+],
+"title": "Consumer Society and Culture"
+},
+"ISF 100J": {
+"instructors": [
+"Shreeharsh Kelkar"
+],
+"title": "The Social Life of Computing"
+},
+"ISF 100K": {
+"instructors": [
+"Amm Quamruzzaman"
+],
+"title": "Health, Wealth, Love and Happiness"
+},
+"ISF 189": {
+"instructors": [
+"Amm Quamruzzaman"
+],
+"title": "Interdisciplinary Research Methods"
+},
+"ISF 190": {
+"instructors": [
+"Amm Quamruzzaman",
+"Fang Xu",
+"Shreeharsh Kelkar"
+],
+"title": "Senior Thesis"
+},
+"ITALIAN 1": {
+"instructors": [
+"Cristina Farronato"
+],
+"title": "Elementary Italian"
+},
+"ITALIAN 2": {
+"instructors": [
+"Cristina Farronato"
+],
+"title": "Elementary Italian"
+},
+"ITALIAN R5B": {
+"instructors": [
+"Cristina Farronato",
+"Giuliana Perco"
+],
+"title": "Reading and Composition"
+},
+"JAPAN 10B": {
+"instructors": [],
+"title": "Intermediate Japanese"
+},
+"JAPAN 1A": {
+"instructors": [],
+"title": "Elementary Japanese"
+},
+"JAPAN 1B": {
+"instructors": [],
+"title": "Elementary Japanese"
+},
+"JEWISH 120": {
+"instructors": [],
+"title": "Special Topics in Jewish Studies"
+},
+"JEWISH 120A": {
+"instructors": [],
+"title": "Special Topics in Jewish Languages and Literature"
+},
+"JEWISH 121B": {
+"instructors": [],
+"title": "Arts and Culture in Israel"
+},
+"JEWISH 122A": {
+"instructors": [],
+"title": "Special Topics in Judaism"
+},
+"JOURN 100": {
+"instructors": [
+"Edward Wasserman"
+],
+"title": "Introduction to News Reporting"
+},
+"JOURN 136": {
+"instructors": [],
+"title": "Media Ethics"
+},
+"JOURN 201": {
+"instructors": [],
+"title": "Advanced News Reporting"
+},
+"JOURN 210": {
+"instructors": [],
+"title": "News Photography"
+},
+"JOURN 213": {
+"instructors": [],
+"title": "Documentary Photography"
+},
+"JOURN 219": {
+"instructors": [],
+"title": "Mini-Special Topics"
+},
+"JOURN 222": {
+"instructors": [],
+"title": "Interactive Narratives"
+},
+"JOURN 226": {
+"instructors": [
+"Geeta O Anand"
+],
+"title": "Science Reporting"
+},
+"JOURN 230": {
+"instructors": [],
+"title": "Business Reporting"
+},
+"JOURN 232": {
+"instructors": [],
+"title": "Business Journalism Capstone"
+},
+"JOURN 234": {
+"instructors": [],
+"title": "International Reporting"
+},
+"JOURN 243": {
+"instructors": [],
+"title": "Long-Form Writing"
+},
+"JOURN 256": {
+"instructors": [],
+"title": "Journalism Law"
+},
+"JOURN 260": {
+"instructors": [
+"David T Barstow"
+],
+"title": "Investigative Reporting for TV and Print"
+},
+"JOURN 276": {
+"instructors": [],
+"title": "Audio on Assignment"
+},
+"JOURN 283": {
+"instructors": [
+"Cassandra Herrman"
+],
+"title": "Intermediate Documentary Production"
+},
+"JOURN 284": {
+"instructors": [],
+"title": "Documentary Workshop II"
+},
+"JOURN 294": {
+"instructors": [
+"David T Barstow",
+"Edward Wasserman",
+"Jason Spingarn-Koff",
+"Jennifer Anne LaFleur",
+"Jennifer Redfearn",
+"Jeremy Sanchez Rue",
+"Ken Light",
+"Mark Danner",
+"Queena Kim",
+"William J Drummond"
+],
+"title": "Master's Project Seminar"
+},
+"JOURN 296": {
+"instructors": [],
+"title": "Topical Reporting in Journalism"
+},
+"JOURN 298": {
+"instructors": [
+"Adam Hochschild",
+"David T Barstow",
+"Jamil Karim Smith",
+"Jason Spingarn-Koff",
+"Jennifer Anne LaFleur",
+"Jennifer M Kahn",
+"Jennifer Redfearn",
+"Lisa Armstrong",
+"Mark Danner",
+"Mark Jeffrey Schapiro",
+"Shereen Marisol Meraji",
+"William J Drummond"
+],
+"title": "Group Study - Special Topics"
+},
+"KOREAN 109": {
+"instructors": [],
+"title": "Korean Language in Popular Media"
+},
+"KOREAN 10BX": {
+"instructors": [],
+"title": "Intermediate Korean for Heritage Speakers"
+},
+"KOREAN 1A": {
+"instructors": [],
+"title": "Elementary Korean"
+},
+"KOREAN 1B": {
+"instructors": [],
+"title": "Elementary Korean"
+},
+"LDARCH 1": {
+"instructors": [],
+"title": "Drawing a Green Future: Fundamentals of Visual Representation and Creativity"
+},
+"LDARCH 102": {
+"instructors": [
+"Karl William Kullmann"
+],
+"title": "Case Studies in Landscape Design"
+},
+"LDARCH 112": {
+"instructors": [
+"Daphne H Edwards"
+],
+"title": "Landscape Plants: Identification and Use"
+},
+"LDARCH 135": {
+"instructors": [
+"Chip Sullivan"
+],
+"title": "Sacred Landscapes"
+},
+"LDARCH 140": {
+"instructors": [],
+"title": "Social and Psychological Factors in Open Space Design"
+},
+"LDARCH 160": {
+"instructors": [
+"Nathan S Lozier"
+],
+"title": "Professional Practice Seminar"
+},
+"LDARCH 170": {
+"instructors": [
+"Louise A Mozingo"
+],
+"title": "History and Literature of Landscape Architecture"
+},
+"LDARCH 200B": {
+"instructors": [
+"Alma L DuSolier"
+],
+"title": "Case Studies in Landscape Design"
+},
+"LDARCH 202": {
+"instructors": [
+"Danielle Zoe Rivera"
+],
+"title": "Design of Landscape Sites"
+},
+"LDARCH 204": {
+"instructors": [
+"David Meyer"
+],
+"title": "Advanced Project Design"
+},
+"LDARCH 205": {
+"instructors": [
+"G Mathias Kondolf"
+],
+"title": "Environmental Planning Studio"
+},
+"LDARCH 206": {
+"instructors": [],
+"title": "Final Project Preparation Studio: Thesis and Reports"
+},
+"LDARCH 221": {
+"instructors": [
+"Lu Liang"
+],
+"title": "Quantitative Methods in Environmental Planning"
+},
+"LDARCH 234B": {
+"instructors": [],
+"title": "Landscape Processes through Drawing and Modeling"
+},
+"LDARCH 237": {
+"instructors": [
+"Kristina Hill"
+],
+"title": "The Process of Environmental Planning"
+},
+"LDARCH 260": {
+"instructors": [
+"Nathan S Lozier"
+],
+"title": "Professional Practice Seminar"
+},
+"LDARCH 287": {
+"instructors": [],
+"title": "Representation as Research: Contemporary Topics in Landscape Visualization"
+},
+"LEGALST 100": {
+"instructors": [
+"Nicole Lindahl-Ruiz"
+],
+"title": "Foundations of Legal Studies"
+},
+"LEGALST 103": {
+"instructors": [
+"Christopher Lawrence Tomlins"
+],
+"title": "Theories of Law and Society"
+},
+"LEGALST 109": {
+"instructors": [
+"Richard Warren Perry"
+],
+"title": "Aims and Limits of the Criminal Law"
+},
+"LEGALST 122": {
+"instructors": [
+"Chris Jay Hoofnagle"
+],
+"title": "Cybersecurity in Context"
+},
+"LEGALST 123": {
+"instructors": [
+"Jonathan David Marshall"
+],
+"title": "Data, Prediction & Law"
+},
+"LEGALST 132AC": {
+"instructors": [
+"Leti Volpp"
+],
+"title": "Immigration and Citizenship"
+},
+"LEGALST 134": {
+"instructors": [
+"Lisa Reinsberg"
+],
+"title": "International Courts & Human Rights"
+},
+"LEGALST 138": {
+"instructors": [
+"Kyle Deland"
+],
+"title": "The Supreme Court and Public Policy"
+},
+"LEGALST 145": {
+"instructors": [
+"Bruno Meyerhof Salama"
+],
+"title": "Law and Economics I"
+},
+"LEGALST 160": {
+"instructors": [
+"Kristin M Sangren"
+],
+"title": "Punishment, Culture, and Society"
+},
+"LEGALST 165": {
+"instructors": [
+"Julie Shackford-Bradley"
+],
+"title": "Truth, Justice & Reconciliation"
+},
+"LEGALST 174": {
+"instructors": [],
+"title": "Comparative Constitutional Law: The Case of Israel"
+},
+"LEGALST 177": {
+"instructors": [
+"Aaron Hall"
+],
+"title": "Survey of American Legal and Constitutional History"
+},
+"LEGALST 190": {
+"instructors": [
+"Alan J Pomerantz",
+"Asad A Rahim",
+"Bruno Meyerhof Salama",
+"Kristin M Sangren",
+"Monica Castillejos Aragon",
+"Nicole Lindahl-Ruiz",
+"Sanchita B Saxena",
+"Sonia Katyal"
+],
+"title": "Seminar on Topics in Law and Society"
+},
+"LEGALST 39D": {
+"instructors": [
+"Alan J Pomerantz"
+],
+"title": "Freshman/Sophomore Seminar"
+},
+"LEGALST H195C": {
+"instructors": [
+"Calvin K Morrill",
+"Cristina Violante"
+],
+"title": "Legal Studies Honors Research and Writing Seminar"
+},
+"LEGALST R1B": {
+"instructors": [],
+"title": "Reading and Composition in Connection with the Law as a Social Institution"
+},
+"LINGUIS 100": {
+"instructors": [
+"Andrew Garrett"
+],
+"title": "Introduction to Linguistic Science"
+},
+"LINGUIS 110": {
+"instructors": [
+"Alan Yu"
+],
+"title": "Phonetics"
+},
+"LINGUIS 121": {
+"instructors": [
+"Amy Rose Deal"
+],
+"title": "Formal Semantics"
+},
+"LINGUIS 130": {
+"instructors": [
+"Andrew Garrett"
+],
+"title": "Comparative and Historical Linguistics"
+},
+"LINGUIS 1B": {
+"instructors": [
+"Sherry L Hicks"
+],
+"title": "American Sign Language II"
+},
+"LINGUIS 24": {
+"instructors": [
+"Line Hove Leander Mikkelsen"
+],
+"title": "Freshman Seminar"
+},
+"LINGUIS 47": {
+"instructors": [
+"Susanne Gahl"
+],
+"title": "Introduction to Communication Disorders"
+},
+"LINGUIS C189": {
+"instructors": [
+"Terry Regier"
+],
+"title": "Introduction to computational linguistics"
+},
+"LINGUIS R1B": {
+"instructors": [],
+"title": "Topics in Linguistic Science"
+},
+"LS 110": {
+"instructors": [
+"Oliver M O'Reilly",
+"Richard K Lyons"
+],
+"title": "Brilliance of Berkeley"
+},
+"LS 22": {
+"instructors": [
+"Saul Perlmutter"
+],
+"title": "Sense and Sensibility and Science"
+},
+"LS 98": {
+"instructors": [],
+"title": "Directed Group Study"
+},
+"LS C120T": {
+"instructors": [],
+"title": "Ideas of Education"
+},
+"LS C70T": {
+"instructors": [],
+"title": "The Planets"
+},
+"MATH 104": {
+"instructors": [
+"Avi Zeff",
+"Gregory Parker",
+"Noah Olander",
+"Obrad Kasum",
+"Siiri Kivimaki",
+"Xianzhe Li",
+"Zhenhao Li"
+],
+"title": "Introduction to Analysis"
+},
+"MATH 105": {
+"instructors": [
+"Xianzhe Li"
+],
+"title": "Second Course in Analysis"
+},
+"MATH 10B": {
+"instructors": [
+"Ryan A Hass"
+],
+"title": "Methods of Mathematics: Calculus, Statistics, and Combinatorics"
+},
+"MATH 110": {
+"instructors": [
+"Olga V Holtz"
+],
+"title": "Abstract Linear Algebra"
+},
+"MATH 113": {
+"instructors": [
+"Kenneth A Ribet"
+],
+"title": "Introduction to Abstract Algebra"
+},
+"MATH 114": {
+"instructors": [
+"Alexander B Givental"
+],
+"title": "Second Course in Abstract Algebra"
+},
+"MATH 121B": {
+"instructors": [
+"Simon Gabriel"
+],
+"title": "Mathematical Tools for the Physical Sciences"
+},
+"MATH 123": {
+"instructors": [
+"Adam Black"
+],
+"title": "Ordinary Differential Equations"
+},
+"MATH 128A": {
+"instructors": [
+"Franziska Weber"
+],
+"title": "Numerical Analysis"
+},
+"MATH 128B": {
+"instructors": [
+"Ryan Schneider"
+],
+"title": "Numerical Analysis"
+},
+"MATH 135": {
+"instructors": [
+"Obrad Kasum"
+],
+"title": "Introduction to the Theory of Sets"
+},
+"MATH 141": {
+"instructors": [
+"Nicki Magill"
+],
+"title": "Elementary Differential Topology"
+},
+"MATH 143": {
+"instructors": [
+"Kendric Schefers"
+],
+"title": "Elementary Algebraic Geometry"
+},
+"MATH 156": {
+"instructors": [
+"Ryan Schneider"
+],
+"title": "Numerical Analysis for Data Science and Statistics"
+},
+"MATH 16A": {
+"instructors": [],
+"title": "Analytic Geometry and Calculus"
+},
+"MATH 16B": {
+"instructors": [
+"Emiliano Gomez"
+],
+"title": "Analytic Geometry and Calculus"
+},
+"MATH 170": {
+"instructors": [
+"Ming Gu"
+],
+"title": "Mathematical Methods for Optimization"
+},
+"MATH 185": {
+"instructors": [
+"David Gao",
+"Felix Weilacher",
+"Joshua Mundinger",
+"Koichi Oyakawa",
+"Michael J Ragone",
+"Vinh Nguyen"
+],
+"title": "Introduction to Complex Analysis"
+},
+"MATH 202B": {
+"instructors": [
+"Amir Mohammadi"
+],
+"title": "Introduction to Topology and Analysis"
+},
+"MATH 205": {
+"instructors": [
+"Ian Agol"
+],
+"title": "Theory of Functions of a Complex Variable"
+},
+"MATH 215B": {
+"instructors": [
+"Constantin Teleman"
+],
+"title": "Algebraic Topology"
+},
+"MATH 228B": {
+"instructors": [
+"Per-Olof Persson"
+],
+"title": "Numerical Solution of Differential Equations"
+},
+"MATH 24": {
+"instructors": [],
+"title": "Freshman Seminars"
+},
+"MATH 240": {
+"instructors": [
+"John W Lott"
+],
+"title": "Riemannian Geometry"
+},
+"MATH 250B": {
+"instructors": [
+"David Eisenbud"
+],
+"title": "Commutative Algebra"
+},
+"MATH 252": {
+"instructors": [
+"Vera Serganova"
+],
+"title": "Representation Theory"
+},
+"MATH 254B": {
+"instructors": [
+"Sug Woo Shin"
+],
+"title": "Number Theory"
+},
+"MATH 261B": {
+"instructors": [
+"Edward Frenkel"
+],
+"title": "Lie Groups"
+},
+"MATH 274": {
+"instructors": [
+"Christian Gaetz"
+],
+"title": "Topics in Algebra"
+},
+"MATH 279": {
+"instructors": [
+"Daniel I Tataru"
+],
+"title": "Topics in Partial Differential Equations"
+},
+"MATH 51": {
+"instructors": [
+"Ko Woon Ohm"
+],
+"title": "Calculus I"
+},
+"MATH 52": {
+"instructors": [
+"Alexander Paulin"
+],
+"title": "Calculus II"
+},
+"MATH 53": {
+"instructors": [
+"Ko Woon Ohm",
+"Suncica Canic"
+],
+"title": "Multivariable Calculus"
+},
+"MATH 54": {
+"instructors": [
+"Jon A Wilkening",
+"Zvezdelina E Stankova"
+],
+"title": "Linear Algebra and Differential Equations"
+},
+"MATH 55": {
+"instructors": [
+"Zvezdelina E Stankova"
+],
+"title": "Discrete Mathematics"
+},
+"MATH C103": {
+"instructors": [],
+"title": "Introduction to Mathematical Economics"
+},
+"MATH C218B": {
+"instructors": [],
+"title": "Probability Theory"
+},
+"MATH C223B": {
+"instructors": [],
+"title": "Advanced Topics in Probablity and Stochastic Processes"
+},
+"MATH H185": {
+"instructors": [
+"Michael J Ragone"
+],
+"title": "Honors Introduction to Complex Analysis"
+},
+"MATSCI 104": {
+"instructors": [
+"Mary Scott"
+],
+"title": "Materials Characterization"
+},
+"MATSCI 104L": {
+"instructors": [
+"Mary Scott"
+],
+"title": "Materials Characterization Laboratory"
+},
+"MATSCI 117": {
+"instructors": [],
+"title": "Properties of Dielectric and Magnetic Materials"
+},
+"MATSCI 128": {
+"instructors": [
+"Jiyun Kang"
+],
+"title": "Modern Structural Materials and Sustainability"
+},
+"MATSCI 217": {
+"instructors": [],
+"title": "Properties of Dielectric and Magnetic Materials"
+},
+"MATSCI 24": {
+"instructors": [
+"John W Morris"
+],
+"title": "Freshman Seminar"
+},
+"MATSCI 241B": {
+"instructors": [
+"Haimei Zheng"
+],
+"title": "Electron Microscopy Laboratory"
+},
+"MBA 209P": {
+"instructors": [
+"Robert J Shaye",
+"Terrance T Odean"
+],
+"title": "Personal Financial Management"
+},
+"MBA 375": {
+"instructors": [
+"Ganesh Iyer"
+],
+"title": "Teaching Business"
+},
+"MCELLBI 100B": {
+"instructors": [
+"Ahmet Yildiz",
+"David F Savage"
+],
+"title": "Biochemistry: Pathways, Mechanisms, and Regulation"
+},
+"MCELLBI 102": {
+"instructors": [
+"Evan W Miller",
+"Evangelina Nogales De La Morena",
+"Sabeeha Merchant"
+],
+"title": "Survey of the Principles of Biochemistry and Molecular Biology"
+},
+"MCELLBI 104": {
+"instructors": [
+"Megan L Martik",
+"Michael Bruce Eisen",
+"Samantha C Lewis"
+],
+"title": "Genetics, Genomics, and Cell Biology"
+},
+"MCELLBI 110": {
+"instructors": [
+"Eunyong Park",
+"James K Nunez",
+"Nick Ingolia"
+],
+"title": "Molecular Biology: Macromolecular Synthesis and Cellular Function"
+},
+"MCELLBI 133L": {
+"instructors": [
+"Abby F Dernburg"
+],
+"title": "Physiology and Cell Biology Laboratory"
+},
+"MCELLBI 136": {
+"instructors": [
+"Ahmad Nabhan",
+"Diana M Bautista",
+"Ian Swinburne"
+],
+"title": "Physiology"
+},
+"MCELLBI 140": {
+"instructors": [
+"Daniel S Rokhsar",
+"Dipti D Nayak",
+"Elcin Unal"
+],
+"title": "General Genetics"
+},
+"MCELLBI 140L": {
+"instructors": [
+"Elcin Unal",
+"Isabelle Le Blanc"
+],
+"title": "Genetics Laboratory"
+},
+"MCELLBI 141": {
+"instructors": [
+"Craig T Miller",
+"Megan L Martik"
+],
+"title": "Developmental Biology"
+},
+"MCELLBI 15": {
+"instructors": [
+"Adonis Tomas Rivie Guardado"
+],
+"title": "Current Topics in the Biological Sciences"
+},
+"MCELLBI 150": {
+"instructors": [
+"Laurent Coscoy",
+"Robert Saxton"
+],
+"title": "Molecular Immunology"
+},
+"MCELLBI 150L": {
+"instructors": [
+"Molly Ohainle",
+"P Robert Beatty",
+"Thomas Mann"
+],
+"title": "Immunology Laboratory"
+},
+"MCELLBI 153L": {
+"instructors": [
+"Arash Ng",
+"Jeffery S Cox"
+],
+"title": "Molecular Medicine Laboratory"
+},
+"MCELLBI 186B": {
+"instructors": [
+"Ellen Annette Lumpkin"
+],
+"title": "Critical Thinking & Scientific Communication in Biomedical Research"
+},
+"MCELLBI 206": {
+"instructors": [
+"Carlos J Bustamante"
+],
+"title": "Physical Biochemistry"
+},
+"MCELLBI 210": {
+"instructors": [
+"Donald Rio",
+"Kathleen Collins"
+],
+"title": "Advanced Biochemistry and Molecular Biology: Macromolecular Reactions and the Cell"
+},
+"MCELLBI 220": {
+"instructors": [
+"James Olzmann",
+"Michael P Rape",
+"Xavier Darzacq"
+],
+"title": "Therapeutic Modalities"
+},
+"MCELLBI 230": {
+"instructors": [],
+"title": "Advanced Cell and Developmental Biology"
+},
+"MCELLBI 276": {
+"instructors": [
+"Julia Schaletzky"
+],
+"title": "Sample Management, Drug Discovery and Lab Automation"
+},
+"MCELLBI 289": {
+"instructors": [
+"Kunxin Luo"
+],
+"title": "Master of Biotechnology Capstone Course"
+},
+"MCELLBI 293C": {
+"instructors": [
+"Abby F Dernburg",
+"Bronwyn Ayla Lucas",
+"Craig T Miller",
+"Ehud Isacoff",
+"Laurent Coscoy",
+"Michael A Marletta",
+"Michael P Rape"
+],
+"title": "Responsible Conduct in Research"
+},
+"MCELLBI 293R": {
+"instructors": [
+"Saiqa Qureshi"
+],
+"title": "Responsible Conduct of Research Refresher"
+},
+"MCELLBI 296": {
+"instructors": [],
+"title": "Molecular and Cell Biology Colloquium"
+},
+"MCELLBI 38": {
+"instructors": [
+"Gary Lee Firestone",
+"Robin Ball"
+],
+"title": "Stem Cell Biology, Ethics and Societal Impact"
+},
+"MCELLBI 50": {
+"instructors": [
+"P Robert Beatty"
+],
+"title": "The Immune System and Disease"
+},
+"MCELLBI C100A": {
+"instructors": [
+"Eunyong Park",
+"Ke Xu"
+],
+"title": "Biophysical Chemistry: Physical Principles and the Molecules of Life"
+},
+"MCELLBI C103": {
+"instructors": [
+"Daniel A Portnoy",
+"Kim Seed",
+"Russell E Vance"
+],
+"title": "Bacterial Pathogenesis"
+},
+"MCELLBI C110L": {
+"instructors": [
+"Isabelle Le Blanc"
+],
+"title": "General Biochemistry and Molecular Biology Laboratory"
+},
+"MCELLBI C112L": {
+"instructors": [
+"Cecilia Cecilia Martinez Gomez"
+],
+"title": "General Microbiology Laboratory"
+},
+"MCELLBI C114": {
+"instructors": [
+"Britt Aspen Glaunsinger",
+"Kim Seed"
+],
+"title": "Introduction to Comparative Virology"
+},
+"MCELLBI C130": {
+"instructors": [
+"David G Drubin",
+"Gloria A Brar",
+"James Olzmann"
+],
+"title": "Cell Biology: from Discovery to Disease"
+},
+"MCELLBI C146": {
+"instructors": [
+"Max Staller"
+],
+"title": "Data Science for Biology"
+},
+"MCELLBI C75": {
+"instructors": [],
+"title": "Introduction to the Biotechnology Field and Industry"
+},
+"MECENG 100": {
+"instructors": [
+"Kameshwar Poolla"
+],
+"title": "Electronics for the Internet of Things"
+},
+"MECENG 101": {
+"instructors": [
+"Sara McMains"
+],
+"title": "Introduction to Lean Manufacturing Systems"
+},
+"MECENG 102B": {
+"instructors": [
+"Homayoon Kazerooni"
+],
+"title": "Mechatronics Design"
+},
+"MECENG 103": {
+"instructors": [
+"George Anwar"
+],
+"title": "Experimentation and Measurements"
+},
+"MECENG 104": {
+"instructors": [],
+"title": "Engineering Mechanics II"
+},
+"MECENG 106": {
+"instructors": [
+"Simo Aleksi Makiharju"
+],
+"title": "Fluid Mechanics"
+},
+"MECENG 108": {
+"instructors": [
+"Michael D Sangid"
+],
+"title": "Mechanical Behavior of Engineering Materials"
+},
+"MECENG 109": {
+"instructors": [
+"Costas P. Grigoropoulos"
+],
+"title": "Heat Transfer"
+},
+"MECENG 110": {
+"instructors": [
+"Ala Moradian"
+],
+"title": "Introduction to Product Development"
+},
+"MECENG 118": {
+"instructors": [
+"Liwei Lin"
+],
+"title": "Introduction to Nanotechnology and Nanoscience"
+},
+"MECENG 120": {
+"instructors": [
+"Mohammad Reza Kaazem Pur Mofrad"
+],
+"title": "Computational Biomechanics Across Multiple Scales"
+},
+"MECENG 126": {
+"instructors": [
+"Lydia L Sohn"
+],
+"title": "The Science and Engineering of Cooking"
+},
+"MECENG 130": {
+"instructors": [
+"Hannah Stuart"
+],
+"title": "Design of Planar Machinery"
+},
+"MECENG 135": {
+"instructors": [
+"George Anwar"
+],
+"title": "Design of Microprocessor-Based Mechanical Systems"
+},
+"MECENG 160": {
+"instructors": [
+"Simo Aleksi Makiharju"
+],
+"title": "Ocean Engineering Seminar"
+},
+"MECENG 218N": {
+"instructors": [
+"Liwei Lin"
+],
+"title": "Introduction to Nanotechnology and Nanoscience"
+},
+"MECENG 226L": {
+"instructors": [
+"Lydia L Sohn"
+],
+"title": "The Science and Engineering of Cooking"
+},
+"MECENG 227": {
+"instructors": [],
+"title": "Mechanical Behavior of Composite Materials"
+},
+"MECENG 233": {
+"instructors": [],
+"title": "Advanced Control Systems II"
+},
+"MECENG 235": {
+"instructors": [
+"George Anwar"
+],
+"title": "Design of Microprocessor-Based Mechanical Systems"
+},
+"MECENG 276DS": {
+"instructors": [
+"Lining Yao"
+],
+"title": "Statistics and Data Science for Engineers"
+},
+"MECENG 292B": {
+"instructors": [
+"Negar Mehr"
+],
+"title": "Advanced Special Topics in Controls"
+},
+"MECENG 292C": {
+"instructors": [
+"Ala Moradian",
+"Hannah Stuart",
+"Kosa Kendall Goucher-Lambert"
+],
+"title": "Advanced Special Topics in Design"
+},
+"MECENG 292E": {
+"instructors": [
+"Costas P. Grigoropoulos",
+"Thomas Schutzius"
+],
+"title": "Advanced Special Topics in Energy Science and Technology"
+},
+"MECENG 292I": {
+"instructors": [
+"Behcet Acikmese"
+],
+"title": "Advanced Special Topics in Mechanics"
+},
+"MECENG 40": {
+"instructors": [
+"Thomas Schutzius"
+],
+"title": "Thermodynamics"
+},
+"MECENG C106A": {
+"instructors": [],
+"title": "Introduction to Robotics"
+},
+"MECENG C180": {
+"instructors": [
+"Sanjay Govindjee"
+],
+"title": "Engineering Analysis Using the Finite Element Method"
+},
+"MECENG C184": {
+"instructors": [],
+"title": "Flight Vehicle Structures and Aeroelasticity"
+},
+"MECENG C237": {
+"instructors": [
+"Claire Jennifer Tomlin",
+"Murat Arcak"
+],
+"title": "Nonlinear Systems"
+},
+"MECENG C85": {
+"instructors": [
+"Panayiotis Papadopoulos",
+"SHAOFAN LI"
+],
+"title": "Introduction to Solid Mechanics"
+},
+"MEDIAST 10": {
+"instructors": [],
+"title": "Introduction to Media Studies"
+},
+"MEDIAST 111C": {
+"instructors": [],
+"title": "Audio-Visual Media History"
+},
+"MEDIAST 112": {
+"instructors": [],
+"title": "Media Theories and Processes"
+},
+"MEDIAST 113": {
+"instructors": [],
+"title": "Media and Democracy"
+},
+"MEDIAST 114": {
+"instructors": [],
+"title": "Media and Globalization"
+},
+"MEDIAST 168": {
+"instructors": [],
+"title": "Cybernetics and Cybercultures: The Psychosocial Impact of Digital Media"
+},
+"MELC 11": {
+"instructors": [
+"Rama Alhabian"
+],
+"title": "Middle Eastern Worlds: The Modern Middle East"
+},
+"MELC 117AC": {
+"instructors": [
+"Yonatan Binyam"
+],
+"title": "The Origins of Racism in the West"
+},
+"MELC 126": {
+"instructors": [
+"Sanjyot Mehendale"
+],
+"title": "Silk Road Art and Archaeology"
+},
+"MELC 158AC": {
+"instructors": [
+"Hatem Albazian"
+],
+"title": "Middle East: Post-Colonialism, Migration, and Diaspora"
+},
+"MELC 165": {
+"instructors": [
+"Minoo Moallem"
+],
+"title": "Film and Fiction of Iran"
+},
+"MELC 18": {
+"instructors": [
+"Joseph Cross"
+],
+"title": "Introduction to Ancient Egypt"
+},
+"MELC 180": {
+"instructors": [
+"Asad Ahmed"
+],
+"title": "The Quran and Its Interpretation"
+},
+"MELC 298": {
+"instructors": [
+"Nora Jacobsen Ben Hammed"
+],
+"title": "Seminar"
+},
+"MELC C120B": {
+"instructors": [],
+"title": "The Art of Ancient Mesopotamia: 1000-330 BCE"
+},
+"MELC R1B": {
+"instructors": [
+"Evan Kirkland Grennon",
+"Wihad Al-Tawil"
+],
+"title": "Reading and Composition in Middle Eastern Languages and Cultures"
+},
+"MUSIC 105": {
+"instructors": [],
+"title": "Introduction to Music Production using Ableton Live"
+},
+"MUSIC 116": {
+"instructors": [],
+"title": "Improvisation in the Jazz Tradition"
+},
+"MUSIC 128": {
+"instructors": [
+"Edmund Mendelssohn"
+],
+"title": "Topics in the History of Music"
+},
+"MUSIC 139": {
+"instructors": [],
+"title": "Topics in Musics of the World"
+},
+"MUSIC 14": {
+"instructors": [],
+"title": "Vocal Technique"
+},
+"MUSIC 140": {
+"instructors": [],
+"title": "Javanese Gamelan"
+},
+"MUSIC 141A": {
+"instructors": [],
+"title": "Philharmonia Orchestra"
+},
+"MUSIC 142": {
+"instructors": [],
+"title": "University Wind Ensemble"
+},
+"MUSIC 144": {
+"instructors": [],
+"title": "University Chorus"
+},
+"MUSIC 145": {
+"instructors": [],
+"title": "University Chamber Chorus"
+},
+"MUSIC 146B": {
+"instructors": [],
+"title": "Balinese Gamelan"
+},
+"MUSIC 147A": {
+"instructors": [],
+"title": "Latin American and Caribbean Music Ensemble"
+},
+"MUSIC 148": {
+"instructors": [],
+"title": "African Music Ensemble"
+},
+"MUSIC 149": {
+"instructors": [],
+"title": "University Baroque Ensemble"
+},
+"MUSIC 150": {
+"instructors": [],
+"title": "Sightsinging and Score Reading"
+},
+"MUSIC 150A": {
+"instructors": [
+"Jean Ahn"
+],
+"title": "Sightsinging and Score Reading I"
+},
+"MUSIC 151A": {
+"instructors": [
+"David Pereira"
+],
+"title": "Harmony I"
+},
+"MUSIC 151B": {
+"instructors": [
+"David Pereira"
+],
+"title": "Harmony II"
+},
+"MUSIC 154B": {
+"instructors": [],
+"title": "Counterpoint"
+},
+"MUSIC 155": {
+"instructors": [],
+"title": "Music Composition"
+},
+"MUSIC 156": {
+"instructors": [],
+"title": "Studies in Musical Analysis"
+},
+"MUSIC 157B": {
+"instructors": [],
+"title": "Orchestration"
+},
+"MUSIC 165": {
+"instructors": [],
+"title": "Berkeley Nu Jazz Collective"
+},
+"MUSIC 167A": {
+"instructors": [],
+"title": "Orchestral Instrument Instruction"
+},
+"MUSIC 167B": {
+"instructors": [],
+"title": "Vocal Performance Instruction"
+},
+"MUSIC 167H": {
+"instructors": [],
+"title": "Early Music Performance Instruction"
+},
+"MUSIC 167I": {
+"instructors": [],
+"title": "Organ Instruction"
+},
+"MUSIC 168A": {
+"instructors": [],
+"title": "Instrumental Performance"
+},
+"MUSIC 168AS": {
+"instructors": [],
+"title": "Classical Ensembles Performance Studio"
+},
+"MUSIC 168B": {
+"instructors": [],
+"title": "Vocal Performance"
+},
+"MUSIC 168C": {
+"instructors": [],
+"title": "Piano/Fortepiano Performance"
+},
+"MUSIC 168CS": {
+"instructors": [],
+"title": "Piano/Fortepiano Performance Studio"
+},
+"MUSIC 168D": {
+"instructors": [],
+"title": "Various Musical Practices Performance"
+},
+"MUSIC 168E": {
+"instructors": [],
+"title": "Jazz Performance"
+},
+"MUSIC 168F": {
+"instructors": [],
+"title": "Vocal Performance: Popular and Commercial"
+},
+"MUSIC 168G": {
+"instructors": [],
+"title": "Guitar Performance"
+},
+"MUSIC 168H": {
+"instructors": [],
+"title": "Early Music Performance"
+},
+"MUSIC 168I": {
+"instructors": [],
+"title": "Organ Performance"
+},
+"MUSIC 170": {
+"instructors": [
+"Lester Hu"
+],
+"title": "Topics in History, Culture, and Analysis"
+},
+"MUSIC 172": {
+"instructors": [],
+"title": "Popular Music Theory"
+},
+"MUSIC 180": {
+"instructors": [],
+"title": "Seminar in Ethnomusicology: Selected Topics"
+},
+"MUSIC 188": {
+"instructors": [],
+"title": "Inside Music Therapy"
+},
+"MUSIC 20": {
+"instructors": [
+"Juliana Gaona Villamizar"
+],
+"title": "Introduction to Musicianship"
+},
+"MUSIC 25": {
+"instructors": [
+"Jenny Xiong"
+],
+"title": "Introduction to Music Theory, Analysis, and Notation"
+},
+"MUSIC 27": {
+"instructors": [
+"Lester Hu"
+],
+"title": "Introduction to Western Music"
+},
+"MUSIC 40": {
+"instructors": [
+"Simone Browne"
+],
+"title": "Group Carillon Lessons for Beginning Students"
+},
+"MUSIC 44": {
+"instructors": [
+"Nikolas S P Nackley"
+],
+"title": "Voice Class"
+},
+"MUSIC 45M": {
+"instructors": [
+"Jacqueline Chew"
+],
+"title": "Elementary Piano"
+},
+"MUSIC 48": {
+"instructors": [
+"Melanie M Acosta"
+],
+"title": "Introduction to Music Therapy"
+},
+"MUSIC 57": {
+"instructors": [],
+"title": "Introduction to Electronic Music Composition"
+},
+"MUSIC 70": {
+"instructors": [],
+"title": "History of Music"
+},
+"MUSIC 80": {
+"instructors": [],
+"title": "Introduction to Ethnomusicology"
+},
+"MUSIC 90": {
+"instructors": [],
+"title": "Making Music"
+},
+"MUSIC R1B": {
+"instructors": [
+"Emily Louise Jones",
+"Ian Mahanpour",
+"Kristine L Barrett",
+"Mary Ann Smart",
+"Soren Edward Nyhus"
+],
+"title": "Reading and Writing about Music"
+},
+"NATAMST 105": {
+"instructors": [
+"Enrique E Lima"
+],
+"title": "Indigenous Issues Across the Americas"
+},
+"NATAMST 158": {
+"instructors": [
+"Enrique E Lima"
+],
+"title": "Native Americans and the Cinema"
+},
+"NATAMST 178": {
+"instructors": [
+"John J Dougherty",
+"Kathleen C Whiteley"
+],
+"title": "Topics in Native American History"
+},
+"NATAMST 190": {
+"instructors": [
+"Cheryl Suzack",
+"Ikaika Ramones"
+],
+"title": "Seminar on Advanced Topics in Native American Studies"
+},
+"NATAMST C22AC": {
+"instructors": [
+"Peter A Nelson",
+"Scott L Stephens"
+],
+"title": "Fire: Past, Present and Future Interactions with the People and Ecosystems of California"
+},
+"NATAMST R1B": {
+"instructors": [],
+"title": "Native American Studies Reading and Composition"
+},
+"NAVSCI 12A": {
+"instructors": [
+"Jermaine Wells"
+],
+"title": "Navigation and Naval Operations I"
+},
+"NAVSCI 400E": {
+"instructors": [
+"Jermaine Wells",
+"P.J. James Greenbaum"
+],
+"title": "Naval Laboratory"
+},
+"NEU 100B": {
+"instructors": [
+"Hillel Adesnik",
+"Joni Wallis",
+"Liberty Hamilton"
+],
+"title": "Circuit, Systems and Behavioral Neuroscience"
+},
+"NEU 110": {
+"instructors": [
+"Robin Ball"
+],
+"title": "Scientific Logic and Communication"
+},
+"NEU 152": {
+"instructors": [
+"Chunlei Liu",
+"Preeya Khanna"
+],
+"title": "Neurotechnology"
+},
+"NEU 162": {
+"instructors": [
+"Linda Wilbrecht"
+],
+"title": "Learning and Memory"
+},
+"NEU 165": {
+"instructors": [
+"Stephan Lammel",
+"William J Jagust"
+],
+"title": "Neurobiology of Disease"
+},
+"NEU 173L": {
+"instructors": [
+"Daniel E Feldman",
+"David Feinberg",
+"Stephan Lammel"
+],
+"title": "Neuroanatomy Laboratory"
+},
+"NEU 210B": {
+"instructors": [
+"Marla B Feller"
+],
+"title": "Neuroscience Career Skills"
+},
+"NEU 294": {
+"instructors": [],
+"title": "Neuroscience Graduate Student Presentation Seminar"
+},
+"NEU 296": {
+"instructors": [],
+"title": "Neuroscience Colloquium"
+},
+"NEU C121": {
+"instructors": [
+"Kevin S Weiner"
+],
+"title": "Human Neuroanatomy"
+},
+"NEU C125": {
+"instructors": [
+"Tara Raam"
+],
+"title": "Neuroethology: Complex Animal Behaviors and Brains"
+},
+"NUCENG 104": {
+"instructors": [
+"Igor Jovanovic"
+],
+"title": "Radiation Detection and Nuclear Instrumentation Laboratory"
+},
+"NUCENG 130": {
+"instructors": [
+"Bethany Goldblum"
+],
+"title": "Analytical Methods for Non-proliferation"
+},
+"NUCENG 140": {
+"instructors": [
+"Massimiliano Fratoni"
+],
+"title": "Nuclear Science and Technology for Space"
+},
+"NUCENG 150": {
+"instructors": [
+"Massimiliano Fratoni"
+],
+"title": "Introduction to Nuclear Reactor Theory"
+},
+"NUCENG 170A": {
+"instructors": [
+"Peter Hosemann"
+],
+"title": "Nuclear Design: Design in Nuclear Power Technology and Instrumentation"
+},
+"NUCENG 230": {
+"instructors": [
+"Bethany Goldblum"
+],
+"title": "Analytical Methods for Non-Proliferation"
+},
+"NUCENG 290F": {
+"instructors": [
+"Ellie Tubman"
+],
+"title": "Special Topics in Fusion and Plasma Physics"
+},
+"NUCENG C146": {
+"instructors": [
+"Rebecca Julie Abergel"
+],
+"title": "Radiochemical Methods in Nuclear Technology and Forensics"
+},
+"NUCENG C235": {
+"instructors": [],
+"title": "Principles of Magnetic Resonance Imaging"
+},
+"NUCENG C282": {
+"instructors": [],
+"title": "Charged Particle Sources and Beam Technology"
+},
+"NUSCTX 10S": {
+"instructors": [],
+"title": "Introduction to Human Nutrition: Managing Life"
+},
+"NUSCTX 296D": {
+"instructors": [],
+"title": "Research Review in Nutritional Sciences and Toxicology"
+},
+"NWMEDIA 200": {
+"instructors": [
+"Abigail T De Kosnik"
+],
+"title": "History and Theory of New Media"
+},
+"NWMEDIA 290": {
+"instructors": [
+"Alex Saum-Pascual"
+],
+"title": "Special Topics in New Media"
+},
+"NWMEDIA C203": {
+"instructors": [],
+"title": "Critical Making"
+},
+"OPTOM 200F": {
+"instructors": [],
+"title": "Advanced Procedures in Ocular Disease Diagnosis and Management"
+},
+"OPTOM 203B": {
+"instructors": [],
+"title": "Optical System and Physical Optics"
+},
+"OPTOM 206B": {
+"instructors": [],
+"title": "Anatomy and Physiology of the Eye and Visual System"
+},
+"OPTOM 217": {
+"instructors": [],
+"title": "Oculomotor Functions and Neurology"
+},
+"OPTOM 219": {
+"instructors": [],
+"title": "Binocular Vision and Space Perception"
+},
+"OPTOM 271B": {
+"instructors": [],
+"title": "Exploring principles of practice management and modes of optometric practice"
+},
+"PBHLTH 101": {
+"instructors": [
+"Lauren Anne van der Walt",
+"Marlon Maus"
+],
+"title": "A Sustainable World: Challenges and Opportunities"
+},
+"PBHLTH 110A": {
+"instructors": [
+"Ariana H Bennett"
+],
+"title": "Introduction to Maternal, Child and Adolescent Health (MCAH)"
+},
+"PBHLTH 116": {
+"instructors": [
+"Darlene D Francis"
+],
+"title": "Seminar on Social, Political, and Ethical Issues in Health and Medicine"
+},
+"PBHLTH 124": {
+"instructors": [
+"Hector P Rodriguez"
+],
+"title": "Health Care and Public Health Management"
+},
+"PBHLTH 142": {
+"instructors": [
+"Mi-Suk J Kang Dufour"
+],
+"title": "Introduction to Probability and Statistics in Biology and Public Health"
+},
+"PBHLTH 142W": {
+"instructors": [
+"Emily Jean Place"
+],
+"title": "Introduction to Probability and Statistics in Biology and Public Health"
+},
+"PBHLTH 150A": {
+"instructors": [
+"Lisa Fischer Barcellos",
+"Mahasin S Mujahid"
+],
+"title": "Introduction to Epidemiology and Human Disease"
+},
+"PBHLTH 171K": {
+"instructors": [
+"Sadie Cash Costello"
+],
+"title": "Introduction to Data Management and Programming in SAS for Public Health"
+},
+"PBHLTH 177A": {
+"instructors": [
+"Charlotte Smith"
+],
+"title": "GIS and Spatial Analysis for Health Equity"
+},
+"PBHLTH 196": {
+"instructors": [
+"David E Presti",
+"Kathleen R Ryan",
+"Meghana Gadgil"
+],
+"title": "Special Topics in Public Health"
+},
+"PBHLTH 196A": {
+"instructors": [
+"Stefano M Bertozzi"
+],
+"title": "Special Topics in Public Health"
+},
+"PBHLTH 200B": {
+"instructors": [
+"Jaspal Singh Sandhu"
+],
+"title": "Art of Public Health"
+},
+"PBHLTH 200FW": {
+"instructors": [
+"Jay P Graham"
+],
+"title": "Environmental Health Sciences Breadth Course"
+},
+"PBHLTH 200GW": {
+"instructors": [
+"Kira Elizabeth Jeter"
+],
+"title": "Health and Social Behavior Breadth"
+},
+"PBHLTH 200K": {
+"instructors": [
+"Jay P Graham",
+"Misbath Daouda"
+],
+"title": "Environmental Health Sciences Breadth Course"
+},
+"PBHLTH 205": {
+"instructors": [
+"Shelley Facente"
+],
+"title": "Program Planning and Needs Assessment"
+},
+"PBHLTH 206AW": {
+"instructors": [
+"Sarah Zyba"
+],
+"title": "Nutrition Assessment"
+},
+"PBHLTH 206EW": {
+"instructors": [
+"Meghana Gadgil",
+"Sarah Zyba"
+],
+"title": "Diet and Chronic Disease"
+},
+"PBHLTH 209W": {
+"instructors": [
+"Neelam Sekhri Feachem",
+"Tatum Marie Sandzimier"
+],
+"title": "Comparative Health Systems"
+},
+"PBHLTH 210B": {
+"instructors": [
+"Ronald E Dahl"
+],
+"title": "Adolescent Health"
+},
+"PBHLTH 210D": {
+"instructors": [
+"Amy Michelle Padula"
+],
+"title": "Reproductive and Perinatal Epidemiology"
+},
+"PBHLTH 218W": {
+"instructors": [
+"Lisa Marie Unti-Bruce",
+"Mara Decker"
+],
+"title": "Evaluation of Health and Social Programs"
+},
+"PBHLTH 219E": {
+"instructors": [
+"Ann C Keller"
+],
+"title": "Introduction to Qualitative Methods in Public Health Research"
+},
+"PBHLTH 219W": {
+"instructors": [
+"Jylana L Sheats"
+],
+"title": "Social and Behavioral Health Research: Introduction to Survey Methods"
+},
+"PBHLTH 222A": {
+"instructors": [
+"James C Robinson"
+],
+"title": "Biomedical Innovation Policy"
+},
+"PBHLTH 222AW": {
+"instructors": [
+"James C Robinson"
+],
+"title": "Biomedical Innovation Policy"
+},
+"PBHLTH 223B": {
+"instructors": [
+"Sheila Sabahat Baxter-Lamb"
+],
+"title": "Capstone Seminar in Health Policy and Management Part 2"
+},
+"PBHLTH 223C": {
+"instructors": [
+"Kimberly MacPherson"
+],
+"title": "Strategic Management and the Health Sector"
+},
+"PBHLTH 223K": {
+"instructors": [
+"Brent Fulton"
+],
+"title": "Health Policy and Management in Public Health"
+},
+"PBHLTH 225AW": {
+"instructors": [
+"Stefano M Bertozzi"
+],
+"title": "Introduction to Applied Implementation Science"
+},
+"PBHLTH 225BW": {
+"instructors": [
+"Stefano M Bertozzi"
+],
+"title": "Implementation Science: Applied Case Studies"
+},
+"PBHLTH 226C": {
+"instructors": [
+"William H Dow"
+],
+"title": "Economics of Population Health"
+},
+"PBHLTH 226CW": {
+"instructors": [
+"William H Dow"
+],
+"title": "Economics of Population Health"
+},
+"PBHLTH 226FW": {
+"instructors": [
+"William H Dow"
+],
+"title": "Cost-Effectiveness Analysis"
+},
+"PBHLTH 227AW": {
+"instructors": [
+"Kimberly MacPherson"
+],
+"title": "Health Care Finance"
+},
+"PBHLTH 24": {
+"instructors": [
+"James C Robinson"
+],
+"title": "Freshman Seminar in Public Health"
+},
+"PBHLTH 241": {
+"instructors": [
+"Alejandro Schuler"
+],
+"title": "Intermediate Biostatistics for Public Health"
+},
+"PBHLTH 241W": {
+"instructors": [
+"Alejandro Schuler"
+],
+"title": "Intermediate Biostatistics for Public Health"
+},
+"PBHLTH 250B": {
+"instructors": [
+"Sadie Cash Costello"
+],
+"title": "Epidemiologic Methods II"
+},
+"PBHLTH 250C": {
+"instructors": [
+"Patrick Bradshaw"
+],
+"title": "Advanced Epidemiologic Methods"
+},
+"PBHLTH 250W": {
+"instructors": [],
+"title": "Epidemiologic Methods I"
+},
+"PBHLTH 253B": {
+"instructors": [
+"Joseph A Lewnard"
+],
+"title": "Epidemiology and Control of Infectious Diseases"
+},
+"PBHLTH 255A": {
+"instructors": [],
+"title": "Social Epidemiology"
+},
+"PBHLTH 257": {
+"instructors": [
+"Arthur Lawrence Reingold"
+],
+"title": "Outbreak Investigation"
+},
+"PBHLTH 267W": {
+"instructors": [
+"Charlotte Smith"
+],
+"title": "Applied GIS for Public Health Practice"
+},
+"PBHLTH 268W": {
+"instructors": [
+"Jay P Graham"
+],
+"title": "Water, Sanitation and Hygiene (WaSH) for Health and Development"
+},
+"PBHLTH 271E": {
+"instructors": [
+"Ann C Keller"
+],
+"title": "Science and Policy for Environment and Health"
+},
+"PBHLTH 271G": {
+"instructors": [
+"Ajay Pillarisetti",
+"Justin V Remais"
+],
+"title": "Health Implications of Climate Change"
+},
+"PBHLTH 277A": {
+"instructors": [
+"Charlotte Smith"
+],
+"title": "GIS and Spatial Analysis for Health Equity"
+},
+"PBHLTH 288C": {
+"instructors": [
+"George W Rutherford"
+],
+"title": "Preventive Medicine Residency Seminar: Managed Care and Preventive Medicine"
+},
+"PBHLTH 290": {
+"instructors": [
+"Barbara A Laraia",
+"Brian Keum",
+"Dan Zeltzer",
+"Jingshen Wang",
+"Joseph A Lewnard",
+"Joshua Apte",
+"Misbath Daouda",
+"Sean Darling-Hammond"
+],
+"title": "Health Issues Seminars"
+},
+"PBHLTH 291": {
+"instructors": [
+"Alex Budak"
+],
+"title": "Leadership for Public Health Changemakers"
+},
+"PBHLTH 292": {
+"instructors": [
+"Ajay Pillarisetti",
+"Anke Hemmerling",
+"Mahasin S Mujahid",
+"Melissa Brown"
+],
+"title": "Seminars for M.P.H. Students"
+},
+"PBHLTH C240A": {
+"instructors": [
+"Mark van der Laan"
+],
+"title": "Introduction to Modern Biostatistical Theory and Practice"
+},
+"PERSIAN 103B": {
+"instructors": [
+"Wali Ahmadi"
+],
+"title": "Classical Persian Poetry"
+},
+"PERSIAN 1B": {
+"instructors": [
+"Gholam-Reza Ghahramani"
+],
+"title": "Elementary Modern Persian"
+},
+"PHDBA 297T": {
+"instructors": [
+"Cecile Gaubert",
+"Don A Moore",
+"Francesco Trebbi",
+"Leif D Nelson",
+"Matilde Bombardini",
+"Nick Tsivanidis"
+],
+"title": "Doctoral Topics in Business Administration"
+},
+"PHILOS 100": {
+"instructors": [
+"Geoffrey Lee"
+],
+"title": "Philosophical Methods"
+},
+"PHILOS 104": {
+"instructors": [
+"Nicholas G Kolodny"
+],
+"title": "Ethical Theories"
+},
+"PHILOS 106": {
+"instructors": [
+"Johann David Anand Frick"
+],
+"title": "Bioethics: Clinical and Population-Level"
+},
+"PHILOS 125": {
+"instructors": [
+"Ezra Rubenstein"
+],
+"title": "Metaphysics"
+},
+"PHILOS 12A": {
+"instructors": [
+"Seth Yalcin"
+],
+"title": "Introduction to Logic"
+},
+"PHILOS 148": {
+"instructors": [
+"Xueyin Zhang"
+],
+"title": "Probability and Induction"
+},
+"PHILOS 190": {
+"instructors": [
+"Hans Sluga"
+],
+"title": "Proseminar"
+},
+"PHILOS 198BC": {
+"instructors": [],
+"title": "Berkeley Connect"
+},
+"PHILOS 2": {
+"instructors": [
+"Olivia Bailey"
+],
+"title": "Individual Morality and Social Justice"
+},
+"PHILOS 25B": {
+"instructors": [
+"Kristin Primus"
+],
+"title": "Modern Philosophy"
+},
+"PHILOS C158": {
+"instructors": [],
+"title": "Introduction to Buddhist Philosophy"
+},
+"PHILOS H196": {
+"instructors": [
+"Nicholas G Kolodny"
+],
+"title": "Senior Seminar"
+},
+"PHILOS R1B": {
+"instructors": [
+"Timothy D Crockett"
+],
+"title": "Reading and Composition Through Philosophy"
+},
+"PHYSED 1": {
+"instructors": [
+"Dini K Wong",
+"Jason Emanuel Britton",
+"Kendra Kimbrough Kimbrough Barnes",
+"Kyungmi Yoo",
+"Matt Denham",
+"Russell Changseob Ahn",
+"Thea van Warmerdam Patterson",
+"Toni Mar",
+"William Justin Caraway"
+],
+"title": "Physical Education Activities"
+},
+"PHYSED 121": {
+"instructors": [
+"Lon H Rork"
+],
+"title": "Health, Wellness, and Culture: A Critical Perspective"
+},
+"PHYSED 177": {
+"instructors": [
+"Lon H Rork",
+"Steven Ross Murray"
+],
+"title": "Wellness for Life"
+},
+"PHYSED 2": {
+"instructors": [
+"Dini K Wong",
+"Kyungmi Yoo",
+"Lon H Rork",
+"Matt Denham",
+"Russell Changseob Ahn",
+"Thea van Warmerdam Patterson",
+"Toni Mar",
+"William Justin Caraway"
+],
+"title": "Physical Education Activities"
+},
+"PHYSED 3": {
+"instructors": [
+"Kyungmi Yoo",
+"Matt Denham",
+"Thea van Warmerdam Patterson",
+"Toni Mar",
+"William Justin Caraway"
+],
+"title": "Physical Education Activities"
+},
+"PHYSED 32": {
+"instructors": [
+"Lon H Rork",
+"Steven Ross Murray"
+],
+"title": "Fitness for Life: Physical Adaptations to Exercise"
+},
+"PHYSED 4": {
+"instructors": [
+"Lon H Rork",
+"Matt Denham",
+"Thea van Warmerdam Patterson",
+"William Justin Caraway"
+],
+"title": "Physical Education Activities"
+},
+"PHYSED 5": {
+"instructors": [
+"William Justin Caraway"
+],
+"title": "Physical Education Activities"
+},
+"PHYSICS 105": {
+"instructors": [
+"Achilles D Speliotopoulos"
+],
+"title": "Analytic Mechanics"
+},
+"PHYSICS 110A": {
+"instructors": [
+"Eric Ma",
+"Matt Pyle"
+],
+"title": "Electromagnetism and Optics"
+},
+"PHYSICS 110B": {
+"instructors": [
+"Chien-I Chiang"
+],
+"title": "Electromagnetism and Optics"
+},
+"PHYSICS 111A": {
+"instructors": [
+"Chiara Pancaldo Salemi",
+"Daniel Barsky"
+],
+"title": "Instrumentation Laboratory"
+},
+"PHYSICS 111B": {
+"instructors": [
+"Hartmut Haeffner",
+"William Holzapfel"
+],
+"title": "Advanced Experimentation Laboratory"
+},
+"PHYSICS 112": {
+"instructors": [
+"Daniel Kasen",
+"Dunghai Lee"
+],
+"title": "Introduction to Statistical and Thermal Physics"
+},
+"PHYSICS 137A": {
+"instructors": [
+"Andrew Charman",
+"Chien-I Chiang"
+],
+"title": "Quantum Mechanics"
+},
+"PHYSICS 137B": {
+"instructors": [
+"Michael Crommie",
+"Zi Qiang Qiu"
+],
+"title": "Quantum Mechanics"
+},
+"PHYSICS 139": {
+"instructors": [
+"Achilles D Speliotopoulos"
+],
+"title": "Special Relativity and General Relativity"
+},
+"PHYSICS 141A": {
+"instructors": [
+"Jeffrey B Neaton"
+],
+"title": "Solid State Physics"
+},
+"PHYSICS 177": {
+"instructors": [
+"Ahmet Yildiz"
+],
+"title": "Principles of Molecular Biophysics"
+},
+"PHYSICS 211": {
+"instructors": [
+"Oskar Hallatschek"
+],
+"title": "Equilibrium Statistical Physics"
+},
+"PHYSICS 290F": {
+"instructors": [
+"Hartmut Haeffner"
+],
+"title": "Seminar"
+},
+"PHYSICS 290S": {
+"instructors": [
+"Ehud Altman"
+],
+"title": "Seminar"
+},
+"PHYSICS 5A": {
+"instructors": [
+"Michael R DeWeese"
+],
+"title": "Introductory Mechanics and Relativity"
+},
+"PHYSICS 5B": {
+"instructors": [
+"Feng Wang"
+],
+"title": "Introductory Electromagnetism, Waves, and Optics"
+},
+"PHYSICS 5BL": {
+"instructors": [
+"Caroline Silva Rocha Costa",
+"Daniel Barsky",
+"William J Golightly"
+],
+"title": "Introduction to Experimental Physics I"
+},
+"PHYSICS 5CL": {
+"instructors": [
+"Andrew Charman",
+"Nathan D Lowhorn"
+],
+"title": "Introduction to Experimental Physics II"
+},
+"PHYSICS 7A": {
+"instructors": [
+"Adrian T Lee"
+],
+"title": "Physics for Scientists and Engineers"
+},
+"PHYSICS 7B": {
+"instructors": [
+"Luca Iliesiu",
+"Ronnie Spitzer"
+],
+"title": "Physics for Scientists and Engineers"
+},
+"PHYSICS 7C": {
+"instructors": [
+"Raul A Briceno"
+],
+"title": "Physics for Scientists and Engineers"
+},
+"PHYSICS 89": {
+"instructors": [
+"Austin J Hedeman"
+],
+"title": "Introduction to Mathematical Physics"
+},
+"PHYSICS 8A": {
+"instructors": [
+"Catherine Bordel",
+"Daniel Barsky"
+],
+"title": "Introductory Physics"
+},
+"PHYSICS 8B": {
+"instructors": [
+"Catherine Bordel",
+"William J Golightly"
+],
+"title": "Introductory Physics"
+},
+"PHYSICS C161": {
+"instructors": [
+"Steven M Kahn"
+],
+"title": "Relativistic Astrophysics and Cosmology"
+},
+"PHYSICS H190": {
+"instructors": [],
+"title": "Physics Honors Course"
+},
+"PLANTBI 101L": {
+"instructors": [
+"Yan Gong"
+],
+"title": "Experimental Plant Biology Laboratory"
+},
+"PLANTBI 120": {
+"instructors": [],
+"title": "Biology of Algae"
+},
+"PLANTBI 120L": {
+"instructors": [],
+"title": "Laboratory for Biology of Algae"
+},
+"PLANTBI 150": {
+"instructors": [
+"Sheng Luan",
+"Yangnan Gu"
+],
+"title": "Plant Cell Biology"
+},
+"PLANTBI 160": {
+"instructors": [
+"Aaron Reid Leichty",
+"Jennifer C Fletcher",
+"Patricia Lang"
+],
+"title": "Plant Molecular Genetics"
+},
+"PLANTBI 165": {
+"instructors": [
+"Devin Coleman Derr",
+"Jennifer Lewis",
+"Rebecca Bart"
+],
+"title": "Plant-Microbe Interactions"
+},
+"PLANTBI 220F": {
+"instructors": [],
+"title": "Microbial Ecology"
+},
+"PLANTBI 292": {
+"instructors": [
+"Aaron Reid Leichty",
+"Adam M Deutschbauer",
+"Adam P Arkin",
+"Anastasios Melis",
+"Arash Komeili",
+"Benjamin K Blackman",
+"Benjamin P Williams",
+"Brian J Staskawicz",
+"Britt Aspen Glaunsinger",
+"Britt Koskella",
+"Cecilia Cecilia Martinez Gomez",
+"Daniel A Portnoy",
+"Devin Coleman Derr",
+"Dipti D Nayak",
+"Frank G Harmon",
+"Gregory M Barton",
+"Henrik Scheller",
+"Igor V Grigoriev",
+"James H Cate",
+"Jay D Keasling",
+"Jeffery S Cox",
+"Jennifer C Fletcher",
+"Jennifer Lewis",
+"Jill F Banfield",
+"John D Coates",
+"John Philip Vogel",
+"Karine Gibbs",
+"Kathleen R Ryan",
+"Kim Seed",
+"Krishna Niyogi",
+"Ksenia V Krasileva",
+"Markita Landry",
+"Mary C Wildermuth",
+"Mary Firestone",
+"Matthew D Welch",
+"Matthew F Traxler",
+"Michael Robert John Boots",
+"Michiko E Taga",
+"Noah K Whiteman",
+"Patricia Lang",
+"Patrick M Shih",
+"Peggy Goodenow Lemaux",
+"Rachel Brem",
+"Sabeeha Merchant",
+"Sarah A Stanley",
+"Sarah Carter Hake",
+"Sheng Luan",
+"Steven E Brenner",
+"Yangnan Gu"
+],
+"title": "Research Review in Plant and Microbial Biology"
+},
+"PLANTBI 40": {
+"instructors": [
+"Benjamin P Williams",
+"Patricia Lang"
+],
+"title": "The (Secret) Life of Plants"
+},
+"PLANTBI C103": {
+"instructors": [
+"Daniel A Portnoy",
+"Kim Seed",
+"Russell E Vance"
+],
+"title": "Bacterial Pathogenesis"
+},
+"PLANTBI C112L": {
+"instructors": [
+"Cecilia Cecilia Martinez Gomez"
+],
+"title": "General Microbiology Laboratory"
+},
+"PLANTBI C114": {
+"instructors": [
+"Britt Aspen Glaunsinger",
+"Kim Seed"
+],
+"title": "Introduction to Comparative Virology"
+},
+"PLANTBI C146": {
+"instructors": [
+"Max Staller"
+],
+"title": "Data Science for Biology"
+},
+"PLANTBI C148": {
+"instructors": [
+"Ksenia V Krasileva",
+"Michiko E Taga"
+],
+"title": "Microbial Genomics and Genetics"
+},
+"POLECON 100": {
+"instructors": [
+"Richard Thomas Ashcroft"
+],
+"title": "Classical Theories of Political Economy"
+},
+"POLECON 101": {
+"instructors": [
+"Crystal Chang"
+],
+"title": "Contemporary Theories of Political Economy"
+},
+"POLECON 154": {
+"instructors": [
+"Mario B Muzzi"
+],
+"title": "Global Trade and Finance"
+},
+"POLECON 157": {
+"instructors": [
+"Robert D Fannion"
+],
+"title": "The Political Economy of Finance"
+},
+"POLECON 165": {
+"instructors": [
+"Crystal Chang"
+],
+"title": "Power and Opportunity in American Capitalism"
+},
+"POLSCI 1": {
+"instructors": [
+"Hunter Rendleman"
+],
+"title": "Introduction to American Politics"
+},
+"POLSCI 103": {
+"instructors": [
+"Eric Schickler"
+],
+"title": "Congress"
+},
+"POLSCI 106A": {
+"instructors": [
+"Daniel Schnur"
+],
+"title": "American Politics: Campaign Strategy - Media"
+},
+"POLSCI 109Z": {
+"instructors": [
+"Gabriel Lenz"
+],
+"title": "Special Topics in American Politics"
+},
+"POLSCI 123M": {
+"instructors": [
+"Michaela Mattes"
+],
+"title": "Conflict Management"
+},
+"POLSCI 124W": {
+"instructors": [
+"Di Wang"
+],
+"title": "Globalization and Me"
+},
+"POLSCI 126A": {
+"instructors": [
+"Vinod Kumar Aggarwal"
+],
+"title": "International Political Economy"
+},
+"POLSCI 140O": {
+"instructors": [
+"Omar Wasow"
+],
+"title": "Projecting Power"
+},
+"POLSCI 140Z": {
+"instructors": [
+"Jennifer L Bussell"
+],
+"title": "Selected Topics in Comparative Politics"
+},
+"POLSCI 143C": {
+"instructors": [
+"Xiaobo L\u00fc"
+],
+"title": "Chinese Politics"
+},
+"POLSCI 149E": {
+"instructors": [
+"Darren C Zook"
+],
+"title": "Special Topics in Area Studies"
+},
+"POLSCI 171": {
+"instructors": [
+"Edward T Lempert"
+],
+"title": "California Politics"
+},
+"POLSCI 191": {
+"instructors": [
+"Eric Schickler",
+"Paul Pierson",
+"Pradeep Chhibber",
+"Ron E Hassner"
+],
+"title": "Junior Seminar"
+},
+"POLSCI 2": {
+"instructors": [
+"Steve Fish"
+],
+"title": "Introduction to Comparative Politics"
+},
+"POLSCI 200B": {
+"instructors": [
+"Cecilia Hyunjung Mo"
+],
+"title": "Major Themes in Comparative Analysis: Research Design"
+},
+"POLSCI 204B": {
+"instructors": [
+"Christopher K Ansell"
+],
+"title": "Bureaucracy in Comparative Perspective"
+},
+"POLSCI 211": {
+"instructors": [
+"Anna Stilz"
+],
+"title": "Special Topics in Political Theory"
+},
+"POLSCI 221": {
+"instructors": [
+"Ron E Hassner"
+],
+"title": "International Security"
+},
+"POLSCI 226A": {
+"instructors": [
+"Ryan Brutger"
+],
+"title": "International Political Economy"
+},
+"POLSCI 232A": {
+"instructors": [
+"Sean P Gailmard"
+],
+"title": "Formal Models of Political Science"
+},
+"POLSCI 279": {
+"instructors": [
+"Paul Pierson"
+],
+"title": "Selected Topics in American Government"
+},
+"POLSCI 290B": {
+"instructors": [
+"Gabriel Lenz",
+"Jennifer L Bussell"
+],
+"title": "Research and Writing"
+},
+"POLSCI 290CP": {
+"instructors": [
+"Thad S Dunning"
+],
+"title": "Emerging Research on the Comparative Politics of Development"
+},
+"POLSCI 290IC": {
+"instructors": [
+"Michaela Mattes",
+"Susan Hyde"
+],
+"title": "Emerging Research in International Relations and Comparative Politics"
+},
+"POLSCI 290IE": {
+"instructors": [
+"Ryan Brutger"
+],
+"title": "Emerging Research in IPE"
+},
+"POLSCI 290IP": {
+"instructors": [
+"Omar Wasow"
+],
+"title": "Identity and Politics Workshop"
+},
+"POLSCI 290PB": {
+"instructors": [
+"Gabriel Lenz"
+],
+"title": "Emerging Research in American Political Behavior Research Workshop"
+},
+"POLSCI 290PI": {
+"instructors": [
+"Eric Schickler",
+"Hunter Rendleman"
+],
+"title": "Emerging Research in American Political Institutions and Public Policy Workshop"
+},
+"POLSCI 3": {
+"instructors": [
+"Erin K Hartman"
+],
+"title": "Introduction to Empirical Analysis and Quantitative Methods"
+},
+"POLSCI 4": {
+"instructors": [
+"Mark Bevir"
+],
+"title": "Introduction to Political Theory"
+},
+"POLSCI C135": {
+"instructors": [
+"Sean P Gailmard"
+],
+"title": "Game Theory in the Social Sciences"
+},
+"POLSCI H190B": {
+"instructors": [
+"Amy Gurowitz",
+"Di Wang",
+"Terri Bimes"
+],
+"title": "Honors Seminar"
+},
+"PORTUG 102": {
+"instructors": [
+"Clelia F Donovan"
+],
+"title": "Conversations in Portuguese"
+},
+"PORTUG 113": {
+"instructors": [],
+"title": "Brazilian Culture Through and Across the Arts and Media"
+},
+"PSYCH 1": {
+"instructors": [
+"Christopher J Gade"
+],
+"title": "General Psychology"
+},
+"PSYCH 101": {
+"instructors": [
+"Arman Daniel Catterson"
+],
+"title": "Research and Data Analysis in Psychology"
+},
+"PSYCH 119": {
+"instructors": [],
+"title": "Drugs, Brain, and Behavior"
+},
+"PSYCH 130": {
+"instructors": [
+"Jasmin Brooks Stephens"
+],
+"title": "Clinical Psychology"
+},
+"PSYCH 131": {
+"instructors": [
+"Giovanni Ramos"
+],
+"title": "Developmental Psychopathology"
+},
+"PSYCH 205": {
+"instructors": [
+"Arman Daniel Catterson"
+],
+"title": "Data Analysis"
+},
+"PSYCH 293": {
+"instructors": [
+"Allison G Harvey"
+],
+"title": "Second-Year Seminar on Professional Development"
+},
+"PSYCH C111": {
+"instructors": [
+"Kevin S Weiner"
+],
+"title": "Human Neuroanatomy"
+},
+"PSYCH C123": {
+"instructors": [
+"Steven T Piantadosi"
+],
+"title": "Computational Models of Cognition"
+},
+"PSYCH C126": {
+"instructors": [
+"David Whitney"
+],
+"title": "Perception"
+},
+"PSYCH C127": {
+"instructors": [
+"Richard Ivry"
+],
+"title": "Cognitive Neuroscience"
+},
+"PUBAFF 207": {
+"instructors": [
+"Andrew W Reddie",
+"Dan Lindheim",
+"Daniel J Acland",
+"Erika Weissinger",
+"Hector E Cardenas Suarez"
+],
+"title": "The Capstone"
+},
+"PUBAFF 290": {
+"instructors": [
+"Amy Beth Slater",
+"Daniel J Sargent",
+"David L Kirp",
+"Doy Charnsupharindr",
+"Libby Beckman Schaaf",
+"Mia Bird",
+"Timothy M Dayonot"
+],
+"title": "Special Topics in Public Affairs"
+},
+"PUBPOL 101": {
+"instructors": [],
+"title": "Introduction to Public Policy Analysis"
+},
+"PUBPOL 118": {
+"instructors": [],
+"title": "Technology, Risk, and Security Colloquium"
+},
+"PUBPOL 138": {
+"instructors": [],
+"title": "Game Changer? An Introduction to A.I. and Public Policy"
+},
+"PUBPOL 141": {
+"instructors": [],
+"title": "Behavioral Economics for Public Policy"
+},
+"PUBPOL 147": {
+"instructors": [],
+"title": "Progress? An Introduction to Technology and Public Policy"
+},
+"PUBPOL 190": {
+"instructors": [
+"Caitlin C Patler",
+"Dan Lindheim",
+"Nancy A Beninati"
+],
+"title": "Special Topics in Public Policy"
+},
+"PUBPOL 200B": {
+"instructors": [
+"Meredith L Sadin",
+"Mia Bird"
+],
+"title": "Professional Policy Practice"
+},
+"PUBPOL 205": {
+"instructors": [
+"Adam A Leive",
+"Caitlin C Patler",
+"Dan Lindheim",
+"Jack Glaser",
+"Meredith L Sadin",
+"Mia Bird",
+"Peter Douglas Linquiti"
+],
+"title": "Advanced Policy Analysis"
+},
+"PUBPOL 210B": {
+"instructors": [
+"Samuel G Evans",
+"Steven P Raphael"
+],
+"title": "The Economics of Public Policy Analysis"
+},
+"PUBPOL 240B": {
+"instructors": [
+"Rucker Charles Johnson"
+],
+"title": "Decision Analysis, Modeling, and Quantitative Methods"
+},
+"PUBPOL 240C": {
+"instructors": [
+"Jacob Martin Grumbach"
+],
+"title": "Decision Analysis, Modeling, and Quantitative Methods"
+},
+"PUBPOL 247": {
+"instructors": [
+"Andrew W Reddie"
+],
+"title": "Progress? An Intro to Tech and Public Policy"
+},
+"PUBPOL 267": {
+"instructors": [],
+"title": "The Social Safety Net, Poverty and Income Inequality"
+},
+"PUBPOL 283": {
+"instructors": [],
+"title": "Renewable Energy Policy in the United States"
+},
+"PUBPOL 290": {
+"instructors": [
+"Evan Schwimmer",
+"Jeanne Sorin",
+"Laurel E Fletcher",
+"Na'ama Shenhav",
+"Samantha Lee",
+"Valentina Rozo Angel"
+],
+"title": "Special Topics in Public Policy"
+},
+"PUBPOL 297": {
+"instructors": [
+"Adam A Leive",
+"Erika Weissinger",
+"Larry A. Rosenthal",
+"Michael Brand"
+],
+"title": "Graduate Student Led Course in Public Policy"
+},
+"PUBPOL C164A": {
+"instructors": [],
+"title": "Berkeley Changemaker: Labor Research for Action and Policy (L-RAP)"
+},
+"PUBPOL C285": {
+"instructors": [],
+"title": "Nuclear Security: The Nexus Between Policy and Technology"
+},
+"PUNJABI 1B": {
+"instructors": [
+"Jvala Singh"
+],
+"title": "Introductory Punjabi"
+},
+"RDEV 235": {
+"instructors": [
+"Carl D Shannon"
+],
+"title": "Real Estate Capital Markets"
+},
+"RDEV 240": {
+"instructors": [],
+"title": "Professional Practice of Real Estate Development"
+},
+"RDEV 290": {
+"instructors": [],
+"title": "Special Topics in Real Estate Development + Design"
+},
+"RHETOR 121": {
+"instructors": [
+"Michael James Mascuch"
+],
+"title": "Rhetoric of Fiction"
+},
+"RHETOR 167": {
+"instructors": [
+"Nancy A Weston"
+],
+"title": "Advanced Themes in Legal Theory, Philosophy, Argumentation"
+},
+"RHETOR 20": {
+"instructors": [
+"Michael James Mascuch"
+],
+"title": "Rhetorical Interpretation"
+},
+"RHETOR 240G": {
+"instructors": [
+"Pheng Cheah",
+"Samera Esmeir"
+],
+"title": "Rhetorical Theory and Criticism: Rhetorical Theory"
+},
+"RHETOR R1B": {
+"instructors": [
+"Dana Reem Karout",
+"Jae-Min Yoo",
+"Keoni Correa",
+"lyndsey karr"
+],
+"title": "The Craft of Writing"
+},
+"SASIAN 100B": {
+"instructors": [],
+"title": "Introduction to Medieval and Modern South Asia"
+},
+"SASIAN C114": {
+"instructors": [
+"Jacob Dalton"
+],
+"title": "Tibetan Buddhism"
+},
+"SASIAN R5B": {
+"instructors": [],
+"title": "India in the Writer's Eye"
+},
+"SCANDIN 160": {
+"instructors": [
+"Jonas Wellendorf"
+],
+"title": "Scandinavian Myth and Religion"
+},
+"SCANDIN 249": {
+"instructors": [
+"Johan Klingborg"
+],
+"title": "Graduate Studies"
+},
+"SCANDIN R5A": {
+"instructors": [
+"John S Prusynski"
+],
+"title": "Reading and Composition"
+},
+"SCANDIN R5B": {
+"instructors": [
+"John S Prusynski"
+],
+"title": "Reading and Composition"
+},
+"SEASIAN 101B": {
+"instructors": [],
+"title": "Introduction to the History, Religion, and Culture of Insular Southeast Asia"
+},
+"SEASIAN R5B": {
+"instructors": [],
+"title": "Under Western Eyes"
+},
+"SLAVIC 131": {
+"instructors": [
+"Harsha Ram"
+],
+"title": "Literature, Art, and Society in 20th-Century Russia"
+},
+"SLAVIC 134F": {
+"instructors": [
+"Robyn M Jensen"
+],
+"title": "Nabokov"
+},
+"SLAVIC 46": {
+"instructors": [
+"Robyn M Jensen"
+],
+"title": "Twentieth-Century Russian Literature"
+},
+"SLAVIC 50": {
+"instructors": [
+"Edward Tyerman"
+],
+"title": "Introduction to Russian/East European/Eurasian Cultures"
+},
+"SLAVIC R5B": {
+"instructors": [
+"Robyn M Jensen"
+],
+"title": "Reading and Composition"
+},
+"SOCIOL 1": {
+"instructors": [
+"ELIZA BROWN"
+],
+"title": "Introduction to Sociology"
+},
+"SOCIOL 101": {
+"instructors": [
+"Luis Flores"
+],
+"title": "Sociological Theory I"
+},
+"SOCIOL 102": {
+"instructors": [
+"Ricarda Hammer"
+],
+"title": "Sociological Theory II"
+},
+"SOCIOL 108": {
+"instructors": [
+"Yan Long"
+],
+"title": "Advanced Methods: In-depth Interviewing"
+},
+"SOCIOL 110": {
+"instructors": [
+"Heather A Haveman"
+],
+"title": "Organizations and Social Institutions"
+},
+"SOCIOL 113": {
+"instructors": [
+"Peter Hurtubise"
+],
+"title": "Sociology of Education"
+},
+"SOCIOL 127": {
+"instructors": [
+"Edwin K Lin"
+],
+"title": "Development and Globalization"
+},
+"SOCIOL 139": {
+"instructors": [
+"Brian A Bedford"
+],
+"title": "Selected Topics in Social Inequality"
+},
+"SOCIOL 140": {
+"instructors": [
+"Laleh Behbehanian"
+],
+"title": "Politics and Social Change"
+},
+"SOCIOL 141": {
+"instructors": [
+"Laleh Behbehanian"
+],
+"title": "Social Movements and Political Action"
+},
+"SOCIOL 148": {
+"instructors": [
+"Cybelle A Fox"
+],
+"title": "Social Policy"
+},
+"SOCIOL 150": {
+"instructors": [
+"John W Kaiser"
+],
+"title": "Social Psychology"
+},
+"SOCIOL 160": {
+"instructors": [
+"Jill A Bakehorn"
+],
+"title": "Sociology of Culture"
+},
+"SOCIOL 163": {
+"instructors": [
+"Joseph Klett"
+],
+"title": "Popular Culture"
+},
+"SOCIOL 166": {
+"instructors": [
+"Linus B Huang"
+],
+"title": "Society and Technology"
+},
+"SOCIOL 167": {
+"instructors": [
+"Joseph Klett",
+"Marina Romani"
+],
+"title": "Virtual Communities/Social Media"
+},
+"SOCIOL 169C": {
+"instructors": [
+"John W Kaiser",
+"Marina Romani"
+],
+"title": "Cross-Cultural Communications"
+},
+"SOCIOL 190": {
+"instructors": [
+"Christina Cross",
+"Danya Lagos",
+"Edwin K Lin",
+"Fatmir Haskaj",
+"Jenae Michelle Carpenter",
+"Ricarda Hammer",
+"Szonja Ivester"
+],
+"title": "Seminar and Research in Sociology"
+},
+"SOCIOL 201B": {
+"instructors": [
+"Mara Loveman"
+],
+"title": "Modern Social Theory"
+},
+"SOCIOL 273F": {
+"instructors": [
+"Yan Long"
+],
+"title": "Advanced Seminars in Research Methods: Interview Methods"
+},
+"SOCIOL 280Q": {
+"instructors": [
+"Armando O Lara-Millan"
+],
+"title": "Advanced Study in Substantive Sociological Fields: Economy and Society"
+},
+"SOCIOL 3AC": {
+"instructors": [
+"Charles Sarno"
+],
+"title": "Principles of Sociology: American Cultures"
+},
+"SOCIOL C144L": {
+"instructors": [
+"G Cristina Mora"
+],
+"title": "Latina/o/x Sociology"
+},
+"SOCIOL H190B": {
+"instructors": [
+"Joanna M Reed",
+"Laleh Behbehanian"
+],
+"title": "Senior Honors Thesis and Seminar"
+},
+"SOCIOL R1B": {
+"instructors": [
+"Kristen S Harknett",
+"Lorraine Cruz Del Rio"
+],
+"title": "Sociological Reading & Composition"
+},
+"SOCWEL 110": {
+"instructors": [
+"Jill D Berrick"
+],
+"title": "Social Work As a Profession"
+},
+"SOCWEL 112": {
+"instructors": [
+"Neil Gilbert"
+],
+"title": "Social Welfare Policy"
+},
+"SOCWEL 114": {
+"instructors": [
+"Valerie Shapiro"
+],
+"title": "Practice in Social Work"
+},
+"SOCWEL 116": {
+"instructors": [
+"Anu Manchikanti Gomez"
+],
+"title": "Current Topics in Social Welfare"
+},
+"SOCWEL 210C": {
+"instructors": [
+"Laurent Reyes"
+],
+"title": "Aging Processes"
+},
+"SOCWEL 254": {
+"instructors": [
+"Angie Perone",
+"Yu-Ling Chang"
+],
+"title": "Policy Practice in Social Work"
+},
+"SOCWEL 280": {
+"instructors": [
+"Julian Chun-Chung Chow",
+"Laurent Reyes"
+],
+"title": "Critical Research Literacy"
+},
+"SOCWEL 282B": {
+"instructors": [
+"Anu Manchikanti Gomez",
+"Erin Michelle Turner Kerrison",
+"Jamie Suki Chang"
+],
+"title": "Seminar in Social Welfare Research II"
+},
+"SOCWEL 294": {
+"instructors": [
+"Jill D Berrick"
+],
+"title": "Master's Special Topics Seminar: Workforce Development"
+},
+"SOCWEL 298": {
+"instructors": [
+"Joyce Dorado",
+"Yamile Marti"
+],
+"title": "Group Study for Graduate Students"
+},
+"SPANISH 100": {
+"instructors": [],
+"title": "Introduction to Hispanic Linguistics"
+},
+"SPANISH 102A": {
+"instructors": [],
+"title": "Advanced Grammar and Composition"
+},
+"SPANISH 104B": {
+"instructors": [
+"Daniella Cadiz Bedini"
+],
+"title": "Survey of Spanish American Literature"
+},
+"SPANISH 109A": {
+"instructors": [],
+"title": "Elementary Judeo-Spanish"
+},
+"SPANISH 135": {
+"instructors": [
+"Daniella Cadiz Bedini",
+"Estelle Tarica",
+"Paulina Leon"
+],
+"title": "Studies in Hispanic Literature"
+},
+"SPANISH 162": {
+"instructors": [
+"Sarah Lease"
+],
+"title": "Spanish Morphology and Syntax"
+},
+"SPANISH 21": {
+"instructors": [],
+"title": "Spanish for Bilingual Students, First Course"
+},
+"SPANISH 22": {
+"instructors": [],
+"title": "Spanish for Bilingual Students, Second Course"
+},
+"SPANISH 25": {
+"instructors": [
+"Daylet Dominguez"
+],
+"title": "Reading and Analysis of Literary Texts"
+},
+"SPANISH R1B": {
+"instructors": [],
+"title": "Reading and Composition Through Readings from the Spanish-Speaking World"
+},
+"STAT 133": {
+"instructors": [],
+"title": "Concepts in Computing with Data"
+},
+"STAT 134": {
+"instructors": [],
+"title": "Concepts of Probability"
+},
+"STAT 135": {
+"instructors": [],
+"title": "Concepts of Statistics"
+},
+"STAT 150": {
+"instructors": [],
+"title": "Stochastic Processes"
+},
+"STAT 151A": {
+"instructors": [],
+"title": "Linear Modelling: Theory and Applications"
+},
+"STAT 153": {
+"instructors": [],
+"title": "Introduction to Time Series"
+},
+"STAT 154": {
+"instructors": [],
+"title": "Modern Statistical Prediction and Machine Learning"
+},
+"STAT 155": {
+"instructors": [],
+"title": "Game Theory"
+},
+"STAT 158": {
+"instructors": [],
+"title": "Experimental Design"
+},
+"STAT 2": {
+"instructors": [],
+"title": "Introduction to Statistics"
+},
+"STAT 20": {
+"instructors": [],
+"title": "Introduction to Probability and Statistics"
+},
+"STAT 210B": {
+"instructors": [],
+"title": "Theoretical Statistics"
+},
+"STAT 214": {
+"instructors": [],
+"title": "Data Analysis and Machine Learning for Real-World Decision Making"
+},
+"STAT 215B": {
+"instructors": [],
+"title": "Statistical Models: Theory and Application"
+},
+"STAT 230A": {
+"instructors": [],
+"title": "Linear Models"
+},
+"STAT 238": {
+"instructors": [],
+"title": "Bayesian Statistics"
+},
+"STAT 248": {
+"instructors": [],
+"title": "Analysis of Time Series"
+},
+"STAT 254": {
+"instructors": [],
+"title": "Modern Statistical Prediction and Machine Learning"
+},
+"STAT 260": {
+"instructors": [],
+"title": "Topics in Probability and Statistics"
+},
+"STAT 375": {
+"instructors": [],
+"title": "Professional Preparation: Teaching of Probability and Statistics"
+},
+"STAT C100": {
+"instructors": [
+"Josh Grossman"
+],
+"title": "Principles & Techniques of Data Science"
+},
+"STAT C131A": {
+"instructors": [],
+"title": "Statistical Methods for Data Science"
+},
+"STAT C205B": {
+"instructors": [],
+"title": "Probability Theory"
+},
+"STAT C206B": {
+"instructors": [],
+"title": "Advanced Topics in Probablity and Stochastic Processes"
+},
+"STAT C241B": {
+"instructors": [],
+"title": "Advanced Topics in Learning and Decision Making"
+},
+"STAT C245A": {
+"instructors": [
+"Mark van der Laan"
+],
+"title": "Introduction to Modern Biostatistical Theory and Practice"
+},
+"STS C250": {
+"instructors": [],
+"title": "Science and Technology Studies Research Seminar"
+},
+"THEATER 10": {
+"instructors": [
+"Margo Hall",
+"Michael S Moran"
+],
+"title": "Fundamentals of Acting I"
+},
+"THEATER 100": {
+"instructors": [
+"Dave Rochlin",
+"Lisa Wymore"
+],
+"title": "From Imagination to Innovation: Activating creativity for transformational change"
+},
+"THEATER 109": {
+"instructors": [
+"Daniel Larlham",
+"Patrick A Russell"
+],
+"title": "Fundamentals of Acting II"
+},
+"THEATER 110B": {
+"instructors": [
+"Christopher Herold",
+"Jessica Berman"
+],
+"title": "Intermediate Acting: The Power of Language"
+},
+"THEATER 111": {
+"instructors": [
+"Christopher Herold"
+],
+"title": "Advanced Acting Studio"
+},
+"THEATER 119": {
+"instructors": [],
+"title": "Performance Theory"
+},
+"THEATER 121": {
+"instructors": [
+"SanSan Kwan"
+],
+"title": "Performance and Culture"
+},
+"THEATER 141": {
+"instructors": [
+"Bear Graham"
+],
+"title": "Intermediate Modern Dance Technique"
+},
+"THEATER 142": {
+"instructors": [
+"Erik Keith Raymond Lee"
+],
+"title": "Advanced Modern Dance Technique"
+},
+"THEATER 145": {
+"instructors": [
+"Latanya D Tigner"
+],
+"title": "Intermediate African Dance in Hip Hop"
+},
+"THEATER 148": {
+"instructors": [
+"IuHui Chua"
+],
+"title": "Movement Improvisation"
+},
+"THEATER 151": {
+"instructors": [
+"Julia H Fawcett"
+],
+"title": "Foundations in Performance History"
+},
+"THEATER 163": {
+"instructors": [],
+"title": "Stage Directing"
+},
+"THEATER 167": {
+"instructors": [
+"Jamila R Cobham"
+],
+"title": "Technical Theater: Performance Practice"
+},
+"THEATER 168": {
+"instructors": [
+"Jamila R Cobham"
+],
+"title": "Technical Theater: Shop Practice"
+},
+"THEATER 172": {
+"instructors": [
+"Rebecca Ennals"
+],
+"title": "Stage Management"
+},
+"THEATER 173": {
+"instructors": [
+"Arnel Sancianco"
+],
+"title": "Scenography: Scenic Design for Performance"
+},
+"THEATER 174": {
+"instructors": [
+"Dominique Hill"
+],
+"title": "Scenography: Costume Design for Performance"
+},
+"THEATER 175B": {
+"instructors": [
+"Ray Oppenheimer"
+],
+"title": "Scenography: Lighting Design for the Theater"
+},
+"THEATER 177": {
+"instructors": [
+"Lana Palmer"
+],
+"title": "Sound Design for Performance"
+},
+"THEATER 202": {
+"instructors": [],
+"title": "Methodologies in Performance Studies"
+},
+"THEATER 25AC": {
+"instructors": [
+"Karina Gutierrez"
+],
+"title": "The Drama of American Cultures: An Introduction to Our Theater"
+},
+"THEATER 40": {
+"instructors": [
+"SanSan Kwan"
+],
+"title": "Beginning Modern Dance Technique"
+},
+"THEATER 60": {
+"instructors": [
+"Laxmi Kumaran"
+],
+"title": "Introduction to Technical Theater and Production"
+},
+"THEATER R1A": {
+"instructors": [
+"Fernando Antonio Martinez",
+"Max Abner"
+],
+"title": "Performance: Writing and Research"
+},
+"THEATER R1B": {
+"instructors": [
+"Ariah R Henderson",
+"Leila Mire",
+"Maria Silk",
+"Sima V Belmar",
+"Srijani Ghosh"
+],
+"title": "Performance: Writing and Research"
+},
+"UGBA 100": {
+"instructors": [
+"Arturo Perez-Reyes",
+"Daniel Alan Himelstein",
+"Janet M Brady",
+"Krystal Jalene Thomas"
+],
+"title": "Business Communication"
+},
+"UGBA 101A": {
+"instructors": [
+"Eyueb Yegen"
+],
+"title": "Microeconomic Analysis for Business Decisions"
+},
+"UGBA 101B": {
+"instructors": [
+"Hubert Nii-Aponsah"
+],
+"title": "Macroeconomic Analysis for Business Decisions"
+},
+"UGBA 102A": {
+"instructors": [
+"Erick O Bell"
+],
+"title": "Financial Accounting"
+},
+"UGBA 102B": {
+"instructors": [
+"John Briginshaw"
+],
+"title": "Managerial Accounting"
+},
+"UGBA 103": {
+"instructors": [
+"Eben Lazarus",
+"Matteo Benetton"
+],
+"title": "Introduction to Finance"
+},
+"UGBA 104": {
+"instructors": [
+"Luyi Yang",
+"Sytske Wijnsma"
+],
+"title": "Introduction to Business Analytics"
+},
+"UGBA 105": {
+"instructors": [
+"Juliana Schroeder"
+],
+"title": "Leading People"
+},
+"UGBA 106": {
+"instructors": [
+"Bill Fanning",
+"Ming Hsu"
+],
+"title": "Marketing"
+},
+"UGBA 107": {
+"instructors": [
+"Alan Ross"
+],
+"title": "The Social, Political, and Ethical Environment of Business"
+},
+"UGBA 10X": {
+"instructors": [
+"Brandi Pearce",
+"Harris C Sondak",
+"Jonathan Heyne",
+"queen jaks"
+],
+"title": "Foundations of Business"
+},
+"UGBA 118": {
+"instructors": [
+"Ann E Harrison"
+],
+"title": "International Trade"
+},
+"UGBA 120AB": {
+"instructors": [
+"Veselina Dinova"
+],
+"title": "Intermediate Financial Accounting 2"
+},
+"UGBA 121": {
+"instructors": [
+"Eric D Ryan"
+],
+"title": "Federal Income Tax Accounting"
+},
+"UGBA 122": {
+"instructors": [
+"John Briginshaw"
+],
+"title": "Financial Data Analysis and Valuation"
+},
+"UGBA 126": {
+"instructors": [
+"Erick O Bell"
+],
+"title": "Auditing"
+},
+"UGBA 128": {
+"instructors": [
+"John Briginshaw"
+],
+"title": "Strategic Cost Management"
+},
+"UGBA 131": {
+"instructors": [
+"Stephen W Etter"
+],
+"title": "Corporate Finance and Financial Statement Analysis"
+},
+"UGBA 131A": {
+"instructors": [
+"Sumon C Mazumdar"
+],
+"title": "Corporate Strategy and Valuation"
+},
+"UGBA 135": {
+"instructors": [
+"Robert J Shaye",
+"Terrance T Odean"
+],
+"title": "Personal Financial Management"
+},
+"UGBA 137": {
+"instructors": [
+"Stephen W Etter"
+],
+"title": "Special Topics in Finance"
+},
+"UGBA 142": {
+"instructors": [],
+"title": "Advanced Business Analytics"
+},
+"UGBA 150": {
+"instructors": [
+"Brandi Pearce"
+],
+"title": "Leading High Impact Teams"
+},
+"UGBA 152": {
+"instructors": [
+"Holly A Schroth"
+],
+"title": "Negotiation and Conflict Resolution"
+},
+"UGBA 156": {
+"instructors": [
+"Laura Paxton Hassner"
+],
+"title": "Berkeley Changemaker: Living with Agency"
+},
+"UGBA 157": {
+"instructors": [
+"Celia Gaertig"
+],
+"title": "Special Topics in the Management of Organizations"
+},
+"UGBA 159": {
+"instructors": [
+"Alex Budak"
+],
+"title": "Becoming a Changemaker"
+},
+"UGBA 167": {
+"instructors": [
+"Bill Fanning"
+],
+"title": "Special Topics in Marketing"
+},
+"UGBA 171": {
+"instructors": [
+"Molly S Turner"
+],
+"title": "Tech and the City: How to Get Urban Innovation Right"
+},
+"UGBA 173": {
+"instructors": [
+"Kunal Cholera"
+],
+"title": "Competitive Strategy"
+},
+"UGBA 174": {
+"instructors": [
+"Olaf Groth"
+],
+"title": "Leading Strategy Implementation"
+},
+"UGBA 177": {
+"instructors": [
+"Noga Abraham"
+],
+"title": "Special Topics in Business and Public Policy"
+},
+"UGBA 180": {
+"instructors": [
+"Laura Weiwu"
+],
+"title": "Introduction to Real Estate and Urban Land Economics"
+},
+"UGBA 184": {
+"instructors": [
+"Antoine Levy"
+],
+"title": "Urban and Real Estate Economics"
+},
+"UGBA 190T": {
+"instructors": [
+"Dave Rochlin",
+"Lisa Wymore",
+"Mariana C Somma"
+],
+"title": "Special Topics in Innovation and Design"
+},
+"UGBA 191L": {
+"instructors": [
+"Ingrid M Gavshon"
+],
+"title": "Leadership Communication"
+},
+"UGBA 191P": {
+"instructors": [
+"Cort A Worthington"
+],
+"title": "Leadership and Personal Development"
+},
+"UGBA 192B": {
+"instructors": [
+"Alicia E Perez",
+"Colin P Lacon"
+],
+"title": "Strategic Philanthropy"
+},
+"UGBA 192ID": {
+"instructors": [],
+"title": "Impact Startup Disco"
+},
+"UGBA 192MC": {
+"instructors": [
+"Colin F Boyle"
+],
+"title": "Management Consulting Skills for Social Impact"
+},
+"UGBA 192PF": {
+"instructors": [],
+"title": "Plant Futures: Introduction to Plant-Centric Food Systems"
+},
+"UGBA 192T": {
+"instructors": [
+"Colin F Boyle",
+"Ganesh Iyer",
+"Judy Hopelain",
+"Kellie A McElhaney",
+"Omar Romero-Hernandez",
+"Robert Gavin Strand"
+],
+"title": "Topics in Responsible Business"
+},
+"UGBA 194": {
+"instructors": [
+"Alan Ross",
+"Douglas D Leeds"
+],
+"title": "Undergraduate Colloquium on Business Topics"
+},
+"UGBA 194S": {
+"instructors": [
+"Solomon B Fulp"
+],
+"title": "Sports Management"
+},
+"UGBA 195A": {
+"instructors": [
+"Aaron B McDaniel"
+],
+"title": "Entrepreneurship"
+},
+"UGBA 195T": {
+"instructors": [
+"Aaron B McDaniel",
+"Abhijeet Kumar",
+"Jonathan Heyne",
+"Jules Maltz"
+],
+"title": "Topics in Entrepreneurship"
+},
+"UGBA 196": {
+"instructors": [
+"Susan L Snyder"
+],
+"title": "Special Topics in Business Administration"
+},
+"UGBA 24": {
+"instructors": [
+"Cort A Worthington"
+],
+"title": "Freshman Seminars"
+},
+"UGBA C12": {
+"instructors": [
+"Chelsea M Gregory",
+"Christyna Maria Serrano"
+],
+"title": "The Berkeley Changemaker"
+},
+"UGBA C196C": {
+"instructors": [
+"Chelsea M Gregory",
+"Christyna Maria Serrano"
+],
+"title": "The Berkeley Changemaker"
+},
+"UGBA C95B": {
+"instructors": [],
+"title": "Introduction to the Biotechnology Field and Industry"
+},
+"UGIS 140": {
+"instructors": [
+"Inge Bruggeman"
+],
+"title": "The Hand-Printed Book in Its Historical Context"
+},
+"VISSCI 260C": {
+"instructors": [],
+"title": "Introduction to Visual Neuroscience"
+},
+"VISSCI C280": {
+"instructors": [],
+"title": "Computer Vision"
+},
+"XMBA 201B": {
+"instructors": [],
+"title": "Macroeconomics in the Global Economy"
+},
+"XMBA 203": {
+"instructors": [],
+"title": "Introduction to Finance"
+},
+"XMBA 206": {
+"instructors": [],
+"title": "Marketing"
+},
+"XMBA 211": {
+"instructors": [
+"Gregory P La Blanc"
+],
+"title": "Game Theory"
+},
+"XMBA 236E": {
+"instructors": [],
+"title": "Mergers and Acquisitions: A Focus on Creating Value"
+},
+"XMBA 252": {
+"instructors": [],
+"title": "Managerial Negotiations"
+},
+"XMBA 257": {
+"instructors": [],
+"title": "Special Topics in the Management of Organizations"
+},
+"XMBA 267": {
+"instructors": [],
+"title": "Special Topics in Marketing"
+},
+"XMBA 277": {
+"instructors": [],
+"title": "Special Topics in Business and Public Policy"
+},
+"XMBA 290T": {
+"instructors": [
+"Kurt W Beyer"
+],
+"title": "Topics in Innovation and Design"
+},
+"XMBA 291RB": {
+"instructors": [],
+"title": "Building Trust-Based Relationships"
+},
+"XMBA 292T": {
+"instructors": [],
+"title": "Topics in Social Sector Leadership"
+},
+"XMBA 295G": {
+"instructors": [],
+"title": "Advanced Innovation"
+},
+"XMBA 295I": {
+"instructors": [
+"Toby E Stuart"
+],
+"title": "Entrepreneurship and Innovation Immersion"
+},
+"XMBA 295T": {
+"instructors": [],
+"title": "Special Topics in Entrepreneurship"
+},
+"XMBA 296": {
+"instructors": [
+"Vicki Orlando"
+],
+"title": "Special Topics in Business Administration"
+},
+"YIDDISH 103": {
+"instructors": [],
+"title": "History of Yiddish Culture in English"
+}
+},
+"generated_at": "2026-10-24T00:20:28+00:00",
+"source": "classes_site catalog"
+}
