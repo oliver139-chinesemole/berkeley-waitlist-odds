@@ -9871,6 +9871,21 @@
 "url_path": "/content/2027-spring-chem-120a-001-lec-001"
 },
 {
+"catalog_number": "121",
+"class_number": "001",
+"component": "LEC",
+"course_key": "CHEM 121",
+"instructors": "Bingqing Cheng",
+"last_status": null,
+"node_id": 543031,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "CHEM",
+"title": "Introduction to Computational Chemistry",
+"url_path": "/content/2027-spring-chem-121-001-lec-001"
+},
+{
 "catalog_number": "125",
 "class_number": "001",
 "component": "LEC",
@@ -16964,6 +16979,21 @@
 "subject": "CHMENG",
 "title": "Polymer Science and Technology",
 "url_path": "/content/2027-spring-chmeng-c178-001-lec-001"
+},
+{
+"catalog_number": "C295R",
+"class_number": "001",
+"component": "LEC",
+"course_key": "CHMENG C295R",
+"instructors": "",
+"last_status": null,
+"node_id": 543033,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "CHMENG",
+"title": "Applied Spectroscopy",
+"url_path": "/content/2027-spring-chmeng-c295r-001-lec-001"
 },
 {
 "catalog_number": "105",
@@ -113329,6 +113359,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-23T23:20:55.163626+00:00",
+"updated_at": "2026-10-24T16:20:44.033676+00:00",
 "version": 3
 }
