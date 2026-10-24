@@ -281,6 +281,27 @@ def test_the_methods_collection_sentence_follows_the_status_term(live_site: Path
     assert "starts when Phase 1 opens" not in markup
 
 
+def test_the_methods_span_matches_collection_dated_in_site_js() -> None:
+    """Pins the swap's precondition: ``liveStatus()`` finds ``COLLECTION_DATED`` in the Methods
+    span by a literal string replace (B2, site.js). It reads the live constant out of
+    site.js itself, not a copy kept here, so an edit to one side without the other fails
+    this test instead of silently breaking the swap once Spring 2027 collection starts.
+    """
+    js = (ROOT / "site" / "assets" / "site.js").read_text()
+    m = re.search(r'const COLLECTION_DATED = "([^"]+)";', js)
+    assert m, "COLLECTION_DATED not found in site.js"
+    collection_dated = m.group(1)
+
+    markup = (ROOT / "site" / "methodology.html").read_text()
+    span = re.search(r'<span id="collection">([^<]+)</span>', markup)
+    assert span, 'no <span id="collection"> in methodology.html'
+
+    assert collection_dated in span.group(1), (
+        f"COLLECTION_DATED {collection_dated!r} (site.js) is not in the Methods span "
+        f"{span.group(1)!r} (methodology.html); liveStatus()'s replace() would stop matching."
+    )
+
+
 @pytest.mark.parametrize(("page", "search", "el", "dated"), [("course.html", SEARCH, "status", DATED), ("methodology.html", "", "collection", METHODS_DATED)], ids=["source", "methods"])
 def test_a_status_file_that_is_not_read_keeps_the_dated_form(live_site: Path, tmp_path: Path, page: str, search: str, el: str, dated: str) -> None:
     """No status file, or a Spring 2027 one with no last_run_at (no status line): the dated form stays as the page printed it."""
