@@ -66676,6 +66676,21 @@
 "url_path": "/content/2027-spring-math-278-001-lec-001"
 },
 {
+"catalog_number": "278",
+"class_number": "002",
+"component": "LEC",
+"course_key": "MATH 278",
+"instructors": "Kevin Yang",
+"last_status": null,
+"node_id": 543069,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "MATH",
+"title": "Topics in Analysis",
+"url_path": "/content/2027-spring-math-278-002-lec-002"
+},
+{
 "catalog_number": "279",
 "class_number": "001",
 "component": "LEC",
@@ -66779,6 +66794,21 @@
 "subject": "MATH",
 "title": "Calculus I",
 "url_path": "/content/2027-spring-math-51-103-dis-103"
+},
+{
+"catalog_number": "51",
+"class_number": "104",
+"component": "DIS",
+"course_key": "MATH 51",
+"instructors": "",
+"last_status": null,
+"node_id": 543070,
+"probed_at": null,
+"section_id": "",
+"section_number": "104",
+"subject": "MATH",
+"title": "Calculus I",
+"url_path": "/content/2027-spring-math-51-104-dis-104"
 },
 {
 "catalog_number": "51",
@@ -68192,6 +68222,21 @@
 },
 {
 "catalog_number": "54",
+"class_number": "208",
+"component": "DIS",
+"course_key": "MATH 54",
+"instructors": "",
+"last_status": null,
+"node_id": 543071,
+"probed_at": null,
+"section_id": "",
+"section_number": "208",
+"subject": "MATH",
+"title": "Linear Algebra and Differential Equations",
+"url_path": "/content/2027-spring-math-54-208-dis-208"
+},
+{
+"catalog_number": "54",
 "class_number": "209",
 "component": "DIS",
 "course_key": "MATH 54",
@@ -68222,6 +68267,36 @@
 },
 {
 "catalog_number": "54",
+"class_number": "211",
+"component": "DIS",
+"course_key": "MATH 54",
+"instructors": "",
+"last_status": null,
+"node_id": 543072,
+"probed_at": null,
+"section_id": "",
+"section_number": "211",
+"subject": "MATH",
+"title": "Linear Algebra and Differential Equations",
+"url_path": "/content/2027-spring-math-54-211-dis-211"
+},
+{
+"catalog_number": "54",
+"class_number": "212",
+"component": "DIS",
+"course_key": "MATH 54",
+"instructors": "",
+"last_status": null,
+"node_id": 543073,
+"probed_at": null,
+"section_id": "",
+"section_number": "212",
+"subject": "MATH",
+"title": "Linear Algebra and Differential Equations",
+"url_path": "/content/2027-spring-math-54-212-dis-212"
+},
+{
+"catalog_number": "54",
 "class_number": "213",
 "component": "DIS",
 "course_key": "MATH 54",
@@ -68249,6 +68324,51 @@
 "subject": "MATH",
 "title": "Linear Algebra and Differential Equations",
 "url_path": "/content/2027-spring-math-54-214-dis-214"
+},
+{
+"catalog_number": "54",
+"class_number": "215",
+"component": "DIS",
+"course_key": "MATH 54",
+"instructors": "",
+"last_status": null,
+"node_id": 543074,
+"probed_at": null,
+"section_id": "",
+"section_number": "215",
+"subject": "MATH",
+"title": "Linear Algebra and Differential Equations",
+"url_path": "/content/2027-spring-math-54-215-dis-215"
+},
+{
+"catalog_number": "54",
+"class_number": "216",
+"component": "DIS",
+"course_key": "MATH 54",
+"instructors": "",
+"last_status": null,
+"node_id": 543075,
+"probed_at": null,
+"section_id": "",
+"section_number": "216",
+"subject": "MATH",
+"title": "Linear Algebra and Differential Equations",
+"url_path": "/content/2027-spring-math-54-216-dis-216"
+},
+{
+"catalog_number": "54",
+"class_number": "217",
+"component": "DIS",
+"course_key": "MATH 54",
+"instructors": "",
+"last_status": null,
+"node_id": 543076,
+"probed_at": null,
+"section_id": "",
+"section_number": "217",
+"subject": "MATH",
+"title": "Linear Algebra and Differential Equations",
+"url_path": "/content/2027-spring-math-54-217-dis-217"
 },
 {
 "catalog_number": "55",
@@ -68459,6 +68579,21 @@
 "subject": "MATH",
 "title": "Linear Algebra",
 "url_path": "/content/2027-spring-math-56-101-dis-101"
+},
+{
+"catalog_number": "56",
+"class_number": "102",
+"component": "DIS",
+"course_key": "MATH 56",
+"instructors": "",
+"last_status": null,
+"node_id": 543077,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "MATH",
+"title": "Linear Algebra",
+"url_path": "/content/2027-spring-math-56-102-dis-102"
 },
 {
 "catalog_number": "56",
@@ -113839,6 +113974,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-24T17:53:39.521031+00:00",
+"updated_at": "2026-10-24T18:22:31.011620+00:00",
 "version": 3
 }
