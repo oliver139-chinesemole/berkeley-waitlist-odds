@@ -50630,7 +50630,7 @@
 "class_number": "001",
 "component": "SEM",
 "course_key": "GEOG R1A",
-"instructors": "",
+"instructors": "Maria Pettis",
 "last_status": null,
 "node_id": 536275,
 "probed_at": null,
@@ -54599,6 +54599,36 @@
 "subject": "HISTORY",
 "title": "Introduction to the History of Religion",
 "url_path": "/content/2027-spring-history-20-106-dis-106"
+},
+{
+"catalog_number": "275B",
+"class_number": "001",
+"component": "SEM",
+"course_key": "HISTORY 275B",
+"instructors": "Carla Hesse",
+"last_status": null,
+"node_id": 543066,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "HISTORY",
+"title": "Core Courses in the Literature of the Several Fields of History: Europe",
+"url_path": "/content/2027-spring-history-275b-001-sem-001"
+},
+{
+"catalog_number": "280A",
+"class_number": "001",
+"component": "SEM",
+"course_key": "HISTORY 280A",
+"instructors": "Carlos F Norena",
+"last_status": null,
+"node_id": 543067,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "HISTORY",
+"title": "Advanced Studies: Sources/General Literature of the Several Fields: Ancient",
+"url_path": "/content/2027-spring-history-280a-001-sem-001"
 },
 {
 "catalog_number": "290",
@@ -60434,6 +60464,21 @@
 "subject": "JOURN",
 "title": "Documentary Photography",
 "url_path": "/content/2027-spring-journ-213-001-lec-001"
+},
+{
+"catalog_number": "219",
+"class_number": "002",
+"component": "SEM",
+"course_key": "JOURN 219",
+"instructors": "Queena Kim",
+"last_status": null,
+"node_id": 543068,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "JOURN",
+"title": "Mini-Special Topics",
+"url_path": "/content/2027-spring-journ-219-002-sem-002"
 },
 {
 "catalog_number": "219",
@@ -113794,6 +113839,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-24T16:50:51.994350+00:00",
+"updated_at": "2026-10-24T17:53:39.521031+00:00",
 "version": 3
 }
