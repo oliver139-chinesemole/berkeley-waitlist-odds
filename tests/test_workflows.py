@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shlex
 import subprocess
 import sys
 import textwrap
@@ -63,6 +64,19 @@ def test_analysis_workflow_replaces_site_data_only_on_a_publish_own_dispatch_for
     assert text.count("rm -rf site/data") == 1
     publish_own = _dispatch_input(text, "publish_own")
     assert publish_own["type"] == "boolean" and publish_own["default"] == "false", publish_own
+
+
+def test_weekly_analysis_run_censors_long_gaps_and_writes_only_the_candidate() -> None:
+    """The backfill censors gaps over 180 min; the weekly own-data run must too, or a shard
+    section seen about once a day nets a day of admits and drops into one interval. The run
+    writes the candidate, never site/data, and keeps the published pre-registration labels
+    when they describe the same term and source (analysis.run.carried_meta)."""
+    text = (WORKFLOWS / "analysis.yml").read_text(encoding="utf-8")
+    lines = [l.strip() for l in text.splitlines() if l.strip().startswith("python -m analysis.run ")]
+    assert len(lines) == 1, lines
+    args = shlex.split(lines[0].split(" 2>&1")[0])
+    for flag, value in (("--max-interval-min", "180"), ("--site-dir", "analysis/out/site_candidate"), ("--meta-from", "site/data/meta.json")):
+        assert flag in args and args[args.index(flag) + 1] == value, (flag, args)
 
 
 def _run_blocks(text: str) -> list[str]:

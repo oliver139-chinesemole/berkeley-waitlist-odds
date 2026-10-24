@@ -51,10 +51,13 @@ jobs:
           TERM_ID=$(python -c "from scraper.sources.base import TermSpec; print(TermSpec.from_name('$TERM_NAME').sis_term_id)")
           echo "term_id=$TERM_ID" >> "$GITHUB_OUTPUT"
           echo "term $TERM_NAME -> $TERM_ID"
+      # --max-interval-min 180 censors gaps over 180 min, as the backfill does: a shard section seen about
+      # once a day would otherwise net a day of admits and drops into one interval and undercount admits.
+      # --meta-from keeps the published pre-registration fields only when they describe the same term and source.
       - name: Run the analysis
         shell: bash
         run: |
-          python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir analysis/out/site_candidate 2>&1 | tee analysis.log
+          python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir analysis/out/site_candidate --max-interval-min 180 --meta-from site/data/meta.json 2>&1 | tee analysis.log
       # site/data holds Spring 2026 curves from Berkeleytime's history (data_source berkeleytime_history),
       # kept for the whole Spring 2027 cycle unless own data is published on purpose: only a dispatch with
       # publish_own=true replaces it (a schedule renders inputs.publish_own as "", a dispatch without the
