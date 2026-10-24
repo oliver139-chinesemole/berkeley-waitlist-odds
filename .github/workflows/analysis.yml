@@ -76,9 +76,16 @@ jobs:
             KEEP=$(mktemp -d)
             KEPT=""
             for f in backtest.json titles.json; do
-              if [ -f "site/data/$f" ] && [ ! -f "analysis/out/site_candidate/$f" ]; then cp "site/data/$f" "$KEEP/" && KEPT="$KEPT $f"; fi
+              if [ -f "site/data/$f" ] && [ ! -f "analysis/out/site_candidate/$f" ]; then
+                cp "site/data/$f" "$KEEP/"
+                KEPT="$KEPT $f"
+              fi
             done
-            rm -rf site/data && cp -r analysis/out/site_candidate site/data && cp -R "$KEEP/." site/data/
+            # one command per line: under the runner's bash -e a failed copy then fails the step,
+            # so the commit step never runs on a half-replaced site/data
+            rm -rf site/data
+            cp -r analysis/out/site_candidate site/data
+            cp -R "$KEEP/." site/data/
             if [ -f "$KEEP/titles.json" ]; then
               python -c "import json, pathlib; p = pathlib.Path('site/data/meta.json'); m = json.loads(p.read_text()); m['titles_file'] = 'titles.json'; p.write_text(json.dumps(m, indent=1, sort_keys=True, allow_nan=False))"
             fi

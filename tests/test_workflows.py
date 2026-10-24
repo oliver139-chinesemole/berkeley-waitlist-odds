@@ -198,3 +198,18 @@ def test_swap_step_prefers_the_candidates_own_titles(tmp_path: Path) -> None:
     assert json.loads(after["titles.json"])["courses"] == {"MATH 1A": {"title": "Calculus", "instructors": []}}
     assert after["backtest.json"] == published["backtest.json"]
     assert json.loads(after["meta.json"]) == candidate_meta
+
+
+@pytest.mark.skipif(hasattr(os, "geteuid") and os.geteuid() == 0, reason="root reads a mode-000 file")
+def test_swap_step_fails_rather_than_commit_a_half_copied_site(tmp_path: Path) -> None:
+    """A copy that fails after the rm must fail the step (the runner's `bash -e`), so the
+    commit step never runs on a site/data the candidate did not fully replace."""
+    job = _job_dir(tmp_path, CANDIDATE_META)
+    unreadable = job / "analysis" / "out" / "site_candidate" / "courses" / "MATH.json"
+    unreadable.chmod(0)
+    try:
+        proc = _run_swap(job, term_id="2272", publish_own="true")
+    finally:
+        unreadable.chmod(0o644)
+    assert proc.returncode != 0, (proc.stdout, proc.stderr)
+    assert "site/data replaced" not in proc.stdout
