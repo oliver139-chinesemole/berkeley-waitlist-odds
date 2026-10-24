@@ -39140,10 +39140,10 @@
 "class_number": "001",
 "component": "LEC",
 "course_key": "MECENG 263Z",
-"instructors": "Mohammad-reza Alam, Arsh Anis Khan",
+"instructors": "Reza Alam, Arsh Anis Khan",
 "last_status": 200,
 "node_id": null,
-"probed_at": "2026-09-24T13:51:49.490069+00:00",
+"probed_at": "2026-10-24T07:51:20.124183+00:00",
 "section_id": "30604",
 "section_number": "001",
 "subject": "MECENG",
@@ -58504,6 +58504,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-24T04:20:55.378235+00:00",
+"updated_at": "2026-10-24T07:52:00.386442+00:00",
 "version": 3
 }
