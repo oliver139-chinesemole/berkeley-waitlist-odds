@@ -144,10 +144,11 @@
     return `<tr><td>${esc(s.component || "")} ${esc(s.section_number || "")}</td><td class="num">${ratio(s.enrolled, s.capacity)}</td><td class="num">${ratio(s.waitlist, s.waitlist_capacity)}</td><td>${esc(seatsText(seats, s.open_reserved))}</td><td${st.cls ? ` class="${st.cls}"` : ""}${st.label ? ` aria-label="${esc(st.label)}"` : ""}>${esc(st.word)}</td><td>${esc(readText(mins))}${stale ? `<span class="stale">${esc(STALE_NOTE)}</span>` : ""}</td></tr>`;
   }
 
-  // Live section counts from the data branch (own snapshots only); the block stays hidden when the file is absent.
+  // Live section counts from the data branch (own snapshots only); the block stays hidden when the file is absent
+  // or holds another term than the one the page counts down to.
   async function live() {
     const r = await BWO.fetchJson(LIVE_URL);
-    if (!r.ok || !r.data || !Array.isArray(r.data.rows) || !Array.isArray(r.data.columns)) return;
+    if (!r.ok || !r.data || !BWO.isForecastTerm(r.data.term_id, meta) || !Array.isArray(r.data.rows) || !Array.isArray(r.data.columns)) return;
     const cols = r.data.columns;
     const mine = r.data.rows.map((vals) => Object.fromEntries(cols.map((c, i) => [c, vals[i]]))).filter((s) => s.course_key === row.key);
     if (!mine.length) return;
