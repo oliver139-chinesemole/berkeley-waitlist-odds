@@ -11,6 +11,11 @@ on:
         description: 'Term name (default: SCRAPE_TERM repo variable)'
         required: false
         type: string
+      publish_own:
+        description: 'Replace site/data with this run''s own-data estimates (only for term 2272 with 10 or more clearings)'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -46,25 +51,48 @@ jobs:
           TERM_ID=$(python -c "from scraper.sources.base import TermSpec; print(TermSpec.from_name('$TERM_NAME').sis_term_id)")
           echo "term_id=$TERM_ID" >> "$GITHUB_OUTPUT"
           echo "term $TERM_NAME -> $TERM_ID"
+      # --max-interval-min 180 marks intervals over 180 min censored, as the backfill does. A shard section is seen about
+      # every six hours (one of 12 shards per 30-min run); the position walk and follow-up stop at such an interval rather
+      # than read its net change as ordinary flow, which undercounts admits. Flow totals still count the interval.
+      # --meta-from keeps the published pre-registration fields only when they describe the same term and source.
       - name: Run the analysis
         shell: bash
         run: |
-          python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir analysis/out/site_candidate 2>&1 | tee analysis.log
-      # site/data may hold the Fall 2026 backfill (data_source berkeleytime_history) until this
-      # project's own Spring 2027 snapshots have clearings; an own-data run with no clearings
-      # must not replace it with an empty cohort. Only the Spring 2027 term (2272) may replace it:
-      # the Fall 2026 test term was collected after its last automatic waitlist run (Sep 11), and by
-      # 2026-09-23 its own-data cohort showed 209 post-deadline clearings (docs/DATA_LOG.md).
-      - name: Publish site data only when the own snapshots have clearings
+          python -m analysis.run --data-root data-branch --term-id "${{ steps.term.outputs.term_id }}" --out analysis/out --site-dir analysis/out/site_candidate --max-interval-min 180 --meta-from site/data/meta.json 2>&1 | tee analysis.log
+      # site/data holds Spring 2026 curves from Berkeleytime's history (data_source berkeleytime_history),
+      # kept for the whole Spring 2027 cycle unless own data is published on purpose: only a dispatch with
+      # publish_own=true replaces it (a schedule renders inputs.publish_own as "", a dispatch without the
+      # input as "false"), and only for term 2272 with 10 or more clearings. Never Fall 2026: it was collected
+      # after its last automatic waitlist run (Sep 11), so its 209 clearings on 2026-09-23 were post-deadline
+      # (docs/DATA_LOG.md).
+      - name: Publish own-data site files only on a publish_own dispatch
         shell: bash
         run: |
           EVENTS=$(python -c "import json; print(json.load(open('analysis/out/site_candidate/meta.json'))['events'])")
           echo "own-data cohort clearings: $EVENTS"
-          if [ "$EVENTS" -ge 10 ] && [ "${{ steps.term.outputs.term_id }}" = "2272" ]; then
-            rm -rf site/data && cp -r analysis/out/site_candidate site/data
-            echo "site/data replaced with the own-data estimates"
+          if [ "$EVENTS" -ge 10 ] && [ "${{ steps.term.outputs.term_id }}" = "2272" ] && [ "${{ inputs.publish_own }}" = "true" ]; then
+            # The export never writes backtest.json (analysis.export_backtest, by hand) and writes titles.json
+            # only with a catalog: keep the published ones across the rm unless the candidate has its own,
+            # and name a kept titles.json in the new meta.json so the pages read it.
+            KEEP=$(mktemp -d)
+            KEPT=""
+            for f in backtest.json titles.json; do
+              if [ -f "site/data/$f" ] && [ ! -f "analysis/out/site_candidate/$f" ]; then
+                cp "site/data/$f" "$KEEP/"
+                KEPT="$KEPT $f"
+              fi
+            done
+            # one command per line: under the runner's bash -e a failed copy then fails the step,
+            # so the commit step never runs on a half-replaced site/data
+            rm -rf site/data
+            cp -r analysis/out/site_candidate site/data
+            cp -R "$KEEP/." site/data/
+            if [ -f "$KEEP/titles.json" ]; then
+              python -c "import json, pathlib; p = pathlib.Path('site/data/meta.json'); m = json.loads(p.read_text()); m['titles_file'] = 'titles.json'; p.write_text(json.dumps(m, indent=1, sort_keys=True, allow_nan=False))"
+            fi
+            echo "site/data replaced with the own-data estimates on a publish_own dispatch; kept from the published site/data:${KEPT:- nothing}"
           else
-            echo "keeping the published site/data (own-data estimates replace it only for term 2272 with 10 or more clearings; published: $(python -c "import json; m=json.load(open('site/data/meta.json')); print(m.get('data_source'), m.get('term_name'), m.get('events'), 'clearings')" 2>/dev/null || echo 'none published'))"
+            echo "keeping the published site/data (own-data estimates replace it only on a dispatch with publish_own=true, for term 2272 with 10 or more clearings; published: $(python -c "import json; m=json.load(open('site/data/meta.json')); print(m.get('data_source'), m.get('term_name'), m.get('events'), 'clearings')" 2>/dev/null || echo 'none published'))"
           fi
       - name: Commit outputs
         id: commit
