@@ -19,8 +19,9 @@ Files written under ``out_dir`` (``site/data``):
   courses, Phase 1 joiners), level and phase grids, and, when flows are given,
   daily admits, joins and drops and how waitlisters left the queue.
 - ``titles.json`` (only when a ``catalog.json`` is given): each index course's
-  title and instructors from the classes_site catalog, for title and
-  instructor search. Labels, not statistics.
+  title and instructors from the classes_site catalog's primary-like entries
+  (a secondary's instructor field names its GSI), for title and instructor
+  search. Labels, not statistics.
 
 Every cell is the Kaplan-Meier clearing curve of its virtual waitlisters on a
 fixed grid of days since joining, out to the longest follow-up the cell has
@@ -47,6 +48,7 @@ import pandas as pd
 
 from analysis.calendar import TermCalendar, calendar_for
 from analysis.survival import BUCKET_ORDER
+from scraper.sources.classes_site import SectionRef, primary_like
 
 logger = logging.getLogger(__name__)
 
@@ -396,18 +398,24 @@ def titles_table(index_keys: Iterable[str], catalog_entries: Iterable[dict]) -> 
     """``{course_key: {"title", "instructors"}}`` for the index's courses, from catalog entries.
 
     Only keys in ``index_keys`` (so the file never names a course the site cannot
-    show). A course's title is the most common non-empty title among its entries;
-    a tie goes to a title some ``LEC`` entry carries, then alphabetical.
-    ``instructors`` is the sorted, de-duplicated union of its entries' names. A
-    course with neither is left out. Keys come back sorted."""
+    show), and only the entries ``primary_like`` keeps (docs/DESIGN_A2.md section
+    19): a secondary's instructor field names its GSI or lab lead, not the
+    course's instructor (a DIS 101 under LEC 001 is dropped; a lab-only course's
+    LAB 101 is its primary and stays). A course's title is the most common
+    non-empty title among those entries; a tie goes to a title some ``LEC`` entry
+    carries, then alphabetical. ``instructors`` is the sorted, de-duplicated union
+    of their names. A course with neither is left out. Keys come back sorted."""
     keys = set(index_keys)
+    entries = [e for e in catalog_entries if str(e.get("course_key") or "") in keys]
+    refs = [SectionRef.from_dict(e) for e in entries]
+    primary = set(primary_like(refs))  # the rule decides on course, class number and component; equal refs share a verdict
     counts: dict[str, Counter] = {}
     on_lecture: dict[str, set[str]] = {}
     people: dict[str, set[str]] = {}
-    for entry in catalog_entries:
-        key = str(entry.get("course_key") or "")
-        if key not in keys:
+    for entry, ref in zip(entries, refs, strict=True):
+        if ref not in primary:
             continue
+        key = ref.course_key
         title = str(entry.get("title") or "").strip()
         if title:
             counts.setdefault(key, Counter())[title] += 1
