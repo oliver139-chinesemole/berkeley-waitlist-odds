@@ -96406,6 +96406,36 @@
 "url_path": "/content/2027-spring-polsci-103-106-dis-106"
 },
 {
+"catalog_number": "103",
+"class_number": "107",
+"component": "DIS",
+"course_key": "POLSCI 103",
+"instructors": "",
+"last_status": null,
+"node_id": 543093,
+"probed_at": null,
+"section_id": "",
+"section_number": "107",
+"subject": "POLSCI",
+"title": "Congress",
+"url_path": "/content/2027-spring-polsci-103-107-dis-107"
+},
+{
+"catalog_number": "103",
+"class_number": "108",
+"component": "DIS",
+"course_key": "POLSCI 103",
+"instructors": "",
+"last_status": null,
+"node_id": 543094,
+"probed_at": null,
+"section_id": "",
+"section_number": "108",
+"subject": "POLSCI",
+"title": "Congress",
+"url_path": "/content/2027-spring-polsci-103-108-dis-108"
+},
+{
 "catalog_number": "106A",
 "class_number": "001",
 "component": "LEC",
@@ -114064,6 +114094,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-24T18:51:15.021355+00:00",
+"updated_at": "2026-10-24T19:20:11.573558+00:00",
 "version": 3
 }
