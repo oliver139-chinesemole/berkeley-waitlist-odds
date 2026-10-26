@@ -9,7 +9,7 @@
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step (2026-10-26 04:00Z, end of session 11): the switch to Spring 2027 has not happened and must happen now (`docs/dev/NEXT_2026-10-25.md` sections 0 and 2). Six draft PRs are open and none is merged; the merge order is NEXT section 3 (#43 first, #46 before Sun Nov 1; merge commits, not squash; #42 459 tests, #43 450, #45 454, #46 457). The next work is NEXT section 5; the history is docs/dev/HANDOFF.md session 11. Update this line at the end of every session.
+- Current step (2026-10-26 04:00Z, end of session 11): the switch to Spring 2027 has not happened and must happen now (`docs/dev/NEXT_2026-10-25.md` sections 0 and 2). Ten draft PRs are open and none is merged; the merge order and the three conflicts to resolve are NEXT section 3 (#43 first, #46 and #50 before Sun Nov 1; merge commits, not squash; 517 tests on the fully merged tree). The next work is NEXT section 5; the history is docs/dev/HANDOFF.md session 11. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.
