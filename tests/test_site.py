@@ -694,9 +694,13 @@ def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Pa
 # 7f348ed and prereg_date 2026-09-21. A deliberate own-data publish (PR #46) drops
 # those fields, since they describe another cohort: the pages then state the
 # pre-registration from BWO.PREREG and say the curves shown are not part of it.
+# A Berkeleytime meta without the fields (`make site-data SITE_TERM=2268` carries
+# nothing across terms) gets the record but no such clause: Fall 2026's cohort is
+# frozen for the test too (a7240f4).
 REGIMES = {
     "today": {"term_id": "2262", "term_name": "Spring 2026", "data_source": "berkeleytime_history", "prereg_commit": "7f348ed", "prereg_date": "2026-09-21"},
     "own_data": {"term_id": "2272", "term_name": "Spring 2027", "data_source": "own_snapshots"},
+    "berkeleytime_without_fields": {"term_id": "2268", "term_name": "Fall 2026", "data_source": "berkeleytime_history"},
 }
 
 
@@ -731,15 +735,23 @@ def test_the_preregistration_is_true_in_both_regimes(full_site: Path, tmp_path: 
                 "After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged,") in box
         assert "The Spring 2026 cohort behind the curves was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test." in about
         assert 'The runs headed "Fit on Spring 2026, scored on Fall 2026" score the curves the pages show' in acc["status"]
-    else:
+    elif regime == "own_data":
         assert ("The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21; "
                 "the curves this site shows now (Spring 2027, this project's own snapshots) are not part of the test. "
                 "After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged,") in box
         assert "The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test; the curves this site shows now are not part of it." in about
         assert "<strong>Spring 2027</strong>, this project's own snapshots" in about
         assert "Fit on Spring 2027" not in page and "score the curves the pages show" not in page  # no such run exists
+        assert "<p>The pages show Spring 2027 curves from this project's own snapshots; these runs test the same method on Fall 2026, not those curves.</p>" in acc["status"]
         assert "Fall 2026</strong>, from Berkeleytime's public history: 2 backtest runs" in acc["status"]  # the backtest keeps its own label
         assert "Fit on Spring 2026, scored on Fall 2026, within 14 days" in page  # the run itself is still shown, under its own heading
+    elif regime == "berkeleytime_without_fields":
+        assert ("The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21. "
+                "After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged,") in box
+        assert "The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test." in about
+        for html in (box, about):
+            assert "not part of" not in html  # Fall 2026 is frozen for the test as well
+        assert "The pages show" not in acc["status"]  # the backtest is of the same term
 
 
 def test_the_preregistration_record_matches_the_committed_meta() -> None:
