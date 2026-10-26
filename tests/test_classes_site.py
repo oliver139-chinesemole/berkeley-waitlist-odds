@@ -15,6 +15,7 @@ from scraper.schema import rows_to_table
 from scraper.sources.base import ParseError, PrioritySpec, TermNotPublished, TermSpec, shard_of
 from scraper.sources.classes_site import (
     ABSENT_REPROBE_AFTER,
+    GONE_WARN_SHARE,
     INITIAL_LOOKBACK_NODES,
     MAX_REPROBES_PER_RUN,
     NODE_PROBE_BUDGET_SHARE,
@@ -740,6 +741,140 @@ def test_fetch_rejects_bad_shard_and_limit(tmp_path: Path) -> None:
         source.fetch(FALL_2026, priority=PrioritySpec.from_text("COMPSCI *"), shard=(5, 2))
     with pytest.raises(ValueError):
         source.fetch(FALL_2026, limit=0)
+
+
+# -- run-log warnings (review of PR #43) -------------------------------------------------
+
+
+RECENT_404 = "2026-10-25T00:00:00+00:00"  # absent, and not due for a re-probe at NOW
+
+
+def lab_only_behind_absent_lecture(subject: str, catalog: str) -> list[SectionRef]:
+    """A lab-only course whose catalog also holds an absent LEC 001: the rule keeps the
+    LEC (the course's lowest class number), the LEC is not live, so nothing is selected
+    though LAB 101 and 102 are live."""
+    return [
+        spring_ref(subject, catalog, "001", "LEC", last_status=404, probed_at=RECENT_404),
+        spring_ref(subject, catalog, "101", "LAB"),
+        spring_ref(subject, catalog, "102", "LAB"),
+    ]
+
+
+def unselectable_warnings(caplog: pytest.LogCaptureFixture) -> list[str]:
+    return [r.getMessage() for r in caplog.records
+            if r.levelno == logging.WARNING and "no selectable section" in r.getMessage()]
+
+
+def test_warns_once_naming_priority_courses_with_live_entries_but_nothing_selected(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    refs = (PRIMARY_LIKE + SECONDARY + lab_only_behind_absent_lecture("PHYSICS", "5CL")
+            + lab_only_behind_absent_lecture("MATSCI", "104L"))
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, client, _ = make_source(tmp_path, small_site(), n_shards=1)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("COMPSCI 61A\nPHYSICS 5CL"), shard=(0, 1))
+    assert unselectable_warnings(caplog) == [
+        "courses with live catalog entries but no selectable section: priority=1 [PHYSICS 5CL] other=1"
+    ]
+    # a warning only: the selection is the rule's, unchanged
+    assert sorted(client.fetched()) == sorted(page_name(r) for r in PRIMARY_LIKE)
+
+
+def test_unselectable_warning_lists_twenty_priority_courses_by_rank(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    refs = [ref for i in range(23) for ref in lab_only_behind_absent_lecture("SUBJ", str(i))]
+    catalog_with(tmp_path, SPRING_2027, refs + PRIMARY_LIKE[:1])
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=1)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("\n".join(f"SUBJ {i}" for i in range(23))), shard=(0, 1))
+    named = ", ".join(f"SUBJ {i}" for i in range(20))
+    assert unselectable_warnings(caplog) == [
+        f"courses with live catalog entries but no selectable section: priority=23 [{named} and 3 more] other=0"
+    ]
+
+
+def test_no_unselectable_warning_when_every_course_has_a_live_candidate(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    catalog_with(tmp_path, SPRING_2027, PRIMARY_LIKE + SECONDARY)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=1)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=None)
+    assert unselectable_warnings(caplog) == []
+
+
+
+def summary_message(caplog: pytest.LogCaptureFixture) -> str:
+    lines = [r.getMessage() for r in caplog.records if r.getMessage().startswith("classes_site term=")]
+    assert len(lines) == 1
+    return lines[0]
+
+
+def gone_warnings(caplog: pytest.LogCaptureFixture) -> list[str]:
+    return [r.getMessage() for r in caplog.records if r.levelno == logging.WARNING and "went absent this run" in r.getMessage()]
+
+
+def spring_site(n_live: int, absent: set[int], *, reprobe: bool = False) -> tuple[list[SectionRef], dict[str, bytes | HttpError]]:
+    """``n_live`` live never-fetched Spring sections, those in ``absent`` answering 404, plus
+    (``reprobe``) an absent section due for its weekly re-probe that answers 404 again."""
+    refs = [spring_ref("SUBJ", str(i), "001", "LEC") for i in range(n_live)]
+    pages = small_site(extra={
+        f"{BASE}{r.url_path}": section_html("Spring 2027", "SUBJ", str(i), "001", "LEC", 50000 + i, 3000 + i, term_id="2272")
+        for i, r in enumerate(refs) if i not in absent
+    })
+    if reprobe:
+        refs.append(spring_ref("SUBJ", "99", "001", "LEC", last_status=404, probed_at="2026-01-01T00:00:00+00:00"))
+    return refs, pages
+
+
+def test_summary_line_counts_live_pages_that_answered_404(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    """gone= is the pages that went absent this run: a never-fetched page answering 404 (marked
+    absent, not missing) counts; a due re-probe answering 404 again was absent already."""
+    refs, pages = spring_site(4, absent={1, 2}, reprobe=True)
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, client, _ = make_source(tmp_path, pages)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        result = source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"))
+    assert len(client.fetched()) == 5 and result.missing_ids == []
+    assert " selected=5 observed=2 (0 via discovery) missing=0 gone=2 elapsed=" in summary_message(caplog)
+
+
+def test_gone_share_above_the_limit_warns(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    refs, pages = spring_site(9, absent={0, 1})  # 2 of 9 = 0.22
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, pages)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"))
+    assert [m.split(" (")[0] for m in gone_warnings(caplog)] == ["2 of 9 selected pages went absent this run"]
+
+
+def test_gone_share_at_the_limit_does_not_warn(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    assert GONE_WARN_SHARE == 0.1
+    refs, pages = spring_site(10, absent={0})  # 1 of 10: at the limit, not above it
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, pages)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"))
+    assert " gone=1 " in summary_message(caplog) and gone_warnings(caplog) == []
+
+
+def test_known_section_answering_404_is_both_gone_and_missing(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, clock = make_source(tmp_path, small_site())
+    source.fetch(FALL_2026, priority=None)
+    pages = small_site()
+    del pages[f"{BASE}{slug_of('Fall 2026', 'COMPSCI', '61A', '001', 'LEC')}"]
+    clock.now = NOW + timedelta(minutes=30)
+    source2, _, _ = make_source(tmp_path, pages, clock=clock)
+    caplog.clear()
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        result = source2.fetch(FALL_2026, priority=None)
+    assert result.missing_ids == ["29147"]
+    assert " missing=1 gone=1 " in summary_message(caplog) and len(gone_warnings(caplog)) == 1  # 1 of 2
 
 
 # -- course title and instructors in the catalog (Q7, 2026-09-23) ---------------------
