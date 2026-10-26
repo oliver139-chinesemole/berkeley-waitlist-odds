@@ -75,6 +75,8 @@ SELF_STUDY_COMPONENTS = frozenset(
 PRIMARY_CLASS_NUMBER_LIMIT = 100
 # The warning about courses with no selectable section names at most this many priority courses.
 MAX_COURSES_NAMED = 20
+# Warn when more than this share of a run's selection answers 404 (docs/DESIGN_A2.md section 19).
+GONE_WARN_SHARE = 0.1
 # The section page exposes ucb.termDetails.sessionDescription ("2026 Fall")
 # but no session id; every section we scrape is in the regular session.
 DEFAULT_SESSION_ID = "1"
@@ -936,6 +938,9 @@ class ClassesSiteSource:
         if time_budget_s is not None:
             remaining = max(0.0, float(time_budget_s) - (self._clock() - started))
         rows, missing_ids, updates = self._fetch_pages(to_fetch, term, remaining)
+        # Pages that went absent this run: live before it, 404 now (a due re-probe answering
+        # 404 again was absent already). Those whose id is unknown are not in missing_ids.
+        gone = sum(1 for r in to_fetch if not r.absent and updates.get(r.url_path, r).absent)
         rows = prefetched + rows
         known = catalog.by_path()
         for path, ref in disc.prefetched_refs.items():
@@ -962,7 +967,7 @@ class ClassesSiteSource:
         self._persist(catalogs, state)
 
         logger.info(
-            "classes_site term=%s scope=%s shard=%s catalog=%d live=%d selected=%d observed=%d (%d via discovery) missing=%d elapsed=%.1fs",
+            "classes_site term=%s scope=%s shard=%s catalog=%d live=%d selected=%d observed=%d (%d via discovery) missing=%d gone=%d elapsed=%.1fs",
             term.sis_term_id,
             scope,
             shard_label or "-",
@@ -972,8 +977,17 @@ class ClassesSiteSource:
             len(rows),
             len(prefetched),
             len(missing_ids),
+            gone,
             self._clock() - started,
         )
+        if gone > GONE_WARN_SHARE * len(selected):
+            logger.warning(
+                "%d of %d selected pages answered 404 this run (more than GONE_WARN_SHARE=%g of the selection): "
+                "a page whose id is unknown is then marked absent, not missing, so missing= and the exit-4 gate do not show it",
+                gone,
+                len(selected),
+                GONE_WARN_SHARE,
+            )
         return FetchResult(
             rows=rows,
             missing_ids=missing_ids,
