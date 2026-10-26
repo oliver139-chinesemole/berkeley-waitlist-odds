@@ -475,23 +475,24 @@ def export_titles_only(out_dir: Path | str, catalog: Path | str) -> dict:
     ``titles_file`` to its ``meta.json``; nothing else is read or rewritten (no cohort,
     no refit). A ``titles.json`` that would change only in ``generated_at`` is left as it
     is, so the weekly refresh from an unchanged catalog commits nothing. Returns
-    ``titles_summary`` and ``changed``."""
+    ``titles_summary`` plus ``titles_changed`` and ``meta_changed`` (whether each file was written)."""
     out_dir = Path(out_dir)
     keys = [row["key"] for row in json.loads((out_dir / "index.json").read_text(encoding="utf-8"))["courses"]]
     meta_path, titles_path = out_dir / "meta.json", out_dir / TITLES_FILE
     info = json.loads(meta_path.read_text(encoding="utf-8"))
     payload = titles_payload(keys, catalog)
     old = json.loads(titles_path.read_text(encoding="utf-8")) if titles_path.is_file() else None
-    changed = old is None or {**old, "generated_at": None} != {**payload, "generated_at": None}
-    if changed:
+    titles_changed = old is None or {**old, "generated_at": None} != {**payload, "generated_at": None}
+    if titles_changed:
         _dump(titles_path, payload)
         logger.info("wrote %s (%d courses from %s)", titles_path, len(payload["courses"]), catalog)
     else:
         logger.info("%s unchanged (catalog %s); left as it was", titles_path, catalog)
-    if info.get("titles_file") != TITLES_FILE:
+    meta_changed = info.get("titles_file") != TITLES_FILE
+    if meta_changed:
         info["titles_file"] = TITLES_FILE
         meta_path.write_text(json.dumps(info, indent=1, sort_keys=True, allow_nan=False), encoding="utf-8")
-    return {"titles": str(titles_path), "meta": str(meta_path), "changed": changed, **titles_summary(payload, keys)}
+    return {"titles": str(titles_path), "meta": str(meta_path), "titles_changed": titles_changed, "meta_changed": meta_changed, **titles_summary(payload, keys)}
 
 
 def export_site_tables(

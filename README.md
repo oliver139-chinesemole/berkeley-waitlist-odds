@@ -30,7 +30,7 @@ flowchart LR
 2. Rows are validated against a pinned pyarrow schema (`scraper/schema.py`) and written as one Parquet file per run to the `data` branch: a full baseline once per UTC day, change-only deltas otherwise. Files are never rewritten.
 3. `scraper/rebuild.py` reconstructs the full panel (every section at every run) from baseline plus deltas and marks cells that were not observed, so they can be censored instead of read as zero flow. `analysis/backfill.py` builds the same panel from Berkeleytime's run-length history, with that recorder's outages censored.
 4. A daily monitor job (`monitor.yml`) computes the largest gap between snapshots in the last 24 hours and opens an issue if it exceeds 90 minutes or fewer than 40 runs landed.
-5. `analysis/flows.py` reconstructs waitlist flows (admits, joins, drops under FIFO assumptions), `analysis/cohort.py` and `analysis/survival.py` fit Kaplan-Meier curves and a Cox model with lifelines, `analysis/backtest.py` scores frozen models on held-out joiners with inverse-probability-of-censoring weights, `analysis/export.py` writes the precomputed JSON, and `analysis.yml` commits it every Sunday and redeploys the GitHub Pages site under `site/`.
+5. `analysis/flows.py` reconstructs waitlist flows (admits, joins, drops under FIFO assumptions), `analysis/cohort.py` and `analysis/survival.py` fit Kaplan-Meier curves and a Cox model with lifelines, `analysis/backtest.py` scores frozen models on held-out joiners with inverse-probability-of-censoring weights, `analysis/export.py` writes the precomputed JSON, and `analysis.yml` runs every Sunday, commits it when it changed and redeploys the GitHub Pages site under `site/`.
 
 ## Run it locally
 

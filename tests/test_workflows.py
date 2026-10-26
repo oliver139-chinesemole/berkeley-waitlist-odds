@@ -124,10 +124,11 @@ def _tree(root: Path) -> dict[str, bytes]:
     return {str(f.relative_to(root)): f.read_bytes() for f in sorted(root.rglob("*")) if f.is_file()}
 
 
-def _job_dir(tmp_path: Path, candidate_meta: dict, candidate_titles: bool = False, published_titles: bool = True) -> Path:
+def _job_dir(tmp_path: Path, candidate_meta: dict | None, candidate_titles: bool = False, published_titles: bool = True) -> Path:
     """A job checkout as the swap step finds it: the published site/data (Spring 2026, with
     backtest.json, the pre-registration and, unless ``published_titles`` is false, titles.json)
-    and the run's own-data candidate."""
+    and the run's own-data candidate, none when ``candidate_meta`` is None (an empty cohort:
+    ``analysis.run`` exports only a non-empty one)."""
     job = tmp_path / "job"
     site = job / "site" / "data"
     _write(site / "meta.json", PUBLISHED_META if published_titles else {k: v for k, v in PUBLISHED_META.items() if k != "titles_file"})
@@ -136,6 +137,8 @@ def _job_dir(tmp_path: Path, candidate_meta: dict, candidate_titles: bool = Fals
     _write(site / "backtest.json", {"term_id": "2268", "term_name": "Fall 2026", "runs": []})
     if published_titles:
         _write(site / "titles.json", {"catalog_term_id": "2272", "courses": {"COMPSCI 61A": {"title": "Structure and Interpretation of Computer Programs", "instructors": []}}})
+    if candidate_meta is None:
+        return job
     cand = job / "analysis" / "out" / "site_candidate"
     _write(cand / "meta.json", candidate_meta)
     _write(cand / "index.json", {"term_id": "2272", "courses": [{"key": "MATH 1A"}]})
@@ -174,15 +177,20 @@ def _run_swap(job: Path, *, term_id: str, publish_own: str) -> subprocess.Comple
         ("dispatch without the input (default false)", "2272", "false", 12),
         ("publish_own=true but the Fall 2026 test term", "2268", "true", 12),
         ("publish_own=true but fewer than 10 clearings", "2272", "true", 9),
+        # an empty cohort writes no candidate: 0 clearings, the step exits 0, so the titles refresh and the commit still run
+        ("schedule, no candidate (empty cohort)", "2272", "", None),
+        ("publish_own=true, no candidate (empty cohort)", "2272", "true", None),
     ],
 )
-def test_swap_step_keeps_the_published_site_data(tmp_path: Path, trigger: str, term_id: str, publish_own: str, events: int) -> None:
-    job = _job_dir(tmp_path, {**CANDIDATE_META, "events": events})
+def test_swap_step_keeps_the_published_site_data(tmp_path: Path, trigger: str, term_id: str, publish_own: str, events: int | None) -> None:
+    job = _job_dir(tmp_path, None if events is None else {**CANDIDATE_META, "events": events})
     before = _tree(job / "site" / "data")
     proc = _run_swap(job, term_id=term_id, publish_own=publish_own)
     assert proc.returncode == 0, (trigger, proc.stdout, proc.stderr)
     assert _tree(job / "site" / "data") == before, trigger
     assert "keeping the published site/data" in proc.stdout and "berkeleytime_history Spring 2026 299826 clearings" in proc.stdout, proc.stdout
+    assert f"own-data cohort clearings: {0 if events is None else events}" in proc.stdout, proc.stdout
+    assert ("no own-data candidate written" in proc.stdout) == (events is None), proc.stdout
 
 
 def test_swap_step_on_purpose_publishes_the_candidate_and_keeps_backtest_and_titles(tmp_path: Path) -> None:

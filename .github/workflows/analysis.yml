@@ -69,7 +69,14 @@ jobs:
       - name: Publish own-data site files only on a publish_own dispatch
         shell: bash
         run: |
-          EVENTS=$(python -c "import json; print(json.load(open('analysis/out/site_candidate/meta.json'))['events'])")
+          # an empty cohort writes no candidate (analysis.run exports only a non-empty one): 0 clearings, and the
+          # step still exits 0 so the titles refresh and the commit step run
+          if [ -f analysis/out/site_candidate/meta.json ]; then
+            EVENTS=$(python -c "import json; print(json.load(open('analysis/out/site_candidate/meta.json'))['events'])")
+          else
+            EVENTS=0
+            echo "no own-data candidate written (empty cohort: no analysis/out/site_candidate/meta.json)"
+          fi
           echo "own-data cohort clearings: $EVENTS"
           if [ "$EVENTS" -ge 10 ] && [ "${{ steps.term.outputs.term_id }}" = "2272" ] && [ "${{ inputs.publish_own }}" = "true" ]; then
             # The export never writes backtest.json (analysis.export_backtest, by hand) and writes titles.json

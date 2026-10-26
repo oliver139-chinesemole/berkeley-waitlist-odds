@@ -306,7 +306,7 @@ def test_titles_only_leaves_a_titles_file_alone_when_only_generated_at_would_cha
     titles_path.write_text(stale)
     meta = meta_path.read_bytes()
     summary = export.export_titles_only(out, catalog)
-    assert summary["changed"] is False and summary["courses"] == 2
+    assert (summary["titles_changed"], summary["meta_changed"], summary["courses"]) == (False, False, 2)
     assert titles_path.read_text() == stale and meta_path.read_bytes() == meta
     # an instructor fills in: the file follows the catalog
     payload = json.loads(catalog.read_text())
@@ -314,8 +314,16 @@ def test_titles_only_leaves_a_titles_file_alone_when_only_generated_at_would_cha
     catalog.write_text(json.dumps(payload))
     summary = export.export_titles_only(out, catalog)
     titles = json.loads(titles_path.read_text())
-    assert summary["changed"] is True and titles["courses"]["MATH 1"]["instructors"] == ["Amy Adams", "Nora Ng", "Zed Zhang"]
+    assert (summary["titles_changed"], summary["meta_changed"]) == (True, False)
+    assert titles["courses"]["MATH 1"]["instructors"] == ["Amy Adams", "Nora Ng", "Zed Zhang"]
     assert titles["generated_at"] != "2026-10-24T00:20:28+00:00" and meta_path.read_bytes() == meta
+    # titles.json current but meta.json not naming it: only meta.json is written, and the summary says so
+    unnamed = {k: v for k, v in json.loads(meta).items() if k != "titles_file"}
+    meta_path.write_text(json.dumps(unnamed, indent=1, sort_keys=True))
+    current = titles_path.read_bytes()
+    summary = export.export_titles_only(out, catalog)
+    assert (summary["titles_changed"], summary["meta_changed"]) == (False, True)
+    assert titles_path.read_bytes() == current and json.loads(meta_path.read_text()) == {**unnamed, "titles_file": "titles.json"}
 
 
 def test_cli_carries_no_labels_from_another_terms_meta(cohort: pd.DataFrame, tmp_path: Path) -> None:
