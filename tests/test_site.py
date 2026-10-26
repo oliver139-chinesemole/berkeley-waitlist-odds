@@ -689,6 +689,78 @@ def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Pa
         (full_site / "data" / "backtest.json").unlink()
 
 
+# The pre-registration (the Accuracy box, the About data status) in both regimes.
+# Today meta.json carries the Spring 2026 Berkeleytime cohort with prereg_commit
+# 7f348ed and prereg_date 2026-09-21. A deliberate own-data publish (PR #46) drops
+# those fields, since they describe another cohort: the pages then state the
+# pre-registration from BWO.PREREG and say the curves shown are not part of it.
+REGIMES = {
+    "today": {"term_id": "2262", "term_name": "Spring 2026", "data_source": "berkeleytime_history", "prereg_commit": "7f348ed", "prereg_date": "2026-09-21"},
+    "own_data": {"term_id": "2272", "term_name": "Spring 2027", "data_source": "own_snapshots"},
+}
+
+
+def regime_site(site_root: Path, tmp_path: Path, regime: str) -> Path:
+    """The export's meta.json with the regime's term, source and pre-registration fields, next to a Fall 2026 backtest with a cross-term run."""
+    from tests.test_export_backtest import make_reports
+    from analysis.export_backtest import export_backtest
+
+    root = tmp_path / regime
+    (root / "data").mkdir(parents=True)
+    meta = {k: v for k, v in load(site_root, "meta.json").items() if k not in ("prereg_commit", "prereg_date")}
+    meta.update(REGIMES[regime], forecast_term_id="2272", forecast_term_name="Spring 2027")
+    (root / "data" / "meta.json").write_text(json.dumps(meta))
+    reports = make_reports(tmp_path)
+    shutil.copytree(reports / "temporal_days14", reports / "cross_term_days14")  # the real file has cross-term runs too
+    export_backtest(reports, root / "data" / "backtest.json", term_id="2268", term_name="Fall 2026", meta={"data_source": "berkeleytime_history"})
+    return root
+
+
+@pytest.mark.parametrize("regime", sorted(REGIMES))
+def test_the_preregistration_is_true_in_both_regimes(full_site: Path, tmp_path: Path, regime: str) -> None:
+    root = regime_site(full_site, tmp_path, regime)
+    acc = render(root, page="accuracy.html")
+    box = acc["elements"]["prereg"]["html"]
+    about = render(root, page="about.html")["elements"]["data-status"]["html"]
+    for html in (box, about):
+        assert "Spring 2026 cohort" in html and "<code>7f348ed</code> on 2026-09-21" in html, html
+        assert "will be frozen" not in html and "Spring 2027 cohort" not in html
+    page = " ".join(el["html"] for el in acc["elements"].values())
+    if regime == "today":
+        assert ("The Spring 2026 cohort behind the curves this site shows was frozen at commit <code>7f348ed</code> on 2026-09-21; the curves are read from it unchanged. "
+                "After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged,") in box
+        assert "The Spring 2026 cohort behind the curves was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test." in about
+        assert 'The runs headed "Fit on Spring 2026, scored on Fall 2026" score the curves the pages show' in acc["status"]
+    else:
+        assert ("The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21; "
+                "the curves this site shows now (Spring 2027, this project's own snapshots) are not part of the test. "
+                "After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged,") in box
+        assert "The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test; the curves this site shows now are not part of it." in about
+        assert "<strong>Spring 2027</strong>, this project's own snapshots" in about
+        assert "Fit on Spring 2027" not in page and "score the curves the pages show" not in page  # no such run exists
+        assert "Fall 2026</strong>, from Berkeleytime's public history: 2 backtest runs" in acc["status"]  # the backtest keeps its own label
+        assert "Fit on Spring 2026, scored on Fall 2026, within 14 days" in page  # the run itself is still shown, under its own heading
+
+
+def test_the_preregistration_record_matches_the_committed_meta() -> None:
+    """BWO.PREREG says what site/data/meta.json says while that file carries the fields, so the two cannot drift apart."""
+    meta = load(SITE, "meta.json")
+    record = render(SITE, page="about.html", expression="BWO.PREREG")["eval"]
+    assert sorted(record) == ["commit", "date", "scored_after", "term_name"]
+    if meta.get("prereg_commit"):  # gone after an own-data publish, which is when the record is used
+        assert (record["term_name"], record["commit"], record["date"]) == (meta["term_name"], str(meta["prereg_commit"])[:10], meta["prereg_date"])
+    if meta.get("forecast_term_id") == "2272":
+        assert record["scored_after"] == meta["add_drop_deadline"]  # Spring 2027's add/drop deadline
+
+
+def test_the_preregistration_without_meta(tmp_path: Path) -> None:
+    """No meta.json at all (the empty state): the box still names the frozen cohort, and no term it does not have."""
+    (tmp_path / "data").mkdir()
+    box = render(tmp_path, page="accuracy.html")["elements"]["prereg"]["html"]
+    assert "The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21. After" in box, box
+    assert "undefined" not in box and "this site shows now" not in box
+
+
 # ------------------------------------------------ live data status (B2)
 # BWO.liveStatus appends one sentence read from the data branch's status.json
 # (served by the harness from HARNESS_STATUS_FILE; unset, the URL 404s).
