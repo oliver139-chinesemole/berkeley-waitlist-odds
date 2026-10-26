@@ -311,3 +311,40 @@ def test_a_status_file_that_is_not_read_keeps_the_dated_form(live_site: Path, tm
     status.write_text(json.dumps({k: v for k, v in json.loads(status.read_text()).items() if k != "last_run_at"}))
     out = render(live_site, page=page, search=search, env={"HARNESS_STATUS_FILE": str(status), "HARNESS_NOW": NOW})
     assert out["elements"][el]["html"] == before
+
+
+# The Lookup page sets its status line once; BWO.liveStatus then appends the status
+# sentence and, for a forecast-term file, swaps the clause. A lookup used to rewrite
+# the whole line to carry its "Showing X for query" note, so a form or chip search
+# after status.json had arrived brought the dated form back and dropped the
+# sentence, and so did a ?course= link whose match waits on a fetch (a title query,
+# which loads titles.json; a course-code link resolves before status.json returns).
+# The note has its own element now (#showing), right under the line.
+TITLES = ROOT / "tests" / "fixtures" / "titles_sample.json"
+LOOKUPS = {  # how -> (render arguments, extra environment, the #showing it leaves)
+    "form": ({"course": "COMPSCI 61A", "position": "3"}, {}, ""),
+    "fuzzy": ({"course": "compsi 61a", "position": "3"}, {}, '<p class="note">Showing <strong>COMPSCI 61A</strong> for <em>compsi 61a</em>.</p>'),
+    "title_link": ({"search": "?course=structure%20and%20interpretation&position=3"}, {"HARNESS_TITLES_FILE": str(TITLES)},
+                   '<p class="note">Showing <strong>COMPSCI 61A</strong> for <em>structure and interpretation</em>.</p>'),
+}
+
+
+@pytest.mark.parametrize(
+    ("term_id", "term_name", "clause"),
+    [("2268", "Fall 2026", DATED), ("2272", "Spring 2027", STARTED)],
+    ids=["before_the_switch", "after_the_switch"],
+)
+@pytest.mark.parametrize("how", sorted(LOOKUPS))
+def test_a_lookup_keeps_the_status_line(live_site: Path, tmp_path: Path, how: str, term_id: str, term_name: str, clause: str) -> None:
+    kwargs, extra, expected = LOOKUPS[how]
+    out = render(live_site, **kwargs, env={"HARNESS_STATUS_FILE": str(status_for(tmp_path, term_id=term_id)), "HARNESS_NOW": NOW, **extra})
+    assert "COMPSCI 61A · position 3" in out["result"], out["result"]  # the lookup ran
+    status = out["elements"]["status"]["html"]
+    assert clause in status and status.count("Live Spring 2027 collection") == 1, status
+    assert status.count("live-status") == 1, status
+    assert f"This project&#39;s last {term_name} snapshot ran about 12 min ago: 1,425 sections read, 1 not reached." in status, status
+    if term_id == "2272":
+        assert "Oct 26" not in status
+    assert "Showing" not in status
+    showing = out["elements"].get("showing", {"html": ""})["html"]
+    assert showing == expected, showing
