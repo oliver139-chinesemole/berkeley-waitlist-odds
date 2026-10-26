@@ -152,12 +152,14 @@ def test_cli_course_total_and_catalog_flags(tmp_path: Path, capsys) -> None:
 
 def test_catalog_report_selection_equals_the_scrapers_selected(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
     """Spring 2027 as on 2026-10-23: no entry probed yet, secondaries in the catalog. The
-    preview's per-run numbers are the selected= of runs over every shard, and its live is theirs."""
+    preview's per-run numbers are the selected= of runs over every shard less the due re-probes
+    (one here), and its live is theirs."""
     refs = [
         spring_ref("COMPSCI", "61A", "001", "LEC"),
         spring_ref("COMPSCI", "61A", "101", "DIS"),  # a DIS 101 under a LEC 001: never selected
         spring_ref("PHYSICS", "5BL", "101", "LAB"),  # lab-only: LAB 101 is the lowest number
         spring_ref("STAT", "20", "001", "LEC", last_status=404, probed_at=RECENT_404),  # absent, not due
+        spring_ref("MATH", "1A", "001", "LEC", last_status=404, probed_at="2026-01-01T00:00:00+00:00"),  # absent, due
         *[ref for i in range(8) for ref in (spring_ref("ART", str(i), "001", "LEC"), spring_ref("ART", str(i), "101", "DIS"))],
     ]
     catalog_with(tmp_path, SPRING_2027, refs)
@@ -174,6 +176,6 @@ def test_catalog_report_selection_equals_the_scrapers_selected(tmp_path: Path, c
         runs.append({key: int(re.search(rf" {key}=(\d+)", line).group(1)) for key in ("live", "selected")})
     report = catalog_report(spec, tmp_path / "catalog" / "2272" / "catalog.json", n_shards=n_shards)
     selected = [run["selected"] for run in runs]
-    assert (report["selection_min"], report["selection_max"]) == (min(selected), max(selected))
-    assert {run["live"] for run in runs} == {report["live"]} == {len(refs) - 1}
+    assert (report["selection_min"] + 1, report["selection_max"] + 1) == (min(selected), max(selected))
+    assert {run["live"] for run in runs} == {report["live"]} == {len(refs) - 2}
     assert report["candidates"] == 10 and report["matched"] == 2 and report["courses"] == 2

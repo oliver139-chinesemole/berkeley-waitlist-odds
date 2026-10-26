@@ -75,7 +75,12 @@ SELF_STUDY_COMPONENTS = frozenset(
 PRIMARY_CLASS_NUMBER_LIMIT = 100
 # The warning about courses with no selectable section names at most this many priority courses.
 MAX_COURSES_NAMED = 20
-# Warn when more than this share of a run's selection answers 404 (docs/DESIGN_A2.md section 19).
+# Warn when the selected pages that went absent in a run (live before it, 404 in it; a due
+# re-probe answering 404 again is not counted) exceed this share of its selected= (the whole
+# selection, re-probes and pages read during discovery included). Why 0.1: the Fall 2026
+# catalog held 2 absent entries of 3,900 after about five weeks of runs, so a run normally
+# loses about none; 0.1 is about 120 pages of a Spring run, a fifth of the exit-4 gate's 0.5
+# (docs/DESIGN_A2.md section 19).
 GONE_WARN_SHARE = 0.1
 # The section page exposes ucb.termDetails.sessionDescription ("2026 Fall")
 # but no session id; every section we scrape is in the regular session.
@@ -333,8 +338,9 @@ def live_candidates(refs: list[SectionRef]) -> list[SectionRef]:
 
 def _warn_unselectable_courses(refs: list[SectionRef], priority: PrioritySpec | None) -> None:
     """One WARNING when a course has a live catalog entry but no live candidate, so no run
-    selects any of its sections in any shard: a lab-only course whose LAB 101 is live beside
-    an absent LEC 001, for one (docs/DESIGN_A2.md section 19). Names the priority courses in
+    selects any of its sections in any shard, apart from the weekly re-probe of its absent
+    sections: a lab-only course whose LAB 101 is live beside an absent LEC 001, for one
+    (docs/DESIGN_A2.md section 19). Names the priority courses in
     list order, at most ``MAX_COURSES_NAMED``, and counts the others. Changes nothing."""
     empty = {ref.course_key for ref in refs if not ref.absent} - {ref.course_key for ref in live_candidates(refs)}
     if not empty:
@@ -983,7 +989,7 @@ class ClassesSiteSource:
         )
         if gone > GONE_WARN_SHARE * len(selected):
             logger.warning(
-                "%d of %d selected pages answered 404 this run (more than GONE_WARN_SHARE=%g of the selection): "
+                "%d of %d selected pages went absent this run (live before, 404 now; more than GONE_WARN_SHARE=%g of the selection): "
                 "a page whose id is unknown is then marked absent, not missing, so missing= and the exit-4 gate do not show it",
                 gone,
                 len(selected),

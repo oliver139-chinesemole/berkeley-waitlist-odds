@@ -812,7 +812,7 @@ def summary_message(caplog: pytest.LogCaptureFixture) -> str:
 
 
 def gone_warnings(caplog: pytest.LogCaptureFixture) -> list[str]:
-    return [r.getMessage() for r in caplog.records if r.levelno == logging.WARNING and "answered 404 this run" in r.getMessage()]
+    return [r.getMessage() for r in caplog.records if r.levelno == logging.WARNING and "went absent this run" in r.getMessage()]
 
 
 def spring_site(n_live: int, absent: set[int], *, reprobe: bool = False) -> tuple[list[SectionRef], dict[str, bytes | HttpError]]:
@@ -848,7 +848,7 @@ def test_gone_share_above_the_limit_warns(tmp_path: Path, caplog: pytest.LogCapt
     source, _, _ = make_source(tmp_path, pages)
     with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
         source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"))
-    assert [m.split(" (")[0] for m in gone_warnings(caplog)] == ["2 of 9 selected pages answered 404 this run"]
+    assert [m.split(" (")[0] for m in gone_warnings(caplog)] == ["2 of 9 selected pages went absent this run"]
 
 
 def test_gone_share_at_the_limit_does_not_warn(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
