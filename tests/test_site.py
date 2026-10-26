@@ -470,11 +470,11 @@ def test_a_fuzzy_match_says_what_it_showed(full_site: Path) -> None:
     fuzzy, plain = out["eval"]
     assert "Showing <strong>COMPSCI 61A</strong> for <em>compsi 61a</em>" in fuzzy
     assert plain == ""
-    # the lookup puts the line in the page's status area
+    # the lookup puts the line under the page's status line, which it leaves alone
     out = render(full_site, course="compsi 0", position="3")
-    assert "Showing <strong>COMPSCI 0</strong> for <em>compsi 0</em>" in out["status"]
+    assert "Showing <strong>COMPSCI 0</strong> for <em>compsi 0</em>" in out["elements"]["showing"]["html"] and "Showing" not in out["status"]
     out = render(full_site, course="cs 0", position="3")
-    assert "Showing" not in out["status"]
+    assert out["elements"]["showing"]["html"] == "" and "Showing" not in out["status"]
 
 
 TITLES = ROOT / "tests" / "fixtures" / "titles_sample.json"
@@ -529,7 +529,7 @@ def test_title_hits_are_whole_tokens_ranked_by_joins() -> None:
 def test_a_title_query_works_end_to_end_and_says_what_it_showed() -> None:
     """The lookup form and the course page's ?c= take the async path; both print the Showing line for a title hit."""
     out = render(SITE, env=WITH_TITLES, course="data structures", position="10")
-    assert "Showing <strong>COMPSCI 61B</strong> for <em>data structures</em>." in out["status"]
+    assert "Showing <strong>COMPSCI 61B</strong> for <em>data structures</em>." in out["elements"]["showing"]["html"]
     assert "COMPSCI 61B · position 10" in out["result"] and title_fetches(out) == 1
     out = render(SITE, page="course.html", search="?c=hilfinger", env=WITH_TITLES)
     assert "Showing <strong>COMPSCI 61B</strong> for <em>hilfinger</em>." in out["status"] and out["title"].startswith("COMPSCI 61B")
