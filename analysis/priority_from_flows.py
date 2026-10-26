@@ -30,6 +30,7 @@ from pathlib import Path
 import pandas as pd
 
 from scraper.sources.base import PrioritySpec, shard_of
+from scraper.sources.classes_site import SectionRef, live_candidates
 
 logger = logging.getLogger(__name__)
 
@@ -136,22 +137,26 @@ def coverage(activity: pd.DataFrame, spec: PrioritySpec) -> dict:
 
 
 def catalog_report(spec: PrioritySpec, catalog: Path | str, n_shards: int = 12) -> dict:
-    """What a run fetches with ``spec`` against a live catalog (``catalog/<term_id>/catalog.json``
-    on the data branch): sections with ``last_status`` 200 that match a pattern, their distinct
-    courses, and the per-run selection once one of ``n_shards`` shards of the remainder is added
-    (shards by ``shard_of(url_path, n_shards)``, as ``ClassesSiteSource._select`` does)."""
-    entries = json.loads(Path(catalog).read_text(encoding="utf-8"))["sections"]
-    live = [e for e in entries if e.get("last_status") == 200]
-    hit = [spec.rank(str(e.get("course_key") or "")) is not None for e in live]
-    matched = [e for e, h in zip(live, hit) if h]
+    """What a run fetches with ``spec`` against a catalog (``catalog/<term_id>/catalog.json``
+    on the data branch), read as ``ClassesSiteSource._select`` reads it: ``live`` entries (not
+    marked absent; never probed counts as live, the summary line's ``live=``), the
+    ``live_candidates`` among them (docs/DESIGN_A2.md section 19), those matching a pattern and
+    their distinct courses, and the per-run selection once one of ``n_shards`` shards of the
+    remaining candidates is added (``shard_of(url_path, n_shards)``). The selection numbers are
+    the run log's ``selected=`` less the due re-probes (at most 100 a run)."""
+    refs = [SectionRef.from_dict(e) for e in json.loads(Path(catalog).read_text(encoding="utf-8"))["sections"]]
+    candidates = live_candidates(refs)
+    hit = [spec.rank(r.course_key) is not None for r in candidates]
+    matched = [r for r, h in zip(candidates, hit) if h]
     shards = [0] * max(int(n_shards), 1)
-    for e, h in zip(live, hit):
+    for r, h in zip(candidates, hit):
         if not h:
-            shards[shard_of(str(e["url_path"]), len(shards))] += 1
+            shards[shard_of(r.key, len(shards))] += 1
     return {
-        "live": len(live),
+        "live": sum(1 for r in refs if not r.absent),
+        "candidates": len(candidates),
         "matched": len(matched),
-        "courses": len({str(e.get("course_key")) for e in matched}),
+        "courses": len({r.course_key for r in matched}),
         "selection_min": len(matched) + min(shards),
         "selection_max": len(matched) + max(shards),
     }

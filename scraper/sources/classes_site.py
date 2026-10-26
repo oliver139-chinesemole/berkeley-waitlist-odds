@@ -326,7 +326,8 @@ def primary_like(refs: list[SectionRef]) -> list[SectionRef]:
 
 def live_candidates(refs: list[SectionRef]) -> list[SectionRef]:
     """What a run selects from, the due re-probes aside: the ``primary_like`` entries that
-    are live, i.e. not marked absent (an entry never probed is live)."""
+    are live, i.e. not marked absent (an entry never probed is live). ``_select``, the
+    full-scope universe and ``analysis.priority_from_flows --catalog`` all read it here."""
     return [ref for ref in primary_like(refs) if not ref.absent]
 
 
