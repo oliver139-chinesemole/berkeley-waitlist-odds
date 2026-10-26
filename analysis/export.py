@@ -437,16 +437,21 @@ def load_catalog(path: Path | str) -> tuple[str | None, list[dict]]:
     return (str(term) if term else None), entries
 
 
-def write_titles(out_dir: Path | str, index_keys: Iterable[str], catalog: Path | str) -> dict:
-    """Write ``titles.json`` under ``out_dir`` for ``index_keys`` from ``catalog``; returns what it wrote.
-    Re-exports of the same inputs are byte-identical apart from ``generated_at``."""
+def titles_payload(index_keys: Iterable[str], catalog: Path | str) -> dict:
+    """The ``titles.json`` payload for ``index_keys`` from ``catalog``, stamped now."""
     term, entries = load_catalog(catalog)
-    payload = {
+    return {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "source": TITLES_SOURCE,
         "catalog_term_id": term,
         "courses": titles_table(index_keys, entries),
     }
+
+
+def write_titles(out_dir: Path | str, index_keys: Iterable[str], catalog: Path | str) -> dict:
+    """Write ``titles.json`` under ``out_dir`` for ``index_keys`` from ``catalog``; returns what it wrote.
+    Re-exports of the same inputs are byte-identical apart from ``generated_at``."""
+    payload = titles_payload(index_keys, catalog)
     _dump(Path(out_dir) / TITLES_FILE, payload)
     logger.info("wrote %s (%d courses from %s)", Path(out_dir) / TITLES_FILE, len(payload["courses"]), catalog)
     return payload
@@ -468,15 +473,25 @@ def titles_summary(payload: dict, index_keys: list[str]) -> dict:
 def export_titles_only(out_dir: Path | str, catalog: Path | str) -> dict:
     """Write ``titles.json`` for the ``index.json`` already in ``out_dir`` and add
     ``titles_file`` to its ``meta.json``; nothing else is read or rewritten (no cohort,
-    no refit). Returns ``titles_summary``."""
+    no refit). A ``titles.json`` that would change only in ``generated_at`` is left as it
+    is, so the weekly refresh from an unchanged catalog commits nothing. Returns
+    ``titles_summary`` and ``changed``."""
     out_dir = Path(out_dir)
     keys = [row["key"] for row in json.loads((out_dir / "index.json").read_text(encoding="utf-8"))["courses"]]
-    meta_path = out_dir / "meta.json"
+    meta_path, titles_path = out_dir / "meta.json", out_dir / TITLES_FILE
     info = json.loads(meta_path.read_text(encoding="utf-8"))
-    payload = write_titles(out_dir, keys, catalog)
-    info["titles_file"] = TITLES_FILE
-    meta_path.write_text(json.dumps(info, indent=1, sort_keys=True, allow_nan=False), encoding="utf-8")
-    return {"titles": str(out_dir / TITLES_FILE), "meta": str(meta_path), **titles_summary(payload, keys)}
+    payload = titles_payload(keys, catalog)
+    old = json.loads(titles_path.read_text(encoding="utf-8")) if titles_path.is_file() else None
+    changed = old is None or {**old, "generated_at": None} != {**payload, "generated_at": None}
+    if changed:
+        _dump(titles_path, payload)
+        logger.info("wrote %s (%d courses from %s)", titles_path, len(payload["courses"]), catalog)
+    else:
+        logger.info("%s unchanged (catalog %s); left as it was", titles_path, catalog)
+    if info.get("titles_file") != TITLES_FILE:
+        info["titles_file"] = TITLES_FILE
+        meta_path.write_text(json.dumps(info, indent=1, sort_keys=True, allow_nan=False), encoding="utf-8")
+    return {"titles": str(titles_path), "meta": str(meta_path), "changed": changed, **titles_summary(payload, keys)}
 
 
 def export_site_tables(

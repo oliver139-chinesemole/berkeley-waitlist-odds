@@ -1,5 +1,6 @@
-# Weekly: rebuild flows, models, figures and the site JSON from the data branch and
-# commit the outputs to main (which redeploys the site). See docs/DESIGN_A5.md section 6.
+# Weekly: rebuild flows, models, figures and the site JSON from the data branch, commit
+# site/data to main when it changed (which redeploys the site), and keep the report and
+# figures in the run's artifact. See docs/DESIGN_A5.md section 6 and docs/RUNBOOK.md section 5.
 name: analysis
 
 on:
@@ -94,19 +95,33 @@ jobs:
           else
             echo "keeping the published site/data (own-data estimates replace it only on a dispatch with publish_own=true, for term 2272 with 10 or more clearings; published: $(python -c "import json; m=json.load(open('site/data/meta.json')); print(m.get('data_source'), m.get('term_name'), m.get('events'), 'clearings')" 2>/dev/null || echo 'none published'))"
           fi
+      # titles.json (title and instructor search) follows the term's classes_site catalog as instructors fill in.
+      # --titles-only writes titles.json for the index.json already in site/data and names it in meta.titles_file,
+      # touching nothing else, and leaves titles.json alone when only its generated_at would change. Only the
+      # catalog of the term the pages count down to (meta.forecast_term_id) may feed it, so a Fall 2026 run never
+      # puts Fall 2026 instructors on the Spring 2027 pages.
+      - name: Refresh titles.json from the term's catalog
+        shell: bash
+        run: |
+          CATALOG="data-branch/catalog/${{ steps.term.outputs.term_id }}/catalog.json"
+          FORECAST=$(python -c "import json; print(json.load(open('site/data/meta.json')).get('forecast_term_id'))" 2>/dev/null || echo none)
+          if [ ! -f "$CATALOG" ]; then
+            echo "titles.json not refreshed: no $CATALOG"
+          elif [ ! -f site/data/index.json ]; then
+            echo "titles.json not refreshed: no site/data/index.json"
+          elif [ "$FORECAST" != "${{ steps.term.outputs.term_id }}" ]; then
+            echo "titles.json not refreshed: the pages count down to term $FORECAST, not this run's term ${{ steps.term.outputs.term_id }}"
+          else
+            python -m analysis.export --titles-only --catalog "$CATALOG" --out site/data
+          fi
+      # The report and figures stay in the run's artifact (analysis/out, last step); only site/data reaches main.
       - name: Commit outputs
         id: commit
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          mkdir -p reports
-          cp "analysis/out/${{ steps.term.outputs.term_id }}/report.md" "reports/report_${{ steps.term.outputs.term_id }}.md"
-          if ls "analysis/out/${{ steps.term.outputs.term_id }}/figures/"*.png >/dev/null 2>&1; then
-            mkdir -p "reports/figures_${{ steps.term.outputs.term_id }}"
-            cp "analysis/out/${{ steps.term.outputs.term_id }}/figures/"*.png "reports/figures_${{ steps.term.outputs.term_id }}/"
-          fi
-          git add site/data reports
+          git add site/data
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "analysis: $TERM_NAME $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           for attempt in 1 2 3; do

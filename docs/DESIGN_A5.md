@@ -61,6 +61,8 @@ Dates come from the registrar ICS in `data/fixtures/`. `phase_at` uses UTC midni
 
 Course titles and instructors (Q4 search) come from the classes_site catalog, not the cohort: `export_site_tables(..., catalog=<catalog.json>)` (CLI `--catalog`) also writes `titles.json` for the index's courses and sets `meta.titles_file`; without a catalog neither is written and a `titles.json` left from an earlier export is removed, so the file on disk always matches the meta that names it. `make site-data` passes `--catalog $(DATA_ROOT)/catalog/2268/catalog.json` when that file exists. `python -m analysis.export --titles-only --catalog <catalog.json> --out site/data` writes only `titles.json` for the `index.json` already there and adds `titles_file` to its `meta.json`, touching nothing else (no cohort, no refit). Titles are labels, not statistics.
 
+`--titles-only` leaves a `titles.json` that would change only in `generated_at` as it is (and `meta.json` when it already names the file), so the weekly `analysis.yml` refresh, which runs it after the swap step from the catalog of the term the pages count down to, commits a titles diff only when the catalog's titles or instructors moved (docs/RUNBOOK.md section 5).
+
 A **cell** is the Kaplan-Meier clearing curve of one group of virtual waitlisters:
 
 | field | meaning |
