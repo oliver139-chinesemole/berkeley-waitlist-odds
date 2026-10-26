@@ -1,4 +1,4 @@
-> Superseded on 2026-09-20 by `docs/dev/STATUS.md` (stage map, what is left, dates, resume prompt). Kept for the file map below.
+> Superseded on 2026-09-20 by `docs/dev/STATUS.md` (stage map, what is left, dates, resume prompt); the live file is now `docs/dev/NEXT_2026-10-25.md`. Kept for the file map below.
 
 # Paste this as the first message of the next session
 

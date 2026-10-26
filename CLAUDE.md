@@ -2,14 +2,14 @@
 @docs/dev/FINISH_PLAN_WAITLIST.md
 
 ## How to work in this repo
-- New session: read docs/dev/HANDOFF.md first (what is done, what is left, how to resume), then the Current step line below.
+- New session: read the newest `docs/dev/NEXT_<date>.md` first (where the last session left things and what is next), then docs/dev/HANDOFF.md (the session history), then the Current step line below.
 - Before any response or action, check loaded skills and invoke every one that applies
   (superpowers:using-superpowers). Announce which skill you are using.
 - Execute every step through the build loop in docs/dev/FINISH_PLAN_WAITLIST.md section 1.2.
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: **read `docs/dev/NEXT_2026-10-25.md` first** (where session 11 left things: the switch to Spring 2027 had still not happened on Oct 26 04:00Z, six draft PRs open, section 5 is the next work). Session 11 (2026-10-23, unattended) ran batch 1 of `docs/dev/NEXT_2026-10-23.md`, Oliver's review of the state at `main` 926645e: the scraper was still collecting Fall 2026 six weeks after that term's add deadline (no Spring 2027 row exists; the Oct 4 switch never happened), and the Spring 2027 selection would have been 3,878 to 3,933 pages a run against about 2,468 the 1,380 s budget holds at the last Fall run's rate, with a coverage check that could not see the cut. Draft PRs of session 11, each reviewed by a subagent, none merged: #43 `scrape-spring-selection` (plan 1.1, 1.2, the operator text; 450 tests), #42 `site-term-guards` (plan 1.4, 1.5; 458 tests), `docs-2026-10-23` (plan 4.3; carries PR #33's commits). Batch 2 (same session, after Oliver's second review, `docs/dev/NEXT_2026-10-23_batch2.md`): PR #45 title search live (stacked on #43), PR #46 the analysis.yml swap gate (merge before Sunday Nov 1), review leftovers pushed to #43 and #42. Next: Oliver merges the selection PR, then runs plan 1.3 (the switch) on Oct 24 or 25; Phase 1 opens Oct 26; plan section 2 in the first week, section 3 before Nov 1, then section 4. Update this line at the end of every session.
+- Current step (2026-10-26 04:00Z, end of session 11): the switch to Spring 2027 has not happened and must happen now (`docs/dev/NEXT_2026-10-25.md` sections 0 and 2). Six draft PRs are open and none is merged; the merge order is NEXT section 3 (#43 first, #46 before Sun Nov 1; merge commits, not squash; #42 459 tests, #43 450, #45 454, #46 457). The next work is NEXT section 5; the history is docs/dev/HANDOFF.md session 11. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.
