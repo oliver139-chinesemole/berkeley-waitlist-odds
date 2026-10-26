@@ -32003,7 +32003,7 @@
 "instructors": "William J Drummond",
 "last_status": 404,
 "node_id": null,
-"probed_at": "2026-10-19T22:53:19.423776+00:00",
+"probed_at": "2026-10-26T23:26:19.489155+00:00",
 "section_id": "16369",
 "section_number": "8",
 "subject": "JOURN",
@@ -58504,6 +58504,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-24T07:52:00.386442+00:00",
+"updated_at": "2026-10-26T23:26:20.722847+00:00",
 "version": 3
 }
