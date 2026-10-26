@@ -742,6 +742,67 @@ def test_fetch_rejects_bad_shard_and_limit(tmp_path: Path) -> None:
         source.fetch(FALL_2026, limit=0)
 
 
+# -- run-log warnings (review of PR #43) -------------------------------------------------
+
+
+RECENT_404 = "2026-10-25T00:00:00+00:00"  # absent, and not due for a re-probe at NOW
+
+
+def lab_only_behind_absent_lecture(subject: str, catalog: str) -> list[SectionRef]:
+    """A lab-only course whose catalog also holds an absent LEC 001: the rule keeps the
+    LEC (the course's lowest class number), the LEC is not live, so nothing is selected
+    though LAB 101 and 102 are live."""
+    return [
+        spring_ref(subject, catalog, "001", "LEC", last_status=404, probed_at=RECENT_404),
+        spring_ref(subject, catalog, "101", "LAB"),
+        spring_ref(subject, catalog, "102", "LAB"),
+    ]
+
+
+def unselectable_warnings(caplog: pytest.LogCaptureFixture) -> list[str]:
+    return [r.getMessage() for r in caplog.records
+            if r.levelno == logging.WARNING and "no selectable section" in r.getMessage()]
+
+
+def test_warns_once_naming_priority_courses_with_live_entries_but_nothing_selected(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    refs = (PRIMARY_LIKE + SECONDARY + lab_only_behind_absent_lecture("PHYSICS", "5CL")
+            + lab_only_behind_absent_lecture("MATSCI", "104L"))
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, client, _ = make_source(tmp_path, small_site(), n_shards=1)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("COMPSCI 61A\nPHYSICS 5CL"), shard=(0, 1))
+    assert unselectable_warnings(caplog) == [
+        "courses with live catalog entries but no selectable section: priority=1 [PHYSICS 5CL] other=1"
+    ]
+    # a warning only: the selection is the rule's, unchanged
+    assert sorted(client.fetched()) == sorted(page_name(r) for r in PRIMARY_LIKE)
+
+
+def test_unselectable_warning_lists_twenty_priority_courses_by_rank(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    refs = [ref for i in range(23) for ref in lab_only_behind_absent_lecture("SUBJ", str(i))]
+    catalog_with(tmp_path, SPRING_2027, refs + PRIMARY_LIKE[:1])
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=1)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("\n".join(f"SUBJ {i}" for i in range(23))), shard=(0, 1))
+    named = ", ".join(f"SUBJ {i}" for i in range(20))
+    assert unselectable_warnings(caplog) == [
+        f"courses with live catalog entries but no selectable section: priority=23 [{named} and 3 more] other=0"
+    ]
+
+
+def test_no_unselectable_warning_when_every_course_has_a_live_candidate(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    catalog_with(tmp_path, SPRING_2027, PRIMARY_LIKE + SECONDARY)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=1)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=None)
+    assert unselectable_warnings(caplog) == []
+
+
 # -- course title and instructors in the catalog (Q7, 2026-09-23) ---------------------
 
 

@@ -73,6 +73,8 @@ SELF_STUDY_COMPONENTS = frozenset(
 )
 # A class number whose leading digits are below this is primary-like (docs/DESIGN_A2.md section 19).
 PRIMARY_CLASS_NUMBER_LIMIT = 100
+# The warning about courses with no selectable section names at most this many priority courses.
+MAX_COURSES_NAMED = 20
 # The section page exposes ucb.termDetails.sessionDescription ("2026 Fall")
 # but no session id; every section we scrape is in the regular session.
 DEFAULT_SESSION_ID = "1"
@@ -318,6 +320,32 @@ def primary_like(refs: list[SectionRef]) -> list[SectionRef]:
         if _class_number_order(ref.class_number) < (False, PRIMARY_CLASS_NUMBER_LIMIT)
         or (ref.course_key, ref.component) in primary_components
     ]
+
+
+def live_candidates(refs: list[SectionRef]) -> list[SectionRef]:
+    """What a run selects from, the due re-probes aside: the ``primary_like`` entries that
+    are live, i.e. not marked absent (an entry never probed is live)."""
+    return [ref for ref in primary_like(refs) if not ref.absent]
+
+
+def _warn_unselectable_courses(refs: list[SectionRef], priority: PrioritySpec | None) -> None:
+    """One WARNING when a course has a live catalog entry but no live candidate, so no run
+    selects any of its sections in any shard: a lab-only course whose LAB 101 is live beside
+    an absent LEC 001, for one (docs/DESIGN_A2.md section 19). Names the priority courses in
+    list order, at most ``MAX_COURSES_NAMED``, and counts the others. Changes nothing."""
+    empty = {ref.course_key for ref in refs if not ref.absent} - {ref.course_key for ref in live_candidates(refs)}
+    if not empty:
+        return
+    ranked = sorted((rank, key) for key in empty if priority is not None and (rank := priority.rank(key)) is not None)
+    names = ", ".join(key for _, key in ranked[:MAX_COURSES_NAMED])
+    if len(ranked) > MAX_COURSES_NAMED:
+        names += f" and {len(ranked) - MAX_COURSES_NAMED} more"
+    logger.warning(
+        "courses with live catalog entries but no selectable section: priority=%d [%s] other=%d",
+        len(ranked),
+        names,
+        len(empty) - len(ranked),
+    )
 
 
 # -- section page parsing ----------------------------------------------------
@@ -824,8 +852,7 @@ class ClassesSiteSource:
         ``MAX_REPROBES_PER_RUN`` absent slugs whose last probe is older than
         seven days. Absent slugs are otherwise skipped. Only ``primary_like``
         entries are candidates, in every scope and for the re-probes too."""
-        refs = primary_like(refs)
-        live = [r for r in refs if not r.absent]
+        live = live_candidates(refs)
         if priority is None:
             first: list[SectionRef] = []
             rest = list(live)
@@ -842,7 +869,7 @@ class ClassesSiteSource:
             ranked.sort(key=lambda item: (item[0], item[1], item[2].url_path))
             first = [item[2] for item in ranked]
         selected = first + rest
-        due = [r for r in refs if self._due_for_reprobe(r)]
+        due = [r for r in primary_like(refs) if self._due_for_reprobe(r)]
         due.sort(key=lambda r: (r.probed_at or "", r.url_path))
         return selected + due[:MAX_REPROBES_PER_RUN]
 
@@ -890,13 +917,14 @@ class ClassesSiteSource:
             scope = "full"
             shard_label = ""
             priority_sha = ""
-            universe_ids: set[str] | None = {r.section_id for r in primary_like(refs) if r.section_id and not r.absent}
+            universe_ids: set[str] | None = {r.section_id for r in live_candidates(refs) if r.section_id}
         else:
             scope = "priority"
             shard_label = f"{shard_pair[0]}/{shard_pair[1]}" if shard_pair else ""
             priority_sha = priority.sha
             universe_ids = None
         selected = self._select(refs, priority, shard_pair if priority is not None else None)
+        _warn_unselectable_courses(refs, priority)
         if limit is not None:
             selected = selected[:limit]
             universe_ids = None
