@@ -30,7 +30,7 @@ flowchart LR
 2. Rows are validated against a pinned pyarrow schema (`scraper/schema.py`) and written as one Parquet file per run to the `data` branch: a full baseline once per UTC day, change-only deltas otherwise. Files are never rewritten.
 3. `scraper/rebuild.py` reconstructs the full panel (every section at every run) from baseline plus deltas and marks cells that were not observed, so they can be censored instead of read as zero flow. `analysis/backfill.py` builds the same panel from Berkeleytime's run-length history, with that recorder's outages censored.
 4. A daily monitor job (`monitor.yml`) computes the largest gap between snapshots in the last 24 hours and opens an issue if it exceeds 90 minutes or fewer than 40 runs landed.
-5. `analysis/flows.py` reconstructs waitlist flows (admits, joins, drops under FIFO assumptions), `analysis/cohort.py` and `analysis/survival.py` fit Kaplan-Meier curves and a Cox model with lifelines, `analysis/backtest.py` scores frozen models on held-out joiners with inverse-probability-of-censoring weights, `analysis/export.py` writes the precomputed JSON, and `analysis.yml` commits it every Sunday and redeploys the GitHub Pages site under `site/`.
+5. `analysis/flows.py` reconstructs waitlist flows (admits, joins, drops under FIFO assumptions), `analysis/cohort.py` and `analysis/survival.py` fit Kaplan-Meier curves and a Cox model with lifelines, `analysis/backtest.py` scores frozen models on held-out joiners with inverse-probability-of-censoring weights, `analysis/export.py` writes the precomputed JSON, and `analysis.yml` runs every Sunday, commits it when it changed and redeploys the GitHub Pages site under `site/`.
 
 ## Run it locally
 
@@ -63,7 +63,7 @@ The backtest scores five predictors at each held-out joiner's own horizon (the l
 
 *Fall 2026 as recorded by Berkeleytime, not this project's own snapshots*: Kaplan-Meier share still waiting, by days since joining, for hypothetical joiners in lower-division courses during Phase 1, by position bucket (`make backfill-analysis TERM=2268`, `reports/figures_2268_berkeleytime/hero.png`). Across all 6,016 sections a joiner at positions 1 to 5 cleared in a median 6.4 days (62% within 14 days); at 6 to 15 the median was 25.7 days (42% within 14 days); at 16 to 40, 25% cleared within 14 days. Each unit of log position multiplies the clearing rate by 0.55. The full report is `reports/report_2268_berkeleytime.md`; the backtests are under `reports/backtest_2268/`.
 
-![Simulated data: what the reconstruction recovers at 30-minute sampling](reports/figures_validation/reconstruction_validation.png)
+![Simulated data: what the reconstruction recovers at 30-minute sampling](site/figures/reconstruction_validation.png)
 
 *Simulated waitlists, not real data* (`python -m analysis.validation_figure`): left, cumulative admits in one section, true versus reconstructed from the sampled counts; right, true versus estimated hours to clear for every simulated student who cleared, under the central drop scenario.
 

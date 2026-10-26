@@ -293,6 +293,39 @@ def test_cli_catalog_and_titles_only(cohort: pd.DataFrame, tmp_path: Path, capsy
         main(["--titles-only", "--out", str(tmp_path / "empty"), "--catalog", str(catalog)])  # a plain error, not a traceback
     assert "no index.json or meta.json there" in capsys.readouterr().err
 
+
+def test_titles_only_leaves_a_titles_file_alone_when_only_generated_at_would_change(cohort: pd.DataFrame, tmp_path: Path) -> None:
+    """The weekly analysis.yml run refreshes titles.json with --titles-only: a catalog that
+    changed nothing the file says leaves both files byte for byte (no weekly commit of a new
+    timestamp); a catalog that did change it rewrites it with a new generated_at."""
+    catalog = _write_catalog(tmp_path)
+    out = tmp_path / "site_data"
+    export_site_tables(cohort, CAL, out, n_boot=5, catalog=catalog)
+    titles_path, meta_path = out / "titles.json", out / "meta.json"
+    stale = titles_path.read_text().replace(json.loads(titles_path.read_text())["generated_at"], "2026-10-24T00:20:28+00:00")
+    titles_path.write_text(stale)
+    meta = meta_path.read_bytes()
+    summary = export.export_titles_only(out, catalog)
+    assert (summary["titles_changed"], summary["meta_changed"], summary["courses"]) == (False, False, 2)
+    assert titles_path.read_text() == stale and meta_path.read_bytes() == meta
+    # an instructor fills in: the file follows the catalog
+    payload = json.loads(catalog.read_text())
+    next(e for e in payload["sections"] if e["course_key"] == "MATH 1")["instructors"] = "Zed Zhang, Amy Adams, Nora Ng"
+    catalog.write_text(json.dumps(payload))
+    summary = export.export_titles_only(out, catalog)
+    titles = json.loads(titles_path.read_text())
+    assert (summary["titles_changed"], summary["meta_changed"]) == (True, False)
+    assert titles["courses"]["MATH 1"]["instructors"] == ["Amy Adams", "Nora Ng", "Zed Zhang"]
+    assert titles["generated_at"] != "2026-10-24T00:20:28+00:00" and meta_path.read_bytes() == meta
+    # titles.json current but meta.json not naming it: only meta.json is written, and the summary says so
+    unnamed = {k: v for k, v in json.loads(meta).items() if k != "titles_file"}
+    meta_path.write_text(json.dumps(unnamed, indent=1, sort_keys=True))
+    current = titles_path.read_bytes()
+    summary = export.export_titles_only(out, catalog)
+    assert (summary["titles_changed"], summary["meta_changed"]) == (False, True)
+    assert titles_path.read_bytes() == current and json.loads(meta_path.read_text()) == {**unnamed, "titles_file": "titles.json"}
+
+
 def test_cli_carries_no_labels_from_another_terms_meta(cohort: pd.DataFrame, tmp_path: Path) -> None:
     """`make site-data` carries source labels from the meta.json already in site/data; when that
     file describes another term (Spring 2026 labels, a Fall 2026 cohort) nothing may be carried."""
