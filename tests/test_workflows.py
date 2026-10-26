@@ -8,6 +8,13 @@ import re
 from pathlib import Path
 
 WORKFLOWS = Path(__file__).resolve().parents[1] / ".github" / "workflows"
+MAKEFILE = Path(__file__).resolve().parents[1] / "Makefile"
+
+
+def _analysis_recipe() -> str:
+    lines = MAKEFILE.read_text(encoding="utf-8").splitlines()
+    i = lines.index("analysis:")
+    return lines[i + 1].strip()
 
 
 def _fetch_args() -> list[str]:
@@ -29,6 +36,13 @@ def test_scrape_workflow_passes_the_budget_shards_and_request_policy() -> None:
     ):
         assert flag in args, (flag, args)
         assert args[args.index(flag) + 1] == value, (flag, args)
+
+
+def test_make_analysis_censors_gaps_over_180_min_like_the_weekly_run() -> None:
+    recipe = _analysis_recipe()
+    assert "--max-interval-min $(MAX_INTERVAL_MIN)" in recipe, recipe
+    text = MAKEFILE.read_text(encoding="utf-8")
+    assert "MAX_INTERVAL_MIN ?= 180" in text
 
 
 def test_analysis_workflow_replaces_site_data_only_for_spring_2027() -> None:
