@@ -24,8 +24,8 @@ OUT_DIR = Path("site/figures")  # GitHub Pages serves site/; the README embeds t
 STYLE = {"figure.figsize": (9, 4), "axes.grid": True, "grid.alpha": 0.3, "axes.spines.top": False, "axes.spines.right": False, "font.size": 10}
 
 
-def make_figure(out_dir: Path, seed: int = 1) -> Path:
-    panel, true_flows, students = simulate(SimConfig(seed=seed))
+def make_figure(out_dir: Path, seed: int = 1, sim_config: SimConfig | None = None) -> Path:
+    panel, true_flows, students = simulate(sim_config if sim_config is not None else SimConfig(seed=seed))
     flows = interval_flows(panel)
     # left: cumulative admits, true vs reconstructed, for the busiest section
     busiest = true_flows.groupby("section_id")["admits"].sum().idxmax()
