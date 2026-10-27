@@ -50,6 +50,7 @@
 <ul>
   <li>Reserved seats break strict queue order: a section can hold seats for a category you are not in, and its waitlist can stand still while seats are open.</li>
   <li>Time conflicts, unit caps and full discussion or lab sections can stop an enrollment that the queue would otherwise have allowed; the counts do not see them.</li>
+  <li>When you would be the only student left on a waitlist, a seat that opens is not counted as yours: the counts show an empty waitlist and another student enrolling, so the estimate can run low for short waitlists.</li>
   <li>Departments process some waitlists by hand and the registrar runs the automatic process in batches, so time to clear includes processing delay.</li>
   <li>Estimates describe one past cycle. Policies, capacities and demand change between terms; the Spring 2026 numbers stand in for Spring 2027 until this project's own data exist.</li>
   <li>Small courses give noisy numbers; the sample size and the interval are printed with every estimate for that reason.</li>
@@ -70,7 +71,7 @@
     const r = await BWO.load([]);
     if (r.state !== "ready") return;
     const m = r.meta;
-    $("data-status").innerHTML = `Showing: <strong>${esc(m.term_name)}</strong>, ${BWO.isBerkeleytime(m) ? "from Berkeleytime's public history" : "this project's own snapshots"}; ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners, ${esc(num(m.events))} of whom got in. Horizons on the pages count down to ${esc(m.forecast_term_name || m.term_name)}'s dates.`;
+    $("data-status").innerHTML = `Showing: <strong>${esc(m.term_name)}</strong>, ${BWO.isBerkeleytime(m) ? "from Berkeleytime's public history" : "this project's own snapshots"}; ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners, ${esc(num(m.events))} of whom got in. These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the section count says more than theirs about how much data there is. Horizons on the pages count down to ${esc(m.forecast_term_name || m.term_name)}'s dates.`;
     BWO.liveStatus($("data-status"), $("collection"));
     BWO.setStamp(m, BWO.today());
   }
