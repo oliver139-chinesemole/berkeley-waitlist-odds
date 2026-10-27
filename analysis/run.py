@@ -12,6 +12,7 @@ import json
 import logging
 import sys
 from dataclasses import dataclass, field
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -64,6 +65,17 @@ def _df_to_md(frame: pd.DataFrame, max_rows: int = 40) -> str:
     if len(frame) > max_rows:
         lines.append(f"| ... {len(frame) - max_rows} more rows | " + " | ".join("" for _ in cols[1:]) + " |")
     return "\n".join(lines)
+
+
+def spans_phase1_end(flows: pd.DataFrame, calendar: TermCalendar) -> bool:
+    """Whether the observations (the flows' interval ends, i.e. the panel's
+    observation times) lie on both sides of the end of Phase 1: 00:00 UTC after
+    ``calendar.phase1_end``, the calendar's UTC-date convention."""
+    if len(flows) == 0:
+        return False
+    d = calendar.phase1_end + timedelta(days=1)
+    boundary = pd.Timestamp(datetime(d.year, d.month, d.day, tzinfo=timezone.utc))
+    return bool(pd.to_datetime(flows["t0"], utc=True).min() < boundary <= pd.to_datetime(flows["t1"], utc=True).max())
 
 
 def _empty_oos() -> dict:
@@ -141,6 +153,15 @@ def run_analysis(
 
     cox_summary = ph = cox_strat = None
     if enough:
+        if spans_phase1_end(flows, calendar):
+            # Within a regime the Cox fit is calibrated; across the Phase 1 to Phase 2 shift it
+            # predicted 1 to 25% against observed 52 to 76% (docs/dev/BACKFILL_BACKTEST.md B3).
+            logger.warning(
+                "Cox fit crosses a regime boundary: the observations span the end of Phase 1 (%s), and the model is "
+                "calibrated within a regime but not across the Phase 1 to Phase 2 shift; the fit is report-only "
+                "(the site serves Kaplan-Meier curves)",
+                calendar.phase1_end.isoformat(),
+            )
         try:
             first, ph, refit = fit_cox_with_ph_check(cohort, max_rows=cox_max_rows)
             if first.subsampled:

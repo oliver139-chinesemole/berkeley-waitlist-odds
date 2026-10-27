@@ -1,8 +1,10 @@
 """End-to-end test of analysis.run on simulated data, plus the site exporter's pooling rule."""
 from __future__ import annotations
 
+import dataclasses
 import json
-from datetime import timedelta
+import logging
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -10,7 +12,7 @@ import pytest
 
 from analysis.calendar import TermCalendar
 from analysis.export import course_tables, export_site_tables
-from analysis.run import run_analysis
+from analysis.run import run_analysis, spans_phase1_end
 from analysis.synthetic import SimConfig, simulate
 from tests.test_survival import synthetic_cohort
 
@@ -159,3 +161,43 @@ def test_run_too_small_writes_notes(tmp_path: Path) -> None:
     few = panel[first_days & panel["section_id"].isin(sorted(panel["section_id"].unique())[:2])]
     res = run_analysis(few, identity, cal, tmp_path, join_every_min=1440)
     assert any("too small" in n for n in res.notes) and res.cox_summary is None and (res.out_dir / "report.md").exists()
+
+
+def _regime_warnings(caplog: pytest.LogCaptureFixture) -> list[logging.LogRecord]:
+    return [r for r in caplog.records if r.name == "analysis.run" and r.levelno == logging.WARNING and "regime boundary" in r.getMessage()]
+
+
+def test_spans_phase1_end() -> None:
+    """Observations on both sides of 00:00 UTC after ``phase1_end`` (the calendar's UTC-date convention) span it."""
+    _, _, cal = sim_inputs()
+    d = cal.phase1_end + timedelta(days=1)
+    boundary = datetime(d.year, d.month, d.day, tzinfo=timezone.utc)
+
+    def fl(h0: float, h1: float) -> pd.DataFrame:
+        return pd.DataFrame({"t0": [boundary + timedelta(hours=h0)], "t1": [boundary + timedelta(hours=h1)]})
+
+    assert spans_phase1_end(fl(-1, 1), cal)
+    assert spans_phase1_end(fl(-1, 0), cal)  # the last observation falls on the first day after Phase 1
+    assert not spans_phase1_end(fl(-2, -1), cal)  # all of it in Phase 1
+    assert not spans_phase1_end(fl(0, 1), cal)  # all of it after (the Fall 2026 own data)
+    assert not spans_phase1_end(fl(0, 1).iloc[0:0], cal)
+
+
+def test_cox_fit_across_phase1_end_logs_one_warning(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    """The Cox model is calibrated within a regime and wrong across the Phase 1 to Phase 2 shift:
+    a fit on observations that span the end of Phase 1 says so once, as a WARNING; no model change."""
+    panel, identity, cal = sim_inputs()
+    few = panel[panel["section_id"].isin(sorted(panel["section_id"].unique())[:2])]
+    with caplog.at_level(logging.WARNING, logger="analysis.run"):
+        res = run_analysis(few, identity, cal, tmp_path / "spans", join_every_min=1440)
+    assert res.cox_summary is not None  # the fit ran
+    hits = _regime_warnings(caplog)
+    assert len(hits) == 1
+    assert cal.phase1_end.isoformat() in hits[0].getMessage() and "report-only" in hits[0].getMessage()
+    # the same panel under a calendar whose Phase 1 ended before the data began: no boundary inside, no warning
+    caplog.clear()
+    day0 = pd.Timestamp(panel["run_started_at"].min()).date()
+    after = dataclasses.replace(cal, phase1_start=day0 - timedelta(days=10), phase1_end=day0 - timedelta(days=1))
+    with caplog.at_level(logging.WARNING, logger="analysis.run"):
+        res = run_analysis(few, identity, after, tmp_path / "after", join_every_min=1440)
+    assert res.cox_summary is not None and _regime_warnings(caplog) == []
