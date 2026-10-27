@@ -82486,6 +82486,21 @@
 "url_path": "/content/2027-spring-nuceng-c226-001-lec-001"
 },
 {
+"catalog_number": "C226",
+"class_number": "101",
+"component": "DIS",
+"course_key": "NUCENG C226",
+"instructors": "Tarek I Zohdi",
+"last_status": null,
+"node_id": 543135,
+"probed_at": null,
+"section_id": "",
+"section_number": "101",
+"subject": "NUCENG",
+"title": "Modeling and Simulation of Advanced Manufacturing Processes",
+"url_path": "/content/2027-spring-nuceng-c226-101-dis-101"
+},
+{
 "catalog_number": "C235",
 "class_number": "001",
 "component": "LEC",
@@ -114394,6 +114409,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-27T15:53:54.408198+00:00",
+"updated_at": "2026-10-27T16:55:35.452402+00:00",
 "version": 3
 }
