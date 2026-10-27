@@ -63,8 +63,22 @@ def test_run_with_no_scored_rows_prints_the_report_note_not_a_crash(tmp_path: Pa
 
 
 def test_missing_reports_directory_fails_cleanly(tmp_path: Path, capsys) -> None:
+    # a --reports path that does not exist at all (typo, wrong term, report never ran):
+    # main() must print a clean message and return a non-zero code, not let
+    # Path.iterdir() raise an unhandled FileNotFoundError with a traceback.
+    missing = tmp_path / "backtest_9999"
+    assert not missing.exists()
+
+    assert main(["--reports", str(missing)]) == 2
+    out = capsys.readouterr().out
+    assert f"--reports {missing}: no such directory" in out
+
+
+def test_empty_reports_directory_with_no_runs_fails_cleanly(tmp_path: Path, capsys) -> None:
+    # distinct from the above: the directory exists (e.g. the term's report dir was
+    # created) but no run subdirectories landed in it.
     empty_reports = tmp_path / "backtest_9999"
-    empty_reports.mkdir()  # exists, but no run subdirectories: nothing landed
+    empty_reports.mkdir()
 
     assert main(["--reports", str(empty_reports)]) == 1
     out = capsys.readouterr().out
