@@ -29056,6 +29056,21 @@
 "url_path": "/content/2027-spring-cyplan-290-00b-sem-00b"
 },
 {
+"catalog_number": "290",
+"class_number": "00E",
+"component": "SEM",
+"course_key": "CYPLAN 290",
+"instructors": "Jean C Doig Godier, Megan Lynn Wier",
+"last_status": null,
+"node_id": 543127,
+"probed_at": null,
+"section_id": "",
+"section_number": "00E",
+"subject": "CYPLAN",
+"title": "Topics in City and Metropolitan Planning",
+"url_path": "/content/2027-spring-cyplan-290-00e-sem-00e"
+},
+{
 "catalog_number": "291",
 "class_number": "001",
 "component": "LEC",
@@ -35744,6 +35759,21 @@
 "subject": "EDUC",
 "title": "Leading Systems In and Through Crisis",
 "url_path": "/content/2027-spring-educ-297a-001-lec-001"
+},
+{
+"catalog_number": "298C",
+"class_number": "001",
+"component": "LEC",
+"course_key": "EDUC 298C",
+"instructors": "Elliot Turiel",
+"last_status": null,
+"node_id": 543128,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "EDUC",
+"title": "Group Studies, Seminars, or Group Research--DCEMST",
+"url_path": "/content/2027-spring-educ-298c-001-lec-001"
 },
 {
 "catalog_number": "298E",
@@ -114334,6 +114364,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-27T14:22:00.050893+00:00",
+"updated_at": "2026-10-27T14:54:01.861791+00:00",
 "version": 3
 }
