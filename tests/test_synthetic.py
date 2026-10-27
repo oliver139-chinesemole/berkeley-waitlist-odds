@@ -1,6 +1,8 @@
 """Conservation and determinism checks on the simulator in analysis.synthetic."""
 from __future__ import annotations
 
+import warnings
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -12,6 +14,7 @@ from analysis.synthetic import (
     TRUE_FLOW_COLUMNS,
     TRUE_FLOWS_COLUMNS,
     SimConfig,
+    _stamps,
     simulate,
 )
 
@@ -162,3 +165,26 @@ def test_full_observation_and_gaps() -> None:
 def test_bad_config() -> None:
     with pytest.raises(ValueError):
         simulate(SimConfig(seed=1, n_sections=0))
+
+
+def test_stamps_never_round_uninitialised_memory() -> None:
+    """NaN minutes (a student who never cleared or never dropped) become NaT without going
+    through pandas' float-to-timedelta cast. pandas 2.3's ``cast_from_unit_vectorized``
+    fills the fractional part only for non-NaN entries of an ``np.empty`` array and then
+    runs ``np.round(frac, 10)``, which multiplies whatever the freed memory held by 1e10:
+    the intermittent "overflow encountered in multiply" of the full suite. Freed memory
+    poisoned with huge floats makes it happen every time."""
+    minutes = np.full(2512, np.nan)
+    minutes[::3] = np.arange(0, 2512, 3) * 1.25
+    for _ in range(20):
+        poison = [np.full(len(minutes), 1e300) for _ in range(8)]
+        del poison
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", RuntimeWarning)
+            stamps = _stamps(minutes)
+    known = ~np.isnan(minutes)
+    assert str(stamps.dtype) == "datetime64[ns, UTC]" and len(stamps) == len(minutes)
+    assert stamps.isna().to_numpy().tolist() == (~known).tolist()
+    expected = BASE_TIME + pd.to_timedelta(minutes[known], unit="m")  # no NaN here, so pandas fills every entry
+    assert (stamps[known].to_numpy() == expected.to_numpy()).all()
+    assert _stamps(np.array([], dtype="float64")).empty
