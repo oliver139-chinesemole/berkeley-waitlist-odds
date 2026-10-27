@@ -998,6 +998,33 @@ def test_unknown_department_names_the_nearest(course_site: Path) -> None:
     assert "No such department" not in summary and all(f"dept.html?subject={s}" in summary for s in ("ART", "COMPSCI", "MATH", "STAT"))
 
 
+# Fifteen real subject codes with distinct joins, one course each: the "Nearest:" links
+# of an unknown subject depend only on the subjects and, for a prefix match, their joins.
+NEAR_SUBJECTS = ("AEROENG", "AGRS", "ARESEC", "ARMENI", "ASTRON", "CHEM", "COMPSCI", "ECON", "GEOG", "HISTORY", "MATH", "PHYSICS", "POLSCI", "PSYCH", "STAT")
+
+
+def test_nearest_subjects_for_misspelt_subjects_are_pinned() -> None:
+    """The three subjects the department page offers for a misspelt one, pinned from the code as it stood.
+
+    Prefix and alias matches come first, then plain Levenshtein distance over every subject,
+    ties alphabetical. The matcher's Damerau distance, with its swap step or its length cap,
+    would reorder these: a swapped pair (AERONEG) would put ARMENI third, and the cap
+    (a length difference over 2 scores 99) would drop COMPSCI and POLSCI for the long spellings.
+    """
+    index = {"courses": [{"key": f"{s} 1", "subject": s, "number": "1", "joins": (i * 7) % len(NEAR_SUBJECTS) + 1, "buckets": {}} for i, s in enumerate(NEAR_SUBJECTS)]}
+    asked = {
+        "AERONEG": ["AEROENG", "ARESEC", "ASTRON"],  # two letters swapped
+        "aeroeg": ["AEROENG", "GEOG", "AGRS"],  # a letter dropped
+        "compscience": ["COMPSCI", "POLSCI", "ARESEC"],  # longer than any code by more than 2
+        "poli science": ["POLSCI", "COMPSCI", "PHYSICS"],
+        "comp": ["COMPSCI", "CHEM", "ECON"],  # a prefix comes first
+        "phsyics": ["PHYSICS", "PSYCH", "POLSCI"],
+    }
+    out = render(Path("/nonexistent"), expression=f"(function(){{ const i = {json.dumps(index)}; return {json.dumps(list(asked))}.map((t) => BWO.nearestSubjects(i, t, 3)); }})()")
+    assert "eval_error" not in out, out.get("eval_error")
+    assert dict(zip(asked, out["eval"])) == asked
+
+
 def test_department_page_shell_and_states(course_site: Path, tmp_path: Path) -> None:
     html = (SITE / "dept.html").read_text()
     assert '<meta property="og:title"' in html and '<meta property="og:description"' in html

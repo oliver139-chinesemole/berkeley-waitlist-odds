@@ -466,17 +466,20 @@ const BWO = (function () {
     }
     return index.__vocab;
   }
-  // Damerau-Levenshtein (optimal string alignment); only ever asked for distances up to 2.
-  function damerau(a, b) {
+  // The site's one edit distance. As the matcher calls it: Damerau-Levenshtein (optimal
+  // string alignment, two neighbouring letters swapped is one edit), only ever asked for
+  // distances up to 2, so lengths more than `cap` apart score 99 unread. BWO.nearestSubjects
+  // ranks every subject by plain Levenshtein (swaps false, no cap), as it always has.
+  function damerau(a, b, cap = 2, swaps = true) {
     const m = a.length, n = b.length;
-    if (Math.abs(m - n) > 2) return 99;
+    if (Math.abs(m - n) > cap) return 99;
     const d = [];
     for (let i = 0; i <= m; i++) d[i] = [i];
     for (let j = 0; j <= n; j++) d[0][j] = j;
     for (let i = 1; i <= m; i++) {
       for (let j = 1; j <= n; j++) {
         d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-        if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+        if (swaps && i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
       }
     }
     return d[m][n];
@@ -955,7 +958,7 @@ const BWO = (function () {
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
-    liveStatus, liveStatusText, isForecastTerm,
+    liveStatus, liveStatusText, isForecastTerm, damerau,
   };
 })();
 if (typeof window !== "undefined") window.BWO = BWO;
@@ -973,22 +976,15 @@ BWO.resolveSubject = function (index, text) {
   for (const s of [t, BWO.SUBJECT_ALIASES[t], squashed, BWO.SUBJECT_ALIASES[squashed]]) if (s && subjects.has(s)) return s;
   return null;
 };
-// Up to n subjects near an unknown one: prefix and alias matches from the course search, then by edit distance.
+// Up to n subjects near an unknown one: prefix and alias matches from the course search,
+// then by plain Levenshtein distance (BWO.damerau without swaps or its length cap).
 BWO.nearestSubjects = function (index, text, n) {
   const want = String(text || "").toUpperCase().replace(/[^A-Z0-9&]/g, "");
   const out = [];
   for (const r of BWO.searchCourses(index, text, 50)) if (!out.includes(r.subject)) out.push(r.subject);
-  const dist = (a, b) => {
-    let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
-    for (let i = 1; i <= a.length; i++) {
-      const cur = [i];
-      for (let j = 1; j <= b.length; j++) cur.push(Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)));
-      prev = cur;
-    }
-    return prev[b.length];
-  };
+  const dist = (s) => BWO.damerau(want, s, Infinity, false);
   const rest = Array.from(new Set(index.courses.map((r) => r.subject))).filter((s) => !out.includes(s));
-  rest.sort((a, b) => dist(want, a) - dist(want, b) || a.localeCompare(b));
+  rest.sort((a, b) => dist(a) - dist(b) || a.localeCompare(b));
   return out.concat(rest).slice(0, n || 3);
 };
 // Every course of a subject, most-joined first, then by number.
