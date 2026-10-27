@@ -108151,6 +108151,21 @@
 "url_path": "/content/2027-spring-stat-155-001-lec-001"
 },
 {
+"catalog_number": "157",
+"class_number": "001",
+"component": "SEM",
+"course_key": "STAT 157",
+"instructors": "Jingfeng Wu",
+"last_status": null,
+"node_id": 543137,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "STAT",
+"title": "Seminar on Topics in Probability and Statistics",
+"url_path": "/content/2027-spring-stat-157-001-sem-001"
+},
+{
 "catalog_number": "158",
 "class_number": "001",
 "component": "LEC",
@@ -114424,6 +114439,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-27T17:22:04.245553+00:00",
+"updated_at": "2026-10-27T18:23:26.559935+00:00",
 "version": 3
 }
