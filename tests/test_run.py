@@ -10,7 +10,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from analysis.calendar import TermCalendar
+from analysis.calendar import TermCalendar, last_auto_cut
 from analysis.export import course_tables, export_site_tables
 from analysis.run import run_analysis, spans_phase1_end
 from analysis.synthetic import SimConfig, simulate
@@ -201,3 +201,51 @@ def test_cox_fit_across_phase1_end_logs_one_warning(tmp_path: Path, caplog: pyte
     with caplog.at_level(logging.WARNING, logger="analysis.run"):
         res = run_analysis(few, identity, after, tmp_path / "after", join_every_min=1440)
     assert res.cox_summary is not None and _regime_warnings(caplog) == []
+
+
+def test_cut_at_last_auto_is_off_by_default_and_cuts_when_asked(tmp_path: Path) -> None:
+    """``cut_at_last_auto`` (CLI ``--cut-at-last-auto``) is off by default. On a simulated panel whose
+    last automatic run falls inside the data, turning it on places no joiner after the cut and ends
+    every row by it; meta.json records the cut. With the run after the data ends the cohort files
+    are byte-identical to a run without the option."""
+    panel, identity, cal = sim_inputs()
+    few = panel[panel["section_id"].isin(sorted(panel["section_id"].unique())[:4])]
+    day0 = pd.Timestamp(panel["run_started_at"].min()).date()
+    inside = dataclasses.replace(cal, last_auto_waitlist=day0 + timedelta(days=10))
+    off = run_analysis(few, identity, inside, tmp_path / "off", site_dir=tmp_path / "off_site", join_every_min=240)
+    on = run_analysis(few, identity, inside, tmp_path / "on", site_dir=tmp_path / "on_site", join_every_min=240, cut_at_last_auto="pacific")
+    cut = last_auto_cut(inside, "pacific")
+    c_off = pd.read_parquet(off.out_dir / "cohort_central.parquet")
+    c_on = pd.read_parquet(on.out_dir / "cohort_central.parquet")
+    assert (pd.to_datetime(c_off["join_time"], utc=True) >= cut).any() and len(c_on) < len(c_off)  # the panel spans the cut
+    join = pd.to_datetime(c_on["join_time"], utc=True)
+    assert (join < cut).all() and (join + pd.to_timedelta(c_on["duration_days"], unit="D") <= cut + timedelta(seconds=1)).all()
+    assert json.loads(off.site_files[1].read_text()).get("cohort_cut") is None
+    assert json.loads(on.site_files[1].read_text())["cohort_cut"] == {"at": cut.isoformat(), "instant": "pacific", "rule": "last_auto_waitlist"}
+    assert any("cut at" in n for n in on.notes) and not any("cut at" in n for n in off.notes)
+    assert on.cohort_rows["central"] == len(c_on)
+    # the simulated term's own last run (day 34) is after the data (21 days): the option changes nothing
+    a = run_analysis(few, identity, cal, tmp_path / "a", join_every_min=240)
+    b = run_analysis(few, identity, cal, tmp_path / "b", join_every_min=240, cut_at_last_auto="utc")
+    for s in ("optimistic", "central", "pessimistic"):
+        assert (a.out_dir / f"cohort_{s}.parquet").read_bytes() == (b.out_dir / f"cohort_{s}.parquet").read_bytes()
+    with pytest.raises(ValueError):
+        run_analysis(few, identity, cal, tmp_path / "bad", cut_at_last_auto="eastern")
+
+
+def test_cli_cut_flag_defaults_off_and_takes_an_instant(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """``--cut-at-last-auto`` alone means Pacific; ``--cut-at-last-auto utc`` the UTC instant; absent, off."""
+    import analysis.run as run_mod
+
+    seen: list = []
+    monkeypatch.setattr(run_mod, "load_panel", lambda root, term: pd.DataFrame())
+    monkeypatch.setattr(run_mod, "section_identity", lambda root, term: pd.DataFrame())
+
+    class _Result:
+        out_dir, flows_summary, cohort_rows, notes, figures = tmp_path, {}, {}, [], []
+
+    monkeypatch.setattr(run_mod, "run_analysis", lambda *a, **k: seen.append(k.get("cut_at_last_auto")) or _Result())
+    base = ["--data-root", str(tmp_path), "--term-id", "2272", "--no-site", "--data-log", str(tmp_path / "none.md")]
+    for extra in ([], ["--cut-at-last-auto"], ["--cut-at-last-auto", "utc"]):
+        assert run_mod.main(base + extra) == 0
+    assert seen == [None, "pacific", "utc"]

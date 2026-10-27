@@ -206,6 +206,27 @@ def walk_positions(
     return duration, event
 
 
+def cut_flows(flows: pd.DataFrame, cut_at: pd.Timestamp) -> pd.DataFrame:
+    """The flows as they were known at ``cut_at``: intervals starting at or after it are
+    dropped, and an interval that straddles it ends at it with its admits and waitlist drops
+    removed (when inside the interval they happened is unknown, so, as in
+    ``analysis.backtest.censor_at``, a clearing counts only if its interval ends by the cut).
+    A copy; the caller's frame is not touched."""
+    cut = pd.Timestamp(cut_at)
+    cut = cut.tz_localize("UTC") if cut.tzinfo is None else cut.tz_convert("UTC")
+    t0 = pd.to_datetime(flows["t0"], utc=True)
+    t1 = pd.to_datetime(flows["t1"], utc=True)
+    keep = (t0 < cut).to_numpy()
+    out = flows[keep].copy()
+    straddle = (t1[keep] > cut).to_numpy()
+    if straddle.any():
+        for col in ("admits", "wl_drops"):
+            if col in out:
+                out.loc[straddle, col] = 0
+        out.loc[straddle, "t1"] = cut if getattr(out["t1"].dt, "tz", None) is not None else cut.tz_localize(None)
+    return out
+
+
 def build_cohort(
     flows: pd.DataFrame,
     identity: pd.DataFrame,
@@ -215,10 +236,17 @@ def build_cohort(
     positions: Sequence[int] = DEFAULT_POSITIONS,
     join_every_min: float = 240,
     min_sections_per_group: int = 30,
+    cut_at: pd.Timestamp | None = None,
 ) -> pd.DataFrame:
-    """One row per (section, sampled join time, position); see the module docstring."""
+    """One row per (section, sampled join time, position); see the module docstring.
+
+    ``cut_at`` (default None: no cut) ends every joiner's follow-up at that instant and
+    places no joiner at or after it (``cut_flows``); ``analysis.calendar.last_auto_cut``
+    gives the end of the term's last automatic waitlist run day (docs/DESIGN_A5.md section 9)."""
     if scenario not in SCENARIOS:
         raise ValueError(f"unknown scenario {scenario!r}; expected one of {SCENARIOS}")
+    if cut_at is not None:
+        flows = cut_flows(flows, cut_at)
     ident = identity.set_index("section_id") if "section_id" in identity.columns else identity
     pos_arr = np.asarray(sorted(int(p) for p in positions), dtype=np.int64)
     pieces: list[pd.DataFrame] = []

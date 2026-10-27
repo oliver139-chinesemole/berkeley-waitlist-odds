@@ -18,7 +18,7 @@ from pathlib import Path
 import pandas as pd
 
 from analysis.backtest import run_backtest
-from analysis.calendar import TermCalendar, calendar_for
+from analysis.calendar import CUT_INSTANTS, TermCalendar, calendar_for, last_auto_cut
 from analysis.cohort import DEFAULT_POSITIONS, build_cohort
 from analysis.export import DEFAULT_LEVEL, LEVELS, export_site_tables
 from analysis.figures import plot_calibration, plot_km
@@ -99,6 +99,7 @@ def run_analysis(
     cox_max_rows: int | None = COX_MAX_ROWS,
     site_level: str = DEFAULT_LEVEL,
     forecast_calendar: TermCalendar | None = None,
+    cut_at_last_auto: str | None = None,
 ) -> AnalysisResult:
     """Everything from a panel (or precomputed ``flows``) to the report.
 
@@ -106,7 +107,12 @@ def run_analysis(
     censoring); ``site_meta`` is merged into ``site/data/meta.json`` and should
     name the ``data_source``; ``forecast_calendar`` is the term whose dates the
     site counts down to when a finished cycle stands in for the coming one.
+    ``cut_at_last_auto`` (default None: off; ``"pacific"`` or ``"utc"``) cuts the
+    cohorts at the end of the term's last automatic waitlist run day
+    (``analysis.calendar.last_auto_cut``; docs/DESIGN_A5.md section 9): no joiner
+    after it, follow-up censored there. Nothing passes it today.
     """
+    cut_at = last_auto_cut(calendar, cut_at_last_auto) if cut_at_last_auto is not None else None
     out_dir = Path(out_dir) / calendar.term_id
     out_dir.mkdir(parents=True, exist_ok=True)
     fig_dir = out_dir / "figures"
@@ -123,7 +129,9 @@ def run_analysis(
     fsum = flows_summary(flows)
     logger.info("flows: %s", fsum)
 
-    cohorts = {s: build_cohort(flows, identity, calendar, scenario=s, positions=positions, join_every_min=join_every_min) for s in SCENARIOS}
+    if cut_at is not None:
+        notes.append(f"cohort cut at {cut_at.isoformat()} (end of the last automatic waitlist run's day, {cut_at_last_auto} midnight): no joiner placed after it, follow-up censored there")
+    cohorts = {s: build_cohort(flows, identity, calendar, scenario=s, positions=positions, join_every_min=join_every_min, cut_at=cut_at) for s in SCENARIOS}
     for s, c in cohorts.items():
         c.to_parquet(out_dir / f"cohort_{s}.parquet", index=False)
     cohort = cohorts["central"]
@@ -208,6 +216,8 @@ def run_analysis(
         # meta["cohort_rows"] stays the integer the exporter writes (the page prints it);
         # the per-scenario counts go under their own key.
         meta = {"data_source": OWN_DATA_SOURCE, "flows": fsum, "cohort_rows_by_scenario": cohort_rows}
+        if cut_at is not None:
+            meta["cohort_cut"] = {"at": cut_at.isoformat(), "instant": cut_at_last_auto, "rule": "last_auto_waitlist"}
         if site_meta:
             meta.update(site_meta)
         site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, forecast_calendar=forecast_calendar, flows=flows, estimate_level=site_level)
@@ -301,6 +311,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--cox-max-rows", type=int, default=COX_MAX_ROWS or 0, help="seeded row cap for the Cox fits (0 = no cap, the default)")
     p.add_argument("--estimate-level", choices=LEVELS, default=DEFAULT_LEVEL, help="what site/data serves per course and bucket: the department curve (default) or the course's own")
     p.add_argument("--forecast-term", default=None, help="SIS term id whose dates the site counts down to (default: the analysed term); 2272 when Fall 2026 stands in for Spring 2027")
+    p.add_argument(
+        "--cut-at-last-auto",
+        nargs="?",
+        const="pacific",
+        default=None,
+        choices=CUT_INSTANTS,
+        help="cut the cohorts at the end of the term's last automatic waitlist run day: no joiner after it, follow-up censored there "
+        "(off by default; alone means Pacific midnight, 'utc' the 00:00 UTC instant; docs/DESIGN_A5.md section 9, a decision pending)",
+    )
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     flows = None
@@ -339,6 +358,7 @@ def main(argv: list[str] | None = None) -> int:
         cox_max_rows=args.cox_max_rows or None,
         site_level=args.estimate_level,
         forecast_calendar=calendar_for(args.forecast_term) if args.forecast_term else None,
+        cut_at_last_auto=args.cut_at_last_auto,
     )
     print(json.dumps({"out": str(result.out_dir), "flows": result.flows_summary, "cohort_rows": result.cohort_rows, "notes": result.notes, "figures": [str(f) for f in result.figures]}, indent=1))
     return 0

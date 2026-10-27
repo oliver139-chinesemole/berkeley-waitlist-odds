@@ -8,7 +8,7 @@ import pandas as pd
 import pytest
 
 from analysis.calendar import SPRING_2027
-from analysis.cohort import COHORT_COLUMNS, build_cohort, censoring_horizon, course_level, joinable, position_bucket, thin_join_times
+from analysis.cohort import COHORT_COLUMNS, build_cohort, censoring_horizon, course_level, cut_flows, joinable, position_bucket, thin_join_times
 
 T0 = datetime(2026, 10, 27, 12, 0, tzinfo=timezone.utc)  # phase 1 of Spring 2027
 
@@ -144,3 +144,40 @@ def test_follow_up_days_is_the_window_a_joiner_could_be_watched() -> None:
     assert at0.at[2, "event"] == 0 and at0.at[2, "duration_min"] == 60.0 and at0.at[2, "follow_up_days"] == pytest.approx(60 / 1440)
     later = cohort[cohort["join_time"] == pd.Timestamp(T0 + timedelta(minutes=90))]
     assert np.allclose(later["follow_up_days"].to_numpy(), 30 / 1440)  # after the gap: to the end of the data
+
+
+def test_cut_at_censors_at_the_instant_and_places_no_later_joiners() -> None:
+    """With ``cut_at`` (off by default) follow-up ends at the cut: a clearing whose interval ends
+    after it is not a clearing (the joiner is censored at the cut), no joiner is placed at or
+    after it, and ``follow_up_days`` stops there. Without it nothing changes."""
+    rows = [(0, 0, 3, False), (1, 0, 3, False), (1, 0, 2, False), (1, 0, 1, False), (0, 0, 3, False)]
+    f = flows("1", rows)  # intervals [0,30], [30,60], [60,90], [90,120], [120,150] minutes after T0
+    before = f.copy(deep=True)
+    ident = identity(("1", "COMPSCI 61A", "61A", "LEC"))
+    kw = dict(positions=(1, 2, 3), join_every_min=0, min_sections_per_group=1)
+    cut = pd.Timestamp(T0 + timedelta(minutes=75))  # inside the third interval
+    uncut = build_cohort(f, ident, SPRING_2027, **kw)
+    cohort = build_cohort(f, ident, SPRING_2027, cut_at=cut, **kw)
+    pd.testing.assert_frame_equal(f, before)  # the caller's flows are not touched
+    # the panel spans the cut: uncut, joiners are placed after it and clear after it
+    assert (uncut["join_time"] >= cut).any()
+    at0_u = uncut[uncut["join_time"] == pd.Timestamp(T0)].set_index("position")
+    assert at0_u["event"].tolist() == [1, 1, 1] and at0_u["duration_min"].tolist() == [60.0, 90.0, 120.0]
+    # cut: no joiner at or after the cut; every row ends by the cut; clearings after it are censored at it
+    assert (cohort["join_time"] < cut).all() and sorted(cohort["join_time"].unique()) == [pd.Timestamp(T0 + timedelta(minutes=m)) for m in (0, 30, 60)]
+    ends = cohort["join_time"] + pd.to_timedelta(cohort["duration_min"], unit="min")
+    assert (ends <= cut).all()
+    assert (cohort["follow_up_days"] <= (cut - cohort["join_time"]).dt.total_seconds() / 86400 + 1e-12).all()
+    at0 = cohort[cohort["join_time"] == pd.Timestamp(T0)].set_index("position")
+    assert at0.at[1, "event"] == 1 and at0.at[1, "duration_min"] == 60.0  # cleared before the cut: unchanged
+    assert at0.at[2, "event"] == 0 and at0.at[2, "duration_min"] == 75.0  # its clearing interval ends at 90, after the cut
+    assert at0.at[3, "event"] == 0 and at0.at[3, "duration_min"] == 75.0
+    assert np.allclose(at0["follow_up_days"].to_numpy(), 75 / 1440)
+    at60 = cohort[cohort["join_time"] == pd.Timestamp(T0 + timedelta(minutes=60))]
+    assert (at60["event"] == 0).all() and (at60["duration_min"] == 15.0).all()
+    # off (the default) and a cut after the data ends: identical to the uncut cohort
+    pd.testing.assert_frame_equal(build_cohort(f, ident, SPRING_2027, cut_at=None, **kw), uncut)
+    pd.testing.assert_frame_equal(build_cohort(f, ident, SPRING_2027, cut_at=pd.Timestamp(T0 + timedelta(minutes=150)), **kw), uncut)
+    # a cut on an interval boundary keeps that interval whole and drops the rest
+    edge = cut_flows(f, pd.Timestamp(T0 + timedelta(minutes=90)))
+    assert len(edge) == 3 and edge["admits"].tolist() == [0, 1, 1] and edge["t1"].max() == pd.Timestamp(T0 + timedelta(minutes=90))
