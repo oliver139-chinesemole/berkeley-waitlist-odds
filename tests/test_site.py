@@ -702,10 +702,15 @@ REGIMES = {
     "own_data": {"term_id": "2272", "term_name": "Spring 2027", "data_source": "own_snapshots"},
     "berkeleytime_without_fields": {"term_id": "2268", "term_name": "Fall 2026", "data_source": "berkeleytime_history"},
 }
+# The same two metas next to a backtest of this project's own snapshots: the Accuracy status
+# line labels the runs Berkeleytime's when either file is (BWO.isBerkeleytime(bt) || ...(meta)).
+OWN_BACKTEST = {"today_own_backtest": "today", "own_data_own_backtest": "own_data"}
+REGIMES.update({name: REGIMES[base] for name, base in OWN_BACKTEST.items()})
 
 
 def regime_site(site_root: Path, tmp_path: Path, regime: str) -> Path:
-    """The export's meta.json with the regime's term, source and pre-registration fields, next to a Fall 2026 backtest with a cross-term run."""
+    """The export's meta.json with the regime's term, source and pre-registration fields, next to a Fall 2026 backtest with a cross-term run
+    (from Berkeleytime's history, or from this project's own snapshots for an OWN_BACKTEST regime)."""
     from tests.test_export_backtest import make_reports
     from analysis.export_backtest import export_backtest
 
@@ -716,7 +721,7 @@ def regime_site(site_root: Path, tmp_path: Path, regime: str) -> Path:
     (root / "data" / "meta.json").write_text(json.dumps(meta))
     reports = make_reports(tmp_path)
     shutil.copytree(reports / "temporal_days14", reports / "cross_term_days14")  # the real file has cross-term runs too
-    export_backtest(reports, root / "data" / "backtest.json", term_id="2268", term_name="Fall 2026", meta={"data_source": "berkeleytime_history"})
+    export_backtest(reports, root / "data" / "backtest.json", term_id="2268", term_name="Fall 2026", meta={"data_source": "own_snapshots" if regime in OWN_BACKTEST else "berkeleytime_history"})
     return root
 
 
@@ -775,14 +780,15 @@ def test_the_preregistration_without_meta(tmp_path: Path) -> None:
 
 # Every string a page prints after asking which source the curves come from
 # (BWO.isBerkeleytime), byte for byte in each regime, with the counts and dates fixed at
-# today's site/data/meta.json and backtest.json and the clock in UTC.
+# today's site/data/meta.json and backtest.json and the clock in UTC. The OWN_BACKTEST regimes guard both
+# operands of the Accuracy label: Berkeleytime meta with an own backtest keeps it, own and own drops it.
 TODAY_COUNTS = {"courses": 2114, "sections": 2902, "cohort_rows": 531568, "events": 299826, "generated_at": "2026-09-24T08:03:05+00:00", "join_window": ["2025-10-27T00:01:10+00:00", "2026-05-15T13:23:04+00:00"]}
 SOURCE_STRINGS: dict[str, dict[str, str]] = {
     "today": {
         "source sentence": "<p><strong>Spring 2026</strong>, from Berkeleytime's public 15-minute enrollment history: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared. Live Spring 2027 collection by this project begins with Phase 1 on Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>",
         "source label": "Spring 2026, from Berkeleytime's public history",
         "about": "<strong>Spring 2026</strong>, Berkeleytime's public history: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort behind the curves was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test.",
-        "methods": "Showing: <strong>Spring 2026</strong>, from Berkeleytime's public history; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the section count says more than theirs about how much data there is. Horizons on the pages count down to Spring 2027's dates.",
+        "methods": "Showing: <strong>Spring 2026</strong>, from Berkeleytime's public history; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the number of sections, not of joiners, is the better guide to how much data there is. Horizons on the pages count down to Spring 2027's dates.",
         "accuracy": "<p><strong>Fall 2026</strong>, from Berkeleytime's public history: 2 backtest runs, generated Sep 21, 2026, 2:22 AM.</p><p>The pages show Spring 2026 curves; these tests were run on Fall 2026. The runs headed \"Fit on Spring 2026, scored on Fall 2026\" score the curves the pages show; the others test the same method within Fall 2026.</p>",
         "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort behind the curves this site shows was frozen at commit <code>7f348ed</code> on 2026-09-21; the curves are read from it unchanged. After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
     },
@@ -790,7 +796,7 @@ SOURCE_STRINGS: dict[str, dict[str, str]] = {
         "source sentence": "<p><strong>Spring 2027</strong>: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared.</p>",
         "source label": "Spring 2027, this project's own snapshots",
         "about": "<strong>Spring 2027</strong>, this project's own snapshots: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test; the curves this site shows now are not part of it.",
-        "methods": "Showing: <strong>Spring 2027</strong>, this project's own snapshots; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the section count says more than theirs about how much data there is. Horizons on the pages count down to Spring 2027's dates.",
+        "methods": "Showing: <strong>Spring 2027</strong>, this project's own snapshots; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the number of sections, not of joiners, is the better guide to how much data there is. Horizons on the pages count down to Spring 2027's dates.",
         "accuracy": "<p><strong>Fall 2026</strong>, from Berkeleytime's public history: 2 backtest runs, generated Sep 21, 2026, 2:22 AM.</p><p>The pages show Spring 2027 curves from this project's own snapshots; these runs test the same method on Fall 2026, not those curves.</p>",
         "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21; the curves this site shows now (Spring 2027, this project's own snapshots) are not part of the test. After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
     },
@@ -798,9 +804,25 @@ SOURCE_STRINGS: dict[str, dict[str, str]] = {
         "source sentence": "<p><strong>Fall 2026</strong>, from Berkeleytime's public 15-minute enrollment history: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared. Live Spring 2027 collection by this project begins with Phase 1 on Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>",
         "source label": "Fall 2026, from Berkeleytime's public history",
         "about": "<strong>Fall 2026</strong>, Berkeleytime's public history: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test.",
-        "methods": "Showing: <strong>Fall 2026</strong>, from Berkeleytime's public history; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the section count says more than theirs about how much data there is. Horizons on the pages count down to Spring 2027's dates.",
+        "methods": "Showing: <strong>Fall 2026</strong>, from Berkeleytime's public history; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the number of sections, not of joiners, is the better guide to how much data there is. Horizons on the pages count down to Spring 2027's dates.",
         "accuracy": "<p><strong>Fall 2026</strong>, from Berkeleytime's public history: 2 backtest runs, generated Sep 21, 2026, 2:22 AM.</p>",
         "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21. After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
+    },
+    "today_own_backtest": {
+        "source sentence": "<p><strong>Spring 2026</strong>, from Berkeleytime's public 15-minute enrollment history: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared. Live Spring 2027 collection by this project begins with Phase 1 on Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>",
+        "source label": "Spring 2026, from Berkeleytime's public history",
+        "about": "<strong>Spring 2026</strong>, Berkeleytime's public history: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort behind the curves was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test.",
+        "methods": "Showing: <strong>Spring 2026</strong>, from Berkeleytime's public history; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the number of sections, not of joiners, is the better guide to how much data there is. Horizons on the pages count down to Spring 2027's dates.",
+        "accuracy": "<p><strong>Fall 2026</strong>, from Berkeleytime's public history: 2 backtest runs, generated Sep 21, 2026, 2:22 AM.</p><p>The pages show Spring 2026 curves; these tests were run on Fall 2026. The runs headed \"Fit on Spring 2026, scored on Fall 2026\" score the curves the pages show; the others test the same method within Fall 2026.</p>",
+        "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort behind the curves this site shows was frozen at commit <code>7f348ed</code> on 2026-09-21; the curves are read from it unchanged. After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
+    },
+    "own_data_own_backtest": {
+        "source sentence": "<p><strong>Spring 2027</strong>: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared.</p>",
+        "source label": "Spring 2027, this project's own snapshots",
+        "about": "<strong>Spring 2027</strong>, this project's own snapshots: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test; the curves this site shows now are not part of it.",
+        "methods": "Showing: <strong>Spring 2027</strong>, this project's own snapshots; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the number of sections, not of joiners, is the better guide to how much data there is. Horizons on the pages count down to Spring 2027's dates.",
+        "accuracy": "<p><strong>Fall 2026</strong>: 2 backtest runs, generated Sep 21, 2026, 2:22 AM.</p><p>The pages show Spring 2027 curves from this project's own snapshots; these runs test the same method on Fall 2026, not those curves.</p>",
+        "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21; the curves this site shows now (Spring 2027, this project's own snapshots) are not part of the test. After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
     },
 }
 
@@ -937,11 +959,11 @@ def test_live_status_failure_leaves_the_page_as_it_was(full_site: Path, tmp_path
 # SESSION_11 item 21d: the joiner counts are copies, not a sample of students, and a seat that opens
 # when the student would be alone on the waitlist is a direct enrollment in the counts
 # (docs/dev/STATUS.md item 10), so the walk never clears that joiner.
-JOINERS_ARE_COPIES = "These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the section count says more than theirs about how much data there is."
+JOINERS_ARE_COPIES = "These joiners are overlapping copies, not separate students, placed at many positions of the same queues at every sampled moment, so the number of sections, not of joiners, is the better guide to how much data there is."
 CANNOT_SEE = ("<strong>What this number cannot see:</strong> seats reserved for a category you are not in, time conflicts and unit caps that block an enrollment, "
-              "discussion or lab sections with no room, and a seat that opens when you would be the only student left on the waitlist, which the enrollment counts record as another student enrolling.")
+              "discussion or lab sections with no room, and a seat that opens when you would be the only student left on the waitlist, which the enrollment counts show staying open or going to another student.")
 ALONE_ON_THE_WAITLIST = ("<li>When you would be the only student left on a waitlist, a seat that opens is not counted as yours: "
-                         "the counts show an empty waitlist and another student enrolling, so the estimate can run low for short waitlists.</li>")
+                         "the counts show an empty waitlist and the seat staying open or going to another student, so the estimate can run low for short waitlists.</li>")
 
 
 def test_the_copy_says_what_the_joiner_counts_and_an_empty_queue_cannot_show(full_site: Path) -> None:

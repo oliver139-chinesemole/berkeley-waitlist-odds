@@ -93,7 +93,7 @@
       <p class="muted small">${BWO.levelNote(meta)}</p>
       <div class="actions"><button type="button" class="quiet" id="copy-link">Copy link</button><button type="button" class="quiet" id="copy-text">Copy as text</button><span id="copied" class="muted small" aria-live="polite"></span></div>
       <p class="muted small">${esc(BWO.VERDICT_NOTE)}</p>
-      <p class="muted small"><strong>What this number cannot see:</strong> seats reserved for a category you are not in, time conflicts and unit caps that block an enrollment, discussion or lab sections with no room, and a seat that opens when you would be the only student left on the waitlist, which the enrollment counts record as another student enrolling. <a href="methodology.html#cannot">What the estimates cannot tell you</a>.</p>`);
+      <p class="muted small"><strong>What this number cannot see:</strong> seats reserved for a category you are not in, time conflicts and unit caps that block an enrollment, discussion or lab sections with no room, and a seat that opens when you would be the only student left on the waitlist, which the enrollment counts show staying open or going to another student. <a href="methodology.html#cannot">What the estimates cannot tell you</a>.</p>`);
     const done = (msg) => { const c = $("copied"); if (c) { c.textContent = msg; setTimeout(() => { c.textContent = ""; }, 2500); } };
     const cl = $("copy-link"), ct = $("copy-text");
     if (cl) cl.addEventListener("click", () => BWO.copyText(link).then(() => done("Link copied")).catch(() => done(link)));
