@@ -98086,6 +98086,21 @@
 "url_path": "/content/2027-spring-polsci-211-008-sem-008"
 },
 {
+"catalog_number": "214",
+"class_number": "002",
+"component": "SEM",
+"course_key": "POLSCI 214",
+"instructors": "Giovanni R F Ferrari, Kinch Hoekstra",
+"last_status": null,
+"node_id": 543136,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "POLSCI",
+"title": "Symposium in the History of Political Thought",
+"url_path": "/content/2027-spring-polsci-214-002-sem-002"
+},
+{
 "catalog_number": "221",
 "class_number": "001",
 "component": "LEC",
@@ -114409,6 +114424,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-27T16:55:35.452402+00:00",
+"updated_at": "2026-10-27T17:22:04.245553+00:00",
 "version": 3
 }
