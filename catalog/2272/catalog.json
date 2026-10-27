@@ -50975,7 +50975,7 @@
 "class_number": "002",
 "component": "LEC",
 "course_key": "GERMAN 2",
-"instructors": "",
+"instructors": "Nikolaus Euba",
 "last_status": null,
 "node_id": 536344,
 "probed_at": null,
@@ -114364,6 +114364,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-27T14:54:01.861791+00:00",
+"updated_at": "2026-10-27T15:25:34.620692+00:00",
 "version": 3
 }
