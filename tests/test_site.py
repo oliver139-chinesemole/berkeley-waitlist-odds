@@ -773,6 +773,62 @@ def test_the_preregistration_without_meta(tmp_path: Path) -> None:
     assert "undefined" not in box and "this site shows now" not in box
 
 
+# Every string a page prints after asking which source the curves come from
+# (BWO.isBerkeleytime), byte for byte in each regime, with the counts and dates fixed at
+# today's site/data/meta.json and backtest.json and the clock in UTC.
+TODAY_COUNTS = {"courses": 2114, "sections": 2902, "cohort_rows": 531568, "events": 299826, "generated_at": "2026-09-24T08:03:05+00:00", "join_window": ["2025-10-27T00:01:10+00:00", "2026-05-15T13:23:04+00:00"]}
+SOURCE_STRINGS: dict[str, dict[str, str]] = {
+    "today": {
+        "source sentence": "<p><strong>Spring 2026</strong>, from Berkeleytime's public 15-minute enrollment history: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared. Live Spring 2027 collection by this project begins with Phase 1 on Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>",
+        "source label": "Spring 2026, from Berkeleytime's public history",
+        "about": "<strong>Spring 2026</strong>, Berkeleytime's public history: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort behind the curves was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test.",
+        "methods": "Showing: <strong>Spring 2026</strong>, from Berkeleytime's public history; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. Horizons on the pages count down to Spring 2027's dates.",
+        "accuracy": "<p><strong>Fall 2026</strong>, from Berkeleytime's public history: 2 backtest runs, generated Sep 21, 2026, 2:22 AM.</p><p>The pages show Spring 2026 curves; these tests were run on Fall 2026. The runs headed \"Fit on Spring 2026, scored on Fall 2026\" score the curves the pages show; the others test the same method within Fall 2026.</p>",
+        "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort behind the curves this site shows was frozen at commit <code>7f348ed</code> on 2026-09-21; the curves are read from it unchanged. After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
+    },
+    "own_data": {
+        "source sentence": "<p><strong>Spring 2027</strong>: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared.</p>",
+        "source label": "Spring 2027, this project's own snapshots",
+        "about": "<strong>Spring 2027</strong>, this project's own snapshots: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test; the curves this site shows now are not part of it.",
+        "methods": "Showing: <strong>Spring 2027</strong>, this project's own snapshots; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. Horizons on the pages count down to Spring 2027's dates.",
+        "accuracy": "<p><strong>Fall 2026</strong>, from Berkeleytime's public history: 2 backtest runs, generated Sep 21, 2026, 2:22 AM.</p><p>The pages show Spring 2027 curves from this project's own snapshots; these runs test the same method on Fall 2026, not those curves.</p>",
+        "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21; the curves this site shows now (Spring 2027, this project's own snapshots) are not part of the test. After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
+    },
+    "berkeleytime_without_fields": {
+        "source sentence": "<p><strong>Fall 2026</strong>, from Berkeleytime's public 15-minute enrollment history: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared. Live Spring 2027 collection by this project begins with Phase 1 on Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>",
+        "source label": "Fall 2026, from Berkeleytime's public history",
+        "about": "<strong>Fall 2026</strong>, Berkeleytime's public history: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test.",
+        "methods": "Showing: <strong>Fall 2026</strong>, from Berkeleytime's public history; 2,114 courses, 2,902 sections, 531,568 hypothetical joiners, 299,826 of whom got in. Horizons on the pages count down to Spring 2027's dates.",
+        "accuracy": "<p><strong>Fall 2026</strong>, from Berkeleytime's public history: 2 backtest runs, generated Sep 21, 2026, 2:22 AM.</p>",
+        "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21. After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
+    },
+}
+
+
+def source_strings(site_root: Path, tmp_path: Path, regime: str) -> dict[str, str]:
+    root = regime_site(site_root, tmp_path, regime)
+    shutil.copytree(site_root / "data", root / "data", dirs_exist_ok=True, ignore=shutil.ignore_patterns("meta.json", "backtest.json"))  # the lookup needs index.json to print its status line
+    for name, changes in (("meta.json", TODAY_COUNTS), ("backtest.json", {"generated_at": "2026-09-21T02:22:27+00:00"})):
+        path = root / "data" / name
+        path.write_text(json.dumps({**json.loads(path.read_text()), **changes}))
+    utc = {"TZ": "UTC"}
+    lookup = render(root, expression="BWO.sourceLabel(BWO.loaded.meta)", env=utc)
+    accuracy = render(root, page="accuracy.html", env=utc)
+    return {
+        "source sentence": lookup["status"],  # BWO.sourceHtml: Lookup, Courses, Course, Department, Insights
+        "source label": lookup["eval"],  # BWO.sourceLabel: the lookup's small print, Course, Department, Insights, Accuracy
+        "about": render(root, page="about.html", env=utc)["elements"]["data-status"]["html"],
+        "methods": render(root, page="methodology.html", env=utc)["elements"]["data-status"]["html"],
+        "accuracy": accuracy["status"],
+        "prereg": accuracy["elements"]["prereg"]["html"],
+    }
+
+
+@pytest.mark.parametrize("regime", sorted(REGIMES))
+def test_the_source_strings_are_pinned(full_site: Path, tmp_path: Path, regime: str) -> None:
+    assert source_strings(full_site, tmp_path, regime) == SOURCE_STRINGS[regime]
+
+
 # ------------------------------------------------ live data status (B2)
 # BWO.liveStatus appends one sentence read from the data branch's status.json
 # (served by the harness from HARNESS_STATUS_FILE; unset, the URL 404s).

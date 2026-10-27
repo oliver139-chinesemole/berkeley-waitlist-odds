@@ -168,9 +168,12 @@ const BWO = (function () {
   // publish) the Accuracy and About pages state the test from this record. A commit
   // and its dates, not a statistic (docs/DESIGN_A6.md, Accuracy).
   const PREREG = { term_name: "Spring 2026", commit: "7f348ed", date: "2026-09-21", scored_after: "2027-02-10" };
+  // Whether meta (or backtest.json) describes curves from Berkeleytime's history rather
+  // than this project's own snapshots. Every page asks this, never the string itself.
+  function isBerkeleytime(meta) { return !!meta && meta.data_source === "berkeleytime_history"; }
   function sourceHtml(meta) {
     const counts = `${esc(num(meta.courses))} courses with estimates from ${esc(num(meta.sections))} sections and ${esc(num(meta.cohort_rows))} hypothetical joiners, ${esc(num(meta.events))} of whom cleared`;
-    if (meta.data_source === "berkeleytime_history") {
+    if (isBerkeleytime(meta)) {
       return `<p><strong>${esc(meta.term_name)}</strong>, from Berkeleytime's public 15-minute enrollment history: ${counts}. Live Spring 2027 collection by this project ${COLLECTION_DATED}; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>`;
     }
     return `<p><strong>${esc(meta.term_name)}</strong>: ${counts}.</p>`;
@@ -220,7 +223,7 @@ const BWO = (function () {
     else run();
   }
   function sourceLabel(meta) {
-    return meta.data_source === "berkeleytime_history" ? `${esc(meta.term_name)}, from Berkeleytime's public history` : `${esc(meta.term_name)}, this project's own snapshots`;
+    return isBerkeleytime(meta) ? `${esc(meta.term_name)}, from Berkeleytime's public history` : `${esc(meta.term_name)}, this project's own snapshots`;
   }
   function stamp(meta, t) {
     const h = horizons(meta, t);
@@ -952,7 +955,7 @@ const BWO = (function () {
   return {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
-    fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, sourceHtml, sourceLabel, stamp, setStamp,
+    fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, stamp, setStamp,
     horizons, keyDates, keyDatesHtml, readCurve, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf,
     parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
