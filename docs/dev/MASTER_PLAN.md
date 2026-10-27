@@ -139,6 +139,8 @@ The v3 pages are accessible and anonymous. The direction, in one line: **a line,
 
 ## 5. Build order
 
+**Status 2026-10-27 (session 11):** the first three blocks are done or in an open PR except U1, U2, U5, U6 and U8's five deferred findings (design, held back from unattended sessions), S4 and S7 (need own Spring data) and Q6's logged miss event (needs analytics). The Oct 4 switch did not happen; see `docs/dev/NEXT_2026-10-25.md` section 0. "Oct 26 onward" is the open list; `docs/dev/SESSION_11_2026-10-26.md` section 3 ranks it.
+
 **This week** — P1, P3, P4, P6, the resume-line fix, the browser pass, and the off-season home page.
 
 **Before Oct 4** — P2 (throughput), Q1 to Q3 (search that works without the catalog code), Q7 (titles from section pages), S1 to S3 (live board), U1 to U4 (timeline, queue strip, palette, type), X7 (Playwright in CI).
