@@ -161,6 +161,13 @@ const BWO = (function () {
   // the forecast term, then BWO.liveStatus swaps in "has started".
   const COLLECTION_DATED = "begins with Phase 1 on Oct 26, 2026";
   const COLLECTION_STARTED = "has started";
+  // The pre-registered Spring 2027 test: the Spring 2026 cohort from Berkeleytime's
+  // history, frozen at the commit that installed it (CLAIMS.md, docs/DATA_LOG.md) and
+  // scored unchanged after the add/drop deadline. meta.json carries prereg_commit and
+  // prereg_date only while its curves are that cohort; without them (an own-data
+  // publish) the Accuracy and About pages state the test from this record. A commit
+  // and its dates, not a statistic (docs/DESIGN_A6.md, Accuracy).
+  const PREREG = { term_name: "Spring 2026", commit: "7f348ed", date: "2026-09-21", scored_after: "2027-02-10" };
   function sourceHtml(meta) {
     const counts = `${esc(num(meta.courses))} courses with estimates from ${esc(num(meta.sections))} sections and ${esc(num(meta.cohort_rows))} hypothetical joiners, ${esc(num(meta.events))} of whom cleared`;
     if (meta.data_source === "berkeleytime_history") {
@@ -940,7 +947,7 @@ const BWO = (function () {
   }
 
   return {
-    SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY,
+    SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, sourceHtml, sourceLabel, stamp, setStamp,
     horizons, keyDates, keyDatesHtml, readCurve, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf,

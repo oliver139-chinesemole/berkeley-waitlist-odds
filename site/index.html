@@ -26,6 +26,7 @@
   <h1>Will you get off the waitlist?</h1>
   <p class="muted">Type your course and your position on its waitlist. You get the share of comparable students who got in before the last automatic waitlist run, and by when.</p>
   <section id="status" class="status" aria-live="polite"><p class="muted">Loading data…</p><div class="skeleton" style="width:70%"></div><div class="skeleton" style="width:45%"></div></section>
+  <div id="showing" aria-live="polite"></div>
 
   <form id="form" class="row lookup" autocomplete="off" hidden>
     <div class="combo">
@@ -118,8 +119,9 @@
     if (seq !== lookups) return;
     const row = match.row;
     const q = BWO.parseQuery(text);
-    // Q5: say so whenever a typo in the subject was forgiven or a title matched.
-    $("status").innerHTML = BWO.sourceHtml(meta) + BWO.showingHtml(match);
+    // Q5: say so whenever a typo in the subject was forgiven or a title matched; in
+    // its own element, so the status line keeps what BWO.liveStatus added to it.
+    $("showing").innerHTML = BWO.showingHtml(match);
     const shown = row ? row.key : (q && q.pairs && q.pairs.length ? `${q.pairs[0].subject} ${q.pairs[0].number}` : (q ? q.raw : String(text).trim().toUpperCase()));
     if (!row) {
       const near = match.nearest.length ? ` Did you mean ${match.nearest.map((r) => `<a href="${BWO.withToday(`?course=${encodeURIComponent(r.key)}&position=${pos}`)}">${esc(r.key)}</a>`).join(", ")}?` : "";
