@@ -237,6 +237,10 @@ DATED = "Live Spring 2027 collection by this project begins with Phase 1 on Oct 
 STARTED = "Live Spring 2027 collection by this project has started; the estimates switch to its own snapshots once Spring waitlists start clearing."
 METHODS_DATED = "Collection for Spring 2027 begins with Phase 1 on Oct 26, 2026."
 METHODS_STARTED = "Collection for Spring 2027 has started."
+# The status sentence for each file (audit item 7): a 2268 run says Spring 2027 collection has not started yet.
+NOT_STARTED = "This project has not started collecting Spring 2027 yet; its last snapshot, of Fall 2026, ran about 12 min ago: 1,425 sections read, 1 not reached."
+LAST_SPRING = "This project&#39;s last Spring 2027 snapshot ran about 12 min ago: 1,425 sections read, 1 not reached."
+SENTENCE = {"2268": NOT_STARTED, "2272": LAST_SPRING}
 
 
 def status_for(tmp_path: Path, **changes: object) -> Path:
@@ -260,7 +264,7 @@ def test_the_source_sentence_follows_the_status_term(live_site: Path, tmp_path: 
     status = out["elements"]["status"]["html"]
     assert clause in status, status
     assert status.count("Live Spring 2027 collection") == 1
-    assert f"This project&#39;s last {term_name} snapshot ran about 12 min ago: 1,425 sections read, 1 not reached." in status
+    assert SENTENCE[term_id] in status
     assert "starts" not in status  # the old "starts Oct 26, 2026" is gone in both forms
     if term_id == "2272":
         assert "Oct 26" not in status  # nothing dated next to a Spring 2027 snapshot
@@ -275,7 +279,7 @@ def test_the_methods_collection_sentence_follows_the_status_term(live_site: Path
     """The Data section's static sentence (``#collection``) under the Methods page's own status line."""
     out = render(live_site, page="methodology.html", env={"HARNESS_STATUS_FILE": str(status_for(tmp_path, term_id=term_id)), "HARNESS_NOW": NOW})
     assert out["elements"]["collection"]["html"] == sentence
-    assert f"This project&#39;s last {term_name} snapshot ran about 12 min ago: 1,425 sections read, 1 not reached." in out["elements"]["data-status"]["html"]
+    assert SENTENCE[term_id] in out["elements"]["data-status"]["html"]
     markup = (ROOT / "site" / "methodology.html").read_text()
     assert f'<span id="collection">{METHODS_DATED}</span>' in markup  # the dated form is what the page ships, for every reader
     assert "starts when Phase 1 opens" not in markup
@@ -342,7 +346,7 @@ def test_a_lookup_keeps_the_status_line(live_site: Path, tmp_path: Path, how: st
     status = out["elements"]["status"]["html"]
     assert clause in status and status.count("Live Spring 2027 collection") == 1, status
     assert status.count("live-status") == 1, status
-    assert f"This project&#39;s last {term_name} snapshot ran about 12 min ago: 1,425 sections read, 1 not reached." in status, status
+    assert SENTENCE[term_id] in status, status
     if term_id == "2272":
         assert "Oct 26" not in status
     assert "Showing" not in status

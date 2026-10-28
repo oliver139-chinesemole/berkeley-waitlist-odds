@@ -75,13 +75,14 @@
     const head = BWO.headlineHtml(cell, resolved.pooled, resolved.source, meta, today);
     const chart = BWO.curveChart({ series: [{ label: `${key}, ${BWO.bucketText(bucket)}`, curve: cell.curve, cls: "s3", you: true }], marks: head.marks, t: today, labelEnd: true, id: "lookup-chart", ariaLabel: `Share of comparable students who had cleared, by days since joining, with a 95% band; ${key} at ${BWO.bucketText(bucket)}` });
     const link = `${location.origin}${location.pathname}?course=${encodeURIComponent(key)}&position=${pos}`;
-    const text = `${key}, position ${pos}: ${head.atDeadline ? `${BWO.frequency(head.atDeadline.p).toLowerCase()} comparable students got in by ${BWO.fmtDay(meta.deadline)} (${pct(head.atDeadline.p)}${head.atDeadline.lo == null ? "" : `, 95% interval ${pct(head.atDeadline.lo)} to ${pct(head.atDeadline.hi)}`})` : "see the look back"}. ${BWO.sourceLabel(meta).replace(/&#39;/g, "'")}. ${link}`;
+    const text = `${key}, position ${pos}: ${head.atDeadline ? shareText(head) : "see the look back"}. ${BWO.sourceLabel(meta).replace(/&#39;/g, "'")}. ${link}`;
     show(`
       <p class="muted small">${esc(BWO.SITE)} · as of ${esc(BWO.fmtShort(today))}</p>
       ${note || ""}
       <p class="muted">${esc(key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${BWO.pooledTag(resolved.pooled, resolved.source, meta)}</p>
       ${head.html}
       ${BWO.byWhenHtml(cell, meta, today)}
+      ${head.after}
       ${entry ? bucketRow(entry, bucket, head.h) : ""}
       ${chart}
       <dl class="kv">
@@ -100,6 +101,16 @@
     if (ct) ct.addEventListener("click", () => BWO.copyText(text).then(() => done("Copied")).catch(() => done(text)));
     if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?course=${encodeURIComponent(key)}&position=${pos}`));
     document.title = `${key} at position ${pos} · ${BWO.SITE}`;
+  }
+
+  // "Copy as text": the headline's words, the verdict first when there is too little data to call.
+  function shareText(head) {
+    const r = head.atDeadline, f = BWO.frequency(r.p);
+    const who = /^About/.test(f) ? `${f.toLowerCase()} comparable students` : `${f.toLowerCase()} among comparable students`;
+    const v = head.thin ? `${head.verdict.label.toLowerCase()} (${head.verdict.why}); ` : "";
+    const run = `the last automatic waitlist run (${BWO.fmtDay(meta.deadline)})`;
+    const left = !r.capped ? `the time left before ${run}` : `the longest the data follow anyone; ${BWO.atLeast(r) ? "at least that share within the " : ""}${BWO.days(head.h.deadline)} left before ${run}`;
+    return `${v}${who} got in within ${BWO.days(head.within)} of joining (${pct(r.p)}${r.lo == null ? "" : `, 95% interval ${pct(r.lo)} to ${pct(r.hi)}`}), ${left}`;
   }
 
   function renderFallback(keyText, pos, bucket, subject, number, message) {
@@ -124,8 +135,12 @@
     $("showing").innerHTML = BWO.showingHtml(match);
     const shown = row ? row.key : (q && q.pairs && q.pairs.length ? `${q.pairs[0].subject} ${q.pairs[0].number}` : (q ? q.raw : String(text).trim().toUpperCase()));
     if (!row) {
+      // Not a course in the index (a typo, or a code that is no course): no estimate, as on the course
+      // page, only the nearest courses. A pooled estimate is for a real course with too few cases.
       const near = match.nearest.length ? ` Did you mean ${match.nearest.map((r) => `<a href="${BWO.withToday(`?course=${encodeURIComponent(r.key)}&position=${pos}`)}">${esc(r.key)}</a>`).join(", ")}?` : "";
-      renderFallback(shown, pos, bucket, q && q.pairs && q.pairs.length ? q.pairs[0].subject : null, q && q.pairs && q.pairs.length ? q.pairs[0].number : null, `No data for <strong>${esc(shown)}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.${near}`);
+      show(`<p class="error">No data for <strong>${esc(shown)}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.${near}</p><p>Or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`);
+      if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?course=${encodeURIComponent(shown)}&position=${pos}`));
+      document.title = `No data for ${shown} · ${BWO.SITE}`;
       return;
     }
     const subj = await BWO.loadSubject(meta, row.subject);
