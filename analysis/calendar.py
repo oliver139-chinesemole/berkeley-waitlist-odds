@@ -8,9 +8,20 @@ matter at the resolution of a phase.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
+
+import pandas as pd
 
 PHASES = ("before", "phase1", "between", "phase2", "adjustment", "instruction", "after")
+# Where the day of the last automatic waitlist run ends, for the optional cohort cut
+# (``last_auto_cut``): midnight in Berkeley. 00:00 UTC is deliberately absent: it is the
+# backtest's deadline horizon, and ``analysis.backtest.ipcw_weights`` counts a row as still
+# waiting only when ``duration > horizon``, so a cohort cut at its own horizon has no known
+# negatives. Adding it back needs a tolerance there first (docs/DESIGN_A5.md section 9).
+PACIFIC = ZoneInfo("America/Los_Angeles")
+_CUT_ZONES = {"pacific": PACIFIC}
+CUT_INSTANTS = tuple(_CUT_ZONES)
 
 
 @dataclass(frozen=True)
@@ -52,6 +63,18 @@ class TermCalendar:
         if moment.tzinfo is None:
             moment = moment.replace(tzinfo=timezone.utc)
         return (start - moment).total_seconds() / 86400.0
+
+
+def last_auto_cut(calendar: TermCalendar, instant: str = "pacific") -> pd.Timestamp:
+    """The end of the ``last_auto_waitlist`` day as a UTC timestamp: 00:00 America/Los_Angeles
+    on the next day (``"pacific"``, the only instant offered; it includes Spring 2027's
+    6:40 PM PT run and ends 7 or 8 hours after the backtest's 00:00 UTC deadline horizon, so a
+    cut cohort is scored before its cut). Used only when a cohort cut is asked for
+    (docs/DESIGN_A5.md section 9); nothing cuts by default."""
+    if instant not in CUT_INSTANTS:
+        raise ValueError(f"unknown cut instant {instant!r}; expected one of {CUT_INSTANTS}")
+    d = calendar.last_auto_waitlist + timedelta(days=1)
+    return pd.Timestamp(datetime(d.year, d.month, d.day, tzinfo=_CUT_ZONES[instant])).tz_convert("UTC")
 
 
 def _as_date(when: datetime | date) -> date:
