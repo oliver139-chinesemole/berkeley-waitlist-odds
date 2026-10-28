@@ -451,6 +451,15 @@ def test_end_labels_keep_bucket_order_where_they_print_the_same() -> None:
     assert end_labels(apart) == ["6-15 92%", "16-40 88%", "1-5 83%"]  # each label beside its own curve's end
 
 
+def test_the_phone_nav_wraps_rather_than_scrolls() -> None:
+    """Item 15: below 30 rem the nav's links wrap instead of scrolling out of sight; tests/site/smoke.mjs checks every link is whole at 390 px."""
+    css = (SITE / "assets" / "site.css").read_text()
+    m = re.search(r"@media \(max-width: 30rem\) \{\s*\.site-head nav \{([^}]*)\}\s*\.site-head nav a \{([^}]*)\}", css)
+    assert m, "no phone rule for the nav"
+    assert "flex-wrap: wrap" in m.group(1) and "overflow-x: visible" in m.group(1)
+    assert "min-height" not in m.group(2) and "min-height: 44px" in css  # the base rule's 44 px target stands
+
+
 def test_every_other_x_tick_is_marked_for_phones() -> None:
     """Item 16: below 30 rem (480 px) every other x tick, its day and its date, is hidden, so the axis keeps half its labels."""
     svg = chart_svg([{"label": "a", "curve": [[0.5, 0.1, 0.05, 0.15], [80, 0.7, 0.6, 0.8]]}], marks=[{"day": 102, "label": "last waitlist run"}], t=None)
@@ -909,9 +918,12 @@ def test_every_subject_has_a_display_name() -> None:
 
     The file covers the Fall 2026 and the Spring 2026 index (the site switches
     terms by swapping site/data), so this holds on either. The Academic Guide's
-    index does not list three of the subjects (DISSTD, MBN, QTP), so as the plan
-    allows they are written blank and listed under "_todo"; the names asserted
-    here are the 40 most-joined subjects, which are all named in both terms.
+    index does not list three of the subjects (DISSTD, MBN, QTP). DISSTD is in
+    the index the site ships, so its name is typed into the generator's MANUAL
+    map (audit item 21: the department list showed "DISSTD" among full names);
+    MBN and QTP, which only the Fall 2026 index has, are written blank and
+    listed under "_todo". Every subject of the shipped index is named, and the
+    40 most-joined are named in both terms.
     """
     names = json.loads((ROOT / "config" / "subject_names.json").read_text())
     index = json.loads((SITE / "data" / "index.json").read_text())
@@ -925,6 +937,8 @@ def test_every_subject_has_a_display_name() -> None:
     assert blank == sorted(names["_todo"]), (blank, names["_todo"])
     top40 = sorted(joins, key=lambda s: (-joins[s], s))[:40]
     assert [s for s in top40 if not names["names"][s]] == []
+    assert sorted(s for s in joins if not names["names"][s]) == []  # item 21: none of the shipped index's subjects is a bare code
+    assert names["names"]["DISSTD"] == "Disability Studies" and "DISSTD" not in names["_todo"]
     # the hand-written nicknames are a separate file, so regenerating never clobbers them
     nicknames = json.loads((ROOT / "config" / "course_nicknames.json").read_text())["nicknames"]
     assert nicknames["E7"] == "ENGIN 7" and nicknames["DATA 8"] == "DATA C8" and nicknames["HAAS"] == "UGBA"
@@ -1427,7 +1441,7 @@ def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
 
 def dept_copy(site_root: Path, tmp_path: Path) -> Path:
     """A copy of the export with distinct joins on the COMPSCI rows (the synthetic cohort has none),
-    so the order the page prints is pinned, plus one DISSTD course: a subject with no display name."""
+    so the order the page prints is pinned, plus one QTP course: a subject with no display name (config/subject_names.json lists it under _todo)."""
     root = tmp_path / "site"
     shutil.copytree(site_root, root)
     path = root / "data" / "index.json"
@@ -1436,7 +1450,8 @@ def dept_copy(site_root: Path, tmp_path: Path) -> Path:
     for i, r in enumerate(compsci):
         r["joins"] = (i * 7) % len(compsci) + 1  # 7 is coprime with 15: distinct, and not the key order
     art = next(r for r in index["courses"] if r["key"] == "ART 11")
-    index["courses"].append({**art, "key": "DISSTD 10", "subject": "DISSTD", "number": "10", "joins": 3})
+    assert json.loads((ROOT / "config" / "subject_names.json").read_text())["names"]["QTP"] == ""  # still unnamed; pick another _todo code if it gets one
+    index["courses"].append({**art, "key": "QTP 10", "subject": "QTP", "number": "10", "joins": 3})
     path.write_text(json.dumps(index))
     return root
 
@@ -1501,12 +1516,12 @@ def test_department_page_shows_the_pool_curve_and_every_course(course_site: Path
 
 def test_department_page_without_a_display_name_and_grouped_subjects(course_site: Path, tmp_path: Path) -> None:
     site = dept_copy(course_site, tmp_path)
-    out = render(site, page="dept.html", search="?subject=DISSTD")
+    out = render(site, page="dept.html", search="?subject=QTP")
     els = out["elements"]
-    assert els["dept-name"]["text"] == "DISSTD" and out["title"].startswith("DISSTD courses")
+    assert els["dept-name"]["text"] == "QTP" and out["title"].startswith("QTP courses")
     assert "1 course with estimates" in els["summary"]["html"] and len(dept_rows(els["table"]["html"])) == 1
     # a small subject is pooled with the other small ones: the curve says so
-    assert "DISSTD is grouped with the smaller departments" in els["summary"]["html"]
+    assert "QTP is grouped with the smaller departments" in els["summary"]["html"]
     assert "The smaller departments together, positions 6 to 15" in els["pool"]["html"]
     out = render(site, page="dept.html", search="?subject=art", expression="BWO.subjectName('ART')")
     assert out["elements"]["dept-name"]["text"] == out["eval"] and out["eval"] in ("ART", "Art Practice")
@@ -1515,8 +1530,18 @@ def test_department_page_without_a_display_name_and_grouped_subjects(course_site
     out = render(site, page="dept.html", search="?subject=cs", expression="BWO.subjectName('COMPSCI')")
     assert out["elements"]["dept-name"]["text"] == out["eval"] and "Every COMPSCI course" in out["elements"]["table"]["html"]
     # a display name from the generated map (PR #17) is used; a missing or empty one falls back to the code
-    out = render(site, page="dept.html", search="?subject=cs", expression="(BWO.SUBJECT_NAMES = {COMPSCI: 'Computer Science', DISSTD: ''}, [BWO.subjectName('COMPSCI'), BWO.subjectName('DISSTD'), BWO.subjectName('NOPE')])")
-    assert out["eval"] == ["Computer Science", "DISSTD", "NOPE"]
+    out = render(site, page="dept.html", search="?subject=cs", expression="(BWO.SUBJECT_NAMES = {COMPSCI: 'Computer Science', QTP: ''}, [BWO.subjectName('COMPSCI'), BWO.subjectName('QTP'), BWO.subjectName('NOPE')])")
+    assert out["eval"] == ["Computer Science", "QTP", "NOPE"]
+
+
+def test_the_department_list_shows_every_subject_by_name() -> None:
+    """Item 21: dept.html with no subject lists every department of the shipped index; none is shown as its bare code."""
+    out = render(SITE, page="dept.html")
+    links = re.findall(r'<a href="dept\.html\?subject=([^&"]+)[^"]*">([^<]+)</a>', out["elements"]["summary"]["html"])
+    subjects = {r["subject"] for r in load(SITE, "index.json")["courses"]}
+    assert {code for code, _ in links} == subjects
+    assert [code for code, text in links if text == code] == []
+    assert ("DISSTD", "Disability Studies") in links
 
 
 def test_unknown_department_names_the_nearest(course_site: Path) -> None:
@@ -1586,17 +1611,17 @@ def test_course_page_links_its_department(course_site: Path) -> None:
 
 
 def test_course_page_links_its_department_without_related_courses(course_site: Path, tmp_path: Path) -> None:
-    """DISSTD 10 is the only DISSTD course: no related-courses block, but the department link still shows."""
+    """QTP 10 is the only QTP course: no related-courses block, but the department link still shows."""
     site = dept_copy(course_site, tmp_path)
     art = load(site, "courses/ART.json")
-    (site / "data" / "courses" / "DISSTD.json").write_text(json.dumps({**art, "courses": {"DISSTD 10": art["courses"]["ART 11"]}}))
+    (site / "data" / "courses" / "QTP.json").write_text(json.dumps({**art, "courses": {"QTP 10": art["courses"]["ART 11"]}}))
     meta = load(site, "meta.json")
-    meta["subject_files"]["DISSTD"] = "courses/DISSTD.json"
+    meta["subject_files"]["QTP"] = "courses/QTP.json"
     (site / "data" / "meta.json").write_text(json.dumps(meta))
-    out = render(site, page="course.html", search="?c=DISSTD%2010&position=10")
+    out = render(site, page="course.html", search="?c=QTP%2010&position=10")
     html = out["elements"]["course"]["html"]
-    assert "Other DISSTD courses" not in html
-    assert 'href="dept.html?subject=DISSTD&bucket=6-15&today=2027-01-10">All DISSTD courses</a>' in html
+    assert "Other QTP courses" not in html
+    assert 'href="dept.html?subject=QTP&bucket=6-15&today=2027-01-10">All QTP courses</a>' in html
 
 # ------------------------------------------------------ the fallback ladder (S5)
 

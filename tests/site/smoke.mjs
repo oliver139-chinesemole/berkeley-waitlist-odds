@@ -76,6 +76,14 @@ for (const [scheme] of SCHEMES.map((s) => [s])) {
         catch (err) { if (!/Timeout/.test(err.message)) throw err; await page.waitForTimeout(1000); await page.screenshot({ path: shot, fullPage: true, timeout: 90000 }); }
         const wide = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
         if (wide) errors.push("page scrolls horizontally");
+        // Every nav link is whole on screen (audit item 15: at 390 px the nav scrolled "Methods" out of sight, cut to "M").
+        const cut = await page.evaluate(() => {
+          const nav = document.querySelector(".site-head nav");
+          if (!nav) return [];
+          const box = nav.getBoundingClientRect();
+          return [...nav.querySelectorAll("a")].filter((a) => { const r = a.getBoundingClientRect(); return r.left < box.left - 0.5 || r.right > box.right + 0.5 || r.right > window.innerWidth + 0.5; }).map((a) => a.textContent);
+        });
+        if (cut.length) errors.push(`nav links cut off: ${cut.join(", ")}`);
         // A phone gets every other x tick (audit item 16): no chart shows more than half its day labels, rounded up.
         if (vpName === "phone") {
           const crowded = await page.evaluate(() => [...document.querySelectorAll(".chart svg")].map((svg) => {

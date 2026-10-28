@@ -77,6 +77,12 @@ body { margin: 0; font-family: var(--sans); font-size: var(--fs-2); line-height:
 .site-head nav a { color: inherit; text-decoration: none; padding: .55rem .7rem; border-radius: 8px; opacity: .85; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; }
 .site-head nav a:hover { opacity: 1; background: var(--tint); }
 .site-head nav a[aria-current="page"] { opacity: 1; box-shadow: inset 0 -3px 0 var(--blue-ink); }
+/* Phones (audit item 15): the five links share the row, a little tighter, and wrap onto a second line rather than
+   scroll out of sight (at 390 px "Methods" was cut to "M"); one row still holds them down to 360 px. */
+@media (max-width: 30rem) {
+  .site-head nav { flex-wrap: wrap; overflow-x: visible; gap: 0; width: 100%; justify-content: space-between; }
+  .site-head nav a { padding: .55rem .3rem; font-size: .9375rem; }
+}
 .site-head nav a:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 main { max-width: 42rem; margin: 0 auto; padding: 1rem 1rem 2rem; }
 main.wide { max-width: 68rem; }
