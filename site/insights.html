@@ -44,8 +44,14 @@
     if (b1 && b2) out.push(`At positions 1 to 5, ${med(b1)}; at 6 to 15, ${med(b2)}${b3 ? `; at 16 to 40, ${med(b3)}` : ""}.`);
     const lv = ins.by_level || {};
     if (lv.lower && lv.upper && lv.lower["6-15"] && lv.upper["6-15"]) {
-      const lo = lv.lower["6-15"].p[1], up = lv.upper["6-15"].p[1];
-      out.push(`${lo >= up ? "Lower" : "Upper"}-division waitlists moved faster at positions 6 to 15: ${pct(Math.max(lo, up))} got in within 14 days against ${pct(Math.min(lo, up))} in ${lo >= up ? "upper" : "lower"}-division courses${lv.grad && lv.grad["6-15"] ? ` (graduate courses: ${pct(lv.grad["6-15"].p[1])})` : ""}.`);
+      const L = lv.lower["6-15"], U = lv.upper["6-15"], lo = L.p[1], up = U.p[1];
+      const grad = lv.grad && lv.grad["6-15"] ? ` (graduate courses: ${pct(lv.grad["6-15"].p[1])})` : "";
+      // "Faster" needs a printed gap of 5 points or more and 95% intervals that do not overlap; a comparison of two exported cells, nothing computed.
+      const has = (c) => c.lo && c.hi && c.lo[1] != null && c.hi[1] != null;
+      const same = Math.abs(Math.round(lo * 100) - Math.round(up * 100)) < 5 || (has(L) && has(U) && L.lo[1] <= U.hi[1] && U.lo[1] <= L.hi[1]);
+      out.push(same
+        ? `Lower- and upper-division waitlists moved at about the same pace at positions 6 to 15: ${pct(lo)} got in within 14 days in lower-division courses and ${pct(up)} in upper-division ones${grad}.`
+        : `${lo >= up ? "Lower" : "Upper"}-division waitlists moved faster at positions 6 to 15: ${pct(Math.max(lo, up))} got in within 14 days against ${pct(Math.min(lo, up))} in ${lo >= up ? "upper" : "lower"}-division courses${grad}.`);
     }
     out.push(`Behind these numbers: ${num(ins.counts.courses)} courses, ${num(ins.counts.sections)} sections and ${num(ins.counts.rows)} hypothetical joiners, ${num(ins.counts.events)} of whom got in. ${BWO.sourceLabel(meta)}.`);
     return `<ul class="findings">${out.map((s) => `<li>${s}</li>`).join("")}</ul>`;

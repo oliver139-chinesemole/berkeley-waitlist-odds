@@ -774,15 +774,20 @@ def test_accuracy_says_what_fall_2026_could_not_test() -> None:
 
 def test_insights_level_sentence_on_the_served_data() -> None:
     html = render(SITE, page="insights.html")["elements"]["content"]["html"]
-    assert "<li>Lower-division waitlists moved faster at positions 6 to 15: 61% got in within 14 days against 60% in upper-division courses (graduate courses: 50%).</li>" in html
+    # 60.6% [56.6, 64.5] against 59.9% [56.9, 62.6]: under a point apart, intervals overlapping
+    assert "<li>Lower- and upper-division waitlists moved at about the same pace at positions 6 to 15: 61% got in within 14 days in lower-division courses and 60% in upper-division ones (graduate courses: 50%).</li>" in html
 
 
 # by_level["lower"|"upper"]["6-15"] at 14 days (index 1): (p, lo, hi) per side, and the sentence the page prints.
+# "Faster" only when the printed gap is 5 points or more and the 95% intervals do not overlap.
+SAME = "Lower- and upper-division waitlists moved at about the same pace at positions 6 to 15: {} got in within 14 days in lower-division courses and {} in upper-division ones."
 LEVEL_CASES = {
     "lower clearly ahead": ((0.70, 0.65, 0.75), (0.55, 0.50, 0.60), "Lower-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 55% in upper-division courses."),
     "upper clearly ahead": ((0.55, 0.50, 0.60), (0.70, 0.65, 0.75), "Upper-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 55% in lower-division courses."),
-    "gap under 5 points": ((0.62, 0.61, 0.63), (0.58, 0.57, 0.59), "Lower-division waitlists moved faster at positions 6 to 15: 62% got in within 14 days against 58% in upper-division courses."),
-    "intervals overlap": ((0.70, 0.55, 0.85), (0.60, 0.50, 0.68), "Lower-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 60% in upper-division courses."),
+    "gap under 5 points": ((0.62, 0.61, 0.63), (0.58, 0.57, 0.59), SAME.format("62%", "58%")),
+    "intervals overlap": ((0.70, 0.55, 0.85), (0.60, 0.50, 0.68), SAME.format("70%", "60%")),
+    "5 points apart": ((0.65, 0.64, 0.66), (0.60, 0.59, 0.61), "Lower-division waitlists moved faster at positions 6 to 15: 65% got in within 14 days against 60% in upper-division courses."),
+    "no intervals": ((0.70, None, None), (0.62, None, None), "Lower-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 62% in upper-division courses."),
 }
 
 
