@@ -35,8 +35,8 @@
   let meta, ins, pooled, index;
   // Deeper positions can end above positions 1 to 5 (the hero chart's end labels, the table's 28-day and longest
   // follow-up columns): a position-1 joiner can sit in a full section with an empty queue, where a seat that opens
-  // is a direct enrolment in the counts, and position p exists only where p - 1 were waiting (analysis/cohort.py).
-  const INVERSION_NOTE = `<p class="muted small">When a deeper position ends above positions 1 to 5, here or in the table and chart below, that comes from where the hypothetical students can be placed, not from any advantage of a later spot. Positions 1 to 5 include full sections with nobody else waiting, where a seat that opens shows in the counts as someone enrolling directly, never as the hypothetical student getting in; positions 6 and up exist only where at least five people were already waiting, so a seat that opens there goes to the queue.</p>`;
+  // is a direct enrolment in the counts, and position p exists only where at least p - 1 were waiting (analysis/cohort.py).
+  const INVERSION_NOTE = `<p class="muted small">When a deeper position sits or ends above positions 1 to 5, here or in the table and chart below, that comes from where the hypothetical students can be placed, not from any advantage of a later spot. Positions 1 to 5 include full sections with nobody else waiting, where a seat that opens shows in the counts as someone enrolling directly, never as the hypothetical student getting in; positions 6 and up exist only where at least five people were already waiting, so a seat that opens there goes to the queue.</p>`;
 
   function at(cell, d) { return BWO.readCurve(cell.curve, d); }
   function findings() {
