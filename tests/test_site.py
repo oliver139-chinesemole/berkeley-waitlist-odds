@@ -689,6 +689,173 @@ def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Pa
         (full_site / "data" / "backtest.json").unlink()
 
 
+# The site audit of 2026-10-27, items 5, 10 and 11: the copy on Accuracy and Insights next to the
+# numbers it explains, rendered on the served files (site/data) so the words are checked against them.
+# The cross-cycle runs first: they are the test that matches how the pages are used.
+SERVED_RUN_HEADS = [
+    "Fit on Spring 2026, scored on Fall 2026, within 14 days",
+    "Fit on Spring 2026, scored on Fall 2026, within 28 days",
+    "Fit on Spring 2026, scored on Fall 2026, by the last automatic waitlist run",
+    "Later joiners scored with a model fit on earlier ones, within 14 days",
+    "Later joiners scored with a model fit on earlier ones, by the last automatic waitlist run",
+    "Held-out courses, within 14 days",
+]
+# Above the runs of the Fall 2026 backtest: what each family tests and why the cross-cycle lines read high.
+ACCURACY_READING = (
+    "<p><strong>Fit on Spring 2026, scored on Fall 2026</strong> is the test closest to how the pages are used: one cycle's curves predicting the next. "
+    "At 14 and 28 days, where most of the scored joiners joined in Phase 1, the curves read high, because Fall 2026 cleared markedly slower than Spring 2026 "
+    "(within 14 days of joining in Phase 1, 48% of hypothetical students at positions 1 to 5 got in against 66% in Spring 2026); "
+    "by the last automatic waitlist run, which scores only joiners from instruction, they read low or close. "
+    "That gap is between the two cycles; scoring Spring 2026 curves on Spring 2027, the same season, is the pre-registered test at the bottom of this page. "
+    "What held from Spring to Fall is the ranking: in all three runs the course curve beat the position bucket, with intervals above zero "
+    "(+0.009 within 14 days, +0.025 within 28 days, +0.019 by the last automatic waitlist run), and the pages' choice of curve rests on that ranking, not on the calibration lines. "
+    "<strong>Later joiners scored with a model fit on earlier ones</strong> stays inside Fall 2026: fit on the joiners from before Phase 2 opened and scored on those after, "
+    "when clearing sped up for everyone, so the curves mostly read low and the course curve does worse than the bucket alone. "
+    "<strong>Held-out courses</strong> scores courses the model never saw, also within Fall 2026, so it tests the department and all-course curves a course without its own falls back to.</p>"
+)
+
+
+def test_accuracy_reads_the_served_backtest_in_order() -> None:
+    html = render(SITE, page="accuracy.html")["elements"]["content"]["html"]
+    assert re.findall(r"<section><h3>(.*?)</h3>", html) == SERVED_RUN_HEADS
+    assert html.startswith('<h2>Calibration and scores</h2>' + ACCURACY_READING + '<p class="muted small">5 predictors are scored side by side:')
+
+
+def test_the_accuracy_reading_holds_in_the_served_backtest() -> None:
+    """Every claim of ACCURACY_READING, checked against site/data/backtest.json and the methodology page it quotes."""
+    bt = load(SITE, "backtest.json")
+    runs = {(r["split"], r["which"]): r for r in bt["runs"]}
+    metric = lambda run, k: next(m for m in run["metrics"] if m["predictor"] == k)  # noqa: E731
+    cross = [runs[("cross_term", w)] for w in ("days14", "days28", "deadline")]
+    # the gains quoted are the score tables' own (signed() prints three decimals), every interval above zero
+    gains = [f"{metric(r, 'course')['gain']:+.3f}" for r in cross]
+    assert f"({gains[0]} within 14 days, {gains[1]} within 28 days, {gains[2]} by the last automatic waitlist run)" in ACCURACY_READING
+    assert all(metric(r, "course")["gain_ci_low"] > 0 for r in cross)
+    # at 14 and 28 days most scored joiners joined in Phase 1; by the last run only joiners from instruction are scored
+    for r in cross[:2]:
+        phase1 = next(c["observable"] for c in r["coverage"] if c["phase"] == "phase1")
+        assert phase1 > r["counts"]["test"] / 2
+    # the temporal runs: trained on every joiner before Phase 2 opened, the course curve worse than the bucket
+    phases = {c["phase"]: c["n"] for c in runs[("cross_term", "days14")]["coverage"]}
+    for which in ("days14", "deadline"):
+        run = runs[("temporal", which)]
+        assert run["counts"]["train"] == phases["before"] + phases["phase1"] + phases["between"]
+        assert metric(run, "course")["gain_ci_high"] < 0
+    # the directions, on the calibration of the predictor the pages use (meta.estimate_level is "course"):
+    # cross-term 14 and 28 days read high in every decile, the cross-term last run low or close in most,
+    # the temporal runs low in most; the held-out runs' course curve is the department's (the fallback)
+    assert load(SITE, "meta.json")["estimate_level"] == "course"
+    cal = lambda run: run["calibration"]["course"]  # noqa: E731
+    for r in cross[:2]:
+        assert all(q["predicted"] > q["observed"] for q in cal(r)), r["name"]
+    assert sum(q["predicted"] <= q["observed"] for q in cal(cross[2])) > len(cal(cross[2])) / 2
+    for which in ("days14", "deadline"):
+        run = runs[("temporal", which)]
+        assert sum(q["predicted"] < q["observed"] for q in cal(run)) > len(cal(run)) / 2, run["name"]
+    grouped = runs[("grouped", "days14")]
+    drop = lambda m: {k: v for k, v in m.items() if k != "predictor"}  # noqa: E731
+    assert drop(metric(grouped, "course")) == drop(metric(grouped, "dept")) and grouped["calibration"]["course"] == grouped["calibration"]["dept"]
+    # the cycle gap is the methodology page's sentence, word for word
+    assert "within 14 days of joining in Phase 1, 48% of hypothetical students at positions 1 to 5 got in against 66% in Spring 2026" in (SITE / "methodology.html").read_text()
+
+
+def test_the_accuracy_reading_is_for_the_fall_2026_backtest_only(full_site: Path, tmp_path: Path) -> None:
+    """Another backtest (the synthetic one, term 9999) gets the runs without the Fall 2026 paragraph."""
+    from tests.test_export_backtest import make_reports
+    from analysis.export_backtest import export_backtest
+
+    shutil.copytree(full_site / "data", tmp_path / "data")
+    export_backtest(make_reports(tmp_path / "reports"), tmp_path / "data" / "backtest.json", term_id="9999", term_name="Simulated term")
+    html = render(tmp_path, page="accuracy.html")["elements"]["content"]["html"]
+    assert html.startswith('<h2>Calibration and scores</h2><p class="muted small">') and "markedly slower" not in html
+
+
+def test_accuracy_says_what_fall_2026_could_not_test() -> None:
+    static = (SITE / "accuracy.html").read_text()
+    assert ("<li><strong>The first week of instruction.</strong> Berkeleytime recorded nothing for any section from Aug 19 to Sep 1, 2026, "
+            "which covers the end of the adjustment period and the first week of class. Nobody who joined in the adjustment period can be scored, "
+            "and no joiner from before the hole can be followed to the first day of class or to the last automatic waitlist run, "
+            "so the two runs headed \"by the last automatic waitlist run\" score only joiners from instruction, who joined after the hole. "
+            "The registrar published no last-run date for Fall 2026; the backtest takes Sep 11, the last day to add without a fee, which is the day Spring 2027's last run falls on. "
+            "Fall 2026 validates clearing in Phase 1, in Phase 2 and in instruction after the hole; \"Which joiners could be scored, by phase\", under each run, gives the shares.</li>") in static
+    assert "last-run horizon is observable" not in static
+    # what the served backtest says: the last-run runs scored exactly their instruction-phase joiners, and no run scored the adjustment period
+    for run in load(SITE, "backtest.json")["runs"]:
+        observable = {c["phase"]: c["observable"] for c in run["coverage"] if c["observable"]}
+        assert "adjustment" not in observable, run["name"]
+        if run["which"] == "deadline":
+            assert observable == {"instruction": run["counts"]["test"]}, run["name"]
+
+
+def test_insights_level_sentence_on_the_served_data() -> None:
+    html = render(SITE, page="insights.html")["elements"]["content"]["html"]
+    # 60.6% [56.6, 64.5] against 59.9% [56.9, 62.6]: under a point apart, intervals overlapping
+    assert "<li>Lower- and upper-division waitlists moved at about the same pace at positions 6 to 15: 61% got in within 14 days in lower-division courses and 60% in upper-division ones (graduate courses: 50%).</li>" in html
+
+
+# by_level["lower"|"upper"]["6-15"] at 14 days (index 1): (p, lo, hi) per side, and the sentence the page prints.
+# "Faster" only when the printed gap is 5 points or more and the 95% intervals do not overlap.
+SAME = "Lower- and upper-division waitlists moved at about the same pace at positions 6 to 15: {} got in within 14 days in lower-division courses and {} in upper-division ones."
+LEVEL_CASES = {
+    "lower clearly ahead": ((0.70, 0.65, 0.75), (0.55, 0.50, 0.60), "Lower-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 55% in upper-division courses."),
+    "upper clearly ahead": ((0.55, 0.50, 0.60), (0.70, 0.65, 0.75), "Upper-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 55% in lower-division courses."),
+    "gap under 5 points": ((0.62, 0.61, 0.63), (0.58, 0.57, 0.59), SAME.format("62%", "58%")),
+    "intervals overlap": ((0.70, 0.55, 0.85), (0.60, 0.50, 0.68), SAME.format("70%", "60%")),
+    "5 points apart": ((0.65, 0.64, 0.66), (0.60, 0.59, 0.61), "Lower-division waitlists moved faster at positions 6 to 15: 65% got in within 14 days against 60% in upper-division courses."),
+    "no intervals": ((0.70, None, None), (0.62, None, None), "Lower-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 62% in upper-division courses."),
+}
+
+
+@pytest.mark.parametrize("case", sorted(LEVEL_CASES))
+def test_insights_level_sentence_faster_or_about_the_same(full_site: Path, tmp_path: Path, case: str) -> None:
+    lower, upper, sentence = LEVEL_CASES[case]
+    shutil.copytree(full_site / "data", tmp_path / "data")
+    path = tmp_path / "data" / "insights.json"
+    ins = json.loads(path.read_text())
+    ins["by_level"].pop("grad", None)
+    for level, (p, lo, hi) in (("lower", lower), ("upper", upper)):
+        cell = ins["by_level"][level]["6-15"]
+        cell["p"][1], cell["lo"][1], cell["hi"][1] = p, lo, hi
+    path.write_text(json.dumps(ins))
+    html = render(tmp_path, page="insights.html")["elements"]["content"]["html"]
+    assert f"<li>{sentence}</li>" in html, html[:2000]
+
+
+# Under the hero chart, above the table: why a deeper position can end above positions 1 to 5.
+INVERSION_NOTE = (
+    '<p class="muted small">When a deeper position sits or ends above positions 1 to 5, here or in the table and chart below, that comes from where the hypothetical students '
+    "can be placed, not from any advantage of a later spot. Positions 1 to 5 include full sections with nobody else waiting, where a seat that opens shows in "
+    "the counts as someone enrolling directly, never as the hypothetical student getting in; positions 6 and up exist only where at least five people were "
+    "already waiting, so a seat that opens there goes to the queue.</p>"
+)
+
+
+def test_insights_position_charts_and_table_on_the_served_data() -> None:
+    html = render(SITE, page="insights.html")["elements"]["content"]["html"]
+    assert '<p class="muted small">Lower-division courses, students who joined during Phase 1: the share who had a seat, by days since joining, one curve per position.</p>' in html
+    hero = html[html.index('id="hero-chart"'):html.index("<h3>All courses and phases</h3>")]
+    assert "6-15 92%" in hero and "1-5 83%" in hero  # the curves' ends: deeper positions above 1 to 5
+    assert hero.endswith("</figure>\n      " + INVERSION_NOTE + "\n      ")  # under the hero chart's legend, right above the table's heading
+    assert '<th scope="col" class="num">Longest follow-up</th>' in html and "<strong>74%</strong> <span class=\"muted small\">at 80 days</span>" in html
+    # Why the note and not a cap at 28 days: in the served all-course table positions 6 to 15 are already above 1 to 5 at 28 days,
+    # intervals apart, so a 28-day cap would keep the inversion. Within 14 days the order is the expected one, in both views.
+    ins = load(SITE, "insights.json")
+    at = lambda view, bucket, day: read_curve(ins[view][bucket]["curve"], day)  # noqa: E731  (p, lo, hi, day)
+    assert at("all_by_bucket", "6-15", 28.0)[1] > at("all_by_bucket", "1-5", 28.0)[2]
+    for view in ("all_by_bucket", "hero"):
+        assert [at(view, b, 14.0)[0] for b in ("1-5", "6-15", "16-40", "41+")] == sorted((at(view, b, 14.0)[0] for b in ("1-5", "6-15", "16-40", "41+")), reverse=True)
+        assert ins[view]["6-15"]["curve"][-1][1] > ins[view]["1-5"]["curve"][-1][1]
+
+
+def test_insights_inversion_note_without_a_hero_chart(full_site: Path, tmp_path: Path) -> None:
+    """No Phase 1 lower-division cases: the note still sits above the table, after the hero's fallback line."""
+    shutil.copytree(full_site / "data", tmp_path / "data")
+    path = tmp_path / "data" / "insights.json"
+    path.write_text(json.dumps({**json.loads(path.read_text()), "hero": {}}))
+    html = render(tmp_path, page="insights.html")["elements"]["content"]["html"]
+    assert ("Not enough Phase 1 lower-division cases for this chart yet.</p>\n      " + INVERSION_NOTE + "\n      <h3>All courses and phases</h3>") in html
+
+
 # The pre-registration (the Accuracy box, the About data status) in both regimes.
 # Today meta.json carries the Spring 2026 Berkeleytime cohort with prereg_commit
 # 7f348ed and prereg_date 2026-09-21. A deliberate own-data publish (PR #46) drops
