@@ -264,12 +264,18 @@ def test_lookup_after_the_last_waitlist_run_is_a_look_back(course_site: Path) ->
     assert f"<p><strong>{pct(last[1])}</strong></p>" in r and "no longer processed automatically" in r and "look back, not a forecast" in r
     assert r.index('class="verdict"') < r.index("no longer processed automatically") < r.index("got in within")  # one section: the verdict leads here too
     assert "by the first day of instruction" not in r and "days away" not in out["stamp"]
+    # item 22: no "7 days from now" row under the sentence saying waitlists are no longer processed; nothing is left to put in the table
+    assert "days from now" not in r and 'class="bywhen"' not in r
+    out = render(Path("/nonexistent"), today="2027-03-01", expression=f"BWO.byWhenHtml({{curve: {json.dumps(HEADLINE_CELLS['within reach'])}}}, {json.dumps(HEADLINE_META)}, BWO.today())")
+    assert out["eval"] == ""
 
 
 # The headline block (BWO.headlineHtml, the lookup's and the course page's) pinned on hand-made curves on Jan 10,
 # 27 days to the end of the last run's day and 9 to instruction: a curve that reaches the 27 days, one that stops
 # at 20 (audit item 1: the share is read at the reach and said as "within 20 days", with "at least" for the 27),
 # and one section with no interval (item 3: the verdict leads, the share comes after the by-when table, dimmed).
+# A verdict's cut-off range is printed in the verdict note only (item 17: "Could go either way (40% to 74%)" sat next to
+# "95% interval 64% to 82%"); "Too little data to call" keeps its reason, which is not a range.
 HEADLINE_META = {"deadline": "2027-02-05", "instruction_start": "2027-01-19", "forecast_term_name": "Spring 2027"}
 HEADLINE_CELLS = {
     "within reach": [[0.5, 0.1, 0.05, 0.15], [7, 0.5, 0.45, 0.55], [28, 0.8, 0.74, 0.86]],
@@ -283,13 +289,13 @@ HEADLINES = {  # (html, after): the caller prints `after` under its table
     ("2027-01-10", "within reach"): (
         '<p class="lead">About 10 in 20 got in within 27 days of joining</p>[dots 10 of 20 dots filled: 50%]<div class="big">50% <small>(95% interval 45% to 55%)</small></div>'
         "<p>of comparable students had cleared within 27 days of joining, the time left before the last automatic waitlist run (Feb 5, 2027).</p>"
-        '<p><span class="verdict">Could go either way</span> <span class="muted small">(40% to 74%)</span></p>'
+        '<p><span class="verdict">Could go either way</span></p>'
         "<p><strong>50%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>", ""),
     ("2027-01-10", "past the reach"): (
         '<p class="lead">About 16 in 20 got in within 20 days of joining</p>[dots 16 of 20 dots filled: 80%]<div class="big">80% <small>(95% interval 74% to 86%)</small></div>'
         "<p>of comparable students had cleared within 20 days of joining, the longest the data follow anyone; "
         "the time left before the last automatic waitlist run (Feb 5, 2027) is 27 days, so at least 80% had cleared within that time.</p>"
-        '<p><span class="verdict">Likely</span> <span class="muted small">(75% or more)</span></p>'
+        '<p><span class="verdict">Likely</span></p>'
         "<p><strong>50%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>", ""),
     ("2027-01-10", "one section"): (
         THIN_LEAD,
@@ -301,11 +307,11 @@ HEADLINES = {  # (html, after): the caller prints `after` under its table
         '<p class="lead">Almost everyone got in within 8 days of joining</p>[dots 20 of 20 dots filled: 100%]<div class="big">100% <small>(95% interval 97% to 100%)</small></div>'
         "<p>of comparable students had cleared within 8 days of joining, the longest the data follow anyone; "
         "the time left before the last automatic waitlist run (Feb 5, 2027) is 27 days.</p>"
-        '<p><span class="verdict">Likely</span> <span class="muted small">(75% or more)</span></p>'
+        '<p><span class="verdict">Likely</span></p>'
         "<p><strong>100%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>", ""),
     ("2027-03-01", "within reach"): (
         '<p class="lead">About 16 in 20 got in within 28 days of joining</p>[dots 16 of 20 dots filled: 80%]<div class="big">80% <small>(95% interval 74% to 86%)</small></div>'
-        + LOOK_BACK + '<p><span class="verdict">Likely</span> <span class="muted small">(75% or more)</span></p>', ""),
+        + LOOK_BACK + '<p><span class="verdict">Likely</span></p>', ""),
     ("2027-03-01", "one section"): (
         THIN_LEAD + LOOK_BACK,
         "<p>About 17 in 20 got in within 7 days of joining</p>[dim dots 17 of 20 dots filled: 84%]<p><strong>84%</strong></p>"),
@@ -342,6 +348,133 @@ def test_the_by_when_table_says_at_least_past_the_reach() -> None:
     assert "at least" not in full and "floor" not in capped + full
 
 
+# Item 18 and Task 15's review: a share read past the curve's reach is "at least" that much on every table,
+# as on the lookup and in the Methods page's sentence, and nothing where it prints as 100% ("100% floor" said nothing).
+AT_LEAST = '<span class="muted small" title="The data follow joiners for fewer days than this horizon">at least</span> '
+
+
+def capped_rows(index: dict, bucket: str, h: float) -> tuple[list[dict], list[dict]]:
+    """The index rows whose cell at `bucket` stops short of `h` days: those under 100%, and those that print as 100%."""
+    rows = [r for r in index["courses"] if r["buckets"].get(bucket) and r["buckets"][bucket]["reach"][1] < h]
+    i = index["horizons"].index(h)
+    return [r for r in rows if jspct(r["buckets"][bucket]["p"][i]) != "100%"], [r for r in rows if jspct(r["buckets"][bucket]["p"][i]) == "100%"]
+
+
+def row_with(html: str, key: str) -> str:
+    """The one table row of the Courses or department table that links `key`."""
+    found = [tr for tr in html.split('<tr class="course">')[1:] if f">{key}</a>" in tr]
+    assert len(found) == 1, (key, len(found))
+    return found[0]
+
+
+def test_past_the_reach_every_table_says_at_least(course_site: Path) -> None:
+    index = load(course_site, "index.json")
+    partial, full = capped_rows(index, "1-5", 14.0)
+    assert partial and full  # the synthetic export has both at positions 1 to 5 within 14 days
+    pages = {}
+    # Courses: the share column, "at least" before the number, nothing at 100%
+    out = render(course_site, page="courses.html", search="?bucket=1-5&pooled=1&all=1")
+    pages["courses"] = table = out["elements"]["table"]["html"]
+    for r in partial:
+        assert f'<td class="num">{AT_LEAST}<strong>{jspct(r["buckets"]["1-5"]["p"][1])}</strong>' in row_with(table, r["key"]), r["key"]
+    for r in full:
+        tr = row_with(table, r["key"])
+        assert '<td class="num"><strong>100%</strong><span class="sub">' in tr and "at least" not in tr, r["key"]
+    # the course page's table of every bucket
+    cell = next(r for r in index["courses"] if r["key"] == "COMPSCI 0")["buckets"]["1-5"]
+    assert cell["reach"][1] < 7
+    out = render(course_site, page="course.html", search="?c=cs0&position=3")
+    pages["course"] = html = out["elements"]["course"]["html"]
+    summary = html.split('aria-label="Share who got in by position and horizon"')[1].split("</table>")[0]
+    for p in cell["p"]:
+        assert f'<td class="num">{AT_LEAST if jspct(p) != "100%" else ""}{jspct(p)}</td>' in summary, p
+    # the department page: the pool's three horizons and every course's 14 days
+    pool = load(course_site, "pooled.json")["dept"]["COMPSCI"]["6-15"]
+    assert pool["reach_days"] < 28
+    out = render(course_site, page="dept.html", search="?subject=COMPSCI")
+    pages["dept"] = out["elements"]["pool"]["html"] + out["elements"]["table"]["html"]
+    p28 = read_curve(pool["curve"], 28.0)[0]
+    assert f'<tr><td>28 days</td><td class="num">{AT_LEAST if jspct(p28) != "100%" else ""}<strong>{jspct(p28)}</strong></td>' in pages["dept"]
+    out = render(course_site, page="dept.html", search="?subject=ART&bucket=1-5")
+    dept_table = out["elements"]["table"]["html"]
+    pages["dept_art"] = dept_table
+    for r in partial + full:
+        if r["subject"] == "ART":
+            p = jspct(r["buckets"]["1-5"]["p"][1])
+            assert f'<td class="num">{AT_LEAST if p != "100%" else ""}<strong>{p}</strong>' in row_with(dept_table, r["key"]), r["key"]
+    # Insights: the bucket grid
+    ins = load(course_site, "insights.json")["all_by_bucket"]
+    out = render(course_site, page="insights.html")
+    pages["insights"] = grid = out["elements"]["content"]["html"]
+    for b, c in ins.items():
+        if c["reach_days"] < 28:
+            p = read_curve(c["curve"], 28.0)[0]
+            assert f'<td class="num">{AT_LEAST if jspct(p) != "100%" else ""}<strong>{jspct(p)}</strong>' in grid, b
+    # the chart's hatched region past the reach says the same in its title (the lookup's one curve stops at 7 days)
+    pages["lookup"] = render(course_site, course="COMPSCI 0", position="3")["result"]
+    assert "<title>Beyond 7 days, the longest the data follow anyone, the share is at least the value at 7 days</title>" in pages["lookup"]
+    for name, text in pages.items():
+        assert not re.search(r"\bfloor\b", text, re.I), name
+
+
+def test_the_verdict_cut_offs_are_in_the_note_only(course_site: Path) -> None:
+    """Item 17: the verdict chip carries no range of its own beside the share's interval; the note under it has the cut-offs."""
+    r = render(course_site, course="COMPSCI 0", position="10")["result"]
+    assert '<p><span class="verdict">' in r and not re.search(r'class="verdict">[^<]*</span> <span class="muted small">\(\d', r)
+    for cut in ("(75% or more)", "(40% to 74%)", "(below 40%)"):
+        assert cut not in r
+    assert "Verdicts: Likely at 75% or more, Could go either way from 40% to 74%, Unlikely below 40%" in r
+    markup = (SITE / "methodology.html").read_text()
+    assert "are fixed cut-offs, not a model, and every page that shows a verdict prints them in a note." in markup and "printed next to every verdict" not in markup
+
+
+def chart_svg(series: list[dict], **opts: object) -> str:
+    out = render(Path("/nonexistent"), expression=f"BWO.curveChart({json.dumps({'series': series, 'id': 't', **opts})})")
+    assert "eval_error" not in out, out.get("eval_error")
+    return out["eval"]
+
+
+def end_labels(svg: str) -> list[str]:
+    """The direct labels at the curves' ends, top to bottom."""
+    found = re.findall(r'<text class="lbl(?: ink)?" x="560" y="([\d.]+)">([^<]+)</text>', svg)
+    return [label for _, label in sorted(found, key=lambda m: float(m[0]))]
+
+
+def test_end_labels_keep_bucket_order_where_they_print_the_same() -> None:
+    """Item 19: four curves ending at 99.8%, 99.6%, 99.5% and 99% read "16-40 100%, 1-5 100%, 6-15 100%, 41+ 99%";
+    labels that print the same are in bucket order, and labels that differ stay in the order of their curves' ends."""
+    def series(ends: dict[str, float]) -> list[dict]:
+        return [{"label": b, "short": b, "curve": [[0.5, 0.1, None, None], [20, p, None, None]], "cls": f"s{i + 1}"} for i, (b, p) in enumerate(ends.items())]
+    tied = chart_svg(series({"1-5": 0.996, "6-15": 0.995, "16-40": 0.998, "41+": 0.99}))
+    assert end_labels(tied) == ["1-5 100%", "6-15 100%", "16-40 100%", "41+ 99%"]
+    apart = chart_svg(series({"1-5": 0.83, "6-15": 0.92, "16-40": 0.88}))
+    assert end_labels(apart) == ["6-15 92%", "16-40 88%", "1-5 83%"]  # each label beside its own curve's end
+
+
+def test_the_phone_nav_wraps_rather_than_scrolls() -> None:
+    """Item 15: below 30 rem the nav's links wrap instead of scrolling out of sight; tests/site/smoke.mjs checks every link is whole at 390 px."""
+    css = (SITE / "assets" / "site.css").read_text()
+    m = re.search(r"@media \(max-width: 30rem\) \{\s*\.site-head nav \{([^}]*)\}\s*\.site-head nav a \{([^}]*)\}", css)
+    assert m, "no phone rule for the nav"
+    assert "flex-wrap: wrap" in m.group(1) and "overflow-x: visible" in m.group(1)
+    assert "min-height" not in m.group(2) and "min-height: 44px" in css  # the base rule's 44 px target stands
+
+
+def test_every_other_x_tick_is_marked_for_phones() -> None:
+    """Item 16: below 30 rem (480 px) every other x tick, its day and its date, is hidden, so the axis keeps half its labels."""
+    svg = chart_svg([{"label": "a", "curve": [[0.5, 0.1, 0.05, 0.15], [80, 0.7, 0.6, 0.8]]}], marks=[{"day": 102, "label": "last waitlist run"}], t=None)
+    days_ = re.findall(r'<text class="lbl( odd)?" x="[\d.]+" y="[\d.]+" text-anchor="middle">(\d+)d</text>', svg)
+    assert [d for _, d in days_] == ["0", "14", "28", "42", "56", "70", "84", "98"]
+    assert [d for odd, d in days_ if odd] == ["14", "42", "70", "98"]
+    out = render(Path("/nonexistent"), expression=("(function(){ const svg = BWO.curveChart({series: [{label: 'a', curve: [[0.5, 0.1, 0.05, 0.15], [80, 0.7, 0.6, 0.8]]}],"
+                                                   " marks: [{day: 102, label: 'x'}], t: BWO.today(), id: 'u'}); return svg; })()"))
+    dates = re.findall(r'<text class="lbl date( odd)?" x="[\d.]+" y="[\d.]+" text-anchor="middle">([^<]+)</text>', out["eval"])
+    assert len(dates) == 8 and [d for odd, d in dates if odd] == ["Jan 24", "Feb 21", "Mar 21", "Apr 18"]
+    css = (SITE / "assets" / "site.css").read_text()
+    rule = re.search(r"@media \(max-width: 30rem\) \{([^}]*\.chart \.lbl\.odd[^}]*)\}", css)
+    assert rule and "display: none" in rule.group(1), "no phone rule hiding every other x tick"
+
+
 def test_a_verdict_with_the_data_behind_it_leads_with_the_share(course_site: Path) -> None:
     """The department's pool at positions 6 to 15 has an interval: the share leads, big, and the verdict follows it."""
     own = load(course_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]["6-15"]
@@ -376,13 +509,14 @@ def test_copy_as_text_says_what_the_headline_says(course_site: Path) -> None:
     out = render(course_site, course="COMPSCI 0", position="3", today="2027-02-03", expression=COPY_TEXT)
     assert out["eval"] == (f"COMPSCI 0, position 3: too little data to call (one section only, no interval); {freq(p).lower()} comparable students got in within 3 days of joining ({jspct(p)}), "
                            f"the time left before the last automatic waitlist run (Feb 5, 2027). {tail}COMPSCI%200&position=3")
-    # "almost everyone" takes "among", not "almost everyone comparable students"; at 100% there is no "at least"
+    # "almost everyone" takes "among", not "almost everyone comparable students"; at 100% there is no "at least",
+    # and the clause after the semicolon is still a sentence (Task 15's review): the run is 27 days away
     cell = cell_of(course_site, "MATH 25", "1-5")
     p, _, _, day = read_curve(cell["curve"], 27.0)
     assert jspct(p) == "100%"
     out = render(course_site, course="MATH 25", position="3", expression=COPY_TEXT)
     assert out["eval"] == (f"MATH 25, position 3: too little data to call (one section only, no interval); almost everyone among comparable students got in within {jsround(day)} days of joining (100%), "
-                           f"the longest the data follow anyone; 27 days left before the last automatic waitlist run (Feb 5, 2027). {tail}MATH%2025&position=3")
+                           f"the longest the data follow anyone; the last automatic waitlist run (Feb 5, 2027) is 27 days away. {tail}MATH%2025&position=3")
 
 
 # Audit item 4: the pages ran on UTC, so from about 17:00 Pacific every date was tomorrow's. "Today" is the
@@ -477,14 +611,27 @@ def test_department_level_estimates(dept_site: Path) -> None:
     assert "Where a mid-list spot moved most" not in out["elements"]["content"]["html"]
 
 
-@pytest.mark.parametrize(("query", "shown"), [("NOPE 999", "NOPE 999"), ("COMPSCI 999", "COMPSCI 999"), ("NOPE 101", "NOPE 101"), ("data structures", "DATA STRUCTURES")])
-def test_a_course_not_in_the_index_gets_no_estimate(full_site: Path, query: str, shown: str) -> None:
-    """Audit item 3: as on the course page, a code that is not a course in the index gets no pooled estimate, only suggestions."""
+NO_DATA = "Check the spelling, or the course had too few waitlisted students to estimate."
+BROWSE = '<p>Or browse <a href="courses.html?today=2027-01-10">every course</a>.</p>'
+
+
+@pytest.mark.parametrize(("query", "shown", "near"), [("NOPE 999", "NOPE 999", None), ("COMPSCI 999", "COMPSCI 999", "COMPSCI"), ("NOPE 101", "NOPE 101", None), ("data structures", "DATA STRUCTURES", None)])
+def test_a_course_not_in_the_index_gets_no_estimate(full_site: Path, query: str, shown: str, near: str | None) -> None:
+    """Audit item 3: as on the course page, a code that is not a course in the index gets no pooled estimate, only suggestions.
+
+    Item 13: "Did you mean" offers only what is close to the query (here COMPSCI's own courses for
+    COMPSCI 999); for a subject nothing resembles it is left out, rather than offering the
+    most-joined courses, which are the Try chips above the form."""
     out = render(full_site, course=query, position="10")
     r = out["result"]
     assert not out["result_hidden"]
-    assert r.startswith(f'<p class="error">No data for <strong>{shown}</strong>. Check the spelling, or the course had too few waitlisted students to estimate. Did you mean <a href="?course=')
-    assert r.endswith('?</p><p>Or browse <a href="courses.html?today=2027-01-10">every course</a>.</p>')
+    if near:
+        assert r.startswith(f'<p class="error">No data for <strong>{shown}</strong>. {NO_DATA} Did you mean <a href="?course=')
+        assert r.endswith("?</p>" + BROWSE)
+        keys = [unquote(k) for k in re.findall(r'<a href="\?course=([^&"]+)&position=10', r)]
+        assert len(keys) == 3 and all(k.startswith(near + " ") for k in keys), keys
+    else:
+        assert r == f'<p class="error">No data for <strong>{shown}</strong>. {NO_DATA}</p>{BROWSE}'
     for estimate in ('class="verdict"', "got in", 'class="big"', "Showing the estimate", "<svg", "This curve:", 'class="bywhen"', "dots"):
         assert estimate not in r, estimate
     assert out["title"] == f"No data for {shown} · Berkeley Waitlist Odds"
@@ -618,19 +765,43 @@ def test_course_query_fixture_passes_in_the_node_runner_and_here() -> None:
             assert len(got["nearest"]) <= 3, f"{row['query']!r}: {got['nearest']}"
 
 
-def test_a_miss_offers_the_nearest_courses(full_site: Path) -> None:
-    """No match, three nearest offered: where the subject is unambiguous the offers come from it."""
-    out = render(SITE, expression="['cs 61x', 'physics 999', 'asdf', ''].map((t) => BWO.matchCourse(BWO.loaded.index, t).nearest.map((r) => r.key))")
-    cs, physics, asdf, empty = out["eval"]
-    assert cs and all(k.startswith("COMPSCI ") for k in cs), cs
-    assert physics and all(k.startswith("PHYSICS ") for k in physics), physics
-    assert len(asdf) <= 3 and len(empty) <= 3
+# Item 13: what each of the fixture's misses offers, by subject (the keys are the joins ranking's, which a
+# refresh may reorder). The subject understood, a prefix the combobox would complete, or a subject within the
+# fuzzy rule's distance; nothing at all when none of those finds a course, never the most-joined three.
+MISS_OFFERS = {
+    "cs 61x": "COMPSCI", "compsci 9999": "COMPSCI", "computer science 9999": "COMPSCI", "physics 999": "PHYSICS",
+    "math 9999": "MATH", "mathematics 9999": "MATH", "stat 61a": "STAT", "data 61a": "DATA", "econ 999": "ECON",
+    "chem 1z": "CHEM", "data": "DATA",  # a subject alone: its courses (docs/DESIGN_A6.md, the title layer)
+    "compsi 999": "COMPSCI",  # a typo in the subject, a number that is no course: the fuzzy rule's subject
+    "comp 61": "COMPSCI",  # a prefix: what the combobox suggested while it was typed
+    "asdf": None, "": None, "zzz 1": None, "qqqq 12": None, "!!!": None, "123456": None, "nope 1": None, "xyz 100": None,
+    "berkeley 12345": None, "uc berkeley": None, "lecture": None, "spring 2027": None, "0000": None, "cs 61a1": None,
+    "business administration 135": None, "quantum basketweaving": None, "data structures 2": None, "and": None,
+}
+
+
+def test_a_miss_offers_only_what_is_close(full_site: Path) -> None:
+    """No match: up to three courses close to the query, or none; where the subject is unambiguous the offers come from it."""
+    queries = list(MISS_OFFERS)
+    out = render(SITE, expression=f"{json.dumps(queries)}.map((t) => {{ const m = BWO.matchCourse(BWO.loaded.index, t); return [m.layer, m.nearest.map((r) => r.key)]; }})")
+    assert "eval_error" not in out, out.get("eval_error")
+    for query, (layer, keys) in zip(queries, out["eval"], strict=True):
+        subject = MISS_OFFERS[query]
+        assert layer == "miss", query
+        if subject is None:
+            assert keys == [], (query, keys)
+        else:
+            assert 1 <= len(keys) <= 3 and all(k.startswith(subject + " ") for k in keys), (query, keys)
+    out = render(SITE, expression="BWO.matchCourse(BWO.loaded.index, 'comp 61').nearest.map((r) => r.key)")
+    assert all(k.startswith("COMPSCI 61") for k in out["eval"]), out["eval"]
     # a hit offers nothing: nearest is only for the no-match message
     out = render(SITE, expression="BWO.matchCourse(BWO.loaded.index, 'cs61a').nearest.length")
     assert out["eval"] == 0
-    # the page prints them under its own no-match message
+    # the page prints them under its own no-match message, and prints none when there are none
+    out = render(full_site, course="compsi 101", position="4")
+    assert "Did you mean <a" in out["result"] and "COMPSCI" in out["result"]
     out = render(full_site, course="NOPE 101", position="4")
-    assert "Did you mean" in out["result"]
+    assert "Did you mean" not in out["result"]
 
 
 def test_a_bare_number_ranks_by_joins(full_site: Path) -> None:
@@ -734,11 +905,11 @@ def test_the_title_layer_is_skipped_silently_without_titles(tmp_path: Path) -> N
     """No titles_file in meta, a missing file or a broken one: a title query is an ordinary miss, fetched at most once."""
     broken = tmp_path / "broken.json"
     broken.write_text("{not json")
-    expression = "(async () => { const i = BWO.loaded.index; const a = await BWO.matchCourseAsync(i, 'data structures'); const b = await BWO.matchCourseAsync(i, 'hilfinger'); return [a.layer, b.layer, a.nearest.length > 0]; })()"
+    expression = "(async () => { const i = BWO.loaded.index; const a = await BWO.matchCourseAsync(i, 'data structures'); const b = await BWO.matchCourseAsync(i, 'hilfinger'); return [a.layer, b.layer, a.nearest.map((r) => r.key)]; })()"
     for env, fetched in (({}, 0), ({"HARNESS_TITLES_FILE": str(tmp_path / "absent.json")}, 1), ({"HARNESS_TITLES_FILE": str(broken)}, 1)):
         out = render(SITE, env=env, expression=expression)
         assert "eval_error" not in out, (env, out.get("eval_error"))
-        assert out["eval"] == ["miss", "miss", True], env
+        assert out["eval"] == ["miss", "miss", []], env  # nothing in it names a subject: no "Did you mean" (item 13)
         assert title_fetches(out) == fetched, (env, out["fetches"])
 
 
@@ -747,9 +918,12 @@ def test_every_subject_has_a_display_name() -> None:
 
     The file covers the Fall 2026 and the Spring 2026 index (the site switches
     terms by swapping site/data), so this holds on either. The Academic Guide's
-    index does not list three of the subjects (DISSTD, MBN, QTP), so as the plan
-    allows they are written blank and listed under "_todo"; the names asserted
-    here are the 40 most-joined subjects, which are all named in both terms.
+    index does not list three of the subjects (DISSTD, MBN, QTP). DISSTD is in
+    the index the site ships, so its name is typed into the generator's MANUAL
+    map (audit item 21: the department list showed "DISSTD" among full names);
+    MBN and QTP, which only the Fall 2026 index has, are written blank and
+    listed under "_todo". Every subject of the shipped index is named, and the
+    40 most-joined are named in both terms.
     """
     names = json.loads((ROOT / "config" / "subject_names.json").read_text())
     index = json.loads((SITE / "data" / "index.json").read_text())
@@ -763,6 +937,8 @@ def test_every_subject_has_a_display_name() -> None:
     assert blank == sorted(names["_todo"]), (blank, names["_todo"])
     top40 = sorted(joins, key=lambda s: (-joins[s], s))[:40]
     assert [s for s in top40 if not names["names"][s]] == []
+    assert sorted(s for s in joins if not names["names"][s]) == []  # item 21: none of the shipped index's subjects is a bare code
+    assert names["names"]["DISSTD"] == "Disability Studies" and "DISSTD" not in names["_todo"]
     # the hand-written nicknames are a separate file, so regenerating never clobbers them
     nicknames = json.loads((ROOT / "config" / "course_nicknames.json").read_text())["nicknames"]
     assert nicknames["E7"] == "ENGIN 7" and nicknames["DATA 8"] == "DATA C8" and nicknames["HAAS"] == "UGBA"
@@ -835,6 +1011,31 @@ def test_course_page_shows_every_bucket_and_the_same_headline(course_site: Path)
     assert out["elements"].get("live", {"html": ""})["html"] == ""  # no live file: the block stays hidden, no error
 
 
+RELATED_HEAD = "<h2>Other COMPSCI courses at positions 6 to 15</h2>"
+
+
+def test_course_page_says_what_its_related_list_is(course_site: Path, tmp_path: Path) -> None:
+    """Item 20: the related list is the most-joined of the subject's other courses with their own or the
+    department's curve at the bucket (one on the all-course pool would print that pool's number), and the
+    page says how many there are, so five of fourteen does not read as the whole subject."""
+    index = load(course_site, "index.json")
+    others = [r for r in index["courses"] if r["subject"] == "COMPSCI" and r["key"] != "COMPSCI 0" and r["buckets"].get("6-15", {}).get("pooled", "all") != "all"]
+    assert len(others) > 5
+    html = render(course_site, page="course.html", search="?c=cs0&position=10")["elements"]["course"]["html"]
+    assert (f"{RELATED_HEAD}<p class=\"muted small\">The 5 most-joined of the {len(others)} other COMPSCI courses with their own or the department's curve "
+            "at these positions.</p>") in html
+    assert html.split(RELATED_HEAD)[1].split("</ul>")[0].count("<li>") == 5
+    # every one shown: the sentence says so
+    root = tmp_path / "site"
+    shutil.copytree(course_site, root)
+    keep = {"COMPSCI 0", others[0]["key"], others[1]["key"]}
+    trimmed = {**index, "courses": [r for r in index["courses"] if r["subject"] != "COMPSCI" or r["key"] in keep]}
+    (root / "data" / "index.json").write_text(json.dumps(trimmed))
+    html = render(root, page="course.html", search="?c=cs0&position=10")["elements"]["course"]["html"]
+    assert f"{RELATED_HEAD}<p class=\"muted small\">Every other COMPSCI course with its own or the department's curve at these positions, most-joined first.</p>" in html
+    assert html.split(RELATED_HEAD)[1].split("</ul>")[0].count("<li>") == 2
+
+
 def test_course_page_says_which_course_a_forgiven_query_showed() -> None:
     """Q5 on the course page: a fuzzy, name or nickname match prints the lookup's "Showing X for query" line; an exact key does not."""
     for query, key in (("compsi%2061a", "COMPSCI 61A"), ("computer%20science%2061a", "COMPSCI 61A"), ("e7", "ENGIN 7")):
@@ -848,7 +1049,10 @@ def test_course_page_says_which_course_a_forgiven_query_showed() -> None:
 
 def test_course_page_without_a_course(full_site: Path) -> None:
     out = render(full_site, page="course.html", search="?c=NOPE%201")
-    assert "No data for" in out["status"] and "NOPE 1" in out["status"] and "index.html?course=NOPE%201" in out["status"]
+    # the sentence is true of what the lookup shows (item 13): close matches when there are any, none otherwise
+    assert out["status"] == (f'<p class="error">No data for <strong>NOPE 1</strong>. {NO_DATA}</p>'
+                             '<p><a href="index.html?course=NOPE%201&position=10&today=2027-01-10">Try the lookup</a>, which suggests courses close to what you typed when there are any, '
+                             'or browse <a href="courses.html?today=2027-01-10">every course</a>.</p>')
     assert "falls back to the department" not in out["status"]  # the lookup gives a code it cannot find no estimate either
     out = render(full_site, page="course.html")
     assert "No data for" in out["status"]
@@ -1237,7 +1441,7 @@ def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
 
 def dept_copy(site_root: Path, tmp_path: Path) -> Path:
     """A copy of the export with distinct joins on the COMPSCI rows (the synthetic cohort has none),
-    so the order the page prints is pinned, plus one DISSTD course: a subject with no display name."""
+    so the order the page prints is pinned, plus one QTP course: a subject with no display name (config/subject_names.json lists it under _todo)."""
     root = tmp_path / "site"
     shutil.copytree(site_root, root)
     path = root / "data" / "index.json"
@@ -1246,7 +1450,8 @@ def dept_copy(site_root: Path, tmp_path: Path) -> Path:
     for i, r in enumerate(compsci):
         r["joins"] = (i * 7) % len(compsci) + 1  # 7 is coprime with 15: distinct, and not the key order
     art = next(r for r in index["courses"] if r["key"] == "ART 11")
-    index["courses"].append({**art, "key": "DISSTD 10", "subject": "DISSTD", "number": "10", "joins": 3})
+    assert json.loads((ROOT / "config" / "subject_names.json").read_text())["names"]["QTP"] == ""  # still unnamed; pick another _todo code if it gets one
+    index["courses"].append({**art, "key": "QTP 10", "subject": "QTP", "number": "10", "joins": 3})
     path.write_text(json.dumps(index))
     return root
 
@@ -1311,12 +1516,12 @@ def test_department_page_shows_the_pool_curve_and_every_course(course_site: Path
 
 def test_department_page_without_a_display_name_and_grouped_subjects(course_site: Path, tmp_path: Path) -> None:
     site = dept_copy(course_site, tmp_path)
-    out = render(site, page="dept.html", search="?subject=DISSTD")
+    out = render(site, page="dept.html", search="?subject=QTP")
     els = out["elements"]
-    assert els["dept-name"]["text"] == "DISSTD" and out["title"].startswith("DISSTD courses")
+    assert els["dept-name"]["text"] == "QTP" and out["title"].startswith("QTP courses")
     assert "1 course with estimates" in els["summary"]["html"] and len(dept_rows(els["table"]["html"])) == 1
     # a small subject is pooled with the other small ones: the curve says so
-    assert "DISSTD is grouped with the smaller departments" in els["summary"]["html"]
+    assert "QTP is grouped with the smaller departments" in els["summary"]["html"]
     assert "The smaller departments together, positions 6 to 15" in els["pool"]["html"]
     out = render(site, page="dept.html", search="?subject=art", expression="BWO.subjectName('ART')")
     assert out["elements"]["dept-name"]["text"] == out["eval"] and out["eval"] in ("ART", "Art Practice")
@@ -1325,8 +1530,18 @@ def test_department_page_without_a_display_name_and_grouped_subjects(course_site
     out = render(site, page="dept.html", search="?subject=cs", expression="BWO.subjectName('COMPSCI')")
     assert out["elements"]["dept-name"]["text"] == out["eval"] and "Every COMPSCI course" in out["elements"]["table"]["html"]
     # a display name from the generated map (PR #17) is used; a missing or empty one falls back to the code
-    out = render(site, page="dept.html", search="?subject=cs", expression="(BWO.SUBJECT_NAMES = {COMPSCI: 'Computer Science', DISSTD: ''}, [BWO.subjectName('COMPSCI'), BWO.subjectName('DISSTD'), BWO.subjectName('NOPE')])")
-    assert out["eval"] == ["Computer Science", "DISSTD", "NOPE"]
+    out = render(site, page="dept.html", search="?subject=cs", expression="(BWO.SUBJECT_NAMES = {COMPSCI: 'Computer Science', QTP: ''}, [BWO.subjectName('COMPSCI'), BWO.subjectName('QTP'), BWO.subjectName('NOPE')])")
+    assert out["eval"] == ["Computer Science", "QTP", "NOPE"]
+
+
+def test_the_department_list_shows_every_subject_by_name() -> None:
+    """Item 21: dept.html with no subject lists every department of the shipped index; none is shown as its bare code."""
+    out = render(SITE, page="dept.html")
+    links = re.findall(r'<a href="dept\.html\?subject=([^&"]+)[^"]*">([^<]+)</a>', out["elements"]["summary"]["html"])
+    subjects = {r["subject"] for r in load(SITE, "index.json")["courses"]}
+    assert {code for code, _ in links} == subjects
+    assert [code for code, text in links if text == code] == []
+    assert ("DISSTD", "Disability Studies") in links
 
 
 def test_unknown_department_names_the_nearest(course_site: Path) -> None:
@@ -1396,17 +1611,17 @@ def test_course_page_links_its_department(course_site: Path) -> None:
 
 
 def test_course_page_links_its_department_without_related_courses(course_site: Path, tmp_path: Path) -> None:
-    """DISSTD 10 is the only DISSTD course: no related-courses block, but the department link still shows."""
+    """QTP 10 is the only QTP course: no related-courses block, but the department link still shows."""
     site = dept_copy(course_site, tmp_path)
     art = load(site, "courses/ART.json")
-    (site / "data" / "courses" / "DISSTD.json").write_text(json.dumps({**art, "courses": {"DISSTD 10": art["courses"]["ART 11"]}}))
+    (site / "data" / "courses" / "QTP.json").write_text(json.dumps({**art, "courses": {"QTP 10": art["courses"]["ART 11"]}}))
     meta = load(site, "meta.json")
-    meta["subject_files"]["DISSTD"] = "courses/DISSTD.json"
+    meta["subject_files"]["QTP"] = "courses/QTP.json"
     (site / "data" / "meta.json").write_text(json.dumps(meta))
-    out = render(site, page="course.html", search="?c=DISSTD%2010&position=10")
+    out = render(site, page="course.html", search="?c=QTP%2010&position=10")
     html = out["elements"]["course"]["html"]
-    assert "Other DISSTD courses" not in html
-    assert 'href="dept.html?subject=DISSTD&bucket=6-15&today=2027-01-10">All DISSTD courses</a>' in html
+    assert "Other QTP courses" not in html
+    assert 'href="dept.html?subject=QTP&bucket=6-15&today=2027-01-10">All QTP courses</a>' in html
 
 # ------------------------------------------------------ the fallback ladder (S5)
 
