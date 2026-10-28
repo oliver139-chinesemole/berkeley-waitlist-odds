@@ -1,8 +1,10 @@
 """End-to-end test of analysis.run on simulated data, plus the site exporter's pooling rule."""
 from __future__ import annotations
 
+import dataclasses
 import json
-from datetime import timedelta
+import logging
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -10,9 +12,9 @@ import pandas as pd
 import pytest
 
 import analysis.run as run
-from analysis.calendar import TermCalendar
+from analysis.calendar import TermCalendar, last_auto_cut
 from analysis.export import course_tables, export_site_tables
-from analysis.run import run_analysis
+from analysis.run import run_analysis, spans_phase1_end
 from analysis.synthetic import SimConfig, simulate
 from tests.test_survival import synthetic_cohort
 
@@ -214,3 +216,94 @@ def test_cli_passes_the_catalog_to_the_run(tmp_path: Path, monkeypatch: pytest.M
     with pytest.raises(SystemExit):
         run.main([*base, "--catalog", str(tmp_path / "absent.json")])
     assert "no such file" in capsys.readouterr().err and len(seen) == 2
+
+
+def _regime_warnings(caplog: pytest.LogCaptureFixture) -> list[logging.LogRecord]:
+    return [r for r in caplog.records if r.name == "analysis.run" and r.levelno == logging.WARNING and "regime boundary" in r.getMessage()]
+
+
+def test_spans_phase1_end() -> None:
+    """Observations on both sides of 00:00 UTC after ``phase1_end`` (the calendar's UTC-date convention) span it."""
+    _, _, cal = sim_inputs()
+    d = cal.phase1_end + timedelta(days=1)
+    boundary = datetime(d.year, d.month, d.day, tzinfo=timezone.utc)
+
+    def fl(h0: float, h1: float) -> pd.DataFrame:
+        return pd.DataFrame({"t0": [boundary + timedelta(hours=h0)], "t1": [boundary + timedelta(hours=h1)]})
+
+    assert spans_phase1_end(fl(-1, 1), cal)
+    assert spans_phase1_end(fl(-1, 0), cal)  # the last observation falls on the first day after Phase 1
+    assert not spans_phase1_end(fl(-2, -1), cal)  # all of it in Phase 1
+    assert not spans_phase1_end(fl(0, 1), cal)  # all of it after (the Fall 2026 own data)
+    assert not spans_phase1_end(fl(0, 1).iloc[0:0], cal)
+
+
+def test_cox_fit_across_phase1_end_logs_one_warning(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    """The Cox model is calibrated within a regime and wrong across the Phase 1 to Phase 2 shift:
+    a fit on observations that span the end of Phase 1 says so once, as a WARNING; no model change."""
+    panel, identity, cal = sim_inputs()
+    few = panel[panel["section_id"].isin(sorted(panel["section_id"].unique())[:2])]
+    with caplog.at_level(logging.WARNING, logger="analysis.run"):
+        res = run_analysis(few, identity, cal, tmp_path / "spans", join_every_min=1440)
+    assert res.cox_summary is not None  # the fit ran
+    hits = _regime_warnings(caplog)
+    assert len(hits) == 1
+    assert cal.phase1_end.isoformat() in hits[0].getMessage() and "report-only" in hits[0].getMessage()
+    # the same panel under a calendar whose Phase 1 ended before the data began: no boundary inside, no warning
+    caplog.clear()
+    day0 = pd.Timestamp(panel["run_started_at"].min()).date()
+    after = dataclasses.replace(cal, phase1_start=day0 - timedelta(days=10), phase1_end=day0 - timedelta(days=1))
+    with caplog.at_level(logging.WARNING, logger="analysis.run"):
+        res = run_analysis(few, identity, after, tmp_path / "after", join_every_min=1440)
+    assert res.cox_summary is not None and _regime_warnings(caplog) == []
+
+
+def test_cut_at_last_auto_is_off_by_default_and_cuts_when_asked(tmp_path: Path) -> None:
+    """``cut_at_last_auto`` (CLI ``--cut-at-last-auto``) is off by default. On a simulated panel whose
+    last automatic run falls inside the data, turning it on places no joiner after the cut and ends
+    every row by it; meta.json records the cut. With the run after the data ends the cohort files
+    are byte-identical to a run without the option."""
+    panel, identity, cal = sim_inputs()
+    few = panel[panel["section_id"].isin(sorted(panel["section_id"].unique())[:4])]
+    day0 = pd.Timestamp(panel["run_started_at"].min()).date()
+    inside = dataclasses.replace(cal, last_auto_waitlist=day0 + timedelta(days=10))
+    off = run_analysis(few, identity, inside, tmp_path / "off", site_dir=tmp_path / "off_site", join_every_min=240)
+    on = run_analysis(few, identity, inside, tmp_path / "on", site_dir=tmp_path / "on_site", join_every_min=240, cut_at_last_auto="pacific")
+    cut = last_auto_cut(inside, "pacific")
+    c_off = pd.read_parquet(off.out_dir / "cohort_central.parquet")
+    c_on = pd.read_parquet(on.out_dir / "cohort_central.parquet")
+    assert (pd.to_datetime(c_off["join_time"], utc=True) >= cut).any() and len(c_on) < len(c_off)  # the panel spans the cut
+    join = pd.to_datetime(c_on["join_time"], utc=True)
+    assert (join < cut).all() and (join + pd.to_timedelta(c_on["duration_days"], unit="D") <= cut + timedelta(seconds=1)).all()
+    assert json.loads(off.site_files[1].read_text()).get("cohort_cut") is None
+    assert json.loads(on.site_files[1].read_text())["cohort_cut"] == {"at": cut.isoformat(), "instant": "pacific", "rule": "last_auto_waitlist"}
+    assert any("cut at" in n for n in on.notes) and not any("cut at" in n for n in off.notes)
+    assert on.cohort_rows["central"] == len(c_on)
+    # the simulated term's own last run (day 34) is after the data (21 days): the option changes nothing
+    a = run_analysis(few, identity, cal, tmp_path / "a", join_every_min=240)
+    b = run_analysis(few, identity, cal, tmp_path / "b", join_every_min=240, cut_at_last_auto="pacific")
+    for s in ("optimistic", "central", "pessimistic"):
+        assert (a.out_dir / f"cohort_{s}.parquet").read_bytes() == (b.out_dir / f"cohort_{s}.parquet").read_bytes()
+    for bad in ("utc", "eastern"):
+        with pytest.raises(ValueError):
+            run_analysis(few, identity, cal, tmp_path / "bad", cut_at_last_auto=bad)
+
+
+def test_cli_cut_flag_defaults_off_and_takes_an_instant(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """``--cut-at-last-auto`` means the Pacific instant, the only one offered; absent, off."""
+    import analysis.run as run_mod
+
+    seen: list = []
+    monkeypatch.setattr(run_mod, "load_panel", lambda root, term: pd.DataFrame())
+    monkeypatch.setattr(run_mod, "section_identity", lambda root, term: pd.DataFrame())
+
+    class _Result:
+        out_dir, flows_summary, cohort_rows, notes, figures = tmp_path, {}, {}, [], []
+
+    monkeypatch.setattr(run_mod, "run_analysis", lambda *a, **k: seen.append(k.get("cut_at_last_auto")) or _Result())
+    base = ["--data-root", str(tmp_path), "--term-id", "2272", "--no-site", "--data-log", str(tmp_path / "none.md")]
+    for extra in ([], ["--cut-at-last-auto"]):
+        assert run_mod.main(base + extra) == 0
+    assert seen == [None, "pacific"]
+    with pytest.raises(SystemExit):
+        run_mod.main(base + ["--cut-at-last-auto", "utc"])

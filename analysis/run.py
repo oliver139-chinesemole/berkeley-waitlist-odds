@@ -12,12 +12,13 @@ import json
 import logging
 import sys
 from dataclasses import dataclass, field
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pandas as pd
 
 from analysis.backtest import run_backtest
-from analysis.calendar import TermCalendar, calendar_for
+from analysis.calendar import CUT_INSTANTS, TermCalendar, calendar_for, last_auto_cut
 from analysis.cohort import DEFAULT_POSITIONS, build_cohort
 from analysis.export import DEFAULT_LEVEL, LEVELS, META_CARRY, export_site_tables
 from analysis.figures import plot_calibration, plot_km
@@ -66,6 +67,17 @@ def _df_to_md(frame: pd.DataFrame, max_rows: int = 40) -> str:
     return "\n".join(lines)
 
 
+def spans_phase1_end(flows: pd.DataFrame, calendar: TermCalendar) -> bool:
+    """Whether the observations (the flows' interval ends, i.e. the panel's
+    observation times) lie on both sides of the end of Phase 1: 00:00 UTC after
+    ``calendar.phase1_end``, the calendar's UTC-date convention."""
+    if len(flows) == 0:
+        return False
+    d = calendar.phase1_end + timedelta(days=1)
+    boundary = pd.Timestamp(datetime(d.year, d.month, d.day, tzinfo=timezone.utc))
+    return bool(pd.to_datetime(flows["t0"], utc=True).min() < boundary <= pd.to_datetime(flows["t1"], utc=True).max())
+
+
 def _empty_oos() -> dict:
     return {"n_train": 0, "n_test": 0, "metrics": pd.DataFrame(), "calibration": pd.DataFrame(), "auc_cox": float("nan"), "brier_cox": float("nan"), "brier_bucket": float("nan"), "brier_rows": 0, "notes": []}
 
@@ -88,6 +100,7 @@ def run_analysis(
     site_level: str = DEFAULT_LEVEL,
     forecast_calendar: TermCalendar | None = None,
     catalog: Path | str | None = None,
+    cut_at_last_auto: str | None = None,
 ) -> AnalysisResult:
     """Everything from a panel (or precomputed ``flows``) to the report.
 
@@ -97,7 +110,12 @@ def run_analysis(
     site counts down to when a finished cycle stands in for the coming one;
     ``catalog`` (a classes_site ``catalog.json``) adds the site's ``titles.json``
     (``export_site_tables``), without which title and instructor search is off.
+    ``cut_at_last_auto`` (default None: off; ``"pacific"``, the only instant offered)
+    cuts the cohorts at the end of the term's last automatic waitlist run day
+    (``analysis.calendar.last_auto_cut``; docs/DESIGN_A5.md section 9): no joiner
+    after it, follow-up censored there. Nothing passes it today.
     """
+    cut_at = last_auto_cut(calendar, cut_at_last_auto) if cut_at_last_auto is not None else None
     out_dir = Path(out_dir) / calendar.term_id
     out_dir.mkdir(parents=True, exist_ok=True)
     fig_dir = out_dir / "figures"
@@ -114,7 +132,9 @@ def run_analysis(
     fsum = flows_summary(flows)
     logger.info("flows: %s", fsum)
 
-    cohorts = {s: build_cohort(flows, identity, calendar, scenario=s, positions=positions, join_every_min=join_every_min) for s in SCENARIOS}
+    if cut_at is not None:
+        notes.append(f"cohort cut at {cut_at.isoformat()} (end of the last automatic waitlist run's day, {cut_at_last_auto} midnight): no joiner placed after it, follow-up censored there")
+    cohorts = {s: build_cohort(flows, identity, calendar, scenario=s, positions=positions, join_every_min=join_every_min, cut_at=cut_at) for s in SCENARIOS}
     for s, c in cohorts.items():
         c.to_parquet(out_dir / f"cohort_{s}.parquet", index=False)
     cohort = cohorts["central"]
@@ -144,6 +164,15 @@ def run_analysis(
 
     cox_summary = ph = cox_strat = None
     if enough:
+        if spans_phase1_end(flows, calendar):
+            # Within a regime the Cox fit is calibrated; across the Phase 1 to Phase 2 shift it
+            # predicted 1 to 25% against observed 52 to 76% (docs/dev/BACKFILL_BACKTEST.md B3).
+            logger.warning(
+                "Cox fit crosses a regime boundary: the observations span the end of Phase 1 (%s), and the model is "
+                "calibrated within a regime but not across the Phase 1 to Phase 2 shift; the fit is report-only "
+                "(the site serves Kaplan-Meier curves)",
+                calendar.phase1_end.isoformat(),
+            )
         try:
             first, ph, refit = fit_cox_with_ph_check(cohort, max_rows=cox_max_rows)
             if first.subsampled:
@@ -190,6 +219,8 @@ def run_analysis(
         # meta["cohort_rows"] stays the integer the exporter writes (the page prints it);
         # the per-scenario counts go under their own key.
         meta = {"data_source": OWN_DATA_SOURCE, "flows": fsum, "cohort_rows_by_scenario": cohort_rows}
+        if cut_at is not None:
+            meta["cohort_cut"] = {"at": cut_at.isoformat(), "instant": cut_at_last_auto, "rule": "last_auto_waitlist"}
         if site_meta:
             meta.update(site_meta)
         site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, forecast_calendar=forecast_calendar, flows=flows, estimate_level=site_level, catalog=catalog)
@@ -313,6 +344,14 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--estimate-level", choices=LEVELS, default=DEFAULT_LEVEL, help="what site/data serves per course and bucket: the department curve (default) or the course's own")
     p.add_argument("--forecast-term", default=None, help="SIS term id whose dates the site counts down to (default: the analysed term); 2272 when Fall 2026 stands in for Spring 2027")
     p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json); the site files then include titles.json for title and instructor search")
+    p.add_argument(
+        "--cut-at-last-auto",
+        action="store_const",
+        const=CUT_INSTANTS[0],
+        default=None,
+        help="cut the cohorts at the end of the term's last automatic waitlist run day (midnight Pacific): no joiner after it, "
+        "follow-up censored there (off by default; docs/DESIGN_A5.md section 9, a decision pending)",
+    )
     args = p.parse_args(argv)
     if args.catalog is not None and not args.catalog.is_file():
         p.error(f"--catalog {args.catalog}: no such file")
@@ -356,6 +395,7 @@ def main(argv: list[str] | None = None) -> int:
         site_level=args.estimate_level,
         forecast_calendar=calendar_for(args.forecast_term) if args.forecast_term else None,
         catalog=args.catalog,
+        cut_at_last_auto=args.cut_at_last_auto,
     )
     print(json.dumps({"out": str(result.out_dir), "flows": result.flows_summary, "cohort_rows": result.cohort_rows, "notes": result.notes, "figures": [str(f) for f in result.figures]}, indent=1))
     return 0
