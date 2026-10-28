@@ -67,14 +67,15 @@ def test_calendar_for() -> None:
 
 def test_last_auto_cut_is_the_end_of_the_last_automatic_run_day() -> None:
     """The cohort cut (off by default): the end of the ``last_auto_waitlist`` day in Pacific
-    time, which includes Spring 2027's 6:40 PM PT run, or 00:00 UTC after it (what the
-    backtest's deadline horizon and the page's countdown use today)."""
-    assert CUT_INSTANTS == ("pacific", "utc")
-    assert last_auto_cut(SPRING_2027) == datetime(2027, 2, 6, 8, tzinfo=timezone.utc)  # PST
+    time, which includes Spring 2027's 6:40 PM PT run. 00:00 UTC is not offered: it is the
+    backtest's deadline horizon, and a cohort cut at its own scoring horizon loses its known
+    negatives (``tests/test_cohort.py::test_a_cut_cohort_is_scored_before_its_cut``)."""
+    assert CUT_INSTANTS == ("pacific",)
+    assert last_auto_cut(SPRING_2027) == last_auto_cut(SPRING_2027, "pacific") == datetime(2027, 2, 6, 8, tzinfo=timezone.utc)  # PST
     assert last_auto_cut(SPRING_2027) > datetime(2027, 2, 6, 2, 40, tzinfo=timezone.utc)  # Feb 5, 6:40 PM PT
-    assert last_auto_cut(SPRING_2027, "utc") == datetime(2027, 2, 6, tzinfo=timezone.utc)
     assert last_auto_cut(FALL_2026) == datetime(2026, 9, 12, 7, tzinfo=timezone.utc)  # PDT
-    assert last_auto_cut(SPRING_2026, "utc") == datetime(2026, 2, 7, tzinfo=timezone.utc)
+    assert last_auto_cut(SPRING_2026) == datetime(2026, 2, 7, 8, tzinfo=timezone.utc)
     assert str(last_auto_cut(SPRING_2027).tz) == "UTC"
-    with pytest.raises(ValueError):
-        last_auto_cut(SPRING_2027, "eastern")
+    for bad in ("utc", "eastern"):
+        with pytest.raises(ValueError):
+            last_auto_cut(SPRING_2027, bad)

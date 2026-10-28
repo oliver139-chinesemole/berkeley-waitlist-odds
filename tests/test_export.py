@@ -155,7 +155,8 @@ def test_cli_rebuilds_site_data_from_a_saved_cohort(cohort: pd.DataFrame, tmp_pa
     cohort_path = tmp_path / "cohort.parquet"
     cohort.to_parquet(cohort_path, index=False)
     old_meta = tmp_path / "old_meta.json"
-    old_meta.write_text(json.dumps({"data_source": "berkeleytime_history", "backfill": {"sections": 296}, "flows": {"admits": 1}, "unrelated": 1}))
+    cut = {"at": "2026-09-12T07:00:00+00:00", "instant": "pacific", "rule": "last_auto_waitlist"}
+    old_meta.write_text(json.dumps({"data_source": "berkeleytime_history", "backfill": {"sections": 296}, "flows": {"admits": 1}, "cohort_cut": cut, "unrelated": 1}))
     out = tmp_path / "site_data"
     assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--forecast-term", "2272", "--out", str(out), "--meta-from", str(old_meta), "--n-boot", "5", "--prereg-commit", "abc123", "--prereg-date", "2026-09-21", "--estimate-level", "dept"]) == 0
     printed = json.loads(capsys.readouterr().out)
@@ -163,6 +164,7 @@ def test_cli_rebuilds_site_data_from_a_saved_cohort(cohort: pd.DataFrame, tmp_pa
     assert printed["courses"] == meta["courses"] and printed["data_source"] == "berkeleytime_history" and printed["estimate_level"] == "dept" and meta["estimate_level"] == "dept"
     assert all(cell["pooled"] is not False for e in json.loads((out / "courses" / "COMPSCI.json").read_text())["courses"].values() for cell in e["buckets"].values())
     assert meta["backfill"] == {"sections": 296} and meta["flows"] == {"admits": 1} and "unrelated" not in meta
+    assert meta["cohort_cut"] == cut  # a cut cohort keeps its label through a re-export
     assert meta["prereg_commit"] == "abc123" and meta["prereg_date"] == "2026-09-21" and meta["forecast_term_name"] == "Spring 2027"
 
 

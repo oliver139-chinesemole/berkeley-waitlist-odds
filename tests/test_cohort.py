@@ -1,13 +1,15 @@
 """Tests for analysis.cohort on hand-built flows."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+import dataclasses
+from datetime import date, datetime, timedelta, timezone
 
 import numpy as np
 import pandas as pd
 import pytest
 
-from analysis.calendar import SPRING_2027
+from analysis.backtest import horizon_days, ipcw_weights, observability
+from analysis.calendar import SPRING_2027, last_auto_cut
 from analysis.cohort import COHORT_COLUMNS, build_cohort, censoring_horizon, course_level, cut_flows, joinable, position_bucket, thin_join_times
 
 T0 = datetime(2026, 10, 27, 12, 0, tzinfo=timezone.utc)  # phase 1 of Spring 2027
@@ -181,3 +183,31 @@ def test_cut_at_censors_at_the_instant_and_places_no_later_joiners() -> None:
     # a cut on an interval boundary keeps that interval whole and drops the rest
     edge = cut_flows(f, pd.Timestamp(T0 + timedelta(minutes=90)))
     assert len(edge) == 3 and edge["admits"].tolist() == [0, 1, 1] and edge["t1"].max() == pd.Timestamp(T0 + timedelta(minutes=90))
+
+
+def test_a_cut_cohort_is_scored_before_its_cut() -> None:
+    """``ipcw_weights`` counts a row as still waiting only when ``duration > horizon``, while
+    ``observability`` admits ``follow_up_days >= horizon``. A cohort cut at its own scoring
+    horizon would pass observability with every uncleared row at weight 0 (no known negatives),
+    which is why 00:00 UTC is not a cut instant. The Pacific cut ends 7 or 8 hours after the
+    backtest's 00:00 UTC deadline horizon, so its uncleared rows are known negatives."""
+    cal = dataclasses.replace(SPRING_2027, last_auto_waitlist=date(2026, 10, 27))  # T0 is 12:00 UTC that day
+    rows = [(1, 0, 3, False)] + [(0, 0, 3, False)] * 48  # one admit, then a still queue for 24.5 hours
+    f = flows("1", rows)
+    ident = identity(("1", "COMPSCI 61A", "61A", "LEC"))
+    kw = dict(positions=(1, 2, 3), join_every_min=0, min_sections_per_group=1)
+    horizon_end = pd.Timestamp(datetime(2026, 10, 28, tzinfo=timezone.utc))  # horizon_days("deadline") ends here
+
+    def scored(cut: pd.Timestamp) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        cohort = build_cohort(f, ident, cal, cut_at=cut, **kw)
+        h = horizon_days(cohort, cal, "deadline").to_numpy()
+        ok, _ = observability(cohort, h)
+        y, w = ipcw_weights(cohort["duration_days"].to_numpy(), cohort["event"].to_numpy(), h)
+        return ok, w, cohort["event"].to_numpy()
+
+    pacific = last_auto_cut(cal)
+    assert pacific == pd.Timestamp("2026-10-28T07:00:00Z")  # PDT
+    ok, w, event = scored(pacific)
+    assert ok.all() and (event == 0).any() and (w[event == 0] > 0).all()  # every uncleared row is a known negative
+    ok, w, event = scored(horizon_end)  # a cut at the horizon itself
+    assert ok.all() and (event == 0).any() and (w[event == 0] == 0).all()  # observable, yet no known negative survives

@@ -207,11 +207,13 @@ def walk_positions(
 
 
 def cut_flows(flows: pd.DataFrame, cut_at: pd.Timestamp) -> pd.DataFrame:
-    """The flows as they were known at ``cut_at``: intervals starting at or after it are
-    dropped, and an interval that straddles it ends at it with its admits and waitlist drops
-    removed (when inside the interval they happened is unknown, so, as in
+    """The flows the cohort walk sees when follow-up stops at ``cut_at``: intervals starting at
+    or after it are dropped, and an interval that straddles it ends at it with its admits and
+    waitlist drops removed (when inside the interval they happened is unknown, so, as in
     ``analysis.backtest.censor_at``, a clearing counts only if its interval ends by the cut).
-    A copy; the caller's frame is not touched."""
+    Only what ``build_cohort`` reads is adjusted: the straddling row keeps the whole interval's
+    ``interval_min``, ``wl_joins`` and ``enr_*`` counts, so this is not a flows table to
+    summarise. A copy; the caller's frame is not touched."""
     cut = pd.Timestamp(cut_at)
     cut = cut.tz_localize("UTC") if cut.tzinfo is None else cut.tz_convert("UTC")
     t0 = pd.to_datetime(flows["t0"], utc=True)

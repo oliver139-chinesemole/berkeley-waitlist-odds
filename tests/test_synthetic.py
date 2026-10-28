@@ -188,3 +188,24 @@ def test_stamps_never_round_uninitialised_memory() -> None:
     expected = BASE_TIME + pd.to_timedelta(minutes[known], unit="m")  # no NaN here, so pandas fills every entry
     assert (stamps[known].to_numpy() == expected.to_numpy()).all()
     assert _stamps(np.array([], dtype="float64")).empty
+
+
+def test_simulate_never_casts_nan_minutes(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The deterministic half of the check above: whatever the allocator does, no float array
+    holding NaN reaches ``pd.to_timedelta`` from the simulator."""
+    import analysis.synthetic as synthetic
+
+    real = synthetic.pd.to_timedelta
+    floats_seen: list[int] = []
+
+    def spy(arg, *args, **kwargs):
+        arr = np.asarray(arg)
+        if arr.dtype.kind == "f":
+            assert not np.isnan(arr).any(), "NaN minutes reached pd.to_timedelta"
+            floats_seen.append(arr.size)
+        return real(arg, *args, **kwargs)
+
+    monkeypatch.setattr(synthetic.pd, "to_timedelta", spy)
+    _, _, students = simulate(SMALL)
+    assert students["clear_time"].isna().any() and students["drop_time"].isna().any()  # NaN minutes were there to cast
+    assert floats_seen  # the spy saw the simulator's float casts

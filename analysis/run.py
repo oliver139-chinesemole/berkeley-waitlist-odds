@@ -107,8 +107,8 @@ def run_analysis(
     censoring); ``site_meta`` is merged into ``site/data/meta.json`` and should
     name the ``data_source``; ``forecast_calendar`` is the term whose dates the
     site counts down to when a finished cycle stands in for the coming one.
-    ``cut_at_last_auto`` (default None: off; ``"pacific"`` or ``"utc"``) cuts the
-    cohorts at the end of the term's last automatic waitlist run day
+    ``cut_at_last_auto`` (default None: off; ``"pacific"``, the only instant offered)
+    cuts the cohorts at the end of the term's last automatic waitlist run day
     (``analysis.calendar.last_auto_cut``; docs/DESIGN_A5.md section 9): no joiner
     after it, follow-up censored there. Nothing passes it today.
     """
@@ -313,12 +313,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--forecast-term", default=None, help="SIS term id whose dates the site counts down to (default: the analysed term); 2272 when Fall 2026 stands in for Spring 2027")
     p.add_argument(
         "--cut-at-last-auto",
-        nargs="?",
-        const="pacific",
+        action="store_const",
+        const=CUT_INSTANTS[0],
         default=None,
-        choices=CUT_INSTANTS,
-        help="cut the cohorts at the end of the term's last automatic waitlist run day: no joiner after it, follow-up censored there "
-        "(off by default; alone means Pacific midnight, 'utc' the 00:00 UTC instant; docs/DESIGN_A5.md section 9, a decision pending)",
+        help="cut the cohorts at the end of the term's last automatic waitlist run day (midnight Pacific): no joiner after it, "
+        "follow-up censored there (off by default; docs/DESIGN_A5.md section 9, a decision pending)",
     )
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")

@@ -226,15 +226,16 @@ def test_cut_at_last_auto_is_off_by_default_and_cuts_when_asked(tmp_path: Path) 
     assert on.cohort_rows["central"] == len(c_on)
     # the simulated term's own last run (day 34) is after the data (21 days): the option changes nothing
     a = run_analysis(few, identity, cal, tmp_path / "a", join_every_min=240)
-    b = run_analysis(few, identity, cal, tmp_path / "b", join_every_min=240, cut_at_last_auto="utc")
+    b = run_analysis(few, identity, cal, tmp_path / "b", join_every_min=240, cut_at_last_auto="pacific")
     for s in ("optimistic", "central", "pessimistic"):
         assert (a.out_dir / f"cohort_{s}.parquet").read_bytes() == (b.out_dir / f"cohort_{s}.parquet").read_bytes()
-    with pytest.raises(ValueError):
-        run_analysis(few, identity, cal, tmp_path / "bad", cut_at_last_auto="eastern")
+    for bad in ("utc", "eastern"):
+        with pytest.raises(ValueError):
+            run_analysis(few, identity, cal, tmp_path / "bad", cut_at_last_auto=bad)
 
 
 def test_cli_cut_flag_defaults_off_and_takes_an_instant(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
-    """``--cut-at-last-auto`` alone means Pacific; ``--cut-at-last-auto utc`` the UTC instant; absent, off."""
+    """``--cut-at-last-auto`` means the Pacific instant, the only one offered; absent, off."""
     import analysis.run as run_mod
 
     seen: list = []
@@ -246,6 +247,8 @@ def test_cli_cut_flag_defaults_off_and_takes_an_instant(monkeypatch: pytest.Monk
 
     monkeypatch.setattr(run_mod, "run_analysis", lambda *a, **k: seen.append(k.get("cut_at_last_auto")) or _Result())
     base = ["--data-root", str(tmp_path), "--term-id", "2272", "--no-site", "--data-log", str(tmp_path / "none.md")]
-    for extra in ([], ["--cut-at-last-auto"], ["--cut-at-last-auto", "utc"]):
+    for extra in ([], ["--cut-at-last-auto"]):
         assert run_mod.main(base + extra) == 0
-    assert seen == [None, "pacific", "utc"]
+    assert seen == [None, "pacific"]
+    with pytest.raises(SystemExit):
+        run_mod.main(base + ["--cut-at-last-auto", "utc"])
