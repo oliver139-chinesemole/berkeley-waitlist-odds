@@ -689,6 +689,69 @@ def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Pa
         (full_site / "data" / "backtest.json").unlink()
 
 
+# The site audit of 2026-10-27, items 5, 10 and 11: the copy on Accuracy and Insights next to the
+# numbers it explains, rendered on the served files (site/data) so the words are checked against them.
+SERVED_RUN_HEADS = [
+    "Later joiners scored with a model fit on earlier ones, within 14 days",
+    "Later joiners scored with a model fit on earlier ones, by the last automatic waitlist run",
+    "Held-out courses, within 14 days",
+    "Fit on Spring 2026, scored on Fall 2026, within 14 days",
+    "Fit on Spring 2026, scored on Fall 2026, within 28 days",
+    "Fit on Spring 2026, scored on Fall 2026, by the last automatic waitlist run",
+]
+
+
+def test_accuracy_reads_the_served_backtest_in_order() -> None:
+    html = render(SITE, page="accuracy.html")["elements"]["content"]["html"]
+    assert re.findall(r"<section><h3>(.*?)</h3>", html) == SERVED_RUN_HEADS
+    assert html.startswith('<h2>Calibration and scores</h2><p class="muted small">5 predictors are scored side by side:')
+
+
+def test_accuracy_says_what_fall_2026_could_not_test() -> None:
+    static = (SITE / "accuracy.html").read_text()
+    assert ("<li><strong>The first week of instruction.</strong> Berkeleytime recorded nothing for any section from Aug 19 to Sep 1, 2026, "
+            "which covers the end of the adjustment period and the first week of class, so no joiner's outcome at the first-day-of-class or "
+            "last-run horizon is observable. Fall 2026 validates clearing during Phase 1 and Phase 2 only; the 14- and 28-day horizons are the ones scored.</li>") in static
+
+
+def test_insights_level_sentence_on_the_served_data() -> None:
+    html = render(SITE, page="insights.html")["elements"]["content"]["html"]
+    assert "<li>Lower-division waitlists moved faster at positions 6 to 15: 61% got in within 14 days against 60% in upper-division courses (graduate courses: 50%).</li>" in html
+
+
+# by_level["lower"|"upper"]["6-15"] at 14 days (index 1): (p, lo, hi) per side, and the sentence the page prints.
+LEVEL_CASES = {
+    "lower clearly ahead": ((0.70, 0.65, 0.75), (0.55, 0.50, 0.60), "Lower-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 55% in upper-division courses."),
+    "upper clearly ahead": ((0.55, 0.50, 0.60), (0.70, 0.65, 0.75), "Upper-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 55% in lower-division courses."),
+    "gap under 5 points": ((0.62, 0.61, 0.63), (0.58, 0.57, 0.59), "Lower-division waitlists moved faster at positions 6 to 15: 62% got in within 14 days against 58% in upper-division courses."),
+    "intervals overlap": ((0.70, 0.55, 0.85), (0.60, 0.50, 0.68), "Lower-division waitlists moved faster at positions 6 to 15: 70% got in within 14 days against 60% in upper-division courses."),
+}
+
+
+@pytest.mark.parametrize("case", sorted(LEVEL_CASES))
+def test_insights_level_sentence_faster_or_about_the_same(full_site: Path, tmp_path: Path, case: str) -> None:
+    lower, upper, sentence = LEVEL_CASES[case]
+    shutil.copytree(full_site / "data", tmp_path / "data")
+    path = tmp_path / "data" / "insights.json"
+    ins = json.loads(path.read_text())
+    ins["by_level"].pop("grad", None)
+    for level, (p, lo, hi) in (("lower", lower), ("upper", upper)):
+        cell = ins["by_level"][level]["6-15"]
+        cell["p"][1], cell["lo"][1], cell["hi"][1] = p, lo, hi
+    path.write_text(json.dumps(ins))
+    html = render(tmp_path, page="insights.html")["elements"]["content"]["html"]
+    assert f"<li>{sentence}</li>" in html, html[:2000]
+
+
+def test_insights_position_charts_and_table_on_the_served_data() -> None:
+    html = render(SITE, page="insights.html")["elements"]["content"]["html"]
+    assert '<p class="muted small">Lower-division courses, students who joined during Phase 1: the share who had a seat, by days since joining, one curve per position.</p>' in html
+    hero = html[html.index('id="hero-chart"'):html.index("<h3>All courses and phases</h3>")]
+    assert "6-15 92%" in hero and "1-5 83%" in hero  # the curves' ends: deeper positions above 1 to 5
+    assert '<th scope="col" class="num">Longest follow-up</th>' in html and "<strong>74%</strong> <span class=\"muted small\">at 80 days</span>" in html
+    assert "never counted as theirs" not in html
+
+
 # The pre-registration (the Accuracy box, the About data status) in both regimes.
 # Today meta.json carries the Spring 2026 Berkeleytime cohort with prereg_commit
 # 7f348ed and prereg_date 2026-09-21. A deliberate own-data publish (PR #46) drops
