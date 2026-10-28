@@ -64412,6 +64412,21 @@
 },
 {
 "catalog_number": "121",
+"class_number": "102",
+"component": "DIS",
+"course_key": "LINGUIS 121",
+"instructors": "",
+"last_status": null,
+"node_id": 543138,
+"probed_at": null,
+"section_id": "",
+"section_number": "102",
+"subject": "LINGUIS",
+"title": "Formal Semantics",
+"url_path": "/content/2027-spring-linguis-121-102-dis-102"
+},
+{
+"catalog_number": "121",
 "class_number": "103",
 "component": "DIS",
 "course_key": "LINGUIS 121",
@@ -75224,6 +75239,21 @@
 "subject": "MECENG",
 "title": "Experimentation and Measurements",
 "url_path": "/content/2027-spring-meceng-103-203-lab-203"
+},
+{
+"catalog_number": "103",
+"class_number": "204",
+"component": "LAB",
+"course_key": "MECENG 103",
+"instructors": "",
+"last_status": null,
+"node_id": 543139,
+"probed_at": null,
+"section_id": "",
+"section_number": "204",
+"subject": "MECENG",
+"title": "Experimentation and Measurements",
+"url_path": "/content/2027-spring-meceng-103-204-lab-204"
 },
 {
 "catalog_number": "104",
@@ -114439,6 +114469,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-27T18:23:26.559935+00:00",
+"updated_at": "2026-10-28T13:23:10.451105+00:00",
 "version": 3
 }
