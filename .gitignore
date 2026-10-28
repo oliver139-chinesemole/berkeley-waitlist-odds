@@ -10,6 +10,10 @@ data-branch/
 analysis/out/
 backfill/
 reports/**/predictions.parquet
+# The weekly analysis.yml run's report and figures (reports/report_<term>.md, reports/figures_<term>/)
+# live in its run artifact, not on main. Four digits only: the hand-installed *_berkeleytime reports stay.
+reports/report_[0-9][0-9][0-9][0-9].md
+reports/figures_[0-9][0-9][0-9][0-9]/
 # Claude Code session state: worktrees and per-session settings never belong in the repo;
 # .claude/agents/ (the project's subagent definitions) does.
 .claude/worktrees/

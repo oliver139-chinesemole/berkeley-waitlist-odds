@@ -1,15 +1,16 @@
 """The workflow files are the deployment knobs nothing else pins: the request policy and
 budget scrape.yml passes to the fetch (DESIGN_A2 section 16) and the site-data guard in
 analysis.yml (docs/DATA_LOG.md decision rows). Text checks on purpose: no YAML dependency,
-and a flag that moves out of the ``args=(...)`` line should fail loudly. The swap step's
-shell block is also run for real: rendered the way Actions renders ``${{ }}`` and run with
-the runner's ``bash -eo pipefail`` in a directory laid out like the job's."""
+and a flag that moves out of the ``args=(...)`` line should fail loudly. The swap and titles
+steps' shell blocks are also run for real: rendered the way Actions renders ``${{ }}`` and run
+with the runner's ``bash -eo pipefail`` in a directory laid out like the job's."""
 from __future__ import annotations
 
 import json
 import os
 import re
 import shlex
+import shutil
 import subprocess
 import sys
 import textwrap
@@ -17,7 +18,8 @@ from pathlib import Path
 
 import pytest
 
-WORKFLOWS = Path(__file__).resolve().parents[1] / ".github" / "workflows"
+ROOT = Path(__file__).resolve().parents[1]
+WORKFLOWS = ROOT / ".github" / "workflows"
 MAKEFILE = Path(__file__).resolve().parents[1] / "Makefile"
 
 
@@ -117,7 +119,7 @@ def _render(script: str, values: dict[str, str]) -> str:
 
     def sub(m: re.Match) -> str:
         expr = m.group(1).strip()
-        assert expr in values, f"the swap step uses an expression this test does not render: {expr}"
+        assert expr in values, f"the step uses an expression this test does not render: {expr}"
         return values[expr]
 
     return re.sub(r"\$\{\{(.*?)\}\}", sub, script)
@@ -136,10 +138,11 @@ def _tree(root: Path) -> dict[str, bytes]:
     return {str(f.relative_to(root)): f.read_bytes() for f in sorted(root.rglob("*")) if f.is_file()}
 
 
-def _job_dir(tmp_path: Path, candidate_meta: dict, candidate_titles: bool = False, published_titles: bool = True) -> Path:
+def _job_dir(tmp_path: Path, candidate_meta: dict | None, candidate_titles: bool = False, published_titles: bool = True) -> Path:
     """A job checkout as the swap step finds it: the published site/data (Spring 2026, with
     backtest.json, the pre-registration and, unless ``published_titles`` is false, titles.json)
-    and the run's own-data candidate."""
+    and the run's own-data candidate, none when ``candidate_meta`` is None (an empty cohort:
+    ``analysis.run`` exports only a non-empty one)."""
     job = tmp_path / "job"
     site = job / "site" / "data"
     _write(site / "meta.json", PUBLISHED_META if published_titles else {k: v for k, v in PUBLISHED_META.items() if k != "titles_file"})
@@ -148,6 +151,8 @@ def _job_dir(tmp_path: Path, candidate_meta: dict, candidate_titles: bool = Fals
     _write(site / "backtest.json", {"term_id": "2268", "term_name": "Fall 2026", "runs": []})
     if published_titles:
         _write(site / "titles.json", {"catalog_term_id": "2272", "courses": {"COMPSCI 61A": {"title": "Structure and Interpretation of Computer Programs", "instructors": []}}})
+    if candidate_meta is None:
+        return job
     cand = job / "analysis" / "out" / "site_candidate"
     _write(cand / "meta.json", candidate_meta)
     _write(cand / "index.json", {"term_id": "2272", "courses": [{"key": "MATH 1A"}]})
@@ -157,18 +162,26 @@ def _job_dir(tmp_path: Path, candidate_meta: dict, candidate_titles: bool = Fals
     return job
 
 
-def _run_swap(job: Path, *, term_id: str, publish_own: str) -> subprocess.CompletedProcess:
+def _run_step(job: Path, marker: str, values: dict[str, str]) -> subprocess.CompletedProcess:
+    """Run the one ``run: |`` block of analysis.yml that contains ``marker`` in ``job``, rendered
+    with ``values``, with this checkout importable as the job's own (``python -m analysis...``)."""
     text = (WORKFLOWS / "analysis.yml").read_text(encoding="utf-8")
-    blocks = [b for b in _run_blocks(text) if "rm -rf site/data" in b]
+    blocks = [b for b in _run_blocks(text) if marker in b]
     assert len(blocks) == 1, blocks
-    script = job / "swap.sh"
-    script.write_text(_render(blocks[0], {"steps.term.outputs.term_id": term_id, "inputs.publish_own": publish_own}), encoding="utf-8")
+    script = job / "step.sh"
+    script.write_text(_render(blocks[0], values), encoding="utf-8")
     shim = job / "bin"
-    shim.mkdir()
-    (shim / "python").symlink_to(sys.executable)
-    env = {**os.environ, "PATH": f"{shim}{os.pathsep}{os.environ.get('PATH', '')}"}
+    shim.mkdir(exist_ok=True)
+    # a wrapper, not a symlink: a venv's interpreter finds its site-packages only under its own path
+    (shim / "python").write_text(f'#!/bin/sh\nexec {shlex.quote(sys.executable)} "$@"\n', encoding="utf-8")
+    (shim / "python").chmod(0o755)
+    env = {**os.environ, "PATH": f"{shim}{os.pathsep}{os.environ.get('PATH', '')}", "PYTHONPATH": str(ROOT)}
     # the runner's `shell: bash` is `bash --noprofile --norc -eo pipefail {0}`
     return subprocess.run(["bash", "--noprofile", "--norc", "-eo", "pipefail", str(script)], cwd=job, env=env, capture_output=True, text=True, timeout=60)
+
+
+def _run_swap(job: Path, *, term_id: str, publish_own: str) -> subprocess.CompletedProcess:
+    return _run_step(job, "rm -rf site/data", {"steps.term.outputs.term_id": term_id, "inputs.publish_own": publish_own})
 
 
 @pytest.mark.parametrize(
@@ -178,15 +191,20 @@ def _run_swap(job: Path, *, term_id: str, publish_own: str) -> subprocess.Comple
         ("dispatch without the input (default false)", "2272", "false", 12),
         ("publish_own=true but the Fall 2026 test term", "2268", "true", 12),
         ("publish_own=true but fewer than 10 clearings", "2272", "true", 9),
+        # an empty cohort writes no candidate: 0 clearings, the step exits 0, so the titles refresh and the commit still run
+        ("schedule, no candidate (empty cohort)", "2272", "", None),
+        ("publish_own=true, no candidate (empty cohort)", "2272", "true", None),
     ],
 )
-def test_swap_step_keeps_the_published_site_data(tmp_path: Path, trigger: str, term_id: str, publish_own: str, events: int) -> None:
-    job = _job_dir(tmp_path, {**CANDIDATE_META, "events": events})
+def test_swap_step_keeps_the_published_site_data(tmp_path: Path, trigger: str, term_id: str, publish_own: str, events: int | None) -> None:
+    job = _job_dir(tmp_path, None if events is None else {**CANDIDATE_META, "events": events})
     before = _tree(job / "site" / "data")
     proc = _run_swap(job, term_id=term_id, publish_own=publish_own)
     assert proc.returncode == 0, (trigger, proc.stdout, proc.stderr)
     assert _tree(job / "site" / "data") == before, trigger
     assert "keeping the published site/data" in proc.stdout and "berkeleytime_history Spring 2026 299826 clearings" in proc.stdout, proc.stdout
+    assert f"own-data cohort clearings: {0 if events is None else events}" in proc.stdout, proc.stdout
+    assert ("no own-data candidate written" in proc.stdout) == (events is None), proc.stdout
 
 
 def test_swap_step_on_purpose_publishes_the_candidate_and_keeps_backtest_and_titles(tmp_path: Path) -> None:
@@ -243,3 +261,106 @@ def test_swap_step_fails_rather_than_commit_a_half_copied_site(tmp_path: Path) -
         unreadable.chmod(0o644)
     assert proc.returncode != 0, (proc.stdout, proc.stderr)
     assert "site/data replaced" not in proc.stdout
+
+
+def _step_names(text: str) -> list[str]:
+    return [l.strip().removeprefix("- name:").strip() for l in text.splitlines() if l.strip().startswith("- name:")]
+
+
+def test_weekly_commit_stages_only_site_data_and_the_artifact_keeps_the_report() -> None:
+    """The report and figures of a weekly run stay in its artifact (analysis/out, 30 days) and
+    never reach main: each Fall 2026 week rewrote a report and four PNGs there, 250 to 340 KB."""
+    text = (WORKFLOWS / "analysis.yml").read_text(encoding="utf-8")
+    blocks = [b for b in _run_blocks(text) if "git commit" in b]
+    assert len(blocks) == 1, blocks
+    assert [l.strip() for l in blocks[0].splitlines() if l.strip().startswith("git add")] == ["git add site/data"]
+    assert "reports" not in blocks[0] and "cp " not in blocks[0], blocks[0]
+    upload = text[text.index("- uses: actions/upload-artifact@v4") :]
+    assert "if: always()" in upload and "analysis/out" in upload and "retention-days: 30" in upload, upload
+
+
+def test_titles_refresh_runs_after_the_swap_and_before_the_commit() -> None:
+    names = _step_names((WORKFLOWS / "analysis.yml").read_text(encoding="utf-8"))
+    swap = names.index("Publish own-data site files only on a publish_own dispatch")
+    assert names[swap + 1 : swap + 3] == ["Refresh titles.json from the term's catalog", "Commit outputs"], names
+
+
+def _catalog_entry(course_key: str, title: str, instructors: str) -> dict:
+    """A lecture as the scraper writes it to catalog/<term>/catalog.json (SectionRef.to_dict)."""
+    subject, number = course_key.split()
+    return {"section_id": "", "url_path": f"/content/2027-spring-{subject}-{number}-001-lec-001".lower(), "course_key": course_key, "subject": subject, "catalog_number": number, "class_number": "001", "section_number": "001", "component": "LEC", "last_status": 200, "probed_at": None, "node_id": None, "title": title, "instructors": instructors}
+
+
+def _titles_job(tmp_path: Path, *, catalog_term: str = "2272", index: bool = True) -> Path:
+    """A job checkout as the titles step finds it: the published site/data (Spring 2026 curves,
+    counting down to Spring 2027, no titles.json yet) and the data branch's ``catalog_term`` catalog."""
+    job = tmp_path / "job"
+    site = job / "site" / "data"
+    _write(site / "meta.json", {**{k: v for k, v in PUBLISHED_META.items() if k != "titles_file"}, "forecast_term_id": "2272", "forecast_term_name": "Spring 2027"})
+    if index:
+        _write(site / "index.json", {"term_id": "2262", "courses": [{"key": "COMPSCI 61A"}, {"key": "MATH 1A"}]})
+    _write(site / "courses" / "COMPSCI.json", {"subject": "COMPSCI", "courses": {}})
+    _write(site / "backtest.json", {"term_id": "2268", "term_name": "Fall 2026", "runs": []})
+    sections = [
+        _catalog_entry("COMPSCI 61A", "Structure and Interpretation of Computer Programs", "John DeNero"),
+        _catalog_entry("HISTORY 7A", "Introduction to the History of the United States", "Brian DeLay"),  # not in the index
+    ]
+    _write(job / "data-branch" / "catalog" / catalog_term / "catalog.json", {"term_id": catalog_term, "sections": sections})
+    return job
+
+
+def _run_titles(job: Path, *, term_id: str) -> subprocess.CompletedProcess:
+    return _run_step(job, "--titles-only", {"steps.term.outputs.term_id": term_id})
+
+
+def test_titles_step_refreshes_titles_from_the_catalog_of_the_term_the_pages_count_down_to(tmp_path: Path) -> None:
+    job = _titles_job(tmp_path)
+    before = _tree(job / "site" / "data")
+    proc = _run_titles(job, term_id="2272")
+    assert proc.returncode == 0, (proc.stdout, proc.stderr)
+    after = _tree(job / "site" / "data")
+    titles = json.loads(after.pop("titles.json"))
+    assert titles["catalog_term_id"] == "2272"
+    assert titles["courses"] == {"COMPSCI 61A": {"title": "Structure and Interpretation of Computer Programs", "instructors": ["John DeNero"]}}
+    assert json.loads(after.pop("meta.json")) == {**json.loads(before.pop("meta.json")), "titles_file": "titles.json"}
+    assert after == before  # --titles-only touches nothing else
+
+
+@pytest.mark.parametrize(
+    ("case", "term_id", "catalog_term", "index", "says"),
+    [
+        ("no catalog for the run's term", "2272", "2268", True, "no data-branch/catalog/2272/catalog.json"),
+        ("no published index.json", "2272", "2272", False, "no site/data/index.json"),
+        # SCRAPE_TERM still Fall 2026: its catalog must not put Fall 2026 instructors on the Spring 2027 pages
+        ("the run's term is not the one the pages count down to", "2268", "2268", True, "the pages count down to term 2272, not this run's term 2268"),
+    ],
+)
+def test_titles_step_leaves_site_data_alone(tmp_path: Path, case: str, term_id: str, catalog_term: str, index: bool, says: str) -> None:
+    job = _titles_job(tmp_path, catalog_term=catalog_term, index=index)
+    before = _tree(job / "site" / "data")
+    proc = _run_titles(job, term_id=term_id)
+    assert proc.returncode == 0, (case, proc.stdout, proc.stderr)
+    assert _tree(job / "site" / "data") == before, case
+    assert f"titles.json not refreshed: {says}" in proc.stdout, (case, proc.stdout)
+
+
+def test_weekly_outputs_are_gitignored_and_the_hand_installed_reports_are_not() -> None:
+    """A stray copy of a weekly report or figure stays out of a commit; the reports the README
+    and CLAIMS.md cite (``*_berkeleytime``, the backtests) and the site's figure do not."""
+    weekly = ["reports/report_2268.md", "reports/report_2272.md", "reports/figures_2268/km_level.png", "reports/figures_2272/hero.png"]
+    kept = [
+        "reports/report_2268_berkeleytime.md",
+        "reports/report_2262_berkeleytime.md",
+        "reports/report_2272_berkeleytime.md",
+        "reports/figures_2268_berkeleytime/hero.png",
+        "reports/figures_2262_berkeleytime/hero.png",
+        "reports/backtest_2268/cross_term_days14/report.md",
+        "site/figures/reconstruction_validation.png",
+    ]
+    if shutil.which("git") is None:
+        pytest.skip("no git here")
+    proc = subprocess.run(["git", "check-ignore", "--no-index", "--verbose", "--non-matching", *weekly, *kept], cwd=ROOT, capture_output=True, text=True, timeout=60)
+    if proc.returncode not in (0, 1):
+        pytest.skip(f"git check-ignore unavailable here: {proc.stderr.strip()}")
+    ignored = {line.split("\t")[1]: not line.startswith("::") for line in proc.stdout.splitlines()}
+    assert ignored == {**dict.fromkeys(weekly, True), **dict.fromkeys(kept, False)}, proc.stdout

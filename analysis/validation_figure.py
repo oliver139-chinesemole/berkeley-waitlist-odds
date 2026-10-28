@@ -1,8 +1,8 @@
 """Figure showing what the flow reconstruction recovers on simulated waitlists.
 
-Deterministic (SimConfig(seed=1)); the output is committed under
-reports/figures_validation/ and embedded in the README and the methodology
-page, always labelled as simulated data.
+Deterministic (SimConfig(seed=1)); the output is committed once, under
+site/figures/ (OUT_DIR), where the methodology page serves it and the README
+embeds it, always labelled as simulated data.
 """
 from __future__ import annotations
 
@@ -20,6 +20,7 @@ from analysis.flows import interval_flows  # noqa: E402
 from analysis.positions import time_to_clear  # noqa: E402
 from analysis.synthetic import SimConfig, simulate  # noqa: E402
 
+OUT_DIR = Path("site/figures")  # GitHub Pages serves site/; the README embeds the same file
 STYLE = {"figure.figsize": (9, 4), "axes.grid": True, "grid.alpha": 0.3, "axes.spines.top": False, "axes.spines.right": False, "font.size": 10}
 
 
@@ -72,5 +73,5 @@ def make_figure(out_dir: Path, seed: int = 1) -> Path:
 
 
 if __name__ == "__main__":
-    path = make_figure(Path(sys.argv[1]) if len(sys.argv) > 1 else Path("reports/figures_validation"))
+    path = make_figure(Path(sys.argv[1]) if len(sys.argv) > 1 else OUT_DIR)
     print(path)

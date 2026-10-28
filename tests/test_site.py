@@ -143,6 +143,19 @@ def test_every_page_loads_the_shared_assets() -> None:
             assert '<script src="assets/site.js"></script>' in html, page
 
 
+def test_one_copy_of_the_validation_figure_where_the_site_serves_it() -> None:
+    """`python -m analysis.validation_figure` writes the PNG the methodology page serves, and the
+    README embeds that same file; every README image points at a file in the repository."""
+    from analysis import validation_figure
+
+    served = SITE / "figures" / "reconstruction_validation.png"
+    assert ROOT / validation_figure.OUT_DIR / "reconstruction_validation.png" == served and served.is_file()
+    assert '<img src="figures/reconstruction_validation.png"' in (SITE / "methodology.html").read_text()
+    embeds = re.findall(r"!\[[^\]]*\]\(([^)\s]+)\)", (ROOT / "README.md").read_text())
+    assert "site/figures/reconstruction_validation.png" in embeds, embeds
+    assert [e for e in embeds if not (ROOT / e).is_file()] == []
+
+
 def test_empty_state_without_data(tmp_path: Path) -> None:
     out = render(tmp_path)
     assert "No estimates yet" in out["status"] and "The curves appear once this project's own Spring 2027 snapshots have seen enough waitlists clear." in out["status"]
