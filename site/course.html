@@ -48,11 +48,17 @@
   }
 
   function related(bucket) {
-    const list = BWO.relatedCourses(index, row, bucket, 5);
+    const all = BWO.relatedCourses(index, row, bucket, Infinity);
+    const list = all.slice(0, 5);
     // The department link shows whenever the subject is known, with or without related courses.
     const dept = row.subject ? `<p class="small"><a href="${BWO.withToday(`dept.html?subject=${encodeURIComponent(row.subject)}&bucket=${bucket}`)}">All ${esc(row.subject)} courses</a> <span class="muted">on the department page</span></p>` : "";
     if (!list.length) return dept;
-    return `<h2>Other ${esc(row.subject)} courses at ${esc(BWO.bucketText(bucket))}</h2>${dept}<ul class="findings">${list.map((r) => { const s = r.buckets[bucket]; const own = s.pooled === false ? s.n : (s.n_course || 0); return `<li><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${BWO.BUCKETS.find((b) => b[2] === bucket)[0]}`)}">${esc(r.key)}</a>: ${pct(s.p[1])} within 14 days <span class="muted">(${num(own)} of its own cases${s.pooled === false ? "" : `, ${esc(s.pooled === "OTHER" ? "other departments" : s.pooled)} estimate`})</span></li>`; }).join("")}</ul><p><a href="${BWO.withToday(`courses.html?dept=${encodeURIComponent(row.dept_group)}&bucket=${bucket}`)}">All ${esc(row.dept_group === "OTHER" ? "other" : row.dept_group)} courses</a></p>`;
+    // What the list is (audit item 20): the most-joined of the subject's other courses with a curve of their own or the
+    // department's at the bucket (one on the all-course pool would show that pool's number), and how many there are.
+    const what = list.length < all.length
+      ? `The ${list.length} most-joined of the ${num(all.length)} other ${esc(row.subject)} courses with their own or the department's curve at these positions.`
+      : `Every other ${esc(row.subject)} course with its own or the department's curve at these positions, most-joined first.`;
+    return `<h2>Other ${esc(row.subject)} courses at ${esc(BWO.bucketText(bucket))}</h2><p class="muted small">${what}</p>${dept}<ul class="findings">${list.map((r) => { const s = r.buckets[bucket]; const own = s.pooled === false ? s.n : (s.n_course || 0); return `<li><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${BWO.BUCKETS.find((b) => b[2] === bucket)[0]}`)}">${esc(r.key)}</a>: ${pct(s.p[1])} within 14 days <span class="muted">(${num(own)} of its own cases${s.pooled === false ? "" : `, ${esc(s.pooled === "OTHER" ? "other departments" : s.pooled)} estimate`})</span></li>`; }).join("")}</ul><p><a href="${BWO.withToday(`courses.html?dept=${encodeURIComponent(row.dept_group)}&bucket=${bucket}`)}">All ${esc(row.dept_group === "OTHER" ? "other" : row.dept_group)} courses</a></p>`;
   }
 
   function render(pos) {
@@ -153,10 +159,19 @@
     const cols = r.data.columns;
     const mine = r.data.rows.map((vals) => Object.fromEntries(cols.map((c, i) => [c, vals[i]]))).filter((s) => s.course_key === row.key);
     if (!mine.length) return;
-    const newest = mine.map((s) => new Date(s.observed_at).getTime()).filter((v) => !isNaN(v));
-    const age = newest.length ? Math.round((Date.now() - Math.max(...newest)) / 60000) : null;
-    $("live").innerHTML = `<h2>Sections now</h2><p class="muted small">This project's own snapshots of classes.berkeley.edu${age != null ? `, as of ${age} min ago` : ""}${r.data.term_name ? ` (${esc(r.data.term_name)})` : ""}.</p>
+    const times = mine.map((s) => new Date(s.observed_at).getTime()).filter((v) => !isNaN(v));
+    const newest = times.length ? Math.max(...times) : null;
+    const draw = (ago) => {
+      $("live").innerHTML = `<h2>Sections now</h2><p class="muted small">This project's own snapshots of classes.berkeley.edu${ago ? `, as of ${ago}` : ""}${r.data.term_name ? ` (${esc(r.data.term_name)})` : ""}.</p>
       <div class="scroll" tabindex="0"><table class="board" aria-label="Sections now"><thead><tr><th scope="col">Section</th><th scope="col" class="num">Enrolled</th><th scope="col" class="num">Waitlist</th><th scope="col">Seats</th><th scope="col">Status</th><th scope="col">Read</th></tr></thead><tbody>${mine.map(boardRow).join("")}</tbody></table></div>`;
+    };
+    draw(newest != null ? BWO.agoText(newest, Date.now()) : null);
+    // One age on the page (audit item 8): a row is rewritten only when its counts change, so the newest
+    // row can be older than the last snapshot that read it. When the snapshot the status line names (this
+    // term's, its sentence shown) ran at or after the newest row, the board gives that age, to the minute.
+    const st = await BWO.loadStatus();
+    const run = st && String(st.s.term_id) === String(r.data.term_id) && BWO.liveStatusText(st.s, st.now, meta) ? BWO.lastRunAt(st.s) : null;
+    if (run != null && (newest == null || run >= newest)) draw(BWO.agoText(run, st.now));
   }
 
   async function main() {
@@ -171,7 +186,7 @@
     const match = await BWO.matchCourseAsync(index, c, meta);
     row = match.row;
     if (!row) {
-      $("status").innerHTML = `<p class="error">No data for <strong>${esc(c || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests the nearest courses, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
+      $("status").innerHTML = `<p class="error">No data for <strong>${esc(c || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests courses close to what you typed when there are any, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
       return;
     }
     const subj = await BWO.loadSubject(meta, row.subject);

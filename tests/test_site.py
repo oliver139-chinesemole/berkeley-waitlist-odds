@@ -376,13 +376,14 @@ def test_copy_as_text_says_what_the_headline_says(course_site: Path) -> None:
     out = render(course_site, course="COMPSCI 0", position="3", today="2027-02-03", expression=COPY_TEXT)
     assert out["eval"] == (f"COMPSCI 0, position 3: too little data to call (one section only, no interval); {freq(p).lower()} comparable students got in within 3 days of joining ({jspct(p)}), "
                            f"the time left before the last automatic waitlist run (Feb 5, 2027). {tail}COMPSCI%200&position=3")
-    # "almost everyone" takes "among", not "almost everyone comparable students"; at 100% there is no "at least"
+    # "almost everyone" takes "among", not "almost everyone comparable students"; at 100% there is no "at least",
+    # and the clause after the semicolon is still a sentence (Task 15's review): the run is 27 days away
     cell = cell_of(course_site, "MATH 25", "1-5")
     p, _, _, day = read_curve(cell["curve"], 27.0)
     assert jspct(p) == "100%"
     out = render(course_site, course="MATH 25", position="3", expression=COPY_TEXT)
     assert out["eval"] == (f"MATH 25, position 3: too little data to call (one section only, no interval); almost everyone among comparable students got in within {jsround(day)} days of joining (100%), "
-                           f"the longest the data follow anyone; 27 days left before the last automatic waitlist run (Feb 5, 2027). {tail}MATH%2025&position=3")
+                           f"the longest the data follow anyone; the last automatic waitlist run (Feb 5, 2027) is 27 days away. {tail}MATH%2025&position=3")
 
 
 # Audit item 4: the pages ran on UTC, so from about 17:00 Pacific every date was tomorrow's. "Today" is the
@@ -477,14 +478,27 @@ def test_department_level_estimates(dept_site: Path) -> None:
     assert "Where a mid-list spot moved most" not in out["elements"]["content"]["html"]
 
 
-@pytest.mark.parametrize(("query", "shown"), [("NOPE 999", "NOPE 999"), ("COMPSCI 999", "COMPSCI 999"), ("NOPE 101", "NOPE 101"), ("data structures", "DATA STRUCTURES")])
-def test_a_course_not_in_the_index_gets_no_estimate(full_site: Path, query: str, shown: str) -> None:
-    """Audit item 3: as on the course page, a code that is not a course in the index gets no pooled estimate, only suggestions."""
+NO_DATA = "Check the spelling, or the course had too few waitlisted students to estimate."
+BROWSE = '<p>Or browse <a href="courses.html?today=2027-01-10">every course</a>.</p>'
+
+
+@pytest.mark.parametrize(("query", "shown", "near"), [("NOPE 999", "NOPE 999", None), ("COMPSCI 999", "COMPSCI 999", "COMPSCI"), ("NOPE 101", "NOPE 101", None), ("data structures", "DATA STRUCTURES", None)])
+def test_a_course_not_in_the_index_gets_no_estimate(full_site: Path, query: str, shown: str, near: str | None) -> None:
+    """Audit item 3: as on the course page, a code that is not a course in the index gets no pooled estimate, only suggestions.
+
+    Item 13: "Did you mean" offers only what is close to the query (here COMPSCI's own courses for
+    COMPSCI 999); for a subject nothing resembles it is left out, rather than offering the
+    most-joined courses, which are the Try chips above the form."""
     out = render(full_site, course=query, position="10")
     r = out["result"]
     assert not out["result_hidden"]
-    assert r.startswith(f'<p class="error">No data for <strong>{shown}</strong>. Check the spelling, or the course had too few waitlisted students to estimate. Did you mean <a href="?course=')
-    assert r.endswith('?</p><p>Or browse <a href="courses.html?today=2027-01-10">every course</a>.</p>')
+    if near:
+        assert r.startswith(f'<p class="error">No data for <strong>{shown}</strong>. {NO_DATA} Did you mean <a href="?course=')
+        assert r.endswith("?</p>" + BROWSE)
+        keys = [unquote(k) for k in re.findall(r'<a href="\?course=([^&"]+)&position=10', r)]
+        assert len(keys) == 3 and all(k.startswith(near + " ") for k in keys), keys
+    else:
+        assert r == f'<p class="error">No data for <strong>{shown}</strong>. {NO_DATA}</p>{BROWSE}'
     for estimate in ('class="verdict"', "got in", 'class="big"', "Showing the estimate", "<svg", "This curve:", 'class="bywhen"', "dots"):
         assert estimate not in r, estimate
     assert out["title"] == f"No data for {shown} · Berkeley Waitlist Odds"
@@ -618,19 +632,43 @@ def test_course_query_fixture_passes_in_the_node_runner_and_here() -> None:
             assert len(got["nearest"]) <= 3, f"{row['query']!r}: {got['nearest']}"
 
 
-def test_a_miss_offers_the_nearest_courses(full_site: Path) -> None:
-    """No match, three nearest offered: where the subject is unambiguous the offers come from it."""
-    out = render(SITE, expression="['cs 61x', 'physics 999', 'asdf', ''].map((t) => BWO.matchCourse(BWO.loaded.index, t).nearest.map((r) => r.key))")
-    cs, physics, asdf, empty = out["eval"]
-    assert cs and all(k.startswith("COMPSCI ") for k in cs), cs
-    assert physics and all(k.startswith("PHYSICS ") for k in physics), physics
-    assert len(asdf) <= 3 and len(empty) <= 3
+# Item 13: what each of the fixture's misses offers, by subject (the keys are the joins ranking's, which a
+# refresh may reorder). The subject understood, a prefix the combobox would complete, or a subject within the
+# fuzzy rule's distance; nothing at all when none of those finds a course, never the most-joined three.
+MISS_OFFERS = {
+    "cs 61x": "COMPSCI", "compsci 9999": "COMPSCI", "computer science 9999": "COMPSCI", "physics 999": "PHYSICS",
+    "math 9999": "MATH", "mathematics 9999": "MATH", "stat 61a": "STAT", "data 61a": "DATA", "econ 999": "ECON",
+    "chem 1z": "CHEM", "data": "DATA",  # a subject alone: its courses (docs/DESIGN_A6.md, the title layer)
+    "compsi 999": "COMPSCI",  # a typo in the subject, a number that is no course: the fuzzy rule's subject
+    "comp 61": "COMPSCI",  # a prefix: what the combobox suggested while it was typed
+    "asdf": None, "": None, "zzz 1": None, "qqqq 12": None, "!!!": None, "123456": None, "nope 1": None, "xyz 100": None,
+    "berkeley 12345": None, "uc berkeley": None, "lecture": None, "spring 2027": None, "0000": None, "cs 61a1": None,
+    "business administration 135": None, "quantum basketweaving": None, "data structures 2": None, "and": None,
+}
+
+
+def test_a_miss_offers_only_what_is_close(full_site: Path) -> None:
+    """No match: up to three courses close to the query, or none; where the subject is unambiguous the offers come from it."""
+    queries = list(MISS_OFFERS)
+    out = render(SITE, expression=f"{json.dumps(queries)}.map((t) => {{ const m = BWO.matchCourse(BWO.loaded.index, t); return [m.layer, m.nearest.map((r) => r.key)]; }})")
+    assert "eval_error" not in out, out.get("eval_error")
+    for query, (layer, keys) in zip(queries, out["eval"], strict=True):
+        subject = MISS_OFFERS[query]
+        assert layer == "miss", query
+        if subject is None:
+            assert keys == [], (query, keys)
+        else:
+            assert 1 <= len(keys) <= 3 and all(k.startswith(subject + " ") for k in keys), (query, keys)
+    out = render(SITE, expression="BWO.matchCourse(BWO.loaded.index, 'comp 61').nearest.map((r) => r.key)")
+    assert all(k.startswith("COMPSCI 61") for k in out["eval"]), out["eval"]
     # a hit offers nothing: nearest is only for the no-match message
     out = render(SITE, expression="BWO.matchCourse(BWO.loaded.index, 'cs61a').nearest.length")
     assert out["eval"] == 0
-    # the page prints them under its own no-match message
+    # the page prints them under its own no-match message, and prints none when there are none
+    out = render(full_site, course="compsi 101", position="4")
+    assert "Did you mean <a" in out["result"] and "COMPSCI" in out["result"]
     out = render(full_site, course="NOPE 101", position="4")
-    assert "Did you mean" in out["result"]
+    assert "Did you mean" not in out["result"]
 
 
 def test_a_bare_number_ranks_by_joins(full_site: Path) -> None:
@@ -734,11 +772,11 @@ def test_the_title_layer_is_skipped_silently_without_titles(tmp_path: Path) -> N
     """No titles_file in meta, a missing file or a broken one: a title query is an ordinary miss, fetched at most once."""
     broken = tmp_path / "broken.json"
     broken.write_text("{not json")
-    expression = "(async () => { const i = BWO.loaded.index; const a = await BWO.matchCourseAsync(i, 'data structures'); const b = await BWO.matchCourseAsync(i, 'hilfinger'); return [a.layer, b.layer, a.nearest.length > 0]; })()"
+    expression = "(async () => { const i = BWO.loaded.index; const a = await BWO.matchCourseAsync(i, 'data structures'); const b = await BWO.matchCourseAsync(i, 'hilfinger'); return [a.layer, b.layer, a.nearest.map((r) => r.key)]; })()"
     for env, fetched in (({}, 0), ({"HARNESS_TITLES_FILE": str(tmp_path / "absent.json")}, 1), ({"HARNESS_TITLES_FILE": str(broken)}, 1)):
         out = render(SITE, env=env, expression=expression)
         assert "eval_error" not in out, (env, out.get("eval_error"))
-        assert out["eval"] == ["miss", "miss", True], env
+        assert out["eval"] == ["miss", "miss", []], env  # nothing in it names a subject: no "Did you mean" (item 13)
         assert title_fetches(out) == fetched, (env, out["fetches"])
 
 
@@ -835,6 +873,31 @@ def test_course_page_shows_every_bucket_and_the_same_headline(course_site: Path)
     assert out["elements"].get("live", {"html": ""})["html"] == ""  # no live file: the block stays hidden, no error
 
 
+RELATED_HEAD = "<h2>Other COMPSCI courses at positions 6 to 15</h2>"
+
+
+def test_course_page_says_what_its_related_list_is(course_site: Path, tmp_path: Path) -> None:
+    """Item 20: the related list is the most-joined of the subject's other courses with their own or the
+    department's curve at the bucket (one on the all-course pool would print that pool's number), and the
+    page says how many there are, so five of fourteen does not read as the whole subject."""
+    index = load(course_site, "index.json")
+    others = [r for r in index["courses"] if r["subject"] == "COMPSCI" and r["key"] != "COMPSCI 0" and r["buckets"].get("6-15", {}).get("pooled", "all") != "all"]
+    assert len(others) > 5
+    html = render(course_site, page="course.html", search="?c=cs0&position=10")["elements"]["course"]["html"]
+    assert (f"{RELATED_HEAD}<p class=\"muted small\">The 5 most-joined of the {len(others)} other COMPSCI courses with their own or the department's curve "
+            "at these positions.</p>") in html
+    assert html.split(RELATED_HEAD)[1].split("</ul>")[0].count("<li>") == 5
+    # every one shown: the sentence says so
+    root = tmp_path / "site"
+    shutil.copytree(course_site, root)
+    keep = {"COMPSCI 0", others[0]["key"], others[1]["key"]}
+    trimmed = {**index, "courses": [r for r in index["courses"] if r["subject"] != "COMPSCI" or r["key"] in keep]}
+    (root / "data" / "index.json").write_text(json.dumps(trimmed))
+    html = render(root, page="course.html", search="?c=cs0&position=10")["elements"]["course"]["html"]
+    assert f"{RELATED_HEAD}<p class=\"muted small\">Every other COMPSCI course with its own or the department's curve at these positions, most-joined first.</p>" in html
+    assert html.split(RELATED_HEAD)[1].split("</ul>")[0].count("<li>") == 2
+
+
 def test_course_page_says_which_course_a_forgiven_query_showed() -> None:
     """Q5 on the course page: a fuzzy, name or nickname match prints the lookup's "Showing X for query" line; an exact key does not."""
     for query, key in (("compsi%2061a", "COMPSCI 61A"), ("computer%20science%2061a", "COMPSCI 61A"), ("e7", "ENGIN 7")):
@@ -848,7 +911,10 @@ def test_course_page_says_which_course_a_forgiven_query_showed() -> None:
 
 def test_course_page_without_a_course(full_site: Path) -> None:
     out = render(full_site, page="course.html", search="?c=NOPE%201")
-    assert "No data for" in out["status"] and "NOPE 1" in out["status"] and "index.html?course=NOPE%201" in out["status"]
+    # the sentence is true of what the lookup shows (item 13): close matches when there are any, none otherwise
+    assert out["status"] == (f'<p class="error">No data for <strong>NOPE 1</strong>. {NO_DATA}</p>'
+                             '<p><a href="index.html?course=NOPE%201&position=10&today=2027-01-10">Try the lookup</a>, which suggests courses close to what you typed when there are any, '
+                             'or browse <a href="courses.html?today=2027-01-10">every course</a>.</p>')
     assert "falls back to the department" not in out["status"]  # the lookup gives a code it cannot find no estimate either
     out = render(full_site, page="course.html")
     assert "No data for" in out["status"]

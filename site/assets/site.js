@@ -206,13 +206,22 @@ const BWO = (function () {
     const m = /^2(\d\d)([258])$/.exec(String(id));
     return m ? `${{ 2: "Spring", 5: "Summer", 8: "Fall" }[m[2]]} 20${m[1]}` : null;
   }
-  function liveStatusText(s, now, meta) {
+  // When a status.json's last run happened (a time in ms), or null.
+  function lastRunAt(s) {
     if (!s || typeof s !== "object" || !s.last_run_at) return null;
     // Python writes microseconds; keep three digits, the precision every browser parses.
     const t = Date.parse(String(s.last_run_at).replace(/(\.\d{3})\d+/, "$1"));
-    if (isNaN(t) || !Number.isFinite(s.n_observed) || !Number.isFinite(s.n_missing)) return null;
+    return isNaN(t) ? null : t;
+  }
+  // How old a snapshot is, the one way the pages say it: "about 12 min ago", "about 2 hours ago" past 90 minutes.
+  function agoText(t, now) {
     const mins = Math.max(1, Math.round((now - t) / 60000));
-    const ago = mins <= 90 ? `about ${mins} min ago` : `about ${plural(Math.round(mins / 60), "hour")} ago`;
+    return mins <= 90 ? `about ${mins} min ago` : `about ${plural(Math.round(mins / 60), "hour")} ago`;
+  }
+  function liveStatusText(s, now, meta) {
+    const t = lastRunAt(s);
+    if (t == null || !Number.isFinite(s.n_observed) || !Number.isFinite(s.n_missing)) return null;
+    const ago = agoText(t, now);
     const counts = `${plural(s.n_observed, "section")} read, ${num(s.n_missing)} not reached`;
     // The term is named so the line cannot be read as the collection the source sentence dates to Phase 1.
     // A run of an earlier term than the one the pages count down to (the scraper has not switched yet)
@@ -222,6 +231,20 @@ const BWO = (function () {
     if (term && forecast && Number(s.term_id) < Number(meta.forecast_term_id)) return `This project has not started collecting ${forecast} yet; its last snapshot, of ${term}, ran ${ago}: ${counts}.`;
     return `This project's last ${term ? term + " " : ""}snapshot ran ${ago}: ${counts}.`;
   }
+  // status.json, fetched once per page load: the status sentence and the course page's board both read
+  // it, so the page gives one age (audit item 8). Resolves to {s, now}, `now` being when the file
+  // arrived, so both print the same minute; null on any failure (network, non-200, bad JSON). Never rejects.
+  let statusLoad = null;
+  function loadStatus() {
+    if (!statusLoad) {
+      try {
+        statusLoad = fetch(STATUS_URL, { cache: "default" }).then((r) => (r.ok ? r.json() : null)).then((s) => (s ? { s, now: Date.now() } : null), () => null);
+      } catch (e) {
+        statusLoad = Promise.resolve(null);
+      }
+    }
+    return statusLoad;
+  }
   // Called after the page has set its status line; never awaited, so it cannot
   // hold up first paint or the data loads. A snapshot of the forecast term (the
   // page's meta from BWO.load) also takes the date out of the collection clause, in
@@ -230,12 +253,10 @@ const BWO = (function () {
     if (!el) return;
     const run = async () => {
       try {
-        const r = await fetch(STATUS_URL, { cache: "default" });
-        if (!r.ok) return;
-        const s = await r.json();
-        const text = liveStatusText(s, Date.now(), loaded.meta);
+        const got = await loadStatus();
+        const text = got && liveStatusText(got.s, got.now, loaded.meta);
         if (!text) return;
-        if (isForecastTerm(s.term_id, loaded.meta)) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, COLLECTION_STARTED);
+        if (isForecastTerm(got.s.term_id, loaded.meta)) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, COLLECTION_STARTED);
         el.innerHTML += el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`;
       } catch (e) { /* the page stays as it was */ }
     };
@@ -530,24 +551,27 @@ const BWO = (function () {
     const alt = /^[A-Z]/.test(number) ? (/^C\d/.test(number) ? number.slice(1) : null) : "C" + number;
     return index.courses.filter((r) => r.number === number || (alt && r.number === alt)).sort(byJoins);
   }
-  function topJoined(index, n) { return index.courses.slice().sort(byJoins).slice(0, n); }
-  // What to offer when nothing matched: the subject's own courses, else the nearest
-  // subjects' courses, else the most-joined courses. Never more than three.
+  // What to offer when nothing matched, never more than three, and only what is close to the text: the
+  // subject's own courses when the subject was understood, else what the combobox suggests for it (a
+  // prefix of a subject or a key), else the courses of the subjects within the fuzzy rule's distance;
+  // else nothing. (Audit item 13: the most-joined three it used to fall back on are the Try chips.)
   function nearestCourses(index, text) {
     const q = parseQuery(text);
-    if (q && q.pairs) {
-      for (const pair of q.pairs) {
-        const rows = index.courses.filter((r) => r.subject === pair.subject);
-        if (rows.length) return rows.sort(byJoins).slice(0, 3);
-      }
-      const rows = [];
+    if (!q) return [];
+    for (const pair of q.pairs || []) {
+      const rows = index.courses.filter((r) => r.subject === pair.subject);
+      if (rows.length) return rows.sort(byJoins).slice(0, 3);
+    }
+    const typed = searchCourses(index, text, 3);
+    if (typed.length) return typed;
+    const rows = [];
+    if (q.pairs) {
       for (const near of nearSubjects(index, q.token)) {
         for (const r of index.courses.filter((x) => x.subject === near.subject).sort(byJoins)) if (rows.length < 3) rows.push(r);
         if (rows.length >= 3) break;
       }
-      if (rows.length) return rows;
     }
-    return topJoined(index, 3);
+    return rows;
   }
   // One pass over an already-normalised query, forgiving nothing that is not
   // written down: a nickname, a subject and number, or a bare number.
@@ -587,8 +611,9 @@ const BWO = (function () {
     return null;
   }
   // The whole matcher: {key, row, layer, ranked, nearest, query}. layer is "miss"
-  // when nothing matched, and then nearest holds up to three courses to offer;
-  // it is computed only if something asks for it, since every keystroke gets here.
+  // when nothing matched, and then nearest holds up to three courses close to the
+  // query (none for an empty one, or when nothing is close); it is computed only if
+  // something asks for it, since every keystroke gets here.
   function matchCourse(index, text) {
     const query = String(text == null ? "" : text);
     const base = normalise(text);
@@ -597,7 +622,7 @@ const BWO = (function () {
     const miss = () => ({
       query, key: null, row: null, layer: "miss", ranked: [],
       get nearest() {
-        if (!offered) offered = !courses ? [] : base ? nearestCourses(index, base) : topJoined(index, 3);
+        if (!offered) offered = courses && base ? nearestCourses(index, base) : [];
         return offered;
       },
     });
@@ -1001,7 +1026,7 @@ const BWO = (function () {
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
-    liveStatus, liveStatusText, isForecastTerm, damerau,
+    liveStatus, liveStatusText, loadStatus, lastRunAt, agoText, isForecastTerm, damerau,
   };
 })();
 if (typeof window !== "undefined") window.BWO = BWO;
