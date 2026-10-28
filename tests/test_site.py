@@ -144,7 +144,8 @@ def test_every_page_loads_the_shared_assets() -> None:
 
 def test_empty_state_without_data(tmp_path: Path) -> None:
     out = render(tmp_path)
-    assert "No estimates yet" in out["status"] and "Oct 26, 2026" in out["status"]
+    assert "No estimates yet" in out["status"] and "The curves appear once this project's own Spring 2027 snapshots have seen enough waitlists clear." in out["status"]
+    assert "Oct 26" not in out["status"] and "mid-November" not in out["status"]  # true before and after Phase 1 opens
     assert out["form_hidden"] and out["result_hidden"]
 
 
@@ -967,7 +968,7 @@ def test_course_page_links_its_department_without_related_courses(course_site: P
 
 # ------------------------------------------------------ the fallback ladder (S5)
 
-SECTION_RUNG = "Section curves need this project's own Spring 2027 snapshots; none exist before Oct 26, 2026."
+SECTION_RUNG = "Section curves need this project's own Spring 2027 snapshots and are not published yet."  # no date: true before and after Phase 1 opens
 
 
 @pytest.fixture(scope="module")
