@@ -264,12 +264,18 @@ def test_lookup_after_the_last_waitlist_run_is_a_look_back(course_site: Path) ->
     assert f"<p><strong>{pct(last[1])}</strong></p>" in r and "no longer processed automatically" in r and "look back, not a forecast" in r
     assert r.index('class="verdict"') < r.index("no longer processed automatically") < r.index("got in within")  # one section: the verdict leads here too
     assert "by the first day of instruction" not in r and "days away" not in out["stamp"]
+    # item 22: no "7 days from now" row under the sentence saying waitlists are no longer processed; nothing is left to put in the table
+    assert "days from now" not in r and 'class="bywhen"' not in r
+    out = render(Path("/nonexistent"), today="2027-03-01", expression=f"BWO.byWhenHtml({{curve: {json.dumps(HEADLINE_CELLS['within reach'])}}}, {json.dumps(HEADLINE_META)}, BWO.today())")
+    assert out["eval"] == ""
 
 
 # The headline block (BWO.headlineHtml, the lookup's and the course page's) pinned on hand-made curves on Jan 10,
 # 27 days to the end of the last run's day and 9 to instruction: a curve that reaches the 27 days, one that stops
 # at 20 (audit item 1: the share is read at the reach and said as "within 20 days", with "at least" for the 27),
 # and one section with no interval (item 3: the verdict leads, the share comes after the by-when table, dimmed).
+# A verdict's cut-off range is printed in the verdict note only (item 17: "Could go either way (40% to 74%)" sat next to
+# "95% interval 64% to 82%"); "Too little data to call" keeps its reason, which is not a range.
 HEADLINE_META = {"deadline": "2027-02-05", "instruction_start": "2027-01-19", "forecast_term_name": "Spring 2027"}
 HEADLINE_CELLS = {
     "within reach": [[0.5, 0.1, 0.05, 0.15], [7, 0.5, 0.45, 0.55], [28, 0.8, 0.74, 0.86]],
@@ -283,13 +289,13 @@ HEADLINES = {  # (html, after): the caller prints `after` under its table
     ("2027-01-10", "within reach"): (
         '<p class="lead">About 10 in 20 got in within 27 days of joining</p>[dots 10 of 20 dots filled: 50%]<div class="big">50% <small>(95% interval 45% to 55%)</small></div>'
         "<p>of comparable students had cleared within 27 days of joining, the time left before the last automatic waitlist run (Feb 5, 2027).</p>"
-        '<p><span class="verdict">Could go either way</span> <span class="muted small">(40% to 74%)</span></p>'
+        '<p><span class="verdict">Could go either way</span></p>'
         "<p><strong>50%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>", ""),
     ("2027-01-10", "past the reach"): (
         '<p class="lead">About 16 in 20 got in within 20 days of joining</p>[dots 16 of 20 dots filled: 80%]<div class="big">80% <small>(95% interval 74% to 86%)</small></div>'
         "<p>of comparable students had cleared within 20 days of joining, the longest the data follow anyone; "
         "the time left before the last automatic waitlist run (Feb 5, 2027) is 27 days, so at least 80% had cleared within that time.</p>"
-        '<p><span class="verdict">Likely</span> <span class="muted small">(75% or more)</span></p>'
+        '<p><span class="verdict">Likely</span></p>'
         "<p><strong>50%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>", ""),
     ("2027-01-10", "one section"): (
         THIN_LEAD,
@@ -301,11 +307,11 @@ HEADLINES = {  # (html, after): the caller prints `after` under its table
         '<p class="lead">Almost everyone got in within 8 days of joining</p>[dots 20 of 20 dots filled: 100%]<div class="big">100% <small>(95% interval 97% to 100%)</small></div>'
         "<p>of comparable students had cleared within 8 days of joining, the longest the data follow anyone; "
         "the time left before the last automatic waitlist run (Feb 5, 2027) is 27 days.</p>"
-        '<p><span class="verdict">Likely</span> <span class="muted small">(75% or more)</span></p>'
+        '<p><span class="verdict">Likely</span></p>'
         "<p><strong>100%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>", ""),
     ("2027-03-01", "within reach"): (
         '<p class="lead">About 16 in 20 got in within 28 days of joining</p>[dots 16 of 20 dots filled: 80%]<div class="big">80% <small>(95% interval 74% to 86%)</small></div>'
-        + LOOK_BACK + '<p><span class="verdict">Likely</span> <span class="muted small">(75% or more)</span></p>', ""),
+        + LOOK_BACK + '<p><span class="verdict">Likely</span></p>', ""),
     ("2027-03-01", "one section"): (
         THIN_LEAD + LOOK_BACK,
         "<p>About 17 in 20 got in within 7 days of joining</p>[dim dots 17 of 20 dots filled: 84%]<p><strong>84%</strong></p>"),
@@ -340,6 +346,124 @@ def test_the_by_when_table_says_at_least_past_the_reach() -> None:
     assert '<tr><td>Last waitlist run <span class="muted">(Feb 5)</span></td><td class="num"><span class="muted small">at least</span> <strong>80%</strong></td><td class="num muted small">74% to 86%</td></tr>' in capped
     assert '<tr><td>Last waitlist run <span class="muted">(Feb 5)</span></td><td class="num"><strong>100%</strong></td><td class="num muted small">97% to 100%</td></tr>' in full
     assert "at least" not in full and "floor" not in capped + full
+
+
+# Item 18 and Task 15's review: a share read past the curve's reach is "at least" that much on every table,
+# as on the lookup and in the Methods page's sentence, and nothing where it prints as 100% ("100% floor" said nothing).
+AT_LEAST = '<span class="muted small" title="The data follow joiners for fewer days than this horizon">at least</span> '
+
+
+def capped_rows(index: dict, bucket: str, h: float) -> tuple[list[dict], list[dict]]:
+    """The index rows whose cell at `bucket` stops short of `h` days: those under 100%, and those that print as 100%."""
+    rows = [r for r in index["courses"] if r["buckets"].get(bucket) and r["buckets"][bucket]["reach"][1] < h]
+    i = index["horizons"].index(h)
+    return [r for r in rows if jspct(r["buckets"][bucket]["p"][i]) != "100%"], [r for r in rows if jspct(r["buckets"][bucket]["p"][i]) == "100%"]
+
+
+def row_with(html: str, key: str) -> str:
+    """The one table row of the Courses or department table that links `key`."""
+    found = [tr for tr in html.split('<tr class="course">')[1:] if f">{key}</a>" in tr]
+    assert len(found) == 1, (key, len(found))
+    return found[0]
+
+
+def test_past_the_reach_every_table_says_at_least(course_site: Path) -> None:
+    index = load(course_site, "index.json")
+    partial, full = capped_rows(index, "1-5", 14.0)
+    assert partial and full  # the synthetic export has both at positions 1 to 5 within 14 days
+    pages = {}
+    # Courses: the share column, "at least" before the number, nothing at 100%
+    out = render(course_site, page="courses.html", search="?bucket=1-5&pooled=1&all=1")
+    pages["courses"] = table = out["elements"]["table"]["html"]
+    for r in partial:
+        assert f'<td class="num">{AT_LEAST}<strong>{jspct(r["buckets"]["1-5"]["p"][1])}</strong>' in row_with(table, r["key"]), r["key"]
+    for r in full:
+        tr = row_with(table, r["key"])
+        assert '<td class="num"><strong>100%</strong><span class="sub">' in tr and "at least" not in tr, r["key"]
+    # the course page's table of every bucket
+    cell = next(r for r in index["courses"] if r["key"] == "COMPSCI 0")["buckets"]["1-5"]
+    assert cell["reach"][1] < 7
+    out = render(course_site, page="course.html", search="?c=cs0&position=3")
+    pages["course"] = html = out["elements"]["course"]["html"]
+    summary = html.split('aria-label="Share who got in by position and horizon"')[1].split("</table>")[0]
+    for p in cell["p"]:
+        assert f'<td class="num">{AT_LEAST if jspct(p) != "100%" else ""}{jspct(p)}</td>' in summary, p
+    # the department page: the pool's three horizons and every course's 14 days
+    pool = load(course_site, "pooled.json")["dept"]["COMPSCI"]["6-15"]
+    assert pool["reach_days"] < 28
+    out = render(course_site, page="dept.html", search="?subject=COMPSCI")
+    pages["dept"] = out["elements"]["pool"]["html"] + out["elements"]["table"]["html"]
+    p28 = read_curve(pool["curve"], 28.0)[0]
+    assert f'<tr><td>28 days</td><td class="num">{AT_LEAST if jspct(p28) != "100%" else ""}<strong>{jspct(p28)}</strong></td>' in pages["dept"]
+    out = render(course_site, page="dept.html", search="?subject=ART&bucket=1-5")
+    dept_table = out["elements"]["table"]["html"]
+    pages["dept_art"] = dept_table
+    for r in partial + full:
+        if r["subject"] == "ART":
+            p = jspct(r["buckets"]["1-5"]["p"][1])
+            assert f'<td class="num">{AT_LEAST if p != "100%" else ""}<strong>{p}</strong>' in row_with(dept_table, r["key"]), r["key"]
+    # Insights: the bucket grid
+    ins = load(course_site, "insights.json")["all_by_bucket"]
+    out = render(course_site, page="insights.html")
+    pages["insights"] = grid = out["elements"]["content"]["html"]
+    for b, c in ins.items():
+        if c["reach_days"] < 28:
+            p = read_curve(c["curve"], 28.0)[0]
+            assert f'<td class="num">{AT_LEAST if jspct(p) != "100%" else ""}<strong>{jspct(p)}</strong>' in grid, b
+    # the chart's hatched region past the reach says the same in its title (the lookup's one curve stops at 7 days)
+    pages["lookup"] = render(course_site, course="COMPSCI 0", position="3")["result"]
+    assert "<title>Beyond 7 days, the longest the data follow anyone, the share is at least the value at 7 days</title>" in pages["lookup"]
+    for name, text in pages.items():
+        assert not re.search(r"\bfloor\b", text, re.I), name
+
+
+def test_the_verdict_cut_offs_are_in_the_note_only(course_site: Path) -> None:
+    """Item 17: the verdict chip carries no range of its own beside the share's interval; the note under it has the cut-offs."""
+    r = render(course_site, course="COMPSCI 0", position="10")["result"]
+    assert '<p><span class="verdict">' in r and not re.search(r'class="verdict">[^<]*</span> <span class="muted small">\(\d', r)
+    for cut in ("(75% or more)", "(40% to 74%)", "(below 40%)"):
+        assert cut not in r
+    assert "Verdicts: Likely at 75% or more, Could go either way from 40% to 74%, Unlikely below 40%" in r
+    markup = (SITE / "methodology.html").read_text()
+    assert "are fixed cut-offs, not a model, and every page that shows a verdict prints them in a note." in markup and "printed next to every verdict" not in markup
+
+
+def chart_svg(series: list[dict], **opts: object) -> str:
+    out = render(Path("/nonexistent"), expression=f"BWO.curveChart({json.dumps({'series': series, 'id': 't', **opts})})")
+    assert "eval_error" not in out, out.get("eval_error")
+    return out["eval"]
+
+
+def end_labels(svg: str) -> list[str]:
+    """The direct labels at the curves' ends, top to bottom."""
+    found = re.findall(r'<text class="lbl(?: ink)?" x="560" y="([\d.]+)">([^<]+)</text>', svg)
+    return [label for _, label in sorted(found, key=lambda m: float(m[0]))]
+
+
+def test_end_labels_keep_bucket_order_where_they_print_the_same() -> None:
+    """Item 19: four curves ending at 99.8%, 99.6%, 99.5% and 99% read "16-40 100%, 1-5 100%, 6-15 100%, 41+ 99%";
+    labels that print the same are in bucket order, and labels that differ stay in the order of their curves' ends."""
+    def series(ends: dict[str, float]) -> list[dict]:
+        return [{"label": b, "short": b, "curve": [[0.5, 0.1, None, None], [20, p, None, None]], "cls": f"s{i + 1}"} for i, (b, p) in enumerate(ends.items())]
+    tied = chart_svg(series({"1-5": 0.996, "6-15": 0.995, "16-40": 0.998, "41+": 0.99}))
+    assert end_labels(tied) == ["1-5 100%", "6-15 100%", "16-40 100%", "41+ 99%"]
+    apart = chart_svg(series({"1-5": 0.83, "6-15": 0.92, "16-40": 0.88}))
+    assert end_labels(apart) == ["6-15 92%", "16-40 88%", "1-5 83%"]  # each label beside its own curve's end
+
+
+def test_every_other_x_tick_is_marked_for_phones() -> None:
+    """Item 16: below 30 rem (480 px) every other x tick, its day and its date, is hidden, so the axis keeps half its labels."""
+    svg = chart_svg([{"label": "a", "curve": [[0.5, 0.1, 0.05, 0.15], [80, 0.7, 0.6, 0.8]]}], marks=[{"day": 102, "label": "last waitlist run"}], t=None)
+    days_ = re.findall(r'<text class="lbl( odd)?" x="[\d.]+" y="[\d.]+" text-anchor="middle">(\d+)d</text>', svg)
+    assert [d for _, d in days_] == ["0", "14", "28", "42", "56", "70", "84", "98"]
+    assert [d for odd, d in days_ if odd] == ["14", "42", "70", "98"]
+    out = render(Path("/nonexistent"), expression=("(function(){ const svg = BWO.curveChart({series: [{label: 'a', curve: [[0.5, 0.1, 0.05, 0.15], [80, 0.7, 0.6, 0.8]]}],"
+                                                   " marks: [{day: 102, label: 'x'}], t: BWO.today(), id: 'u'}); return svg; })()"))
+    dates = re.findall(r'<text class="lbl date( odd)?" x="[\d.]+" y="[\d.]+" text-anchor="middle">([^<]+)</text>', out["eval"])
+    assert len(dates) == 8 and [d for odd, d in dates if odd] == ["Jan 24", "Feb 21", "Mar 21", "Apr 18"]
+    css = (SITE / "assets" / "site.css").read_text()
+    rule = re.search(r"@media \(max-width: 30rem\) \{([^}]*\.chart \.lbl\.odd[^}]*)\}", css)
+    assert rule and "display: none" in rule.group(1), "no phone rule hiding every other x tick"
 
 
 def test_a_verdict_with_the_data_behind_it_leads_with_the_share(course_site: Path) -> None:

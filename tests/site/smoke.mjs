@@ -76,6 +76,14 @@ for (const [scheme] of SCHEMES.map((s) => [s])) {
         catch (err) { if (!/Timeout/.test(err.message)) throw err; await page.waitForTimeout(1000); await page.screenshot({ path: shot, fullPage: true, timeout: 90000 }); }
         const wide = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
         if (wide) errors.push("page scrolls horizontally");
+        // A phone gets every other x tick (audit item 16): no chart shows more than half its day labels, rounded up.
+        if (vpName === "phone") {
+          const crowded = await page.evaluate(() => [...document.querySelectorAll(".chart svg")].map((svg) => {
+            const ticks = [...svg.querySelectorAll("text.lbl")].filter((t) => /^\d+d$/.test(t.textContent));
+            return [ticks.length, ticks.filter((t) => getComputedStyle(t).display !== "none").length];
+          }).filter(([all, shown]) => shown > Math.ceil(all / 2)));
+          if (crowded.length) errors.push(`x-axis ticks not halved: ${JSON.stringify(crowded)}`);
+        }
         await page.addScriptTag({ content: axeSource });
         const axe = await page.evaluate(async () => await window.axe.run(document, { runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21aa"] } }));
         const serious = axe.violations.filter((v) => v.impact === "serious" || v.impact === "critical");

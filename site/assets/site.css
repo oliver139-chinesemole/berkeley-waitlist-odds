@@ -231,6 +231,8 @@ tr.course td .sub { color: var(--muted); font-size: var(--fs-1); display: block;
 .chart .lbl { font-size: 11px; fill: var(--muted); }
 .chart .lbl.ink { fill: var(--ink); font-weight: 600; }
 .chart .lbl.date { font-size: 10px; }
+/* a phone gets every other x tick, day and date (audit item 16: nine labels across 350 px) */
+@media (max-width: 30rem) { .chart .lbl.odd { display: none; } }
 .chart .beyond { fill: url(#hatch); opacity: .9; }
 .chart .cross { stroke: var(--muted); stroke-width: 1; }
 .chart .hit { fill: transparent; cursor: crosshair; }

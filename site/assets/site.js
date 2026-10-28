@@ -312,7 +312,7 @@ const BWO = (function () {
 
   // ----------------------------------------------------------------- curves
   // A curve is a step function: the last grid point at or before h days is
-  // P(got in within h days); past the reach the last point stands, as a floor.
+  // P(got in within h days); past the reach the last point stands, so the share by h is at least that.
   function readCurve(curve, h) {
     let pt = null;
     for (const c of curve) { if (c[0] <= h) pt = c; else break; }
@@ -323,6 +323,9 @@ const BWO = (function () {
   // Past the reach the share read is the value at the reach, so the share by the horizon is at least that;
   // at a share that prints as 100% "at least" would say nothing, and the pages leave it out.
   function atLeast(r) { return r.capped && Math.round(r.p * 100) < 100; }
+  // The same word on every table (audit item 18): "at least" before a share read past its curve's reach,
+  // nothing where that share prints as 100% ("100% floor" said nothing). `capped`: the horizon is past the reach.
+  function atLeastTag(p, capped) { return capped && Math.round(p * 100) < 100 ? '<span class="muted small" title="The data follow joiners for fewer days than this horizon">at least</span> ' : ""; }
   function interval(r) { return r.lo == null || r.hi == null ? "" : ` <small>(95% interval ${pct(r.lo)} to ${pct(r.hi)})</small>`; }
   // Resolve a course's bucket cell to a curve cell: its own, or the pool it points at.
   function resolveCell(entry, bucket, pooled) {
@@ -799,7 +802,9 @@ const BWO = (function () {
   function headlineHtml(cell, pooled, source, meta, t) {
     const h = horizons(meta, t);
     const marks = [];
-    const verdictHtml = (v, lead) => `<p${lead ? ' class="lead"' : ""}><span class="verdict">${esc(v.label)}</span> <span class="muted small">(${esc(v.why)})</span></p>`;
+    // The cut-off ranges are in the verdict note only (audit item 17: "Could go either way (40% to 74%)" sat beside the
+    // share's "95% interval 64% to 82%"); "Too little data to call" keeps its reason, which is not a range.
+    const verdictHtml = (v, lead) => `<p${lead ? ' class="lead"' : ""}><span class="verdict">${esc(v.label)}</span>${v.label === THIN ? ` <span class="muted small">(${esc(v.why)})</span>` : ""}</p>`;
     // `left`: the sentence under the share, which completes it ("70% of comparable students had cleared ...").
     const share = (r, within, thin, left) => thin
       ? `<p>${frequency(r.p)} got in within ${days(within)} of joining</p>${dots(r.p, { dim: true })}
@@ -841,7 +846,8 @@ const BWO = (function () {
   function byWhenHtml(cell, meta, t) {
     const h = horizons(meta, t);
     const rows = [];
-    for (const d of [7, 14]) if (h.deadline <= 0 || d < h.deadline) rows.push({ label: `${d} days from now`, day: d, date: addDays(t, d) });
+    // After the last run the page is a look back: no "7 days from now" under "no longer processed" (audit item 22).
+    for (const d of [7, 14]) if (h.deadline > 0 && d < h.deadline) rows.push({ label: `${d} days from now`, day: d, date: addDays(t, d) });
     if (h.instruction > 0) rows.push({ label: "First day of class", day: h.instruction, date: dateOf(meta.instruction_start) });
     if (h.deadline > 0) rows.push({ label: "Last waitlist run", day: h.deadline, date: dateOf(meta.deadline) });
     if (!rows.length) return "";
@@ -889,12 +895,14 @@ const BWO = (function () {
     for (const p of [0, .25, .5, .75, 1]) svg += `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(p).toFixed(1)}" y2="${y(p).toFixed(1)}"/><text class="lbl" x="${L - 6}" y="${(y(p) + 4).toFixed(1)}" text-anchor="end">${Math.round(p * 100)}%</text>`;
     svg += `<line class="axis" x1="${L}" x2="${W - R}" y1="${y(0).toFixed(1)}" y2="${y(0).toFixed(1)}"/>`;
     // beyond the data's reach
-    if (reach < maxDay) svg += `<rect class="beyond" x="${x(reach).toFixed(1)}" y="${T}" width="${(x(maxDay) - x(reach)).toFixed(1)}" height="${(H - T - B)}" fill="url(#hatch-${id})"><title>Beyond ${days(reach)}, the longest the data follow anyone; the last value stands as a floor</title></rect>`;
-    // x ticks: days, and the calendar date under each when "today" is known
+    if (reach < maxDay) svg += `<rect class="beyond" x="${x(reach).toFixed(1)}" y="${T}" width="${(x(maxDay) - x(reach)).toFixed(1)}" height="${(H - T - B)}" fill="url(#hatch-${id})"><title>Beyond ${days(reach)}, the longest the data follow anyone, the share is at least the value at ${days(reach)}</title></rect>`;
+    // x ticks: days, and the calendar date under each when "today" is known. Every other tick is "odd", which
+    // the stylesheet hides below 30 rem, so a phone gets half the labels (audit item 16).
     const step = maxDay > 120 ? 28 : maxDay > 60 ? 14 : maxDay > 21 ? 7 : maxDay > 10 ? 2 : 1;
-    for (let dd = 0; dd <= maxDay + 1e-9; dd += step) {
-      svg += `<text class="lbl" x="${x(dd).toFixed(1)}" y="${H - B + 14}" text-anchor="middle">${dd}d</text>`;
-      if (opts.t) svg += `<text class="lbl date" x="${x(dd).toFixed(1)}" y="${H - B + 27}" text-anchor="middle">${esc(fmtShort(addDays(opts.t, dd)))}</text>`;
+    for (let dd = 0, k = 0; dd <= maxDay + 1e-9; dd += step, k++) {
+      const odd = k % 2 ? " odd" : "";
+      svg += `<text class="lbl${odd}" x="${x(dd).toFixed(1)}" y="${H - B + 14}" text-anchor="middle">${dd}d</text>`;
+      if (opts.t) svg += `<text class="lbl date${odd}" x="${x(dd).toFixed(1)}" y="${H - B + 27}" text-anchor="middle">${esc(fmtShort(addDays(opts.t, dd)))}</text>`;
     }
     svg += `<text class="lbl" x="${W - R}" y="${H - 4}" text-anchor="end">days since joining the waitlist</text>`;
     // bands first, then curves, then marks and labels
@@ -916,8 +924,9 @@ const BWO = (function () {
       const last = s.curve[s.curve.length - 1];
       ends.push({ s, i, x: x(last[0]), y: y(last[1]), p: last[1] });
     });
-    // end markers with a surface ring, and direct labels nudged apart
-    ends.sort((a, b) => a.y - b.y);
+    // end markers with a surface ring, and direct labels nudged apart, top to bottom: by the share they print,
+    // then in series (bucket) order, so "1-5 100%, 6-15 100%, 16-40 100%" rather than by an unprinted decimal (audit item 19)
+    ends.sort((a, b) => Math.round(b.p * 100) - Math.round(a.p * 100) || a.i - b.i);
     let lastY = -Infinity;
     for (const e of ends) {
       e.ly = Math.max(e.y, lastY + 13);
@@ -1021,7 +1030,7 @@ const BWO = (function () {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, stamp, setStamp,
-    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf,
+    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, atLeastTag,
     parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
