@@ -706,7 +706,7 @@ ACCURACY_READING = (
     "At 14 and 28 days, where most of the scored joiners joined in Phase 1, the curves read high, because Fall 2026 cleared markedly slower than Spring 2026 "
     "(within 14 days of joining in Phase 1, 48% of hypothetical students at positions 1 to 5 got in against 66% in Spring 2026); "
     "by the last automatic waitlist run, which scores only joiners from instruction, they do not. "
-    "That gap is between the two cycles; Spring 2026 curves scored on Spring 2027, the same season, is the pre-registered test at the bottom of this page. "
+    "That gap is between the two cycles; scoring Spring 2026 curves on Spring 2027, the same season, is the pre-registered test at the bottom of this page. "
     "What carries across cycles is the ranking: in all three runs the course curve beat the position bucket, with intervals above zero "
     "(+0.009 within 14 days, +0.025 within 28 days, +0.019 by the last automatic waitlist run), and the pages' choice of curve rests on that ranking, not on the calibration lines. "
     "<strong>Later joiners scored with a model fit on earlier ones</strong> stays inside Fall 2026: fit on the joiners from before Phase 2 opened and scored on those after, "
@@ -808,7 +808,7 @@ def test_insights_level_sentence_faster_or_about_the_same(full_site: Path, tmp_p
 
 # Under the hero chart, above the table: why a deeper position can end above positions 1 to 5.
 INVERSION_NOTE = (
-    '<p class="muted small">When a deeper position ends above positions 1 to 5, here or in the table below, that comes from where the hypothetical students '
+    '<p class="muted small">When a deeper position ends above positions 1 to 5, here or in the table and chart below, that comes from where the hypothetical students '
     "can be placed, not from any advantage of a later spot. Positions 1 to 5 include full sections with nobody else waiting, where a seat that opens shows in "
     "the counts as someone enrolling directly, never as the hypothetical student getting in; positions 6 and up exist only where at least five people were "
     "already waiting, so a seat that opens there goes to the queue.</p>"
