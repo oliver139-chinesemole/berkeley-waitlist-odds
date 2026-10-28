@@ -3,7 +3,8 @@
 Each page's own inline script runs under node against a stub document and a
 file-backed ``fetch`` (tests/site/harness.js), after the shared assets/site.js.
 Skipped when node is missing. "Today" is pinned through the pages' own
-``?today=YYYY-MM-DD`` query parameter.
+``?today=YYYY-MM-DD`` query parameter; the tests about the reader's own clock
+pin the instant (``HARNESS_NOW``) and the time zone (``TZ``) instead.
 """
 from __future__ import annotations
 
@@ -204,27 +205,46 @@ def test_backfill_source_is_labelled(backfill_site: Path) -> None:
 # ------------------------------------------------------------------ lookup
 
 
+def jsround(x: float) -> int:
+    """Math.round as the page rounds: a half goes up (Python's round() sends it to even)."""
+    return int(x + 0.5)
+
+
+def freq(p: float) -> str:
+    """BWO.frequency: the share as a natural frequency out of 20."""
+    k = jsround(p * 20)
+    return "Almost no one" if k == 0 else "Almost everyone" if k == 20 else f"About {k} in 20"
+
+
 def test_lookup_reads_the_curve_at_the_askers_own_horizons(course_site: Path) -> None:
     cell = cell_of(course_site, "COMPSCI 0", "1-5")
-    assert cell["sections"] >= 1 and cell["reach_days"] > 0
+    assert cell["sections"] == 1 and 0 < cell["reach_days"] < 7  # one section, followed for less than a week
     out = render(course_site, course="compsci   0", position="3")
     r = out["result"]
     assert not out["result_hidden"]
     assert "COMPSCI 0" in r and "position 3 (positions 1 to 5)" in r
-    # headline: P(cleared within the 27 days left before the end of the last waitlist run's day)
+    # headline: P(cleared within the 27 days left before the end of the last waitlist run's day), which no one in
+    # this curve was followed for, so it is read at the reach, said as "within <reach> days", and "at least" for the 27
     at_deadline = read_curve(cell["curve"], 27.0)
-    assert f'<div class="big">{pct(at_deadline[0])}' in r and "within 27 days of joining" in r and "last automatic waitlist run" in r and "Feb 5, 2027" in r
-    k = round(at_deadline[0] * 20)
-    assert f'aria-label="{k} of 20 dots filled: {pct(at_deadline[0])}"' in r and r.count('<i class="on"></i>') == k
-    if at_deadline[1] is not None:
-        assert f"95% interval {pct(at_deadline[1])} to {pct(at_deadline[2])}" in r
-    assert 'class="verdict"' in r and "Verdicts: Likely at 75% or more" in r
-    # second line: by the first day of instruction, 9 days from "today"
+    reach = jsround(at_deadline[3])
+    assert f"<p>{freq(at_deadline[0])} got in within {reach} days of joining</p>" in r and "got in by" not in r
+    assert (f"<p><strong>{pct(at_deadline[0])}</strong> of comparable students had cleared within {reach} days of joining, the longest the data follow anyone; "
+            f"the time left before the last automatic waitlist run (Feb 5, 2027) is 27 days, so at least {pct(at_deadline[0])} had cleared within that time.</p>") in r
+    assert "treat this as a floor" not in r
+    k = jsround(at_deadline[0] * 20)
+    assert f'<span class="dots dim" role="img" aria-label="{k} of 20 dots filled: {pct(at_deadline[0])}">' in r and r.count('<i class="on"></i>') == k
+    # one section, no interval: the verdict leads, the share follows the by-when table, and nothing is big
+    assert r.index('<p class="lead"><span class="verdict">Too little data to call</span> <span class="muted small">(one section only, no interval)</span></p>') < r.index('class="bywhen"') < r.index("got in within")
+    assert '<div class="big">' not in r and "Verdicts: Likely at 75% or more" in r
+    # second line: by the first day of instruction, 9 days from "today", also past the reach
     at_instruction = read_curve(cell["curve"], 9.0)
-    assert f"<strong>{pct(at_instruction[0])}</strong> by the first day of instruction" in r and "9 days from now" in r
-    # by-when table: 7 and 14 days from today with their dates, then the two calendar dates
+    assert f"<p>At least <strong>{pct(at_instruction[0])}</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>" in r
+    # by-when table: 7 and 14 days from today with their dates, then the two calendar dates, every one past the reach
     at7 = read_curve(cell["curve"], 7.0)
-    assert "7 days from now" in r and "Jan 17" in r and f"<strong>{pct(at7[0])}</strong>" in r and "Last waitlist run" in r and "First day of class" in r
+    assert '<th class="num">Share in by then</th>' in r and "Share who got in" not in r and 'aria-label="Share in by then"' in r
+    assert f'<td>7 days from now <span class="muted">(Jan 17)</span></td><td class="num"><span class="muted small">at least</span> <strong>{pct(at7[0])}</strong></td>' in r
+    assert '<td>Last waitlist run <span class="muted">(Feb 5)</span></td>' in r and '<td>First day of class <span class="muted">(Jan 19)</span></td>' in r
+    assert ">floor<" not in r
     assert f"{cell['sections']} section" in r and f"{cell['n']} hypothetical joiners, {cell['events']} cleared" in r
     assert "<svg" in r and 'class="mark"' in r and "last waitlist run" in r and 'role="img"' in r and "Show as table" in r
     assert r.count('class="curve') == 1 and ' H ' in r  # one step-drawn curve
@@ -233,10 +253,6 @@ def test_lookup_reads_the_curve_at_the_askers_own_horizons(course_site: Path) ->
     assert "Estimates are by course and position when a course has at least 30 cases" in r
     assert "Other positions" in r and 'class="you"' in r and "positions 6 to 15" in r
     assert "Copy link" in r and "Copy as text" in r and "as of Jan 10" in r
-    if cell["reach_days"] < 27:
-        assert "treat this as a floor" in r
-    else:
-        assert "treat this as a floor" not in r
     assert "course=COMPSCI%200&position=3" in out["location"] and out["title"].startswith("COMPSCI 0 at position 3")
 
 
@@ -245,8 +261,174 @@ def test_lookup_after_the_last_waitlist_run_is_a_look_back(course_site: Path) ->
     out = render(course_site, course="COMPSCI 0", position="3", today="2027-03-01")
     r = out["result"]
     last = cell["curve"][-1]
-    assert f'<div class="big">{pct(last[1])}' in r and "no longer processed automatically" in r and "look back, not a forecast" in r
+    assert f"<p><strong>{pct(last[1])}</strong></p>" in r and "no longer processed automatically" in r and "look back, not a forecast" in r
+    assert r.index('class="verdict"') < r.index("no longer processed automatically") < r.index("got in within")  # one section: the verdict leads here too
     assert "by the first day of instruction" not in r and "days away" not in out["stamp"]
+
+
+# The headline block (BWO.headlineHtml, the lookup's and the course page's) pinned on hand-made curves on Jan 10,
+# 27 days to the end of the last run's day and 9 to instruction: a curve that reaches the 27 days, one that stops
+# at 20 (audit item 1: the share is read at the reach and said as "within 20 days", with "at least" for the 27),
+# and one section with no interval (item 3: the verdict leads, the share comes after the by-when table, dimmed).
+HEADLINE_META = {"deadline": "2027-02-05", "instruction_start": "2027-01-19", "forecast_term_name": "Spring 2027"}
+HEADLINE_CELLS = {
+    "within reach": [[0.5, 0.1, 0.05, 0.15], [7, 0.5, 0.45, 0.55], [28, 0.8, 0.74, 0.86]],
+    "past the reach": [[0.5, 0.1, 0.05, 0.15], [7, 0.5, 0.45, 0.55], [20, 0.8, 0.74, 0.86]],
+    "one section": [[0.5, 0.2, None, None], [6.65, 0.84, None, None]],
+    "all in by the reach": [[0.5, 0.3, 0.2, 0.4], [8, 1.0, 0.97, 1.0]],  # "at least 100%" says nothing: no "at least"
+}
+LOOK_BACK = "<p>The last automatic waitlist run for Spring 2027 was on Feb 5, 2027; waitlists are no longer processed automatically, so this is a look back, not a forecast.</p>"
+THIN_LEAD = '<p class="lead"><span class="verdict">Too little data to call</span> <span class="muted small">(one section only, no interval)</span></p>'
+HEADLINES = {  # (html, after): the caller prints `after` under its table
+    ("2027-01-10", "within reach"): (
+        '<p class="lead">About 10 in 20 got in within 27 days of joining</p>[dots 10 of 20 dots filled: 50%]<div class="big">50% <small>(95% interval 45% to 55%)</small></div>'
+        "<p>of comparable students had cleared within 27 days of joining, the time left before the last automatic waitlist run (Feb 5, 2027).</p>"
+        '<p><span class="verdict">Could go either way</span> <span class="muted small">(40% to 74%)</span></p>'
+        "<p><strong>50%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>", ""),
+    ("2027-01-10", "past the reach"): (
+        '<p class="lead">About 16 in 20 got in within 20 days of joining</p>[dots 16 of 20 dots filled: 80%]<div class="big">80% <small>(95% interval 74% to 86%)</small></div>'
+        "<p>of comparable students had cleared within 20 days of joining, the longest the data follow anyone; "
+        "the time left before the last automatic waitlist run (Feb 5, 2027) is 27 days, so at least 80% had cleared within that time.</p>"
+        '<p><span class="verdict">Likely</span> <span class="muted small">(75% or more)</span></p>'
+        "<p><strong>50%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>", ""),
+    ("2027-01-10", "one section"): (
+        THIN_LEAD,
+        "<p>About 17 in 20 got in within 7 days of joining</p>[dim dots 17 of 20 dots filled: 84%]"
+        "<p><strong>84%</strong> of comparable students had cleared within 7 days of joining, the longest the data follow anyone; "
+        "the time left before the last automatic waitlist run (Feb 5, 2027) is 27 days, so at least 84% had cleared within that time.</p>"
+        "<p>At least <strong>84%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>"),
+    ("2027-01-10", "all in by the reach"): (
+        '<p class="lead">Almost everyone got in within 8 days of joining</p>[dots 20 of 20 dots filled: 100%]<div class="big">100% <small>(95% interval 97% to 100%)</small></div>'
+        "<p>of comparable students had cleared within 8 days of joining, the longest the data follow anyone; "
+        "the time left before the last automatic waitlist run (Feb 5, 2027) is 27 days.</p>"
+        '<p><span class="verdict">Likely</span> <span class="muted small">(75% or more)</span></p>'
+        "<p><strong>100%</strong> by the first day of instruction (Jan 19, 2027, 9 days from now).</p>", ""),
+    ("2027-03-01", "within reach"): (
+        '<p class="lead">About 16 in 20 got in within 28 days of joining</p>[dots 16 of 20 dots filled: 80%]<div class="big">80% <small>(95% interval 74% to 86%)</small></div>'
+        + LOOK_BACK + '<p><span class="verdict">Likely</span> <span class="muted small">(75% or more)</span></p>', ""),
+    ("2027-03-01", "one section"): (
+        THIN_LEAD + LOOK_BACK,
+        "<p>About 17 in 20 got in within 7 days of joining</p>[dim dots 17 of 20 dots filled: 84%]<p><strong>84%</strong></p>"),
+}
+
+
+def squeeze(html: str) -> str:
+    """Markup without its template indentation (whitespace around a line break, never a space the page means) and the 20-dot line as one token."""
+    html = re.sub(r"\s*\n\s*", "", html)
+    return re.sub(r'<span class="dots( dim)?" role="img" aria-label="([^"]*)">(?:<i class="(?:on)?"></i>)*</span>', lambda m: f"[{'dim ' if m.group(1) else ''}dots {m.group(2)}]", html)
+
+
+@pytest.mark.parametrize(("today", "cell"), sorted(HEADLINES))
+def test_the_headline_block_is_pinned(today: str, cell: str) -> None:
+    expression = (f"(function(){{ const h = BWO.headlineHtml({{curve: {json.dumps(HEADLINE_CELLS[cell])}}}, false, 'course', {json.dumps(HEADLINE_META)}, BWO.today());"
+                  " return [h.html, h.after || '', h.marks]; })()")
+    out = render(Path("/nonexistent"), today=today, expression=expression)
+    assert "eval_error" not in out, out.get("eval_error")
+    html, after, marks = out["eval"]
+    assert (squeeze(html), squeeze(after)) == HEADLINES[(today, cell)]
+    assert marks == ([{"day": 27, "label": "last waitlist run"}, {"day": 9, "label": "instruction"}] if today == "2027-01-10" else [])
+
+
+def test_the_by_when_table_says_at_least_past_the_reach() -> None:
+    """Past the curve's reach a row is the value at the reach: "at least", except at 100%, where it would say nothing."""
+    expression = ("[" + ", ".join(f"BWO.byWhenHtml({{curve: {json.dumps(HEADLINE_CELLS[c])}}}, {json.dumps(HEADLINE_META)}, BWO.today())" for c in ("past the reach", "all in by the reach")) + "]")
+    out = render(Path("/nonexistent"), expression=expression)
+    assert "eval_error" not in out, out.get("eval_error")
+    capped, full = out["eval"]
+    assert capped.startswith('<table class="bywhen" aria-label="Share in by then"><thead><tr><th>By when</th><th class="num">Share in by then</th><th class="num">95% interval</th></tr></thead>')
+    assert '<tr><td>14 days from now <span class="muted">(Jan 24)</span></td><td class="num"><strong>50%</strong></td><td class="num muted small">45% to 55%</td></tr>' in capped
+    assert '<tr><td>Last waitlist run <span class="muted">(Feb 5)</span></td><td class="num"><span class="muted small">at least</span> <strong>80%</strong></td><td class="num muted small">74% to 86%</td></tr>' in capped
+    assert '<tr><td>Last waitlist run <span class="muted">(Feb 5)</span></td><td class="num"><strong>100%</strong></td><td class="num muted small">97% to 100%</td></tr>' in full
+    assert "at least" not in full and "floor" not in capped + full
+
+
+def test_a_verdict_with_the_data_behind_it_leads_with_the_share(course_site: Path) -> None:
+    """The department's pool at positions 6 to 15 has an interval: the share leads, big, and the verdict follows it."""
+    own = load(course_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]["6-15"]
+    pool = load(course_site, "pooled.json")["dept"][own["pooled"]]["6-15"]
+    p, lo, hi, day = read_curve(pool["curve"], 27.0)
+    assert lo is not None and hi - lo <= 0.30 and day < 27  # a verdict, read at the reach
+    r = render(course_site, course="COMPSCI 0", position="10")["result"]
+    assert r.index(f'<p class="lead">{freq(p)} got in within {jsround(day)} days of joining</p>') < r.index(f'<div class="big">{jspct(p)}') < r.index('<p><span class="verdict">') < r.index('class="bywhen"')
+    assert "dots dim" not in r
+
+
+COPY_TEXT = ("(async () => { let got = null; navigator = { clipboard: { writeText: (t) => { got = t; return Promise.resolve(); } } };"
+             " BWO.$('copy-text').listeners.click[0](); return got; })()")
+
+
+def test_copy_as_text_says_what_the_headline_says(course_site: Path) -> None:
+    """Item 1 in the shareable text: "within N days of joining", the days left, "at least" past the reach, the verdict when there is too little data."""
+    tail = "Simulated term, this project's own snapshots. https://example.test/index.html?course="
+    own = load(course_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]["6-15"]
+    pool = load(course_site, "pooled.json")["dept"][own["pooled"]]["6-15"]
+    p, lo, hi, day = read_curve(pool["curve"], 27.0)
+    out = render(course_site, course="COMPSCI 0", position="10", expression=COPY_TEXT)
+    assert out["eval"] == (f"COMPSCI 0, position 10: {freq(p).lower()} comparable students got in within {jsround(day)} days of joining ({jspct(p)}, 95% interval {jspct(lo)} to {jspct(hi)}), "
+                           f"the longest the data follow anyone; at least that share within the 27 days left before the last automatic waitlist run (Feb 5, 2027). {tail}COMPSCI%200&position=10")
+    cell = cell_of(course_site, "COMPSCI 0", "1-5")
+    p, _, _, day = read_curve(cell["curve"], 27.0)
+    out = render(course_site, course="COMPSCI 0", position="3", expression=COPY_TEXT)
+    assert out["eval"] == (f"COMPSCI 0, position 3: too little data to call (one section only, no interval); {freq(p).lower()} comparable students got in within {jsround(day)} days of joining ({jspct(p)}), "
+                           f"the longest the data follow anyone; at least that share within the 27 days left before the last automatic waitlist run (Feb 5, 2027). {tail}COMPSCI%200&position=3")
+    # three days before the end of the last run's day the curve reaches the horizon: the time left is the horizon
+    p, _, _, _ = read_curve(cell["curve"], 3.0)
+    out = render(course_site, course="COMPSCI 0", position="3", today="2027-02-03", expression=COPY_TEXT)
+    assert out["eval"] == (f"COMPSCI 0, position 3: too little data to call (one section only, no interval); {freq(p).lower()} comparable students got in within 3 days of joining ({jspct(p)}), "
+                           f"the time left before the last automatic waitlist run (Feb 5, 2027). {tail}COMPSCI%200&position=3")
+    # "almost everyone" takes "among", not "almost everyone comparable students"; at 100% there is no "at least"
+    cell = cell_of(course_site, "MATH 25", "1-5")
+    p, _, _, day = read_curve(cell["curve"], 27.0)
+    assert jspct(p) == "100%"
+    out = render(course_site, course="MATH 25", position="3", expression=COPY_TEXT)
+    assert out["eval"] == (f"MATH 25, position 3: too little data to call (one section only, no interval); almost everyone among comparable students got in within {jsround(day)} days of joining (100%), "
+                           f"the longest the data follow anyone; 27 days left before the last automatic waitlist run (Feb 5, 2027). {tail}MATH%2025&position=3")
+
+
+# Audit item 4: the pages ran on UTC, so from about 17:00 Pacific every date was tomorrow's. "Today" is the
+# reader's own calendar date; at 18:20 PDT on Oct 27 (01:20Z Oct 28) a Pacific reader sees Oct 27 and a UTC
+# reader Oct 28, each with whole days from it. Nov 1 is a DST change, so "7 days from now" crosses it.
+PACIFIC_EVENING = "2026-10-28T01:20:00Z"
+READER_DATES = {
+    "America/Los_Angeles": {"day": "Oct 27", "phase2": 27, "adjust": 76, "instruction": 84, "deadline": 102, "week": "Nov 3", "fortnight": "Nov 10"},
+    "UTC": {"day": "Oct 28", "phase2": 26, "adjust": 75, "instruction": 83, "deadline": 101, "week": "Nov 4", "fortnight": "Nov 11"},
+}
+
+
+@pytest.mark.parametrize("tz", sorted(READER_DATES))
+def test_today_is_the_readers_own_calendar_date(course_site: Path, tz: str) -> None:
+    want = READER_DATES[tz]
+    expression = "[BWO.today().getHours(), BWO.today().getDate(), BWO.horizons(BWO.loaded.meta, BWO.today()), BWO.fmtShort(BWO.addDays(BWO.today(), 7))]"
+    out = render(course_site, course="COMPSCI 0", position="3", today=None, expression=expression, env={"TZ": tz, "HARNESS_NOW": PACIFIC_EVENING})
+    r = out["result"]
+    assert f'<p class="muted small">Berkeley Waitlist Odds · as of {want["day"]}</p>' in r
+    dates = out["elements"]["dates"]["html"]
+    assert f'<strong>Nov 23, 2026</strong> Phase 2 opens <span class="muted">(in {want["phase2"]} days)</span>' in dates
+    assert f'<strong>Jan 11, 2027</strong> Adjustment period <span class="muted">(in {want["adjust"]} days)</span>' in dates
+    assert f'<strong>Jan 19, 2027</strong> First day of class <span class="muted">(in {want["instruction"]} days)</span>' in dates
+    assert f'<td>7 days from now <span class="muted">({want["week"]})</span></td>' in r and f'<td>14 days from now <span class="muted">({want["fortnight"]})</span></td>' in r
+    assert '<td>First day of class <span class="muted">(Jan 19)</span></td>' in r and '<td>Last waitlist run <span class="muted">(Feb 5)</span></td>' in r
+    assert f"by the first day of instruction (Jan 19, 2027, {want['instruction']} days from now)" in r
+    assert f"the time left before the last automatic waitlist run (Feb 5, 2027) is {want['deadline']} days" in r
+    assert re.search(r'class="lbl date"[^>]*>([^<]*)<', r).group(1) == want["day"]  # the chart's x-axis starts today
+    assert out["stamp"].endswith(f"Last automatic waitlist run Feb 5, 2027 ({want['deadline']} days away).")
+    assert out["eval"] == [0, int(want["day"].split()[1]), {"deadline": want["deadline"], "instruction": want["instruction"]}, want["week"]]
+
+
+@pytest.mark.parametrize("tz", ["America/Los_Angeles", "UTC", "Pacific/Kiritimati", "Pacific/Pago_Pago"])
+def test_a_pinned_today_is_that_date_in_every_time_zone(course_site: Path, tz: str) -> None:
+    """?today= is a date, not an instant: the same page in UTC+14 and UTC-11."""
+    out = render(course_site, course="COMPSCI 0", position="3", env={"TZ": tz})
+    assert "as of Jan 10</p>" in out["result"] and '<td>7 days from now <span class="muted">(Jan 17)</span></td>' in out["result"]
+    assert "(in 9 days)" in out["elements"]["dates"]["html"] and out["stamp"].endswith("(27 days away).")
+
+
+def test_insights_daily_dates_are_the_data_dates() -> None:
+    """The admits-per-day axis labels are calendar dates from the data (the committed export has flows), printed as written in any time zone."""
+    daily = load(SITE, "insights.json")["daily"]
+    html = render(SITE, page="insights.html", env={"TZ": "America/Los_Angeles"})["elements"]["content"]["html"]
+    first = date.fromisoformat(daily[0]["date"])
+    assert f'text-anchor="start">{first.strftime("%b")} {first.day}</text>' in html
 
 
 def test_pooled_estimate_is_labelled(course_site: Path) -> None:
@@ -295,23 +477,36 @@ def test_department_level_estimates(dept_site: Path) -> None:
     assert "Where a mid-list spot moved most" not in out["elements"]["content"]["html"]
 
 
-def test_unknown_course_falls_back_to_the_department_then_level_then_all(full_site: Path) -> None:
-    pooled = load(full_site, "pooled.json")
-    # known subject, unknown number: the department's curve for the bucket
-    out = render(full_site, course="COMPSCI 999", position="4")
+@pytest.mark.parametrize(("query", "shown"), [("NOPE 999", "NOPE 999"), ("COMPSCI 999", "COMPSCI 999"), ("NOPE 101", "NOPE 101"), ("data structures", "DATA STRUCTURES")])
+def test_a_course_not_in_the_index_gets_no_estimate(full_site: Path, query: str, shown: str) -> None:
+    """Audit item 3: as on the course page, a code that is not a course in the index gets no pooled estimate, only suggestions."""
+    out = render(full_site, course=query, position="10")
     r = out["result"]
-    assert "No data for" in r and "COMPSCI 999" in r and not out["result_hidden"]
-    assert "Showing the estimate for the whole COMPSCI department at positions 1 to 5 instead" in r
-    dept = pooled["dept"]["COMPSCI"]["1-5"]
-    assert f'<div class="big">{pct(read_curve(dept["curve"], 27.0)[0])}' in r
-    # unknown subject, upper-division number: the level pool, else all courses
-    out = render(full_site, course="NOPE 101", position="4")
-    r = out["result"]
-    assert "No data for" in r and "NOPE 101" in r
-    if "upper" in pooled["level"] and "1-5" in pooled["level"]["upper"]:
-        assert "all upper-division courses at positions 1 to 5" in r
-    else:
-        assert "all courses at positions 1 to 5" in r
+    assert not out["result_hidden"]
+    assert r.startswith(f'<p class="error">No data for <strong>{shown}</strong>. Check the spelling, or the course had too few waitlisted students to estimate. Did you mean <a href="?course=')
+    assert r.endswith('?</p><p>Or browse <a href="courses.html?today=2027-01-10">every course</a>.</p>')
+    for estimate in ('class="verdict"', "got in", 'class="big"', "Showing the estimate", "<svg", "This curve:", 'class="bywhen"', "dots"):
+        assert estimate not in r, estimate
+    assert out["title"] == f"No data for {shown} · Berkeley Waitlist Odds"
+    assert out["location"] == f"?course={shown.replace(' ', '%20')}&position=10&today=2027-01-10"
+
+
+def gap_copy(site_root: Path, tmp_path: Path, *, drop: tuple[str, ...] = ()) -> Path:
+    """A copy of the export where COMPSCI 0 had no cases at positions 41 and up, and ``drop`` pools ("dept", "level") are missing there too."""
+    root = tmp_path / ("gap_" + "_".join(drop))
+    shutil.copytree(site_root, root)
+    subject = root / "data" / "courses" / "COMPSCI.json"
+    f = json.loads(subject.read_text())
+    del f["courses"]["COMPSCI 0"]["buckets"]["41+"]
+    subject.write_text(json.dumps(f))
+    path = root / "data" / "pooled.json"
+    pooled = json.loads(path.read_text())
+    if "dept" in drop:
+        del pooled["dept"]["COMPSCI"]["41+"]
+    if "level" in drop:
+        del pooled["level"]["lower"]["41+"]
+    path.write_text(json.dumps(pooled))
+    return root
 
 
 def test_missing_bucket_names_the_buckets_with_data(narrow_site: Path) -> None:
@@ -646,7 +841,9 @@ def test_course_page_shows_every_bucket_and_the_same_headline(course_site: Path)
     html = out["elements"]["course"]["html"]
     assert out["title"].startswith("COMPSCI 0") and "<h1>COMPSCI 0" in html
     at_deadline = read_curve(cell["curve"], 27.0)
-    assert f'<div class="big">{pct(at_deadline[0])}' in html and "position 3 (positions 1 to 5)" in html and "within 27 days of joining" in html
+    assert f"<p><strong>{pct(at_deadline[0])}</strong> of comparable students" in html and "position 3 (positions 1 to 5)" in html and "is 27 days, so at least" in html
+    # one section: the verdict leads, then the cases, then the share
+    assert html.index('<p class="lead"><span class="verdict">Too little data to call</span>') < html.index("<dt>Cases</dt>") < html.index("got in within") < html.index('class="muted small ladder"')
     assert html.count('class="curve') == len([b for b in ("1-5", "6-15", "16-40", "41+") if b in load(course_site, "courses/COMPSCI.json")["courses"]["COMPSCI 0"]["buckets"]])
     assert 'class="curve s1 you"' in html and "Show as table" in html and 'class="legend"' in html
     assert "Every position" in html and '<th scope="row">positions 1 to 5 <span class="tag">you</span>' in html and "Other COMPSCI courses" in html
@@ -668,6 +865,7 @@ def test_course_page_says_which_course_a_forgiven_query_showed() -> None:
 def test_course_page_without_a_course(full_site: Path) -> None:
     out = render(full_site, page="course.html", search="?c=NOPE%201")
     assert "No data for" in out["status"] and "NOPE 1" in out["status"] and "index.html?course=NOPE%201" in out["status"]
+    assert "falls back to the department" not in out["status"]  # the lookup gives a code it cannot find no estimate either
     out = render(full_site, page="course.html")
     assert "No data for" in out["status"]
 
@@ -801,6 +999,7 @@ def test_the_preregistration_without_meta(tmp_path: Path) -> None:
 TODAY_COUNTS = {"courses": 2114, "sections": 2902, "cohort_rows": 531568, "events": 299826, "generated_at": "2026-09-24T08:03:05+00:00", "join_window": ["2025-10-27T00:01:10+00:00", "2026-05-15T13:23:04+00:00"]}
 SOURCE_STRINGS: dict[str, dict[str, str]] = {
     "today": {
+        "stamp": "Data through May 15, 2026, 1:23 PM; curves frozen Sep 21, 2026 (7f348ed). Horizons computed for 2027-01-10. Last automatic waitlist run Feb 5, 2027 (27 days away).",
         "source sentence": "<p><strong>Spring 2026</strong>, from Berkeleytime's public 15-minute enrollment history: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared. Live Spring 2027 collection by this project begins with Phase 1 on Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>",
         "source label": "Spring 2026, from Berkeleytime's public history",
         "about": "<strong>Spring 2026</strong>, Berkeleytime's public history: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort behind the curves was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test.",
@@ -809,6 +1008,7 @@ SOURCE_STRINGS: dict[str, dict[str, str]] = {
         "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort behind the curves this site shows was frozen at commit <code>7f348ed</code> on 2026-09-21; the curves are read from it unchanged. After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
     },
     "own_data": {
+        "stamp": "Data through May 15, 2026, 1:23 PM; page generated Sep 24, 2026, 8:03 AM. Horizons computed for 2027-01-10. Last automatic waitlist run Feb 5, 2027 (27 days away).",
         "source sentence": "<p><strong>Spring 2027</strong>: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared.</p>",
         "source label": "Spring 2027, this project's own snapshots",
         "about": "<strong>Spring 2027</strong>, this project's own snapshots: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test; the curves this site shows now are not part of it.",
@@ -817,6 +1017,7 @@ SOURCE_STRINGS: dict[str, dict[str, str]] = {
         "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21; the curves this site shows now (Spring 2027, this project's own snapshots) are not part of the test. After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
     },
     "berkeleytime_without_fields": {
+        "stamp": "Data through May 15, 2026, 1:23 PM; page generated Sep 24, 2026, 8:03 AM. Horizons computed for 2027-01-10. Last automatic waitlist run Feb 5, 2027 (27 days away).",
         "source sentence": "<p><strong>Fall 2026</strong>, from Berkeleytime's public 15-minute enrollment history: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared. Live Spring 2027 collection by this project begins with Phase 1 on Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>",
         "source label": "Fall 2026, from Berkeleytime's public history",
         "about": "<strong>Fall 2026</strong>, Berkeleytime's public history: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test.",
@@ -825,6 +1026,7 @@ SOURCE_STRINGS: dict[str, dict[str, str]] = {
         "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort from Berkeleytime's public history was frozen for this test at commit <code>7f348ed</code> on 2026-09-21. After Spring 2027's add/drop deadline (Feb 10, 2027) the frozen curves will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
     },
     "today_own_backtest": {
+        "stamp": "Data through May 15, 2026, 1:23 PM; curves frozen Sep 21, 2026 (7f348ed). Horizons computed for 2027-01-10. Last automatic waitlist run Feb 5, 2027 (27 days away).",
         "source sentence": "<p><strong>Spring 2026</strong>, from Berkeleytime's public 15-minute enrollment history: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared. Live Spring 2027 collection by this project begins with Phase 1 on Oct 26, 2026; the estimates switch to its own snapshots once Spring waitlists start clearing.</p>",
         "source label": "Spring 2026, from Berkeleytime's public history",
         "about": "<strong>Spring 2026</strong>, Berkeleytime's public history: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort behind the curves was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test.",
@@ -833,6 +1035,7 @@ SOURCE_STRINGS: dict[str, dict[str, str]] = {
         "prereg": "<h2>Pre-registered: the Spring 2027 test</h2><div class=\"prereg\"><p>The Spring 2026 cohort behind the curves this site shows was frozen at commit <code>7f348ed</code> on 2026-09-21; the curves are read from it unchanged. After Spring 2027's add/drop deadline (Feb 10, 2027) they will be scored, unchanged, against every Spring 2027 joiner this project's own snapshots recorded: Brier score, AUC and gain over the position-only baseline at 14 days, 28 days, the first day of instruction and the last automatic waitlist run, with the same observability rule and section bootstrap as above. The result goes on this page whatever it says.</p></div>",
     },
     "own_data_own_backtest": {
+        "stamp": "Data through May 15, 2026, 1:23 PM; page generated Sep 24, 2026, 8:03 AM. Horizons computed for 2027-01-10. Last automatic waitlist run Feb 5, 2027 (27 days away).",
         "source sentence": "<p><strong>Spring 2027</strong>: 2,114 courses with estimates from 2,902 sections and 531,568 hypothetical joiners, 299,826 of whom cleared.</p>",
         "source label": "Spring 2027, this project's own snapshots",
         "about": "<strong>Spring 2027</strong>, this project's own snapshots: 2,114 courses, 2,902 sections, 531,568 hypothetical joiners of whom 299,826 cleared. Data through May 15, 2026, 1:23 PM; files generated Sep 24, 2026, 8:03 AM. The Spring 2026 cohort from Berkeleytime's public history was frozen at commit <code>7f348ed</code> on 2026-09-21 for the Spring 2027 test; the curves this site shows now are not part of it.",
@@ -853,6 +1056,7 @@ def source_strings(site_root: Path, tmp_path: Path, regime: str) -> dict[str, st
     lookup = render(root, expression="BWO.sourceLabel(BWO.loaded.meta)", env=utc)
     accuracy = render(root, page="accuracy.html", env=utc)
     return {
+        "stamp": lookup["stamp"],  # BWO.stamp on every page: the frozen curves while meta carries prereg_*, else the generation time (audit item 14)
         "source sentence": lookup["status"],  # BWO.sourceHtml: Lookup, Courses, Course, Department, Insights
         "source label": lookup["eval"],  # BWO.sourceLabel: the lookup's small print, Course, Department, Insights, Accuracy
         "about": render(root, page="about.html", env=utc)["elements"]["data-status"]["html"],
@@ -953,6 +1157,31 @@ def test_live_status_text(full_site: Path, status: dict | None, now: str, expect
     assert out.get("eval") == expected
 
 
+# Audit item 7: until the scraper switches, status.json is for an earlier term than the one the pages count down
+# to, so the sentence says the forecast term's collection has not started and names the run's term in a clause.
+# Berkeley term ids sort in time order (2268 Fall 2026 < 2272 Spring 2027); an id that is not one, or a run of a
+# later term, gets the plain sentence, since no order can be read from it.
+SPRING_2027 = {"forecast_term_id": "2272", "forecast_term_name": "Spring 2027"}
+BEFORE_THE_SWITCH = [
+    ("2268", SPRING_2027, "This project has not started collecting Spring 2027 yet; its last snapshot, of Fall 2026, ran about 5 min ago: 5 sections read, 0 not reached."),
+    ("2268", {"forecast_term_id": "2272"}, "This project has not started collecting Spring 2027 yet; its last snapshot, of Fall 2026, ran about 5 min ago: 5 sections read, 0 not reached."),
+    ("2265", SPRING_2027, "This project has not started collecting Spring 2027 yet; its last snapshot, of Summer 2026, ran about 5 min ago: 5 sections read, 0 not reached."),
+    ("2272", SPRING_2027, "This project's last Spring 2027 snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+    ("2278", SPRING_2027, "This project's last Fall 2027 snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+    ("2268", {"forecast_term_id": "9999", "forecast_term_name": "Simulated term"}, "This project's last Fall 2026 snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+    ("9999", SPRING_2027, "This project's last snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+    ("2268", None, "This project's last Fall 2026 snapshot ran about 5 min ago: 5 sections read, 0 not reached."),
+]
+
+
+@pytest.mark.parametrize(("term_id", "meta", "expected"), BEFORE_THE_SWITCH)
+def test_live_status_text_before_the_switch(full_site: Path, term_id: str, meta: dict | None, expected: str) -> None:
+    status = {"last_run_at": "2026-10-28T00:43:00+00:00", "n_observed": 5, "n_missing": 0, "term_id": term_id}
+    out = render(full_site, page="about.html", today=None, expression=f"BWO.liveStatusText({json.dumps(status)}, Date.parse('2026-10-28T00:48:00Z'), {json.dumps(meta)})")
+    assert "eval_error" not in out, out.get("eval_error")
+    assert out["eval"] == expected
+
+
 @pytest.mark.parametrize("page", sorted(STATUS_PAGES))
 def test_live_status_failure_leaves_the_page_as_it_was(full_site: Path, tmp_path: Path, page: str) -> None:
     before = status_line(full_site, page, None)
@@ -988,6 +1217,28 @@ def test_the_copy_says_what_the_joiner_counts_and_an_empty_queue_cannot_show(ful
     assert CANNOT_SEE in render(full_site, course="COMPSCI 0", position="3")["result"]
     cannot = (SITE / "methodology.html").read_text().split('<h2 id="cannot">')[1].split("</ul>")[0]
     assert ALONE_ON_THE_WAITLIST in cannot
+
+
+def test_the_static_copy_the_audit_flagged() -> None:
+    """Audit items 6, 9 and 12, and the Methods page's account of the headline after item 1."""
+    about = (SITE / "about.html").read_text()
+    assert "If you were on a waitlist and want to tell the project what happened, an outcome form may be linked from the lookup page later." in about
+    assert "once Spring 2027 enrollment opens" not in about  # item 9: enrollment opened and there is no form
+    methods = (SITE / "methodology.html").read_text()
+    order = re.search(r"const ORDER = \[([^\]]*)\];", (SITE / "accuracy.html").read_text()).group(1)
+    scored = re.findall(r'"(\w+)"', order)
+    assert scored == ["bucket", "dept", "course", "site", "cox"]
+    assert ("The reports compare five predictors: the position bucket alone, the department-and-bucket curve, the course-and-bucket curve the pages use, "
+            "the literal number the first version of the lookup showed, and the Cox model;") in methods  # item 12: the five the Accuracy page scores
+    odds = re.sub(r"<[^>]+>", "", methods.split('<h2 id="odds">')[1].split("<h2")[0])
+    assert not re.search(r"\.\s+[a-z]", odds), re.findall(r".{30}\.\s+[a-z].{20}", odds)  # item 12: no sentence starts in lower case
+    assert ("the page counts the days from today through the day of the last automatic waitlist run of the term and reads the curve for your course and position there") in methods
+    assert ("When the time you have left is longer than the data followed anyone, the headline gives the share within the longest follow-up instead, "
+            "says how long that was, and says the share by the last run was at least that.") in methods
+    for page in [*SITE.glob("*.html"), SITE / "assets" / "site.js"]:  # item 6: the collection strings #42 reworded stay gone
+        text = page.read_text()
+        for stale in ("starts Oct 26, 2026", "none exist before Oct 26", "starts when Phase 1 opens"):
+            assert stale not in text, (page.name, stale)
 
 
 def test_about_and_methods_pages_show_the_data_status(full_site: Path) -> None:
@@ -1235,18 +1486,18 @@ def test_ladder_names_all_courses_and_why_when_the_department_is_too_small(solo_
     assert ladder(html) == f"{rung} {SECTION_RUNG}"
 
 
-def test_ladder_on_the_unknown_course_fallbacks(full_site: Path) -> None:
+def test_ladder_on_the_missing_bucket_fallbacks(full_site: Path, tmp_path: Path) -> None:
+    """A real course with no cases at the asker's bucket: its department's pool, then its level's, then all courses', each labelled."""
     pooled = load(full_site, "pooled.json")
-    # known subject, unknown number: the department rung
-    r = render(full_site, course="COMPSCI 999", position="4")["result"]
-    assert ladder(r) == f"This curve: the COMPSCI department, positions 1 to 5 (COMPSCI 999 had no cases), n&nbsp;=&nbsp;{pooled['dept']['COMPSCI']['1-5']['n']:,}. {SECTION_RUNG}"
-    # unknown subject, upper-division number: the level pool
-    r = render(full_site, course="NOPE 101", position="4")["result"]
-    assert ladder(r) == f"This curve: all upper-division courses, positions 1 to 5 (NOPE 101 had no cases), n&nbsp;=&nbsp;{pooled['level']['upper']['1-5']['n']:,}. {SECTION_RUNG}"
-    # unknown subject, graduate number with no graduate pool: all courses
-    assert "grad" not in pooled["level"]
-    r = render(full_site, course="NOPE 201", position="4")["result"]
-    assert ladder(r) == f"This curve: all courses, positions 1 to 5 (NOPE 201 had no cases), n&nbsp;=&nbsp;{pooled['all']['1-5']['n']:,}. {SECTION_RUNG}"
+    missing = "No estimate for positions 41+ in <strong>COMPSCI 0</strong>; the waitlist there was never that long. Positions with data: 1-5, 6-15, 16-40."
+    for drop, rung, n, what in (
+        ((), "the COMPSCI department", pooled["dept"]["COMPSCI"]["41+"]["n"], "the whole COMPSCI department"),
+        (("dept",), "all lower-division courses", pooled["level"]["lower"]["41+"]["n"], "all lower-division courses"),
+        (("dept", "level"), "all courses", pooled["all"]["41+"]["n"], "all courses"),
+    ):
+        r = render(gap_copy(full_site, tmp_path, drop=drop), course="COMPSCI 0", position="45")["result"]
+        assert f'<p class="error">{missing}</p><p>Showing the estimate for {what} at positions 41 and up instead.</p>' in r, drop
+        assert ladder(r) == f"This curve: {rung}, positions 41 and up (COMPSCI 0 had no cases), n&nbsp;=&nbsp;{n:,}. {SECTION_RUNG}", drop
 
 
 def test_ladder_at_department_level_estimates(dept_site: Path) -> None:

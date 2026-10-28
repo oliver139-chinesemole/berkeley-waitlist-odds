@@ -113,7 +113,7 @@
       const k = marks.findIndex((mm) => mm[0] === key);
       svg += `<line class="mark" x1="${x(i).toFixed(1)}" x2="${x(i).toFixed(1)}" y1="${T}" y2="${y(0).toFixed(1)}"/><text class="lbl ink" x="${(x(i) + 3).toFixed(1)}" y="${k % 2 ? T + 6 : T - 8}">${esc(label)}</text>`;
     }
-    for (let i = 0; i < d.length; i += Math.max(1, Math.round(d.length / 6))) svg += `<text class="lbl" x="${x(i).toFixed(1)}" y="${H - B + 14}" text-anchor="start">${esc(BWO.fmtShort(new Date(d[i].date + "T00:00:00Z")))}</text>`;
+    for (let i = 0; i < d.length; i += Math.max(1, Math.round(d.length / 6))) svg += `<text class="lbl" x="${x(i).toFixed(1)}" y="${H - B + 14}" text-anchor="start">${esc(BWO.fmtShort(BWO.dateOf(d[i].date)))}</text>`;
     svg += `<text class="lbl" x="${W - R}" y="${H - 4}" text-anchor="end">admits from the waitlist per day</text>`;
     const table = `<details class="table"><summary>Show as table</summary><div class="scroll" tabindex="0"><table><thead><tr><th scope="col">Day</th><th scope="col" class="num">Admits</th><th scope="col" class="num">Joins</th><th scope="col" class="num">Drops</th><th scope="col" class="num">Share dark</th></tr></thead><tbody>${d.map((day) => `<tr><td>${esc(day.date)}</td><td class="num">${num(day.admits)}</td><td class="num">${num(day.joins)}</td><td class="num">${num(day.drops)}</td><td class="num">${day.share_censored == null ? "" : pct(day.share_censored)}</td></tr>`).join("")}</tbody></table></div></details>`;
     return `<figure class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Admits from the waitlist per day across the enrollment calendar; hatched days were not recorded">${svg}</svg><ul class="legend"><li class="k3">Admits per day</li><li class="kgold">Calendar</li></ul>${table}</figure>`;
