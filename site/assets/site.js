@@ -85,20 +85,31 @@ const BWO = (function () {
   function pct(p) { return Math.round(p * 100) + "%"; }
   function num(n) { return Number(n).toLocaleString("en-US"); }
   function fmtDate(iso) { try { return new Date(iso).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }); } catch (e) { return iso; } }
-  function fmtDay(iso) { try { return new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { dateStyle: "medium", timeZone: "UTC" }); } catch (e) { return iso; } }
-  function fmtShort(d) { try { return d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" }); } catch (e) { return d.toISOString().slice(0, 10); } }
+  // Dates are calendar days in the reader's own time zone: "today" is the browser's date at local
+  // midnight (or the ?today= pin), a date from the data ("2027-02-05") is that day at local midnight,
+  // and both print in local time, so no date turns into tomorrow's in a Pacific evening.
+  function dateOf(iso) {
+    const d = iso ? new Date(String(iso) + "T12:00:00Z") : null;
+    return d && !isNaN(d.getTime()) ? new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) : null;
+  }
+  function fmtDay(iso) { try { return dateOf(iso).toLocaleDateString("en-US", { dateStyle: "medium" }); } catch (e) { return iso; } }
+  function fmtShort(d) { try { return d.toLocaleDateString("en-US", { month: "short", day: "numeric" }); } catch (e) { return String(d); } }
   function days(n) { const r = Math.round(n); return r === 1 ? "1 day" : r + " days"; }
   function plural(n, one, many) { return n === 1 ? `1 ${one}` : `${num(n)} ${many || one + "s"}`; }
   function bucketOf(pos) { for (const [lo, hi, label] of BUCKETS) if (pos >= lo && pos <= hi) return label; return "41+"; }
   function bucketText(b) { return b === "41+" ? "positions 41 and up" : "positions " + b.replace("-", " to "); }
-  function addDays(date, n) { return new Date(date.getTime() + n * DAY); }
+  // n days on the calendar (rounded, as days() prints it), not n * 24 hours, which a DST change moves off midnight.
+  function addDays(date, n) { return new Date(date.getFullYear(), date.getMonth(), date.getDate() + Math.round(n)); }
+  // Whole days from one local-midnight date to another; the rounding absorbs a DST hour.
+  function daysBetween(from, to) { return Math.round((to.getTime() - from.getTime()) / DAY); }
   function params() { return new URLSearchParams(typeof location !== "undefined" ? location.search : ""); }
   function today() {
-    const t = params().get("today");
-    const d = t ? new Date(t + "T12:00:00Z") : new Date();
-    return isNaN(d.getTime()) ? new Date() : d;
+    const pin = dateOf(params().get("today"));
+    if (pin) return pin;
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate());
   }
-  function pinned() { const t = params().get("today"); return t && !isNaN(new Date(t + "T12:00:00Z").getTime()) ? t : null; }
+  function pinned() { const t = params().get("today"); return dateOf(t) ? t : null; }
   // Keep ?today= on internal links so a pinned date follows the reader around the site.
   function withToday(href) { const t = pinned(); return t ? href + (href.includes("?") ? "&" : "?") + "today=" + t : href; }
 
@@ -189,18 +200,27 @@ const BWO = (function () {
   // True when a data-branch file (status.json, live/latest.json) is for the term
   // the pages count down to: the scraper reads its test term until it switches.
   function isForecastTerm(termId, meta) { return !!meta && meta.forecast_term_id != null && String(termId) === String(meta.forecast_term_id); }
-  function liveStatusText(s, now) {
+  // Berkeley term ids: 2, the year's last two digits, then 2 Spring, 5 Summer, 8 Fall (2268 is Fall 2026),
+  // so as numbers they sort in time order. Null for an id that is not one.
+  function termName(id) {
+    const m = /^2(\d\d)([258])$/.exec(String(id));
+    return m ? `${{ 2: "Spring", 5: "Summer", 8: "Fall" }[m[2]]} 20${m[1]}` : null;
+  }
+  function liveStatusText(s, now, meta) {
     if (!s || typeof s !== "object" || !s.last_run_at) return null;
     // Python writes microseconds; keep three digits, the precision every browser parses.
     const t = Date.parse(String(s.last_run_at).replace(/(\.\d{3})\d+/, "$1"));
     if (isNaN(t) || !Number.isFinite(s.n_observed) || !Number.isFinite(s.n_missing)) return null;
     const mins = Math.max(1, Math.round((now - t) / 60000));
     const ago = mins <= 90 ? `about ${mins} min ago` : `about ${plural(Math.round(mins / 60), "hour")} ago`;
-    // Berkeley term ids: 2, the year's last two digits, then 2 Spring, 5 Summer, 8 Fall (2268 is Fall 2026).
-    // The term is named so the line cannot be read as the collection the source sentence says starts later.
-    const t2 = /^2(\d\d)([258])$/.exec(String(s.term_id));
-    const term = t2 ? `${{ 2: "Spring", 5: "Summer", 8: "Fall" }[t2[2]]} 20${t2[1]} ` : "";
-    return `This project's last ${term}snapshot ran ${ago}: ${plural(s.n_observed, "section")} read, ${num(s.n_missing)} not reached.`;
+    const counts = `${plural(s.n_observed, "section")} read, ${num(s.n_missing)} not reached`;
+    // The term is named so the line cannot be read as the collection the source sentence dates to Phase 1.
+    // A run of an earlier term than the one the pages count down to (the scraper has not switched yet)
+    // says so first, rather than leave a Fall 2026 snapshot standing alone under Spring 2027 dates.
+    const term = termName(s.term_id);
+    const forecast = meta && termName(meta.forecast_term_id) ? meta.forecast_term_name || termName(meta.forecast_term_id) : null;
+    if (term && forecast && Number(s.term_id) < Number(meta.forecast_term_id)) return `This project has not started collecting ${forecast} yet; its last snapshot, of ${term}, ran ${ago}: ${counts}.`;
+    return `This project's last ${term ? term + " " : ""}snapshot ran ${ago}: ${counts}.`;
   }
   // Called after the page has set its status line; never awaited, so it cannot
   // hold up first paint or the data loads. A snapshot of the forecast term (the
@@ -213,7 +233,7 @@ const BWO = (function () {
         const r = await fetch(STATUS_URL, { cache: "default" });
         if (!r.ok) return;
         const s = await r.json();
-        const text = liveStatusText(s, Date.now());
+        const text = liveStatusText(s, Date.now(), loaded.meta);
         if (!text) return;
         if (isForecastTerm(s.term_id, loaded.meta)) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, COLLECTION_STARTED);
         el.innerHTML += el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`;
@@ -229,18 +249,18 @@ const BWO = (function () {
     const h = horizons(meta, t);
     const pin = pinned();
     const when = pin ? ` Horizons computed for ${esc(pin)}.` : "";
-    return "Data through " + fmtDate(meta.join_window ? meta.join_window[1] : meta.generated_at) + "; page generated " + fmtDate(meta.generated_at) + "." + when + (h.deadline > 0 ? ` Last automatic waitlist run ${fmtDay(meta.deadline)} (${days(h.deadline)} away).` : "");
+    // While meta carries prereg_* its curves are the pre-registered cohort, frozen at that commit: say so
+    // (the same fields the Accuracy box prints); an own-data publish keeps its generation time.
+    const made = meta.prereg_commit && meta.prereg_date ? `curves frozen ${fmtDay(meta.prereg_date)} (${String(meta.prereg_commit).slice(0, 10)})` : `page generated ${fmtDate(meta.generated_at)}`;
+    return "Data through " + fmtDate(meta.join_window ? meta.join_window[1] : meta.generated_at) + "; " + made + "." + when + (h.deadline > 0 ? ` Last automatic waitlist run ${fmtDay(meta.deadline)} (${days(h.deadline)} away).` : "");
   }
   function setStamp(meta, t) { const el = $("stamp"); if (el) el.textContent = meta ? stamp(meta, t) : ""; }
 
   // ------------------------------------------------------------- horizons
-  // Days from "today" to the end of the last automatic waitlist run's day and to
-  // 00:00 UTC on the first day of instruction, for the forecast term in meta.
+  // Whole days from "today" to the end of the last automatic waitlist run's day (27 on Jan 10
+  // for Feb 5) and to the first day of instruction, for the forecast term in meta.
   function horizons(meta, t) {
-    const d = meta.deadline.split("-").map(Number), i = meta.instruction_start.split("-").map(Number);
-    const deadlineEnd = Date.UTC(d[0], d[1] - 1, d[2] + 1);
-    const instruction = Date.UTC(i[0], i[1] - 1, i[2]);
-    return { deadline: (deadlineEnd - t.getTime()) / DAY, instruction: (instruction - t.getTime()) / DAY };
+    return { deadline: daysBetween(t, addDays(dateOf(meta.deadline), 1)), instruction: daysBetween(t, dateOf(meta.instruction_start)) };
   }
   // The strip of key dates: what is next, from the forecast term's calendar.
   function keyDates(meta, t) {
@@ -253,9 +273,8 @@ const BWO = (function () {
     for (const [key, label] of rows) {
       const iso = dates[key] || (key === "instruction_start" ? meta.instruction_start : key === "last_auto_waitlist" ? meta.deadline : null);
       if (!iso) continue;
-      const p = iso.split("-").map(Number);
-      const left = (Date.UTC(p[0], p[1] - 1, p[2]) - t.getTime()) / DAY;
-      out.push({ key, label, iso, left, past: left < -1 });
+      const left = daysBetween(t, dateOf(iso));
+      out.push({ key, label, iso, left, past: left < 0 });
     }
     return out;
   }
@@ -263,7 +282,7 @@ const BWO = (function () {
     const all = keyDates(meta, t);
     const upcoming = all.filter((d) => !d.past).slice(0, 3);
     const items = (upcoming.length ? upcoming : all.slice(-2)).map((d) => {
-      const rel = d.left >= 1 ? `in ${days(d.left)}` : d.left > -1 ? "today" : `${days(-d.left)} ago`;
+      const rel = d.left > 0 ? `in ${days(d.left)}` : d.left === 0 ? "today" : `${days(-d.left)} ago`;
       const you = d.key === "instruction_start" || d.key === "last_auto_waitlist" ? " you" : "";
       return `<li class="${you.trim()}"><strong>${esc(fmtDay(d.iso))}</strong> ${esc(d.label)} <span class="muted">(${rel})</span></li>`;
     }).join("");
@@ -280,6 +299,9 @@ const BWO = (function () {
     const reach = curve[curve.length - 1][0];
     return { p: pt[1], lo: pt[2], hi: pt[3], day: pt[0], capped: h > reach + 1e-9 };
   }
+  // Past the reach the share read is the value at the reach, so the share by the horizon is at least that;
+  // at a share that prints as 100% "at least" would say nothing, and the pages leave it out.
+  function atLeast(r) { return r.capped && Math.round(r.p * 100) < 100; }
   function interval(r) { return r.lo == null || r.hi == null ? "" : ` <small>(95% interval ${pct(r.lo)} to ${pct(r.hi)})</small>`; }
   // Resolve a course's bucket cell to a curve cell: its own, or the pool it points at.
   function resolveCell(entry, bucket, pooled) {
@@ -742,47 +764,65 @@ const BWO = (function () {
     for (let i = 0; i < 20; i++) s += `<i class="${i < k ? "on" : ""}"></i>`;
     return `<span class="dots${opts && opts.dim ? " dim" : ""}" role="img" aria-label="${k} of 20 dots filled: ${pct(p)}">${s}</span>`;
   }
-  // The headline block shared by the lookup and the course page (same words, same code).
+  // The headline block shared by the lookup and the course page (same words, same code). The share is
+  // read at the days left, or at the curve's reach when no one was followed that long, and said as
+  // "within N days of joining" for that N, with "at least" for the days left (a past cycle's share is
+  // something that happened to comparable students, not a date in the forecast term). When the verdict
+  // is "Too little data to call", the verdict leads and the share comes back, dimmed and not big, in
+  // `after`, which the caller prints under its table: a number the data cannot support is not read first.
+  const THIN = "Too little data to call";
   function headlineHtml(cell, pooled, source, meta, t) {
     const h = horizons(meta, t);
-    let html = "";
     const marks = [];
+    const verdictHtml = (v, lead) => `<p${lead ? ' class="lead"' : ""}><span class="verdict">${esc(v.label)}</span> <span class="muted small">(${esc(v.why)})</span></p>`;
+    // `left`: the sentence under the share, which completes it ("70% of comparable students had cleared ...").
+    const share = (r, within, thin, left) => thin
+      ? `<p>${frequency(r.p)} got in within ${days(within)} of joining</p>${dots(r.p, { dim: true })}
+        <p><strong>${pct(r.p)}</strong>${interval(r)}${left ? " " + left : ""}</p>`
+      : `<p class="lead">${frequency(r.p)} got in within ${days(within)} of joining</p>${dots(r.p)}
+        <div class="big">${pct(r.p)}${interval(r)}</div>${left ? `
+        <p>${left}</p>` : ""}`;
     if (h.deadline <= 0) {
       const last = readCurve(cell.curve, 1e9);
       const v = verdict(last, pooled);
-      html += `<p class="lead">${frequency(last.p)} got in within ${days(last.day)} of joining</p>${dots(last.p)}
-        <div class="big">${pct(last.p)}${interval(last)}</div>
-        <p>The last automatic waitlist run for ${esc(meta.forecast_term_name || meta.term_name)} was on ${esc(fmtDay(meta.deadline))}; waitlists are no longer processed automatically, so this is a look back, not a forecast.</p>
-        <p><span class="verdict">${esc(v.label)}</span> <span class="muted small">(${esc(v.why)})</span></p>`;
-      return { html, marks, h };
+      const back = `<p>The last automatic waitlist run for ${esc(meta.forecast_term_name || meta.term_name)} was on ${esc(fmtDay(meta.deadline))}; waitlists are no longer processed automatically, so this is a look back, not a forecast.</p>`;
+      if (v.label === THIN) return { html: verdictHtml(v, true) + back, after: share(last, last.day, true, ""), marks, h };
+      return { html: `${share(last, last.day, false, "")}
+        ${back}
+        ${verdictHtml(v)}`, after: "", marks, h };
     }
     const atDeadline = readCurve(cell.curve, h.deadline);
     const v = verdict(atDeadline, pooled);
-    html += `<p class="lead">${frequency(atDeadline.p)} got in by ${esc(fmtDay(meta.deadline))}</p>${dots(atDeadline.p)}
-      <div class="big">${pct(atDeadline.p)}${interval(atDeadline)}</div>
-      <p>of comparable students had cleared within ${days(h.deadline)} of joining, the time left before the last automatic waitlist run (${esc(fmtDay(meta.deadline))}).</p>
-      <p><span class="verdict">${esc(v.label)}</span> <span class="muted small">(${esc(v.why)})</span></p>`;
+    const thin = v.label === THIN;
+    const run = `the last automatic waitlist run (${esc(fmtDay(meta.deadline))})`;
+    const within = atDeadline.capped ? atDeadline.day : h.deadline;
+    const left = atDeadline.capped
+      ? `of comparable students had cleared within ${days(within)} of joining, the longest the data follow anyone; the time left before ${run} is ${days(h.deadline)}${atLeast(atDeadline) ? `, so at least ${pct(atDeadline.p)} had cleared within that time` : ""}.`
+      : `of comparable students had cleared within ${days(within)} of joining, the time left before ${run}.`;
     marks.push({ day: h.deadline, label: "last waitlist run" });
-    if (atDeadline.capped) html += `<p class="note muted">The data follow joiners for ${days(atDeadline.day)}; treat this as a floor.</p>`;
+    let next;
     if (h.instruction > 0) {
       const atInstruction = readCurve(cell.curve, h.instruction);
-      html += `<p><strong>${pct(atInstruction.p)}</strong> by the first day of instruction (${esc(fmtDay(meta.instruction_start))}, ${days(h.instruction)} from now).</p>`;
+      next = `<p>${atLeast(atInstruction) ? "At least " : ""}<strong>${pct(atInstruction.p)}</strong> by the first day of instruction (${esc(fmtDay(meta.instruction_start))}, ${days(h.instruction)} from now).</p>`;
       marks.push({ day: h.instruction, label: "instruction" });
     } else {
-      html += `<p class="note muted">Instruction has begun; most clearing happens after the first day of class.</p>`;
+      next = `<p class="note muted">Instruction has begun; most clearing happens after the first day of class.</p>`;
     }
-    return { html, marks, h, atDeadline };
+    if (thin) return { html: verdictHtml(v, true), after: share(atDeadline, within, true, left) + next, marks, h, atDeadline, within, verdict: v, thin };
+    return { html: `${share(atDeadline, within, false, left)}
+      ${verdictHtml(v)}${next}`, after: "", marks, h, atDeadline, within, verdict: v };
   }
   // "By when": fixed horizons plus the two calendar dates, each with its date from today.
   function byWhenHtml(cell, meta, t) {
     const h = horizons(meta, t);
     const rows = [];
     for (const d of [7, 14]) if (h.deadline <= 0 || d < h.deadline) rows.push({ label: `${d} days from now`, day: d, date: addDays(t, d) });
-    if (h.instruction > 0) rows.push({ label: "First day of class", day: h.instruction, date: new Date(meta.instruction_start + "T00:00:00Z") });
-    if (h.deadline > 0) rows.push({ label: "Last waitlist run", day: h.deadline, date: new Date(meta.deadline + "T00:00:00Z") });
+    if (h.instruction > 0) rows.push({ label: "First day of class", day: h.instruction, date: dateOf(meta.instruction_start) });
+    if (h.deadline > 0) rows.push({ label: "Last waitlist run", day: h.deadline, date: dateOf(meta.deadline) });
     if (!rows.length) return "";
-    const tr = rows.map((r) => { const v = readCurve(cell.curve, r.day); return `<tr><td>${esc(r.label)} <span class="muted">(${esc(fmtShort(r.date))})</span></td><td class="num"><strong>${pct(v.p)}</strong>${v.capped ? ' <span class="muted small">floor</span>' : ""}</td><td class="num muted small">${v.lo == null ? "" : pct(v.lo) + " to " + pct(v.hi)}</td></tr>`; }).join("");
-    return `<table class="bywhen" aria-label="Share who got in, by when"><thead><tr><th>By when</th><th class="num">Share who got in</th><th class="num">95% interval</th></tr></thead><tbody>${tr}</tbody></table>`;
+    // Past the curve's reach the share is the value at the reach, so the row says "at least".
+    const tr = rows.map((r) => { const v = readCurve(cell.curve, r.day); return `<tr><td>${esc(r.label)} <span class="muted">(${esc(fmtShort(r.date))})</span></td><td class="num">${atLeast(v) ? '<span class="muted small">at least</span> ' : ""}<strong>${pct(v.p)}</strong></td><td class="num muted small">${v.lo == null ? "" : pct(v.lo) + " to " + pct(v.hi)}</td></tr>`; }).join("");
+    return `<table class="bywhen" aria-label="Share in by then"><thead><tr><th>By when</th><th class="num">Share in by then</th><th class="num">95% interval</th></tr></thead><tbody>${tr}</tbody></table>`;
   }
   function casesHtml(cell, own) {
     return `${plural(cell.sections, "section")}, ${num(cell.n)} hypothetical joiners, ${num(cell.events)} cleared${own ? ` (this course alone: ${num(own.n_course)} joiners in ${plural(own.sections_course, "section")})` : ""}`;
@@ -954,9 +994,9 @@ const BWO = (function () {
 
   return {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
-    $, esc, pct, num, fmtDate, fmtDay, fmtShort, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
+    $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, stamp, setStamp,
-    horizons, keyDates, keyDatesHtml, readCurve, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf,
+    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf,
     parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,

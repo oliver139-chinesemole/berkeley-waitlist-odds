@@ -70,6 +70,7 @@
         <p class="muted">${esc(row.key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${resolved ? BWO.pooledTag(resolved.pooled, resolved.source, meta) : ""}</p>
         ${head.html}
         ${resolved && resolved.cell ? `<dl class="kv"><dt>Median time to clear</dt><dd>${esc(BWO.medianText(resolved.cell))}</dd><dt>Cases</dt><dd>${esc(BWO.casesHtml(resolved.cell, resolved.own))}</dd></dl>` : ""}
+        ${head.after || ""}
         ${BWO.ladderHtml(resolved, entry, bucket, meta)}
         <p class="muted small">${BWO.sourceLabel(meta)}. <a href="${BWO.withToday(`index.html?course=${encodeURIComponent(row.key)}&position=${pos}`)}">Open in the lookup</a> for the by-when table and a shareable card.</p>
         <p class="muted small">${BWO.levelNote(meta)}</p>
@@ -170,7 +171,7 @@
     const match = await BWO.matchCourseAsync(index, c, meta);
     row = match.row;
     if (!row) {
-      $("status").innerHTML = `<p class="error">No data for <strong>${esc(c || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which falls back to the department, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
+      $("status").innerHTML = `<p class="error">No data for <strong>${esc(c || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests the nearest courses, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
       return;
     }
     const subj = await BWO.loadSubject(meta, row.subject);
