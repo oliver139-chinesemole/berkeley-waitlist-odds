@@ -26,7 +26,7 @@
   <div id="content"></div>
   <h2>What could not be tested on Fall 2026</h2>
   <ul class="findings">
-    <li><strong>The first week of instruction.</strong> Berkeleytime recorded nothing for any section from Aug 19 to Sep 1, 2026, which covers the end of the adjustment period and the first week of class, so no joiner's outcome at the first-day-of-class or last-run horizon is observable. Fall 2026 validates clearing during Phase 1 and Phase 2 only; the 14- and 28-day horizons are the ones scored.</li>
+    <li><strong>The first week of instruction.</strong> Berkeleytime recorded nothing for any section from Aug 19 to Sep 1, 2026, which covers the end of the adjustment period and the first week of class. Nobody who joined in the adjustment period can be scored, and no joiner from before the hole can be followed to the first day of class or to the last automatic waitlist run on Sep 11, so the two runs headed "by the last automatic waitlist run" score only joiners from instruction, who joined between Sep 1 and Sep 11. Fall 2026 validates clearing in Phase 1, in Phase 2 and in instruction after the hole; "Which joiners could be scored, by phase", under each run, gives the shares.</li>
     <li><strong>Reserved seats.</strong> A section can hold seats for a category the joiner is not in; the counts do not say who was eligible, so the estimates treat the queue as first-in-first-out.</li>
     <li><strong>The Cox model across the Phase 1 to Phase 2 shift.</strong> Fit on Phase 1 joiners, it under-predicts Phase 2 clearing; its scores are shown for honesty, but the pages use the Kaplan-Meier curves, not the model.</li>
   </ul>
@@ -43,6 +43,10 @@
   const SPLIT = { temporal: "Later joiners scored with a model fit on earlier ones", grouped: "Held-out courses", cross_term: "Fit on Spring 2026, scored on Fall 2026" };
   const NAMES = { bucket: "Position bucket (baseline)", dept: "Department and bucket curve", course: "Course and bucket curve", site: "Fixed-lead-time number (site v1)", cox: "Cox model" };
   const ORDER = ["bucket", "dept", "course", "site", "cox"];
+  // Above the runs of the Fall 2026 backtest (term 2268), the one site/data/backtest.json holds: what each
+  // family tests and why the cross-cycle lines read high. Fixed copy, like SPLIT; the numbers are the score
+  // tables' own and tests/test_site.py checks each claim against the served file.
+  const READING_2268 = `<p><strong>Fit on Spring 2026, scored on Fall 2026</strong> is the test closest to how the pages are used: one cycle's curves predicting the next. At 14 and 28 days, where most of the scored joiners joined in Phase 1, the curves read high, because Fall 2026 cleared markedly slower than Spring 2026 (within 14 days of joining in Phase 1, 48% of hypothetical students at positions 1 to 5 got in against 66% in Spring 2026); by the last automatic waitlist run, which scores only joiners from instruction, they do not. That gap is between the two cycles; Spring 2026 curves scored on Spring 2027, the same season, is the pre-registered test at the bottom of this page. What carries across cycles is the ranking: in all three runs the course curve beat the position bucket, with intervals above zero (+0.009 within 14 days, +0.025 within 28 days, +0.019 by the last automatic waitlist run), and the pages' choice of curve rests on that ranking, not on the calibration lines. <strong>Later joiners scored with a model fit on earlier ones</strong> stays inside Fall 2026: fit on the joiners from before Phase 2 opened and scored on those after, when clearing sped up for everyone, so the curves mostly read low and the course curve does worse than the bucket alone. <strong>Held-out courses</strong> scores courses the model never saw, also within Fall 2026, so it tests the department and all-course curves a course without its own falls back to.</p>`;
   let meta = null;
   // The predictor the pages use: the department curve at the department level, the course curve otherwise.
   function pagesPredictor(run) {
@@ -130,10 +134,10 @@
       : `<p>The pages show ${esc(meta.term_name)} curves from this project's own snapshots; these runs test the same method on ${esc(bt.term_name)}, not those curves.</p>`;
     $("status").innerHTML = `<p><strong>${esc(bt.term_name || meta.term_name)}</strong>${BWO.isBerkeleytime(bt) || BWO.isBerkeleytime(meta) ? ", from Berkeleytime's public history" : ""}: ${bt.runs.length} backtest ${bt.runs.length === 1 ? "run" : "runs"}, generated ${esc(BWO.fmtDate(bt.generated_at))}.</p>${relation}`;
     BWO.liveStatus($("status"));
-    const order = ["temporal", "grouped", "cross_term"];
+    const order = ["cross_term", "temporal", "grouped"];
     const runs = bt.runs.slice().sort((a, b) => order.indexOf(a.split) - order.indexOf(b.split) || a.which.localeCompare(b.which));
     const named = ORDER.filter((k) => bt.predictors[k]).concat(Object.keys(bt.predictors).filter((k) => !ORDER.includes(k)));
-    $("content").innerHTML = `<h2>Calibration and scores</h2><p class="muted small">${named.length} predictors are scored side by side: ${named.map((k) => `<strong>${esc(NAMES[k] || k)}</strong>: ${esc(bt.predictors[k])}`).join("; ")}.</p>` + runs.map(runHtml).join("");
+    $("content").innerHTML = `<h2>Calibration and scores</h2>${String(bt.term_id) === "2268" ? READING_2268 : ""}<p class="muted small">${named.length} predictors are scored side by side: ${named.map((k) => `<strong>${esc(NAMES[k] || k)}</strong>: ${esc(bt.predictors[k])}`).join("; ")}.</p>` + runs.map(runHtml).join("");
   }
   main();
 })();

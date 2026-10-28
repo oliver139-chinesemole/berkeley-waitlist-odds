@@ -691,27 +691,85 @@ def test_accuracy_page_without_and_with_a_backtest(full_site: Path, tmp_path: Pa
 
 # The site audit of 2026-10-27, items 5, 10 and 11: the copy on Accuracy and Insights next to the
 # numbers it explains, rendered on the served files (site/data) so the words are checked against them.
+# The cross-cycle runs first: they are the test that matches how the pages are used.
 SERVED_RUN_HEADS = [
-    "Later joiners scored with a model fit on earlier ones, within 14 days",
-    "Later joiners scored with a model fit on earlier ones, by the last automatic waitlist run",
-    "Held-out courses, within 14 days",
     "Fit on Spring 2026, scored on Fall 2026, within 14 days",
     "Fit on Spring 2026, scored on Fall 2026, within 28 days",
     "Fit on Spring 2026, scored on Fall 2026, by the last automatic waitlist run",
+    "Later joiners scored with a model fit on earlier ones, within 14 days",
+    "Later joiners scored with a model fit on earlier ones, by the last automatic waitlist run",
+    "Held-out courses, within 14 days",
 ]
+# Above the runs of the Fall 2026 backtest: what each family tests and why the cross-cycle lines read high.
+ACCURACY_READING = (
+    "<p><strong>Fit on Spring 2026, scored on Fall 2026</strong> is the test closest to how the pages are used: one cycle's curves predicting the next. "
+    "At 14 and 28 days, where most of the scored joiners joined in Phase 1, the curves read high, because Fall 2026 cleared markedly slower than Spring 2026 "
+    "(within 14 days of joining in Phase 1, 48% of hypothetical students at positions 1 to 5 got in against 66% in Spring 2026); "
+    "by the last automatic waitlist run, which scores only joiners from instruction, they do not. "
+    "That gap is between the two cycles; Spring 2026 curves scored on Spring 2027, the same season, is the pre-registered test at the bottom of this page. "
+    "What carries across cycles is the ranking: in all three runs the course curve beat the position bucket, with intervals above zero "
+    "(+0.009 within 14 days, +0.025 within 28 days, +0.019 by the last automatic waitlist run), and the pages' choice of curve rests on that ranking, not on the calibration lines. "
+    "<strong>Later joiners scored with a model fit on earlier ones</strong> stays inside Fall 2026: fit on the joiners from before Phase 2 opened and scored on those after, "
+    "when clearing sped up for everyone, so the curves mostly read low and the course curve does worse than the bucket alone. "
+    "<strong>Held-out courses</strong> scores courses the model never saw, also within Fall 2026, so it tests the department and all-course curves a course without its own falls back to.</p>"
+)
 
 
 def test_accuracy_reads_the_served_backtest_in_order() -> None:
     html = render(SITE, page="accuracy.html")["elements"]["content"]["html"]
     assert re.findall(r"<section><h3>(.*?)</h3>", html) == SERVED_RUN_HEADS
-    assert html.startswith('<h2>Calibration and scores</h2><p class="muted small">5 predictors are scored side by side:')
+    assert html.startswith('<h2>Calibration and scores</h2>' + ACCURACY_READING + '<p class="muted small">5 predictors are scored side by side:')
+
+
+def test_the_accuracy_reading_holds_in_the_served_backtest() -> None:
+    """Every claim of ACCURACY_READING, checked against site/data/backtest.json and the methodology page it quotes."""
+    bt = load(SITE, "backtest.json")
+    runs = {(r["split"], r["which"]): r for r in bt["runs"]}
+    metric = lambda run, k: next(m for m in run["metrics"] if m["predictor"] == k)  # noqa: E731
+    cross = [runs[("cross_term", w)] for w in ("days14", "days28", "deadline")]
+    # the gains quoted are the score tables' own (signed() prints three decimals), every interval above zero
+    gains = [f"{metric(r, 'course')['gain']:+.3f}" for r in cross]
+    assert f"({gains[0]} within 14 days, {gains[1]} within 28 days, {gains[2]} by the last automatic waitlist run)" in ACCURACY_READING
+    assert all(metric(r, "course")["gain_ci_low"] > 0 for r in cross)
+    # at 14 and 28 days most scored joiners joined in Phase 1; by the last run only joiners from instruction are scored
+    for r in cross[:2]:
+        phase1 = next(c["observable"] for c in r["coverage"] if c["phase"] == "phase1")
+        assert phase1 > r["counts"]["test"] / 2
+    # the temporal runs: trained on every joiner before Phase 2 opened, the course curve worse than the bucket
+    phases = {c["phase"]: c["n"] for c in runs[("cross_term", "days14")]["coverage"]}
+    for which in ("days14", "deadline"):
+        run = runs[("temporal", which)]
+        assert run["counts"]["train"] == phases["before"] + phases["phase1"] + phases["between"]
+        assert metric(run, "course")["gain_ci_high"] < 0
+    # the cycle gap is the methodology page's sentence, word for word
+    assert "within 14 days of joining in Phase 1, 48% of hypothetical students at positions 1 to 5 got in against 66% in Spring 2026" in (SITE / "methodology.html").read_text()
+
+
+def test_the_accuracy_reading_is_for_the_fall_2026_backtest_only(full_site: Path, tmp_path: Path) -> None:
+    """Another backtest (the synthetic one, term 9999) gets the runs without the Fall 2026 paragraph."""
+    from tests.test_export_backtest import make_reports
+    from analysis.export_backtest import export_backtest
+
+    shutil.copytree(full_site / "data", tmp_path / "data")
+    export_backtest(make_reports(tmp_path / "reports"), tmp_path / "data" / "backtest.json", term_id="9999", term_name="Simulated term")
+    html = render(tmp_path, page="accuracy.html")["elements"]["content"]["html"]
+    assert html.startswith('<h2>Calibration and scores</h2><p class="muted small">') and "markedly slower" not in html
 
 
 def test_accuracy_says_what_fall_2026_could_not_test() -> None:
     static = (SITE / "accuracy.html").read_text()
     assert ("<li><strong>The first week of instruction.</strong> Berkeleytime recorded nothing for any section from Aug 19 to Sep 1, 2026, "
-            "which covers the end of the adjustment period and the first week of class, so no joiner's outcome at the first-day-of-class or "
-            "last-run horizon is observable. Fall 2026 validates clearing during Phase 1 and Phase 2 only; the 14- and 28-day horizons are the ones scored.</li>") in static
+            "which covers the end of the adjustment period and the first week of class. Nobody who joined in the adjustment period can be scored, "
+            "and no joiner from before the hole can be followed to the first day of class or to the last automatic waitlist run on Sep 11, "
+            "so the two runs headed \"by the last automatic waitlist run\" score only joiners from instruction, who joined between Sep 1 and Sep 11. "
+            "Fall 2026 validates clearing in Phase 1, in Phase 2 and in instruction after the hole; \"Which joiners could be scored, by phase\", under each run, gives the shares.</li>") in static
+    assert "last-run horizon is observable" not in static
+    # what the served backtest says: the last-run runs scored exactly their instruction-phase joiners, and no run scored the adjustment period
+    for run in load(SITE, "backtest.json")["runs"]:
+        observable = {c["phase"]: c["observable"] for c in run["coverage"] if c["observable"]}
+        assert "adjustment" not in observable, run["name"]
+        if run["which"] == "deadline":
+            assert observable == {"instruction": run["counts"]["test"]}, run["name"]
 
 
 def test_insights_level_sentence_on_the_served_data() -> None:
