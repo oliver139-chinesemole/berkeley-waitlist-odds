@@ -19,7 +19,7 @@ import pandas as pd
 from analysis.backtest import run_backtest
 from analysis.calendar import TermCalendar, calendar_for
 from analysis.cohort import DEFAULT_POSITIONS, build_cohort
-from analysis.export import DEFAULT_LEVEL, LEVELS, export_site_tables
+from analysis.export import DEFAULT_LEVEL, LEVELS, META_CARRY, export_site_tables
 from analysis.figures import plot_calibration, plot_km
 from analysis.flows import interval_flows, summary as flows_summary
 from analysis.panel import Outage, load_panel, parse_data_log, section_identity
@@ -269,6 +269,34 @@ def run_analysis(
     )
 
 
+# The META_CARRY labels a run writes itself. ``analysis.export --meta-from`` carries all of
+# META_CARRY because it re-exports a saved cohort; a run rebuilds its cohort, so the labels
+# that describe it are its own and only the rest (the pre-registration fields) is carried.
+RUN_OWN_LABELS = ("data_source", "flows", "backfill", "cohort_rows_by_scenario")
+
+
+def carried_meta(meta_from: Path, term_id: str, data_source: str) -> dict:
+    """The META_CARRY labels of an existing ``meta.json`` that a run does not write itself,
+    or none when it describes another term or another source (or does not exist).
+
+    ``analysis.export.main``'s term rule plus the source: labels describe a cohort, and the
+    pages print ``prereg_commit`` as "the <term> cohort behind the curves this site shows was
+    frozen at commit ...", so Spring 2026's (7f348ed) carried onto Spring 2027's own snapshots,
+    or Fall 2026's backfill (a7240f4) onto Fall 2026's own snapshots, would be false.
+    """
+    if not meta_from.exists():
+        logger.info("--meta-from %s not found: carrying nothing", meta_from)
+        return {}
+    old = json.loads(meta_from.read_text(encoding="utf-8"))
+    if str(old.get("term_id")) != str(term_id) or old.get("data_source") != data_source:
+        logger.warning(
+            "--meta-from %s describes term %s (%s), not %s (%s): carrying none of its labels",
+            meta_from, old.get("term_id"), old.get("data_source"), term_id, data_source,
+        )
+        return {}
+    return {k: old[k] for k in META_CARRY if k in old and k not in RUN_OWN_LABELS}
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Reproduce every table, figure and site file from the data branch (or a backfilled term).")
     p.add_argument("--data-root", type=Path, default=Path("./data-branch"))
@@ -276,6 +304,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--backfill-dir", type=Path, default=None, help="output of `python -m analysis.backfill build` (Berkeleytime history instead of the data branch)")
     p.add_argument("--out", type=Path, default=Path("analysis/out"))
     p.add_argument("--site-dir", type=Path, default=Path("site/data"))
+    p.add_argument("--meta-from", type=Path, default=None, help="an existing meta.json (e.g. site/data/meta.json) whose pre-registration fields the site files keep when it describes the same term and data source; the run's own labels always win")
     p.add_argument("--data-log", type=Path, default=Path("docs/DATA_LOG.md"))
     p.add_argument("--max-interval-min", type=float, default=None)
     p.add_argument("--join-every-min", type=float, default=240)
@@ -309,6 +338,8 @@ def main(argv: list[str] | None = None) -> int:
         panel = load_panel(args.data_root, term_id)
         identity = section_identity(args.data_root, term_id)
         outages = parse_data_log(args.data_log) if args.data_log.exists() else []
+    if args.meta_from is not None:
+        site_meta = {**carried_meta(args.meta_from, term_id, (site_meta or {}).get("data_source", OWN_DATA_SOURCE)), **(site_meta or {})}
     calendar = calendar_for(term_id)
     result = run_analysis(
         panel,
