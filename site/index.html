@@ -109,7 +109,8 @@
     const who = /^About/.test(f) ? `${f.toLowerCase()} comparable students` : `${f.toLowerCase()} among comparable students`;
     const v = head.thin ? `${head.verdict.label.toLowerCase()} (${head.verdict.why}); ` : "";
     const run = `the last automatic waitlist run (${BWO.fmtDay(meta.deadline)})`;
-    const left = !r.capped ? `the time left before ${run}` : `the longest the data follow anyone; ${BWO.atLeast(r) ? "at least that share within the " : ""}${BWO.days(head.h.deadline)} left before ${run}`;
+    // Past the reach: "at least that share" in the days left, or, where the share prints as 100%, just how far away the run is.
+    const left = !r.capped ? `the time left before ${run}` : `the longest the data follow anyone; ${BWO.atLeast(r) ? `at least that share within the ${BWO.days(head.h.deadline)} left before ${run}` : `${run} is ${BWO.days(head.h.deadline)} away`}`;
     return `${v}${who} got in within ${BWO.days(head.within)} of joining (${pct(r.p)}${r.lo == null ? "" : `, 95% interval ${pct(r.lo)} to ${pct(r.hi)}`}), ${left}`;
   }
 

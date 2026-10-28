@@ -38,8 +38,8 @@ const BWO = (function () {
   "COLWRIT": "College Writing Programs", "COMLIT": "Comparative Literature", "COMPSCI": "Computer Science", "COMPSS": "Computational Social Sciences",
   "CPH": "Computational Precision Health", "CRITTH": "Critical Theory Graduate Group", "CYBER": "Cybersecurity",
   "CYPLAN": "City and Regional Planning", "DANISH": "Danish", "DATA": "Undergraduate Data Science", "DATASCI": "Data Science", "DEMOG": "Demography",
-  "DESINV": "Design Innovation", "DEVENG": "Development Engineering", "DEVP": "Development Practice", "DUTCH": "Dutch",
-  "EALANG": "East Asian Languages and Cultures", "ECON": "Economics", "EDSTEM": "CalTeach", "EDUC": "Education",
+  "DESINV": "Design Innovation", "DEVENG": "Development Engineering", "DEVP": "Development Practice", "DISSTD": "Disability Studies",
+  "DUTCH": "Dutch", "EALANG": "East Asian Languages and Cultures", "ECON": "Economics", "EDSTEM": "CalTeach", "EDUC": "Education",
   "EECS": "Electrical Engineering and Computer Sciences", "EGYPT": "Egyptian", "ELENG": "Electrical Engineering",
   "ENERES": "Energy and Resources Group", "ENGIN": "Engineering", "ENGLISH": "English", "ENVDES": "Environmental Design",
   "ENVECON": "Environmental Economics and Policy", "EPS": "Earth and Planetary Science", "ESPM": "Environmental Science, Policy, and Management",
@@ -206,13 +206,22 @@ const BWO = (function () {
     const m = /^2(\d\d)([258])$/.exec(String(id));
     return m ? `${{ 2: "Spring", 5: "Summer", 8: "Fall" }[m[2]]} 20${m[1]}` : null;
   }
-  function liveStatusText(s, now, meta) {
+  // When a status.json's last run happened (a time in ms), or null.
+  function lastRunAt(s) {
     if (!s || typeof s !== "object" || !s.last_run_at) return null;
     // Python writes microseconds; keep three digits, the precision every browser parses.
     const t = Date.parse(String(s.last_run_at).replace(/(\.\d{3})\d+/, "$1"));
-    if (isNaN(t) || !Number.isFinite(s.n_observed) || !Number.isFinite(s.n_missing)) return null;
+    return isNaN(t) ? null : t;
+  }
+  // How old a snapshot is, the one way the pages say it: "about 12 min ago", "about 2 hours ago" past 90 minutes.
+  function agoText(t, now) {
     const mins = Math.max(1, Math.round((now - t) / 60000));
-    const ago = mins <= 90 ? `about ${mins} min ago` : `about ${plural(Math.round(mins / 60), "hour")} ago`;
+    return mins <= 90 ? `about ${mins} min ago` : `about ${plural(Math.round(mins / 60), "hour")} ago`;
+  }
+  function liveStatusText(s, now, meta) {
+    const t = lastRunAt(s);
+    if (t == null || !Number.isFinite(s.n_observed) || !Number.isFinite(s.n_missing)) return null;
+    const ago = agoText(t, now);
     const counts = `${plural(s.n_observed, "section")} read, ${num(s.n_missing)} not reached`;
     // The term is named so the line cannot be read as the collection the source sentence dates to Phase 1.
     // A run of an earlier term than the one the pages count down to (the scraper has not switched yet)
@@ -222,6 +231,20 @@ const BWO = (function () {
     if (term && forecast && Number(s.term_id) < Number(meta.forecast_term_id)) return `This project has not started collecting ${forecast} yet; its last snapshot, of ${term}, ran ${ago}: ${counts}.`;
     return `This project's last ${term ? term + " " : ""}snapshot ran ${ago}: ${counts}.`;
   }
+  // status.json, fetched once per page load: the status sentence and the course page's board both read
+  // it, so the page gives one age (audit item 8). Resolves to {s, now}, `now` being when the file
+  // arrived, so both print the same minute; null on any failure (network, non-200, bad JSON). Never rejects.
+  let statusLoad = null;
+  function loadStatus() {
+    if (!statusLoad) {
+      try {
+        statusLoad = fetch(STATUS_URL, { cache: "default" }).then((r) => (r.ok ? r.json() : null)).then((s) => (s ? { s, now: Date.now() } : null), () => null);
+      } catch (e) {
+        statusLoad = Promise.resolve(null);
+      }
+    }
+    return statusLoad;
+  }
   // Called after the page has set its status line; never awaited, so it cannot
   // hold up first paint or the data loads. A snapshot of the forecast term (the
   // page's meta from BWO.load) also takes the date out of the collection clause, in
@@ -230,12 +253,10 @@ const BWO = (function () {
     if (!el) return;
     const run = async () => {
       try {
-        const r = await fetch(STATUS_URL, { cache: "default" });
-        if (!r.ok) return;
-        const s = await r.json();
-        const text = liveStatusText(s, Date.now(), loaded.meta);
+        const got = await loadStatus();
+        const text = got && liveStatusText(got.s, got.now, loaded.meta);
         if (!text) return;
-        if (isForecastTerm(s.term_id, loaded.meta)) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, COLLECTION_STARTED);
+        if (isForecastTerm(got.s.term_id, loaded.meta)) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, COLLECTION_STARTED);
         el.innerHTML += el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`;
       } catch (e) { /* the page stays as it was */ }
     };
@@ -291,7 +312,7 @@ const BWO = (function () {
 
   // ----------------------------------------------------------------- curves
   // A curve is a step function: the last grid point at or before h days is
-  // P(got in within h days); past the reach the last point stands, as a floor.
+  // P(got in within h days); past the reach the last point stands, so the share by h is at least that.
   function readCurve(curve, h) {
     let pt = null;
     for (const c of curve) { if (c[0] <= h) pt = c; else break; }
@@ -302,6 +323,9 @@ const BWO = (function () {
   // Past the reach the share read is the value at the reach, so the share by the horizon is at least that;
   // at a share that prints as 100% "at least" would say nothing, and the pages leave it out.
   function atLeast(r) { return r.capped && Math.round(r.p * 100) < 100; }
+  // The same word on every table (audit item 18): "at least" before a share read past its curve's reach,
+  // nothing where that share prints as 100% ("100% floor" said nothing). `capped`: the horizon is past the reach.
+  function atLeastTag(p, capped) { return capped && Math.round(p * 100) < 100 ? '<span class="muted small" title="The data follow joiners for fewer days than this horizon">at least</span> ' : ""; }
   function interval(r) { return r.lo == null || r.hi == null ? "" : ` <small>(95% interval ${pct(r.lo)} to ${pct(r.hi)})</small>`; }
   // Resolve a course's bucket cell to a curve cell: its own, or the pool it points at.
   function resolveCell(entry, bucket, pooled) {
@@ -530,24 +554,27 @@ const BWO = (function () {
     const alt = /^[A-Z]/.test(number) ? (/^C\d/.test(number) ? number.slice(1) : null) : "C" + number;
     return index.courses.filter((r) => r.number === number || (alt && r.number === alt)).sort(byJoins);
   }
-  function topJoined(index, n) { return index.courses.slice().sort(byJoins).slice(0, n); }
-  // What to offer when nothing matched: the subject's own courses, else the nearest
-  // subjects' courses, else the most-joined courses. Never more than three.
+  // What to offer when nothing matched, never more than three, and only what is close to the text: the
+  // subject's own courses when the subject was understood, else what the combobox suggests for it (a
+  // prefix of a subject or a key), else the courses of the subjects within the fuzzy rule's distance;
+  // else nothing. (Audit item 13: the most-joined three it used to fall back on are the Try chips.)
   function nearestCourses(index, text) {
     const q = parseQuery(text);
-    if (q && q.pairs) {
-      for (const pair of q.pairs) {
-        const rows = index.courses.filter((r) => r.subject === pair.subject);
-        if (rows.length) return rows.sort(byJoins).slice(0, 3);
-      }
-      const rows = [];
+    if (!q) return [];
+    for (const pair of q.pairs || []) {
+      const rows = index.courses.filter((r) => r.subject === pair.subject);
+      if (rows.length) return rows.sort(byJoins).slice(0, 3);
+    }
+    const typed = searchCourses(index, text, 3);
+    if (typed.length) return typed;
+    const rows = [];
+    if (q.pairs) {
       for (const near of nearSubjects(index, q.token)) {
         for (const r of index.courses.filter((x) => x.subject === near.subject).sort(byJoins)) if (rows.length < 3) rows.push(r);
         if (rows.length >= 3) break;
       }
-      if (rows.length) return rows;
     }
-    return topJoined(index, 3);
+    return rows;
   }
   // One pass over an already-normalised query, forgiving nothing that is not
   // written down: a nickname, a subject and number, or a bare number.
@@ -587,8 +614,9 @@ const BWO = (function () {
     return null;
   }
   // The whole matcher: {key, row, layer, ranked, nearest, query}. layer is "miss"
-  // when nothing matched, and then nearest holds up to three courses to offer;
-  // it is computed only if something asks for it, since every keystroke gets here.
+  // when nothing matched, and then nearest holds up to three courses close to the
+  // query (none for an empty one, or when nothing is close); it is computed only if
+  // something asks for it, since every keystroke gets here.
   function matchCourse(index, text) {
     const query = String(text == null ? "" : text);
     const base = normalise(text);
@@ -597,7 +625,7 @@ const BWO = (function () {
     const miss = () => ({
       query, key: null, row: null, layer: "miss", ranked: [],
       get nearest() {
-        if (!offered) offered = !courses ? [] : base ? nearestCourses(index, base) : topJoined(index, 3);
+        if (!offered) offered = courses && base ? nearestCourses(index, base) : [];
         return offered;
       },
     });
@@ -774,7 +802,9 @@ const BWO = (function () {
   function headlineHtml(cell, pooled, source, meta, t) {
     const h = horizons(meta, t);
     const marks = [];
-    const verdictHtml = (v, lead) => `<p${lead ? ' class="lead"' : ""}><span class="verdict">${esc(v.label)}</span> <span class="muted small">(${esc(v.why)})</span></p>`;
+    // The cut-off ranges are in the verdict note only (audit item 17: "Could go either way (40% to 74%)" sat beside the
+    // share's "95% interval 64% to 82%"); "Too little data to call" keeps its reason, which is not a range.
+    const verdictHtml = (v, lead) => `<p${lead ? ' class="lead"' : ""}><span class="verdict">${esc(v.label)}</span>${v.label === THIN ? ` <span class="muted small">(${esc(v.why)})</span>` : ""}</p>`;
     // `left`: the sentence under the share, which completes it ("70% of comparable students had cleared ...").
     const share = (r, within, thin, left) => thin
       ? `<p>${frequency(r.p)} got in within ${days(within)} of joining</p>${dots(r.p, { dim: true })}
@@ -816,7 +846,8 @@ const BWO = (function () {
   function byWhenHtml(cell, meta, t) {
     const h = horizons(meta, t);
     const rows = [];
-    for (const d of [7, 14]) if (h.deadline <= 0 || d < h.deadline) rows.push({ label: `${d} days from now`, day: d, date: addDays(t, d) });
+    // After the last run the page is a look back: no "7 days from now" under "no longer processed" (audit item 22).
+    for (const d of [7, 14]) if (h.deadline > 0 && d < h.deadline) rows.push({ label: `${d} days from now`, day: d, date: addDays(t, d) });
     if (h.instruction > 0) rows.push({ label: "First day of class", day: h.instruction, date: dateOf(meta.instruction_start) });
     if (h.deadline > 0) rows.push({ label: "Last waitlist run", day: h.deadline, date: dateOf(meta.deadline) });
     if (!rows.length) return "";
@@ -864,12 +895,14 @@ const BWO = (function () {
     for (const p of [0, .25, .5, .75, 1]) svg += `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(p).toFixed(1)}" y2="${y(p).toFixed(1)}"/><text class="lbl" x="${L - 6}" y="${(y(p) + 4).toFixed(1)}" text-anchor="end">${Math.round(p * 100)}%</text>`;
     svg += `<line class="axis" x1="${L}" x2="${W - R}" y1="${y(0).toFixed(1)}" y2="${y(0).toFixed(1)}"/>`;
     // beyond the data's reach
-    if (reach < maxDay) svg += `<rect class="beyond" x="${x(reach).toFixed(1)}" y="${T}" width="${(x(maxDay) - x(reach)).toFixed(1)}" height="${(H - T - B)}" fill="url(#hatch-${id})"><title>Beyond ${days(reach)}, the longest the data follow anyone; the last value stands as a floor</title></rect>`;
-    // x ticks: days, and the calendar date under each when "today" is known
+    if (reach < maxDay) svg += `<rect class="beyond" x="${x(reach).toFixed(1)}" y="${T}" width="${(x(maxDay) - x(reach)).toFixed(1)}" height="${(H - T - B)}" fill="url(#hatch-${id})"><title>Beyond ${days(reach)}, the longest the data follow anyone, the share is at least the value at ${days(reach)}</title></rect>`;
+    // x ticks: days, and the calendar date under each when "today" is known. Every other tick is "odd", which
+    // the stylesheet hides below 30 rem, so a phone gets half the labels (audit item 16).
     const step = maxDay > 120 ? 28 : maxDay > 60 ? 14 : maxDay > 21 ? 7 : maxDay > 10 ? 2 : 1;
-    for (let dd = 0; dd <= maxDay + 1e-9; dd += step) {
-      svg += `<text class="lbl" x="${x(dd).toFixed(1)}" y="${H - B + 14}" text-anchor="middle">${dd}d</text>`;
-      if (opts.t) svg += `<text class="lbl date" x="${x(dd).toFixed(1)}" y="${H - B + 27}" text-anchor="middle">${esc(fmtShort(addDays(opts.t, dd)))}</text>`;
+    for (let dd = 0, k = 0; dd <= maxDay + 1e-9; dd += step, k++) {
+      const odd = k % 2 ? " odd" : "";
+      svg += `<text class="lbl${odd}" x="${x(dd).toFixed(1)}" y="${H - B + 14}" text-anchor="middle">${dd}d</text>`;
+      if (opts.t) svg += `<text class="lbl date${odd}" x="${x(dd).toFixed(1)}" y="${H - B + 27}" text-anchor="middle">${esc(fmtShort(addDays(opts.t, dd)))}</text>`;
     }
     svg += `<text class="lbl" x="${W - R}" y="${H - 4}" text-anchor="end">days since joining the waitlist</text>`;
     // bands first, then curves, then marks and labels
@@ -891,8 +924,9 @@ const BWO = (function () {
       const last = s.curve[s.curve.length - 1];
       ends.push({ s, i, x: x(last[0]), y: y(last[1]), p: last[1] });
     });
-    // end markers with a surface ring, and direct labels nudged apart
-    ends.sort((a, b) => a.y - b.y);
+    // end markers with a surface ring, and direct labels nudged apart, top to bottom: by the share they print,
+    // then in series (bucket) order, so "1-5 100%, 6-15 100%, 16-40 100%" rather than by an unprinted decimal (audit item 19)
+    ends.sort((a, b) => Math.round(b.p * 100) - Math.round(a.p * 100) || a.i - b.i);
     let lastY = -Infinity;
     for (const e of ends) {
       e.ly = Math.max(e.y, lastY + 13);
@@ -996,12 +1030,12 @@ const BWO = (function () {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, stamp, setStamp,
-    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf,
+    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, atLeastTag,
     parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
-    liveStatus, liveStatusText, isForecastTerm, damerau,
+    liveStatus, liveStatusText, loadStatus, lastRunAt, agoText, isForecastTerm, damerau,
   };
 })();
 if (typeof window !== "undefined") window.BWO = BWO;

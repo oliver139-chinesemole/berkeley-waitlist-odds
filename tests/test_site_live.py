@@ -108,6 +108,41 @@ def test_the_block_renders_only_this_courses_sections(live_site: Path) -> None:
     assert board(without) == ""  # no live file, no block, no error
 
 
+def board_age(out: dict) -> str:
+    """The age in the board's first sentence, e.g. "about 3 min ago"."""
+    m = re.search(r"This project's own snapshots of classes\.berkeley\.edu, as of (.+?) \(Spring 2027\)\.</p>", board(out))
+    assert m, board(out)
+    return m.group(1)
+
+
+@pytest.mark.parametrize(
+    ("run_minutes", "term_id", "age"),
+    [
+        (2, "2272", "about 2 min ago"),  # the last snapshot ran after the newest row: one age, the status line's
+        (3, "2272", "about 3 min ago"),
+        (12, "2272", "about 3 min ago"),  # the newest row is newer than the status file says: the board's own
+        (2, "2268", "about 3 min ago"),  # a run of another term says nothing about these rows
+        (None, None, "about 3 min ago"),  # no status file read
+    ],
+    ids=["status_newer", "same_minute", "rows_newer", "other_term", "no_status"],
+)
+def test_the_board_and_the_status_line_give_one_age(live_site: Path, tmp_path: Path, run_minutes: int | None, term_id: str | None, age: str) -> None:
+    """Audit item 8: the status line (status.json) and the board (live/latest.json) said "37 min ago" and
+    "as of 65 min ago" on one page. A row is rewritten only when its counts change, so the newest row can
+    be older than the last snapshot that read it: the board takes the status line's age, to the minute,
+    whenever that snapshot (of the board's term, with its sentence shown) is the newer one."""
+    env = dict(LIVE_ENV)
+    if run_minutes is not None:
+        run = (datetime.fromisoformat(NOW) - timedelta(minutes=run_minutes)).isoformat()
+        env["HARNESS_STATUS_FILE"] = str(status_for(tmp_path, term_id=term_id, last_run_at=run))
+    out = render(live_site, page="course.html", search=SEARCH, env=env)
+    assert board_age(out) == age
+    if run_minutes is not None:
+        assert f"ran about {run_minutes} min ago" in out["elements"]["status"]["html"]  # the line itself is unchanged
+    out = render(live_site, page="course.html", search=SEARCH, env={**env, "HARNESS_STATUS_REJECT": "1"})
+    assert board_age(out) == "about 3 min ago"  # a dropped status request leaves the board as it was
+
+
 def test_a_live_file_for_another_term_shows_no_board(live_site: Path, tmp_path: Path) -> None:
     """Until the scraper switches, live/latest.json holds the test term (Fall 2026, 2268): no board under Spring 2027 curves."""
     meta = json.loads((live_site / "data" / "meta.json").read_text())
