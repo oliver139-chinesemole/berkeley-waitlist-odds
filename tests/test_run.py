@@ -4,10 +4,12 @@ from __future__ import annotations
 import json
 from datetime import timedelta
 from pathlib import Path
+from types import SimpleNamespace
 
 import pandas as pd
 import pytest
 
+import analysis.run as run
 from analysis.calendar import TermCalendar
 from analysis.export import course_tables, export_site_tables
 from analysis.run import run_analysis
@@ -159,3 +161,56 @@ def test_run_too_small_writes_notes(tmp_path: Path) -> None:
     few = panel[first_days & panel["section_id"].isin(sorted(panel["section_id"].unique())[:2])]
     res = run_analysis(few, identity, cal, tmp_path, join_every_min=1440)
     assert any("too small" in n for n in res.notes) and res.cox_summary is None and (res.out_dir / "report.md").exists()
+
+
+def _two_course_catalog(tmp_path: Path, keys: list[str]) -> Path:
+    """A catalog.json with, per course, a lecture (its instructor) and a discussion (its GSI)."""
+    sections = []
+    for key in keys:
+        subject, number = key.split()
+        for component, cls, name in (("LEC", "001", f"Prof {subject}"), ("DIS", "101", f"GSI {subject}")):
+            sections.append({"section_id": "", "url_path": f"/content/x-{subject}-{number}-{cls}".lower(), "course_key": key, "subject": subject, "catalog_number": number, "class_number": cls, "section_number": cls, "component": component, "title": f"Title of {key}", "instructors": name})
+    path = tmp_path / "catalog" / "2272" / "catalog.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps({"term_id": "2272", "sections": sections}), encoding="utf-8")
+    return path
+
+
+def test_run_writes_titles_from_the_catalog(tmp_path: Path) -> None:
+    """run_analysis(catalog=) hands the catalog to the site export: titles.json for the index's courses, lecture names only."""
+    panel, identity, cal = sim_inputs()
+    few = panel[panel["section_id"].isin(sorted(panel["section_id"].unique())[:2])]
+    keys = sorted(identity.loc[identity["section_id"].isin(few["section_id"]), "course_key"].unique())
+    catalog = _two_course_catalog(tmp_path, keys)
+    res = run_analysis(few, identity, cal, tmp_path / "out", site_dir=tmp_path / "site", join_every_min=1440, catalog=catalog)
+    index_path, meta_path = res.site_files
+    assert json.loads(meta_path.read_text())["titles_file"] == "titles.json"
+    titles = json.loads((tmp_path / "site" / "titles.json").read_text())
+    index_keys = [r["key"] for r in json.loads(index_path.read_text())["courses"]]
+    assert titles["catalog_term_id"] == "2272" and index_keys and set(index_keys) <= set(keys)
+    assert titles["courses"] == {k: {"title": f"Title of {k}", "instructors": [f"Prof {k.split()[0]}"]} for k in index_keys}
+    # without a catalog there is no titles file and no meta key, as in export_site_tables
+    res = run_analysis(few, identity, cal, tmp_path / "out", site_dir=tmp_path / "site", join_every_min=1440)
+    assert not (tmp_path / "site" / "titles.json").exists() and "titles_file" not in json.loads(res.site_files[1].read_text())
+
+
+def test_cli_passes_the_catalog_to_the_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture) -> None:
+    """`python -m analysis.run --catalog <catalog.json>` reaches run_analysis(catalog=); a missing file is refused before any work."""
+    seen: list[dict] = []
+
+    def fake_run(*args: object, **kwargs: object) -> SimpleNamespace:
+        seen.append(kwargs)
+        return SimpleNamespace(out_dir=tmp_path, flows_summary={}, cohort_rows={}, notes=[], figures=[])
+
+    monkeypatch.setattr(run, "run_analysis", fake_run)
+    monkeypatch.setattr(run, "load_panel", lambda root, term: pd.DataFrame())
+    monkeypatch.setattr(run, "section_identity", lambda root, term: pd.DataFrame())
+    catalog = _two_course_catalog(tmp_path, ["MATH 1"])
+    base = ["--data-root", str(tmp_path), "--term-id", "2272", "--data-log", str(tmp_path / "no_log.md"), "--out", str(tmp_path / "out")]
+    assert run.main([*base, "--catalog", str(catalog)]) == 0
+    assert run.main(base) == 0
+    assert [kw["catalog"] for kw in seen] == [catalog, None]
+    capsys.readouterr()
+    with pytest.raises(SystemExit):
+        run.main([*base, "--catalog", str(tmp_path / "absent.json")])
+    assert "no such file" in capsys.readouterr().err and len(seen) == 2

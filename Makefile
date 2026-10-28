@@ -16,7 +16,7 @@ SITE_TERM ?= 2262
 # the cross-term backtest found course identity transfers across cycles) or dept.
 ESTIMATE_LEVEL ?= course
 # The classes_site catalog whose titles and instructors become site/data/titles.json (Q4 search).
-# site-data passes it only when the file exists, so the target works without a data-branch checkout.
+# analysis and site-data pass it only when the file exists, so they work without a data-branch checkout.
 CATALOG ?= $(DATA_ROOT)/catalog/2272/catalog.json
 
 .PHONY: test flows analysis backfill-pilot backfill backfill-analysis backtest site-data
@@ -28,7 +28,7 @@ flows:
 	python -m analysis.flows --data-root $(DATA_ROOT) --term-id $(TERM) --out analysis/out/flows_$(TERM).parquet
 
 analysis:
-	python -m analysis.run --data-root $(DATA_ROOT) --term-id $(TERM) --out analysis/out --site-dir site/data
+	python -m analysis.run --data-root $(DATA_ROOT) --term-id $(TERM) --out analysis/out --site-dir site/data $$(test -f $(CATALOG) && echo --catalog $(CATALOG))
 
 # First $(PILOT) sections of the seeded permutation (a subset of the full pull), then build.
 backfill-pilot:
