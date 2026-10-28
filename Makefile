@@ -18,6 +18,9 @@ ESTIMATE_LEVEL ?= course
 # The classes_site catalog whose titles and instructors become site/data/titles.json (Q4 search).
 # analysis and site-data pass it only when the file exists, so they work without a data-branch checkout.
 CATALOG ?= $(DATA_ROOT)/catalog/2272/catalog.json
+# Gaps between snapshots longer than this are censored in the position walk, matching the weekly
+# analysis.yml run (PR #46); the backfill path censors at its own GAP_MIN, already 180.
+MAX_INTERVAL_MIN ?= 180
 
 .PHONY: test flows analysis backfill-pilot backfill backfill-analysis backtest site-data
 
@@ -28,7 +31,7 @@ flows:
 	python -m analysis.flows --data-root $(DATA_ROOT) --term-id $(TERM) --out analysis/out/flows_$(TERM).parquet
 
 analysis:
-	python -m analysis.run --data-root $(DATA_ROOT) --term-id $(TERM) --out analysis/out --site-dir site/data $$(test -f $(CATALOG) && echo --catalog $(CATALOG))
+	python -m analysis.run --data-root $(DATA_ROOT) --term-id $(TERM) --out analysis/out --site-dir site/data --max-interval-min $(MAX_INTERVAL_MIN) $$(test -f $(CATALOG) && echo --catalog $(CATALOG))
 
 # First $(PILOT) sections of the seeded permutation (a subset of the full pull), then build.
 backfill-pilot:
