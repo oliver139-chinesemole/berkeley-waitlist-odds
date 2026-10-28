@@ -54,6 +54,9 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Backtest reports as quotable sentences.")
     p.add_argument("--reports", type=Path, default=Path("reports/backtest_2268"))
     args = p.parse_args(argv)
+    if not args.reports.is_dir():
+        print(f"--reports {args.reports}: no such directory")
+        return 2
     runs = sorted(d for d in args.reports.iterdir() if d.is_dir())
     if not runs:
         print(f"no runs under {args.reports}")
