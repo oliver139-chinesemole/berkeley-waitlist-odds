@@ -24,10 +24,10 @@ if (!htmlPath || !root) {
 const html = fs.readFileSync(htmlPath, "utf8");
 
 class Element {
-  constructor(id, tag, attrs) {
+  constructor(id, tag, attrs, text) {
     this.id = id;
     this.tagName = (tag || "div").toUpperCase();
-    this.innerHTML = "";
+    this.innerHTML = text || "";
     this.textContent = "";
     this.value = attrs.value || "";
     this.hidden = "hidden" in attrs;
@@ -57,22 +57,25 @@ class Element {
   getBoundingClientRect() { return { left: 0, top: 0, width: 640, height: 260 }; }
 }
 
-// The attributes an element starts with in the markup (class, hidden, value).
+// The attributes an element starts with in the markup (class, hidden, value), and
+// its markup text when that is plain text with no child element, which is what a
+// browser's innerHTML returns before any script runs (static prose a page swaps).
 function initialAttrs(id) {
   const m = html.match(new RegExp("<([a-z]+)([^>]*)\\bid=\"" + id + "\"([^>]*)>"));
-  if (!m) return { tag: "div", attrs: {} };
+  if (!m) return { tag: "div", attrs: {}, text: "" };
   const attrs = {};
   for (const part of [m[2], m[3]]) {
     for (const a of part.matchAll(/\b([a-zA-Z-]+)(?:="([^"]*)")?/g)) attrs[a[1]] = a[2] === undefined ? "" : a[2];
   }
-  return { tag: m[1], attrs };
+  const text = (html.slice(m.index + m[0].length).match(new RegExp("^([^<]*)</" + m[1] + ">")) || [, ""])[1];
+  return { tag: m[1], attrs, text };
 }
 
 const elements = {};
 const document = {
   title: (html.match(/<title>([^<]*)<\/title>/) || [, ""])[1],
   getElementById(id) {
-    if (!elements[id]) { const { tag, attrs } = initialAttrs(id); elements[id] = new Element(id, tag, attrs); }
+    if (!elements[id]) { const { tag, attrs, text } = initialAttrs(id); elements[id] = new Element(id, tag, attrs, text); }
     return elements[id];
   },
   addEventListener() {},
