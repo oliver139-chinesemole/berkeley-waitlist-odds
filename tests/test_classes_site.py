@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 
+from scraper.fetch import missing_share
 from scraper.http import HttpError
 from scraper.schema import rows_to_table
 from scraper.sources.base import ParseError, PrioritySpec, TermNotPublished, TermSpec, shard_of
@@ -20,12 +21,14 @@ from scraper.sources.classes_site import (
     SELF_STUDY_COMPONENTS,
     ClassesSiteSource,
     SectionRef,
+    _class_number_order,
     merge_catalog,
     parse_node_title,
     parse_rss,
     parse_section_page,
     parse_section_meta,
     parse_section_ref,
+    primary_like,
     ref_from_feed_item,
 )
 
@@ -514,7 +517,90 @@ def test_priority_without_shard_fetches_priority_only(tmp_path: Path) -> None:
     assert client.fetched() == ["2026-fall-compsci-61a-001-lec-001"]
 
 
-def test_missing_ids_only_for_known_sections(tmp_path: Path) -> None:
+def spring_ref(subject: str, catalog: str, class_number: str, component: str, **changes) -> SectionRef:
+    ref = SectionRef(section_id="", url_path=slug_of("Spring 2027", subject, catalog, class_number, component),
+                     course_key=f"{subject} {catalog}", subject=subject, catalog_number=catalog,
+                     class_number=class_number, section_number=class_number, component=component)
+    return replace(ref, **changes)
+
+
+def page_name(ref: SectionRef) -> str:
+    return ref.url_path.rsplit("/", 1)[1]
+
+
+# docs/DESIGN_A2.md section 19: a section is selected when its class number is below 100, or when
+# its component carries the course's lowest class number. One course per case the plain
+# "below 100" rule gets wrong, next to the secondaries both rules leave out.
+PRIMARY_LIKE = [
+    spring_ref("COMPSCI", "61A", "001", "LEC"),  # a lecture course: LEC 001 ...
+    spring_ref("PHYSICS", "5BL", "101", "LAB"),  # a lab-only course: its primaries are LAB 1xx
+    spring_ref("PHYSICS", "5BL", "102", "LAB"),
+    spring_ref("COMPSCI", "294", "150", "LEC"),  # lectures numbered by topic
+    spring_ref("COMPSCI", "294", "160", "LEC"),
+    spring_ref("MCELLBI", "290", "A01", "SEM"),  # a class number without leading digits
+    spring_ref("ASTRON", "7A", "001", "DIS"),  # a discussion that is its course's primary (no LEC)
+]
+SECONDARY = [
+    spring_ref("COMPSCI", "61A", "101", "DIS"),  # ... and its discussion
+    # absent and due for a re-probe: the rule covers re-probes too
+    spring_ref("COMPSCI", "61A", "102", "DIS", last_status=404, probed_at="2026-01-01T00:00:00+00:00"),
+]
+
+
+def test_selection_keeps_primary_like_sections_only(tmp_path: Path) -> None:
+    catalog_with(tmp_path, SPRING_2027, PRIMARY_LIKE + SECONDARY)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, client, _ = make_source(tmp_path, small_site(), n_shards=1)
+    source.fetch(SPRING_2027, priority=PrioritySpec.from_text("COMPSCI 61A\nPHYSICS 5BL"), shard=(0, 1))
+    fetched = client.fetched()
+    assert fetched[:3] == [page_name(r) for r in PRIMARY_LIKE[:3]]  # the priority courses, in list order
+    assert sorted(fetched) == sorted(page_name(r) for r in PRIMARY_LIKE)
+    # the catalog is the discovery record: the secondaries stay in it
+    paths = {s["url_path"] for s in read_catalog(tmp_path, "2272")["sections"]}
+    assert {r.url_path for r in SECONDARY} <= paths
+
+
+def test_primary_like_keeps_every_component_tied_at_the_lowest_number() -> None:
+    # INTEGBI 132L in the Spring 2027 catalog: LAB 001 and LEC 001 share the lowest number, so
+    # every LAB and LEC is primary-like, LAB 101 and LEC 105 included; a DIS 201 is not
+    refs = [spring_ref("INTEGBI", "132L", n, c) for n, c in (("001", "LAB"), ("001", "LEC"), ("101", "LAB"), ("105", "LEC"), ("201", "DIS"))]
+    assert primary_like(refs) == refs[:4]
+
+
+def test_primary_like_counts_absent_entries_toward_the_lowest_number() -> None:
+    # an absent LEC 001 still makes LEC the course's primary component: its discussions stay out
+    lec = spring_ref("ANTHRO", "3AC", "001", "LEC", last_status=404, probed_at="2026-10-20T00:00:00+00:00")
+    dis = [spring_ref("ANTHRO", "3AC", "101", "DIS"), spring_ref("ANTHRO", "3AC", "102", "DIS")]
+    assert primary_like([*dis, lec]) == [lec]
+
+
+def test_primary_like_sorts_numeric_class_numbers_before_letters() -> None:
+    # DIS 101 is the course's lowest class number (numeric before non-numeric), so the DIS is
+    # selected and the SEM A01 is not
+    sem, dis = spring_ref("MCELLBI", "293C", "A01", "SEM"), spring_ref("MCELLBI", "293C", "101", "DIS")
+    assert primary_like([sem, dis]) == [dis]
+
+
+def test_class_number_order_reads_leading_digits() -> None:
+    assert _class_number_order("061A") == (False, 61)
+    assert _class_number_order("001") == (False, 1)
+    assert _class_number_order("A01") == (True, 0)
+
+
+def test_full_scope_universe_follows_the_selection_rule(tmp_path: Path) -> None:
+    lec = replace(PRIMARY_LIKE[0], section_id="40001")
+    dis = replace(SECONDARY[0], section_id="40002")
+    catalog_with(tmp_path, SPRING_2027, [lec, dis])
+    site_state(tmp_path, probed=1012, seen=1012)
+    page = section_html("Spring 2027", "COMPSCI", "61A", "001", "LEC", 40001, 2001, term_id="2272")
+    source, client, _ = make_source(tmp_path, small_site(extra={f"{BASE}{lec.url_path}": page}))
+    result = source.fetch(SPRING_2027, priority=None)
+    assert client.fetched() == [page_name(lec)]
+    assert result.scope == "full" and result.universe_ids == {"40001"}
+    assert [r["section_id"] for r in result.rows] == ["40001"] and result.missing_ids == []
+
+
+def test_missing_ids_carry_the_id_of_a_known_section(tmp_path: Path) -> None:
     site_state(tmp_path, probed=1012, seen=1012)
     source, _, clock = make_source(tmp_path, small_site())
     source.fetch(FALL_2026, priority=None)
@@ -580,6 +666,46 @@ def test_time_budget_cutoff_marks_known_ids_missing(tmp_path: Path) -> None:
     result = source2.fetch(FALL_2026, priority=None, time_budget_s=100)
     assert len(result.rows) == 1 and len(result.missing_ids) == 1
     assert client2.get_many_calls[-1][1] == pytest.approx(100.0)
+
+
+def test_budget_cutoff_on_unknown_sections_counts_as_missing(tmp_path: Path) -> None:
+    """The first run of a term knows no id: a cutoff on half the selection must still
+    reach missing_ids (by page path) and the share the exit-4 gate reads."""
+    refs = [spring_ref("SUBJ", str(i), "001", "LEC") for i in range(6)]
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    pages = small_site(extra={
+        f"{BASE}{r.url_path}": section_html("Spring 2027", "SUBJ", str(i), "001", "LEC", 50000 + i, 3000 + i, term_id="2272")
+        for i, r in enumerate(refs)
+    })
+    source, client, _ = make_source(tmp_path, pages, attempt_limit=3)
+    result = source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"), time_budget_s=100)
+    assert client.fetched() == [page_name(r) for r in refs]
+    assert [r["section_id"] for r in result.rows] == ["50000", "50001", "50002"]
+    assert result.missing_ids == [r.url_path for r in refs[3:]]
+    assert missing_share(result) == 0.5
+
+
+def test_failed_unknown_section_counts_as_missing_but_a_404_does_not(tmp_path: Path) -> None:
+    """A transport or parse failure is a page we did not observe; a 404 is an answer (the
+    page is absent), so a 404 on a never-fetched page stays out of missing_ids."""
+    refs = [spring_ref("SUBJ", str(i), "001", "LEC") for i in range(4)]
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    urls = [f"{BASE}{r.url_path}" for r in refs]
+    pages = small_site(extra={
+        urls[0]: section_html("Spring 2027", "SUBJ", "0", "001", "LEC", 50000, 3000, term_id="2272"),
+        urls[1]: HttpError(0, urls[1], "read timed out"),
+        urls[2]: b"<html>no blob</html>",
+        # urls[3] is not routed: 404
+    })
+    source, _, _ = make_source(tmp_path, pages)
+    result = source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"))
+    assert [r["section_id"] for r in result.rows] == ["50000"]
+    assert result.missing_ids == [refs[1].url_path, refs[2].url_path]
+    entries = {s["url_path"]: s for s in read_catalog(tmp_path, "2272")["sections"]}
+    assert entries[refs[3].url_path]["last_status"] == 404
+    assert entries[refs[1].url_path]["last_status"] is None and entries[refs[2].url_path]["last_status"] is None
 
 
 def test_discovery_time_counts_against_budget(tmp_path: Path) -> None:

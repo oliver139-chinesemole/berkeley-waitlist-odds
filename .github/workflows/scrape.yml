@@ -55,7 +55,8 @@ jobs:
     timeout-minutes: 59
     env:
       # Scheduled runs take the term from the SCRAPE_TERM repository variable
-      # (Settings > Secrets and variables > Actions > Variables); Fall 2026 until Oct 4.
+      # (Settings > Secrets and variables > Actions > Variables); Fall 2026 until the switch to
+      # Spring 2027 (docs/RUNBOOK.md step 7).
       TERM_NAME: ${{ inputs.term || vars.SCRAPE_TERM || 'Spring 2027' }}
       SOURCE: ${{ inputs.source || 'auto' }}
       FORCE_BASELINE: ${{ inputs.force_baseline == true && 'true' || 'false' }}
