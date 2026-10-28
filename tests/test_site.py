@@ -806,13 +806,39 @@ def test_insights_level_sentence_faster_or_about_the_same(full_site: Path, tmp_p
     assert f"<li>{sentence}</li>" in html, html[:2000]
 
 
+# Under the hero chart, above the table: why a deeper position can end above positions 1 to 5.
+INVERSION_NOTE = (
+    '<p class="muted small">When a deeper position ends above positions 1 to 5, here or in the table below, that comes from where the hypothetical students '
+    "can be placed, not from any advantage of a later spot. Positions 1 to 5 include full sections with nobody else waiting, where a seat that opens shows in "
+    "the counts as someone enrolling directly, never as the hypothetical student getting in; positions 6 and up exist only where at least five people were "
+    "already waiting, so a seat that opens there goes to the queue.</p>"
+)
+
+
 def test_insights_position_charts_and_table_on_the_served_data() -> None:
     html = render(SITE, page="insights.html")["elements"]["content"]["html"]
     assert '<p class="muted small">Lower-division courses, students who joined during Phase 1: the share who had a seat, by days since joining, one curve per position.</p>' in html
     hero = html[html.index('id="hero-chart"'):html.index("<h3>All courses and phases</h3>")]
     assert "6-15 92%" in hero and "1-5 83%" in hero  # the curves' ends: deeper positions above 1 to 5
+    assert hero.endswith("</figure>\n      " + INVERSION_NOTE + "\n      ")  # under the hero chart's legend, right above the table's heading
     assert '<th scope="col" class="num">Longest follow-up</th>' in html and "<strong>74%</strong> <span class=\"muted small\">at 80 days</span>" in html
-    assert "never counted as theirs" not in html
+    # Why the note and not a cap at 28 days: in the served all-course table positions 6 to 15 are already above 1 to 5 at 28 days,
+    # intervals apart, so a 28-day cap would keep the inversion. Within 14 days the order is the expected one, in both views.
+    ins = load(SITE, "insights.json")
+    at = lambda view, bucket, day: read_curve(ins[view][bucket]["curve"], day)  # noqa: E731  (p, lo, hi, day)
+    assert at("all_by_bucket", "6-15", 28.0)[1] > at("all_by_bucket", "1-5", 28.0)[2]
+    for view in ("all_by_bucket", "hero"):
+        assert [at(view, b, 14.0)[0] for b in ("1-5", "6-15", "16-40", "41+")] == sorted((at(view, b, 14.0)[0] for b in ("1-5", "6-15", "16-40", "41+")), reverse=True)
+        assert ins[view]["6-15"]["curve"][-1][1] > ins[view]["1-5"]["curve"][-1][1]
+
+
+def test_insights_inversion_note_without_a_hero_chart(full_site: Path, tmp_path: Path) -> None:
+    """No Phase 1 lower-division cases: the note still sits above the table, after the hero's fallback line."""
+    shutil.copytree(full_site / "data", tmp_path / "data")
+    path = tmp_path / "data" / "insights.json"
+    path.write_text(json.dumps({**json.loads(path.read_text()), "hero": {}}))
+    html = render(tmp_path, page="insights.html")["elements"]["content"]["html"]
+    assert ("Not enough Phase 1 lower-division cases for this chart yet.</p>\n      " + INVERSION_NOTE + "\n      <h3>All courses and phases</h3>") in html
 
 
 # The pre-registration (the Accuracy box, the About data status) in both regimes.
