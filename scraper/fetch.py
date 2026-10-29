@@ -474,13 +474,18 @@ def run(args: argparse.Namespace, env: Mapping[str, str] | None = None) -> int:
         catalog_max_pages=args.catalog_max_pages,
         env=env,
     )
+    # The visit of this shard today rotates the shard remainder (classes_site); sources whose
+    # fetch has no such parameter are called as before.
+    extra: dict[str, Any] = {}
+    if shard is not None and _accepts_parameter(source.fetch, "visit"):
+        extra["visit"] = run_index // shard[1]
     logger.info(
-        "run start term=%s (sis %s) source=%s run_index=%d shard=%s budget=%.0fs limit=%s dry_run=%s",
-        term.name, term.sis_term_id, source_name, run_index, shard, args.time_budget_s, args.limit, args.dry_run,
+        "run start term=%s (sis %s) source=%s run_index=%d shard=%s visit=%s budget=%.0fs limit=%s dry_run=%s",
+        term.name, term.sis_term_id, source_name, run_index, shard, extra.get("visit", "-"), args.time_budget_s, args.limit, args.dry_run,
     )
 
     t0 = time.monotonic()
-    result = source.fetch(term, priority=priority, shard=shard, time_budget_s=args.time_budget_s, limit=args.limit)
+    result = source.fetch(term, priority=priority, shard=shard, time_budget_s=args.time_budget_s, limit=args.limit, **extra)
     sweep_seconds = time.monotonic() - t0
     n_observed = len(result.rows)
     n_missing = len(result.missing_ids)

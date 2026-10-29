@@ -108,8 +108,9 @@ class PrioritySpec:
     def rank(self, course_key: str) -> int | None:
         """Index of the first pattern that matches ``course_key``, or None.
 
-        Lower is more important: the priority file is ordered, and a run whose
-        time budget runs out drops the highest ranks first.
+        Lower is more important: the priority file is ordered. The fetch order is not the
+        rank order itself: ``ClassesSiteSource._select`` rotates it per run, so a budget
+        cutoff drops a moving slice rather than the highest ranks.
         """
         key = self.normalize(course_key)
         subject = key.rsplit(" ", 1)[0] if " " in key else key

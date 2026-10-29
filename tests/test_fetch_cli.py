@@ -381,6 +381,30 @@ def test_n_shards_zero_disables_sharding(tmp_path: Path, monkeypatch: pytest.Mon
     assert src.calls[0]["shard"] is None
 
 
+@dataclass
+class VisitFakeSource(FakeSource):
+    """A source whose fetch takes ``visit``, as ClassesSiteSource's does."""
+
+    def fetch(self, term, *, priority=None, shard=None, time_budget_s=None, limit=None, visit=0) -> FetchResult:
+        result = super().fetch(term, priority=priority, shard=shard, time_budget_s=time_budget_s, limit=limit)
+        self.calls[-1]["visit"] = visit
+        return result
+
+
+def test_visit_is_the_run_index_divided_by_the_shard_count(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Run 29 with 12 shards is shard 5 on its third visit of the day (visit 2); without a
+    shard no visit is passed."""
+    priority_file = tmp_path / "priority.txt"
+    priority_file.write_text("COMPSCI *\n")
+    common = ["--term", TERM, "--source", "classes_site", "--data-root", str(tmp_path / "d"), "--priority-file", str(priority_file), "--dry-run"]
+    src = install(monkeypatch, VisitFakeSource(rows=[make_row("1")], scope="priority"))
+    assert fetch.main(common + ["--n-shards", "12", "--run-index", "29"]) == fetch.EXIT_OK
+    assert src.calls[0]["shard"] == (5, 12) and src.calls[0]["visit"] == 2
+    src = install(monkeypatch, VisitFakeSource(rows=[make_row("1")], scope="priority"))
+    assert fetch.main(common + ["--n-shards", "0", "--run-index", "29"]) == fetch.EXIT_OK
+    assert src.calls[0]["shard"] is None and src.calls[0]["visit"] == 0
+
+
 def test_missing_priority_file_is_an_error(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     install(monkeypatch, FakeSource(rows=[make_row("1")]))
     args = ["--term", TERM, "--source", "classes_site", "--data-root", str(tmp_path), "--priority-file", str(tmp_path / "nope.txt")]
