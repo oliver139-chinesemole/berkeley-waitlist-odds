@@ -599,16 +599,34 @@ const BWO = (function () {
     const alt = /^[A-Z]/.test(number) ? (/^C\d/.test(number) ? number.slice(1) : null) : "C" + number;
     return index.courses.filter((r) => r.number === number || (alt && r.number === alt)).sort(byJoins);
   }
+  // "Did you mean" within the understood subject ranks courses by catalog-number distance to the number typed (review
+  // of 2026-10-29, 3.3: ECON 121 offered ECON 100A, 100B and 1, the most-joined): the numeric part first, then
+  // the letter suffix nearest the one typed, then joins. A number with no digits ranks last.
+  function catalogParts(number) {
+    const m = /^([A-Z]*)(\d+)([A-Z]*)$/.exec(String(number || ""));
+    return m ? { n: parseInt(m[2], 10), suffix: m[3] } : null;
+  }
+  function byCatalogDistance(number) {
+    const want = catalogParts(number);
+    const code = (suffix) => (suffix ? suffix.charCodeAt(0) : 64);  // no suffix sits just before A
+    const key = (r) => {
+      const got = catalogParts(r.number);
+      if (!want || !got) return [Infinity, Infinity];
+      return [Math.abs(got.n - want.n), got.suffix === want.suffix ? 0 : 1 + Math.abs(code(got.suffix) - code(want.suffix))];
+    };
+    return (a, b) => { const ka = key(a), kb = key(b); return ka[0] - kb[0] || ka[1] - kb[1] || byJoins(a, b); };
+  }
   // What to offer when nothing matched, never more than three, and only what is close to the text: the
   // subject's own courses when the subject was understood, else what the combobox suggests for it (a
   // prefix of a subject or a key), else the courses of the subjects within the fuzzy rule's distance;
   // else nothing. (Audit item 13: the most-joined three it used to fall back on are the Try chips.)
+  // The subject's own courses come nearest number first (byCatalogDistance).
   function nearestCourses(index, text) {
     const q = parseQuery(text);
     if (!q) return [];
     for (const pair of q.pairs || []) {
       const rows = index.courses.filter((r) => r.subject === pair.subject);
-      if (rows.length) return rows.sort(byJoins).slice(0, 3);
+      if (rows.length) return rows.sort(byCatalogDistance(pair.number)).slice(0, 3);
     }
     const typed = searchCourses(index, text, 3);
     if (typed.length) return typed;
@@ -1107,16 +1125,23 @@ BWO.resolveSubject = function (index, text) {
   for (const s of [t, BWO.SUBJECT_ALIASES[t], squashed, BWO.SUBJECT_ALIASES[squashed]]) if (s && subjects.has(s)) return s;
   return null;
 };
-// Up to n subjects near an unknown one: prefix and alias matches from the course search,
-// then by plain Levenshtein distance (BWO.damerau without swaps or its length cap).
+// Up to n subjects near an unknown one, and only near ones (review of 2026-10-29, 3.4: NOPE was offered Earth and
+// Planetary Science and two more unrelated subjects): first the subjects the text is a shorthand for or the start of,
+// by code or by name ("comp", "Econom", "cs"), most-joined first; then those within the matcher's edit distance
+// (BWO.damerau, at most 2, swaps counted), closest first, ties alphabetical. None when nothing is that close.
 BWO.nearestSubjects = function (index, text, n) {
-  const want = String(text || "").toUpperCase().replace(/[^A-Z0-9&]/g, "");
-  const out = [];
-  for (const r of BWO.searchCourses(index, text, 50)) if (!out.includes(r.subject)) out.push(r.subject);
-  const dist = (s) => BWO.damerau(want, s, Infinity, false);
-  const rest = Array.from(new Set(index.courses.map((r) => r.subject))).filter((s) => !out.includes(s));
-  rest.sort((a, b) => dist(a) - dist(b) || a.localeCompare(b));
-  return out.concat(rest).slice(0, n || 3);
+  const squash = (t) => String(t || "").toUpperCase().replace(/[^A-Z0-9&]/g, "");
+  const want = squash(text);
+  if (!want) return [];
+  const joins = {};
+  for (const r of index.courses) joins[r.subject] = (joins[r.subject] || 0) + (r.joins || 0);
+  const subjects = Object.keys(joins);
+  const alias = BWO.SUBJECT_ALIASES[want];
+  const named = (s) => { const name = squash(BWO.SUBJECT_NAMES && BWO.SUBJECT_NAMES[s]); return !!name && name.startsWith(want); };
+  const starts = subjects.filter((s) => s === alias || s.startsWith(want) || named(s)).sort((a, b) => joins[b] - joins[a] || a.localeCompare(b));
+  const close = subjects.filter((s) => !starts.includes(s)).map((s) => [s, BWO.damerau(want, s)]).filter((x) => x[1] <= 2)
+    .sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0])).map((x) => x[0]);
+  return starts.concat(close).slice(0, n || 3);
 };
 // Every course of a subject, most-joined first, then by number.
 BWO.deptCourses = function (index, subject) {

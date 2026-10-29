@@ -1548,7 +1548,7 @@ def test_unknown_department_names_the_nearest(course_site: Path) -> None:
     out = render(course_site, page="dept.html", search="?subject=NOPE")
     els = out["elements"]
     assert "No such department" in els["summary"]["html"] and "NOPE" in els["summary"]["html"]
-    assert 1 <= els["summary"]["html"].count("dept.html?subject=") <= 3
+    assert els["summary"]["html"].count("dept.html?subject=") == 0 and "Nearest" not in els["summary"]["html"]  # review 3.4: nothing is close
     assert els["pool"]["html"] == "" and els["table"]["html"] == "" and controls_hidden(out)
     assert out["title"].startswith("No such department")
     assert "Simulated term" in out["status"]
@@ -1566,21 +1566,23 @@ NEAR_SUBJECTS = ("AEROENG", "AGRS", "ARESEC", "ARMENI", "ASTRON", "CHEM", "COMPS
 
 
 def test_nearest_subjects_for_misspelt_subjects_are_pinned() -> None:
-    """The three subjects the department page offers for a misspelt one, pinned from the code as it stood.
+    """The subjects the department page offers for a misspelt one, pinned.
 
-    Prefix and alias matches come first, then plain Levenshtein distance over every subject,
-    ties alphabetical. The matcher's Damerau distance, with its swap step or its length cap,
-    would reorder these: a swapped pair (AERONEG) would put ARMENI third, and the cap
-    (a length difference over 2 scores 99) would drop COMPSCI and POLSCI for the long spellings.
+    Review of 2026-10-29, 3.4: only close subjects. Shorthand and prefix matches (by code or name) come
+    first, then the matcher's Damerau distance, at most 2; a spelling further than that from every code
+    (the long ones here) gets none, where it used to get the three nearest however far they were.
     """
     index = {"courses": [{"key": f"{s} 1", "subject": s, "number": "1", "joins": (i * 7) % len(NEAR_SUBJECTS) + 1, "buckets": {}} for i, s in enumerate(NEAR_SUBJECTS)]}
     asked = {
-        "AERONEG": ["AEROENG", "ARESEC", "ASTRON"],  # two letters swapped
-        "aeroeg": ["AEROENG", "GEOG", "AGRS"],  # a letter dropped
-        "compscience": ["COMPSCI", "POLSCI", "ARESEC"],  # longer than any code by more than 2
-        "poli science": ["POLSCI", "COMPSCI", "PHYSICS"],
-        "comp": ["COMPSCI", "CHEM", "ECON"],  # a prefix comes first
-        "phsyics": ["PHYSICS", "PSYCH", "POLSCI"],
+        "AERONEG": ["AEROENG"],  # two letters swapped: one edit
+        "aeroeg": ["AEROENG"],  # a letter dropped
+        "compscience": [],  # longer than any code by more than 2, and no subject's name starts with it
+        "poli science": [],
+        "comp": ["COMPSCI"],  # a prefix
+        "phsyics": ["PHYSICS"],
+        "cs": ["COMPSCI"],  # the shorthand
+        "chme": ["CHEM"],
+        "nope": [],
     }
     out = render(Path("/nonexistent"), expression=f"(function(){{ const i = {json.dumps(index)}; return {json.dumps(list(asked))}.map((t) => BWO.nearestSubjects(i, t, 3)); }})()")
     assert "eval_error" not in out, out.get("eval_error")
@@ -1851,3 +1853,35 @@ def test_the_dot_row_never_wraps() -> None:
     full_w = float(re.search(r"\n\.dots i \{[^}]*width: ([\d.]+)rem", css).group(1))
     full_gap = float(re.search(r"gap: ([\d.]+)rem", base).group(1))
     assert (20 * full_w + 19 * full_gap) * 16 <= 448 - 66
+
+
+def test_did_you_mean_ranks_the_subjects_own_courses_by_number() -> None:
+    """Section 3.3, on the served index: ECON 121 (no such course) offers the ECON numbers nearest 121, not ECON 1;
+    a subject that matches nothing offers nothing (the Try chips are not suggestions)."""
+    out = render(SITE, expression="['ECON 121', 'econ 121', 'xyz', 'xyz 12'].map((t) => BWO.matchCourse(BWO.loaded.index, t).nearest.map((r) => r.key))")
+    econ, lower, xyz, xyz12 = out["eval"]
+    assert econ == lower and econ[0] == "ECON 119" and len(econ) == 3, econ
+    assert all(k.startswith("ECON ") and abs(int(re.sub(r"\D", "", k)) - 121) <= 10 for k in econ) and "ECON 1" not in econ, econ
+    assert xyz == [] and xyz12 == []
+    page = render(SITE, course="ECON 121", position="10")["result"]
+    assert "Did you mean" in page and ">ECON 119</a>" in page and ">ECON 1</a>" not in page
+
+
+def test_did_you_mean_orders_numbers_then_suffixes() -> None:
+    """The numeric part first, then the letter suffix nearest the one typed, then joins."""
+    rows = ", ".join(f"{{key: 'MATH {n}', subject: 'MATH', number: '{n}', joins: {j}, buckets: {{}}}}" for n, j in (("1", 900), ("53", 50), ("54", 800), ("55", 10), ("56", 5), ("H54", 1), ("110", 400)))
+    out = render(Path("/nonexistent"), expression=f"(function(){{ const i = {{courses: [{rows}]}}; return ['math 54a', 'math 57', 'math 100'].map((t) => BWO.matchCourse(i, t).nearest.map((r) => r.key)); }})()")
+    assert out["eval"] == [["MATH 54", "MATH H54", "MATH 53"], ["MATH 56", "MATH 55", "MATH 54"], ["MATH 110", "MATH 56", "MATH 55"]]
+
+
+def test_dept_page_offers_only_close_subjects() -> None:
+    """Section 3.4: an unknown subject lists only subjects within edit distance 2, or whose code or name starts with
+    what was typed; otherwise no "Nearest", only the browse sentence."""
+    out = render(SITE, page="dept.html", search="?subject=NOPE")
+    summary = out["elements"]["summary"]["html"]
+    assert "Nearest" not in summary and "dept.html?subject=" not in summary
+    assert summary.endswith('<p>Or browse <a href="courses.html?today=2027-01-10">every course</a>.</p>')
+    out = render(SITE, page="dept.html", search="?subject=ECNO")
+    assert "Nearest: " in out["elements"]["summary"]["html"] and "dept.html?subject=ECON" in out["elements"]["summary"]["html"]
+    out = render(SITE, page="dept.html", search="?subject=Econom")
+    assert "dept.html?subject=ECON" in out["elements"]["summary"]["html"]  # the start of the subject's name
