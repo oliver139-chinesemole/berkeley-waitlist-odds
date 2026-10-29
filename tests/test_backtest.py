@@ -199,3 +199,82 @@ def test_unobservable_horizons_are_excluded_not_scored() -> None:
     assert set(grouped.predictions["phase"]) == {"phase1"}
     ok3, _ = observability(cohort.drop(columns=["follow_up_days"]), np.full(len(cohort), 14.0))
     assert ok3.all()  # no window information: every row is assumed observable
+
+
+# --- the Cox predictor's scoring (spec 2.4): event probability at each row's own horizon ---
+
+
+class _KnownCox:
+    """A fitted-Cox stand-in with a known baseline survival and known partial hazards."""
+
+    def __init__(self, times: list[float], surv: list[float], partial_hazard: pd.Series) -> None:
+        self.baseline_survival_ = pd.DataFrame({"baseline survival": surv}, index=pd.Index(times, dtype=float))
+        self._ph = partial_hazard
+
+    def predict_partial_hazard(self, x: pd.DataFrame) -> pd.Series:
+        return self._ph.loc[x.index]
+
+
+def _cox_with(fitter: _KnownCox, columns: list[str]):
+    from types import SimpleNamespace
+
+    from analysis.backtest import CoxPredictor
+
+    cox = CoxPredictor()
+    cox.result = SimpleNamespace(fitter=fitter, subsampled=False)
+    cox.columns = columns
+    cox.depts = {"COMPSCI", "MATH", "STAT"}
+    return cox
+
+
+def test_cox_predicts_the_event_probability_at_each_rows_own_horizon() -> None:
+    rows = synthetic_cohort().head(6).reset_index(drop=True)
+    ph = pd.Series([1.0, 2.0, 1.0, 2.0, 1.0, 2.0], index=rows.index)
+    # S0 = 1 before day 1, 0.8 on [1, 2), 0.5 from day 2
+    cox = _cox_with(_KnownCox([1.0, 2.0], [0.8, 0.5], ph), ["log_position"])
+    h = np.array([0.5, 0.5, 1.5, 1.5, 3.0, 3.0])
+    p, fallback = cox.predict(rows, h, np.full(6, np.nan))
+    assert not fallback.any()
+    s0 = np.array([1.0, 1.0, 0.8, 0.8, 0.5, 0.5])
+    np.testing.assert_allclose(p, 1.0 - s0 ** ph.to_numpy())  # 1 - S0(h)^ph, not S0(h)^ph
+    assert p[4] == pytest.approx(0.5) and p[5] == pytest.approx(0.75)
+
+
+def test_a_perfect_cox_predictor_scores_brier_zero() -> None:
+    rows = synthetic_cohort().head(8).reset_index(drop=True)
+    # known survival: nobody clears before day 2, everybody by day 2 (S0 = 1, then 0)
+    cox = _cox_with(_KnownCox([2.0], [0.0], pd.Series(1.0, index=rows.index)), ["log_position"])
+    # the first four are scored at day 3 and cleared on day 2; the last four at day 1, still waiting when followed to day 5
+    h = np.array([3.0] * 4 + [1.0] * 4)
+    duration = np.array([2.0] * 4 + [5.0] * 4)
+    event = np.array([1] * 4 + [0] * 4)
+    p, _ = cox.predict(rows, h, np.full(8, np.nan))
+    np.testing.assert_array_equal(p, [1.0] * 4 + [0.0] * 4)
+    y, w = ipcw_weights(duration, event, h)
+    assert (w > 0).all() and list(y) == [1.0] * 4 + [0.0] * 4
+    assert brier(y, p, w) == 0.0
+    assert brier(y, 1.0 - p, w) == 1.0  # scoring survival instead of the event probability is maximally wrong
+    assert weighted_auc(y, p, w) == 1.0
+
+
+def test_a_fitted_cox_on_separable_rows_scores_near_zero() -> None:
+    """End to end through lifelines: rows that clear on day 1 against rows that never do,
+    told apart by position. The ranking is perfect and the Brier far below a constant 0.5's
+    0.25; not 0, because the fit's penalizer (0.01) keeps the coefficient finite and the
+    day-1 rows' predicted probability near 0.65 (measured 0.069)."""
+    from analysis.backtest import CoxPredictor
+
+    base = synthetic_cohort()
+    rows = base[base["position"].isin([1, 50])].reset_index(drop=True)
+    fast = rows["position"] == 1
+    rows["duration_days"] = np.where(fast, 1.0, 30.0)
+    rows["event"] = np.where(fast, 1, 0)
+    rows["duration_min"] = rows["duration_days"] * 1440.0
+    cox = CoxPredictor().fit(rows)
+    assert cox.error is None
+    h = np.full(len(rows), 14.0)
+    p, fallback = cox.predict(rows, h, np.full(len(rows), np.nan))
+    assert not fallback.any()
+    y, w = ipcw_weights(rows["duration_days"].to_numpy(), rows["event"].to_numpy(), h)
+    assert weighted_auc(y, p, w) == 1.0 and p[fast.to_numpy()].min() > 0.4 > 0.01 > p[~fast.to_numpy()].max()
+    assert brier(y, p, w) < 0.1 and brier(y, 1.0 - p, w) > 0.5
