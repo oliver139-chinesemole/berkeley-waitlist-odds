@@ -630,28 +630,39 @@ def test_exits_at_last_auto_measures_still_waiting_at_the_last_automatic_run(coh
     from analysis.calendar import SPRING_2026
 
     flows = GOLDEN_FLOWS.assign(t0=pd.to_datetime(["2026-01-27T09:30Z", "2026-02-06T22:30Z", "2026-02-06T23:30Z", "2026-05-01T11:30Z"]))
-    # the last observation (the default): section 0 ends at 4, section 1 at 2, section 2 at 0
-    assert insights_tables(cohort, pools, min_n=30, n_boot=5, flows=flows)["exits"] == {"admitted": 4, "dropped": 7, "still_waiting": 6}
+    # section 3: the last automatic run itself, Fri Feb 6, 2026 at 6:40 PM Pacific = 02:40Z on Feb 7
+    last_run = pd.DataFrame({"section_id": ["3"], "t0": pd.to_datetime(["2026-02-07T02:10Z"]), "t1": pd.to_datetime(["2026-02-07T02:40Z"]), "admits": [2], "wl_joins": [0], "wl_drops": [0], "censored": [False], "waitlist0": [3], "d_waitlist": [-2]})
+    flows = pd.concat([flows, last_run], ignore_index=True)
+    # the last observation (the default): section 0 ends at 4, section 1 at 2, section 2 at 0, section 3 at 1
+    assert insights_tables(cohort, pools, min_n=30, n_boot=5, flows=flows)["exits"] == {"admitted": 6, "dropped": 7, "still_waiting": 7}
     ins = insights_tables(cohort, pools, min_n=30, n_boot=5, flows=flows, calendar=SPRING_2026, exits_at_last_auto=True)
-    # cut at the end of Feb 6, 2026 (UTC), the last automatic waitlist run's day: section 0's list after its
-    # Feb 6 interval (4), section 1's at the start of the interval that straddles the cut (6), section 2 not yet seen
+    # cut at the end of Feb 6, 2026 in Pacific time (08:00Z on Feb 7), after the 6:40 PM run: its admits count (a
+    # UTC-midnight cut would have put them in the purge); section 0's list after its Feb 6 interval (4), section 1's
+    # at the start of the interval that straddles the cut (6), section 3's after the run (1), section 2 not yet seen
     assert ins["exits"] == {
-        "admitted": 3,
+        "admitted": 5,
         "dropped": 1,
-        "still_waiting": 4 + 6,
-        "as_of": "2026-02-07T00:00:00+00:00",
+        "still_waiting": 4 + 6 + 1,
+        "as_of": "2026-02-07T08:00:00+00:00",
         "after_last_auto": {"admitted": 1, "dropped": 6},
     }
+    assert export.last_auto_cutoff(SPRING_2027).isoformat() == "2027-02-06T08:00:00+00:00"  # Feb 5, 2027 run, PST
+    assert export.last_auto_cutoff(FALL_2026).isoformat() == "2026-09-12T07:00:00+00:00"  # Sep 11, 2026, PDT
     with pytest.raises(ValueError, match="calendar"):
         insights_tables(cohort, pools, min_n=30, n_boot=5, flows=flows, exits_at_last_auto=True)
     with pytest.raises(ValueError, match="t0"):
         insights_tables(cohort, pools, min_n=30, n_boot=5, flows=GOLDEN_FLOWS, calendar=SPRING_2026, exits_at_last_auto=True)
+    with pytest.raises(ValueError, match="flows"):
+        export_site_tables(cohort, SPRING_2026, tmp_path / "noflows", n_boot=5, exits_at_last_auto=True)
     export_site_tables(cohort, SPRING_2026, tmp_path / "on", n_boot=5, flows=flows, exits_at_last_auto=True)
-    assert json.loads((tmp_path / "on" / "insights.json").read_text())["exits"]["still_waiting"] == 10
+    assert json.loads((tmp_path / "on" / "insights.json").read_text())["exits"]["still_waiting"] == 11
     assert json.loads((tmp_path / "on" / "meta.json").read_text())["exits_at_last_auto"] is True
     cohort_path, flows_path = tmp_path / "cohort.parquet", tmp_path / "flows.parquet"
     cohort.to_parquet(cohort_path, index=False)
     flows.to_parquet(flows_path, index=False)
     assert main(["--cohort", str(cohort_path), "--term-id", "2262", "--flows", str(flows_path), "--out", str(tmp_path / "cli"), "--n-boot", "5", "--exits-at-last-auto"]) == 0
     capsys.readouterr()
-    assert json.loads((tmp_path / "cli" / "insights.json").read_text())["exits"]["as_of"] == "2026-02-07T00:00:00+00:00"
+    assert json.loads((tmp_path / "cli" / "insights.json").read_text())["exits"]["as_of"] == "2026-02-07T08:00:00+00:00"
+    with pytest.raises(SystemExit):
+        main(["--cohort", str(cohort_path), "--term-id", "2262", "--out", str(tmp_path / "cli2"), "--n-boot", "5", "--exits-at-last-auto"])
+    assert "--flows" in capsys.readouterr().err and not (tmp_path / "cli2").exists()

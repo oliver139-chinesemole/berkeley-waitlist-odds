@@ -295,7 +295,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json); the site files then include a catalog_only stub row (pointing at its pools) for every catalog course with no cohort rows and titles.json for title and instructor search")
     p.add_argument("--reach-min-at-risk", type=int, default=0, metavar="N", help="site files: cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
     p.add_argument("--interval-min-sections", type=int, default=0, metavar="N", help="site files: leave out the 95%% band of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
-    p.add_argument("--exits-at-last-auto", action="store_true", help="site files: count the Insights exits at the term's last automatic waitlist run, the purge after it apart (default: at the last observation)")
+    p.add_argument("--exits-at-last-auto", action="store_true", help="site files: Insights exits are admits and drops up to the end of the term's last automatic waitlist run day in Pacific time (after the run), the waitlist at that moment as still_waiting, and the admits and drops after it (the purge) apart (default: everything to the last observation)")
     args = p.parse_args(argv)
     if args.catalog is not None and not args.catalog.is_file():
         p.error(f"--catalog {args.catalog}: no such file")

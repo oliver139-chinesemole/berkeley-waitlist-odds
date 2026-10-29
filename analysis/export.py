@@ -43,8 +43,9 @@ import re
 import sys
 from collections import Counter
 from collections.abc import Iterable
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
@@ -394,8 +395,8 @@ def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_
     waiting at the last observation (the default; for a finished term that is after
     the registrar's end-of-term purge, so the purge lands in "dropped"). With
     ``exits_at_last_auto`` (default off) every count stops at the end of ``calendar``'s
-    last automatic waitlist run day (00:00 UTC the day after, the backtest's
-    ``deadline``): admits and drops of intervals ending by then, each section's list
+    last automatic waitlist run day in Pacific time (``last_auto_cutoff``, after the
+    run itself): admits and drops of intervals ending by then, each section's list
     at that moment (after its last interval ending by then, or at the start of the
     interval spanning it; 0 for a section not yet seen), ``as_of``, and the flows
     after it (the purge) under ``after_last_auto``. Needs the flows' ``t0``."""
@@ -456,10 +457,18 @@ def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_
     return out
 
 
+PACIFIC = ZoneInfo("America/Los_Angeles")
+
+
 def last_auto_cutoff(calendar: TermCalendar) -> pd.Timestamp:
-    """00:00 UTC the day after the last automatic waitlist run (the backtest's ``deadline``)."""
-    d = calendar.last_auto_waitlist + pd.Timedelta(days=1)
-    return pd.Timestamp(d.isoformat(), tz="UTC")
+    """The end of the last automatic waitlist run's day in Pacific time (midnight at the
+    start of the next day), as UTC: after the run itself (6:40 PM on that day; Spring
+    2026: Fri Feb 6, 6:40 PM PST = 02:40Z on Feb 7, cut 08:00Z on Feb 7). Midnight UTC
+    would fall about 2.7 h before the run and count its admits as purge."""
+    # Once PR #53 merges, its last_auto_cut(calendar, "pacific") replaces this, so the
+    # backtest's deadline and the Insights exits share one definition of the cut.
+    d = calendar.last_auto_waitlist + timedelta(days=1)
+    return pd.Timestamp(datetime(d.year, d.month, d.day, tzinfo=PACIFIC)).tz_convert("UTC")
 
 
 def _exits_at_last_auto(f: pd.DataFrame, calendar: TermCalendar | None) -> dict:
@@ -638,6 +647,8 @@ def export_site_tables(
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     forecast = forecast_calendar or calendar
+    if exits_at_last_auto and (flows is None or flows.empty):
+        raise ValueError("exits_at_last_auto needs flows (the Insights exits come from them)")
     pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
     courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot, pools=pools, estimate_level=estimate_level, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
     joins = joins_by_course(cohort, flows)
@@ -748,7 +759,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json): adds a catalog_only stub row (pointing at its pools) for every catalog course with no cohort rows, writes titles.json (each index course's title and instructors) and meta.titles_file, catalog_term_id, catalog_courses and catalog_only_courses")
     p.add_argument("--reach-min-at-risk", type=int, default=0, metavar="N", help="cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
     p.add_argument("--interval-min-sections", type=int, default=0, metavar="N", help="leave out the 95%% band (lo/hi null) of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
-    p.add_argument("--exits-at-last-auto", action="store_true", help="insights.json exits: count admits, drops and who is still waiting at the data term's last automatic waitlist run, the purge after it apart (default: at the last observation)")
+    p.add_argument("--exits-at-last-auto", action="store_true", help="needs --flows; insights.json exits: admits and drops up to the end of the data term's last automatic waitlist run day in Pacific time (after the run), the waitlist at that moment as still_waiting, and the admits and drops after it (the purge) apart (default: everything to the last observation)")
     p.add_argument("--titles-only", action="store_true", help="with --catalog: write only titles.json for the index.json already in --out and add titles_file to its meta.json; no cohort, no refit, every other file untouched")
     args = p.parse_args(argv)
     if args.catalog is not None and not args.catalog.is_file():
@@ -763,6 +774,8 @@ def main(argv: list[str] | None = None) -> int:
             p.error(f"--titles-only needs an existing export in --out {args.out}: no {' or '.join(missing)} there (run a full export first)")
     elif args.cohort is None or args.term_id is None:
         p.error("--cohort and --term-id are required (except with --titles-only)")
+    if args.exits_at_last_auto and args.flows is None:
+        p.error("--exits-at-last-auto needs --flows (the exits come from the flows)")
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     if args.titles_only:
         print(json.dumps(export_titles_only(args.out, args.catalog), indent=1))
