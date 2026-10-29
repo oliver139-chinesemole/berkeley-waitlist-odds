@@ -72,13 +72,15 @@ From `docs/dev/SITE_V3_PLAN.md` section 13 and MASTER_PLAN section 2: shared ass
 
 ## 6. Left to build (IDs from `docs/dev/MASTER_PLAN.md` section 3; order from its section 5)
 
+**Update 2026-10-23 (session 11).** Every PR named in this table merged into `main` on 2026-09-25 (HANDOFF session 10); the per-item state verified from `main` on 2026-10-23 is the table in `docs/dev/NEXT_2026-10-23.md` section 4.3 and MASTER_PLAN section 3. Two things to know beyond the table: Q4 is merged but not live (`site/data/titles.json` was never exported and `meta.titles_file` is absent; plan 4.1; fixed in PR #45 `titles-live`, stacked on #43), and the hardcoded Oct 26 copy (`site.js` `sourceHtml`, `emptyHtml`, `SECTION_RUNG`) plus the course page's board, which showed Fall 2026 rows under Spring 2027 dates because `live()` never compared the file's term with `meta.forecast_term_id`, are fixed in PR #42 (`site-term-guards`, reviewed and approved, not merged; plan 1.4, 1.5). A fourth dated string on the Methods page is in the same PR. Known after review: a search on the Lookup page re-renders the source sentence, so "has started" reverts to the dated form (and the status line goes, which is pre-existing) until the next load.
+
 Nothing site-side should start before #4 merges (P1): stacking on an unmerged branch produces conflicts, not speed. After #4 and #11:
 
 Session 7 (2026-09-24) worked Track B of `docs/dev/NEXT_2026-09-24.md` while #4 waited: B1 (the methodology sentence, on `site-v3`), B2 (PR #17) and B3 (PR #16) stacked on `site-v3`; B4 (PR #19: the section-board fixture, the harness hooks and the strict-xfail contract) and then A3 itself (PR #20: the board, S1 to S3, with the `scraper/live.py` columns and selection) followed after Oliver's go-ahead; PR #18 adds the `.claude/agents/` definitions (see `docs/dev/HANDOFF.md` session 7).
 
 | ID | Item | Status | Notes |
 | --- | --- | --- | --- |
-| P3 | `live/latest.json` starts being written | lands with #4 (its scrape.yml step is on site-v3) | verify the file on the `data` branch after the first run |
+| P3 | `live/latest.json` starts being written | done: written every run since #4 merged (2026-10-23: 1,443 rows, term 2268 until the switch) | |
 | P6 | GoatCounter on every page | Oliver | needs his site code; visits cannot be backfilled, so before any link is shared |
 | S1 | Live section board: one row per section, enrolled/capacity, waitlist/capacity, seats open, seats open but reserved, "read N minutes ago" | PR #20, follow-ups PR #23 | one row per section with enrolled/capacity, waitlist/capacity, seats open, the reserved line, `read N min ago`, a blue status ramp; PR #19 holds the fixture, the harness hooks and the contract test. `scraper/live.py` now emits `reserved_count` and `open_reserved` and writes every section of a course with a full or waitlisted section (about 160 KB, 30 KB gzipped) |
 | S2 | Reserved-seat line per row from `open_reserved` ("4 seats open, all reserved") | PR #20 | registrar's wording: `N seats open, all reserved`, `N seats open, anyone can take them`, `N seats open, M of them reserved` |
@@ -108,8 +110,8 @@ Session 7 (2026-09-24) worked Track B of `docs/dev/NEXT_2026-09-24.md` while #4 
 | L15 | Outcome form: course, position, date joined, outcome | open | the only individual-level ground truth |
 | C5, C6 | Row sparklines; CSV download of the current view | open | |
 | I5 to I8 | Admits per day against the calendar with the Aug 19 to Sep 1 outage shaded; exit composition; Cox forest plot; hardest and easiest courses | open | I7 not started |
-| B2 | Data-status line read from the data branch's `status.json` | PR #27 (session 9) | reading `status.json` live is not done |
-| — | Department pages (`/dept/COMPSCI`) | open | keyed by subject |
+| B2 | Data-status line read from the data branch's `status.json` | done: PR #27 merged 2026-09-25 (b7fc82c) | `BWO.liveStatus` reads `status.json` live and names the term from the file's `term_id`; it does not compare that with `meta.forecast_term_id` (NEXT_2026-10-23 1.4 says it does; wrong). The guard (`BWO.isForecastTerm`) arrives with PR #42 |
+| — | Department pages (`dept.html?subject=CODE`) | done: PR #30 (merged 9bae5db) | keyed by subject |
 | X8 | Custom domain | Oliver, optional | before the r/berkeley post |
 | — | Off-season home page | moot | v3 counts down to Spring 2027 and the key-dates strip carries Oct 26; revisit only if the browser pass says otherwise |
 
