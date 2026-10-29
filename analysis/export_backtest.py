@@ -3,8 +3,10 @@
 Reads every run directory under ``reports/backtest_<term>/`` written by
 ``python -m analysis.backtest`` (``metrics.csv``, ``calibration.csv``,
 ``coverage.csv``, ``by_bucket.csv``, ``by_phase.csv``, ``report.md``) and
-writes one JSON file the Accuracy page reads. Nothing is computed here: the
-numbers are the reports' numbers, and the page prints them.
+writes one JSON file the Accuracy page reads. The numbers are the reports'
+numbers, and the page prints them; the one thing worked out here is each run's
+``calibration_gap`` (``calibration_gap()``), so the result cards can print it
+without computing a statistic in the browser (docs/DESIGN_A6.md).
 """
 from __future__ import annotations
 
@@ -57,6 +59,18 @@ def which_label(which: str) -> str:
     return {"deadline": "by the last automatic waitlist run", "instruction": "by the first day of instruction"}.get(which, which)
 
 
+def calibration_gap(calibration: dict[str, list[dict]]) -> dict[str, float]:
+    """Per predictor, the mean over its calibration deciles of predicted minus observed, in percentage points
+    at the run's horizon, rounded to one decimal (positive: the estimates ran high). The result cards print it
+    (review of 2026-10-29, 1.3). Predictors with no usable decile are left out."""
+    out: dict[str, float] = {}
+    for predictor, points in calibration.items():
+        diffs = [p["predicted"] - p["observed"] for p in points if isinstance(p.get("predicted"), (int, float)) and isinstance(p.get("observed"), (int, float))]
+        if diffs:
+            out[predictor] = round(100 * sum(diffs) / len(diffs), 1)
+    return out
+
+
 def read_run(run_dir: Path) -> dict | None:
     m = RUN_RE.match(run_dir.name)
     if not m or not (run_dir / "metrics.csv").exists():
@@ -70,7 +84,7 @@ def read_run(run_dir: Path) -> dict | None:
         found = COUNTS_RE.search(report.read_text(encoding="utf-8"))
         if found:
             counts = {k: int(v) for k, v in found.groupdict().items()}
-    return {
+    run = {
         "name": run_dir.name,
         "split": m.group("split"),
         "which": m.group("which"),
@@ -82,6 +96,10 @@ def read_run(run_dir: Path) -> dict | None:
         "by_bucket": _records(run_dir / "by_bucket.csv"),
         "by_phase": _records(run_dir / "by_phase.csv"),
     }
+    gap = calibration_gap(calibration)
+    if gap:
+        run["calibration_gap"] = gap
+    return run
 
 
 def export_backtest(reports_dir: Path | str, out_path: Path | str, *, term_id: str, term_name: str | None = None, meta: dict | None = None) -> Path:

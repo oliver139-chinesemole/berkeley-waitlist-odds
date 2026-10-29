@@ -45,6 +45,7 @@
   const COLS = [
     ["key", "Course", false], ["p", "Share who got in", true], ["median", "Median days", true], ["n", "Cases", true], ["sections", "Sections", true],
   ];
+  const DEFAULT_SORT = "default";  // not a column: thin and "at least" rows last, then by lower bound (review of 2026-10-29, 2.1)
   const ROW_CAP = 150; // rows rendered before "Show all"; keeps the phone view short
   let meta, index, state;
 
@@ -57,7 +58,8 @@
       level: ["lower", "upper", "grad"].includes(p.get("level")) ? p.get("level") : "",
       q: p.get("q") || "",
       pooled: p.get("pooled") === "1",
-      sort: COLS.some((c) => c[0] === p.get("sort")) ? p.get("sort") : "p",
+      // No sort in the URL is the default order (BWO.courseDefaultOrder), its own state: a click on Share is the plain share order.
+      sort: COLS.some((c) => c[0] === p.get("sort")) ? p.get("sort") : DEFAULT_SORT,
       dir: p.get("dir") === "asc" ? "asc" : "desc",
       all: p.get("all") === "1",
     };
@@ -70,8 +72,8 @@
     if (state.level) p.set("level", state.level);
     if (state.q) p.set("q", state.q);
     if (state.pooled) p.set("pooled", "1");
-    if (state.sort !== "p") p.set("sort", state.sort);
-    if (state.dir !== "desc") p.set("dir", state.dir);
+    if (state.sort !== DEFAULT_SORT) p.set("sort", state.sort);
+    if (state.sort !== DEFAULT_SORT && state.dir !== "desc") p.set("dir", state.dir);
     if (state.all) p.set("all", "1");
     const t = BWO.pinned();
     if (t) p.set("today", t);
@@ -87,6 +89,7 @@
     const dept = BWO.estimateLevel(meta) === "dept";
     const out = [];
     for (const r of index.courses) {
+      if (r.catalog_only) continue;  // a stub for a course with no cases: the lookup and course page have it, the table does not
       const s = r.buckets[state.bucket];
       if (!s) continue;
       if (!state.pooled && (dept ? s.pooled === "all" : s.pooled !== false)) continue;
@@ -101,6 +104,8 @@
       out.push({ r, s, p: s.p[state.h], lo: s.lo[state.h], hi: s.hi[state.h], median: s.median_days, n: s.pooled === false ? s.n : (s.n_course || 0), pool_n: s.n, sections: s.pooled === false ? s.sections : (s.sections_course || 0), key: r.key, floor: s.reach[1] < BWO.loaded.index.horizons[state.h] });
     }
     const dir = state.dir === "asc" ? 1 : -1;
+    // The default (share, highest first) puts thin and "at least" rows last; a column the reader picks sorts plainly.
+    if (state.sort === DEFAULT_SORT) return out.sort(BWO.courseDefaultOrder);
     out.sort((a, b) => {
       const va = a[state.sort], vb = b[state.sort];
       if (state.sort === "key") return dir * a.key.localeCompare(b.key);
@@ -119,11 +124,11 @@
     $("count").textContent = `${num(list.length)} ${list.length === 1 ? "course" : "courses"} at ${BWO.bucketText(state.bucket)}, share who got in within ${horizonDays} days${state.pooled ? "" : dept ? " (estimates pooled over all courses hidden)" : " (pooled estimates hidden)"}${dept ? "; department estimates, cases are the course's own" : ""}.`;
     const head = COLS.map(([id, label, numeric]) => `<th scope="col" class="${numeric ? "num" : ""}" aria-sort="${state.sort === id ? (state.dir === "asc" ? "ascending" : "descending") : "none"}"><button type="button" class="sort" data-sort="${id}">${esc(label)}</button></th>`).join("");
     const shown = state.all ? list : list.slice(0, ROW_CAP);
-    const body = shown.map((x) => `<tr class="course"><td><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(x.key)}&position=${BWO.BUCKETS.find((b) => b[2] === state.bucket)[0]}`)}">${esc(x.key)}</a><span class="sub">${esc(x.r.level ? x.r.level + " division" : "")}${dept && x.s.pooled !== "all" ? ` · ${esc(x.s.pooled === "OTHER" ? "other departments" : x.s.pooled)} estimate` : ""}${BWO.pooledTag(x.s.pooled, x.s.pooled === "all" ? "all" : "dept", meta) ? ` · ${BWO.pooledTag(x.s.pooled, x.s.pooled === "all" ? "all" : "dept", meta)}` : ""}</span></td>
-      <td class="num">${BWO.atLeastTag(x.p, x.floor)}<strong>${pct(x.p)}</strong><span class="sub">${x.lo == null ? "" : `${pct(x.lo)} to ${pct(x.hi)}`}</span></td>
-      <td class="num rest">${x.median == null ? '<span class="muted">never half</span>' : x.median.toFixed(1)}</td>
-      <td class="num rest">${num(x.n)}</td>
-      <td class="num rest">${num(x.sections)}</td></tr>`).join("");
+    const body = shown.map((x) => `<tr class="course"><td><a href="${BWO.withToday(`course.html?c=${encodeURIComponent(x.key)}&position=${BWO.BUCKETS.find((b) => b[2] === state.bucket)[0]}`)}">${esc(x.key)}</a><span class="sub">${esc(BWO.levelText(x.r.level))}${dept && x.s.pooled !== "all" ? ` · ${esc(x.s.pooled === "OTHER" ? "other departments" : x.s.pooled)} estimate` : ""}${BWO.pooledTag(x.s.pooled, x.s.pooled === "all" ? "all" : "dept", meta) ? ` · ${BWO.pooledTag(x.s.pooled, x.s.pooled === "all" ? "all" : "dept", meta)}` : ""}</span></td>
+      <td class="num" data-label="Share who got in">${BWO.atLeastTag(x.p, x.floor)}<strong>${pct(x.p)}</strong><span class="sub">${x.lo == null ? "" : `${pct(x.lo)} to ${pct(x.hi)}`}</span></td>
+      <td class="num rest" data-label="Median days">${x.median == null ? '<span class="muted">never half</span>' : x.median.toFixed(1)}</td>
+      <td class="num rest" data-label="Cases">${num(x.n)}</td>
+      <td class="num rest" data-label="Sections">${num(x.sections)}</td></tr>`).join("");
     const more = list.length > shown.length ? `<p class="small"><button type="button" class="quiet" id="showall">Show all ${num(list.length)} courses</button> <span class="muted">(${num(shown.length)} shown)</span></p>` : "";
     $("table").innerHTML = list.length
       ? `<table class="twoline" aria-label="Courses"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>${more}`

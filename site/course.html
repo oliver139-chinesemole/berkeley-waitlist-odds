@@ -33,9 +33,9 @@
 (function () {
   const { $, esc, pct, num, plural } = BWO;
   const LIVE_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/live/latest.json";
-  let meta, index, pooled, entry, row, today;
+  let meta, index, pooled, entry, row, today, backtestLoad = null, renders = 0;
 
-  function positionFromUrl() { const p = parseInt(BWO.params().get("position"), 10); return p >= 1 ? Math.min(p, 500) : 10; }
+  function positionFromUrl() { return BWO.clampPosition(BWO.params().get("position"), 10); }
 
   function summaryTable(yourBucket) {
     const h = index.horizons;
@@ -70,11 +70,12 @@
     const chart = BWO.curveChart({ series, marks: head.marks, t: today, id: "course-chart", ariaLabel: `Share who got in by days since joining, one curve per position bucket, ${row.key}; your bucket has its 95% band` });
     $("course").innerHTML = `
       <p class="muted"><a href="${BWO.withToday("courses.html")}">Courses</a> · ${esc(row.dept_group === "OTHER" ? "other departments" : row.dept_group)}</p>
-      <h1>${esc(row.key)} <span class="tag">${esc(row.level ? row.level + " division" : "")}</span></h1>
+      <h1>${esc(row.key)} <span class="tag">${esc(BWO.levelText(row.level))}</span></h1>
       <form id="posform" class="row lookup" style="max-width:24rem"><div><label for="position">Your position</label><input id="position" type="number" inputmode="numeric" min="1" max="500" step="1" value="${pos}"></div><div><button type="submit">Update</button></div></form>
       <section class="card" aria-live="polite">
         <p class="muted">${esc(row.key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${resolved ? BWO.pooledTag(resolved.pooled, resolved.source, meta) : ""}</p>
         ${head.html}
+        ${BWO.CALIBRATION_SLOT}
         ${resolved && resolved.cell ? `<dl class="kv"><dt>Median time to clear</dt><dd>${esc(BWO.medianText(resolved.cell))}</dd><dt>Cases</dt><dd>${esc(BWO.casesHtml(resolved.cell, resolved.own))}</dd></dl>` : ""}
         ${head.after || ""}
         ${BWO.ladderHtml(resolved, entry, bucket, meta)}
@@ -88,8 +89,10 @@
       <div id="live"></div>
       ${related(bucket)}`;
     BWO.activateCharts();
+    const card = ++renders;
+    BWO.fillCalibration(backtestLoad, meta, head.within, () => card === renders);
     document.title = `${row.key} · ${BWO.SITE}`;
-    $("posform").addEventListener("submit", (ev) => { ev.preventDefault(); const p = Math.max(1, parseInt($("position").value, 10) || 1); if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?c=${encodeURIComponent(row.key)}&position=${p}`)); render(p); });
+    $("posform").addEventListener("submit", (ev) => { ev.preventDefault(); const p = BWO.clampPosition($("position").value, 10); if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?c=${encodeURIComponent(row.key)}&position=${p}`)); render(p); });
     live();
   }
 
@@ -182,11 +185,12 @@
     meta = r.meta; index = r.data.index; pooled = r.data.pooled || { all: {}, dept: {}, level: {} };
     $("dates").innerHTML = BWO.keyDatesHtml(meta, today);
     BWO.setStamp(meta, today);
-    const c = BWO.params().get("c") || "";
+    const c = BWO.params().get("c") || BWO.params().get("course") || "";  // the lookup's name for it works too (review 2.8)
+    backtestLoad = BWO.loadBacktest(meta);  // not awaited: the card's calibration line fills in when it arrives
     const match = await BWO.matchCourseAsync(index, c, meta);
     row = match.row;
     if (!row) {
-      $("status").innerHTML = `<p class="error">No data for <strong>${esc(c || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests courses close to what you typed when there are any, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
+      $("status").innerHTML = `<p class="error">${BWO.noDataHtml(meta, c.trim() ? BWO.typedKey(c) : "")}</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests courses close to what you typed when there are any, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
       return;
     }
     const subj = await BWO.loadSubject(meta, row.subject);

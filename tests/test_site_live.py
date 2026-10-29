@@ -18,9 +18,9 @@ separate rows, and each page shows only its own.
 
 The source sentence's collection clause, and the Methods page's collection
 sentence, follow the data branch's ``status.json`` the same way
-(``HARNESS_STATUS_FILE``): "begins with Phase 1 on Oct 26, 2026" (true before and
-after that day) while the scraper reads its test term or the file is not read,
-"has started" once it reads the forecast term.
+(``HARNESS_STATUS_FILE``): "begins with Phase 1 on Oct 26, 2026" while the file is not read, or before that
+day while the scraper reads its test term; "has not started" after it while the
+scraper still reads its test term; "has started" once it reads the forecast term.
 """
 from __future__ import annotations
 
@@ -272,6 +272,10 @@ DATED = "Live Spring 2027 collection by this project begins with Phase 1 on Oct 
 STARTED = "Live Spring 2027 collection by this project has started; the estimates switch to its own snapshots once Spring waitlists start clearing."
 METHODS_DATED = "Collection for Spring 2027 begins with Phase 1 on Oct 26, 2026."
 METHODS_STARTED = "Collection for Spring 2027 has started."
+# Past Phase 1's start (NOW is Jan 10, 2027) with a run of an earlier term, the date goes: "has not started"
+# next to "has not started collecting" (review of 2026-10-29, section 7); test_site.py pins the dated form before Oct 26.
+UNSWITCHED = "Live Spring 2027 collection by this project has not started; the estimates switch to its own snapshots once Spring waitlists start clearing."
+METHODS_UNSWITCHED = "Collection for Spring 2027 has not started."
 # The status sentence for each file (audit item 7): a 2268 run says Spring 2027 collection has not started yet.
 NOT_STARTED = "This project has not started collecting Spring 2027 yet; its last snapshot, of Fall 2026, ran about 12 min ago: 1,425 sections read, 1 not reached."
 LAST_SPRING = "This project&#39;s last Spring 2027 snapshot ran about 12 min ago: 1,425 sections read, 1 not reached."
@@ -290,7 +294,7 @@ def status_for(tmp_path: Path, **changes: object) -> Path:
 
 @pytest.mark.parametrize(
     ("term_id", "term_name", "clause"),
-    [("2268", "Fall 2026", DATED), ("2272", "Spring 2027", STARTED)],
+    [("2268", "Fall 2026", UNSWITCHED), ("2272", "Spring 2027", STARTED)],
     ids=["before_the_switch", "after_the_switch"],
 )
 @pytest.mark.parametrize("page", sorted(SOURCE_PAGES))
@@ -307,7 +311,7 @@ def test_the_source_sentence_follows_the_status_term(live_site: Path, tmp_path: 
 
 @pytest.mark.parametrize(
     ("term_id", "term_name", "sentence"),
-    [("2268", "Fall 2026", METHODS_DATED), ("2272", "Spring 2027", METHODS_STARTED)],
+    [("2268", "Fall 2026", METHODS_UNSWITCHED), ("2272", "Spring 2027", METHODS_STARTED)],
     ids=["before_the_switch", "after_the_switch"],
 )
 def test_the_methods_collection_sentence_follows_the_status_term(live_site: Path, tmp_path: Path, term_id: str, term_name: str, sentence: str) -> None:
@@ -370,7 +374,7 @@ LOOKUPS = {  # how -> (render arguments, extra environment, the #showing it leav
 
 @pytest.mark.parametrize(
     ("term_id", "term_name", "clause"),
-    [("2268", "Fall 2026", DATED), ("2272", "Spring 2027", STARTED)],
+    [("2268", "Fall 2026", UNSWITCHED), ("2272", "Spring 2027", STARTED)],
     ids=["before_the_switch", "after_the_switch"],
 )
 @pytest.mark.parametrize("how", sorted(LOOKUPS))
