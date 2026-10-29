@@ -124,6 +124,10 @@ Covering run: `tests/test_run.py tests/test_run_meta.py tests/test_export.py tes
 
 None. The one real interaction is between #45's shipped `site/data/titles.json` and #56's "no Did you mean" expectation in the titles-skipped test. The resolution itself handles it: #45's titles-free copy of site/data is combined with #56's `[]` nearest-keys assertion, and no extra commit is needed.
 
+## Batch 6 (2026-10-29): four PRs not yet in the integration branch
+
+#59 `scrape-partial-sweeps` (on #48), #58 `catalog-stubs` (on #45), #60 `export-options` (on #58; its head merges #58's last commit), #61 `site-review-oct29` (on #56). Order with the rest: #43, #42, #44, #45, #47, #48, **#59**, #49, #52, #55, #56, **#61**, #54, #46, #50, #51, #53, **#58**, **#60**. `integration-2026-10-30` (1ecb970, on origin) is `integration-2026-10-28` plus #59, #61 and #60 in that order, resolved by keeping both sides: `docs/DATA_LOG.md` (rows from both), `docs/DESIGN_A6.md` (the Insights paragraph: the division rule and inversion note, then #61's tail sentence), `analysis/export.py` (`write_titles` and `titles_payload` both take `loaded=`), `analysis/run.py` (`--cut-at-last-auto` beside `--reach-min-at-risk`, `--interval-min-sections`, `--exits-at-last-auto`; the `--catalog` help text from #60), `tests/test_run.py` (both test sets). Result: 664 tests, 190 of 190 queries, 41 smoke renders. Two default-off "last automatic run" helpers now coexist (`--cut-at-last-auto` from #53, `--exits-at-last-auto` from #60); they give the same instant for 2262, 2268 and 2272 and should share one function later.
+
 ## How Oliver lands it
 
 ### Option A: PR by PR in GitHub (merge commits, not squash)

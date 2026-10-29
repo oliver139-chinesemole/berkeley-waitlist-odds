@@ -9,7 +9,7 @@
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step (2026-10-26 04:00Z, end of session 11): the switch to Spring 2027 has not happened and must happen now (`docs/dev/NEXT_2026-10-25.md` sections 0 and 2). Sixteen draft PRs are open (#42 to #56, #33) and none is merged; the merge order and the conflicts to resolve are NEXT section 3 (#43 first, #46 and #50 before Sun Nov 1; merge commits, not squash). One decision is waiting on Oliver: the deadline cut (NEXT section 4, item 0). The next work is NEXT section 5; the history is docs/dev/HANDOFF.md session 11. Update this line at the end of every session.
+- Current step (2026-10-29T22:50Z, end of session 11 batch 6): the switch to Spring 2027 has not happened and the scrape runs are failing with exit 4 under Phase 1 load (`docs/dev/NEXT_2026-10-25.md` section 0 item 4; Oliver's review `docs/dev/SITE_REVIEW_2026-10-29.md`). Twenty draft PRs are open (#42 to #56, #58 to #61, #33) and none is merged: merge #43, #48 and #59 with the switch, then the order in NEXT section 3 and 3b (merge commits, not squash; #46 and #50 before Sun Nov 1). Decisions waiting on Oliver: NEXT section 4 (the deadline cut, `--max-missing-share`, #60's options, the calibration line). Next work: NEXT section 5 (batch 7 candidates); history in docs/dev/HANDOFF.md session 11. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.
