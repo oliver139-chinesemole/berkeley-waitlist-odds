@@ -70,7 +70,7 @@
     const chart = BWO.curveChart({ series, marks: head.marks, t: today, id: "course-chart", ariaLabel: `Share who got in by days since joining, one curve per position bucket, ${row.key}; your bucket has its 95% band` });
     $("course").innerHTML = `
       <p class="muted"><a href="${BWO.withToday("courses.html")}">Courses</a> · ${esc(row.dept_group === "OTHER" ? "other departments" : row.dept_group)}</p>
-      <h1>${esc(row.key)} <span class="tag">${esc(row.level ? row.level + " division" : "")}</span></h1>
+      <h1>${esc(row.key)} <span class="tag">${esc(BWO.levelText(row.level))}</span></h1>
       <form id="posform" class="row lookup" style="max-width:24rem"><div><label for="position">Your position</label><input id="position" type="number" inputmode="numeric" min="1" max="500" step="1" value="${pos}"></div><div><button type="submit">Update</button></div></form>
       <section class="card" aria-live="polite">
         <p class="muted">${esc(row.key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${resolved ? BWO.pooledTag(resolved.pooled, resolved.source, meta) : ""}</p>

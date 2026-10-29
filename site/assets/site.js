@@ -436,6 +436,8 @@ const BWO = (function () {
     const file = (meta && meta.files && meta.files.backtest) || "backtest.json";
     return fetchJson("data/" + file).then((r) => (r.ok ? r.data : null), () => null);
   }
+  // A course level as the pages print it: "lower division", "upper division", "graduate division" (review of 2026-10-29, 3.8: it said "grad division").
+  function levelText(level) { return level ? `${level === "grad" ? "graduate" : level} division` : ""; }
   function levelOf(number) { const m = String(number || "").match(/(\d+)/); if (!m) return null; const n = parseInt(m[1], 10); return n < 100 ? "lower" : n < 200 ? "upper" : "grad"; }
 
   // ----------------------------------------------------------------- search
@@ -1072,7 +1074,7 @@ const BWO = (function () {
     let rows = [], active = -1, open = false;
     const render = () => {
       if (!rows.length) { list.innerHTML = ""; list.hidden = true; open = false; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); return; }
-      list.innerHTML = rows.map((r, i) => `<li role="option" id="${list.id}-${i}" aria-selected="${i === active}" data-key="${esc(r.key)}"><span>${esc(r.key)}</span><span class="sub">${esc(r.level ? r.level + " division" : "")}${r.joins ? ` · ${num(r.joins)} joins` : ""}</span></li>`).join("");
+      list.innerHTML = rows.map((r, i) => `<li role="option" id="${list.id}-${i}" aria-selected="${i === active}" data-key="${esc(r.key)}"><span>${esc(r.key)}</span><span class="sub">${esc(levelText(r.level))}${r.joins ? ` · ${num(r.joins)} waitlist joins${loaded.meta && loaded.meta.term_name ? `, ${esc(loaded.meta.term_name)}` : ""}` : ""}</span></li>`).join("");
       list.hidden = false; open = true;
       input.setAttribute("aria-expanded", "true");
       if (active >= 0) input.setAttribute("aria-activedescendant", `${list.id}-${active}`); else input.removeAttribute("aria-activedescendant");
@@ -1102,7 +1104,7 @@ const BWO = (function () {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, clampPosition, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, noDataHtml, stamp, setStamp,
-    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, atLeastTag, pagesPredictor, calibrationGap, calibrationHtml, loadBacktest,
+    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, levelText, atLeastTag, pagesPredictor, calibrationGap, calibrationHtml, loadBacktest,
     parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, courseDefaultOrder, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,

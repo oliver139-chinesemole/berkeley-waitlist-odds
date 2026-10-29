@@ -1885,3 +1885,30 @@ def test_dept_page_offers_only_close_subjects() -> None:
     assert "Nearest: " in out["elements"]["summary"]["html"] and "dept.html?subject=ECON" in out["elements"]["summary"]["html"]
     out = render(SITE, page="dept.html", search="?subject=Econom")
     assert "dept.html?subject=ECON" in out["elements"]["summary"]["html"]  # the start of the subject's name
+
+
+def test_combobox_rows_say_what_the_joins_count() -> None:
+    """Section 3.7, on the served index (the synthetic export has no joins): "· 538 joins" names what it counts
+    and the term it is from; the number stays."""
+    out = render(SITE, expression="(function(){ const list = document.getElementById('course-list'); BWO.combobox(document.getElementById('course'), list, BWO.loaded.index).suggest('cs 61a'); return list.innerHTML; })()")
+    row = next(r for r in load(SITE, "index.json")["courses"] if r["key"] == "COMPSCI 61A")
+    term = load(SITE, "meta.json")["term_name"]
+    assert row["joins"] and f"<span>COMPSCI 61A</span><span class=\"sub\">lower division · {row['joins']:,} waitlist joins, {term}</span>" in out["eval"]
+    assert " joins</span>" not in out["eval"]
+
+
+def test_graduate_courses_say_graduate_division() -> None:
+    """Section 3.8: "grad division" is "graduate division" (on the department page, and wherever a level is printed)."""
+    out = render(SITE, page="dept.html", search="?subject=ECON", expression="['lower', 'upper', 'grad', null].map(BWO.levelText)")
+    assert out["eval"] == ["lower division", "upper division", "graduate division", ""]
+    table = out["elements"]["table"]["html"]
+    assert "graduate division" in table and "grad division" not in table
+    for page in ("dept.html", "courses.html", "course.html"):
+        assert 'r.level + " division"' not in (SITE / page).read_text() and 'row.level + " division"' not in (SITE / page).read_text()
+    assert '"DISSTD": "Disability Studies"' in (SITE / "assets" / "site.js").read_text()  # DISSTD already has its name on this branch
+
+
+def test_the_404_page_has_a_description() -> None:
+    """Section 3.10: every page has a meta description, the 404 page included."""
+    for page in PAGES:
+        assert re.search(r'<meta name="description" content="[^"]{20,}">', (SITE / page).read_text()), page
