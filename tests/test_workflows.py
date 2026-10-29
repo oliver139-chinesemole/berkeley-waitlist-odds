@@ -276,7 +276,7 @@ def test_weekly_commit_stages_only_site_data_and_the_artifact_keeps_the_report()
     assert len(blocks) == 1, blocks
     assert [l.strip() for l in blocks[0].splitlines() if l.strip().startswith("git add")] == ["git add site/data"]
     assert "reports" not in blocks[0] and "cp " not in blocks[0], blocks[0]
-    upload = text[text.index("- uses: actions/upload-artifact@v4") :]
+    upload = text[text.index("- uses: actions/upload-artifact@v7") :]
     assert "if: always()" in upload and "analysis/out" in upload and "retention-days: 30" in upload, upload
 
 
