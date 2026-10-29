@@ -28,19 +28,20 @@ concurrency:
 
 jobs:
   analysis:
-    runs-on: ubuntu-latest
+    # ubuntu-latest migrates to Ubuntu 26 from 2026-10-19; pinned until after the Feb 10, 2027 add/drop deadline.
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     env:
       PYTHONUNBUFFERED: "1"
       TERM_NAME: ${{ inputs.term || vars.SCRAPE_TERM || 'Spring 2027' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           ref: data
           path: data-branch
           fetch-depth: 1
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -146,7 +147,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: gh workflow run pages.yml
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: analysis-${{ steps.term.outputs.term_id }}-${{ github.run_id }}
