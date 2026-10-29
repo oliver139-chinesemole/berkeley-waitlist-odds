@@ -178,6 +178,9 @@ const BWO = (function () {
   // the forecast term, then BWO.liveStatus swaps in "has started".
   const COLLECTION_DATED = "begins with Phase 1 on Oct 26, 2026";
   const COLLECTION_STARTED = "has started";
+  // Once Phase 1 has begun and status.json still names an earlier term (the scraper has not switched), the dated
+  // clause would sit next to "has not started collecting": the date goes (review of 2026-10-29, section 7).
+  const COLLECTION_NOT_STARTED = "has not started";
   // The pre-registered Spring 2027 test: the Spring 2026 cohort from Berkeleytime's
   // history, frozen at the commit that installed it (CLAIMS.md, docs/DATA_LOG.md) and
   // scored unchanged after the add/drop deadline. meta.json carries prereg_commit and
@@ -251,6 +254,12 @@ const BWO = (function () {
     }
     return statusLoad;
   }
+  // True when the run in status.json is of an earlier term than the forecast term and today is past the forecast term's Phase 1 start.
+  function notStartedPastPhase1(s, meta) {
+    const start = meta && meta.dates ? dateOf(meta.dates.phase1_start) : null;
+    if (!start || !termName(s.term_id) || !termName(meta.forecast_term_id) || !(Number(s.term_id) < Number(meta.forecast_term_id))) return false;
+    return today() > start;
+  }
   // Called after the page has set its status line; never awaited, so it cannot
   // hold up first paint or the data loads. A snapshot of the forecast term (the
   // page's meta from BWO.load) also takes the date out of the collection clause, in
@@ -262,7 +271,8 @@ const BWO = (function () {
         const got = await loadStatus();
         const text = got && liveStatusText(got.s, got.now, loaded.meta);
         if (!text) return;
-        if (isForecastTerm(got.s.term_id, loaded.meta)) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, COLLECTION_STARTED);
+        const clause = isForecastTerm(got.s.term_id, loaded.meta) ? COLLECTION_STARTED : notStartedPastPhase1(got.s, loaded.meta) ? COLLECTION_NOT_STARTED : null;
+        if (clause) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, clause);
         el.innerHTML += el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`;
       } catch (e) { /* the page stays as it was */ }
     };
@@ -297,9 +307,17 @@ const BWO = (function () {
   function horizons(meta, t) {
     return { deadline: daysBetween(t, addDays(dateOf(meta.deadline), 1)), instruction: daysBetween(t, dateOf(meta.instruction_start)) };
   }
-  // The strip of key dates: what is next, from the forecast term's calendar.
+  // The strip of key dates: what is next, from the forecast term's calendar. While Phase 1 is running (from
+  // phase1_start through its end) the first item is the day it ends for continuing students, `running: true`
+  // (review of 2026-10-29, 3.9: the strip started at "Phase 2 opens" with Phase 1 open). Its end is
+  // meta.dates.phase1_end (Nov 15, 2026), or the day before phase2_start when the calendar has no phase1_end.
+  function isoOf(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; }
   function keyDates(meta, t) {
     const dates = meta.dates || {};
+    const start = dateOf(dates.phase1_start), next = dateOf(dates.phase2_start);
+    const end = dateOf(dates.phase1_end) || (next ? addDays(next, -1) : null);
+    const running = start && end && t >= start && t <= end
+      ? [{ key: "phase1_end", label: "Phase 1 (continuing) ends", iso: isoOf(end), left: daysBetween(t, end), past: false, running: true }] : [];
     const rows = [
       ["phase1_start", "Phase 1 opens"], ["phase2_start", "Phase 2 opens"], ["adjustment_start", "Adjustment period"],
       ["instruction_start", "First day of class"], ["last_auto_waitlist", "Last automatic waitlist run"], ["add_drop_deadline", "Add/drop deadline"],
@@ -311,12 +329,13 @@ const BWO = (function () {
       const left = daysBetween(t, dateOf(iso));
       out.push({ key, label, iso, left, past: left < 0 });
     }
-    return out;
+    return running.concat(out);
   }
   function keyDatesHtml(meta, t) {
     const all = keyDates(meta, t);
-    const upcoming = all.filter((d) => !d.past).slice(0, 3);
-    const items = (upcoming.length ? upcoming : all.slice(-2)).map((d) => {
+    const running = all.filter((d) => d.running), rest = all.filter((d) => !d.running);
+    const upcoming = rest.filter((d) => !d.past).slice(0, 3);
+    const items = running.concat(upcoming.length ? upcoming : rest.slice(-2)).map((d) => {
       const rel = d.left > 0 ? `in ${days(d.left)}` : d.left === 0 ? "today" : `${days(-d.left)} ago`;
       const you = d.key === "instruction_start" || d.key === "last_auto_waitlist" ? " you" : "";
       return `<li class="${you.trim()}"><strong>${esc(fmtDay(d.iso))}</strong> ${esc(d.label)} <span class="muted">(${rel})</span></li>`;

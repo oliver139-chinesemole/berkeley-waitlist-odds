@@ -1912,3 +1912,58 @@ def test_the_404_page_has_a_description() -> None:
     """Section 3.10: every page has a meta description, the 404 page included."""
     for page in PAGES:
         assert re.search(r'<meta name="description" content="[^"]{20,}">', (SITE / page).read_text()), page
+
+
+def pinned_render(site_root: Path, now: str, **kw: object) -> dict:
+    """A render at a pinned instant in Berkeley's time zone, with no ?today= (the page's own clock)."""
+    env = {"HARNESS_NOW": now, "TZ": "America/Los_Angeles", **(kw.pop("env", None) or {})}
+    return render(site_root, today=None, env=env, **kw)
+
+
+@pytest.mark.parametrize(("now", "first"), [
+    ("2026-10-20T19:00:00Z", '<strong>Oct 26, 2026</strong> Phase 1 opens <span class="muted">(in 6 days)</span>'),
+    ("2026-10-29T19:00:00Z", '<strong>Nov 15, 2026</strong> Phase 1 (continuing) ends <span class="muted">(in 17 days)</span>'),
+    ("2026-11-15T19:00:00Z", '<strong>Nov 15, 2026</strong> Phase 1 (continuing) ends <span class="muted">(today)</span>'),
+    ("2026-11-16T19:00:00Z", '<strong>Nov 23, 2026</strong> Phase 2 opens <span class="muted">(in 7 days)</span>'),
+    ("2026-11-25T19:00:00Z", '<strong>Jan 11, 2027</strong> Adjustment period <span class="muted">(in 47 days)</span>'),
+])
+def test_the_date_strip_says_phase_1_is_running(full_site: Path, now: str, first: str) -> None:
+    """Section 3.9: while Phase 1 runs, the strip starts with the day it ends (meta.dates.phase1_end, the continuing
+    students' end, Nov 15); the three dates after it are the strip as it was."""
+    strip = pinned_render(full_site, now)["elements"]["dates"]["html"]
+    items = re.findall(r"<li[^>]*>(.*?)</li>", strip)
+    assert items[1] == first, items
+    running = "Phase 1 (continuing) ends" in first
+    assert len(items) == 1 + 3 + (1 if running else 0)
+    if running:
+        assert [re.sub(r"<[^>]+>", "", i).split(" (")[0] for i in items[2:]] == ["Nov 23, 2026 Phase 2 opens", "Jan 11, 2027 Adjustment period", "Jan 19, 2027 First day of class"]
+    out = pinned_render(full_site, now, expression="BWO.keyDates(BWO.loaded.meta, BWO.today()).filter((d) => d.running).map((d) => [d.key, d.iso])")
+    assert out["eval"] == ([["phase1_end", "2026-11-15"]] if running else [])
+    # without phase1_end the day before Phase 2 opens stands in
+    out = pinned_render(full_site, now, expression="(function(){ const m = JSON.parse(JSON.stringify(BWO.loaded.meta)); delete m.dates.phase1_end; return BWO.keyDates(m, BWO.today()).filter((d) => d.running).map((d) => d.iso); })()")
+    assert out["eval"] == (["2026-11-22"] if "2026-10-26" <= now[:10] <= "2026-11-22" else [])
+
+
+def collection_clause(html: str) -> str:
+    m = re.search(r"Live Spring 2027 collection by this project ([^;]*);", html)
+    assert m, html
+    return m.group(1)
+
+
+@pytest.mark.parametrize(("now", "term", "clause", "methods"), [
+    ("2026-10-29T19:00:00Z", "2268", "has not started", "Collection for Spring 2027 has not started."),  # past Phase 1, the scraper not switched
+    ("2026-10-20T19:00:00Z", "2268", "begins with Phase 1 on Oct 26, 2026", "Collection for Spring 2027 begins with Phase 1 on Oct 26, 2026."),
+    ("2026-10-29T19:00:00Z", "2272", "has started", "Collection for Spring 2027 has started."),
+])
+def test_the_collection_clause_never_contradicts_the_status_line(tmp_path: Path, now: str, term: str, clause: str, methods: str) -> None:
+    """Section 7: the dated clause must not sit next to "has not started collecting"; on the served meta (forecast 2272, Phase 1 Oct 26)."""
+    status = tmp_path / "status.json"
+    status.write_text(json.dumps({**json.loads(STATUS_FIXTURE.read_text()), "last_run_at": "2026-10-29T18:48:00+00:00", "term_id": term}))
+    env = {"HARNESS_STATUS_FILE": str(status)}
+    line = pinned_render(SITE, now, env=env)["status"]
+    assert collection_clause(line) == clause
+    assert ("has not started collecting Spring 2027 yet" in line) == (term == "2268")
+    out = pinned_render(SITE, now, page="methodology.html", env=env)
+    assert out["elements"]["collection"]["html"] == methods
+    # no status file: the dated clause, which is all the page knows
+    assert collection_clause(pinned_render(SITE, now)["status"]) == "begins with Phase 1 on Oct 26, 2026"
