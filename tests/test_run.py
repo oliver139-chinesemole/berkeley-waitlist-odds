@@ -231,3 +231,14 @@ def test_site_options_reach_the_export_and_default_off(tmp_path: Path, monkeypat
     assert run.main([*base, "--reach-min-at-risk", "20"]) == 0
     capsys.readouterr()
     assert seen[0]["site_options"] == {} and seen[1]["site_options"] == {"reach_min_at_risk": 20}
+
+
+def test_cli_passes_interval_min_sections(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture) -> None:
+    seen: list[dict] = []
+    monkeypatch.setattr(run, "run_analysis", lambda *a, **kw: seen.append(kw) or SimpleNamespace(out_dir=tmp_path, flows_summary={}, cohort_rows={}, notes=[], figures=[]))
+    monkeypatch.setattr(run, "load_panel", lambda root, term: pd.DataFrame())
+    monkeypatch.setattr(run, "section_identity", lambda root, term: pd.DataFrame())
+    base = ["--data-root", str(tmp_path), "--term-id", "2272", "--data-log", str(tmp_path / "no_log.md"), "--out", str(tmp_path / "out")]
+    assert run.main([*base, "--interval-min-sections", "3"]) == 0
+    capsys.readouterr()
+    assert seen[0]["site_options"] == {"interval_min_sections": 3}

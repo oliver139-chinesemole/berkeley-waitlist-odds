@@ -591,3 +591,36 @@ def test_reach_min_at_risk_reaches_pools_courses_insights_and_the_clis(cohort: p
     capsys.readouterr()
     assert json.loads((tmp_path / "cli" / "meta.json").read_text())["reach_min_at_risk"] == 60
     assert json.loads((tmp_path / "cli" / "pooled.json").read_text())["all"] == c_pool["all"]
+
+
+def test_interval_min_sections_drops_the_band_of_a_cell_with_too_few_sections(cohort: pd.DataFrame, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    durations = [float(d % 9 + 1) for d in range(60)]
+    events = [d % 3 != 0 for d in range(60)]
+    two = _toy_rows(durations, [int(e) for e in events], [str(i % 2) for i in range(60)])
+    three = _toy_rows(durations, [int(e) for e in events], [str(i % 3) for i in range(60)])
+    assert any(pt[2] is not None for pt in export._cell(two, n_boot=20)["curve"])  # the bootstrap runs on 2 sections
+    cut = export._cell(two, n_boot=20, interval_min_sections=3)
+    assert all(pt[2] is None and pt[3] is None for pt in cut["curve"]) and cut["sections"] == 2
+    assert [pt[:2] for pt in cut["curve"]] == [pt[:2] for pt in export._cell(two, n_boot=20)["curve"]]
+    s = export._summary(cut)
+    assert s["lo"] == [None, None, None] and s["hi"] == [None, None, None]
+    assert export._cell(three, n_boot=20, interval_min_sections=3) == export._cell(three, n_boot=20)
+    plain, banded = tmp_path / "plain", tmp_path / "banded"
+    export_site_tables(cohort, CAL, plain, n_boot=5)
+    export_site_tables(cohort, CAL, banded, n_boot=5, interval_min_sections=16)
+    pools = json.loads((banded / "pooled.json").read_text())
+    for kind in ("dept", "level"):
+        for cells in pools[kind].values():
+            for c in cells.values():
+                assert all(pt[2] is None for pt in c["curve"]) == (c["sections"] < 16)
+    assert json.loads((banded / "meta.json").read_text())["interval_min_sections"] == 16 and "interval_min_sections" not in json.loads((plain / "meta.json").read_text())
+    idx = {r["key"]: r for r in json.loads((banded / "index.json").read_text())["courses"]}
+    for r in idx.values():
+        for s in r["buckets"].values():
+            if s["pooled"] is False:
+                assert (s["lo"][0] is None) == (s["sections"] < 16)
+    cohort_path = tmp_path / "cohort.parquet"
+    cohort.to_parquet(cohort_path, index=False)
+    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--out", str(tmp_path / "cli"), "--n-boot", "5", "--interval-min-sections", "16"]) == 0
+    capsys.readouterr()
+    assert json.loads((tmp_path / "cli" / "meta.json").read_text())["interval_min_sections"] == 16
