@@ -21,21 +21,22 @@ env:
 
 jobs:
   gaps:
-    runs-on: ubuntu-latest
+    # ubuntu-latest migrates to Ubuntu 26 from 2026-10-19; pinned until after the Feb 10, 2027 add/drop deadline.
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - name: Check out main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Check out data branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: data
           path: data-branch
           fetch-depth: 1
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -90,7 +91,6 @@ jobs:
             cat gap_report.txt
             echo '```'
             echo
-            echo "Before Oct 4, 2026 this is expected for Spring 2027 (term not published; runs exit 3 and write nothing)."
             echo "Log the outage in docs/DATA_LOG.md once resolved."
           } > alert_body.md
           if [ -n "$ISSUE_NUMBER" ]; then

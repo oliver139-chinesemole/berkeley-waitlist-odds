@@ -304,6 +304,12 @@ class PooledKM:
 
 
 class CoxPredictor:
+    """The Cox fit's probability of clearing by each row's own horizon ``h``:
+    ``1 - S0(h) ** partial_hazard`` with lifelines' baseline survival (centred
+    covariates, matching ``predict_partial_hazard``), i.e. the event probability,
+    equal to ``1 - predict_survival_function(x, times=[h])``. Rows the design matrix
+    drops take the fallback."""
+
     def __init__(self, *, max_rows: int | None = COX_MAX_ROWS) -> None:
         self.result = None
         self.columns: list[str] = []

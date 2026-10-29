@@ -26,6 +26,7 @@
   <h1>Will you get off the waitlist?</h1>
   <p class="muted">Type your course and your position on its waitlist. You get the share of comparable students who got in before the last automatic waitlist run, and by when.</p>
   <section id="status" class="status" aria-live="polite"><p class="muted">Loading data…</p><div class="skeleton" style="width:70%"></div><div class="skeleton" style="width:45%"></div></section>
+  <div id="showing" aria-live="polite"></div>
 
   <form id="form" class="row lookup" autocomplete="off" hidden>
     <div class="combo">
@@ -74,13 +75,15 @@
     const head = BWO.headlineHtml(cell, resolved.pooled, resolved.source, meta, today);
     const chart = BWO.curveChart({ series: [{ label: `${key}, ${BWO.bucketText(bucket)}`, curve: cell.curve, cls: "s3", you: true }], marks: head.marks, t: today, labelEnd: true, id: "lookup-chart", ariaLabel: `Share of comparable students who had cleared, by days since joining, with a 95% band; ${key} at ${BWO.bucketText(bucket)}` });
     const link = `${location.origin}${location.pathname}?course=${encodeURIComponent(key)}&position=${pos}`;
-    const text = `${key}, position ${pos}: ${head.atDeadline ? `${BWO.frequency(head.atDeadline.p).toLowerCase()} comparable students got in by ${BWO.fmtDay(meta.deadline)} (${pct(head.atDeadline.p)}${head.atDeadline.lo == null ? "" : `, 95% interval ${pct(head.atDeadline.lo)} to ${pct(head.atDeadline.hi)}`})` : "see the look back"}. ${BWO.sourceLabel(meta).replace(/&#39;/g, "'")}. ${link}`;
+    const text = `${key}, position ${pos}: ${head.atDeadline ? shareText(head) : "see the look back"}. ${BWO.sourceLabel(meta).replace(/&#39;/g, "'")}. ${link}`;
     show(`
       <p class="muted small">${esc(BWO.SITE)} · as of ${esc(BWO.fmtShort(today))}</p>
       ${note || ""}
       <p class="muted">${esc(key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${BWO.pooledTag(resolved.pooled, resolved.source, meta)}</p>
       ${head.html}
+      ${BWO.CALIBRATION_SLOT}
       ${BWO.byWhenHtml(cell, meta, today)}
+      ${head.after}
       ${entry ? bucketRow(entry, bucket, head.h) : ""}
       ${chart}
       <dl class="kv">
@@ -92,13 +95,26 @@
       <p class="muted small">${BWO.levelNote(meta)}</p>
       <div class="actions"><button type="button" class="quiet" id="copy-link">Copy link</button><button type="button" class="quiet" id="copy-text">Copy as text</button><span id="copied" class="muted small" aria-live="polite"></span></div>
       <p class="muted small">${esc(BWO.VERDICT_NOTE)}</p>
-      <p class="muted small"><strong>What this number cannot see:</strong> seats reserved for a category you are not in, time conflicts and unit caps that block an enrollment, and discussion or lab sections with no room. <a href="methodology.html#cannot">What the estimates cannot tell you</a>.</p>`);
+      <p class="muted small"><strong>What this number cannot see:</strong> seats reserved for a category you are not in, time conflicts and unit caps that block an enrollment, discussion or lab sections with no room, and a seat that opens when you would be the only student left on the waitlist, which the enrollment counts show staying open or going to another student. <a href="methodology.html#cannot">What the estimates cannot tell you</a>.</p>`);
+    const card = lookups;
+    BWO.fillCalibration(backtestLoad, meta, head.within, () => card === lookups);
     const done = (msg) => { const c = $("copied"); if (c) { c.textContent = msg; setTimeout(() => { c.textContent = ""; }, 2500); } };
     const cl = $("copy-link"), ct = $("copy-text");
     if (cl) cl.addEventListener("click", () => BWO.copyText(link).then(() => done("Link copied")).catch(() => done(link)));
     if (ct) ct.addEventListener("click", () => BWO.copyText(text).then(() => done("Copied")).catch(() => done(text)));
     if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?course=${encodeURIComponent(key)}&position=${pos}`));
     document.title = `${key} at position ${pos} · ${BWO.SITE}`;
+  }
+
+  // "Copy as text": the headline's words, the verdict first when there is too little data to call.
+  function shareText(head) {
+    const r = head.atDeadline, f = BWO.frequency(r.p);
+    const who = /^About/.test(f) ? `${f.toLowerCase()} comparable students` : `${f.toLowerCase()} among comparable students`;
+    const v = head.thin ? `${head.verdict.label.toLowerCase()} (${head.verdict.why}); ` : "";
+    const run = `the last automatic waitlist run (${BWO.fmtDay(meta.deadline)})`;
+    // Past the reach: "at least that share" in the days left, or, where the share prints as 100%, just how far away the run is.
+    const left = !r.capped ? `the time left before ${run}` : `the longest the data follow anyone; ${BWO.atLeast(r) ? `at least that share within the ${BWO.days(head.h.deadline)} left before ${run}` : `${run} is ${BWO.days(head.h.deadline)} away`}`;
+    return `${v}${who} got in within ${BWO.days(head.within)} of joining (${pct(r.p)}${r.lo == null ? "" : `, 95% interval ${pct(r.lo)} to ${pct(r.hi)}`}), ${left}`;
   }
 
   function renderFallback(keyText, pos, bucket, subject, number, message) {
@@ -110,6 +126,7 @@
     renderCell(keyText, pos, bucket, fb, null, `<p class="error">${message}</p><p>Showing the estimate for ${what} at ${esc(BWO.bucketText(bucket))} instead.</p>`);
   }
 
+  let backtestLoad = Promise.resolve(null);  // backtest.json, for the calibration line on the card
   let lookups = 0;  // a title query waits for titles.json; a newer lookup wins
   async function lookup(text, pos) {
     const bucket = BWO.bucketOf(pos);
@@ -117,13 +134,17 @@
     const match = await BWO.matchCourseAsync(index, text, meta);
     if (seq !== lookups) return;
     const row = match.row;
-    const q = BWO.parseQuery(text);
-    // Q5: say so whenever a typo in the subject was forgiven or a title matched.
-    $("status").innerHTML = BWO.sourceHtml(meta) + BWO.showingHtml(match);
-    const shown = row ? row.key : (q && q.pairs && q.pairs.length ? `${q.pairs[0].subject} ${q.pairs[0].number}` : (q ? q.raw : String(text).trim().toUpperCase()));
+    // Q5: say so whenever a typo in the subject was forgiven or a title matched; in
+    // its own element, so the status line keeps what BWO.liveStatus added to it.
+    $("showing").innerHTML = BWO.showingHtml(match);
+    const shown = row ? row.key : BWO.typedKey(text);
     if (!row) {
+      // Not a course in the index (a typo, or a code that is no course): no estimate, as on the course
+      // page, only the nearest courses. A pooled estimate is for a real course with too few cases.
       const near = match.nearest.length ? ` Did you mean ${match.nearest.map((r) => `<a href="${BWO.withToday(`?course=${encodeURIComponent(r.key)}&position=${pos}`)}">${esc(r.key)}</a>`).join(", ")}?` : "";
-      renderFallback(shown, pos, bucket, q && q.pairs && q.pairs.length ? q.pairs[0].subject : null, q && q.pairs && q.pairs.length ? q.pairs[0].number : null, `No data for <strong>${esc(shown)}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.${near}`);
+      show(`<p class="error">${BWO.noDataHtml(meta, shown)}${near}</p><p>Or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`);
+      if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?course=${encodeURIComponent(shown)}&position=${pos}`));
+      document.title = `No data for ${shown} · ${BWO.SITE}`;
       return;
     }
     const subj = await BWO.loadSubject(meta, row.subject);
@@ -142,7 +163,8 @@
   function submit(ev) {
     if (ev) ev.preventDefault();
     const text = $("course").value;
-    const pos = Math.max(1, parseInt($("position").value, 10) || 1);
+    const pos = BWO.clampPosition($("position").value, 10);
+    $("position").value = String(pos);
     if (!text.trim()) return;
     lookup(text, pos);
   }
@@ -153,6 +175,7 @@
     if (r.state === "failed" || (r.state === "ready" && !r.data.index)) { $("status").innerHTML = BWO.failedHtml(); return; }
     if (r.state === "empty") { $("status").innerHTML = BWO.emptyHtml(r.meta); $("form").hidden = true; return; }
     meta = r.meta; index = r.data.index; pooled = r.data.pooled || { all: {}, dept: {}, level: {} };
+    backtestLoad = BWO.loadBacktest(meta);
     $("dates").innerHTML = BWO.keyDatesHtml(meta, today);
     $("status").innerHTML = BWO.sourceHtml(meta);
     BWO.liveStatus($("status"));
@@ -174,7 +197,7 @@
     BWO.combobox($("course"), $("course-list"), index, () => { submit(); });
     $("form").addEventListener("submit", submit);
     const params = BWO.params();
-    if (params.get("course")) { $("course").value = params.get("course"); if (params.get("position")) $("position").value = params.get("position"); submit(); }
+    if (params.get("course")) { $("course").value = params.get("course"); if (params.get("position")) $("position").value = String(BWO.clampPosition(params.get("position"), 10)); submit(); }
   }
   main();
 })();

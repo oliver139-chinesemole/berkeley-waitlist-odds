@@ -77,6 +77,12 @@ body { margin: 0; font-family: var(--sans); font-size: var(--fs-2); line-height:
 .site-head nav a { color: inherit; text-decoration: none; padding: .55rem .7rem; border-radius: 8px; opacity: .85; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; }
 .site-head nav a:hover { opacity: 1; background: var(--tint); }
 .site-head nav a[aria-current="page"] { opacity: 1; box-shadow: inset 0 -3px 0 var(--blue-ink); }
+/* Phones (audit item 15): the five links share the row, a little tighter, and wrap onto a second line rather than
+   scroll out of sight (at 390 px "Methods" was cut to "M"); one row still holds them down to 360 px. */
+@media (max-width: 30rem) {
+  .site-head nav { flex-wrap: wrap; overflow-x: visible; gap: 0; width: 100%; justify-content: space-between; }
+  .site-head nav a { padding: .55rem .3rem; font-size: .9375rem; }
+}
 .site-head nav a:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 main { max-width: 42rem; margin: 0 auto; padding: 1rem 1rem 2rem; }
 main.wide { max-width: 68rem; }
@@ -151,6 +157,13 @@ button.quiet:hover { background: var(--hair); }
 .dots i.on { background: var(--blue); }
 .dots.dim i { border-color: var(--line); }
 .dots.dim i.on { background: var(--muted); border-color: var(--muted); }
+/* The 20 dots fit one line on a phone (review of 2026-10-29, 3.5: at 390 px they wrapped 17 + 3). The full-size row is
+   23.7 rem wide, wider than the card below about 445 px, so the smaller dot starts at 28 rem (448 px): 279 px, one line
+   down to 360 px. Narrower than that (320 px, or a larger default font) the row wraps rather than overflow the card. */
+@media (max-width: 28rem) {
+  .dots { gap: .18rem; }
+  .dots i { width: .7rem; height: .7rem; }
+}
 dl.kv { display: grid; grid-template-columns: max-content 1fr; gap: .25rem .75rem; margin: .5rem 0 0; }
 dl.kv dt { color: var(--muted); }
 dl.kv dd { margin: 0; }
@@ -189,6 +202,10 @@ tr.course td .sub { color: var(--muted); font-size: var(--fs-1); display: block;
   table.twoline td { border: 0; padding: .1rem .25rem; }
   table.twoline td.rest { grid-column: 1 / -1; color: var(--muted); font-size: var(--fs-1); }
   table.twoline td.num { text-align: right; }
+  /* the header is hidden here, so each number on the Courses page says what it is (review of 2026-10-29, 3.1) */
+  table.twoline td[data-label]::before { content: attr(data-label) ": "; color: var(--muted); font-size: var(--fs-1); font-weight: 400; }
+  table.twoline td.num[data-label]:not(.rest)::before { content: attr(data-label); display: block; }
+  table.twoline td.rest[data-label] { text-align: left; }
 }
 /* live section board: the position ramp as a status cue, light to dark, never a traffic light */
 .status-open, .status-waitlist, .status-full, .status-reserved { border-left: 4px solid var(--ramp); padding-left: .6rem; font-weight: 600; }
@@ -231,6 +248,8 @@ tr.course td .sub { color: var(--muted); font-size: var(--fs-1); display: block;
 .chart .lbl { font-size: 11px; fill: var(--muted); }
 .chart .lbl.ink { fill: var(--ink); font-weight: 600; }
 .chart .lbl.date { font-size: 10px; }
+/* a phone gets every other x tick, day and date (audit item 16: nine labels across 350 px) */
+@media (max-width: 30rem) { .chart .lbl.odd { display: none; } }
 .chart .beyond { fill: url(#hatch); opacity: .9; }
 .chart .cross { stroke: var(--muted); stroke-width: 1; }
 .chart .hit { fill: transparent; cursor: crosshair; }

@@ -33,6 +33,10 @@
 (function () {
   const { $, esc, pct, num } = BWO;
   let meta, ins, pooled, index;
+  // Deeper positions can end above positions 1 to 5 (the hero chart's end labels, the table's 28-day and longest
+  // follow-up columns): a position-1 joiner can sit in a full section with an empty queue, where a seat that opens
+  // is a direct enrolment in the counts, and position p exists only where at least p - 1 were waiting (analysis/cohort.py).
+  const INVERSION_NOTE = `<p class="muted small">When a deeper position sits or ends above positions 1 to 5, here or in the table and chart below, that comes from where the hypothetical students can be placed, not from any advantage of a later spot. Positions 1 to 5 include full sections with nobody else waiting, where a seat that opens shows in the counts as someone enrolling directly, never as the hypothetical student getting in; positions 6 and up exist only where at least five people were already waiting, so a seat that opens there goes to the queue.</p>`;
 
   function at(cell, d) { return BWO.readCurve(cell.curve, d); }
   function findings() {
@@ -44,8 +48,14 @@
     if (b1 && b2) out.push(`At positions 1 to 5, ${med(b1)}; at 6 to 15, ${med(b2)}${b3 ? `; at 16 to 40, ${med(b3)}` : ""}.`);
     const lv = ins.by_level || {};
     if (lv.lower && lv.upper && lv.lower["6-15"] && lv.upper["6-15"]) {
-      const lo = lv.lower["6-15"].p[1], up = lv.upper["6-15"].p[1];
-      out.push(`${lo >= up ? "Lower" : "Upper"}-division waitlists moved faster at positions 6 to 15: ${pct(Math.max(lo, up))} got in within 14 days against ${pct(Math.min(lo, up))} in ${lo >= up ? "upper" : "lower"}-division courses${lv.grad && lv.grad["6-15"] ? ` (graduate courses: ${pct(lv.grad["6-15"].p[1])})` : ""}.`);
+      const L = lv.lower["6-15"], U = lv.upper["6-15"], lo = L.p[1], up = U.p[1];
+      const grad = lv.grad && lv.grad["6-15"] ? ` (graduate courses: ${pct(lv.grad["6-15"].p[1])})` : "";
+      // "Faster" needs a printed gap of 5 points or more and 95% intervals that do not overlap; a comparison of two exported cells, nothing computed.
+      const has = (c) => c.lo && c.hi && c.lo[1] != null && c.hi[1] != null;
+      const same = Math.abs(Math.round(lo * 100) - Math.round(up * 100)) < 5 || (has(L) && has(U) && L.lo[1] <= U.hi[1] && U.lo[1] <= L.hi[1]);
+      out.push(same
+        ? `Lower- and upper-division waitlists moved at about the same pace at positions 6 to 15: ${pct(lo)} got in within 14 days in lower-division courses and ${pct(up)} in upper-division ones${grad}.`
+        : `${lo >= up ? "Lower" : "Upper"}-division waitlists moved faster at positions 6 to 15: ${pct(Math.max(lo, up))} got in within 14 days against ${pct(Math.min(lo, up))} in ${lo >= up ? "upper" : "lower"}-division courses${grad}.`);
     }
     out.push(`Behind these numbers: ${num(ins.counts.courses)} courses, ${num(ins.counts.sections)} sections and ${num(ins.counts.rows)} hypothetical joiners, ${num(ins.counts.events)} of whom got in. ${BWO.sourceLabel(meta)}.`);
     return `<ul class="findings">${out.map((s) => `<li>${s}</li>`).join("")}</ul>`;
@@ -55,7 +65,7 @@
     const hs = [7, 14, 28];
     const trs = BWO.BUCKET_ORDER.filter((b) => ins.all_by_bucket[b]).map((b) => {
       const c = ins.all_by_bucket[b];
-      const cells = hs.map((h) => { const v = at(c, h); return `<td class="num"><strong>${pct(v.p)}</strong>${v.lo == null ? "" : `<span class="sub muted small"> ${pct(v.lo)} to ${pct(v.hi)}</span>`}${v.capped ? ' <span class="muted small">floor</span>' : ""}</td>`; }).join("");
+      const cells = hs.map((h) => { const v = at(c, h); return `<td class="num">${BWO.atLeastTag(v.p, v.capped)}<strong>${pct(v.p)}</strong>${v.lo == null ? "" : `<span class="sub muted small"> ${pct(v.lo)} to ${pct(v.hi)}</span>`}</td>`; }).join("");
       const last = c.curve[c.curve.length - 1];
       return `<tr><th scope="row">${esc(BWO.bucketText(b))}</th>${cells}<td class="num"><strong>${pct(last[1])}</strong> <span class="muted small">at ${BWO.days(c.reach_days)}</span></td><td class="num">${num(c.n)}</td></tr>`;
     }).join("");
@@ -73,7 +83,7 @@
     if (!rows.length) return "";
     rows.sort((a, b) => b.p - a.p || a.dept.localeCompare(b.dept));
     const html = rows.map((r) => `<div class="row-d"><span>${esc(r.dept === "OTHER" ? "Other departments" : r.dept)}</span><span class="track" aria-hidden="true">${r.lo == null ? "" : `<span class="iv" style="left:${(r.lo * 100).toFixed(1)}%;width:${((r.hi - r.lo) * 100).toFixed(1)}%"></span>`}<span class="pt" style="left:${(r.p * 100).toFixed(1)}%"></span></span><span class="num"><strong>${pct(r.p)}</strong></span></div>`).join("");
-    const table = `<details class="table"><summary>Show as table</summary><div class="scroll" tabindex="0"><table><thead><tr><th scope="col">Department</th><th scope="col" class="num">Within 28 days</th><th scope="col" class="num">95% interval</th><th scope="col" class="num">Cases</th><th scope="col" class="num">Sections</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc(r.dept === "OTHER" ? "Other departments" : r.dept)}</td><td class="num">${pct(r.p)}${r.capped ? " (floor)" : ""}</td><td class="num">${r.lo == null ? "" : `${pct(r.lo)} to ${pct(r.hi)}`}</td><td class="num">${num(r.n)}</td><td class="num">${num(r.sections)}</td></tr>`).join("")}</tbody></table></div></details>`;
+    const table = `<details class="table"><summary>Show as table</summary><div class="scroll" tabindex="0"><table><thead><tr><th scope="col">Department</th><th scope="col" class="num">Within 28 days</th><th scope="col" class="num">95% interval</th><th scope="col" class="num">Cases</th><th scope="col" class="num">Sections</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc(r.dept === "OTHER" ? "Other departments" : r.dept)}</td><td class="num">${BWO.atLeastTag(r.p, r.capped)}${pct(r.p)}</td><td class="num">${r.lo == null ? "" : `${pct(r.lo)} to ${pct(r.hi)}`}</td><td class="num">${num(r.n)}</td><td class="num">${num(r.sections)}</td></tr>`).join("")}</tbody></table></div></details>`;
     return `<div class="dotplot" role="img" aria-label="Share who got in within 28 days at positions 6 to 15, by department, with 95% intervals">${html}</div><p class="muted small">Dot: share who got in within 28 days at positions 6 to 15; bar: 95% interval from resampling sections. Departments with at least 30 cases in at least two sections.</p>${table}`;
   }
 
@@ -113,7 +123,7 @@
       const k = marks.findIndex((mm) => mm[0] === key);
       svg += `<line class="mark" x1="${x(i).toFixed(1)}" x2="${x(i).toFixed(1)}" y1="${T}" y2="${y(0).toFixed(1)}"/><text class="lbl ink" x="${(x(i) + 3).toFixed(1)}" y="${k % 2 ? T + 6 : T - 8}">${esc(label)}</text>`;
     }
-    for (let i = 0; i < d.length; i += Math.max(1, Math.round(d.length / 6))) svg += `<text class="lbl" x="${x(i).toFixed(1)}" y="${H - B + 14}" text-anchor="start">${esc(BWO.fmtShort(new Date(d[i].date + "T00:00:00Z")))}</text>`;
+    for (let i = 0; i < d.length; i += Math.max(1, Math.round(d.length / 6))) svg += `<text class="lbl" x="${x(i).toFixed(1)}" y="${H - B + 14}" text-anchor="start">${esc(BWO.fmtShort(BWO.dateOf(d[i].date)))}</text>`;
     svg += `<text class="lbl" x="${W - R}" y="${H - 4}" text-anchor="end">admits from the waitlist per day</text>`;
     const table = `<details class="table"><summary>Show as table</summary><div class="scroll" tabindex="0"><table><thead><tr><th scope="col">Day</th><th scope="col" class="num">Admits</th><th scope="col" class="num">Joins</th><th scope="col" class="num">Drops</th><th scope="col" class="num">Share dark</th></tr></thead><tbody>${d.map((day) => `<tr><td>${esc(day.date)}</td><td class="num">${num(day.admits)}</td><td class="num">${num(day.joins)}</td><td class="num">${num(day.drops)}</td><td class="num">${day.share_censored == null ? "" : pct(day.share_censored)}</td></tr>`).join("")}</tbody></table></div></details>`;
     return `<figure class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Admits from the waitlist per day across the enrollment calendar; hatched days were not recorded">${svg}</svg><ul class="legend"><li class="k3">Admits per day</li><li class="kgold">Calendar</li></ul>${table}</figure>`;
@@ -145,9 +155,11 @@
       <h2>How much your position matters</h2>
       <p class="muted small">Lower-division courses, students who joined during Phase 1: the share who had a seat, by days since joining, one curve per position.</p>
       ${heroSeries.length ? BWO.curveChart({ series: heroSeries, maxDay: 56, t: null, id: "hero-chart", ariaLabel: "Share who got in by days since joining, lower-division courses, Phase 1 joiners, one curve per position bucket" }) : `<p class="muted">Not enough Phase 1 lower-division cases for this chart yet.</p>`}
+      ${INVERSION_NOTE}
       <h3>All courses and phases</h3>
       ${grid()}
       ${allSeries.length ? BWO.curveChart({ series: allSeries, maxDay: 56, id: "all-chart", ariaLabel: "Share who got in by days since joining, all courses, one curve per position bucket" }) : ""}
+      <p class="muted small">After about four weeks the curves rest on few joiners; read the 14- and 28-day columns.</p>
       <h2>Departments</h2>
       ${departments() || `<p class="muted">No department has enough cases yet.</p>`}
       ${ins.daily ? `<h2>When waitlists move</h2>${daily()}` : ""}

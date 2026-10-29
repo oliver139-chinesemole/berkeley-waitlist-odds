@@ -35,7 +35,7 @@
   <p>The code, the analysis and this site are open source under the MIT licence in the <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds">repository</a>. The snapshot data collected by this project are published on the repository's <code>data</code> branch. Berkeleytime's history is theirs; this project stores only the aggregates derived from it.</p>
 
   <h2>Feedback</h2>
-  <p>Found a wrong number, a course that will not resolve, or a place where the wording misleads? Open an issue on <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/issues">GitHub</a>. If you were on a waitlist and want to tell the project what happened, an outcome form will be linked from the lookup page once Spring 2027 enrollment opens.</p>
+  <p>Found a wrong number, a course that will not resolve, or a place where the wording misleads? Open an issue on <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds/issues">GitHub</a>. If you were on a waitlist and want to tell the project what happened, an outcome form may be linked from the lookup page later.</p>
 </main>
 <footer>
   <p><a href="methodology.html">How this works</a> · <a href="https://github.com/oliver139-chinesemole/berkeley-waitlist-odds">Source and data</a></p>
@@ -51,8 +51,8 @@
     if (r.state === "failed") { el.innerHTML = BWO.failedHtml(); return; }
     if (r.state === "empty") { el.innerHTML = BWO.emptyHtml(r.meta); return; }
     const m = r.meta;
-    const src = m.data_source === "berkeleytime_history" ? "Berkeleytime's public history" : "this project's own snapshots";
-    el.innerHTML = `<strong>${esc(m.term_name)}</strong>, ${src}: ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners of whom ${esc(num(m.events))} cleared. Data through ${esc(BWO.fmtDate(m.join_window ? m.join_window[1] : m.generated_at))}; files generated ${esc(BWO.fmtDate(m.generated_at))}.${m.prereg_commit ? ` The ${esc(m.term_name)} cohort behind the curves was frozen at commit <code>${esc(String(m.prereg_commit).slice(0, 10))}</code> on ${esc(m.prereg_date || "")} for the Spring 2027 test.` : ""}`;
+    const src = BWO.isBerkeleytime(m) ? "Berkeleytime's public history" : "this project's own snapshots";
+    el.innerHTML = `<strong>${esc(m.term_name)}</strong>, ${src}: ${esc(num(m.courses))} courses, ${esc(num(m.sections))} sections, ${esc(num(m.cohort_rows))} hypothetical joiners of whom ${esc(num(m.events))} cleared. Data through ${esc(BWO.fmtDate(m.join_window ? m.join_window[1] : m.generated_at))}; files generated ${esc(BWO.fmtDate(m.generated_at))}.${m.prereg_commit ? ` The ${esc(m.term_name)} cohort behind the curves was frozen at commit <code>${esc(String(m.prereg_commit).slice(0, 10))}</code> on ${esc(m.prereg_date || "")} for the Spring 2027 test.` : ` The ${esc(BWO.PREREG.term_name)} cohort from Berkeleytime's public history was frozen at commit <code>${esc(BWO.PREREG.commit)}</code> on ${esc(BWO.PREREG.date)} for the Spring 2027 test${BWO.isBerkeleytime(m) ? "" : "; the curves this site shows now are not part of it"}.`}`;
     BWO.liveStatus(el);
     BWO.setStamp(m, BWO.today());
   }

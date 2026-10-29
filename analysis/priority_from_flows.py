@@ -30,6 +30,7 @@ from pathlib import Path
 import pandas as pd
 
 from scraper.sources.base import PrioritySpec, shard_of
+from scraper.sources.classes_site import SectionRef, live_candidates
 
 logger = logging.getLogger(__name__)
 
@@ -99,8 +100,9 @@ def render(courses: pd.DataFrame, *, source_note: str, top_sections: int, min_co
         "# Matching ignores spaces inside the subject and is case-insensitive; see PrioritySpec in",
         "# scraper/sources/base.py. Text after # is a comment; blank lines are ignored.",
         "#",
-        "# ORDER MATTERS. Sections are fetched in the order of the first pattern they match, so",
-        "# when a run's time budget runs out the courses at the bottom are the ones dropped.",
+        "# ORDER MATTERS. Sections are fetched in the order of the first pattern they match, each run",
+        "# starting a shard-dependent offset down the list and wrapping around (docs/DESIGN_A2.md",
+        "# section 12), so a run whose time budget runs out drops a slice that moves from run to run.",
         "#",
         f"# Built by `python -m analysis.priority_from_flows` on {datetime.now(timezone.utc).date().isoformat()}: {source_note}.",
         f"# Courses of the {top_sections} sections with the most reconstructed waitlist joins{pass_note}, ordered by",
@@ -136,30 +138,41 @@ def coverage(activity: pd.DataFrame, spec: PrioritySpec) -> dict:
 
 
 def catalog_report(spec: PrioritySpec, catalog: Path | str, n_shards: int = 12) -> dict:
-    """What a run fetches with ``spec`` against a live catalog (``catalog/<term_id>/catalog.json``
-    on the data branch): sections with ``last_status`` 200 that match a pattern, their distinct
-    courses, and the per-run selection once one of ``n_shards`` shards of the remainder is added
-    (shards by ``shard_of(url_path, n_shards)``, as ``ClassesSiteSource._select`` does)."""
-    entries = json.loads(Path(catalog).read_text(encoding="utf-8"))["sections"]
-    live = [e for e in entries if e.get("last_status") == 200]
-    hit = [spec.rank(str(e.get("course_key") or "")) is not None for e in live]
-    matched = [e for e, h in zip(live, hit) if h]
+    """What a run fetches with ``spec`` against a catalog (``catalog/<term_id>/catalog.json``
+    on the data branch), read as ``ClassesSiteSource._select`` reads it: ``live`` entries (not
+    marked absent; never probed counts as live, the summary line's ``live=``), the
+    ``live_candidates`` among them (docs/DESIGN_A2.md section 19), those matching a pattern and
+    their distinct courses, and the per-run selection once one of ``n_shards`` shards of the
+    remaining candidates is added (``shard_of(url_path, n_shards)``). The selection numbers are
+    the run log's ``selected=`` less the due re-probes (at most 100 a run)."""
+    refs = [SectionRef.from_dict(e) for e in json.loads(Path(catalog).read_text(encoding="utf-8"))["sections"]]
+    candidates = live_candidates(refs)
+    hit = [spec.rank(r.course_key) is not None for r in candidates]
+    matched = [r for r, h in zip(candidates, hit) if h]
     shards = [0] * max(int(n_shards), 1)
-    for e, h in zip(live, hit):
+    for r, h in zip(candidates, hit):
         if not h:
-            shards[shard_of(str(e["url_path"]), len(shards))] += 1
+            shards[shard_of(r.key, len(shards))] += 1
     return {
-        "live": len(live),
+        "live": sum(1 for r in refs if not r.absent),
+        "candidates": len(candidates),
         "matched": len(matched),
-        "courses": len({str(e.get("course_key")) for e in matched}),
+        "courses": len({r.course_key for r in matched}),
         "selection_min": len(matched) + min(shards),
         "selection_max": len(matched) + max(shards),
     }
 
 
+def catalog_courses(catalog: Path | str) -> set[str]:
+    """Normalised course keys of the ``live_candidates`` in a catalog: the courses a run there
+    can fetch at all."""
+    refs = [SectionRef.from_dict(e) for e in json.loads(Path(catalog).read_text(encoding="utf-8"))["sections"]]
+    return {PrioritySpec.normalize(r.course_key) for r in live_candidates(refs)}
+
+
 def build(
     flows_paths: list[Path], identity_paths: list[Path], *, top_sections: int, current: Path | None, out: Path, source_note: str,
-    min_course_joins: int = 0, catalog: Path | None = None, n_shards: int = 12,
+    min_course_joins: int = 0, catalog: Path | None = None, n_shards: int = 12, catalog_courses_only: bool = False,
 ) -> dict:
     acts = []
     for fp, ip in zip(flows_paths, identity_paths):
@@ -167,7 +180,14 @@ def build(
         identity = pd.read_parquet(ip)
         acts.append(section_activity(flows, identity, term_id=str(fp.parent.name)))
     activity = pd.concat(acts, ignore_index=True)
-    courses = rank_courses(activity, top_sections=top_sections, min_course_joins=min_course_joins)
+    ranked = activity
+    if catalog_courses_only:
+        # Rank only the courses the catalog runs, so --top-sections counts sections of those;
+        # coverage below still reads every input section.
+        running = catalog_courses(catalog)
+        keys = activity["course_key"].astype(str).map(PrioritySpec.normalize)
+        ranked = activity[keys.isin(running)]
+    courses = rank_courses(ranked, top_sections=top_sections, min_course_joins=min_course_joins)
     text = render(courses, source_note=source_note, top_sections=top_sections, min_course_joins=min_course_joins)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text, encoding="utf-8")
@@ -178,6 +198,7 @@ def build(
         "sections_in_top": int(courses["top_sections"].sum()),
         "courses_by_total": int((courses["top_sections"] == 0).sum()),
         "min_course_joins": int(min_course_joins),
+        "catalog_courses_only": bool(catalog_courses_only),
         "candidate": coverage(activity, candidate),
     }
     if catalog is not None:
@@ -198,16 +219,20 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--min-course-joins", type=int, default=0, help="also admit every course with at least this many joins over all its sections (0 = off)")
     p.add_argument("--catalog", type=Path, default=None, help="a live catalog.json: report what a run would fetch with the candidate and the current list")
     p.add_argument("--n-shards", type=int, default=12, help="shards of the remainder for the --catalog selection numbers")
+    p.add_argument("--catalog-courses-only", action="store_true", help="rank only courses with a live candidate section in --catalog (a term's own catalog)")
     p.add_argument("--current", type=Path, default=DEFAULT_CURRENT, help="the live list, for the comparison")
     p.add_argument("--out", type=Path, default=DEFAULT_OUT)
     p.add_argument("--note", default="Berkeleytime history (berkeleytime_history)", help="source note written into the file header")
     args = p.parse_args(argv)
     if len(args.flows) != len(args.identity):
         p.error("--flows and --identity must have the same number of paths")
+    if args.catalog_courses_only and args.catalog is None:
+        p.error("--catalog-courses-only needs --catalog")
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     report = build(
         args.flows, args.identity, top_sections=args.top_sections, current=args.current, out=args.out, source_note=args.note,
         min_course_joins=args.min_course_joins, catalog=args.catalog, n_shards=args.n_shards,
+        catalog_courses_only=args.catalog_courses_only,
     )
     print(json.dumps(report, indent=1))
     return 0

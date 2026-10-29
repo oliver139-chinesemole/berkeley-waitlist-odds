@@ -55,7 +55,7 @@
     const where = BWO.bucketText(bucket);
     const tr = index.horizons.map((h) => {
       const v = BWO.readCurve(cell.curve, h);
-      return `<tr><td>${h} days</td><td class="num"><strong>${pct(v.p)}</strong>${v.capped ? ' <span class="muted small" title="The data follow joiners for fewer days than this horizon">floor</span>' : ""}</td><td class="num muted small">${v.lo == null ? "" : `${pct(v.lo)} to ${pct(v.hi)}`}</td></tr>`;
+      return `<tr><td>${h} days</td><td class="num">${BWO.atLeastTag(v.p, v.capped)}<strong>${pct(v.p)}</strong></td><td class="num muted small">${v.lo == null ? "" : `${pct(v.lo)} to ${pct(v.hi)}`}</td></tr>`;
     }).join("");
     const i = BWO.BUCKET_ORDER.indexOf(bucket);
     const chart = BWO.curveChart({
@@ -73,12 +73,11 @@
     const body = rows.map((r) => {
       const s = r.buckets[bucket];
       const link = `<a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${low}`)}">${esc(r.key)}</a>`;
-      const level = esc(r.level ? r.level + " division" : "");
+      const level = esc(BWO.levelText(r.level));
       if (!s) return `<tr class="course"><td>${link}<span class="sub">${level}</span></td><td class="num"><span class="muted small">no estimate here</span></td><td class="num rest"><span class="muted">none at these positions</span></td></tr>`;
       const tag = BWO.pooledTag(s.pooled, s.pooled === "all" ? "all" : "dept", meta);
-      const floor = s.reach[1] < index.horizons[1] ? ' <span class="muted small" title="The data follow joiners for fewer days than this horizon">floor</span>' : "";
       const own = s.pooled === false ? s.n : (s.n_course || 0), sections = s.pooled === false ? s.sections : (s.sections_course || 0);
-      return `<tr class="course"><td>${link}<span class="sub">${level}${tag}</span></td><td class="num"><strong>${pct(s.p[1])}</strong>${floor}<span class="sub">${s.lo[1] == null ? "" : `${pct(s.lo[1])} to ${pct(s.hi[1])}`}</span></td><td class="num rest">${BWO.plural(own, "case")} in ${BWO.plural(sections, "section")}</td></tr>`;
+      return `<tr class="course"><td>${link}<span class="sub">${level}${tag}</span></td><td class="num">${BWO.atLeastTag(s.p[1], s.reach[1] < index.horizons[1])}<strong>${pct(s.p[1])}</strong><span class="sub">${s.lo[1] == null ? "" : `${pct(s.lo[1])} to ${pct(s.hi[1])}`}</span></td><td class="num rest">${BWO.plural(own, "case")} in ${BWO.plural(sections, "section")}</td></tr>`;
     }).join("");
     return `<h2>Every ${esc(subject)} course</h2>
       <p class="muted small">Most-joined first. The share of comparable students at ${esc(BWO.bucketText(bucket))} who got in within ${index.horizons[1]} days, with its 95% interval; cases and sections are the course's own. A pooled course shows its department's curve.</p>

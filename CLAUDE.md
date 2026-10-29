@@ -2,14 +2,14 @@
 @docs/dev/FINISH_PLAN_WAITLIST.md
 
 ## How to work in this repo
-- New session: read docs/dev/HANDOFF.md first (what is done, what is left, how to resume), then the Current step line below.
+- New session: read the newest `docs/dev/NEXT_<date>.md` first (where the last session left things and what is next), then docs/dev/HANDOFF.md (the session history), then the Current step line below.
 - Before any response or action, check loaded skills and invoke every one that applies
   (superpowers:using-superpowers). Announce which skill you are using.
 - Execute every step through the build loop in docs/dev/FINISH_PLAN_WAITLIST.md section 1.2.
   Each step lists its skills and plugins.
 - If a named skill or plugin is not loaded, say so once and continue with the same
   discipline by hand.
-- Current step: session 9 closed 2026-09-25 19:45Z (docs/dev/NEXT_SITE_2026-09-25.md, Track B, unattended); docs/dev/MASTER_PLAN.md leads, docs/dev/STATUS.md section 3 has every open PR with its state, docs/dev/HANDOFF.md session 9 has the note for Oliver at its top. Done: CLAIMS scraper rows re-measured (PR #21); main merged into site-v3 so PR #4 is MERGEABLE again (a3e0f21 + 5325cbc); #11, #17, #16, #19, #20 rebased onto it with green CI and proven to merge in order (388 tests); follow-up PRs, each reviewed and approved: #22 design, #23 board, #24 search, #25 cross-listing, #26 fallback ladder, #27 live status line, #28 titles exporter, #29 title search, #30 department pages, #31 U8 audit. Nothing merged, no rate-flag change; one latency episode logged (18:07Z). Next: Oliver merges in STATUS section 3's order (#15 with the session 9 docs PR, #18, #21; #4, #11, pages.yml; #17, #16, #19, #20; then the follow-ups rebased onto main), his decisions in HANDOFF session 9 item 2, his phone for the board (VoiceOver); before the Spring 2027 switch wire the catalog into analysis.run so titles.json survives the weekly run; Oct 4 term switch. Update this line at the end of every session.
+- Current step (2026-10-29T22:50Z, end of session 11 batch 6): the switch to Spring 2027 has not happened and the scrape runs are failing with exit 4 under Phase 1 load (`docs/dev/NEXT_2026-10-25.md` section 0 item 4; Oliver's review `docs/dev/SITE_REVIEW_2026-10-29.md`). Twenty draft PRs are open (#42 to #56, #58 to #61, #33) and none is merged: merge #43, #48 and #59 with the switch, then the order in NEXT section 3 and 3b (merge commits, not squash; #46 and #50 before Sun Nov 1). Decisions waiting on Oliver: NEXT section 4 (the deadline cut, `--max-missing-share`, #60's options, the calibration line). Next work: NEXT section 5 (batch 7 candidates); history in docs/dev/HANDOFF.md session 11. Update this line at the end of every session.
 
 ## Where things are
 - docs/PHASE0.md: which data sources work, what each returns, rate limits, the Spring 2027 calendar.
@@ -64,11 +64,11 @@ python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24 --fai
 ```
 
 ## Rules that are not obvious from the code
-- Only scrape.yml writes to the `data` branch. Never commit there by hand. analysis.yml is the only workflow that commits to `main` (site/data and reports/).
+- Only scrape.yml writes to the `data` branch. Never commit there by hand. analysis.yml is the only workflow that commits to `main` (site/data only, once the `weekly-noise` branch lands; the run artifact keeps the report and figures for 30 days).
 - Workflows dispatch each other with the built-in token because pushes made with it never trigger other workflows: scrape.yml re-dispatches itself every 30 minutes and the monitor daily, analysis.yml dispatches pages.yml, heartbeat.yml restarts a dead chain.
 - Tests never touch the network. Use the fixtures in data/fixtures/ and fakes.
 - The classes.berkeley.edu client is stdlib urllib on purpose. The site blocks clients whose TLS handshake advertises ALPN http/1.1 alone, which is what requests and httpx do (docs/PHASE0.md). Do not switch it and do not impersonate a browser.
 - Never request `/search/` on classes.berkeley.edu: robots.txt disallows it. Section discovery uses the site's own `/rss.xml` and `/node/<id>` pages (docs/DESIGN_A2.md section 14); Berkeleytime is unreachable from GitHub runners and is only a local cross-check.
-- `config/priority_courses.txt` is ordered by importance; a budget cutoff drops the bottom of the list. Editing it changes `priority_sha`; log the edit in docs/DATA_LOG.md.
+- `config/priority_courses.txt` is ordered by importance; each run starts it at a shard-dependent offset (DESIGN_A2 section 12, 2026-10-29), so a budget cutoff drops a different slice each run. Editing it changes `priority_sha`; log the edit in docs/DATA_LOG.md.
 - `fetched_at` is the actual fetch time, never the scheduled time.
 - Data gaps are permanent. A broken run is fixed within 24 hours and logged in docs/DATA_LOG.md.

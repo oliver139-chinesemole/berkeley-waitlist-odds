@@ -9,23 +9,27 @@ from pathlib import Path
 
 import pytest
 
+from scraper.fetch import missing_share
 from scraper.http import HttpError
 from scraper.schema import rows_to_table
 from scraper.sources.base import ParseError, PrioritySpec, TermNotPublished, TermSpec, shard_of
 from scraper.sources.classes_site import (
     ABSENT_REPROBE_AFTER,
+    GONE_WARN_SHARE,
     INITIAL_LOOKBACK_NODES,
     MAX_REPROBES_PER_RUN,
     NODE_PROBE_BUDGET_SHARE,
     SELF_STUDY_COMPONENTS,
     ClassesSiteSource,
     SectionRef,
+    _class_number_order,
     merge_catalog,
     parse_node_title,
     parse_rss,
     parse_section_page,
     parse_section_meta,
     parse_section_ref,
+    primary_like,
     ref_from_feed_item,
 )
 
@@ -490,11 +494,12 @@ def test_priority_rank_order_then_shard(tmp_path: Path) -> None:
     source, client, _ = make_source(tmp_path, small_site(), n_shards=2)
     result = source.fetch(FALL_2026, priority=priority, shard=(1, 2))
     keys = client.fetched()
+    # rank order COMPSCI, DATA, PHYSICS, MCELLBI, rotated to start at 1 * 4 // 2 = 2 for shard 1/2
     assert keys[:4] == [
-        "2026-fall-compsci-61a-001-lec-001",
-        "2026-fall-data-c100-001-lec-001",
         "2026-fall-physics-7a-001-lec-001",
         "2026-fall-mcellbi-102-001-lec-001",
+        "2026-fall-compsci-61a-001-lec-001",
+        "2026-fall-data-c100-001-lec-001",
     ]
     expected_rest = sorted(
         slug_of("Fall 2026", s, c, "001", "LEC").rsplit("/", 1)[1]
@@ -506,6 +511,77 @@ def test_priority_rank_order_then_shard(tmp_path: Path) -> None:
     assert result.universe_ids is None
 
 
+# docs/DESIGN_A2.md section 12, amended 2026-10-29: the ranked priority order starts at
+# k * len(ranked) // n for shard (k, n), so a budget cutoff misses different sections each run.
+ROTATION_COURSES = [("COMPSCI", "61A"), ("DATA", "C100"), ("PHYSICS", "7A"), ("MCELLBI", "102"), ("ART", "1"), ("HISTORY", "7A"), ("MUSIC", "27")]
+ROTATION_PRIORITY = "COMPSCI *\nDATA *\nPHYSICS 7*\nMCELLBI *"
+RANKED = ["COMPSCI 61A", "DATA C100", "PHYSICS 7A", "MCELLBI 102"]
+
+
+def test_priority_order_rotates_with_the_shard_and_keeps_the_set(tmp_path: Path) -> None:
+    refs = catalog_of(*ROTATION_COURSES)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=12)
+    spec = PrioritySpec.from_text(ROTATION_PRIORITY)
+    first = source._select(refs, spec, (0, 12))
+    sixth = source._select(refs, spec, (6, 12))
+    assert [r.course_key for r in first[:4]] == RANKED  # offset 0 * 4 // 12 = 0
+    assert [r.course_key for r in sixth[:4]] == RANKED[2:] + RANKED[:2]  # offset 6 * 4 // 12 = 2
+    for k, selected in ((0, first), (6, sixth)):
+        rest = [r for r in refs if r.course_key not in RANKED and shard_of(r.key, 12) == k]
+        assert selected[4:] == rest  # the shard remainder is untouched, after the priority sections
+    assert {r.url_path for r in first[:4]} == {r.url_path for r in sixth[:4]}
+
+
+def test_priority_order_without_a_shard_is_the_ranked_order(tmp_path: Path) -> None:
+    refs = catalog_of(*ROTATION_COURSES)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=12)
+    selected = source._select(refs, PrioritySpec.from_text(ROTATION_PRIORITY), None)
+    assert [r.course_key for r in selected] == RANKED
+
+
+def test_empty_priority_list_is_untouched_by_the_rotation(tmp_path: Path) -> None:
+    refs = catalog_of(*ROTATION_COURSES)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=2)
+    for k in (0, 1):
+        selected = source._select(refs, PrioritySpec.from_text(""), (k, 2))
+        assert selected == [r for r in refs if shard_of(r.key, 2) == k]
+
+
+# The shard remainder rotates by the visit (run_index // n_shards, passed by scraper/fetch.py):
+# a shard is visited 48 // n times a day, and each visit starts its remainder that fraction
+# further along, so the cut at the end of the selection moves between visits of one shard.
+REST_COURSES = [("ART", str(i)) for i in range(60)]
+DUE_REPROBE = replace(catalog_of(("MUSIC", "27"))[0], last_status=404, probed_at="2026-01-01T00:00:00+00:00")
+
+
+def _rest_part(selected: list[SectionRef]) -> list[SectionRef]:
+    return [r for r in selected if r.course_key.startswith("ART ")]
+
+
+def test_shard_remainder_rotates_with_the_visit_and_keeps_the_set(tmp_path: Path) -> None:
+    refs = catalog_of(("COMPSCI", "61A"), *REST_COURSES) + [DUE_REPROBE]
+    source, _, _ = make_source(tmp_path, small_site(), clock=Clock(NOW), n_shards=12)
+    spec = PrioritySpec.from_text("COMPSCI *")
+    members = [r for r in refs[1:-1] if shard_of(r.key, 12) == 3]
+    assert len(members) >= 4  # enough for a quarter step
+    visits = [source._select(refs, spec, (3, 12), visit=v) for v in range(5)]
+    for selected in visits:
+        assert selected[0].course_key == "COMPSCI 61A" and selected[-1] == DUE_REPROBE  # priority first, re-probe last
+        assert sorted(r.url_path for r in _rest_part(selected)) == sorted(r.url_path for r in members)
+    assert _rest_part(visits[0]) == members  # visit 0: catalog order
+    step = len(members) // 4  # 48 // 12 = 4 visits a day
+    assert _rest_part(visits[1]) == members[step:] + members[:step]
+    assert _rest_part(visits[1])[0] != _rest_part(visits[0])[0]
+    assert _rest_part(visits[4]) == members  # visit 4 is the next day's visit 0
+
+
+def test_no_shard_means_no_remainder_rotation(tmp_path: Path) -> None:
+    refs = catalog_of(("COMPSCI", "61A"), *REST_COURSES)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=12)
+    assert source._select(refs, None, None, visit=1) == refs  # full scope: catalog order
+    assert source._select(refs, PrioritySpec.from_text("COMPSCI *"), None, visit=1) == refs[:1]
+
+
 def test_priority_without_shard_fetches_priority_only(tmp_path: Path) -> None:
     catalog_with(tmp_path, FALL_2026, catalog_of(("COMPSCI", "61A"), ("ART", "1")))
     site_state(tmp_path, probed=1012, seen=1012)
@@ -514,7 +590,90 @@ def test_priority_without_shard_fetches_priority_only(tmp_path: Path) -> None:
     assert client.fetched() == ["2026-fall-compsci-61a-001-lec-001"]
 
 
-def test_missing_ids_only_for_known_sections(tmp_path: Path) -> None:
+def spring_ref(subject: str, catalog: str, class_number: str, component: str, **changes) -> SectionRef:
+    ref = SectionRef(section_id="", url_path=slug_of("Spring 2027", subject, catalog, class_number, component),
+                     course_key=f"{subject} {catalog}", subject=subject, catalog_number=catalog,
+                     class_number=class_number, section_number=class_number, component=component)
+    return replace(ref, **changes)
+
+
+def page_name(ref: SectionRef) -> str:
+    return ref.url_path.rsplit("/", 1)[1]
+
+
+# docs/DESIGN_A2.md section 19: a section is selected when its class number is below 100, or when
+# its component carries the course's lowest class number. One course per case the plain
+# "below 100" rule gets wrong, next to the secondaries both rules leave out.
+PRIMARY_LIKE = [
+    spring_ref("COMPSCI", "61A", "001", "LEC"),  # a lecture course: LEC 001 ...
+    spring_ref("PHYSICS", "5BL", "101", "LAB"),  # a lab-only course: its primaries are LAB 1xx
+    spring_ref("PHYSICS", "5BL", "102", "LAB"),
+    spring_ref("COMPSCI", "294", "150", "LEC"),  # lectures numbered by topic
+    spring_ref("COMPSCI", "294", "160", "LEC"),
+    spring_ref("MCELLBI", "290", "A01", "SEM"),  # a class number without leading digits
+    spring_ref("ASTRON", "7A", "001", "DIS"),  # a discussion that is its course's primary (no LEC)
+]
+SECONDARY = [
+    spring_ref("COMPSCI", "61A", "101", "DIS"),  # ... and its discussion
+    # absent and due for a re-probe: the rule covers re-probes too
+    spring_ref("COMPSCI", "61A", "102", "DIS", last_status=404, probed_at="2026-01-01T00:00:00+00:00"),
+]
+
+
+def test_selection_keeps_primary_like_sections_only(tmp_path: Path) -> None:
+    catalog_with(tmp_path, SPRING_2027, PRIMARY_LIKE + SECONDARY)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, client, _ = make_source(tmp_path, small_site(), n_shards=1)
+    source.fetch(SPRING_2027, priority=PrioritySpec.from_text("COMPSCI 61A\nPHYSICS 5BL"), shard=(0, 1))
+    fetched = client.fetched()
+    assert fetched[:3] == [page_name(r) for r in PRIMARY_LIKE[:3]]  # the priority courses, in list order
+    assert sorted(fetched) == sorted(page_name(r) for r in PRIMARY_LIKE)
+    # the catalog is the discovery record: the secondaries stay in it
+    paths = {s["url_path"] for s in read_catalog(tmp_path, "2272")["sections"]}
+    assert {r.url_path for r in SECONDARY} <= paths
+
+
+def test_primary_like_keeps_every_component_tied_at_the_lowest_number() -> None:
+    # INTEGBI 132L in the Spring 2027 catalog: LAB 001 and LEC 001 share the lowest number, so
+    # every LAB and LEC is primary-like, LAB 101 and LEC 105 included; a DIS 201 is not
+    refs = [spring_ref("INTEGBI", "132L", n, c) for n, c in (("001", "LAB"), ("001", "LEC"), ("101", "LAB"), ("105", "LEC"), ("201", "DIS"))]
+    assert primary_like(refs) == refs[:4]
+
+
+def test_primary_like_counts_absent_entries_toward_the_lowest_number() -> None:
+    # an absent LEC 001 still makes LEC the course's primary component: its discussions stay out
+    lec = spring_ref("ANTHRO", "3AC", "001", "LEC", last_status=404, probed_at="2026-10-20T00:00:00+00:00")
+    dis = [spring_ref("ANTHRO", "3AC", "101", "DIS"), spring_ref("ANTHRO", "3AC", "102", "DIS")]
+    assert primary_like([*dis, lec]) == [lec]
+
+
+def test_primary_like_sorts_numeric_class_numbers_before_letters() -> None:
+    # DIS 101 is the course's lowest class number (numeric before non-numeric), so the DIS is
+    # selected and the SEM A01 is not
+    sem, dis = spring_ref("MCELLBI", "293C", "A01", "SEM"), spring_ref("MCELLBI", "293C", "101", "DIS")
+    assert primary_like([sem, dis]) == [dis]
+
+
+def test_class_number_order_reads_leading_digits() -> None:
+    assert _class_number_order("061A") == (False, 61)
+    assert _class_number_order("001") == (False, 1)
+    assert _class_number_order("A01") == (True, 0)
+
+
+def test_full_scope_universe_follows_the_selection_rule(tmp_path: Path) -> None:
+    lec = replace(PRIMARY_LIKE[0], section_id="40001")
+    dis = replace(SECONDARY[0], section_id="40002")
+    catalog_with(tmp_path, SPRING_2027, [lec, dis])
+    site_state(tmp_path, probed=1012, seen=1012)
+    page = section_html("Spring 2027", "COMPSCI", "61A", "001", "LEC", 40001, 2001, term_id="2272")
+    source, client, _ = make_source(tmp_path, small_site(extra={f"{BASE}{lec.url_path}": page}))
+    result = source.fetch(SPRING_2027, priority=None)
+    assert client.fetched() == [page_name(lec)]
+    assert result.scope == "full" and result.universe_ids == {"40001"}
+    assert [r["section_id"] for r in result.rows] == ["40001"] and result.missing_ids == []
+
+
+def test_missing_ids_carry_the_id_of_a_known_section(tmp_path: Path) -> None:
     site_state(tmp_path, probed=1012, seen=1012)
     source, _, clock = make_source(tmp_path, small_site())
     source.fetch(FALL_2026, priority=None)
@@ -582,6 +741,46 @@ def test_time_budget_cutoff_marks_known_ids_missing(tmp_path: Path) -> None:
     assert client2.get_many_calls[-1][1] == pytest.approx(100.0)
 
 
+def test_budget_cutoff_on_unknown_sections_counts_as_missing(tmp_path: Path) -> None:
+    """The first run of a term knows no id: a cutoff on half the selection must still
+    reach missing_ids (by page path) and the share the exit-4 gate reads."""
+    refs = [spring_ref("SUBJ", str(i), "001", "LEC") for i in range(6)]
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    pages = small_site(extra={
+        f"{BASE}{r.url_path}": section_html("Spring 2027", "SUBJ", str(i), "001", "LEC", 50000 + i, 3000 + i, term_id="2272")
+        for i, r in enumerate(refs)
+    })
+    source, client, _ = make_source(tmp_path, pages, attempt_limit=3)
+    result = source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"), time_budget_s=100)
+    assert client.fetched() == [page_name(r) for r in refs]
+    assert [r["section_id"] for r in result.rows] == ["50000", "50001", "50002"]
+    assert result.missing_ids == [r.url_path for r in refs[3:]]
+    assert missing_share(result) == 0.5
+
+
+def test_failed_unknown_section_counts_as_missing_but_a_404_does_not(tmp_path: Path) -> None:
+    """A transport or parse failure is a page we did not observe; a 404 is an answer (the
+    page is absent), so a 404 on a never-fetched page stays out of missing_ids."""
+    refs = [spring_ref("SUBJ", str(i), "001", "LEC") for i in range(4)]
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    urls = [f"{BASE}{r.url_path}" for r in refs]
+    pages = small_site(extra={
+        urls[0]: section_html("Spring 2027", "SUBJ", "0", "001", "LEC", 50000, 3000, term_id="2272"),
+        urls[1]: HttpError(0, urls[1], "read timed out"),
+        urls[2]: b"<html>no blob</html>",
+        # urls[3] is not routed: 404
+    })
+    source, _, _ = make_source(tmp_path, pages)
+    result = source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"))
+    assert [r["section_id"] for r in result.rows] == ["50000"]
+    assert result.missing_ids == [refs[1].url_path, refs[2].url_path]
+    entries = {s["url_path"]: s for s in read_catalog(tmp_path, "2272")["sections"]}
+    assert entries[refs[3].url_path]["last_status"] == 404
+    assert entries[refs[1].url_path]["last_status"] is None and entries[refs[2].url_path]["last_status"] is None
+
+
 def test_discovery_time_counts_against_budget(tmp_path: Path) -> None:
     site_state(tmp_path, probed=1008, seen=None)
     clock = Clock()
@@ -614,6 +813,140 @@ def test_fetch_rejects_bad_shard_and_limit(tmp_path: Path) -> None:
         source.fetch(FALL_2026, priority=PrioritySpec.from_text("COMPSCI *"), shard=(5, 2))
     with pytest.raises(ValueError):
         source.fetch(FALL_2026, limit=0)
+
+
+# -- run-log warnings (review of PR #43) -------------------------------------------------
+
+
+RECENT_404 = "2026-10-25T00:00:00+00:00"  # absent, and not due for a re-probe at NOW
+
+
+def lab_only_behind_absent_lecture(subject: str, catalog: str) -> list[SectionRef]:
+    """A lab-only course whose catalog also holds an absent LEC 001: the rule keeps the
+    LEC (the course's lowest class number), the LEC is not live, so nothing is selected
+    though LAB 101 and 102 are live."""
+    return [
+        spring_ref(subject, catalog, "001", "LEC", last_status=404, probed_at=RECENT_404),
+        spring_ref(subject, catalog, "101", "LAB"),
+        spring_ref(subject, catalog, "102", "LAB"),
+    ]
+
+
+def unselectable_warnings(caplog: pytest.LogCaptureFixture) -> list[str]:
+    return [r.getMessage() for r in caplog.records
+            if r.levelno == logging.WARNING and "no selectable section" in r.getMessage()]
+
+
+def test_warns_once_naming_priority_courses_with_live_entries_but_nothing_selected(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    refs = (PRIMARY_LIKE + SECONDARY + lab_only_behind_absent_lecture("PHYSICS", "5CL")
+            + lab_only_behind_absent_lecture("MATSCI", "104L"))
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, client, _ = make_source(tmp_path, small_site(), n_shards=1)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("COMPSCI 61A\nPHYSICS 5CL"), shard=(0, 1))
+    assert unselectable_warnings(caplog) == [
+        "courses with live catalog entries but no selectable section: priority=1 [PHYSICS 5CL] other=1"
+    ]
+    # a warning only: the selection is the rule's, unchanged
+    assert sorted(client.fetched()) == sorted(page_name(r) for r in PRIMARY_LIKE)
+
+
+def test_unselectable_warning_lists_twenty_priority_courses_by_rank(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    refs = [ref for i in range(23) for ref in lab_only_behind_absent_lecture("SUBJ", str(i))]
+    catalog_with(tmp_path, SPRING_2027, refs + PRIMARY_LIKE[:1])
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=1)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("\n".join(f"SUBJ {i}" for i in range(23))), shard=(0, 1))
+    named = ", ".join(f"SUBJ {i}" for i in range(20))
+    assert unselectable_warnings(caplog) == [
+        f"courses with live catalog entries but no selectable section: priority=23 [{named} and 3 more] other=0"
+    ]
+
+
+def test_no_unselectable_warning_when_every_course_has_a_live_candidate(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    catalog_with(tmp_path, SPRING_2027, PRIMARY_LIKE + SECONDARY)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=1)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=None)
+    assert unselectable_warnings(caplog) == []
+
+
+
+def summary_message(caplog: pytest.LogCaptureFixture) -> str:
+    lines = [r.getMessage() for r in caplog.records if r.getMessage().startswith("classes_site term=")]
+    assert len(lines) == 1
+    return lines[0]
+
+
+def gone_warnings(caplog: pytest.LogCaptureFixture) -> list[str]:
+    return [r.getMessage() for r in caplog.records if r.levelno == logging.WARNING and "went absent this run" in r.getMessage()]
+
+
+def spring_site(n_live: int, absent: set[int], *, reprobe: bool = False) -> tuple[list[SectionRef], dict[str, bytes | HttpError]]:
+    """``n_live`` live never-fetched Spring sections, those in ``absent`` answering 404, plus
+    (``reprobe``) an absent section due for its weekly re-probe that answers 404 again."""
+    refs = [spring_ref("SUBJ", str(i), "001", "LEC") for i in range(n_live)]
+    pages = small_site(extra={
+        f"{BASE}{r.url_path}": section_html("Spring 2027", "SUBJ", str(i), "001", "LEC", 50000 + i, 3000 + i, term_id="2272")
+        for i, r in enumerate(refs) if i not in absent
+    })
+    if reprobe:
+        refs.append(spring_ref("SUBJ", "99", "001", "LEC", last_status=404, probed_at="2026-01-01T00:00:00+00:00"))
+    return refs, pages
+
+
+def test_summary_line_counts_live_pages_that_answered_404(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    """gone= is the pages that went absent this run: a never-fetched page answering 404 (marked
+    absent, not missing) counts; a due re-probe answering 404 again was absent already."""
+    refs, pages = spring_site(4, absent={1, 2}, reprobe=True)
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, client, _ = make_source(tmp_path, pages)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        result = source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"))
+    assert len(client.fetched()) == 5 and result.missing_ids == []
+    assert " selected=5 observed=2 (0 via discovery) missing=0 gone=2 elapsed=" in summary_message(caplog)
+
+
+def test_gone_share_above_the_limit_warns(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    refs, pages = spring_site(9, absent={0, 1})  # 2 of 9 = 0.22
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, pages)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"))
+    assert [m.split(" (")[0] for m in gone_warnings(caplog)] == ["2 of 9 selected pages went absent this run"]
+
+
+def test_gone_share_at_the_limit_does_not_warn(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    assert GONE_WARN_SHARE == 0.1
+    refs, pages = spring_site(10, absent={0})  # 1 of 10: at the limit, not above it
+    catalog_with(tmp_path, SPRING_2027, refs)
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, _ = make_source(tmp_path, pages)
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        source.fetch(SPRING_2027, priority=PrioritySpec.from_text("SUBJ"))
+    assert " gone=1 " in summary_message(caplog) and gone_warnings(caplog) == []
+
+
+def test_known_section_answering_404_is_both_gone_and_missing(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    site_state(tmp_path, probed=1012, seen=1012)
+    source, _, clock = make_source(tmp_path, small_site())
+    source.fetch(FALL_2026, priority=None)
+    pages = small_site()
+    del pages[f"{BASE}{slug_of('Fall 2026', 'COMPSCI', '61A', '001', 'LEC')}"]
+    clock.now = NOW + timedelta(minutes=30)
+    source2, _, _ = make_source(tmp_path, pages, clock=clock)
+    caplog.clear()
+    with caplog.at_level(logging.INFO, logger="scraper.sources.classes_site"):
+        result = source2.fetch(FALL_2026, priority=None)
+    assert result.missing_ids == ["29147"]
+    assert " missing=1 gone=1 " in summary_message(caplog) and len(gone_warnings(caplog)) == 1  # 1 of 2
 
 
 # -- course title and instructors in the catalog (Q7, 2026-09-23) ---------------------

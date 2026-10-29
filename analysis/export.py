@@ -8,7 +8,10 @@ Files written under ``out_dir`` (``site/data``):
   got in within 7, 14 and 28 days and at the cell's reach (each with its 95%
   band), the median, counts, the pooled flag, and the reconstructed waitlist
   joins the pages rank courses by. Drives search, the Courses table and the
-  related-courses list; small enough to load on a phone.
+  related-courses list; small enough to load on a phone. With a ``catalog.json``
+  (the forecast term's schedule) every catalog course with no cohort rows gets a
+  row too, flagged ``catalog_only``, whose cells all point at its pools with
+  ``n_course`` 0; ``meta.json`` then counts them (``catalog_only_courses``).
 - ``courses/<SUBJECT>.json``: per course and bucket, a pointer to the pool
   that stands in for it plus the course's own counts; at
   ``estimate_level="course"`` a cell with ``min_n`` rows or more carries its
@@ -19,12 +22,13 @@ Files written under ``out_dir`` (``site/data``):
   courses, Phase 1 joiners), level and phase grids, and, when flows are given,
   daily admits, joins and drops and how waitlisters left the queue.
 - ``titles.json`` (only when a ``catalog.json`` is given): each index course's
-  title and instructors from the classes_site catalog, for title and
-  instructor search. Labels, not statistics.
+  title and instructors from the classes_site catalog's primary-like entries
+  (a secondary's instructor field names its GSI), for title and instructor
+  search. Labels, not statistics.
 
 Every cell is the Kaplan-Meier clearing curve of its virtual waitlisters on a
 fixed grid of days since joining, out to the longest follow-up the cell has
-(``reach_days``), with a 95% band from resampling sections (not rows: the rows
+(``reach_days``; with ``--reach-min-at-risk`` N, the last day N joiners are still at risk), with a 95% band from resampling sections (not rows: the rows
 of one section are copies of the same queue). The pages read a curve as a step
 function at the asker's own days left (``read_curve``): the last grid point at
 or before the horizon; past the reach the last point stands, as a floor. The
@@ -33,20 +37,24 @@ pages compute no statistic of their own.
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import logging
 import re
 import sys
 from collections import Counter
-from collections.abc import Iterable
-from datetime import datetime, timezone
+from collections.abc import Callable, Iterable
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
 
 from analysis.calendar import TermCalendar, calendar_for
+from analysis.cohort import OTHER_GROUP, course_level
 from analysis.survival import BUCKET_ORDER
+from scraper.sources.classes_site import SectionRef, primary_like
 
 logger = logging.getLogger(__name__)
 
@@ -66,7 +74,7 @@ DEFAULT_ESTIMATE_LEVEL = "course"
 LEVELS, DEFAULT_LEVEL = ESTIMATE_LEVELS, DEFAULT_ESTIMATE_LEVEL  # the names analysis.run imports
 LEVEL_ORDER = ("lower", "upper", "grad")
 PHASE_ORDER = ("before", "phase1", "between", "phase2", "adjustment", "instruction", "after")
-META_CARRY = ("data_source", "flows", "backfill", "cohort_rows_by_scenario", "prereg_commit", "prereg_date")
+META_CARRY = ("data_source", "flows", "backfill", "cohort_rows_by_scenario", "prereg_commit", "prereg_date", "cohort_cut")
 TITLES_FILE = "titles.json"
 TITLES_SOURCE = "classes_site catalog"
 CALENDAR_FIELDS = ("phase1_start", "phase1_end", "phase2_start", "phase2_end", "adjustment_start", "instruction_start", "last_auto_waitlist", "add_drop_deadline")
@@ -144,14 +152,39 @@ def _grid(reach_days: float) -> np.ndarray:
     return np.asarray(days, dtype=float)
 
 
-def _cell(rows: pd.DataFrame, *, n_boot: int = N_BOOT) -> dict:
-    """One curve cell: the KM clearing curve with its band, the reach, the median and the counts."""
+def reach_cut(durations: np.ndarray, min_at_risk: int) -> float:
+    """The last day with at least ``min_at_risk`` joiners still at risk (followed that
+    long: duration >= the day), i.e. the ``min_at_risk``-th longest follow-up (the
+    longest when ``min_at_risk`` is 0 or 1). A cell with fewer rows has no such day and
+    is refused: ``export_site_tables`` raises ``min_n`` to ``min_at_risk``, so such a
+    cell falls back to its pool instead."""
+    d = np.sort(np.asarray(durations, dtype=float))[::-1]
+    k = max(int(min_at_risk), 1)
+    if k > len(d):
+        raise ValueError(f"a cell with {len(d)} rows has fewer than {k} joiners at risk on any day")
+    return float(d[k - 1])
+
+
+def _cell(rows: pd.DataFrame, *, n_boot: int = N_BOOT, reach_min_at_risk: int = 0, interval_min_sections: int = 0) -> dict:
+    """One curve cell: the KM clearing curve with its band, the reach, the median and the counts.
+
+    ``reach_min_at_risk`` N (0: off) cuts the curve at ``reach_cut``, the last day with
+    at least N joiners at risk, and makes that day the reach, so a Kaplan-Meier jump on
+    the last few joiners (to 1.0 when they all clear) never becomes the reach or the
+    floor past it. The points kept are the uncut curve's (the estimate at a day does not
+    depend on later rows). The median is a statistic of the full data, not a curve point,
+    and is kept as computed: under the cut it may lie past ``reach``.
+
+    ``interval_min_sections`` N (0: off) leaves out the band (``lo``/``hi`` null) of a
+    cell with fewer than N sections: a section bootstrap over two sections resamples
+    the same two queues and gives a band that looks precise and is not."""
     d = rows["duration_days"].to_numpy(dtype=float)
     e = rows["event"].to_numpy(dtype=int)
-    reach = float(d.max())
+    reach = reach_cut(d, reach_min_at_risk) if reach_min_at_risk else float(d.max())
     grid = _grid(reach)
     p = km_clear_at(d, e, grid)
-    band = section_bootstrap_band(rows, grid, n_boot=n_boot)
+    n_sections = int(rows["section_id"].nunique())
+    band = None if n_sections < interval_min_sections else section_bootstrap_band(rows, grid, n_boot=n_boot)
     curve = []
     for i, day in enumerate(grid):
         point = [float(day), round(float(p[i]), 3)]
@@ -162,12 +195,12 @@ def _cell(rows: pd.DataFrame, *, n_boot: int = N_BOOT) -> dict:
         curve.append(point)
     median = median_clear_days(d, e)
     return {
-        "curve": curve,  # [days since joining, P(got in by then), 95% low, 95% high] out to the longest follow-up
+        "curve": curve,  # [days since joining, P(got in by then), 95% low, 95% high] out to the reach (the longest follow-up, or the at-risk cut when reach_min_at_risk is on)
         "reach_days": round(reach, 1),
         "median_days": None if median is None else round(median, 2),
         "n": int(len(rows)),
         "events": int(e.sum()),
-        "sections": int(rows["section_id"].nunique()),
+        "sections": n_sections,
     }
 
 
@@ -197,21 +230,23 @@ def _ordered(keys: list[str], order: tuple[str, ...]) -> list[str]:
     return known + sorted(k for k in keys if k not in order)
 
 
-def pool_tables(cohort: pd.DataFrame, *, min_n: int = MIN_N, n_boot: int = N_BOOT) -> dict:
+def pool_tables(cohort: pd.DataFrame, *, min_n: int = MIN_N, n_boot: int = N_BOOT, cell: Callable[[pd.DataFrame], dict] | None = None) -> dict:
     """``{"all": {bucket: cell}, "dept": {dept_group: {bucket: cell}}, "level": {level: {bucket: cell}}}``
-    for every pool with ``min_n`` rows or more."""
+    for every pool with ``min_n`` rows or more. ``cell`` builds a curve cell (default
+    ``_cell`` with ``n_boot``; ``export_site_tables`` passes its options bound in)."""
+    cell = cell or functools.partial(_cell, n_boot=n_boot)
     pools: dict = {"all": {}, "dept": {}, "level": {}}
     if cohort.empty:
         return pools
     for bucket, g in cohort.groupby("position_bucket", observed=True):
         if len(g) >= min_n:
-            pools["all"][str(bucket)] = _cell(g, n_boot=n_boot)
+            pools["all"][str(bucket)] = cell(g)
     for (dept, bucket), g in cohort.groupby(["dept_group", "position_bucket"], observed=True):
         if len(g) >= min_n:
-            pools["dept"].setdefault(str(dept), {})[str(bucket)] = _cell(g, n_boot=n_boot)
+            pools["dept"].setdefault(str(dept), {})[str(bucket)] = cell(g)
     for (level, bucket), g in cohort.groupby(["level", "position_bucket"], observed=True):
         if len(g) >= min_n:
-            pools["level"].setdefault(str(level), {})[str(bucket)] = _cell(g, n_boot=n_boot)
+            pools["level"].setdefault(str(level), {})[str(bucket)] = cell(g)
     return pools
 
 
@@ -222,7 +257,7 @@ def resolve_pool(pools: dict, pooled: str, bucket: str) -> dict | None:
     return pools["dept"].get(pooled, {}).get(bucket)
 
 
-def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT, pools: dict | None = None, estimate_level: str = DEFAULT_ESTIMATE_LEVEL) -> dict:
+def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT, pools: dict | None = None, estimate_level: str = DEFAULT_ESTIMATE_LEVEL, cell: Callable[[pd.DataFrame], dict] | None = None) -> dict:
     """``{course_key: {subject, number, level, dept_group, buckets: {bucket: cell}}}``.
 
     A pointer cell names in ``pooled`` the department whose curve for the same
@@ -238,8 +273,9 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
     out: dict = {}
     if cohort.empty:
         return out
+    make_cell = cell or functools.partial(_cell, n_boot=n_boot)
     if pools is None:
-        pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot)
+        pools = pool_tables(cohort, min_n=min_n, cell=make_cell)
     for course_key, course_rows in cohort.groupby("course_key", sort=True, observed=True):
         dept = str(course_rows["dept_group"].iloc[0])
         cells: dict = {}
@@ -248,7 +284,7 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
             if len(rows) == 0:
                 continue
             if estimate_level == "course" and len(rows) >= min_n:
-                cell = _cell(rows, n_boot=n_boot)
+                cell = make_cell(rows)
                 cell["pooled"] = False
             else:
                 if bucket in pools["dept"].get(dept, {}):
@@ -268,6 +304,47 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
                 "dept_group": dept,
                 "buckets": cells,
             }
+    return out
+
+
+def catalog_course_entries(catalog_entries: Iterable[dict]) -> list[dict]:
+    """The catalog entries that name a course: non-empty ``course_key``, ``subject`` and
+    ``catalog_number``. ``catalog_stubs`` and the ``catalog_courses`` count both read
+    these, so a malformed entry is skipped by both and counted by neither."""
+    return [e for e in catalog_entries if all(str(e.get(k) or "").strip() for k in ("course_key", "subject", "catalog_number"))]
+
+
+def catalog_stubs(catalog_entries: Iterable[dict], cohort: pd.DataFrame, courses: dict, pools: dict) -> dict:
+    """``{course_key: entry}`` for every catalog course not in ``courses`` (what
+    ``course_tables`` returned: a cohort course no pool covers is missing there too, so it
+    gets a stub rather than no row at all), shaped like a
+    ``course_tables`` entry plus ``catalog_only: True``. ``dept_group`` is the cohort's own
+    for the subject, else ``OTHER_GROUP`` (a subject with no cohort sections, the rule
+    ``build_cohort`` applies to subjects under ``min_sections_per_group``); ``level`` is
+    ``course_level``. Each bucket some pool covers gets a pointer cell with ``n_course``
+    and ``sections_course`` 0 (the department pool first, then ``"all"``); a course no
+    pool covers at all is left out, as in ``course_tables``. Entries missing a course key, subject
+    or catalog number are skipped (``catalog_course_entries``)."""
+    known = {str(k) for k in courses}
+    groups = {str(k): str(v) for k, v in cohort.groupby("subject", observed=True)["dept_group"].first().items()} if len(cohort) else {}
+    out: dict = {}
+    for e in catalog_course_entries(catalog_entries):
+        key = str(e["course_key"])
+        if key in known or key in out:
+            continue
+        subject, number = str(e["subject"]), str(e["catalog_number"])
+        dept = groups.get(subject, OTHER_GROUP)
+        cells: dict = {}
+        for bucket in BUCKET_ORDER:
+            if bucket in pools["dept"].get(dept, {}):
+                pooled = dept
+            elif bucket in pools["all"]:
+                pooled = "all"
+            else:
+                continue
+            cells[bucket] = {"pooled": pooled, "n_course": 0, "sections_course": 0}
+        if cells:
+            out[key] = {"subject": subject, "number": number, "level": course_level(number), "dept_group": dept, "buckets": cells, "catalog_only": True}
     return out
 
 
@@ -310,6 +387,8 @@ def index_rows(courses: dict, pools: dict, joins: dict[str, int] | None = None) 
                 "buckets": buckets,
             }
         )
+        if entry.get("catalog_only"):
+            rows[-1]["catalog_only"] = True
     return rows
 
 
@@ -317,8 +396,18 @@ def _grid_of(cells: dict) -> dict:
     return {k: _summary(c) for k, c in cells.items()}
 
 
-def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_boot: int = N_BOOT, flows: pd.DataFrame | None = None) -> dict:
-    """Term-wide tables for the Insights page (see the module docstring)."""
+def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_boot: int = N_BOOT, flows: pd.DataFrame | None = None, cell: Callable[[pd.DataFrame], dict] | None = None, calendar: TermCalendar | None = None, exits_at_last_auto: bool = False) -> dict:
+    """Term-wide tables for the Insights page (see the module docstring).
+
+    ``exits`` counts how waitlisters left the queue: admitted, dropped, and still
+    waiting at the last observation (the default; for a finished term that is after
+    the registrar's end-of-term purge, so the purge lands in "dropped"). With
+    ``exits_at_last_auto`` (default off) every count stops at the end of ``calendar``'s
+    last automatic waitlist run day in Pacific time (``last_auto_cutoff``, after the
+    run itself): admits and drops of intervals ending by then, each section's list
+    at that moment (after its last interval ending by then, or at the start of the
+    interval spanning it; 0 for a section not yet seen), ``as_of``, and the flows
+    after it (the purge) under ``after_last_auto``. Needs the flows' ``t0``."""
     out: dict = {
         "horizons": list(HORIZONS),
         "counts": {
@@ -334,15 +423,16 @@ def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_
     }
     if cohort.empty:
         return out
+    cell = cell or functools.partial(_cell, n_boot=n_boot)
     hero_rows = cohort[(cohort["level"] == "lower") & (cohort["phase"] == "phase1")]
     for bucket, g in hero_rows.groupby("position_bucket", observed=True):
         if len(g) >= min_n:
-            out["hero"][str(bucket)] = _cell(g, n_boot=n_boot)
+            out["hero"][str(bucket)] = cell(g)
     out["hero"] = {b: out["hero"][b] for b in _ordered(list(out["hero"]), BUCKET_ORDER)}
     by_phase: dict = {}
     for (phase, bucket), g in cohort.groupby(["phase", "position_bucket"], observed=True):
         if len(g) >= min_n:
-            by_phase.setdefault(str(phase), {})[str(bucket)] = _summary(_cell(g, n_boot=n_boot))
+            by_phase.setdefault(str(phase), {})[str(bucket)] = _summary(cell(g))
     out["by_phase"] = {p: by_phase[p] for p in _ordered(list(by_phase), PHASE_ORDER)}
     if flows is not None and len(flows) and {"t1", "admits", "wl_joins", "wl_drops"} <= set(flows.columns):
         f = flows.copy()
@@ -361,14 +451,49 @@ def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_
             }
             for day, r in daily.sort_index().iterrows()
         ]
-        last = f.sort_values("t1").groupby("section_id", observed=True).tail(1)
-        still = (last["waitlist0"] + last["d_waitlist"]).clip(lower=0).sum() if {"waitlist0", "d_waitlist"} <= set(last.columns) else None
-        out["exits"] = {
-            "admitted": int(f["admits"].sum()),
-            "dropped": int(f["wl_drops"].sum()),
-            "still_waiting": None if still is None else int(still),
-        }
+        if exits_at_last_auto:
+            out["exits"] = _exits_at_last_auto(f, calendar)
+        else:
+            last = f.sort_values("t1").groupby("section_id", observed=True).tail(1)
+            still = (last["waitlist0"] + last["d_waitlist"]).clip(lower=0).sum() if {"waitlist0", "d_waitlist"} <= set(last.columns) else None
+            out["exits"] = {
+                "admitted": int(f["admits"].sum()),
+                "dropped": int(f["wl_drops"].sum()),
+                "still_waiting": None if still is None else int(still),
+            }
     return out
+
+
+PACIFIC = ZoneInfo("America/Los_Angeles")
+
+
+def last_auto_cutoff(calendar: TermCalendar) -> pd.Timestamp:
+    """The end of the last automatic waitlist run's day in Pacific time (midnight at the
+    start of the next day), as UTC: after the run itself (6:40 PM on that day; Spring
+    2026: Fri Feb 6, 6:40 PM PST = 02:40Z on Feb 7, cut 08:00Z on Feb 7). Midnight UTC
+    would fall about 2.7 h before the run and count its admits as purge."""
+    # Once PR #53 merges, its last_auto_cut(calendar, "pacific") replaces this, so the
+    # backtest's deadline and the Insights exits share one definition of the cut.
+    d = calendar.last_auto_waitlist + timedelta(days=1)
+    return pd.Timestamp(datetime(d.year, d.month, d.day, tzinfo=PACIFIC)).tz_convert("UTC")
+
+
+def _exits_at_last_auto(f: pd.DataFrame, calendar: TermCalendar) -> dict:
+    if not {"t0", "waitlist0", "d_waitlist"} <= set(f.columns):
+        raise ValueError("exits_at_last_auto needs the flows' t0, waitlist0 and d_waitlist")
+    cut = last_auto_cutoff(calendar)
+    t0 = pd.to_datetime(f["t0"], utc=True)
+    t1 = pd.to_datetime(f["t1"], utc=True)
+    before, after = f[t1 <= cut], f[t1 > cut]
+    started = f[t0 <= cut].assign(_t0=t0[t0 <= cut], _t1=t1[t0 <= cut]).sort_values("_t0").groupby("section_id", observed=True).tail(1)
+    at_cut = (started["waitlist0"] + started["d_waitlist"]).where(started["_t1"] <= cut, started["waitlist0"])
+    return {
+        "admitted": int(before["admits"].sum()),
+        "dropped": int(before["wl_drops"].sum()),
+        "still_waiting": int(at_cut.clip(lower=0).sum()),
+        "as_of": cut.isoformat(),
+        "after_last_auto": {"admitted": int(after["admits"].sum()), "dropped": int(after["wl_drops"].sum())},
+    }
 
 
 def _subject_file(subject: str) -> str:
@@ -396,18 +521,24 @@ def titles_table(index_keys: Iterable[str], catalog_entries: Iterable[dict]) -> 
     """``{course_key: {"title", "instructors"}}`` for the index's courses, from catalog entries.
 
     Only keys in ``index_keys`` (so the file never names a course the site cannot
-    show). A course's title is the most common non-empty title among its entries;
-    a tie goes to a title some ``LEC`` entry carries, then alphabetical.
-    ``instructors`` is the sorted, de-duplicated union of its entries' names. A
-    course with neither is left out. Keys come back sorted."""
+    show), and only the entries ``primary_like`` keeps (docs/DESIGN_A2.md section
+    19): a secondary's instructor field names its GSI or lab lead, not the
+    course's instructor (a DIS 101 under LEC 001 is dropped; a lab-only course's
+    LAB 101 is its primary and stays). A course's title is the most common
+    non-empty title among those entries; a tie goes to a title some ``LEC`` entry
+    carries, then alphabetical. ``instructors`` is the sorted, de-duplicated union
+    of their names. A course with neither is left out. Keys come back sorted."""
     keys = set(index_keys)
+    entries = [e for e in catalog_entries if str(e.get("course_key") or "") in keys]
+    refs = [SectionRef.from_dict(e) for e in entries]
+    primary = set(primary_like(refs))  # the rule decides on course, class number and component; equal refs share a verdict
     counts: dict[str, Counter] = {}
     on_lecture: dict[str, set[str]] = {}
     people: dict[str, set[str]] = {}
-    for entry in catalog_entries:
-        key = str(entry.get("course_key") or "")
-        if key not in keys:
+    for entry, ref in zip(entries, refs, strict=True):
+        if ref not in primary:
             continue
+        key = ref.course_key
         title = str(entry.get("title") or "").strip()
         if title:
             counts.setdefault(key, Counter())[title] += 1
@@ -437,16 +568,23 @@ def load_catalog(path: Path | str) -> tuple[str | None, list[dict]]:
     return (str(term) if term else None), entries
 
 
-def write_titles(out_dir: Path | str, index_keys: Iterable[str], catalog: Path | str) -> dict:
-    """Write ``titles.json`` under ``out_dir`` for ``index_keys`` from ``catalog``; returns what it wrote.
-    Re-exports of the same inputs are byte-identical apart from ``generated_at``."""
-    term, entries = load_catalog(catalog)
-    payload = {
+def titles_payload(index_keys: Iterable[str], catalog: Path | str, *, loaded: tuple[str | None, list[dict]] | None = None) -> dict:
+    """The ``titles.json`` payload for ``index_keys`` from ``catalog``, stamped now.
+    ``loaded`` is ``load_catalog(catalog)`` when the caller has already parsed it."""
+    term, entries = loaded if loaded is not None else load_catalog(catalog)
+    return {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "source": TITLES_SOURCE,
         "catalog_term_id": term,
         "courses": titles_table(index_keys, entries),
     }
+
+
+def write_titles(out_dir: Path | str, index_keys: Iterable[str], catalog: Path | str, *, loaded: tuple[str | None, list[dict]] | None = None) -> dict:
+    """Write ``titles.json`` under ``out_dir`` for ``index_keys`` from ``catalog``; returns what it wrote.
+    ``loaded`` is ``load_catalog(catalog)`` when the caller has already parsed it.
+    Re-exports of the same inputs are byte-identical apart from ``generated_at``."""
+    payload = titles_payload(index_keys, catalog, loaded=loaded)
     _dump(Path(out_dir) / TITLES_FILE, payload)
     logger.info("wrote %s (%d courses from %s)", Path(out_dir) / TITLES_FILE, len(payload["courses"]), catalog)
     return payload
@@ -468,15 +606,26 @@ def titles_summary(payload: dict, index_keys: list[str]) -> dict:
 def export_titles_only(out_dir: Path | str, catalog: Path | str) -> dict:
     """Write ``titles.json`` for the ``index.json`` already in ``out_dir`` and add
     ``titles_file`` to its ``meta.json``; nothing else is read or rewritten (no cohort,
-    no refit). Returns ``titles_summary``."""
+    no refit). A ``titles.json`` that would change only in ``generated_at`` is left as it
+    is, so the weekly refresh from an unchanged catalog commits nothing. Returns
+    ``titles_summary`` plus ``titles_changed`` and ``meta_changed`` (whether each file was written)."""
     out_dir = Path(out_dir)
     keys = [row["key"] for row in json.loads((out_dir / "index.json").read_text(encoding="utf-8"))["courses"]]
-    meta_path = out_dir / "meta.json"
+    meta_path, titles_path = out_dir / "meta.json", out_dir / TITLES_FILE
     info = json.loads(meta_path.read_text(encoding="utf-8"))
-    payload = write_titles(out_dir, keys, catalog)
-    info["titles_file"] = TITLES_FILE
-    meta_path.write_text(json.dumps(info, indent=1, sort_keys=True, allow_nan=False), encoding="utf-8")
-    return {"titles": str(out_dir / TITLES_FILE), "meta": str(meta_path), **titles_summary(payload, keys)}
+    payload = titles_payload(keys, catalog)
+    old = json.loads(titles_path.read_text(encoding="utf-8")) if titles_path.is_file() else None
+    titles_changed = old is None or {**old, "generated_at": None} != {**payload, "generated_at": None}
+    if titles_changed:
+        _dump(titles_path, payload)
+        logger.info("wrote %s (%d courses from %s)", titles_path, len(payload["courses"]), catalog)
+    else:
+        logger.info("%s unchanged (catalog %s); left as it was", titles_path, catalog)
+    meta_changed = info.get("titles_file") != TITLES_FILE
+    if meta_changed:
+        info["titles_file"] = TITLES_FILE
+        meta_path.write_text(json.dumps(info, indent=1, sort_keys=True, allow_nan=False), encoding="utf-8")
+    return {"titles": str(titles_path), "meta": str(meta_path), "titles_changed": titles_changed, "meta_changed": meta_changed, **titles_summary(payload, keys)}
 
 
 def export_site_tables(
@@ -491,6 +640,9 @@ def export_site_tables(
     flows: pd.DataFrame | None = None,
     estimate_level: str = DEFAULT_ESTIMATE_LEVEL,
     catalog: Path | None = None,
+    reach_min_at_risk: int = 0,
+    interval_min_sections: int = 0,
+    exits_at_last_auto: bool = False,
 ) -> tuple[Path, Path]:
     """Write the site's JSON under ``out_dir``; returns ``(index.json, meta.json)``.
 
@@ -498,16 +650,56 @@ def export_site_tables(
     is the term whose dates the pages count down to, so a finished cycle can
     stand in for the coming one and be labelled as such. ``estimate_level`` is
     what a course's estimate is (``course_tables``); ``meta.json`` records it.
-    ``catalog`` (a classes_site ``catalog.json``) adds ``titles.json`` for the
-    index's courses and ``meta.titles_file``; without it neither is written and a
-    ``titles.json`` left from an earlier export is removed.
+    ``catalog`` (a classes_site ``catalog.json``, the forecast term's schedule) adds
+    a ``catalog_stubs`` entry for every catalog course with no index row from the
+    cohort (into the subject files and the index, flagged ``catalog_only``),
+    ``titles.json`` for the index's courses, and ``meta.titles_file``,
+    ``catalog_term_id``, ``catalog_courses`` and ``catalog_only_courses``;
+    ``meta.courses`` still counts courses with cohort rows. A catalog of another
+    term than the forecast's logs a warning and adds only ``titles.json`` and
+    ``meta.titles_file``: no stubs, none of the three catalog fields. Without it none of these is written and a ``titles.json`` left from an
+    earlier export is removed.
+
+    Default-off options (the served curves are pre-registered; each is recorded in
+    ``meta.json`` only when on, so with the defaults every file is byte-identical to an
+    export without them): ``reach_min_at_risk`` cuts every curve cell where fewer than
+    that many joiners are still at risk and ``interval_min_sections`` leaves out the band
+    of a curve cell with fewer sections than that (``_cell``); ``exits_at_last_auto``
+    measures the Insights exits at the data term's last automatic waitlist run
+    (``insights_tables``).
     """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     forecast = forecast_calendar or calendar
-    pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot)
-    courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot, pools=pools, estimate_level=estimate_level)
+    if reach_min_at_risk:
+        # A cell needs N joiners at risk to be cut at N: under N rows it falls back to its
+        # pool, as any cell under min_n does (meta.min_n records the raised value).
+        min_n = max(min_n, int(reach_min_at_risk))
+    if exits_at_last_auto and (flows is None or flows.empty):
+        raise ValueError("exits_at_last_auto needs flows (the Insights exits come from them)")
+    cell = functools.partial(_cell, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
+    pools = pool_tables(cohort, min_n=min_n, cell=cell)
+    courses = course_tables(cohort, calendar, min_n=min_n, pools=pools, estimate_level=estimate_level, cell=cell)
     joins = joins_by_course(cohort, flows)
+    n_courses = len(courses)  # courses with cohort rows, before any catalog stub
+    catalog_info: dict = {}
+    loaded = None
+    if catalog is not None:
+        loaded = load_catalog(catalog)
+        catalog_term, catalog_entries = loaded
+        if not isinstance(catalog_term, str) or not catalog_term:
+            raise ValueError(f"catalog {catalog}: no term id (none in the file, its entries or a catalog/<term>/ directory name); meta.catalog_term_id must name the catalog's term")
+        if catalog_term != str(forecast.term_id):
+            # another term's schedule: its titles still serve, but "not on the schedule" would be judged against the wrong list
+            logger.warning("catalog %s is term %s, not the forecast term %s: no catalog stubs or catalog meta; titles.json only", catalog, catalog_term, forecast.term_id)
+        else:
+            stubs = catalog_stubs(catalog_entries, cohort, courses, pools)
+            courses = dict(sorted({**courses, **stubs}.items()))
+            catalog_info = {
+                "catalog_term_id": catalog_term,
+                "catalog_courses": len({str(e["course_key"]) for e in catalog_course_entries(catalog_entries)}),
+                "catalog_only_courses": len(stubs),
+            }
 
     courses_dir = out_dir / "courses"
     courses_dir.mkdir(exist_ok=True)
@@ -529,11 +721,11 @@ def export_site_tables(
     rows = index_rows(courses, pools, joins)
     _dump(index_path, {"term_id": calendar.term_id, "horizons": list(HORIZONS), "courses": rows})
     if catalog is not None:
-        write_titles(out_dir, [row["key"] for row in rows], catalog)
+        write_titles(out_dir, [row["key"] for row in rows], catalog, loaded=loaded)
     elif (out_dir / TITLES_FILE).exists():
         (out_dir / TITLES_FILE).unlink()
     _dump(out_dir / "pooled.json", {"term_id": calendar.term_id, **pools})
-    _dump(out_dir / "insights.json", {"term_id": calendar.term_id, **insights_tables(cohort, pools, min_n=min_n, n_boot=n_boot, flows=flows)})
+    _dump(out_dir / "insights.json", {"term_id": calendar.term_id, **insights_tables(cohort, pools, min_n=min_n, flows=flows, cell=cell, calendar=calendar, exits_at_last_auto=exits_at_last_auto)})
 
     info = {
         "term_id": calendar.term_id,
@@ -543,7 +735,7 @@ def export_site_tables(
         "dates": {k: getattr(forecast, k).isoformat() for k in CALENDAR_FIELDS},
         "data_dates": {k: getattr(calendar, k).isoformat() for k in CALENDAR_FIELDS},
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "courses": len(courses),
+        "courses": n_courses,
         "cohort_rows": int(len(cohort)),
         "events": int(cohort["event"].sum()) if len(cohort) else 0,
         "sections": int(cohort["section_id"].nunique()) if len(cohort) else 0,
@@ -565,13 +757,31 @@ def export_site_tables(
     }
     if catalog is not None:
         info["titles_file"] = TITLES_FILE
+        info.update(catalog_info)
+    if reach_min_at_risk:
+        info["reach_min_at_risk"] = int(reach_min_at_risk)
+    if interval_min_sections:
+        info["interval_min_sections"] = int(interval_min_sections)
+    if exits_at_last_auto:
+        info["exits_at_last_auto"] = True
     if meta:
         info.update(meta)
     info.setdefault("terms", [{"term_id": calendar.term_id, "term_name": calendar.name, "data_source": info.get("data_source")}])
     meta_path = out_dir / "meta.json"
     meta_path.write_text(json.dumps(info, indent=1, sort_keys=True, allow_nan=False), encoding="utf-8")
-    logger.info("wrote %s (%d courses, %d subject files), %s and %s", index_path, len(courses), len(subject_files), out_dir / "pooled.json", meta_path)
+    logger.info("wrote %s (%d courses, %d catalog-only, %d subject files), %s and %s", index_path, n_courses, len(courses) - n_courses, len(subject_files), out_dir / "pooled.json", meta_path)
     return index_path, meta_path
+
+
+def nonneg_int(text: str) -> int:
+    """argparse ``type=`` for the default-off counts (0 is off): an integer >= 0."""
+    try:
+        value = int(text)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"must be an integer >= 0 (0 is off), got {text!r}") from None
+    if value < 0:
+        raise argparse.ArgumentTypeError(f"must be >= 0 (0 is off), got {value}")
+    return value
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -590,12 +800,18 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--n-boot", type=int, default=N_BOOT)
     p.add_argument("--min-n", type=int, default=MIN_N)
     p.add_argument("--estimate-level", choices=ESTIMATE_LEVELS, default=DEFAULT_ESTIMATE_LEVEL, help="course: a course with min_n rows gets its own curve, else the department's (default); dept: the department's curve stands in for every course")
-    p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json); writes titles.json (each index course's title and instructors) and meta.titles_file")
+    p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json): adds a catalog_only stub row (pointing at its pools) for every catalog course with no cohort rows, writes titles.json (each index course's title and instructors) and meta.titles_file, catalog_term_id, catalog_courses and catalog_only_courses")
+    p.add_argument("--reach-min-at-risk", type=nonneg_int, default=0, metavar="N", help="cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
+    p.add_argument("--interval-min-sections", type=nonneg_int, default=0, metavar="N", help="leave out the 95%% band (lo/hi null) of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
+    p.add_argument("--exits-at-last-auto", action="store_true", help="needs --flows; insights.json exits: admits and drops up to the end of the data term's last automatic waitlist run day in Pacific time (after the run), the waitlist at that moment as still_waiting, and the admits and drops after it (the purge) apart (default: everything to the last observation)")
     p.add_argument("--titles-only", action="store_true", help="with --catalog: write only titles.json for the index.json already in --out and add titles_file to its meta.json; no cohort, no refit, every other file untouched")
     args = p.parse_args(argv)
     if args.catalog is not None and not args.catalog.is_file():
         p.error(f"--catalog {args.catalog}: no such file")
     if args.titles_only:
+        options = [flag for flag, on in (("--reach-min-at-risk", args.reach_min_at_risk), ("--interval-min-sections", args.interval_min_sections), ("--exits-at-last-auto", args.exits_at_last_auto)) if on]
+        if options:
+            p.error(f"--titles-only rewrites only titles.json; {', '.join(options)} change the curves or insights and need a full export")
         if args.catalog is None:
             p.error("--titles-only needs --catalog")
         if args.cohort is not None or args.term_id is not None:
@@ -605,6 +821,8 @@ def main(argv: list[str] | None = None) -> int:
             p.error(f"--titles-only needs an existing export in --out {args.out}: no {' or '.join(missing)} there (run a full export first)")
     elif args.cohort is None or args.term_id is None:
         p.error("--cohort and --term-id are required (except with --titles-only)")
+    if args.exits_at_last_auto and args.flows is None:
+        p.error("--exits-at-last-auto needs --flows (the exits come from the flows)")
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
     if args.titles_only:
         print(json.dumps(export_titles_only(args.out, args.catalog), indent=1))
@@ -640,6 +858,9 @@ def main(argv: list[str] | None = None) -> int:
         flows=flows,
         estimate_level=args.estimate_level,
         catalog=args.catalog,
+        reach_min_at_risk=args.reach_min_at_risk,
+        interval_min_sections=args.interval_min_sections,
+        exits_at_last_auto=args.exits_at_last_auto,
     )
     info = json.loads(meta_path.read_text(encoding="utf-8"))
     print(json.dumps({"index": str(index_path), "meta": str(meta_path), "courses": info["courses"], "events": info["events"], "sections": info["sections"], "data_source": info.get("data_source"), "estimate_level": info["estimate_level"], "subject_files": len(info["subject_files"]), "titles_file": info.get("titles_file")}, indent=1))

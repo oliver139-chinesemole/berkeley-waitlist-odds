@@ -1,8 +1,8 @@
 # Analysis entry points. `make analysis` runs on the data branch; the backfill
 # targets run on Berkeleytime's public history for a finished term (laptop only:
 # Berkeleytime blocks GitHub's runners). See docs/dev/BACKFILL_BACKTEST.md.
-TERM ?= 2268
-TERM_NAME ?= Fall 2026
+TERM ?= 2272
+TERM_NAME ?= Spring 2027
 DATA_ROOT ?= ./data-branch
 BACKFILL_RAW ?= backfill/raw/$(TERM)
 BACKFILL_DIR ?= backfill/$(TERM)
@@ -16,8 +16,11 @@ SITE_TERM ?= 2262
 # the cross-term backtest found course identity transfers across cycles) or dept.
 ESTIMATE_LEVEL ?= course
 # The classes_site catalog whose titles and instructors become site/data/titles.json (Q4 search).
-# site-data passes it only when the file exists, so the target works without a data-branch checkout.
-CATALOG ?= $(DATA_ROOT)/catalog/2268/catalog.json
+# analysis and site-data pass it only when the file exists, so they work without a data-branch checkout.
+CATALOG ?= $(DATA_ROOT)/catalog/2272/catalog.json
+# Gaps between snapshots longer than this are censored in the position walk, matching the weekly
+# analysis.yml run (PR #46); the backfill path censors at its own GAP_MIN, already 180.
+MAX_INTERVAL_MIN ?= 180
 
 .PHONY: test flows analysis backfill-pilot backfill backfill-analysis backtest site-data
 
@@ -28,7 +31,7 @@ flows:
 	python -m analysis.flows --data-root $(DATA_ROOT) --term-id $(TERM) --out analysis/out/flows_$(TERM).parquet
 
 analysis:
-	python -m analysis.run --data-root $(DATA_ROOT) --term-id $(TERM) --out analysis/out --site-dir site/data
+	python -m analysis.run --data-root $(DATA_ROOT) --term-id $(TERM) --out analysis/out --site-dir site/data --max-interval-min $(MAX_INTERVAL_MIN) $$(test -f $(CATALOG) && echo --catalog $(CATALOG))
 
 # First $(PILOT) sections of the seeded permutation (a subset of the full pull), then build.
 backfill-pilot:

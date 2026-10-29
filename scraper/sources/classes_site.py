@@ -62,6 +62,8 @@ LEGACY_CATALOG_FILENAME = "sections.json"  # listing-based file written before 2
 CATALOG_VERSION = 3
 ABSENT_REPROBE_AFTER = timedelta(days=7)  # retry a 404 slug after this
 MAX_REPROBES_PER_RUN = 100
+# scrape.yml's cadence (:07 and :37): a shard of n is visited RUNS_PER_DAY // n times a UTC day.
+RUNS_PER_DAY = 48
 MAX_NODE_PROBES_PER_RUN = 400  # ids enumerated per run while catching up
 NODE_PROBE_BUDGET_SHARE = 0.3  # at most this share of the remaining budget goes to enumeration
 INITIAL_LOOKBACK_NODES = 2000  # first run ever: sweep this many ids below the newest feed id
@@ -71,12 +73,24 @@ INITIAL_LOOKBACK_NODES = 2000  # first run ever: sweep this many ids below the n
 SELF_STUDY_COMPONENTS = frozenset(
     {"IND", "GRP", "FLD", "TUT", "INT", "SLF", "PRA", "REC", "SES", "CLN", "WOR", "REA", "WBD", "VOL", "DEM"}
 )
+# A class number whose leading digits are below this is primary-like (docs/DESIGN_A2.md section 19).
+PRIMARY_CLASS_NUMBER_LIMIT = 100
+# The warning about courses with no selectable section names at most this many priority courses.
+MAX_COURSES_NAMED = 20
+# Warn when the selected pages that went absent in a run (live before it, 404 in it; a due
+# re-probe answering 404 again is not counted) exceed this share of its selected= (the whole
+# selection, re-probes and pages read during discovery included). Why 0.1: the Fall 2026
+# catalog held 2 absent entries of 3,900 after about five weeks of runs, so a run normally
+# loses about none; 0.1 is about 120 pages of a Spring run, a fifth of the exit-4 gate's 0.5
+# (docs/DESIGN_A2.md section 19).
+GONE_WARN_SHARE = 0.1
 # The section page exposes ucb.termDetails.sessionDescription ("2026 Fall")
 # but no session id; every section we scrape is in the regular session.
 DEFAULT_SESSION_ID = "1"
 
 _TITLE_RE = re.compile(r"^\s*(\d{4})\s+(Spring|Summer|Fall)\s+(\S+)\s+(\S+)\s+(\S+)\s+([A-Za-z]{2,4})\s+(\S+)\s*$")
 _SLUG_RE = re.compile(r"^/content/(\d{4})-(spring|summer|fall)-(.+)$")
+_LEADING_DIGITS_RE = re.compile(r"\d+")
 
 
 def _utcnow() -> datetime:
@@ -279,6 +293,70 @@ def merge_catalog(existing: list[SectionRef], fresh: list[SectionRef]) -> tuple[
         if changes:
             by_path[ref.url_path] = replace(current, **changes)
     return list(by_path.values()), added
+
+
+def _class_number_order(class_number: str) -> tuple[bool, int]:
+    """Sort key of a class number by its leading digits (``"001"`` -> 1, ``"061A"`` -> 61);
+    a number without leading digits (``"A01"``, ``"UC01"``) sorts after every numeric one."""
+    m = _LEADING_DIGITS_RE.match(class_number)
+    return (False, int(m.group())) if m else (True, 0)
+
+
+def primary_like(refs: list[SectionRef]) -> list[SectionRef]:
+    """The catalog entries a run may select, in their catalog order (docs/DESIGN_A2.md section 19).
+
+    An entry is kept when the leading digits of its class number are below
+    ``PRIMARY_CLASS_NUMBER_LIMIT`` (100), or when its component is one that carries its
+    course's lowest class number (taken over every entry of the course, absent ones
+    included; components tied at that number are all kept). The second clause keeps the
+    courses whose primaries are numbered 100 and up, which the first alone would empty:
+    lab-only courses (PHYSICS 5BL LAB 101), lectures numbered by topic (COMPSCI 294 LEC
+    150) and letter-numbered seminars (MCELLBI 290 SEM A01). A secondary section such as
+    DIS 101 under LEC 001 stays in the catalog and is never selected. The page itself
+    says nothing about primaries (``is_primary`` is None), so the class number decides.
+    """
+    lowest: dict[str, tuple[bool, int]] = {}
+    for ref in refs:
+        order = _class_number_order(ref.class_number)
+        if ref.course_key not in lowest or order < lowest[ref.course_key]:
+            lowest[ref.course_key] = order
+    primary_components = {
+        (ref.course_key, ref.component) for ref in refs if _class_number_order(ref.class_number) == lowest[ref.course_key]
+    }
+    return [
+        ref
+        for ref in refs
+        if _class_number_order(ref.class_number) < (False, PRIMARY_CLASS_NUMBER_LIMIT)
+        or (ref.course_key, ref.component) in primary_components
+    ]
+
+
+def live_candidates(refs: list[SectionRef]) -> list[SectionRef]:
+    """What a run selects from, the due re-probes aside: the ``primary_like`` entries that
+    are live, i.e. not marked absent (an entry never probed is live). ``_select``, the
+    full-scope universe and ``analysis.priority_from_flows --catalog`` all read it here."""
+    return [ref for ref in primary_like(refs) if not ref.absent]
+
+
+def _warn_unselectable_courses(refs: list[SectionRef], priority: PrioritySpec | None) -> None:
+    """One WARNING when a course has a live catalog entry but no live candidate, so no run
+    selects any of its sections in any shard, apart from the weekly re-probe of its absent
+    sections: a lab-only course whose LAB 101 is live beside an absent LEC 001, for one
+    (docs/DESIGN_A2.md section 19). Names the priority courses in
+    list order, at most ``MAX_COURSES_NAMED``, and counts the others. Changes nothing."""
+    empty = {ref.course_key for ref in refs if not ref.absent} - {ref.course_key for ref in live_candidates(refs)}
+    if not empty:
+        return
+    ranked = sorted((rank, key) for key in empty if priority is not None and (rank := priority.rank(key)) is not None)
+    names = ", ".join(key for _, key in ranked[:MAX_COURSES_NAMED])
+    if len(ranked) > MAX_COURSES_NAMED:
+        names += f" and {len(ranked) - MAX_COURSES_NAMED} more"
+    logger.warning(
+        "courses with live catalog entries but no selectable section: priority=%d [%s] other=%d",
+        len(ranked),
+        names,
+        len(empty) - len(ranked),
+    )
 
 
 # -- section page parsing ----------------------------------------------------
@@ -778,13 +856,20 @@ class ClassesSiteSource:
         refs: list[SectionRef],
         priority: PrioritySpec | None,
         shard: tuple[int, int] | None,
+        visit: int = 0,
     ) -> list[SectionRef]:
         """Order of fetching: priority sections by rank (then course key),
-        then shard ``k`` of ``n`` of the remainder (no shard means priority
-        only; no priority means everything), then up to
-        ``MAX_REPROBES_PER_RUN`` absent slugs whose last probe is older than
-        seven days. Absent slugs are otherwise skipped."""
-        live = [r for r in refs if not r.absent]
+        rotated to start at ``k * len(ranked) // n`` for shard ``(k, n)``; then
+        shard ``k`` of ``n`` of the remainder in catalog order, rotated to start
+        ``v * len(rest) // d`` along, with ``d = RUNS_PER_DAY // n`` visits of the
+        shard a day and ``v = visit % d`` (``visit`` is the run index divided by
+        ``n``, from scraper/fetch.py); then up to ``MAX_REPROBES_PER_RUN`` absent
+        slugs whose last probe is older than seven days. No shard means priority
+        only (no priority means everything) and no rotation. Rotations change
+        the order, never the set. Absent slugs are otherwise skipped. Only
+        ``primary_like`` entries are candidates, in every scope and for the
+        re-probes too (docs/DESIGN_A2.md section 12)."""
+        live = live_candidates(refs)
         if priority is None:
             first: list[SectionRef] = []
             rest = list(live)
@@ -800,8 +885,18 @@ class ClassesSiteSource:
                     ranked.append((rank, ref.course_key, ref))
             ranked.sort(key=lambda item: (item[0], item[1], item[2].url_path))
             first = [item[2] for item in ranked]
+            if shard is not None:
+                # Start shard k's run k/n of the way down the ranked order, so a budget
+                # cutoff misses different priority sections each run (docs/DESIGN_A2.md section 12).
+                offset = shard[0] * len(first) // shard[1]
+                first = first[offset:] + first[:offset]
+                # The priority block fits the budget and the cut lands in the remainder, so it
+                # rotates too: each visit of shard k starts its remainder a 1/d step further along.
+                per_day = max(1, RUNS_PER_DAY // shard[1])
+                offset = (visit % per_day) * len(rest) // per_day
+                rest = rest[offset:] + rest[:offset]
         selected = first + rest
-        due = [r for r in refs if self._due_for_reprobe(r)]
+        due = [r for r in primary_like(refs) if self._due_for_reprobe(r)]
         due.sort(key=lambda r: (r.probed_at or "", r.url_path))
         return selected + due[:MAX_REPROBES_PER_RUN]
 
@@ -815,18 +910,26 @@ class ClassesSiteSource:
         shard: tuple[int, int] | None = None,
         time_budget_s: float | None = None,
         limit: int | None = None,
+        visit: int = 0,
     ) -> FetchResult:
         """Discover, select, fetch the pages, update the catalog.
 
-        Scope is "full" (every live catalog section, ``universe_ids`` = ids of
-        the live sections whose id is known) when ``priority`` is None, else
-        "priority" (priority matches union shard members, ``universe_ids``
-        None). ``limit`` caps the selection after it is made; under ``limit``
-        the universe is unknown, so ``universe_ids`` is None. Discovery time
-        counts against ``time_budget_s``; every HTTP failure, parse failure,
-        and unattempted page of a section with a known id lands in
-        ``missing_ids``. Raises TermNotPublished when the term has no catalog
-        entries after discovery.
+        ``visit`` (the run index divided by the shard count, passed by scraper/fetch.py)
+        rotates the shard remainder between visits of the same shard (``_select``).
+
+        Candidates are the ``primary_like`` catalog entries. Scope is "full"
+        (every live candidate, ``universe_ids`` = ids of the live candidates
+        whose id is known) when ``priority`` is None, else "priority"
+        (priority matches union shard members, ``universe_ids`` None).
+        ``limit`` caps the selection after it is made; under ``limit`` the
+        universe is unknown, so ``universe_ids`` is None. Discovery time counts
+        against ``time_budget_s``. Every selected page that yields no row (HTTP
+        failure, parse failure, never attempted before the deadline) lands in
+        ``missing_ids``: its section id, or its page path while the id is
+        unknown; a 404 counts only when the id is known, because a 404 on a
+        never-fetched page is an answer (the catalog marks the page absent),
+        not a missing observation. Raises TermNotPublished when the term has
+        no catalog entries after discovery.
         """
         if limit is not None and limit < 1:
             raise ValueError("limit must be >= 1")
@@ -845,13 +948,14 @@ class ClassesSiteSource:
             scope = "full"
             shard_label = ""
             priority_sha = ""
-            universe_ids: set[str] | None = {r.section_id for r in refs if r.section_id and not r.absent}
+            universe_ids: set[str] | None = {r.section_id for r in live_candidates(refs) if r.section_id}
         else:
             scope = "priority"
             shard_label = f"{shard_pair[0]}/{shard_pair[1]}" if shard_pair else ""
             priority_sha = priority.sha
             universe_ids = None
-        selected = self._select(refs, priority, shard_pair if priority is not None else None)
+        selected = self._select(refs, priority, shard_pair if priority is not None else None, visit)
+        _warn_unselectable_courses(refs, priority)
         if limit is not None:
             selected = selected[:limit]
             universe_ids = None
@@ -863,6 +967,9 @@ class ClassesSiteSource:
         if time_budget_s is not None:
             remaining = max(0.0, float(time_budget_s) - (self._clock() - started))
         rows, missing_ids, updates = self._fetch_pages(to_fetch, term, remaining)
+        # Pages that went absent this run: live before it, 404 now (a due re-probe answering
+        # 404 again was absent already). Those whose id is unknown are not in missing_ids.
+        gone = sum(1 for r in to_fetch if not r.absent and updates.get(r.url_path, r).absent)
         rows = prefetched + rows
         known = catalog.by_path()
         for path, ref in disc.prefetched_refs.items():
@@ -889,7 +996,7 @@ class ClassesSiteSource:
         self._persist(catalogs, state)
 
         logger.info(
-            "classes_site term=%s scope=%s shard=%s catalog=%d live=%d selected=%d observed=%d (%d via discovery) missing=%d elapsed=%.1fs",
+            "classes_site term=%s scope=%s shard=%s catalog=%d live=%d selected=%d observed=%d (%d via discovery) missing=%d gone=%d elapsed=%.1fs",
             term.sis_term_id,
             scope,
             shard_label or "-",
@@ -899,8 +1006,17 @@ class ClassesSiteSource:
             len(rows),
             len(prefetched),
             len(missing_ids),
+            gone,
             self._clock() - started,
         )
+        if gone > GONE_WARN_SHARE * len(selected):
+            logger.warning(
+                "%d of %d selected pages went absent this run (live before, 404 now; more than GONE_WARN_SHARE=%g of the selection): "
+                "a page whose id is unknown is then marked absent, not missing, so missing= and the exit-4 gate do not show it",
+                gone,
+                len(selected),
+                GONE_WARN_SHARE,
+            )
         return FetchResult(
             rows=rows,
             missing_ids=missing_ids,
@@ -925,10 +1041,13 @@ class ClassesSiteSource:
     ) -> tuple[list[SnapshotRow], list[str], dict[str, SectionRef]]:
         """Fetch and parse the selected pages, in selection order.
 
-        Returns rows, ``missing_ids`` (known ids that failed or were never
-        attempted), and catalog updates keyed by ``url_path``: a learned id
-        and status 200 on success, status 404 on a missing page. Transport
-        errors and budget cutoffs do not change the catalog."""
+        Returns rows, ``missing_ids`` (every page that failed or was never
+        attempted, by section id, or by page path while the id is unknown; a
+        404 only when the id is known: on a never-fetched page it is an
+        answer, not a missing observation), and catalog updates keyed by
+        ``url_path``: a learned id and status 200 on success, status 404 on a
+        missing page. Transport errors and budget cutoffs do not change the
+        catalog."""
         order = {self.section_url(ref): i for i, ref in enumerate(selected)}
         ref_by_url = {self.section_url(ref): ref for ref in selected}
         parsed: dict[int, SnapshotRow] = {}
@@ -949,18 +1068,16 @@ class ClassesSiteSource:
                     return
                 level = logging.DEBUG if getattr(payload, "budget_exhausted", False) else logging.WARNING
                 logger.log(level, "section %s not fetched: %s", ref.section_id or ref.url_path, payload)
-                if ref.section_id:
-                    with lock:
-                        failed[index] = ref.section_id
+                with lock:
+                    failed[index] = ref.section_id or ref.url_path
                 return
             fetched_at = self._now()
             try:
                 row = parse_section_page(payload, ref, fetched_at, term)
             except ParseError as exc:
                 logger.warning("section %s not parsed: %s", ref.section_id or ref.url_path, exc)
-                if ref.section_id:
-                    with lock:
-                        failed[index] = ref.section_id
+                with lock:
+                    failed[index] = ref.section_id or ref.url_path
                 return
             # A second lxml parse of a page already parsed for its counts: about a
             # millisecond next to a network round trip, and it keeps SnapshotRow's

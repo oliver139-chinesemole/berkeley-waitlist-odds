@@ -123,8 +123,18 @@ class _Students:
 
 
 def _stamps(minutes: np.ndarray) -> pd.Series:
-    """Minutes since BASE_TIME (NaN -> NaT) as tz-aware UTC timestamps."""
-    return pd.Series(BASE_TIME + pd.to_timedelta(minutes, unit="m"))
+    """Minutes since BASE_TIME (NaN -> NaT) as tz-aware UTC timestamps.
+
+    Only the known entries go through pandas' float-to-timedelta cast: for a NaN
+    entry pandas 2.3 (``cast_from_unit_vectorized``) leaves the fractional part
+    uninitialised and then rounds it with ``np.round(frac, 10)``, so whatever the
+    freed memory held is multiplied by 1e10, an intermittent "overflow encountered
+    in multiply" (the NaN still came back NaT)."""
+    minutes = np.asarray(minutes, dtype="float64")
+    known = ~np.isnan(minutes)
+    deltas = np.full(minutes.shape, np.timedelta64("NaT", "ns"))
+    deltas[known] = pd.to_timedelta(minutes[known], unit="m").to_numpy()
+    return pd.Series(BASE_TIME + pd.to_timedelta(deltas))
 
 
 def _poisson_times(rng: np.random.Generator, rate_per_day: float, horizon_min: float) -> np.ndarray:

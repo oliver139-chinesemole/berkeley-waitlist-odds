@@ -1,14 +1,16 @@
 """Tests for analysis.cohort on hand-built flows."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+import dataclasses
+from datetime import date, datetime, timedelta, timezone
 
 import numpy as np
 import pandas as pd
 import pytest
 
-from analysis.calendar import SPRING_2027
-from analysis.cohort import COHORT_COLUMNS, build_cohort, censoring_horizon, course_level, joinable, position_bucket, thin_join_times
+from analysis.backtest import horizon_days, ipcw_weights, observability
+from analysis.calendar import SPRING_2027, last_auto_cut
+from analysis.cohort import COHORT_COLUMNS, build_cohort, censoring_horizon, course_level, cut_flows, joinable, position_bucket, thin_join_times
 
 T0 = datetime(2026, 10, 27, 12, 0, tzinfo=timezone.utc)  # phase 1 of Spring 2027
 
@@ -144,3 +146,68 @@ def test_follow_up_days_is_the_window_a_joiner_could_be_watched() -> None:
     assert at0.at[2, "event"] == 0 and at0.at[2, "duration_min"] == 60.0 and at0.at[2, "follow_up_days"] == pytest.approx(60 / 1440)
     later = cohort[cohort["join_time"] == pd.Timestamp(T0 + timedelta(minutes=90))]
     assert np.allclose(later["follow_up_days"].to_numpy(), 30 / 1440)  # after the gap: to the end of the data
+
+
+def test_cut_at_censors_at_the_instant_and_places_no_later_joiners() -> None:
+    """With ``cut_at`` (off by default) follow-up ends at the cut: a clearing whose interval ends
+    after it is not a clearing (the joiner is censored at the cut), no joiner is placed at or
+    after it, and ``follow_up_days`` stops there. Without it nothing changes."""
+    rows = [(0, 0, 3, False), (1, 0, 3, False), (1, 0, 2, False), (1, 0, 1, False), (0, 0, 3, False)]
+    f = flows("1", rows)  # intervals [0,30], [30,60], [60,90], [90,120], [120,150] minutes after T0
+    before = f.copy(deep=True)
+    ident = identity(("1", "COMPSCI 61A", "61A", "LEC"))
+    kw = dict(positions=(1, 2, 3), join_every_min=0, min_sections_per_group=1)
+    cut = pd.Timestamp(T0 + timedelta(minutes=75))  # inside the third interval
+    uncut = build_cohort(f, ident, SPRING_2027, **kw)
+    cohort = build_cohort(f, ident, SPRING_2027, cut_at=cut, **kw)
+    pd.testing.assert_frame_equal(f, before)  # the caller's flows are not touched
+    # the panel spans the cut: uncut, joiners are placed after it and clear after it
+    assert (uncut["join_time"] >= cut).any()
+    at0_u = uncut[uncut["join_time"] == pd.Timestamp(T0)].set_index("position")
+    assert at0_u["event"].tolist() == [1, 1, 1] and at0_u["duration_min"].tolist() == [60.0, 90.0, 120.0]
+    # cut: no joiner at or after the cut; every row ends by the cut; clearings after it are censored at it
+    assert (cohort["join_time"] < cut).all() and sorted(cohort["join_time"].unique()) == [pd.Timestamp(T0 + timedelta(minutes=m)) for m in (0, 30, 60)]
+    ends = cohort["join_time"] + pd.to_timedelta(cohort["duration_min"], unit="min")
+    assert (ends <= cut).all()
+    assert (cohort["follow_up_days"] <= (cut - cohort["join_time"]).dt.total_seconds() / 86400 + 1e-12).all()
+    at0 = cohort[cohort["join_time"] == pd.Timestamp(T0)].set_index("position")
+    assert at0.at[1, "event"] == 1 and at0.at[1, "duration_min"] == 60.0  # cleared before the cut: unchanged
+    assert at0.at[2, "event"] == 0 and at0.at[2, "duration_min"] == 75.0  # its clearing interval ends at 90, after the cut
+    assert at0.at[3, "event"] == 0 and at0.at[3, "duration_min"] == 75.0
+    assert np.allclose(at0["follow_up_days"].to_numpy(), 75 / 1440)
+    at60 = cohort[cohort["join_time"] == pd.Timestamp(T0 + timedelta(minutes=60))]
+    assert (at60["event"] == 0).all() and (at60["duration_min"] == 15.0).all()
+    # off (the default) and a cut after the data ends: identical to the uncut cohort
+    pd.testing.assert_frame_equal(build_cohort(f, ident, SPRING_2027, cut_at=None, **kw), uncut)
+    pd.testing.assert_frame_equal(build_cohort(f, ident, SPRING_2027, cut_at=pd.Timestamp(T0 + timedelta(minutes=150)), **kw), uncut)
+    # a cut on an interval boundary keeps that interval whole and drops the rest
+    edge = cut_flows(f, pd.Timestamp(T0 + timedelta(minutes=90)))
+    assert len(edge) == 3 and edge["admits"].tolist() == [0, 1, 1] and edge["t1"].max() == pd.Timestamp(T0 + timedelta(minutes=90))
+
+
+def test_a_cut_cohort_is_scored_before_its_cut() -> None:
+    """``ipcw_weights`` counts a row as still waiting only when ``duration > horizon``, while
+    ``observability`` admits ``follow_up_days >= horizon``. A cohort cut at its own scoring
+    horizon would pass observability with every uncleared row at weight 0 (no known negatives),
+    which is why 00:00 UTC is not a cut instant. The Pacific cut ends 7 or 8 hours after the
+    backtest's 00:00 UTC deadline horizon, so its uncleared rows are known negatives."""
+    cal = dataclasses.replace(SPRING_2027, last_auto_waitlist=date(2026, 10, 27))  # T0 is 12:00 UTC that day
+    rows = [(1, 0, 3, False)] + [(0, 0, 3, False)] * 48  # one admit, then a still queue for 24.5 hours
+    f = flows("1", rows)
+    ident = identity(("1", "COMPSCI 61A", "61A", "LEC"))
+    kw = dict(positions=(1, 2, 3), join_every_min=0, min_sections_per_group=1)
+    horizon_end = pd.Timestamp(datetime(2026, 10, 28, tzinfo=timezone.utc))  # horizon_days("deadline") ends here
+
+    def scored(cut: pd.Timestamp) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        cohort = build_cohort(f, ident, cal, cut_at=cut, **kw)
+        h = horizon_days(cohort, cal, "deadline").to_numpy()
+        ok, _ = observability(cohort, h)
+        y, w = ipcw_weights(cohort["duration_days"].to_numpy(), cohort["event"].to_numpy(), h)
+        return ok, w, cohort["event"].to_numpy()
+
+    pacific = last_auto_cut(cal)
+    assert pacific == pd.Timestamp("2026-10-28T07:00:00Z")  # PDT
+    ok, w, event = scored(pacific)
+    assert ok.all() and (event == 0).any() and (w[event == 0] > 0).all()  # every uncleared row is a known negative
+    ok, w, event = scored(horizon_end)  # a cut at the horizon itself
+    assert ok.all() and (event == 0).any() and (w[event == 0] == 0).all()  # observable, yet no known negative survives
