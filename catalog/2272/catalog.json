@@ -10922,6 +10922,21 @@
 },
 {
 "catalog_number": "1B",
+"class_number": "421",
+"component": "LAB",
+"course_key": "CHEM 1B",
+"instructors": "",
+"last_status": null,
+"node_id": 543145,
+"probed_at": null,
+"section_id": "",
+"section_number": "421",
+"subject": "CHEM",
+"title": "General Chemistry",
+"url_path": "/content/2027-spring-chem-1b-421-lab-421"
+},
+{
+"catalog_number": "1B",
 "class_number": "501",
 "component": "LAB",
 "course_key": "CHEM 1B",
@@ -16874,6 +16889,21 @@
 "subject": "CHMENG",
 "title": "Mathematical Methods in Chemical Engineering",
 "url_path": "/content/2027-spring-chmeng-230-001-lec-001"
+},
+{
+"catalog_number": "245",
+"class_number": "001",
+"component": "LEC",
+"course_key": "CHMENG 245",
+"instructors": "Neil Kanth Razdan",
+"last_status": null,
+"node_id": 543146,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "CHMENG",
+"title": "Catalysis",
+"url_path": "/content/2027-spring-chmeng-245-001-lec-001"
 },
 {
 "catalog_number": "248",
@@ -114514,6 +114544,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-29T11:00:47.968354+00:00",
+"updated_at": "2026-10-29T18:00:43.296951+00:00",
 "version": 3
 }
