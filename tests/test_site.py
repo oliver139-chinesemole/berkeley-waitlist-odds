@@ -978,7 +978,7 @@ def test_courses_page_filters_sorts_and_keeps_state_in_the_url(course_site: Path
     table = out["elements"]["table"]["html"]
     own = [r for r in index["courses"] if r["buckets"].get("1-5", {}).get("pooled") is False]
     assert own and table.count('<tr class="course">') == len(own) and f"{len(own)} courses at positions 1 to 5" in out["elements"]["count"]["text"]
-    assert 'aria-sort="descending"' in table and 'data-sort="p"' in table
+    assert 'aria-sort="descending"' not in table and 'data-sort="p"' in table  # the default order is no column's (review 2.1)
     # the default view hides pooled rows; when that hides everything the page says so
     out = render(course_site, page="courses.html")
     mid_own = [r for r in index["courses"] if r["buckets"].get("6-15", {}).get("pooled") is False]
@@ -1787,6 +1787,15 @@ def test_the_courses_default_sort_puts_thin_and_capped_rows_last(course_site: Pa
     order = lambda html: re.findall(r">(ZZZ \d)</a>", html)  # noqa: E731
     assert order(render(site, page="courses.html", search="?bucket=1-5")["elements"]["table"]["html"]) == ["ZZZ 2", "ZZZ 1"]
     assert order(render(site, page="courses.html", search="?bucket=1-5&sort=p&dir=asc")["elements"]["table"]["html"]) == ["ZZZ 2", "ZZZ 1"]
+    out = render(site, page="courses.html", search="?bucket=1-5&sort=p")  # Share, highest first, asked for: the plain share order
+    assert order(out["elements"]["table"]["html"]) == ["ZZZ 1", "ZZZ 2"] and 'aria-sort="descending"><button type="button" class="sort" data-sort="p">' in out["elements"]["table"]["html"]
+    # the default order claims no column; a click on the Share header from it is the plain share order, in the URL too
+    out = render(site, page="courses.html", search="?bucket=1-5")
+    assert 'aria-sort="descending"' not in out["elements"]["table"]["html"] and "sort=" not in out["location"]
+    click = "(function(){ const t = document.getElementById('table'); t.dispatch('click', {target: {getAttribute: (k) => (k === 'data-sort' ? 'p' : null)}}); return [t.innerHTML, location.href]; })()"
+    html, href = render(site, page="courses.html", search="?bucket=1-5", expression=click)["eval"]
+    assert order(html) == ["ZZZ 1", "ZZZ 2"] and 'aria-sort="descending"><button type="button" class="sort" data-sort="p">' in html
+    assert "sort=p" in href and "dir=" not in href
     assert order(render(site, page="courses.html", search="?bucket=1-5&sort=sections")["elements"]["table"]["html"]) == ["ZZZ 2", "ZZZ 1"]
     assert order(render(site, page="courses.html", search="?bucket=1-5&sort=sections&dir=asc")["elements"]["table"]["html"]) == ["ZZZ 1", "ZZZ 2"]
 

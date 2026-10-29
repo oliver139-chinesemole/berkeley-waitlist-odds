@@ -45,6 +45,7 @@
   const COLS = [
     ["key", "Course", false], ["p", "Share who got in", true], ["median", "Median days", true], ["n", "Cases", true], ["sections", "Sections", true],
   ];
+  const DEFAULT_SORT = "default";  // not a column: thin and "at least" rows last, then by lower bound (review of 2026-10-29, 2.1)
   const ROW_CAP = 150; // rows rendered before "Show all"; keeps the phone view short
   let meta, index, state;
 
@@ -57,7 +58,8 @@
       level: ["lower", "upper", "grad"].includes(p.get("level")) ? p.get("level") : "",
       q: p.get("q") || "",
       pooled: p.get("pooled") === "1",
-      sort: COLS.some((c) => c[0] === p.get("sort")) ? p.get("sort") : "p",
+      // No sort in the URL is the default order (BWO.courseDefaultOrder), its own state: a click on Share is the plain share order.
+      sort: COLS.some((c) => c[0] === p.get("sort")) ? p.get("sort") : DEFAULT_SORT,
       dir: p.get("dir") === "asc" ? "asc" : "desc",
       all: p.get("all") === "1",
     };
@@ -70,8 +72,8 @@
     if (state.level) p.set("level", state.level);
     if (state.q) p.set("q", state.q);
     if (state.pooled) p.set("pooled", "1");
-    if (state.sort !== "p") p.set("sort", state.sort);
-    if (state.dir !== "desc") p.set("dir", state.dir);
+    if (state.sort !== DEFAULT_SORT) p.set("sort", state.sort);
+    if (state.sort !== DEFAULT_SORT && state.dir !== "desc") p.set("dir", state.dir);
     if (state.all) p.set("all", "1");
     const t = BWO.pinned();
     if (t) p.set("today", t);
@@ -102,7 +104,7 @@
     }
     const dir = state.dir === "asc" ? 1 : -1;
     // The default (share, highest first) puts thin and "at least" rows last; a column the reader picks sorts plainly.
-    if (state.sort === "p" && state.dir === "desc") return out.sort(BWO.courseDefaultOrder);
+    if (state.sort === DEFAULT_SORT) return out.sort(BWO.courseDefaultOrder);
     out.sort((a, b) => {
       const va = a[state.sort], vb = b[state.sort];
       if (state.sort === "key") return dir * a.key.localeCompare(b.key);
