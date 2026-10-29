@@ -397,7 +397,38 @@ const BWO = (function () {
   // One sentence on the rule, for the pages' small print.
   function levelNote(meta) {
     if (estimateLevel(meta) === "dept") return `Estimates are by department and position, not by course: in the ${esc(meta.term_name)} backtest, course-level curves did not beat the position-only baseline, so a course's own cases are shown as counts next to its department's curve (<a href="accuracy.html">how accurate it was</a>).`;
-    return `Estimates are by course and position when a course has at least ${esc(meta.min_n || 30)} cases, otherwise by department (labelled pooled): across whole cycles, a course's own curve predicted better than its position alone (<a href="accuracy.html">how accurate it was</a>).`;
+    return `Estimates are by course and position when a course has at least ${esc(meta.min_n || 30)} cases, otherwise by department (labelled pooled): across whole cycles, a course's own curve ranked students better than position alone (<a href="accuracy.html">how accurate it was</a>).`;
+  }
+  // Calibration on the result card (review of 2026-10-29, 1.3): the cross-term backtest (fit on Spring 2026,
+  // scored on Fall 2026) at 14 or 28 days, the decile points of the predictor the pages use, read from
+  // backtest.json. `gap` is predicted minus observed averaged over the points, so positive means the
+  // estimates ran high. Null past 28 days, without the run, or without its points.
+  const CALIBRATION_TERM = "Fall 2026";
+  // The predictor the pages use: the department curve at the department level, the course curve otherwise (the Accuracy page's rule).
+  function pagesPredictor(run, meta) {
+    const cal = (run && run.calibration) || {};
+    const preferred = estimateLevel(meta) === "dept" ? ["dept", "course", "site"] : ["course", "dept", "site"];
+    return preferred.find((k) => cal[k] && cal[k].length) || "site";
+  }
+  function calibrationGap(backtest, meta, horizon) {
+    if (!backtest || !Array.isArray(backtest.runs) || !(horizon > 0) || horizon > 28) return null;
+    const h = horizon <= 14 ? 14 : 28;
+    const run = backtest.runs.find((r) => r && r.name === `cross_term_days${h}`);
+    const pts = run && (run.calibration || {})[pagesPredictor(run, meta)];
+    if (!pts || !pts.length || !pts.every((q) => Number.isFinite(q.predicted) && Number.isFinite(q.observed))) return null;
+    const gap = pts.reduce((sum, q) => sum + (q.predicted - q.observed), 0) / pts.length;
+    return { gap, points: Math.round(Math.abs(gap) * 100), horizon: h, run: run.name };
+  }
+  // One line under the headline when the headline's horizon is 28 days or less and the gap is 5 points or more.
+  function calibrationHtml(backtest, meta, horizon) {
+    const g = calibrationGap(backtest, meta, horizon);
+    if (!g || Math.abs(g.gap) < 0.05) return "";
+    return `<p class="muted small calibration">In <a href="accuracy.html">testing</a> on ${CALIBRATION_TERM}, estimates like this ran about ${g.points} points ${g.gap > 0 ? "high" : "low"} at ${g.horizon} days.</p>`;
+  }
+  // backtest.json for the result cards, fetched once; null when it is missing or does not load.
+  function loadBacktest(meta) {
+    const file = (meta && meta.files && meta.files.backtest) || "backtest.json";
+    return fetchJson("data/" + file).then((r) => (r.ok ? r.data : null), () => null);
   }
   function levelOf(number) { const m = String(number || "").match(/(\d+)/); if (!m) return null; const n = parseInt(m[1], 10); return n < 100 ? "lower" : n < 200 ? "upper" : "grad"; }
 
@@ -1038,7 +1069,7 @@ const BWO = (function () {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, noDataHtml, stamp, setStamp,
-    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, atLeastTag,
+    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, atLeastTag, pagesPredictor, calibrationGap, calibrationHtml, loadBacktest,
     parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,

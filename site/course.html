@@ -33,7 +33,7 @@
 (function () {
   const { $, esc, pct, num, plural } = BWO;
   const LIVE_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/live/latest.json";
-  let meta, index, pooled, entry, row, today;
+  let meta, index, pooled, entry, row, today, backtest;
 
   function positionFromUrl() { const p = parseInt(BWO.params().get("position"), 10); return p >= 1 ? Math.min(p, 500) : 10; }
 
@@ -75,6 +75,7 @@
       <section class="card" aria-live="polite">
         <p class="muted">${esc(row.key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${resolved ? BWO.pooledTag(resolved.pooled, resolved.source, meta) : ""}</p>
         ${head.html}
+        ${BWO.calibrationHtml(backtest, meta, head.within)}
         ${resolved && resolved.cell ? `<dl class="kv"><dt>Median time to clear</dt><dd>${esc(BWO.medianText(resolved.cell))}</dd><dt>Cases</dt><dd>${esc(BWO.casesHtml(resolved.cell, resolved.own))}</dd></dl>` : ""}
         ${head.after || ""}
         ${BWO.ladderHtml(resolved, entry, bucket, meta)}
@@ -183,7 +184,8 @@
     $("dates").innerHTML = BWO.keyDatesHtml(meta, today);
     BWO.setStamp(meta, today);
     const c = BWO.params().get("c") || "";
-    const match = await BWO.matchCourseAsync(index, c, meta);
+    const [match, bt] = await Promise.all([BWO.matchCourseAsync(index, c, meta), BWO.loadBacktest(meta)]);
+    backtest = bt;
     row = match.row;
     if (!row) {
       $("status").innerHTML = `<p class="error">${BWO.noDataHtml(meta, c.trim())}</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests courses close to what you typed when there are any, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;

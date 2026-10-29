@@ -45,11 +45,7 @@
   const ORDER = ["bucket", "dept", "course", "site", "cox"];
   let meta = null;
   // The predictor the pages use: the department curve at the department level, the course curve otherwise.
-  function pagesPredictor(run) {
-    const cal = run.calibration || {};
-    const preferred = BWO.estimateLevel(meta) === "dept" ? ["dept", "course", "site"] : ["course", "dept", "site"];
-    return preferred.find((k) => cal[k] && cal[k].length) || "site";
-  }
+  function pagesPredictor(run) { return BWO.pagesPredictor(run, meta); }
   function label(k, run) { return (NAMES[k] || k) + (k === pagesPredictor(run) ? " (what the pages use)" : ""); }
 
   function fmt(v, d) { return v == null ? "" : Number(v).toFixed(d == null ? 3 : d); }
