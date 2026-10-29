@@ -214,3 +214,52 @@ def test_cli_passes_the_catalog_to_the_run(tmp_path: Path, monkeypatch: pytest.M
     with pytest.raises(SystemExit):
         run.main([*base, "--catalog", str(tmp_path / "absent.json")])
     assert "no such file" in capsys.readouterr().err and len(seen) == 2
+
+
+def test_site_options_reach_the_export_and_default_off(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture) -> None:
+    """The default-off export options (analysis.export) pass from the CLI through run_analysis to the site files."""
+    panel, identity, cal = sim_inputs()
+    few = panel[panel["section_id"].isin(sorted(panel["section_id"].unique())[:2])]
+    res = run_analysis(few, identity, cal, tmp_path / "out", site_dir=tmp_path / "site", join_every_min=1440, reach_min_at_risk=5)
+    assert json.loads(res.site_files[1].read_text())["reach_min_at_risk"] == 5
+    seen: list[dict] = []
+    monkeypatch.setattr(run, "run_analysis", lambda *a, **kw: seen.append(kw) or SimpleNamespace(out_dir=tmp_path, flows_summary={}, cohort_rows={}, notes=[], figures=[]))
+    monkeypatch.setattr(run, "load_panel", lambda root, term: pd.DataFrame())
+    monkeypatch.setattr(run, "section_identity", lambda root, term: pd.DataFrame())
+    base = ["--data-root", str(tmp_path), "--term-id", "2272", "--data-log", str(tmp_path / "no_log.md"), "--out", str(tmp_path / "out")]
+    assert run.main(base) == 0
+    assert run.main([*base, "--reach-min-at-risk", "20"]) == 0
+    capsys.readouterr()
+    assert seen[0]["reach_min_at_risk"] == 0 and seen[1]["reach_min_at_risk"] == 20
+
+
+def test_cli_passes_interval_min_sections(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture) -> None:
+    seen: list[dict] = []
+    monkeypatch.setattr(run, "run_analysis", lambda *a, **kw: seen.append(kw) or SimpleNamespace(out_dir=tmp_path, flows_summary={}, cohort_rows={}, notes=[], figures=[]))
+    monkeypatch.setattr(run, "load_panel", lambda root, term: pd.DataFrame())
+    monkeypatch.setattr(run, "section_identity", lambda root, term: pd.DataFrame())
+    base = ["--data-root", str(tmp_path), "--term-id", "2272", "--data-log", str(tmp_path / "no_log.md"), "--out", str(tmp_path / "out")]
+    assert run.main([*base, "--interval-min-sections", "3"]) == 0
+    capsys.readouterr()
+    assert seen[0]["interval_min_sections"] == 3
+
+
+def test_cli_passes_exits_at_last_auto(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture) -> None:
+    seen: list[dict] = []
+    monkeypatch.setattr(run, "run_analysis", lambda *a, **kw: seen.append(kw) or SimpleNamespace(out_dir=tmp_path, flows_summary={}, cohort_rows={}, notes=[], figures=[]))
+    monkeypatch.setattr(run, "load_panel", lambda root, term: pd.DataFrame())
+    monkeypatch.setattr(run, "section_identity", lambda root, term: pd.DataFrame())
+    base = ["--data-root", str(tmp_path), "--term-id", "2272", "--data-log", str(tmp_path / "no_log.md"), "--out", str(tmp_path / "out")]
+    assert run.main([*base, "--exits-at-last-auto"]) == 0
+    capsys.readouterr()
+    assert seen[0]["exits_at_last_auto"] is True
+
+
+@pytest.mark.parametrize("flag", ["--reach-min-at-risk", "--interval-min-sections"])
+def test_run_cli_refuses_a_negative_option(flag: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture) -> None:
+    seen: list[dict] = []
+    monkeypatch.setattr(run, "run_analysis", lambda *a, **kw: seen.append(kw))
+    with pytest.raises(SystemExit):
+        run.main(["--data-root", str(tmp_path), "--term-id", "2272", flag, "-1"])
+    error = capsys.readouterr().err.strip().splitlines()[-1]
+    assert flag in error and ">= 0" in error and not seen

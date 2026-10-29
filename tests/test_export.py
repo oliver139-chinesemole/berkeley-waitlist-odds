@@ -492,6 +492,217 @@ def test_an_export_parses_the_catalog_once(cohort: pd.DataFrame, tmp_path: Path,
     assert len(calls) == 1 and (tmp_path / "out" / "titles.json").exists()
 
 
+# --- default-off options (Task 21): with the defaults every file is what the exporter wrote before them ---
+
+GOLDEN_FLOWS = pd.DataFrame(
+    {
+        "section_id": ["0", "0", "1", "2"],
+        "t1": pd.to_datetime(["2026-01-27T10:00Z", "2026-02-06T23:00Z", "2026-02-07T12:00Z", "2026-05-01T12:00Z"]),
+        "admits": [1, 2, 0, 1],
+        "wl_joins": [3, 0, 1, 0],
+        "wl_drops": [0, 1, 4, 2],
+        "censored": [False, True, False, False],
+        "waitlist0": [5, 4, 6, 2],
+        "d_waitlist": [-1, 0, -4, -2],
+    }
+)
+
+
+def _export_digest(out: Path) -> dict[str, str]:
+    """sha256 of every file an export wrote, ``generated_at`` blanked."""
+    import hashlib
+
+    return {str(p.relative_to(out)): hashlib.sha256(_without_generated_at(p.read_text(encoding="utf-8")).encode()).hexdigest() for p in sorted(out.rglob("*.json"))}
+
+GOLDEN_DIGEST = {  # analysis.export at e3265ed (before the Task 21 options), synthetic cohort, n_boot=10
+    "courses/ART.json": "00af1e831ab16c2b41cb41c3ddb19979ba3e5747ccaafc927d92a4b5d60366d2",
+    "courses/COMPSCI.json": "6b2b234ea0a0bbfe8165fd36192e04f5cc158feb3458c65c2aed0dbc2a00e071",
+    "courses/HISTORY.json": "b0c1000e8cce32990af52beae842619ba0173398b8c4db65b2d867bbd74bfe3e",
+    "courses/MATH.json": "13e90c5626fdefcf3f671ff153d19bab2b196f1aba4c6c6cda3ea2cd46e093b5",
+    "courses/STAT.json": "b5ef8df61f1165b0471925a4e0f2fe10517016dc247dc2bdc626182d02fc4c85",
+    "index.json": "cd49034455f732eb30e2caee22a4583d2eeeadffdd739e192cde838aeaeb60c0",
+    "insights.json": "bb9cf1b76bc24ae48e2cdea7d46aebe81a8b579e3bbddeb8ac47e5bdad9838b6",
+    "meta.json": "acde6db0c1cc2e00a86bcec003c50e9be86505fb822ee619c367f3bfa0b7a54f",
+    "pooled.json": "09a512843be0fbf000671236e71d2392f19d4655ba69d52dd66d461554ef257e",
+    "titles.json": "f0c0fd3ffbdf6f650a2f7a83ba8db39b6b9654a64246a2bbadff433779437d53",
+}
+
+
+def _golden_export(out: Path, catalog: Path, **options: object) -> dict[str, str]:
+    from analysis.calendar import SPRING_2026
+
+    export_site_tables(synthetic_cohort(), SPRING_2026, out, n_boot=10, forecast_calendar=SPRING_2027, flows=GOLDEN_FLOWS, catalog=catalog, **options)
+    return _export_digest(out)
+
+
+def test_default_options_write_the_same_bytes_as_before_them(tmp_path: Path) -> None:
+    catalog = _write_stub_catalog(tmp_path)
+    assert _golden_export(tmp_path / "default", catalog) == GOLDEN_DIGEST
+    assert _golden_export(tmp_path / "off", catalog, reach_min_at_risk=0, interval_min_sections=0, exits_at_last_auto=False) == GOLDEN_DIGEST
+
+
+def _toy_rows(durations: list[float], events: list[int], sections: list[str] | None = None) -> pd.DataFrame:
+    return pd.DataFrame({"duration_days": durations, "event": events, "section_id": sections or [str(i % 4) for i in range(len(durations))]})
+
+
+def test_reach_min_at_risk_cuts_the_curve_where_fewer_than_n_are_left() -> None:
+    # 37 joiners followed 1..37 days, none cleared; the last 3 (followed past day 37) all clear on day 40:
+    # Kaplan-Meier jumps to 1.0 on three people
+    durations = [float(d) for d in range(1, 38)] + [40.0, 40.0, 40.0]
+    events = [0] * 37 + [1, 1, 1]
+    rows = _toy_rows(durations, events)
+    full = export._cell(rows, n_boot=5)
+    assert full["reach_days"] == 40.0 and full["curve"][-1][1] == 1.0
+    cut = export._cell(rows, n_boot=5, reach_min_at_risk=20)
+    # 20 joiners have duration >= 21 (days 21..37 and the three 40s): day 21 is the last with 20 at risk
+    assert cut["reach_days"] == 21.0 and cut["curve"][-1][0] == 21.0 and cut["curve"][-1][1] == 0.0
+    # the cut curve is the full curve's prefix (the estimate at t does not depend on later rows)
+    assert cut["curve"] == [pt for pt in full["curve"] if pt[0] <= 21.0]
+    # the median is a statistic of the full data, not a curve point: kept though it lies past the cut
+    assert full["median_days"] == 40.0 and cut["median_days"] == 40.0 > cut["reach_days"]
+    assert cut["n"] == full["n"] and cut["events"] == full["events"] and cut["sections"] == full["sections"]
+    s = export._summary(cut)
+    assert s["reach"] == [0.0, 21.0]
+    with pytest.raises(ValueError, match="fewer"):  # a cell under N rows never gets a curve (export_site_tables raises min_n to N)
+        export._cell(_toy_rows([2.0, 3.0, 5.0], [1, 0, 1]), n_boot=0, reach_min_at_risk=20)
+    # N at or below 1 is the uncut curve
+    assert export._cell(rows, n_boot=5, reach_min_at_risk=1) == full
+
+
+def test_reach_min_at_risk_reaches_pools_courses_insights_and_the_clis(cohort: pd.DataFrame, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    plain, cut = tmp_path / "plain", tmp_path / "cut"
+    export_site_tables(cohort, CAL, plain, n_boot=5)
+    export_site_tables(cohort, CAL, cut, n_boot=5, reach_min_at_risk=30)
+    p_pool, c_pool = (json.loads((d / "pooled.json").read_text()) for d in (plain, cut))
+    for b, cell in p_pool["all"].items():
+        d = sorted(cohort.loc[cohort["position_bucket"] == b, "duration_days"], reverse=True)
+        assert c_pool["all"][b]["reach_days"] == round(d[29], 1) <= cell["reach_days"]
+    assert json.loads((cut / "meta.json").read_text())["reach_min_at_risk"] == 30 and "reach_min_at_risk" not in json.loads((plain / "meta.json").read_text())
+    own = {(k, b): c for k, e in json.loads((cut / "courses" / "COMPSCI.json").read_text())["courses"].items() for b, c in e["buckets"].items() if c["pooled"] is False}
+    assert own
+    for (k, b), c in own.items():
+        d = sorted(cohort.loc[(cohort["course_key"] == k) & (cohort["position_bucket"] == b), "duration_days"], reverse=True)
+        assert c["reach_days"] == round(d[29], 1) and c["curve"][-1][0] == round(d[29], 2)
+    ins = json.loads((cut / "insights.json").read_text())
+    assert all(c["reach_days"] <= p_pool["all"][b]["reach_days"] for b, c in ins["all_by_bucket"].items())
+    cohort_path = tmp_path / "cohort.parquet"
+    cohort.to_parquet(cohort_path, index=False)
+    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--out", str(tmp_path / "cli"), "--n-boot", "5", "--reach-min-at-risk", "30"]) == 0
+    capsys.readouterr()
+    assert json.loads((tmp_path / "cli" / "meta.json").read_text())["reach_min_at_risk"] == 30
+    assert json.loads((tmp_path / "cli" / "pooled.json").read_text())["all"] == c_pool["all"]
+
+
+def test_reach_min_at_risk_above_min_n_sends_smaller_cells_to_their_pool(cohort: pd.DataFrame, tmp_path: Path) -> None:
+    # ART 11 at 1-5: 36 rows plus 4 followed only 0.2 days = 40 rows, a course curve at min_n 30
+    extra = cohort[(cohort["course_key"] == "ART 11") & (cohort["position_bucket"] == "1-5")].head(4).assign(duration_days=0.2, duration_min=0.2 * 1440, event=0)
+    rows = pd.concat([cohort, extra], ignore_index=True)
+    assert len(rows[(rows["course_key"] == "ART 11") & (rows["position_bucket"] == "1-5")]) == 40
+    plain, cut = tmp_path / "plain", tmp_path / "cut"
+    export_site_tables(rows, CAL, plain, n_boot=5)
+    export_site_tables(rows, CAL, cut, n_boot=5, reach_min_at_risk=60)
+    before = json.loads((plain / "courses" / "ART.json").read_text())["courses"]["ART 11"]["buckets"]["1-5"]
+    after = json.loads((cut / "courses" / "ART.json").read_text())["courses"]["ART 11"]["buckets"]["1-5"]
+    assert before["pooled"] is False and before["n"] == 40
+    # at N=60 the 40-row cell falls back to its pool like any cell under min_n, not a one-point curve at 0.2 days
+    assert after["pooled"] not in (False, None) and after["n_course"] == 40 and "curve" not in after
+    pools = json.loads((cut / "pooled.json").read_text())
+    pool = pools["all"]["1-5"] if after["pooled"] == "all" else pools["dept"][after["pooled"]]["1-5"]
+    assert pool["n"] >= 60 and pool["reach_days"] > 0.2
+    meta = json.loads((cut / "meta.json").read_text())
+    assert meta["min_n"] == 60 and meta["reach_min_at_risk"] == 60 and json.loads((plain / "meta.json").read_text())["min_n"] == 30
+
+
+def test_interval_min_sections_drops_the_band_of_a_cell_with_too_few_sections(cohort: pd.DataFrame, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    durations = [float(d % 9 + 1) for d in range(60)]
+    events = [d % 3 != 0 for d in range(60)]
+    two = _toy_rows(durations, [int(e) for e in events], [str(i % 2) for i in range(60)])
+    three = _toy_rows(durations, [int(e) for e in events], [str(i % 3) for i in range(60)])
+    assert any(pt[2] is not None for pt in export._cell(two, n_boot=20)["curve"])  # the bootstrap runs on 2 sections
+    cut = export._cell(two, n_boot=20, interval_min_sections=3)
+    assert all(pt[2] is None and pt[3] is None for pt in cut["curve"]) and cut["sections"] == 2
+    assert [pt[:2] for pt in cut["curve"]] == [pt[:2] for pt in export._cell(two, n_boot=20)["curve"]]
+    s = export._summary(cut)
+    assert s["lo"] == [None, None, None] and s["hi"] == [None, None, None]
+    assert export._cell(three, n_boot=20, interval_min_sections=3) == export._cell(three, n_boot=20)
+    plain, banded = tmp_path / "plain", tmp_path / "banded"
+    export_site_tables(cohort, CAL, plain, n_boot=5)
+    export_site_tables(cohort, CAL, banded, n_boot=5, interval_min_sections=16)
+    pools = json.loads((banded / "pooled.json").read_text())
+    for kind in ("dept", "level"):
+        for cells in pools[kind].values():
+            for c in cells.values():
+                assert all(pt[2] is None for pt in c["curve"]) == (c["sections"] < 16)
+    assert json.loads((banded / "meta.json").read_text())["interval_min_sections"] == 16 and "interval_min_sections" not in json.loads((plain / "meta.json").read_text())
+    idx = {r["key"]: r for r in json.loads((banded / "index.json").read_text())["courses"]}
+    for r in idx.values():
+        for s in r["buckets"].values():
+            if s["pooled"] is False:
+                assert (s["lo"][0] is None) == (s["sections"] < 16)
+    cohort_path = tmp_path / "cohort.parquet"
+    cohort.to_parquet(cohort_path, index=False)
+    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--out", str(tmp_path / "cli"), "--n-boot", "5", "--interval-min-sections", "16"]) == 0
+    capsys.readouterr()
+    assert json.loads((tmp_path / "cli" / "meta.json").read_text())["interval_min_sections"] == 16
+
+
+def test_exits_at_last_auto_measures_still_waiting_at_the_last_automatic_run(cohort: pd.DataFrame, pools: dict, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    from analysis.calendar import SPRING_2026
+
+    flows = GOLDEN_FLOWS.assign(t0=pd.to_datetime(["2026-01-27T09:30Z", "2026-02-06T22:30Z", "2026-02-06T23:30Z", "2026-05-01T11:30Z"]))
+    # section 3: the last automatic run itself, Fri Feb 6, 2026 at 6:40 PM Pacific = 02:40Z on Feb 7
+    last_run = pd.DataFrame({"section_id": ["3"], "t0": pd.to_datetime(["2026-02-07T02:10Z"]), "t1": pd.to_datetime(["2026-02-07T02:40Z"]), "admits": [2], "wl_joins": [0], "wl_drops": [0], "censored": [False], "waitlist0": [3], "d_waitlist": [-2]})
+    flows = pd.concat([flows, last_run], ignore_index=True)
+    # the last observation (the default): section 0 ends at 4, section 1 at 2, section 2 at 0, section 3 at 1
+    assert insights_tables(cohort, pools, min_n=30, n_boot=5, flows=flows)["exits"] == {"admitted": 6, "dropped": 7, "still_waiting": 7}
+    ins = insights_tables(cohort, pools, min_n=30, n_boot=5, flows=flows, calendar=SPRING_2026, exits_at_last_auto=True)
+    # cut at the end of Feb 6, 2026 in Pacific time (08:00Z on Feb 7), after the 6:40 PM run: its admits count (a
+    # UTC-midnight cut would have put them in the purge); section 0's list after its Feb 6 interval (4), section 1's
+    # at the start of the interval that straddles the cut (6), section 3's after the run (1), section 2 not yet seen
+    assert ins["exits"] == {
+        "admitted": 5,
+        "dropped": 1,
+        "still_waiting": 4 + 6 + 1,
+        "as_of": "2026-02-07T08:00:00+00:00",
+        "after_last_auto": {"admitted": 1, "dropped": 6},
+    }
+    assert export.last_auto_cutoff(SPRING_2027).isoformat() == "2027-02-06T08:00:00+00:00"  # Feb 5, 2027 run, PST
+    assert export.last_auto_cutoff(FALL_2026).isoformat() == "2026-09-12T07:00:00+00:00"  # Sep 11, 2026, PDT
+    with pytest.raises(ValueError, match="t0"):
+        insights_tables(cohort, pools, min_n=30, n_boot=5, flows=GOLDEN_FLOWS, calendar=SPRING_2026, exits_at_last_auto=True)
+    with pytest.raises(ValueError, match="flows"):
+        export_site_tables(cohort, SPRING_2026, tmp_path / "noflows", n_boot=5, exits_at_last_auto=True)
+    export_site_tables(cohort, SPRING_2026, tmp_path / "on", n_boot=5, flows=flows, exits_at_last_auto=True)
+    assert json.loads((tmp_path / "on" / "insights.json").read_text())["exits"]["still_waiting"] == 11
+    assert json.loads((tmp_path / "on" / "meta.json").read_text())["exits_at_last_auto"] is True
+    cohort_path, flows_path = tmp_path / "cohort.parquet", tmp_path / "flows.parquet"
+    cohort.to_parquet(cohort_path, index=False)
+    flows.to_parquet(flows_path, index=False)
+    assert main(["--cohort", str(cohort_path), "--term-id", "2262", "--flows", str(flows_path), "--out", str(tmp_path / "cli"), "--n-boot", "5", "--exits-at-last-auto"]) == 0
+    capsys.readouterr()
+    assert json.loads((tmp_path / "cli" / "insights.json").read_text())["exits"]["as_of"] == "2026-02-07T08:00:00+00:00"
+    with pytest.raises(SystemExit):
+        main(["--cohort", str(cohort_path), "--term-id", "2262", "--out", str(tmp_path / "cli2"), "--n-boot", "5", "--exits-at-last-auto"])
+    assert "--flows" in capsys.readouterr().err and not (tmp_path / "cli2").exists()
+
+
+@pytest.mark.parametrize("flag", ["--reach-min-at-risk", "--interval-min-sections"])
+def test_cli_refuses_a_negative_option(flag: str, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    with pytest.raises(SystemExit):
+        main(["--cohort", str(tmp_path / "c.parquet"), "--term-id", "2262", "--out", str(tmp_path / "out"), flag, "-1"])
+    error = capsys.readouterr().err.strip().splitlines()[-1]  # the usage lines name every flag; the error line is the message
+    assert flag in error and ">= 0" in error and not (tmp_path / "out").exists()
+
+
+@pytest.mark.parametrize("extra", [["--reach-min-at-risk", "20"], ["--interval-min-sections", "3"], ["--exits-at-last-auto"]])
+def test_titles_only_refuses_the_export_options(extra: list[str], tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    catalog = _write_catalog(tmp_path)
+    with pytest.raises(SystemExit):
+        main(["--titles-only", "--catalog", str(catalog), "--out", str(tmp_path), *extra])
+    error = capsys.readouterr().err.strip().splitlines()[-1]
+    assert "--titles-only" in error and extra[0] in error
+
+
 # --- Task 19 senior review: the catalog must be the forecast term's; a cohort course with no index row gets a stub ---
 
 
