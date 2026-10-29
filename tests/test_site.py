@@ -1967,3 +1967,13 @@ def test_the_collection_clause_never_contradicts_the_status_line(tmp_path: Path,
     assert out["elements"]["collection"]["html"] == methods
     # no status file: the dated clause, which is all the page knows
     assert collection_clause(pinned_render(SITE, now)["status"]) == "begins with Phase 1 on Oct 26, 2026"
+
+
+INSIGHTS_TAIL_NOTE = "After about four weeks the curves rest on few joiners; read the 14- and 28-day columns."
+
+
+def test_insights_says_where_the_position_curves_thin_out(full_site: Path) -> None:
+    """Section 2.9: one sentence under the position charts."""
+    html = render(full_site, page="insights.html")["elements"]["content"]["html"]
+    assert html.count(INSIGHTS_TAIL_NOTE) == 1
+    assert html.index('id="all-chart"') < html.index(INSIGHTS_TAIL_NOTE) < html.index("<h2>Departments</h2>")
