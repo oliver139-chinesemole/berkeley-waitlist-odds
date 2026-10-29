@@ -668,8 +668,6 @@ def test_exits_at_last_auto_measures_still_waiting_at_the_last_automatic_run(coh
     }
     assert export.last_auto_cutoff(SPRING_2027).isoformat() == "2027-02-06T08:00:00+00:00"  # Feb 5, 2027 run, PST
     assert export.last_auto_cutoff(FALL_2026).isoformat() == "2026-09-12T07:00:00+00:00"  # Sep 11, 2026, PDT
-    with pytest.raises(ValueError, match="calendar"):
-        insights_tables(cohort, pools, min_n=30, n_boot=5, flows=flows, exits_at_last_auto=True)
     with pytest.raises(ValueError, match="t0"):
         insights_tables(cohort, pools, min_n=30, n_boot=5, flows=GOLDEN_FLOWS, calendar=SPRING_2026, exits_at_last_auto=True)
     with pytest.raises(ValueError, match="flows"):

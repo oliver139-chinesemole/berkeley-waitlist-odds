@@ -19,7 +19,7 @@ import pandas as pd
 from analysis.backtest import run_backtest
 from analysis.calendar import TermCalendar, calendar_for
 from analysis.cohort import DEFAULT_POSITIONS, build_cohort
-from analysis.export import DEFAULT_LEVEL, LEVELS, export_site_tables
+from analysis.export import DEFAULT_LEVEL, LEVELS, export_site_tables, nonneg_int
 from analysis.figures import plot_calibration, plot_km
 from analysis.flows import interval_flows, summary as flows_summary
 from analysis.panel import Outage, load_panel, parse_data_log, section_identity
@@ -88,7 +88,9 @@ def run_analysis(
     site_level: str = DEFAULT_LEVEL,
     forecast_calendar: TermCalendar | None = None,
     catalog: Path | str | None = None,
-    site_options: dict | None = None,
+    reach_min_at_risk: int = 0,
+    interval_min_sections: int = 0,
+    exits_at_last_auto: bool = False,
 ) -> AnalysisResult:
     """Everything from a panel (or precomputed ``flows``) to the report.
 
@@ -98,9 +100,8 @@ def run_analysis(
     site counts down to when a finished cycle stands in for the coming one;
     ``catalog`` (a classes_site ``catalog.json``) adds the site's ``titles.json``
     (``export_site_tables``), without which title and instructor search is off;
-    ``site_options`` are ``export_site_tables``' default-off keyword options
-    (``reach_min_at_risk``, ``interval_min_sections``, ``exits_at_last_auto``), passed
-    only when given.
+    ``reach_min_at_risk``, ``interval_min_sections`` and ``exits_at_last_auto`` are
+    ``export_site_tables``' default-off options, passed through.
     """
     out_dir = Path(out_dir) / calendar.term_id
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -196,7 +197,7 @@ def run_analysis(
         meta = {"data_source": OWN_DATA_SOURCE, "flows": fsum, "cohort_rows_by_scenario": cohort_rows}
         if site_meta:
             meta.update(site_meta)
-        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, forecast_calendar=forecast_calendar, flows=flows, estimate_level=site_level, catalog=catalog, **(site_options or {}))
+        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, forecast_calendar=forecast_calendar, flows=flows, estimate_level=site_level, catalog=catalog, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections, exits_at_last_auto=exits_at_last_auto)
 
     report = [
         f"# Waitlist analysis report: {calendar.name} (term {calendar.term_id})",
@@ -273,11 +274,6 @@ def run_analysis(
     )
 
 
-def _site_options(args: argparse.Namespace) -> dict:
-    """The export options the command line turned on (an option left at its default is not passed)."""
-    return {k: v for k, v in {"reach_min_at_risk": args.reach_min_at_risk, "interval_min_sections": args.interval_min_sections, "exits_at_last_auto": args.exits_at_last_auto}.items() if v}
-
-
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Reproduce every table, figure and site file from the data branch (or a backfilled term).")
     p.add_argument("--data-root", type=Path, default=Path("./data-branch"))
@@ -293,13 +289,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--estimate-level", choices=LEVELS, default=DEFAULT_LEVEL, help="what site/data serves per course and bucket: the department curve (default) or the course's own")
     p.add_argument("--forecast-term", default=None, help="SIS term id whose dates the site counts down to (default: the analysed term); 2272 when Fall 2026 stands in for Spring 2027")
     p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json); the site files then include a catalog_only stub row (pointing at its pools) for every catalog course with no cohort rows and titles.json for title and instructor search")
-    p.add_argument("--reach-min-at-risk", type=int, default=0, metavar="N", help="site files: cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
-    p.add_argument("--interval-min-sections", type=int, default=0, metavar="N", help="site files: leave out the 95%% band of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
+    p.add_argument("--reach-min-at-risk", type=nonneg_int, default=0, metavar="N", help="site files: cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
+    p.add_argument("--interval-min-sections", type=nonneg_int, default=0, metavar="N", help="site files: leave out the 95%% band of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
     p.add_argument("--exits-at-last-auto", action="store_true", help="site files: Insights exits are admits and drops up to the end of the term's last automatic waitlist run day in Pacific time (after the run), the waitlist at that moment as still_waiting, and the admits and drops after it (the purge) apart (default: everything to the last observation)")
     args = p.parse_args(argv)
-    for flag, value in (("--reach-min-at-risk", args.reach_min_at_risk), ("--interval-min-sections", args.interval_min_sections)):
-        if value < 0:
-            p.error(f"{flag} must be >= 0 (0 is off), got {value}")
     if args.catalog is not None and not args.catalog.is_file():
         p.error(f"--catalog {args.catalog}: no such file")
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")
@@ -340,7 +333,9 @@ def main(argv: list[str] | None = None) -> int:
         site_level=args.estimate_level,
         forecast_calendar=calendar_for(args.forecast_term) if args.forecast_term else None,
         catalog=args.catalog,
-        site_options=_site_options(args),
+        reach_min_at_risk=args.reach_min_at_risk,
+        interval_min_sections=args.interval_min_sections,
+        exits_at_last_auto=args.exits_at_last_auto,
     )
     print(json.dumps({"out": str(result.out_dir), "flows": result.flows_summary, "cohort_rows": result.cohort_rows, "notes": result.notes, "figures": [str(f) for f in result.figures]}, indent=1))
     return 0

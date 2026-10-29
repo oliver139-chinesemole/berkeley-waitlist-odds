@@ -37,12 +37,13 @@ pages compute no statistic of their own.
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import logging
 import re
 import sys
 from collections import Counter
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -229,21 +230,23 @@ def _ordered(keys: list[str], order: tuple[str, ...]) -> list[str]:
     return known + sorted(k for k in keys if k not in order)
 
 
-def pool_tables(cohort: pd.DataFrame, *, min_n: int = MIN_N, n_boot: int = N_BOOT, reach_min_at_risk: int = 0, interval_min_sections: int = 0) -> dict:
+def pool_tables(cohort: pd.DataFrame, *, min_n: int = MIN_N, n_boot: int = N_BOOT, cell: Callable[[pd.DataFrame], dict] | None = None) -> dict:
     """``{"all": {bucket: cell}, "dept": {dept_group: {bucket: cell}}, "level": {level: {bucket: cell}}}``
-    for every pool with ``min_n`` rows or more."""
+    for every pool with ``min_n`` rows or more. ``cell`` builds a curve cell (default
+    ``_cell`` with ``n_boot``; ``export_site_tables`` passes its options bound in)."""
+    cell = cell or functools.partial(_cell, n_boot=n_boot)
     pools: dict = {"all": {}, "dept": {}, "level": {}}
     if cohort.empty:
         return pools
     for bucket, g in cohort.groupby("position_bucket", observed=True):
         if len(g) >= min_n:
-            pools["all"][str(bucket)] = _cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
+            pools["all"][str(bucket)] = cell(g)
     for (dept, bucket), g in cohort.groupby(["dept_group", "position_bucket"], observed=True):
         if len(g) >= min_n:
-            pools["dept"].setdefault(str(dept), {})[str(bucket)] = _cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
+            pools["dept"].setdefault(str(dept), {})[str(bucket)] = cell(g)
     for (level, bucket), g in cohort.groupby(["level", "position_bucket"], observed=True):
         if len(g) >= min_n:
-            pools["level"].setdefault(str(level), {})[str(bucket)] = _cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
+            pools["level"].setdefault(str(level), {})[str(bucket)] = cell(g)
     return pools
 
 
@@ -254,7 +257,7 @@ def resolve_pool(pools: dict, pooled: str, bucket: str) -> dict | None:
     return pools["dept"].get(pooled, {}).get(bucket)
 
 
-def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT, pools: dict | None = None, estimate_level: str = DEFAULT_ESTIMATE_LEVEL, reach_min_at_risk: int = 0, interval_min_sections: int = 0) -> dict:
+def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT, pools: dict | None = None, estimate_level: str = DEFAULT_ESTIMATE_LEVEL, cell: Callable[[pd.DataFrame], dict] | None = None) -> dict:
     """``{course_key: {subject, number, level, dept_group, buckets: {bucket: cell}}}``.
 
     A pointer cell names in ``pooled`` the department whose curve for the same
@@ -270,8 +273,9 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
     out: dict = {}
     if cohort.empty:
         return out
+    make_cell = cell or functools.partial(_cell, n_boot=n_boot)
     if pools is None:
-        pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
+        pools = pool_tables(cohort, min_n=min_n, cell=make_cell)
     for course_key, course_rows in cohort.groupby("course_key", sort=True, observed=True):
         dept = str(course_rows["dept_group"].iloc[0])
         cells: dict = {}
@@ -280,7 +284,7 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
             if len(rows) == 0:
                 continue
             if estimate_level == "course" and len(rows) >= min_n:
-                cell = _cell(rows, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
+                cell = make_cell(rows)
                 cell["pooled"] = False
             else:
                 if bucket in pools["dept"].get(dept, {}):
@@ -390,7 +394,7 @@ def _grid_of(cells: dict) -> dict:
     return {k: _summary(c) for k, c in cells.items()}
 
 
-def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_boot: int = N_BOOT, flows: pd.DataFrame | None = None, reach_min_at_risk: int = 0, interval_min_sections: int = 0, calendar: TermCalendar | None = None, exits_at_last_auto: bool = False) -> dict:
+def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_boot: int = N_BOOT, flows: pd.DataFrame | None = None, cell: Callable[[pd.DataFrame], dict] | None = None, calendar: TermCalendar | None = None, exits_at_last_auto: bool = False) -> dict:
     """Term-wide tables for the Insights page (see the module docstring).
 
     ``exits`` counts how waitlisters left the queue: admitted, dropped, and still
@@ -417,15 +421,16 @@ def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_
     }
     if cohort.empty:
         return out
+    cell = cell or functools.partial(_cell, n_boot=n_boot)
     hero_rows = cohort[(cohort["level"] == "lower") & (cohort["phase"] == "phase1")]
     for bucket, g in hero_rows.groupby("position_bucket", observed=True):
         if len(g) >= min_n:
-            out["hero"][str(bucket)] = _cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
+            out["hero"][str(bucket)] = cell(g)
     out["hero"] = {b: out["hero"][b] for b in _ordered(list(out["hero"]), BUCKET_ORDER)}
     by_phase: dict = {}
     for (phase, bucket), g in cohort.groupby(["phase", "position_bucket"], observed=True):
         if len(g) >= min_n:
-            by_phase.setdefault(str(phase), {})[str(bucket)] = _summary(_cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections))
+            by_phase.setdefault(str(phase), {})[str(bucket)] = _summary(cell(g))
     out["by_phase"] = {p: by_phase[p] for p in _ordered(list(by_phase), PHASE_ORDER)}
     if flows is not None and len(flows) and {"t1", "admits", "wl_joins", "wl_drops"} <= set(flows.columns):
         f = flows.copy()
@@ -454,8 +459,6 @@ def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_
                 "dropped": int(f["wl_drops"].sum()),
                 "still_waiting": None if still is None else int(still),
             }
-    elif exits_at_last_auto and calendar is None:
-        raise ValueError("exits_at_last_auto needs the data term's calendar")
     return out
 
 
@@ -473,9 +476,7 @@ def last_auto_cutoff(calendar: TermCalendar) -> pd.Timestamp:
     return pd.Timestamp(datetime(d.year, d.month, d.day, tzinfo=PACIFIC)).tz_convert("UTC")
 
 
-def _exits_at_last_auto(f: pd.DataFrame, calendar: TermCalendar | None) -> dict:
-    if calendar is None:
-        raise ValueError("exits_at_last_auto needs the data term's calendar (last_auto_waitlist)")
+def _exits_at_last_auto(f: pd.DataFrame, calendar: TermCalendar) -> dict:
     if not {"t0", "waitlist0", "d_waitlist"} <= set(f.columns):
         raise ValueError("exits_at_last_auto needs the flows' t0, waitlist0 and d_waitlist")
     cut = last_auto_cutoff(calendar)
@@ -655,8 +656,9 @@ def export_site_tables(
         min_n = max(min_n, int(reach_min_at_risk))
     if exits_at_last_auto and (flows is None or flows.empty):
         raise ValueError("exits_at_last_auto needs flows (the Insights exits come from them)")
-    pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
-    courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot, pools=pools, estimate_level=estimate_level, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
+    cell = functools.partial(_cell, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
+    pools = pool_tables(cohort, min_n=min_n, cell=cell)
+    courses = course_tables(cohort, calendar, min_n=min_n, pools=pools, estimate_level=estimate_level, cell=cell)
     joins = joins_by_course(cohort, flows)
     n_courses = len(courses)  # courses with cohort rows, before any catalog stub
     catalog_info: dict = {}
@@ -698,7 +700,7 @@ def export_site_tables(
     elif (out_dir / TITLES_FILE).exists():
         (out_dir / TITLES_FILE).unlink()
     _dump(out_dir / "pooled.json", {"term_id": calendar.term_id, **pools})
-    _dump(out_dir / "insights.json", {"term_id": calendar.term_id, **insights_tables(cohort, pools, min_n=min_n, n_boot=n_boot, flows=flows, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections, calendar=calendar, exits_at_last_auto=exits_at_last_auto)})
+    _dump(out_dir / "insights.json", {"term_id": calendar.term_id, **insights_tables(cohort, pools, min_n=min_n, flows=flows, cell=cell, calendar=calendar, exits_at_last_auto=exits_at_last_auto)})
 
     info = {
         "term_id": calendar.term_id,
@@ -746,6 +748,17 @@ def export_site_tables(
     return index_path, meta_path
 
 
+def nonneg_int(text: str) -> int:
+    """argparse ``type=`` for the default-off counts (0 is off): an integer >= 0."""
+    try:
+        value = int(text)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"must be an integer >= 0 (0 is off), got {text!r}") from None
+    if value < 0:
+        raise argparse.ArgumentTypeError(f"must be >= 0 (0 is off), got {value}")
+    return value
+
+
 def main(argv: list[str] | None = None) -> int:
     """Rebuild ``site/data`` from a saved cohort without re-running the whole analysis
     (the by-hand refresh in docs/RUNBOOK.md)."""
@@ -763,14 +776,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--min-n", type=int, default=MIN_N)
     p.add_argument("--estimate-level", choices=ESTIMATE_LEVELS, default=DEFAULT_ESTIMATE_LEVEL, help="course: a course with min_n rows gets its own curve, else the department's (default); dept: the department's curve stands in for every course")
     p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json): adds a catalog_only stub row (pointing at its pools) for every catalog course with no cohort rows, writes titles.json (each index course's title and instructors) and meta.titles_file, catalog_term_id, catalog_courses and catalog_only_courses")
-    p.add_argument("--reach-min-at-risk", type=int, default=0, metavar="N", help="cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
-    p.add_argument("--interval-min-sections", type=int, default=0, metavar="N", help="leave out the 95%% band (lo/hi null) of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
+    p.add_argument("--reach-min-at-risk", type=nonneg_int, default=0, metavar="N", help="cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
+    p.add_argument("--interval-min-sections", type=nonneg_int, default=0, metavar="N", help="leave out the 95%% band (lo/hi null) of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
     p.add_argument("--exits-at-last-auto", action="store_true", help="needs --flows; insights.json exits: admits and drops up to the end of the data term's last automatic waitlist run day in Pacific time (after the run), the waitlist at that moment as still_waiting, and the admits and drops after it (the purge) apart (default: everything to the last observation)")
     p.add_argument("--titles-only", action="store_true", help="with --catalog: write only titles.json for the index.json already in --out and add titles_file to its meta.json; no cohort, no refit, every other file untouched")
     args = p.parse_args(argv)
-    for flag, value in (("--reach-min-at-risk", args.reach_min_at_risk), ("--interval-min-sections", args.interval_min_sections)):
-        if value < 0:
-            p.error(f"{flag} must be >= 0 (0 is off), got {value}")
     if args.catalog is not None and not args.catalog.is_file():
         p.error(f"--catalog {args.catalog}: no such file")
     if args.titles_only:
