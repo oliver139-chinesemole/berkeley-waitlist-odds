@@ -15,14 +15,15 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # ubuntu-latest migrates to Ubuntu 26 from 2026-10-19; pinned until after the Feb 10, 2027 add/drop deadline.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - name: Check out
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip

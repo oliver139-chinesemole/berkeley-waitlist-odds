@@ -42,7 +42,8 @@ env:
 
 jobs:
   snapshot:
-    runs-on: ubuntu-latest
+    # ubuntu-latest migrates to Ubuntu 26 from 2026-10-19; pinned until after the Feb 10, 2027 add/drop deadline.
+    runs-on: ubuntu-24.04
     # 29 min = 1740 s. The fetch's --time-budget-s clock starts only after the
     # two checkouts, setup-python and pip (about 60-120 s), and the budget only
     # stops *scheduling*: a request already in flight may still spend one
@@ -62,7 +63,7 @@ jobs:
       FORCE_BASELINE: ${{ inputs.force_baseline == true && 'true' || 'false' }}
     steps:
       - name: Check out main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Verify the data branch exists
         shell: bash
@@ -73,14 +74,14 @@ jobs:
           fi
 
       - name: Check out data branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: data
           path: data-branch
           fetch-depth: 1
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -163,7 +164,7 @@ jobs:
         # always() rather than failure(): a job cancelled by timeout-minutes
         # is neither success nor failure, and its log is the one we most need.
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: fetch-log-${{ github.run_id }}-${{ github.run_attempt }}
           path: fetch.log
