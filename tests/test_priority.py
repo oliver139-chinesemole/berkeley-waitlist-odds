@@ -42,7 +42,8 @@ def test_shipped_priority_file_matches_live_site_spellings() -> None:
     against the Spring 2027 catalog (the courses of the top 800 sections by joins among the
     courses that catalog runs, no course-total pass), in joins order, exact course keys as
     classes.berkeley.edu spells them. Courses absent from that catalog are off the list on
-    purpose (MATH 1A/1B, EECS 16A, DATA 100, INTEGBI 131), and so are the reading-and-composition
+    purpose (MATH 1A/1B, EECS 16A, INTEGBI 131), DATA C100 is in that catalog but below the cut on
+    its joins (21 over both cycles), and so are the reading-and-composition
     courses the 2026-09-24 list admitted by course total."""
     spec = PrioritySpec.from_file(PRIORITY_FILE)
     assert len(spec.patterns) == 464  # generated file: the sha in the data log is the real guard
@@ -55,7 +56,7 @@ def test_shipped_priority_file_matches_live_site_spellings() -> None:
     ):
         assert spec.matches(key), key
     for key in (
-        "MATH 1A", "MATH 1B", "AEROENG 10", "PSYCH 2", "AFRICAM R1B", "EECS 16A", "DATA 100", "INTEGBI 131",
+        "MATH 1A", "MATH 1B", "AEROENG 10", "PSYCH 2", "AFRICAM R1B", "EECS 16A", "DATA C100", "INTEGBI 131",
         "COLWRIT R1A", "ENGLISH R1A",
     ):
         assert not spec.matches(key), key

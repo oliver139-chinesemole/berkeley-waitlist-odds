@@ -6,8 +6,9 @@
 # Matching ignores spaces inside the subject and is case-insensitive; see PrioritySpec in
 # scraper/sources/base.py. Text after # is a comment; blank lines are ignored.
 #
-# ORDER MATTERS. Sections are fetched in the order of the first pattern they match, so
-# when a run's time budget runs out the courses at the bottom are the ones dropped.
+# ORDER MATTERS. Sections are fetched in the order of the first pattern they match, each run
+# starting a shard-dependent offset down the list and wrapping around (docs/DESIGN_A2.md
+# section 13), so a run whose time budget runs out drops a slice that moves from run to run.
 #
 # Built by `python -m analysis.priority_from_flows` on 2026-10-29: Berkeleytime history (berkeleytime_history), Fall 2026 and Spring 2026, ranked over the courses in the Spring 2027 catalog of 2026-10-29.
 # Courses of the 800 sections with the most reconstructed waitlist joins, ordered by
