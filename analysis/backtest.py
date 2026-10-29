@@ -307,14 +307,8 @@ class CoxPredictor:
     """The Cox fit's probability of clearing by each row's own horizon ``h``:
     ``1 - S0(h) ** partial_hazard`` with lifelines' baseline survival (centred
     covariates, matching ``predict_partial_hazard``), i.e. the event probability,
-    equal to ``1 - predict_survival_function(x, times=[h])``. Checked by
-    ``tests/test_backtest.py`` (a known survival function; a perfect predictor
-    scores Brier 0). In the within-term temporal runs the training rows are Phase 1
-    joiners and the test rows Phase 2 and later: ``days_to_instruction`` falls
-    outside the training range (Fall 2026: 40 to 133 days in training, -16 to 24 in
-    test) and the test phases have no column of their own, so the fit extrapolates
-    and predicts a few percent where most cleared. That is the model, not the
-    scoring (Task 21 report, 21c)."""
+    equal to ``1 - predict_survival_function(x, times=[h])``. Rows the design matrix
+    drops take the fallback."""
 
     def __init__(self, *, max_rows: int | None = COX_MAX_ROWS) -> None:
         self.result = None
