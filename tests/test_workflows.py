@@ -26,6 +26,7 @@ def test_scrape_workflow_passes_the_budget_shards_and_request_policy() -> None:
         ("--n-shards", "12"),
         ("--min-interval-s", "0.5"),
         ("--max-concurrency", "4"),
+        ("--max-missing-share", "0.95"),
     ):
         assert flag in args, (flag, args)
         assert args[args.index(flag) + 1] == value, (flag, args)
