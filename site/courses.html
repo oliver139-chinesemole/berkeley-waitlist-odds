@@ -101,6 +101,8 @@
       out.push({ r, s, p: s.p[state.h], lo: s.lo[state.h], hi: s.hi[state.h], median: s.median_days, n: s.pooled === false ? s.n : (s.n_course || 0), pool_n: s.n, sections: s.pooled === false ? s.sections : (s.sections_course || 0), key: r.key, floor: s.reach[1] < BWO.loaded.index.horizons[state.h] });
     }
     const dir = state.dir === "asc" ? 1 : -1;
+    // The default (share, highest first) puts thin and "at least" rows last; a column the reader picks sorts plainly.
+    if (state.sort === "p" && state.dir === "desc") return out.sort(BWO.courseDefaultOrder);
     out.sort((a, b) => {
       const va = a[state.sort], vb = b[state.sort];
       if (state.sort === "key") return dir * a.key.localeCompare(b.key);

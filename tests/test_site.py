@@ -1764,3 +1764,26 @@ def test_a_catalog_only_row_keeps_the_stub_rendering(full_site: Path, tmp_path: 
     r = render(site, course="COMPSCI 999", position="10")["result"]
     assert "isn't on the" not in r and "No data for" not in r
     assert "This curve: the COMPSCI department, positions 6 to 15 (COMPSCI 999 had 0 cases, fewer than 30)" in r
+
+
+def test_the_courses_default_sort_puts_thin_and_capped_rows_last(course_site: Path, tmp_path: Path) -> None:
+    """Section 2.1: by default a one-section row or one read past its curve's reach sorts after every other row,
+    then by the interval's lower bound where there is one, else the share; an explicit column sort is unchanged."""
+    rows = "[{key: 'A 1', p: 1.0, lo: null, sections: 1, floor: false}, {key: 'B 1', p: 0.7, lo: 0.6, sections: 2, floor: false}, {key: 'C 1', p: 0.9, lo: 0.5, sections: 3, floor: false}, {key: 'D 1', p: 0.99, lo: 0.95, sections: 4, floor: true}, {key: 'E 1', p: 0.65, lo: null, sections: 2, floor: false}]"
+    out = render(course_site, page="courses.html", expression=f"{rows}.sort(BWO.courseDefaultOrder).map((x) => x.key)")
+    assert out["eval"] == ["E 1", "B 1", "C 1", "A 1", "D 1"]
+    # on the page: the default order follows the rule, and sorting by share is the plain share order
+    site = tmp_path / "sort"
+    shutil.copytree(course_site, site)
+    index = load(site, "index.json")
+    template = next(r for r in index["courses"] if "1-5" in r["buckets"] and r["buckets"]["1-5"]["pooled"] is False)
+    cell = template["buckets"]["1-5"]
+    one = {**template, "key": "ZZZ 1", "subject": "ZZZ", "number": "1", "buckets": {"1-5": {**cell, "p": [1.0, 1.0, 1.0], "lo": [None] * 3, "hi": [None] * 3, "sections": 1, "reach": [1.0, 99.0]}}}
+    two = {**template, "key": "ZZZ 2", "subject": "ZZZ", "number": "2", "buckets": {"1-5": {**cell, "p": [0.7, 0.7, 0.7], "lo": [0.6] * 3, "hi": [0.8] * 3, "sections": 2, "reach": [0.7, 99.0]}}}
+    index["courses"] = [one, two]
+    (site / "data" / "index.json").write_text(json.dumps(index))
+    order = lambda html: re.findall(r">(ZZZ \d)</a>", html)  # noqa: E731
+    assert order(render(site, page="courses.html", search="?bucket=1-5")["elements"]["table"]["html"]) == ["ZZZ 2", "ZZZ 1"]
+    assert order(render(site, page="courses.html", search="?bucket=1-5&sort=p&dir=asc")["elements"]["table"]["html"]) == ["ZZZ 2", "ZZZ 1"]
+    assert order(render(site, page="courses.html", search="?bucket=1-5&sort=sections")["elements"]["table"]["html"]) == ["ZZZ 2", "ZZZ 1"]
+    assert order(render(site, page="courses.html", search="?bucket=1-5&sort=sections&dir=asc")["elements"]["table"]["html"]) == ["ZZZ 1", "ZZZ 2"]

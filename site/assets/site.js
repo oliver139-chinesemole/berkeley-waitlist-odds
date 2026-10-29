@@ -809,6 +809,15 @@ const BWO = (function () {
     const rest = index.courses.filter((r) => !own.includes(r) && !anyOwn.includes(r)).sort(byJoins);
     return own.concat(anyOwn, rest).slice(0, n || 3);
   }
+  // The Courses page's default order (review of 2026-10-29, 2.1): a row on one section, or one whose share is
+  // read past its curve's reach (an "at least"), after every other row; within each group by the interval's
+  // lower bound where there is one, else the share, highest first; then the key. Rows are the page's
+  // {key, p, lo, sections, floor}.
+  function courseDefaultOrder(a, b) {
+    const thin = (x) => (x.sections < 2 || x.floor ? 1 : 0);
+    const value = (x) => (x.lo != null ? x.lo : x.p != null ? x.p : -1);
+    return thin(a) - thin(b) || value(b) - value(a) || a.key.localeCompare(b.key);
+  }
   function relatedCourses(index, row, bucket, n) {
     const b = bucket || "6-15";
     const same = index.courses.filter((r) => r.key !== row.key && r.subject === row.subject && r.buckets[b] && r.buckets[b].pooled !== "all");
@@ -1070,7 +1079,7 @@ const BWO = (function () {
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, noDataHtml, stamp, setStamp,
     horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, atLeastTag, pagesPredictor, calibrationGap, calibrationHtml, loadBacktest,
-    parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
+    parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, courseDefaultOrder, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
