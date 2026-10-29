@@ -1714,3 +1714,53 @@ def test_ladder_reads_min_n_from_meta(course_site: Path) -> None:
     assert "(COMPSCI 0 had 1 case, fewer than 40), n&nbsp;=&nbsp;500." in out["eval"]
     out = render(course_site, expression="BWO.pooledSentence({cell: {n: 1234}, pooled: false, source: 'course', own: null}, {key: 'COMPSCI 0'}, '41+', BWO.loaded.meta)")
     assert out["eval"] == "This curve: COMPSCI 0, positions 41 and up, n&nbsp;=&nbsp;1,234."
+
+
+# ------------------------------------------------ the Oct 29 review (docs/dev/SITE_REVIEW_2026-10-29.md)
+
+
+def with_meta(site_root: Path, tmp_path: Path, name: str, **changes: object) -> Path:
+    """A copy of the export with ``changes`` merged into meta.json (a value of None removes the key)."""
+    root = tmp_path / name
+    shutil.copytree(site_root, root)
+    meta = load(root, "meta.json")
+    for k, v in changes.items():
+        if v is None:
+            meta.pop(k, None)
+        else:
+            meta[k] = v
+    (root / "data" / "meta.json").write_text(json.dumps(meta))
+    return root
+
+
+def test_a_key_off_the_forecast_schedule_says_so(full_site: Path, tmp_path: Path) -> None:
+    """Section 0: with the forecast term's catalog in the export, a key not in the index is not on that schedule;
+    without one (the served export today) the message is the one the site has always printed."""
+    site = with_meta(full_site, tmp_path, "catalog", catalog_term_id="2272", catalog_courses=10, catalog_only_courses=0)
+    term = load(site, "meta.json")["forecast_term_name"]
+    out = render(site, course="NOPE 999", position="10")
+    assert out["result"] == f'<p class="error"><strong>NOPE 999</strong> isn\'t on the {term} schedule.</p>{BROWSE}'
+    out = render(site, course="COMPSCI 999", position="10")
+    assert out["result"].startswith(f'<p class="error"><strong>COMPSCI 999</strong> isn\'t on the {term} schedule. Did you mean <a href="?course=COMPSCI')
+    assert out["result"].endswith(BROWSE) and NO_DATA not in out["result"]
+    status = render(site, page="course.html", search="?c=NOPE%20999")["status"]
+    assert status.startswith(f'<p class="error"><strong>NOPE 999</strong> isn\'t on the {term} schedule.</p><p><a href="index.html?course=NOPE%20999&position=10')
+    assert "every course</a>" in status
+    # no catalog: today's sentence on both pages
+    assert NO_DATA in render(full_site, course="NOPE 999", position="10")["result"]
+    assert NO_DATA in render(full_site, page="course.html", search="?c=NOPE%20999")["status"]
+
+
+def test_a_catalog_only_row_keeps_the_stub_rendering(full_site: Path, tmp_path: Path) -> None:
+    """A stub row (catalog_only, pointer cells with n_course 0) is a course: it gets the department's curve, labelled, not the off-schedule message."""
+    site = with_meta(full_site, tmp_path, "stub", catalog_term_id="2272", catalog_courses=11, catalog_only_courses=1)
+    pointer = {"pooled": "COMPSCI", "n_course": 0, "sections_course": 0}
+    index = load(site, "index.json")
+    index["courses"].append({"key": "COMPSCI 999", "subject": "COMPSCI", "number": "999", "level": "upper", "dept_group": "COMPSCI", "joins": 0, "catalog_only": True, "buckets": {"6-15": dict(pointer)}})
+    (site / "data" / "index.json").write_text(json.dumps(index))
+    subject = load(site, "courses/COMPSCI.json")
+    subject["courses"]["COMPSCI 999"] = {"catalog_only": True, "buckets": {"6-15": dict(pointer)}}
+    (site / "data" / "courses" / "COMPSCI.json").write_text(json.dumps(subject))
+    r = render(site, course="COMPSCI 999", position="10")["result"]
+    assert "isn't on the" not in r and "No data for" not in r
+    assert "This curve: the COMPSCI department, positions 6 to 15 (COMPSCI 999 had 0 cases, fewer than 30)" in r

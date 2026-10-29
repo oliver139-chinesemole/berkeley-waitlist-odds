@@ -263,6 +263,14 @@ const BWO = (function () {
     if (typeof document !== "undefined" && document.readyState === "loading") document.addEventListener("DOMContentLoaded", run, { once: true });
     else run();
   }
+  // The sentence for a key that is not in the index (review section 0). Once the export was given the
+  // forecast term's catalog (meta.catalog_term_id), every course on that schedule has a row, so a key with
+  // none is not on it; without a catalog the site cannot tell a typo from a course with too few cases.
+  function noDataHtml(meta, shown) {
+    const term = meta && (meta.forecast_term_name || termName(meta.forecast_term_id));
+    if (meta && meta.catalog_term_id && shown && term) return `<strong>${esc(shown)}</strong> isn't on the ${esc(term)} schedule.`;
+    return `No data for <strong>${esc(shown || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.`;
+  }
   function sourceLabel(meta) {
     return isBerkeleytime(meta) ? `${esc(meta.term_name)}, from Berkeleytime's public history` : `${esc(meta.term_name)}, this project's own snapshots`;
   }
@@ -1029,7 +1037,7 @@ const BWO = (function () {
   return {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
-    fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, stamp, setStamp,
+    fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, noDataHtml, stamp, setStamp,
     horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, atLeastTag,
     parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,

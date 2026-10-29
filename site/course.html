@@ -186,7 +186,7 @@
     const match = await BWO.matchCourseAsync(index, c, meta);
     row = match.row;
     if (!row) {
-      $("status").innerHTML = `<p class="error">No data for <strong>${esc(c || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests courses close to what you typed when there are any, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
+      $("status").innerHTML = `<p class="error">${BWO.noDataHtml(meta, c.trim())}</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests courses close to what you typed when there are any, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
       return;
     }
     const subj = await BWO.loadSubject(meta, row.subject);

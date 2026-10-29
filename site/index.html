@@ -139,7 +139,7 @@
       // Not a course in the index (a typo, or a code that is no course): no estimate, as on the course
       // page, only the nearest courses. A pooled estimate is for a real course with too few cases.
       const near = match.nearest.length ? ` Did you mean ${match.nearest.map((r) => `<a href="${BWO.withToday(`?course=${encodeURIComponent(r.key)}&position=${pos}`)}">${esc(r.key)}</a>`).join(", ")}?` : "";
-      show(`<p class="error">No data for <strong>${esc(shown)}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.${near}</p><p>Or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`);
+      show(`<p class="error">${BWO.noDataHtml(meta, shown)}${near}</p><p>Or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`);
       if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?course=${encodeURIComponent(shown)}&position=${pos}`));
       document.title = `No data for ${shown} · ${BWO.SITE}`;
       return;
