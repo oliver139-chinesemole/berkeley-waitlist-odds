@@ -25352,6 +25352,21 @@
 },
 {
 "catalog_number": "294",
+"class_number": "043",
+"component": "LEC",
+"course_key": "COMPSCI 294",
+"instructors": "Trevor Darrell",
+"last_status": null,
+"node_id": 543140,
+"probed_at": null,
+"section_id": "",
+"section_number": "043",
+"subject": "COMPSCI",
+"title": "Special Topics",
+"url_path": "/content/2027-spring-compsci-294-043-lec-043"
+},
+{
+"catalog_number": "294",
 "class_number": "066",
 "component": "LEC",
 "course_key": "COMPSCI 294",
@@ -46126,6 +46141,21 @@
 "url_path": "/content/2027-spring-espm-375-001-lec-001"
 },
 {
+"catalog_number": "376",
+"class_number": "001",
+"component": "LEC",
+"course_key": "ESPM 376",
+"instructors": "Erica B Rosenblum",
+"last_status": null,
+"node_id": 543141,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "ESPM",
+"title": "PhD as Process: holistic professional way finding",
+"url_path": "/content/2027-spring-espm-376-001-lec-001"
+},
+{
 "catalog_number": "40",
 "class_number": "001",
 "component": "LEC",
@@ -53716,6 +53746,21 @@
 "url_path": "/content/2027-spring-history-103d-002-sem-002"
 },
 {
+"catalog_number": "103H",
+"class_number": "001",
+"component": "SEM",
+"course_key": "HISTORY 103H",
+"instructors": "Christian Alvarado",
+"last_status": null,
+"node_id": 543142,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "HISTORY",
+"title": "Proseminar: Problems in Interpretation in the Several Fields of History: Africa",
+"url_path": "/content/2027-spring-history-103h-001-sem-001"
+},
+{
 "catalog_number": "103M",
 "class_number": "001",
 "component": "SEM",
@@ -60770,7 +60815,7 @@
 "class_number": "003",
 "component": "SEM",
 "course_key": "JOURN 219",
-"instructors": "",
+"instructors": "David Jonas Cohn",
 "last_status": null,
 "node_id": 537122,
 "probed_at": null,
@@ -114469,6 +114514,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-28T13:23:10.451105+00:00",
+"updated_at": "2026-10-29T11:00:47.968354+00:00",
 "version": 3
 }
