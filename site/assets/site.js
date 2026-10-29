@@ -102,6 +102,12 @@ const BWO = (function () {
   function addDays(date, n) { return new Date(date.getFullYear(), date.getMonth(), date.getDate() + Math.round(n)); }
   // Whole days from one local-midnight date to another; the rounding absorbs a DST hour.
   function daysBetween(from, to) { return Math.round((to.getTime() - from.getTime()) / DAY); }
+  // A waitlist position as the pages take it, from a URL or the form (review of 2026-10-29, 2.7): a whole
+  // number clamped to 1..500 (the form's own min and max), or `fallback` when the text is no number.
+  function clampPosition(raw, fallback) {
+    const p = parseInt(raw, 10);
+    return Number.isNaN(p) ? fallback : Math.min(500, Math.max(1, p));
+  }
   function params() { return new URLSearchParams(typeof location !== "undefined" ? location.search : ""); }
   function today() {
     const pin = dateOf(params().get("today"));
@@ -1076,7 +1082,7 @@ const BWO = (function () {
 
   return {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
-    $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
+    $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, clampPosition, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, noDataHtml, stamp, setStamp,
     horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, atLeastTag, pagesPredictor, calibrationGap, calibrationHtml, loadBacktest,
     parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, courseDefaultOrder, indexMap,

@@ -35,7 +35,7 @@
   const LIVE_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/live/latest.json";
   let meta, index, pooled, entry, row, today, backtest;
 
-  function positionFromUrl() { const p = parseInt(BWO.params().get("position"), 10); return p >= 1 ? Math.min(p, 500) : 10; }
+  function positionFromUrl() { return BWO.clampPosition(BWO.params().get("position"), 10); }
 
   function summaryTable(yourBucket) {
     const h = index.horizons;
@@ -90,7 +90,7 @@
       ${related(bucket)}`;
     BWO.activateCharts();
     document.title = `${row.key} · ${BWO.SITE}`;
-    $("posform").addEventListener("submit", (ev) => { ev.preventDefault(); const p = Math.max(1, parseInt($("position").value, 10) || 1); if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?c=${encodeURIComponent(row.key)}&position=${p}`)); render(p); });
+    $("posform").addEventListener("submit", (ev) => { ev.preventDefault(); const p = BWO.clampPosition($("position").value, 10); if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?c=${encodeURIComponent(row.key)}&position=${p}`)); render(p); });
     live();
   }
 
@@ -183,7 +183,7 @@
     meta = r.meta; index = r.data.index; pooled = r.data.pooled || { all: {}, dept: {}, level: {} };
     $("dates").innerHTML = BWO.keyDatesHtml(meta, today);
     BWO.setStamp(meta, today);
-    const c = BWO.params().get("c") || "";
+    const c = BWO.params().get("c") || BWO.params().get("course") || "";  // the lookup's name for it works too (review 2.8)
     const [match, bt] = await Promise.all([BWO.matchCourseAsync(index, c, meta), BWO.loadBacktest(meta)]);
     backtest = bt;
     row = match.row;

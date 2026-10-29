@@ -1787,3 +1787,25 @@ def test_the_courses_default_sort_puts_thin_and_capped_rows_last(course_site: Pa
     assert order(render(site, page="courses.html", search="?bucket=1-5&sort=p&dir=asc")["elements"]["table"]["html"]) == ["ZZZ 2", "ZZZ 1"]
     assert order(render(site, page="courses.html", search="?bucket=1-5&sort=sections")["elements"]["table"]["html"]) == ["ZZZ 2", "ZZZ 1"]
     assert order(render(site, page="courses.html", search="?bucket=1-5&sort=sections&dir=asc")["elements"]["table"]["html"]) == ["ZZZ 1", "ZZZ 2"]
+
+
+@pytest.mark.parametrize(("raw", "shown"), [("1000", 500), ("0", 1), ("-5", 1), ("abc", 10), ("12", 12), ("500", 500), ("", 10)])
+def test_a_position_from_the_url_is_clamped_like_the_form(full_site: Path, raw: str, shown: int) -> None:
+    """Section 2.7: one rule on both pages (BWO.clampPosition, 1 to 500, 10 when it is no number), written back into the input."""
+    out = render(full_site, expression=f"BWO.clampPosition({json.dumps(raw)}, 10)")
+    assert out["eval"] == shown
+    out = render(full_site, search=f"?course=STAT%202&position={raw}")
+    assert f"STAT 2 · position {shown} (" in out["result"]
+    assert out["elements"]["position"]["value"] == str(shown)
+    html = render(full_site, page="course.html", search=f"?c=STAT%202&position={raw}")["elements"]["course"]["html"]
+    assert f"STAT 2 · position {shown} (" in html and f'<input id="position" type="number" inputmode="numeric" min="1" max="500" step="1" value="{shown}">' in html
+
+
+def test_the_course_page_reads_course_as_well_as_c(full_site: Path) -> None:
+    """Section 2.8: the lookup's parameter name works on the course page; ?c= wins when both are there."""
+    html = render(full_site, page="course.html", search="?course=STAT%202&position=3")["elements"]["course"]["html"]
+    assert "<h1>STAT 2 " in html and "STAT 2 · position 3 (" in html
+    html = render(full_site, page="course.html", search="?c=MATH%201&course=STAT%202")["elements"]["course"]["html"]
+    assert "<h1>MATH 1 " in html
+    html = render(SITE, page="course.html", search="?course=ECON%20100A")["elements"]["course"]["html"]  # the review's URL, on the served data
+    assert "<h1>ECON 100A " in html

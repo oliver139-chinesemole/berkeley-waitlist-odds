@@ -163,7 +163,8 @@
   function submit(ev) {
     if (ev) ev.preventDefault();
     const text = $("course").value;
-    const pos = Math.max(1, parseInt($("position").value, 10) || 1);
+    const pos = BWO.clampPosition($("position").value, 10);
+    $("position").value = String(pos);
     if (!text.trim()) return;
     lookup(text, pos);
   }
@@ -196,7 +197,7 @@
     BWO.combobox($("course"), $("course-list"), index, () => { submit(); });
     $("form").addEventListener("submit", submit);
     const params = BWO.params();
-    if (params.get("course")) { $("course").value = params.get("course"); if (params.get("position")) $("position").value = params.get("position"); submit(); }
+    if (params.get("course")) { $("course").value = params.get("course"); if (params.get("position")) $("position").value = String(BWO.clampPosition(params.get("position"), 10)); submit(); }
   }
   main();
 })();
