@@ -150,11 +150,27 @@ def _grid(reach_days: float) -> np.ndarray:
     return np.asarray(days, dtype=float)
 
 
-def _cell(rows: pd.DataFrame, *, n_boot: int = N_BOOT) -> dict:
-    """One curve cell: the KM clearing curve with its band, the reach, the median and the counts."""
+def reach_cut(durations: np.ndarray, min_at_risk: int) -> float:
+    """The last day with at least ``min_at_risk`` joiners still at risk (followed that
+    long: duration >= the day), i.e. the ``min_at_risk``-th longest follow-up; the
+    longest follow-up when ``min_at_risk`` is 0 or 1, the shortest when the cell has
+    fewer rows than that (all of them are at risk there, the most there ever are)."""
+    d = np.sort(np.asarray(durations, dtype=float))[::-1]
+    k = min(max(int(min_at_risk), 1), len(d))
+    return float(d[k - 1])
+
+
+def _cell(rows: pd.DataFrame, *, n_boot: int = N_BOOT, reach_min_at_risk: int = 0) -> dict:
+    """One curve cell: the KM clearing curve with its band, the reach, the median and the counts.
+
+    ``reach_min_at_risk`` N (0: off) cuts the curve at ``reach_cut``, the last day with
+    at least N joiners at risk, and makes that day the reach, so a Kaplan-Meier jump on
+    the last few joiners (to 1.0 when they all clear) never becomes the reach or the
+    floor past it; the median then counts only if it falls within the cut. The points
+    kept are the uncut curve's (the estimate at a day does not depend on later rows)."""
     d = rows["duration_days"].to_numpy(dtype=float)
     e = rows["event"].to_numpy(dtype=int)
-    reach = float(d.max())
+    reach = reach_cut(d, reach_min_at_risk) if reach_min_at_risk else float(d.max())
     grid = _grid(reach)
     p = km_clear_at(d, e, grid)
     band = section_bootstrap_band(rows, grid, n_boot=n_boot)
@@ -167,6 +183,8 @@ def _cell(rows: pd.DataFrame, *, n_boot: int = N_BOOT) -> dict:
             point += [None, None]
         curve.append(point)
     median = median_clear_days(d, e)
+    if median is not None and median > reach:
+        median = None
     return {
         "curve": curve,  # [days since joining, P(got in by then), 95% low, 95% high] out to the longest follow-up
         "reach_days": round(reach, 1),
@@ -203,7 +221,7 @@ def _ordered(keys: list[str], order: tuple[str, ...]) -> list[str]:
     return known + sorted(k for k in keys if k not in order)
 
 
-def pool_tables(cohort: pd.DataFrame, *, min_n: int = MIN_N, n_boot: int = N_BOOT) -> dict:
+def pool_tables(cohort: pd.DataFrame, *, min_n: int = MIN_N, n_boot: int = N_BOOT, reach_min_at_risk: int = 0) -> dict:
     """``{"all": {bucket: cell}, "dept": {dept_group: {bucket: cell}}, "level": {level: {bucket: cell}}}``
     for every pool with ``min_n`` rows or more."""
     pools: dict = {"all": {}, "dept": {}, "level": {}}
@@ -211,13 +229,13 @@ def pool_tables(cohort: pd.DataFrame, *, min_n: int = MIN_N, n_boot: int = N_BOO
         return pools
     for bucket, g in cohort.groupby("position_bucket", observed=True):
         if len(g) >= min_n:
-            pools["all"][str(bucket)] = _cell(g, n_boot=n_boot)
+            pools["all"][str(bucket)] = _cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk)
     for (dept, bucket), g in cohort.groupby(["dept_group", "position_bucket"], observed=True):
         if len(g) >= min_n:
-            pools["dept"].setdefault(str(dept), {})[str(bucket)] = _cell(g, n_boot=n_boot)
+            pools["dept"].setdefault(str(dept), {})[str(bucket)] = _cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk)
     for (level, bucket), g in cohort.groupby(["level", "position_bucket"], observed=True):
         if len(g) >= min_n:
-            pools["level"].setdefault(str(level), {})[str(bucket)] = _cell(g, n_boot=n_boot)
+            pools["level"].setdefault(str(level), {})[str(bucket)] = _cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk)
     return pools
 
 
@@ -228,7 +246,7 @@ def resolve_pool(pools: dict, pooled: str, bucket: str) -> dict | None:
     return pools["dept"].get(pooled, {}).get(bucket)
 
 
-def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT, pools: dict | None = None, estimate_level: str = DEFAULT_ESTIMATE_LEVEL) -> dict:
+def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = MIN_N, n_boot: int = N_BOOT, pools: dict | None = None, estimate_level: str = DEFAULT_ESTIMATE_LEVEL, reach_min_at_risk: int = 0) -> dict:
     """``{course_key: {subject, number, level, dept_group, buckets: {bucket: cell}}}``.
 
     A pointer cell names in ``pooled`` the department whose curve for the same
@@ -245,7 +263,7 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
     if cohort.empty:
         return out
     if pools is None:
-        pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot)
+        pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk)
     for course_key, course_rows in cohort.groupby("course_key", sort=True, observed=True):
         dept = str(course_rows["dept_group"].iloc[0])
         cells: dict = {}
@@ -254,7 +272,7 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
             if len(rows) == 0:
                 continue
             if estimate_level == "course" and len(rows) >= min_n:
-                cell = _cell(rows, n_boot=n_boot)
+                cell = _cell(rows, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk)
                 cell["pooled"] = False
             else:
                 if bucket in pools["dept"].get(dept, {}):
@@ -364,7 +382,7 @@ def _grid_of(cells: dict) -> dict:
     return {k: _summary(c) for k, c in cells.items()}
 
 
-def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_boot: int = N_BOOT, flows: pd.DataFrame | None = None) -> dict:
+def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_boot: int = N_BOOT, flows: pd.DataFrame | None = None, reach_min_at_risk: int = 0) -> dict:
     """Term-wide tables for the Insights page (see the module docstring)."""
     out: dict = {
         "horizons": list(HORIZONS),
@@ -384,12 +402,12 @@ def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_
     hero_rows = cohort[(cohort["level"] == "lower") & (cohort["phase"] == "phase1")]
     for bucket, g in hero_rows.groupby("position_bucket", observed=True):
         if len(g) >= min_n:
-            out["hero"][str(bucket)] = _cell(g, n_boot=n_boot)
+            out["hero"][str(bucket)] = _cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk)
     out["hero"] = {b: out["hero"][b] for b in _ordered(list(out["hero"]), BUCKET_ORDER)}
     by_phase: dict = {}
     for (phase, bucket), g in cohort.groupby(["phase", "position_bucket"], observed=True):
         if len(g) >= min_n:
-            by_phase.setdefault(str(phase), {})[str(bucket)] = _summary(_cell(g, n_boot=n_boot))
+            by_phase.setdefault(str(phase), {})[str(bucket)] = _summary(_cell(g, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk))
     out["by_phase"] = {p: by_phase[p] for p in _ordered(list(by_phase), PHASE_ORDER)}
     if flows is not None and len(flows) and {"t1", "admits", "wl_joins", "wl_drops"} <= set(flows.columns):
         f = flows.copy()
@@ -545,6 +563,7 @@ def export_site_tables(
     flows: pd.DataFrame | None = None,
     estimate_level: str = DEFAULT_ESTIMATE_LEVEL,
     catalog: Path | None = None,
+    reach_min_at_risk: int = 0,
 ) -> tuple[Path, Path]:
     """Write the site's JSON under ``out_dir``; returns ``(index.json, meta.json)``.
 
@@ -559,12 +578,17 @@ def export_site_tables(
     and ``catalog_only_courses``; ``meta.courses`` still counts courses with cohort
     rows. Without it none of these is written and a ``titles.json`` left from an
     earlier export is removed.
+
+    Default-off options (the served curves are pre-registered; each is recorded in
+    ``meta.json`` only when on, so with the defaults every file is byte-identical to an
+    export without them): ``reach_min_at_risk`` cuts every curve cell where fewer than
+    that many joiners are still at risk (``_cell``).
     """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     forecast = forecast_calendar or calendar
-    pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot)
-    courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot, pools=pools, estimate_level=estimate_level)
+    pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk)
+    courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot, pools=pools, estimate_level=estimate_level, reach_min_at_risk=reach_min_at_risk)
     joins = joins_by_course(cohort, flows)
     n_courses = len(courses)  # courses with cohort rows, before any catalog stub
     catalog_info: dict = {}
@@ -606,7 +630,7 @@ def export_site_tables(
     elif (out_dir / TITLES_FILE).exists():
         (out_dir / TITLES_FILE).unlink()
     _dump(out_dir / "pooled.json", {"term_id": calendar.term_id, **pools})
-    _dump(out_dir / "insights.json", {"term_id": calendar.term_id, **insights_tables(cohort, pools, min_n=min_n, n_boot=n_boot, flows=flows)})
+    _dump(out_dir / "insights.json", {"term_id": calendar.term_id, **insights_tables(cohort, pools, min_n=min_n, n_boot=n_boot, flows=flows, reach_min_at_risk=reach_min_at_risk)})
 
     info = {
         "term_id": calendar.term_id,
@@ -639,6 +663,8 @@ def export_site_tables(
     if catalog is not None:
         info["titles_file"] = TITLES_FILE
         info.update(catalog_info)
+    if reach_min_at_risk:
+        info["reach_min_at_risk"] = int(reach_min_at_risk)
     if meta:
         info.update(meta)
     info.setdefault("terms", [{"term_id": calendar.term_id, "term_name": calendar.name, "data_source": info.get("data_source")}])
@@ -665,6 +691,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--min-n", type=int, default=MIN_N)
     p.add_argument("--estimate-level", choices=ESTIMATE_LEVELS, default=DEFAULT_ESTIMATE_LEVEL, help="course: a course with min_n rows gets its own curve, else the department's (default); dept: the department's curve stands in for every course")
     p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json): adds a catalog_only stub row (pointing at its pools) for every catalog course with no cohort rows, writes titles.json (each index course's title and instructors) and meta.titles_file, catalog_term_id, catalog_courses and catalog_only_courses")
+    p.add_argument("--reach-min-at-risk", type=int, default=0, metavar="N", help="cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
     p.add_argument("--titles-only", action="store_true", help="with --catalog: write only titles.json for the index.json already in --out and add titles_file to its meta.json; no cohort, no refit, every other file untouched")
     args = p.parse_args(argv)
     if args.catalog is not None and not args.catalog.is_file():
@@ -714,6 +741,7 @@ def main(argv: list[str] | None = None) -> int:
         flows=flows,
         estimate_level=args.estimate_level,
         catalog=args.catalog,
+        reach_min_at_risk=args.reach_min_at_risk,
     )
     info = json.loads(meta_path.read_text(encoding="utf-8"))
     print(json.dumps({"index": str(index_path), "meta": str(meta_path), "courses": info["courses"], "events": info["events"], "sections": info["sections"], "data_source": info.get("data_source"), "estimate_level": info["estimate_level"], "subject_files": len(info["subject_files"]), "titles_file": info.get("titles_file")}, indent=1))

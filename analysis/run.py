@@ -88,6 +88,7 @@ def run_analysis(
     site_level: str = DEFAULT_LEVEL,
     forecast_calendar: TermCalendar | None = None,
     catalog: Path | str | None = None,
+    site_options: dict | None = None,
 ) -> AnalysisResult:
     """Everything from a panel (or precomputed ``flows``) to the report.
 
@@ -96,7 +97,9 @@ def run_analysis(
     name the ``data_source``; ``forecast_calendar`` is the term whose dates the
     site counts down to when a finished cycle stands in for the coming one;
     ``catalog`` (a classes_site ``catalog.json``) adds the site's ``titles.json``
-    (``export_site_tables``), without which title and instructor search is off.
+    (``export_site_tables``), without which title and instructor search is off;
+    ``site_options`` are ``export_site_tables``' default-off keyword options
+    (``reach_min_at_risk``), passed only when given.
     """
     out_dir = Path(out_dir) / calendar.term_id
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -192,7 +195,7 @@ def run_analysis(
         meta = {"data_source": OWN_DATA_SOURCE, "flows": fsum, "cohort_rows_by_scenario": cohort_rows}
         if site_meta:
             meta.update(site_meta)
-        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, forecast_calendar=forecast_calendar, flows=flows, estimate_level=site_level, catalog=catalog)
+        site_files = export_site_tables(cohort, calendar, site_dir, meta=meta, forecast_calendar=forecast_calendar, flows=flows, estimate_level=site_level, catalog=catalog, **(site_options or {}))
 
     report = [
         f"# Waitlist analysis report: {calendar.name} (term {calendar.term_id})",
@@ -269,6 +272,11 @@ def run_analysis(
     )
 
 
+def _site_options(args: argparse.Namespace) -> dict:
+    """The export options the command line turned on (an option left at its default is not passed)."""
+    return {k: v for k, v in {"reach_min_at_risk": args.reach_min_at_risk}.items() if v}
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Reproduce every table, figure and site file from the data branch (or a backfilled term).")
     p.add_argument("--data-root", type=Path, default=Path("./data-branch"))
@@ -284,6 +292,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--estimate-level", choices=LEVELS, default=DEFAULT_LEVEL, help="what site/data serves per course and bucket: the department curve (default) or the course's own")
     p.add_argument("--forecast-term", default=None, help="SIS term id whose dates the site counts down to (default: the analysed term); 2272 when Fall 2026 stands in for Spring 2027")
     p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json); the site files then include a catalog_only stub row (pointing at its pools) for every catalog course with no cohort rows and titles.json for title and instructor search")
+    p.add_argument("--reach-min-at-risk", type=int, default=0, metavar="N", help="site files: cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
     args = p.parse_args(argv)
     if args.catalog is not None and not args.catalog.is_file():
         p.error(f"--catalog {args.catalog}: no such file")
@@ -325,6 +334,7 @@ def main(argv: list[str] | None = None) -> int:
         site_level=args.estimate_level,
         forecast_calendar=calendar_for(args.forecast_term) if args.forecast_term else None,
         catalog=args.catalog,
+        site_options=_site_options(args),
     )
     print(json.dumps({"out": str(result.out_dir), "flows": result.flows_summary, "cohort_rows": result.cohort_rows, "notes": result.notes, "figures": [str(f) for f in result.figures]}, indent=1))
     return 0
