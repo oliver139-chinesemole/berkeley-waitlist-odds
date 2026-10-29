@@ -73,7 +73,7 @@
     const body = rows.map((r) => {
       const s = r.buckets[bucket];
       const link = `<a href="${BWO.withToday(`course.html?c=${encodeURIComponent(r.key)}&position=${low}`)}">${esc(r.key)}</a>`;
-      const level = esc(r.level ? r.level + " division" : "");
+      const level = esc(BWO.levelText(r.level));
       if (!s) return `<tr class="course"><td>${link}<span class="sub">${level}</span></td><td class="num"><span class="muted small">no estimate here</span></td><td class="num rest"><span class="muted">none at these positions</span></td></tr>`;
       const tag = BWO.pooledTag(s.pooled, s.pooled === "all" ? "all" : "dept", meta);
       const own = s.pooled === false ? s.n : (s.n_course || 0), sections = s.pooled === false ? s.sections : (s.sections_course || 0);

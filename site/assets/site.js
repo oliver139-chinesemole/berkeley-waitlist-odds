@@ -102,6 +102,12 @@ const BWO = (function () {
   function addDays(date, n) { return new Date(date.getFullYear(), date.getMonth(), date.getDate() + Math.round(n)); }
   // Whole days from one local-midnight date to another; the rounding absorbs a DST hour.
   function daysBetween(from, to) { return Math.round((to.getTime() - from.getTime()) / DAY); }
+  // A waitlist position as the pages take it, from a URL or the form (review of 2026-10-29, 2.7): a whole
+  // number clamped to 1..500 (the form's own min and max), or `fallback` when the text is no number.
+  function clampPosition(raw, fallback) {
+    const p = parseInt(raw, 10);
+    return Number.isNaN(p) ? fallback : Math.min(500, Math.max(1, p));
+  }
   function params() { return new URLSearchParams(typeof location !== "undefined" ? location.search : ""); }
   function today() {
     const pin = dateOf(params().get("today"));
@@ -116,11 +122,12 @@ const BWO = (function () {
   // --------------------------------------------------------------- data files
   const cache = {};
   const loaded = {}; // what load() fetched, for the page and for the tests
-  async function fetchJson(url) {
+  // `httpCache`: the browser cache mode, "no-store" (always fresh) unless a caller says otherwise.
+  async function fetchJson(url, httpCache) {
     if (cache[url]) return cache[url];
     let out;
     try {
-      const r = await fetch(url, { cache: "no-store" });
+      const r = await fetch(url, { cache: httpCache || "no-store" });
       if (r.ok) out = { ok: true, data: await r.json() };
       else out = { ok: false, status: r.status, missing: r.status === 404 };
     } catch (e) {
@@ -172,6 +179,9 @@ const BWO = (function () {
   // the forecast term, then BWO.liveStatus swaps in "has started".
   const COLLECTION_DATED = "begins with Phase 1 on Oct 26, 2026";
   const COLLECTION_STARTED = "has started";
+  // Once Phase 1 has begun and status.json still names an earlier term (the scraper has not switched), the dated
+  // clause would sit next to "has not started collecting": the date goes (review of 2026-10-29, section 7).
+  const COLLECTION_NOT_STARTED = "has not started";
   // The pre-registered Spring 2027 test: the Spring 2026 cohort from Berkeleytime's
   // history, frozen at the commit that installed it (CLAIMS.md, docs/DATA_LOG.md) and
   // scored unchanged after the add/drop deadline. meta.json carries prereg_commit and
@@ -245,6 +255,12 @@ const BWO = (function () {
     }
     return statusLoad;
   }
+  // True when the run in status.json is of an earlier term than the forecast term and today is the forecast term's Phase 1 start or later.
+  function notStartedPastPhase1(s, meta) {
+    const start = meta && meta.dates ? dateOf(meta.dates.phase1_start) : null;
+    if (!start || !termName(s.term_id) || !termName(meta.forecast_term_id) || !(Number(s.term_id) < Number(meta.forecast_term_id))) return false;
+    return today() >= start;  // from Phase 1's first day: "begins ... on Oct 26" beside "has not started" is the contradiction
+  }
   // Called after the page has set its status line; never awaited, so it cannot
   // hold up first paint or the data loads. A snapshot of the forecast term (the
   // page's meta from BWO.load) also takes the date out of the collection clause, in
@@ -256,12 +272,22 @@ const BWO = (function () {
         const got = await loadStatus();
         const text = got && liveStatusText(got.s, got.now, loaded.meta);
         if (!text) return;
-        if (isForecastTerm(got.s.term_id, loaded.meta)) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, COLLECTION_STARTED);
+        const clause = isForecastTerm(got.s.term_id, loaded.meta) ? COLLECTION_STARTED : notStartedPastPhase1(got.s, loaded.meta) ? COLLECTION_NOT_STARTED : null;
+        if (clause) for (const t of [el, also]) if (t) t.innerHTML = t.innerHTML.replace(COLLECTION_DATED, clause);
         el.innerHTML += el.tagName === "P" ? ` <span class="live-status">${esc(text)}</span>` : `<p class="muted small live-status">${esc(text)}</p>`;
       } catch (e) { /* the page stays as it was */ }
     };
     if (typeof document !== "undefined" && document.readyState === "loading") document.addEventListener("DOMContentLoaded", run, { once: true });
     else run();
+  }
+  // The sentence for a key that is not in the index (review section 0). Once the export was given the
+  // forecast term's catalog (meta.catalog_term_id), every course on that schedule has a row, so a key with
+  // none is not on it; without a catalog the site cannot tell a typo from a course with too few cases.
+  function noDataHtml(meta, shown) {
+    const term = meta && (meta.forecast_term_name || termName(meta.forecast_term_id));
+    // The catalog must be the forecast term's: an export given another term's catalog says nothing about this schedule.
+    if (meta && meta.catalog_term_id && String(meta.catalog_term_id) === String(meta.forecast_term_id) && shown && term) return `<strong>${esc(shown)}</strong> isn't on the ${esc(term)} schedule.`;
+    return `No data for <strong>${esc(shown || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.`;
   }
   function sourceLabel(meta) {
     return isBerkeleytime(meta) ? `${esc(meta.term_name)}, from Berkeleytime's public history` : `${esc(meta.term_name)}, this project's own snapshots`;
@@ -283,9 +309,17 @@ const BWO = (function () {
   function horizons(meta, t) {
     return { deadline: daysBetween(t, addDays(dateOf(meta.deadline), 1)), instruction: daysBetween(t, dateOf(meta.instruction_start)) };
   }
-  // The strip of key dates: what is next, from the forecast term's calendar.
+  // The strip of key dates: what is next, from the forecast term's calendar. While Phase 1 is running (from
+  // phase1_start through its end) the first item is the day it ends for continuing students, `running: true`
+  // (review of 2026-10-29, 3.9: the strip started at "Phase 2 opens" with Phase 1 open). Its end is
+  // meta.dates.phase1_end (Nov 15, 2026), or the day before phase2_start when the calendar has no phase1_end.
+  function isoOf(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; }
   function keyDates(meta, t) {
     const dates = meta.dates || {};
+    const start = dateOf(dates.phase1_start), next = dateOf(dates.phase2_start);
+    const end = dateOf(dates.phase1_end) || (next ? addDays(next, -1) : null);
+    const running = start && end && t >= start && t <= end
+      ? [{ key: "phase1_end", label: "Phase 1 (continuing) ends", iso: isoOf(end), left: daysBetween(t, end), past: false, running: true }] : [];
     const rows = [
       ["phase1_start", "Phase 1 opens"], ["phase2_start", "Phase 2 opens"], ["adjustment_start", "Adjustment period"],
       ["instruction_start", "First day of class"], ["last_auto_waitlist", "Last automatic waitlist run"], ["add_drop_deadline", "Add/drop deadline"],
@@ -297,12 +331,13 @@ const BWO = (function () {
       const left = daysBetween(t, dateOf(iso));
       out.push({ key, label, iso, left, past: left < 0 });
     }
-    return out;
+    return running.concat(out);
   }
   function keyDatesHtml(meta, t) {
     const all = keyDates(meta, t);
-    const upcoming = all.filter((d) => !d.past).slice(0, 3);
-    const items = (upcoming.length ? upcoming : all.slice(-2)).map((d) => {
+    const running = all.filter((d) => d.running), rest = all.filter((d) => !d.running);
+    const upcoming = rest.filter((d) => !d.past).slice(0, 3);
+    const items = running.concat(upcoming.length ? upcoming : rest.slice(-2)).map((d) => {
       const rel = d.left > 0 ? `in ${days(d.left)}` : d.left === 0 ? "today" : `${days(-d.left)} ago`;
       const you = d.key === "instruction_start" || d.key === "last_auto_waitlist" ? " you" : "";
       return `<li class="${you.trim()}"><strong>${esc(fmtDay(d.iso))}</strong> ${esc(d.label)} <span class="muted">(${rel})</span></li>`;
@@ -389,8 +424,51 @@ const BWO = (function () {
   // One sentence on the rule, for the pages' small print.
   function levelNote(meta) {
     if (estimateLevel(meta) === "dept") return `Estimates are by department and position, not by course: in the ${esc(meta.term_name)} backtest, course-level curves did not beat the position-only baseline, so a course's own cases are shown as counts next to its department's curve (<a href="accuracy.html">how accurate it was</a>).`;
-    return `Estimates are by course and position when a course has at least ${esc(meta.min_n || 30)} cases, otherwise by department (labelled pooled): across whole cycles, a course's own curve predicted better than its position alone (<a href="accuracy.html">how accurate it was</a>).`;
+    return `Estimates are by course and position when a course has at least ${esc(meta.min_n || 30)} cases, otherwise by department (labelled pooled): across whole cycles, a course's own curve ranked students better than position alone (<a href="accuracy.html">how accurate it was</a>).`;
   }
+  // Calibration on the result card (review of 2026-10-29, 1.3): the cross-term backtest (fit on Spring 2026,
+  // scored on Fall 2026) at 14 or 28 days. The gap is the export's (analysis/export_backtest.py writes
+  // `calibration_gap` per run and predictor: predicted minus observed over the deciles, in points); the page
+  // only picks the run and the predictor it uses. Null past 28 days, without the run, or without the field.
+  // The predictor the pages use: the department curve at the department level, the course curve otherwise (the Accuracy page's rule).
+  function pagesPredictor(run, meta) {
+    const cal = (run && run.calibration) || {};
+    const preferred = estimateLevel(meta) === "dept" ? ["dept", "course", "site"] : ["course", "dept", "site"];
+    return preferred.find((k) => cal[k] && cal[k].length) || "site";
+  }
+  function calibrationGap(backtest, meta, horizon) {
+    if (!backtest || !Array.isArray(backtest.runs) || !(horizon > 0) || horizon > 28) return null;
+    const h = horizon <= 14 ? 14 : 28;
+    const run = backtest.runs.find((r) => r && r.name === `cross_term_days${h}`);
+    const gap = run && run.calibration_gap ? run.calibration_gap[pagesPredictor(run, meta)] : null;
+    if (typeof gap !== "number" || !Number.isFinite(gap)) return null;
+    return { points: gap, horizon: h, run: run.name, term: backtest.term_name || null };
+  }
+  // One line under the headline when the headline's horizon is 28 days or less and the gap is 5 points or more.
+  function calibrationHtml(backtest, meta, horizon) {
+    const g = calibrationGap(backtest, meta, horizon);
+    if (!g || Math.abs(g.points) < 5) return "";
+    // The gap is a mean over the deciles, so the sentence says "on average" and "the site's estimates", not "estimates like this".
+    return `<p class="muted small calibration">On average, the site's estimates ran about ${Math.round(Math.abs(g.points))} points ${g.points > 0 ? "high" : "low"} at ${g.horizon} days in <a href="accuracy.html">testing</a>${g.term ? ` on ${esc(g.term)}` : ""}.</p>`;
+  }
+  // Where a result card puts that line: a slot it prints at once and fills when backtest.json arrives, so a slow
+  // fetch never holds up the card. `stillCurrent()` is false once a newer card replaced this one.
+  const CALIBRATION_SLOT = '<div id="calibration-line"></div>';
+  function fillCalibration(load, meta, horizon, stillCurrent) {
+    Promise.resolve(load).then((bt) => {
+      if (stillCurrent && !stillCurrent()) return;
+      const el = $("calibration-line");
+      if (el) el.innerHTML = calibrationHtml(bt, meta, horizon);
+    }, () => {});
+  }
+  // backtest.json for the result cards, fetched once; null when it is missing or does not load.
+  function loadBacktest(meta) {
+    const file = (meta && meta.files && meta.files.backtest) || "backtest.json";
+    // The browser may keep it: it changes at most weekly, and a stale copy only delays a calibration line.
+    return fetchJson("data/" + file, "default").then((r) => (r.ok ? r.data : null), () => null);
+  }
+  // A course level as the pages print it: "lower division", "upper division", "graduate division" (review of 2026-10-29, 3.8: it said "grad division").
+  function levelText(level) { return level ? `${level === "grad" ? "graduate" : level} division` : ""; }
   function levelOf(number) { const m = String(number || "").match(/(\d+)/); if (!m) return null; const n = parseInt(m[1], 10); return n < 100 ? "lower" : n < 200 ? "upper" : "grad"; }
 
   // ----------------------------------------------------------------- search
@@ -554,16 +632,34 @@ const BWO = (function () {
     const alt = /^[A-Z]/.test(number) ? (/^C\d/.test(number) ? number.slice(1) : null) : "C" + number;
     return index.courses.filter((r) => r.number === number || (alt && r.number === alt)).sort(byJoins);
   }
+  // "Did you mean" within the understood subject ranks courses by catalog-number distance to the number typed (review
+  // of 2026-10-29, 3.3: ECON 121 offered ECON 100A, 100B and 1, the most-joined): the numeric part first, then
+  // the letter suffix nearest the one typed, then joins. A number with no digits ranks last.
+  function catalogParts(number) {
+    const m = /^([A-Z]*)(\d+)([A-Z]*)$/.exec(String(number || ""));
+    return m ? { n: parseInt(m[2], 10), suffix: m[3] } : null;
+  }
+  function byCatalogDistance(number) {
+    const want = catalogParts(number);
+    const code = (suffix) => (suffix ? suffix.charCodeAt(0) : 64);  // no suffix sits just before A
+    const key = (r) => {
+      const got = catalogParts(r.number);
+      if (!want || !got) return [Infinity, Infinity];
+      return [Math.abs(got.n - want.n), got.suffix === want.suffix ? 0 : 1 + Math.abs(code(got.suffix) - code(want.suffix))];
+    };
+    return (a, b) => { const ka = key(a), kb = key(b); return ka[0] - kb[0] || ka[1] - kb[1] || byJoins(a, b); };
+  }
   // What to offer when nothing matched, never more than three, and only what is close to the text: the
   // subject's own courses when the subject was understood, else what the combobox suggests for it (a
   // prefix of a subject or a key), else the courses of the subjects within the fuzzy rule's distance;
   // else nothing. (Audit item 13: the most-joined three it used to fall back on are the Try chips.)
+  // The subject's own courses come nearest number first (byCatalogDistance).
   function nearestCourses(index, text) {
     const q = parseQuery(text);
     if (!q) return [];
     for (const pair of q.pairs || []) {
       const rows = index.courses.filter((r) => r.subject === pair.subject);
-      if (rows.length) return rows.sort(byJoins).slice(0, 3);
+      if (rows.length) return rows.sort(byCatalogDistance(pair.number)).slice(0, 3);
     }
     const typed = searchCourses(index, text, 3);
     if (typed.length) return typed;
@@ -648,6 +744,12 @@ const BWO = (function () {
     return miss();
   }
   function findCourse(index, text) { return matchCourse(index, text).row; }
+  // How a query that matched nothing is printed back: the subject and number as parsed ("nope 999" is NOPE 999),
+  // else the normalised text. The lookup and the course page say it the same way.
+  function typedKey(text) {
+    const q = parseQuery(text);
+    return q && q.pairs && q.pairs.length ? `${q.pairs[0].subject} ${q.pairs[0].number}` : q ? q.raw : String(text == null ? "" : text).trim().toUpperCase();
+  }
 
   // The title layer, last of all: "data structures" or "hilfinger". Titles and
   // instructors live in data/titles.json (meta.titles_file), fetched on the first
@@ -770,9 +872,19 @@ const BWO = (function () {
     const rest = index.courses.filter((r) => !own.includes(r) && !anyOwn.includes(r)).sort(byJoins);
     return own.concat(anyOwn, rest).slice(0, n || 3);
   }
+  // The Courses page's default order (review of 2026-10-29, 2.1): a row on one section, or one whose share is
+  // read past its curve's reach (an "at least"), after every other row; within each group by the interval's
+  // lower bound where there is one, else the share, highest first; then the key. Rows are the page's
+  // {key, p, lo, sections, floor}.
+  function courseDefaultOrder(a, b) {
+    const thin = (x) => (x.sections < 2 || x.floor ? 1 : 0);
+    const value = (x) => (x.lo != null ? x.lo : x.p != null ? x.p : -1);
+    return thin(a) - thin(b) || value(b) - value(a) || a.key.localeCompare(b.key);
+  }
   function relatedCourses(index, row, bucket, n) {
     const b = bucket || "6-15";
-    const same = index.courses.filter((r) => r.key !== row.key && r.subject === row.subject && r.buckets[b] && r.buckets[b].pooled !== "all");
+    // A catalog_only stub has no cases of its own: it is not a related course worth listing (it only repeats its pool).
+    const same = index.courses.filter((r) => r.key !== row.key && !r.catalog_only && r.subject === row.subject && r.buckets[b] && r.buckets[b].pooled !== "all");
     same.sort(byJoins);
     return same.slice(0, n || 5);
   }
@@ -1000,7 +1112,7 @@ const BWO = (function () {
     let rows = [], active = -1, open = false;
     const render = () => {
       if (!rows.length) { list.innerHTML = ""; list.hidden = true; open = false; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); return; }
-      list.innerHTML = rows.map((r, i) => `<li role="option" id="${list.id}-${i}" aria-selected="${i === active}" data-key="${esc(r.key)}"><span>${esc(r.key)}</span><span class="sub">${esc(r.level ? r.level + " division" : "")}${r.joins ? ` · ${num(r.joins)} joins` : ""}</span></li>`).join("");
+      list.innerHTML = rows.map((r, i) => `<li role="option" id="${list.id}-${i}" aria-selected="${i === active}" data-key="${esc(r.key)}"><span>${esc(r.key)}</span><span class="sub">${esc(levelText(r.level))}${r.joins ? ` · ${num(r.joins)} waitlist joins${loaded.meta && loaded.meta.term_name ? `, ${esc(loaded.meta.term_name)}` : ""}` : ""}</span></li>`).join("");
       list.hidden = false; open = true;
       input.setAttribute("aria-expanded", "true");
       if (active >= 0) input.setAttribute("aria-activedescendant", `${list.id}-${active}`); else input.removeAttribute("aria-activedescendant");
@@ -1028,10 +1140,10 @@ const BWO = (function () {
 
   return {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
-    $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, params, today, pinned, withToday,
-    fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, stamp, setStamp,
-    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, atLeastTag,
-    parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, indexMap,
+    $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, clampPosition, params, today, pinned, withToday,
+    fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, noDataHtml, stamp, setStamp,
+    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, levelText, atLeastTag, pagesPredictor, calibrationGap, calibrationHtml, loadBacktest, CALIBRATION_SLOT, fillCalibration,
+    parseQuery, findCourse, typedKey, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, courseDefaultOrder, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
@@ -1053,16 +1165,28 @@ BWO.resolveSubject = function (index, text) {
   for (const s of [t, BWO.SUBJECT_ALIASES[t], squashed, BWO.SUBJECT_ALIASES[squashed]]) if (s && subjects.has(s)) return s;
   return null;
 };
-// Up to n subjects near an unknown one: prefix and alias matches from the course search,
-// then by plain Levenshtein distance (BWO.damerau without swaps or its length cap).
+// Up to n subjects near an unknown one, and only near ones (review of 2026-10-29, 3.4: NOPE was offered Earth and
+// Planetary Science and two more unrelated subjects): first the subjects the text is a shorthand for or the start of,
+// by code or by name ("comp", "Econom", "cs"), or whose code or shorthand the text starts with ("compscience",
+// "poli science"), most-joined first; then those within the matcher's edit distance (BWO.damerau, swaps counted;
+// at most 1 for five characters or fewer, else 2, as nearSubjects), closest first, ties alphabetical. None when nothing is that close.
 BWO.nearestSubjects = function (index, text, n) {
-  const want = String(text || "").toUpperCase().replace(/[^A-Z0-9&]/g, "");
-  const out = [];
-  for (const r of BWO.searchCourses(index, text, 50)) if (!out.includes(r.subject)) out.push(r.subject);
-  const dist = (s) => BWO.damerau(want, s, Infinity, false);
-  const rest = Array.from(new Set(index.courses.map((r) => r.subject))).filter((s) => !out.includes(s));
-  rest.sort((a, b) => dist(a) - dist(b) || a.localeCompare(b));
-  return out.concat(rest).slice(0, n || 3);
+  const squash = (t) => String(t || "").toUpperCase().replace(/[^A-Z0-9&]/g, "");
+  const want = squash(text);
+  if (!want) return [];
+  const joins = {};
+  for (const r of index.courses) joins[r.subject] = (joins[r.subject] || 0) + (r.joins || 0);
+  const subjects = Object.keys(joins);
+  const alias = BWO.SUBJECT_ALIASES[want];
+  const named = (s) => { const name = squash(BWO.SUBJECT_NAMES && BWO.SUBJECT_NAMES[s]); return !!name && name.startsWith(want); };
+  // A code or a shorthand the text starts with ("compscience" is COMPSCI, "poli science" starts with POLISCI).
+  // Three letters at least: a two-letter code or shorthand (PE, ME, CE, NE, DS) begins too many unrelated words.
+  const leads = new Set(Object.keys(BWO.SUBJECT_ALIASES).filter((k) => squash(k).length >= 3 && want.startsWith(squash(k))).map((k) => BWO.SUBJECT_ALIASES[k]));
+  const starts = subjects.filter((s) => s === alias || s.startsWith(want) || (s.length >= 3 && want.startsWith(s)) || leads.has(s) || named(s)).sort((a, b) => joins[b] - joins[a] || a.localeCompare(b));
+  const limit = want.length <= 5 ? 1 : 2;  // the matcher's own rule (nearSubjects): one edit for a short spelling
+  const close = subjects.filter((s) => !starts.includes(s)).map((s) => [s, BWO.damerau(want, s)]).filter((x) => x[1] <= limit)
+    .sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0])).map((x) => x[0]);
+  return starts.concat(close).slice(0, n || 3);
 };
 // Every course of a subject, most-joined first, then by number.
 BWO.deptCourses = function (index, subject) {

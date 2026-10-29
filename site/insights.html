@@ -159,6 +159,7 @@
       <h3>All courses and phases</h3>
       ${grid()}
       ${allSeries.length ? BWO.curveChart({ series: allSeries, maxDay: 56, id: "all-chart", ariaLabel: "Share who got in by days since joining, all courses, one curve per position bucket" }) : ""}
+      <p class="muted small">After about four weeks the curves rest on few joiners; read the 14- and 28-day columns.</p>
       <h2>Departments</h2>
       ${departments() || `<p class="muted">No department has enough cases yet.</p>`}
       ${ins.daily ? `<h2>When waitlists move</h2>${daily()}` : ""}
