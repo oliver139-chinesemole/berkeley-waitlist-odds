@@ -284,8 +284,10 @@ def catalog_course_entries(catalog_entries: Iterable[dict]) -> list[dict]:
     return [e for e in catalog_entries if all(str(e.get(k) or "").strip() for k in ("course_key", "subject", "catalog_number"))]
 
 
-def catalog_stubs(catalog_entries: Iterable[dict], cohort: pd.DataFrame, pools: dict) -> dict:
-    """``{course_key: entry}`` for every catalog course with no cohort rows, shaped like a
+def catalog_stubs(catalog_entries: Iterable[dict], cohort: pd.DataFrame, courses: dict, pools: dict) -> dict:
+    """``{course_key: entry}`` for every catalog course not in ``courses`` (what
+    ``course_tables`` returned: a cohort course no pool covers is missing there too, so it
+    gets a stub rather than no row at all), shaped like a
     ``course_tables`` entry plus ``catalog_only: True``. ``dept_group`` is the cohort's own
     for the subject, else ``OTHER_GROUP`` (a subject with no cohort sections, the rule
     ``build_cohort`` applies to subjects under ``min_sections_per_group``); ``level`` is
@@ -293,7 +295,7 @@ def catalog_stubs(catalog_entries: Iterable[dict], cohort: pd.DataFrame, pools: 
     and ``sections_course`` 0 (the department pool first, then ``"all"``); a course no
     pool covers at all is left out, as in ``course_tables``. Entries missing a course key, subject
     or catalog number are skipped (``catalog_course_entries``)."""
-    known = set(cohort["course_key"].astype(str)) if len(cohort) else set()
+    known = {str(k) for k in courses}
     groups = {str(k): str(v) for k, v in cohort.groupby("subject", observed=True)["dept_group"].first().items()} if len(cohort) else {}
     out: dict = {}
     for e in catalog_course_entries(catalog_entries):
@@ -553,11 +555,13 @@ def export_site_tables(
     stand in for the coming one and be labelled as such. ``estimate_level`` is
     what a course's estimate is (``course_tables``); ``meta.json`` records it.
     ``catalog`` (a classes_site ``catalog.json``, the forecast term's schedule) adds
-    a ``catalog_stubs`` entry for every catalog course with no cohort rows (into the
-    subject files and the index, flagged ``catalog_only``), ``titles.json`` for the
-    index's courses, and ``meta.titles_file``, ``catalog_term_id``, ``catalog_courses``
-    and ``catalog_only_courses``; ``meta.courses`` still counts courses with cohort
-    rows. Without it none of these is written and a ``titles.json`` left from an
+    a ``catalog_stubs`` entry for every catalog course with no index row from the
+    cohort (into the subject files and the index, flagged ``catalog_only``),
+    ``titles.json`` for the index's courses, and ``meta.titles_file``,
+    ``catalog_term_id``, ``catalog_courses`` and ``catalog_only_courses``;
+    ``meta.courses`` still counts courses with cohort rows. A catalog of another
+    term than the forecast's logs a warning and adds only ``titles.json`` and
+    ``meta.titles_file``: no stubs, none of the three catalog fields. Without it none of these is written and a ``titles.json`` left from an
     earlier export is removed.
     """
     out_dir = Path(out_dir)
@@ -574,13 +578,17 @@ def export_site_tables(
         catalog_term, catalog_entries = loaded
         if not isinstance(catalog_term, str) or not catalog_term:
             raise ValueError(f"catalog {catalog}: no term id (none in the file, its entries or a catalog/<term>/ directory name); meta.catalog_term_id must name the catalog's term")
-        stubs = catalog_stubs(catalog_entries, cohort, pools)
-        courses = dict(sorted({**courses, **stubs}.items()))
-        catalog_info = {
-            "catalog_term_id": catalog_term,
-            "catalog_courses": len({str(e["course_key"]) for e in catalog_course_entries(catalog_entries)}),
-            "catalog_only_courses": len(stubs),
-        }
+        if catalog_term != str(forecast.term_id):
+            # another term's schedule: its titles still serve, but "not on the schedule" would be judged against the wrong list
+            logger.warning("catalog %s is term %s, not the forecast term %s: no catalog stubs or catalog meta; titles.json only", catalog, catalog_term, forecast.term_id)
+        else:
+            stubs = catalog_stubs(catalog_entries, cohort, courses, pools)
+            courses = dict(sorted({**courses, **stubs}.items()))
+            catalog_info = {
+                "catalog_term_id": catalog_term,
+                "catalog_courses": len({str(e["course_key"]) for e in catalog_course_entries(catalog_entries)}),
+                "catalog_only_courses": len(stubs),
+            }
 
     courses_dir = out_dir / "courses"
     courses_dir.mkdir(exist_ok=True)
