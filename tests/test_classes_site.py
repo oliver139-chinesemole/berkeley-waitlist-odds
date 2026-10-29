@@ -511,7 +511,7 @@ def test_priority_rank_order_then_shard(tmp_path: Path) -> None:
     assert result.universe_ids is None
 
 
-# docs/DESIGN_A2.md section 13, amended 2026-10-29: the ranked priority order starts at
+# docs/DESIGN_A2.md section 12, amended 2026-10-29: the ranked priority order starts at
 # k * len(ranked) // n for shard (k, n), so a budget cutoff misses different sections each run.
 ROTATION_COURSES = [("COMPSCI", "61A"), ("DATA", "C100"), ("PHYSICS", "7A"), ("MCELLBI", "102"), ("ART", "1"), ("HISTORY", "7A"), ("MUSIC", "27")]
 ROTATION_PRIORITY = "COMPSCI *\nDATA *\nPHYSICS 7*\nMCELLBI *"

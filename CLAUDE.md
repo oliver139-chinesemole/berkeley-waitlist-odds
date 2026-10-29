@@ -69,6 +69,6 @@ python -m scraper.gaps --data-root ./data-branch --term-id 2268 --hours 24 --fai
 - Tests never touch the network. Use the fixtures in data/fixtures/ and fakes.
 - The classes.berkeley.edu client is stdlib urllib on purpose. The site blocks clients whose TLS handshake advertises ALPN http/1.1 alone, which is what requests and httpx do (docs/PHASE0.md). Do not switch it and do not impersonate a browser.
 - Never request `/search/` on classes.berkeley.edu: robots.txt disallows it. Section discovery uses the site's own `/rss.xml` and `/node/<id>` pages (docs/DESIGN_A2.md section 14); Berkeleytime is unreachable from GitHub runners and is only a local cross-check.
-- `config/priority_courses.txt` is ordered by importance; each run starts it at a shard-dependent offset (DESIGN_A2 section 13, 2026-10-29), so a budget cutoff drops a different slice each run. Editing it changes `priority_sha`; log the edit in docs/DATA_LOG.md.
+- `config/priority_courses.txt` is ordered by importance; each run starts it at a shard-dependent offset (DESIGN_A2 section 12, 2026-10-29), so a budget cutoff drops a different slice each run. Editing it changes `priority_sha`; log the edit in docs/DATA_LOG.md.
 - `fetched_at` is the actual fetch time, never the scheduled time.
 - Data gaps are permanent. A broken run is fixed within 24 hours and logged in docs/DATA_LOG.md.

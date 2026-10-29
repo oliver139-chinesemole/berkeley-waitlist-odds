@@ -102,7 +102,7 @@ def render(courses: pd.DataFrame, *, source_note: str, top_sections: int, min_co
         "#",
         "# ORDER MATTERS. Sections are fetched in the order of the first pattern they match, each run",
         "# starting a shard-dependent offset down the list and wrapping around (docs/DESIGN_A2.md",
-        "# section 13), so a run whose time budget runs out drops a slice that moves from run to run.",
+        "# section 12), so a run whose time budget runs out drops a slice that moves from run to run.",
         "#",
         f"# Built by `python -m analysis.priority_from_flows` on {datetime.now(timezone.utc).date().isoformat()}: {source_note}.",
         f"# Courses of the {top_sections} sections with the most reconstructed waitlist joins{pass_note}, ordered by",

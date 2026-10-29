@@ -880,7 +880,7 @@ class ClassesSiteSource:
             first = [item[2] for item in ranked]
             if shard is not None:
                 # Start shard k's run k/n of the way down the ranked order, so a budget
-                # cutoff misses different priority sections each run (docs/DESIGN_A2.md section 13).
+                # cutoff misses different priority sections each run (docs/DESIGN_A2.md section 12).
                 offset = shard[0] * len(first) // shard[1]
                 first = first[offset:] + first[:offset]
         selected = first + rest
