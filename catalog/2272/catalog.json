@@ -62342,6 +62342,21 @@
 },
 {
 "catalog_number": "102",
+"class_number": "001",
+"component": "STD",
+"course_key": "LDARCH 102",
+"instructors": "",
+"last_status": null,
+"node_id": 543147,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "LDARCH",
+"title": "Case Studies in Landscape Design",
+"url_path": "/content/2027-spring-ldarch-102-001-std-001"
+},
+{
+"catalog_number": "102",
 "class_number": "01",
 "component": "STD",
 "course_key": "LDARCH 102",
@@ -114544,6 +114559,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-29T18:00:43.296951+00:00",
+"updated_at": "2026-10-29T18:30:43.675004+00:00",
 "version": 3
 }
