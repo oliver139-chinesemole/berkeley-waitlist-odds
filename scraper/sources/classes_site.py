@@ -62,6 +62,8 @@ LEGACY_CATALOG_FILENAME = "sections.json"  # listing-based file written before 2
 CATALOG_VERSION = 3
 ABSENT_REPROBE_AFTER = timedelta(days=7)  # retry a 404 slug after this
 MAX_REPROBES_PER_RUN = 100
+# scrape.yml's cadence (:07 and :37): a shard of n is visited RUNS_PER_DAY // n times a UTC day.
+RUNS_PER_DAY = 48
 MAX_NODE_PROBES_PER_RUN = 400  # ids enumerated per run while catching up
 NODE_PROBE_BUDGET_SHARE = 0.3  # at most this share of the remaining budget goes to enumeration
 INITIAL_LOOKBACK_NODES = 2000  # first run ever: sweep this many ids below the newest feed id
@@ -854,13 +856,19 @@ class ClassesSiteSource:
         refs: list[SectionRef],
         priority: PrioritySpec | None,
         shard: tuple[int, int] | None,
+        visit: int = 0,
     ) -> list[SectionRef]:
         """Order of fetching: priority sections by rank (then course key),
-        then shard ``k`` of ``n`` of the remainder (no shard means priority
-        only; no priority means everything), then up to
-        ``MAX_REPROBES_PER_RUN`` absent slugs whose last probe is older than
-        seven days. Absent slugs are otherwise skipped. Only ``primary_like``
-        entries are candidates, in every scope and for the re-probes too."""
+        rotated to start at ``k * len(ranked) // n`` for shard ``(k, n)``; then
+        shard ``k`` of ``n`` of the remainder in catalog order, rotated to start
+        ``v * len(rest) // d`` along, with ``d = RUNS_PER_DAY // n`` visits of the
+        shard a day and ``v = visit % d`` (``visit`` is the run index divided by
+        ``n``, from scraper/fetch.py); then up to ``MAX_REPROBES_PER_RUN`` absent
+        slugs whose last probe is older than seven days. No shard means priority
+        only (no priority means everything) and no rotation. Rotations change
+        the order, never the set. Absent slugs are otherwise skipped. Only
+        ``primary_like`` entries are candidates, in every scope and for the
+        re-probes too (docs/DESIGN_A2.md section 12)."""
         live = live_candidates(refs)
         if priority is None:
             first: list[SectionRef] = []
@@ -877,6 +885,16 @@ class ClassesSiteSource:
                     ranked.append((rank, ref.course_key, ref))
             ranked.sort(key=lambda item: (item[0], item[1], item[2].url_path))
             first = [item[2] for item in ranked]
+            if shard is not None:
+                # Start shard k's run k/n of the way down the ranked order, so a budget
+                # cutoff misses different priority sections each run (docs/DESIGN_A2.md section 12).
+                offset = shard[0] * len(first) // shard[1]
+                first = first[offset:] + first[:offset]
+                # The priority block fits the budget and the cut lands in the remainder, so it
+                # rotates too: each visit of shard k starts its remainder a 1/d step further along.
+                per_day = max(1, RUNS_PER_DAY // shard[1])
+                offset = (visit % per_day) * len(rest) // per_day
+                rest = rest[offset:] + rest[:offset]
         selected = first + rest
         due = [r for r in primary_like(refs) if self._due_for_reprobe(r)]
         due.sort(key=lambda r: (r.probed_at or "", r.url_path))
@@ -892,8 +910,12 @@ class ClassesSiteSource:
         shard: tuple[int, int] | None = None,
         time_budget_s: float | None = None,
         limit: int | None = None,
+        visit: int = 0,
     ) -> FetchResult:
         """Discover, select, fetch the pages, update the catalog.
+
+        ``visit`` (the run index divided by the shard count, passed by scraper/fetch.py)
+        rotates the shard remainder between visits of the same shard (``_select``).
 
         Candidates are the ``primary_like`` catalog entries. Scope is "full"
         (every live candidate, ``universe_ids`` = ids of the live candidates
@@ -932,7 +954,7 @@ class ClassesSiteSource:
             shard_label = f"{shard_pair[0]}/{shard_pair[1]}" if shard_pair else ""
             priority_sha = priority.sha
             universe_ids = None
-        selected = self._select(refs, priority, shard_pair if priority is not None else None)
+        selected = self._select(refs, priority, shard_pair if priority is not None else None, visit)
         _warn_unselectable_courses(refs, priority)
         if limit is not None:
             selected = selected[:limit]

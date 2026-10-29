@@ -494,11 +494,12 @@ def test_priority_rank_order_then_shard(tmp_path: Path) -> None:
     source, client, _ = make_source(tmp_path, small_site(), n_shards=2)
     result = source.fetch(FALL_2026, priority=priority, shard=(1, 2))
     keys = client.fetched()
+    # rank order COMPSCI, DATA, PHYSICS, MCELLBI, rotated to start at 1 * 4 // 2 = 2 for shard 1/2
     assert keys[:4] == [
-        "2026-fall-compsci-61a-001-lec-001",
-        "2026-fall-data-c100-001-lec-001",
         "2026-fall-physics-7a-001-lec-001",
         "2026-fall-mcellbi-102-001-lec-001",
+        "2026-fall-compsci-61a-001-lec-001",
+        "2026-fall-data-c100-001-lec-001",
     ]
     expected_rest = sorted(
         slug_of("Fall 2026", s, c, "001", "LEC").rsplit("/", 1)[1]
@@ -508,6 +509,77 @@ def test_priority_rank_order_then_shard(tmp_path: Path) -> None:
     assert sorted(keys[4:]) == expected_rest
     assert result.scope == "priority" and result.shard == "1/2" and result.priority_sha == priority.sha
     assert result.universe_ids is None
+
+
+# docs/DESIGN_A2.md section 12, amended 2026-10-29: the ranked priority order starts at
+# k * len(ranked) // n for shard (k, n), so a budget cutoff misses different sections each run.
+ROTATION_COURSES = [("COMPSCI", "61A"), ("DATA", "C100"), ("PHYSICS", "7A"), ("MCELLBI", "102"), ("ART", "1"), ("HISTORY", "7A"), ("MUSIC", "27")]
+ROTATION_PRIORITY = "COMPSCI *\nDATA *\nPHYSICS 7*\nMCELLBI *"
+RANKED = ["COMPSCI 61A", "DATA C100", "PHYSICS 7A", "MCELLBI 102"]
+
+
+def test_priority_order_rotates_with_the_shard_and_keeps_the_set(tmp_path: Path) -> None:
+    refs = catalog_of(*ROTATION_COURSES)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=12)
+    spec = PrioritySpec.from_text(ROTATION_PRIORITY)
+    first = source._select(refs, spec, (0, 12))
+    sixth = source._select(refs, spec, (6, 12))
+    assert [r.course_key for r in first[:4]] == RANKED  # offset 0 * 4 // 12 = 0
+    assert [r.course_key for r in sixth[:4]] == RANKED[2:] + RANKED[:2]  # offset 6 * 4 // 12 = 2
+    for k, selected in ((0, first), (6, sixth)):
+        rest = [r for r in refs if r.course_key not in RANKED and shard_of(r.key, 12) == k]
+        assert selected[4:] == rest  # the shard remainder is untouched, after the priority sections
+    assert {r.url_path for r in first[:4]} == {r.url_path for r in sixth[:4]}
+
+
+def test_priority_order_without_a_shard_is_the_ranked_order(tmp_path: Path) -> None:
+    refs = catalog_of(*ROTATION_COURSES)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=12)
+    selected = source._select(refs, PrioritySpec.from_text(ROTATION_PRIORITY), None)
+    assert [r.course_key for r in selected] == RANKED
+
+
+def test_empty_priority_list_is_untouched_by_the_rotation(tmp_path: Path) -> None:
+    refs = catalog_of(*ROTATION_COURSES)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=2)
+    for k in (0, 1):
+        selected = source._select(refs, PrioritySpec.from_text(""), (k, 2))
+        assert selected == [r for r in refs if shard_of(r.key, 2) == k]
+
+
+# The shard remainder rotates by the visit (run_index // n_shards, passed by scraper/fetch.py):
+# a shard is visited 48 // n times a day, and each visit starts its remainder that fraction
+# further along, so the cut at the end of the selection moves between visits of one shard.
+REST_COURSES = [("ART", str(i)) for i in range(60)]
+DUE_REPROBE = replace(catalog_of(("MUSIC", "27"))[0], last_status=404, probed_at="2026-01-01T00:00:00+00:00")
+
+
+def _rest_part(selected: list[SectionRef]) -> list[SectionRef]:
+    return [r for r in selected if r.course_key.startswith("ART ")]
+
+
+def test_shard_remainder_rotates_with_the_visit_and_keeps_the_set(tmp_path: Path) -> None:
+    refs = catalog_of(("COMPSCI", "61A"), *REST_COURSES) + [DUE_REPROBE]
+    source, _, _ = make_source(tmp_path, small_site(), clock=Clock(NOW), n_shards=12)
+    spec = PrioritySpec.from_text("COMPSCI *")
+    members = [r for r in refs[1:-1] if shard_of(r.key, 12) == 3]
+    assert len(members) >= 4  # enough for a quarter step
+    visits = [source._select(refs, spec, (3, 12), visit=v) for v in range(5)]
+    for selected in visits:
+        assert selected[0].course_key == "COMPSCI 61A" and selected[-1] == DUE_REPROBE  # priority first, re-probe last
+        assert sorted(r.url_path for r in _rest_part(selected)) == sorted(r.url_path for r in members)
+    assert _rest_part(visits[0]) == members  # visit 0: catalog order
+    step = len(members) // 4  # 48 // 12 = 4 visits a day
+    assert _rest_part(visits[1]) == members[step:] + members[:step]
+    assert _rest_part(visits[1])[0] != _rest_part(visits[0])[0]
+    assert _rest_part(visits[4]) == members  # visit 4 is the next day's visit 0
+
+
+def test_no_shard_means_no_remainder_rotation(tmp_path: Path) -> None:
+    refs = catalog_of(("COMPSCI", "61A"), *REST_COURSES)
+    source, _, _ = make_source(tmp_path, small_site(), n_shards=12)
+    assert source._select(refs, None, None, visit=1) == refs  # full scope: catalog order
+    assert source._select(refs, PrioritySpec.from_text("COMPSCI *"), None, visit=1) == refs[:1]
 
 
 def test_priority_without_shard_fetches_priority_only(tmp_path: Path) -> None:
