@@ -558,12 +558,13 @@ def test_reach_min_at_risk_cuts_the_curve_where_fewer_than_n_are_left() -> None:
     assert cut["reach_days"] == 21.0 and cut["curve"][-1][0] == 21.0 and cut["curve"][-1][1] == 0.0
     # the cut curve is the full curve's prefix (the estimate at t does not depend on later rows)
     assert cut["curve"] == [pt for pt in full["curve"] if pt[0] <= 21.0]
-    assert full["median_days"] == 40.0 and cut["median_days"] is None  # the median lies past the cut
+    # the median is a statistic of the full data, not a curve point: kept though it lies past the cut
+    assert full["median_days"] == 40.0 and cut["median_days"] == 40.0 > cut["reach_days"]
     assert cut["n"] == full["n"] and cut["events"] == full["events"] and cut["sections"] == full["sections"]
     s = export._summary(cut)
     assert s["reach"] == [0.0, 21.0]
-    # fewer rows than N: cut at the shortest follow-up (all n at risk there)
-    assert export._cell(_toy_rows([2.0, 3.0, 5.0], [1, 0, 1]), n_boot=0, reach_min_at_risk=20)["reach_days"] == 2.0
+    with pytest.raises(ValueError, match="fewer"):  # a cell under N rows never gets a curve (export_site_tables raises min_n to N)
+        export._cell(_toy_rows([2.0, 3.0, 5.0], [1, 0, 1]), n_boot=0, reach_min_at_risk=20)
     # N at or below 1 is the uncut curve
     assert export._cell(rows, n_boot=5, reach_min_at_risk=1) == full
 
@@ -571,25 +572,45 @@ def test_reach_min_at_risk_cuts_the_curve_where_fewer_than_n_are_left() -> None:
 def test_reach_min_at_risk_reaches_pools_courses_insights_and_the_clis(cohort: pd.DataFrame, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
     plain, cut = tmp_path / "plain", tmp_path / "cut"
     export_site_tables(cohort, CAL, plain, n_boot=5)
-    export_site_tables(cohort, CAL, cut, n_boot=5, reach_min_at_risk=60)
+    export_site_tables(cohort, CAL, cut, n_boot=5, reach_min_at_risk=30)
     p_pool, c_pool = (json.loads((d / "pooled.json").read_text()) for d in (plain, cut))
     for b, cell in p_pool["all"].items():
         d = sorted(cohort.loc[cohort["position_bucket"] == b, "duration_days"], reverse=True)
-        assert c_pool["all"][b]["reach_days"] == round(d[59], 1) <= cell["reach_days"]
-    assert json.loads((cut / "meta.json").read_text())["reach_min_at_risk"] == 60 and "reach_min_at_risk" not in json.loads((plain / "meta.json").read_text())
+        assert c_pool["all"][b]["reach_days"] == round(d[29], 1) <= cell["reach_days"]
+    assert json.loads((cut / "meta.json").read_text())["reach_min_at_risk"] == 30 and "reach_min_at_risk" not in json.loads((plain / "meta.json").read_text())
     own = {(k, b): c for k, e in json.loads((cut / "courses" / "COMPSCI.json").read_text())["courses"].items() for b, c in e["buckets"].items() if c["pooled"] is False}
     assert own
     for (k, b), c in own.items():
         d = sorted(cohort.loc[(cohort["course_key"] == k) & (cohort["position_bucket"] == b), "duration_days"], reverse=True)
-        assert c["reach_days"] == round(d[min(60, len(d)) - 1], 1) and c["curve"][-1][0] == round(d[min(60, len(d)) - 1], 2)
+        assert c["reach_days"] == round(d[29], 1) and c["curve"][-1][0] == round(d[29], 2)
     ins = json.loads((cut / "insights.json").read_text())
     assert all(c["reach_days"] <= p_pool["all"][b]["reach_days"] for b, c in ins["all_by_bucket"].items())
     cohort_path = tmp_path / "cohort.parquet"
     cohort.to_parquet(cohort_path, index=False)
-    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--out", str(tmp_path / "cli"), "--n-boot", "5", "--reach-min-at-risk", "60"]) == 0
+    assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--out", str(tmp_path / "cli"), "--n-boot", "5", "--reach-min-at-risk", "30"]) == 0
     capsys.readouterr()
-    assert json.loads((tmp_path / "cli" / "meta.json").read_text())["reach_min_at_risk"] == 60
+    assert json.loads((tmp_path / "cli" / "meta.json").read_text())["reach_min_at_risk"] == 30
     assert json.loads((tmp_path / "cli" / "pooled.json").read_text())["all"] == c_pool["all"]
+
+
+def test_reach_min_at_risk_above_min_n_sends_smaller_cells_to_their_pool(cohort: pd.DataFrame, tmp_path: Path) -> None:
+    # ART 11 at 1-5: 36 rows plus 4 followed only 0.2 days = 40 rows, a course curve at min_n 30
+    extra = cohort[(cohort["course_key"] == "ART 11") & (cohort["position_bucket"] == "1-5")].head(4).assign(duration_days=0.2, duration_min=0.2 * 1440, event=0)
+    rows = pd.concat([cohort, extra], ignore_index=True)
+    assert len(rows[(rows["course_key"] == "ART 11") & (rows["position_bucket"] == "1-5")]) == 40
+    plain, cut = tmp_path / "plain", tmp_path / "cut"
+    export_site_tables(rows, CAL, plain, n_boot=5)
+    export_site_tables(rows, CAL, cut, n_boot=5, reach_min_at_risk=60)
+    before = json.loads((plain / "courses" / "ART.json").read_text())["courses"]["ART 11"]["buckets"]["1-5"]
+    after = json.loads((cut / "courses" / "ART.json").read_text())["courses"]["ART 11"]["buckets"]["1-5"]
+    assert before["pooled"] is False and before["n"] == 40
+    # at N=60 the 40-row cell falls back to its pool like any cell under min_n, not a one-point curve at 0.2 days
+    assert after["pooled"] not in (False, None) and after["n_course"] == 40 and "curve" not in after
+    pools = json.loads((cut / "pooled.json").read_text())
+    pool = pools["all"]["1-5"] if after["pooled"] == "all" else pools["dept"][after["pooled"]]["1-5"]
+    assert pool["n"] >= 60 and pool["reach_days"] > 0.2
+    meta = json.loads((cut / "meta.json").read_text())
+    assert meta["min_n"] == 60 and meta["reach_min_at_risk"] == 60 and json.loads((plain / "meta.json").read_text())["min_n"] == 30
 
 
 def test_interval_min_sections_drops_the_band_of_a_cell_with_too_few_sections(cohort: pd.DataFrame, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:

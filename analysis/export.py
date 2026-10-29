@@ -153,11 +153,14 @@ def _grid(reach_days: float) -> np.ndarray:
 
 def reach_cut(durations: np.ndarray, min_at_risk: int) -> float:
     """The last day with at least ``min_at_risk`` joiners still at risk (followed that
-    long: duration >= the day), i.e. the ``min_at_risk``-th longest follow-up; the
-    longest follow-up when ``min_at_risk`` is 0 or 1, the shortest when the cell has
-    fewer rows than that (all of them are at risk there, the most there ever are)."""
+    long: duration >= the day), i.e. the ``min_at_risk``-th longest follow-up (the
+    longest when ``min_at_risk`` is 0 or 1). A cell with fewer rows has no such day and
+    is refused: ``export_site_tables`` raises ``min_n`` to ``min_at_risk``, so such a
+    cell falls back to its pool instead."""
     d = np.sort(np.asarray(durations, dtype=float))[::-1]
-    k = min(max(int(min_at_risk), 1), len(d))
+    k = max(int(min_at_risk), 1)
+    if k > len(d):
+        raise ValueError(f"a cell with {len(d)} rows has fewer than {k} joiners at risk on any day")
     return float(d[k - 1])
 
 
@@ -167,8 +170,9 @@ def _cell(rows: pd.DataFrame, *, n_boot: int = N_BOOT, reach_min_at_risk: int = 
     ``reach_min_at_risk`` N (0: off) cuts the curve at ``reach_cut``, the last day with
     at least N joiners at risk, and makes that day the reach, so a Kaplan-Meier jump on
     the last few joiners (to 1.0 when they all clear) never becomes the reach or the
-    floor past it; the median then counts only if it falls within the cut. The points
-    kept are the uncut curve's (the estimate at a day does not depend on later rows).
+    floor past it. The points kept are the uncut curve's (the estimate at a day does not
+    depend on later rows). The median is a statistic of the full data, not a curve point,
+    and is kept as computed: under the cut it may lie past ``reach``.
 
     ``interval_min_sections`` N (0: off) leaves out the band (``lo``/``hi`` null) of a
     cell with fewer than N sections: a section bootstrap over two sections resamples
@@ -189,8 +193,6 @@ def _cell(rows: pd.DataFrame, *, n_boot: int = N_BOOT, reach_min_at_risk: int = 
             point += [None, None]
         curve.append(point)
     median = median_clear_days(d, e)
-    if median is not None and median > reach:
-        median = None
     return {
         "curve": curve,  # [days since joining, P(got in by then), 95% low, 95% high] out to the reach (the longest follow-up, or the at-risk cut when reach_min_at_risk is on)
         "reach_days": round(reach, 1),
@@ -647,6 +649,10 @@ def export_site_tables(
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     forecast = forecast_calendar or calendar
+    if reach_min_at_risk:
+        # A cell needs N joiners at risk to be cut at N: under N rows it falls back to its
+        # pool, as any cell under min_n does (meta.min_n records the raised value).
+        min_n = max(min_n, int(reach_min_at_risk))
     if exits_at_last_auto and (flows is None or flows.empty):
         raise ValueError("exits_at_last_auto needs flows (the Insights exits come from them)")
     pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)
