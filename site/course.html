@@ -33,7 +33,7 @@
 (function () {
   const { $, esc, pct, num, plural } = BWO;
   const LIVE_URL = "https://raw.githubusercontent.com/oliver139-chinesemole/berkeley-waitlist-odds/data/live/latest.json";
-  let meta, index, pooled, entry, row, today, backtest;
+  let meta, index, pooled, entry, row, today, backtestLoad = null, renders = 0;
 
   function positionFromUrl() { return BWO.clampPosition(BWO.params().get("position"), 10); }
 
@@ -75,7 +75,7 @@
       <section class="card" aria-live="polite">
         <p class="muted">${esc(row.key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${resolved ? BWO.pooledTag(resolved.pooled, resolved.source, meta) : ""}</p>
         ${head.html}
-        ${BWO.calibrationHtml(backtest, meta, head.within)}
+        ${BWO.CALIBRATION_SLOT}
         ${resolved && resolved.cell ? `<dl class="kv"><dt>Median time to clear</dt><dd>${esc(BWO.medianText(resolved.cell))}</dd><dt>Cases</dt><dd>${esc(BWO.casesHtml(resolved.cell, resolved.own))}</dd></dl>` : ""}
         ${head.after || ""}
         ${BWO.ladderHtml(resolved, entry, bucket, meta)}
@@ -89,6 +89,8 @@
       <div id="live"></div>
       ${related(bucket)}`;
     BWO.activateCharts();
+    const card = ++renders;
+    BWO.fillCalibration(backtestLoad, meta, head.within, () => card === renders);
     document.title = `${row.key} · ${BWO.SITE}`;
     $("posform").addEventListener("submit", (ev) => { ev.preventDefault(); const p = BWO.clampPosition($("position").value, 10); if (typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", BWO.withToday(`?c=${encodeURIComponent(row.key)}&position=${p}`)); render(p); });
     live();
@@ -184,11 +186,11 @@
     $("dates").innerHTML = BWO.keyDatesHtml(meta, today);
     BWO.setStamp(meta, today);
     const c = BWO.params().get("c") || BWO.params().get("course") || "";  // the lookup's name for it works too (review 2.8)
-    const [match, bt] = await Promise.all([BWO.matchCourseAsync(index, c, meta), BWO.loadBacktest(meta)]);
-    backtest = bt;
+    backtestLoad = BWO.loadBacktest(meta);  // not awaited: the card's calibration line fills in when it arrives
+    const match = await BWO.matchCourseAsync(index, c, meta);
     row = match.row;
     if (!row) {
-      $("status").innerHTML = `<p class="error">${BWO.noDataHtml(meta, c.trim())}</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests courses close to what you typed when there are any, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
+      $("status").innerHTML = `<p class="error">${BWO.noDataHtml(meta, c.trim() ? BWO.typedKey(c) : "")}</p><p><a href="${BWO.withToday(`index.html?course=${encodeURIComponent(c)}&position=10`)}">Try the lookup</a>, which suggests courses close to what you typed when there are any, or browse <a href="${BWO.withToday("courses.html")}">every course</a>.</p>`;
       return;
     }
     const subj = await BWO.loadSubject(meta, row.subject);

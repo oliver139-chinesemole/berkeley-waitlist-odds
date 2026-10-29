@@ -254,11 +254,11 @@ const BWO = (function () {
     }
     return statusLoad;
   }
-  // True when the run in status.json is of an earlier term than the forecast term and today is past the forecast term's Phase 1 start.
+  // True when the run in status.json is of an earlier term than the forecast term and today is the forecast term's Phase 1 start or later.
   function notStartedPastPhase1(s, meta) {
     const start = meta && meta.dates ? dateOf(meta.dates.phase1_start) : null;
     if (!start || !termName(s.term_id) || !termName(meta.forecast_term_id) || !(Number(s.term_id) < Number(meta.forecast_term_id))) return false;
-    return today() > start;
+    return today() >= start;  // from Phase 1's first day: "begins ... on Oct 26" beside "has not started" is the contradiction
   }
   // Called after the page has set its status line; never awaited, so it cannot
   // hold up first paint or the data loads. A snapshot of the forecast term (the
@@ -425,10 +425,9 @@ const BWO = (function () {
     return `Estimates are by course and position when a course has at least ${esc(meta.min_n || 30)} cases, otherwise by department (labelled pooled): across whole cycles, a course's own curve ranked students better than position alone (<a href="accuracy.html">how accurate it was</a>).`;
   }
   // Calibration on the result card (review of 2026-10-29, 1.3): the cross-term backtest (fit on Spring 2026,
-  // scored on Fall 2026) at 14 or 28 days, the decile points of the predictor the pages use, read from
-  // backtest.json. `gap` is predicted minus observed averaged over the points, so positive means the
-  // estimates ran high. Null past 28 days, without the run, or without its points.
-  const CALIBRATION_TERM = "Fall 2026";
+  // scored on Fall 2026) at 14 or 28 days. The gap is the export's (analysis/export_backtest.py writes
+  // `calibration_gap` per run and predictor: predicted minus observed over the deciles, in points); the page
+  // only picks the run and the predictor it uses. Null past 28 days, without the run, or without the field.
   // The predictor the pages use: the department curve at the department level, the course curve otherwise (the Accuracy page's rule).
   function pagesPredictor(run, meta) {
     const cal = (run && run.calibration) || {};
@@ -439,16 +438,25 @@ const BWO = (function () {
     if (!backtest || !Array.isArray(backtest.runs) || !(horizon > 0) || horizon > 28) return null;
     const h = horizon <= 14 ? 14 : 28;
     const run = backtest.runs.find((r) => r && r.name === `cross_term_days${h}`);
-    const pts = run && (run.calibration || {})[pagesPredictor(run, meta)];
-    if (!pts || !pts.length || !pts.every((q) => Number.isFinite(q.predicted) && Number.isFinite(q.observed))) return null;
-    const gap = pts.reduce((sum, q) => sum + (q.predicted - q.observed), 0) / pts.length;
-    return { gap, points: Math.round(Math.abs(gap) * 100), horizon: h, run: run.name };
+    const gap = run && run.calibration_gap ? run.calibration_gap[pagesPredictor(run, meta)] : null;
+    if (typeof gap !== "number" || !Number.isFinite(gap)) return null;
+    return { points: gap, horizon: h, run: run.name, term: backtest.term_name || null };
   }
   // One line under the headline when the headline's horizon is 28 days or less and the gap is 5 points or more.
   function calibrationHtml(backtest, meta, horizon) {
     const g = calibrationGap(backtest, meta, horizon);
-    if (!g || Math.abs(g.gap) < 0.05) return "";
-    return `<p class="muted small calibration">In <a href="accuracy.html">testing</a> on ${CALIBRATION_TERM}, estimates like this ran about ${g.points} points ${g.gap > 0 ? "high" : "low"} at ${g.horizon} days.</p>`;
+    if (!g || Math.abs(g.points) < 5) return "";
+    return `<p class="muted small calibration">In <a href="accuracy.html">testing</a>${g.term ? ` on ${esc(g.term)}` : ""}, estimates like this ran about ${Math.round(Math.abs(g.points))} points ${g.points > 0 ? "high" : "low"} at ${g.horizon} days.</p>`;
+  }
+  // Where a result card puts that line: a slot it prints at once and fills when backtest.json arrives, so a slow
+  // fetch never holds up the card. `stillCurrent()` is false once a newer card replaced this one.
+  const CALIBRATION_SLOT = '<div id="calibration-line"></div>';
+  function fillCalibration(load, meta, horizon, stillCurrent) {
+    Promise.resolve(load).then((bt) => {
+      if (stillCurrent && !stillCurrent()) return;
+      const el = $("calibration-line");
+      if (el) el.innerHTML = calibrationHtml(bt, meta, horizon);
+    }, () => {});
   }
   // backtest.json for the result cards, fetched once; null when it is missing or does not load.
   function loadBacktest(meta) {
@@ -732,6 +740,12 @@ const BWO = (function () {
     return miss();
   }
   function findCourse(index, text) { return matchCourse(index, text).row; }
+  // How a query that matched nothing is printed back: the subject and number as parsed ("nope 999" is NOPE 999),
+  // else the normalised text. The lookup and the course page say it the same way.
+  function typedKey(text) {
+    const q = parseQuery(text);
+    return q && q.pairs && q.pairs.length ? `${q.pairs[0].subject} ${q.pairs[0].number}` : q ? q.raw : String(text == null ? "" : text).trim().toUpperCase();
+  }
 
   // The title layer, last of all: "data structures" or "hilfinger". Titles and
   // instructors live in data/titles.json (meta.titles_file), fetched on the first
@@ -1123,8 +1137,8 @@ const BWO = (function () {
     SITE, REPO, BUCKETS, BUCKET_ORDER, VERDICT, VERDICT_NOTE, SUBJECT_ALIASES, DAY, PREREG,
     $, esc, pct, num, fmtDate, fmtDay, fmtShort, dateOf, days, plural, bucketOf, bucketText, addDays, clampPosition, params, today, pinned, withToday,
     fetchJson, load, loaded, loadSubject, dataReady, emptyHtml, failedHtml, skeletonHtml, isBerkeleytime, sourceHtml, sourceLabel, noDataHtml, stamp, setStamp,
-    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, levelText, atLeastTag, pagesPredictor, calibrationGap, calibrationHtml, loadBacktest,
-    parseQuery, findCourse, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, courseDefaultOrder, indexMap,
+    horizons, keyDates, keyDatesHtml, readCurve, atLeast, interval, resolveCell, fallbackCell, estimateLevel, pooledTag, pooledSentence, ladderHtml, SECTION_RUNG, levelNote, levelOf, levelText, atLeastTag, pagesPredictor, calibrationGap, calibrationHtml, loadBacktest, CALIBRATION_SLOT, fillCalibration,
+    parseQuery, findCourse, typedKey, matchCourse, matchCourseAsync, showingHtml, searchCourses, topCourses, relatedCourses, courseDefaultOrder, indexMap,
     SUBJECT_NAMES, SUBJECT_NAME_ALIASES, COURSE_NICKNAMES, LAYERS,
     verdict, frequency, dots, headlineHtml, byWhenHtml, casesHtml, medianText, copyText,
     curveChart, activateCharts, combobox,
@@ -1148,8 +1162,9 @@ BWO.resolveSubject = function (index, text) {
 };
 // Up to n subjects near an unknown one, and only near ones (review of 2026-10-29, 3.4: NOPE was offered Earth and
 // Planetary Science and two more unrelated subjects): first the subjects the text is a shorthand for or the start of,
-// by code or by name ("comp", "Econom", "cs"), most-joined first; then those within the matcher's edit distance
-// (BWO.damerau, at most 2, swaps counted), closest first, ties alphabetical. None when nothing is that close.
+// by code or by name ("comp", "Econom", "cs"), or whose code or shorthand the text starts with ("compscience",
+// "poli science"), most-joined first; then those within the matcher's edit distance (BWO.damerau, swaps counted;
+// at most 1 for five characters or fewer, else 2, as nearSubjects), closest first, ties alphabetical. None when nothing is that close.
 BWO.nearestSubjects = function (index, text, n) {
   const squash = (t) => String(t || "").toUpperCase().replace(/[^A-Z0-9&]/g, "");
   const want = squash(text);
@@ -1159,8 +1174,11 @@ BWO.nearestSubjects = function (index, text, n) {
   const subjects = Object.keys(joins);
   const alias = BWO.SUBJECT_ALIASES[want];
   const named = (s) => { const name = squash(BWO.SUBJECT_NAMES && BWO.SUBJECT_NAMES[s]); return !!name && name.startsWith(want); };
-  const starts = subjects.filter((s) => s === alias || s.startsWith(want) || named(s)).sort((a, b) => joins[b] - joins[a] || a.localeCompare(b));
-  const close = subjects.filter((s) => !starts.includes(s)).map((s) => [s, BWO.damerau(want, s)]).filter((x) => x[1] <= 2)
+  // A code or a shorthand the text starts with ("compscience" is COMPSCI, "poli science" starts with POLISCI).
+  const leads = new Set(Object.keys(BWO.SUBJECT_ALIASES).filter((k) => want.startsWith(squash(k))).map((k) => BWO.SUBJECT_ALIASES[k]));
+  const starts = subjects.filter((s) => s === alias || s.startsWith(want) || want.startsWith(s) || leads.has(s) || named(s)).sort((a, b) => joins[b] - joins[a] || a.localeCompare(b));
+  const limit = want.length <= 5 ? 1 : 2;  // the matcher's own rule (nearSubjects): one edit for a short spelling
+  const close = subjects.filter((s) => !starts.includes(s)).map((s) => [s, BWO.damerau(want, s)]).filter((x) => x[1] <= limit)
     .sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0])).map((x) => x[0]);
   return starts.concat(close).slice(0, n || 3);
 };

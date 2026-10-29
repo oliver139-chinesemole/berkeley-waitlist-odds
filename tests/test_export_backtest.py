@@ -86,3 +86,19 @@ def test_cli(tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
 
 def test_which_labels() -> None:
     assert which_label("days28") == "within 28 days" and which_label("deadline").startswith("by the last") and which_label("instruction").startswith("by the first")
+
+
+def test_read_run_writes_the_calibration_gap_per_predictor(tmp_path: Path) -> None:
+    """Review of 2026-10-29, 1.3: the mean over a predictor's deciles of predicted minus observed, in points, one decimal,
+    so the pages print it without computing it."""
+    reports = make_reports(tmp_path)
+    run = read_run(reports / "temporal_days14")
+    # bucket: ((0.2447 - 0.2835) + (0.3624 - 0.3872)) / 2 = -0.0318; site: 0.7 - 0.61 = 0.09
+    assert run["calibration_gap"] == {"bucket": -3.2, "site": 9.0}
+    known = reports / "cross_term_days28"
+    known.mkdir()
+    (known / "metrics.csv").write_text(METRICS)
+    (known / "calibration.csv").write_text("predictor,decile,n,weight,predicted,observed\ncourse,0,10,10,0.5,0.3\ncourse,1,10,10,0.8,0.6\ncourse,2,10,10,0.9,0.85\ndept,0,10,10,0.4,0.45\n")
+    assert read_run(known)["calibration_gap"] == {"course": 15.0, "dept": -5.0}
+    # no calibration: no field
+    assert "calibration_gap" not in read_run(reports / "temporal_days28")

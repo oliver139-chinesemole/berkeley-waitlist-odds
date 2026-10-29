@@ -1568,21 +1568,25 @@ NEAR_SUBJECTS = ("AEROENG", "AGRS", "ARESEC", "ARMENI", "ASTRON", "CHEM", "COMPS
 def test_nearest_subjects_for_misspelt_subjects_are_pinned() -> None:
     """The subjects the department page offers for a misspelt one, pinned.
 
-    Review of 2026-10-29, 3.4: only close subjects. Shorthand and prefix matches (by code or name) come
-    first, then the matcher's Damerau distance, at most 2; a spelling further than that from every code
-    (the long ones here) gets none, where it used to get the three nearest however far they were.
+    Review of 2026-10-29, 3.4: only close subjects. Shorthand and prefix matches (the text a prefix of a code
+    or a name, or a code or shorthand a prefix of the text) come first, then the matcher's Damerau distance,
+    at most 1 for five characters or fewer and 2 above; anything further gets none, where it used to get the
+    three nearest however far they were.
     """
     index = {"courses": [{"key": f"{s} 1", "subject": s, "number": "1", "joins": (i * 7) % len(NEAR_SUBJECTS) + 1, "buckets": {}} for i, s in enumerate(NEAR_SUBJECTS)]}
     asked = {
         "AERONEG": ["AEROENG"],  # two letters swapped: one edit
         "aeroeg": ["AEROENG"],  # a letter dropped
-        "compscience": [],  # longer than any code by more than 2, and no subject's name starts with it
-        "poli science": [],
+        "compscience": ["COMPSCI"],  # starts with the code
+        "poli science": ["POLSCI"],  # starts with a shorthand of it (POLISCI)
         "comp": ["COMPSCI"],  # a prefix
         "phsyics": ["PHYSICS"],
         "cs": ["COMPSCI"],  # the shorthand
         "chme": ["CHEM"],
         "nope": [],
+        "mtah": ["MATH"],  # a swap in a short spelling: one edit
+        "stta": ["STAT"],
+        "xy": [],  # two edits from many short codes; the short-spelling cap is one
     }
     out = render(Path("/nonexistent"), expression=f"(function(){{ const i = {json.dumps(index)}; return {json.dumps(list(asked))}.map((t) => BWO.nearestSubjects(i, t, 3)); }})()")
     assert "eval_error" not in out, out.get("eval_error")
@@ -1745,8 +1749,8 @@ def test_a_key_off_the_forecast_schedule_says_so(full_site: Path, tmp_path: Path
     out = render(site, course="COMPSCI 999", position="10")
     assert out["result"].startswith(f'<p class="error"><strong>COMPSCI 999</strong> isn\'t on the {term} schedule. Did you mean <a href="?course=COMPSCI')
     assert out["result"].endswith(BROWSE) and NO_DATA not in out["result"]
-    status = render(site, page="course.html", search="?c=NOPE%20999")["status"]
-    assert status.startswith(f'<p class="error"><strong>NOPE 999</strong> isn\'t on the {term} schedule.</p><p><a href="index.html?course=NOPE%20999&position=10')
+    status = render(site, page="course.html", search="?c=nope%20999")["status"]  # printed as parsed, as the lookup prints it
+    assert status.startswith(f'<p class="error"><strong>NOPE 999</strong> isn\'t on the {term} schedule.</p><p><a href="index.html?course=nope%20999&position=10')
     assert "every course</a>" in status
     # no catalog: today's sentence on both pages
     assert NO_DATA in render(full_site, course="NOPE 999", position="10")["result"]
@@ -1961,7 +1965,8 @@ def collection_clause(html: str) -> str:
 
 @pytest.mark.parametrize(("now", "term", "clause", "methods"), [
     ("2026-10-29T19:00:00Z", "2268", "has not started", "Collection for Spring 2027 has not started."),  # past Phase 1, the scraper not switched
-    ("2026-10-20T19:00:00Z", "2268", "begins with Phase 1 on Oct 26, 2026", "Collection for Spring 2027 begins with Phase 1 on Oct 26, 2026."),
+    ("2026-10-26T19:00:00Z", "2268", "has not started", "Collection for Spring 2027 has not started."),  # Phase 1's first day counts
+    ("2026-10-25T19:00:00Z", "2268", "begins with Phase 1 on Oct 26, 2026", "Collection for Spring 2027 begins with Phase 1 on Oct 26, 2026."),
     ("2026-10-29T19:00:00Z", "2272", "has started", "Collection for Spring 2027 has started."),
 ])
 def test_the_collection_clause_never_contradicts_the_status_line(tmp_path: Path, now: str, term: str, clause: str, methods: str) -> None:
@@ -1986,3 +1991,73 @@ def test_insights_says_where_the_position_curves_thin_out(full_site: Path) -> No
     html = render(full_site, page="insights.html")["elements"]["content"]["html"]
     assert html.count(INSIGHTS_TAIL_NOTE) == 1
     assert html.index('id="all-chart"') < html.index(INSIGHTS_TAIL_NOTE) < html.index("<h2>Departments</h2>")
+
+
+def test_the_level_note_claims_ranking_not_calibration(course_site: Path) -> None:
+    """Review of 2026-10-29, 1.3c: across cycles the course curve ranked students better; it was not better calibrated."""
+    note = ("Estimates are by course and position when a course has at least 30 cases, otherwise by department (labelled pooled): "
+            'across whole cycles, a course\'s own curve ranked students better than position alone (<a href="accuracy.html">how accurate it was</a>).')
+    assert note in render(course_site, course="COMPSCI 0", position="3")["result"]
+    assert note in render(course_site, page="course.html", search="?c=COMPSCI%200&position=3")["elements"]["course"]["html"]
+    assert "predicted better" not in (SITE / "assets" / "site.js").read_text()
+
+
+def gap_site(site_root: Path, tmp_path: Path, gaps: dict[str, dict[str, float] | None], term_name: str | None = "Fall 2026") -> Path:
+    """A copy of the export with a backtest.json whose cross-term runs carry ``gaps`` as the export writes them (None: no field)."""
+    root = tmp_path / ("gap_" + "_".join(sorted(gaps)))
+    shutil.copytree(site_root, root)
+    deciles = [{"decile": 0, "n": 10.0, "weight": 10.0, "predicted": 0.5, "observed": 0.4}]
+    runs = []
+    for name, gap in gaps.items():
+        run = {"name": name, "split": "cross_term", "which": name.split("_")[-1], "horizon_label": "x", "metrics": [], "calibration": {"course": deciles, "dept": deciles}}
+        if gap is not None:
+            run["calibration_gap"] = gap
+        runs.append(run)
+    (root / "data" / "backtest.json").write_text(json.dumps({"term_id": "2268", "term_name": term_name, "runs": runs}))
+    # COMPSCI 0's own curve at positions 1 to 5 followed to day 40, so its headline can be read at 14, 27 or 40 days
+    path = root / "data" / "courses" / "COMPSCI.json"
+    subject = json.loads(path.read_text())
+    cell = subject["courses"]["COMPSCI 0"]["buckets"]["1-5"]
+    cell["curve"].append([40.0, *cell["curve"][-1][1:]])
+    path.write_text(json.dumps(subject))
+    return root
+
+
+def calibration_line(out: dict) -> str:
+    return out["elements"].get("calibration-line", {}).get("html", "")
+
+
+def test_the_calibration_line_prints_the_exports_gap(course_site: Path, tmp_path: Path) -> None:
+    """Review of 2026-10-29, 1.3a: the card prints the export's calibration_gap for the pages' predictor at the
+    headline's horizon (14 or 28 days); it fills a slot after the card is drawn, and is absent past 28 days,
+    under 5 points, or without the field."""
+    site = gap_site(course_site, tmp_path, {"cross_term_days14": {"course": 16.2, "dept": 15.4}, "cross_term_days28": {"course": -7.4, "dept": 1.0}})
+    # 27 days left (today Jan 10) and a curve that follows joiners that long: the 28-day run, which ran low
+    out = render(site, course="COMPSCI 0", position="3")
+    assert '<div id="calibration-line"></div>' in out["result"]  # the card is drawn with the slot, the line arrives after
+    head = re.search(r"got in within (\d+) days of joining", out["result"])
+    assert head and 14 < int(head.group(1)) <= 28
+    assert calibration_line(out) == '<p class="muted small calibration">In <a href="accuracy.html">testing</a> on Fall 2026, estimates like this ran about 7 points low at 28 days.</p>'
+    # 14 days left: the 14-day run, high, rounded
+    out = render(site, course="COMPSCI 0", position="3", today="2027-01-23")
+    assert calibration_line(out) == '<p class="muted small calibration">In <a href="accuracy.html">testing</a> on Fall 2026, estimates like this ran about 16 points high at 14 days.</p>'
+    out = render(site, page="course.html", search="?c=COMPSCI%200&position=3", today="2027-01-23")
+    assert '<div id="calibration-line"></div>' in out["elements"]["course"]["html"] and "about 16 points high at 14 days" in calibration_line(out)
+    # department-level estimates read the dept gap: 1.0 is under 5 points, so no line at 28 days
+    dept = with_meta(site, tmp_path, "gap_dept", estimate_level="dept")
+    assert calibration_line(render(dept, course="COMPSCI 0", position="3")) == ""
+    # months away: no line
+    far = render(site, course="COMPSCI 0", position="3", today="2026-11-01")
+    head = re.search(r"got in within (\d+) days of joining", far["result"])
+    assert head and int(head.group(1)) > 28 and calibration_line(far) == ""
+    # the run without the field, or no term name
+    (tmp_path / "bare").mkdir()
+    bare = gap_site(course_site, tmp_path / "bare", {"cross_term_days14": None, "cross_term_days28": None})
+    assert calibration_line(render(bare, course="COMPSCI 0", position="3", today="2027-01-23")) == ""
+    (tmp_path / "anon").mkdir()
+    anon = gap_site(course_site, tmp_path / "anon", {"cross_term_days14": {"course": 16.2}}, term_name=None)
+    assert calibration_line(render(anon, course="COMPSCI 0", position="3", today="2027-01-23")) == '<p class="muted small calibration">In <a href="accuracy.html">testing</a>, estimates like this ran about 16 points high at 14 days.</p>'
+    # no backtest.json at all: the card is the same, the slot stays empty
+    out = render(course_site, course="COMPSCI 0", position="3", today="2027-01-23")
+    assert "COMPSCI 0 · position 3" in out["result"] and calibration_line(out) == ""
+    assert "reduce(" not in (SITE / "assets" / "site.js").read_text().split("function calibrationGap")[1].split("function calibrationHtml")[0]  # the page computes nothing

@@ -54,7 +54,7 @@
 <script>
 (function () {
   const { $, esc, pct, num } = BWO;
-  let meta = null, index = null, pooled = null, today = null, backtest = null;
+  let meta = null, index = null, pooled = null, today = null;
 
   function bucketRow(entry, yourBucket, h) {
     const items = [];
@@ -81,7 +81,7 @@
       ${note || ""}
       <p class="muted">${esc(key)} · position ${pos} (${esc(BWO.bucketText(bucket))})${BWO.pooledTag(resolved.pooled, resolved.source, meta)}</p>
       ${head.html}
-      ${BWO.calibrationHtml(backtest, meta, head.within)}
+      ${BWO.CALIBRATION_SLOT}
       ${BWO.byWhenHtml(cell, meta, today)}
       ${head.after}
       ${entry ? bucketRow(entry, bucket, head.h) : ""}
@@ -96,6 +96,8 @@
       <div class="actions"><button type="button" class="quiet" id="copy-link">Copy link</button><button type="button" class="quiet" id="copy-text">Copy as text</button><span id="copied" class="muted small" aria-live="polite"></span></div>
       <p class="muted small">${esc(BWO.VERDICT_NOTE)}</p>
       <p class="muted small"><strong>What this number cannot see:</strong> seats reserved for a category you are not in, time conflicts and unit caps that block an enrollment, discussion or lab sections with no room, and a seat that opens when you would be the only student left on the waitlist, which the enrollment counts show staying open or going to another student. <a href="methodology.html#cannot">What the estimates cannot tell you</a>.</p>`);
+    const card = lookups;
+    BWO.fillCalibration(backtestLoad, meta, head.within, () => card === lookups);
     const done = (msg) => { const c = $("copied"); if (c) { c.textContent = msg; setTimeout(() => { c.textContent = ""; }, 2500); } };
     const cl = $("copy-link"), ct = $("copy-text");
     if (cl) cl.addEventListener("click", () => BWO.copyText(link).then(() => done("Link copied")).catch(() => done(link)));
@@ -130,14 +132,12 @@
     const bucket = BWO.bucketOf(pos);
     const seq = ++lookups;
     const match = await BWO.matchCourseAsync(index, text, meta);
-    backtest = await backtestLoad;
     if (seq !== lookups) return;
     const row = match.row;
-    const q = BWO.parseQuery(text);
     // Q5: say so whenever a typo in the subject was forgiven or a title matched; in
     // its own element, so the status line keeps what BWO.liveStatus added to it.
     $("showing").innerHTML = BWO.showingHtml(match);
-    const shown = row ? row.key : (q && q.pairs && q.pairs.length ? `${q.pairs[0].subject} ${q.pairs[0].number}` : (q ? q.raw : String(text).trim().toUpperCase()));
+    const shown = row ? row.key : BWO.typedKey(text);
     if (!row) {
       // Not a course in the index (a typo, or a code that is no course): no estimate, as on the course
       // page, only the nearest courses. A pooled estimate is for a real course with too few cases.
