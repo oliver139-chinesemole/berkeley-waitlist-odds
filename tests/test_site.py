@@ -1756,7 +1756,8 @@ def with_meta(site_root: Path, tmp_path: Path, name: str, **changes: object) -> 
 def test_a_key_off_the_forecast_schedule_says_so(full_site: Path, tmp_path: Path) -> None:
     """Section 0: with the forecast term's catalog in the export, a key not in the index is not on that schedule;
     without one (the served export today) the message is the one the site has always printed."""
-    site = with_meta(full_site, tmp_path, "catalog", catalog_term_id="2272", catalog_courses=10, catalog_only_courses=0)
+    forecast = load(full_site, "meta.json")["forecast_term_id"]
+    site = with_meta(full_site, tmp_path, "catalog", catalog_term_id=forecast, catalog_courses=10, catalog_only_courses=0)
     term = load(site, "meta.json")["forecast_term_name"]
     out = render(site, course="NOPE 999", position="10")
     assert out["result"] == f'<p class="error"><strong>NOPE 999</strong> isn\'t on the {term} schedule.</p>{BROWSE}'
@@ -1766,6 +1767,10 @@ def test_a_key_off_the_forecast_schedule_says_so(full_site: Path, tmp_path: Path
     status = render(site, page="course.html", search="?c=nope%20999")["status"]  # printed as parsed, as the lookup prints it
     assert status.startswith(f'<p class="error"><strong>NOPE 999</strong> isn\'t on the {term} schedule.</p><p><a href="index.html?course=nope%20999&position=10')
     assert "every course</a>" in status
+    # a catalog of another term than the forecast term says nothing about its schedule: the old sentence
+    other = with_meta(full_site, tmp_path, "catalog_other", catalog_term_id="2268", forecast_term_id="2272", forecast_term_name="Spring 2027")
+    assert NO_DATA in render(other, course="NOPE 999", position="10")["result"]
+    assert NO_DATA in render(other, page="course.html", search="?c=NOPE%20999")["status"]
     # no catalog: today's sentence on both pages
     assert NO_DATA in render(full_site, course="NOPE 999", position="10")["result"]
     assert NO_DATA in render(full_site, page="course.html", search="?c=NOPE%20999")["status"]
@@ -1773,7 +1778,7 @@ def test_a_key_off_the_forecast_schedule_says_so(full_site: Path, tmp_path: Path
 
 def test_a_catalog_only_row_keeps_the_stub_rendering(full_site: Path, tmp_path: Path) -> None:
     """A stub row (catalog_only, pointer cells with n_course 0) is a course: it gets the department's curve, labelled, not the off-schedule message."""
-    site = with_meta(full_site, tmp_path, "stub", catalog_term_id="2272", catalog_courses=11, catalog_only_courses=1)
+    site = with_meta(full_site, tmp_path, "stub", catalog_term_id=load(full_site, "meta.json")["forecast_term_id"], catalog_courses=11, catalog_only_courses=1)
     pointer = {"pooled": "COMPSCI", "n_course": 0, "sections_course": 0}
     index = load(site, "index.json")
     index["courses"].append({"key": "COMPSCI 999", "subject": "COMPSCI", "number": "999", "level": "upper", "dept_group": "COMPSCI", "joins": 0, "catalog_only": True, "buckets": {"6-15": dict(pointer)}})
@@ -1866,16 +1871,18 @@ def test_the_phone_course_table_labels_its_numbers(course_site: Path) -> None:
 
 
 def test_the_dot_row_never_wraps() -> None:
-    """Section 3.5: the 20 dots stay on one line, smaller on a narrow phone."""
+    """Section 3.5: the 20 dots stay on one line on a phone (smaller under 28 rem, one line at 360 px), and wrap, never overflow, narrower than that."""
     css = (SITE / "assets" / "site.css").read_text()
     base = re.search(r"\n\.dots \{([^}]*)\}", css).group(1)
-    assert "flex-wrap: nowrap" in base and "flex-wrap: wrap" not in base
+    assert "flex-wrap: wrap" in base  # where the row cannot fit it wraps rather than push the page sideways
     narrow = media_block(css, "(max-width: 28rem)")
     dot = re.search(r"\.dots i \{([^}]*)\}", narrow).group(1)
     width = float(re.search(r"width: ([\d.]+)rem", dot).group(1))
     gap = float(re.search(r"\.dots \{[^}]*gap: ([\d.]+)rem", narrow).group(1))
     # 20 dots and 19 gaps fit a 360 px phone's card: 360 px less the page's and the card's padding and border (66 px), at 16 px a rem
     assert (20 * width + 19 * gap) * 16 <= 360 - 66
+    # at 320 px the small row (about 279 px) is wider than the card's inside (254 px): it must wrap, which the base rule allows
+    assert (20 * width + 19 * gap) * 16 > 320 - 66 and "nowrap" not in css.split(".dots")[1].split("}")[0]
     # and the full-size row fits wherever the narrow rule stops applying (28 rem, 448 px)
     full_w = float(re.search(r"\n\.dots i \{[^}]*width: ([\d.]+)rem", css).group(1))
     full_gap = float(re.search(r"gap: ([\d.]+)rem", base).group(1))
@@ -2051,12 +2058,12 @@ def test_the_calibration_line_prints_the_exports_gap(course_site: Path, tmp_path
     assert '<div id="calibration-line"></div>' in out["result"]  # the card is drawn with the slot, the line arrives after
     head = re.search(r"got in within (\d+) days of joining", out["result"])
     assert head and 14 < int(head.group(1)) <= 28
-    assert calibration_line(out) == '<p class="muted small calibration">In <a href="accuracy.html">testing</a> on Fall 2026, estimates like this ran about 7 points low at 28 days.</p>'
+    assert calibration_line(out) == '<p class="muted small calibration">On average, the site\'s estimates ran about 7 points low at 28 days in <a href="accuracy.html">testing</a> on Fall 2026.</p>'
     # 14 days left: the 14-day run, high, rounded
     out = render(site, course="COMPSCI 0", position="3", today="2027-01-23")
-    assert calibration_line(out) == '<p class="muted small calibration">In <a href="accuracy.html">testing</a> on Fall 2026, estimates like this ran about 16 points high at 14 days.</p>'
+    assert calibration_line(out) == '<p class="muted small calibration">On average, the site\'s estimates ran about 16 points high at 14 days in <a href="accuracy.html">testing</a> on Fall 2026.</p>'
     out = render(site, page="course.html", search="?c=COMPSCI%200&position=3", today="2027-01-23")
-    assert '<div id="calibration-line"></div>' in out["elements"]["course"]["html"] and "about 16 points high at 14 days" in calibration_line(out)
+    assert '<div id="calibration-line"></div>' in out["elements"]["course"]["html"] and "about 16 points high at 14 days in" in calibration_line(out)
     # department-level estimates read the dept gap: 1.0 is under 5 points, so no line at 28 days
     dept = with_meta(site, tmp_path, "gap_dept", estimate_level="dept")
     assert calibration_line(render(dept, course="COMPSCI 0", position="3")) == ""
@@ -2070,8 +2077,42 @@ def test_the_calibration_line_prints_the_exports_gap(course_site: Path, tmp_path
     assert calibration_line(render(bare, course="COMPSCI 0", position="3", today="2027-01-23")) == ""
     (tmp_path / "anon").mkdir()
     anon = gap_site(course_site, tmp_path / "anon", {"cross_term_days14": {"course": 16.2}}, term_name=None)
-    assert calibration_line(render(anon, course="COMPSCI 0", position="3", today="2027-01-23")) == '<p class="muted small calibration">In <a href="accuracy.html">testing</a>, estimates like this ran about 16 points high at 14 days.</p>'
+    assert calibration_line(render(anon, course="COMPSCI 0", position="3", today="2027-01-23")) == '<p class="muted small calibration">On average, the site\'s estimates ran about 16 points high at 14 days in <a href="accuracy.html">testing</a>.</p>'
+    # a 7-day headline reads the 14-day run
+    out = render(site, expression="(async () => BWO.calibrationGap(await BWO.loadBacktest(BWO.loaded.meta), BWO.loaded.meta, 7))()")
+    assert out["eval"] == {"points": 16.2, "horizon": 14, "run": "cross_term_days14", "term": "Fall 2026"}
+    # the served backtest.json, until it is regenerated with the field, prints no line on a 14-day card
+    if not any("calibration_gap" in r for r in load(SITE, "backtest.json")["runs"]):
+        for page, search in (("index.html", "?course=COMPSCI%2061A&position=10"), ("course.html", "?c=COMPSCI%2061A&position=10")):
+            out = render(SITE, page=page, search=search, today="2027-01-23")
+            assert "within 14 days of joining" in (out["result"] + out["elements"].get("course", {}).get("html", "")) and calibration_line(out) == "", page
     # no backtest.json at all: the card is the same, the slot stays empty
     out = render(course_site, course="COMPSCI 0", position="3", today="2027-01-23")
     assert "COMPSCI 0 · position 3" in out["result"] and calibration_line(out) == ""
     assert "reduce(" not in (SITE / "assets" / "site.js").read_text().split("function calibrationGap")[1].split("function calibrationHtml")[0]  # the page computes nothing
+
+
+
+def test_catalog_only_stubs_stay_out_of_the_course_table_and_related_lists(course_site: Path, tmp_path: Path) -> None:
+    """#58 review: a stub (catalog_only, a pointer cell at every bucket, no cases) is a course for the lookup, the
+    combobox and the course page, but not a row of the Courses table or a related course."""
+    site = tmp_path / "stubs"
+    shutil.copytree(course_site, site)
+    index = load(site, "index.json")
+    template = next(r for r in index["courses"] if r["subject"] == "COMPSCI")
+    pointer = {**template["buckets"].get("1-5", next(iter(template["buckets"].values()))), "pooled": "COMPSCI", "n_course": 0, "sections_course": 0}
+    stub = {**template, "key": "COMPSCI 998", "number": "998", "joins": 10 ** 6, "catalog_only": True, "buckets": {b: dict(pointer) for b in ("1-5", "6-15", "16-40", "41+")}}
+    index["courses"].append(stub)
+    (site / "data" / "index.json").write_text(json.dumps(index))
+    subject = load(site, "courses/COMPSCI.json")
+    subject["courses"]["COMPSCI 998"] = {"catalog_only": True, "buckets": {b: {"pooled": "COMPSCI", "n_course": 0, "sections_course": 0} for b in ("1-5", "6-15", "16-40", "41+")}}
+    (site / "data" / "courses" / "COMPSCI.json").write_text(json.dumps(subject))
+    table = render(site, page="courses.html", search="?pooled=1&bucket=41%2B&all=1")["elements"]["table"]["html"]
+    assert "COMPSCI 998" not in table and "COMPSCI 0" in table
+    out = render(site, expression="BWO.relatedCourses(BWO.loaded.index, BWO.indexMap(BWO.loaded.index)['COMPSCI 0'], '6-15', 50).map((r) => r.key)")
+    assert "COMPSCI 998" not in out["eval"]
+    # the matcher and the combobox still know it
+    out = render(site, expression="[BWO.findCourse(BWO.loaded.index, 'cs 998').key, BWO.searchCourses(BWO.loaded.index, 'cs 99', 8).map((r) => r.key)]")
+    assert out["eval"][0] == "COMPSCI 998" and "COMPSCI 998" in out["eval"][1]
+    html = render(site, page="course.html", search="?c=COMPSCI%20998&position=10")["elements"]["course"]["html"]
+    assert "<h1>COMPSCI 998 " in html

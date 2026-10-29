@@ -89,6 +89,7 @@
     const dept = BWO.estimateLevel(meta) === "dept";
     const out = [];
     for (const r of index.courses) {
+      if (r.catalog_only) continue;  // a stub for a course with no cases: the lookup and course page have it, the table does not
       const s = r.buckets[state.bucket];
       if (!s) continue;
       if (!state.pooled && (dept ? s.pooled === "all" : s.pooled !== false)) continue;

@@ -122,11 +122,12 @@ const BWO = (function () {
   // --------------------------------------------------------------- data files
   const cache = {};
   const loaded = {}; // what load() fetched, for the page and for the tests
-  async function fetchJson(url) {
+  // `httpCache`: the browser cache mode, "no-store" (always fresh) unless a caller says otherwise.
+  async function fetchJson(url, httpCache) {
     if (cache[url]) return cache[url];
     let out;
     try {
-      const r = await fetch(url, { cache: "no-store" });
+      const r = await fetch(url, { cache: httpCache || "no-store" });
       if (r.ok) out = { ok: true, data: await r.json() };
       else out = { ok: false, status: r.status, missing: r.status === 404 };
     } catch (e) {
@@ -284,7 +285,8 @@ const BWO = (function () {
   // none is not on it; without a catalog the site cannot tell a typo from a course with too few cases.
   function noDataHtml(meta, shown) {
     const term = meta && (meta.forecast_term_name || termName(meta.forecast_term_id));
-    if (meta && meta.catalog_term_id && shown && term) return `<strong>${esc(shown)}</strong> isn't on the ${esc(term)} schedule.`;
+    // The catalog must be the forecast term's: an export given another term's catalog says nothing about this schedule.
+    if (meta && meta.catalog_term_id && String(meta.catalog_term_id) === String(meta.forecast_term_id) && shown && term) return `<strong>${esc(shown)}</strong> isn't on the ${esc(term)} schedule.`;
     return `No data for <strong>${esc(shown || "this course")}</strong>. Check the spelling, or the course had too few waitlisted students to estimate.`;
   }
   function sourceLabel(meta) {
@@ -446,7 +448,8 @@ const BWO = (function () {
   function calibrationHtml(backtest, meta, horizon) {
     const g = calibrationGap(backtest, meta, horizon);
     if (!g || Math.abs(g.points) < 5) return "";
-    return `<p class="muted small calibration">In <a href="accuracy.html">testing</a>${g.term ? ` on ${esc(g.term)}` : ""}, estimates like this ran about ${Math.round(Math.abs(g.points))} points ${g.points > 0 ? "high" : "low"} at ${g.horizon} days.</p>`;
+    // The gap is a mean over the deciles, so the sentence says "on average" and "the site's estimates", not "estimates like this".
+    return `<p class="muted small calibration">On average, the site's estimates ran about ${Math.round(Math.abs(g.points))} points ${g.points > 0 ? "high" : "low"} at ${g.horizon} days in <a href="accuracy.html">testing</a>${g.term ? ` on ${esc(g.term)}` : ""}.</p>`;
   }
   // Where a result card puts that line: a slot it prints at once and fills when backtest.json arrives, so a slow
   // fetch never holds up the card. `stillCurrent()` is false once a newer card replaced this one.
@@ -461,7 +464,8 @@ const BWO = (function () {
   // backtest.json for the result cards, fetched once; null when it is missing or does not load.
   function loadBacktest(meta) {
     const file = (meta && meta.files && meta.files.backtest) || "backtest.json";
-    return fetchJson("data/" + file).then((r) => (r.ok ? r.data : null), () => null);
+    // The browser may keep it: it changes at most weekly, and a stale copy only delays a calibration line.
+    return fetchJson("data/" + file, "default").then((r) => (r.ok ? r.data : null), () => null);
   }
   // A course level as the pages print it: "lower division", "upper division", "graduate division" (review of 2026-10-29, 3.8: it said "grad division").
   function levelText(level) { return level ? `${level === "grad" ? "graduate" : level} division` : ""; }
@@ -879,7 +883,8 @@ const BWO = (function () {
   }
   function relatedCourses(index, row, bucket, n) {
     const b = bucket || "6-15";
-    const same = index.courses.filter((r) => r.key !== row.key && r.subject === row.subject && r.buckets[b] && r.buckets[b].pooled !== "all");
+    // A catalog_only stub has no cases of its own: it is not a related course worth listing (it only repeats its pool).
+    const same = index.courses.filter((r) => r.key !== row.key && !r.catalog_only && r.subject === row.subject && r.buckets[b] && r.buckets[b].pooled !== "all");
     same.sort(byJoins);
     return same.slice(0, n || 5);
   }

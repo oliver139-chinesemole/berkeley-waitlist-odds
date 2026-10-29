@@ -152,13 +152,14 @@ button.quiet:hover { background: var(--hair); }
 .lead { font-size: var(--fs-3); margin: .25rem 0; }
 /* the top two steps of the scale wait for a screen with room for them */
 @media (min-width: 48rem) { h1 { font-size: var(--fs-6); } .big { font-size: var(--fs-8); } }
-.dots { display: inline-flex; gap: .3rem; flex-wrap: nowrap; margin: .35rem 0; }
+.dots { display: inline-flex; gap: .3rem; flex-wrap: wrap; margin: .35rem 0; }
 .dots i { display: inline-block; width: .9rem; height: .9rem; border-radius: 50%; border: 2px solid var(--blue); box-sizing: border-box; background: transparent; }
 .dots i.on { background: var(--blue); }
 .dots.dim i { border-color: var(--line); }
 .dots.dim i.on { background: var(--muted); border-color: var(--muted); }
-/* The 20 dots stay on one line (review of 2026-10-29, 3.5: at 390 px they wrapped 17 + 3). The full-size row is
-   23.7 rem wide, wider than the card below about 445 px, so the smaller dot starts at 28 rem (448 px), under 420 px included. */
+/* The 20 dots fit one line on a phone (review of 2026-10-29, 3.5: at 390 px they wrapped 17 + 3). The full-size row is
+   23.7 rem wide, wider than the card below about 445 px, so the smaller dot starts at 28 rem (448 px): 279 px, one line
+   down to 360 px. Narrower than that (320 px, or a larger default font) the row wraps rather than overflow the card. */
 @media (max-width: 28rem) {
   .dots { gap: .18rem; }
   .dots i { width: .7rem; height: .7rem; }
