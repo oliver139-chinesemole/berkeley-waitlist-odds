@@ -376,10 +376,10 @@ def test_past_the_reach_every_table_says_at_least(course_site: Path) -> None:
     out = render(course_site, page="courses.html", search="?bucket=1-5&pooled=1&all=1")
     pages["courses"] = table = out["elements"]["table"]["html"]
     for r in partial:
-        assert f'<td class="num">{AT_LEAST}<strong>{jspct(r["buckets"]["1-5"]["p"][1])}</strong>' in row_with(table, r["key"]), r["key"]
+        assert f'<td class="num" data-label="Share who got in">{AT_LEAST}<strong>{jspct(r["buckets"]["1-5"]["p"][1])}</strong>' in row_with(table, r["key"]), r["key"]
     for r in full:
         tr = row_with(table, r["key"])
-        assert '<td class="num"><strong>100%</strong><span class="sub">' in tr and "at least" not in tr, r["key"]
+        assert '<td class="num" data-label="Share who got in"><strong>100%</strong><span class="sub">' in tr and "at least" not in tr, r["key"]
     # the course page's table of every bucket
     cell = next(r for r in index["courses"] if r["key"] == "COMPSCI 0")["buckets"]["1-5"]
     assert cell["reach"][1] < 7
@@ -1809,3 +1809,45 @@ def test_the_course_page_reads_course_as_well_as_c(full_site: Path) -> None:
     assert "<h1>MATH 1 " in html
     html = render(SITE, page="course.html", search="?course=ECON%20100A")["elements"]["course"]["html"]  # the review's URL, on the served data
     assert "<h1>ECON 100A " in html
+
+
+def media_block(css: str, query: str) -> str:
+    """The body of the first ``@media <query> { ... }`` block, nested braces and all."""
+    start = css.index("@media " + query + " {") + len("@media " + query + " {")
+    depth, i = 1, start
+    while depth:
+        depth += {"{": 1, "}": -1}.get(css[i], 0)
+        i += 1
+    return css[start:i - 1]
+
+
+def test_the_phone_course_table_labels_its_numbers(course_site: Path) -> None:
+    """Section 3.1: in the stacked layout (40 rem and down) each number says what it is; above it the header does."""
+    table = render(course_site, page="courses.html", search="?bucket=1-5")["elements"]["table"]["html"]
+    rows = re.findall(r'<tr class="course">(.*?)</tr>', table, flags=re.S)
+    assert rows
+    for tr in rows:
+        labels = re.findall(r'<td class="num[^"]*" data-label="([^"]+)">', tr)
+        assert labels == ["Share who got in", "Median days", "Cases", "Sections"], tr
+    css = (SITE / "assets" / "site.css").read_text()
+    stacked = media_block(css, "(max-width: 40rem)")
+    assert re.search(r'table\.twoline td\[data-label\]::before \{[^}]*content: attr\(data-label\)', stacked)
+    outside = css.replace("@media (max-width: 40rem) {" + stacked + "}", "")
+    assert "data-label" not in outside  # nothing changes above the stacked width
+
+
+def test_the_dot_row_never_wraps() -> None:
+    """Section 3.5: the 20 dots stay on one line, smaller on a narrow phone."""
+    css = (SITE / "assets" / "site.css").read_text()
+    base = re.search(r"\n\.dots \{([^}]*)\}", css).group(1)
+    assert "flex-wrap: nowrap" in base and "flex-wrap: wrap" not in base
+    narrow = media_block(css, "(max-width: 28rem)")
+    dot = re.search(r"\.dots i \{([^}]*)\}", narrow).group(1)
+    width = float(re.search(r"width: ([\d.]+)rem", dot).group(1))
+    gap = float(re.search(r"\.dots \{[^}]*gap: ([\d.]+)rem", narrow).group(1))
+    # 20 dots and 19 gaps fit a 360 px phone's card: 360 px less the page's and the card's padding and border (66 px), at 16 px a rem
+    assert (20 * width + 19 * gap) * 16 <= 360 - 66
+    # and the full-size row fits wherever the narrow rule stops applying (28 rem, 448 px)
+    full_w = float(re.search(r"\n\.dots i \{[^}]*width: ([\d.]+)rem", css).group(1))
+    full_gap = float(re.search(r"gap: ([\d.]+)rem", base).group(1))
+    assert (20 * full_w + 19 * full_gap) * 16 <= 448 - 66
