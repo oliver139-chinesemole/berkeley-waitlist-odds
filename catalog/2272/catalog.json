@@ -58711,6 +58711,51 @@
 "url_path": "/content/2027-spring-integbi-169-106-dis-106"
 },
 {
+"catalog_number": "169",
+"class_number": "107",
+"component": "DIS",
+"course_key": "INTEGBI 169",
+"instructors": "",
+"last_status": null,
+"node_id": 543150,
+"probed_at": null,
+"section_id": "",
+"section_number": "107",
+"subject": "INTEGBI",
+"title": "Evolutionary Medicine",
+"url_path": "/content/2027-spring-integbi-169-107-dis-107"
+},
+{
+"catalog_number": "169",
+"class_number": "108",
+"component": "DIS",
+"course_key": "INTEGBI 169",
+"instructors": "",
+"last_status": null,
+"node_id": 543151,
+"probed_at": null,
+"section_id": "",
+"section_number": "108",
+"subject": "INTEGBI",
+"title": "Evolutionary Medicine",
+"url_path": "/content/2027-spring-integbi-169-108-dis-108"
+},
+{
+"catalog_number": "169",
+"class_number": "109",
+"component": "DIS",
+"course_key": "INTEGBI 169",
+"instructors": "",
+"last_status": null,
+"node_id": 543152,
+"probed_at": null,
+"section_id": "",
+"section_number": "109",
+"subject": "INTEGBI",
+"title": "Evolutionary Medicine",
+"url_path": "/content/2027-spring-integbi-169-109-dis-109"
+},
+{
 "catalog_number": "175LF",
 "class_number": "001",
 "component": "LEC",
@@ -114559,6 +114604,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-29T18:30:43.675004+00:00",
+"updated_at": "2026-10-29T20:00:58.191475+00:00",
 "version": 3
 }
