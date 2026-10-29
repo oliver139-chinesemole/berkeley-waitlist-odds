@@ -268,7 +268,7 @@ def test_titles_come_from_primary_like_entries_only() -> None:
 def test_export_writes_titles_from_the_catalog(cohort: pd.DataFrame, tmp_path: Path) -> None:
     catalog = _write_catalog(tmp_path)
     out = tmp_path / "site_data"
-    index_path, meta_path = export_site_tables(cohort, CAL, out, n_boot=5, catalog=catalog)
+    index_path, meta_path = export_site_tables(cohort, CAL, out, n_boot=5, forecast_calendar=FALL_2026, catalog=catalog)
     assert json.loads(meta_path.read_text())["titles_file"] == "titles.json"
     titles = json.loads((out / "titles.json").read_text())
     assert set(titles) == {"generated_at", "source", "catalog_term_id", "courses"}
@@ -283,7 +283,7 @@ def test_export_writes_titles_from_the_catalog(cohort: pd.DataFrame, tmp_path: P
     }
     first = (out / "titles.json").read_text()
     assert first.index('"COMPSCI 0"') < first.index('"MATH 1"')
-    export_site_tables(cohort, CAL, out, n_boot=5, catalog=catalog)
+    export_site_tables(cohort, CAL, out, n_boot=5, forecast_calendar=FALL_2026, catalog=catalog)
     assert _without_generated_at((out / "titles.json").read_text()) == _without_generated_at(first)
 
 
@@ -397,7 +397,7 @@ def test_catalog_stubs_point_at_the_department_then_all(cohort: pd.DataFrame, po
         "dept": {**pools["dept"], "OTHER": {b: c for b, c in pools["dept"]["OTHER"].items() if b != "1-5"}},
         "level": pools["level"],
     }
-    stubs = export.catalog_stubs(STUB_CATALOG["sections"], cohort, trimmed)
+    stubs = export.catalog_stubs(STUB_CATALOG["sections"], cohort, course_tables(cohort, CAL, pools=trimmed), trimmed)
     assert set(stubs) == STUB_KEYS  # COMPSCI 0 has cohort rows
     hist = stubs["HISTORY 7"]
     assert {k: v for k, v in hist.items() if k != "buckets"} == {"subject": "HISTORY", "number": "7", "level": "lower", "dept_group": "OTHER", "catalog_only": True}
@@ -411,7 +411,7 @@ def test_catalog_stubs_point_at_the_department_then_all(cohort: pd.DataFrame, po
     assert list(hist["buckets"]) == [b for b in export.BUCKET_ORDER if b in hist["buckets"]]
     # STAT has every bucket but 41+, which no pool covers once all-course 41+ is gone: skipped
     stat = {**trimmed, "dept": {**trimmed["dept"], "STAT": {b: c for b, c in pools["dept"]["STAT"].items() if b != "41+"}}}
-    assert export.catalog_stubs(STUB_CATALOG["sections"], cohort, stat)["STAT 150"]["buckets"] == {
+    assert export.catalog_stubs(STUB_CATALOG["sections"], cohort, course_tables(cohort, CAL, pools=stat), stat)["STAT 150"]["buckets"] == {
         b: {"pooled": "STAT", "n_course": 0, "sections_course": 0} for b in ("1-5", "6-15", "16-40")
     }
     assert stubs["ART 100"]["dept_group"] == "OTHER" and stubs["COMPSCI 299"]["dept_group"] == "COMPSCI" and stubs["STAT 150"]["dept_group"] == "STAT"
@@ -423,7 +423,7 @@ def test_export_adds_a_stub_for_every_catalog_course_without_cohort_rows(cohort:
     catalog = _write_stub_catalog(tmp_path)
     plain, full = tmp_path / "plain", tmp_path / "full"
     export_site_tables(cohort, CAL, plain, n_boot=5)
-    index_path, meta_path = export_site_tables(cohort, CAL, full, n_boot=5, catalog=catalog)
+    index_path, meta_path = export_site_tables(cohort, CAL, full, n_boot=5, forecast_calendar=SPRING_2027, catalog=catalog)
     before = {r["key"]: r for r in json.loads((plain / "index.json").read_text())["courses"]}
     rows = {r["key"]: r for r in json.loads(index_path.read_text())["courses"]}
     assert set(rows) == set(before) | STUB_KEYS and len(rows) == len(before) + len(STUB_KEYS)
@@ -467,7 +467,7 @@ def test_export_with_a_catalog_needs_its_term_id(cohort: pd.DataFrame, tmp_path:
     path.write_text(json.dumps({"sections": [{k: v for k, v in e.items() if k != "term_id"} for e in STUB_CATALOG["sections"]]}), encoding="utf-8")
     with pytest.raises(ValueError, match="term id"):
         export_site_tables(cohort, CAL, tmp_path / "out", n_boot=5, catalog=path)
-    meta = json.loads(export_site_tables(cohort, CAL, tmp_path / "ok", n_boot=5, catalog=_write_stub_catalog(tmp_path))[1].read_text())
+    meta = json.loads(export_site_tables(cohort, CAL, tmp_path / "ok", n_boot=5, forecast_calendar=SPRING_2027, catalog=_write_stub_catalog(tmp_path))[1].read_text())
     assert meta["catalog_term_id"] == "2272" and isinstance(meta["catalog_term_id"], str)
 
 
@@ -475,12 +475,12 @@ def test_catalog_stubs_and_the_catalog_count_skip_the_same_malformed_entries(coh
     good = _entry("HISTORY 7", "LEC", "001")
     no_subject = {k: v for k, v in _entry("ETHSTD 21", "LEC", "001").items() if k != "subject"}
     no_number = {k: v for k, v in _entry("PHYSICS 7A", "LEC", "001").items() if k != "catalog_number"}
-    stubs = export.catalog_stubs([no_subject, no_number, good], cohort, pools)  # no KeyError
+    stubs = export.catalog_stubs([no_subject, no_number, good], cohort, course_tables(cohort, CAL, pools=pools), pools)  # no KeyError
     assert set(stubs) == {"HISTORY 7"}
     path = tmp_path / "catalog" / "2272" / "catalog.json"
     path.parent.mkdir(parents=True)
     path.write_text(json.dumps({"term_id": "2272", "sections": [no_subject, no_number, good]}), encoding="utf-8")
-    meta = json.loads(export_site_tables(cohort, CAL, tmp_path / "out", n_boot=5, catalog=path)[1].read_text())
+    meta = json.loads(export_site_tables(cohort, CAL, tmp_path / "out", n_boot=5, forecast_calendar=SPRING_2027, catalog=path)[1].read_text())
     assert meta["catalog_courses"] == 1 and meta["catalog_only_courses"] == 1
 
 
@@ -488,7 +488,7 @@ def test_an_export_parses_the_catalog_once(cohort: pd.DataFrame, tmp_path: Path,
     calls = []
     real = export.load_catalog
     monkeypatch.setattr(export, "load_catalog", lambda p: calls.append(p) or real(p))
-    export_site_tables(cohort, CAL, tmp_path / "out", n_boot=5, catalog=_write_stub_catalog(tmp_path))
+    export_site_tables(cohort, CAL, tmp_path / "out", n_boot=5, forecast_calendar=SPRING_2027, catalog=_write_stub_catalog(tmp_path))
     assert len(calls) == 1 and (tmp_path / "out" / "titles.json").exists()
 
 
@@ -701,3 +701,42 @@ def test_titles_only_refuses_the_export_options(extra: list[str], tmp_path: Path
         main(["--titles-only", "--catalog", str(catalog), "--out", str(tmp_path), *extra])
     error = capsys.readouterr().err.strip().splitlines()[-1]
     assert "--titles-only" in error and extra[0] in error
+
+
+# --- Task 19 senior review: the catalog must be the forecast term's; a cohort course with no index row gets a stub ---
+
+
+def test_a_catalog_of_another_term_adds_titles_but_no_stubs(cohort: pd.DataFrame, tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    catalog = _write_stub_catalog(tmp_path)  # Spring 2027 (2272)
+    plain, wrong = tmp_path / "plain", tmp_path / "wrong"
+    export_site_tables(cohort, CAL, plain, n_boot=5, forecast_calendar=FALL_2026)
+    with caplog.at_level("WARNING", logger=export.logger.name):
+        index_path, meta_path = export_site_tables(cohort, CAL, wrong, n_boot=5, forecast_calendar=FALL_2026, catalog=catalog)
+    assert any("2272" in r.getMessage() and "2268" in r.getMessage() for r in caplog.records if r.levelname == "WARNING")
+    rows = json.loads(index_path.read_text())["courses"]
+    assert not [r for r in rows if r.get("catalog_only")]
+    assert rows == json.loads((plain / "index.json").read_text())["courses"]
+    meta = json.loads(meta_path.read_text())
+    assert not {"catalog_term_id", "catalog_courses", "catalog_only_courses"} & set(meta)
+    assert meta["titles_file"] == "titles.json"
+    titles = json.loads((wrong / "titles.json").read_text())
+    assert titles["catalog_term_id"] == "2272" and "COMPSCI 0" in titles["courses"] and "HISTORY 7" not in titles["courses"]
+    # the forecast term defaults to the data term: CAL (9999) is not 2272 either
+    assert "catalog_term_id" not in json.loads(export_site_tables(cohort, CAL, tmp_path / "bare", n_boot=5, catalog=catalog)[1].read_text())
+
+
+def test_a_cohort_course_course_tables_drops_gets_a_stub(cohort: pd.DataFrame, pools: dict) -> None:
+    # STAT 10 keeps only its 1-5 rows, and no pool covers 1-5: course_tables leaves it out
+    thin = cohort[(cohort["course_key"] != "STAT 10") | (cohort["position_bucket"] == "1-5")]
+    trimmed = {
+        "all": {b: c for b, c in pools["all"].items() if b != "1-5"},
+        "dept": {d: {b: c for b, c in cells.items() if b != "1-5"} for d, cells in pools["dept"].items()},
+        "level": pools["level"],
+    }
+    courses = course_tables(thin, CAL, pools=trimmed, estimate_level="dept")  # every cell a pointer
+    assert "STAT 10" in set(thin["course_key"].astype(str)) and "STAT 10" not in courses and "STAT 14" in courses
+    entries = [_entry("STAT 10", "LEC", "001"), _entry("STAT 14", "LEC", "001")]
+    stubs = export.catalog_stubs(entries, thin, courses, trimmed)
+    assert set(stubs) == {"STAT 10"}  # STAT 14 has its index row, never overwritten
+    assert stubs["STAT 10"]["catalog_only"] is True and stubs["STAT 10"]["dept_group"] == "STAT"
+    assert stubs["STAT 10"]["buckets"] == {b: {"pooled": "STAT", "n_course": 0, "sections_course": 0} for b in ("6-15", "16-40", "41+")}
