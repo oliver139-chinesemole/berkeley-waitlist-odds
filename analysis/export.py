@@ -762,9 +762,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--exits-at-last-auto", action="store_true", help="needs --flows; insights.json exits: admits and drops up to the end of the data term's last automatic waitlist run day in Pacific time (after the run), the waitlist at that moment as still_waiting, and the admits and drops after it (the purge) apart (default: everything to the last observation)")
     p.add_argument("--titles-only", action="store_true", help="with --catalog: write only titles.json for the index.json already in --out and add titles_file to its meta.json; no cohort, no refit, every other file untouched")
     args = p.parse_args(argv)
+    for flag, value in (("--reach-min-at-risk", args.reach_min_at_risk), ("--interval-min-sections", args.interval_min_sections)):
+        if value < 0:
+            p.error(f"{flag} must be >= 0 (0 is off), got {value}")
     if args.catalog is not None and not args.catalog.is_file():
         p.error(f"--catalog {args.catalog}: no such file")
     if args.titles_only:
+        options = [flag for flag, on in (("--reach-min-at-risk", args.reach_min_at_risk), ("--interval-min-sections", args.interval_min_sections), ("--exits-at-last-auto", args.exits_at_last_auto)) if on]
+        if options:
+            p.error(f"--titles-only rewrites only titles.json; {', '.join(options)} change the curves or insights and need a full export")
         if args.catalog is None:
             p.error("--titles-only needs --catalog")
         if args.cohort is not None or args.term_id is not None:

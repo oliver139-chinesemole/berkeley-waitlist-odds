@@ -253,3 +253,13 @@ def test_cli_passes_exits_at_last_auto(tmp_path: Path, monkeypatch: pytest.Monke
     assert run.main([*base, "--exits-at-last-auto"]) == 0
     capsys.readouterr()
     assert seen[0]["site_options"] == {"exits_at_last_auto": True}
+
+
+@pytest.mark.parametrize("flag", ["--reach-min-at-risk", "--interval-min-sections"])
+def test_run_cli_refuses_a_negative_option(flag: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture) -> None:
+    seen: list[dict] = []
+    monkeypatch.setattr(run, "run_analysis", lambda *a, **kw: seen.append(kw))
+    with pytest.raises(SystemExit):
+        run.main(["--data-root", str(tmp_path), "--term-id", "2272", flag, "-1"])
+    error = capsys.readouterr().err.strip().splitlines()[-1]
+    assert flag in error and ">= 0" in error and not seen

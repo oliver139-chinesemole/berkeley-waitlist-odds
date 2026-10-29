@@ -297,6 +297,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--interval-min-sections", type=int, default=0, metavar="N", help="site files: leave out the 95%% band of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
     p.add_argument("--exits-at-last-auto", action="store_true", help="site files: Insights exits are admits and drops up to the end of the term's last automatic waitlist run day in Pacific time (after the run), the waitlist at that moment as still_waiting, and the admits and drops after it (the purge) apart (default: everything to the last observation)")
     args = p.parse_args(argv)
+    for flag, value in (("--reach-min-at-risk", args.reach_min_at_risk), ("--interval-min-sections", args.interval_min_sections)):
+        if value < 0:
+            p.error(f"{flag} must be >= 0 (0 is off), got {value}")
     if args.catalog is not None and not args.catalog.is_file():
         p.error(f"--catalog {args.catalog}: no such file")
     logging.basicConfig(level=logging.INFO, stream=sys.stderr, format="%(levelname)s %(name)s: %(message)s")

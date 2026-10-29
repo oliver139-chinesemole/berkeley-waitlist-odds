@@ -666,3 +666,20 @@ def test_exits_at_last_auto_measures_still_waiting_at_the_last_automatic_run(coh
     with pytest.raises(SystemExit):
         main(["--cohort", str(cohort_path), "--term-id", "2262", "--out", str(tmp_path / "cli2"), "--n-boot", "5", "--exits-at-last-auto"])
     assert "--flows" in capsys.readouterr().err and not (tmp_path / "cli2").exists()
+
+
+@pytest.mark.parametrize("flag", ["--reach-min-at-risk", "--interval-min-sections"])
+def test_cli_refuses_a_negative_option(flag: str, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    with pytest.raises(SystemExit):
+        main(["--cohort", str(tmp_path / "c.parquet"), "--term-id", "2262", "--out", str(tmp_path / "out"), flag, "-1"])
+    error = capsys.readouterr().err.strip().splitlines()[-1]  # the usage lines name every flag; the error line is the message
+    assert flag in error and ">= 0" in error and not (tmp_path / "out").exists()
+
+
+@pytest.mark.parametrize("extra", [["--reach-min-at-risk", "20"], ["--interval-min-sections", "3"], ["--exits-at-last-auto"]])
+def test_titles_only_refuses_the_export_options(extra: list[str], tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    catalog = _write_catalog(tmp_path)
+    with pytest.raises(SystemExit):
+        main(["--titles-only", "--catalog", str(catalog), "--out", str(tmp_path), *extra])
+    error = capsys.readouterr().err.strip().splitlines()[-1]
+    assert "--titles-only" in error and extra[0] in error
