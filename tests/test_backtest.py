@@ -278,3 +278,9 @@ def test_a_fitted_cox_on_separable_rows_scores_near_zero() -> None:
     y, w = ipcw_weights(rows["duration_days"].to_numpy(), rows["event"].to_numpy(), h)
     assert weighted_auc(y, p, w) == 1.0 and p[fast.to_numpy()].min() > 0.4 > 0.01 > p[~fast.to_numpy()].max()
     assert brier(y, p, w) < 0.1 and brier(y, 1.0 - p, w) > 0.5
+    # the predictor is lifelines' own event probability at the horizon: 1 - S(14 | x)
+    from analysis.survival import design_matrix
+
+    x = design_matrix(rows).drop(columns=["duration_days", "event", "section_id"]).reindex(columns=cox.columns, fill_value=0.0)
+    lifelines_p = 1.0 - cox.result.fitter.predict_survival_function(x, times=[14.0]).to_numpy()[0]
+    np.testing.assert_allclose(p[rows.index.get_indexer(x.index)], lifelines_p, rtol=0, atol=1e-12)

@@ -538,8 +538,7 @@ def _golden_export(out: Path, catalog: Path, **options: object) -> dict[str, str
 def test_default_options_write_the_same_bytes_as_before_them(tmp_path: Path) -> None:
     catalog = _write_stub_catalog(tmp_path)
     assert _golden_export(tmp_path / "default", catalog) == GOLDEN_DIGEST
-    off = {k: v for k, v in {"reach_min_at_risk": 0, "interval_min_sections": 0, "exits_at_last_auto": False}.items() if k in export_site_tables.__kwdefaults__}
-    assert _golden_export(tmp_path / "off", catalog, **off) == GOLDEN_DIGEST
+    assert _golden_export(tmp_path / "off", catalog, reach_min_at_risk=0, interval_min_sections=0, exits_at_last_auto=False) == GOLDEN_DIGEST
 
 
 def _toy_rows(durations: list[float], events: list[int], sections: list[str] | None = None) -> pd.DataFrame:

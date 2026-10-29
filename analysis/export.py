@@ -28,7 +28,7 @@ Files written under ``out_dir`` (``site/data``):
 
 Every cell is the Kaplan-Meier clearing curve of its virtual waitlisters on a
 fixed grid of days since joining, out to the longest follow-up the cell has
-(``reach_days``), with a 95% band from resampling sections (not rows: the rows
+(``reach_days``; with ``--reach-min-at-risk`` N, the last day N joiners are still at risk), with a 95% band from resampling sections (not rows: the rows
 of one section are copies of the same queue). The pages read a curve as a step
 function at the asker's own days left (``read_curve``): the last grid point at
 or before the horizon; past the reach the last point stands, as a floor. The
@@ -192,7 +192,7 @@ def _cell(rows: pd.DataFrame, *, n_boot: int = N_BOOT, reach_min_at_risk: int = 
     if median is not None and median > reach:
         median = None
     return {
-        "curve": curve,  # [days since joining, P(got in by then), 95% low, 95% high] out to the longest follow-up
+        "curve": curve,  # [days since joining, P(got in by then), 95% low, 95% high] out to the reach (the longest follow-up, or the at-risk cut when reach_min_at_risk is on)
         "reach_days": round(reach, 1),
         "median_days": None if median is None else round(median, 2),
         "n": int(len(rows)),
