@@ -456,3 +456,37 @@ def test_export_adds_a_stub_for_every_catalog_course_without_cohort_rows(cohort:
     for key in ("catalog_term_id", "catalog_courses", "catalog_only_courses"):
         assert key not in plain_meta
     assert "HISTORY" not in plain_meta["subject_files"]
+
+
+# --- Task 19 review: catalog term, malformed entries, one parse per export ---
+
+
+def test_export_with_a_catalog_needs_its_term_id(cohort: pd.DataFrame, tmp_path: Path) -> None:
+    path = tmp_path / "nodigits" / "catalog.json"  # no term_id in the file, its entries or its directory
+    path.parent.mkdir()
+    path.write_text(json.dumps({"sections": [{k: v for k, v in e.items() if k != "term_id"} for e in STUB_CATALOG["sections"]]}), encoding="utf-8")
+    with pytest.raises(ValueError, match="term id"):
+        export_site_tables(cohort, CAL, tmp_path / "out", n_boot=5, catalog=path)
+    meta = json.loads(export_site_tables(cohort, CAL, tmp_path / "ok", n_boot=5, catalog=_write_stub_catalog(tmp_path))[1].read_text())
+    assert meta["catalog_term_id"] == "2272" and isinstance(meta["catalog_term_id"], str)
+
+
+def test_catalog_stubs_and_the_catalog_count_skip_the_same_malformed_entries(cohort: pd.DataFrame, pools: dict, tmp_path: Path) -> None:
+    good = _entry("HISTORY 7", "LEC", "001")
+    no_subject = {k: v for k, v in _entry("ETHSTD 21", "LEC", "001").items() if k != "subject"}
+    no_number = {k: v for k, v in _entry("PHYSICS 7A", "LEC", "001").items() if k != "catalog_number"}
+    stubs = export.catalog_stubs([no_subject, no_number, good], cohort, pools)  # no KeyError
+    assert set(stubs) == {"HISTORY 7"}
+    path = tmp_path / "catalog" / "2272" / "catalog.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps({"term_id": "2272", "sections": [no_subject, no_number, good]}), encoding="utf-8")
+    meta = json.loads(export_site_tables(cohort, CAL, tmp_path / "out", n_boot=5, catalog=path)[1].read_text())
+    assert meta["catalog_courses"] == 1 and meta["catalog_only_courses"] == 1
+
+
+def test_an_export_parses_the_catalog_once(cohort: pd.DataFrame, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    calls = []
+    real = export.load_catalog
+    monkeypatch.setattr(export, "load_catalog", lambda p: calls.append(p) or real(p))
+    export_site_tables(cohort, CAL, tmp_path / "out", n_boot=5, catalog=_write_stub_catalog(tmp_path))
+    assert len(calls) == 1 and (tmp_path / "out" / "titles.json").exists()
