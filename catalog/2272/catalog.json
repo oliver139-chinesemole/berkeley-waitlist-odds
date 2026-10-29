@@ -75826,6 +75826,21 @@
 "url_path": "/content/2027-spring-meceng-137-101-lab-101"
 },
 {
+"catalog_number": "150",
+"class_number": "001",
+"component": "LEC",
+"course_key": "MECENG 150",
+"instructors": "Tarek I Zohdi",
+"last_status": null,
+"node_id": 543153,
+"probed_at": null,
+"section_id": "",
+"section_number": "001",
+"subject": "MECENG",
+"title": "Modeling and Simulation of Advanced Manufacturing Processes",
+"url_path": "/content/2027-spring-meceng-150-001-lec-001"
+},
+{
 "catalog_number": "160",
 "class_number": "001",
 "component": "SEM",
@@ -79889,6 +79904,21 @@
 "subject": "NATAMST",
 "title": "Topics in Native American History",
 "url_path": "/content/2027-spring-natamst-178-101-dis-101"
+},
+{
+"catalog_number": "178",
+"class_number": "201",
+"component": "DIS",
+"course_key": "NATAMST 178",
+"instructors": "",
+"last_status": null,
+"node_id": 543154,
+"probed_at": null,
+"section_id": "",
+"section_number": "201",
+"subject": "NATAMST",
+"title": "Topics in Native American History",
+"url_path": "/content/2027-spring-natamst-178-201-dis-201"
 },
 {
 "catalog_number": "190",
@@ -114406,6 +114436,21 @@
 "url_path": "/content/2027-spring-xmba-290t-001-lec-001"
 },
 {
+"catalog_number": "290T",
+"class_number": "002",
+"component": "LEC",
+"course_key": "XMBA 290T",
+"instructors": "Zsolt Katona, Thomas Y Lee",
+"last_status": null,
+"node_id": 543155,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "XMBA",
+"title": "Topics in Innovation and Design",
+"url_path": "/content/2027-spring-xmba-290t-002-lec-002"
+},
+{
 "catalog_number": "291RB",
 "class_number": "001",
 "component": "LEC",
@@ -114434,6 +114479,21 @@
 "subject": "XMBA",
 "title": "Topics in Social Sector Leadership",
 "url_path": "/content/2027-spring-xmba-292t-001-lec-001"
+},
+{
+"catalog_number": "292T",
+"class_number": "002",
+"component": "LEC",
+"course_key": "XMBA 292T",
+"instructors": "Francesca LeBaron",
+"last_status": null,
+"node_id": 543156,
+"probed_at": null,
+"section_id": "",
+"section_number": "002",
+"subject": "XMBA",
+"title": "Topics in Social Sector Leadership",
+"url_path": "/content/2027-spring-xmba-292t-002-lec-002"
 },
 {
 "catalog_number": "295G",
@@ -114604,6 +114664,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2272",
 "term_name": "Spring 2027",
-"updated_at": "2026-10-29T20:00:58.191475+00:00",
+"updated_at": "2026-10-29T23:00:49.543205+00:00",
 "version": 3
 }
