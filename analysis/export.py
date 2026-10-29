@@ -387,8 +387,18 @@ def _grid_of(cells: dict) -> dict:
     return {k: _summary(c) for k, c in cells.items()}
 
 
-def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_boot: int = N_BOOT, flows: pd.DataFrame | None = None, reach_min_at_risk: int = 0, interval_min_sections: int = 0) -> dict:
-    """Term-wide tables for the Insights page (see the module docstring)."""
+def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_boot: int = N_BOOT, flows: pd.DataFrame | None = None, reach_min_at_risk: int = 0, interval_min_sections: int = 0, calendar: TermCalendar | None = None, exits_at_last_auto: bool = False) -> dict:
+    """Term-wide tables for the Insights page (see the module docstring).
+
+    ``exits`` counts how waitlisters left the queue: admitted, dropped, and still
+    waiting at the last observation (the default; for a finished term that is after
+    the registrar's end-of-term purge, so the purge lands in "dropped"). With
+    ``exits_at_last_auto`` (default off) every count stops at the end of ``calendar``'s
+    last automatic waitlist run day (00:00 UTC the day after, the backtest's
+    ``deadline``): admits and drops of intervals ending by then, each section's list
+    at that moment (after its last interval ending by then, or at the start of the
+    interval spanning it; 0 for a section not yet seen), ``as_of``, and the flows
+    after it (the purge) under ``after_last_auto``. Needs the flows' ``t0``."""
     out: dict = {
         "horizons": list(HORIZONS),
         "counts": {
@@ -431,14 +441,45 @@ def insights_tables(cohort: pd.DataFrame, pools: dict, *, min_n: int = MIN_N, n_
             }
             for day, r in daily.sort_index().iterrows()
         ]
-        last = f.sort_values("t1").groupby("section_id", observed=True).tail(1)
-        still = (last["waitlist0"] + last["d_waitlist"]).clip(lower=0).sum() if {"waitlist0", "d_waitlist"} <= set(last.columns) else None
-        out["exits"] = {
-            "admitted": int(f["admits"].sum()),
-            "dropped": int(f["wl_drops"].sum()),
-            "still_waiting": None if still is None else int(still),
-        }
+        if exits_at_last_auto:
+            out["exits"] = _exits_at_last_auto(f, calendar)
+        else:
+            last = f.sort_values("t1").groupby("section_id", observed=True).tail(1)
+            still = (last["waitlist0"] + last["d_waitlist"]).clip(lower=0).sum() if {"waitlist0", "d_waitlist"} <= set(last.columns) else None
+            out["exits"] = {
+                "admitted": int(f["admits"].sum()),
+                "dropped": int(f["wl_drops"].sum()),
+                "still_waiting": None if still is None else int(still),
+            }
+    elif exits_at_last_auto and calendar is None:
+        raise ValueError("exits_at_last_auto needs the data term's calendar")
     return out
+
+
+def last_auto_cutoff(calendar: TermCalendar) -> pd.Timestamp:
+    """00:00 UTC the day after the last automatic waitlist run (the backtest's ``deadline``)."""
+    d = calendar.last_auto_waitlist + pd.Timedelta(days=1)
+    return pd.Timestamp(d.isoformat(), tz="UTC")
+
+
+def _exits_at_last_auto(f: pd.DataFrame, calendar: TermCalendar | None) -> dict:
+    if calendar is None:
+        raise ValueError("exits_at_last_auto needs the data term's calendar (last_auto_waitlist)")
+    if not {"t0", "waitlist0", "d_waitlist"} <= set(f.columns):
+        raise ValueError("exits_at_last_auto needs the flows' t0, waitlist0 and d_waitlist")
+    cut = last_auto_cutoff(calendar)
+    t0 = pd.to_datetime(f["t0"], utc=True)
+    t1 = pd.to_datetime(f["t1"], utc=True)
+    before, after = f[t1 <= cut], f[t1 > cut]
+    started = f[t0 <= cut].assign(_t0=t0[t0 <= cut], _t1=t1[t0 <= cut]).sort_values("_t0").groupby("section_id", observed=True).tail(1)
+    at_cut = (started["waitlist0"] + started["d_waitlist"]).where(started["_t1"] <= cut, started["waitlist0"])
+    return {
+        "admitted": int(before["admits"].sum()),
+        "dropped": int(before["wl_drops"].sum()),
+        "still_waiting": int(at_cut.clip(lower=0).sum()),
+        "as_of": cut.isoformat(),
+        "after_last_auto": {"admitted": int(after["admits"].sum()), "dropped": int(after["wl_drops"].sum())},
+    }
 
 
 def _subject_file(subject: str) -> str:
@@ -570,6 +611,7 @@ def export_site_tables(
     catalog: Path | None = None,
     reach_min_at_risk: int = 0,
     interval_min_sections: int = 0,
+    exits_at_last_auto: bool = False,
 ) -> tuple[Path, Path]:
     """Write the site's JSON under ``out_dir``; returns ``(index.json, meta.json)``.
 
@@ -589,7 +631,9 @@ def export_site_tables(
     ``meta.json`` only when on, so with the defaults every file is byte-identical to an
     export without them): ``reach_min_at_risk`` cuts every curve cell where fewer than
     that many joiners are still at risk and ``interval_min_sections`` leaves out the band
-    of a curve cell with fewer sections than that (``_cell``).
+    of a curve cell with fewer sections than that (``_cell``); ``exits_at_last_auto``
+    measures the Insights exits at the data term's last automatic waitlist run
+    (``insights_tables``).
     """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -637,7 +681,7 @@ def export_site_tables(
     elif (out_dir / TITLES_FILE).exists():
         (out_dir / TITLES_FILE).unlink()
     _dump(out_dir / "pooled.json", {"term_id": calendar.term_id, **pools})
-    _dump(out_dir / "insights.json", {"term_id": calendar.term_id, **insights_tables(cohort, pools, min_n=min_n, n_boot=n_boot, flows=flows, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections)})
+    _dump(out_dir / "insights.json", {"term_id": calendar.term_id, **insights_tables(cohort, pools, min_n=min_n, n_boot=n_boot, flows=flows, reach_min_at_risk=reach_min_at_risk, interval_min_sections=interval_min_sections, calendar=calendar, exits_at_last_auto=exits_at_last_auto)})
 
     info = {
         "term_id": calendar.term_id,
@@ -674,6 +718,8 @@ def export_site_tables(
         info["reach_min_at_risk"] = int(reach_min_at_risk)
     if interval_min_sections:
         info["interval_min_sections"] = int(interval_min_sections)
+    if exits_at_last_auto:
+        info["exits_at_last_auto"] = True
     if meta:
         info.update(meta)
     info.setdefault("terms", [{"term_id": calendar.term_id, "term_name": calendar.name, "data_source": info.get("data_source")}])
@@ -702,6 +748,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json): adds a catalog_only stub row (pointing at its pools) for every catalog course with no cohort rows, writes titles.json (each index course's title and instructors) and meta.titles_file, catalog_term_id, catalog_courses and catalog_only_courses")
     p.add_argument("--reach-min-at-risk", type=int, default=0, metavar="N", help="cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
     p.add_argument("--interval-min-sections", type=int, default=0, metavar="N", help="leave out the 95%% band (lo/hi null) of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
+    p.add_argument("--exits-at-last-auto", action="store_true", help="insights.json exits: count admits, drops and who is still waiting at the data term's last automatic waitlist run, the purge after it apart (default: at the last observation)")
     p.add_argument("--titles-only", action="store_true", help="with --catalog: write only titles.json for the index.json already in --out and add titles_file to its meta.json; no cohort, no refit, every other file untouched")
     args = p.parse_args(argv)
     if args.catalog is not None and not args.catalog.is_file():
@@ -753,6 +800,7 @@ def main(argv: list[str] | None = None) -> int:
         catalog=args.catalog,
         reach_min_at_risk=args.reach_min_at_risk,
         interval_min_sections=args.interval_min_sections,
+        exits_at_last_auto=args.exits_at_last_auto,
     )
     info = json.loads(meta_path.read_text(encoding="utf-8"))
     print(json.dumps({"index": str(index_path), "meta": str(meta_path), "courses": info["courses"], "events": info["events"], "sections": info["sections"], "data_source": info.get("data_source"), "estimate_level": info["estimate_level"], "subject_files": len(info["subject_files"]), "titles_file": info.get("titles_file")}, indent=1))

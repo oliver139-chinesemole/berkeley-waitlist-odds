@@ -99,7 +99,8 @@ def run_analysis(
     ``catalog`` (a classes_site ``catalog.json``) adds the site's ``titles.json``
     (``export_site_tables``), without which title and instructor search is off;
     ``site_options`` are ``export_site_tables``' default-off keyword options
-    (``reach_min_at_risk``, ``interval_min_sections``), passed only when given.
+    (``reach_min_at_risk``, ``interval_min_sections``, ``exits_at_last_auto``), passed
+    only when given.
     """
     out_dir = Path(out_dir) / calendar.term_id
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -274,7 +275,7 @@ def run_analysis(
 
 def _site_options(args: argparse.Namespace) -> dict:
     """The export options the command line turned on (an option left at its default is not passed)."""
-    return {k: v for k, v in {"reach_min_at_risk": args.reach_min_at_risk, "interval_min_sections": args.interval_min_sections}.items() if v}
+    return {k: v for k, v in {"reach_min_at_risk": args.reach_min_at_risk, "interval_min_sections": args.interval_min_sections, "exits_at_last_auto": args.exits_at_last_auto}.items() if v}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -294,6 +295,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--catalog", type=Path, default=None, help="a classes_site catalog.json (data branch: catalog/<term>/catalog.json); the site files then include a catalog_only stub row (pointing at its pools) for every catalog course with no cohort rows and titles.json for title and instructor search")
     p.add_argument("--reach-min-at-risk", type=int, default=0, metavar="N", help="site files: cut each curve at the last day with at least N joiners still at risk and make that day its reach (default 0: off, the pre-registered curves)")
     p.add_argument("--interval-min-sections", type=int, default=0, metavar="N", help="site files: leave out the 95%% band of a cell with fewer than N sections (default 0: off, the pre-registered curves)")
+    p.add_argument("--exits-at-last-auto", action="store_true", help="site files: count the Insights exits at the term's last automatic waitlist run, the purge after it apart (default: at the last observation)")
     args = p.parse_args(argv)
     if args.catalog is not None and not args.catalog.is_file():
         p.error(f"--catalog {args.catalog}: no such file")
