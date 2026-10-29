@@ -8,7 +8,10 @@ Files written under ``out_dir`` (``site/data``):
   got in within 7, 14 and 28 days and at the cell's reach (each with its 95%
   band), the median, counts, the pooled flag, and the reconstructed waitlist
   joins the pages rank courses by. Drives search, the Courses table and the
-  related-courses list; small enough to load on a phone.
+  related-courses list; small enough to load on a phone. With a ``catalog.json``
+  (the forecast term's schedule) every catalog course with no cohort rows gets a
+  row too, flagged ``catalog_only``, whose cells all point at its pools with
+  ``n_course`` 0; ``meta.json`` then counts them (``catalog_only_courses``).
 - ``courses/<SUBJECT>.json``: per course and bucket, a pointer to the pool
   that stands in for it plus the course's own counts; at
   ``estimate_level="course"`` a cell with ``min_n`` rows or more carries its
@@ -47,6 +50,7 @@ import numpy as np
 import pandas as pd
 
 from analysis.calendar import TermCalendar, calendar_for
+from analysis.cohort import OTHER_GROUP, course_level
 from analysis.survival import BUCKET_ORDER
 from scraper.sources.classes_site import SectionRef, primary_like
 
@@ -273,6 +277,37 @@ def course_tables(cohort: pd.DataFrame, calendar: TermCalendar, *, min_n: int = 
     return out
 
 
+def catalog_stubs(catalog_entries: Iterable[dict], cohort: pd.DataFrame, pools: dict) -> dict:
+    """``{course_key: entry}`` for every catalog course with no cohort rows, shaped like a
+    ``course_tables`` entry plus ``catalog_only: True``. ``dept_group`` is the cohort's own
+    for the subject, else ``OTHER_GROUP`` (a subject with no cohort sections, the rule
+    ``build_cohort`` applies to subjects under ``min_sections_per_group``); ``level`` is
+    ``course_level``. Each bucket some pool covers gets a pointer cell with ``n_course``
+    and ``sections_course`` 0 (the department pool first, then ``"all"``); a course no
+    pool covers at all is left out, as in ``course_tables``."""
+    known = set(cohort["course_key"].astype(str)) if len(cohort) else set()
+    groups = {str(k): str(v) for k, v in cohort.groupby("subject", observed=True)["dept_group"].first().items()} if len(cohort) else {}
+    out: dict = {}
+    for e in catalog_entries:
+        key = str(e.get("course_key") or "")
+        if not key or key in known or key in out:
+            continue
+        subject, number = str(e["subject"]), str(e["catalog_number"])
+        dept = groups.get(subject, OTHER_GROUP)
+        cells: dict = {}
+        for bucket in BUCKET_ORDER:
+            if bucket in pools["dept"].get(dept, {}):
+                pooled = dept
+            elif bucket in pools["all"]:
+                pooled = "all"
+            else:
+                continue
+            cells[bucket] = {"pooled": pooled, "n_course": 0, "sections_course": 0}
+        if cells:
+            out[key] = {"subject": subject, "number": number, "level": course_level(number), "dept_group": dept, "buckets": cells, "catalog_only": True}
+    return out
+
+
 def joins_by_course(cohort: pd.DataFrame, flows: pd.DataFrame | None) -> dict[str, int]:
     """Reconstructed waitlist joins per course (the rank behind the example chips), from
     the flows of the sections the cohort knows; empty without flows."""
@@ -312,6 +347,8 @@ def index_rows(courses: dict, pools: dict, joins: dict[str, int] | None = None) 
                 "buckets": buckets,
             }
         )
+        if entry.get("catalog_only"):
+            rows[-1]["catalog_only"] = True
     return rows
 
 
@@ -506,9 +543,13 @@ def export_site_tables(
     is the term whose dates the pages count down to, so a finished cycle can
     stand in for the coming one and be labelled as such. ``estimate_level`` is
     what a course's estimate is (``course_tables``); ``meta.json`` records it.
-    ``catalog`` (a classes_site ``catalog.json``) adds ``titles.json`` for the
-    index's courses and ``meta.titles_file``; without it neither is written and a
-    ``titles.json`` left from an earlier export is removed.
+    ``catalog`` (a classes_site ``catalog.json``, the forecast term's schedule) adds
+    a ``catalog_stubs`` entry for every catalog course with no cohort rows (into the
+    subject files and the index, flagged ``catalog_only``), ``titles.json`` for the
+    index's courses, and ``meta.titles_file``, ``catalog_term_id``, ``catalog_courses``
+    and ``catalog_only_courses``; ``meta.courses`` still counts courses with cohort
+    rows. Without it none of these is written and a ``titles.json`` left from an
+    earlier export is removed.
     """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -516,6 +557,17 @@ def export_site_tables(
     pools = pool_tables(cohort, min_n=min_n, n_boot=n_boot)
     courses = course_tables(cohort, calendar, min_n=min_n, n_boot=n_boot, pools=pools, estimate_level=estimate_level)
     joins = joins_by_course(cohort, flows)
+    n_courses = len(courses)  # courses with cohort rows, before any catalog stub
+    catalog_info: dict = {}
+    if catalog is not None:
+        catalog_term, catalog_entries = load_catalog(catalog)
+        stubs = catalog_stubs(catalog_entries, cohort, pools)
+        courses = dict(sorted({**courses, **stubs}.items()))
+        catalog_info = {
+            "catalog_term_id": catalog_term,
+            "catalog_courses": len({str(e.get("course_key")) for e in catalog_entries if e.get("course_key")}),
+            "catalog_only_courses": len(stubs),
+        }
 
     courses_dir = out_dir / "courses"
     courses_dir.mkdir(exist_ok=True)
@@ -551,7 +603,7 @@ def export_site_tables(
         "dates": {k: getattr(forecast, k).isoformat() for k in CALENDAR_FIELDS},
         "data_dates": {k: getattr(calendar, k).isoformat() for k in CALENDAR_FIELDS},
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "courses": len(courses),
+        "courses": n_courses,
         "cohort_rows": int(len(cohort)),
         "events": int(cohort["event"].sum()) if len(cohort) else 0,
         "sections": int(cohort["section_id"].nunique()) if len(cohort) else 0,
@@ -573,12 +625,13 @@ def export_site_tables(
     }
     if catalog is not None:
         info["titles_file"] = TITLES_FILE
+        info.update(catalog_info)
     if meta:
         info.update(meta)
     info.setdefault("terms", [{"term_id": calendar.term_id, "term_name": calendar.name, "data_source": info.get("data_source")}])
     meta_path = out_dir / "meta.json"
     meta_path.write_text(json.dumps(info, indent=1, sort_keys=True, allow_nan=False), encoding="utf-8")
-    logger.info("wrote %s (%d courses, %d subject files), %s and %s", index_path, len(courses), len(subject_files), out_dir / "pooled.json", meta_path)
+    logger.info("wrote %s (%d courses, %d catalog-only, %d subject files), %s and %s", index_path, n_courses, len(courses) - n_courses, len(subject_files), out_dir / "pooled.json", meta_path)
     return index_path, meta_path
 
 

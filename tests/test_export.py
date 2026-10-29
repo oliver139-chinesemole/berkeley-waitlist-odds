@@ -197,7 +197,7 @@ TITLE_CATALOG = {
         _entry("COMPSCI 0", "LEC", "001", "Structure and Interpretation of Computer Programs", ["Rebecca Sofia Lie", "Pamela Fox", ""]),
         # instructors as the scraper writes them: one comma-separated string
         _entry("MATH 1", "LEC", "001", "Calculus", "Zed Zhang,  Amy Adams , Zed Zhang"),
-        # absent from the index: never written
+        # no cohort rows: a catalog stub (catalog_stubs), so in the index and titled too
         _entry("HISTORY 7", "LEC", "001", "Introduction to the History of the United States", "Brian DeLay"),
     ],
 }
@@ -275,9 +275,10 @@ def test_export_writes_titles_from_the_catalog(cohort: pd.DataFrame, tmp_path: P
     assert titles["source"] == "classes_site catalog" and titles["catalog_term_id"] == "2268"
     assert re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\+00:00", titles["generated_at"])
     index_keys = {r["key"] for r in json.loads(index_path.read_text())["courses"]}
-    assert set(titles["courses"]) <= index_keys and "HISTORY 7" not in titles["courses"]
+    assert set(titles["courses"]) <= index_keys and "HISTORY 7" in index_keys
     assert titles["courses"] == {
         "COMPSCI 0": {"title": "Structure and Interpretation of Computer Programs", "instructors": ["Pamela Fox", "Rebecca Sofia Lie"]},
+        "HISTORY 7": {"title": "Introduction to the History of the United States", "instructors": ["Brian DeLay"]},
         "MATH 1": {"title": "Calculus", "instructors": ["Amy Adams", "Zed Zhang"]},
     }
     first = (out / "titles.json").read_text()
@@ -308,8 +309,16 @@ def test_cli_catalog_and_titles_only(cohort: pd.DataFrame, tmp_path: Path, capsy
     full, bare = tmp_path / "full", tmp_path / "bare"
     assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--out", str(full), "--n-boot", "5", "--catalog", str(catalog)]) == 0
     assert main(["--cohort", str(cohort_path), "--term-id", "2268", "--out", str(bare), "--n-boot", "5"]) == 0
-    assert (full / "titles.json").exists() and json.loads((full / "meta.json").read_text())["titles_file"] == "titles.json"
-    assert not (bare / "titles.json").exists() and "titles_file" not in json.loads((bare / "meta.json").read_text())
+    full_meta, bare_meta = json.loads((full / "meta.json").read_text()), json.loads((bare / "meta.json").read_text())
+    assert (full / "titles.json").exists() and full_meta["titles_file"] == "titles.json"
+    assert not (bare / "titles.json").exists() and "titles_file" not in bare_meta
+    # --catalog adds a stub for each catalog course with no cohort rows (HISTORY 7); meta.courses keeps its meaning
+    assert full_meta["courses"] == bare_meta["courses"] and full_meta["catalog_term_id"] == "2268"
+    assert full_meta["catalog_courses"] == 3 and full_meta["catalog_only_courses"] == 1
+    assert [r for r in json.loads((full / "index.json").read_text())["courses"] if r.get("catalog_only")] == [
+        r for r in json.loads((full / "index.json").read_text())["courses"] if r["key"] == "HISTORY 7"
+    ]
+    assert not {"catalog_term_id", "catalog_courses", "catalog_only_courses"} & set(bare_meta)
     capsys.readouterr()
     before = json.loads((bare / "meta.json").read_text())
     untouched = {p.name: p.read_bytes() for p in bare.iterdir() if p.is_file() and p.name != "meta.json"}
@@ -320,7 +329,9 @@ def test_cli_catalog_and_titles_only(cohort: pd.DataFrame, tmp_path: Path, capsy
     assert printed["courses"] == 2 and printed["index_keys"] == n_index and printed["index_keys_without_title"] == n_index - 2
     assert json.loads((bare / "meta.json").read_text()) == {**before, "titles_file": "titles.json"}
     assert {p.name: p.read_bytes() for p in bare.iterdir() if p.is_file() and p.name not in ("meta.json", "titles.json")} == untouched
-    assert _without_generated_at((bare / "titles.json").read_text()) == _without_generated_at((full / "titles.json").read_text())
+    # the same titles for the courses both indexes have; the full export's stub (HISTORY 7) is titled too
+    full_titles = json.loads((full / "titles.json").read_text())["courses"]
+    assert json.loads((bare / "titles.json").read_text())["courses"] == {k: v for k, v in full_titles.items() if k != "HISTORY 7"} and "HISTORY 7" in full_titles
     with pytest.raises(SystemExit):
         main(["--titles-only", "--out", str(bare)])  # needs --catalog
     with pytest.raises(SystemExit):
@@ -349,3 +360,99 @@ def test_cli_carries_no_labels_from_another_terms_meta(cohort: pd.DataFrame, tmp
     for key in ("backfill", "flows", "cohort_rows_by_scenario", "prereg_commit", "prereg_date"):
         assert key not in meta, key
     assert meta.get("data_source") != "berkeleytime_history"
+
+
+# --- catalog stubs: every course on the forecast term's schedule, with or without cohort rows (Task 19) ---
+
+
+STUB_CATALOG = {
+    "term_id": "2272",
+    "sections": [
+        # a course with cohort rows: neither duplicated nor overwritten
+        _entry("COMPSCI 0", "LEC", "001", "Structure and Interpretation of Computer Programs", "Pamela Fox"),
+        _entry("COMPSCI 0", "DIS", "101"),
+        # no cohort rows, in subjects the cohort has: that subject's dept_group (ART's is OTHER in this cohort)
+        _entry("COMPSCI 299", "LEC", "001", "Research"),
+        _entry("COMPSCI 299", "DIS", "101"),  # two entries, one course
+        _entry("STAT 150", "LEC", "001", "Stochastic Processes"),
+        _entry("ART 100", "STD", "001", "Drawing"),
+        # no cohort rows, in a subject the cohort lacks: OTHER
+        _entry("HISTORY 7", "LEC", "001", "Introduction to the History of the United States", "Brian DeLay"),
+        _entry("MATH C10", "LEC", "001"),
+    ],
+}
+STUB_KEYS = {"COMPSCI 299", "STAT 150", "ART 100", "HISTORY 7", "MATH C10"}
+
+
+def _write_stub_catalog(tmp_path: Path) -> Path:
+    path = tmp_path / "catalog" / "2272" / "catalog.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(STUB_CATALOG), encoding="utf-8")
+    return path
+
+
+def test_catalog_stubs_point_at_the_department_then_all(cohort: pd.DataFrame, pools: dict) -> None:
+    trimmed = {
+        "all": {b: c for b, c in pools["all"].items() if b != "41+"},
+        "dept": {**pools["dept"], "OTHER": {b: c for b, c in pools["dept"]["OTHER"].items() if b != "1-5"}},
+        "level": pools["level"],
+    }
+    stubs = export.catalog_stubs(STUB_CATALOG["sections"], cohort, trimmed)
+    assert set(stubs) == STUB_KEYS  # COMPSCI 0 has cohort rows
+    hist = stubs["HISTORY 7"]
+    assert {k: v for k, v in hist.items() if k != "buckets"} == {"subject": "HISTORY", "number": "7", "level": "lower", "dept_group": "OTHER", "catalog_only": True}
+    # OTHER lacks 1-5 here, so that bucket points at all courses; 41+ is in the OTHER pool only
+    assert hist["buckets"] == {
+        "1-5": {"pooled": "all", "n_course": 0, "sections_course": 0},
+        "6-15": {"pooled": "OTHER", "n_course": 0, "sections_course": 0},
+        "16-40": {"pooled": "OTHER", "n_course": 0, "sections_course": 0},
+        "41+": {"pooled": "OTHER", "n_course": 0, "sections_course": 0},
+    }
+    assert list(hist["buckets"]) == [b for b in export.BUCKET_ORDER if b in hist["buckets"]]
+    # STAT has every bucket but 41+, which no pool covers once all-course 41+ is gone: skipped
+    stat = {**trimmed, "dept": {**trimmed["dept"], "STAT": {b: c for b, c in pools["dept"]["STAT"].items() if b != "41+"}}}
+    assert export.catalog_stubs(STUB_CATALOG["sections"], cohort, stat)["STAT 150"]["buckets"] == {
+        b: {"pooled": "STAT", "n_course": 0, "sections_course": 0} for b in ("1-5", "6-15", "16-40")
+    }
+    assert stubs["ART 100"]["dept_group"] == "OTHER" and stubs["COMPSCI 299"]["dept_group"] == "COMPSCI" and stubs["STAT 150"]["dept_group"] == "STAT"
+    assert [stubs[k]["level"] for k in ("MATH C10", "STAT 150", "COMPSCI 299")] == ["lower", "upper", "grad"]
+    assert stubs["MATH C10"]["dept_group"] == "MATH" and stubs["MATH C10"]["number"] == "C10"
+
+
+def test_export_adds_a_stub_for_every_catalog_course_without_cohort_rows(cohort: pd.DataFrame, tmp_path: Path) -> None:
+    catalog = _write_stub_catalog(tmp_path)
+    plain, full = tmp_path / "plain", tmp_path / "full"
+    export_site_tables(cohort, CAL, plain, n_boot=5)
+    index_path, meta_path = export_site_tables(cohort, CAL, full, n_boot=5, catalog=catalog)
+    before = {r["key"]: r for r in json.loads((plain / "index.json").read_text())["courses"]}
+    rows = {r["key"]: r for r in json.loads(index_path.read_text())["courses"]}
+    assert set(rows) == set(before) | STUB_KEYS and len(rows) == len(before) + len(STUB_KEYS)
+    # the cohort's courses, pools and insights are exactly what an export without a catalog writes
+    assert {k: rows[k] for k in before} == before
+    for name in ("pooled.json", "insights.json"):
+        assert (full / name).read_text() == (plain / name).read_text()
+    for path in (plain / "courses").iterdir():
+        assert json.loads((full / "courses" / path.name).read_text())["courses"].items() >= json.loads(path.read_text())["courses"].items()
+    pooled = json.loads((full / "pooled.json").read_text())
+    for key in STUB_KEYS:
+        row = rows[key]
+        assert row["catalog_only"] is True and row["buckets"]
+        for bucket, s in row["buckets"].items():
+            assert s["pooled"] == row["dept_group"] and s["n_course"] == 0 and s["sections_course"] == 0
+            assert s["median_days"] == pooled["dept"][row["dept_group"]][bucket]["median_days"]
+    assert all("catalog_only" not in r for r in before.values())
+    assert [r["key"] for r in json.loads(index_path.read_text())["courses"]] == sorted(rows)
+    history = json.loads((full / "courses" / "HISTORY.json").read_text())
+    assert history["courses"]["HISTORY 7"] == {
+        "subject": "HISTORY", "number": "7", "level": "lower", "dept_group": "OTHER", "catalog_only": True,
+        "buckets": {b: {"pooled": "OTHER", "n_course": 0, "sections_course": 0} for b in export.BUCKET_ORDER},
+    }
+    assert "catalog_only" not in json.loads((full / "courses" / "COMPSCI.json").read_text())["courses"]["COMPSCI 0"]
+    meta, plain_meta = json.loads(meta_path.read_text()), json.loads((plain / "meta.json").read_text())
+    assert meta["courses"] == plain_meta["courses"] == len(before)  # courses with cohort rows
+    assert meta["catalog_term_id"] == "2272" and meta["catalog_courses"] == 6 and meta["catalog_only_courses"] == 5
+    assert meta["subject_files"]["HISTORY"] == "courses/HISTORY.json"
+    assert "HISTORY 7" in json.loads((full / "titles.json").read_text())["courses"]
+    for key in ("catalog_term_id", "catalog_courses", "catalog_only_courses"):
+        assert key not in plain_meta
+    assert "HISTORY" not in plain_meta["subject_files"]
