@@ -33601,6 +33601,21 @@
 "url_path": "/content/2026-fall-linguis-c146-001-lec-001"
 },
 {
+"catalog_number": "H195S",
+"class_number": "001",
+"component": "SEM",
+"course_key": "LINGUIS H195S",
+"instructors": "Nicole Holliday",
+"last_status": 200,
+"node_id": 543144,
+"probed_at": "2026-10-29T14:37:43.907774+00:00",
+"section_id": "33931",
+"section_number": "001",
+"subject": "LINGUIS",
+"title": "Senior Honors Seminar",
+"url_path": "/content/2026-fall-linguis-h195s-001-sem-001"
+},
+{
 "catalog_number": "R1B",
 "class_number": "001",
 "component": "LEC",
@@ -58504,6 +58519,6 @@
 "source": "classes.berkeley.edu rss.xml + /node/<id> enumeration + section page probes",
 "term_id": "2268",
 "term_name": "Fall 2026",
-"updated_at": "2026-10-28T02:24:06.876441+00:00",
+"updated_at": "2026-10-29T14:53:55.362829+00:00",
 "version": 3
 }
