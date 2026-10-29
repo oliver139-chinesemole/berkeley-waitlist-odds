@@ -1175,8 +1175,9 @@ BWO.nearestSubjects = function (index, text, n) {
   const alias = BWO.SUBJECT_ALIASES[want];
   const named = (s) => { const name = squash(BWO.SUBJECT_NAMES && BWO.SUBJECT_NAMES[s]); return !!name && name.startsWith(want); };
   // A code or a shorthand the text starts with ("compscience" is COMPSCI, "poli science" starts with POLISCI).
-  const leads = new Set(Object.keys(BWO.SUBJECT_ALIASES).filter((k) => want.startsWith(squash(k))).map((k) => BWO.SUBJECT_ALIASES[k]));
-  const starts = subjects.filter((s) => s === alias || s.startsWith(want) || want.startsWith(s) || leads.has(s) || named(s)).sort((a, b) => joins[b] - joins[a] || a.localeCompare(b));
+  // Three letters at least: a two-letter code or shorthand (PE, ME, CE, NE, DS) begins too many unrelated words.
+  const leads = new Set(Object.keys(BWO.SUBJECT_ALIASES).filter((k) => squash(k).length >= 3 && want.startsWith(squash(k))).map((k) => BWO.SUBJECT_ALIASES[k]));
+  const starts = subjects.filter((s) => s === alias || s.startsWith(want) || (s.length >= 3 && want.startsWith(s)) || leads.has(s) || named(s)).sort((a, b) => joins[b] - joins[a] || a.localeCompare(b));
   const limit = want.length <= 5 ? 1 : 2;  // the matcher's own rule (nearSubjects): one edit for a short spelling
   const close = subjects.filter((s) => !starts.includes(s)).map((s) => [s, BWO.damerau(want, s)]).filter((x) => x[1] <= limit)
     .sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0])).map((x) => x[0]);

@@ -1593,6 +1593,20 @@ def test_nearest_subjects_for_misspelt_subjects_are_pinned() -> None:
     assert dict(zip(asked, out["eval"])) == asked
 
 
+# Review of 2026-10-29, 3.4, on the served index: a code or shorthand the text starts with counts only from three
+# letters, so words that merely begin with PE, ME, CE, NE or DS get no department.
+SERVED_NEAR = {
+    "PEACE": [], "MEDIEVAL": [], "CELTIC": ["CELTIC"], "NEUROSCI": ["NEU"],  # NEUROSCI is NEU's own shorthand
+    "DSP": [], "compscience": ["COMPSCI"], "poli science": ["POLSCI"], "NOPE": [],
+}
+
+
+def test_nearest_subjects_on_the_served_index_are_pinned() -> None:
+    out = render(SITE, page="dept.html", expression=f"{json.dumps(list(SERVED_NEAR))}.map((t) => BWO.nearestSubjects(BWO.loaded.index, t, 3))")
+    assert "eval_error" not in out, out.get("eval_error")
+    assert dict(zip(SERVED_NEAR, out["eval"])) == SERVED_NEAR
+
+
 def test_department_page_shell_and_states(course_site: Path, tmp_path: Path) -> None:
     html = (SITE / "dept.html").read_text()
     assert '<meta property="og:title"' in html and '<meta property="og:description"' in html
